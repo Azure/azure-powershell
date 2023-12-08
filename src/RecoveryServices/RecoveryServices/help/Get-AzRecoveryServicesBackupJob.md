@@ -101,7 +101,7 @@ The class of resources being protected. Currently the values supported for this 
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, AzureStorage, AzureWorkload, MAB
+Accepted values: AzureVM, AzureStorage, AzureWorkload, MAB, AzureSQL
 
 Required: False
 Position: Named

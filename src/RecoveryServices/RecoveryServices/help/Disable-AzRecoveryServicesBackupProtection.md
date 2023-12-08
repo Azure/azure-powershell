@@ -58,6 +58,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $item[0] -RetainRecoveryPointsA
 $item = Get-AzRecoveryServicesBackupItem -VaultId $suspendVault.ID -BackupManagementType AzureVM -WorkloadType AzureVM
  $item[0].ProtectionState
 ```
+
 ```output
 BackupsSuspended
 ```

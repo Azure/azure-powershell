@@ -1,7 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
+external help file: Az.RecoveryServices-help.xml
 Module Name: Az.RecoveryServices
-ms.assetid: DEB3D7B5-D974-472B-B8B4-9A19CA6AECCC
 online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem
 schema: 2.0.0
 ---
@@ -9,116 +8,149 @@ schema: 2.0.0
 # Get-AzRecoveryServicesBackupItem
 
 ## SYNOPSIS
-
-Gets the items from a container in Backup.
+Gets list of backup items protected with a recovery services vault
 
 ## SYNTAX
 
-### GetItemsForContainer (Default)
+### GetItemsForVault (Default)
 ```
-Get-AzRecoveryServicesBackupItem [-Container] <ContainerBase> [[-Name] <String>]
- [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
- [-WorkloadType] <WorkloadType> [[-DeleteState] <ItemDeleteState>] [-FriendlyName <String>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-UseSecondaryRegion] [<CommonParameters>]
-```
-
-### GetItemsForVault
-```
-Get-AzRecoveryServicesBackupItem [-BackupManagementType] <BackupManagementType> [[-Name] <String>]
- [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
- [-WorkloadType] <WorkloadType> [[-DeleteState] <ItemDeleteState>] [-FriendlyName <String>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-UseSecondaryRegion] [<CommonParameters>]
+Get-AzRecoveryServicesBackupItem -ResourceGroupName <String> -VaultName <String>
+ -DatasourceType <DatasourceTypes> [-SubscriptionId <String[]>] [-FriendlyName <String>] [-Name <String>]
+ [-ProtectionStatus <String>] [-ProtectionState <String>] [-DeleteState <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### GetItemsForPolicy
+### GetItemsForContainer
 ```
-Get-AzRecoveryServicesBackupItem [-Policy] <PolicyBase> [[-Name] <String>]
- [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
- [[-DeleteState] <ItemDeleteState>] [-FriendlyName <String>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-UseSecondaryRegion] [<CommonParameters>]
+Get-AzRecoveryServicesBackupItem -ResourceGroupName <String> -VaultName <String>
+ -DatasourceType <DatasourceTypes> -Container <IProtectionContainerResource> [-SubscriptionId <String[]>]
+ [-FriendlyName <String>] [-Name <String>] [-ProtectionStatus <String>] [-ProtectionState <String>]
+ [-DeleteState <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetItemsForpolicy
+```
+Get-AzRecoveryServicesBackupItem -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String[]>]
+ [-FriendlyName <String>] [-Name <String>] [-ProtectionStatus <String>] [-ProtectionState <String>]
+ [-DeleteState <String>] [-DefaultProfile <PSObject>] -Policy <IProtectionPolicyResource> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
-The **Get-AzRecoveryServicesBackupItem** cmdlet gets the list of protected items in a container and the protection status of the items.
-A container that is registered to an Azure Recovery Services vault can have one or more items that can be protected.
-For Azure virtual machines, there can be only one backup item in the virtual machine container.
-Set the vault context by using the -VaultId parameter.
+Gets list of backup items protected with a recovery services vault
 
 ## EXAMPLES
 
-### Example 1: Get an item from a Backup container
-
+### Example 1: Get backup items protected by recovery services vault
 ```powershell
-$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -FriendlyName "V2VM" -VaultId $vault.ID
-$BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureVM -VaultId $vault.ID
+$items = Get-AzRecoveryServicesBackupItem -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -DatasourceType AzureVM
+$items
 ```
 
-The first command gets the container of type AzureVM, and then stores it in the $Container variable.
-The second command gets the Backup item named V2VM in $Container, and then stores it in the $BackupItem variable.
-
-### Example 2: Get an Azure File Share Item from FriendlyName
-
-```powershell
-$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -FriendlyName "StorageAccount1" -VaultId $vault.ID
-$BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "FileShareName"
+```output
+ETag Location Name
+---- -------- ----
+              VM;iaasvmcontainerv2;hiagarg;hiagavm1
+              VM;iaasvmcontainerv2;hiagarg;hiagavm2
+              VM;iaasvmcontainerv2;hiagarg;hiagavm
 ```
 
-The first command gets the container of type AzureStorage, and then stores it in the $Container variable.
-The second command gets the Backup item whose friendlyName matches the value passed in FriendlyName Parameter, and then stores it in the $BackupItem variable.
-Using FriendlyName parameter can result in returning more than one Azure File Share. In such cases, execute the cmdlet by passing value for -Name parameter as the Name property returned in the result set of $BackupItem.
+This command fetches the backup items protected by a recovery services vault for DatasourceType AzureVM.
+
+### Example 2: Get backup items for a particular container
+```powershell
+$container = Get-AzRecoveryServicesBackupContainer -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -ContainerType AzureVMAppContainer -DatasourceType MSSQL | Where-Object { $_.Name -match $containerFriendlyName }
+$items = Get-AzRecoveryServicesBackupItem -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -DatasourceType MSSQL -Container $container
+$items[0] | fl
+```
+
+```output
+BackupManagementType             : AzureWorkload
+BackupSetName                    :
+ContainerName                    : VMAppContainer;Compute;hiagarg;sql-pstest-vm1
+CreateMode                       :
+DeferredDeleteTimeInUtc          :
+DeferredDeleteTimeRemaining      :
+ETag                             :
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;hiagarg;sql-pstest-vm1/protectedItems/SQLDataBase;MSSQLSERVER;model
+IsArchiveEnabled                 : False
+IsDeferredDeleteScheduleUpcoming :
+IsRehydrate                      :
+IsScheduledForDeferredDelete     :
+LastRecoveryPoint                :
+Location                         :
+Name                             : SQLDataBase;MSSQLSERVER;model
+PolicyId                         :
+PolicyName                       :
+Property                         : Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.AzureVMWorkloadSqlDatabaseProtectedItem
+ProtectedItemType                : AzureVmWorkloadSQLDatabase
+ResourceGuardOperationRequest    :
+SoftDeleteRetentionPeriod        : 0
+SourceResourceId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/hiagarg/providers/Microsoft.Compute/virtualMachines/sql-pstest-vm1
+Tag                              : Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ResourceTags
+Type                             : Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems
+WorkloadType                     : SQLDataBase
+```
+
+The first command gets the backup container and second command fetches the backup items protected by a recovery services vault for DatasourceType MSSQL and belong to backup container $container.
+
+### Example 3: Get backup items protected by a backup policy
+```powershell
+$policy =  Get-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -PolicySubType "Standard" -DatasourceType MSSQL | Where-Object { $_.Name -match "HourlyLogBackup"  }
+$items = Get-AzRecoveryServicesBackupItem -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -Policy $policy
+$items
+```
+
+```output
+ETag Location Name
+---- -------- ----
+              SQLDataBase;mssqlserver;msdb
+              SQLDataBase;MSSQLSERVER;mig-db1
+              SQLDataBase;mssqlserver;model
+```
+
+The first command gets the backup policy and second command fetches the backup items protected by a recovery services vault with the policy.
 
 ## PARAMETERS
 
-### -BackupManagementType
-
-The class of resources being protected. The acceptable values for this parameter are:
-
-- AzureVM
-- MAB
-- AzureStorage
-- AzureWorkload
+### -Container
+Specifies a container object from which this cmdlet gets backup items.
+To obtain an ProtectionContainerResource, use the Get-AzRecoveryServicesBackupContainer cmdlet.
+To construct, see NOTES section for CONTAINER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
-Parameter Sets: GetItemsForVault
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainerResource
+Parameter Sets: GetItemsForContainer
 Aliases:
-Accepted values: AzureVM, MAB, AzureStorage, AzureWorkload
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Container
-
-Specifies a container object from which this cmdlet gets backup items.
-To obtain an **AzureRmRecoveryServicesBackupContainer**, use the **Get-AzRecoveryServicesBackupContainer** cmdlet.
+### -DatasourceType
+Specifies the DatasourceType
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
-Parameter Sets: GetItemsForContainer
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.DatasourceTypes
+Parameter Sets: GetItemsForVault, GetItemsForContainer
 Aliases:
+Accepted values: AzureVM, MSSQL, SAPHANA, AzureFiles
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
 
-The credentials, account, tenant, and subscription used for communication with azure.
-
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -128,20 +160,17 @@ Accept wildcard characters: False
 ```
 
 ### -DeleteState
-Specifies the deletestate of the item
-The acceptable values for this parameter are:
-
-- ToBeDeleted
-- NotDeleted
+Specifies the delete state of the item The acceptable values for this parameter are: 
+ ToBeDeleted 
+ NotDeleted
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemDeleteState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: ToBeDeleted, NotDeleted
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -163,8 +192,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-
-Specifies the name of backup item. For file share, specify the unique ID of protected file share.
+Specifies the name of backup item.
+For file share, specify the unique ID of protected file share.
 
 ```yaml
 Type: System.String
@@ -172,94 +201,42 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Policy
-
-Protection policy object.
+Protection policy object
+To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
-Parameter Sets: GetItemsForPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionPolicyResource
+Parameter Sets: GetItemsForpolicy
 Aliases:
 
 Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProtectionState
-
-Specifies the state of protection.
-The acceptable values for this parameter are:
-
-- IRPending.
-Initial synchronization has not started and there is no recovery point yet.
-- Protected.
-Protection is ongoing.
-- ProtectionError.
-There is a protection error.
-- ProtectionStopped.
-Protection is disabled.
-
-```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState
-Parameter Sets: (All)
-Aliases:
-Accepted values: IRPending, ProtectionError, Protected, ProtectionStopped, BackupsSuspended
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProtectionStatus
-
-Specifies the overall protection status of an item in the container.
-The acceptable values for this parameter are:
-
-- Healthy
-- Unhealthy
-
-```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionStatus
-Parameter Sets: (All)
-Aliases:
-Accepted values: Healthy, Unhealthy
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UseSecondaryRegion
-Filters from Secondary Region for Cross Region Restore
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VaultId
+### -ProtectionState
+Specifies the state of protection.
+The acceptable values for this parameter are: 
+ IRPending.
+Initial synchronization has not started and there is no recovery point yet.
 
-ARM ID of the Recovery Services Vault.
+ Protected.
+Protection is ongoing.
+
+ ProtectionError.
+There is a protection error.
+
+ ProtectionStopped.
+Protection is disabled.
 
 ```yaml
 Type: System.String
@@ -269,28 +246,66 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WorkloadType
-
-Workload type of the resource. The acceptable values for this parameter are:
-
-- AzureVM
-- AzureFiles
-- MSSQL
-- FileFolder
-- SAPHanaDatabase
+### -ProtectionStatus
+Specifies the overall protection status of an item in the container.
+The acceptable values for this parameter are: Healthy, Unhealthy
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
-Parameter Sets: GetItemsForContainer, GetItemsForVault
+Type: System.String
+Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, AzureFiles, MSSQL, FileFolder, SAPHanaDatabase
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group where the recovery services vault is present.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: True
-Position: 5
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription Id
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VaultName
+The name of the recovery services vault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -301,22 +316,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
-
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
+### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectedItemResource
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Backup-AzRecoveryServicesBackupItem](./Backup-AzRecoveryServicesBackupItem.md)
-
-[Disable-AzRecoveryServicesBackupProtection](./Disable-AzRecoveryServicesBackupProtection.md)
-
-[Get-AzRecoveryServicesBackupRecoveryPoint](./Get-AzRecoveryServicesBackupRecoveryPoint.md)
-
-[Restore-AzRecoveryServicesBackupItem](./Restore-AzRecoveryServicesBackupItem.md)

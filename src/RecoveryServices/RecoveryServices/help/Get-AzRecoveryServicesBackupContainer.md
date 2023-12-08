@@ -1,7 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
+external help file: Az.RecoveryServices-help.xml
 Module Name: Az.RecoveryServices
-ms.assetid: 1097FF29-1C23-4960-930C-5C1227419359
 online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer
 schema: 2.0.0
 ---
@@ -9,89 +8,91 @@ schema: 2.0.0
 # Get-AzRecoveryServicesBackupContainer
 
 ## SYNOPSIS
-
-Gets Backup containers.
+Gets list of backup containers registered with a recovery services vault
 
 ## SYNTAX
 
 ```
-Get-AzRecoveryServicesBackupContainer [-ContainerType] <ContainerType> [[-BackupManagementType] <String>]
- [[-FriendlyName] <String>] [[-ResourceGroupName] <String>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzRecoveryServicesBackupContainer -ResourceGroupName <String> -VaultName <String>
+ -ContainerType <BackupContainerType> [-SubscriptionId <String>] [-FriendlyName <String>]
+ [-DatasourceType <DatasourceTypes>] [-ContainerResourceGroupName <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
-The **Get-AzRecoveryServicesBackupContainer** cmdlet gets a backup container. A Backup container encapsulates data sources that are modelled as backup items.
-For Container type "Azure VM" , the output lists all the containers whose name exactly matches to the one passed  as the value for Friendly Name parameter. 
-For other container types,  output gives a list of containers with name similar to the value passed for Friendly name parameter.
-Set the vault context by using the -VaultId parameter.
+Gets list of backup containers registered with a recovery services vault
 
 ## EXAMPLES
 
-### Example 1: Get a specific container
-
+### Example 1: Get backup containers for DatasourceType MSSQL
 ```powershell
-$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -FriendlyName "V2VM" -VaultId $vault.ID
+$container = Get-AzRecoveryServicesBackupContainer -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -ContainerType AzureVMAppContainer -DatasourceType MSSQL | Where-Object { $_.Name -match $containerFriendlyName }
+$container | fl
 ```
 
-This command gets the container named V2VM of type AzureVM.
-
-### Example 2: Get all containers of a specific type
-
-```powershell
-$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MAB -VaultId $vault.ID
+```output
+BackupManagementType  : AzureWorkload
+ContainerType         : VMAppContainer
+ETag                  :
+FriendlyName          : sql-vm2
+HealthStatus          : Healthy
+Id                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;hiagarg;sql-vm2
+Location              :
+Name                  : VMAppContainer;Compute;hiagarg;sql-vm2
+Property              : Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.AzureVMAppContainerProtectionContainer
+ProtectableObjectType : VMAppContainer
+RegistrationStatus    : Registered
+Tag                   : Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ResourceTags
+Type                  : Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers
 ```
 
-This command gets all Windows containers that are protected by Azure Backup agent.
-The **BackupManagementType** parameter is only required for Windows containers.
+This command is used to fetch backup containers for DatasourceType MSSQL which are registered with recovery services vault.
 
 ## PARAMETERS
 
-### -BackupManagementType
-
-The class of resources being protected. The acceptable values for this parameter are:
-
-- AzureVM
-- MAB
-- AzureWorkload
-- AzureStorage
-
-This parameter is used to differentiate Windows machines that are backed up using MARS agent or other backup engines.
+### -ContainerResourceGroupName
+The ResourceGroup of the resource being managed by the Azure Backup service for example: ResourceGroup name of the VM
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, AzureStorage, AzureWorkload, MAB
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ContainerType
-
 Specifies the backup container type.
-The acceptable values for this parameter are:
-
-- AzureVM
-- Windows
-- AzureStorage
-- AzureVMAppContainer
+The acceptable values for this parameter are: AzureVM, Windows, AzureStorage, AzureVMAppContainer
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.BackupContainerType
 Parameter Sets: (All)
 Aliases:
 Accepted values: AzureVM, Windows, AzureStorage, AzureVMAppContainer
 
 Required: True
-Position: 1
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatasourceType
+Specifies the DatasourceType
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Support.DatasourceTypes
+Parameter Sets: (All)
+Aliases:
+Accepted values: AzureVM, MSSQL, SAPHANA, AzureFiles
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -99,12 +100,10 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 
-The credentials, account, tenant, and subscription used for communication with azure.
-
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -114,41 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -FriendlyName
-
-Specifies the friendly name of the container to get.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-
-Specifies the name of the resource group.
-This parameter is for Azure virtual machines only.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VaultId
-
-ARM ID of the Recovery Services Vault.
+Specifies the friendly name of the container to get
 
 ```yaml
 Type: System.String
@@ -158,7 +123,52 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group where the recovery services vault is present.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription Id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VaultName
+The name of the recovery services vault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -167,18 +177,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
+### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionContainerResource
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzRecoveryServicesBackupItem](./Get-AzRecoveryServicesBackupItem.md)
-
-[Get-AzRecoveryServicesBackupManagementServer](./Get-AzRecoveryServicesBackupManagementServer.md)
-
-[Unregister-AzRecoveryServicesBackupContainer](./Unregister-AzRecoveryServicesBackupContainer.md)
