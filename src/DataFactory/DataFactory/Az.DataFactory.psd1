@@ -69,11 +69,11 @@ ScriptsToProcess = @()
 TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'DataFactories.format.ps1xml', 'DataFactoryV2.format.ps1xml'
+FormatsToProcess = 'DataFactoryV1.format.ps1xml', 'DataFactoryV2.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll', 
-               'Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll')
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV1.dll', 
+                  'Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()

@@ -7,7 +7,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <PropertyGroup>
-    <AssemblyName>$(AzAssemblyPrefix)DataFactories</AssemblyName>
+    <AssemblyName>$(AzAssemblyPrefix)DataFactoryV1</AssemblyName>
     <RootNamespace>$(LegacyAssemblyPrefix)DataFactories</RootNamespace>
   </PropertyGroup>
 
