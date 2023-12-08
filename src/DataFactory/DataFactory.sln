@@ -25,9 +25,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFactories", "DataFactor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFactory.Management.Sdk", "DataFactory.Management.Sdk\DataFactory.Management.Sdk.csproj", "{451FBF9A-2667-453B-AD7D-63001D0C7509}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFactoryV2.Test", "DataFactoryV2.Test\DataFactoryV2.Test.csproj", "{FB7A88FF-93A8-423B-85A1-7901F6162BCC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFactory.Test", "DataFactory.Test\DataFactoryV2.Test.csproj", "{FB7A88FF-93A8-423B-85A1-7901F6162BCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFactoryV2", "DataFactoryV2\DataFactoryV2.csproj", "{F12394B9-2BEB-45F1-8DE2-8BE4690CEFF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFactory", "DataFactory\DataFactoryV2.csproj", "{F12394B9-2BEB-45F1-8DE2-8BE4690CEFF2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{606D032A-FA9D-4AD1-9926-AF86BE5FB044}"
 EndProject
