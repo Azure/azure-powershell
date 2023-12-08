@@ -14,31 +14,30 @@ Sets a server long term retention policy.
 
 ### WeeklyRetentionRequired (Default)
 ```
-Set-AzSqlDatabaseBackupLongTermRetentionPolicy -WeeklyRetention <String> [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String> [-MakeBackupsImmutable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzSqlDatabaseBackupLongTermRetentionPolicy -WeeklyRetention <String> [-ServerName] <String> [-DatabaseName] <String>
+[-ResourceGroupName] <String> [-MakeBackupsImmutable <String>] [-BackupStorageAccessTier <String>]
+[-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemovePolicy
 ```
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy [-RemovePolicy] [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MonthlyRetentionRequired
 ```
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy [-WeeklyRetention <String>] -MonthlyRetention <String>
- [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-MakeBackupsImmutable]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-MakeBackupsImmutable <String>]
+ [-BackupStorageAccessTier <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### YearlyRetentionRequired
 ```
 Set-AzSqlDatabaseBackupLongTermRetentionPolicy [-WeeklyRetention <String>] [-MonthlyRetention <String>]
- -YearlyRetention <String> -WeekOfYear <Int32> [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-MakeBackupsImmutable] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -YearlyRetention <String> -WeekOfYear <Int32> [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
+ [-MakeBackupsImmutable <String>] [-BackupStorageAccessTier <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,6 +155,48 @@ Location                               :
 
 This is another way of removing the policy for database01 so it no longer saves any long term retention backups.
 This will not affect backups that have already been taken
+
+### Example 6: Update the long term retention policy to set future LTR backups to be immutable.
+```powershell
+Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -WeeklyRetention P0D -MakeBackupsImmutable $true
+```
+
+```output
+ResourceGroupName                      : resourcegroup01
+ServerName                             : server01
+DatabaseName                           : database01
+WeeklyRetention                        : PT0S
+MonthlyRetention                       : PT0S
+YearlyRetention                        : PT0S
+WeekOfYear                             : 0
+Location                               :
+MakeBackupsImmutable...................: True
+BackupStorageAccessTier................: Hot
+```
+
+This is setting the policy for database01 so all the future long term retention backups will be immutable.
+This will not affect backups that have already been taken.
+
+### Example 7: Update the long term retention policy to set afterwards backup storage access tier to new type
+```powershell
+Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -WeeklyRetention P0D -BackupStorageAccessTier Archive
+```
+
+```output
+ResourceGroupName                      : resourcegroup01
+ServerName                             : server01
+DatabaseName                           : database01
+WeeklyRetention                        : PT0S
+MonthlyRetention                       : PT0S
+YearlyRetention                        : PT0S
+WeekOfYear                             : 0
+Location                               :
+MakeBackupsImmutable...................: False
+BackupStorageAccessTier................: Archive
+```
+
+This is setting the policy for database01 so all the future long term retention backups' storage access tier will be Archive.
+This will not affect backups that have already been taken.
 
 ## PARAMETERS
 
@@ -326,11 +367,27 @@ Accept wildcard characters: False
 
 ### -MakeBackupsImmutable
 Make Backups Immutable.
-Whether to make LTR backups immutable.
+Set future LTR backups to be immutable.
 
 ```yaml
 Type: System.Bool
-Parameter Sets: MakeBackupsImmutableSet
+Parameter Sets: WeeklyRetentionRequired, MonthlyRetentionRequired, YearlyRetentionRequired
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupStorageAccessTier
+Backup Storage Access Tier.
+Set future LTR backups to the target storage access tier.
+
+```yaml
+Type: System.String
+Parameter Sets: WeeklyRetentionRequired, MonthlyRetentionRequired, YearlyRetentionRequired
 Aliases:
 
 Required: False

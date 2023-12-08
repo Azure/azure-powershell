@@ -346,7 +346,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 MonthlyRetention = response.MonthlyRetention,
                 YearlyRetention = response.YearlyRetention,
                 WeekOfYear = response.WeekOfYear,
-                MakeBackupsImmutable = response.MakeBackupsImmutable
+                MakeBackupsImmutable = response.MakeBackupsImmutable,
+                BackupStorageAccessTier = response.BackupStorageAccessTier
             };
         }
 

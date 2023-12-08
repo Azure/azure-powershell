@@ -66,5 +66,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// Gets or sets the setting whether to make LTR backups immutable
         /// </summary>
         public bool? MakeBackupsImmutable { get; set; }
+
+        /// <summary>
+        /// Gets or sets the afterwards backup storage access tier
+        /// </summary>
+        public string BackupStorageAccessTier { get; set; }
     }
 }
