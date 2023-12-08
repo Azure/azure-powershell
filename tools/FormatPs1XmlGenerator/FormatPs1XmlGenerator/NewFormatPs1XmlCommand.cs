@@ -15,6 +15,8 @@ using System.Collections;
 
 namespace FormatPs1XmlGenerator
 {
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -32,6 +34,13 @@ namespace FormatPs1XmlGenerator
 
         [Parameter(Position = 3, ValueFromPipeline = false, Mandatory = false)]
         public string OutputPath { get; set; }
+
+        [Parameter(Position = 4, ValueFromPipeline = false, Mandatory = false)]
+        [PSArgumentCompleter("Debug", "Release")]
+        public string Configuration { get; set; } = "Debug";
+
+        [Parameter(Position = 5, ValueFromPipeline = false, Mandatory = false)]
+        public string RepoArtifacts { get; set; } = "artifacts";
 
         [Parameter]
         public SwitchParameter Force { get; set; }
@@ -64,7 +73,11 @@ namespace FormatPs1XmlGenerator
                     }
                 }
 
-                foreach (var assemblyPath in GetAssemblyPath(ModulePath))
+                var moduleName = Path.GetFileNameWithoutExtension(ModulePath);
+                var RepoRoot = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(ModulePath))));
+                var moduleArtifactsOutputPath = Path.Combine(Path.Combine(RepoRoot, Path.Combine(RepoArtifacts, Configuration)), moduleName);
+
+                foreach (var assemblyPath in GetAssemblyPath(moduleArtifactsOutputPath, ModulePath))
                 {
                     Reflect(assemblyPath);
                 }
@@ -75,7 +88,7 @@ namespace FormatPs1XmlGenerator
             }
         }
 
-        internal static IEnumerable<string> GetAssemblyPath(string manifestPath)
+        internal static IEnumerable<string> GetAssemblyPath(string artifactsPath, string manifestPath)
         {
             // parse module (psd1 file) - get assemblies list
             var list = new List<string>();
@@ -85,9 +98,10 @@ namespace FormatPs1XmlGenerator
                 var result = ps.Invoke();
                 var moduleInfo = (Hashtable)result[0].BaseObject;
                 if (moduleInfo == null) return list;
+
                 var nestedModules = (object[])moduleInfo["NestedModules"];
                 var moduleBase = Path.GetDirectoryName(manifestPath) ?? throw new InvalidOperationException("Unable to get module base directory from the manifest path");
-                list.AddRange(nestedModules.Select(nestedModule => Path.GetFullPath(Path.Combine(moduleBase, nestedModule.ToString()))));
+                list.AddRange(nestedModules.Select(nestedModule => Path.GetFullPath(Path.Combine(artifactsPath, nestedModule.ToString()))));
             }
 
             return list;

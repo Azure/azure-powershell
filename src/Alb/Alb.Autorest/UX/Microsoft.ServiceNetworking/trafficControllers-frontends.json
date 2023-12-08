@@ -1,6 +1,6 @@
 {
   "resourceType": "trafficControllers/frontends",
-  "apiVersion": "2023-05-01-preview",
+  "apiVersion": "2023-11-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.alb"
   },
