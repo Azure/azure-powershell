@@ -99,6 +99,10 @@ directive:
       variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
     remove: true
   - where:
+      subject: CustomLocation
+      variant: ^CreateViaIdentityExpanded$
+    remove: true
+  - where:
       variant: ^Find$|^FindViaIdentity$
     remove: true
   - where:

@@ -44,62 +44,45 @@ function New-AzCustomLocation {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocation])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
         [System.String]
         # Custom Locations name.
         ${Name},
 
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Parameter(ParameterSetName='CreateViaJsonFilePath')]
-        [Parameter(ParameterSetName='CreateViaJsonString')]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity]
-        # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-        ${InputObject},
-
         [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String]
         # The geo-location where the resource lives
         ${Location},
 
         [Parameter(ParameterSetName='CreateExpanded')]
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String]
         # The type of the Custom Locations authentication
         ${AuthenticationType},
 
         [Parameter(ParameterSetName='CreateExpanded')]
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String]
         # The kubeconfig value.
         ${AuthenticationValue},
 
         [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String[]]
@@ -107,14 +90,12 @@ function New-AzCustomLocation {
         ${ClusterExtensionId},
 
         [Parameter(ParameterSetName='CreateExpanded')]
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String]
         # Display name for the Custom Locations location.
         ${DisplayName},
 
         [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String]
         # Connected Cluster or AKS Cluster.
@@ -122,7 +103,6 @@ function New-AzCustomLocation {
         ${HostResourceId},
 
         [Parameter(ParameterSetName='CreateExpanded')]
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PSArgumentCompleterAttribute("SystemAssigned", "None")]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String]
@@ -130,14 +110,12 @@ function New-AzCustomLocation {
         ${IdentityType},
 
         [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [System.String]
         # Kubernetes namespace that will be created on the specified cluster.
         ${Namespace},
 
         [Parameter(ParameterSetName='CreateExpanded')]
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
