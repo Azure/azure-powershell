@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Alb-help.xml
 Module Name: Az.Alb
 online version: https://learn.microsoft.com/powershell/module/az.alb/remove-azalb
 schema: 2.0.0
@@ -14,14 +14,14 @@ Delete a TrafficController
 
 ### Delete (Default)
 ```
-Remove-AzAlb -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzAlb -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzAlb -InputObject <IAlbIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzAlb -InputObject <IAlbIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -221,4 +221,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[TrafficControllerName <String>]`: traffic controller name for path
 
 ## RELATED LINKS
-

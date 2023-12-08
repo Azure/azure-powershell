@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Alb-help.xml
 Module Name: Az.Alb
 online version: https://learn.microsoft.com/powershell/module/az.alb/update-azalb
 schema: 2.0.0
@@ -15,12 +15,12 @@ Update a TrafficController
 ### UpdateExpanded (Default)
 ```
 Update-AzAlb -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzAlb -InputObject <IAlbIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Update-AzAlb -InputObject <IAlbIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -191,4 +191,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[TrafficControllerName <String>]`: traffic controller name for path
 
 ## RELATED LINKS
-
