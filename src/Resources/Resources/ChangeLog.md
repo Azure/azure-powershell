@@ -19,11 +19,11 @@
 -->
 
 ## Upcoming Release
+* Added `-WithSource` parameter to `Publish-AzBicepModule` for publishing source with a module (currently experimental)
 
 ## Version 6.12.1
 * Used utf8 encoding for reading stdout & stderr when invoking Bicep. [#23246]
 * Fixed regression in `Publish-AzBicepModule` [Azure/bicep/12461](https://github.com/Azure/bicep/issues/12461)
-* Added `-WithSource` parameter to `Publish-AzBicepModule` for publishing source with a module (currently experimental)
 
 ## Version 6.12.0
 * Supported $ref statements for user-defined types in Bicep files.
