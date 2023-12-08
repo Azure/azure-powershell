@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.Applicationinsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsapikey
 schema: 2.0.0
 ---
@@ -13,8 +13,8 @@ Create an API Key of an Application Insights component.
 ## SYNTAX
 
 ```
-New-AzApplicationInsightsApiKey -Name <String> -ResourceGroupName <String> -Description <String>
- -Permissions <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+New-AzApplicationInsightsApiKey -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
+ -Description <String> -Permissions <String[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -28,7 +28,6 @@ Create an API Key of an Application Insights component.
 $apiKeyDescription = "testapiKey"
 $permissions = @("ReadTelemetry", "WriteAnnotations")
 New-AzApplicationInsightsApiKey -ResourceGroupName "testGroup" -Name "test" -Description $apiKeyDescription -Permissions $permissions
-
 ```
 
 Create a new Api Key for an application insights resource
@@ -171,4 +170,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

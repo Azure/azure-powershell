@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.Applicationinsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightslinkedstorageaccount
 schema: 2.0.0
 ---
@@ -15,14 +15,14 @@ Update linked storage accounts for an Application Insights component.
 ### UpdateExpanded (Default)
 ```
 Update-AzApplicationInsightsLinkedStorageAccount -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-LinkedStorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-LinkedStorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzApplicationInsightsLinkedStorageAccount -InputObject <IApplicationInsightsIdentity>
- [-LinkedStorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-LinkedStorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -199,4 +199,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[WebTestName <String>]`: The name of the Application Insights WebTest resource.
 
 ## RELATED LINKS
-
