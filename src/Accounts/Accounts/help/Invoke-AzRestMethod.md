@@ -147,6 +147,15 @@ Content    : {"properties":{"public":true,"url":"https://test-spring-service-dem
 
 Get app "demo" under Spring cloud service "test-spring-service"
 
+### Example 5
+```powershell
+# Replace *** with real values
+$payload = @{principalId="***"; resourceId="***"; appRoleId="***"} | ConvertTo-Json -Depth 3
+Invoke-AzRestMethod -Method POST -Uri https://graph.microsoft.com/v1.0/servicePrincipals/***/appRoleAssignedTo -Payload $payload
+```
+
+Call Microsoft Graph API to assign App Role by constructing a hashtable, converting to a JSON string, and passing the payload to `Invoke-AzRestMethod`.
+
 ## PARAMETERS
 
 ### -ApiVersion

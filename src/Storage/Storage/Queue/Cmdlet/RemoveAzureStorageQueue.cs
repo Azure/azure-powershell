@@ -14,9 +14,9 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Queue
 {
+    using global::Azure.Storage.Queues;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage.Queue;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -86,17 +86,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
                 throw new ArgumentException(String.Format(Resources.InvalidQueueName, name));
             }
 
-            QueueRequestOptions requestOptions = RequestOptions;
-            CloudQueue queue = Channel.GetQueueReference(name);
-
-            if (!Channel.DoesQueueExist(queue, requestOptions, OperationContext))
+            QueueClient queueClient = Util.GetTrack2QueueClient(this.Name, (AzureStorageContext)this.Context, this.ClientOptions);
+            if (!queueClient.Exists())
             {
                 throw new ResourceNotFoundException(String.Format(Resources.QueueNotFound, name));
             }
 
-            if (force || ShouldContinue(string.Format("Remove queue and all content in it: {0}", name), ""))
+            if(force || ShouldContinue(string.Format("Remove queue and all content in it: {0}", name), ""))
             {
-                Channel.DeleteQueue(queue, requestOptions, OperationContext);
+                queueClient.Delete();
                 return true;
             }
             else
@@ -114,7 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
             if (ShouldProcess(Name, "Remove queue"))
             {
                 String result = string.Empty;
-
+                
                 bool success = RemoveAzureQueue(Name);
 
                 if (success)

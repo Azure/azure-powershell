@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         public List<RecoveryPointResource> GetRecoveryPoints(
             string containerName,
             string protectedItemName,
-            ODataQuery<BMSRPQueryObject> queryFilter,
+            ODataQuery<BmsrpQueryObject> queryFilter,
             string vaultName = null,
             string resourceGroupName = null)
         {
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         public List<CrrModel.RecoveryPointResource> GetRecoveryPointsFromSecondaryRegion(
             string containerName,
             string protectedItemName,
-            ODataQuery<CrrModel.BMSRPQueryObject> queryFilter,
+            ODataQuery<CrrModel.BmsrpQueryObject> queryFilter,
             string vaultName = null,
             string resourceGroupName = null)
         {
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 containerName,
                 protectedItemName,
                 moveRequest.ObjectType,
-                moveRequest.ExcludedRPList
+                moveRequest.ExcludedRpList
                 ).Result.Body;
 
             Func<string, RestAzureNS.IPage<RecoveryPointResource>> listNextAsync =

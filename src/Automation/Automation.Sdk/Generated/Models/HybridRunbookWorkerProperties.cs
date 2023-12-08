@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="workerType">Type of the HybridWorker.
-        /// Possible values include: 'HybridV1', 'HybridV2'</param>
+        /// Possible values include: &#39;HybridV1&#39;, &#39;HybridV2&#39;</param>
 
         /// <param name="workerName">Name of the HybridWorker.
         /// </param>

@@ -50,13 +50,15 @@ It uses the **Split** method of the .NET **String** class and then passes the na
 
 ### Example 3: Create an Azure storage container with Encryption Scope
 <!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\> $container = New-AzStorageContainer  -Name "mycontainer" -DefaultEncryptionScope "myencryptscope" -PreventEncryptionScopeOverride $true 
 
-PS C:\> $container.BlobContainerProperties.DefaultEncryptionScope
+
+```
+$container = New-AzStorageContainer  -Name "mycontainer" -DefaultEncryptionScope "myencryptscope" -PreventEncryptionScopeOverride $true 
+
+$container.BlobContainerProperties.DefaultEncryptionScope
 myencryptscope
 
-PS C:\> $container.BlobContainerProperties.PreventEncryptionScopeOverride
+$container.BlobContainerProperties.PreventEncryptionScopeOverride
 True
 ```
 

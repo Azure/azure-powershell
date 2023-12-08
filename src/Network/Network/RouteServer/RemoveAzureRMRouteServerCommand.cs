@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     string ipConfigName = "ipconfig1";
 
-                    this.NetworkClient.NetworkManagementClient.VirtualHubIpConfiguration.Delete(ResourceGroupName, RouteServerName, ipConfigName);
+                    this.NetworkClient.NetworkManagementClient.VirtualHubIPConfiguration.Delete(ResourceGroupName, RouteServerName, ipConfigName);
                     this.NetworkClient.NetworkManagementClient.VirtualHubs.Delete(ResourceGroupName, RouteServerName);
                     if (PassThru)
                     {

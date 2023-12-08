@@ -31,16 +31,18 @@ The **Get-AzStorageObjectReplicationPolicy** cmdlet gets or lists object replica
 
 ### Example 1: Get an object replication policy with specific policy Id and show its rules.
 <!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\> $policy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" -PolicyId 56bfa11c-81ef-4f8d-b307-5e5386e16fba
 
-PS C:\> $policy
+
+```
+$policy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" -PolicyId 56bfa11c-81ef-4f8d-b307-5e5386e16fba
+
+$policy
 
 ResourceGroupName StorageAccountName PolicyId                             EnabledTime SourceAccount   DestinationAccount Rules                                     
 ----------------- ------------------ --------                             ----------- -------------   ------------------ -----   
 myresourcegroup   mydestaccount      56bfa11c-81ef-4f8d-b307-5e5386e16fba             mysourceaccount mydestaccount      [5fa8b1d6-4985-4abd-a0b3-ec4d07295a43,...]
 
-PS C:\> $policy.Rules
+$policy.Rules
 
 RuleId                               SourceContainer DestinationContainer Filters.PrefixMatch Filters.MinCreationTime
 ------                               --------------- -------------------- ------------------- -----------------------
@@ -56,6 +58,7 @@ $policies = Get-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourceg
 
 $policies
 ```
+
 ```output
 ResourceGroupName StorageAccountName PolicyId                             EnabledTime SourceAccount   DestinationAccount Rules                                     
 ----------------- ------------------ --------                             ----------- -------------   ------------------ -----   
@@ -143,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

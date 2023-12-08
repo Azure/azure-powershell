@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Added upcoming breaking change warning for deprecation of config parameter `DisableErrorRecordsPersistence`.
+
+## Version 2.13.2
+* Enabled in-tool notification for version upgrade by default.
 * Upgraded Azure.Core to 1.35.0.
 
 ## Version 2.13.1

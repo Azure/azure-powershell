@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
             this.NullifyNetworkManagerManagementGroupConnectionIfAbsent(mnccModel);
 
             // Execute the Create NetworkManagerManagementGroupConnection call
-            this.NetworkManagerManagementGroupConnectionClient.CreateOrUpdate(mnccModel, this.ManagementGroupId, this.Name);
+            this.NetworkManagerManagementGroupConnectionClient.CreateOrUpdate(this.ManagementGroupId, this.Name, mnccModel);
             var psNetworkManagerManagementGroupConnection = this.GetNetworkManagerManagementGroupConnection(this.ManagementGroupId, this.Name);
             return psNetworkManagerManagementGroupConnection;
         }

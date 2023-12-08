@@ -94,11 +94,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var addvCenterRequestProperties =
                 new AddVCenterRequestProperties();
             addvCenterRequestProperties.FriendlyName = this.Name;
-            addvCenterRequestProperties.IpAddress = this.IpOrHostName;
+            addvCenterRequestProperties.IPAddress = this.IpOrHostName;
             addvCenterRequestProperties.Port = this.Port.ToString();
             string processServerId = vmwareFabricDetails.ProcessServers.First(
                 vmd => (
-                vmd.IpAddress.Equals(vmwareFabricDetails.IpAddress)
+                vmd.IPAddress.Equals(vmwareFabricDetails.IPAddress)
                 || string.Compare(
                     vmwareFabricDetails.HostName,
                     vmd.FriendlyName,

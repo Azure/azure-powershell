@@ -25,9 +25,11 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ### Example 1: Get a directory from a Filesystem, and show the details
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
-PS C:\> $dir1 = Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/"
-PS C:\> $dir1
+$dir1 = Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/"
+$dir1
 
    FileSystem Name: filesystem1
 
@@ -96,8 +98,9 @@ This command gets a directory from a Filesystem, and show the details.
 ```powershell
 Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1"
 ```
+
 ```output
-   FileSystem Name: filesystem1
+FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
 ----                 -----------  ------          ------------         -----------  -----                -----               
@@ -171,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

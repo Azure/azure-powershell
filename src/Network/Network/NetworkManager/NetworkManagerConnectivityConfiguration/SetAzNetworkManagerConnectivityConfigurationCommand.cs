@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
 
 
                 // Execute the PUT NetworkManagerConnectivityConfiguration call
-                this.NetworkManagerConnectivityConfigurationClient.CreateOrUpdate(mnccModel, this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
+                this.NetworkManagerConnectivityConfigurationClient.CreateOrUpdate(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name, mnccModel);
                 var psNetworkManagerConnectivityConfiguration = this.GetNetworkManagerConnectivityConfiguration(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
 
                 WriteObject(psNetworkManagerConnectivityConfiguration);

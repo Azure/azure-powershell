@@ -29,23 +29,44 @@ Class GeneratedSdkIssue {
 $ExceptionList = @()
 $SavePath = $PWD
 
-$skipModules = @(
-    'Az.AlertsManagement',
-    'Az.Automation',
-    'Az.CognitiveServices',
-    'Az.CosmosDB',
-    'Az.KeyVault',
-    'Az.NetAppFiles',
-    'Az.RedisCache',
-    'Az.Storage',
-    'Az.Search',
-    'Az.Security',
-    'Az.Sql',
-    'Az.TrafficManager'
-)
-
 $MissReadMe = 9000
+$AutorestCSharpDetected = 9080
 $GenSdkChanged = 9090
+
+function EnsureModuleName {
+    param([string]$moduleName)
+    if (-not [System.String]::IsNullOrEmpty($moduleName) -and -not $moduleName.StartsWith("Az."))
+    {
+        return "Az.$moduleName"
+    }
+    return $moduleName
+}
+
+function Get-NonExceptionSdkRecord{
+    param(
+        [GeneratedSdkIssue[]]$records
+    )
+    $exceptionPaths = "$PSScriptRoot\..\..\..\tools\StaticAnalysis\Exceptions"
+    $errors = @()
+    foreach($record in $records){    
+        $needAdd = $true    
+        $exceptionPath = Join-Path -Path $exceptionPaths -ChildPath (EnsureModuleName($record.Module)) -AdditionalChildPath "GeneratedSdkIssues.csv"
+        if(Test-Path -Path $exceptionPath){
+            $exceptionContents = Import-Csv -Path $exceptionPath
+            foreach($exceptionContent in $exceptionContents) {
+                if($exceptionContent.Module -eq $record.Module -and $exceptionContent.Sdk -eq $record.Sdk -and $exceptionContent.Severity -eq $record.Severity -and $exceptionContent.ProblemId -eq $record.ProblemId -and $exceptionContent.Description -eq $record.Description){
+                    $needAdd = $false
+                    break
+                }
+            }
+        }
+        if($needAdd){
+            $errors += $record
+        }
+    }
+    return $errors
+}
+
 try {
     if ((Test-Path $FilesChangedPaths -PathType Leaf) -and $FilesChangedPaths.EndsWith(".txt")) {
         # Read Changedfiles and check if generted sdk code is updated.
@@ -53,7 +74,7 @@ try {
         # Collect Sdk paths whose files under Generated folder change.
         $ChangedSdks = New-Object System.Collections.Generic.List[System.Object]
         foreach ($_ in $FilesChanged) {
-            $ChangedSdks.Add($_.Substring(0,$_.IndexOf('.Sdk'))+'.Sdk')
+            $ChangedSdks.Add($_.Substring(0,$_.IndexOf('.Sdk', [System.StringComparison]::OrdinalIgnoreCase))+'.Sdk')
         }
         # Remove duplicated Sdks.
         $ChangedSdks = $ChangedSdks | select -unique
@@ -67,9 +88,11 @@ try {
     foreach ($_ in $ChangedSdks) {
         # Extract Module Name
         $ModuleName = "Az." + ($_ -split "\/|\\")[1]
-        # Skip check for modules listed in $skipModules
-        if ($skipModules.Contains($ModuleName)) {
-            Write-Host "Skip checking $ModuleName"
+
+        # Skip check for modules without README.md and .Sdk folder.
+        if (-not(Test-Path -Path "$PSScriptRoot/../../../$_/README.md" -PathType Leaf) -and -not(Test-Path -Path $PSScriptRoot/../../../$_))
+        {
+            Write-Host "$PSScriptRoot/../../../$_" "Does not exist, and no README file detected. The module is no longer SDK based. Skip it."
             continue
         }
 
@@ -79,8 +102,36 @@ try {
 
         # Regenerate the Sdk under Generated folder
         if( Test-Path -Path "README.md" -PathType Leaf){
-            Write-Host "Re-generating SDK under Generated folder for $ModuleName..."
-            npx autorest --use:@microsoft.azure/autorest.csharp@2.3.90
+            # Decide to use autorest powershell v4/ autorest csharp v3.
+            $readMeContent = Get-Content README.md
+            if ([regex]::Matches($readMeContent, '\s*powershell\s*:\s*true\s*') -and [regex]::Matches($readMeContent, '\s*isSdkGenerator\s*:\s*true\s*'))
+            {
+                Write-Host "Using autorest powershell v4:`nRe-generating SDK under Generated folder for $ModuleName..."
+                npx autorest
+            }
+            elseif ([regex]::Matches($readMeContent, '\s*csharp\s*:\s*true\s*'))
+            {
+                $ExceptionList += [GeneratedSdkIssue]@{
+                    Module = $ModuleName;
+                    Sdk = $_;
+                    Severity = 1;
+                    ProblemId = $AutorestCSharpDetected
+                    Description = "Do not support updating SDK using autorest csharp v3."
+                    Remediation = "Please update the Readme.md to generate code by autorest powershell v4."
+                }
+            }
+            else
+            {
+                $ExceptionList += [GeneratedSdkIssue]@{
+                    Module = $ModuleName;
+                    Sdk = $_;
+                    Severity = 1;
+                    ProblemId = $GenSdkChanged
+                    Description = "Do not find correct autorest version, please check Readme.md"
+                    Remediation = "Please determine autorest v4 in Readme file."
+                }
+            }
+            
             If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
             {
                 $ExceptionList += [GeneratedSdkIssue]@{
@@ -92,7 +143,7 @@ try {
                     Remediation = ""
                 }
             }
-            npx autorest README.md --version=v2
+
             If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
             {
                 $ExceptionList += [GeneratedSdkIssue]@{
@@ -116,6 +167,7 @@ try {
             }
         }
 
+
         # See if the code is completely the same as we generated
         $changes = git status ".\Generated" --porcelain
         if ($changes -ne $null){
@@ -138,6 +190,7 @@ try {
         }
         Set-Location $SavePath
     }
+    $ExceptionList = Get-NonExceptionSdkRecord $ExceptionList
 }
 catch {
     Write-Host "An error occurred: $_"

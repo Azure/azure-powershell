@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             AzureVmItem iaasVmItem = item as AzureVmItem;
             BackupRequestResource triggerBackupRequest = new BackupRequestResource();
             IaasVMBackupRequest iaasVmBackupRequest = new IaasVMBackupRequest();
-            iaasVmBackupRequest.RecoveryPointExpiryTimeInUTC = expiryDateTime;
+            iaasVmBackupRequest.RecoveryPointExpiryTimeInUtc = expiryDateTime;
             triggerBackupRequest.Properties = iaasVmBackupRequest;
 
             return ServiceClientAdapter.TriggerBackup(
@@ -705,8 +705,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, rp.Id);
 
-            IaasVMILRRegistrationRequest registrationRequest =
-                new IaasVMILRRegistrationRequest();
+            IaasVmilrRegistrationRequest registrationRequest =
+                new IaasVmilrRegistrationRequest();
             registrationRequest.RecoveryPointId = rp.RecoveryPointId;
             registrationRequest.VirtualMachineId = rp.SourceResourceId;
             registrationRequest.RenewExistingRegistration = (rp.IlrSessionActive == false) ? false : true;
@@ -924,8 +924,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 instantRPAdditionalDetails = new InstantRPAdditionalDetails();
 
-                instantRPAdditionalDetails.AzureBackupRGNamePrefix = snapshotRGName;
-                if (snapshotRGNameSuffix != null) instantRPAdditionalDetails.AzureBackupRGNameSuffix = snapshotRGNameSuffix;
+                instantRPAdditionalDetails.AzureBackupRgNamePrefix = snapshotRGName;
+                if (snapshotRGNameSuffix != null) instantRPAdditionalDetails.AzureBackupRgNameSuffix = snapshotRGNameSuffix;
             }
             else if(snapshotRGNameSuffix != null)
             {
@@ -945,7 +945,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     PolicyType = (schedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2)) ? "V2" : null,
                     TimeZone = timeZone,
                     InstantRpRetentionRangeInDays = snapshotRetentionInDays,
-                    InstantRPDetails = instantRPAdditionalDetails
+                    InstantRpDetails = instantRPAdditionalDetails
                 }
             };
 
@@ -1061,8 +1061,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 instantRPAdditionalDetails = new InstantRPAdditionalDetails();
 
-                instantRPAdditionalDetails.AzureBackupRGNamePrefix = snapshotRGName;
-                if (snapshotRGNameSuffix != null) instantRPAdditionalDetails.AzureBackupRGNameSuffix = snapshotRGNameSuffix;
+                instantRPAdditionalDetails.AzureBackupRgNamePrefix = snapshotRGName;
+                if (snapshotRGNameSuffix != null) instantRPAdditionalDetails.AzureBackupRgNameSuffix = snapshotRGNameSuffix;
             }
             else if (snapshotRGNameSuffix != null)
             {
@@ -1082,7 +1082,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     TimeZone = timeZone,
                     PolicyType = (((AzureVmPolicy)policy).SchedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2)) ? "V2" : null,
                     InstantRpRetentionRangeInDays = ((AzureVmPolicy)policy).SnapshotRetentionInDays,
-                    InstantRPDetails = (instantRPAdditionalDetails != null)? instantRPAdditionalDetails : new InstantRPAdditionalDetails(
+                    InstantRpDetails = (instantRPAdditionalDetails != null)? instantRPAdditionalDetails : new InstantRPAdditionalDetails(
                         ((AzureVmPolicy)policy).AzureBackupRGName,
                         ((AzureVmPolicy)policy).AzureBackupRGNameSuffix)
                 }
@@ -1699,7 +1699,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             vmVersion = (isComputeAzureVM) == true ? computeAzureVMVersion : classicComputeAzureVMVersion;
             string virtualMachineId = GetAzureIaasVirtualMachineId(rgName, vmVersion, vmName);
 
-            ODataQuery<BMSPOQueryObject> queryParam = new ODataQuery<BMSPOQueryObject>(
+            ODataQuery<BmspoQueryObject> queryParam = new ODataQuery<BmspoQueryObject>(
                 q => q.BackupManagementType
                      == ServiceClientModel.BackupManagementType.AzureIaasVM);
 
@@ -1783,7 +1783,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                             suffix, clientScriptForConnection.ScriptExtension);
 
                         return new AzureVmRPMountScriptDetails(
-                            clientScriptForConnection.OsType, fileName, password);
+                            clientScriptForConnection.OSType, fileName, password);
                     }
                 }
                 throw new Exception(
@@ -1822,7 +1822,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
                 else
                 {
-                    string operatingSystemName = clientScriptForConnection.OsType;
+                    string operatingSystemName = clientScriptForConnection.OSType;
                     string vmName = protectedItemName.Split(';')[3];
                     fileName = string.Format(
                             CultureInfo.InvariantCulture,
@@ -1834,7 +1834,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 password = this.ReplacePasswordInScriptContentAndReturn(ref content);
 
                 return new AzureVmRPMountScriptDetails(
-                    clientScriptForConnection.OsType, fileName, password);
+                    clientScriptForConnection.OSType, fileName, password);
             }
             catch (Exception e)
             {

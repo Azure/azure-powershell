@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="state">Gets status of account.
-        /// Possible values include: 'Ok', 'Unavailable', 'Suspended'</param>
+        /// Possible values include: &#39;Ok&#39;, &#39;Unavailable&#39;, &#39;Suspended&#39;</param>
 
         /// <param name="creationTime">Gets the creation time.
         /// </param>

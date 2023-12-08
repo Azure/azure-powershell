@@ -50,10 +50,12 @@ This example uses the *Prefix* parameter to return a list of all containers with
 
 ### Example 3: List Azure Storage container, include deleted containers
 <!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\> $containers =  Get-AzStorageContainer -IncludeDeleted -Context $ctx 
 
-PS C:\> $containers
+
+```
+$containers =  Get-AzStorageContainer -IncludeDeleted -Context $ctx 
+
+$containers
 
    Storage Account Name: storageaccountname
 
@@ -62,7 +64,7 @@ Name                 PublicAccess         LastModified                   IsDelet
 testcon              Off                  8/28/2020 10:18:13 AM +00:00                                                                                                                                                                                                                                                                   
 testcon2                                  9/4/2020 12:52:37 PM +00:00    True       01D67D248986B6DA  
 
-PS C:\> $c[1].BlobContainerProperties
+$c[1].BlobContainerProperties
 
 LastModified                   : 9/4/2020 12:52:37 PM +00:00
 LeaseStatus                    : Unlocked
@@ -212,7 +214,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Prefix
@@ -248,7 +250,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

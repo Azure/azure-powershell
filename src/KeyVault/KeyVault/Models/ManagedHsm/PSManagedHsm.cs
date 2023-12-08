@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             ProvisioningState = managedHsm.Properties.ProvisioningState;
             SecurityDomain = new PSManagedHsmSecurityDomain(managedHsm?.Properties?.SecurityDomainProperties);
             Regions = managedHsm?.Properties?.Regions?.Select(r => new PSMHSMGeoReplicatedRegion(r))?.ToArray();
+            Identity = new PSManagedServiceIdentity(managedHsm.Identity);
             OriginalManagedHsm = managedHsm;
         }
 
@@ -72,6 +73,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public bool? EnablePurgeProtection { get; internal set; }
         public string StatusMessage { get; private set; }
         public string ProvisioningState { get; private set; }
+
+        public PSManagedServiceIdentity Identity { get; private set; }
 
         public PSManagedHsmSecurityDomain SecurityDomain { get; private set; }
 

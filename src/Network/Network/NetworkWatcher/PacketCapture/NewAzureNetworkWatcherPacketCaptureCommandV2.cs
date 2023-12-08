@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (this.TargetType.ToLower() == "vmss" || this.TargetType.ToLower() == "azurevmss")
                 {
-                    packetCaptureProperties.TargetType = MNM.PacketCaptureTargetType.AzureVMSS;
+                    packetCaptureProperties.TargetType = MNM.PacketCaptureTargetType.AzureVmss;
                 }
             }
 

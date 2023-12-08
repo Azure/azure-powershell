@@ -148,23 +148,23 @@ This command creates a Storage account withenable Files Active Directory Domain 
 
 
 ```powershell
-PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EncryptionKeyTypeForTable Account -EncryptionKeyTypeForQueue Account -RequireInfrastructureEncryption
+New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EncryptionKeyTypeForTable Account -EncryptionKeyTypeForQueue Account -RequireInfrastructureEncryption
 
-PS C:\>$account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $accountName
+$account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $accountName
 
-PS C:\>$account.Encryption.Services.Queue
-
-Enabled LastEnabledTime     KeyType
-------- ---------------     -------
-   True 1/9/2020 6:09:11 AM Account
-
-PS C:\>$account.Encryption.Services.Table
+$account.Encryption.Services.Queue
 
 Enabled LastEnabledTime     KeyType
 ------- ---------------     -------
    True 1/9/2020 6:09:11 AM Account
 
-PS C:\> $account.Encryption.RequireInfrastructureEncryption
+$account.Encryption.Services.Table
+
+Enabled LastEnabledTime     KeyType
+------- ---------------     -------
+   True 1/9/2020 6:09:11 AM Account
+
+$account.Encryption.RequireInfrastructureEncryption
 True
 ```
 
@@ -176,15 +176,15 @@ Then get the Storage account properties, and view the encryption keytype of Queu
 
 
 ```
-PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2 -MinimumTlsVersion TLS1_1 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $false
+$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2 -MinimumTlsVersion TLS1_1 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $false
 
-PS C:\> $account.MinimumTlsVersion
+$account.MinimumTlsVersion
 TLS1_1
 
-PS C:\> $account.AllowBlobPublicAccess
+$account.AllowBlobPublicAccess
 False
 
-PS C:\> $a.AllowSharedKeyAccess
+$a.AllowSharedKeyAccess
 False
 ```
 
@@ -195,15 +195,15 @@ The command create account with MinimumTlsVersion, AllowBlobPublicAccess, and di
 
 
 ```powershell
-PS C:\>$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -PublishMicrosoftEndpoint $true -PublishInternetEndpoint $true -RoutingChoice MicrosoftRouting
+$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -PublishMicrosoftEndpoint $true -PublishInternetEndpoint $true -RoutingChoice MicrosoftRouting
 
-PS C:\>$account.RoutingPreference
+$account.RoutingPreference
 
 RoutingChoice    PublishMicrosoftEndpoints PublishInternetEndpoints
 -------------    ------------------------- ------------------------
 MicrosoftRouting                     True                     True
 
-PS C:\>$account.PrimaryEndpoints
+$account.PrimaryEndpoints
 
 Blob               : https://mystorageaccount.blob.core.windows.net/
 Queue              : https://mystorageaccount.queue.core.windows.net/
@@ -224,15 +224,15 @@ This command creates a Storage account with RoutingPreference setting: PublishMi
 
 
 ```powershell
-PS C:\>$account = New-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -SkuName Premium_LRS -Location westus -EdgeZone "microsoftlosangeles1" -AllowCrossTenantReplication $false
+$account = New-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -SkuName Premium_LRS -Location westus -EdgeZone "microsoftlosangeles1" -AllowCrossTenantReplication $false
 
-PS C:\>$account.ExtendedLocation
+$account.ExtendedLocation
 
 Name                 Type    
 ----                 ----    
 microsoftlosangeles1 EdgeZone
 
-PS C:\> $account.AllowCrossTenantReplication
+$account.AllowCrossTenantReplication
 False
 ```
 
@@ -243,12 +243,12 @@ This command creates a Storage account with EdgeZone as "microsoftlosangeles1" a
 
 
 ```powershell
-PS C:\> $account = New-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -SkuName Premium_LRS -Location eastus -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06"
+$account = New-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -SkuName Premium_LRS -Location eastus -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06"
 
-PS C:\> $account.KeyPolicy.KeyExpirationPeriodInDays
+$account.KeyPolicy.KeyExpirationPeriodInDays
 5
 
-PS C:\> $account.SasPolicy.SasExpirationPeriod
+$account.SasPolicy.SasExpirationPeriod
 1.12:05:06
 ```
 
@@ -260,26 +260,26 @@ This command creates a Storage account with KeyExpirationPeriod and SasExpiratio
 
 ```powershell
 # Create KeyVault (no need if using exist keyvault)
-PS C:\> $keyVault = New-AzKeyVault -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -Location eastus2euap -EnablePurgeProtection
-PS C:\> $key = Add-AzKeyVaultKey -VaultName $keyvaultName -Name $keyname -Destination 'Software'
+$keyVault = New-AzKeyVault -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -Location eastus2euap -EnablePurgeProtection
+$key = Add-AzKeyVaultKey -VaultName $keyvaultName -Name $keyname -Destination 'Software'
 
 # create user assigned identity and grant access to keyvault (no need if using exist user assigned identity)
-PS C:\> $userId = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $userIdName
-PS C:\> Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -ObjectId $userId.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
-PS C:\> $useridentityId= $userId.Id
+$userId = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $userIdName
+Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -ObjectId $userId.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
+$useridentityId= $userId.Id
 
 # create Storage account with Keyvault encryption (access Keyvault with user assigned identity), then show properties
-PS C:\> $account = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -Kind StorageV2 -SkuName Standard_LRS -Location eastus2euap `
+$account = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -Kind StorageV2 -SkuName Standard_LRS -Location eastus2euap `
                 -IdentityType SystemAssignedUserAssigned  -UserAssignedIdentityId $useridentityId  `
                 -KeyVaultUri $keyVault.VaultUri -KeyName $keyname -KeyVaultUserAssignedIdentityId $useridentityId
 
-PS C:\> $account.Encryption.EncryptionIdentity
+$account.Encryption.EncryptionIdentity
 
 EncryptionUserAssignedIdentity                                                                                                                 
 ------------------------------ 
 /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserid
 
-PS C:\> $account.Encryption.KeyVaultProperties
+$account.Encryption.KeyVaultProperties
 
 KeyName                       : wrappingKey
 KeyVersion                    : 
@@ -323,12 +323,12 @@ The command creates account with disable PublicNetworkAccess of the account.
 
 
 ```
-PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -EnableAccountLevelImmutability -ImmutabilityPeriod 1 -ImmutabilityPolicyState Unlocked
+$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -EnableAccountLevelImmutability -ImmutabilityPeriod 1 -ImmutabilityPolicyState Unlocked
 
-PS C:\> $account.ImmutableStorageWithVersioning.Enabled
+$account.ImmutableStorageWithVersioning.Enabled
 True
 
-PS C:\> $account.ImmutableStorageWithVersioning.ImmutabilityPolicy
+$account.ImmutableStorageWithVersioning.ImmutabilityPolicy
 
 ImmutabilityPeriodSinceCreationInDays State    
 ------------------------------------- -----    
@@ -353,17 +353,17 @@ This command creates a Storage account with enable Azure Files Active Directory 
 
 ```powershell
 # create Storage account with Keyvault encryption (access Keyvault with FederatedClientId), then show properties
-PS C:\> $account = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -Kind StorageV2 -SkuName Standard_LRS -Location eastus2euap `
+$account = New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -Kind StorageV2 -SkuName Standard_LRS -Location eastus2euap `
                 -IdentityType SystemAssignedUserAssigned  -UserAssignedIdentityId $useridentityId  `
                 -KeyVaultUri $keyVault.VaultUri -KeyName $keyname -KeyVaultUserAssignedIdentityId $useridentityId -KeyVaultFederatedClientId $federatedClientId
 
-PS C:\> $account.Encryption.EncryptionIdentity
+$account.Encryption.EncryptionIdentity
 
 EncryptionUserAssignedIdentity                                                                                                      EncryptionFederatedIdentityClientId                                                                                                                 
 ------------------------------                                                                                                      ----------------------------------- 
 /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserid ********-****-****-****-************
 
-PS C:\> $account.Encryption.KeyVaultProperties
+$account.Encryption.KeyVaultProperties
 
 KeyName                       : wrappingKey
 KeyVersion                    : 
@@ -376,7 +376,7 @@ This command creates a storage account with Keyvault from another tenant (access
 
 ### Example 18: Create account with DnsEndpointType as AzureDnsZone
 ```powershell
-New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -DnsEndpointType AzureDnsZone 
+New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -DnsEndpointType AzureDnsZone
 ```
 
 The command creates a storage account with DnsEndpointType as AzureDnsZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier.

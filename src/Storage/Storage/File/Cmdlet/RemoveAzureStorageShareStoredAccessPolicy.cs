@@ -48,6 +48,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Return whether the specified policy is successfully removed")]
         public SwitchParameter PassThru { get; set; }
 
+        // Overwrite the useless parameter
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
+
         internal bool RemoveAzureShareStoredAccessPolicy(IStorageFileManagement localChannel, string shareName, string policyName)
         {
             bool success = false;

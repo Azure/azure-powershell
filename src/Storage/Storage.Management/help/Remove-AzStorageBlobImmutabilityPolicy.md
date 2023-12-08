@@ -35,10 +35,12 @@ The **Remove-AzStorageBlobImmutabilityPolicy** cmdlet removes immutability polic
 
 ### Example 1: Removes immutability policy of a Storage blob.
 <!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\> $blob = Remove-AzStorageBlobImmutabilityPolicy -Container $containerName -Blob $blobname  
 
-PS C:\> $blob
+
+```
+$blob = Remove-AzStorageBlobImmutabilityPolicy -Container $containerName -Blob $blobname  
+
+$blob
 
    AccountName: mystorageaccount, ContainerName: mycontainer
 
@@ -46,7 +48,7 @@ Name                 BlobType  Length          ContentType                    La
 ----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
 testblob             BlockBlob 10485760        application/octet-stream       2021-07-19 08:56:00Z Hot                                     False      2021-07-19T08:56:01.8120788Z *
 
-PS C:\> $blob.BlobProperties.ImmutabilityPolicy
+$blob.BlobProperties.ImmutabilityPolicy
 
 ExpiresOn PolicyMode
 --------- ----------

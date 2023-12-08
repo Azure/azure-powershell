@@ -84,6 +84,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Determines whether this gateway should accept traffic from other VNets")]
+        public bool? AllowNonVirtualWanTraffic { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -127,6 +133,11 @@ namespace Microsoft.Azure.Commands.Network
 
                 existingExpressRouteGateway.AutoScaleConfiguration.Bounds.Min = Convert.ToInt32(this.MinScaleUnits);
                 existingExpressRouteGateway.AutoScaleConfiguration.Bounds.Max = Convert.ToInt32(this.MaxScaleUnits);
+            }
+
+            if (AllowNonVirtualWanTraffic.HasValue)
+            {
+                existingExpressRouteGateway.AllowNonVirtualWanTraffic = AllowNonVirtualWanTraffic.Value;
             }
 
             ConfirmAction(

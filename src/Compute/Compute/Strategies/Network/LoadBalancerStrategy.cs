@@ -61,7 +61,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
         public static ResourceConfig<LoadBalancer> CreateLoadBalancerConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
-            Sku sku)
+            Sku sku,
+            string edgeZone)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -70,7 +71,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     Sku = new LoadBalancerSku
                     {
                         Name = sku.ToString()
-                    }
+                    },
+                    ExtendedLocation = edgeZone == null
+                        ? null
+                        : new ExtendedLocation { Name = edgeZone }
                 });
     }
 }

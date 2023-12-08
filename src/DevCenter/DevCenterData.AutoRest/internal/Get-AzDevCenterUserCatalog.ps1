@@ -22,24 +22,22 @@ Gets the specified catalog within the project
 .Example
 Get-AzDevCenterUserCatalog -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject
 .Example
-Get-AzDevCenterUserCatalog -DevCenter Contoso -ProjectName DevProject
+Get-AzDevCenterUserCatalog -DevCenterName Contoso -ProjectName DevProject
 .Example
 Get-AzDevCenterUserCatalog -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -CatalogName CentralCatalog 
 .Example
-Get-AzDevCenterUserCatalog -DevCenter Contoso -ProjectName DevProject -CatalogName CentralCatalog 
+Get-AzDevCenterUserCatalog -DevCenterName Contoso -ProjectName DevProject -CatalogName CentralCatalog 
 .Example
 $catalogInput = @{"CatalogName" = "CentralCatalog"; "ProjectName" =" DevProject" }
 Get-AzDevCenterUserCatalog -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $catalogInput
 .Example
 $catalogInput = @{"CatalogName" = "CentralCatalog"; "ProjectName" = "DevProject" }
-Get-AzDevCenterUserCatalog -DevCenter Contoso -InputObject $catalogInput 
+Get-AzDevCenterUserCatalog -DevCenterName Contoso -InputObject $catalogInput 
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICatalog
-.Outputs
-System.String
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICatalog
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,19 +46,23 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of an action that will take place on a Dev Box.
   [CatalogName <String>]: The name of the catalog
+  [CustomizationGroupName <String>]: A customization group name.
+  [CustomizationTaskId <String>]: A customization task ID.
   [DefinitionName <String>]: The name of the environment definition
   [DevBoxName <String>]: The name of a Dev Box.
   [EnvironmentName <String>]: The name of the environment.
   [Id <String>]: Resource identity path
+  [OperationId <String>]: The id of the operation on a Dev Box.
   [PoolName <String>]: The name of a pool of Dev Boxes.
   [ProjectName <String>]: The DevCenter Project upon which to execute operations.
   [ScheduleName <String>]: The name of a schedule.
+  [TaskName <String>]: A customization task name.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenterusercatalog
 #>
 function Get-AzDevCenterUserCatalog {
-[OutputType([System.String], [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICatalog])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICatalog])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

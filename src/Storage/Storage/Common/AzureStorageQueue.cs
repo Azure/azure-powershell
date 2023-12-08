@@ -21,6 +21,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     using global::Azure.Storage.Queues;
     using Microsoft.WindowsAzure.Commands.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using global::Azure.Storage.Queues.Models;
+    using Microsoft.Azure.Storage.Auth;
 
     /// <summary>
     /// Azure storage queue
@@ -97,6 +99,21 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             EncodeMessage = queue.EncodeMessage;
         }
 
+        public AzureStorageQueue(QueueClient queueClient, QueueProperties queueProperties, AzureStorageContext storageContext)
+        {
+            Name = queueClient.Name;
+            this.privateQueueClient = queueClient;
+            CloudQueue = GetTrack1QueueClient(queueClient, storageContext.StorageAccount.Credentials);
+            CloudQueue.FetchAttributes();
+            EncodeMessage = CloudQueue.EncodeMessage;
+            Uri = queueClient.Uri;
+            if (queueProperties != null)
+            {
+                privateQueueProperties = queueProperties;
+                ApproximateMessageCount = queueProperties.ApproximateMessagesCount;
+            }
+        }
+
         // Convert Track1 queue object to Track 2 queue Client
         protected static QueueClient GetTrack2QueueClient(CloudQueue cloudQueue, AzureStorageContext context)
         {
@@ -128,6 +145,17 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             }
 
             return queueClient;
+        }
+
+        protected static CloudQueue GetTrack1QueueClient(QueueClient queueClient, StorageCredentials credentials)
+        {
+            if (credentials.IsSAS)
+            {
+                credentials = null;
+            }
+            CloudQueue track1CloudQueue = new CloudQueue(queueClient.Uri, credentials);
+            
+            return track1CloudQueue;
         }
     }
 }

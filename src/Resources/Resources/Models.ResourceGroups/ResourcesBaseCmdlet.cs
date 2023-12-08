@@ -17,6 +17,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
 {
     using Authorization;
     using ResourceManager.Common;
+    using System.Management.Automation;
+    using System;
 
     /// <summary> 
     /// Base class for all resources cmdlets
@@ -113,6 +115,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public virtual string DetermineParameterSetName()
         {
             return ParameterSetName;
+        }
+
+        protected void WriteTerminatingError(string message, params object[] args)
+        {
+            ThrowTerminatingError(new ErrorRecord(new Exception(String.Format(message, args)), "Error", ErrorCategory.NotSpecified, null));
         }
     }
 }

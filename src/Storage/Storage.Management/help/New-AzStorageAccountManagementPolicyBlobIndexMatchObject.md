@@ -24,22 +24,24 @@ The **New-AzStorageAccountManagementPolicyBlobIndexMatchObject** cmdlet creates 
 
 ### Example 1: Creates 2 ManagementPolicy BlobIndexMatch object3, then add them to a management policy rule filter
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
-PS C:\> $blobindexmatch1 = New-AzStorageAccountManagementPolicyBlobIndexMatchObject -Name "tag1" -Value "value1"
-PS C:\> $blobindexmatch1
+$blobindexmatch1 = New-AzStorageAccountManagementPolicyBlobIndexMatchObject -Name "tag1" -Value "value1"
+$blobindexmatch1
 
 Name Op Value 
 ---- -- ----- 
 tag1 == value1
 
-PS C:\> $blobindexmatch2 = New-AzStorageAccountManagementPolicyBlobIndexMatchObject -Name "tag2" -Value "value2"
+$blobindexmatch2 = New-AzStorageAccountManagementPolicyBlobIndexMatchObject -Name "tag2" -Value "value2"
 
-PS C:\> New-AzStorageAccountManagementPolicyFilter -PrefixMatch prefix1,prefix2 -BlobType blockBlob `
+New-AzStorageAccountManagementPolicyFilter -PrefixMatch prefix1,prefix2 -BlobType blockBlob `
         -BlobIndexMatch $blobindexmatch1,$blobindexmatch2
 
 PrefixMatch        BlobTypes   BlobIndexMatch
 -----------        ---------   --------------
-{prefix1, prefix2} {blockBlob} {tag1, tag2}  
+{prefix1, prefix2} {blockBlob} {tag1, tag2}
 ```
 
 This command creates 2 ManagementPolicy BlobIndexMatch objects, then add themto a management policy rule filter.

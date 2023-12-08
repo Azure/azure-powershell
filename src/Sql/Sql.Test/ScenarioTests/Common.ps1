@@ -528,6 +528,15 @@ function Get-JobStepName
 
 <#
 .SYNOPSIS
+Gets valid job private endpoint name
+#>
+function Get-JobPrivateEndpointName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets valid schema name
 #>
 function Get-SchemaName

@@ -45,10 +45,12 @@ This command first creates an ACL object with 3 acl entries, then sets ACL recur
 
 ### Example 2: Set ACL recursively on a root directory of filesystem
 <!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\> $result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl  -Context $ctx
 
-PS C:\> $result
+
+```
+$result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl  -Context $ctx
+
+$result
 
 FailedEntries                   : {dir1/dir2/file4}
 TotalDirectoriesSuccessfulCount : 500
@@ -56,7 +58,7 @@ TotalFilesSuccessfulCount       : 2500
 TotalFailureCount               : 1
 ContinuationToken               : VBaHi5TfyO2ai1wYTRhIL2FjbGNibjA2c3RmATAxRDVEN0UzRENFQzZCRTAvYWRsc3Rlc3QyATAxRDY2M0ZCQTZBN0JGQTkvZGlyMC9kaXIxL2ZpbGUzFgAAAA==
 
-PS C:\> $result.FailedEntries
+$result.FailedEntries
 
 Name            IsDirectory ErrorMessage                                                                   
 ----            ----------- ------------                                                                   
@@ -64,9 +66,9 @@ dir0/dir2/file4       False This request is not authorized to perform this opera
 
 # user need fix the failed item , then can resume with ContinuationToken
 
-PS C:\> $result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl -ContinuationToken $result.ContinuationToken -Context $ctx
+$result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl -ContinuationToken $result.ContinuationToken -Context $ctx
 
-PS C:\> $result
+$result
 
 FailedEntries                   : 
 TotalDirectoriesSuccessfulCount : 100
@@ -79,6 +81,8 @@ This command first sets ACL recursively to a root directory and failed, then res
 
 ### Example 3: Set ACL recursively chunk by chunk
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 $token = $null
 $TotalDirectoriesSuccess = 0
@@ -109,10 +113,12 @@ This script sets ACL rescursively on directory chunk by chunk, with chunk size a
 
 ### Example 4: Set ACL recursively on a directory and ContinueOnFailure, then resume from failures one by one
 <!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\> $result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -ContinueOnFailure -Context $ctx
 
-PS C:\> $result
+
+```
+$result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -ContinueOnFailure -Context $ctx
+
+$result
 
 FailedEntries                   : {dir0/dir1/file1, dir0/dir2/file4}
 TotalDirectoriesSuccessfulCount : 100
@@ -120,7 +126,7 @@ TotalFilesSuccessfulCount       : 500
 TotalFailureCount               : 2
 ContinuationToken               : VBaHi5TfyO2ai1wYTRhIL2FjbGNibjA2c3RmATAxRDVEN0UzRENFQzZCRTAvYWRsc3Rlc3QyATAxRDY2M0ZCQTZBN0JGQTkvZGlyMC9kaXIxL2ZpbGUzFgAAAA==
 
-PS C:\> $result.FailedEntries
+$result.FailedEntries
 
 Name            IsDirectory ErrorMessage                                                                   
 ----            ----------- ------------                                                                   
@@ -129,7 +135,7 @@ dir0/dir2/file4       False This request is not authorized to perform this opera
 
 # user need fix the failed item , then can resume with ContinuationToken
 
-PS C:\> foreach ($path in $result.FailedEntries.Name)
+foreach ($path in $result.FailedEntries.Name)
         {
             # user code to fix failed entry in $path
             
@@ -329,7 +335,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

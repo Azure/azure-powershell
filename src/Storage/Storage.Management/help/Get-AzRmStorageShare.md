@@ -51,8 +51,9 @@ The **Get-AzRmStorageShare** cmdlet gets or lists Storage file shares.
 ```powershell
 Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare"
 ```
+
 ```output
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
 ----     -------- ---------------- ---------- ------- ------- ---------------
@@ -65,8 +66,9 @@ This command gets a Storage file share with Storage account name and share name.
 ```powershell
 Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount"
 ```
+
 ```output
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name     QuotaGiB EnabledProtocols AccessTier           Deleted Version ShareUsageBytes
 ----     -------- ---------------- ----------           ------- ------- ---------------
@@ -82,7 +84,7 @@ Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -StorageAccountName "m
 ```
 
 ```output
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
 ----     -------- ---------------- ---------- ------- ------- ---------------
@@ -97,7 +99,7 @@ Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "m
 ```
 
 ```output
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
 ----     -------- ---------------- ---------- ------- ------- ---------------
@@ -108,11 +110,11 @@ This command gets a Storage file share with Storage account name and share name,
 
 ### Example 5: List all Storage file shares of a Storage account, include the deleted shares, include the share snapshots
 ```powershell
-Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -IncludeDeleted -IncludeSnapshot 
+Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -IncludeDeleted -IncludeSnapshot
 ```
 
 ```output
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name       QuotaGiB EnabledProtocols AccessTier           Deleted Version          ShareUsageBytes snapshotTime       
 ----       -------- ---------------- ----------           ------- -------          --------------- ------------       
@@ -129,7 +131,7 @@ Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "m
 ```
 
 ```output
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
 Name       QuotaGiB EnabledProtocols AccessTier           Deleted Version ShareUsageBytes snapshotTime       
 ----       -------- ---------------- ----------           ------- ------- --------------- ------------       

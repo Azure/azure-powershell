@@ -68,6 +68,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             Constants.RunbookType.Graph,
             Constants.RunbookType.Python2,
             Constants.RunbookType.Python3,
+            Constants.RunbookType.Powershell72,
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }

@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         {
             this.HostName = acsDetails.GlobalAcsHostName;
             this.Namespace = acsDetails.GlobalAcsNamespace;
-            this.ResourceProviderRealm = acsDetails.GlobalAcsRPRealm;
+            this.ResourceProviderRealm = acsDetails.GlobalAcsRpRealm;
         }
 
         /// <summary>
