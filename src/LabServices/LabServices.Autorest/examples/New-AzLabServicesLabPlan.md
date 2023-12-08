@@ -1,6 +1,6 @@
 ### Example 1: Create a new Lab plan.
 ```powershell
-PS C:\> New-AzLabServicesLabPlan `
+New-AzLabServicesLabPlan `
 	-LabPlanName "testplan" `
 	-ResourceGroupName "Group Name" `
 	-Location "westus2" `

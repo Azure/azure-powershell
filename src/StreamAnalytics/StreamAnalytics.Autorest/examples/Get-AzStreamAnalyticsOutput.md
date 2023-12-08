@@ -1,6 +1,6 @@
 ### Example 1: Get information about job outputs
 ```powershell
-PS C:\> Get-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh
+Get-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh
 
 Name      Type                                            ETag
 ----      ----                                            ----
@@ -11,7 +11,7 @@ This command returns information about the outputs defined on the job.
 
 ### Example 2: Get information about a specific job output
 ```powershell
-PS C:\> Get-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name output-01
+Get-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name output-01
 
 Name      Type                                            ETag
 ----      ----                                            ----
@@ -22,7 +22,7 @@ This command returns information about the output defined on the job.
 
 ### Example 3: Get information about a specific job output by pipeline
 ```powershell
-PS C:\>New-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-portal -Name output-05 -File .\test\template-json\StroageAccount.json | Get-AzStreamAnalyticsOutput
+New-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-01-portal -Name output-05 -File .\test\template-json\StroageAccount.json | Get-AzStreamAnalyticsOutput
 
 Name      Type                                            ETag
 ----      ----                                            ----

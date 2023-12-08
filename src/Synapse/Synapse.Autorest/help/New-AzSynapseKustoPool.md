@@ -27,8 +27,10 @@ Create or update a Kusto pool.
 
 ### Example 1: Create a new Kusto pool
 ```powershell
-PS C:\> New-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name testnewkustopool -Location 'East US' -SkuName "Storage optimized" -SkuSize Medium
+New-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name testnewkustopool -Location 'East US' -SkuName "Storage optimized" -SkuSize Medium
+```
 
+```output
 Location  Name                    Type                                    Etag
 --------  ----                    ----                                    ----
 East US 2 testws/testnewkustopool Microsoft.Synapse/workspaces/kustoPools 

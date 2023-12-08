@@ -24,8 +24,10 @@ Get the latest version of a system scan ruleset
 
 ### Example 1: Get latest system scan ruleset available for a data source
 ```powershell
-PS C:\> Get-AzPurviewSystemScanRulesetLatest -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceType 'AzureStorage'
+Get-AzPurviewSystemScanRulesetLatest -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceType 'AzureStorage'
+```
 
+```output
 Id                : systemscanrulesets/AzureStorage
 Kind              : AzureStorage
 Name              : AzureStorage

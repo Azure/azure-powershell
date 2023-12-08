@@ -27,8 +27,10 @@ Create an in-memory object for AzureSubscriptionCredentialScan.
 
 ### Example 1: Create Azure resource sub Credential scan object
 ```powershell
-PS C:\> New-AzPurviewAzureSubscriptionCredentialScanObject -Kind 'AzureSubscriptionCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp'
+New-AzPurviewAzureSubscriptionCredentialScanObject -Kind 'AzureSubscriptionCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp'
+```
 
+```output
 CollectionLastModifiedAt  :
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference

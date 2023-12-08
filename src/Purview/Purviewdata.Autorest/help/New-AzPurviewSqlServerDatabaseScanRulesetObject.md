@@ -25,8 +25,10 @@ Create an in-memory object for SqlServerDatabaseScanRuleset.
 
 ### Example 1: Create Sql Server Db custom scanruleset object
 ```powershell
-PS C:\> New-AzPurviewSqlServerDatabaseScanRulesetObject -Kind 'SqlServerDatabase' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+New-AzPurviewSqlServerDatabaseScanRulesetObject -Kind 'SqlServerDatabase' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+```
 
+```output
 CreatedAt                            :
 Description                          : desc
 ExcludedSystemClassification         : {MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER, MICROSOFT.SECURITY.COMMON_PASSWORDS}

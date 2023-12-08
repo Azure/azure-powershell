@@ -24,8 +24,10 @@ Deletes the key vault connection associated with the account
 
 ### Example 1: Remove a key vault connection
 ```powershell
-PS C:\> Remove-AzPurviewKeyVaultConnection -Endpoint 'https://parv-brs-2.purview.azure.com/' -KeyVaultName 'KeyVaultConnection5'
+Remove-AzPurviewKeyVaultConnection -Endpoint 'https://parv-brs-2.purview.azure.com/' -KeyVaultName 'KeyVaultConnection5'
+```
 
+```output
 BaseUrl           : https://datascankv.vault.azure.net/
 Description       : This is a key vault
 Id                : keyVaults/KeyVaultConnection5

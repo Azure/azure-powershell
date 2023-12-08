@@ -1,6 +1,6 @@
 ### Example 1: List all Kusto principalAssignments
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolPrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool
+Get-AzSynapseKustoPoolPrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool
 
 Name                                 Type
 ----                                 ----
@@ -11,7 +11,7 @@ The above command lists all principalAssignments in the workspace "testws".
 
 ### Example 2: Gets a Kusto principalAssignment by name
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolPrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -PrincipalAssignmentName kustoprincipal1
+Get-AzSynapseKustoPoolPrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -PrincipalAssignmentName kustoprincipal1
 
 Name                                 Type
 ----                                 ----
