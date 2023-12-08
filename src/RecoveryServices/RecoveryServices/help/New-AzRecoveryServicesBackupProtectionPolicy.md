@@ -1,7 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
+external help file: Az.RecoveryServices-help.xml
 Module Name: Az.RecoveryServices
-ms.assetid: C2A7F37B-5713-4430-B83F-C6745692396D
 online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesbackupprotectionpolicy
 schema: 2.0.0
 ---
@@ -9,187 +8,97 @@ schema: 2.0.0
 # New-AzRecoveryServicesBackupProtectionPolicy
 
 ## SYNOPSIS
-Creates a Backup protection policy.
+Creates a new backup policy in a given recovery services vault
 
 ## SYNTAX
 
 ```
-New-AzRecoveryServicesBackupProtectionPolicy [-Name] <String> [-WorkloadType] <WorkloadType>
- [[-BackupManagementType] <BackupManagementType>] [[-RetentionPolicy] <RetentionPolicyBase>]
- [[-SchedulePolicy] <SchedulePolicyBase>] [[-MoveToArchiveTier] <Boolean>] [[-TieringMode] <TieringMode>]
- [[-TierAfterDuration] <Int32>] [[-TierAfterDurationType] <String>] [-BackupSnapshotResourceGroup <String>]
- [-BackupSnapshotResourceGroupSuffix <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName <String> -VaultName <String>
+ -PolicyName <String> -Policy <IProtectionPolicy> [-SubscriptionId <String>]
+ [-SnapshotRetentionDurationInDays <Int32>] [-DefaultProfile <PSObject>] [-MoveToArchiveTier <Boolean>]
+ [-TieringMode <String>] [-TierAfterDuration <Int32>] [-TierAfterDurationType <String>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzRecoveryServicesBackupProtectionPolicy** cmdlet creates a Backup protection policy in a vault.
-A protection policy is associated with at least one retention policy.
-The retention policy defines how long a recovery point is kept with Azure Backup.
-You can use the Get-AzRecoveryServicesBackupRetentionPolicyObject cmdlet to get the default retention policy.
-And you can use the Get-AzRecoveryServicesBackupSchedulePolicyObject cmdlet to get the default schedule policy.
-The **SchedulePolicy** and **RetentionPolicy** objects are used as inputs to the **New-AzRecoveryServicesBackupProtectionPolicy** cmdlet.
-Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
+Creates a new backup policy in a given recovery services vault
 
 ## EXAMPLES
 
-### Example 1: Create a Backup protection policy
+### Example 1: Enable TierRecommended for AzureVM
 ```powershell
-$SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
-$SchPol.ScheduleRunTimes.Clear()
-$Dt = Get-Date
-$SchPol.ScheduleRunTimes.Add($Dt.ToUniversalTime())
-$RetPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
-$RetPol.DailySchedule.DurationCountInDays = 365
-New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType AzureVM -RetentionPolicy $RetPol -SchedulePolicy $SchPol
+$pol1=Get-AzRecoveryServicesPolicyTemplate -DatasourceType AzureVM
+New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest4 -MoveToArchiveTier $true -TieringMode TierRecommended
+$pol1.TieringPolicy.AdditionalProperties.ArchivedRP | fl
 ```
 
-The first command gets a base **SchedulePolicyObject**, and then stores it in the $SchPol variable.
-The second command removes all scheduled run times from the schedule policy in $SchPol.
-The third command uses the Get-Date cmdlet to get the current date and time.
-The fourth command adds the current date and time in $Dt as the scheduled run time to the schedule policy.
-The fifth command gets a base **RetentionPolicy** object, and then stores it in the $RetPol variable.
-The sixth command sets the retention duration policy to 365 days.
-The final command creates a **BackupProtectionPolicy** object based on the schedule and retention policies created by the previous commands.
-
-### Example 2: Create a fileshare policy for multiple backups per day
-```powershell
-$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
-$timeZone = Get-TimeZone
-$schedulePolicy.ScheduleRunTimeZone = $timeZone.Id
-$startTime = Get-Date -Date "2021-12-22T06:00:00.00+00:00"
-$schedulePolicy.ScheduleWindowStartTime = $startTime.ToUniversalTime()
-$schedulePolicy.ScheduleInterval = 6
-$schedulePolicy.ScheduleWindowDuration = 14
-$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
-$retentionPolicy.DailySchedule.DurationCountInDays = 10
-New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType AzureVM -RetentionPolicy $retentionPolicy -SchedulePolicy $schedulePolicy
+```output
+Duration     : 0
+DurationType : Invalid
+TieringMode  : TierRecommended
 ```
 
-The first command gets a base hourly **SchedulePolicyObject**, and then stores it in the $schedulePolicy variable.
-The second and third command fetches the timezone and updates the timezone in the $schedulePolicy.
-The fourth and fifth command initializes the schedule window start time and updates the $schedulePolicy. Please note the start time must be in UTC even if the timezone is not UTC.
-The sixth and seventh command updates the interval (in hours) after which the backup will be retriggered on the same day, duration (in hours) for which the schedule will run.
-The eighth command gets a base hourly **RetentionPolicy** object, and then stores it in the $retentionPolicy variable.
-The ninth command sets the retention duration policy to 10 days.
-The final command creates a **BackupProtectionPolicy** object based on the schedule and retention policies created by the previous commands.
+The first command gets the default policy template for a given DatasourceType.
+The second command modifies the tiering policy and creates a new policy.
+The third command is to display modified tiering policy.
 
-### Example 3
-
-Creates a Backup protection policy. (autogenerated)
-
-<!-- Aladdin Generated Example -->
-
-
+### Example 2: Enable TierAfter for AzureVM
 ```powershell
-New-AzRecoveryServicesBackupProtectionPolicy -Name 'NewPolicy' -RetentionPolicy $RetPol -SchedulePolicy $SchPol -VaultId $vault.ID -WorkloadType AzureVM
+$pol1=Get-AzRecoveryServicesPolicyTemplate -DatasourceType AzureVM
+New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest5 -MoveToArchiveTier $true -TierAfterDuration 54 -TieringMode TierAfter -TierAfterDurationType Months
+$pol1.TieringPolicy.AdditionalProperties.ArchivedRP | fl
 ```
 
-### Example 4: Create new AzureVM policy to enable Archive smart tiering with TieringMode TierRecommended
-```powershell
-$pol = New-AzRecoveryServicesBackupProtectionPolicy -Name newTierRecommendedPolicy -WorkloadType AzureVM -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $vault.ID -MoveToArchiveTier $true -TieringMode TierRecommended
+```output
+Duration     : 54
+DurationType : Months
+TieringMode  : TierAfter
 ```
 
-This command is used to create policy to enable archive smart tiering for tiering mode TierRecommended, we set -MoveToArchiveTier parameter to $true to enable smart tiering. We set TieringMode to TierRecommended to move all recommended recovery points to archive. Please note that tiering mode TierRecommended is only supported for workload type AzureVM. 
+The first command gets the default policy template for a given DatasourceType.
+The second command modifies the tiering policy and creates a new policy.
+The third command is to display modified tiering policy.
 
-### Example 5: Create new policy with archive smart tiering disabled
+### Example 3: Enable TierAfter for SAPHANA
 ```powershell
-$pol = New-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID  -WorkloadType AzureVM -BackupManagementType AzureVM -RetentionPolicy $retPol -SchedulePolicy $schPol -MoveToArchiveTier $false
+$pol1=Get-AzRecoveryServicesPolicyTemplate -DatasourceType SAPHANA
+New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest6 -MoveToArchiveTier $true -TierAfterDuration 64 -TieringMode TierAfter -TierAfterDurationType Days
+$pol1.SubProtectionPolicy[0].TieringPolicy.AdditionalProperties.ArchivedRP | fl
 ```
 
-This command is used to disable archive smart tiering while creating a policy, we set MoveToArchiveTier parameter to $false to disable tiering.
-
-### Example 6: Create a non UTC timezone standard policy for workloadType MSSQL
-```powershell
-$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType MSSQL -BackupManagementType AzureWorkload -PolicySubType Standard
-
-$timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "Tokyo" } 
-$date= Get-Date -Hour 9 -Minute 0 -Second 0 -Year 2022 -Day 26 -Month 12 -Millisecond 0
-$date = [DateTime]::SpecifyKind($date,[DateTimeKind]::Utc)
-$schedulePolicy.FullBackupSchedulePolicy.ScheduleRunFrequency = "Weekly"
-$schedulePolicy.FullBackupSchedulePolicy.ScheduleRunTimes[0] = $date
-$schedulePolicy.FullBackupSchedulePolicy.ScheduleRunTimeZone = $timeZone[0].Id
-
-$schedulePolicy.IsDifferentialBackupEnabled = $true
-$schedulePolicy.DifferentialBackupSchedulePolicy.ScheduleRunDays[0] = "Wednesday"
-$schedulePolicy.DifferentialBackupSchedulePolicy.ScheduleRunTimes[0] = $date.AddHours(1)
-
-$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType MSSQL -BackupManagementType AzureWorkload
-
-$retentionPolicy.DifferentialBackupRetentionPolicy.RetentionCount = 15
-
-$retentionPolicy.FullBackupRetentionPolicy.IsDailyScheduleEnabled = $false
-$retentionPolicy.FullBackupRetentionPolicy.IsMonthlyScheduleEnabled = $false
-$retentionPolicy.FullBackupRetentionPolicy.WeeklySchedule.DurationCountInWeeks = 35
-$retentionPolicy.FullBackupRetentionPolicy.YearlySchedule.DurationCountInYears = 2
-
-New-AzRecoveryServicesBackupProtectionPolicy -Name "Tokyo-mssql-policy" -WorkloadType MSSQL -BackupManagementType AzureWorkload -RetentionPolicy $retentionPolicy -SchedulePolicy $schedulePolicy -VaultId $vault.ID
+```output
+Duration     : 64
+DurationType : Days
+TieringMode  : TierAfter
 ```
 
-The first command gets a **SchedulePolicyObject**, and then stores it in the $schedulePolicy variable.
-The second command block fetches the timezone and datetime (localtime marked as UTC) and updates the timezone and time in the $schedulePolicy. Please note that the datetime should always be marked as UTC as the timezone is given separately. Also note, for other workload types timezone should be given in $schedulePolicy.ScheduleRunTimeZone attribute.
-The third command block updates the Differential schedule policy.
-Then, we get the **RetentionPolicyObject** and update differential and full backup retention settings.
-Finally we create a **BackupProtectionPolicy** object based on the schedule and retention policies created by the previous commands.
+The first command gets the default policy template for a given DatasourceType.
+The second command modifies the tiering policy and creates a new policy.
+The third command is to display modified tiering policy.
+
+### Example 4: Disable Tiering Policy
+```powershell
+New-AzRecoveryServicesBackupProtectionPolicy -ResourceGroupName arohijain-rg -VaultName arohijain-vault -Policy $pol1 -PolicyName tiertest5 -MoveToArchiveTier $false
+$pol1.TieringPolicy.AdditionalProperties.ArchivedRP | fl
+```
+
+```output
+Duration     :
+DurationType :
+TieringMode  : DoNotTier
+```
+
+The first command disables the tiering policy and creates a new policy.
+The second command is to display modified tiering policy.
 
 ## PARAMETERS
 
-### -BackupSnapshotResourceGroup
-Custom resource group name to store the instant recovery points of managed virtual machines. This is optional
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackupSnapshotResourceGroupSuffix
-Custom resource group name suffix to store the instant recovery points of managed virtual machines. This is optional
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackupManagementType
-The class of resources being protected. The acceptable values for this parameter are:
-- AzureVM
-- AzureStorage
-- AzureWorkload
-
-```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
-Parameter Sets: (All)
-Aliases:
-Accepted values: AzureVM, AzureStorage, AzureWorkload
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -199,7 +108,6 @@ Accept wildcard characters: False
 ```
 
 ### -MoveToArchiveTier
-Specifies whether recovery points should be moved to archive storage by the policy or not. Allowed values are $true, $false
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -207,14 +115,30 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the policy.
+### -Policy
+Workload specific Backup policy object.
+To construct, see NOTES section for POLICY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionPolicy
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PolicyName
+Policy Name for the policy to be created
 
 ```yaml
 Type: System.String
@@ -222,46 +146,28 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RetentionPolicy
-Specifies the base **RetentionPolicy** object.
-You can use the Get-AzRecoveryServicesBackupRetentionPolicyObject cmdlet to get a **RetentionPolicy** object.
+### -ResourceGroupName
+The name of the resource group where the recovery services vault is present.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 4
+Required: True
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SchedulePolicy
-Specifies the base **SchedulePolicy** object.
-You can use the Get-AzRecoveryServicesBackupSchedulePolicyObject cmdlet to get a **SchedulePolicy** object.
-
-```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TierAfterDuration
-Specifies the duration after which recovery points should start moving to the archive tier, value can be in days or months. Applicable only when TieringMode is TierAllEligible
+### -SnapshotRetentionDurationInDays
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -269,46 +175,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TierAfterDurationType
-Specifies whether the TierAfterDuration is in Days or Months
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: Days, Months
-
-Required: False
-Position: 9
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TieringMode
-Specifies whether to move recommended or all eligible recovery points to archive
-
-```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.TieringMode
-Parameter Sets: (All)
-Aliases:
-Accepted values: TierRecommended, TierAllEligible
-
-Required: False
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VaultId
-ARM ID of the Recovery Services Vault.
+### -SubscriptionId
+Subscription Id
 
 ```yaml
 Type: System.String
@@ -318,26 +192,64 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WorkloadType
-Workload type of the resource. The acceptable values for this parameter are:
-- AzureVM
-- AzureFiles
-- MSSQL
+### -TierAfterDuration
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, AzureFiles, MSSQL
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TierAfterDurationType
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TieringMode
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VaultName
+The name of the recovery services vault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -358,6 +270,7 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -376,34 +289,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
-
-### System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
-
-### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase
-
-### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase
-
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
+### Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IProtectionPolicyResource
 
 ## NOTES
 
+ALIASES
+
+Set-AzRecoveryServicesBackupprotectionPolicy
+
 ## RELATED LINKS
-
-[Enable-AzRecoveryServicesBackupProtection](./Enable-AzRecoveryServicesBackupProtection.md)
-
-[Get-AzRecoveryServicesBackupProtectionPolicy](./Get-AzRecoveryServicesBackupProtectionPolicy.md)
-
-[Get-AzRecoveryServicesBackupRetentionPolicyObject](./Get-AzRecoveryServicesBackupRetentionPolicyObject.md)
-
-[Get-AzRecoveryServicesBackupSchedulePolicyObject](./Get-AzRecoveryServicesBackupSchedulePolicyObject.md)
-
-[Remove-AzRecoveryServicesBackupProtectionPolicy](./Remove-AzRecoveryServicesBackupProtectionPolicy.md)
-
-[Set-AzRecoveryServicesBackupProtectionPolicy](./Set-AzRecoveryServicesBackupProtectionPolicy.md)
-
-

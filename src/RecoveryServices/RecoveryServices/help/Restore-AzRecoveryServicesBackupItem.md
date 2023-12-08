@@ -25,18 +25,6 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-RehydrateDuration <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### AzureManagedVMCreateNewParameterSet
-```
-Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
- [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-TargetResourceGroupName] <String>
- [-RestoreOnlyOSDisk] [-RestoreDiskList <String[]>] [-DiskEncryptionSetId <String>] [-RestoreToSecondaryRegion]
- [-TargetZoneNumber <Int32>] [-RehydratePriority <String>] [-UseSystemAssignedIdentity]
- [-UserAssignedIdentityId <String>] [-TargetVMName <String>] [-TargetVNetName <String>]
- [-TargetVNetResourceGroup <String>] [-TargetSubnetName <String>] [-TargetSubscriptionId <String>]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-RehydrateDuration <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
 ### AzureFileShareParameterSet
 ```
 Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
@@ -53,6 +41,18 @@ Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] 
  [-RestoreDiskList <String[]>] [-RestoreAsUnmanagedDisks] [-RestoreToSecondaryRegion]
  [-RehydratePriority <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [-RehydrateDuration <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureManagedVMCreateNewParameterSet
+```
+Restore-AzRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
+ [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-TargetResourceGroupName] <String>
+ [-RestoreOnlyOSDisk] [-RestoreDiskList <String[]>] [-DiskEncryptionSetId <String>] [-RestoreToSecondaryRegion]
+ [-TargetZoneNumber <Int32>] [-RehydratePriority <String>] [-UseSystemAssignedIdentity]
+ [-UserAssignedIdentityId <String>] [-TargetVMName <String>] [-TargetVNetName <String>]
+ [-TargetVNetResourceGroup <String>] [-TargetSubnetName <String>] [-TargetSubscriptionId <String>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-RehydrateDuration <String>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureVMUnManagedDiskParameterSet
@@ -309,7 +309,7 @@ Here we filter the recovery points present in the VaultArchive tier and trigger 
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 $item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID
 $rp = Get-AzRecoveryServicesBackupRecoveryPoint -StartDate (Get-Date).AddDays(-29).ToUniversalTime() -EndDate (Get-Date).AddDays(0).ToUniversalTime() -VaultId $vault.ID -Item $item[3] -Tier VaultStandard
-$restoreJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location -RecoveryPoint $rp[0] -StorageAccountName "saName" -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName "targetVMName" -TargetVNetName "targetVNet" -TargetVNetResourceGroup $vault.ResourceGroupName -TargetSubnetName "default" -TargetZoneNumber 2 
+$restoreJob = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location -RecoveryPoint $rp[0] -StorageAccountName "saName" -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName "targetVMName" -TargetVNetName "targetVNet" -TargetVNetResourceGroup $vault.ResourceGroupName -TargetSubnetName "default" -TargetZoneNumber 2
 ```
 
 Here we filter the recovery points present in the VaultStandard tier and trigger a cross zonal restore for non-ZonePinned VM in a ZRS vault. For CZR we pass -TargetZoneNumber parameter. For Non-ZonedPinned VM, CZR is supported only for ZRS vaults. For ZonePinned VMs CZR is supported for ZRS vaults and cross region restore to secondary region for CRR enabled vaults.

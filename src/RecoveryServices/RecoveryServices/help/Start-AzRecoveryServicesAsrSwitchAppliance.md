@@ -90,7 +90,7 @@ Aliases: ReplicatedItem
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

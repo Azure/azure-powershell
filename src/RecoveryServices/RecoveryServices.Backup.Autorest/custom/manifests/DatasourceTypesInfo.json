@@ -1,0 +1,29 @@
+﻿{
+  "supportedDatasourceTypes": [
+    {
+      "serviceBackupManagementType": "AzureIaasVM",
+      "serviceWorkloadType": "",
+      "clientDatasourceType": "AzureVM"
+    },
+    {
+      "backupManagementType": "AzureWorkload",
+      "workloadType": "SQLDatabase",
+      "clientDatasourceType": "MSSQL"
+    },
+    {
+      "backupManagementType": "AzureStorage",
+      "workloadType": "",
+      "clientDatasourceType": "AzureFiles"
+    },
+    {
+      "backupManagementType": "AzureWorkload",
+      "workloadType": "SAPHanaDatabase",
+      "clientDatasourceType": "SAPHANA"
+    },
+    {
+      "backupManagementType": "AzureWorkload",
+      "workloadType": "SAPHanaDBInstance",
+      "clientDatasourceType": "SAPHANAWithSnapshot"
+    }
+  ]
+}
