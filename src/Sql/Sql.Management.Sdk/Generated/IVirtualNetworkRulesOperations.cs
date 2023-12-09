@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a virtual network rule.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -49,7 +50,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates an existing virtual network rule.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -81,7 +83,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes the virtual network rule with the given name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -107,7 +110,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of virtual network rules in a server.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -133,7 +137,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates an existing virtual network rule.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -165,7 +170,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes the virtual network rule with the given name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.

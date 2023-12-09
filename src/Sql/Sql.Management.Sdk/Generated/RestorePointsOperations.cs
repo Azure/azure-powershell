@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of database restore points.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -262,7 +263,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates a restore point for a data warehouse.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -290,7 +292,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a restore point.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -520,7 +523,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a restore point.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -729,7 +733,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates a restore point for a data warehouse.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.

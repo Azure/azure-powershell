@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets all target groups in an agent.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -49,7 +50,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a target group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -81,7 +83,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a target group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -116,7 +119,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a target group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.

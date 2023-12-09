@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="operationMode">The move operation mode.
-        /// Possible values include: 'Move', 'Copy'</param>
+        /// Possible values include: &#39;Move&#39;, &#39;Copy&#39;</param>
         public ManagedDatabaseStartMoveDefinition(string destinationManagedDatabaseId, string operationMode = default(string))
 
         {
