@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Creates or updates azure databricks accessConnector.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors/{connectorName}", ApiVersion = "2023-05-01")]
     public partial class NewAzDatabricksAccessConnector_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener
     {

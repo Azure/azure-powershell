@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Databricks-help.xml
 Module Name: Az.Databricks
 online version: https://learn.microsoft.com/powershell/module/az.databricks/get-azdatabricksvnetpeering
 schema: 2.0.0
@@ -14,14 +14,14 @@ Gets the workspace vNet Peering.
 
 ### List (Default)
 ```
-Get-AzDatabricksVNetPeering -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>]
+Get-AzDatabricksVNetPeering -ResourceGroupName <String> [-SubscriptionId <String[]>] -WorkspaceName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDatabricksVNetPeering -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+Get-AzDatabricksVNetPeering -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -131,7 +131,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -146,7 +146,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -161,7 +161,7 @@ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -202,4 +202,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[WorkspaceName <String>]`: The name of the workspace.
 
 ## RELATED LINKS
-
