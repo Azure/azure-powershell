@@ -29,11 +29,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="ruleName">Rule name tagged on Recovery Point that governs life cycle
         /// </param>
-        public RecoveryPointProperties(string expiryTime = default(string), string ruleName = default(string))
+
+        /// <param name="isSoftDeleted">Bool to indicate whether RP is in soft delete state or not
+        /// </param>
+        public RecoveryPointProperties(string expiryTime = default(string), string ruleName = default(string), bool? isSoftDeleted = default(bool?))
 
         {
             this.ExpiryTime = expiryTime;
             this.RuleName = ruleName;
+            this.IsSoftDeleted = isSoftDeleted;
             CustomInit();
         }
 
@@ -54,5 +58,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ruleName")]
         public string RuleName {get; set; }
+
+        /// <summary>
+        /// Gets or sets bool to indicate whether RP is in soft delete state or not
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isSoftDeleted")]
+        public bool? IsSoftDeleted {get; set; }
     }
 }

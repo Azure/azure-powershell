@@ -28,11 +28,11 @@ function Test-AzureVmWorkloadCrossRegionRestore
 	$vaultId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault"
 	$sourceDBName = "model"
 	$location = "centraluseuap"
-	$recoveryPointId = "164200650492022" # $rp[1].RecoveryPointId
+	$recoveryPointId = "169022372866539" # $rp[1].RecoveryPointId
 
 	$targetResourceGroup = "clitest-rg-donotuse"
 	$targetVault = "clitest-vault-secondary-donotuse"
-	$targetDBName = "model_restored_6_26_2023_1751"
+	$targetDBName = "model_restored_08_12_2023_1745"
 	$overwrite = "Yes"
 
 	try
