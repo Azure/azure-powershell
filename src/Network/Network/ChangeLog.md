@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Updated `New-AzApplicationGateway` to include `EnableRequestBuffering` and `EnableResponseBuffering` parameters
 * Fixed a few minor issues
 
 ## Version 7.1.0
@@ -68,7 +69,6 @@
     - `New-AzPublicIpAddress`
 * Fixed bug where HubRoutingPreference didn't show up when running 'Get-AzRouteServer'
 * Updated `New-AzVirtualNetworkGateway` to remove validation for `ExtendedLocation` parameter
-* Updated `New-AzApplicationGateway` to include `EnableRequestBuffering` and `EnableResponseBuffering` parameters
 
 ## Version 6.0.0
 * Added new cmdlets for RouteMap child resource of VirtualHub.
