@@ -697,5 +697,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
                 return ResourceManager.GetString("ImmutabilityNotUnlocked", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Public Network Access is by default enabled for this vault and can be updated using Update-AzRecoveryServicesVault cmdlet.
+        /// </summary>
+        internal static string PublicNetworkAccessEnabledByDefault
+        {
+            get
+            {
+                return ResourceManager.GetString("PublicNetworkAccessEnabledByDefault", resourceCulture);
+            }
+        }
     }
 }

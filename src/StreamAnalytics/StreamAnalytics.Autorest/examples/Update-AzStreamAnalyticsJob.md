@@ -1,6 +1,6 @@
 ### Example 1: Update a stream analytics job
 ```powershell
-PS C:\> Update-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-pwsh -EventsLateArrivalMaxDelayInSecond 13 -EventsOutOfOrderMaxDelayInSecond 21
+Update-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-pwsh -EventsLateArrivalMaxDelayInSecond 13 -EventsOutOfOrderMaxDelayInSecond 21
 
 Location        Name          Type                                    ETag
 --------        ----          ----                                    ----
@@ -11,7 +11,7 @@ This command updates a stream analytics job.
 
 ### Example 2: Update a stream analytics job by pipeline
 ```powershell
-PS C:\> Get-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-pwsh | Update-AzStreamAnalyticsJob -EventsLateArrivalMaxDelayInSecond 13 -EventsOutOfOrderMaxDelayInSecond 21
+Get-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-01-pwsh | Update-AzStreamAnalyticsJob -EventsLateArrivalMaxDelayInSecond 13 -EventsOutOfOrderMaxDelayInSecond 21
 
 Location        Name          Type                                    ETag
 --------        ----          ----                                    ----

@@ -27,7 +27,7 @@ Get-AzAlbAssociation -AlbName test-alb -ResourceGroupName test-rg
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociation
+Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,11 +40,19 @@ INPUTOBJECT <IAlbIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [TrafficControllerName <String>]: traffic controller name for path
+
+TRAFFICCONTROLLERINPUTOBJECT <IAlbIdentity>: Identity Parameter
+  [AssociationName <String>]: Name of Association
+  [FrontendName <String>]: Frontends
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TrafficControllerName <String>]: traffic controller name for path
 .Link
 https://learn.microsoft.com/powershell/module/az.alb/get-azalbassociation
 #>
 function Get-AzAlbAssociation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -55,6 +63,7 @@ param(
     ${AlbName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityTrafficController', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [System.String]
     # Name of Association
@@ -82,6 +91,13 @@ param(
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityTrafficController', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for TRAFFICCONTROLLERINPUTOBJECT properties and create a hash table.
+    ${TrafficControllerInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -160,13 +176,18 @@ begin {
         $mapping = @{
             Get = 'Az.Alb.private\Get-AzAlbAssociation_Get';
             GetViaIdentity = 'Az.Alb.private\Get-AzAlbAssociation_GetViaIdentity';
+            GetViaIdentityTrafficController = 'Az.Alb.private\Get-AzAlbAssociation_GetViaIdentityTrafficController';
             List = 'Az.Alb.private\Get-AzAlbAssociation_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

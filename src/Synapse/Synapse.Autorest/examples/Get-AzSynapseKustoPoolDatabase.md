@@ -1,6 +1,6 @@
 ### Example 1: List all Kusto databases in a workspace by name
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool
+Get-AzSynapseKustoPoolDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool
 
 Kind      Location  Name                                                                                                                                                                                                
 ----      --------  ----                                  
@@ -11,7 +11,7 @@ The above command returns all Kusto databases in Kusto Pool "testkustopool" in t
 
 ### Example 2: Get a specific Kusto database by name
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase
+Get-AzSynapseKustoPoolDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase
 
 Kind      Location  Name                                                                                            
 ----      --------  ----                                  

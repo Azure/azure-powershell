@@ -16,15 +16,19 @@ Creates or updates a machine pool
 ```
 New-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Location <String> -DevBoxDefinitionName <String>
- -LocalAdministrator <LocalAdminStatus> -NetworkConnectionName <String> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -LocalAdministrator <LocalAdminStatus> -NetworkConnectionName <String> [-DisplayName <String>]
+ [-ManagedVirtualNetworkRegion <String[]>] [-Tag <Hashtable>] [-SingleSignOnStatus <SingleSignOnStatus>]
+ [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterAdminPool -InputObject <IDevCenterIdentity> -Location <String> -DevBoxDefinitionName <String>
- -LocalAdministrator <LocalAdminStatus> -NetworkConnectionName <String> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -LocalAdministrator <LocalAdminStatus> -NetworkConnectionName <String> [-DisplayName <String>]
+ [-ManagedVirtualNetworkRegion <String[]>] [-Tag <Hashtable>] [-SingleSignOnStatus <SingleSignOnStatus>]
+ [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,6 +99,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisplayName
+The display name of the pool.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -135,6 +154,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedVirtualNetworkRegion
+The regions of the managed virtual network (required when managedNetworkType is Managed).
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -217,6 +251,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SingleSignOnStatus
+Indicates whether Dev Boxes in this pool are created with single sign on enabled.
+The also requires that single sign on be enabled on the tenant.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SingleSignOnStatus
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -237,6 +287,21 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkType
+Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.VirtualNetworkType
 Parameter Sets: (All)
 Aliases:
 

@@ -25,12 +25,12 @@ List the operations for the provider
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.alb/get-azalboperation
 #>
 function Get-AzAlbOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

@@ -739,6 +739,9 @@ namespace Microsoft.Azure.Management.Sql
         /// </param>
         /// <param name='backupName'>
         /// The backup name.
+        /// <param name='databaseState'>
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -958,6 +961,10 @@ namespace Microsoft.Azure.Management.Sql
         /// <summary>
         /// Deletes a long term retention backup.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
         /// <param name='locationName'>
         /// The location of the database
         /// </param>
@@ -1017,6 +1024,10 @@ namespace Microsoft.Azure.Management.Sql
         /// <summary>
         /// Copy an existing long term retention backup.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
         /// <param name='locationName'>
         /// The location of the database.
         /// </param>
@@ -1048,6 +1059,10 @@ namespace Microsoft.Azure.Management.Sql
         /// <summary>
         /// Updates an existing long term retention backup.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
         /// <param name='locationName'>
         /// The location of the database.
         /// </param>
@@ -1817,6 +1832,9 @@ namespace Microsoft.Azure.Management.Sql
         /// </param>
         /// <param name='backupName'>
         /// The backup name.
+        /// <param name='databaseState'>
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2191,6 +2209,9 @@ namespace Microsoft.Azure.Management.Sql
         /// </param>
         /// <param name='backupName'>
         /// The backup name.
+        /// <param name='databaseState'>
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

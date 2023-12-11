@@ -1,6 +1,6 @@
 ### Example 1: Create a new schedule in a lab.
 ```powershell
-PS C:\>  New-AzLabServicesSchedule `
+ New-AzLabServicesSchedule `
             -ResourceGroupName "Group Name" `
             -LabName "Lab Name" `
             -Name "Schedule Name" `

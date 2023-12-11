@@ -1,6 +1,6 @@
 ### Example 1: Update a Windows IoT services by name
 ```powershell
-PS C:\> Update-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test -Quantity 10
+Update-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test -Quantity 10
 
 Location Name    Type                                Etag
 -------- ----    ----                                ----
@@ -11,7 +11,7 @@ This command updates a Windows IoT services by name.
 
 ### Example 2: Update a Windows IoT services by pipeline
 ```powershell
-PS C:\> Get-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test | Update-AzWindowsIotServicesDevice-Quantity 100 -Tag @{'oper'='update'}
+Get-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test | Update-AzWindowsIotServicesDevice-Quantity 100 -Tag @{'oper'='update'}
 
 Location Name    Type                                Etag
 -------- ----    ----                                ----

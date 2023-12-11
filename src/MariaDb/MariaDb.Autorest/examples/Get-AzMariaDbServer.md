@@ -1,6 +1,6 @@
 ### Example 1: List all MariaDB under a subscriptions
 ```powershell
-PS C:\> Get-AzMariaDbServer
+Get-AzMariaDbServer
 
 Name                       Location AdministratorLogin Version StorageProfileStorageMb SkuName    SkuTier        SslEnforcement
 ----                       -------- ------------------ ------- ----------------------- -------    -------        --------------
@@ -24,7 +24,7 @@ This command lists all MariaDB under a subscriptions.
 
 ### Example 2: List all MariaDB under a resource group
 ```powershell
-PS C:\> Get-AzMariaDbServer -ResourceGroupName mariadb-test-qu5ov0
+Get-AzMariaDbServer -ResourceGroupName mariadb-test-qu5ov0
 
 Name                       Location AdministratorLogin Version StorageProfileStorageMb SkuName    SkuTier        SslEnforcement
 ----                       -------- ------------------ ------- ----------------------- -------    -------        --------------
@@ -44,7 +44,7 @@ This command lists all MariaDB under a resource group.
 
 ### Example 3: Get a MariaDB
 ```powershell
-PS C:\> Get-AzMariaDbServer -ResourceGroupName mariadb-test-qu5ov0 -Name mariadb-test-h3pame
+Get-AzMariaDbServer -ResourceGroupName mariadb-test-qu5ov0 -Name mariadb-test-h3pame
 
 Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuTier SslEnforcement
 ----                -------- ------------------ ------- ----------------------- -------  ------- --------------

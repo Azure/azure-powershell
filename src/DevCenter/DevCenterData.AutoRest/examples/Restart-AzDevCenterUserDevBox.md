@@ -6,7 +6,7 @@ This command restarts the dev box "myDevBox" assigned to user "786a823c-8037-48a
 
 ### Example 2: Restart a dev box by dev center
 ```powershell
-Restart-AzDevCenterUserDevBox -DevCenter Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
+Restart-AzDevCenterUserDevBox -DevCenterName Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
 ```
 This command restarts the dev box "myDevBox" assigned to the currently signed-in user.
 
@@ -20,7 +20,7 @@ This command restarts the dev box "myDevBox" assigned to the currently signed-in
 ### Example 4: Restart a dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
-Restart-AzDevCenterUserDevBox -DevCenter Contoso -InputObject $devBoxInput 
+Restart-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput 
 ```
 This command restarts the dev box "myDevBox" assigned to user "786a823c-8037-48ab-89b8-8599901e67d0".
 

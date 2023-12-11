@@ -81,9 +81,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="policyName">Name of the policy used for protection
         /// </param>
 
-        /// <param name="softDeleteRetentionPeriod">Soft delete retention period in days
+        /// <param name="softDeleteRetentionPeriodInDays">Soft delete retention period in days
         /// </param>
-        public ProtectedItem(string backupManagementType = default(string), string workloadType = default(string), string containerName = default(string), string sourceResourceId = default(string), string policyId = default(string), System.DateTime? lastRecoveryPoint = default(System.DateTime?), string backupSetName = default(string), string createMode = default(string), System.DateTime? deferredDeleteTimeInUtc = default(System.DateTime?), bool? isScheduledForDeferredDelete = default(bool?), string deferredDeleteTimeRemaining = default(string), bool? isDeferredDeleteScheduleUpcoming = default(bool?), bool? isRehydrate = default(bool?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), bool? isArchiveEnabled = default(bool?), string policyName = default(string), int? softDeleteRetentionPeriod = default(int?))
+        public ProtectedItem(string backupManagementType = default(string), string workloadType = default(string), string containerName = default(string), string sourceResourceId = default(string), string policyId = default(string), System.DateTime? lastRecoveryPoint = default(System.DateTime?), string backupSetName = default(string), string createMode = default(string), System.DateTime? deferredDeleteTimeInUtc = default(System.DateTime?), bool? isScheduledForDeferredDelete = default(bool?), string deferredDeleteTimeRemaining = default(string), bool? isDeferredDeleteScheduleUpcoming = default(bool?), bool? isRehydrate = default(bool?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), bool? isArchiveEnabled = default(bool?), string policyName = default(string), int? softDeleteRetentionPeriodInDays = default(int?))
 
         {
             this.BackupManagementType = backupManagementType;
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             this.ResourceGuardOperationRequests = resourceGuardOperationRequests;
             this.IsArchiveEnabled = isArchiveEnabled;
             this.PolicyName = policyName;
-            this.SoftDeleteRetentionPeriod = softDeleteRetentionPeriod;
+            this.SoftDeleteRetentionPeriodInDays = softDeleteRetentionPeriodInDays;
             CustomInit();
         }
 
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <summary>
         /// Gets or sets soft delete retention period in days
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "softDeleteRetentionPeriod")]
-        public int? SoftDeleteRetentionPeriod {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "softDeleteRetentionPeriodInDays")]
+        public int? SoftDeleteRetentionPeriodInDays {get; set; }
     }
 }

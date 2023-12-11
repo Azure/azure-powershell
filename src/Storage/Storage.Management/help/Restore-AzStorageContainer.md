@@ -44,7 +44,7 @@ This command lists all containers include deleted containers, filter out all the
 
 
 ```
-PS C:\> Get-AzStorageContainer -IncludeDeleted -Context $ctx | Where-Object { $_.IsDeleted } 
+Get-AzStorageContainer -IncludeDeleted -Context $ctx | Where-Object { $_.IsDeleted } 
 
    Storage Account Name: storageaccountname
 
@@ -53,7 +53,7 @@ Name                 PublicAccess         LastModified                   IsDelet
 container1                                8/28/2020 10:18:13 AM +00:00   True       01D685BC91A88F22                                                                                                                                                                                                                                                                
 container2                                9/4/2020 12:52:37 PM +00:00    True       01D67D248986B6DA  
 
-PS C:\> Restore-AzStorageContainer -Name container1 -VersionId 01D685BC91A88F22 -Context $ctx
+Restore-AzStorageContainer -Name container1 -VersionId 01D685BC91A88F22 -Context $ctx
 
    Storage Account Name: storageaccountname
 
