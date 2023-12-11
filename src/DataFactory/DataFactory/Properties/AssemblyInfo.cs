@@ -17,7 +17,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Microsoft Azure Powershell - DataFactoryV2 Manager")]
+[assembly: AssemblyTitle("Microsoft Azure Powershell - DataFactory Manager")]
 [assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
 [assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
 [assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
@@ -27,7 +27,3 @@ using System.Runtime.InteropServices;
 [assembly: Guid("5d024af0-81c9-44f0-b3b0-7080f103fb4d")]
 [assembly: AssemblyVersion("1.18.0")]
 [assembly: AssemblyFileVersion("1.18.0")]
-
-#if !SIGN
-[assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.Test")]
-#endif
