@@ -21,7 +21,7 @@ Get-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String
 ### AccountName
 ```
 Get-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> [-IncludeDeleted]
- [-IncludeSnapshot] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IncludeSnapshot] [-Filter <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### AccountObjectSingle
@@ -32,7 +32,7 @@ Get-AzRmStorageShare -StorageAccount <PSStorageAccount> -Name <String> [-Snapsho
 
 ### AccountObject
 ```
-Get-AzRmStorageShare -StorageAccount <PSStorageAccount> [-IncludeDeleted] [-IncludeSnapshot]
+Get-AzRmStorageShare -StorageAccount <PSStorageAccount> [-IncludeDeleted] [-IncludeSnapshot] [-Filter <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -149,6 +149,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Filter
+The filter of share name. When specified, only share names starting with the filter will be listed. The filter must be in format: startswith(name, <prefix>)
+
+```yaml
+Type: System.String
+Parameter Sets: AccountName, AccountObject
+Aliases:
 
 Required: False
 Position: Named
@@ -309,9 +324,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
+
+### System.String
 
 ## OUTPUTS
 
