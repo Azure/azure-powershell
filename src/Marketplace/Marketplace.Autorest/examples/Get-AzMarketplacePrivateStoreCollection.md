@@ -1,6 +1,6 @@
 ### Example 1: Get list of private store collections
 ```powershell
-PS C:\> Get-AzMarketplacePrivateStoreCollection -PrivateStoreId 53425a7b-4ac1-4729-8340-e1da5046212c
+Get-AzMarketplacePrivateStoreCollection -PrivateStoreId 53425a7b-4ac1-4729-8340-e1da5046212c
 
 Name                                 SystemDataCreatedAt  SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
 ----                                 -------------------  ------------------- ----------------------- ------------------------ ------------------------ ----------------------------

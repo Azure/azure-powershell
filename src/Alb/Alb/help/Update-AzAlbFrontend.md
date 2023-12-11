@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Alb-help.xml
 Module Name: Az.Alb
 online version: https://learn.microsoft.com/powershell/module/az.alb/update-azalbfrontend
 schema: 2.0.0
@@ -15,13 +15,19 @@ Update a Frontend
 ### UpdateExpanded (Default)
 ```
 Update-AzAlbFrontend -AlbName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityTrafficControllerExpanded
+```
+Update-AzAlbFrontend -Name <String> -TrafficControllerInputObject <IAlbIdentity> [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzAlbFrontend -InputObject <IAlbIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzAlbFrontend -InputObject <IAlbIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +96,7 @@ Frontends
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityTrafficControllerExpanded
 Aliases:
 
 Required: True
@@ -143,6 +149,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TrafficControllerInputObject
+Identity Parameter
+To construct, see NOTES section for TRAFFICCONTROLLERINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity
+Parameter Sets: UpdateViaIdentityTrafficControllerExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -206,4 +228,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[TrafficControllerName <String>]`: traffic controller name for path
 
 ## RELATED LINKS
-

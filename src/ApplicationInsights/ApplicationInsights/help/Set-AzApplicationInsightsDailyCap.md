@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.Applicationinsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightsdailycap
 schema: 2.0.0
 ---
@@ -13,8 +13,8 @@ Update current billing features for an Application Insights component.
 ## SYNTAX
 
 ```
-Set-AzApplicationInsightsDailyCap -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DailyCapGB <Double>] [-DisableNotificationWhenHitCap] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Set-AzApplicationInsightsDailyCap -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
+ [-DailyCapGB <Double>] [-DisableNotificationWhenHitCap] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -168,4 +168,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

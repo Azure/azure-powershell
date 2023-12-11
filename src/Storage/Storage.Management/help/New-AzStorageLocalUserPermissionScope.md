@@ -27,13 +27,13 @@ The **New-AzStorageLocalUserPermissionScope** cmdlet creates a permission scope 
 
 
 ```
-PS C:\> $permissionScope1 = New-AzStorageLocalUserPermissionScope -Permission rw -Service blob -ResourceName container1 
+$permissionScope1 = New-AzStorageLocalUserPermissionScope -Permission rw -Service blob -ResourceName container1 
 
-PS C:\> $permissionScope2 = New-AzStorageLocalUserPermissionScope -Permission rwd -Service file -ResourceName share2
+$permissionScope2 = New-AzStorageLocalUserPermissionScope -Permission rwd -Service file -ResourceName share2
 
-PS C:\> $localuser = Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -PermissionScope $permissionScope1,$permissionScope2
+$localuser = Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -PermissionScope $permissionScope1,$permissionScope2
 
-PS C:\> $localuser
+$localuser
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
@@ -41,7 +41,7 @@ Name      Sid                                          HomeDirectory HasSharedKe
 ----      ---                                          ------------- ------------ --------- -------------- ---------------- -----------------
 testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /                                                   [container1,...]                  
 
-PS C:\> $localuser.PermissionScopes
+$localuser.PermissionScopes
 
 Permissions Service ResourceName
 ----------- ------- ------------

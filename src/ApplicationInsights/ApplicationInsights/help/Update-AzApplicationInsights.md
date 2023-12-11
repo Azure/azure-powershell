@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.Applicationinsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsights
 schema: 2.0.0
 ---
@@ -14,14 +14,13 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 ## SYNTAX
 
 ```
-Update-AzApplicationInsights -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzApplicationInsights -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
  [-ApplicationType <ApplicationType>] [-DisableIPMasking] [-DisableLocalAuth] [-Etag <String>]
- [-FlowType <FlowType>] [-ForceCustomerStorageForProfiler] [-HockeyAppId <String>]
- [-ImmediatePurgeDataOn30Day] [-IngestionMode <IngestionMode>]
- [-PublicNetworkAccessForIngestion <PublicNetworkAccessType>]
+ [-FlowType <FlowType>] [-ForceCustomerStorageForProfiler] [-HockeyAppId <String>] [-ImmediatePurgeDataOn30Day]
+ [-IngestionMode <IngestionMode>] [-PublicNetworkAccessForIngestion <PublicNetworkAccessType>]
  [-PublicNetworkAccessForQuery <PublicNetworkAccessType>] [-RequestSource <RequestSource>]
  [-RetentionInDays <Int32>] [-SamplingPercentage <Double>] [-Tag <Hashtable>] [-WorkspaceResourceId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -389,4 +388,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

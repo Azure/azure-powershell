@@ -15,18 +15,22 @@ Partially updates a machine pool
 ### UpdateExpanded (Default)
 ```
 Update-AzDevCenterAdminPool -Name <String> -ProjectName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DevBoxDefinitionName <String>] [-LocalAdministrator <LocalAdminStatus>]
- [-NetworkConnectionName <String>] [-StopOnDisconnectGracePeriodMinute <Int32>]
- [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DevBoxDefinitionName <String>] [-DisplayName <String>]
+ [-LocalAdministrator <LocalAdminStatus>] [-ManagedVirtualNetworkRegion <String[]>]
+ [-NetworkConnectionName <String>] [-SingleSignOnStatus <SingleSignOnStatus>]
+ [-StopOnDisconnectGracePeriodMinute <Int32>] [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>]
+ [-Tag <Hashtable>] [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDevCenterAdminPool -InputObject <IDevCenterIdentity> [-DevBoxDefinitionName <String>]
- [-LocalAdministrator <LocalAdminStatus>] [-NetworkConnectionName <String>]
+ [-DisplayName <String>] [-LocalAdministrator <LocalAdminStatus>] [-ManagedVirtualNetworkRegion <String[]>]
+ [-NetworkConnectionName <String>] [-SingleSignOnStatus <SingleSignOnStatus>]
  [-StopOnDisconnectGracePeriodMinute <Int32>] [-StopOnDisconnectStatus <StopOnDisconnectEnableStatus>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-VirtualNetworkType <VirtualNetworkType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,6 +101,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisplayName
+The display name of the pool.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -118,6 +137,21 @@ Indicates whether owners of Dev Boxes in this pool are added as local administra
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedVirtualNetworkRegion
+The regions of the managed virtual network (required when managedNetworkType is Managed).
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -204,6 +238,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SingleSignOnStatus
+Indicates whether Dev Boxes in this pool are created with single sign on enabled.
+The also requires that single sign on be enabled on the tenant.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SingleSignOnStatus
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StopOnDisconnectGracePeriodMinute
 The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
 
@@ -254,6 +304,21 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkType
+Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.VirtualNetworkType
 Parameter Sets: (All)
 Aliases:
 
