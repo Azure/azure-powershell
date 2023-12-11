@@ -315,7 +315,7 @@ function Test-VolumeReplication
                     throw 
                 }                
             }
-            Start-TestSleep -Seconds 10
+            Start-TestSleep -Seconds 20
             $i++
         }
         until ($replicationStatus.MirrorState -eq $targetState -or $i -eq 40);

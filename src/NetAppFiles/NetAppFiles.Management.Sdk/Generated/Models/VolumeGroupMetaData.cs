@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="applicationType">Application Type
-        /// Possible values include: 'SAP-HANA'</param>
+        /// Possible values include: 'SAP-HANA', 'ORACLE'</param>
 
         /// <param name="applicationIdentifier">Application specific identifier
         /// </param>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string GroupDescription {get; set; }
 
         /// <summary>
-        /// Gets or sets application Type Possible values include: &#39;SAP-HANA&#39;
+        /// Gets or sets application Type Possible values include: &#39;SAP-HANA&#39;, &#39;ORACLE&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "applicationType")]
         public string ApplicationType {get; set; }

@@ -45,7 +45,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="usageThreshold">Maximum storage quota allowed for a file system in bytes. This is a soft
         /// quota used for alerting only. Minimum size is 100 GiB. Upper limit is
-        /// 100TiB, 500Tib for LargeVolume. Specified in bytes.
+        /// 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on exceptional
+        /// basis. Specified in bytes.
         /// </param>
 
         /// <param name="exportPolicy">Set of export policy rules
@@ -86,10 +87,28 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// clients will be tiered.
         /// </param>
 
+        /// <param name="coolAccessRetrievalPolicy">coolAccessRetrievalPolicy determines the data retrieval behavior from the
+        /// cool tier to standard storage based on the read pattern for cool access
+        /// enabled volumes. The possible values for this field are:
+        /// Default - Data will be pulled from cool tier to standard storage on random
+        /// reads. This policy is the default.
+        /// OnRead - All client-driven data read is pulled from cool tier to standard
+        /// storage on both sequential and random reads.
+        /// Never - No client-driven data is pulled from cool tier to standard storage.
+        /// Possible values include: 'Default', 'OnRead', 'Never'</param>
+
         /// <param name="snapshotDirectoryVisible">If enabled (true) the volume will contain a read-only snapshot directory
         /// which provides access to each of the volume&#39;s snapshots.
         /// </param>
-        public VolumePatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string serviceLevel = default(string), long? usageThreshold = default(long?), VolumePatchPropertiesExportPolicy exportPolicy = default(VolumePatchPropertiesExportPolicy), double? throughputMibps = default(double?), VolumePatchPropertiesDataProtection dataProtection = default(VolumePatchPropertiesDataProtection), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), string unixPermissions = default(string), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), bool? snapshotDirectoryVisible = default(bool?))
+
+        /// <param name="smbAccessBasedEnumeration">Enables access-based enumeration share property for SMB Shares. Only
+        /// applicable for SMB/DualProtocol volume
+        /// Possible values include: 'Disabled', 'Enabled'</param>
+
+        /// <param name="smbNonBrowsable">Enables non-browsable property for SMB Shares. Only applicable for
+        /// SMB/DualProtocol volume
+        /// Possible values include: 'Disabled', 'Enabled'</param>
+        public VolumePatch(string location = default(string), string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string serviceLevel = default(string), long? usageThreshold = default(long?), VolumePatchPropertiesExportPolicy exportPolicy = default(VolumePatchPropertiesExportPolicy), double? throughputMibps = default(double?), VolumePatchPropertiesDataProtection dataProtection = default(VolumePatchPropertiesDataProtection), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), string unixPermissions = default(string), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), bool? snapshotDirectoryVisible = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string))
 
         {
             this.Location = location;
@@ -108,7 +127,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.UnixPermissions = unixPermissions;
             this.CoolAccess = coolAccess;
             this.CoolnessPeriod = coolnessPeriod;
+            this.CoolAccessRetrievalPolicy = coolAccessRetrievalPolicy;
             this.SnapshotDirectoryVisible = snapshotDirectoryVisible;
+            this.SmbAccessBasedEnumeration = smbAccessBasedEnumeration;
+            this.SmbNonBrowsable = smbNonBrowsable;
             CustomInit();
         }
 
@@ -157,7 +179,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <summary>
         /// Gets or sets maximum storage quota allowed for a file system in bytes. This
         /// is a soft quota used for alerting only. Minimum size is 100 GiB. Upper
-        /// limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
+        /// limit is 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on
+        /// exceptional basis. Specified in bytes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.usageThreshold")]
         public long? UsageThreshold {get; set; }
@@ -229,11 +252,38 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public int? CoolnessPeriod {get; set; }
 
         /// <summary>
+        /// Gets or sets coolAccessRetrievalPolicy determines the data retrieval
+        /// behavior from the cool tier to standard storage based on the read pattern
+        /// for cool access enabled volumes. The possible values for this field are:
+        /// Default - Data will be pulled from cool tier to standard storage on random
+        /// reads. This policy is the default.
+        /// OnRead - All client-driven data read is pulled from cool tier to standard
+        /// storage on both sequential and random reads.
+        /// Never - No client-driven data is pulled from cool tier to standard storage. Possible values include: &#39;Default&#39;, &#39;OnRead&#39;, &#39;Never&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.coolAccessRetrievalPolicy")]
+        public string CoolAccessRetrievalPolicy {get; set; }
+
+        /// <summary>
         /// Gets or sets if enabled (true) the volume will contain a read-only snapshot
         /// directory which provides access to each of the volume&#39;s snapshots.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.snapshotDirectoryVisible")]
         public bool? SnapshotDirectoryVisible {get; set; }
+
+        /// <summary>
+        /// Gets or sets enables access-based enumeration share property for SMB
+        /// Shares. Only applicable for SMB/DualProtocol volume Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.smbAccessBasedEnumeration")]
+        public string SmbAccessBasedEnumeration {get; set; }
+
+        /// <summary>
+        /// Gets or sets enables non-browsable property for SMB Shares. Only applicable
+        /// for SMB/DualProtocol volume Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.smbNonBrowsable")]
+        public string SmbNonBrowsable {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -250,9 +300,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
             if (this.UsageThreshold != null)
             {
-                if (this.UsageThreshold > 549755813888000)
+                if (this.UsageThreshold > 2638827906662400)
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "UsageThreshold", 549755813888000);
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "UsageThreshold", 2638827906662400);
                 }
                 if (this.UsageThreshold < 107374182400)
                 {
@@ -283,6 +333,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "CoolnessPeriod", 7);
                 }
             }
+
+
+
         }
     }
 }

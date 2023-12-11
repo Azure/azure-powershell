@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 * Fixed some minor issues
+* Added `EncryptionKeySource`, `KeyVaultKeyName`, `KeyVaultResourceId`, `KeyVaultUri`, `IdentityType`, `UserAssignedIdentity`  to `New-AzNetAppFilesAccount` and `Update-AzNetAppFilesAccount`
+* Added new cmdLets `Get-AzNetAppFilesNetworkSiblingSet` and `Update-AzNetAppFilesNetworkSiblingSet` to query and update update the network features of a network sibling set
+* Added new cmdLets `Get-AzNetAppFilesNetworkSiblingSet` and `Update-AzNetAppFilesNetworkSiblingSet` to query and update update the network features of a network sibling set
+* Added `CoolAccessRetrievalPolicy` to `New-AzNetAppFilesVolume` and `Update-AzNetAppFilesVolume`
+* Added `SmbNonBrowsable` and `SmbAccessBasedEnumeration` to `Update-AzNetAppFilesVolume`
 
 ## Version 0.13.1
 * Updated Azure.Core to 1.34.0.

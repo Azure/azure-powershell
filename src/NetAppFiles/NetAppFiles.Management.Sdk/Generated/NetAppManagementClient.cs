@@ -97,10 +97,6 @@ namespace Microsoft.Azure.Management.NetApp
         /// </summary>
         public virtual IBackupsOperations Backups { get; private set; }
         /// <summary>
-        /// Gets the IAccountBackupsOperations
-        /// </summary>
-        public virtual IAccountBackupsOperations AccountBackups { get; private set; }
-        /// <summary>
         /// Gets the IBackupPoliciesOperations
         /// </summary>
         public virtual IBackupPoliciesOperations BackupPolicies { get; private set; }
@@ -360,13 +356,12 @@ namespace Microsoft.Azure.Management.NetApp
             this.Snapshots = new SnapshotsOperations(this);
             this.SnapshotPolicies = new SnapshotPoliciesOperations(this);
             this.Backups = new BackupsOperations(this);
-            this.AccountBackups = new AccountBackupsOperations(this);
             this.BackupPolicies = new BackupPoliciesOperations(this);
             this.VolumeQuotaRules = new VolumeQuotaRulesOperations(this);
             this.VolumeGroups = new VolumeGroupsOperations(this);
             this.Subvolumes = new SubvolumesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2022-11-01";
+            this.ApiVersion = "2023-05-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

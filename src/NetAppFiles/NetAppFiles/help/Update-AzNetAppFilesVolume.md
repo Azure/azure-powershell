@@ -19,7 +19,8 @@ Update-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -Accou
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Backup <PSNetAppFilesVolumeBackupProperties>]
  [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
- [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-SnapshotDirectoryVisible]
+ [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
+ [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>] [-SmbNonBrowsable <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,7 +30,8 @@ Update-AzNetAppFilesVolume -Name <String> [-UsageThreshold <Int64>] [-ServiceLev
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Backup <PSNetAppFilesVolumeBackupProperties>]
  [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
- [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-SnapshotDirectoryVisible]
+ [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
+ [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>] [-SmbNonBrowsable <String>]
  -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -40,7 +42,8 @@ Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Backup <PSNetAppFilesVolumeBackupProperties>]
  [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
- [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-SnapshotDirectoryVisible]
+ [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
+ [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>] [-SmbNonBrowsable <String>]
  -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -50,7 +53,8 @@ Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Backup <PSNetAppFilesVolumeBackupProperties>]
  [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-IsDefaultQuotaEnabled]
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-Tag <Hashtable>]
- [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-SnapshotDirectoryVisible]
+ [-UnixPermission <String>] [-CoolAccess] [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>]
+ [-SnapshotDirectoryVisible] [-SmbAccessBasedEnumeration <String>] [-SmbNonBrowsable <String>]
  -InputObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -118,6 +122,24 @@ Specifies whether Cool Access(tiering) is enabled for the volume (default false)
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CoolAccessRetrievalPolicy
+CoolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are: 
+ Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
+ OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
+ Never - No client-driven data is pulled from cool tier to standard storage.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -325,6 +347,36 @@ Accept wildcard characters: False
 
 ### -ServiceLevel
 The service level of the ANF volume
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SmbAccessBasedEnumeration
+Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SmbNonBrowsable
+Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
 
 ```yaml
 Type: System.String

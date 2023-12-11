@@ -57,10 +57,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
 
         /// <summary>
-        /// Gets or sets id
+        /// Gets id
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "replicationId")]
-        public string ReplicationId {get; set; }
+        public string ReplicationId {get; private set; }
 
         /// <summary>
         /// Gets or sets indicates whether the local volume is the source or

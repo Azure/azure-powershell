@@ -261,24 +261,24 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 anfADConfig.KdcIP = KdcIP ?? anfADConfig.KdcIP;
                 anfADConfig.ServerRootCaCertificate = ServerRootCACertificate ?? anfADConfig.ServerRootCaCertificate;
                 anfADConfig.SecurityOperators = SecurityOperator ?? anfADConfig.SecurityOperators;
-                if (AesEncryption)
+                if (AesEncryption.IsPresent)
                 {
                     anfADConfig.AesEncryption = AesEncryption;
                 }
-                if (LdapSigning)
+                if (LdapSigning.IsPresent)
                 {
                     anfADConfig.LdapSigning = LdapSigning;
                 }
-                if (LdapOverTLS)
+                if (LdapOverTLS.IsPresent)
                 {
                     anfADConfig.LdapOverTls = LdapOverTLS;
                 }
-                if (AllowLocalNfsUsersWithLdap)
+                if (AllowLocalNfsUsersWithLdap.IsPresent)
                 {
                     anfADConfig.AllowLocalNfsUsersWithLdap = AllowLocalNfsUsersWithLdap;
                 }
                 anfADConfig.Administrators = Administrator ?? anfADConfig.Administrators;
-                if (EncryptDCConnection)
+                if (EncryptDCConnection.IsPresent)
                 {
                     anfADConfig.EncryptDcConnections = EncryptDCConnection;
                 }

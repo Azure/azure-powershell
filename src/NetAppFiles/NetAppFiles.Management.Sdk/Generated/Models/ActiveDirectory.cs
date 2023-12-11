@@ -310,7 +310,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
         {
 
 
-
+            if (this.Password != null)
+            {
+                if (this.Password.Length > 64)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "Password", 64);
+                }
+            }
 
             if (this.Dns != null)
             {

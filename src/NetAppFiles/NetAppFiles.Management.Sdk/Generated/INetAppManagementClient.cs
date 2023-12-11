@@ -114,11 +114,6 @@ namespace Microsoft.Azure.Management.NetApp
         IBackupsOperations Backups { get; }
 
         /// <summary>
-        /// Gets the IAccountBackupsOperations
-        /// </summary>
-        IAccountBackupsOperations AccountBackups { get; }
-
-        /// <summary>
         /// Gets the IBackupPoliciesOperations
         /// </summary>
         IBackupPoliciesOperations BackupPolicies { get; }
