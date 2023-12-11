@@ -45,8 +45,8 @@ $policyName = "afspolicy1"
 
  function Enable-Protection(
 	$vault, 
-	$fileShareFriendlyName,
-	$saName)
+	[string] $fileShareFriendlyName,
+	[string] $saName)
 {
 	$container = Get-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
@@ -104,13 +104,17 @@ function Cleanup-Vault(
 	$container)
 {
 	# Disable Protection
-	Disable-AzRecoveryServicesBackupProtection `
+	if($item -ne $null){
+		Disable-AzRecoveryServicesBackupProtection `
 		-VaultId $vault.ID `
 		-Item $item `
 		-RemoveRecoveryPoints `
+		-Force;	
+	}
+	if($container -ne $null){
+		Unregister-AzRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
+		-Container $container `
 		-Force;
-	Unregister-AzRecoveryServicesBackupContainer `
-	-VaultId $vault.ID `
-	-Container $container `
-	-Force;
+	}	
 }

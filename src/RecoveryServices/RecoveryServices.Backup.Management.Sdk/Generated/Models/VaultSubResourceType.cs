@@ -7,15 +7,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 {
 
     /// <summary>
-    /// Defines values for SoftDeleteFeatureState.
+    /// Defines values for VaultSubResourceType.
     /// </summary>
 
 
-    public static class SoftDeleteFeatureState
+    public static class VaultSubResourceType
     {
-        public const string Invalid = "Invalid";
-        public const string Enabled = "Enabled";
-        public const string Disabled = "Disabled";
-        public const string AlwaysON = "AlwaysON";
+        public const string AzureBackup = "AzureBackup";
+        public const string AzureBackupSecondary = "AzureBackup_secondary";
+        public const string AzureSiteRecovery = "AzureSiteRecovery";
     }
 }

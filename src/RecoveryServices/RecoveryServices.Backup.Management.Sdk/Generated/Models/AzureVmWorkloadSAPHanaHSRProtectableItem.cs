@@ -8,22 +8,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
     using System.Linq;
 
     /// <summary>
-    /// Azure VM workload-specific protectable item representing SAP HANA
-    /// Dbinstance.
+    /// Azure VM workload-specific protectable item representing HANA HSR.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("SAPHanaHSR")]
-    public partial class AzureVmWorkloadSAPHanaHSR : AzureVmWorkloadProtectableItem
+    [Newtonsoft.Json.JsonObject("HanaHSRContainer")]
+    public partial class AzureVmWorkloadSAPHanaHSRProtectableItem : AzureVmWorkloadProtectableItem
     {
         /// <summary>
-        /// Initializes a new instance of the AzureVmWorkloadSAPHanaHSR class.
+        /// Initializes a new instance of the AzureVmWorkloadSAPHanaHSRProtectableItem class.
         /// </summary>
-        public AzureVmWorkloadSAPHanaHSR()
+        public AzureVmWorkloadSAPHanaHSRProtectableItem()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AzureVmWorkloadSAPHanaHSR class.
+        /// Initializes a new instance of the AzureVmWorkloadSAPHanaHSRProtectableItem class.
         /// </summary>
 
         /// <param name="backupManagementType">Type of backup management to backup an item.
@@ -65,9 +64,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="prebackupvalidation">Pre-backup validation for protectable objects
         /// </param>
-        public AzureVmWorkloadSAPHanaHSR(string backupManagementType = default(string), string workloadType = default(string), string friendlyName = default(string), string protectionState = default(string), string parentName = default(string), string parentUniqueName = default(string), string serverName = default(string), bool? isAutoProtectable = default(bool?), bool? isAutoProtected = default(bool?), int? subinquireditemcount = default(int?), int? subprotectableitemcount = default(int?), PreBackupValidation prebackupvalidation = default(PreBackupValidation))
 
-        : base(backupManagementType, workloadType, friendlyName, protectionState, parentName, parentUniqueName, serverName, isAutoProtectable, isAutoProtected, subinquireditemcount, subprotectableitemcount, prebackupvalidation)
+        /// <param name="isProtectable">Indicates if item is protectable
+        /// </param>
+        public AzureVmWorkloadSAPHanaHSRProtectableItem(string backupManagementType = default(string), string workloadType = default(string), string friendlyName = default(string), string protectionState = default(string), string parentName = default(string), string parentUniqueName = default(string), string serverName = default(string), bool? isAutoProtectable = default(bool?), bool? isAutoProtected = default(bool?), int? subinquireditemcount = default(int?), int? subprotectableitemcount = default(int?), PreBackupValidation prebackupvalidation = default(PreBackupValidation), bool? isProtectable = default(bool?))
+
+        : base(backupManagementType, workloadType, friendlyName, protectionState, parentName, parentUniqueName, serverName, isAutoProtectable, isAutoProtected, subinquireditemcount, subprotectableitemcount, prebackupvalidation, isProtectable)
         {
             CustomInit();
         }
