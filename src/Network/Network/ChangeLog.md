@@ -19,8 +19,8 @@
 --->
 
 ## Upcoming Release
-* Updated `New-AzApplicationGateway` to include `EnableRequestBuffering` and `EnableResponseBuffering` parameters
 * Fixed a few minor issues
+* Updated `New-AzApplicationGateway` to include `EnableRequestBuffering` and `EnableResponseBuffering` parameters
 
 ## Version 7.1.0
 * Added DefaultOutboundAccess parameter on subnet creation
