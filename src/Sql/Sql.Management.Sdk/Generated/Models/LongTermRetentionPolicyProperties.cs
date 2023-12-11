@@ -8,31 +8,21 @@ namespace Microsoft.Azure.Management.Sql.Models
     using System.Linq;
 
     /// <summary>
-    /// A long term retention policy.
+    /// Properties of a long term retention policy
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class LongTermRetentionPolicy : ProxyResource
+    public partial class LongTermRetentionPolicyProperties
     {
         /// <summary>
-        /// Initializes a new instance of the LongTermRetentionPolicy class.
+        /// Initializes a new instance of the LongTermRetentionPolicyProperties class.
         /// </summary>
-        public LongTermRetentionPolicy()
+        public LongTermRetentionPolicyProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the LongTermRetentionPolicy class.
+        /// Initializes a new instance of the LongTermRetentionPolicyProperties class.
         /// </summary>
-
-        /// <param name="id">Resource ID.
-        /// </param>
-
-        /// <param name="name">Resource name.
-        /// </param>
-
-        /// <param name="type">Resource type.
-        /// </param>
 
         /// <param name="makeBackupsImmutable">The setting whether to make LTR backups immutable
         /// </param>
@@ -51,9 +41,8 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="weekOfYear">The week of year to take the yearly backup in an ISO 8601 format.
         /// </param>
-        public LongTermRetentionPolicy(string id = default(string), string name = default(string), string type = default(string), bool? makeBackupsImmutable = default(bool?), string backupStorageAccessTier = default(string), string weeklyRetention = default(string), string monthlyRetention = default(string), string yearlyRetention = default(string), int? weekOfYear = default(int?))
+        public LongTermRetentionPolicyProperties(bool? makeBackupsImmutable = default(bool?), string backupStorageAccessTier = default(string), string weeklyRetention = default(string), string monthlyRetention = default(string), string yearlyRetention = default(string), int? weekOfYear = default(int?))
 
-        : base(id, name, type)
         {
             this.MakeBackupsImmutable = makeBackupsImmutable;
             this.BackupStorageAccessTier = backupStorageAccessTier;
@@ -73,41 +62,41 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <summary>
         /// Gets or sets the setting whether to make LTR backups immutable
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.makeBackupsImmutable")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "makeBackupsImmutable")]
         public bool? MakeBackupsImmutable {get; set; }
 
         /// <summary>
         /// Gets or sets the BackupStorageAccessTier for the LTR backups Possible values include: &#39;Hot&#39;, &#39;Archive&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backupStorageAccessTier")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "backupStorageAccessTier")]
         public string BackupStorageAccessTier {get; set; }
 
         /// <summary>
         /// Gets or sets the weekly retention policy for an LTR backup in an ISO 8601
         /// format.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.weeklyRetention")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "weeklyRetention")]
         public string WeeklyRetention {get; set; }
 
         /// <summary>
         /// Gets or sets the monthly retention policy for an LTR backup in an ISO 8601
         /// format.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.monthlyRetention")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "monthlyRetention")]
         public string MonthlyRetention {get; set; }
 
         /// <summary>
         /// Gets or sets the yearly retention policy for an LTR backup in an ISO 8601
         /// format.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.yearlyRetention")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "yearlyRetention")]
         public string YearlyRetention {get; set; }
 
         /// <summary>
         /// Gets or sets the week of year to take the yearly backup in an ISO 8601
         /// format.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.weekOfYear")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "weekOfYear")]
         public int? WeekOfYear {get; set; }
     }
 }

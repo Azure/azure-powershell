@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Sets a database&#39;s long term retention policy.
+        /// Set or update a database&#39;s long term retention policy.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Sets a database&#39;s long term retention policy.
+        /// Set or update a database&#39;s long term retention policy.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
-        /// Sets a database&#39;s long term retention policy.
+        /// Set or update a database&#39;s long term retention policy.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Management.Sql
         }
 
         /// <summary>
-        /// Sets a database&#39;s long term retention policy.
+        /// Set or update a database&#39;s long term retention policy.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

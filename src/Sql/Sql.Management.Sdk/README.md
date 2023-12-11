@@ -26,7 +26,7 @@ use-extension:
 
 ###
 ``` yaml
-commit: 583e15ceb4cf23dc23b2300bd352f16d781e69ac
+commit: 2b8553deacb52ccd703b976d24348162be6c1d97
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/metrics.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/sql.core_legacy.json

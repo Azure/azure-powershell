@@ -241,13 +241,13 @@ namespace Microsoft.Azure.Management.Sql
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<LongTermRetentionBackup>>> ListByDatabaseWithHttpMessagesAsync(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionBackupOperationResult>> CopyWithHttpMessagesAsync(string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, CopyLongTermRetentionBackupParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the long term retention backups for a given location.
+        /// Updates an existing long term retention backup.
         /// </summary>
         /// <remarks>
-        /// Lists the long term retention backups for a given location.
+        /// Updates an existing long term retention backup.
         /// </remarks>
         /// <param name='locationName'>
         /// The location of the database.
@@ -261,9 +261,6 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='backupName'>
         /// The backup name.
         /// </param>
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or
-        /// all databases.
         /// <param name='parameters'>
         /// The requested backup resource state
         /// </param>
@@ -530,9 +527,6 @@ namespace Microsoft.Azure.Management.Sql
         /// </param>
         /// <param name='parameters'>
         /// The parameters needed for long term retention copy request
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or
-        /// all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -570,9 +564,6 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='backupName'>
         /// The backup name.
         /// </param>
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or
-        /// all databases.
         /// <param name='parameters'>
         /// The requested backup resource state
         /// </param>
@@ -596,10 +587,6 @@ namespace Microsoft.Azure.Management.Sql
         /// <remarks>
         /// Deletes a long term retention backup.
         /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
         /// <param name='locationName'>
         /// The location of the database
         /// </param>
@@ -637,9 +624,6 @@ namespace Microsoft.Azure.Management.Sql
         /// </param>
         /// <param name='longTermRetentionDatabaseName'>
         /// 
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or
-        /// all databases.
         /// </param>
         /// <param name='backupName'>
         /// 

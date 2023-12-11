@@ -74,10 +74,10 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionPolicy>> GetWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Sets a database&#39;s long term retention policy.
+        /// Set or update a database&#39;s long term retention policy.
         /// </summary>
         /// <remarks>
-        /// Sets a database&#39;s long term retention policy.
+        /// Set or update a database&#39;s long term retention policy.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
@@ -107,10 +107,10 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionPolicy>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serverName, string databaseName, LongTermRetentionPolicy parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Sets a database&#39;s long term retention policy.
+        /// Set or update a database&#39;s long term retention policy.
         /// </summary>
         /// <remarks>
-        /// Sets a database&#39;s long term retention policy.
+        /// Set or update a database&#39;s long term retention policy.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group that contains the resource. You can obtain
