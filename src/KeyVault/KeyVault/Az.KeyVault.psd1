@@ -72,7 +72,7 @@ TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'KeyVault.Autorest/Az.KeyVault.format.ps1xml', 
-               'KeyVault.format.ps1xml'
+               'KeyVault.format.ps1xml', 'keyvault.generated.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('./Az.KeyVault.Extension', 
