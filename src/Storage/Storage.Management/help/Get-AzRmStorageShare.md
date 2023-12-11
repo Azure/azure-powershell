@@ -140,6 +140,21 @@ testshare1 5120                     TransactionOptimized                        
 
 This command gets a single file share snapshot with share name and snapshot time.
 
+### Example 7: List Storage file shares of a Storage account with a filter
+```powershell
+Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Filter "startswith(name, test)"
+```
+
+```output
+ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name       QuotaGiB EnabledProtocols AccessTier           Deleted Version ShareUsageBytes snapshotTime
+----       -------- ---------------- ----------           ------- ------- --------------- ------------
+testshare1 5120     SMB              TransactionOptimized
+testshare2 5120     SMB              TransactionOptimized
+```
+This command lists all Storage file shares with names that begin with "test".
+
 ## PARAMETERS
 
 ### -DefaultProfile
