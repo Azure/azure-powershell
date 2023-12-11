@@ -1,6 +1,6 @@
 ### Example 1: Create a new lab.
 ```powershell
-PS C:\>  New-AzLabServicesLab `
+ New-AzLabServicesLab `
         -Name "NewLab" `
         -ResourceGroupName $ENV:ResourceGroupName `
         -Location $ENV:Location `

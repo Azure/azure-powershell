@@ -14,9 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzDevCenterUserEnvironment_ReplaceExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Description(@"Creates or updates an environment.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.HttpPath(Path = "/projects/{projectName}/users/{userId}/environments/{environmentName}", ApiVersion = "2023-10-01-preview")]
     public partial class SetAzDevCenterUserEnvironment_ReplaceExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener
     {
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         private string __processRecordId;
 
         /// <summary>Properties of an environment.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment _body = new Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Environment();
+        private Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment _body = new Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Environment();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -47,13 +48,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
 
-        /// <summary>Name of the catalog.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the catalog.")]
+        /// <summary>The name of the catalog. Cannot be updated after creation.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the catalog. Cannot be updated after creation.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Name of the catalog.",
+        Description = @"The name of the catalog. Cannot be updated after creation.",
         SerializedName = @"catalogName",
         PossibleTypes = new [] { typeof(string) })]
         public string CatalogName { get => _body.CatalogName ?? null; set => _body.CatalogName = value; }
@@ -85,27 +86,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.ParameterCategory.Uri)]
         public string Endpoint { get => this._endpoint; set => this._endpoint = value; }
 
-        /// <summary>Name of the environment definition.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the environment definition.")]
+        /// <summary>The name of the environment definition. Cannot be updated after creation.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the environment definition. Cannot be updated after creation.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Name of the environment definition.",
+        Description = @"The name of the environment definition. Cannot be updated after creation.",
         SerializedName = @"environmentDefinitionName",
         PossibleTypes = new [] { typeof(string) })]
         public string EnvironmentDefinitionName { get => _body.DefinitionName ?? null; set => _body.DefinitionName = value; }
 
-        /// <summary>Environment type.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Environment type.")]
+        /// <summary>The name of the environment type. Cannot be updated after creation.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the environment type. Cannot be updated after creation.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Environment type.",
+        Description = @"The name of the environment type. Cannot be updated after creation.",
         SerializedName = @"environmentType",
         PossibleTypes = new [] { typeof(string) })]
         public string EnvironmentType { get => _body.Type ?? null; set => _body.Type = value; }
+
+        /// <summary>
+        /// The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.",
+        SerializedName = @"expirationDate",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        public global::System.DateTime ExpirationDate { get => _body.ExpirationDate ?? default(global::System.DateTime); set => _body.ExpirationDate = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -153,17 +167,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
-        /// <summary>Parameters object for the environment.</summary>
+        /// <summary>
+        /// Parameters object for the environment. Can only be updated via create or replace.
+        /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Parameters object for the environment.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Parameters object for the environment. Can only be updated via create or replace.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Parameters object for the environment.",
+        Description = @"Parameters object for the environment. Can only be updated via create or replace.",
         SerializedName = @"parameters",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentUpdatePropertiesParameters) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentUpdatePropertiesParameters Parameter { get => _body.Parameter ?? null /* object */; set => _body.Parameter = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentUpdatePropertiesParameters) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentUpdatePropertiesParameters Parameter { get => _body.Parameter ?? null /* object */; set => _body.Parameter = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.HttpPipeline" /> that the remote call will use.
@@ -225,24 +241,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -473,12 +489,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -495,7 +511,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint, ProjectName=ProjectName, UserId=UserId, Name=Name, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -513,12 +529,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment> response)
         {
             using( NoSynchronizationContext )
             {
@@ -530,7 +546,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment
                 WriteObject((await response));
             }
         }

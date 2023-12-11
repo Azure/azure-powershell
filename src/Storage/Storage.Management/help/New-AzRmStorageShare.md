@@ -66,7 +66,7 @@ This command creates a Storage file share with Storage account object and share 
 
 
 ```
-PS C:\>$share = New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -AccessTier Hot
+$share = New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -AccessTier Hot
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
@@ -82,7 +82,7 @@ This command creates a Storage file share with accesstier as Hot.
 
 
 ```
-PS C:\>$shareSnapshot = New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -Snapshot
+$shareSnapshot = New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -Snapshot
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
@@ -98,9 +98,9 @@ This command creates a Storage file share snapshot of an existing base file shar
 
 
 ```
-PS C:\>$share = New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -EnabledProtocol NFS -RootSquash NoRootSquash 
+$share = New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -EnabledProtocol NFS -RootSquash NoRootSquash 
 
-PS C:\> $share
+$share
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
@@ -108,7 +108,7 @@ Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
 ----     -------- ---------------- ---------- ------- ------- ---------------
 myshare           NFS
 
-PS C:\> $share.RootSquash
+$share.RootSquash
 NoRootSquash
 ```
 

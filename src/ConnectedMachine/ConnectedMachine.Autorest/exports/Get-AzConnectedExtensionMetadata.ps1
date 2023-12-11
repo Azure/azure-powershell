@@ -25,12 +25,12 @@ Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Locatio
 Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Location 'eastus2euap' -Publisher 'Microsoft.HybridCompute' -Version '1.10.10'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IExtensionValue
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValue
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedextensionmetadata
 #>
 function Get-AzConnectedExtensionMetadata {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IExtensionValue])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionValue])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -143,7 +143,7 @@ begin {
             Get = 'Az.ConnectedMachine.private\Get-AzConnectedExtensionMetadata_Get';
             List = 'Az.ConnectedMachine.private\Get-AzConnectedExtensionMetadata_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]

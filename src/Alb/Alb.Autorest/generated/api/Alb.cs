@@ -25,12 +25,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AssociationsInterfaceCreateOrUpdate(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociation body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AssociationsInterfaceCreateOrUpdate(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -57,11 +58,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AssociationsInterfaceCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.AssociationsInterfaceCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -73,12 +74,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AssociationsInterfaceCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociation body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AssociationsInterfaceCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -118,16 +120,80 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AssociationsInterfaceCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.AssociationsInterfaceCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="AssociationsInterfaceCreateOrUpdate" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <summary>Create a Association</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation> AssociationsInterfaceCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceNetworking/trafficControllers/(?<trafficControllerName>[^/]+)/associations/(?<associationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var trafficControllerName = _match.Groups["trafficControllerName"].Value;
+                var associationName = _match.Groups["associationName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + trafficControllerName
+                        + "/associations/"
+                        + associationName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AssociationsInterfaceCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Create a Association</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="associationName">Name of Association</param>
+        /// <param name="jsonString">Json string supplied to the AssociationsInterfaceCreateOrUpdate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -136,7 +202,153 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AssociationsInterfaceCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AssociationsInterfaceCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "/associations/"
+                        + global::System.Uri.EscapeDataString(associationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AssociationsInterfaceCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Create a Association</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="associationName">Name of Association</param>
+        /// <param name="jsonString">Json string supplied to the AssociationsInterfaceCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation> AssociationsInterfaceCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "/associations/"
+                        + global::System.Uri.EscapeDataString(associationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AssociationsInterfaceCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Create a Association</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="associationName">Name of Association</param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation> AssociationsInterfaceCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "/associations/"
+                        + global::System.Uri.EscapeDataString(associationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AssociationsInterfaceCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "AssociationsInterfaceCreateOrUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation> AssociationsInterfaceCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -144,9 +356,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 try
                 {
                     var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
@@ -154,13 +367,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     var location = _response.GetFirstHeader(@"Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
-
-                        // get the delay before polling. (default to 30 seconds if not present)
-                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // start the delay timer (we'll await later...)
-                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
 
                         // while we wait, let's grab the headers and get ready to poll.
                         if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
@@ -174,10 +382,158 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
                         var content = await _response.Content.ReadAsStringAsync();
-                        await waiting;
 
-                        // check for cancellation
-                        if( eventListener.Token.IsCancellationRequested ) { return; }
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Association.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "AssociationsInterfaceCreateOrUpdate" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task AssociationsInterfaceCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
 
                         // drop the old response
                         _response?.Dispose();
@@ -186,45 +542,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         _response = await sender.SendAsync(request, eventListener);
                         await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                        // if we got back an OK, take a peek inside and see if it's done
-                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                        {
-                            var error = false;
-                            try {
-                                if( Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject json)
-                                {
-                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("status");
-                                    if( state is null )
-                                    {
-                                        // the body doesn't contain any information that has the state of the LRO
-                                        // we're going to just get out, and let the consumer have the result
-                                        break;
-                                    }
-
-                                    switch( state?.ToString()?.ToLower() )
-                                    {
-                                      case "failed":
-                                          error = true;
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
                                           break;
-                                      case "succeeded":
-                                      case "canceled":
-                                        // we're done polling.
-                                        break;
+                                      }
 
-                                      default:
-                                        // need to keep polling!
-                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                        continue;
-                                    }
-                                }
-                            } catch {
-                                // if we run into a problem peeking into the result,
-                                // we really don't want to do anything special.
-                            }
-                            if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.UndeclaredResponseException(_response);
-                            }
-                        }
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
 
                         // check for terminal status code
                         if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -243,6 +599,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -250,13 +607,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.Association.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Association.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -284,7 +641,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AssociationsInterfaceCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociation body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AssociationsInterfaceCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -294,9 +651,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(trafficControllerName),trafficControllerName);
-                await eventListener.AssertRegEx(nameof(trafficControllerName),trafficControllerName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(trafficControllerName), trafficControllerName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
                 await eventListener.AssertNotNull(nameof(associationName),associationName);
-                await eventListener.AssertRegEx(nameof(associationName),associationName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(associationName), associationName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -316,9 +673,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AssociationsInterfaceDelete(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AssociationsInterfaceDelete(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -345,7 +702,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AssociationsInterfaceDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.AssociationsInterfaceDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -360,9 +717,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AssociationsInterfaceDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AssociationsInterfaceDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -402,11 +759,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AssociationsInterfaceDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.AssociationsInterfaceDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="AssociationsInterfaceDelete" /> method.</summary>
+        /// <summary>Actual wire call for <see cref= "AssociationsInterfaceDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -417,7 +774,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AssociationsInterfaceDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AssociationsInterfaceDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -426,6 +783,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 {
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
@@ -436,13 +794,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     var location = _response.GetFirstHeader(@"Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
-
-                        // get the delay before polling. (default to 30 seconds if not present)
-                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // start the delay timer (we'll await later...)
-                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // while we wait, let's grab the headers and get ready to poll.
                         if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
@@ -456,10 +809,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
                         var content = await _response.Content.ReadAsStringAsync();
-                        await waiting;
-
-                        // check for cancellation
-                        if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // drop the old response
                         _response?.Dispose();
@@ -468,45 +817,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         _response = await sender.SendAsync(request, eventListener);
                         await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                        // if we got back an OK, take a peek inside and see if it's done
-                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                        {
-                            var error = false;
-                            try {
-                                if( Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject json)
-                                {
-                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("status");
-                                    if( state is null )
-                                    {
-                                        // the body doesn't contain any information that has the state of the LRO
-                                        // we're going to just get out, and let the consumer have the result
-                                        break;
-                                    }
-
-                                    switch( state?.ToString()?.ToLower() )
-                                    {
-                                      case "failed":
-                                          error = true;
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
                                           break;
-                                      case "succeeded":
-                                      case "canceled":
-                                        // we're done polling.
-                                        break;
+                                      }
 
-                                      default:
-                                        // need to keep polling!
-                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                        continue;
-                                    }
-                                }
-                            } catch {
-                                // if we run into a problem peeking into the result,
-                                // we really don't want to do anything special.
-                            }
-                            if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.UndeclaredResponseException(_response);
-                            }
-                        }
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
 
                         // check for terminal status code
                         if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -525,6 +874,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -544,7 +894,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -581,9 +931,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(trafficControllerName),trafficControllerName);
-                await eventListener.AssertRegEx(nameof(trafficControllerName),trafficControllerName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(trafficControllerName), trafficControllerName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
                 await eventListener.AssertNotNull(nameof(associationName),associationName);
-                await eventListener.AssertRegEx(nameof(associationName),associationName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(associationName), associationName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
             }
         }
 
@@ -600,9 +950,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AssociationsInterfaceGet(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AssociationsInterfaceGet(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -629,7 +979,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AssociationsInterfaceGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.AssociationsInterfaceGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -643,9 +993,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AssociationsInterfaceGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AssociationsInterfaceGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -685,11 +1035,169 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AssociationsInterfaceGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.AssociationsInterfaceGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="AssociationsInterfaceGet" /> method.</summary>
+        /// <summary>Get a Association</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation> AssociationsInterfaceGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceNetworking/trafficControllers/(?<trafficControllerName>[^/]+)/associations/(?<associationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var trafficControllerName = _match.Groups["trafficControllerName"].Value;
+                var associationName = _match.Groups["associationName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + trafficControllerName
+                        + "/associations/"
+                        + associationName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AssociationsInterfaceGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a Association</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="associationName">Name of Association</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation> AssociationsInterfaceGetWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "/associations/"
+                        + global::System.Uri.EscapeDataString(associationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AssociationsInterfaceGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "AssociationsInterfaceGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation> AssociationsInterfaceGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Association.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "AssociationsInterfaceGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -699,7 +1207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AssociationsInterfaceGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AssociationsInterfaceGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -710,6 +1218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -717,13 +1226,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.Association.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Association.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -760,9 +1269,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(trafficControllerName),trafficControllerName);
-                await eventListener.AssertRegEx(nameof(trafficControllerName),trafficControllerName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(trafficControllerName), trafficControllerName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
                 await eventListener.AssertNotNull(nameof(associationName),associationName);
-                await eventListener.AssertRegEx(nameof(associationName),associationName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(associationName), associationName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
             }
         }
 
@@ -778,9 +1287,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AssociationsInterfaceListByTrafficController(string subscriptionId, string resourceGroupName, string trafficControllerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AssociationsInterfaceListByTrafficController(string subscriptionId, string resourceGroupName, string trafficControllerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -806,7 +1315,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AssociationsInterfaceListByTrafficController_Call(request,onOk,onDefault,eventListener,sender);
+                await this.AssociationsInterfaceListByTrafficController_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -820,9 +1329,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AssociationsInterfaceListByTrafficControllerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AssociationsInterfaceListByTrafficControllerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -860,12 +1369,168 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AssociationsInterfaceListByTrafficController_Call(request,onOk,onDefault,eventListener,sender);
+                await this.AssociationsInterfaceListByTrafficController_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List Association resources by TrafficController</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationListResult> AssociationsInterfaceListByTrafficControllerViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceNetworking/trafficControllers/(?<trafficControllerName>[^/]+)/associations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var trafficControllerName = _match.Groups["trafficControllerName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + trafficControllerName
+                        + "/associations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AssociationsInterfaceListByTrafficControllerWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List Association resources by TrafficController</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationListResult> AssociationsInterfaceListByTrafficControllerWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "/associations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AssociationsInterfaceListByTrafficControllerWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="AssociationsInterfaceListByTrafficController" /> method.
+        /// Actual wire call for <see cref= "AssociationsInterfaceListByTrafficControllerWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationListResult> AssociationsInterfaceListByTrafficControllerWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.AssociationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "AssociationsInterfaceListByTrafficController" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -876,7 +1541,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AssociationsInterfaceListByTrafficController_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AssociationsInterfaceListByTrafficController_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -887,6 +1552,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -894,13 +1560,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.AssociationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.AssociationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -936,7 +1602,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(trafficControllerName),trafficControllerName);
-                await eventListener.AssertRegEx(nameof(trafficControllerName),trafficControllerName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(trafficControllerName), trafficControllerName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
             }
         }
 
@@ -951,12 +1617,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AssociationsInterfaceUpdate(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociationUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AssociationsInterfaceUpdate(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -983,11 +1650,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AssociationsInterfaceUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.AssociationsInterfaceUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -999,12 +1666,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AssociationsInterfaceUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociationUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AssociationsInterfaceUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1044,15 +1712,287 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.AssociationsInterfaceUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.AssociationsInterfaceUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="AssociationsInterfaceUpdate" /> method.</summary>
+        /// <summary>Update a Association</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The resource properties to be updated.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation> AssociationsInterfaceUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceNetworking/trafficControllers/(?<trafficControllerName>[^/]+)/associations/(?<associationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/associations/{associationName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var trafficControllerName = _match.Groups["trafficControllerName"].Value;
+                var associationName = _match.Groups["associationName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + trafficControllerName
+                        + "/associations/"
+                        + associationName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AssociationsInterfaceUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Update a Association</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="associationName">Name of Association</param>
+        /// <param name="jsonString">Json string supplied to the AssociationsInterfaceUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task AssociationsInterfaceUpdateViaJsonString(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "/associations/"
+                        + global::System.Uri.EscapeDataString(associationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.AssociationsInterfaceUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Update a Association</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="associationName">Name of Association</param>
+        /// <param name="jsonString">Json string supplied to the AssociationsInterfaceUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation> AssociationsInterfaceUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "/associations/"
+                        + global::System.Uri.EscapeDataString(associationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AssociationsInterfaceUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Update a Association</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="associationName">Name of Association</param>
+        /// <param name="body">The resource properties to be updated.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation> AssociationsInterfaceUpdateWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "/associations/"
+                        + global::System.Uri.EscapeDataString(associationName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.AssociationsInterfaceUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "AssociationsInterfaceUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>" /> that
+        /// will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation> AssociationsInterfaceUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Association.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "AssociationsInterfaceUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1062,7 +2002,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AssociationsInterfaceUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AssociationsInterfaceUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1073,6 +2013,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1080,13 +2021,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.Association.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Association.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1114,7 +2055,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AssociationsInterfaceUpdate_Validate(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociationUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AssociationsInterfaceUpdate_Validate(string subscriptionId, string resourceGroupName, string trafficControllerName, string associationName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAssociationUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1124,9 +2065,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(trafficControllerName),trafficControllerName);
-                await eventListener.AssertRegEx(nameof(trafficControllerName),trafficControllerName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(trafficControllerName), trafficControllerName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
                 await eventListener.AssertNotNull(nameof(associationName),associationName);
-                await eventListener.AssertRegEx(nameof(associationName),associationName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(associationName), associationName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -1143,12 +2084,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FrontendsInterfaceCreateOrUpdate(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FrontendsInterfaceCreateOrUpdate(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1175,11 +2117,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FrontendsInterfaceCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.FrontendsInterfaceCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1191,12 +2133,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FrontendsInterfaceCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FrontendsInterfaceCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1236,16 +2179,80 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FrontendsInterfaceCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.FrontendsInterfaceCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="FrontendsInterfaceCreateOrUpdate" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <summary>Create a Frontend</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend> FrontendsInterfaceCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceNetworking/trafficControllers/(?<trafficControllerName>[^/]+)/frontends/(?<frontendName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var trafficControllerName = _match.Groups["trafficControllerName"].Value;
+                var frontendName = _match.Groups["frontendName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + trafficControllerName
+                        + "/frontends/"
+                        + frontendName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FrontendsInterfaceCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Create a Frontend</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="frontendName">Frontends</param>
+        /// <param name="jsonString">Json string supplied to the FrontendsInterfaceCreateOrUpdate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -1254,7 +2261,153 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FrontendsInterfaceCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FrontendsInterfaceCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "/frontends/"
+                        + global::System.Uri.EscapeDataString(frontendName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FrontendsInterfaceCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Create a Frontend</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="frontendName">Frontends</param>
+        /// <param name="jsonString">Json string supplied to the FrontendsInterfaceCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend> FrontendsInterfaceCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "/frontends/"
+                        + global::System.Uri.EscapeDataString(frontendName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FrontendsInterfaceCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Create a Frontend</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="frontendName">Frontends</param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend> FrontendsInterfaceCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "/frontends/"
+                        + global::System.Uri.EscapeDataString(frontendName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FrontendsInterfaceCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "FrontendsInterfaceCreateOrUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend> FrontendsInterfaceCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1262,9 +2415,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 try
                 {
                     var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
@@ -1272,13 +2426,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     var location = _response.GetFirstHeader(@"Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
-
-                        // get the delay before polling. (default to 30 seconds if not present)
-                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // start the delay timer (we'll await later...)
-                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
 
                         // while we wait, let's grab the headers and get ready to poll.
                         if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
@@ -1292,10 +2441,156 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
                         var content = await _response.Content.ReadAsStringAsync();
-                        await waiting;
 
-                        // check for cancellation
-                        if( eventListener.Token.IsCancellationRequested ) { return; }
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Frontend.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "FrontendsInterfaceCreateOrUpdate" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task FrontendsInterfaceCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
 
                         // drop the old response
                         _response?.Dispose();
@@ -1304,45 +2599,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         _response = await sender.SendAsync(request, eventListener);
                         await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                        // if we got back an OK, take a peek inside and see if it's done
-                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                        {
-                            var error = false;
-                            try {
-                                if( Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject json)
-                                {
-                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("status");
-                                    if( state is null )
-                                    {
-                                        // the body doesn't contain any information that has the state of the LRO
-                                        // we're going to just get out, and let the consumer have the result
-                                        break;
-                                    }
-
-                                    switch( state?.ToString()?.ToLower() )
-                                    {
-                                      case "failed":
-                                          error = true;
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
                                           break;
-                                      case "succeeded":
-                                      case "canceled":
-                                        // we're done polling.
-                                        break;
+                                      }
 
-                                      default:
-                                        // need to keep polling!
-                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                        continue;
-                                    }
-                                }
-                            } catch {
-                                // if we run into a problem peeking into the result,
-                                // we really don't want to do anything special.
-                            }
-                            if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.UndeclaredResponseException(_response);
-                            }
-                        }
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
 
                         // check for terminal status code
                         if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -1361,6 +2656,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1368,13 +2664,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.Frontend.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Frontend.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1402,7 +2698,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FrontendsInterfaceCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task FrontendsInterfaceCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1412,9 +2708,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(trafficControllerName),trafficControllerName);
-                await eventListener.AssertRegEx(nameof(trafficControllerName),trafficControllerName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(trafficControllerName), trafficControllerName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
                 await eventListener.AssertNotNull(nameof(frontendName),frontendName);
-                await eventListener.AssertRegEx(nameof(frontendName),frontendName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(frontendName), frontendName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -1434,9 +2730,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FrontendsInterfaceDelete(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FrontendsInterfaceDelete(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1463,7 +2759,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FrontendsInterfaceDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.FrontendsInterfaceDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -1478,9 +2774,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FrontendsInterfaceDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FrontendsInterfaceDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1520,11 +2816,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FrontendsInterfaceDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.FrontendsInterfaceDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="FrontendsInterfaceDelete" /> method.</summary>
+        /// <summary>Actual wire call for <see cref= "FrontendsInterfaceDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -1535,7 +2831,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FrontendsInterfaceDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FrontendsInterfaceDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1544,6 +2840,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 {
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
@@ -1554,13 +2851,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     var location = _response.GetFirstHeader(@"Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
-
-                        // get the delay before polling. (default to 30 seconds if not present)
-                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // start the delay timer (we'll await later...)
-                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // while we wait, let's grab the headers and get ready to poll.
                         if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
@@ -1574,10 +2866,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
                         var content = await _response.Content.ReadAsStringAsync();
-                        await waiting;
-
-                        // check for cancellation
-                        if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // drop the old response
                         _response?.Dispose();
@@ -1586,45 +2874,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         _response = await sender.SendAsync(request, eventListener);
                         await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                        // if we got back an OK, take a peek inside and see if it's done
-                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                        {
-                            var error = false;
-                            try {
-                                if( Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject json)
-                                {
-                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("status");
-                                    if( state is null )
-                                    {
-                                        // the body doesn't contain any information that has the state of the LRO
-                                        // we're going to just get out, and let the consumer have the result
-                                        break;
-                                    }
-
-                                    switch( state?.ToString()?.ToLower() )
-                                    {
-                                      case "failed":
-                                          error = true;
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
                                           break;
-                                      case "succeeded":
-                                      case "canceled":
-                                        // we're done polling.
-                                        break;
+                                      }
 
-                                      default:
-                                        // need to keep polling!
-                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                        continue;
-                                    }
-                                }
-                            } catch {
-                                // if we run into a problem peeking into the result,
-                                // we really don't want to do anything special.
-                            }
-                            if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.UndeclaredResponseException(_response);
-                            }
-                        }
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
 
                         // check for terminal status code
                         if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -1643,6 +2931,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1662,7 +2951,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1699,9 +2988,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(trafficControllerName),trafficControllerName);
-                await eventListener.AssertRegEx(nameof(trafficControllerName),trafficControllerName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(trafficControllerName), trafficControllerName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
                 await eventListener.AssertNotNull(nameof(frontendName),frontendName);
-                await eventListener.AssertRegEx(nameof(frontendName),frontendName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(frontendName), frontendName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
             }
         }
 
@@ -1718,9 +3007,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FrontendsInterfaceGet(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FrontendsInterfaceGet(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1747,7 +3036,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FrontendsInterfaceGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.FrontendsInterfaceGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1761,9 +3050,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FrontendsInterfaceGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FrontendsInterfaceGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1803,11 +3092,169 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FrontendsInterfaceGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.FrontendsInterfaceGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="FrontendsInterfaceGet" /> method.</summary>
+        /// <summary>Get a Frontend</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend> FrontendsInterfaceGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceNetworking/trafficControllers/(?<trafficControllerName>[^/]+)/frontends/(?<frontendName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var trafficControllerName = _match.Groups["trafficControllerName"].Value;
+                var frontendName = _match.Groups["frontendName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + trafficControllerName
+                        + "/frontends/"
+                        + frontendName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FrontendsInterfaceGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a Frontend</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="frontendName">Frontends</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend> FrontendsInterfaceGetWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "/frontends/"
+                        + global::System.Uri.EscapeDataString(frontendName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FrontendsInterfaceGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "FrontendsInterfaceGetWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend> FrontendsInterfaceGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Frontend.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "FrontendsInterfaceGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1817,7 +3264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FrontendsInterfaceGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FrontendsInterfaceGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1828,6 +3275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -1835,13 +3283,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.Frontend.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Frontend.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1878,9 +3326,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(trafficControllerName),trafficControllerName);
-                await eventListener.AssertRegEx(nameof(trafficControllerName),trafficControllerName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(trafficControllerName), trafficControllerName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
                 await eventListener.AssertNotNull(nameof(frontendName),frontendName);
-                await eventListener.AssertRegEx(nameof(frontendName),frontendName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(frontendName), frontendName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
             }
         }
 
@@ -1896,9 +3344,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FrontendsInterfaceListByTrafficController(string subscriptionId, string resourceGroupName, string trafficControllerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontendListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FrontendsInterfaceListByTrafficController(string subscriptionId, string resourceGroupName, string trafficControllerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontendListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1924,7 +3372,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FrontendsInterfaceListByTrafficController_Call(request,onOk,onDefault,eventListener,sender);
+                await this.FrontendsInterfaceListByTrafficController_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1938,9 +3386,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FrontendsInterfaceListByTrafficControllerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontendListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FrontendsInterfaceListByTrafficControllerViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontendListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1978,12 +3426,168 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FrontendsInterfaceListByTrafficController_Call(request,onOk,onDefault,eventListener,sender);
+                await this.FrontendsInterfaceListByTrafficController_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List Frontend resources by TrafficController</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontendListResult>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontendListResult> FrontendsInterfaceListByTrafficControllerViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceNetworking/trafficControllers/(?<trafficControllerName>[^/]+)/frontends$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var trafficControllerName = _match.Groups["trafficControllerName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + trafficControllerName
+                        + "/frontends"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FrontendsInterfaceListByTrafficControllerWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List Frontend resources by TrafficController</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontendListResult>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontendListResult> FrontendsInterfaceListByTrafficControllerWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "/frontends"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FrontendsInterfaceListByTrafficControllerWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="FrontendsInterfaceListByTrafficController" /> method.
+        /// Actual wire call for <see cref= "FrontendsInterfaceListByTrafficControllerWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontendListResult>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontendListResult> FrontendsInterfaceListByTrafficControllerWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.FrontendListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "FrontendsInterfaceListByTrafficController" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1994,7 +3598,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FrontendsInterfaceListByTrafficController_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontendListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FrontendsInterfaceListByTrafficController_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontendListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2005,6 +3609,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2012,13 +3617,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.FrontendListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.FrontendListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2054,7 +3659,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(trafficControllerName),trafficControllerName);
-                await eventListener.AssertRegEx(nameof(trafficControllerName),trafficControllerName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(trafficControllerName), trafficControllerName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
             }
         }
 
@@ -2069,12 +3674,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FrontendsInterfaceUpdate(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontendUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FrontendsInterfaceUpdate(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontendUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2101,11 +3707,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FrontendsInterfaceUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.FrontendsInterfaceUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -2117,12 +3723,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FrontendsInterfaceUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontendUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FrontendsInterfaceUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontendUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2162,15 +3769,285 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FrontendsInterfaceUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.FrontendsInterfaceUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="FrontendsInterfaceUpdate" /> method.</summary>
+        /// <summary>Update a Frontend</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The resource properties to be updated.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend> FrontendsInterfaceUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontendUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceNetworking/trafficControllers/(?<trafficControllerName>[^/]+)/frontends/(?<frontendName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var trafficControllerName = _match.Groups["trafficControllerName"].Value;
+                var frontendName = _match.Groups["frontendName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + trafficControllerName
+                        + "/frontends/"
+                        + frontendName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FrontendsInterfaceUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Update a Frontend</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="frontendName">Frontends</param>
+        /// <param name="jsonString">Json string supplied to the FrontendsInterfaceUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task FrontendsInterfaceUpdateViaJsonString(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "/frontends/"
+                        + global::System.Uri.EscapeDataString(frontendName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.FrontendsInterfaceUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Update a Frontend</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="frontendName">Frontends</param>
+        /// <param name="jsonString">Json string supplied to the FrontendsInterfaceUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend> FrontendsInterfaceUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "/frontends/"
+                        + global::System.Uri.EscapeDataString(frontendName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FrontendsInterfaceUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Update a Frontend</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="frontendName">Frontends</param>
+        /// <param name="body">The resource properties to be updated.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend> FrontendsInterfaceUpdateWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontendUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "/frontends/"
+                        + global::System.Uri.EscapeDataString(frontendName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.FrontendsInterfaceUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "FrontendsInterfaceUpdateWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>" /> that will
+        /// be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend> FrontendsInterfaceUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Frontend.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "FrontendsInterfaceUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2180,7 +4057,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FrontendsInterfaceUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FrontendsInterfaceUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2191,6 +4068,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2198,13 +4076,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.Frontend.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Frontend.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2232,7 +4110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FrontendsInterfaceUpdate_Validate(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontendUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task FrontendsInterfaceUpdate_Validate(string subscriptionId, string resourceGroupName, string trafficControllerName, string frontendName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontendUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2242,9 +4120,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(trafficControllerName),trafficControllerName);
-                await eventListener.AssertRegEx(nameof(trafficControllerName),trafficControllerName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(trafficControllerName), trafficControllerName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
                 await eventListener.AssertNotNull(nameof(frontendName),frontendName);
-                await eventListener.AssertRegEx(nameof(frontendName),frontendName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(frontendName), frontendName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -2259,9 +4137,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2281,7 +4159,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.OperationsList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.OperationsList_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -2295,9 +4173,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2326,11 +4204,147 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.OperationsList_Call(request,onOk,onDefault,eventListener,sender);
+                await this.OperationsList_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="OperationsList" /> method.</summary>
+        /// <summary>List the operations for the provider</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IOperationListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.ServiceNetworking/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.ServiceNetworking/operations'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.ServiceNetworking/operations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.OperationsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List the operations for the provider</summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IOperationListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/providers/Microsoft.ServiceNetworking/operations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.OperationsListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "OperationsListWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IOperationListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IOperationListResult> OperationsListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.OperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "OperationsList" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -2340,7 +4354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2351,6 +4365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2358,13 +4373,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.OperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.OperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2405,12 +4420,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceCreateOrUpdate(string subscriptionId, string resourceGroupName, string trafficControllerName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficController body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceCreateOrUpdate(string subscriptionId, string resourceGroupName, string trafficControllerName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2435,11 +4451,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TrafficControllerInterfaceCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.TrafficControllerInterfaceCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -2451,12 +4467,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficController body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2493,18 +4510,76 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TrafficControllerInterfaceCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.TrafficControllerInterfaceCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>
-        /// Actual wire call for <see cref="TrafficControllerInterfaceCreateOrUpdate" /> method.
-        /// </summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <summary>Create a TrafficController</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController> TrafficControllerInterfaceCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceNetworking/trafficControllers/(?<trafficControllerName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var trafficControllerName = _match.Groups["trafficControllerName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + trafficControllerName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TrafficControllerInterfaceCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Create a TrafficController</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="jsonString">Json string supplied to the TrafficControllerInterfaceCreateOrUpdate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2513,7 +4588,145 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TrafficControllerInterfaceCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string trafficControllerName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TrafficControllerInterfaceCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Create a TrafficController</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="jsonString">Json string supplied to the TrafficControllerInterfaceCreateOrUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController> TrafficControllerInterfaceCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TrafficControllerInterfaceCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Create a TrafficController</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="body">Resource create parameters.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController> TrafficControllerInterfaceCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TrafficControllerInterfaceCreateOrUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "TrafficControllerInterfaceCreateOrUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController> TrafficControllerInterfaceCreateOrUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2521,9 +4734,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 try
                 {
                     var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
                     // this operation supports x-ms-long-running-operation
                     var _originalUri = request.RequestUri.AbsoluteUri;
                     // declared final-state-via: azure-async-operation
@@ -2531,13 +4745,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     var location = _response.GetFirstHeader(@"Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
-
-                        // get the delay before polling. (default to 30 seconds if not present)
-                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // start the delay timer (we'll await later...)
-                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
 
                         // while we wait, let's grab the headers and get ready to poll.
                         if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
@@ -2551,10 +4760,158 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
                         var content = await _response.Content.ReadAsStringAsync();
-                        await waiting;
 
-                        // check for cancellation
-                        if( eventListener.Token.IsCancellationRequested ) { return; }
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficController.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "TrafficControllerInterfaceCreateOrUpdate" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task TrafficControllerInterfaceCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: azure-async-operation
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
 
                         // drop the old response
                         _response?.Dispose();
@@ -2563,45 +4920,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         _response = await sender.SendAsync(request, eventListener);
                         await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                        // if we got back an OK, take a peek inside and see if it's done
-                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                        {
-                            var error = false;
-                            try {
-                                if( Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject json)
-                                {
-                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("status");
-                                    if( state is null )
-                                    {
-                                        // the body doesn't contain any information that has the state of the LRO
-                                        // we're going to just get out, and let the consumer have the result
-                                        break;
-                                    }
-
-                                    switch( state?.ToString()?.ToLower() )
-                                    {
-                                      case "failed":
-                                          error = true;
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
                                           break;
-                                      case "succeeded":
-                                      case "canceled":
-                                        // we're done polling.
-                                        break;
+                                      }
 
-                                      default:
-                                        // need to keep polling!
-                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                        continue;
-                                    }
-                                }
-                            } catch {
-                                // if we run into a problem peeking into the result,
-                                // we really don't want to do anything special.
-                            }
-                            if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.UndeclaredResponseException(_response);
-                            }
-                        }
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
 
                         // check for terminal status code
                         if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -2620,6 +4977,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2627,13 +4985,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.TrafficController.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficController.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2660,7 +5018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TrafficControllerInterfaceCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string trafficControllerName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficController body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task TrafficControllerInterfaceCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string trafficControllerName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2670,7 +5028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(trafficControllerName),trafficControllerName);
-                await eventListener.AssertRegEx(nameof(trafficControllerName),trafficControllerName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(trafficControllerName), trafficControllerName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -2689,9 +5047,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceDelete(string subscriptionId, string resourceGroupName, string trafficControllerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceDelete(string subscriptionId, string resourceGroupName, string trafficControllerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2716,7 +5074,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TrafficControllerInterfaceDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.TrafficControllerInterfaceDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
@@ -2731,9 +5089,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2770,11 +5128,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TrafficControllerInterfaceDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+                await this.TrafficControllerInterfaceDelete_Call (request, onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="TrafficControllerInterfaceDelete" /> method.</summary>
+        /// <summary>Actual wire call for <see cref= "TrafficControllerInterfaceDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -2785,7 +5143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TrafficControllerInterfaceDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task TrafficControllerInterfaceDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2794,6 +5152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 {
                     var sendTask = sender.SendAsync(request, eventListener);
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                     // this operation supports x-ms-long-running-operation
@@ -2804,13 +5163,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     var location = _response.GetFirstHeader(@"Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
-
-                        // get the delay before polling. (default to 30 seconds if not present)
-                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
-                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                        // start the delay timer (we'll await later...)
-                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // while we wait, let's grab the headers and get ready to poll.
                         if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
@@ -2824,10 +5178,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
                         var content = await _response.Content.ReadAsStringAsync();
-                        await waiting;
-
-                        // check for cancellation
-                        if( eventListener.Token.IsCancellationRequested ) { return; }
 
                         // drop the old response
                         _response?.Dispose();
@@ -2836,45 +5186,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         _response = await sender.SendAsync(request, eventListener);
                         await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
 
-                        // if we got back an OK, take a peek inside and see if it's done
-                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
-                        {
-                            var error = false;
-                            try {
-                                if( Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject json)
-                                {
-                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("status");
-                                    if( state is null )
-                                    {
-                                        // the body doesn't contain any information that has the state of the LRO
-                                        // we're going to just get out, and let the consumer have the result
-                                        break;
-                                    }
-
-                                    switch( state?.ToString()?.ToLower() )
-                                    {
-                                      case "failed":
-                                          error = true;
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
                                           break;
-                                      case "succeeded":
-                                      case "canceled":
-                                        // we're done polling.
-                                        break;
+                                      }
 
-                                      default:
-                                        // need to keep polling!
-                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
-                                        continue;
-                                    }
-                                }
-                            } catch {
-                                // if we run into a problem peeking into the result,
-                                // we really don't want to do anything special.
-                            }
-                            if (error) {
-                                throw new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.UndeclaredResponseException(_response);
-                            }
-                        }
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
 
                         // check for terminal status code
                         if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
@@ -2893,6 +5243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -2912,7 +5263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2948,7 +5299,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(trafficControllerName),trafficControllerName);
-                await eventListener.AssertRegEx(nameof(trafficControllerName),trafficControllerName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(trafficControllerName), trafficControllerName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
             }
         }
 
@@ -2964,9 +5315,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceGet(string subscriptionId, string resourceGroupName, string trafficControllerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceGet(string subscriptionId, string resourceGroupName, string trafficControllerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2991,7 +5342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TrafficControllerInterfaceGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.TrafficControllerInterfaceGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -3005,9 +5356,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3044,11 +5395,165 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TrafficControllerInterfaceGet_Call(request,onOk,onDefault,eventListener,sender);
+                await this.TrafficControllerInterfaceGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="TrafficControllerInterfaceGet" /> method.</summary>
+        /// <summary>Get a TrafficController</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController> TrafficControllerInterfaceGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceNetworking/trafficControllers/(?<trafficControllerName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var trafficControllerName = _match.Groups["trafficControllerName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + trafficControllerName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TrafficControllerInterfaceGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a TrafficController</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController> TrafficControllerInterfaceGetWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TrafficControllerInterfaceGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "TrafficControllerInterfaceGetWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController> TrafficControllerInterfaceGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficController.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "TrafficControllerInterfaceGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3058,7 +5563,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TrafficControllerInterfaceGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task TrafficControllerInterfaceGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3069,6 +5574,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -3076,13 +5582,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.TrafficController.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficController.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3118,7 +5624,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(trafficControllerName),trafficControllerName);
-                await eventListener.AssertRegEx(nameof(trafficControllerName),trafficControllerName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(trafficControllerName), trafficControllerName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
             }
         }
 
@@ -3133,9 +5639,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficControllerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3159,7 +5665,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TrafficControllerInterfaceListByResourceGroup_Call(request,onOk,onDefault,eventListener,sender);
+                await this.TrafficControllerInterfaceListByResourceGroup_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -3173,9 +5679,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficControllerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3210,12 +5716,162 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TrafficControllerInterfaceListByResourceGroup_Call(request,onOk,onDefault,eventListener,sender);
+                await this.TrafficControllerInterfaceListByResourceGroup_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List TrafficController resources by resource group</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult> TrafficControllerInterfaceListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceNetworking/trafficControllers$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TrafficControllerInterfaceListByResourceGroupWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List TrafficController resources by resource group</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult> TrafficControllerInterfaceListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TrafficControllerInterfaceListByResourceGroupWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="TrafficControllerInterfaceListByResourceGroup" /> method.
+        /// Actual wire call for <see cref= "TrafficControllerInterfaceListByResourceGroupWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult> TrafficControllerInterfaceListByResourceGroupWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficControllerListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "TrafficControllerInterfaceListByResourceGroup" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3226,7 +5882,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TrafficControllerInterfaceListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficControllerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task TrafficControllerInterfaceListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3237,6 +5893,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -3244,13 +5901,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.TrafficControllerListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficControllerListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3297,9 +5954,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficControllerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3321,7 +5978,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TrafficControllerInterfaceListBySubscription_Call(request,onOk,onDefault,eventListener,sender);
+                await this.TrafficControllerInterfaceListBySubscription_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -3335,9 +5992,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficControllerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3369,12 +6026,156 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TrafficControllerInterfaceListBySubscription_Call(request,onOk,onDefault,eventListener,sender);
+                await this.TrafficControllerInterfaceListBySubscription_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>List TrafficController resources by subscription ID</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult> TrafficControllerInterfaceListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.ServiceNetworking/trafficControllers$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.ServiceNetworking/trafficControllers'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TrafficControllerInterfaceListBySubscriptionWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>List TrafficController resources by subscription ID</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult> TrafficControllerInterfaceListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TrafficControllerInterfaceListBySubscriptionWithResult_Call (request, eventListener,sender);
             }
         }
 
         /// <summary>
-        /// Actual wire call for <see cref="TrafficControllerInterfaceListBySubscription" /> method.
+        /// Actual wire call for <see cref= "TrafficControllerInterfaceListBySubscriptionWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult> TrafficControllerInterfaceListBySubscriptionWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficControllerListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "TrafficControllerInterfaceListBySubscription" /> method.
         /// </summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3385,7 +6186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TrafficControllerInterfaceListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficControllerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task TrafficControllerInterfaceListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3396,6 +6197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -3403,13 +6205,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.TrafficControllerListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficControllerListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3452,12 +6254,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceUpdate(string subscriptionId, string resourceGroupName, string trafficControllerName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficControllerUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceUpdate(string subscriptionId, string resourceGroupName, string trafficControllerName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3482,11 +6285,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TrafficControllerInterfaceUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.TrafficControllerInterfaceUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -3498,12 +6301,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficControllerUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-05-01-preview";
+            var apiVersion = @"2023-11-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3540,15 +6344,275 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.TrafficControllerInterfaceUpdate_Call(request,onOk,onDefault,eventListener,sender);
+                await this.TrafficControllerInterfaceUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="TrafficControllerInterfaceUpdate" /> method.</summary>
+        /// <summary>Update a TrafficController</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The resource properties to be updated.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController> TrafficControllerInterfaceUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.ServiceNetworking/trafficControllers/(?<trafficControllerName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var trafficControllerName = _match.Groups["trafficControllerName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + trafficControllerName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TrafficControllerInterfaceUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Update a TrafficController</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="jsonString">Json string supplied to the TrafficControllerInterfaceUpdate operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task TrafficControllerInterfaceUpdateViaJsonString(string subscriptionId, string resourceGroupName, string trafficControllerName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.TrafficControllerInterfaceUpdate_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Update a TrafficController</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="jsonString">Json string supplied to the TrafficControllerInterfaceUpdate operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController> TrafficControllerInterfaceUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TrafficControllerInterfaceUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Update a TrafficController</summary>
+        /// <param name="subscriptionId">The ID of the target subscription.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="trafficControllerName">traffic controller name for path</param>
+        /// <param name="body">The resource properties to be updated.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController> TrafficControllerInterfaceUpdateWithResult(string subscriptionId, string resourceGroupName, string trafficControllerName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2023-11-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.ServiceNetworking/trafficControllers/"
+                        + global::System.Uri.EscapeDataString(trafficControllerName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.TrafficControllerInterfaceUpdateWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "TrafficControllerInterfaceUpdateWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController> TrafficControllerInterfaceUpdateWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficController.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "TrafficControllerInterfaceUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3558,7 +6622,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TrafficControllerInterfaceUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task TrafficControllerInterfaceUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3569,6 +6633,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
                     _response = await sendTask;
                     await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
 
                     switch ( _response.StatusCode )
@@ -3576,13 +6641,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.TrafficController.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.TrafficController.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3609,7 +6674,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task TrafficControllerInterfaceUpdate_Validate(string subscriptionId, string resourceGroupName, string trafficControllerName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficControllerUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task TrafficControllerInterfaceUpdate_Validate(string subscriptionId, string resourceGroupName, string trafficControllerName, Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficControllerUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3619,7 +6684,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
                 await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
                 await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
                 await eventListener.AssertNotNull(nameof(trafficControllerName),trafficControllerName);
-                await eventListener.AssertRegEx(nameof(trafficControllerName),trafficControllerName,@"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
+                await eventListener.AssertRegEx(nameof(trafficControllerName), trafficControllerName, @"^[A-Za-z0-9]([A-Za-z0-9-_.]{0,62}[A-Za-z0-9])?$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }

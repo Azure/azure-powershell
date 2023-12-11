@@ -1,6 +1,6 @@
 ### Example 1: List the properties of the specified FHIR Service.
 ```powershell
-PS C:\> Get-AzHealthcareFhirService -ResourceGroupName azps_test_group -WorkspaceName azpshcws
+Get-AzHealthcareFhirService -ResourceGroupName azps_test_group -WorkspaceName azpshcws
 
 Location Name                     Kind    ResourceGroupName
 -------- ----                     ----    -----------------
@@ -11,7 +11,7 @@ List the properties of the specified FHIR Service.
 
 ### Example 2: Gets the properties of the specified FHIR Service.
 ```powershell
-PS C:\> Get-AzHealthcareFhirService -Name azpsfhirservice -ResourceGroupName azps_test_group -WorkspaceName azpshcws
+Get-AzHealthcareFhirService -Name azpsfhirservice -ResourceGroupName azps_test_group -WorkspaceName azpshcws
 
 Location Name                     Kind    ResourceGroupName
 -------- ----                     ----    -----------------

@@ -1,6 +1,6 @@
 ### Example 1: List
 ```powershell
-PS C:\> Get-AzBareMetal
+Get-AzBareMetal
 
 Location       Name         ResourceGroupName
 --------       ----         -----------------
@@ -14,7 +14,7 @@ Gets Azure BareMetal instance.
 
 ### Example 2: Get
 ```powershell
-PS C:\> Get-AzBareMetal -Name oelnvmetest -ResourceGroupName SAT09A-T230
+Get-AzBareMetal -Name oelnvmetest -ResourceGroupName SAT09A-T230
 
 Location       Name         ResourceGroupName
 --------       ----         -----------------
@@ -25,7 +25,7 @@ Gets an Azure BareMetal instance for the specified subscription, resource group,
 
 ### Example 3: List1
 ```powershell
-PS C:\> Get-AzBareMetal -ResourceGroupName MWH03A-T210
+Get-AzBareMetal -ResourceGroupName MWH03A-T210
 
 Location Name        ResourceGroupName
 -------- ----        -----------------

@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.Applicationinsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightsworkbook
 schema: 2.0.0
 ---
@@ -17,15 +17,15 @@ Updates a workbook that has already been added.
 Update-AzApplicationInsightsWorkbook -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-LinkedSourceId <String>] [-Category <String>] [-Description <String>] [-DisplayName <String>]
  [-Revision <String>] [-SerializedData <String>] [-SourceTag <String[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzApplicationInsightsWorkbook -InputObject <IApplicationInsightsIdentity> [-LinkedSourceId <String>]
  [-Category <String>] [-Description <String>] [-DisplayName <String>] [-Revision <String>]
- [-SerializedData <String>] [-SourceTag <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SerializedData <String>] [-SourceTag <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -325,4 +325,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[WebTestName <String>]`: The name of the Application Insights WebTest resource.
 
 ## RELATED LINKS
-

@@ -1,6 +1,6 @@
 ### Example 1: List all followed databases
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolFollowerDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool
+Get-AzSynapseKustoPoolFollowerDatabase -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool
 
 AttachedDatabaseConfigurationName DatabaseName KustoPoolResourceId
 --------------------------------- ------------ -------------------

@@ -1,6 +1,6 @@
 ### Example 1: Gets the list of the Enabled Resource Types.
 ```powershell
-PS C:\>  Get-AzCustomLocationEnabledResourceType -ResourceGroupName azps_test_group -Name azps_test_cluster
+ Get-AzCustomLocationEnabledResourceType -ResourceGroupName azps_test_group -Name azps_test_cluster
 
 Name                                                             Type
 ----                                                             ----

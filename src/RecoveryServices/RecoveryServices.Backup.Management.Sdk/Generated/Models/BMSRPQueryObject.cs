@@ -41,7 +41,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="moveReadyRpOnly">Whether the RP can be moved to another tier
         /// </param>
-        public BmsrpQueryObject(System.DateTime? startDate = default(System.DateTime?), System.DateTime? endDate = default(System.DateTime?), string restorePointQueryType = default(string), bool? extendedInfo = default(bool?), bool? moveReadyRpOnly = default(bool?))
+
+        /// <param name="includeSoftDeletedRp">Flag to indicate whether Soft Deleted RPs should be included/excluded from
+        /// result.
+        /// </param>
+        public BmsrpQueryObject(System.DateTime? startDate = default(System.DateTime?), System.DateTime? endDate = default(System.DateTime?), string restorePointQueryType = default(string), bool? extendedInfo = default(bool?), bool? moveReadyRpOnly = default(bool?), bool? includeSoftDeletedRp = default(bool?))
 
         {
             this.StartDate = startDate;
@@ -49,6 +53,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             this.RestorePointQueryType = restorePointQueryType;
             this.ExtendedInfo = extendedInfo;
             this.MoveReadyRpOnly = moveReadyRpOnly;
+            this.IncludeSoftDeletedRp = includeSoftDeletedRp;
             CustomInit();
         }
 
@@ -88,5 +93,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "moveReadyRPOnly")]
         public bool? MoveReadyRpOnly {get; set; }
+
+        /// <summary>
+        /// Gets or sets flag to indicate whether Soft Deleted RPs should be
+        /// included/excluded from result.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "includeSoftDeletedRP")]
+        public bool? IncludeSoftDeletedRp {get; set; }
     }
 }

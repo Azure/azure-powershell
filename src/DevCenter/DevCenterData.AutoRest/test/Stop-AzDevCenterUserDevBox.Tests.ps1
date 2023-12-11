@@ -22,7 +22,7 @@ Describe 'Stop-AzDevCenterUserDevBox' {
         $devBox.PowerState | Should -Be "Hibernated"
 
         if ($Record -or $Live) {
-            $stopAction = Stop-AzDevCenterUserDevBox -DevCenter $env.devCenterName -Name $env.skipDevBox2 -ProjectName $env.projectName  
+            $stopAction = Stop-AzDevCenterUserDevBox -DevCenterName $env.devCenterName -Name $env.skipDevBox2 -ProjectName $env.projectName  
             $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.skipDevBox2 -ProjectName $env.projectName -UserId "me"
             $devBox.ActionState | Should -Be "Stopped"
             $devBox.PowerState | Should -Be "Hibernated"
@@ -41,7 +41,7 @@ Describe 'Stop-AzDevCenterUserDevBox' {
         $devBox.PowerState | Should -Be "Hibernated"
 
         if ($Record -or $Live) {
-            $stopAction = Stop-AzDevCenterUserDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput2 
+            $stopAction = Stop-AzDevCenterUserDevBox -DevCenterName $env.devCenterName -InputObject $devBoxInput2 
             $stopAction.Status | Should -Be "Succeeded"
             $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.skipDevBox4 -ProjectName $env.projectName -UserId "me"
             $devBox.ActionState | Should -Be "Stopped"

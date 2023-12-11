@@ -15,13 +15,14 @@ Creates or updates a devcenter resource
 ### CreateExpanded (Default)
 ```
 New-AzDevCenterAdminDevCenter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Location <String> [-DisplayName <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDevCenterAdminDevCenter -InputObject <IDevCenterIdentity> -Location <String>
+New-AzDevCenterAdminDevCenter -InputObject <IDevCenterIdentity> -Location <String> [-DisplayName <String>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -87,6 +88,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayName
+The display name of the devcenter.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
