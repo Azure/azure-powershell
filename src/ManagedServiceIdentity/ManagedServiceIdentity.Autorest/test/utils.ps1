@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -31,7 +56,7 @@ function setupEnv() {
     # Associated Resources
     $env.associatedResourceResourceGroup = 'ar-rg-' + (RandomString -len 8)
     $env.associatedResourceIdentityName = 'ar-identity' + (RandomString -len 6)
-    
+
     # federated identity credentials
     $env.ficResourceGroup = 'fic-rg-' + (RandomString -len 8)
     $env.ficAudience = @("api://AzureADTokenExchange")
@@ -45,7 +70,7 @@ function setupEnv() {
     $env.ficName03 = 'fic-' + (RandomString -len 6)
     $env.Issuer03 = "https://kubernetes-oauth.azure." + (RandomString -len 6)
     $env.Subject03 = "system:serviceaccount:ns:svcaccount-" + (RandomString -len 6)
-    
+
     Write-Host "start to create test group"
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
     New-AzResourceGroup -Name $env.ficResourceGroup -Location $env.location

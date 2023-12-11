@@ -84,11 +84,16 @@ if (-not [System.String]::IsNullOrEmpty($AlcRefAssembly)) {
     $refAssemblies = $AlcRefAssembly.Split(';')
     $refAssemblies | ForEach-Object {
         $refAssemblyPath = [System.IO.Path]::Combine($ModuleFolder, $_ + ".dll")
-        if ($isReleaseConfiguration) {
-            Move-Item -Path $refAssemblyPath -Destination $alcDestinationDir -Force
-        }
+        if (Test-Path -Path $refAssemblyPath) {
+            if ($isReleaseConfiguration) {
+                Move-Item -Path $refAssemblyPath -Destination $alcDestinationDir -Force
+            }
+            else {
+                Copy-Item -Path $refAssemblyPath -Destination $alcDestinationDir -Force
+            }
+        } 
         else {
-            Copy-Item -Path $refAssemblyPath -Destination $alcDestinationDir -Force
+            Write-Warning "Cannot find the AssemblyPath $refAssemblyPath"
         }
     }
 }

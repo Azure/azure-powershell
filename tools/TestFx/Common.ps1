@@ -20,7 +20,7 @@ $excludedExtensions = @(".dll", ".zip", ".msi", ".exe")
 #
 #    param [string] $path: The path to the transript file to read
 ###################################
-function Get-Transcript 
+function Get-Transcript
 {
    param([string] $path)
    return Get-Content $path |
@@ -45,7 +45,7 @@ function Get-LogFile
 
 #################
 #
-# Execute a test, no exception thrown means the test passes.  Can also be used to compare test 
+# Execute a test, no exception thrown means the test passes.  Can also be used to compare test
 #  output to a baseline file, or to generate a baseline file
 #
 #    param [scriptblock] $test: The test code to run
@@ -53,12 +53,12 @@ function Get-LogFile
 #    param [switch] $generate: Set if the baseline file should be generated, otherwise
 #     the baseline file would be used for comparison with test output
 ##################
-function Run-Test 
+function Run-Test
 {
     param([scriptblock]$test, [string] $testName = $null, [string] $testScript = $null, [switch] $generate = $false)
     Test-Setup
     $transFile = $testName + ".log"
-    if ($testName -eq $null) 
+    if ($testName -eq $null)
     {
       $transFile = Get-LogFile "."
     }
@@ -78,18 +78,18 @@ function Run-Test
     {
          Write-Log "[run-test]: Running test without file comparison"
     }
-        
+
     $oldPref = $ErrorActionPreference
     $ErrorActionPreference = "SilentlyContinue"
     #Start-Transcript -Path $transFile
     $success = $false;
     $ErrorActionPreference = $oldPref
-    try 
+    try
     {
       &$test
       $success = $true;
     }
-    finally 
+    finally
     {
         Test-Cleanup
         $oldPref = $ErrorActionPreference
@@ -105,16 +105,16 @@ function Run-Test
                 {
                     throw "[run-test]: Test Failed " + (Out-String -InputObject $result) + ", Transcript at $transFile"
                 }
-            
+
             }
         }
-        
+
         if ($success)
         {
             Write-Log "[run-test]: Test Passed"
         }
     }
-    
+
 }
 
 ##################
@@ -138,11 +138,11 @@ function Check-SubscriptionMatch
     param([string] $baseSubscriptionName, [Microsoft.WindowsAzure.Commands.Utilities.Common.SubscriptionData] $checkedSubscription)
     Write-Log ("[CheckSubscriptionMatch]: base subscription: '$baseSubscriptionName', validating '" + ($checkedSubscription.SubscriptionName)+ "'")
     Format-Subscription $checkedSubscription | Write-Log
-    if ($baseSubscriptionName -ne $checkedSubscription.SubscriptionName) 
+    if ($baseSubscriptionName -ne $checkedSubscription.SubscriptionName)
     {
         throw ("[Check-SubscriptionMatch]: Subscription Match Failed '" + ($baseSubscriptionName) + "' != '" + ($checkedSubscription.SubscriptionName) + "'")
     }
-    
+
     Write-Log ("CheckSubscriptionMatch]: subscription check succeeded.")
 }
 
@@ -163,7 +163,7 @@ function Get-FullName
 
 #############################
 #
-# PowerShell environment setup for running a test, save previous snvironment settings and 
+# PowerShell environment setup for running a test, save previous snvironment settings and
 # enable verbose, debug, and warning streams
 #
 #############################
@@ -218,7 +218,7 @@ function Dump-Contents
     {
         throw "[dump-contents]: $rootPath does not exist"
     }
-    
+
     foreach ($item in Get-ChildItem $rootPath)
     {
         Write-Log
@@ -340,7 +340,7 @@ function Retry-Function
     param([ScriptBlock] $scriptBlock, [Object] $argument, [int] $maxTries, [int] $interval)
 
     if ($interval -eq 0) { $interval = 60  }
-    
+
     $result = Invoke-Command -ScriptBlock $scriptBlock -ArgumentList $argument;
     $tries = 1;
     while(( $result -ne $true) -and ($tries -le $maxTries))
@@ -349,7 +349,7 @@ function Retry-Function
         $result = Invoke-Command -ScriptBlock $scriptBlock -ArgumentList $argument;
         $tries++;
     }
-    
+
     return $result;
 }
 
@@ -359,7 +359,7 @@ Gets random resource name
 #>
 function getRandomItemName {
     param([string] $prefix)
-    
+
     if ($prefix -eq $null -or $prefix -eq '') {
         $prefix = "ps";
     }
@@ -376,7 +376,7 @@ function getAssetName {
     }
 
     $testName = getTestName
-    
+
     try {
         $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, $prefix);
     } catch {
@@ -642,17 +642,16 @@ Sleeps but only during recording.
 #>
 function Start-TestSleep
 {
-    [CmdletBinding(DefaultParameterSetName = "SleepBySeconds")]
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
     param(
-        [parameter(Mandatory = $true, Position = 0, ParameterSetName = "SleepBySeconds")]
-        [int]
-        [ValidateRange("Positive")]
-        $Seconds,
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
 
-        [parameter(Mandatory = $true, Position = 0, ParameterSetName = "SleepByMilliseconds")]
-        [int]
-        [ValidateRange("Positive")]
-        $Milliseconds
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
     )
 
     process

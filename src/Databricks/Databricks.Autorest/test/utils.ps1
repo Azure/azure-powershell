@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -66,10 +91,10 @@ function setupEnv() {
     $testVN = New-AzVirtualNetwork -Name $env.vNetName -ResourceGroupName $env.resourceGroup -Location $env.location -AddressPrefix "110.0.0.0/16" -Subnet $kvSubnet,$priSubnet,$pubSubnet
     $vNetResId = (Get-AzVirtualNetwork -Name $env.vNetName -ResourceGroupName $env.resourceGroup).Subnets[0].Id
     $ruleSet = New-AzKeyVaultNetworkRuleSetObject -DefaultAction Allow -Bypass AzureServices -IpAddressRange "110.0.1.0/24" -VirtualNetworkResourceId $vNetResId
-    
+
     write-host "start to create KeyVault env"
     New-AzKeyVault -ResourceGroupName $env.resourceGroup -VaultName $env.keyVaultName -NetworkRuleSet $ruleSet -Location $env.location -Sku 'Premium' -EnablePurgeProtection
-    
+
     write-host "start to create Databricks(have vNet) env"
     New-AzDatabricksWorkspace -Name $env.workSpaceName1 -ResourceGroupName $env.resourceGroup -Location $env.location -VirtualNetworkId $testVN.Id -PrivateSubnetName $priSubnet.Name -PublicSubnetName $pubSubnet.Name -Sku Premium
 

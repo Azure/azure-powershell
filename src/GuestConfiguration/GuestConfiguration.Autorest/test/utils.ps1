@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -22,7 +47,7 @@ function setupEnv() {
     $guestConfigName = RandomString -allChars $false -len 6
     $assignmentName = RandomString -allChars $false -len 6
     $reportName = RandomString -allChars $false -len 6
-    
+
     $resourcegroupName = "ps-$(RandomString -allChars $false -len 4)-rg"
     $location = "westcentralus"
     $rg = New-AzResourceGroup -Location $location -Name $resourcegroupName
@@ -32,7 +57,7 @@ function setupEnv() {
     $vmAdmin = "ps-$(RandomString -allChars $false -len 4)-admin"
     $vmPwd = ConvertTo-SecureString "$(RandomString -allChars $false -len 4)Pw.@0" -AsPlainText -Force
     $credential = New-Object System.Management.Automation.PSCredential ($vmAdmin, $vmPwd)
-    
+
     $vm = New-AzVM -Name $vmName -Credential $credential -ResourceGroupName $resourcegroupName
     $vmss = New-AzVmss -VMScaleSetName $vmssName -Credential $credential -ResourceGroupName $resourcegroupName
 
