@@ -12,29 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
-using System.Collections.Generic;
+using System;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
-{
-    public class TemplateFileTypeDefinition
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
+[assembly: AssemblyTitle("Microsoft Azure Powershell - DataFactory Manager")]
+[assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
+[assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
+[assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
 
-        [JsonProperty("nullable")]
-        public bool? Nullable { get; set; }
-
-        [JsonProperty("allowedValues")]
-        public List<object> AllowedValues { get; set; }
-
-        [JsonProperty("minLength")]
-        public string MinLength { get; set; }
-
-        [JsonProperty("maxLength")]
-        public string MaxLength { get; set; }
-
-        [JsonProperty("$ref")]
-        public string Ref { get; set; }
-    }
-}
+[assembly: ComVisible(false)]
+[assembly: CLSCompliant(false)]
+[assembly: Guid("5d024af0-81c9-44f0-b3b0-7080f103fb4d")]
+[assembly: AssemblyVersion("1.18.0")]
+[assembly: AssemblyFileVersion("1.18.0")]
