@@ -1,6 +1,6 @@
 ### Example 1: Get-AzConnectedNetworkFunctionVendor
 ```powershell
-PS C:\> Get-AzConnectedNetworkFunctionVendor
+Get-AzConnectedNetworkFunctionVendor
 
 SkuList                                                                                         VendorName
 -------                                                                                         ----------
@@ -13,7 +13,7 @@ Getting information about the vendors and their skus
 
 ### Example 2: Get-AzConnectedNetworkFunctionVendor via Subscription Id
 ```powershell
-PS C:\> Get-AzConnectedNetworkFunctionVendor -SubscriptionId "xxxxx-00000-xxxxx-00000"
+Get-AzConnectedNetworkFunctionVendor -SubscriptionId "xxxxx-00000-xxxxx-00000"
 
 SkuList                                                                                         VendorName
 -------                                                                                         ----------

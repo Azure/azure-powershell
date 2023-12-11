@@ -36,7 +36,7 @@ Describe 'New-AzDevCenterUserDevBox' {
         $devBox.PowerState | Should -Be "Running"
 
         if ($Record -or $Live) {
-            $devBox = New-AzDevCenterUserDevBox -DevCenter $env.devCenterName -Name "devbox2" -ProjectName $env.projectName -PoolName $env.poolName
+            $devBox = New-AzDevCenterUserDevBox -DevCenterName $env.devCenterName -Name "devbox2" -ProjectName $env.projectName -PoolName $env.poolName
             $devBox.Name | Should -Be "devbox2"
             $devBox.User | Should -Be $env.userObjectId
             $devBox.ProjectName | Should -Be $env.projectName
@@ -83,7 +83,7 @@ Describe 'New-AzDevCenterUserDevBox' {
         $devBox.PowerState | Should -Be "Running"
 
         if ($Record -or $Live) {
-            $devBox = New-AzDevCenterUserDevBox -DevCenter $env.devCenterName -InputObject  $devBoxInput2 -PoolName $env.poolName
+            $devBox = New-AzDevCenterUserDevBox -DevCenterName $env.devCenterName -InputObject  $devBoxInput2 -PoolName $env.poolName
             $devBox.Name | Should -Be "devbox6"
             $devBox.User | Should -Be $env.userObjectId
             $devBox.ProjectName | Should -Be $env.projectName

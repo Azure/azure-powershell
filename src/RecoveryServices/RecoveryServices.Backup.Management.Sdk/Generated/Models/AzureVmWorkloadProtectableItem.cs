@@ -64,7 +64,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="prebackupvalidation">Pre-backup validation for protectable objects
         /// </param>
-        public AzureVmWorkloadProtectableItem(string backupManagementType = default(string), string workloadType = default(string), string friendlyName = default(string), string protectionState = default(string), string parentName = default(string), string parentUniqueName = default(string), string serverName = default(string), bool? isAutoProtectable = default(bool?), bool? isAutoProtected = default(bool?), int? subinquireditemcount = default(int?), int? subprotectableitemcount = default(int?), PreBackupValidation prebackupvalidation = default(PreBackupValidation))
+
+        /// <param name="isProtectable">Indicates if item is protectable
+        /// </param>
+        public AzureVmWorkloadProtectableItem(string backupManagementType = default(string), string workloadType = default(string), string friendlyName = default(string), string protectionState = default(string), string parentName = default(string), string parentUniqueName = default(string), string serverName = default(string), bool? isAutoProtectable = default(bool?), bool? isAutoProtected = default(bool?), int? subinquireditemcount = default(int?), int? subprotectableitemcount = default(int?), PreBackupValidation prebackupvalidation = default(PreBackupValidation), bool? isProtectable = default(bool?))
 
         : base(backupManagementType, workloadType, friendlyName, protectionState)
         {
@@ -76,6 +79,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             this.Subinquireditemcount = subinquireditemcount;
             this.Subprotectableitemcount = subprotectableitemcount;
             this.Prebackupvalidation = prebackupvalidation;
+            this.IsProtectable = isProtectable;
             CustomInit();
         }
 
@@ -135,5 +139,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "prebackupvalidation")]
         public PreBackupValidation Prebackupvalidation {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates if item is protectable
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isProtectable")]
+        public bool? IsProtectable {get; set; }
     }
 }

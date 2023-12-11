@@ -1,6 +1,6 @@
 ### Example 1: List all confluent marketplace agreement under a subscription
 ```powershell
-PS C:\> Get-AzConfluentMarketplaceAgreement
+Get-AzConfluentMarketplaceAgreement
 
 Name        Type
 ----        ----

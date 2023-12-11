@@ -1,7 +1,7 @@
 ### Example 1: Gets available product families on procured subscription
 ```powershell
-PS C:\> $productFamilyMeta = Get-AzEdgeOrderProductFamilyMetadata -SubscriptionId SubscriptionId
-PS C:\> $productFamilyMeta.HierarchyInformation
+$productFamilyMeta = Get-AzEdgeOrderProductFamilyMetadata -SubscriptionId SubscriptionId
+$productFamilyMeta.HierarchyInformation
 
 ConfigurationName ProductFamilyName ProductLineName ProductName
 ----------------- ----------------- --------------- -----------

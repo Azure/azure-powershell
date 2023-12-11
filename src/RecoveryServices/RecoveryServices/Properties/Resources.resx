@@ -331,4 +331,7 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="ImmutabilityCantBeLocked" xml:space="preserve">
     <value>Immutability can only be locked when it is Unlocked(Enabled).</value>
   </data>
+  <data name="PublicNetworkAccessEnabledByDefault" xml:space="preserve">
+    <value>Public Network Access is by default enabled for this vault and can be updated using Update-AzRecoveryServicesVault cmdlet</value>
+  </data>
 </root>

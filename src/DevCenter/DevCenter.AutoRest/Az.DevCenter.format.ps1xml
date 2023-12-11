@@ -21,6 +21,9 @@
             <Label>DevCenterName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>EnvironmentDefinitionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EnvironmentTypeName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -54,6 +57,9 @@
             <Label>SubscriptionId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>TaskName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>VersionName</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -71,6 +77,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DevCenterName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EnvironmentDefinitionName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EnvironmentTypeName</PropertyName>
@@ -106,7 +115,66 @@
                 <PropertyName>SubscriptionId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>TaskName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>VersionName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.CustomerManagedKeyEncryption</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.CustomerManagedKeyEncryption</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>KeyEncryptionKeyUrl</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>KeyEncryptionKeyUrl</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.CustomerManagedKeyEncryptionKeyIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api40.CustomerManagedKeyEncryptionKeyIdentity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DelegatedIdentityClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IdentityType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UserAssignedIdentityResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DelegatedIdentityClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IdentityType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UserAssignedIdentityResourceId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -672,9 +740,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.AllowedEnvironmentType</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.AllowedEnvironmentType</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.AllowedEnvironmentType</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.AllowedEnvironmentType</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -730,9 +798,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.AllowedEnvironmentTypeListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.AllowedEnvironmentTypeListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.AllowedEnvironmentTypeListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.AllowedEnvironmentTypeListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -752,12 +820,15 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.AllowedEnvironmentTypeProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.AllowedEnvironmentTypeProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.AllowedEnvironmentTypeProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.AllowedEnvironmentTypeProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
@@ -765,6 +836,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
@@ -774,9 +848,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.AttachedNetworkConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.AttachedNetworkConnection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.AttachedNetworkConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.AttachedNetworkConnection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -832,9 +906,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.AttachedNetworkConnectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.AttachedNetworkConnectionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.AttachedNetworkConnectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.AttachedNetworkConnectionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -878,9 +952,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.AttachedNetworkListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.AttachedNetworkListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.AttachedNetworkListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.AttachedNetworkListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -900,9 +974,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Capability</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Capability</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Capability</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Capability</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -928,9 +1002,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Catalog</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Catalog</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Catalog</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Catalog</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -986,9 +1060,65 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.CatalogListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CatalogConflictError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.CatalogListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CatalogConflictError</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Path</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Path</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CatalogErrorDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CatalogErrorDetails</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CatalogListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CatalogListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1008,9 +1138,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.CatalogProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CatalogProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.CatalogProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CatalogProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1037,6 +1167,15 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>GitHubUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SyncType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ConnectionState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastConnectionTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LastSyncTime</Label>
@@ -1076,6 +1215,15 @@
                 <PropertyName>GitHubUri</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>SyncType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ConnectionState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastConnectionTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>LastSyncTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1090,9 +1238,53 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.CatalogUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CatalogSyncError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.CatalogUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CatalogSyncError</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Path</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Path</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CatalogUpdateProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CatalogUpdateProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>SyncType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>SyncType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CatalogUpdateTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CatalogUpdateTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1112,9 +1304,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.CloudErrorBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CloudErrorBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.CloudErrorBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CloudErrorBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1146,9 +1338,145 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevBoxDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CustomizationTask</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevBoxDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CustomizationTask</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CustomizationTaskInput</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CustomizationTaskInput</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Required</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Required</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CustomizationTaskListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CustomizationTaskListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CustomizationTaskProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.CustomizationTaskProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Timeout</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ValidationStatus</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Timeout</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ValidationStatus</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevBoxDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevBoxDefinition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1210,9 +1538,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevBoxDefinitionListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevBoxDefinitionListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevBoxDefinitionListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevBoxDefinitionListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1232,9 +1560,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevBoxDefinitionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevBoxDefinitionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevBoxDefinitionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevBoxDefinitionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1270,6 +1598,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ValidationStatus</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1308,15 +1639,18 @@
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ValidationStatus</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevBoxDefinitionUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevBoxDefinitionUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevBoxDefinitionUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevBoxDefinitionUpdate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1336,9 +1670,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevBoxDefinitionUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevBoxDefinitionUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevBoxDefinitionUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevBoxDefinitionUpdateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1364,9 +1698,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevCenter</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevCenter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevCenter</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevCenter</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1428,9 +1762,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevCenterListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevCenterListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevCenterListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevCenterListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1450,12 +1784,27 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevCenterProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevCenterProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevCenterProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevCenterProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>CustomerManagedKeyEncryptionKeyUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeyEncryptionKeyIdentityDelegatedIdentityClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeyEncryptionKeyIdentityType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>KeyEncryptionKeyIdentityUserAssignedIdentityResourceId</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>DevCenterUri</Label>
           </TableColumnHeader>
@@ -1466,6 +1815,21 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CustomerManagedKeyEncryptionKeyUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeyEncryptionKeyIdentityDelegatedIdentityClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeyEncryptionKeyIdentityType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>KeyEncryptionKeyIdentityUserAssignedIdentityResourceId</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DevCenterUri</PropertyName>
               </TableColumnItem>
@@ -1478,9 +1842,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevCenterSku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevCenterSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevCenterSku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevCenterSku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1536,9 +1900,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevCenterUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevCenterUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.DevCenterUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevCenterUpdate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1558,9 +1922,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.EndpointDependency</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevCenterUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.EndpointDependency</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.DevCenterUpdateProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EndpointDependency</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EndpointDependency</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1586,9 +1972,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.EndpointDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EndpointDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.EndpointDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EndpointDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1608,9 +1994,163 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.EnvironmentRole</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.EnvironmentRole</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentDefinition</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentDefinitionListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentDefinitionListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentDefinitionParameter</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentDefinitionParameter</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ReadOnly</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Required</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ReadOnly</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Required</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentDefinitionProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentDefinitionProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TemplatePath</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ValidationStatus</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TemplatePath</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ValidationStatus</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentRole</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentRole</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1636,9 +2176,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.EnvironmentType</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentType</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.EnvironmentType</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentType</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1694,9 +2234,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.EnvironmentTypeListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentTypeListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.EnvironmentTypeListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentTypeListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1716,12 +2256,15 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.EnvironmentTypeProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentTypeProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.EnvironmentTypeProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentTypeProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
@@ -1729,6 +2272,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
@@ -1738,9 +2284,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Gallery</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentTypeUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Gallery</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.EnvironmentTypeUpdateProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Gallery</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Gallery</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1796,9 +2364,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.GalleryListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.GalleryListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.GalleryListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.GalleryListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1818,9 +2386,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.GalleryProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.GalleryProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.GalleryProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.GalleryProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1846,9 +2414,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.GitCatalog</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.GitCatalog</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.GitCatalog</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.GitCatalog</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1886,9 +2454,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.HealthCheck</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.HealthCheck</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.HealthCheck</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.HealthCheck</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1944,9 +2512,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.HealthCheckStatusDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.HealthCheckStatusDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.HealthCheckStatusDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.HealthCheckStatusDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2002,9 +2570,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.HealthCheckStatusDetailsListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.HealthCheckStatusDetailsListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.HealthCheckStatusDetailsListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.HealthCheckStatusDetailsListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2024,9 +2592,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.HealthCheckStatusDetailsProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.HealthCheckStatusDetailsProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.HealthCheckStatusDetailsProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.HealthCheckStatusDetailsProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2052,9 +2620,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.HealthStatusDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.HealthStatusDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.HealthStatusDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.HealthStatusDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2080,9 +2648,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Image</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Image</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Image</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Image</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2138,9 +2706,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ImageListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ImageListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ImageListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ImageListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2160,9 +2728,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ImageProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ImageProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ImageProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ImageProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2212,9 +2780,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ImageReference</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ImageReference</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ImageReference</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ImageReference</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2234,9 +2802,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ImageValidationErrorDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ImageValidationErrorDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ImageValidationErrorDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ImageValidationErrorDetails</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2262,9 +2830,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ImageVersion</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ImageVersion</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ImageVersion</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ImageVersion</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2320,9 +2888,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ImageVersionListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ImageVersionListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ImageVersionListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ImageVersionListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2342,9 +2910,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ImageVersionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ImageVersionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ImageVersionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ImageVersionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2388,9 +2956,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ListUsagesResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ListUsagesResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ListUsagesResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ListUsagesResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2410,9 +2978,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.NetworkConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.NetworkConnection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.NetworkConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.NetworkConnection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2474,9 +3042,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.NetworkConnectionListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.NetworkConnectionListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.NetworkConnectionListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.NetworkConnectionListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2496,9 +3064,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.NetworkConnectionUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.NetworkConnectionUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.NetworkConnectionUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.NetworkConnectionUpdate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2518,9 +3086,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.NetworkConnectionUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.NetworkConnectionUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.NetworkConnectionUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.NetworkConnectionUpdateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2564,9 +3132,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.NetworkProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.NetworkProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.NetworkProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.NetworkProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2634,9 +3202,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.OperationStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.OperationStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.OperationStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.OperationStatus</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2704,9 +3272,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.OutboundEnvironmentEndpoint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.OutboundEnvironmentEndpoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.OutboundEnvironmentEndpoint</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.OutboundEnvironmentEndpoint</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2726,9 +3294,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.OutboundEnvironmentEndpointCollection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.OutboundEnvironmentEndpointCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.OutboundEnvironmentEndpointCollection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.OutboundEnvironmentEndpointCollection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2748,9 +3316,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Pool</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Pool</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Pool</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Pool</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2812,9 +3380,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.PoolListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.PoolListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.PoolListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.PoolListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2834,14 +3402,17 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.PoolProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.PoolProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.PoolProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.PoolProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>DevBoxDefinitionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LicenseType</Label>
@@ -2850,13 +3421,25 @@
             <Label>LocalAdministrator</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ManagedVirtualNetworkRegion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>NetworkConnectionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SingleSignOnStatus</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>StopOnDisconnectGracePeriodMinute</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>StopOnDisconnectStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VirtualNetworkType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DevBoxCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>HealthStatus</Label>
@@ -2872,19 +3455,34 @@
                 <PropertyName>DevBoxDefinitionName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>LicenseType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LocalAdministrator</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ManagedVirtualNetworkRegion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>NetworkConnectionName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SingleSignOnStatus</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>StopOnDisconnectGracePeriodMinute</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>StopOnDisconnectStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VirtualNetworkType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DevBoxCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>HealthStatus</PropertyName>
@@ -2898,9 +3496,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.PoolUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.PoolUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.PoolUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.PoolUpdate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2920,14 +3518,17 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.PoolUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.PoolUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.PoolUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.PoolUpdateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>DevBoxDefinitionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LicenseType</Label>
@@ -2936,7 +3537,16 @@
             <Label>LocalAdministrator</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ManagedVirtualNetworkRegion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>NetworkConnectionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SingleSignOnStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VirtualNetworkType</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2946,23 +3556,35 @@
                 <PropertyName>DevBoxDefinitionName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>LicenseType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LocalAdministrator</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ManagedVirtualNetworkRegion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>NetworkConnectionName</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SingleSignOnStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>VirtualNetworkType</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Project</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Project</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Project</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Project</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3024,9 +3646,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ProjectEnvironmentType</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ProjectEnvironmentType</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ProjectEnvironmentType</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ProjectEnvironmentType</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3088,9 +3710,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ProjectEnvironmentTypeListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ProjectEnvironmentTypeListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ProjectEnvironmentTypeListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ProjectEnvironmentTypeListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3110,9 +3732,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ProjectEnvironmentTypeProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ProjectEnvironmentTypeProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ProjectEnvironmentTypeProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ProjectEnvironmentTypeProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3121,6 +3743,12 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EnvironmentCount</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
@@ -3136,6 +3764,12 @@
                 <PropertyName>Status</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EnvironmentCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -3144,9 +3778,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ProjectEnvironmentTypeUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ProjectEnvironmentTypeUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ProjectEnvironmentTypeUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ProjectEnvironmentTypeUpdateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3172,9 +3806,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ProjectListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ProjectListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ProjectListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ProjectListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3194,9 +3828,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ProjectProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ProjectProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ProjectProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ProjectProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3205,6 +3839,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DevCenterId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MaxDevBoxesPerUser</Label>
@@ -3226,6 +3863,9 @@
                 <PropertyName>DevCenterId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>MaxDevBoxesPerUser</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -3240,9 +3880,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ProjectUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ProjectUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ProjectUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ProjectUpdate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3262,9 +3902,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ProjectUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ProjectUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ProjectUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ProjectUpdateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3273,6 +3913,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DevCenterId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MaxDevBoxesPerUser</Label>
@@ -3288,6 +3931,9 @@
                 <PropertyName>DevCenterId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>MaxDevBoxesPerUser</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -3296,9 +3942,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ResourceRange</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ResourceRange</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ResourceRange</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ResourceRange</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3324,9 +3970,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Schedule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Schedule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Schedule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Schedule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3382,9 +4028,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ScheduleListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ScheduleListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ScheduleListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ScheduleListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3404,9 +4050,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ScheduleProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ScheduleProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ScheduleProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ScheduleProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3450,9 +4096,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ScheduleUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ScheduleUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ScheduleUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ScheduleUpdate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3472,9 +4118,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ScheduleUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ScheduleUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ScheduleUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.ScheduleUpdateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3512,9 +4158,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.SkuListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.SkuListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.SkuListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.SkuListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3534,9 +4180,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.StopOnDisconnectConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.StopOnDisconnectConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.StopOnDisconnectConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.StopOnDisconnectConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3562,9 +4208,61 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Tags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.SyncStats</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Tags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.SyncStats</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Added</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Removed</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SynchronizationError</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Unchanged</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Updated</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ValidationError</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Added</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Removed</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SynchronizationError</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Unchanged</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Updated</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ValidationError</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Tags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Tags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3584,9 +4282,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.TrackedResourceUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.TrackedResourceUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.TrackedResourceUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.TrackedResourceUpdate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3606,9 +4304,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Usage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Usage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.Usage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.Usage</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3640,9 +4338,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.UsageName</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.UsageName</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.UsageName</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.UsageName</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

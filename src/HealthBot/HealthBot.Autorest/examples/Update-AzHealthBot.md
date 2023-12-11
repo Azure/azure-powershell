@@ -1,6 +1,6 @@
 ### Example 1: update HealthBot by Resourcegroupname and Name
 ```powershell
-PS C:\> update-AzHealthBot -ResourceGroupName youriTest -Name yourihealthbot -Sku S1
+update-AzHealthBot -ResourceGroupName youriTest -Name yourihealthbot -Sku S1
 
 Location Name           SystemDataCreatedAt SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type
 -------- ----           ------------------- -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- ----
@@ -11,7 +11,7 @@ update HealthBot by Resourcegroupname and Name
 
 ### Example 2: update HealthBot by InputObject
 ```powershell
-PS C:\> $getHealth = Get-AzHealthBot -ResourceGroupName youriTest -Name yourihealthbot
+$getHealth = Get-AzHealthBot -ResourceGroupName youriTest -Name yourihealthbot
 Update-AzHealthBot -InputObject $getHealth -Sku F0
 
 Location Name           SystemDataCreatedAt SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Type

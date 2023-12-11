@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterAdminNetworkCo
 
 Describe 'Get-AzDevCenterAdminNetworkConnectionHealthDetail' {
     It 'Get' {
-        $healthDetail = Get-AzDevCenterAdminNetworkConnectionHealthDetail -NetworkConnectionName $env.networkConnectionName -ResourceGroupName $env.resourceGroup
+        $healthDetail = Get-AzDevCenterAdminNetworkConnectionHealthDetail -NetworkConnectionName $env.networkConnection10 -ResourceGroupName $env.rg10 -SubscriptionId $env.SubscriptionId2
         $healthDetail.HealthCheck.Count | Should -Be 7
         $healthDetail.HealthCheck[0].DisplayName | Should -Be "Azure tenant readiness"
         $healthDetail.HealthCheck[1].DisplayName | Should -Be "Azure virtual network readiness"

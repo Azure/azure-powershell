@@ -14,6 +14,209 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
     public partial class DevCenterdata
     {
 
+        /// <summary>Applies customizations to the Dev Box.</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="devBoxName">The name of a Dev Box.</param>
+        /// <param name="customizationGroupName">A customization group name.</param>
+        /// <param name="body">Represents a customization group.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DevBoxesCreateCustomizationGroup(string endpoint, string projectName, string userId, string devBoxName, string customizationGroupName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "/devboxes/"
+                        + global::System.Uri.EscapeDataString(devBoxName)
+                        + "/customizationGroups/"
+                        + global::System.Uri.EscapeDataString(customizationGroupName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DevBoxesCreateCustomizationGroup_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Applies customizations to the Dev Box.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="body">Represents a customization group.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DevBoxesCreateCustomizationGroupViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/devboxes/(?<devBoxName>[^/]+)/customizationGroups/(?<customizationGroupName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/devboxes/{devBoxName}/customizationGroups/{customizationGroupName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var userId = _match.Groups["userId"].Value;
+                var devBoxName = _match.Groups["devBoxName"].Value;
+                var customizationGroupName = _match.Groups["customizationGroupName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/users/"
+                        + userId
+                        + "/devboxes/"
+                        + devBoxName
+                        + "/customizationGroups/"
+                        + customizationGroupName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DevBoxesCreateCustomizationGroup_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="DevBoxesCreateCustomizationGroup" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DevBoxesCreateCustomizationGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="DevBoxesCreateCustomizationGroup" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="devBoxName">The name of a Dev Box.</param>
+        /// <param name="customizationGroupName">A customization group name.</param>
+        /// <param name="body">Represents a customization group.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DevBoxesCreateCustomizationGroup_Validate(string endpoint, string projectName, string userId, string devBoxName, string customizationGroupName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup body, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(userId),userId);
+                await eventListener.AssertMinimumLength(nameof(userId),userId,2);
+                await eventListener.AssertMaximumLength(nameof(userId),userId,36);
+                await eventListener.AssertRegEx(nameof(userId),userId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$|^me$");
+                await eventListener.AssertNotNull(nameof(devBoxName),devBoxName);
+                await eventListener.AssertMinimumLength(nameof(devBoxName),devBoxName,3);
+                await eventListener.AssertMaximumLength(nameof(devBoxName),devBoxName,63);
+                await eventListener.AssertRegEx(nameof(devBoxName),devBoxName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(customizationGroupName),customizationGroupName);
+                await eventListener.AssertMinimumLength(nameof(customizationGroupName),customizationGroupName,3);
+                await eventListener.AssertMaximumLength(nameof(customizationGroupName),customizationGroupName,63);
+                await eventListener.AssertRegEx(nameof(customizationGroupName),customizationGroupName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
         /// <summary>Creates or replaces a Dev Box.</summary>
         /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
         /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
@@ -28,9 +231,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesCreateDevBox(string endpoint, string projectName, string userId, string devBoxName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesCreateDevBox(string endpoint, string projectName, string userId, string devBoxName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBox body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBox>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -75,9 +278,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesCreateDevBoxViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesCreateDevBoxViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBox body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBox>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -132,7 +335,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesCreateDevBox_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesCreateDevBox_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBox>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -246,13 +449,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBox.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBox.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -280,7 +483,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesCreateDevBox_Validate(string endpoint, string projectName, string userId, string devBoxName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox body, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DevBoxesCreateDevBox_Validate(string endpoint, string projectName, string userId, string devBoxName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBox body, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -317,9 +520,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesDelayAction(string endpoint, string projectName, string userId, string devBoxName, string actionName, global::System.DateTime until, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesDelayAction(string endpoint, string projectName, string userId, string devBoxName, string actionName, global::System.DateTime until, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -365,9 +568,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesDelayActionViaIdentity(global::System.String viaIdentity, string endpoint, global::System.DateTime until, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesDelayActionViaIdentity(global::System.String viaIdentity, string endpoint, global::System.DateTime until, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -424,7 +627,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesDelayAction_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesDelayAction_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -442,13 +645,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxAction.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxAction.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -515,9 +718,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesDelayActions(string endpoint, string projectName, string userId, string devBoxName, global::System.DateTime until, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxActionsDelayMultipleResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesDelayActions(string endpoint, string projectName, string userId, string devBoxName, global::System.DateTime until, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxActionsDelayMultipleResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -561,9 +764,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesDelayActionsViaIdentity(global::System.String viaIdentity, string endpoint, global::System.DateTime until, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxActionsDelayMultipleResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesDelayActionsViaIdentity(global::System.String viaIdentity, string endpoint, global::System.DateTime until, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxActionsDelayMultipleResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -617,7 +820,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesDelayActions_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxActionsDelayMultipleResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesDelayActions_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxActionsDelayMultipleResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -635,13 +838,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxActionsDelayMultipleResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxActionsDelayMultipleResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -703,9 +906,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesDeleteDevBox(string endpoint, string projectName, string userId, string devBoxName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesDeleteDevBox(string endpoint, string projectName, string userId, string devBoxName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -746,9 +949,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesDeleteDevBoxViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesDeleteDevBoxViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -800,7 +1003,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesDeleteDevBox_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesDeleteDevBox_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -918,7 +1121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.NoContent:
@@ -930,7 +1133,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -991,9 +1194,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesGetAction(string endpoint, string projectName, string userId, string devBoxName, string actionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesGetAction(string endpoint, string projectName, string userId, string devBoxName, string actionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1035,9 +1238,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesGetActionViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesGetActionViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1091,7 +1294,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesGetAction_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesGetAction_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1109,13 +1312,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxAction.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxAction.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1167,6 +1370,397 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
             }
         }
 
+        /// <summary>Gets a customization group.</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="devBoxName">The name of a Dev Box.</param>
+        /// <param name="customizationGroupName">A customization group name.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DevBoxesGetCustomizationGroup(string endpoint, string projectName, string userId, string devBoxName, string customizationGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "/devboxes/"
+                        + global::System.Uri.EscapeDataString(devBoxName)
+                        + "/customizationGroups/"
+                        + global::System.Uri.EscapeDataString(customizationGroupName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DevBoxesGetCustomizationGroup_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets a customization group.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DevBoxesGetCustomizationGroupViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/devboxes/(?<devBoxName>[^/]+)/customizationGroups/(?<customizationGroupName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/devboxes/{devBoxName}/customizationGroups/{customizationGroupName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var userId = _match.Groups["userId"].Value;
+                var devBoxName = _match.Groups["devBoxName"].Value;
+                var customizationGroupName = _match.Groups["customizationGroupName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/users/"
+                        + userId
+                        + "/devboxes/"
+                        + devBoxName
+                        + "/customizationGroups/"
+                        + customizationGroupName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DevBoxesGetCustomizationGroup_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="DevBoxesGetCustomizationGroup" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DevBoxesGetCustomizationGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="DevBoxesGetCustomizationGroup" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="devBoxName">The name of a Dev Box.</param>
+        /// <param name="customizationGroupName">A customization group name.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DevBoxesGetCustomizationGroup_Validate(string endpoint, string projectName, string userId, string devBoxName, string customizationGroupName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(userId),userId);
+                await eventListener.AssertMinimumLength(nameof(userId),userId,2);
+                await eventListener.AssertMaximumLength(nameof(userId),userId,36);
+                await eventListener.AssertRegEx(nameof(userId),userId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$|^me$");
+                await eventListener.AssertNotNull(nameof(devBoxName),devBoxName);
+                await eventListener.AssertMinimumLength(nameof(devBoxName),devBoxName,3);
+                await eventListener.AssertMaximumLength(nameof(devBoxName),devBoxName,63);
+                await eventListener.AssertRegEx(nameof(devBoxName),devBoxName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(customizationGroupName),customizationGroupName);
+                await eventListener.AssertMinimumLength(nameof(customizationGroupName),customizationGroupName,3);
+                await eventListener.AssertMaximumLength(nameof(customizationGroupName),customizationGroupName,63);
+                await eventListener.AssertRegEx(nameof(customizationGroupName),customizationGroupName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+            }
+        }
+
+        /// <summary>Gets the log for a customization task.</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="devBoxName">The name of a Dev Box.</param>
+        /// <param name="customizationGroupName">A customization group name.</param>
+        /// <param name="customizationTaskId">A customization task ID.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DevBoxesGetCustomizationTaskLog(string endpoint, string projectName, string userId, string devBoxName, string customizationGroupName, string customizationTaskId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<global::System.IO.Stream>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "/devboxes/"
+                        + global::System.Uri.EscapeDataString(devBoxName)
+                        + "/customizationGroups/"
+                        + global::System.Uri.EscapeDataString(customizationGroupName)
+                        + "/logs/"
+                        + global::System.Uri.EscapeDataString(customizationTaskId)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DevBoxesGetCustomizationTaskLog_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets the log for a customization task.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DevBoxesGetCustomizationTaskLogViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<global::System.IO.Stream>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/devboxes/(?<devBoxName>[^/]+)/customizationGroups/(?<customizationGroupName>[^/]+)/logs/(?<customizationTaskId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/devboxes/{devBoxName}/customizationGroups/{customizationGroupName}/logs/{customizationTaskId}'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var userId = _match.Groups["userId"].Value;
+                var devBoxName = _match.Groups["devBoxName"].Value;
+                var customizationGroupName = _match.Groups["customizationGroupName"].Value;
+                var customizationTaskId = _match.Groups["customizationTaskId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/users/"
+                        + userId
+                        + "/devboxes/"
+                        + devBoxName
+                        + "/customizationGroups/"
+                        + customizationGroupName
+                        + "/logs/"
+                        + customizationTaskId
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DevBoxesGetCustomizationTaskLog_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="DevBoxesGetCustomizationTaskLog" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DevBoxesGetCustomizationTaskLog_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<global::System.IO.Stream>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStreamAsync());
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response);
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="DevBoxesGetCustomizationTaskLog" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="devBoxName">The name of a Dev Box.</param>
+        /// <param name="customizationGroupName">A customization group name.</param>
+        /// <param name="customizationTaskId">A customization task ID.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DevBoxesGetCustomizationTaskLog_Validate(string endpoint, string projectName, string userId, string devBoxName, string customizationGroupName, string customizationTaskId, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(userId),userId);
+                await eventListener.AssertMinimumLength(nameof(userId),userId,2);
+                await eventListener.AssertMaximumLength(nameof(userId),userId,36);
+                await eventListener.AssertRegEx(nameof(userId),userId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$|^me$");
+                await eventListener.AssertNotNull(nameof(devBoxName),devBoxName);
+                await eventListener.AssertMinimumLength(nameof(devBoxName),devBoxName,3);
+                await eventListener.AssertMaximumLength(nameof(devBoxName),devBoxName,63);
+                await eventListener.AssertRegEx(nameof(devBoxName),devBoxName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(customizationGroupName),customizationGroupName);
+                await eventListener.AssertMinimumLength(nameof(customizationGroupName),customizationGroupName,3);
+                await eventListener.AssertMaximumLength(nameof(customizationGroupName),customizationGroupName,63);
+                await eventListener.AssertRegEx(nameof(customizationGroupName),customizationGroupName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(customizationTaskId),customizationTaskId);
+                await eventListener.AssertMinimumLength(nameof(customizationTaskId),customizationTaskId,36);
+                await eventListener.AssertMaximumLength(nameof(customizationTaskId),customizationTaskId,36);
+                await eventListener.AssertRegEx(nameof(customizationTaskId),customizationTaskId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$");
+            }
+        }
+
         /// <summary>Gets a Dev Box</summary>
         /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
         /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
@@ -1180,9 +1774,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesGetDevBoxByUser(string endpoint, string projectName, string userId, string devBoxName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesGetDevBoxByUser(string endpoint, string projectName, string userId, string devBoxName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBox>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1222,9 +1816,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesGetDevBoxByUserViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesGetDevBoxByUserViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBox>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1275,7 +1869,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesGetDevBoxByUser_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesGetDevBoxByUser_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBox>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1293,13 +1887,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBox.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBox.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1346,6 +1940,196 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
             }
         }
 
+        /// <summary>Gets an operation on a Dev Box.</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="devBoxName">The name of a Dev Box.</param>
+        /// <param name="operationId">The id of the operation on a Dev Box.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DevBoxesGetOperation(string endpoint, string projectName, string userId, string devBoxName, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxOperation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "/devboxes/"
+                        + global::System.Uri.EscapeDataString(devBoxName)
+                        + "/operations/"
+                        + global::System.Uri.EscapeDataString(operationId)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DevBoxesGetOperation_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets an operation on a Dev Box.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DevBoxesGetOperationViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxOperation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/devboxes/(?<devBoxName>[^/]+)/operations/(?<operationId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/devboxes/{devBoxName}/operations/{operationId}'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var userId = _match.Groups["userId"].Value;
+                var devBoxName = _match.Groups["devBoxName"].Value;
+                var operationId = _match.Groups["operationId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/users/"
+                        + userId
+                        + "/devboxes/"
+                        + devBoxName
+                        + "/operations/"
+                        + operationId
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DevBoxesGetOperation_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="DevBoxesGetOperation" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DevBoxesGetOperation_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxOperation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxOperation.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="DevBoxesGetOperation" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="devBoxName">The name of a Dev Box.</param>
+        /// <param name="operationId">The id of the operation on a Dev Box.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DevBoxesGetOperation_Validate(string endpoint, string projectName, string userId, string devBoxName, string operationId, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(userId),userId);
+                await eventListener.AssertMinimumLength(nameof(userId),userId,2);
+                await eventListener.AssertMaximumLength(nameof(userId),userId,36);
+                await eventListener.AssertRegEx(nameof(userId),userId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$|^me$");
+                await eventListener.AssertNotNull(nameof(devBoxName),devBoxName);
+                await eventListener.AssertMinimumLength(nameof(devBoxName),devBoxName,3);
+                await eventListener.AssertMaximumLength(nameof(devBoxName),devBoxName,63);
+                await eventListener.AssertRegEx(nameof(devBoxName),devBoxName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(operationId),operationId);
+                await eventListener.AssertMinimumLength(nameof(operationId),operationId,3);
+                await eventListener.AssertMaximumLength(nameof(operationId),operationId,63);
+                await eventListener.AssertRegEx(nameof(operationId),operationId,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+            }
+        }
+
         /// <summary>Gets a pool</summary>
         /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
         /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
@@ -1358,9 +2142,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesGetPool(string endpoint, string projectName, string poolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesGetPool(string endpoint, string projectName, string poolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1398,9 +2182,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesGetPoolViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesGetPoolViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1448,7 +2232,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesGetPool_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesGetPool_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1466,13 +2250,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Pool.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Pool.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1527,9 +2311,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesGetRemoteConnection(string endpoint, string projectName, string userId, string devBoxName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IRemoteConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesGetRemoteConnection(string endpoint, string projectName, string userId, string devBoxName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IRemoteConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1570,9 +2354,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesGetRemoteConnectionViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IRemoteConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesGetRemoteConnectionViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IRemoteConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1624,7 +2408,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesGetRemoteConnection_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IRemoteConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesGetRemoteConnection_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IRemoteConnection>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1642,13 +2426,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.RemoteConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.RemoteConnection.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1708,9 +2492,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesGetScheduleByPool(string endpoint, string projectName, string poolName, string scheduleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ISchedule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesGetScheduleByPool(string endpoint, string projectName, string poolName, string scheduleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ISchedule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1750,9 +2534,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesGetScheduleByPoolViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ISchedule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesGetScheduleByPoolViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ISchedule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1803,7 +2587,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesGetScheduleByPool_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ISchedule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesGetScheduleByPool_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ISchedule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1821,13 +2605,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Schedule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Schedule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1884,9 +2668,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesListActions(string endpoint, string projectName, string userId, string devBoxName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxActionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesListActions(string endpoint, string projectName, string userId, string devBoxName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxActionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1927,9 +2711,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesListActionsViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxActionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesListActionsViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxActionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1981,7 +2765,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesListActions_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxActionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesListActions_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxActionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1999,13 +2783,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxActionsListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxActionsListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2064,9 +2848,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesListAllDevBoxes(string endpoint, string filter, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesListAllDevBoxes(string endpoint, string filter, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2107,9 +2891,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesListAllDevBoxesByUser(string endpoint, string filter, int? top, string userId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesListAllDevBoxesByUser(string endpoint, string filter, int? top, string userId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2152,9 +2936,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesListAllDevBoxesByUserViaIdentity(global::System.String viaIdentity, string endpoint, string filter, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesListAllDevBoxesByUserViaIdentity(global::System.String viaIdentity, string endpoint, string filter, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2204,7 +2988,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesListAllDevBoxesByUser_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesListAllDevBoxesByUser_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2222,13 +3006,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2281,9 +3065,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesListAllDevBoxesViaIdentity(global::System.String viaIdentity, string endpoint, string filter, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesListAllDevBoxesViaIdentity(global::System.String viaIdentity, string endpoint, string filter, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2330,7 +3114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesListAllDevBoxes_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesListAllDevBoxes_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2348,13 +3132,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2389,6 +3173,205 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
             }
         }
 
+        /// <summary>
+        /// Lists customization groups on the Dev Box. Listed customization groups exclude task information unless specified via the
+        /// include parameter.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="devBoxName">The name of a Dev Box.</param>
+        /// <param name="include">Optional query parameter to specify what properties should be included in the response.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DevBoxesListCustomizationGroups(string endpoint, string projectName, string userId, string devBoxName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.ListCustomizationGroupsIncludeProperty[] include, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "/devboxes/"
+                        + global::System.Uri.EscapeDataString(devBoxName)
+                        + "/customizationGroups"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (null != include  && include.Length > 0 ? "include=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(include, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DevBoxesListCustomizationGroups_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Lists customization groups on the Dev Box. Listed customization groups exclude task information unless specified via the
+        /// include parameter.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="include">Optional query parameter to specify what properties should be included in the response.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DevBoxesListCustomizationGroupsViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.ListCustomizationGroupsIncludeProperty[] include, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/devboxes/(?<devBoxName>[^/]+)/customizationGroups$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/devboxes/{devBoxName}/customizationGroups'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var userId = _match.Groups["userId"].Value;
+                var devBoxName = _match.Groups["devBoxName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/users/"
+                        + userId
+                        + "/devboxes/"
+                        + devBoxName
+                        + "/customizationGroups"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (null != include  && include.Length > 0 ? "include=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(include, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DevBoxesListCustomizationGroups_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="DevBoxesListCustomizationGroups" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DevBoxesListCustomizationGroups_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationGroupListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="DevBoxesListCustomizationGroups" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="devBoxName">The name of a Dev Box.</param>
+        /// <param name="include">Optional query parameter to specify what properties should be included in the response.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DevBoxesListCustomizationGroups_Validate(string endpoint, string projectName, string userId, string devBoxName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.ListCustomizationGroupsIncludeProperty[] include, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(userId),userId);
+                await eventListener.AssertMinimumLength(nameof(userId),userId,2);
+                await eventListener.AssertMaximumLength(nameof(userId),userId,36);
+                await eventListener.AssertRegEx(nameof(userId),userId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$|^me$");
+                await eventListener.AssertNotNull(nameof(devBoxName),devBoxName);
+                await eventListener.AssertMinimumLength(nameof(devBoxName),devBoxName,3);
+                await eventListener.AssertMaximumLength(nameof(devBoxName),devBoxName,63);
+                await eventListener.AssertRegEx(nameof(devBoxName),devBoxName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                if (include != null ) {
+                        for (int __i = 0; __i < include.Length; __i++) {
+                          await eventListener.AssertEnum($"include[{__i}]",include[__i],@"tasks");
+                        }
+                      }
+            }
+        }
+
         /// <summary>Lists Dev Boxes in the project for a particular user.</summary>
         /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
         /// <param name="filter">An OData filter clause to apply to the operation.</param>
@@ -2403,9 +3386,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesListDevBoxesByUser(string endpoint, string filter, int? top, string projectName, string userId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesListDevBoxesByUser(string endpoint, string filter, int? top, string projectName, string userId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2450,9 +3433,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesListDevBoxesByUserViaIdentity(global::System.String viaIdentity, string endpoint, string filter, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesListDevBoxesByUserViaIdentity(global::System.String viaIdentity, string endpoint, string filter, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2505,7 +3488,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesListDevBoxesByUser_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesListDevBoxesByUser_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2523,13 +3506,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2574,6 +3557,202 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
             }
         }
 
+        /// <summary>Lists operations on the Dev Box which have occurred within the past 90 days.</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="top">The maximum number of resources to return from the operation. Example: 'top=10'.</param>
+        /// <param name="filter">An OData filter clause to apply to the operation.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="devBoxName">The name of a Dev Box.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DevBoxesListOperations(string endpoint, int? top, string filter, string projectName, string userId, string devBoxName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "/devboxes/"
+                        + global::System.Uri.EscapeDataString(devBoxName)
+                        + "/operations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (null == top ? global::System.String.Empty : "top=" + global::System.Uri.EscapeDataString(top.ToString()))
+                        + "&"
+                        + (string.IsNullOrEmpty(filter) ? global::System.String.Empty : "filter=" + global::System.Uri.EscapeDataString(filter))
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DevBoxesListOperations_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists operations on the Dev Box which have occurred within the past 90 days.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="top">The maximum number of resources to return from the operation. Example: 'top=10'.</param>
+        /// <param name="filter">An OData filter clause to apply to the operation.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DevBoxesListOperationsViaIdentity(global::System.String viaIdentity, string endpoint, int? top, string filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/devboxes/(?<devBoxName>[^/]+)/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/devboxes/{devBoxName}/operations'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var userId = _match.Groups["userId"].Value;
+                var devBoxName = _match.Groups["devBoxName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/users/"
+                        + userId
+                        + "/devboxes/"
+                        + devBoxName
+                        + "/operations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (null == top ? global::System.String.Empty : "top=" + global::System.Uri.EscapeDataString(top.ToString()))
+                        + "&"
+                        + (string.IsNullOrEmpty(filter) ? global::System.String.Empty : "filter=" + global::System.Uri.EscapeDataString(filter))
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DevBoxesListOperations_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="DevBoxesListOperations" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DevBoxesListOperations_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxOperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="DevBoxesListOperations" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="top">The maximum number of resources to return from the operation. Example: 'top=10'.</param>
+        /// <param name="filter">An OData filter clause to apply to the operation.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="devBoxName">The name of a Dev Box.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DevBoxesListOperations_Validate(string endpoint, int? top, string filter, string projectName, string userId, string devBoxName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(filter),filter);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(userId),userId);
+                await eventListener.AssertMinimumLength(nameof(userId),userId,2);
+                await eventListener.AssertMaximumLength(nameof(userId),userId,36);
+                await eventListener.AssertRegEx(nameof(userId),userId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$|^me$");
+                await eventListener.AssertNotNull(nameof(devBoxName),devBoxName);
+                await eventListener.AssertMinimumLength(nameof(devBoxName),devBoxName,3);
+                await eventListener.AssertMaximumLength(nameof(devBoxName),devBoxName,63);
+                await eventListener.AssertRegEx(nameof(devBoxName),devBoxName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+            }
+        }
+
         /// <summary>Lists available pools</summary>
         /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
         /// <param name="top">The maximum number of resources to return from the operation. Example: 'top=10'.</param>
@@ -2587,9 +3766,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesListPools(string endpoint, int? top, string filter, string projectName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IPoolListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesListPools(string endpoint, int? top, string filter, string projectName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IPoolListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2632,9 +3811,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesListPoolsViaIdentity(global::System.String viaIdentity, string endpoint, int? top, string filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IPoolListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesListPoolsViaIdentity(global::System.String viaIdentity, string endpoint, int? top, string filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IPoolListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2684,7 +3863,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesListPools_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IPoolListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesListPools_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IPoolListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2702,13 +3881,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.PoolListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.PoolListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2748,7 +3927,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
             }
         }
 
-        /// <summary>Lists available schedules for a pool.</summary>
+        /// <summary>
+        /// Lists all schedules within a pool that are configured by your project administrator.
+        /// </summary>
         /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
         /// <param name="top">The maximum number of resources to return from the operation. Example: 'top=10'.</param>
         /// <param name="filter">An OData filter clause to apply to the operation.</param>
@@ -2762,9 +3943,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesListSchedulesByPool(string endpoint, int? top, string filter, string projectName, string poolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IScheduleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesListSchedulesByPool(string endpoint, int? top, string filter, string projectName, string poolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IScheduleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2796,7 +3977,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
             }
         }
 
-        /// <summary>Lists available schedules for a pool.</summary>
+        /// <summary>
+        /// Lists all schedules within a pool that are configured by your project administrator.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
         /// <param name="top">The maximum number of resources to return from the operation. Example: 'top=10'.</param>
@@ -2809,9 +3992,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesListSchedulesByPoolViaIdentity(global::System.String viaIdentity, string endpoint, int? top, string filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IScheduleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesListSchedulesByPoolViaIdentity(global::System.String viaIdentity, string endpoint, int? top, string filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IScheduleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2864,7 +4047,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesListSchedulesByPool_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IScheduleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesListSchedulesByPool_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IScheduleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2882,13 +4065,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ScheduleListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ScheduleListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2933,7 +4116,187 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
             }
         }
 
-        /// <summary>Restarts a Dev Box</summary>
+        /// <summary>
+        /// Lists all schedules within a project that are configured by your project administrator.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="top">The maximum number of resources to return from the operation. Example: 'top=10'.</param>
+        /// <param name="filter">An OData filter clause to apply to the operation.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DevBoxesListSchedulesByProject(string endpoint, int? top, string filter, string projectName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IScheduleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/schedules"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (null == top ? global::System.String.Empty : "top=" + global::System.Uri.EscapeDataString(top.ToString()))
+                        + "&"
+                        + (string.IsNullOrEmpty(filter) ? global::System.String.Empty : "filter=" + global::System.Uri.EscapeDataString(filter))
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DevBoxesListSchedulesByProject_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Lists all schedules within a project that are configured by your project administrator.
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="top">The maximum number of resources to return from the operation. Example: 'top=10'.</param>
+        /// <param name="filter">An OData filter clause to apply to the operation.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DevBoxesListSchedulesByProjectViaIdentity(global::System.String viaIdentity, string endpoint, int? top, string filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IScheduleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/schedules$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/schedules'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/schedules"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (null == top ? global::System.String.Empty : "top=" + global::System.Uri.EscapeDataString(top.ToString()))
+                        + "&"
+                        + (string.IsNullOrEmpty(filter) ? global::System.String.Empty : "filter=" + global::System.Uri.EscapeDataString(filter))
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DevBoxesListSchedulesByProject_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="DevBoxesListSchedulesByProject" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DevBoxesListSchedulesByProject_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IScheduleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ScheduleListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="DevBoxesListSchedulesByProject" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="top">The maximum number of resources to return from the operation. Example: 'top=10'.</param>
+        /// <param name="filter">An OData filter clause to apply to the operation.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DevBoxesListSchedulesByProject_Validate(string endpoint, int? top, string filter, string projectName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(filter),filter);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+            }
+        }
+
+        /// <summary>
+        /// Attempts automated repair steps to resolve common problems on a Dev Box. The Dev Box may restart during this operation.
+        /// </summary>
         /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
         /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
         /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
@@ -2946,9 +4309,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesRestartDevBox(string endpoint, string projectName, string userId, string devBoxName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesRepairDevBox(string endpoint, string projectName, string userId, string devBoxName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2960,7 +4323,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         + global::System.Uri.EscapeDataString(userId)
                         + "/devboxes/"
                         + global::System.Uri.EscapeDataString(devBoxName)
-                        + ":restart"
+                        + ":repair"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -2974,11 +4337,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DevBoxesRestartDevBox_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DevBoxesRepairDevBox_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Restarts a Dev Box</summary>
+        /// <summary>
+        /// Attempts automated repair steps to resolve common problems on a Dev Box. The Dev Box may restart during this operation.
+        /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2989,18 +4354,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesRestartDevBoxViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesRepairDevBoxViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/devboxes/(?<devBoxName>[^/]+):restart$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/devboxes/(?<devBoxName>[^/]+):repair$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/devboxes/{devBoxName}:restart'");
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/devboxes/{devBoxName}:repair'");
                 }
 
                 // replace URI parameters with values from identity
@@ -3015,7 +4380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         + userId
                         + "/devboxes/"
                         + devBoxName
-                        + ":restart"
+                        + ":repair"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -3029,11 +4394,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.DevBoxesRestartDevBox_Call(request,onOk,onDefault,eventListener,sender);
+                await this.DevBoxesRepairDevBox_Call(request,onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Actual wire call for <see cref="DevBoxesRestartDevBox" /> method.</summary>
+        /// <summary>Actual wire call for <see cref="DevBoxesRepairDevBox" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3043,7 +4408,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesRestartDevBox_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesRepairDevBox_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3161,13 +4526,294 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="DevBoxesRepairDevBox" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="devBoxName">The name of a Dev Box.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DevBoxesRepairDevBox_Validate(string endpoint, string projectName, string userId, string devBoxName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(userId),userId);
+                await eventListener.AssertMinimumLength(nameof(userId),userId,2);
+                await eventListener.AssertMaximumLength(nameof(userId),userId,36);
+                await eventListener.AssertRegEx(nameof(userId),userId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$|^me$");
+                await eventListener.AssertNotNull(nameof(devBoxName),devBoxName);
+                await eventListener.AssertMinimumLength(nameof(devBoxName),devBoxName,3);
+                await eventListener.AssertMaximumLength(nameof(devBoxName),devBoxName,63);
+                await eventListener.AssertRegEx(nameof(devBoxName),devBoxName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+            }
+        }
+
+        /// <summary>Restarts a Dev Box</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="devBoxName">The name of a Dev Box.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DevBoxesRestartDevBox(string endpoint, string projectName, string userId, string devBoxName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "/devboxes/"
+                        + global::System.Uri.EscapeDataString(devBoxName)
+                        + ":restart"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DevBoxesRestartDevBox_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Restarts a Dev Box</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DevBoxesRestartDevBoxViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/devboxes/(?<devBoxName>[^/]+):restart$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/devboxes/{devBoxName}:restart'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var userId = _match.Groups["userId"].Value;
+                var devBoxName = _match.Groups["devBoxName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/users/"
+                        + userId
+                        + "/devboxes/"
+                        + devBoxName
+                        + ":restart"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DevBoxesRestartDevBox_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="DevBoxesRestartDevBox" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DevBoxesRestartDevBox_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: operation-location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3228,9 +4874,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesSkipAction(string endpoint, string projectName, string userId, string devBoxName, string actionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesSkipAction(string endpoint, string projectName, string userId, string devBoxName, string actionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3273,9 +4919,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesSkipActionViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesSkipActionViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3330,7 +4976,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesSkipAction_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesSkipAction_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3354,7 +5000,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3419,9 +5065,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesStartDevBox(string endpoint, string projectName, string userId, string devBoxName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesStartDevBox(string endpoint, string projectName, string userId, string devBoxName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3462,9 +5108,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesStartDevBoxViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesStartDevBoxViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3516,7 +5162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesStartDevBox_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesStartDevBox_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3634,13 +5280,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3701,9 +5347,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesStopDevBox(string endpoint, string projectName, string userId, string devBoxName, bool? hibernate, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesStopDevBox(string endpoint, string projectName, string userId, string devBoxName, bool? hibernate, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3747,9 +5393,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevBoxesStopDevBoxViaIdentity(global::System.String viaIdentity, string endpoint, bool? hibernate, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevBoxesStopDevBoxViaIdentity(global::System.String viaIdentity, string endpoint, bool? hibernate, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3803,7 +5449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevBoxesStopDevBox_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevBoxesStopDevBox_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3921,13 +5567,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3986,9 +5632,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevCenterGetProject(string endpoint, string projectName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevCenterGetProject(string endpoint, string projectName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4024,9 +5670,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevCenterGetProjectViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevCenterGetProjectViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4071,7 +5717,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevCenterGetProject_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevCenterGetProject_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IProject>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4089,13 +5735,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Project.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Project.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4144,9 +5790,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevCenterListProjects(string endpoint, string filter, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IProjectListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevCenterListProjects(string endpoint, string filter, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IProjectListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4187,9 +5833,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DevCenterListProjectsViaIdentity(global::System.String viaIdentity, string endpoint, string filter, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IProjectListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DevCenterListProjectsViaIdentity(global::System.String viaIdentity, string endpoint, string filter, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IProjectListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4236,7 +5882,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DevCenterListProjects_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IProjectListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DevCenterListProjects_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IProjectListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4254,13 +5900,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ProjectListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ProjectListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4309,9 +5955,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsCreateOrReplaceEnvironment(string endpoint, string projectName, string userId, string environmentName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsCreateOrReplaceEnvironment(string endpoint, string projectName, string userId, string environmentName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4356,9 +6002,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsCreateOrReplaceEnvironmentViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsCreateOrReplaceEnvironmentViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4415,7 +6061,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EnvironmentsCreateOrReplaceEnvironment_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EnvironmentsCreateOrReplaceEnvironment_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4529,13 +6175,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Environment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Environment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4563,7 +6209,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EnvironmentsCreateOrReplaceEnvironment_Validate(string endpoint, string projectName, string userId, string environmentName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment body, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task EnvironmentsCreateOrReplaceEnvironment_Validate(string endpoint, string projectName, string userId, string environmentName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment body, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -4585,6 +6231,205 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
             }
         }
 
+        /// <summary>Delays the occurrence of an action.</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="actionName">The name of an action that will take place on an Environment.</param>
+        /// <param name="until">The time to delay the Environment action until.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsDelayAction(string endpoint, string projectName, string userId, string environmentName, string actionName, global::System.DateTime until, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "/environments/"
+                        + global::System.Uri.EscapeDataString(environmentName)
+                        + "/actions/"
+                        + global::System.Uri.EscapeDataString(actionName)
+                        + ":delay"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + "until=" + until.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsDelayAction_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Delays the occurrence of an action.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="until">The time to delay the Environment action until.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsDelayActionViaIdentity(global::System.String viaIdentity, string endpoint, global::System.DateTime until, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/environments/(?<environmentName>[^/]+)/actions/(?<actionName>[^/]+):delay$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/environments/{environmentName}/actions/{actionName}:delay'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var userId = _match.Groups["userId"].Value;
+                var environmentName = _match.Groups["environmentName"].Value;
+                var actionName = _match.Groups["actionName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/users/"
+                        + userId
+                        + "/environments/"
+                        + environmentName
+                        + "/actions/"
+                        + actionName
+                        + ":delay"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + "until=" + until.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsDelayAction_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="EnvironmentsDelayAction" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsDelayAction_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentAction.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="EnvironmentsDelayAction" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="actionName">The name of an action that will take place on an Environment.</param>
+        /// <param name="until">The time to delay the Environment action until.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsDelayAction_Validate(string endpoint, string projectName, string userId, string environmentName, string actionName, global::System.DateTime until, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(userId),userId);
+                await eventListener.AssertMinimumLength(nameof(userId),userId,2);
+                await eventListener.AssertMaximumLength(nameof(userId),userId,36);
+                await eventListener.AssertRegEx(nameof(userId),userId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$|^me$");
+                await eventListener.AssertNotNull(nameof(environmentName),environmentName);
+                await eventListener.AssertMinimumLength(nameof(environmentName),environmentName,3);
+                await eventListener.AssertMaximumLength(nameof(environmentName),environmentName,63);
+                await eventListener.AssertRegEx(nameof(environmentName),environmentName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(actionName),actionName);
+                await eventListener.AssertMinimumLength(nameof(actionName),actionName,3);
+                await eventListener.AssertMaximumLength(nameof(actionName),actionName,63);
+                await eventListener.AssertRegEx(nameof(actionName),actionName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+            }
+        }
+
         /// <summary>Deletes an environment and all its associated resources</summary>
         /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
         /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
@@ -4599,9 +6444,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsDeleteEnvironment(string endpoint, string projectName, string userId, string environmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsDeleteEnvironment(string endpoint, string projectName, string userId, string environmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4642,9 +6487,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsDeleteEnvironmentViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsDeleteEnvironmentViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4696,7 +6541,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EnvironmentsDeleteEnvironment_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EnvironmentsDeleteEnvironment_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IOperationStatus>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4814,7 +6659,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.OperationStatus.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.NoContent:
@@ -4826,7 +6671,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4873,6 +6718,196 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
             }
         }
 
+        /// <summary>Retrieve a specific environment action.</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="actionName">The name of an action that will take place on an Environment.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsGetAction(string endpoint, string projectName, string userId, string environmentName, string actionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "/environments/"
+                        + global::System.Uri.EscapeDataString(environmentName)
+                        + "/actions/"
+                        + global::System.Uri.EscapeDataString(actionName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsGetAction_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Retrieve a specific environment action.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsGetActionViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/environments/(?<environmentName>[^/]+)/actions/(?<actionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/environments/{environmentName}/actions/{actionName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var userId = _match.Groups["userId"].Value;
+                var environmentName = _match.Groups["environmentName"].Value;
+                var actionName = _match.Groups["actionName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/users/"
+                        + userId
+                        + "/environments/"
+                        + environmentName
+                        + "/actions/"
+                        + actionName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsGetAction_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="EnvironmentsGetAction" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsGetAction_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentAction>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentAction.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="EnvironmentsGetAction" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="actionName">The name of an action that will take place on an Environment.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsGetAction_Validate(string endpoint, string projectName, string userId, string environmentName, string actionName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(userId),userId);
+                await eventListener.AssertMinimumLength(nameof(userId),userId,2);
+                await eventListener.AssertMaximumLength(nameof(userId),userId,36);
+                await eventListener.AssertRegEx(nameof(userId),userId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$|^me$");
+                await eventListener.AssertNotNull(nameof(environmentName),environmentName);
+                await eventListener.AssertMinimumLength(nameof(environmentName),environmentName,3);
+                await eventListener.AssertMaximumLength(nameof(environmentName),environmentName,63);
+                await eventListener.AssertRegEx(nameof(environmentName),environmentName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(actionName),actionName);
+                await eventListener.AssertMinimumLength(nameof(actionName),actionName,3);
+                await eventListener.AssertMaximumLength(nameof(actionName),actionName,63);
+                await eventListener.AssertRegEx(nameof(actionName),actionName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+            }
+        }
+
         /// <summary>Gets the specified catalog within the project</summary>
         /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
         /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
@@ -4885,9 +6920,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsGetCatalog(string endpoint, string projectName, string catalogName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICatalog>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsGetCatalog(string endpoint, string projectName, string catalogName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICatalog>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4925,9 +6960,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsGetCatalogViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICatalog>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsGetCatalogViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICatalog>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4975,7 +7010,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EnvironmentsGetCatalog_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICatalog>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EnvironmentsGetCatalog_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICatalog>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4993,13 +7028,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Catalog.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Catalog.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5054,9 +7089,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsGetEnvironmentByUser(string endpoint, string projectName, string userId, string environmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsGetEnvironmentByUser(string endpoint, string projectName, string userId, string environmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5096,9 +7131,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsGetEnvironmentByUserViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsGetEnvironmentByUserViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5149,7 +7184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EnvironmentsGetEnvironmentByUser_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EnvironmentsGetEnvironmentByUser_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5167,13 +7202,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Environment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Environment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5233,9 +7268,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsGetEnvironmentDefinition(string endpoint, string projectName, string catalogName, string definitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsGetEnvironmentDefinition(string endpoint, string projectName, string catalogName, string definitionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5275,9 +7310,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsGetEnvironmentDefinitionViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsGetEnvironmentDefinitionViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5330,7 +7365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EnvironmentsGetEnvironmentDefinition_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EnvironmentsGetEnvironmentDefinition_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5348,13 +7383,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentDefinition.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentDefinition.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5401,6 +7436,750 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
             }
         }
 
+        /// <summary>Gets the logs for an operation on an environment.</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="operationId">The id of the operation on an environment.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsGetLogsByOperation(string endpoint, string projectName, string userId, string environmentName, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<global::System.IO.Stream>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "/environments/"
+                        + global::System.Uri.EscapeDataString(environmentName)
+                        + "/operations/"
+                        + global::System.Uri.EscapeDataString(operationId)
+                        + "/logs"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsGetLogsByOperation_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets the logs for an operation on an environment.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsGetLogsByOperationViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<global::System.IO.Stream>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/environments/(?<environmentName>[^/]+)/operations/(?<operationId>[^/]+)/logs$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/environments/{environmentName}/operations/{operationId}/logs'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var userId = _match.Groups["userId"].Value;
+                var environmentName = _match.Groups["environmentName"].Value;
+                var operationId = _match.Groups["operationId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/users/"
+                        + userId
+                        + "/environments/"
+                        + environmentName
+                        + "/operations/"
+                        + operationId
+                        + "/logs"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsGetLogsByOperation_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="EnvironmentsGetLogsByOperation" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsGetLogsByOperation_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<global::System.IO.Stream>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStreamAsync());
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response);
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="EnvironmentsGetLogsByOperation" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="operationId">The id of the operation on an environment.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsGetLogsByOperation_Validate(string endpoint, string projectName, string userId, string environmentName, string operationId, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(userId),userId);
+                await eventListener.AssertMinimumLength(nameof(userId),userId,2);
+                await eventListener.AssertMaximumLength(nameof(userId),userId,36);
+                await eventListener.AssertRegEx(nameof(userId),userId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$|^me$");
+                await eventListener.AssertNotNull(nameof(environmentName),environmentName);
+                await eventListener.AssertMinimumLength(nameof(environmentName),environmentName,3);
+                await eventListener.AssertMaximumLength(nameof(environmentName),environmentName,63);
+                await eventListener.AssertRegEx(nameof(environmentName),environmentName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(operationId),operationId);
+                await eventListener.AssertMinimumLength(nameof(operationId),operationId,3);
+                await eventListener.AssertMaximumLength(nameof(operationId),operationId,63);
+                await eventListener.AssertRegEx(nameof(operationId),operationId,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+            }
+        }
+
+        /// <summary>Gets an environment action result.</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="operationId">The id of the operation on an environment.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsGetOperation(string endpoint, string projectName, string userId, string environmentName, string operationId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentOperation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "/environments/"
+                        + global::System.Uri.EscapeDataString(environmentName)
+                        + "/operations/"
+                        + global::System.Uri.EscapeDataString(operationId)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsGetOperation_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets an environment action result.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsGetOperationViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentOperation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/environments/(?<environmentName>[^/]+)/operations/(?<operationId>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/environments/{environmentName}/operations/{operationId}'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var userId = _match.Groups["userId"].Value;
+                var environmentName = _match.Groups["environmentName"].Value;
+                var operationId = _match.Groups["operationId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/users/"
+                        + userId
+                        + "/environments/"
+                        + environmentName
+                        + "/operations/"
+                        + operationId
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsGetOperation_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="EnvironmentsGetOperation" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsGetOperation_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentOperation>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentOperation.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="EnvironmentsGetOperation" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="operationId">The id of the operation on an environment.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsGetOperation_Validate(string endpoint, string projectName, string userId, string environmentName, string operationId, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(userId),userId);
+                await eventListener.AssertMinimumLength(nameof(userId),userId,2);
+                await eventListener.AssertMaximumLength(nameof(userId),userId,36);
+                await eventListener.AssertRegEx(nameof(userId),userId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$|^me$");
+                await eventListener.AssertNotNull(nameof(environmentName),environmentName);
+                await eventListener.AssertMinimumLength(nameof(environmentName),environmentName,3);
+                await eventListener.AssertMaximumLength(nameof(environmentName),environmentName,63);
+                await eventListener.AssertRegEx(nameof(environmentName),environmentName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(operationId),operationId);
+                await eventListener.AssertMinimumLength(nameof(operationId),operationId,3);
+                await eventListener.AssertMaximumLength(nameof(operationId),operationId,63);
+                await eventListener.AssertRegEx(nameof(operationId),operationId,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+            }
+        }
+
+        /// <summary>Gets Outputs from the environment</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsGetOutputs(string endpoint, string projectName, string userId, string environmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentOutputs1>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "/environments/"
+                        + global::System.Uri.EscapeDataString(environmentName)
+                        + "/outputs"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsGetOutputs_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets Outputs from the environment</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsGetOutputsViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentOutputs1>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/environments/(?<environmentName>[^/]+)/outputs$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/environments/{environmentName}/outputs'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var userId = _match.Groups["userId"].Value;
+                var environmentName = _match.Groups["environmentName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/users/"
+                        + userId
+                        + "/environments/"
+                        + environmentName
+                        + "/outputs"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsGetOutputs_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="EnvironmentsGetOutputs" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsGetOutputs_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentOutputs1>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentOutputs1.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="EnvironmentsGetOutputs" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsGetOutputs_Validate(string endpoint, string projectName, string userId, string environmentName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(userId),userId);
+                await eventListener.AssertMinimumLength(nameof(userId),userId,2);
+                await eventListener.AssertMaximumLength(nameof(userId),userId,36);
+                await eventListener.AssertRegEx(nameof(userId),userId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$|^me$");
+                await eventListener.AssertNotNull(nameof(environmentName),environmentName);
+                await eventListener.AssertMinimumLength(nameof(environmentName),environmentName,3);
+                await eventListener.AssertMaximumLength(nameof(environmentName),environmentName,63);
+                await eventListener.AssertRegEx(nameof(environmentName),environmentName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+            }
+        }
+
+        /// <summary>Get all scheduled actions for a user within an environment.</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsListActions(string endpoint, string projectName, string userId, string environmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentActionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "/environments/"
+                        + global::System.Uri.EscapeDataString(environmentName)
+                        + "/actions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsListActions_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get all scheduled actions for a user within an environment.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsListActionsViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentActionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/environments/(?<environmentName>[^/]+)/actions$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/environments/{environmentName}/actions'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var userId = _match.Groups["userId"].Value;
+                var environmentName = _match.Groups["environmentName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/users/"
+                        + userId
+                        + "/environments/"
+                        + environmentName
+                        + "/actions"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsListActions_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="EnvironmentsListActions" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsListActions_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentActionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentActionsListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="EnvironmentsListActions" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsListActions_Validate(string endpoint, string projectName, string userId, string environmentName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(userId),userId);
+                await eventListener.AssertMinimumLength(nameof(userId),userId,2);
+                await eventListener.AssertMaximumLength(nameof(userId),userId,36);
+                await eventListener.AssertRegEx(nameof(userId),userId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$|^me$");
+                await eventListener.AssertNotNull(nameof(environmentName),environmentName);
+                await eventListener.AssertMinimumLength(nameof(environmentName),environmentName,3);
+                await eventListener.AssertMaximumLength(nameof(environmentName),environmentName,63);
+                await eventListener.AssertRegEx(nameof(environmentName),environmentName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+            }
+        }
+
         /// <summary>Lists all of the catalogs available for a project.</summary>
         /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
         /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
@@ -5413,9 +8192,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsListCatalogsByProject(string endpoint, string projectName, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICatalogListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsListCatalogsByProject(string endpoint, string projectName, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICatalogListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5455,9 +8234,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsListCatalogsByProjectViaIdentity(global::System.String viaIdentity, string endpoint, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICatalogListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsListCatalogsByProjectViaIdentity(global::System.String viaIdentity, string endpoint, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICatalogListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5505,7 +8284,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EnvironmentsListCatalogsByProject_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICatalogListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EnvironmentsListCatalogsByProject_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICatalogListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5523,13 +8302,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CatalogListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CatalogListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5580,9 +8359,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentDefinitionsByCatalog(string endpoint, string projectName, int? top, string catalogName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentDefinitionsByCatalog(string endpoint, string projectName, int? top, string catalogName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5624,9 +8403,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentDefinitionsByCatalogViaIdentity(global::System.String viaIdentity, string endpoint, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentDefinitionsByCatalogViaIdentity(global::System.String viaIdentity, string endpoint, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5679,7 +8458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentDefinitionsByCatalog_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentDefinitionsByCatalog_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5697,13 +8476,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentDefinitionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentDefinitionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5758,9 +8537,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentDefinitionsByProject(string endpoint, string projectName, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentDefinitionsByProject(string endpoint, string projectName, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5800,9 +8579,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentDefinitionsByProjectViaIdentity(global::System.String viaIdentity, string endpoint, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentDefinitionsByProjectViaIdentity(global::System.String viaIdentity, string endpoint, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5852,7 +8631,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentDefinitionsByProject_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentDefinitionsByProject_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5870,13 +8649,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentDefinitionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentDefinitionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5926,9 +8705,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentTypes(string endpoint, string projectName, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentTypeListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentTypes(string endpoint, string projectName, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentTypeListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5968,9 +8747,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentTypesViaIdentity(global::System.String viaIdentity, string endpoint, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentTypeListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentTypesViaIdentity(global::System.String viaIdentity, string endpoint, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentTypeListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6018,7 +8797,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentTypes_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentTypeListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentTypes_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentTypeListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6036,13 +8815,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentTypeListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentTypeListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6092,9 +8871,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironments(string endpoint, int? top, string projectName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironments(string endpoint, int? top, string projectName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6135,9 +8914,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentsByUser(string endpoint, int? top, string projectName, string userId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentsByUser(string endpoint, int? top, string projectName, string userId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6179,9 +8958,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentsByUserViaIdentity(global::System.String viaIdentity, string endpoint, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentsByUserViaIdentity(global::System.String viaIdentity, string endpoint, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6232,7 +9011,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentsByUser_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentsByUser_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6250,13 +9029,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6311,9 +9090,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentsViaIdentity(global::System.String viaIdentity, string endpoint, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EnvironmentsListEnvironmentsViaIdentity(global::System.String viaIdentity, string endpoint, int? top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-04-01";
+            var apiVersion = @"2023-10-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6361,7 +9140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EnvironmentsListEnvironments_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EnvironmentsListEnvironments_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6379,13 +9158,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6420,6 +9199,1214 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata
                 await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
                 await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
                 await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+            }
+        }
+
+        /// <summary>Lists operations on the environment which have occurred within the past 90 days</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="top">The maximum number of resources to return from the operation. Example: 'top=10'.</param>
+        /// <param name="filter">An OData filter clause to apply to the operation.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsListOperations(string endpoint, int? top, string filter, string projectName, string userId, string environmentName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "/environments/"
+                        + global::System.Uri.EscapeDataString(environmentName)
+                        + "/operations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (null == top ? global::System.String.Empty : "top=" + global::System.Uri.EscapeDataString(top.ToString()))
+                        + "&"
+                        + (string.IsNullOrEmpty(filter) ? global::System.String.Empty : "filter=" + global::System.Uri.EscapeDataString(filter))
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsListOperations_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists operations on the environment which have occurred within the past 90 days</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="top">The maximum number of resources to return from the operation. Example: 'top=10'.</param>
+        /// <param name="filter">An OData filter clause to apply to the operation.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsListOperationsViaIdentity(global::System.String viaIdentity, string endpoint, int? top, string filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/environments/(?<environmentName>[^/]+)/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/environments/{environmentName}/operations'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var userId = _match.Groups["userId"].Value;
+                var environmentName = _match.Groups["environmentName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/users/"
+                        + userId
+                        + "/environments/"
+                        + environmentName
+                        + "/operations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (null == top ? global::System.String.Empty : "top=" + global::System.Uri.EscapeDataString(top.ToString()))
+                        + "&"
+                        + (string.IsNullOrEmpty(filter) ? global::System.String.Empty : "filter=" + global::System.Uri.EscapeDataString(filter))
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsListOperations_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="EnvironmentsListOperations" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsListOperations_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentOperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="EnvironmentsListOperations" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="top">The maximum number of resources to return from the operation. Example: 'top=10'.</param>
+        /// <param name="filter">An OData filter clause to apply to the operation.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsListOperations_Validate(string endpoint, int? top, string filter, string projectName, string userId, string environmentName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(filter),filter);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(userId),userId);
+                await eventListener.AssertMinimumLength(nameof(userId),userId,2);
+                await eventListener.AssertMaximumLength(nameof(userId),userId,36);
+                await eventListener.AssertRegEx(nameof(userId),userId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$|^me$");
+                await eventListener.AssertNotNull(nameof(environmentName),environmentName);
+                await eventListener.AssertMinimumLength(nameof(environmentName),environmentName,3);
+                await eventListener.AssertMaximumLength(nameof(environmentName),environmentName,63);
+                await eventListener.AssertRegEx(nameof(environmentName),environmentName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+            }
+        }
+
+        /// <summary>Partially updates an environment</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="body">Updatable environment properties.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsPatchEnvironment(string endpoint, string projectName, string userId, string environmentName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentPatchProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "/environments/"
+                        + global::System.Uri.EscapeDataString(environmentName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsPatchEnvironment_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Partially updates an environment</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="body">Updatable environment properties.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsPatchEnvironmentViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentPatchProperties body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/environments/(?<environmentName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/environments/{environmentName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var userId = _match.Groups["userId"].Value;
+                var environmentName = _match.Groups["environmentName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/users/"
+                        + userId
+                        + "/environments/"
+                        + environmentName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsPatchEnvironment_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="EnvironmentsPatchEnvironment" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsPatchEnvironment_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Environment.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="EnvironmentsPatchEnvironment" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="body">Updatable environment properties.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsPatchEnvironment_Validate(string endpoint, string projectName, string userId, string environmentName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentPatchProperties body, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(userId),userId);
+                await eventListener.AssertMinimumLength(nameof(userId),userId,2);
+                await eventListener.AssertMaximumLength(nameof(userId),userId,36);
+                await eventListener.AssertRegEx(nameof(userId),userId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$|^me$");
+                await eventListener.AssertNotNull(nameof(environmentName),environmentName);
+                await eventListener.AssertMinimumLength(nameof(environmentName),environmentName,3);
+                await eventListener.AssertMaximumLength(nameof(environmentName),environmentName,63);
+                await eventListener.AssertRegEx(nameof(environmentName),environmentName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Skips an occurrence of an action.</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="actionName">The name of an action that will take place on an Environment.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsSkipAction(string endpoint, string projectName, string userId, string environmentName, string actionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/users/"
+                        + global::System.Uri.EscapeDataString(userId)
+                        + "/environments/"
+                        + global::System.Uri.EscapeDataString(environmentName)
+                        + "/actions/"
+                        + global::System.Uri.EscapeDataString(actionName)
+                        + ":skip"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsSkipAction_Call(request,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Skips an occurrence of an action.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task EnvironmentsSkipActionViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/users/(?<userId>[^/]+)/environments/(?<environmentName>[^/]+)/actions/(?<actionName>[^/]+):skip$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/users/{userId}/environments/{environmentName}/actions/{actionName}:skip'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var userId = _match.Groups["userId"].Value;
+                var environmentName = _match.Groups["environmentName"].Value;
+                var actionName = _match.Groups["actionName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/users/"
+                        + userId
+                        + "/environments/"
+                        + environmentName
+                        + "/actions/"
+                        + actionName
+                        + ":skip"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.EnvironmentsSkipAction_Call(request,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="EnvironmentsSkipAction" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsSkipAction_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="EnvironmentsSkipAction" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="userId">The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.</param>
+        /// <param name="environmentName">The name of the environment.</param>
+        /// <param name="actionName">The name of an action that will take place on an Environment.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task EnvironmentsSkipAction_Validate(string endpoint, string projectName, string userId, string environmentName, string actionName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(userId),userId);
+                await eventListener.AssertMinimumLength(nameof(userId),userId,2);
+                await eventListener.AssertMaximumLength(nameof(userId),userId,36);
+                await eventListener.AssertRegEx(nameof(userId),userId,@"^[a-zA-Z0-9]{8}-([a-zA-Z0-9]{4}-){3}[a-zA-Z0-9]{12}$|^me$");
+                await eventListener.AssertNotNull(nameof(environmentName),environmentName);
+                await eventListener.AssertMinimumLength(nameof(environmentName),environmentName,3);
+                await eventListener.AssertMaximumLength(nameof(environmentName),environmentName,63);
+                await eventListener.AssertRegEx(nameof(environmentName),environmentName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(actionName),actionName);
+                await eventListener.AssertMinimumLength(nameof(actionName),actionName,3);
+                await eventListener.AssertMaximumLength(nameof(actionName),actionName,63);
+                await eventListener.AssertRegEx(nameof(actionName),actionName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+            }
+        }
+
+        /// <summary>Gets a customization task.</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="top">The maximum number of resources to return from the operation. Example: 'top=10'.</param>
+        /// <param name="filter">An OData filter clause to apply to the operation.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="catalogName">The name of the catalog</param>
+        /// <param name="taskName">A customization task name.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProjectsGetCustomizationTaskDefinition(string endpoint, int? top, string filter, string projectName, string catalogName, string taskName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationTaskDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/catalogs/"
+                        + global::System.Uri.EscapeDataString(catalogName)
+                        + "/customizationTasks/"
+                        + global::System.Uri.EscapeDataString(taskName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (null == top ? global::System.String.Empty : "top=" + global::System.Uri.EscapeDataString(top.ToString()))
+                        + "&"
+                        + (string.IsNullOrEmpty(filter) ? global::System.String.Empty : "filter=" + global::System.Uri.EscapeDataString(filter))
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProjectsGetCustomizationTaskDefinition_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets a customization task.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="top">The maximum number of resources to return from the operation. Example: 'top=10'.</param>
+        /// <param name="filter">An OData filter clause to apply to the operation.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProjectsGetCustomizationTaskDefinitionViaIdentity(global::System.String viaIdentity, string endpoint, int? top, string filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationTaskDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/catalogs/(?<catalogName>[^/]+)/customizationTasks/(?<taskName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/catalogs/{catalogName}/customizationTasks/{taskName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                var catalogName = _match.Groups["catalogName"].Value;
+                var taskName = _match.Groups["taskName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/catalogs/"
+                        + catalogName
+                        + "/customizationTasks/"
+                        + taskName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (null == top ? global::System.String.Empty : "top=" + global::System.Uri.EscapeDataString(top.ToString()))
+                        + "&"
+                        + (string.IsNullOrEmpty(filter) ? global::System.String.Empty : "filter=" + global::System.Uri.EscapeDataString(filter))
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProjectsGetCustomizationTaskDefinition_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref="ProjectsGetCustomizationTaskDefinition" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProjectsGetCustomizationTaskDefinition_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationTaskDefinition>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTaskDefinition.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ProjectsGetCustomizationTaskDefinition" /> method. Call this like the actual call, but
+        /// you will get validation events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="top">The maximum number of resources to return from the operation. Example: 'top=10'.</param>
+        /// <param name="filter">An OData filter clause to apply to the operation.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="catalogName">The name of the catalog</param>
+        /// <param name="taskName">A customization task name.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProjectsGetCustomizationTaskDefinition_Validate(string endpoint, int? top, string filter, string projectName, string catalogName, string taskName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(filter),filter);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(catalogName),catalogName);
+                await eventListener.AssertMinimumLength(nameof(catalogName),catalogName,3);
+                await eventListener.AssertMaximumLength(nameof(catalogName),catalogName,63);
+                await eventListener.AssertRegEx(nameof(catalogName),catalogName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(taskName),taskName);
+                await eventListener.AssertMinimumLength(nameof(taskName),taskName,3);
+                await eventListener.AssertMaximumLength(nameof(taskName),taskName,63);
+                await eventListener.AssertRegEx(nameof(taskName),taskName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+            }
+        }
+
+        /// <summary>Lists all customization tasks available to the project.</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="filter">An OData filter clause to apply to the operation.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProjectsListCustomizationTaskDefinitions(string endpoint, string filter, string projectName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationTaskDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/customizationTasks"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(filter) ? global::System.String.Empty : "filter=" + global::System.Uri.EscapeDataString(filter))
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProjectsListCustomizationTaskDefinitions_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Lists all customization tasks available to the project.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="filter">An OData filter clause to apply to the operation.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProjectsListCustomizationTaskDefinitionsViaIdentity(global::System.String viaIdentity, string endpoint, string filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationTaskDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/customizationTasks$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/customizationTasks'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/customizationTasks"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(filter) ? global::System.String.Empty : "filter=" + global::System.Uri.EscapeDataString(filter))
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProjectsListCustomizationTaskDefinitions_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref="ProjectsListCustomizationTaskDefinitions" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProjectsListCustomizationTaskDefinitions_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationTaskDefinitionListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTaskDefinitionListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ProjectsListCustomizationTaskDefinitions" /> method. Call this like the actual call,
+        /// but you will get validation events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="filter">An OData filter clause to apply to the operation.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProjectsListCustomizationTaskDefinitions_Validate(string endpoint, string filter, string projectName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(filter),filter);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+            }
+        }
+
+        /// <summary>Validates a list of customization tasks.</summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="body">Customization tasks to validate.</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProjectsValidateCustomizationTasks(string endpoint, string projectName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationTaskList body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + global::System.Uri.EscapeDataString(projectName)
+                        + "/customizationTasks:validateGroup"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProjectsValidateCustomizationTasks_Call(request,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Validates a list of customization tasks.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="body">Customization tasks to validate.</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ProjectsValidateCustomizationTasksViaIdentity(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationTaskList body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2023-10-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/projects/(?<projectName>[^/]+)/customizationTasks:validateGroup$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/projects/{projectName}/customizationTasks:validateGroup'");
+                }
+
+                // replace URI parameters with values from identity
+                var projectName = _match.Groups["projectName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/projects/"
+                        + projectName
+                        + "/customizationTasks:validateGroup"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ProjectsValidateCustomizationTasks_Call(request,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="ProjectsValidateCustomizationTasks" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProjectsValidateCustomizationTasks_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: operation-location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ProjectsValidateCustomizationTasks" /> method. Call this like the actual call, but you
+        /// will get validation events back.
+        /// </summary>
+        /// <param name="endpoint">The DevCenter-specific URI to operate on.</param>
+        /// <param name="projectName">The DevCenter Project upon which to execute operations.</param>
+        /// <param name="body">Customization tasks to validate.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ProjectsValidateCustomizationTasks_Validate(string endpoint, string projectName, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICustomizationTaskList body, Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertNotNull(nameof(projectName),projectName);
+                await eventListener.AssertMinimumLength(nameof(projectName),projectName,3);
+                await eventListener.AssertMaximumLength(nameof(projectName),projectName,63);
+                await eventListener.AssertRegEx(nameof(projectName),projectName,@"^[a-zA-Z0-9][a-zA-Z0-9-_.]{2,62}$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
     }
