@@ -140,7 +140,7 @@ pac138,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac139,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SecurityInsights.3.1.1.nupkg;sourceType=sa]Az.SecurityInsights,3.1.1
 pac140,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SelfHelp.0.1.1.nupkg;sourceType=sa]Az.SelfHelp,0.1.1
 pac141,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ServiceBus.3.0.0.nupkg;sourceType=sa]Az.ServiceBus,3.0.0
-pac142,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ServiceFabric.3.3.1.nupkg;sourceType=sa]Az.ServiceFabric,3.3.1
+pac142,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ServiceFabric.3.3.2.nupkg;sourceType=sa]Az.ServiceFabric,3.3.2
 pac143,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ServiceLinker.0.2.0.nupkg;sourceType=sa]Az.ServiceLinker,0.2.0
 pac144,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SignalR.2.0.0.nupkg;sourceType=sa]Az.SignalR,2.0.0
 pac145,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SpringCloud.0.3.0.nupkg;sourceType=sa]Az.SpringCloud,0.3.0
