@@ -49,7 +49,7 @@ https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterusersc
 #>
 function Get-AzDevCenterUserSchedule {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ISchedule])]
-    [CmdletBinding(DefaultParameterSetName = 'Get', PositionalBinding = $false)]
+    [CmdletBinding(PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName ='Get', Mandatory)]
         [Parameter(ParameterSetName ='GetViaIdentity', Mandatory)]

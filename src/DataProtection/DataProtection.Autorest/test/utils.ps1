@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
@@ -13,7 +38,7 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     $env.RecordDate = (Get-Date -Year 2023 -Month 08 -Day 28 -Hour 15 -Minute 11 -Second 11).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
-        
+
     $BackupInstanceTestVariables = @{
         SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
         ResourceGroupName = "sarath-rg"
@@ -27,7 +52,7 @@ function setupEnv() {
         DiskNewPolicyName = "sarath-disk-generated-policy"
     }
 
-    $randomstring = RandomString -allChars $false -len 10    
+    $randomstring = RandomString -allChars $false -len 10
     $BackupVaultTestVariables = @{
         SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
         ResourceGroupName = "sarath-rg"
@@ -74,7 +99,7 @@ function setupEnv() {
         ResourceGroupName = "BlobBackup-BugBash"
         VaultName = "jecECYBlobVault"
     }
-    
+
     $OssVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         ResourceGroupName = "oss-pstest-rg"
@@ -83,7 +108,7 @@ function setupEnv() {
         OssDbName = "oss-pstest-db"
         OssDbId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres"
         PolicyName = "oss-pstest-policy"
-        NewPolicyName = "oss-pstest-policy-archive"        
+        NewPolicyName = "oss-pstest-policy-archive"
         KeyVault = "oss-pstest-keyvault"
         SecretURI = "https://oss-pstest-keyvault.vault.azure.net/secrets/oss-pstest-secret"
         TargetResourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/oss-pstest-dbrestore"
@@ -102,8 +127,8 @@ function setupEnv() {
         VaultName = "TestBkpVault"
         VaultRG = "testBkpVaultRG"
         SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
-       
-        DiskId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Diskrg/providers/Microsoft.Compute/disks/Mydisk2" 
+
+        DiskId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Diskrg/providers/Microsoft.Compute/disks/Mydisk2"
         Diskrg = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Diskrg"
         Snapshotrg = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG"
         DiskPolicyName = "diskBkpPolicy"
@@ -116,7 +141,7 @@ function setupEnv() {
         OssId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Ossrg/providers/Microsoft.DBforPostgreSQL/servers/rishitserver3/databases/postgres"
         Ossrg = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Ossrg"
         KeyURI = "https://rishitkeyvault3.vault.azure.net/secrets/rishitnewsecret"
-        KeyVaultId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Sqlrg/providers/Microsoft.KeyVault/vaults/rishitkeyvault3" 
+        KeyVaultId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Sqlrg/providers/Microsoft.KeyVault/vaults/rishitkeyvault3"
     }
 
     $AksVariables = @{
@@ -129,7 +154,7 @@ function setupEnv() {
         SourceClusterId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksbackuptestrg-rajat/providers/Microsoft.ContainerService/managedClusters/aks-pstest-cluster"
         TargetClusterId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksbackuptestrg-rajat/providers/Microsoft.ContainerService/managedClusters/aks-clitest-cluster"
         SnapshotResourceGroupId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksbackuptestrg-rajat"
-        FriendlyName = "pstest-aks-cluster"        
+        FriendlyName = "pstest-aks-cluster"
     }
 
     $AksRestoreVariables = @{
@@ -203,7 +228,7 @@ function setupEnv() {
     $env.add("TestResourceGuard", $ResourceGuardVariables) | Out-Null
     $env.add("TestGrantPermission", $GrantPermissionVariables) | Out-Null
     $env.add("TestAksBackupScenario", $AksVariables) | Out-Null
-    $env.add("TestAksRestoreScenario", $AksRestoreVariables) | Out-Null    
+    $env.add("TestAksRestoreScenario", $AksRestoreVariables) | Out-Null
     $env.add("TestBlobHardeningScenario", $BlobHardeningVariables) | Out-Null
     $env.add("TestCrossSubscriptionRestoreScenario", $CrossSubscriptionRestoreVariables) | Out-Null
     $env.add("TestSoftDelete", $SoftDeleteVariables) | Out-Null
