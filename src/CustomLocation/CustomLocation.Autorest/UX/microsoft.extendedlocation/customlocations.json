@@ -1,6 +1,6 @@
 {
   "resourceType": "customlocations",
-  "apiVersion": "2021-08-15",
+  "apiVersion": "2021-08-31-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.customlocation"
   },
