@@ -26,7 +26,7 @@ The quota request ID **id** is returned in the response of the PUT operation.
 Get the current usage of a resource.
 
 ### [New-AzQuota](New-AzQuota.md)
-Create or update the quota limit for the specified resource with the requested value.
+Create the quota limit for the specified resource with the requested value.
 To update the quota, follow these steps:\n1.
 Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate the new quota limit.
 These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.

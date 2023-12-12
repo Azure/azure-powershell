@@ -586,19 +586,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`GEOLOCATION <IWebTestGeolocation[]>`: A list of where to physically run the tests from to give global coverage for accessibility of your application.
-  - `[Location <String>]`: Location ID for the WebTest to run from.
-
-`REQUESTHEADER <IHeaderField[]>`: List of headers and their values to add to the WebTest call.
-  - `[Name <String>]`: The name of the header.
-  - `[Value <String>]`: The value of the header.
-
 ## RELATED LINKS
 

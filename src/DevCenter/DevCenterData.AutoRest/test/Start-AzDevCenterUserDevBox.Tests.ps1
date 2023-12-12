@@ -22,7 +22,7 @@ Describe 'Start-AzDevCenterUserDevBox' {
         $devBox.PowerState | Should -Be "Running"
 
         if ($Record -or $Live) {
-            $startOperation = Start-AzDevCenterUserDevBox -DevCenter $env.devCenterName -Name $env.devboxName3 -ProjectName $env.projectName 
+            $startOperation = Start-AzDevCenterUserDevBox -DevCenterName $env.devCenterName -Name $env.devboxName3 -ProjectName $env.projectName 
             $startOperation.Status | Should -Be "Succeeded"
             $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devboxName3 -ProjectName $env.projectName -UserId "me"
             $devBox.ActionState | Should -Be "Started"
@@ -42,7 +42,7 @@ Describe 'Start-AzDevCenterUserDevBox' {
         $devBox.PowerState | Should -Be "Running"
 
         if ($Record -or $Live) {
-            $startOperation = Start-AzDevCenterUserDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput
+            $startOperation = Start-AzDevCenterUserDevBox -DevCenterName $env.devCenterName -InputObject $devBoxInput
             $startOperation.Status | Should -Be "Succeeded"
             $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devboxName3 -ProjectName $env.projectName -UserId "me"
             $devBox.ActionState | Should -Be "Started"

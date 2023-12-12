@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -20,7 +45,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    
+
     ####### Prerequisite #######
     # Visit https://github.com/Azure/azvmimagebuilder/tree/main/quickquickstarts to get more details
     # 1. Create a resource group
@@ -66,7 +91,7 @@ function setupEnv() {
 
     # 6. Create a gallery definition
     Write-Host -ForegroundColor Green "Create a gallery definition..."
-    $imageDefName = $env.AddWithCache("imageDefName", "azpsvmimage1", $UsePreviousConfigForRecord) 
+    $imageDefName = $env.AddWithCache("imageDefName", "azpsvmimage1", $UsePreviousConfigForRecord)
     $image = New-AzGalleryImageDefinition -GalleryName $testGalleryName -ResourceGroupName $rg -Location $location -Name $imageDefName -OsState generalized -OsType Linux -Publisher bez -Offer UbuntuServer -Sku '18.04-LTS'
     $env.AddWithCache("image", $image, $UsePreviousConfigForRecord)
 
@@ -88,14 +113,14 @@ function setupEnv() {
     # 9. Add user id to access the template
     Write-Host "Add user id to access the template"
     New-AzRoleAssignment -ObjectId $identity.PrincipalId -RoleDefinitionName Contributor -ResourceGroupName $rg
-    
+
     # 10. Start the image builder above
     # Need to record start image builder separetely.
     # Only below lines are not needed in recording stop test cases
     # Write-Host -ForegroundColor Green "Starting the image builder template..."
     # Start-Sleep -Seconds 25
     # Start-AzImageBuilderTemplate -Name $templateName -ResourceGroupName $rg -NoWait
-    
+
     # Prepare some variables for test usage
     $newTemplateName1 = $env.AddWithCache("newTemplateName1", 'azps-tmp-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
     $newTemplateName2 = $env.AddWithCache("newTemplateName2", 'azps-tmp-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)

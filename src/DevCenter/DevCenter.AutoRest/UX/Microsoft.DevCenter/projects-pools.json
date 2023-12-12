@@ -1,6 +1,6 @@
 {
   "resourceType": "projects/pools",
-  "apiVersion": "2023-04-01",
+  "apiVersion": "2023-10-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.devcenter"
   },
@@ -73,6 +73,49 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.poolName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Start-AzDevCenterAdminPoolHealthCheck",
+      "description": "Triggers a refresh of the pool status.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/runHealthChecks",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/start-azdevcenteradminpoolhealthcheck"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PoolName <String>",
+              "-ProjectName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Triggers a refresh of the pool status.",
+          "parameters": [
+            {
+              "name": "-PoolName",
               "value": "[Path.poolName]"
             },
             {

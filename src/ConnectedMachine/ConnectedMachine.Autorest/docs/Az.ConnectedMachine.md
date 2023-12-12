@@ -23,6 +23,9 @@ Retrieves information about the model view or the instance view of a hybrid mach
 ### [Get-AzConnectedMachineExtension](Get-AzConnectedMachineExtension.md)
 The operation to get the extension.
 
+### [Get-AzConnectedMachineRunCommand](Get-AzConnectedMachineRunCommand.md)
+The operation to get a run command.
+
 ### [Get-AzConnectedPrivateLinkScope](Get-AzConnectedPrivateLinkScope.md)
 Returns a Azure Arc PrivateLinkScope.
 
@@ -33,7 +36,10 @@ The operation to install patches on a hybrid machine identity in Azure.
 The operation to assess patches on a hybrid machine identity in Azure.
 
 ### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)
-The operation to create or update the extension.
+The operation to Create the extension.
+
+### [New-AzConnectedMachineRunCommand](New-AzConnectedMachineRunCommand.md)
+The operation to Create a run command.
 
 ### [New-AzConnectedPrivateLinkScope](New-AzConnectedPrivateLinkScope.md)
 Creates (or updates) a Azure Arc PrivateLinkScope.
@@ -45,11 +51,14 @@ The operation to delete a hybrid machine.
 ### [Remove-AzConnectedMachineExtension](Remove-AzConnectedMachineExtension.md)
 The operation to delete the extension.
 
+### [Remove-AzConnectedMachineRunCommand](Remove-AzConnectedMachineRunCommand.md)
+The operation to delete a run command.
+
 ### [Remove-AzConnectedPrivateLinkScope](Remove-AzConnectedPrivateLinkScope.md)
 Deletes a Azure Arc PrivateLinkScope.
 
 ### [Set-AzConnectedMachineExtension](Set-AzConnectedMachineExtension.md)
-The operation to create or update the extension.
+The operation to Create the extension.
 
 ### [Set-AzConnectedPrivateLinkScope](Set-AzConnectedPrivateLinkScope.md)
 Creates (or updates) a Azure Arc PrivateLinkScope.
@@ -62,7 +71,10 @@ The operation to Upgrade Machine Extensions.
 The operation to update a hybrid machine.
 
 ### [Update-AzConnectedMachineExtension](Update-AzConnectedMachineExtension.md)
-The operation to create or update the extension.
+The operation to Update the extension.
+
+### [Update-AzConnectedMachineRunCommand](Update-AzConnectedMachineRunCommand.md)
+The operation to Create a run command.
 
 ### [Update-AzConnectedPrivateLinkScopeTag](Update-AzConnectedPrivateLinkScopeTag.md)
 Updates an existing PrivateLinkScope's tags.

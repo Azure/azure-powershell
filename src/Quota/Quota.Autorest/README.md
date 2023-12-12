@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Quota service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -31,25 +31,24 @@ For information on how to develop for `Az.Quota`, see [how-to.md](how-to.md).
 
 ``` yaml
 # lock the commit
-commit: 679887ace44697c726aba8d2814ee415a5d25e6f
+commit: 4442e8121686218ce2951ab4dc734e489aa5bc08
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/quota/resource-manager/Microsoft.Quota/preview/2021-03-15-preview/quota.json
+  - $(repo)/specification/quota/resource-manager/Microsoft.Quota/stable/2023-02-01/quota.json
 
 title: Quota
 module-version: 0.1.0
 
 identity-correction-for-post: true
-# resouces usage id does not contain resource group name.
-# resourcegroup-append: true
+resourcegroup-append: true
 nested-object-to-string: true
+auto-switch-view: false
 
 inlining-threshold: 50
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+use-extension: 
+  "@autorest/powershell": "4.x"
 
 directive:
   # The regex(^/(?<scope>[^/]+)/) mathch failed because the scope inlcude '/' character.
@@ -60,15 +59,12 @@ directive:
 
   # Remove the set Workspace cmdlet
   - where:
+      variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
+    remove: true
+  - where:
       verb: Set
-      subject: ""
     remove: true
     
-  # Remove the unexpanded parameter set
-  - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-    remove: true
-
   - where:
       verb: Get
       subject: RequestStatus|Usage
@@ -78,7 +74,6 @@ directive:
   # Rename parameter
   - where:
       werb: New
-      subject: ""
       parameter-name: NameValue
     set:
       parameter-name: Name
@@ -86,7 +81,6 @@ directive:
   # future extendibility. It’s not used currently
   - where:
       verb: New|Update
-      subject: ""
       parameter-name: AnyProperty
     hide: true
 
@@ -130,6 +124,7 @@ directive:
   - no-inline:
     - LimitJsonObject
     
-  # - model-cmdlet:
-  #   - LimitObject  # Successfull generated then hide it to custom(Rename cmdlet and parameter).
+  - model-cmdlet:
+    - model-name: LimitObject
+      cmdlet-name: New-AzQuotaLimitObject
 ```

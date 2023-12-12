@@ -27,14 +27,14 @@ Gets an action.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxAction
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
-  [ActionName <String>]: The name of an action that will take place on a Dev Box.
+  [Name <String>]: The name of an action that will take place on a Dev Box.
   [CatalogName <String>]: The name of the catalog
   [DefinitionName <String>]: The name of the environment definition
   [DevBoxName <String>]: The name of a Dev Box.
@@ -48,7 +48,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxaction
 #>
 function Get-AzDevCenterUserDevBoxAction {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxAction])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]
@@ -62,17 +62,19 @@ function Get-AzDevCenterUserDevBoxAction {
         [Parameter(ParameterSetName='GetViaIdentityByDevCenter', Mandatory)]
         [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
         [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
+        [Alias('DevCenter')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
         [System.String]
         # The DevCenter upon which to execute operations.
-        ${DevCenter},
+        ${DevCenterName},
     
         [Parameter(ParameterSetName='Get', Mandatory)]
         [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
+        [Alias('ActionName')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
         # The name of an action that will take place on a Dev Box.
-        ${ActionName},
+        ${Name},
     
         [Parameter(ParameterSetName='Get', Mandatory)]
         [Parameter(ParameterSetName='List', Mandatory)]
@@ -162,9 +164,9 @@ function Get-AzDevCenterUserDevBoxAction {
 
     process {
         if (-not $PSBoundParameters.ContainsKey('Endpoint')) {
-            $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
+            $Endpoint = GetEndpointFromResourceGraph -DevCenterName $DevCenterName -Project $ProjectName
             $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
-            $null = $PSBoundParameters.Remove("DevCenter")
+            $null = $PSBoundParameters.Remove("DevCenterName")
       
         }
         else {
