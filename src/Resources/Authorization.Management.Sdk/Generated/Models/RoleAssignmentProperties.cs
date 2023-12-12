@@ -8,26 +8,21 @@ namespace Microsoft.Azure.Management.Authorization.Models
     using System.Linq;
 
     /// <summary>
-    /// Role assignment create parameters.
+    /// Role assignment properties.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class RoleAssignmentCreateParameters
+    public partial class RoleAssignmentProperties
     {
         /// <summary>
-        /// Initializes a new instance of the RoleAssignmentCreateParameters class.
+        /// Initializes a new instance of the RoleAssignmentProperties class.
         /// </summary>
-        public RoleAssignmentCreateParameters()
+        public RoleAssignmentProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RoleAssignmentCreateParameters class.
+        /// Initializes a new instance of the RoleAssignmentProperties class.
         /// </summary>
-
-        /// <param name="principalType">The principal type of the assigned principal ID.
-        /// Possible values include: &#39;User&#39;, &#39;Group&#39;, &#39;ServicePrincipal&#39;,
-        /// &#39;ForeignGroup&#39;</param>
 
         /// <param name="scope">The role assignment scope.
         /// </param>
@@ -37,6 +32,10 @@ namespace Microsoft.Azure.Management.Authorization.Models
 
         /// <param name="principalId">The principal ID.
         /// </param>
+
+        /// <param name="principalType">The principal type of the assigned principal ID.
+        /// Possible values include: &#39;User&#39;, &#39;Group&#39;, &#39;ServicePrincipal&#39;,
+        /// &#39;ForeignGroup&#39;</param>
 
         /// <param name="description">Description of role assignment
         /// </param>
@@ -64,13 +63,13 @@ namespace Microsoft.Azure.Management.Authorization.Models
 
         /// <param name="delegatedManagedIdentityResourceId">Id of the delegated managed identity resource
         /// </param>
-        public RoleAssignmentCreateParameters(string roleDefinitionId, string principalId, string principalType = default(string), string scope = default(string), string description = default(string), string condition = default(string), string conditionVersion = default(string), System.DateTime? createdOn = default(System.DateTime?), System.DateTime? updatedOn = default(System.DateTime?), string createdBy = default(string), string updatedBy = default(string), string delegatedManagedIdentityResourceId = default(string))
+        public RoleAssignmentProperties(string roleDefinitionId, string principalId, string scope = default(string), string principalType = default(string), string description = default(string), string condition = default(string), string conditionVersion = default(string), System.DateTime? createdOn = default(System.DateTime?), System.DateTime? updatedOn = default(System.DateTime?), string createdBy = default(string), string updatedBy = default(string), string delegatedManagedIdentityResourceId = default(string))
 
         {
-            this.PrincipalType = principalType;
             this.Scope = scope;
             this.RoleDefinitionId = roleDefinitionId;
             this.PrincipalId = principalId;
+            this.PrincipalType = principalType;
             this.Description = description;
             this.Condition = condition;
             this.ConditionVersion = conditionVersion;
@@ -89,33 +88,33 @@ namespace Microsoft.Azure.Management.Authorization.Models
 
 
         /// <summary>
-        /// Gets or sets the principal type of the assigned principal ID. Possible values include: &#39;User&#39;, &#39;Group&#39;, &#39;ServicePrincipal&#39;, &#39;ForeignGroup&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.principalType")]
-        public string PrincipalType {get; set; }
-
-        /// <summary>
         /// Gets the role assignment scope.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.scope")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "scope")]
         public string Scope {get; private set; }
 
         /// <summary>
         /// Gets or sets the role definition ID.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.roleDefinitionId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "roleDefinitionId")]
         public string RoleDefinitionId {get; set; }
 
         /// <summary>
         /// Gets or sets the principal ID.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.principalId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "principalId")]
         public string PrincipalId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the principal type of the assigned principal ID. Possible values include: &#39;User&#39;, &#39;Group&#39;, &#39;ServicePrincipal&#39;, &#39;ForeignGroup&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "principalType")]
+        public string PrincipalType {get; set; }
 
         /// <summary>
         /// Gets or sets description of role assignment
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.description")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "description")]
         public string Description {get; set; }
 
         /// <summary>
@@ -124,43 +123,43 @@ namespace Microsoft.Azure.Management.Authorization.Models
         /// @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName]
         /// StringEqualsIgnoreCase &#39;foo_storage_container&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.condition")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "condition")]
         public string Condition {get; set; }
 
         /// <summary>
         /// Gets or sets version of the condition. Currently accepted value is &#39;2.0&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.conditionVersion")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "conditionVersion")]
         public string ConditionVersion {get; set; }
 
         /// <summary>
         /// Gets time it was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.createdOn")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "createdOn")]
         public System.DateTime? CreatedOn {get; private set; }
 
         /// <summary>
         /// Gets time it was updated
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.updatedOn")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "updatedOn")]
         public System.DateTime? UpdatedOn {get; private set; }
 
         /// <summary>
         /// Gets id of the user who created the assignment
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.createdBy")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "createdBy")]
         public string CreatedBy {get; private set; }
 
         /// <summary>
         /// Gets id of the user who updated the assignment
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.updatedBy")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "updatedBy")]
         public string UpdatedBy {get; private set; }
 
         /// <summary>
         /// Gets or sets id of the delegated managed identity resource
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.delegatedManagedIdentityResourceId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "delegatedManagedIdentityResourceId")]
         public string DelegatedManagedIdentityResourceId {get; set; }
         /// <summary>
         /// Validate the object.
