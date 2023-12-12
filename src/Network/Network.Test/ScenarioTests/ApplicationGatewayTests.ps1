@@ -608,7 +608,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 	)
 
 	# Setup
-	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "westus2"
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
@@ -809,7 +809,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSetWithConditions
 	)
 
 	# Setup
-	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "westus2"
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
@@ -3101,7 +3101,7 @@ function Test-ApplicationGatewayWithFirewallPolicy
 	{
 		# The Per-Site firewall policy can only be enabled in regions which have the dynamic setting set to true.
 		# Currently Central US EUAP region has it enabled so hardcoding it to this region, This can be removed once it is enabled on regions in production.
-		$location = "westus"
+		$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
@@ -3205,7 +3205,7 @@ function Test-ApplicationGatewayWithFirewallPolicy
 		$listener02 = Get-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener02Name
 		Add-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener03Name -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp02 -HostName TestName -SslCertificate $sslCert
 		$urlPathMap = Get-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name $urlPathMapName
-		Add-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType PathBasedRouting -Priority 100 -HttpListener $listener02 -UrlPathMap $urlPathMap
+		Add-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType PathBasedRouting -Priority 101 -HttpListener $listener02 -UrlPathMap $urlPathMap
 
 		# Add twice
 		Assert-ThrowsLike { Add-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name $trustedRootCertName -CertificateFile $certFilePath } "*already exists*"
@@ -3328,7 +3328,7 @@ function Test-ApplicationGatewayWithTCPResources
 	{
 		# The Routing Rule Priortity field will be enabled in upcoming SDK release and  is enabled for selected locations in NRP
 		# Currently West US 3 region does not have priority filed enabled so hardcoding it to this region, This can be removed once it is enabled on all regions in productions and SDK is released.
-		$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 3"
+		$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
@@ -4159,7 +4159,7 @@ function Test-ApplicationGatewayWithListenerHostNames
 	)
 
 	# Setup
-	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
@@ -4187,8 +4187,8 @@ function Test-ApplicationGatewayWithListenerHostNames
 	$rule01Name = Get-ResourceName
 	$rule02Name = Get-ResourceName
 
-	$customError403Url01 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
-	$customError403Url02 = "http://mycustomerrorpages.blob.core.windows.net/errorpages/403-another.htm"
+	$customError403Url01 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403.htm"
+	$customError403Url02 = "https://mycustomerrorpages.blob.core.windows.net/errorpages/403.htm"
 
 	$urlPathMapName = Get-ResourceName
 	$urlPathMapName2 = Get-ResourceName
@@ -4225,7 +4225,17 @@ function Test-ApplicationGatewayWithListenerHostNames
 		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
 		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name -Port 80
 		$fp02 = New-AzApplicationGatewayFrontendPort -Name $frontendPort02Name -Port 443
-		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01 -RequireServerNameIndication false
+
+		$listenerPolicyName = "listenerhttpPolicy"
+		$policySetting = New-AzApplicationGatewayFirewallPolicySetting -Mode "Prevention" -State Enabled -MaxFileUploadInMb 300 
+		New-AzApplicationGatewayFirewallPolicy -Name $listenerPolicyName -ResourceGroupName $rgname -Location $location -PolicySetting $policySetting
+		$httpPolicy = Get-AzApplicationGatewayFirewallPolicy -Name $listenerPolicyName -ResourceGroupName $rgname
+		Assert-AreEqual $httpPolicy.PolicySettings.FileUploadLimitInMb  $policySetting.FileUploadLimitInMb
+		Assert-AreEqual $httpPolicy.PolicySettings.Mode  $policySetting.Mode
+		Assert-AreEqual $httpPolicy.PolicySettings.State  $policySetting.State
+
+
+		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01 -RequireServerNameIndication false -FirewallPolicy $httpPolicy
 
 		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
 		$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 443 -Protocol Https -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress
@@ -4277,7 +4287,7 @@ function Test-ApplicationGatewayWithListenerHostNames
 		$listener02 = Get-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener02Name
 		Add-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener03Name -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp02 -HostName TestName -SslCertificate $sslCert
 		$urlPathMap = Get-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name $urlPathMapName
-		Add-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType PathBasedRouting -Priority 100 -HttpListener $listener02 -UrlPathMap $urlPathMap
+		Add-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType PathBasedRouting -Priority 101 -HttpListener $listener02 -UrlPathMap $urlPathMap
 
 		# Add twice
 		Assert-ThrowsLike { Add-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name $trustedRootCertName -CertificateFile $certFilePath } "*already exists*"
@@ -4373,7 +4383,7 @@ function Test-ApplicationGatewayWithPrivateLinkConfiguration
 	)
 
 	# Setup
-	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "westus2"
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
@@ -4415,7 +4425,7 @@ function Test-ApplicationGatewayWithPrivateLinkConfiguration
 		$plsSubnet = Get-AzVirtualNetworkSubnetConfig -Name $plsSubnetName -VirtualNetwork $vnet
 
 		# Create public ip
-		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -Zone 1,2 -AllocationMethod Static -sku Standard
 
 		# Create ip configuration
 		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
