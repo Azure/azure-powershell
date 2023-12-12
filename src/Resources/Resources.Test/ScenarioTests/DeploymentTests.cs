@@ -204,6 +204,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNullableParametersAreNotRequired()
+            => TestRunner.RunTestScript("Test-NullableParametersAreNotRequired");
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentFromBicepparamFileOnly()
         {
             TestRunner.RunTestScript("Test-NewDeploymentFromBicepparamFileOnly");

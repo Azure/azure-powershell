@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.CustomLocation-help.xml
 Module Name: Az.CustomLocation
 online version: https://learn.microsoft.com/powershell/module/az.customlocation/get-azcustomlocation
 schema: 2.0.0
@@ -23,15 +23,15 @@ Get-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzCustomLocation -InputObject <ICustomLocationIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzCustomLocation -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzCustomLocation -InputObject <ICustomLocationIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -160,7 +160,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -197,4 +197,3 @@ INPUTOBJECT `<ICustomLocationIdentity>`: Identity Parameter
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-
