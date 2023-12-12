@@ -48,13 +48,21 @@ function setupEnv() {
     $clusterName = RandomString -allChars $false -len 6
     $extensionName = RandomString -allChars $false -len 6
     $clusterLocationName = RandomString -allChars $false -len 6
+    $clusterLocationName1 = RandomString -allChars $false -len 6
     $clusterLocationName2 = RandomString -allChars $false -len 6
-
+    $resourceSyncRuleName1 = RandomString -allChars $false -len 6
+    $resourceSyncRuleName2 = RandomString -allChars $false -len 6
+    $resourceSyncRuleName3 = RandomString -allChars $false -len 6
+    
     $env.Add("k8sName", $k8sName)
     $env.Add("clusterName", $clusterName)
     $env.Add("extensionName", $extensionName)
     $env.Add("clusterLocationName", $clusterLocationName)
+    $env.Add("clusterLocationName1", $clusterLocationName1)
     $env.Add("clusterLocationName2", $clusterLocationName2)
+    $env.Add("resourceSyncRuleName1", $resourceSyncRuleName1)
+    $env.Add("resourceSyncRuleName2", $resourceSyncRuleName2)
+    $env.Add("resourceSyncRuleName3", $resourceSyncRuleName3)
 
     $env.Add("location", "eastus")
 
@@ -65,26 +73,27 @@ function setupEnv() {
     write-host "1. start to create test group..."
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
-    write-host "1. az aks create..."
-    az aks create --name $env.k8sName --resource-group $env.resourceGroup --kubernetes-version 1.20.9 --vm-set-type AvailabilitySet
+    write-host "2. az aks create..."
+    az aks create --name $env.k8sName --resource-group $env.resourceGroup --kubernetes-version 1.26.6 --vm-set-type AvailabilitySet
 
-    write-host "1. az aks get-credentials..."
+    write-host "3. az aks get-credentials..."
     az aks get-credentials --resource-group $env.resourceGroup --name $env.k8sName
 
-    write-host "1. az connectedk8s connect..."
+    write-host "4. az connectedk8s connect..."
     az connectedk8s connect --name $env.clusterName --resource-group $env.resourceGroup --location $env.location
-
-    write-host "1. az k8s-extension create..."
+    # New-AzConnectedKubernetes -Name $env.clusterName -ResourceGroupName $env.resourceGroup -Location $env.location
+    
+    write-host "5. az k8s-extension create..."
     az k8s-extension create -c $env.clusterName -g $env.resourceGroup --name $env.extensionName --cluster-type connectedClusters --extension-type microsoft.arcdataservices --auto-upgrade false --scope cluster --release-namespace arc --config Microsoft.CustomLocation.ServiceAccount=sa-bootstrapper
+    # New-AzKubernetesExtension -ClusterName $env.clusterName -ClusterType ConnectedClusters -Name $env.extensionName -ResourceGroupName $env.resourceGroup -ExtensionType microsoft.arcdataservices -AutoUpgradeMinorVersion:$false -ReleaseNamespace arc -IdentityType 'SystemAssigned'
 
-    az k8s-extension show -g $env.resourceGroup -c $env.clusterName --name $env.extensionName --cluster-type connectedclusters
-
-    $HostResourceId = az connectedk8s show -n $env.clusterName -g $env.resourceGroup --query id -o tsv
-
-    $ClusterExtensionId = az k8s-extension show --name $env.extensionName --cluster-type connectedClusters -c $env.clusterName -g $env.resourceGroup --query id -o tsv
+    $HostResourceId = (Get-AzConnectedKubernetes -ClusterName $env.clusterName -ResourceGroupName $env.resourceGroup).Id
+    $ClusterExtensionId = (Get-AzKubernetesExtension -ClusterName $env.clusterName -ClusterType ConnectedClusters -ResourceGroupName $env.resourceGroup -Name $env.extensionName).Id
 
     $env.Add("HostResourceId", $HostResourceId)
     $env.Add("ClusterExtensionId", $ClusterExtensionId)
+
+    New-AzCustomLocation -ResourceGroupName $env.resourceGroup -Name $env.clusterLocationName -Location $env.location -ClusterExtensionId $env.ClusterExtensionId -HostResourceId $env.HostResourceId -DisplayName $env.clusterLocationName -Namespace azps1
 
     # Wait for extension creation to complete
     Start-Sleep –s 180

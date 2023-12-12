@@ -1,25 +1,28 @@
 ### Example 1: Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
 ```powershell
-Update-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster_1 -ClusterExtensionId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster/providers/Microsoft.KubernetesConfiguration/extensions/azps_test_extension" -HostResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster" -Namespace arc
+$HostResourceId = (Get-AzConnectedKubernetes -ClusterName azps-connect -ResourceGroupName azps_test_cluster).Id
+$ClusterExtensionId = (Get-AzKubernetesExtension -ClusterName azps-connect -ClusterType ConnectedClusters -ResourceGroupName azps_test_cluster -Name azps-extension).Id
+Update-AzCustomLocation -ResourceGroupName azps_test_cluster -Name azps-customlocation -ClusterExtensionId $ClusterExtensionId -HostResourceId $HostResourceId -Namespace azps-namespace -Tag @{"Key1"="Value1"}
 ```
 
 ```output
-Location Name                Namespace
--------- ----                ----
-eastus   azps_test_cluster_1 arc
+Location Name                Namespace      ResourceGroupName
+-------- ----                ---------      -----------------
+eastus   azps-customlocation azps-namespace azps_test_cluster
 ```
 
 Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription.
 
 ### Example 2: Updates a Custom Location.
 ```powershell
-Get-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster | Update-AzCustomLocation
+$obj = Get-AzCustomLocation -ResourceGroupName azps_test_cluster -Name azps-customlocation
+Update-AzCustomLocation -InputObject $obj -Tag @{"Key1"="Value1"}
 ```
 
 ```output
-Location Name                Namespace
--------- ----                ----
-eastus   azps_test_cluster_1 arc
+Location Name                Namespace      ResourceGroupName
+-------- ----                ---------      -----------------
+eastus   azps-customlocation azps-namespace azps_test_cluster
 ```
 
 Updates a Custom Location.

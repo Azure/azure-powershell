@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzCustomLocation'))
+if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCustomLocationResourceSyncRule'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzCustomLocation.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzCustomLocationResourceSyncRule.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,20 +14,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCustomLocation'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCustomLocation' {
-    It 'CreateExpanded' -skip {
+Describe 'Update-AzCustomLocationResourceSyncRule' {
+    It 'UpdateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateViaJsonFilePath' -skip {
+    It 'UpdateViaJsonString' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateViaJsonString' -skip {
+    It 'UpdateViaJsonFilePath' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateViaIdentityExpanded' -skip {
+    It 'UpdateViaIdentityCustomlocationExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
