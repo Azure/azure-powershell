@@ -8,31 +8,21 @@ namespace Microsoft.Azure.Management.Authorization.Models
     using System.Linq;
 
     /// <summary>
-    /// Deny Assignment
+    /// Deny assignment properties.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class DenyAssignment
+    public partial class DenyAssignmentProperties
     {
         /// <summary>
-        /// Initializes a new instance of the DenyAssignment class.
+        /// Initializes a new instance of the DenyAssignmentProperties class.
         /// </summary>
-        public DenyAssignment()
+        public DenyAssignmentProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DenyAssignment class.
+        /// Initializes a new instance of the DenyAssignmentProperties class.
         /// </summary>
-
-        /// <param name="id">The deny assignment ID.
-        /// </param>
-
-        /// <param name="name">The deny assignment name.
-        /// </param>
-
-        /// <param name="type">The deny assignment type.
-        /// </param>
 
         /// <param name="denyAssignmentName">The display name of the deny assignment.
         /// </param>
@@ -59,12 +49,9 @@ namespace Microsoft.Azure.Management.Authorization.Models
         /// <param name="isSystemProtected">Specifies whether this deny assignment was created by Azure and cannot be
         /// edited or deleted.
         /// </param>
-        public DenyAssignment(string id = default(string), string name = default(string), string type = default(string), string denyAssignmentName = default(string), string description = default(string), System.Collections.Generic.IList<DenyAssignmentPermission> permissions = default(System.Collections.Generic.IList<DenyAssignmentPermission>), string scope = default(string), bool? doNotApplyToChildScopes = default(bool?), System.Collections.Generic.IList<Principal> principals = default(System.Collections.Generic.IList<Principal>), System.Collections.Generic.IList<Principal> excludePrincipals = default(System.Collections.Generic.IList<Principal>), bool? isSystemProtected = default(bool?))
+        public DenyAssignmentProperties(string denyAssignmentName = default(string), string description = default(string), System.Collections.Generic.IList<DenyAssignmentPermission> permissions = default(System.Collections.Generic.IList<DenyAssignmentPermission>), string scope = default(string), bool? doNotApplyToChildScopes = default(bool?), System.Collections.Generic.IList<Principal> principals = default(System.Collections.Generic.IList<Principal>), System.Collections.Generic.IList<Principal> excludePrincipals = default(System.Collections.Generic.IList<Principal>), bool? isSystemProtected = default(bool?))
 
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.DenyAssignmentName = denyAssignmentName;
             this.Description = description;
             this.Permissions = permissions;
@@ -83,73 +70,55 @@ namespace Microsoft.Azure.Management.Authorization.Models
 
 
         /// <summary>
-        /// Gets the deny assignment ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets the deny assignment name.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets the deny assignment type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
-
-        /// <summary>
         /// Gets or sets the display name of the deny assignment.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.denyAssignmentName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "denyAssignmentName")]
         public string DenyAssignmentName {get; set; }
 
         /// <summary>
         /// Gets or sets the description of the deny assignment.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.description")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "description")]
         public string Description {get; set; }
 
         /// <summary>
         /// Gets or sets an array of permissions that are denied by the deny
         /// assignment.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.permissions")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "permissions")]
         public System.Collections.Generic.IList<DenyAssignmentPermission> Permissions {get; set; }
 
         /// <summary>
         /// Gets or sets the deny assignment scope.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.scope")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "scope")]
         public string Scope {get; set; }
 
         /// <summary>
         /// Gets or sets determines if the deny assignment applies to child scopes.
         /// Default value is false.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.doNotApplyToChildScopes")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "doNotApplyToChildScopes")]
         public bool? DoNotApplyToChildScopes {get; set; }
 
         /// <summary>
         /// Gets or sets array of principals to which the deny assignment applies.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.principals")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "principals")]
         public System.Collections.Generic.IList<Principal> Principals {get; set; }
 
         /// <summary>
         /// Gets or sets array of principals to which the deny assignment does not
         /// apply.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.excludePrincipals")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "excludePrincipals")]
         public System.Collections.Generic.IList<Principal> ExcludePrincipals {get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether this deny assignment was created by Azure
         /// and cannot be edited or deleted.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isSystemProtected")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isSystemProtected")]
         public bool? IsSystemProtected {get; set; }
     }
 }
