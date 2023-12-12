@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.CustomLocation-help.xml
 Module Name: Az.CustomLocation
 online version: https://learn.microsoft.com/powershell/module/az.customlocation/get-azcustomlocationenabledresourcetype
 schema: 2.0.0
@@ -13,8 +13,8 @@ Gets the list of the Enabled Resource Types.
 ## SYNTAX
 
 ```
-Get-AzCustomLocationEnabledResourceType -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzCustomLocationEnabledResourceType -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,4 +112,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-
