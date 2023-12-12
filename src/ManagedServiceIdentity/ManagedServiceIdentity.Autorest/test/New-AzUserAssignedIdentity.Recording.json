@@ -1,15 +1,15 @@
 {
-  "New-AzUserAssignedIdentity+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-wmbx18cj/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityeo64yq?api-version=2023-01-31+1": {
+  "New-AzUserAssignedIdentity+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/identity-of9g5pl0/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2bgdny?api-version=2023-01-31+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-wmbx18cj/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityeo64yq?api-version=2023-01-31",
-      "Content": "{\n  \"location\": \"Central US\"\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/identity-of9g5pl0/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2bgdny?api-version=2023-01-31",
+      "Content": "{\r\n  \"location\": \"Central US\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "30" ]
+        "Content-Length": [ "32" ]
       }
     },
     "Response": {
@@ -17,21 +17,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourcegroups/identity-wmbx18cj/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityeo64yq" ],
+        "Location": [ "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/identity-of9g5pl0/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2bgdny" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
-        "x-ms-request-id": [ "69fd6833-dd7c-40d6-ae60-851f5e29e977" ],
-        "x-ms-correlation-request-id": [ "69fd6833-dd7c-40d6-ae60-851f5e29e977" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20230214T115930Z:69fd6833-dd7c-40d6-ae60-851f5e29e977" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "b9a485a9-d9fc-406a-b7dc-988ef5954eb5" ],
+        "x-ms-correlation-request-id": [ "b9a485a9-d9fc-406a-b7dc-988ef5954eb5" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20231127T094619Z:b9a485a9-d9fc-406a-b7dc-988ef5954eb5" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 14 Feb 2023 11:59:30 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 7ECEB8E7AA0440D68E52086864DCB15B Ref B: TYO201100115023 Ref C: 2023-11-27T09:46:17Z" ],
+        "Date": [ "Mon, 27 Nov 2023 09:46:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "450" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourcegroups/identity-wmbx18cj/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityeo64yq\",\"name\":\"identityeo64yq\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"centralus\",\"tags\":{},\"properties\":{\"tenantId\":\"a66b4d27-b1b3-4b60-8b06-7fb4fd05bc3c\",\"principalId\":\"c1de5485-bf9c-4d72-9e37-532feeddb801\",\"clientId\":\"009f4c8e-e907-4483-bb04-34b54042df1d\"}}",
+      "Content": "{\"location\":\"centralus\",\"tags\":{},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/identity-of9g5pl0/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity2bgdny\",\"name\":\"identity2bgdny\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"properties\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"principalId\":\"dfe95af7-5ac4-4719-a38d-b4c9aa5a7311\",\"clientId\":\"97be01b8-d1d0-4843-b4cb-913860d98172\"}}",
       "isContentBase64": false
     }
   }

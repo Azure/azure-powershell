@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdscalingplan
 schema: 2.0.0
@@ -13,14 +13,14 @@ Create or update a scaling plan.
 ## SYNTAX
 
 ```
-New-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> -TimeZone <String> [-SubscriptionId <String>]
+New-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -TimeZone <String>
  [-Description <String>] [-ExclusionTag <String>] [-FriendlyName <String>]
  [-HostPoolReference <IScalingHostPoolReference[]>] [-HostPoolType <ScalingHostPoolType>]
  [-IdentityType <ResourceIdentityType>] [-Kind <String>] [-Location <String>] [-ManagedBy <String>]
  [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
  [-PlanVersion <String>] [-Schedule <IScalingSchedule[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
  [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,7 +50,7 @@ New-AzWvdScalingPlan `
 ```output
 Location      Name         Type
 --------      ----         ----
-westcentralus scalingPlan1 Microsoft.DesktopVirtualization/scalingplans 
+westcentralus scalingPlan1 Microsoft.DesktopVirtualization/scalingplans
 ```
 
 This command creates a new Windows Virtual Desktop Scaling Plan in a Resource Group.
@@ -113,7 +113,7 @@ New-AzWvdScalingPlan `
 ```output
 Location      Name         Type
 --------      ----         ----
-westcentralus scalingPlan1 Microsoft.DesktopVirtualization/scalingplans 
+westcentralus scalingPlan1 Microsoft.DesktopVirtualization/scalingplans
 ```
 
 This command creates a new Windows Virtual Desktop Scaling Plan in a Resource Group with a pooled schedule assigned at creation.
@@ -572,4 +572,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

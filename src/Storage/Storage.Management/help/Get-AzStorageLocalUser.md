@@ -34,9 +34,9 @@ The **Get-AzStorageLocalUser** cmdlet gets a specified local user or lists all l
 
 
 ```
-PS C:\> $localUser = Get-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1
+$localUser = Get-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1
 
-PS C:\> $localUser 
+$localUser 
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
@@ -44,7 +44,7 @@ Name      Sid                                          HomeDirectory HasSharedKe
 ----      ---                                          ------------- ------------ --------- -------------- ----------------
 testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1,...]
 
-PS C:\> $localUser.PermissionScopes
+$localUser.PermissionScopes
   
 Permissions Service ResourceName
 ----------- ------- ------------

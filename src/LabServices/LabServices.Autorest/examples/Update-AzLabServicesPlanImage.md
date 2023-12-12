@@ -1,6 +1,6 @@
 ### Example 1: Update a lab plan image.
 ```powershell
-PS C:\> Update-AzLabServicesPlanImage -ResourceGroupName "Group Name" -LabPlanName "LabPlan Name" -Name "Image Name" -EnabledState "Enabled"
+Update-AzLabServicesPlanImage -ResourceGroupName "Group Name" -LabPlanName "LabPlan Name" -Name "Image Name" -EnabledState "Enabled"
 
 Name
 ----

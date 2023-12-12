@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -82,7 +107,7 @@ function setupEnv() {
     $queueSecondaryKey = GenerateSASKey
     $topicPrimaryKey = GenerateSASKey
     $topicSecondaryKey = GenerateSASKey
-    
+
     $env.Add('namespacePrimaryKey', $namespacePrimaryKey)
     $env.Add('namespaceSecondaryKey', $namespaceSecondaryKey)
     $env.Add('queuePrimaryKey', $queuePrimaryKey)
@@ -124,7 +149,7 @@ function setupEnv() {
     $keyVaultTemplate.parameters.object_id.value = $namespace.PrincipalId
     Set-Content -Path .\test\deployment-template\keyVaultParameter.json -Value (ConvertTo-Json $keyVaultTemplate)
     $rg = New-AzResourceGroupDeployment -TemplateFile .\test\deployment-template\keyVaultTemplate.json -TemplateParameterFile .\test\deployment-template\keyVaultParameter.json -Name keyVaultTemplate -ResourceGroupName $resourceGroup
-    
+
     Write-Host -ForegroundColor Magenta "Deployed KeyVault ARM template"
 
     $resourceNames = Get-Content .\test\deployment-template\pre-created-resources\parameter.json | ConvertFrom-Json

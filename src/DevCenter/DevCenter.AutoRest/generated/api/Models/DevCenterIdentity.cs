@@ -40,6 +40,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
         public string DevCenterName { get => this._devCenterName; set => this._devCenterName = value; }
 
+        /// <summary>Backing field for <see cref="EnvironmentDefinitionName" /> property.</summary>
+        private string _environmentDefinitionName;
+
+        /// <summary>The name of the Environment Definition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
+        public string EnvironmentDefinitionName { get => this._environmentDefinitionName; set => this._environmentDefinitionName = value; }
+
         /// <summary>Backing field for <see cref="EnvironmentTypeName" /> property.</summary>
         private string _environmentTypeName;
 
@@ -124,6 +131,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
+        /// <summary>Backing field for <see cref="TaskName" /> property.</summary>
+        private string _taskName;
+
+        /// <summary>The name of the Task.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
+        public string TaskName { get => this._taskName; set => this._taskName = value; }
+
         /// <summary>Backing field for <see cref="VersionName" /> property.</summary>
         private string _versionName;
 
@@ -172,6 +186,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         SerializedName = @"devCenterName",
         PossibleTypes = new [] { typeof(string) })]
         string DevCenterName { get; set; }
+        /// <summary>The name of the Environment Definition.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the Environment Definition.",
+        SerializedName = @"environmentDefinitionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string EnvironmentDefinitionName { get; set; }
         /// <summary>The name of the environment type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
         Required = false,
@@ -268,6 +290,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
+        /// <summary>The name of the Task.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the Task.",
+        SerializedName = @"taskName",
+        PossibleTypes = new [] { typeof(string) })]
+        string TaskName { get; set; }
         /// <summary>The version of the image.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
         Required = false,
@@ -289,6 +319,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         string DevBoxDefinitionName { get; set; }
         /// <summary>The name of the devcenter.</summary>
         string DevCenterName { get; set; }
+        /// <summary>The name of the Environment Definition.</summary>
+        string EnvironmentDefinitionName { get; set; }
         /// <summary>The name of the environment type.</summary>
         string EnvironmentTypeName { get; set; }
         /// <summary>The name of the gallery.</summary>
@@ -313,6 +345,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         string ScheduleName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
+        /// <summary>The name of the Task.</summary>
+        string TaskName { get; set; }
         /// <summary>The version of the image.</summary>
         string VersionName { get; set; }
 

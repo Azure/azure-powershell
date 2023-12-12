@@ -1,6 +1,6 @@
 ### Example 1: Create Azure SQL Data Warehouse custom scanruleset object
 ```powershell
-PS C:\> {{ Add code here }}
+{{ Add code here }}
 
 CreatedAt                            :
 Description                          : desc

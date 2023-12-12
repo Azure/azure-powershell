@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/az.app/update-azcontainerappsourcecontrol
 schema: 2.0.0
@@ -15,25 +15,25 @@ Create the SourceControl for a Container App.
 ### UpdateExpanded (Default)
 ```
 Update-AzContainerAppSourceControl -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AzureClientId <String>] [-AzureClientSecret <SecureString>]
- [-AzureKind <String>] [-AzureSubscriptionId <String>] [-AzureTenantId <String>] [-Branch <String>]
+ [-SubscriptionId <String>] [-AzureClientId <String>] [-AzureClientSecret <SecureString>] [-AzureKind <String>]
+ [-AzureSubscriptionId <String>] [-AzureTenantId <String>] [-Branch <String>]
  [-GithubAccessToken <SecureString>] [-GithubConfigurationImage <String>] [-GithubContextPath <String>]
  [-GithubOS <String>] [-GithubPublishType <String>] [-GithubRuntimeStack <String>]
  [-GithubRuntimeVersion <String>] [-RegistryPassword <SecureString>] [-RegistryUrl <String>]
- [-RegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-RegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityContainerAppExpanded
 ```
-Update-AzContainerAppSourceControl -ContainerAppInputObject <IAppIdentity> -Name <String>
+Update-AzContainerAppSourceControl -Name <String> -ContainerAppInputObject <IAppIdentity>
  [-AzureClientId <String>] [-AzureClientSecret <SecureString>] [-AzureKind <String>]
  [-AzureSubscriptionId <String>] [-AzureTenantId <String>] [-Branch <String>]
  [-GithubAccessToken <SecureString>] [-GithubConfigurationImage <String>] [-GithubContextPath <String>]
  [-GithubOS <String>] [-GithubPublishType <String>] [-GithubRuntimeStack <String>]
  [-GithubRuntimeVersion <String>] [-RegistryPassword <SecureString>] [-RegistryUrl <String>]
- [-RegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-RegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -44,7 +44,7 @@ Update-AzContainerAppSourceControl -InputObject <IAppIdentity> [-AzureClientId <
  [-GithubConfigurationImage <String>] [-GithubContextPath <String>] [-GithubOS <String>]
  [-GithubPublishType <String>] [-GithubRuntimeStack <String>] [-GithubRuntimeVersion <String>]
  [-RegistryPassword <SecureString>] [-RegistryUrl <String>] [-RegistryUserName <String>] [-RepoUrl <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -546,4 +546,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

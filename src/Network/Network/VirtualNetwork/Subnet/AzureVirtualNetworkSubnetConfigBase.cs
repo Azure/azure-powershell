@@ -126,5 +126,11 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "IpAllocation")]
         public PSIpAllocation[] IpAllocation { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Default outbound connectivity for all VMs in the subnet")]
+        public bool? DefaultOutboundAccess { get; set; }
     }
 }

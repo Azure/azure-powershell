@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `Set-AzSqlDatabaseFailoverGroup` when going from multi-secondary to single secondary
+
+## Version 4.12.0
 * Added new parameters `MaintenanceConfigurationId`, `DnsZone` to `AzSqlInstancePool` cmdlets
 * Add "1.3" into set of valid TLS versions and made TLS 1.2 default wheb creating server.
 

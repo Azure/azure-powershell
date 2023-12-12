@@ -143,6 +143,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ParameterSetName = AccountObjectParameterSet)]
         public SwitchParameter IncludeSnapshot { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "The filter of share name. When specified, only share names starting with the filter will be listed. The filter must be in format: startswith(name, <prefix>)",
+            ParameterSetName = AccountNameParameterSet)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The filter of share name. When specified, only share names starting with the filter will be listed. The filter must be in format: startswith(name, <prefix>)",
+            ParameterSetName = AccountObjectParameterSet)]
+        public string Filter { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -198,7 +206,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 IPage<FileShareItem> shares = this.StorageClient.FileShares.List(
                            this.ResourceGroupName,
                            this.StorageAccountName,
-                           expand: listSharesExpand);
+                           expand: listSharesExpand,
+                           filter: this.Filter);
                 WriteShareList(shares);
                 while (shares.NextPageLink != null)
                 {

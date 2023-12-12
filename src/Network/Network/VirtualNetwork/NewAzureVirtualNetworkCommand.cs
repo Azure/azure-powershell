@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (var ipAllocation in this.IpAllocation)
                 {
                     var ipAllocationReference = new MNM.SubResource(ipAllocation.Id);
-                    vnetModel.IpAllocations.Add(ipAllocationReference);
+                    vnetModel.IPAllocations.Add(ipAllocationReference);
                 }
             }
 

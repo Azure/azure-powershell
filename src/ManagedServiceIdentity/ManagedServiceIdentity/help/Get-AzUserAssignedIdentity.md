@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedServiceIdentity-help.xml
 Module Name: Az.ManagedServiceIdentity
 online version: https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azuserassignedidentity
 schema: 2.0.0
@@ -23,16 +23,16 @@ Get-AzUserAssignedIdentity -Name <String> -ResourceGroupName <String> [-Subscrip
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzUserAssignedIdentity -InputObject <IManagedServiceIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzUserAssignedIdentity -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzUserAssignedIdentity -InputObject <IManagedServiceIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -163,7 +163,7 @@ The Id of the Subscription to which the identity belongs.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -202,4 +202,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The Id of the Subscription to which the identity belongs.
 
 ## RELATED LINKS
-

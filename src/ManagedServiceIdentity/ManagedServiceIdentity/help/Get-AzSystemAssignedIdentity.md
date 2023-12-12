@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedServiceIdentity-help.xml
 Module Name: Az.ManagedServiceIdentity
 online version: https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azsystemassignedidentity
 schema: 2.0.0
@@ -81,4 +81,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

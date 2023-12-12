@@ -1,6 +1,6 @@
 ### Example 1: Regenerate either the primary or secondary key for use with the Maps APIs
 ```powershell
-PS C:\> New-AzMapsAccountKey -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount01 -KeyType primary
+New-AzMapsAccountKey -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount01 -KeyType primary
 
 PrimaryKey                                  PrimaryKeyLastUpdated        SecondaryKey                                SecondaryKeyLastUpdated
 ----------                                  ---------------------        ------------                                -----------------------
@@ -12,7 +12,7 @@ The old key will stop working immediately.
 
 ### Example 2: Regenerate either the primary or secondary key for use with the Maps APIs by pipeline
 ```powershell
-PS C:\> Get-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount01 | New-AzMapsAccountKey -KeyType primary
+Get-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount01 | New-AzMapsAccountKey -KeyType primary
 
 PrimaryKey                                  PrimaryKeyLastUpdated        SecondaryKey                                SecondaryKeyLastUpdated
 ----------                                  ---------------------        ------------                                -----------------------

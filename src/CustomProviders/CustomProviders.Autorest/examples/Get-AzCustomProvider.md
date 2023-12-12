@@ -1,6 +1,6 @@
 ### Example 1: List all Custom Providers in a subscription
 ```powershell
-PS C:\> Get-AzCustomProvider
+Get-AzCustomProvider
 
 Location  Name             Type
 --------  ----             ----
@@ -12,7 +12,7 @@ Lists all the custom providers in a subscription
 
 ### Example 2: Get a single custom provider
 ```powershell
-PS C:\> Get-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type | Format-List
+Get-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type | Format-List
 
 Action            :
 Id                : /subscriptions/xxxxx-yyyyy-xxxx-yyyy/resourceGroups/mc-cp01/providers/Microsoft.CustomProviders/resourceproviders/Namespace.Type

@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzQuotaOperation'))
 }
 
 Describe 'Get-AzQuotaOperation' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $config = Get-AzQuotaOperation
+            $config.Count | Should -BeGreaterThan 0
+         } | Should -Not -Throw
     }
 }

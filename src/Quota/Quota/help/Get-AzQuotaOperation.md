@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Quota-help.xml
 Module Name: Az.Quota
 online version: https://learn.microsoft.com/powershell/module/az.quota/get-azquotaoperation
 schema: 2.0.0
@@ -34,7 +34,7 @@ Microsoft.Quota/quotas/write
 Microsoft.Quota/quotaRequests/read       
 Microsoft.Quota/usages/read              
 Microsoft.Quota/operations/read          
-Microsoft.Quota/register/action          
+Microsoft.Quota/register/action
 ```
 
 This command lists all the operations supported by the Microsoft.Quota resource provider.
@@ -70,4 +70,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

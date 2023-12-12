@@ -20,11 +20,16 @@
 
 -->
 ## Upcoming Release
+* Fixed `New-AzVmss` to correctly work when using `-EdgeZone` by creating the Load Balancer in the correct edge zone.
+* Removed references to image aliases in `New-AzVM` and `New-AzVmss` to images that were removed.
+
+## Version 7.1.0
 * Added new parameter `-ElasticSanResourceId` to `New-AzSnapshotConfig` cmdlet.
 * Added new parameter `-OptimizedForFrequentAttach` to `New-AzDiskConfig` cmdlet.
 * Added new examples in `New-AzVM` and `New-AzVmss` for TrustedLaunch default usage.
 * Fixed the `New-AzVM` bug to avoid accessing the `EncryptionAtHost` property for subscriptions who cannot access it since it is behind a feature flag.
 * Updated `Get-AzVmExtension` to return instanceView when used with `-Status`.
+* Reverted SSH Private Key File permission changes in `New-AzVm`.
 
 ## Version 7.0.0
 * Added update functionality in `Update-AzVmss` for parameters `SecurityType`, `EnableSecureBoot`, and `EnableVtpm` for the parameter set with the Put operation.

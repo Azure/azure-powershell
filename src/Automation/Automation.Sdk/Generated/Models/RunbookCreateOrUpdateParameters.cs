@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="runbookType">Gets or sets the type of the runbook.
-        /// Possible values include: 'Script', 'Graph', 'PowerShellWorkflow',
-        /// 'PowerShell', 'GraphPowerShellWorkflow', 'GraphPowerShell', 'Python2',
-        /// 'Python3'</param>
+        /// Possible values include: &#39;Script&#39;, &#39;Graph&#39;, &#39;PowerShellWorkflow&#39;,
+        /// &#39;PowerShell&#39;, &#39;GraphPowerShellWorkflow&#39;, &#39;GraphPowerShell&#39;, &#39;Python2&#39;,
+        /// &#39;Python3&#39;, &#39;PowerShell72&#39;</param>
 
         /// <param name="draft">Gets or sets the draft runbook properties.
         /// </param>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         public bool? LogProgress {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the type of the runbook. Possible values include: &#39;Script&#39;, &#39;Graph&#39;, &#39;PowerShellWorkflow&#39;, &#39;PowerShell&#39;, &#39;GraphPowerShellWorkflow&#39;, &#39;GraphPowerShell&#39;, &#39;Python2&#39;, &#39;Python3&#39;
+        /// Gets or sets gets or sets the type of the runbook. Possible values include: &#39;Script&#39;, &#39;Graph&#39;, &#39;PowerShellWorkflow&#39;, &#39;PowerShell&#39;, &#39;GraphPowerShellWorkflow&#39;, &#39;GraphPowerShell&#39;, &#39;Python2&#39;, &#39;Python3&#39;, &#39;PowerShell72&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.runbookType")]
         public string RunbookType {get; set; }

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.App-help.xml
 Module Name: Az.App
 online version: https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappjob
 schema: 2.0.0
@@ -14,48 +14,47 @@ Create a Container Apps Job.
 
 ### CreateExpanded (Default)
 ```
-New-AzContainerAppJob -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+New-AzContainerAppJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-ConfigurationRegistry <IRegistryCredentials[]>] [-ConfigurationReplicaRetryLimit <Int32>]
- [-ConfigurationReplicaTimeout <Int32>] [-ConfigurationSecret <ISecret[]>]
- [-ConfigurationTriggerType <String>] [-EnvironmentId <String>] [-EventTriggerConfigParallelism <Int32>]
+ [-ConfigurationReplicaTimeout <Int32>] [-ConfigurationSecret <ISecret[]>] [-ConfigurationTriggerType <String>]
+ [-EnvironmentId <String>] [-EventTriggerConfigParallelism <Int32>]
  [-EventTriggerConfigReplicaCompletionCount <Int32>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-ManualTriggerConfigParallelism <Int32>]
- [-ManualTriggerConfigReplicaCompletionCount <Int32>] [-ScaleMaxExecution <Int32>]
- [-ScaleMinExecution <Int32>] [-ScalePollingInterval <Int32>] [-ScaleRule <IJobScaleRule[]>]
- [-ScheduleTriggerConfigCronExpression <String>] [-ScheduleTriggerConfigParallelism <Int32>]
- [-ScheduleTriggerConfigReplicaCompletionCount <Int32>] [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>]
- [-TemplateInitContainer <IInitContainer[]>] [-TemplateVolume <IVolume[]>] [-WorkloadProfileName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ManualTriggerConfigReplicaCompletionCount <Int32>] [-ScaleMaxExecution <Int32>] [-ScaleMinExecution <Int32>]
+ [-ScalePollingInterval <Int32>] [-ScaleRule <IJobScaleRule[]>] [-ScheduleTriggerConfigCronExpression <String>]
+ [-ScheduleTriggerConfigParallelism <Int32>] [-ScheduleTriggerConfigReplicaCompletionCount <Int32>]
+ [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>] [-TemplateInitContainer <IInitContainer[]>]
+ [-TemplateVolume <IVolume[]>] [-WorkloadProfileName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzContainerAppJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzContainerAppJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzContainerAppJob -InputObject <IAppIdentity> -Location <String>
  [-ConfigurationRegistry <IRegistryCredentials[]>] [-ConfigurationReplicaRetryLimit <Int32>]
- [-ConfigurationReplicaTimeout <Int32>] [-ConfigurationSecret <ISecret[]>]
- [-ConfigurationTriggerType <String>] [-EnvironmentId <String>] [-EventTriggerConfigParallelism <Int32>]
+ [-ConfigurationReplicaTimeout <Int32>] [-ConfigurationSecret <ISecret[]>] [-ConfigurationTriggerType <String>]
+ [-EnvironmentId <String>] [-EventTriggerConfigParallelism <Int32>]
  [-EventTriggerConfigReplicaCompletionCount <Int32>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-ManualTriggerConfigParallelism <Int32>]
- [-ManualTriggerConfigReplicaCompletionCount <Int32>] [-ScaleMaxExecution <Int32>]
- [-ScaleMinExecution <Int32>] [-ScalePollingInterval <Int32>] [-ScaleRule <IJobScaleRule[]>]
- [-ScheduleTriggerConfigCronExpression <String>] [-ScheduleTriggerConfigParallelism <Int32>]
- [-ScheduleTriggerConfigReplicaCompletionCount <Int32>] [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>]
- [-TemplateInitContainer <IInitContainer[]>] [-TemplateVolume <IVolume[]>] [-WorkloadProfileName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzContainerAppJob -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzContainerAppJob -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ManualTriggerConfigReplicaCompletionCount <Int32>] [-ScaleMaxExecution <Int32>] [-ScaleMinExecution <Int32>]
+ [-ScalePollingInterval <Int32>] [-ScaleRule <IJobScaleRule[]>] [-ScheduleTriggerConfigCronExpression <String>]
+ [-ScheduleTriggerConfigParallelism <Int32>] [-ScheduleTriggerConfigReplicaCompletionCount <Int32>]
+ [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>] [-TemplateInitContainer <IInitContainer[]>]
+ [-TemplateVolume <IVolume[]>] [-WorkloadProfileName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -364,7 +363,7 @@ Job Name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases: JobName
 
 Required: True
@@ -395,7 +394,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -517,7 +516,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -650,4 +649,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
