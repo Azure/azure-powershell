@@ -32,7 +32,6 @@ Describe 'Get-AzNetworkSecurityPerimeter' {
         
         $GETObj = Get-AzNetworkSecurityPerimeter -Name $env.tmpNsp1 -ResourceGroupName $env.rgname
         $GETObjViaIdentity = Get-AzNetworkSecurityPerimeter -InputObject $GETObj
-
         $GETObj.Name | Should -Be $GETObjViaIdentity.Name
         
         } | Should -Not -Throw
