@@ -524,7 +524,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowBlobPublicAccess
-Allow public access to all blobs or containers in the storage account. The default interpretation is false for this property.
+Allow anonymous access to all blobs or containers in the storage account. The default interpretation is false for this property.
 
 ```yaml
 Type: System.Boolean

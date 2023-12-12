@@ -590,7 +590,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowBlobPublicAccess
-Allow or disallow public access to all blobs or containers in the storage account.
+Allow or disallow anonymous access to all blobs or containers in the storage account.
 
 ```yaml
 Type: System.Boolean

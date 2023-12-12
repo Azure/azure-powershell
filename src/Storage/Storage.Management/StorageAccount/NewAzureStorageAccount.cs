@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Allow public access to all blobs or containers in the storage account. The default interpretation is false for this property.")]
+            HelpMessage = "Allow anonymous access to all blobs or containers in the storage account. The default interpretation is false for this property.")]
         [ValidateNotNullOrEmpty]
         public bool AllowBlobPublicAccess
         {
