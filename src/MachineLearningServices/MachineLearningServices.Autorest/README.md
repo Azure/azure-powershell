@@ -30,13 +30,13 @@ For information on how to develop for `Az.MachineLearningServices`, see [how-to.
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 71c5186ed3b500430d6de0386ffb586eb30c681d
+commit: 893834a29aefcc1f1af9e7e8c3c51f1078cdbd19
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-05-01/machineLearningServices.json
-  - $(repo)/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-05-01/mfe.json
-  - $(repo)/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-05-01/workspaceFeatures.json
+  - $(repo)/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2023-10-01/machineLearningServices.json
+  - $(repo)/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2023-10-01/mfe.json
+  - $(repo)/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2023-10-01/workspaceFeatures.json
 
 subject-prefix: MLWorkspace
 title: MachineLearningServices
