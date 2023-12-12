@@ -40,8 +40,6 @@ title: PaloAltoNetworks
 module-version: 0.2.0
 subject-prefix: $(service-name)
 
-use-extension:
-  "@autorest/powershell": "4.x"
 
 directive:
   - from: swagger-document 
