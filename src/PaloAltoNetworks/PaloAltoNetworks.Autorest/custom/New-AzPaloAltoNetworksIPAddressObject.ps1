@@ -21,12 +21,12 @@ Create an in-memory object for IPAddress.
 Create an in-memory object for IPAddress.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IPAddress
+Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPAddress
 .Link
 https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworksipaddressobject
 #>
 function New-AzPaloAltoNetworksIPAddressObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IPAddress')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPAddress')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +39,7 @@ function New-AzPaloAltoNetworksIPAddressObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IPAddress]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPAddress]::New()
 
         if ($PSBoundParameters.ContainsKey('Address')) {
             $Object.Address = $Address

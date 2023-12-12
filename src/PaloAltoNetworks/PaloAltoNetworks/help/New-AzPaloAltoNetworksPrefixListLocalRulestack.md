@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PaloAltoNetworks-help.xml
 Module Name: Az.PaloAltoNetworks
 online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/new-azpaloaltonetworksprefixlistlocalrulestack
 schema: 2.0.0
@@ -14,8 +14,8 @@ Create a PrefixListResource
 
 ```
 New-AzPaloAltoNetworksPrefixListLocalRulestack -LocalRulestackName <String> -Name <String>
- -ResourceGroupName <String> -PrefixList <String[]> [-SubscriptionId <String>] [-AuditComment <String>]
- [-Description <String>] [-Etag <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -PrefixList <String[]> [-AuditComment <String>]
+ [-Description <String>] [-Etag <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -251,4 +251,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-
