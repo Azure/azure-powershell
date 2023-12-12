@@ -30,23 +30,16 @@ For information on how to develop for `Az.PaloAltoNetworks`, see [how-to.md](how
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 53f6cced1504a476ba001c9d7250ab195e9c299b
+commit: 1e00aa55113c2a47b26cf588b732758071d6f05f
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2022-08-29/PaloAltoNetworks.Cloudngfw.json
+  - $(repo)/specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/stable/2023-09-01/PaloAltoNetworks.Cloudngfw.json
 
 title: PaloAltoNetworks
 module-version: 0.2.0
 subject-prefix: $(service-name)
 
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document 
@@ -62,7 +55,7 @@ directive:
         "default": {
           "description": "Common error response for all Azure Resource Manager APIs to return error details for failed operations.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/53f6cced1504a476ba001c9d7250ab195e9c299b/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/1e00aa55113c2a47b26cf588b732758071d6f05f/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
           }
         }
       }
@@ -80,18 +73,21 @@ directive:
         "default": {
           "description": "Common error response for all Azure Resource Manager APIs to return error details for failed operations.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/53f6cced1504a476ba001c9d7250ab195e9c299b/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/1e00aa55113c2a47b26cf588b732758071d6f05f/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
           }
         }
       }
 
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Save$|^SaveViaIdentity$
+      variant: ^(Create|Update|Save)(?!.*?Expanded)
     remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
+    remove: true
+
   - where:
       verb: Set
     remove: true
-
 # # Some of the parameters are of type Object and need to be expanded into a command for the convenience of the user
 # # The following are commented out and their generated cmdlets may be renamed and custom logic
 # # Do not delete this code
