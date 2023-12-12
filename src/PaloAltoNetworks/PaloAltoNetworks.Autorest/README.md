@@ -152,7 +152,11 @@ directive:
   - where:
       subject: RevertGlobalRulestack
     remove: true
-
+# Remove update cmdlets generated from get->put, since service team does not need them now.
+  - where:
+      verb: Update
+      subject: ^CertificateObjectLocalRulestack$|^FqdnListLocalRulestack$|^PrefixListLocalRulestack$|^LocalRule$
+    remove: true
   - where:
       parameter-name: StackName
     set:
