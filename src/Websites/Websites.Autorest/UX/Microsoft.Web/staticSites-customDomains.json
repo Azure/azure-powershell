@@ -1,0 +1,95 @@
+{
+  "resourceType": "staticSites/customDomains",
+  "apiVersion": "2020-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.websites"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStaticWebAppCustomDomain",
+      "description": "Description for Gets an existing custom domain for a particular static site.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/customDomains/{domainName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappcustomdomain"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DomainName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Description for Gets an existing custom domain for a particular static site.",
+          "parameters": [
+            {
+              "name": "-DomainName",
+              "value": "[Path.domainName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStaticWebAppCustomDomain",
+      "description": "Description for Deletes a custom domain.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/customDomains/{domainName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.websites/remove-azstaticwebappcustomdomain"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DomainName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Description for Deletes a custom domain.",
+          "parameters": [
+            {
+              "name": "-DomainName",
+              "value": "[Path.domainName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

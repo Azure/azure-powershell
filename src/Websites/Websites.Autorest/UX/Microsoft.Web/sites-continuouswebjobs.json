@@ -1,0 +1,181 @@
+{
+  "resourceType": "sites/continuouswebjobs",
+  "apiVersion": "2021-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.websites"
+  },
+  "commands": [
+    {
+      "name": "Get-AzWebAppContinuousWebJob",
+      "description": "Get or list continuous web for an app.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.websites/get-azwebappcontinuouswebjob"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AppName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get or list continuous web for an app.",
+          "parameters": [
+            {
+              "name": "-AppName",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.webJobName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzWebAppContinuousWebJob",
+      "description": "Delete a continuous web job for an app.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.websites/remove-azwebappcontinuouswebjob"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AppName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a continuous web job for an app.",
+          "parameters": [
+            {
+              "name": "-AppName",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.webJobName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Start-AzWebAppContinuousWebJob",
+      "description": "Start a continuous web job for an app.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/start",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.websites/start-azwebappcontinuouswebjob"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AppName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Start a continuous web job for an app.",
+          "parameters": [
+            {
+              "name": "-AppName",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.webJobName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stop-AzWebAppContinuousWebJob",
+      "description": "Stop a continuous web job for an app.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/continuouswebjobs/{webJobName}/stop",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.websites/stop-azwebappcontinuouswebjob"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AppName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Stop a continuous web job for an app.",
+          "parameters": [
+            {
+              "name": "-AppName",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.webJobName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
