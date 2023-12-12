@@ -291,7 +291,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 
                 if (suggestionSession.UserInput != null)
                 {
-                    toAddSuggestion.Add(GetSuggestionTelemetryData.PropertyNameUserInput, suggestionSession.UserInput);
+                    toAddSuggestion.Add(GetSuggestionTelemetryData.PropertyNameInnerUserInput, suggestionSession.UserInput);
                     _uniqueUserInput.Add(suggestionSession.UserInput);
                 }
 
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             if (suggestions.Count > 0)
             {
                 properties.Add(GetSuggestionTelemetryData.PropertyNamePrediction, JsonSerializer.Serialize(suggestions, JsonUtilities.TelemetrySerializerOptions));
-                properties.Add(GetSuggestionTelemetryData.PropertyNameUserInput, string.Join(_StringValueConcatenator, _uniqueUserInput));
+                properties.Add(GetSuggestionTelemetryData.PropertyNameOuterUserInput, string.Join(_StringValueConcatenator, _uniqueUserInput));
             }
 
             if (aggregatedData.CommandLine != null)
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                         telemetryData.Exception,
                         new Dictionary<string, string>()
                         {
-                            { GetSuggestionTelemetryData.PropertyNameUserInput, maskedUserInput },
+                            { GetSuggestionTelemetryData.PropertyNameOuterUserInput, maskedUserInput },
                         });
             }
         }

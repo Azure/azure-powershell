@@ -37,11 +37,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
         /// <returns>IEnumerable&lt;System.String&gt;.</returns>
         IEnumerable<string> ValidFilesystems();
         /// <summary>
-        /// Whitelists the of code point ranges.
-        /// </summary>
-        /// <returns>IEnumerable&lt;Configuration.CodePointRange&gt;.</returns>
-        IEnumerable<Configuration.CodePointRange> WhitelistOfCodePointRanges();
-        /// <summary>
         /// Blacklists the of code points.
         /// </summary>
         /// <returns>IEnumerable&lt;System.Int32&gt;.</returns>

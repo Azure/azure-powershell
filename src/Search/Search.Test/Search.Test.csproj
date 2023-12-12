@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Search.Management.Sdk\Microsoft.Azure.Management.Search.csproj" />
     <ProjectReference Include="..\Search\Search.csproj" />
   </ItemGroup>
 

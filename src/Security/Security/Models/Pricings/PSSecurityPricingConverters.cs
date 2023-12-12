@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Management.Security.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Security.Models.Pricings
 {
@@ -28,7 +29,8 @@ namespace Microsoft.Azure.Commands.Security.Models.Pricings
                 Name = value.Name,
                 PricingTier = value.PricingTier,
                 FreeTrialRemainingTime = value.FreeTrialRemainingTime,
-                SubPlan = value.SubPlan
+                SubPlan = value.SubPlan,
+                Extensions = value.Extensions == null ? null : JsonConvert.SerializeObject(value.Extensions),
             };
         }
 

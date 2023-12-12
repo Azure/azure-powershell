@@ -14,9 +14,8 @@ Skips an occurrence of an action.
 
 ### Skip (Default)
 ```
-Skip-AzDevCenterUserDevBoxAction -Endpoint <String> -ActionName <String> -DevBoxName <String>
- -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Skip-AzDevCenterUserDevBoxAction -Endpoint <String> -Name <String> -DevBoxName <String> -ProjectName <String>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SkipViaIdentity
@@ -27,13 +26,13 @@ Skip-AzDevCenterUserDevBoxAction -Endpoint <String> -InputObject <IDevCenterdata
 
 ### SkipViaIdentityByDevCenter
 ```
-Skip-AzDevCenterUserDevBoxAction -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Skip-AzDevCenterUserDevBoxAction -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SkipByDevCenter
 ```
-Skip-AzDevCenterUserDevBoxAction -DevCenter <String> -ActionName <String> -DevBoxName <String>
+Skip-AzDevCenterUserDevBoxAction -DevCenterName <String> -Name <String> -DevBoxName <String>
  -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -75,21 +74,6 @@ This command skips the action "schedule-default" for the dev box "myDevBox".
 
 ## PARAMETERS
 
-### -ActionName
-The name of an action that will take place on a Dev Box.
-
-```yaml
-Type: System.String
-Parameter Sets: Skip, SkipByDevCenter
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -121,13 +105,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
 Parameter Sets: SkipViaIdentityByDevCenter, SkipByDevCenter
-Aliases:
+Aliases: DevCenter
 
 Required: True
 Position: Named
@@ -164,6 +148,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of an action that will take place on a Dev Box.
+
+```yaml
+Type: System.String
+Parameter Sets: Skip, SkipByDevCenter
+Aliases: ActionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

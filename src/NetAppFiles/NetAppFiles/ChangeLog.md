@@ -25,6 +25,10 @@
 * Added `CoolAccessRetrievalPolicy` to `New-AzNetAppFilesVolume` and `Update-AzNetAppFilesVolume`
 * Added `SmbNonBrowsable` and `SmbAccessBasedEnumeration` to `Update-AzNetAppFilesVolume`
 
+## Version 0.13.2
+* Fixed some minor issues
+* Upgraded Azure.Core to 1.35.0.
+
 ## Version 0.13.1
 * Updated Azure.Core to 1.34.0.
 

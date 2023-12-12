@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IAuthenticationKeys))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description(@"Retrieve the List of Authentication Keys for Self Hosted Integration Runtime.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listAuthKeys", ApiVersion = "2022-03-30-preview")]
     public partial class GetAzDataMigrationSqlServiceAuthKey_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener
     {

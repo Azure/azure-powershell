@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
 
             Guid? objectId = input.Sid;
             string displayName = input.Login;
-            bool? adOnlyAuth = input.AzureADOnlyAuthentication;
+            bool? adOnlyAuth = input.AzureAdOnlyAuthentication;
 
             // Gets the default Tenant id for the subscriptions
             Guid tenantId = GetTenantId();
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
                     Sid = new Guid(app.AppId),
                     TenantId = tenantId,
                     PrincipalType = "Application",
-                    AzureADOnlyAuthentication = adOnlyAuth
+                    AzureAdOnlyAuthentication = adOnlyAuth
                 };
             }
 
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
                     Sid = new Guid(group.Id),
                     TenantId = tenantId,
                     PrincipalType = "Group",
-                    AzureADOnlyAuthentication = adOnlyAuth
+                    AzureAdOnlyAuthentication = adOnlyAuth
                 };
             }
 
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
                     Sid = new Guid(obj.Id),
                     TenantId = tenantId,
                     PrincipalType = "User",
-                    AzureADOnlyAuthentication = adOnlyAuth
+                    AzureAdOnlyAuthentication = adOnlyAuth
                 };
             }
         }

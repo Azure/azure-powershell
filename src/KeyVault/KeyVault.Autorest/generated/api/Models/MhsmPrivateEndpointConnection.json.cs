@@ -78,8 +78,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
                 return;
             }
             __managedHsmResource = new Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.ManagedHsmResource(json);
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmPrivateEndpointConnectionProperties.FromJson(__jsonProperties) : Property;}
-            {_etag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("etag"), out var __jsonEtag) ? (string)__jsonEtag : (string)Etag;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmPrivateEndpointConnectionProperties.FromJson(__jsonProperties) : _property;}
+            {_etag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonString>("etag"), out var __jsonEtag) ? (string)__jsonEtag : (string)_etag;}
             AfterFromJson(json);
         }
 

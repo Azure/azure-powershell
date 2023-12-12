@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 6.0.2
+* Fixed a bug where the get cluster command does not display abfss storage information.
+
 ## Version 6.0.1
 * This change adds some warning messages to the incoming break changes for the next version, with detailed information as follows:
   * Added warning message for planning to replace the type of property `DiskEncryption` of type `Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster` from `Microsoft.Azure.Management.HDInsight.Models.DiskEncryptionProperties` to `Azure.ResourceManager.HDInsight.Models.HDInsightDiskEncryptionProperties`.

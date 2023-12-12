@@ -32,19 +32,19 @@ Get-AzDevCenterUserCatalog -Endpoint <String> -InputObject <IDevCenterdataIdenti
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserCatalog -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserCatalog -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserCatalog -DevCenter <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+Get-AzDevCenterUserCatalog -DevCenterName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserCatalog -DevCenter <String> -ProjectName <String> -CatalogName <String>
+Get-AzDevCenterUserCatalog -DevCenterName <String> -ProjectName <String> -CatalogName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -130,13 +130,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetViaIdentityByDevCenter, ListByDevCenter, GetByDevCenter
-Aliases:
+Aliases: DevCenter
 
 Required: True
 Position: Named

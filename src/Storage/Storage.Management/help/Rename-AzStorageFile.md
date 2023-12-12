@@ -15,8 +15,9 @@ Renames a file.
 ### ShareName (Default)
 ```
 Rename-AzStorageFile [-ShareName] <String> [-SourcePath] <String> [[-DestinationPath] <String>]
- [-ContentType <String>] [-Permission <String>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ContentType <String>] [-Permission <String>] [-DisAllowSourceTrailingDot] [-DisAllowDestTrailingDot]
+ [-Force] [-AsJob] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-IgnoreReadonly]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileObject
@@ -149,6 +150,36 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisAllowDestTrailingDot
+Disallow trailing dot (.) to suffix destination directory and destination file names.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ShareName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisAllowSourceTrailingDot
+Disallow trailing dot (.) to suffix source directory and source file names.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ShareName
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

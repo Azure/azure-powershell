@@ -19,6 +19,24 @@
 -->
 
 ## Upcoming Release
+* Supported nullable Bicep parameters in Deployment cmdlets
+
+## Version 6.12.1
+* Used utf8 encoding for reading stdout & stderr when invoking Bicep. [#23246]
+* Fixed regression in `Publish-AzBicepModule` [Azure/bicep/12461](https://github.com/Azure/bicep/issues/12461)
+
+## Version 6.12.0
+* Supported $ref statements for user-defined types in Bicep files.
+* Fixed reporting duplicate warnings when compiling Bicep files.
+* Updated New and Set Management Group cmdlets to allow DeploymentSubscription to be optional.
+* Fixed inexplicable error message when subscription and scope are neither provided in RoleAssignment/RoleDefinition related commands. [#22716]
+
+## Version 6.11.2
+* Fixed bug where `.bicepparam` values were not being correctly serialized in the correct format.
+* Allowed supplemental parameters for Deployments cmdlets when used with `.bicepparam` file.
+
+## Version 6.11.1
+* Reverted commits that caused regression in `Get-AzRoleAssignment`. [#22863]
 
 ## Version 6.11.0
 * Supported `TemplateParameterFile` to accept a `.bicepparam` file.

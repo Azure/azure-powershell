@@ -12,9 +12,15 @@ Gets a schedule.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
-Get-AzDevCenterUserSchedule -Endpoint <String> -PoolName <String> -ProjectName <String>
+Get-AzDevCenterUserSchedule -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzDevCenterUserSchedule -Endpoint <String> -PoolName <String> -ProjectName <String> -ScheduleName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -24,16 +30,34 @@ Get-AzDevCenterUserSchedule -Endpoint <String> -InputObject <IDevCenterdataIdent
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List1
+```
+Get-AzDevCenterUserSchedule -Endpoint <String> -PoolName <String> -ProjectName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserSchedule -DevCenter <String> -PoolName <String> -ProjectName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserSchedule -DevCenterName <String> -PoolName <String> -ProjectName <String>
+ -ScheduleName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserSchedule -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserSchedule -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1ByDevCenter
+```
+Get-AzDevCenterUserSchedule -DevCenterName <String> -PoolName <String> -ProjectName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByDevCenter
+```
+Get-AzDevCenterUserSchedule -DevCenterName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,13 +113,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter
-Aliases:
+Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter, List1ByDevCenter, ListByDevCenter
+Aliases: DevCenter
 
 Required: True
 Position: Named
@@ -109,7 +133,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: List, Get, GetViaIdentity, List1
 Aliases:
 
 Required: True
@@ -140,7 +164,7 @@ The name of a pool of Dev Boxes.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByDevCenter
+Parameter Sets: Get, List1, GetByDevCenter, List1ByDevCenter
 Aliases:
 
 Required: True
@@ -152,6 +176,21 @@ Accept wildcard characters: False
 
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get, List1, GetByDevCenter, List1ByDevCenter, ListByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleName
+The name of a schedule.
 
 ```yaml
 Type: System.String

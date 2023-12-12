@@ -265,9 +265,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             returnRules.DefaultAction = ParsePSNetworkRuleDefaultAction(rules.DefaultAction);
 
             List<PSIpRule> ipRuleList = new List<PSIpRule>();
-            if (rules.IpRules != null)
+            if (rules.IPRules != null)
             {
-                foreach (var ipRule in rules.IpRules)
+                foreach (var ipRule in rules.IPRules)
                 {
                     ipRuleList.Add(ParsePSNetworkRuleIPRule(ipRule));
                 }
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 {
                     ipRuleList.Add(ParseStorageNetworkRuleIPRule(ipRule));
                 }
-                returnRules.IpRules = ipRuleList.ToArray();
+                returnRules.IPRules = ipRuleList.ToArray();
             }
 
             List<VirtualNetworkRule> virtualNetworkList = new List<VirtualNetworkRule>();

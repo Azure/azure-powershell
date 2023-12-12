@@ -131,9 +131,9 @@ Get-AzDenyAssignment [-Scope <String>] -DenyAssignmentName <String> [-DefaultPro
 Use the Get-AzDenyAssignment command to list all deny assignments that are effective on a scope.
 Without any parameters, this command returns all the deny assignments made under the subscription.
 This list can  be filtered using filtering parameters for principal, deny assignment name and scope.
-To specify a user, use SignInName or Azure AD ObjectId parameters.
-To specify a security group, use Azure AD ObjectId parameter.
-And to specify an Azure AD application, use ServicePrincipalName or ObjectId parameters.
+To specify a user, use SignInName or Microsoft Entra ObjectId parameters.
+To specify a security group, use Microsoft Entra ObjectId parameter.
+And to specify a Microsoft Entra application, use ServicePrincipalName or ObjectId parameters.
 The scope at which access is being denied may be specified.
 It defaults to the selected subscription.
 The scope of the deny assignment can be specified using one of the following parameter combinations
@@ -412,7 +412,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-The Azure AD ObjectId of the User, Group or Service Principal.
+The Microsoft Entra ObjectId of the User, Group or Service Principal.
 Filters all deny assignments that are made to the specified principal.
 
 ```yaml
@@ -530,7 +530,7 @@ Accept wildcard characters: False
 
 ### -ServicePrincipalName
 The ServicePrincipalName of the service principal.
-Filters all deny assignments that are made to the specified Azure AD application.
+Filters all deny assignments that are made to the specified Microsoft Entra application.
 
 ```yaml
 Type: System.String

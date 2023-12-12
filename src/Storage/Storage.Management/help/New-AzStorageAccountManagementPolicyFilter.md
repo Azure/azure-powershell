@@ -24,19 +24,21 @@ The **New-AzStorageAccountManagementPolicyFilter** cmdlet creates a ManagementPo
 
 ### Example 1: Creates a ManagementPolicy rule filter object, then add it to a management policy rule and set to a Storage account
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
-PS C:\>$blobindexmatch1 = New-AzStorageAccountManagementPolicyBlobIndexMatchObject -Name "tag1" -Value "value1"
-PS C:\>$blobindexmatch2 = New-AzStorageAccountManagementPolicyBlobIndexMatchObject -Name "tag2" -Value "value2"
-PS C:\>$filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch blobprefix1,blobprefix2 -BlobType appendBlob,blockBlob -BlobIndexMatch $blobindexmatch1,$blobindexmatch2
-PS C:\>$filter 
+$blobindexmatch1 = New-AzStorageAccountManagementPolicyBlobIndexMatchObject -Name "tag1" -Value "value1"
+$blobindexmatch2 = New-AzStorageAccountManagementPolicyBlobIndexMatchObject -Name "tag2" -Value "value2"
+$filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch blobprefix1,blobprefix2 -BlobType appendBlob,blockBlob -BlobIndexMatch $blobindexmatch1,$blobindexmatch2
+$filter 
 
 PrefixMatch                BlobTypes               BlobIndexMatch
 -----------                ---------               --------------
 {blobprefix1, blobprefix2} {appendBlob, blockBlob} {tag1, tag2}  
 
-PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
-PS C:\>$rule = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
-PS C:\>$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Rule $rule
+$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
+$rule = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
+$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Rule $rule
 ```
 
 This command create a ManagementPolicy rule filter object. Then add it to a management policy rule and set to a Storage account.

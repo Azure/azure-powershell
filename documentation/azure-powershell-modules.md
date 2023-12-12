@@ -42,6 +42,7 @@
 | Connected Kubernetes           | `Az.ConnectedKubernetes`        | [![ConnectedKubernetes]][ConnectedKubernetesGallery]               | [Changelog][ConnectedKubernetesChangeLog]        |
 | Connected Machine              | `Az.ConnectedMachine`           | [![ConnectedMachine]][ConnectedMachineGallery]                     | [Changelog][ConnectedMachineChangeLog]           |
 | ConnectedNetwork               | `Az.ConnectedNetwork`           | [![ConnectedNetwork]][ConnectedNetworkGallery]                     | [Changelog][ConnectedNetworkChangeLog]           |
+| ConnectedVMware                | `Az.ConnectedVMware`            | [![ConnectedVMware]][ConnectedVMwareGallery]                       | [Changelog][ConnectedVMwareChangeLog]            |
 | Container Instance             | `Az.ContainerInstance`          | [![ContainerInstance]][ContainerInstanceGallery]                   | [Changelog][ContainerInstanceChangeLog]          |
 | Container Registry             | `Az.ContainerRegistry`          | [![ContainerRegistry]][ContainerRegistryGallery]                   | [Changelog][ContainerRegistryChangeLog]          |
 | Cosmos DB                      | `Az.CosmosDB`                   | [![CosmosDB]][CosmosDBGallery]                                     | [Changelog][CosmosDBChangeLog]                   |
@@ -83,6 +84,7 @@
 | Guest Configuration            | `Az.GuestConfiguration`         | [![GuestConfiguration]][GuestConfigurationGallery]                 | [Changelog][GuestConfigurationChangeLog]         |
 | SAP HANA on Azure              | `Az.HanaOnAzure`                | [![HanaOnAzure]][HanaOnAzureGallery]                               | [Changelog][HanaOnAzureChangeLog]                |
 | HDInsight                      | `Az.HDInsight`                  | [![HDInsight]][HDInsightGallery]                                   | [Changelog][HDInsightChangeLog]                  |
+| HdInsightOnAks                 | `Az.HdInsightOnAks`             | [![HdInsightOnAks]][HdInsightOnAksGallery]                         | [Changelog][HdInsightOnAksChangeLog]             |
 | HealthBot                      | `Az.HealthBot`                  | [![HealthBot]][HealthBotGallery]                                   | [Changelog][HealthBotChangeLog]                  |
 | API for FHIR                   | `Az.HealthcareApis`             | [![HealthcareApis]][HealthcareApisGallery]                         | [Changelog][HealthcareApisChangeLog]             |
 | HPC Cache                      | `Az.HPCCache`                   | [![HPCCache]][HPCCacheGallery]                                     | [Changelog][HPCCacheChangeLog]                   |
@@ -116,6 +118,8 @@
 | Database for MySQL             | `Az.MySql`                      | [![MySql]][MySqlGallery]                                           | [Changelog][MySqlChangeLog]                      |
 | NetApp Files                   | `Az.NetAppFiles`                | [![NetAppFiles]][NetAppFilesGallery]                               | [Changelog][NetAppFilesChangeLog]                |
 | Network                        | `Az.Network`                    | [![Network]][NetworkGallery]                                       | [Changelog][NetworkChangeLog]                    |
+| NetworkAnalytics               | `Az.NetworkAnalytics`           | [![NetworkAnalytics]][NetworkAnalyticsGallery]                     | [Changelog][NetworkAnalyticsChangeLog]           |
+| NetworkCloud                   | `Az.NetworkCloud`               | [![NetworkCloud]][NetworkCloudGallery]                             | [Changelog][NetworkCloudChangeLog]               |
 | NetworkFunction                | `Az.NetworkFunction`            | [![NetworkFunction]][NetworkFunctionGallery]                       | [Changelog][NetworkFunctionChangeLog]            |
 | Nginx                          | `Az.Nginx`                      | [![Nginx]][NginxGallery]                                           | [Changelog][NginxChangeLog]                      |
 | Notification Hubs              | `Az.NotificationHubs`           | [![NotificationHubs]][NotificationHubsGallery]                     | [Changelog][NotificationHubsChangeLog]           |
@@ -152,6 +156,7 @@
 | SQL Server on Virtual Machines | `Az.SqlVirtualMachine`          | [![SqlVirtualMachine]][SqlVirtualMachineGallery]                   | [Changelog][SqlVirtualMachineChangeLog]          |
 | SSH                            | `Az.Ssh`                        | [![Ssh]][SshGallery]                                               | [Changelog][SshChangeLog]                        |
 | Stack HCI                      | `Az.StackHCI`                   | [![StackHCI]][StackHCIGallery]                                     | [Changelog][StackHCIChangeLog]                   |
+| Stack HCI VM                   | `Az.StackHCIVM`                 | [![StackHCIVM ]][StackHCIVMGallery]                                | [Changelog][StackHCIVMChangeLog]                 |
 | Storage                        | `Az.Storage`                    | [![Storage]][StorageGallery]                                       | [Changelog][Storage.ManagementChangeLog]         |
 | Storage Mover                  | `Az.StorageMover`               | [![StorageMover]][StorageMoverGallery]                             | [Changelog][StorageMoverChangeLog]               |
 | File Sync                      | `Az.StorageSync`                | [![StorageSync]][StorageSyncGallery]                               | [Changelog][StorageSyncChangeLog]                |
@@ -205,6 +210,7 @@
 [ConnectedKubernetes]:        https://img.shields.io/powershellgallery/v/Az.ConnectedKubernetes.svg?style=flat-square&label=Az.ConnectedKubernetes
 [ConnectedMachine]:           https://img.shields.io/powershellgallery/v/Az.ConnectedMachine.svg?style=flat-square&label=Az.ConnectedMachine
 [ConnectedNetwork]:           https://img.shields.io/powershellgallery/v/Az.ConnectedNetwork.svg?style=flat-square&label=Az.ConnectedNetwork
+[ConnectedVMware]:            https://img.shields.io/powershellgallery/v/Az.ConnectedVMware.svg?style=flat-square&label=Az.ConnectedVMware
 [ContainerInstance]:          https://img.shields.io/powershellgallery/v/Az.ContainerInstance.svg?style=flat-square&label=Az.ContainerInstance
 [ContainerRegistry]:          https://img.shields.io/powershellgallery/v/Az.ContainerRegistry.svg?style=flat-square&label=Az.ContainerRegistry
 [CosmosDB]:                   https://img.shields.io/powershellgallery/v/Az.CosmosDB.svg?style=flat-square&label=Az.CosmosDB
@@ -247,6 +253,7 @@
 [HanaOnAzure]:                https://img.shields.io/powershellgallery/v/Az.HanaOnAzure.svg?style=flat-square&label=Az.HanaOnAzure
 [HealthBot]:                  https://img.shields.io/powershellgallery/v/Az.HealthBot.svg?style=flat-square&label=Az.HealthBot
 [HDInsight]:                  https://img.shields.io/powershellgallery/v/Az.HDInsight.svg?style=flat-square&label=Az.HDInsight
+[HdInsightOnAks]:             https://img.shields.io/powershellgallery/v/Az.HdInsightOnAks.svg?style=flat-square&label=Az.HdInsightOnAks
 [HealthcareApis]:             https://img.shields.io/powershellgallery/v/Az.HealthcareApis.svg?style=flat-square&label=Az.HealthcareApis
 [HPCCache]:                   https://img.shields.io/powershellgallery/v/Az.HPCCache.svg?style=flat-square&label=Az.HPCCache
 [ImportExport]:               https://img.shields.io/powershellgallery/v/Az.ImportExport.svg?style=flat-square&label=Az.ImportExport
@@ -279,6 +286,8 @@
 [MySql]:                      https://img.shields.io/powershellgallery/v/Az.MySql.svg?style=flat-square&label=Az.MySql
 [NetAppFiles]:                https://img.shields.io/powershellgallery/v/Az.NetAppFiles.svg?style=flat-square&label=Az.NetAppFiles
 [Network]:                    https://img.shields.io/powershellgallery/v/Az.Network.svg?style=flat-square&label=Az.Network
+[NetworkAnalytics]:           https://img.shields.io/powershellgallery/v/Az.NetworkAnalytics.svg?style=flat-square&label=Az.NetworkAnalytics
+[NetworkCloud]:               https://img.shields.io/powershellgallery/v/Az.NetworkCloud.svg?style=flat-square&label=Az.NetworkCloud
 [NetworkFunction]:            https://img.shields.io/powershellgallery/v/Az.NetworkFunction.svg?style=flat-square&label=Az.NetworkFunction
 [Nginx]:                      https://img.shields.io/powershellgallery/v/Az.Nginx.svg?style=flat-square&label=Az.Nginx
 [NotificationHubs]:           https://img.shields.io/powershellgallery/v/Az.NotificationHubs.svg?style=flat-square&label=Az.NotificationHubs
@@ -315,6 +324,7 @@
 [SqlVirtualMachine]:          https://img.shields.io/powershellgallery/v/Az.SqlVirtualMachine.svg?style=flat-square&label=Az.SqlVirtualMachine
 [Ssh]:                        https://img.shields.io/powershellgallery/v/Az.Ssh.svg?style=flat-square&label=Az.Ssh
 [StackHCI]:                   https://img.shields.io/powershellgallery/v/Az.StackHCI.svg?style=flat-square&label=Az.StackHCI
+[StackHCIVM]:                 https://img.shields.io/powershellgallery/v/Az.StackHCIVM.svg?style=flat-square&label=Az.StackHCIVM
 [Storage]:                    https://img.shields.io/powershellgallery/v/Az.Storage.svg?style=flat-square&label=Az.Storage
 [StorageMover]:               https://img.shields.io/powershellgallery/v/Az.StorageMover.svg?style=flat-square&label=Az.StorageMover
 [StorageSync]:                https://img.shields.io/powershellgallery/v/Az.StorageSync.svg?style=flat-square&label=Az.StorageSync
@@ -364,6 +374,7 @@
 [ConnectedKubernetesGallery]:        https://www.powershellgallery.com/packages/Az.ConnectedKubernetes/
 [ConnectedMachineGallery]:           https://www.powershellgallery.com/packages/Az.ConnectedMachine/
 [ConnectedNetworkGallery]:           https://www.powershellgallery.com/packages/Az.ConnectedNetwork/
+[ConnectedVMwareGallery]:            https://www.powershellgallery.com/packages/Az.ConnectedVMware/
 [ContainerInstanceGallery]:          https://www.powershellgallery.com/packages/Az.ContainerInstance/
 [ContainerRegistryGallery]:          https://www.powershellgallery.com/packages/Az.ContainerRegistry/
 [CosmosDBGallery]:                   https://www.powershellgallery.com/packages/Az.CosmosDB/
@@ -406,6 +417,7 @@
 [HanaOnAzureGallery]:                https://www.powershellgallery.com/packages/Az.HanaOnAzure/
 [HealthBotGallery]:                  https://www.powershellgallery.com/packages/Az.HealthBot/
 [HDInsightGallery]:                  https://www.powershellgallery.com/packages/Az.HDInsight/
+[HdInsightOnAksGallery]:             https://www.powershellgallery.com/packages/Az.HdInsightOnAks/
 [HealthcareApisGallery]:             https://www.powershellgallery.com/packages/Az.HealthcareApis/
 [HPCCacheGallery]:                   https://www.powershellgallery.com/packages/Az.HPCCache/
 [ImportExportGallery]:               https://www.powershellgallery.com/packages/Az.ImportExport/
@@ -438,6 +450,8 @@
 [MySqlGallery]:                      https://www.powershellgallery.com/packages/Az.MySql/
 [NetAppFilesGallery]:                https://www.powershellgallery.com/packages/Az.NetAppFiles/
 [NetworkGallery]:                    https://www.powershellgallery.com/packages/Az.Network/
+[NetworkAnalyticsGallery]:           https://www.powershellgallery.com/packages/Az.NetworkAnalytics/
+[NetworkCloudGallery]:               https://www.powershellgallery.com/packages/Az.NetworkCloud/
 [NetworkFunctionGallery]:            https://www.powershellgallery.com/packages/Az.NetworkFunction/
 [NginxGallery]:                      https://www.powershellgallery.com/packages/Az.Nginx/
 [NotificationHubsGallery]:           https://www.powershellgallery.com/packages/Az.NotificationHubs/
@@ -474,6 +488,7 @@
 [SqlVirtualMachineGallery]:          https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/
 [SshGallery]:                        https://www.powershellgallery.com/packages/Az.Ssh/
 [StackHCIGallery]:                   https://www.powershellgallery.com/packages/Az.StackHCI/
+[StackHCIVMGallery]:                   https://www.powershellgallery.com/packages/Az.StackHCIVM/
 [StorageGallery]:                    https://www.powershellgallery.com/packages/Az.Storage/
 [StorageMoverGallery]:               https://www.powershellgallery.com/packages/Az.StorageMover/
 [StorageSyncGallery]:                https://www.powershellgallery.com/packages/Az.StorageSync/
@@ -521,6 +536,7 @@
 [ConnectedKubernetesChangeLog]:        ../src/ConnectedKubernetes/ChangeLog.md
 [ConnectedMachineChangeLog]:           ../src/ConnectedMachine/ChangeLog.md
 [ConnectedNetworkChangeLog]:           ../src/ConnectedNetwork/ChangeLog.md
+[ConnectedVMwareChangeLog]:            ../src/ConnectedVMware/ChangeLog.md
 [ContainerInstanceChangeLog]:          ../src/ContainerInstance/ChangeLog.md
 [ContainerRegistryChangeLog]:          ../src/ContainerRegistry/ContainerRegistry/ChangeLog.md
 [CosmosDBChangeLog]:                   ../src/CosmosDB/CosmosDB/ChangeLog.md
@@ -562,6 +578,7 @@
 [GuestConfigurationChangeLog]:         ../src/GuestConfiguration/ChangeLog.md
 [HanaOnAzureChangeLog]:                ../src/HanaOnAzure/ChangeLog.md
 [HDInsightChangeLog]:                  ../src/HDInsight/HDInsight/ChangeLog.md
+[HdInsightOnAksChangeLog]:             ../src/HdInsightOnAks/HdInsightOnAks/ChangeLog.md
 [HealthBotChangeLog]:                  ../src/HealthBot/ChangeLog.md
 [HealthcareApisChangeLog]:             ../src/HealthcareApis/ChangeLog.md
 [HPCCacheChangeLog]:                   ../src/HPCCache/HPCCache/ChangeLog.md
@@ -595,6 +612,8 @@
 [MySqlChangeLog]:                      ../src/MySql/ChangeLog.md
 [NetAppFilesChangeLog]:                ../src/NetAppFiles/NetAppFiles/ChangeLog.md
 [NetworkChangeLog]:                    ../src/Network/Network/ChangeLog.md
+[NetworkAnalyticsChangeLog]:           ../src/NetworkAnalytics/NetworkAnalytics/ChangeLog.md
+[NetworkCloudChangeLog]:               ../src/NetworkCloud/NetworkCloud/ChangeLog.md
 [NetworkFunctionChangeLog]:            ../src/NetworkFunction/ChangeLog.md
 [NginxChangeLog]:                      ../src/Nginx/ChangeLog.md
 [NotificationHubsChangeLog]:           ../src/NotificationHubs/NotificationHubs/ChangeLog.md
@@ -631,6 +650,7 @@
 [SqlVirtualMachineChangeLog]:          ../src/SqlVirtualMachine/SqlVirtualMachine/ChangeLog.md
 [SshChangeLog]:                        ../src/Ssh/Ssh/ChangeLog.md
 [StackHCIChangeLog]:                   ../src/StackHCI/ChangeLog.md
+[StackHCIVMChangeLog]:                 ../src/StackHCIVM/ChangeLog.md
 [Storage.ManagementChangeLog]:         ../src/Storage/Storage.Management/ChangeLog.md
 [StorageMoverChangeLog]:               ../src/StorageMover/ChangeLog.md
 [StorageSyncChangeLog]:                ../src/StorageSync/StorageSync/ChangeLog.md

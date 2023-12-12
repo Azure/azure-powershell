@@ -74,6 +74,16 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 
         public bool? DataFlowEnableCleanUp => ManagedIntegrationRuntime.ComputeProperties?.DataFlowProperties.Cleanup;
 
+        public int? CopyComputeScaleDataIntegrationUnit => ManagedIntegrationRuntime.ComputeProperties?.CopyComputeScaleProperties?.DataIntegrationUnit;
+
+        public int? CopyComputeScaleTimeToLive => ManagedIntegrationRuntime.ComputeProperties?.CopyComputeScaleProperties?.TimeToLive;
+
+        public int? PipelineExternalComputeScaleTimeToLive => ManagedIntegrationRuntime.ComputeProperties?.PipelineExternalComputeScaleProperties?.TimeToLive;
+
+        public int? PipelineExternalComputeScaleNumberOfPipelineNodes => ManagedIntegrationRuntime.ComputeProperties?.PipelineExternalComputeScaleProperties?.NumberOfPipelineNodes;
+
+        public int? PipelineExternalComputeScaleNumberOfExternalNodes => ManagedIntegrationRuntime.ComputeProperties?.PipelineExternalComputeScaleProperties?.NumberOfExternalNodes;
+
         public string State => ManagedIntegrationRuntime.State;
 
         public string LicenseType => ManagedIntegrationRuntime.SsisProperties?.LicenseType;

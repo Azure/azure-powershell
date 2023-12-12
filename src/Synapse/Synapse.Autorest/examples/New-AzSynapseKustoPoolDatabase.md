@@ -1,6 +1,6 @@
 ### Example 1: Creates or updates a new kusto database in a workspace
 ```powershell
-PS C:\> New-AzSynapseKustoPoolDatabase -ResourceGroupName "testrg" -WorkspaceName "testws" -KustoPoolName "testkustopool" -DatabaseName "mykustodatabase" -Kind "ReadWrite" -Location "East US 2"
+New-AzSynapseKustoPoolDatabase -ResourceGroupName "testrg" -WorkspaceName "testws" -KustoPoolName "testkustopool" -DatabaseName "mykustodatabase" -Kind "ReadWrite" -Location "East US 2"
 
 Kind      Location  Name                                                                                   
 ----      --------  ----                              

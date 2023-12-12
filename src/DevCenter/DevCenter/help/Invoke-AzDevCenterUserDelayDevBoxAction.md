@@ -22,22 +22,22 @@ Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint <String> -DevBoxName <String> 
 ### Delay
 ```
 Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] -ActionName <String> -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-UserId <String>] -Name <String> -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Delay1ByDevCenter
 ```
-Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter <String> -DevBoxName <String> -ProjectName <String>
+Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
  [-UserId <String>] -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DelayByDevCenter
 ```
-Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] -ActionName <String> -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
+ [-UserId <String>] -Name <String> -DelayTime <TimeSpan> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,21 +74,6 @@ Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter Contoso -DevBoxName myDevBox 
 This command delays the action "schedule-default" for the dev box "myDevBox" for 5 hours and 15 minutes.
 
 ## PARAMETERS
-
-### -ActionName
-The name of an action that will take place on a Dev Box.
-
-```yaml
-Type: System.String
-Parameter Sets: Delay, DelayByDevCenter
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -137,13 +122,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delay1ByDevCenter, DelayByDevCenter
-Aliases:
+Aliases: DevCenter
 
 Required: True
 Position: Named
@@ -159,6 +144,21 @@ The DevCenter-specific URI to operate on.
 Type: System.String
 Parameter Sets: Delay1, Delay
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of an action that will take place on a Dev Box.
+
+```yaml
+Type: System.String
+Parameter Sets: Delay, DelayByDevCenter
+Aliases: ActionName
 
 Required: True
 Position: Named

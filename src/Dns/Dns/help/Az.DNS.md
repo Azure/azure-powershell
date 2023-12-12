@@ -14,11 +14,17 @@ This topic displays help topics for the Azure DNS Cmdlets.
 ### [Add-AzDnsRecordConfig](Add-AzDnsRecordConfig.md)
 Adds a DNS record to a local record set object.
 
+### [Get-AzDnsDnssecConfig](Get-AzDnsDnssecConfig.md)
+Gets the DNSSEC configuration.
+
 ### [Get-AzDnsRecordSet](Get-AzDnsRecordSet.md)
 Gets a DNS record set.
 
 ### [Get-AzDnsZone](Get-AzDnsZone.md)
 Gets a DNS zone.
+
+### [New-AzDnsDnssecConfig](New-AzDnsDnssecConfig.md)
+Creates or updates the DNSSEC configuration on a DNS zone.
 
 ### [New-AzDnsRecordConfig](New-AzDnsRecordConfig.md)
 Creates a new DNS record local object.
@@ -28,6 +34,10 @@ Creates a DNS record set.
 
 ### [New-AzDnsZone](New-AzDnsZone.md)
 Creates a new DNS zone.
+
+### [Remove-AzDnsDnssecConfig](Remove-AzDnsDnssecConfig.md)
+Deletes the DNSSEC configuration on a DNS zone.
+This operation cannot be undone.
 
 ### [Remove-AzDnsRecordConfig](Remove-AzDnsRecordConfig.md)
 Removes a DNS record from a local record set object.

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateChangeTypes]
         public string[] ExcludeChangeType { get; set; }
 
-        protected override PSDeploymentWhatIfCmdletParameters WhatIfParameters => new PSDeploymentWhatIfCmdletParameters(
+        protected override PSDeploymentWhatIfCmdletParameters BuildWhatIfParameters() => new PSDeploymentWhatIfCmdletParameters(
             DeploymentScopeType.ResourceGroup,
             deploymentName: this.Name,
             mode: this.Mode,
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             templateObject: this.TemplateObject,
             templateSpecId: TemplateSpecId,
             templateParametersUri: this.TemplateParameterUri,
-            templateParametersObject: GetTemplateParameterObject(this.TemplateParameterObject),
+            templateParametersObject: GetTemplateParameterObject(),
             resultFormat: this.ResultFormat,
             excludeChangeTypes: this.ExcludeChangeType);
     }

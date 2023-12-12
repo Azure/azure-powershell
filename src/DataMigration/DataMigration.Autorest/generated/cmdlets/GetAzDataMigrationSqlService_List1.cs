@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description(@"Retrieve all SQL migration services in the subscriptions.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/sqlMigrationServices", ApiVersion = "2022-03-30-preview")]
     public partial class GetAzDataMigrationSqlService_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener
     {

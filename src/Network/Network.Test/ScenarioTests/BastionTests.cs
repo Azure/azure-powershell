@@ -57,5 +57,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-BastionIpObjectParam");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.bastion)]
+        public void TestBastionCreateWithFeatures()
+        {
+            TestRunner.RunTestScript("Test-BastionCreateWithFeatures");
+        }
     }
 }

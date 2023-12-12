@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AlertsSuppressionRules
                     // Setting scope to null if there are no items in the array
                     alertsScope = alertsScope?.AllOf?.Count > 0 ? alertsScope : null;
 
-                    alertsSuppressionRuleInput = new AlertsSuppressionRule(AlertType, Reason, State.ConvertToNetType(), name: Name, expirationDateUtc: ExpirationDateUtc, comment: Comment, suppressionAlertsScope: alertsScope);
+                    alertsSuppressionRuleInput = new AlertsSuppressionRule(name: Name, alertType: AlertType, reason: Reason, state: State.ConvertToNetType(), expirationDateUtc: ExpirationDateUtc, comment: Comment, suppressionAlertsScope: alertsScope);
                 }
 
                 var alertsSuppressionRule = SecurityCenterClient.AlertsSuppressionRules.UpdateWithHttpMessagesAsync(name, alertsSuppressionRuleInput).GetAwaiter().GetResult().Body;

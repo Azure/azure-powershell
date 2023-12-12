@@ -172,7 +172,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-Azure AD ObjectId of the user, group or service principal.
+Microsoft Entra ObjectId of the user, group or service principal.
 
 ```yaml
 Type: System.String
@@ -322,7 +322,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServicePrincipalName
-The ServicePrincipalName of the Azure AD application
+The ServicePrincipalName of the Microsoft Entra application
 
 ```yaml
 Type: System.String
@@ -404,4 +404,3 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 [Get-AzRoleAssignment](./Get-AzRoleAssignment.md)
 
 [Get-AzRoleDefinition](./Get-AzRoleDefinition.md)
-

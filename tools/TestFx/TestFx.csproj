@@ -3,8 +3,9 @@
   <PropertyGroup>
     <IncludeCommonTestProject>false</IncludeCommonTestProject>
   </PropertyGroup>
-  
+
   <Import Project="$(MSBuildThisFileDirectory)..\..\src\Az.Test.props" />
+  <Import Project="$(RepoTools)Az.nonprod.props" />
 
   <PropertyGroup>
     <AssemblyName>Microsoft.Azure.PowerShell.TestFx</AssemblyName>
@@ -30,13 +31,9 @@
     <ProjectReference Include="$(RepoSrc)Accounts\Authentication\Authentication.csproj" />
     <ProjectReference Include="$(RepoSrc)Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
   </ItemGroup>
-  
+
   <ItemGroup>
-	<PackageReference Include="Moq" Version="4.7.145" />
-	<PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
-	<PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.7" />
-	<PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.1" />
-	<PackageReference Include="System.Security.Cryptography.Pkcs" Version="6.0.4" />
+    <PackageReference Include="Moq" Version="4.7.145" />
   </ItemGroup>
 
 </Project>

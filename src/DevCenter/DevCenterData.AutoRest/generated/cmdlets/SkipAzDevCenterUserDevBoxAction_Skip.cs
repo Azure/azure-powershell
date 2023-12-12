@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Description(@"Skips an occurrence of an action.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.HttpPath(Path = "/projects/{projectName}/users/{userId}/devboxes/{devBoxName}/actions/{actionName}:skip", ApiVersion = "2023-10-01-preview")]
     public partial class SkipAzDevCenterUserDevBoxAction_Skip : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener
     {
@@ -33,20 +34,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
-
-        /// <summary>Backing field for <see cref="ActionName" /> property.</summary>
-        private string _actionName;
-
-        /// <summary>The name of an action that will take place on a Dev Box.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of an action that will take place on a Dev Box.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of an action that will take place on a Dev Box.",
-        SerializedName = @"actionName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.ParameterCategory.Path)]
-        public string ActionName { get => this._actionName; set => this._actionName = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -117,6 +104,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
+        /// <summary>Backing field for <see cref="Name" /> property.</summary>
+        private string _name;
+
+        /// <summary>The name of an action that will take place on a Dev Box.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of an action that will take place on a Dev Box.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The name of an action that will take place on a Dev Box.",
+        SerializedName = @"actionName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("ActionName")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.ParameterCategory.Path)]
+        public string Name { get => this._name; set => this._name = value; }
+
         /// <summary>
         /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
         /// </summary>
@@ -184,12 +186,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnNoContent</c> will be called before the regular onNoContent has been processed, allowing customization of
@@ -339,12 +341,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.DevBoxesSkipAction(Endpoint, ProjectName, UserId, DevBoxName, ActionName, onNoContent, onDefault, this, Pipeline);
+                    await this.Client.DevBoxesSkipAction(Endpoint, ProjectName, UserId, DevBoxName, Name, onNoContent, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Endpoint=Endpoint,ProjectName=ProjectName,UserId=UserId,DevBoxName=DevBoxName,ActionName=ActionName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Endpoint=Endpoint,ProjectName=ProjectName,UserId=UserId,DevBoxName=DevBoxName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -375,12 +377,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -397,15 +399,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint, ProjectName=ProjectName, UserId=UserId, DevBoxName=DevBoxName, ActionName=ActionName })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint, ProjectName=ProjectName, UserId=UserId, DevBoxName=DevBoxName, Name=Name })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint, ProjectName=ProjectName, UserId=UserId, DevBoxName=DevBoxName, ActionName=ActionName })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint, ProjectName=ProjectName, UserId=UserId, DevBoxName=DevBoxName, Name=Name })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

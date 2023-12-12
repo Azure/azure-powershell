@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         public const string TopPolicyMetadata = "Maximum number of policy metadata resources to return.";
         public const string ComplianceState = "The Compliance State of the resource. E.g. 'Compliant', 'NonCompliant', 'Unknown'";
         public const string ExpiresOn = "The time the compliance state set in the attestation should expire.";
-        public const string Owner = "The person responsible for setting the state of the resource. This value is typically an Azure Active Directory object ID.";
+        public const string Owner = "The person responsible for setting the state of the resource. This value is typically a Microsoft Entra object ID.";
         public const string Comment = "Comments describing why this attestation was created.";
         public const string Evidence = "The evidence supporting the compliance state set in this attestation.";
         public const string AssessmentDate = "The time the evidence of an attestation was assessed.";

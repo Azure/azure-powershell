@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentFromBicepFile()
         {
             TestRunner.RunTestScript("Test-NewDeploymentFromBicepFile");
@@ -196,17 +196,43 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentFromBicepFileAndBicepparamFile()
         {
             TestRunner.RunTestScript("Test-NewDeploymentFromBicepFileAndBicepparamFile");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNullableParametersAreNotRequired()
+            => TestRunner.RunTestScript("Test-NullableParametersAreNotRequired");
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentFromBicepparamFileOnly()
         {
             TestRunner.RunTestScript("Test-NewDeploymentFromBicepparamFileOnly");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentFromBicepparamFileWithOverrides()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentFromBicepparamFileWithOverrides");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentWithCustomTypes()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentWithCustomTypes");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentWithCustomTypesAndInlineOverrides()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentWithCustomTypesAndInlineOverrides");
         }
 
         //Please make sure to re-record this test if any changes are made to WhatIf, QueryString or ResourceGroupDeployments

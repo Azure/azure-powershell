@@ -417,3 +417,20 @@ function Test-SwitchFailoverGroupTryPlannedBeforeForcedFailover()
 		Validate-FailoverGroupWithGet $newSecondaryFg
 	}
 }
+
+function Test-FailoverGroupMultipleSecondaries()
+{
+	Handle-FailoverGroupTest {
+		Param($server, $partnerServer)
+
+		$primaryRegion = "UK South"
+		$primaryRg = Create-ResourceGroupForTest
+		$primaryServer = Create-ServerForTest $primaryRg $primaryRegion
+
+		$partnerServers = $server.ResourceId, $partnerServer.ResourceId
+
+		$fgName = Get-FailoverGroupName
+		$fg = New-AzSqlDatabaseFailoverGroup -ResourceGroupName $primaryServer.ResourceGroupName -ServerName $primaryServer.ServerName -PartnerServerName $partnerServer.ServerName -FailoverGroupName $fgName -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1 -AllowReadOnlyFailoverToPrimary Enabled -PartnerServerList $partnerServers -ReadOnlyEndpointTargetServer $partnerServer.ResourceId
+		Validate-FailoverGroup $primaryServer $server $fgName Primary Automatic 1 Enabled @() $fg
+	}
+}

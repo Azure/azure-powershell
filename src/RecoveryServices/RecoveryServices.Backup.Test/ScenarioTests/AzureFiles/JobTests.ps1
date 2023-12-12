@@ -51,7 +51,7 @@ function Test-AzureFSGetJob
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 		$item = Enable-Protection $vault $fileShareFriendlyName $saName
 
-		$startDate1 = Get-QueryDateInUtc $((Get-Date).AddDays(-1)) "StartDate1"
+		$startDate1 = Get-QueryDateInUtc $((Get-Date).AddHours(-2)) "StartDate1"
 		$endDate1 = Get-QueryDateInUtc $(Get-Date) "EndDate1"
 
 		$jobs = Get-AzRecoveryServicesBackupJob -VaultId $vault.ID -From $startDate1 -To $endDate1
@@ -76,7 +76,7 @@ function Test-AzureFSGetJob
 	}
 	finally
 	{
-		Cleanup-Vault $vault $item $container
+		Cleanup-Vault $vault $item
 	}
 }
 

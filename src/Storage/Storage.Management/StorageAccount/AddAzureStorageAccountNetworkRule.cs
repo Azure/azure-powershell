@@ -169,12 +169,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                         break;
                     case IpRuleStringParameterSet:
-                        if (storageACL.IpRules == null)
-                            storageACL.IpRules = new List<IPRule>();
+                        if (storageACL.IPRules == null)
+                            storageACL.IPRules = new List<IPRule>();
                         foreach (string s in IPAddressOrRange)
                         {
                             bool ruleExist = false;
-                            foreach (IPRule originRule in storageACL.IpRules)
+                            foreach (IPRule originRule in storageACL.IPRules)
                             {
                                 if (originRule.IPAddressOrRange.Equals(s, System.StringComparison.InvariantCultureIgnoreCase))
                                 {
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             if (!ruleExist)
                             {
                                 IPRule rule = new IPRule(s);
-                                storageACL.IpRules.Add(rule);
+                                storageACL.IPRules.Add(rule);
                                 ruleChanged = true;
                             }
                         }
@@ -263,12 +263,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                         break;
                     case IpRuleObjectParameterSet:
-                        if (storageACL.IpRules == null)
-                            storageACL.IpRules = new List<IPRule>();
+                        if (storageACL.IPRules == null)
+                            storageACL.IPRules = new List<IPRule>();
                         foreach (PSIpRule rule in IPRule)
                         {
                             bool ruleExist = false;
-                            foreach (IPRule originRule in storageACL.IpRules)
+                            foreach (IPRule originRule in storageACL.IPRules)
                             {
                                 if (originRule.IPAddressOrRange.Equals(rule.IPAddressOrRange, System.StringComparison.InvariantCultureIgnoreCase))
                                 {
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             if (!ruleExist)
                             {
 
-                                storageACL.IpRules.Add(PSNetworkRuleSet.ParseStorageNetworkRuleIPRule(rule));
+                                storageACL.IPRules.Add(PSNetworkRuleSet.ParseStorageNetworkRuleIPRule(rule));
                                 ruleChanged = true;
                             }
                         }

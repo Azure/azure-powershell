@@ -5,14 +5,14 @@ This directory contains management plane service clients of Az.Security module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@microsoft.azure/autorest.csharp@2.3.90
-autorest.cmd README.md --version=v2
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
@@ -25,13 +25,13 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-commit: 312544c27464f61bf9639924099d4238bdfa1d71
+commit: def187e2e78d7173d8fdd7f77740dd9719e1dfbf
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/preview/2021-10-01-preview/mdeOnboardings.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/preview/2021-07-01-preview/customAssessmentAutomation.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/preview/2021-07-01-preview/customEntityStoreAssignment.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/stable/2017-08-01/complianceResults.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/stable/2022-03-01/pricings.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/stable/2023-01-01/pricings.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/stable/2019-01-01/advancedThreatProtectionSettings.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/stable/2019-08-01/deviceSecurityGroups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/stable/2019-08-01/iotSecuritySolutions.json
@@ -75,7 +75,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/security/resource-manager/Microsoft.Security/preview/2022-07-01-preview/applications.json
 
 override-info:
-  title: SecurityCenter
+  title: SecurityCenterClient
 
 directive:
   - from: securityContacts.json
@@ -90,6 +90,22 @@ directive:
     where: $.parameters.AscLocation
     transform: >
         $['x-ms-parameter-location'] = 'client';
+  - from: sqlVulnerabilityAssessmentsBaselineRuleOperations.json
+    where: $.definitions.RuleResultsInput.properties.results
+    transform: >
+        $['description'] = 'Expected results to be inserted into the baseline.Leave this field empty it LatestScan == true.';
+  - from: sqlVulnerabilityAssessmentsBaselineRuleOperations.json
+    where: $.definitions.RulesResultsInput.properties.results
+    transform: >
+        $['description'] = 'Expected results to be inserted into the baseline.Leave this field empty it LatestScan == true.';
+  - from: governanceRules.json
+    where: $.definitions.ExecuteGovernanceRuleParams.properties.override
+    transform: >
+        $["x-ms-client-name"] = "overrideParameter";
+  - from: alerts.json
+    where: $.definitions.AlertProperties.properties.intent['x-ms-enum'].values[1]
+    transform: >
+        $["description"] = $["description"].replace('Att&ck', 'Attack');
 
 output-folder: Generated
 namespace: Microsoft.Azure.Management.Security

@@ -62,8 +62,9 @@ This command uses a blob name and wildcard to get a blob.
 ```powershell
 Get-AzStorageContainer -Name container* | Get-AzStorageBlob -IncludeDeleted
 ```
+
 ```output
-   Container Uri: https://storageaccountname.blob.core.windows.net/container1
+Container Uri: https://storageaccountname.blob.core.windows.net/container1
 
 Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime         IsDeleted 
 ----                 --------  ------          -----------                    ------------         ---------- ------------         --------- 
@@ -108,10 +109,11 @@ The final command uses the **Echo** command to display the total.
 
 ### Example 5: Get all blobs in a container include blob version
 ```powershell
-Get-AzStorageBlob -Container "containername"  -IncludeVersion 
+Get-AzStorageBlob -Container "containername"  -IncludeVersion
 ```
+
 ```output
-   AccountName: storageaccountname, ContainerName: containername
+AccountName: storageaccountname, ContainerName: containername
 
 Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     
 ----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
@@ -126,10 +128,11 @@ This command gets all blobs in a container include blob version.
 
 ### Example 6: Get a single blob version
 ```powershell
-Get-AzStorageBlob -Container "containername" -Blob blob2 -VersionId "2020-07-03T16:19:16.2883167Z" 
+Get-AzStorageBlob -Container "containername" -Blob blob2 -VersionId "2020-07-03T16:19:16.2883167Z"
 ```
+
 ```output
-   AccountName: storageaccountname, ContainerName: containername
+AccountName: storageaccountname, ContainerName: containername
 
 Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     
 ----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
@@ -142,8 +145,9 @@ This command gets a single blobs verion with VersionId.
 ```powershell
 Get-AzStorageBlob -Container "containername" -Blob blob1 -SnapshotTime "2020-07-06T06:56:06.8588431Z"
 ```
+
 ```output
-   AccountName: storageaccountname, ContainerName: containername
+AccountName: storageaccountname, ContainerName: containername
 
 Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     
 ----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
@@ -157,9 +161,9 @@ This command gets a single blobs snapshot with SnapshotTime.
 
 
 ```
-PS C:\> $blobs = Get-AzStorageBlob -Container "containername" -IncludeTag
+$blobs = Get-AzStorageBlob -Container "containername" -IncludeTag
 
-PS C:\> $blobs
+$blobs
 
    AccountName: storageaccountname, ContainerName: containername
 
@@ -169,7 +173,7 @@ testblob             BlockBlob 2097152         application/octet-stream       20
 testblob2            BlockBlob 2097152         application/octet-stream       2020-07-23 09:35:04Z Hot                                     False      2020-07-23T09:35:04.0856187Z *
 
 
-PS C:\> $blobs[0].Tags
+$blobs[0].Tags
 Name          Value 
 ----          -----
 tag1          value1
@@ -182,8 +186,9 @@ This command lists blobs from a container with blob tags, and show the tags of t
 ```powershell
 Get-AzStorageBlob -Container "containername" -Blob testblob -TagCondition """tag1""='value1'"
 ```
+
 ```output
-   AccountName: storageaccountname, ContainerName: containername
+AccountName: storageaccountname, ContainerName: containername
 
 Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotTime                 IsDeleted  VersionId                     
 ----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     

@@ -21,7 +21,7 @@ Set-AzVMADDomainExtension -DomainName <String> [-OUPath <String>] [-JoinOption <
 ```
 
 ## DESCRIPTION
-The **Set-AzVMADDomainExtension** cmdlet adds an Azure Active Directory (AD) domain virtual machine extension to a virtual machine.
+The **Set-AzVMADDomainExtension** cmdlet adds a Microsoft Entra ID virtual machine extension to a virtual machine.
 This extension lets your virtual machine join a domain.
 
 ## EXAMPLES

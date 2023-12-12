@@ -32,8 +32,10 @@ This command creates a storage table with a name of tableabc.
 
 ### Example 2: Create multiple azure storage tables
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
-PS C:\>"table1 table2 table3".split() | New-AzStorageTable
+"table1 table2 table3".split() | New-AzStorageTable
 ```
 
 This command creates multiple tables.
@@ -88,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,0 +1,95 @@
+{
+  "resourceType": "mobileNetworks/services",
+  "apiVersion": "2022-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMobileNetworkService",
+      "description": "Gets information about the specified service.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/services/{serviceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworkservice"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MobileNetworkName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets information about the specified service.",
+          "parameters": [
+            {
+              "name": "-MobileNetworkName",
+              "value": "[Path.mobileNetworkName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMobileNetworkService",
+      "description": "Deletes the specified service.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/services/{serviceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork/remove-azmobilenetworkservice"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MobileNetworkName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes the specified service.",
+          "parameters": [
+            {
+              "name": "-MobileNetworkName",
+              "value": "[Path.mobileNetworkName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
