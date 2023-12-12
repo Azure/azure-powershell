@@ -183,6 +183,56 @@ function Test-LongTermRetentionV2Policy($location = "southeastasia")
 	}
 }
 
+function Test-LongTermRetentionV2PolicyWithImmutableAndAccessTier($location = "eastus2euap")
+{
+	# Setup
+	$location = "eastus2euap"
+	$rg = "lilliancanaryserver"
+	$server = "lilliancanaryserver"
+	$databaseName = "lillianLTRDB1"
+	$weeklyRetentionP3W = "P3W"
+	$weeklyRetentionP4W = "P3W"
+	$accessTierHot = "Hot"
+	$accessTierArchive = "Archive"
+
+	# Basic Get LTRPolicy Test. Validate the MakeBackupsImmutable and BackupStorageAccessTier default values are expected.
+	$policy = Get-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	Assert-AreEqual $policy.WeeklyRetention $weeklyRetention1
+	Assert-AreEqual $policy.BackupStorageAccessTier $accessTierHot
+	Assert-AreEqual $policy.MakeBackupsImmutable $false
+
+	# Basic Update LTRPolicy with parameter MakeBackupsImmutable Test. Validate the Immutable and WeeklyRetention are updated as expected.
+	Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention2 -MakeBackupsImmutable $true
+	# Sleep 30 seconds for waiting the SET to be done before checking result.
+	Start-Sleep -Seconds 30
+	$policy = Get-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	Assert-AreEqual $policy.WeeklyRetention $weeklyRetention2
+	Assert-AreEqual $policy.MonthlyRetention $emptyRetention
+	Assert-AreEqual $policy.YearlyRetention $emptyRetention
+	Assert-AreEqual $policy.MakeBackupsImmutable $true
+
+	# Basic Update LTRPolicy with parameter BackupStorageAccessTier Test. Validate the BackupStorageAccessTier and WeeklyRetention are updated as expected.
+	Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention1 -BackupStorageAccessTier $accessTierArchive
+	# Sleep 30 seconds for waiting the SET to be done before checking result.
+	Start-Sleep -Seconds 30
+	$policy = Get-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	Assert-AreEqual $policy.WeeklyRetention $weeklyRetention1
+	Assert-AreEqual $policy.MonthlyRetention $emptyRetention
+	Assert-AreEqual $policy.YearlyRetention $emptyRetention
+	Assert-AreEqual $policy.BackupStorageAccessTier $accessTierArchive
+
+	# Combine Update LTRPolicy with parameter MakeBackupsImmutable and BackupStorageAccessTier Test. Validate the MakeBackupsImmutable, BackupStorageAccessTier and WeeklyRetention are updated as expected.
+	Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention2 -MakeBackupsImmutable $false -BackupStorageAccessTier $accessTierHot
+	# Sleep 30 seconds for waiting the SET to be done before checking result.
+	Start-Sleep -Seconds 30
+	$policy = Get-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	Assert-AreEqual $policy.WeeklyRetention $weeklyRetention2
+	Assert-AreEqual $policy.MonthlyRetention $emptyRetention
+	Assert-AreEqual $policy.YearlyRetention $emptyRetention
+	Assert-AreEqual $policy.MakeBackupsImmutable $false
+	Assert-AreEqual $policy.BackupStorageAccessTier $accessTierHot
+}
+
 function Test-LongTermRetentionV2Backup($location = "southeastasia")
 {
 	# Setup

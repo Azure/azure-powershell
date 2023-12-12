@@ -90,6 +90,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLongTermRetentionV2PolicyWithImmutableAndAccessTier()
+        {
+            TestRunner.RunTestScript("Test-LongTermRetentionV2PolicyWithImmutableAndAccessTier");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLongTermRetentionV2Backup()
         {
             TestRunner.RunTestScript("Test-LongTermRetentionV2Backup");
