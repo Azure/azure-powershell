@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             DiskEncryption = cluster.Properties.DiskEncryptionProperties;
             AssignedIdentity = new AzureHDInsightClusterIdentity(cluster.Identity);
             EncryptionInTransit =cluster.Properties?.EncryptionInTransitProperties?.IsEncryptionInTransitEnabled;
-            if(cluster.Properties?.StorageProfile.Storageaccounts != null && cluster.Properties?.StorageProfile.Storageaccounts.Count > 0)
+            if(cluster.Properties?.StorageProfile?.Storageaccounts != null && cluster.Properties?.StorageProfile?.Storageaccounts.Count > 0)
             {
                 EnableSecureChannel = cluster.Properties?.StorageProfile.Storageaccounts[0]?.EnableSecureChannel;
             }
