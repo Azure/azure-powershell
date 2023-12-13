@@ -196,6 +196,11 @@ directive:
       property-name: Items
 
   - where:
+      subject: serviceprincipalapproleassignment$
+      verb: New
+    hide: true
+
+  - where:
       subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|GroupGraphRefMember$|grouprefmember$
     hide: true
   - where:

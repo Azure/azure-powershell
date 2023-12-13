@@ -15,11 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzADServicePrincipalAppRo
 }
 
 Describe 'New-AzADServicePrincipalAppRoleAssignment' {
-    It 'CreateExpanded' -skip {
+    It 'ObjectIdWithResourceIdParameterSet' {
+        $appRa = New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId $env.spId1 -ResourceId $env.resourceId1 -AppRoleId $env.appRoleId
+        $appRa.AppRoleId | Should -Be $env.appRoleId
+    }
+
+    It 'ObjectIdWithResourceDisplayNameParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Create' -skip {
+    It 'SPNWithResourceIdParameterSet' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'SPNWithResourceDisplayNameParameterSet' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
