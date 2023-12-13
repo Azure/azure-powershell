@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             {
                 if (e.RequestInformation.BatchError.Code != "PoolExists")
                 {
-                    throw e;
+                    throw;
                 }
             }
         }

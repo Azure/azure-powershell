@@ -13,14 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Attestation;
-using Microsoft.Azure.Management.Attestation;
-using Microsoft.Azure.Test.HttpRecorder;
-using System;
-using System.Collections.Generic;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Commands.TestFx;
+using Microsoft.Azure.Management.Attestation;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System.Collections.Generic;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
@@ -76,22 +74,12 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
 
         private static AttestationClient GetAttestationClient(MockContext context)
         {
-            string environmentConnectionString = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
             string accessToken = "fakefakefake";
 
             // When recording, we should have a connection string passed into the code from the environment
-            if (!string.IsNullOrEmpty(environmentConnectionString))
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                // Gather test client credential information from the environment
-                var connectionInfo = new ConnectionString(Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION"));
-                string servicePrincipal = connectionInfo.GetValue<string>(ConnectionStringKeys.ServicePrincipalKey);
-                string servicePrincipalSecret = connectionInfo.GetValue<string>(ConnectionStringKeys.ServicePrincipalSecretKey);
-                string aadTenant = connectionInfo.GetValue<string>(ConnectionStringKeys.TenantIdKey);
-
-                // Create credentials
-                var clientCredentials = new ClientCredential(servicePrincipal, servicePrincipalSecret);
-                var authContext = new AuthenticationContext($"https://login.windows.net/{aadTenant}", TokenCache.DefaultShared);
-                accessToken = authContext.AcquireTokenAsync("https://attest.azure.net", clientCredentials).Result.AccessToken;
+                accessToken = TestEnvironmentFactory.GetTestEnvironment().GetServicePrincipalAccessToken(new[] { "https://attest.azure.net/.default" });
             }
 
             return new AttestationClient(new AttestationCredentials(accessToken), HttpMockServer.CreateInstance());
