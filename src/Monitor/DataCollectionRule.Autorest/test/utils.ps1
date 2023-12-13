@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -73,7 +98,7 @@ function setupEnv() {
         $VM = New-AzVM -ResourceGroupName $env.resourceGroup -Location $env.Location -Name $vmname -Credential $cred
     }
     $env.VMId = $VM.Id
-    
+
     Write-Host "Start to create test data"
     Write-Host "Create data collection rules"
     $null = New-AzDataCollectionRule -Name $env.testCollectionRule1 -ResourceGroupName $env.resourceGroup -JsonFilePath (Join-Path $PSScriptRoot '.\jsonfile\ruleTest1.json')
@@ -88,7 +113,7 @@ function setupEnv() {
     $syslog = New-AzSyslogDataSourceObject -FacilityName syslog -LogLevel Alert,Critical,Emergency -Name syslogBase -Stream Microsoft-Syslog
     $rule = New-AzDataCollectionRule -Name $env.testCollectionRule2 -ResourceGroupName $env.resourceGroup2 -Location eastus -DataFlow $dataflow -DataSourcePerformanceCounter $performanceCounter1,$performanceCounter2 -DataSourceWindowsEventLog $windowsEvent1,$windowsEvent2 -DestinationLogAnalytic $logAnalytics -DataSourceSyslog $cronlog,$syslog
     $env.ruleID = $rule.Id
-    
+
     Write-Host "Create data collection endpoints"
     $endpoint = New-AzDataCollectionEndpoint -Name $env.testCollectionEndpoint -ResourceGroupName $env.resourceGroup -Location $env.Location -NetworkAclsPublicNetworkAccess Enabled
     $null = New-AzDataCollectionEndpoint -Name $env.testCollectionEndpoint2 -ResourceGroupName $env.resourceGroup2 -JsonFilePath (Join-Path $PSScriptRoot '.\jsonfile\endpointTest1.json')

@@ -1,7 +1,7 @@
 ### Example 1: Creates hierarchy information object
 ```powershell
-PS C:\> $HierarchyInformation=New-AzEdgeOrderHierarchyInformationObject -ProductFamilyName "azurestackedge" -ProductLineName "azurestackedge" -ProductName "azurestackedgegpu" -ConfigurationName "EdgeP_High"
-PS C:\> $HierarchyInformation | fl
+$HierarchyInformation=New-AzEdgeOrderHierarchyInformationObject -ProductFamilyName "azurestackedge" -ProductLineName "azurestackedge" -ProductName "azurestackedgegpu" -ConfigurationName "EdgeP_High"
+$HierarchyInformation | fl
 
 ConfigurationName : EdgeP_High
 ProductFamilyName : azurestackedge

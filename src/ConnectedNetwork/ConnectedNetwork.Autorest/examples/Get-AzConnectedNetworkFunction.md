@@ -1,6 +1,6 @@
 ### Example 1: Get-AzConnectedNetworkFunction via Resource group and Resource name
 ```powershell
-PS C:\> Get-AzConnectedNetworkFunction -Name myVnf -ResourceGroupName myResources
+Get-AzConnectedNetworkFunction -Name myVnf -ResourceGroupName myResources
 
 
 ContainerConfiguration       : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionPropertiesFormatNetworkFunctionContainerConfigurations
@@ -34,8 +34,8 @@ Getting information about the network function in resource group myResources wit
 
 ### Example 2: Get-AzConnectedNetworkFunction via Identity
 ```powershell
-PS C:\> $vnf = @{ NetworkFunctionName = "myVnf1"; ResourceGroupName = "myResources"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
-PS C:\> Get-AzConnectedNetworkFunction -InputObject $vnf
+$vnf = @{ NetworkFunctionName = "myVnf1"; ResourceGroupName = "myResources"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
+Get-AzConnectedNetworkFunction -InputObject $vnf
 
 
 ContainerConfiguration       : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionPropertiesFormatNetworkFunctionContainerConfigurations

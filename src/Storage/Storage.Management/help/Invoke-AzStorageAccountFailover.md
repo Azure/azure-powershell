@@ -39,15 +39,15 @@ Please understand the following impact to your storage account before you initia
 
 
 ```
-PS C:\>$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -IncludeGeoReplicationStats
-PS C:\>$account.GeoReplicationStats
+$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -IncludeGeoReplicationStats
+$account.GeoReplicationStats
 
 Status LastSyncTime
 ------ ------------
 Live   11/13/2018 2:44:22 AM
 
-PS C:\>$job = Invoke-AzStorageAccountFailover -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Force -AsJob
-PS C:\>$job | Wait-Job
+$job = Invoke-AzStorageAccountFailover -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Force -AsJob
+$job | Wait-Job
 ```
 
 This command check the last sync time of a Storage account then invokes failover of it, the secondary cluster will become primary after failover. Since failover takes a long time, suggest to run it in the backend with -Asjob parameter, and then wait for the job complete.

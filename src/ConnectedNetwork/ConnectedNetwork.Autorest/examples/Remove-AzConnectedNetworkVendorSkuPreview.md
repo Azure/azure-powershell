@@ -1,6 +1,6 @@
 ### Example 1: Remove-AzConnectedNetworkVendorSkuPreview via sku name, vendor name and preview subscription
 ```powershell
-PS C:\> Remove-AzConnectedNetworkVendorSkuPreview -SkuName mySku -VendorName myVendor -PreviewSubscription xxxxx-22222-xxxxx-22222
+Remove-AzConnectedNetworkVendorSkuPreview -SkuName mySku -VendorName myVendor -PreviewSubscription xxxxx-22222-xxxxx-22222
 
 ```
 
@@ -8,8 +8,8 @@ Deleting the preview information of sku mySku with vendor name myVendor for the 
 
 ### Example 2: Remove-AzConnectedNetworkVendorSkuPreview via Identity
 ```powershell
-PS C:\> $sku = Get-AzConnectedNetworkVendorSkuPreview -SkuName mySku1 -VendorName myVendor -PreviewSubscription xxxxx-22222-xxxxx-22222
-PS C:\> Remove-AzConnectedNetworkVendorSkuPreview -InputObject $sku
+$sku = Get-AzConnectedNetworkVendorSkuPreview -SkuName mySku1 -VendorName myVendor -PreviewSubscription xxxxx-22222-xxxxx-22222
+Remove-AzConnectedNetworkVendorSkuPreview -InputObject $sku
 
 ```
 

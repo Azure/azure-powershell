@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdprivateendpointconnection
 schema: 2.0.0
@@ -14,25 +14,26 @@ Get a private endpoint connection.
 
 ### List (Default)
 ```
-Get-AzWvdPrivateEndpointConnection -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWvdPrivateEndpointConnection -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzWvdPrivateEndpointConnection -HostPoolName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -HostPoolName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### Get
 ```
-Get-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
+Get-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzWvdPrivateEndpointConnection -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -HostPoolName <String> [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -42,11 +43,10 @@ Get-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity>
  [<CommonParameters>]
 ```
 
-### List1
+### GetViaIdentity
 ```
-Get-AzWvdPrivateEndpointConnection -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +67,7 @@ privateName1                                  /subscriptions/00000000-0000-0000-
 
 Gets a private endpoint connection from a Workspace.
 
-### Example 1: List PrivateEndpointConnections by Workspace 
+### Example 1: List PrivateEndpointConnections by Workspace
 ```powershell
 Get-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -workspaceName WorkspaceName
 ```
@@ -94,7 +94,7 @@ privateName1                                  /subscriptions/00000000-0000-0000-
 
 Gets a private endpoint connection from a HostPool.
 
-### Example 1: List PrivateEndpointConnections by HostPool 
+### Example 1: List PrivateEndpointConnections by HostPool
 ```powershell
 Get-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -HostPoolName hpName
 ```
@@ -162,7 +162,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: GetViaIdentity1, GetViaIdentity
 Aliases:
 
 Required: True
@@ -192,7 +192,7 @@ The name of the private endpoint connection associated with the Azure resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1
+Parameter Sets: Get1, Get
 Aliases: PrivateEndpointConnectionName
 
 Required: True
@@ -223,7 +223,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, List, List1
+Parameter Sets: List, Get1, Get, List1
 Aliases:
 
 Required: True
@@ -238,7 +238,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, Get1, List, List1
+Parameter Sets: List, Get1, Get, List1
 Aliases:
 
 Required: False
@@ -253,7 +253,7 @@ The name of the workspace
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -277,4 +277,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

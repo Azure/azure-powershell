@@ -6,7 +6,7 @@ This command creates the dev box "myDevBox" for the user "786a823c-8037-48ab-89b
 
 ### Example 2: Create a dev box by dev center
 ```powershell
-New-AzDevCenterUserDevBox -DevCenter Contoso -ProjectName DevProject -UserId "me" -Name myDevBox -PoolName DevPool
+New-AzDevCenterUserDevBox -DevCenterName Contoso -ProjectName DevProject -UserId "me" -Name myDevBox -PoolName DevPool
 ```
 This command creates the dev box "myDevBox" for the currently signed-in user.
 
@@ -20,6 +20,6 @@ This command creates the dev box "myDevBox" for the currently signed-in user.
 ### Example 4: Create a dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
-New-AzDevCenterUserDevBox -DevCenter Contoso -InputObject $devBoxInput -PoolName DevPool
+New-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput -PoolName DevPool
 ```
 This command creates the dev box "myDevBox" for the user "786a823c-8037-48ab-89b8-8599901e67d0".

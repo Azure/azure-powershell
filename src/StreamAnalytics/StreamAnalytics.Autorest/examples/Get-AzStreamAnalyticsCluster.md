@@ -1,6 +1,6 @@
 ### Example 1: Get all the stream analytics clusters under a subscription
 ```powershell
-PS C:\> Get-AzStreamAnalyticsCluster
+Get-AzStreamAnalyticsCluster
 
 Location        Name         Type                               Etag
 --------        ----         ----                               ----
@@ -11,7 +11,7 @@ This command gets all the stream analytics clusters under a subscription.
 
 ### Example 2: Get all the stream analytics clusters under a resource group
 ```powershell
-PS C:\> Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test
+Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test
 
 Location        Name         Type                               Etag
 --------        ----         ----                               ----
@@ -22,7 +22,7 @@ This command gets all the stream analytics clusters under a resource group.
 
 ### Example 3: Get a stream analytics cluster by name
 ```powershell
-PS C:\> Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01
+Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01
 
 Location        Name         Type                               Etag
 --------        ----         ----                               ----
@@ -33,7 +33,7 @@ This command gets a stream analytics cluster by name.
 
 ### Example 4: Get a stream analytics cluster by pipeline
 ```powershell
-PS C:\> Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01 | Get-AzStreamAnalyticsCluster
+Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01 | Get-AzStreamAnalyticsCluster
 
 Location        Name         Type                               Etag
 --------        ----         ----                               ----

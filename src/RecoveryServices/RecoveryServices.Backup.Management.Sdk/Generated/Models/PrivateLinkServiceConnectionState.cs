@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="description">Gets or sets description
         /// </param>
 
-        /// <param name="actionRequired">Gets or sets actions required
+        /// <param name="actionsRequired">Gets or sets actions required
         /// </param>
-        public PrivateLinkServiceConnectionState(string status = default(string), string description = default(string), string actionRequired = default(string))
+        public PrivateLinkServiceConnectionState(string status = default(string), string description = default(string), string actionsRequired = default(string))
 
         {
             this.Status = status;
             this.Description = description;
-            this.ActionRequired = actionRequired;
+            this.ActionsRequired = actionsRequired;
             CustomInit();
         }
 
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <summary>
         /// Gets or sets gets or sets actions required
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "actionRequired")]
-        public string ActionRequired {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "actionsRequired")]
+        public string ActionsRequired {get; set; }
     }
 }

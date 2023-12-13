@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/import-azwvdappattachpackageinfo
 schema: 2.0.0
@@ -15,29 +15,29 @@ Gets information from a package given the path to the package.
 ### ImportExpanded (Default)
 ```
 Import-AzWvdAppAttachPackageInfo -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-PackageArchitecture <AppAttachPackageArchitectures>] [-Path <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PackageArchitecture <AppAttachPackageArchitectures>] [-Path <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Import
 ```
-Import-AzWvdAppAttachPackageInfo -HostPoolName <String> -ResourceGroupName <String>
- -ImportPackageInfoRequest <IImportPackageInfoRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ImportViaIdentity
-```
-Import-AzWvdAppAttachPackageInfo -InputObject <IDesktopVirtualizationIdentity>
- -ImportPackageInfoRequest <IImportPackageInfoRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Import-AzWvdAppAttachPackageInfo -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -ImportPackageInfoRequest <IImportPackageInfoRequest> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ImportViaIdentityExpanded
 ```
 Import-AzWvdAppAttachPackageInfo -InputObject <IDesktopVirtualizationIdentity>
- [-PackageArchitecture <AppAttachPackageArchitectures>] [-Path <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PackageArchitecture <AppAttachPackageArchitectures>] [-Path <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ImportViaIdentity
+```
+Import-AzWvdAppAttachPackageInfo -InputObject <IDesktopVirtualizationIdentity>
+ -ImportPackageInfoRequest <IImportPackageInfoRequest> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +84,7 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: Import, ImportExpanded
+Parameter Sets: ImportExpanded, Import
 Aliases:
 
 Required: True
@@ -116,7 +116,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: ImportViaIdentity, ImportViaIdentityExpanded
+Parameter Sets: ImportViaIdentityExpanded, ImportViaIdentity
 Aliases:
 
 Required: True
@@ -162,7 +162,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Import, ImportExpanded
+Parameter Sets: ImportExpanded, Import
 Aliases:
 
 Required: True
@@ -177,7 +177,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Import, ImportExpanded
+Parameter Sets: ImportExpanded, Import
 Aliases:
 
 Required: False
@@ -234,4 +234,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         protected override IEnumerable<AzureSqlFailoverGroupModel> PersistChanges(IEnumerable<AzureSqlFailoverGroupModel> entity)
         {
             AzureSqlFailoverGroupModel model = entity.First();
-            bool useV2 = (model.PartnerServers != null && model.PartnerServers.Count > 1);
+            bool useV2 = (model.PartnerServers != null && model.PartnerServers.Count > 1) || (MyInvocation.BoundParameters.ContainsKey("PartnerServerList"));
             return new List<AzureSqlFailoverGroupModel>() {
                 ModelAdapter.PatchUpdateFailoverGroup(entity.First(), useV2)
             };

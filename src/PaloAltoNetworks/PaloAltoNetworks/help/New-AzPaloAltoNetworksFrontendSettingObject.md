@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PaloAltoNetworks-help.xml
 Module Name: Az.PaloAltoNetworks
 online version: https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworksfrontendsettingobject
 schema: 2.0.0
@@ -14,7 +14,7 @@ Create an in-memory object for FrontendSetting.
 
 ```
 New-AzPaloAltoNetworksFrontendSettingObject -BackendConfigurationPort <String>
- -FrontendConfigurationPort <String> -Name <String> -Protocol <ProtocolType> [-Address <String>]
+ -FrontendConfigurationPort <String> -Name <String> -Protocol <String> [-Address <String>]
  [-BackendConfigurationAddress1 <String>] [-BackendConfigurationAddressResourceId <String>]
  [-FrontendConfigurationAddressResourceId <String>] [<CommonParameters>]
 ```
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 Protocol Type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.ProtocolType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -173,4 +173,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

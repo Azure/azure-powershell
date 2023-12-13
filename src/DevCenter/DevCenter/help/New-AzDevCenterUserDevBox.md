@@ -28,14 +28,14 @@ New-AzDevCenterUserDevBox -Endpoint <String> -InputObject <IDevCenterdataIdentit
 
 ### CreateViaIdentityExpandedByDevCenter
 ```
-New-AzDevCenterUserDevBox -DevCenter <String> -InputObject <IDevCenterdataIdentity> -PoolName <String>
+New-AzDevCenterUserDevBox -DevCenterName <String> -InputObject <IDevCenterdataIdentity> -PoolName <String>
  [-LocalAdministrator <LocalAdminStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateExpandedByDevCenter
 ```
-New-AzDevCenterUserDevBox -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
+New-AzDevCenterUserDevBox -DevCenterName <String> -Name <String> -ProjectName <String> [-UserId <String>]
  -PoolName <String> [-LocalAdministrator <LocalAdminStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -108,13 +108,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateViaIdentityExpandedByDevCenter, CreateExpandedByDevCenter
-Aliases:
+Aliases: DevCenter
 
 Required: True
 Position: Named

@@ -70,8 +70,8 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Authentication Method")]
         [ValidateSet(
-            MNM.AuthenticationMethod.EAPTLS,
-            MNM.AuthenticationMethod.EAPMSCHAPv2,
+            MNM.AuthenticationMethod.Eaptls,
+            MNM.AuthenticationMethod.EapmschaPv2,
             IgnoreCase = true)]
         public string AuthenticationMethod { get; set; }
 
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Network
             PSP2SVpnProfileParameters p2sVpnProfileParams = new PSP2SVpnProfileParameters();
 
             p2sVpnProfileParams.AuthenticationMethod = string.IsNullOrWhiteSpace(this.AuthenticationMethod)
-                ? MNM.AuthenticationMethod.EAPTLS.ToString()
+                ? MNM.AuthenticationMethod.Eaptls.ToString()
                 : this.AuthenticationMethod;
 
             var p2sVpnProfileParametersModel = NetworkResourceManagerProfile.Mapper.Map<MNM.P2SVpnProfileParameters>(p2sVpnProfileParams);

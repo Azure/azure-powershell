@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `Set-AzSqlDatabaseFailoverGroup` when going from multi-secondary to single secondary
+
+## Version 4.12.0
 * Added new parameters `MaintenanceConfigurationId`, `DnsZone` to `AzSqlInstancePool` cmdlets
 
 ## Version 4.11.0

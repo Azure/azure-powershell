@@ -1,7 +1,7 @@
 ### Example 1: List existing CommunicationServices for a Subscription
 
 ```powershell
-PS C:\> Get-AzCommunicationService -SubscriptionId 73fc3592-3cef-4300-5e19-8d18b65ce0e8
+Get-AzCommunicationService -SubscriptionId 73fc3592-3cef-4300-5e19-8d18b65ce0e8
 
 Location Name             Type                                          AzureAsyncOperation
 -------- ----             ----                                          -------------------
@@ -16,7 +16,7 @@ Returns a list of all ACS resources under that subscription.
 ### Example 2: Get infomation on specified Azure Communication resource
 
 ```powershell
-PS C:\> Get-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+Get-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 
 Location Name           Type                                          AzureAsyncOperation
 -------- ----           ----                                          -------------------

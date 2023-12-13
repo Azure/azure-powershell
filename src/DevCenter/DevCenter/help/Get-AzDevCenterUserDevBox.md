@@ -42,30 +42,30 @@ Get-AzDevCenterUserDevBox -Endpoint <String> -ProjectName <String> -UserId <Stri
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterUserDevBox -DevCenter <String> -InputObject <IDevCenterdataIdentity>
+Get-AzDevCenterUserDevBox -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserDevBox -DevCenter <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserDevBox -DevCenterName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List2ByDevCenter
 ```
-Get-AzDevCenterUserDevBox -DevCenter <String> -ProjectName <String> -UserId <String>
+Get-AzDevCenterUserDevBox -DevCenterName <String> -ProjectName <String> -UserId <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1ByDevCenter
 ```
-Get-AzDevCenterUserDevBox -DevCenter <String> -UserId <String> [-DefaultProfile <PSObject>]
+Get-AzDevCenterUserDevBox -DevCenterName <String> -UserId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserDevBox -DevCenter <String> -ProjectName <String> -UserId <String> -Name <String>
+Get-AzDevCenterUserDevBox -DevCenterName <String> -ProjectName <String> -UserId <String> -Name <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -164,13 +164,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetViaIdentityByDevCenter, ListByDevCenter, List2ByDevCenter, List1ByDevCenter, GetByDevCenter
-Aliases:
+Aliases: DevCenter
 
 Required: True
 Position: Named

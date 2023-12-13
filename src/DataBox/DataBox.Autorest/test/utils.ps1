@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
     #Preload subscriptionId and tenant from context, which will be used in test
@@ -33,12 +58,12 @@ function setupEnv() {
     $dataAccount = New-AzDataBoxStorageAccountDetailsObject -DataAccountType "StorageAccount" -StorageAccountId "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/dhja/providers/Microsoft.Storage/storageAccounts/dhjapowershellstorage"
 
     $details = New-AzDataBoxJobDetailsObject -Type "DataBox"  -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} )-ContactDetail $contactDetail -ShippingAddress $ShippingDetails
-    
+
     Write-Host -ForegroundColor Green "Just did " + $jobName
 
-    New-AzDataBoxJob -Name $jobName -SubscriptionId "fa68082f-8ff7-4a25-95c7-ce9da541242f" -ResourceGroupName $resourceGroup -TransferType "ImportToAzure" -Detail $details -Location "WestUS" -SkuName "DataBox" 
+    New-AzDataBoxJob -Name $jobName -SubscriptionId "fa68082f-8ff7-4a25-95c7-ce9da541242f" -ResourceGroupName $resourceGroup -TransferType "ImportToAzure" -Detail $details -Location "WestUS" -SkuName "DataBox"
 
-    Write-Host -ForegroundColor Green "Create completed" 
+    Write-Host -ForegroundColor Green "Create completed"
     $env.Add("JobName",$jobName)
     $env.Add("JobNameImport","powershell" + (RandomString -allChars $false -len 4))
     $env.Add("JobNameUAI", "powershellUAI" +(RandomString -allChars $false -len 4))
@@ -71,7 +96,7 @@ function setupEnv() {
 }
 function cleanupEnv() {
     Stop-AzDataBoxJob -Name $env.JobName -ResourceGroupName $env.ResourceGroup -Reason "Test Job" -SubscriptionId $env.SubscriptionId
-    Remove-AzDataBoxJob -Name $env.JobName -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId   
+    Remove-AzDataBoxJob -Name $env.JobName -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId
     Write-Host -ForegroundColor Green "Just did " + $env.ResourceGroup
     Remove-AzResourceGroup -Name $env.ResourceGroup
 }

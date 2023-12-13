@@ -6,7 +6,7 @@ function GetEndpoint([string]$project, [string]$resourceGroup) {
             + "| extend devCenterUri = properties.devCenterUri | project devCenterUri"
         $argResponse = Az.ResourceGraph\Search-AzGraph -Query $query
         $devCenterUri = $argResponse.devCenterUri
-       
+
         return $devCenterUri.Substring(0, $devCenterUri.Length - 1)
 
 }
@@ -18,6 +18,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % { [char]$_ })
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -198,14 +223,13 @@ function setupEnv() {
     $env.Add("functionAppName13", $functionAppName13)
 
 
-
     New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envName -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
     New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envName2 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $functionApp -EnvironmentType $environmentTypeName -Parameter $functionAppParameters
     New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envNameToDelete -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
     New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envNameToDelete2 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
     New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envNameToDelete3 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
     New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envNameToDelete4 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
-    
+
     New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $devboxName -ProjectName $projectName -PoolName $poolName
     New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $devboxName2 -ProjectName $projectName2 -PoolName $poolName2
     New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $devboxName3 -ProjectName $projectName -PoolName $poolName
@@ -226,7 +250,6 @@ function setupEnv() {
     New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $skipDevBox4 -ProjectName $projectName -PoolName $poolName
 
 
-
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -235,5 +258,5 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.resourceGroup
+     Remove-AzResourceGroup -Name $env.resourceGroup
 }
