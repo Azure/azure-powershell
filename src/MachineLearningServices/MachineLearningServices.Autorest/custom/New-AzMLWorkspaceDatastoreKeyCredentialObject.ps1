@@ -21,12 +21,12 @@ Create an in-memory object for AccountKeyDatastoreCredentials.
 Create an in-memory object for AccountKeyDatastoreCredentials.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AccountKeyDatastoreCredentials
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20231001.AccountKeyDatastoreCredentials
 .Link
 https://learn.microsoft.com/powershell/module/az.MachineLearningServices/New-AzMLWorkspaceDatastoreKeyCredentialObject
 #>
 function New-AzMLWorkspaceDatastoreKeyCredentialObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AccountKeyDatastoreCredentials')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20231001.AccountKeyDatastoreCredentials')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,8 +36,8 @@ function New-AzMLWorkspaceDatastoreKeyCredentialObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AccountKeyDatastoreCredentials]::New()
-        $Secret = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AccountKeyDatastoreSecrets]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20231001.AccountKeyDatastoreCredentials]::New()
+        $Secret = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20231001.AccountKeyDatastoreSecrets]::New()
         $Object.CredentialsType = 'AccountKey'
 
         $Secret.SecretsType = 'AccountKey'
