@@ -41,7 +41,7 @@ input-file:
 
 root-module-name: $(prefix).Monitor
 title: MetricData
-module-name: MetricBatchData
+module-name: Az.MetricBatchData
 module-version: 0.1.0
 subject-prefix: ''
 
