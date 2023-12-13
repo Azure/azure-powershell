@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="chownMode">This parameter specifies who is authorized to change the ownership of a
         /// file. restricted - Only root user can change the ownership of the file.
         /// unrestricted - Non-root users can change ownership of files that they own.
-        /// Possible values include: 'Restricted', 'Unrestricted'</param>
+        /// Possible values include: &#39;Restricted&#39;, &#39;Unrestricted&#39;</param>
         public ExportPolicyRule(int? ruleIndex = default(int?), bool? unixReadOnly = default(bool?), bool? unixReadWrite = default(bool?), bool? kerberos5ReadOnly = default(bool?), bool? kerberos5ReadWrite = default(bool?), bool? kerberos5IReadOnly = default(bool?), bool? kerberos5IReadWrite = default(bool?), bool? kerberos5PReadOnly = default(bool?), bool? kerberos5PReadWrite = default(bool?), bool? cifs = default(bool?), bool? nfsv3 = default(bool?), bool? nfsv41 = default(bool?), string allowedClients = default(string), bool? hasRootAccess = default(bool?), string chownMode = default(string))
 
         {

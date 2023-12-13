@@ -41,12 +41,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="networkFeatures">Network features available to the volume, or current state of update.
-        /// Possible values include: 'Basic', 'Standard', 'Basic_Standard',
-        /// 'Standard_Basic'</param>
+        /// Possible values include: &#39;Basic&#39;, &#39;Standard&#39;, &#39;Basic_Standard&#39;,
+        /// &#39;Standard_Basic&#39;</param>
 
         /// <param name="provisioningState">Gets the status of the NetworkSiblingSet at the time the operation was
         /// called.
-        /// Possible values include: 'Succeeded', 'Failed', 'Canceled', 'Updating'</param>
+        /// Possible values include: &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Updating&#39;</param>
 
         /// <param name="nicInfoList">List of NIC information
         /// </param>

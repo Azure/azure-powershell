@@ -658,7 +658,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of the volume
         /// </param>
         /// <param name='forceDelete'>
-        /// An option to force delete the volume. Will cleanup resources connected to the particular volume
+        /// An option to force delete the volume. Will cleanup resources connected to
+        /// the particular volume
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -776,7 +777,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of the volume
         /// </param>
         /// <param name='body'>
-        /// Optional body to provide the ability to clear file locks with selected options
+        /// Optional body to provide the ability to clear file locks with selected
+        /// options
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2315,7 +2317,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of the volume
         /// </param>
         /// <param name='forceDelete'>
-        /// An option to force delete the volume. Will cleanup resources connected to the particular volume
+        /// An option to force delete the volume. Will cleanup resources connected to
+        /// the particular volume
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3416,7 +3419,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of the volume
         /// </param>
         /// <param name='body'>
-        /// Optional body to provide the ability to clear file locks with selected options
+        /// Optional body to provide the ability to clear file locks with selected
+        /// options
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -4272,7 +4276,8 @@ namespace Microsoft.Azure.Management.NetApp
 
         }
         /// <summary>
-        /// Re-establish a previously deleted replication between 2 volumes that have a common ad-hoc or policy-based snapshots
+        /// Re-establish a previously deleted replication between 2 volumes that have a
+        /// common ad-hoc or policy-based snapshots
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -4549,7 +4554,9 @@ namespace Microsoft.Azure.Management.NetApp
 
         }
         /// <summary>
-        /// Resync the connection on the destination volume. If the operation is ran on the source volume it will reverse-resync the connection and sync from destination to source.
+        /// Resync the connection on the destination volume. If the operation is ran on
+        /// the source volume it will reverse-resync the connection and sync from
+        /// destination to source.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -4811,7 +4818,8 @@ namespace Microsoft.Azure.Management.NetApp
 
         }
         /// <summary>
-        /// Delete the replication connection on the destination volume, and send release to the source replication
+        /// Delete the replication connection on the destination volume, and send
+        /// release to the source replication
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -6427,7 +6435,8 @@ namespace Microsoft.Azure.Management.NetApp
 
         }
         /// <summary>
-        /// Reverts the volume relocation process, cleans up the new volume and starts using the former-existing volume.
+        /// Reverts the volume relocation process, cleans up the new volume and starts
+        /// using the former-existing volume.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

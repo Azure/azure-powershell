@@ -286,7 +286,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// File path to verify.
         /// </param>
         /// <param name='subnetId'>
-        /// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes
+        /// The Azure Resource URI for a delegated subnet. Must have the delegation
+        /// Microsoft.NetApp/volumes
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -970,10 +971,13 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of Azure region.
         /// </param>
         /// <param name='networkSiblingSetId'>
-        /// Network Sibling Set ID for a group of volumes sharing networking resources in a subnet.
+        /// Network Sibling Set ID for a group of volumes sharing networking resources
+        /// in a subnet.
         /// </param>
         /// <param name='subnetId'>
-        /// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes. Example /subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Network/virtualNetworks/testVnet/subnets/{mySubnet}
+        /// The Azure Resource URI for a delegated subnet. Must have the delegation
+        /// Microsoft.NetApp/volumes. Example
+        /// /subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Network/virtualNetworks/testVnet/subnets/{mySubnet}
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1199,13 +1203,17 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of Azure region.
         /// </param>
         /// <param name='networkSiblingSetId'>
-        /// Network Sibling Set ID for a group of volumes sharing networking resources in a subnet.
+        /// Network Sibling Set ID for a group of volumes sharing networking resources
+        /// in a subnet.
         /// </param>
         /// <param name='subnetId'>
-        /// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes. Example /subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Network/virtualNetworks/testVnet/subnets/{mySubnet}
+        /// The Azure Resource URI for a delegated subnet. Must have the delegation
+        /// Microsoft.NetApp/volumes. Example
+        /// /subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Network/virtualNetworks/testVnet/subnets/{mySubnet}
         /// </param>
         /// <param name='networkSiblingSetStateId'>
-        /// Network sibling set state Id identifying the current state of the sibling set.
+        /// Network sibling set state Id identifying the current state of the sibling
+        /// set.
         /// </param>
         /// <param name='networkFeatures'>
         /// Network features available to the volume, some such
@@ -1230,13 +1238,17 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of Azure region.
         /// </param>
         /// <param name='networkSiblingSetId'>
-        /// Network Sibling Set ID for a group of volumes sharing networking resources in a subnet.
+        /// Network Sibling Set ID for a group of volumes sharing networking resources
+        /// in a subnet.
         /// </param>
         /// <param name='subnetId'>
-        /// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes. Example /subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Network/virtualNetworks/testVnet/subnets/{mySubnet}
+        /// The Azure Resource URI for a delegated subnet. Must have the delegation
+        /// Microsoft.NetApp/volumes. Example
+        /// /subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Network/virtualNetworks/testVnet/subnets/{mySubnet}
         /// </param>
         /// <param name='networkSiblingSetStateId'>
-        /// Network sibling set state Id identifying the current state of the sibling set.
+        /// Network sibling set state Id identifying the current state of the sibling
+        /// set.
         /// </param>
         /// <param name='networkFeatures'>
         /// Network features available to the volume, some such

@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="networkFeatures">Network features available to the volume, some such
-        /// Possible values include: 'Basic', 'Standard', 'Basic_Standard',
-        /// 'Standard_Basic'</param>
+        /// Possible values include: &#39;Basic&#39;, &#39;Standard&#39;, &#39;Basic_Standard&#39;,
+        /// &#39;Standard_Basic&#39;</param>
         public UpdateNetworkSiblingSetRequest(string networkSiblingSetId, string subnetId, string networkSiblingSetStateId, string networkFeatures)
 
         {

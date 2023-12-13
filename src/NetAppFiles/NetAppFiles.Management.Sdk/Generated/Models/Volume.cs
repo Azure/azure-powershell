@@ -53,18 +53,18 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="serviceLevel">The service level of the file system
-        /// Possible values include: 'Standard', 'Premium', 'Ultra', 'StandardZRS'</param>
+        /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;</param>
 
         /// <param name="networkFeatures">Network features available to the volume, or current state of update.
-        /// Possible values include: 'Basic', 'Standard', 'Basic_Standard',
-        /// 'Standard_Basic'</param>
+        /// Possible values include: &#39;Basic&#39;, &#39;Standard&#39;, &#39;Basic_Standard&#39;,
+        /// &#39;Standard_Basic&#39;</param>
 
         /// <param name="securityStyle">The security style of volume, default unix, defaults to ntfs for dual
         /// protocol or CIFS protocol
-        /// Possible values include: 'ntfs', 'unix'</param>
+        /// Possible values include: &#39;ntfs&#39;, &#39;unix&#39;</param>
 
         /// <param name="enableSubvolumes">Flag indicating whether subvolume operations are enabled on the volume
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="fileSystemId">Unique FileSystem Identifier.
         /// </param>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="storageToNetworkProximity">Provides storage to network proximity information for the volume.
-        /// Possible values include: 'Default', 'T1', 'T2', 'AcrossT2'</param>
+        /// Possible values include: &#39;Default&#39;, &#39;T1&#39;, &#39;T2&#39;, &#39;AcrossT2&#39;</param>
 
         /// <param name="mountTargets">List of mount targets
         /// </param>
@@ -141,11 +141,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="smbAccessBasedEnumeration">Enables access-based enumeration share property for SMB Shares. Only
         /// applicable for SMB/DualProtocol volume
-        /// Possible values include: 'Disabled', 'Enabled'</param>
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
         /// <param name="smbNonBrowsable">Enables non-browsable property for SMB Shares. Only applicable for
         /// SMB/DualProtocol volume
-        /// Possible values include: 'Disabled', 'Enabled'</param>
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
         /// <param name="smbContinuouslyAvailable">Enables continuously available share property for smb volume. Only
         /// applicable for SMB volume
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="encryptionKeySource">Source of key used to encrypt data in volume. Applicable if NetApp account
         /// has encryption.keySource = &#39;Microsoft.KeyVault&#39;. Possible values
         /// (case-insensitive) are: &#39;Microsoft.NetApp, Microsoft.KeyVault&#39;
-        /// Possible values include: 'Microsoft.NetApp', 'Microsoft.KeyVault'</param>
+        /// Possible values include: &#39;Microsoft.NetApp&#39;, &#39;Microsoft.KeyVault&#39;</param>
 
         /// <param name="keyVaultPrivateEndpointResourceId">The resource ID of private endpoint for KeyVault. It must reside in the
         /// same VNET as the volume. Only applicable if encryptionKeySource =
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// OnRead - All client-driven data read is pulled from cool tier to standard
         /// storage on both sequential and random reads.
         /// Never - No client-driven data is pulled from cool tier to standard storage.
-        /// Possible values include: 'Default', 'OnRead', 'Never'</param>
+        /// Possible values include: &#39;Default&#39;, &#39;OnRead&#39;, &#39;Never&#39;</param>
 
         /// <param name="unixPermissions">UNIX permissions for NFS volume accepted in octal 4 digit format. First
         /// digit selects the set user ID(4), set group ID (2) and sticky (1)
@@ -206,11 +206,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="fileAccessLogs">Flag indicating whether file access logs are enabled for the volume, based
         /// on active diagnostic settings present on the volume.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="avsDataStore">Specifies whether the volume is enabled for Azure VMware Solution (AVS)
         /// datastore purpose
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="dataStoreResourceId">Data store resource unique identifier
         /// </param>

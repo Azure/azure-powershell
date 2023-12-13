@@ -229,7 +229,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of the volume
         /// </param>
         /// <param name='forceDelete'>
-        /// An option to force delete the volume. Will cleanup resources connected to the particular volume
+        /// An option to force delete the volume. Will cleanup resources connected to
+        /// the particular volume
         /// </param>
         public static void Delete(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, bool? forceDelete = default(bool?))
         {
@@ -255,7 +256,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of the volume
         /// </param>
         /// <param name='forceDelete'>
-        /// An option to force delete the volume. Will cleanup resources connected to the particular volume
+        /// An option to force delete the volume. Will cleanup resources connected to
+        /// the particular volume
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -562,7 +564,8 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.BreakReplicationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Re-establish a previously deleted replication between 2 volumes that have a common ad-hoc or policy-based snapshots
+        /// Re-establish a previously deleted replication between 2 volumes that have a
+        /// common ad-hoc or policy-based snapshots
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -585,7 +588,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Re-establish a previously deleted replication between 2 volumes that have a common ad-hoc or policy-based snapshots
+        /// Re-establish a previously deleted replication between 2 volumes that have a
+        /// common ad-hoc or policy-based snapshots
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -712,7 +716,9 @@ namespace Microsoft.Azure.Management.NetApp
             }
         }
         /// <summary>
-        /// Resync the connection on the destination volume. If the operation is ran on the source volume it will reverse-resync the connection and sync from destination to source.
+        /// Resync the connection on the destination volume. If the operation is ran on
+        /// the source volume it will reverse-resync the connection and sync from
+        /// destination to source.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -735,7 +741,9 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Resync the connection on the destination volume. If the operation is ran on the source volume it will reverse-resync the connection and sync from destination to source.
+        /// Resync the connection on the destination volume. If the operation is ran on
+        /// the source volume it will reverse-resync the connection and sync from
+        /// destination to source.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -760,7 +768,8 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.ResyncReplicationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Delete the replication connection on the destination volume, and send release to the source replication
+        /// Delete the replication connection on the destination volume, and send
+        /// release to the source replication
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -783,7 +792,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Delete the replication connection on the destination volume, and send release to the source replication
+        /// Delete the replication connection on the destination volume, and send
+        /// release to the source replication
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1048,7 +1058,8 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.FinalizeRelocationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Reverts the volume relocation process, cleans up the new volume and starts using the former-existing volume.
+        /// Reverts the volume relocation process, cleans up the new volume and starts
+        /// using the former-existing volume.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1071,7 +1082,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Reverts the volume relocation process, cleans up the new volume and starts using the former-existing volume.
+        /// Reverts the volume relocation process, cleans up the new volume and starts
+        /// using the former-existing volume.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1216,7 +1228,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of the volume
         /// </param>
         /// <param name='forceDelete'>
-        /// An option to force delete the volume. Will cleanup resources connected to the particular volume
+        /// An option to force delete the volume. Will cleanup resources connected to
+        /// the particular volume
         /// </param>
         public static void BeginDelete(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, bool? forceDelete = default(bool?))
         {
@@ -1242,7 +1255,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of the volume
         /// </param>
         /// <param name='forceDelete'>
-        /// An option to force delete the volume. Will cleanup resources connected to the particular volume
+        /// An option to force delete the volume. Will cleanup resources connected to
+        /// the particular volume
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -1549,7 +1563,8 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.BeginBreakReplicationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Re-establish a previously deleted replication between 2 volumes that have a common ad-hoc or policy-based snapshots
+        /// Re-establish a previously deleted replication between 2 volumes that have a
+        /// common ad-hoc or policy-based snapshots
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1572,7 +1587,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Re-establish a previously deleted replication between 2 volumes that have a common ad-hoc or policy-based snapshots
+        /// Re-establish a previously deleted replication between 2 volumes that have a
+        /// common ad-hoc or policy-based snapshots
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1597,7 +1613,9 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.BeginReestablishReplicationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Resync the connection on the destination volume. If the operation is ran on the source volume it will reverse-resync the connection and sync from destination to source.
+        /// Resync the connection on the destination volume. If the operation is ran on
+        /// the source volume it will reverse-resync the connection and sync from
+        /// destination to source.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1620,7 +1638,9 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Resync the connection on the destination volume. If the operation is ran on the source volume it will reverse-resync the connection and sync from destination to source.
+        /// Resync the connection on the destination volume. If the operation is ran on
+        /// the source volume it will reverse-resync the connection and sync from
+        /// destination to source.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1645,7 +1665,8 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.BeginResyncReplicationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Delete the replication connection on the destination volume, and send release to the source replication
+        /// Delete the replication connection on the destination volume, and send
+        /// release to the source replication
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1668,7 +1689,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Delete the replication connection on the destination volume, and send release to the source replication
+        /// Delete the replication connection on the destination volume, and send
+        /// release to the source replication
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1933,7 +1955,8 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.BeginFinalizeRelocationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Reverts the volume relocation process, cleans up the new volume and starts using the former-existing volume.
+        /// Reverts the volume relocation process, cleans up the new volume and starts
+        /// using the former-existing volume.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1956,7 +1979,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Reverts the volume relocation process, cleans up the new volume and starts using the former-existing volume.
+        /// Reverts the volume relocation process, cleans up the new volume and starts
+        /// using the former-existing volume.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
 
         /// <param name="serviceLevel">The service level of the file system
-        /// Possible values include: 'Standard', 'Premium', 'Ultra', 'StandardZRS'</param>
+        /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;</param>
 
         /// <param name="usageThreshold">Maximum storage quota allowed for a file system in bytes. This is a soft
         /// quota used for alerting only. Minimum size is 100 GiB. Upper limit is
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// OnRead - All client-driven data read is pulled from cool tier to standard
         /// storage on both sequential and random reads.
         /// Never - No client-driven data is pulled from cool tier to standard storage.
-        /// Possible values include: 'Default', 'OnRead', 'Never'</param>
+        /// Possible values include: &#39;Default&#39;, &#39;OnRead&#39;, &#39;Never&#39;</param>
 
         /// <param name="snapshotDirectoryVisible">If enabled (true) the volume will contain a read-only snapshot directory
         /// which provides access to each of the volume&#39;s snapshots.
@@ -87,11 +87,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="smbAccessBasedEnumeration">Enables access-based enumeration share property for SMB Shares. Only
         /// applicable for SMB/DualProtocol volume
-        /// Possible values include: 'Disabled', 'Enabled'</param>
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
         /// <param name="smbNonBrowsable">Enables non-browsable property for SMB Shares. Only applicable for
         /// SMB/DualProtocol volume
-        /// Possible values include: 'Disabled', 'Enabled'</param>
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
         public VolumePatchProperties(string serviceLevel = default(string), long? usageThreshold = default(long?), VolumePatchPropertiesExportPolicy exportPolicy = default(VolumePatchPropertiesExportPolicy), double? throughputMibps = default(double?), VolumePatchPropertiesDataProtection dataProtection = default(VolumePatchPropertiesDataProtection), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), string unixPermissions = default(string), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), bool? snapshotDirectoryVisible = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string))
 
         {

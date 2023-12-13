@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="applicationType">Application Type
-        /// Possible values include: 'SAP-HANA', 'ORACLE'</param>
+        /// Possible values include: &#39;SAP-HANA&#39;, &#39;ORACLE&#39;</param>
 
         /// <param name="applicationIdentifier">Application specific identifier
         /// </param>
