@@ -2240,8 +2240,7 @@ function Test-ApplicationGatewayCRUDSubItems
 	)
 
 	# Setup
-	# Setting location to East US 2 EUAP because FIPS are enabled in the slice subscription
-	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US 2 EUAP"
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
@@ -3608,7 +3607,7 @@ function Test-ApplicationGatewayWithTLSResources
 	{
 		# The Routing Rule Priortity field will be enabled in upcoming SDK release and  is enabled for selected locations in NRP
 		# Currently West US 3 region does not have priority filed enabled so hardcoding it to this region, This can be removed once it is enabled on all regions in productions and SDK is released.
-		$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 3"
+		$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
 		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
 		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
