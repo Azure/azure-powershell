@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Fixed a few minor issues
+* Fixed missing properties in PSBackendAddressPool
 
 ## Version 7.1.0
 * Added DefaultOutboundAccess parameter on subnet creation
