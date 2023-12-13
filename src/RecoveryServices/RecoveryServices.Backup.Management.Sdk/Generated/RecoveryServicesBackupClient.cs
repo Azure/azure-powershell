@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             this.ResourceGuardProxies = new ResourceGuardProxiesOperations(this);
             this.ResourceGuardProxy = new ResourceGuardProxyOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-01-01";
+            this.ApiVersion = "2023-04-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

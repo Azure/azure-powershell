@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.Applicationinsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightsworkbooktemplate
 schema: 2.0.0
 ---
@@ -15,16 +15,16 @@ Updates a workbook template that has already been added.
 ### UpdateExpanded (Default)
 ```
 Update-AzApplicationInsightsWorkbookTemplate -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Author <String>] [-Gallery <IWorkbookTemplateGallery[]>]
- [-Localized <Hashtable>] [-Priority <Int32>] [-Tag <Hashtable>] [-TemplateData <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Author <String>] [-Gallery <IWorkbookTemplateGallery[]>] [-Localized <Hashtable>]
+ [-Priority <Int32>] [-Tag <Hashtable>] [-TemplateData <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzApplicationInsightsWorkbookTemplate -InputObject <IApplicationInsightsIdentity> [-Author <String>]
  [-Gallery <IWorkbookTemplateGallery[]>] [-Localized <Hashtable>] [-Priority <Int32>] [-Tag <Hashtable>]
- [-TemplateData <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TemplateData <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -303,4 +303,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[WebTestName <String>]`: The name of the Application Insights WebTest resource.
 
 ## RELATED LINKS
-

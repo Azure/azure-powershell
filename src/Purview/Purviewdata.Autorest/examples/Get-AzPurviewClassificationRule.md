@@ -1,6 +1,6 @@
 ### Example 1: Get custom classification rule by name
 ```powershell
-PS C:\> Get-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com/ -Name ClassificationRule1
+Get-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com/ -Name ClassificationRule1
 
 ClassificationAction   : Keep
 ClassificationName     : ClassificationName1
@@ -27,7 +27,7 @@ Get classification rule named Classification1
 
 ### Example 2: Get all custom classification rules
 ```powershell
-PS C:\> Get-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com/
+Get-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com/
 
 ClassificationAction   : Keep
 ClassificationName     : ClassificationName1

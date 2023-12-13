@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.Applicationinsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsightsmyworkbook
 schema: 2.0.0
 ---
@@ -13,9 +13,9 @@ Updates a private workbook that has already been added.
 ## SYNTAX
 
 ```
-Update-AzApplicationInsightsMyWorkbook -Name <String> -ResourceGroupName <String>
- -WorkbookProperty <IMyWorkbook> [-SubscriptionId <String>] [-LinkedSourceId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzApplicationInsightsMyWorkbook -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-LinkedSourceId <String>] -WorkbookProperty <IMyWorkbook> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -209,4 +209,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[Version <String>]`: This instance's version of the data model. This can change as new features are added that can be marked private workbook.
 
 ## RELATED LINKS
-

@@ -76,14 +76,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
             {
                 return;
             }
-            {_globalRulestackName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("globalRulestackName"), out var __jsonGlobalRulestackName) ? (string)__jsonGlobalRulestackName : (string)GlobalRulestackName;}
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
-            {_priority = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("priority"), out var __jsonPriority) ? (string)__jsonPriority : (string)Priority;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_firewallName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("firewallName"), out var __jsonFirewallName) ? (string)__jsonFirewallName : (string)FirewallName;}
-            {_localRulestackName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("localRulestackName"), out var __jsonLocalRulestackName) ? (string)__jsonLocalRulestackName : (string)LocalRulestackName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_globalRulestackName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("globalRulestackName"), out var __jsonGlobalRulestackName) ? (string)__jsonGlobalRulestackName : (string)_globalRulestackName;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
+            {_priority = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("priority"), out var __jsonPriority) ? (string)__jsonPriority : (string)_priority;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)_subscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)_resourceGroupName;}
+            {_firewallName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("firewallName"), out var __jsonFirewallName) ? (string)__jsonFirewallName : (string)_firewallName;}
+            {_localRulestackName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("localRulestackName"), out var __jsonLocalRulestackName) ? (string)__jsonLocalRulestackName : (string)_localRulestackName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

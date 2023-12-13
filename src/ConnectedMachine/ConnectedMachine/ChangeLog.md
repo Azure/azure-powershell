@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.6.0
 * This release, aimed at version 2023-10-03-preview of ConnectedMachine, introduces new commands alongside the existing ones
     - Get-AzConnectedMachineRunCommand: Retrieve run commands for an Azure Arc-Enabled Server
     - New-AzConnectedMachineRunCommand: Create a run command for an Azure Arc-Enabled Server

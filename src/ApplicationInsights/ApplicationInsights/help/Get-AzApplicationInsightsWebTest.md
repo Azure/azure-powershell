@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.Applicationinsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightswebtest
 schema: 2.0.0
 ---
@@ -14,8 +14,7 @@ Get a specific Application Insights web test definition.
 
 ### List1 (Default)
 ```
-Get-AzApplicationInsightsWebTest [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzApplicationInsightsWebTest [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -24,10 +23,10 @@ Get-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> [-Su
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### List2
 ```
-Get-AzApplicationInsightsWebTest -InputObject <IApplicationInsightsIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzApplicationInsightsWebTest -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -AppInsightsName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
@@ -36,10 +35,10 @@ Get-AzApplicationInsightsWebTest -ResourceGroupName <String> [-SubscriptionId <S
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List2
+### GetViaIdentity
 ```
-Get-AzApplicationInsightsWebTest -AppInsightsName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationInsightsWebTest -InputObject <IApplicationInsightsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -200,7 +199,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List2
+Parameter Sets: Get, List2, List
 Aliases:
 
 Required: True
@@ -215,7 +214,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1, List2
+Parameter Sets: List1, Get, List2, List
 Aliases:
 
 Required: False
@@ -260,4 +259,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[WebTestName <String>]`: The name of the Application Insights WebTest resource.
 
 ## RELATED LINKS
-

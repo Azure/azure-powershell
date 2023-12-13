@@ -28,7 +28,7 @@ pac26,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac27,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConfidentialLedger.1.0.0.nupkg;sourceType=sa]Az.ConfidentialLedger,1.0.0
 pac28,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Confluent.0.2.0.nupkg;sourceType=sa]Az.Confluent,0.2.0
 pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedKubernetes.0.10.0.nupkg;sourceType=sa]Az.ConnectedKubernetes,0.10.0
-pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedMachine.0.5.2.nupkg;sourceType=sa]Az.ConnectedMachine,0.5.2
+pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedMachine.0.6.0.nupkg;sourceType=sa]Az.ConnectedMachine,0.6.0
 pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedNetwork.0.1.0.nupkg;sourceType=sa]Az.ConnectedNetwork,0.1.0
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedVMware.0.1.0.nupkg;sourceType=sa]Az.ConnectedVMware,0.1.0
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ContainerInstance.4.0.0.nupkg;sourceType=sa]Az.ContainerInstance,4.0.0
@@ -50,7 +50,7 @@ pac48,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac49,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataShare.1.0.1.nupkg;sourceType=sa]Az.DataShare,1.0.1
 pac50,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DedicatedHsm.0.3.0.nupkg;sourceType=sa]Az.DedicatedHsm,0.3.0
 pac51,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeploymentManager.1.1.0.nupkg;sourceType=sa]Az.DeploymentManager,1.1.0
-pac52,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DesktopVirtualization.4.2.0.nupkg;sourceType=sa]Az.DesktopVirtualization,4.2.0
+pac52,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DesktopVirtualization.4.2.1.nupkg;sourceType=sa]Az.DesktopVirtualization,4.2.1
 pac53,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DevCenter.1.0.0.nupkg;sourceType=sa]Az.DevCenter,1.0.0
 pac54,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceProvisioningServices.0.10.0.nupkg;sourceType=sa]Az.DeviceProvisioningServices,0.10.0
 pac55,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceUpdate.0.1.0.nupkg;sourceType=sa]Az.DeviceUpdate,0.1.0

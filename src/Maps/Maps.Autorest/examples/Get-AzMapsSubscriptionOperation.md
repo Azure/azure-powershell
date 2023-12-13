@@ -1,6 +1,6 @@
 ### Example 1: List operations available for the Maps Resource Provider
 ```powershell
-PS C:\> Get-AzMapsSubscriptionOperation
+Get-AzMapsSubscriptionOperation
 
 IsDataAction Name                                                                          Origin
 ------------ ----                                                                          ------

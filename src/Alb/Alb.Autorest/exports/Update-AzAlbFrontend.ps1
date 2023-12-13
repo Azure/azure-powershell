@@ -25,7 +25,7 @@ Update-AzAlbFrontend -Name test-frontend -AlbName test-alb -ResourceGroupName te
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend
+Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,11 +38,19 @@ INPUTOBJECT <IAlbIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
   [TrafficControllerName <String>]: traffic controller name for path
+
+TRAFFICCONTROLLERINPUTOBJECT <IAlbIdentity>: Identity Parameter
+  [AssociationName <String>]: Name of Association
+  [FrontendName <String>]: Frontends
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [TrafficControllerName <String>]: traffic controller name for path
 .Link
 https://learn.microsoft.com/powershell/module/az.alb/update-azalbfrontend
 #>
 function Update-AzAlbFrontend {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -52,6 +60,7 @@ param(
     ${AlbName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityTrafficControllerExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [System.String]
     # Frontends
@@ -78,9 +87,16 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityTrafficControllerExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for TRAFFICCONTROLLERINPUTOBJECT properties and create a hash table.
+    ${TrafficControllerInputObject},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontendUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontendUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -162,12 +178,17 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Alb.private\Update-AzAlbFrontend_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Alb.private\Update-AzAlbFrontend_UpdateViaIdentityExpanded';
+            UpdateViaIdentityTrafficControllerExpanded = 'Az.Alb.private\Update-AzAlbFrontend_UpdateViaIdentityTrafficControllerExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

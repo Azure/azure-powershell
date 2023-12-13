@@ -64,12 +64,12 @@ This command set public access as Blob for all Storage blob containers in a Stor
 
 
 ```
-PS C:\> $container = Update-AzRmStorageContainer -ResourceGroupName "myersourcegroup" -AccountName "mystorageaccount" -Name "mycontainer" -RootSquash NoRootSquash
+$container = Update-AzRmStorageContainer -ResourceGroupName "myersourcegroup" -AccountName "mystorageaccount" -Name "mycontainer" -RootSquash NoRootSquash
 
-PS C:\> $container.EnableNfsV3AllSquash
+$container.EnableNfsV3AllSquash
 False
 
-PS C:\> $container.EnableNfsV3RootSquash
+$container.EnableNfsV3RootSquash
 False
 ```
 

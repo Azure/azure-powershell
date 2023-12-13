@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.Applicationinsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsights
 schema: 2.0.0
 ---
@@ -19,13 +19,13 @@ Get-AzApplicationInsights [-SubscriptionId <String[]>] [-DefaultProfile <PSObjec
 
 ### Get
 ```
-Get-AzApplicationInsights -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Full]
+Get-AzApplicationInsights [-SubscriptionId <String[]>] -ResourceGroupName <String> -Name <String> [-Full]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetByInputObject
+### ListByResourceGroupName
 ```
-Get-AzApplicationInsights -InputObject <IApplicationInsightsIdentity> [-DefaultProfile <PSObject>]
+Get-AzApplicationInsights [-SubscriptionId <String[]>] -ResourceGroupName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -34,10 +34,10 @@ Get-AzApplicationInsights -InputObject <IApplicationInsightsIdentity> [-DefaultP
 Get-AzApplicationInsights -ResourceId <String> [-Full] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ListByResourceGroupName
+### GetByInputObject
 ```
-Get-AzApplicationInsights -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationInsights -InputObject <IApplicationInsightsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +77,6 @@ Accept wildcard characters: False
 ```
 
 ### -Full
-
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -158,7 +157,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, ListByResourceGroupName, ListBySubscription
+Parameter Sets: ListBySubscription, Get, ListByResourceGroupName
 Aliases:
 
 Required: False
@@ -205,4 +204,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[WebTestName <String>]`: The name of the Application Insights WebTest resource.
 
 ## RELATED LINKS
-

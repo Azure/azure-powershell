@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Resources\*.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Resources/**/*.*" CopyToOutputDirectory="PreserveNewest" />
     <None Update="*.json" CopyToOutputDirectory="PreserveNewest" />
     <None Update="*.bicep" CopyToOutputDirectory="PreserveNewest" />
 	<None Update="*.bicepparam" CopyToOutputDirectory="PreserveNewest" />
