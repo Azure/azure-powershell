@@ -26,6 +26,7 @@ AutoRest does not generate authentication code for the module. Authentication is
 For information on how to develop for `Az.Databricks`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
+
 ---
 ### AutoRest Configuration
 > see https://aka.ms/autorest
