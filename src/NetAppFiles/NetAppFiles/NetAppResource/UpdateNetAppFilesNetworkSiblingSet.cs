@@ -64,15 +64,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             HelpMessage = "Network features available to the volume, or current state of update.")]
         [PSArgumentCompleter("Basic", "Standard", "Basic_Standard", "Standard_Basic")]
         [ValidateNotNullOrEmpty]
-        public string NetworkFeatures{ get; set; }
+        public string NetworkFeature{ get; set; }
 
 
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(NetworkSiblingSetId, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateNetworkSiblingSet, NetworkSiblingSetId)))
             {
-                var anfPool = AzureNetAppFilesManagementClient.NetAppResource.UpdateNetworkSiblingSet(Location, NetworkSiblingSetId, SubnetId, NetworkSiblingSetStateId, NetworkFeatures).ConvertToPs();
-                WriteObject(anfPool);
+                var anfNetworkSiblingSet = AzureNetAppFilesManagementClient.NetAppResource.UpdateNetworkSiblingSet(Location, NetworkSiblingSetId, SubnetId, NetworkSiblingSetStateId, NetworkFeature).ConvertToPs();
+                WriteObject(anfNetworkSiblingSet);
             }
         }
     }

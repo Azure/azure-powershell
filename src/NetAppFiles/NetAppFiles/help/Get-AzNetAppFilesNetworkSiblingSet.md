@@ -24,8 +24,8 @@ Get details of the specified network sibling set.
 
 ### Example 1
 ```powershell
-PS C:\> $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume"
-PS C:\> Get-AzNetAppFilesNetworkSiblingSet -Location $resourceLocation -NetworkSiblingSetId $retrievedVolume.NetworkSiblingSetId -SubnetId "mysubnet"
+$retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume"
+Get-AzNetAppFilesNetworkSiblingSet -Location $resourceLocation -NetworkSiblingSetId $retrievedVolume.NetworkSiblingSetId -SubnetId "mysubnet"
 ```
 
 This example gets a volume then uses that volumes NetworkSiblingSetId property to get deatils about that network sibling get.
