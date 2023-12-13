@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (vm.SecurityProfile == null)
                     vm.SecurityProfile = new SecurityProfile();
 
-                vm.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost.IsPresent;
+                vm.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost;
             }
 
             if (this.IsParameterBound(c => c.CapacityReservationGroupId))

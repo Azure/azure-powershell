@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Commands.Compute
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostPresent: (_cmdlet.EncryptionAtHost.IsPresent == true) ? true : (bool?) null ,
+                        encryptionAtHostPresent: (_cmdlet.EncryptionAtHost == true) ? true : (bool?) null ,
                         sshPublicKeys: sshPublicKeyList,
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
@@ -725,7 +725,7 @@ namespace Microsoft.Azure.Commands.Compute
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostPresent: (_cmdlet.EncryptionAtHost.IsPresent == true) ? true : (bool?)null,
+                        encryptionAtHostPresent: (_cmdlet.EncryptionAtHost == true) ? true : (bool?)null,
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
@@ -1108,7 +1108,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                     var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
 
-                    if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
+                    if (!(this.DisableBginfoExtension == true || IsLinuxOs()))
                     {
                         var currentBginfoVersion = GetBginfoExtension();
 
@@ -1274,12 +1274,12 @@ namespace Microsoft.Azure.Commands.Compute
         private VirtualMachineIdentity GetVMIdentityFromArgs()
         {
             var isUserAssignedEnabled = !string.IsNullOrWhiteSpace(UserAssignedIdentity);
-            return (SystemAssignedIdentity.IsPresent || isUserAssignedEnabled)
+            return ((SystemAssignedIdentity == true) || isUserAssignedEnabled)
                 ? new VirtualMachineIdentity
                 {
                     Type = !isUserAssignedEnabled ?
                            CM.ResourceIdentityType.SystemAssigned :
-                           (SystemAssignedIdentity.IsPresent ? CM.ResourceIdentityType.SystemAssignedUserAssigned : CM.ResourceIdentityType.UserAssigned),
+                           ((SystemAssignedIdentity == true) ? CM.ResourceIdentityType.SystemAssignedUserAssigned : CM.ResourceIdentityType.UserAssigned),
 
                     UserAssignedIdentities = isUserAssignedEnabled
                                              ? new Dictionary<string, UserAssignedIdentitiesValue>()
@@ -1529,7 +1529,7 @@ namespace Microsoft.Azure.Commands.Compute
         {
             string publicKey = "";
             SshPublicKeyResource SshPublicKey;
-            if (!this.ConfigAsyncVisited && this.GenerateSshKey.IsPresent)
+            if (!this.ConfigAsyncVisited && (this.GenerateSshKey == true))
             {
                 try
                 {
@@ -1608,7 +1608,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         private void cleanUp()
         {
-            if (this.GenerateSshKey.IsPresent)
+            if (this.GenerateSshKey == true)
             {
                 //delete the created ssh key resource
                 WriteInformation("VM creation failed. Deleting the SSH key resource that was created.", new string[] { "PSHOST" });
@@ -1638,7 +1638,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else
             {
-                if (this.GenerateSshKey.IsPresent)
+                if (this.GenerateSshKey == true)
                 {
                     throw new Exception("Please provide parameter '-SshKeyName' to be used with '-GenerateSshKey'");
                 }

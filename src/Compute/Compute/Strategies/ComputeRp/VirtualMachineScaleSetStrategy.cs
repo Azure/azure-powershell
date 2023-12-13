@@ -51,18 +51,18 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string vmSize,
             int instanceCount,
             VirtualMachineScaleSetIdentity identity,
-            bool singlePlacementGroup,
+            bool? singlePlacementGroup,
             UpgradeMode? upgradeMode,
             IEnumerable<int> dataDisks,
             IList<string> zones,
-            bool ultraSSDEnabled,
+            bool? ultraSSDEnabled,
             Func<IEngine, CM.SubResource> proximityPlacementGroup,
             Func<IEngine, CM.SubResource> hostGroup,
             string priority,
             string evictionPolicy,
             double? maxPrice,
             string[] scaleInPolicy,
-            bool doNotRunExtensionsOnOverprovisionedVMs,
+            bool? doNotRunExtensionsOnOverprovisionedVMs,
             bool? encryptionAtHost,
             int? platformFaultDomainCount,
             string edgeZone,
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         Identity = identity,
                         SinglePlacementGroup = singlePlacementGroup,
-                        AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
+                        AdditionalCapabilities = (ultraSSDEnabled == true) ? new AdditionalCapabilities(true) : null,
                         PlatformFaultDomainCount = platformFaultDomainCount,
                         VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                         {
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         {
                             Rules = scaleInPolicy
                         },
-                        DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
+                        DoNotRunExtensionsOnOverprovisionedVMs = (doNotRunExtensionsOnOverprovisionedVMs == true) ? true : (bool?)null,
                         OrchestrationMode = orchestrationMode
                     };
                     if (auxAuthHeader != null)
@@ -202,17 +202,17 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string vmSize,
             int instanceCount,
             VirtualMachineScaleSetIdentity identity,
-            bool singlePlacementGroup,
+            bool? singlePlacementGroup,
             IEnumerable<int> dataDisks,
             IList<string> zones,
-            bool ultraSSDEnabled,
+            bool? ultraSSDEnabled,
             Func<IEngine, CM.SubResource> proximityPlacementGroup,
             Func<IEngine, CM.SubResource> hostGroup,
             string priority,
             string evictionPolicy,
             double? maxPrice,
             string[] scaleInPolicy,
-            bool doNotRunExtensionsOnOverprovisionedVMs,
+            bool? doNotRunExtensionsOnOverprovisionedVMs,
             bool? encryptionAtHost,
             int? platformFaultDomainCount,
             string edgeZone,
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     Identity = identity,
                     SinglePlacementGroup = singlePlacementGroup,
-                    AdditionalCapabilities = ultraSSDEnabled ? new AdditionalCapabilities(true) : null,
+                    AdditionalCapabilities = (ultraSSDEnabled == true) ? new AdditionalCapabilities(true) : null,
                     PlatformFaultDomainCount = platformFaultDomainCount,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                     {
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     {
                         Rules = scaleInPolicy
                     },
-                    DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
+                    DoNotRunExtensionsOnOverprovisionedVMs = (doNotRunExtensionsOnOverprovisionedVMs == true) ? true : (bool?)null,
                     OrchestrationMode = orchestrationMode
                 });
     }

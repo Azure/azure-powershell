@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     domainNameLabel: _cmdlet.DomainNameLabel,
                     allocationMethod: _cmdlet.AllocationMethod,
                     //sku.Basic is not compatible with multiple placement groups
-                    sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
+                    sku: (noZones && (_cmdlet.SinglePlacementGroup == true))
                         ? PublicIPAddressStrategy.Sku.Basic
                         : PublicIPAddressStrategy.Sku.Standard,
                     zones: null);
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var loadBalancer = resourceGroup.CreateLoadBalancerConfig(
                     name: _cmdlet.LoadBalancerName,
                     //sku.Basic is not compatible with multiple placement groups
-                    sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
+                    sku: (noZones && (_cmdlet.SinglePlacementGroup == true))
                         ? LoadBalancerStrategy.Sku.Basic
                         : LoadBalancerStrategy.Sku.Standard,
                     edgeZone : _cmdlet.EdgeZone);
@@ -440,17 +440,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         : (UpgradeMode?)null,
                     dataDisks: _cmdlet.DataDiskSizeInGb,
                     zones: _cmdlet.Zone,
-                    ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
+                    ultraSSDEnabled: (_cmdlet.EnableUltraSSD == true) ? true : (bool?)null,
                     identity: _cmdlet.GetVmssIdentityFromArgs(),
-                    singlePlacementGroup: _cmdlet.SinglePlacementGroup.IsPresent,
+                    singlePlacementGroup: (_cmdlet.SinglePlacementGroup == true) ? true : (bool?)null,
                     proximityPlacementGroup: proximityPlacementGroup,
                     hostGroup: hostGroup,
                     priority: _cmdlet.Priority,
                     evictionPolicy: _cmdlet.EvictionPolicy,
                     maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
-                    doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
-                    encryptionAtHost: (_cmdlet.EncryptionAtHost.IsPresent == true) ? true : (bool?)null,
+                    doNotRunExtensionsOnOverprovisionedVMs: (_cmdlet.SkipExtensionsOnOverprovisionedVMs == true) ? true : (bool?)null,
+                    encryptionAtHost: (_cmdlet.EncryptionAtHost == true) ? true : (bool?)null,
                     platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null,
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
@@ -490,7 +490,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     domainNameLabel: _cmdlet.DomainNameLabel,
                     allocationMethod: _cmdlet.AllocationMethod,
                     //sku.Basic is not compatible with multiple placement groups
-                    sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
+                    sku: (noZones && (_cmdlet.SinglePlacementGroup == true))
                         ? PublicIPAddressStrategy.Sku.Basic
                         : PublicIPAddressStrategy.Sku.Standard,
                     zones: null);
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var loadBalancer = resourceGroup.CreateLoadBalancerConfig(
                     name: _cmdlet.LoadBalancerName,
                     //sku.Basic is not compatible with multiple placement groups
-                    sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
+                    sku: (noZones && (_cmdlet.SinglePlacementGroup == true))
                         ? LoadBalancerStrategy.Sku.Basic
                         : LoadBalancerStrategy.Sku.Standard,
                     edgeZone: _cmdlet.EdgeZone);
@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     instanceCount: _cmdlet.InstanceCount,
                     dataDisks: _cmdlet.DataDiskSizeInGb,
                     zones: _cmdlet.Zone,
-                    ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
+                    ultraSSDEnabled: (_cmdlet.EnableUltraSSD == true) ? true : (bool?)null,
                     identity: _cmdlet.GetVmssIdentityFromArgs(),
                     singlePlacementGroup: _cmdlet.SinglePlacementGroup == true,
                     proximityPlacementGroup: proximityPlacementGroup,
@@ -579,8 +579,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     evictionPolicy: _cmdlet.EvictionPolicy,
                     maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
-                    doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
-                    encryptionAtHost: (_cmdlet.EncryptionAtHost.IsPresent == true) ? true : (bool?)null,
+                    doNotRunExtensionsOnOverprovisionedVMs: (_cmdlet.SkipExtensionsOnOverprovisionedVMs == true) ? true : (bool?)null,
+                    encryptionAtHost: (_cmdlet.EncryptionAtHost == true) ? true : (bool?)null,
                     platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : platformFaultDomainCountFlexibleDefault,
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: flexibleOrchestrationMode,
@@ -711,12 +711,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private VirtualMachineScaleSetIdentity GetVmssIdentityFromArgs()
         {
             var isUserAssignedEnabled = !string.IsNullOrWhiteSpace(UserAssignedIdentity);
-            return (SystemAssignedIdentity.IsPresent || isUserAssignedEnabled)
+            return ((SystemAssignedIdentity == true) || isUserAssignedEnabled)
                 ? new VirtualMachineScaleSetIdentity
                 {
                     Type = !isUserAssignedEnabled ?
                            ResourceIdentityType.SystemAssigned :
-                           (SystemAssignedIdentity.IsPresent ? ResourceIdentityType.SystemAssignedUserAssigned : ResourceIdentityType.UserAssigned),
+                           ((SystemAssignedIdentity == true) ? ResourceIdentityType.SystemAssignedUserAssigned : ResourceIdentityType.UserAssigned),
                     UserAssignedIdentities = isUserAssignedEnabled 
                                              ? new Dictionary<string, UserAssignedIdentitiesValue>()
                                              {
