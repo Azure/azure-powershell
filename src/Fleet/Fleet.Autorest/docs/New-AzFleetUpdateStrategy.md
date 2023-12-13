@@ -55,13 +55,13 @@ Create a FleetUpdateStrategy
 ### Example 1: Create a fleet update strategy
 ```powershell
 $stage = New-AzFleetUpdateStageObject -Name stag1 -Group @{name='group-a'} -AfterStageWaitInSecond 3600
-New-AzFleetUpdateStrategy -FleetName testfleet01 -ResourceGroupName K8sFleet-Test -Name strartegy1 -StrategyStage $stage
+New-AzFleetUpdateStrategy -FleetName testfleet01 -ResourceGroupName K8sFleet-Test -Name strategy1 -StrategyStage $stage
 ```
 
 ```output
 ETag                         : "fd057996-0000-0100-0000-65572da20000"
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/K8sFleet-Test/providers/Microsoft.ContainerService/fleets/testfleet01/updateStrategies/strartegy1
-Name                         : strartegy1
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/K8sFleet-Test/providers/Microsoft.ContainerService/fleets/testfleet01/updateStrategies/strategy1
+Name                         : strategy1
 ProvisioningState            : Succeeded
 ResourceGroupName            : K8sFleet-Test
 StrategyStage                : {{
@@ -89,13 +89,13 @@ The second command creates a fleet update strategy.
 ```powershell
 $f = Get-AzFleet -Name testfleet01 -ResourceGroupName K8sFleet-Test
 $stage2 = New-AzFleetUpdateStageObject -Name stag2 -Group @{name='group-b'} -AfterStageWaitInSecond 3600
-New-AzFleetUpdateStrategy -FleetInputObject $f -Name strartegy3 -StrategyStage $stage2
+New-AzFleetUpdateStrategy -FleetInputObject $f -Name strategy3 -StrategyStage $stage2
 ```
 
 ```output
 ETag                         : "88067ac6-0000-0100-0000-655b29860000"
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/K8sFleet-Test/providers/Microsoft.ContainerService/fleets/testfleet01/updateStrategies/strartegy3
-Name                         : strartegy3
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/K8sFleet-Test/providers/Microsoft.ContainerService/fleets/testfleet01/updateStrategies/strategy3
+Name                         : strategy3
 ProvisioningState            : Succeeded
 ResourceGroupName            : K8sFleet-Test
 StrategyStage                : {{
