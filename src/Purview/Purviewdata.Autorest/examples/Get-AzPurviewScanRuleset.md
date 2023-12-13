@@ -1,6 +1,6 @@
 ### Example 1: Get all custom scanrulesets
 ```powershell
-PS C:\> Get-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/
+Get-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/
 
 CreatedAt                            : 1/25/2022 2:01:38 AM
 Description                          : asdasd
@@ -36,7 +36,7 @@ Get all custom scanrulesets
 
 ### Example 2: Get custom scanruleset by name
 ```powershell
-PS C:\> Get-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/ -Name TestRule
+Get-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/ -Name TestRule
 
 CreatedAt                            : 2/17/2022 2:30:15 PM
 Description                          : test desc

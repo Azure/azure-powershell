@@ -1,6 +1,6 @@
 ### Example 1: Get key vault connection by name
 ```powershell
-PS C:\> Get-AzPurviewKeyVaultConnection -Endpoint 'https://parv-brs-2.purview.azure.com/' -KeyVaultName 'KeyVaultConnection1'
+Get-AzPurviewKeyVaultConnection -Endpoint 'https://parv-brs-2.purview.azure.com/' -KeyVaultName 'KeyVaultConnection1'
 
 BaseUrl           : https://datascantestcases.vault.azure.net/
 Description       : This is a Key Vault connection
@@ -12,7 +12,7 @@ Get key vault connection named 'KeyVaultConnection1'
 
 ### Example 2: Get all key vault connections
 ```powershell
-PS C:\> Get-AzPurviewKeyVaultConnection -Endpoint 'https://parv-brs-2.purview.azure.com/'
+Get-AzPurviewKeyVaultConnection -Endpoint 'https://parv-brs-2.purview.azure.com/'
 
 BaseUrl           : https://datascantestcases.vault.azure.net/
 Description       : This is a Key Vault connection

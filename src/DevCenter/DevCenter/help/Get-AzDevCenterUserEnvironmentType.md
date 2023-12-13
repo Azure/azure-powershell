@@ -20,7 +20,7 @@ Get-AzDevCenterUserEnvironmentType -Endpoint <String> -ProjectName <String> [-De
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserEnvironmentType -DevCenter <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+Get-AzDevCenterUserEnvironmentType -DevCenterName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -61,13 +61,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
 Parameter Sets: ListByDevCenter
-Aliases:
+Aliases: DevCenter
 
 Required: True
 Position: Named

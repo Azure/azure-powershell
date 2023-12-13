@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.Applicationinsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsworkbook
 schema: 2.0.0
 ---
@@ -13,12 +13,12 @@ Create a new workbook.
 ## SYNTAX
 
 ```
-New-AzApplicationInsightsWorkbook -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-LinkedSourceId <String>] [-Category <String>] [-Description <String>]
+New-AzApplicationInsightsWorkbook -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-LinkedSourceId <String>] -Location <String> [-Category <String>] [-Description <String>]
  [-DisplayName <String>] [-Etag <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-SerializedData <String>] [-SourceId <String>]
  [-SourceTag <String[]>] [-StorageUri <String>] [-Tag <Hashtable>] [-Version <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -361,4 +361,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

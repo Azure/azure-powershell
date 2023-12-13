@@ -1,7 +1,11 @@
-﻿using Microsoft.Azure.Commands.KeyVault.Models;
+﻿using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
+using System.Collections;
 using System.Management.Automation;
 using System.Security;
 using System.Text;
@@ -14,6 +18,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
     /// 3. Wraps a symmetric key using a specified key.
     /// 4. Unwraps a symmetric key using the specified key that was initially used for wrapping that key.
     /// </summary>
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSKeyOperationResult), "12.0.0", "6.0.0", DeprecatedOutputProperties = new string[] { "Result" }, NewOutputProperties = new string[] { "RawResult" })]
     [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyOperation", SupportsShouldProcess = true, DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyOperationResult))]
     public class InvokeAzureKeyVaultKeyOperation : KeyVaultKeyCmdletBase
@@ -52,27 +57,69 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
         [Alias("EncryptionAlgorithm", "WrapAlgorithm")]
         public string Algorithm { get; set; }
 
-        [Parameter(Mandatory = true,
-            HelpMessage = "The value to be operated")]
+        [Parameter(Mandatory = false, HelpMessage = "The value to be operated. This parameter will be converted to byte array in UTF-8 encoding way. If your value can't be encoded by UTF-8, please use parameter ByteArrayValue as its alternative.")]
         [ValidateNotNullOrEmpty]
+        [CmdletParameterBreakingChangeWithVersion(nameof(Value), "12.0.0", "6.0.0", ReplaceMentCmdletParameterName = nameof(ByteArrayValue))]
         public SecureString Value { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The value to be operated in byte array format.")]
+        [ValidateNotNullOrEmpty]
+        public byte[] ByteArrayValue { get; set; }
+
         #endregion Input Parameter Definitions
+
+        private Operations opt = Operations.Unknown;
+
+        internal void ValidateParameters()
+        {
+            if (this.IsParameterBound(c => c.Value) && this.IsParameterBound(c => c.ByteArrayValue))
+            {
+                throw new AzPSArgumentException(string.Format("Please provide only one of parameter Value and ByteArrayValue"), nameof(ByteArrayValue));
+            }
+            else if (!this.IsParameterBound(c => c.Value) && !this.IsParameterBound(c => c.ByteArrayValue))
+            {
+                throw new AzPSArgumentException(string.Format("Must provide one of parameter Value and ByteArrayValue"), nameof(ByteArrayValue));
+            }
+        }
 
         internal override void NormalizeParameterSets()
         {
+
             if (InputObject != null)
             {
                 Version = Version ?? InputObject.Version;
             }
+
+            Enum.TryParse(Operation, out opt);
+
+            if (this.IsParameterBound(c => c.Value))
+            {
+                switch (opt)
+                {
+                    case Operations.Encrypt:
+                        ByteArrayValue = Encoding.UTF8.GetBytes(Value.ConvertToString()); 
+                        break;
+                    case Operations.Decrypt:
+                        ByteArrayValue = Convert.FromBase64String(Value.ConvertToString()); 
+                        break;
+                    case Operations.Wrap:
+                        ByteArrayValue = Encoding.UTF8.GetBytes(Value.ConvertToString());
+                        break;
+                    case Operations.Unwrap:
+                        ByteArrayValue = Convert.FromBase64String(Value.ConvertToString());
+                        break;
+                    default:
+                        throw new NotSupportedException("Not supported ${Operation} yet");
+                }
+            }
+
             base.NormalizeParameterSets();
         }
         
         public override void ExecuteCmdlet()
         {
+            ValidateParameters();
             NormalizeParameterSets();
-
-            Operations opt = Operations.Unknown;
-            Enum.TryParse(Operation, out opt);
 
             if (string.IsNullOrEmpty(HsmName))
             {
@@ -80,23 +127,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
                 {
                     case Operations.Encrypt:
                         this.WriteObject(
-                            this.Track2DataClient.Encrypt(VaultName, Name, Version,
-                                Encoding.UTF8.GetBytes(Value.ConvertToString()), Algorithm));
+                            this.Track2DataClient.Encrypt(VaultName, Name, Version, ByteArrayValue, Algorithm));
                         break;
                     case Operations.Decrypt:
                         this.WriteObject(
-                            this.Track2DataClient.Decrypt(VaultName, Name, Version,
-                                Convert.FromBase64String(Value.ConvertToString()), Algorithm));
+                            this.Track2DataClient.Decrypt(VaultName, Name, Version, ByteArrayValue, Algorithm));
                         break;
                     case Operations.Wrap:
                         this.WriteObject(
-                            this.Track2DataClient.WrapKey(VaultName, Name, Version,
-                                Encoding.UTF8.GetBytes(Value.ConvertToString()), Algorithm));
+                            this.Track2DataClient.WrapKey(VaultName, Name, Version, ByteArrayValue, Algorithm));
                         break;
                     case Operations.Unwrap:
                         this.WriteObject(
-                            this.Track2DataClient.UnwrapKey(VaultName, Name, Version,
-                                Convert.FromBase64String(Value.ConvertToString()), Algorithm));
+                            this.Track2DataClient.UnwrapKey(VaultName, Name, Version, ByteArrayValue, Algorithm));
                         break;
                     case Operations.Unknown:
                         throw new NotSupportedException("Not supported ${Operation} yet");
@@ -108,23 +151,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
                 {
                     case Operations.Encrypt:
                         this.WriteObject(
-                            this.Track2DataClient.ManagedHsmKeyEncrypt(HsmName, Name, Version,
-                                Encoding.UTF8.GetBytes(Value.ConvertToString()), Algorithm));
+                            this.Track2DataClient.ManagedHsmKeyEncrypt(HsmName, Name, Version, ByteArrayValue, Algorithm));
                         break;
                     case Operations.Decrypt:
                         this.WriteObject(
-                            this.Track2DataClient.ManagedHsmKeyDecrypt(HsmName, Name, Version,
-                                Convert.FromBase64String(Value.ConvertToString()), Algorithm));
+                            this.Track2DataClient.ManagedHsmKeyDecrypt(HsmName, Name, Version, ByteArrayValue, Algorithm));
                         break;
                     case Operations.Wrap:
                         this.WriteObject(
-                            this.Track2DataClient.ManagedHsmWrapKey(HsmName, Name, Version,
-                                Encoding.UTF8.GetBytes(Value.ConvertToString()), Algorithm));
+                            this.Track2DataClient.ManagedHsmWrapKey(HsmName, Name, Version, ByteArrayValue, Algorithm));
                         break;
                     case Operations.Unwrap:
                         this.WriteObject(
-                            this.Track2DataClient.ManagedHsmUnwrapKey(HsmName, Name, Version,
-                                Convert.FromBase64String(Value.ConvertToString()), Algorithm));
+                            this.Track2DataClient.ManagedHsmUnwrapKey(HsmName, Name, Version, ByteArrayValue, Algorithm));
                         break;
                     case Operations.Unknown:
                         throw new NotSupportedException("Not supported ${Operation} yet");

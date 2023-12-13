@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+* Fixed `New-AzVmss` to correctly work when using `-EdgeZone` by creating the Load Balancer in the correct edge zone.
+* Removed references to image aliases in `New-AzVM` and `New-AzVmss` to images that were removed.
 
 ## Version 7.1.0
 * Added new parameter `-ElasticSanResourceId` to `New-AzSnapshotConfig` cmdlet.

@@ -178,5 +178,44 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> RefreshWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, Microsoft.Rest.Azure.OData.ODataQuery<BMSRefreshContainersQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSRefreshContainersQueryObject>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
+        /// <summary>
+        /// Registers the container with Recovery Services vault.
+        /// This is an asynchronous operation. To track the operation status, use location header to call get latest status of
+        /// the operation.
+        /// </summary>
+        /// <remarks>
+        /// Registers the container with Recovery Services vault.
+        /// This is an asynchronous operation. To track the operation status, use location header to call get latest status of
+        /// the operation.
+        /// </remarks>
+        /// <param name='vaultName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group where the recovery services vault is present.
+        /// </param>
+        /// <param name='fabricName'>
+        /// Fabric name associated with the container.
+        /// </param>
+        /// <param name='containerName'>
+        /// Name of the container to be registered.
+        /// </param>
+        /// <param name='parameters'>
+        /// Request body for operation
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionContainerResource>> BeginRegisterWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, ProtectionContainerResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
     }
 }

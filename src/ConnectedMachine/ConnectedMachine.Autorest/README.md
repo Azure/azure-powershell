@@ -26,37 +26,66 @@ AutoRest does not generate authentication code for the module. Authentication is
 For information on how to develop for `Az.ConnectedMachine`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
+ 
 <!-- region Generated -->
 # Az.ConnectedMachine
 This directory contains the PowerShell module for Hybrid Compute.
-
+ 
 ---
 ## Run Generation
 In this directory, run AutoRest:
 > `autorest`
-
+ 
 ---
 ### AutoRest Configuration
 > see https://aka.ms/autorest
-
+ 
 ``` yaml
-branch: 2ef47d44ce28c909893ead9b6485e8253ee5eed7
+commit: 2d044b8a317aff46d45080f5a797ac376955f648
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-12-27/HybridCompute.json
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-12-27/privateLinkScopes.json
-
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2023-10-03-preview/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2023-10-03-preview/privateLinkScopes.json
+ 
 module-version: 0.5.0
 title: ConnectedMachine
 subject-prefix: 'Connected'
 
-identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
 directive:
-  - from: swagger-document 
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}"].get.parameters
+    transform: >-
+      return [
+          {
+            "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "machineName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-_\\.]{1,54}$",
+            "minLength": 1,
+            "maxLength": 54,
+            "description": "The name of the hybrid machine."
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "The expand expression to apply on the operation.",
+          }
+        ]
+ 
+  - from: swagger-document
     where: $.definitions.Machine.properties.properties
     transform: >-
       return {
@@ -64,8 +93,8 @@ directive:
           "$ref": "#/definitions/MachineProperties",
           "description": "Hybrid Compute Machine properties"
         }
-
-  - from: swagger-document 
+ 
+  - from: swagger-document
     where: $.definitions.MachineExtensionUpdateProperties.properties
     transform: >-
       return {
@@ -152,13 +181,49 @@ directive:
           "description": "The machine extension instance view."
         }
       }
+  # add 200 response to run-command delete 
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}"].delete.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK"
+        },
+        "202": {
+          "description": "Accepted",
+          "headers": {
+            "Location": {
+              "description": "The URL of the resource used to check the status of the asynchronous operation.",
+              "type": "string"
+            },
+            "Retry-After": {
+              "description": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation.",
+              "type": "integer",
+              "format": "int32"
+            },
+            "Azure-AsyncOperation": {
+              "description": "The URI to poll for completion status.",
+              "type": "string"
+            }
+          }
+        },
+        "204": {
+          "description": "No Content"
+        },
+        "default": {
+          "description": "Error response describing why the operation failed.",
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/2d044b8a317aff46d45080f5a797ac376955f648/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+          }
+        }
+      }
 
   # GetViaIdentity isn't useful until Azure PowerShell supports piping of different subjects
   - where:
       verb: Get
-      variant: ^GetViaIdentity\d?$
+      variant: ^GetViaIdentity.*$
     remove: true
-    
+
   # Make parameters friendlier for extensions
   - where:
       subject: MachineExtension
@@ -200,7 +265,7 @@ directive:
       parameter-name: AgentUpgradeEnableAutomaticUpgrade
     set:
       parameter-name: AgentUpgradeEnableAutomatic
-
+ 
   # Formatting
   - where:
        model-name: Machine
@@ -234,7 +299,7 @@ directive:
           - Location
           - PublicNetworkAccess
           - ProvisioningState
-
+ 
   # Removing cmlets
   - where:
       subject: PrivateEndpointConnection
@@ -247,16 +312,39 @@ directive:
       subject: PrivateLinkScopeValidationDetail
     remove: true
   - where:
-      verb: Get
       subject: NetworkProfile
     remove: true
+  - where:
+      subject: AgentVersion
+    remove: true
+  - where:
+      subject: HybridIdentityMetadata
+    remove: true
+  - where:
+      subject: MachineRunCommand
+      verb: Set
+    remove: true
 
+  # add back when swagger change is checked in
+  - where:
+      subject: License
+    remove: true
+  - where:
+      subject: LicenseProfile
+    remove: true
+  - where:
+      subject: NetworkConfiguration
+    remove: true
+  - where:
+      subject: NetworkSecurityPerimeterConfiguration$
+    remove: true
+ 
   # Removing non-expand commands
   - where:
       subject: MachinePatch
-      variant: ^Install$|^InstallViaIdentity$
+      variant: ^(Install)(?!.*?Expanded|JsonFilePath|JsonString)
     remove: true
-
+ 
   # Completers
   - where:
       parameter-name: Location
@@ -272,8 +360,8 @@ directive:
         name: ResourceGroupName Completer
         description: Gets the list of ResourceGroupName's available for this subscription.
         script: Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName
-
+ 
   # These APIs are used by the agent so they do not need to be in the cmdlets.
-  - remove-operation:
-    - Machines_CreateOrUpdate
+  - remove-operation: Machines_CreateOrUpdate
+  - remove-operation: MachineRunCommands_Update
 ```

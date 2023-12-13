@@ -1,6 +1,6 @@
 ### Example 1: List the api keys for a given monitor resource
 ```powershell
-PS C:\> Get-AzDatadogMonitorApiKey -ResourceGroupName azure-rg-Datadog -Name Datadog
+Get-AzDatadogMonitorApiKey -ResourceGroupName azure-rg-Datadog -Name Datadog
 
 Created             CreatedBy           Key                              Name
 -------             ---------           ---                              ----

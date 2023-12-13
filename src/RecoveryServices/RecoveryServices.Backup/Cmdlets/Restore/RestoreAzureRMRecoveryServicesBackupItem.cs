@@ -318,6 +318,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.RestoreVM.TargetSubscriptionId)]
         public string TargetSubscriptionId { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = AzureManagedVMCreateNewParameterSet,
+            HelpMessage = ParamHelpMsgs.RestoreVM.EdgeZone)]
+        public SwitchParameter RestoreToEdgeZone { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -404,6 +408,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(RestoreVMBackupItemParams.TargetVNetResourceGroup, TargetVNetResourceGroup);
                 providerParameters.Add(RestoreVMBackupItemParams.TargetSubnetName, TargetSubnetName);
                 providerParameters.Add(RestoreVMBackupItemParams.TargetSubscriptionId, TargetSubscriptionId);
+                providerParameters.Add(RestoreVMBackupItemParams.RestoreToEdgeZone, RestoreToEdgeZone.IsPresent);
 
                 if (DiskEncryptionSetId != null)
                 {
@@ -430,10 +435,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     if (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.ZoneRedundant.ToString() ||                     
                         (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.GeoRedundant.ToString() && crrEnabled))
                     {
-                        // eliminate non-vault tier RPs 
-                        if (rp.RecoveryPointTier == RecoveryPointTier.VaultStandard ) // TODO: For Enhanced policy, we need to enable snapshot or vault RP. We can enable in general, service would throw the appropriate error.
-                        {   
-                            // TODO: validate to check if snapshot/SV RP is not more than 4 Hrs old we show an error/warning (check with PMs)
+                        // eliminate Archive tier RPs. Snapshot RPs are supported for RPCv2/Enhanced policy
+                        // service would throw the appropriate error for Standard policy
+                        if (rp.RecoveryPointTier != 0 && rp.RecoveryPointTier != RecoveryPointTier.VaultArchive) 
+                        {
+                            WriteDebug("Recovery point time = " + rp.RecoveryPointTime.ToString());
+                            WriteDebug("UTC NOW - 4 Hrs = " + DateTime.UtcNow.AddHours(-4).ToString());
+                                                        
+                            if ((rp.RecoveryPointTier == RecoveryPointTier.Snapshot || rp.RecoveryPointTier == RecoveryPointTier.SnapshotAndVaultStandard || rp.RecoveryPointTier == RecoveryPointTier.SnapshotAndVaultArchive) && rp.RecoveryPointTime > DateTime.UtcNow.AddHours(-4))
+                            {
+                                throw new ArgumentException(String.Format(Resources.UnbakedSnapshotRecoveryPoint));
+                            }
 
                             // check CZR eligibility for RA-GRS
                             if (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.GeoRedundant.ToString() && crrEnabled)
@@ -460,7 +472,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         throw new ArgumentException(string.Format(Resources.ZonalRestoreVaultStorageRedundancyException));
                     }
                 }
-
+                
                 if (StorageAccountName != null)
                 {
                     providerParameters.Add(RestoreBackupItemParams.StorageAccountName, StorageAccountName);

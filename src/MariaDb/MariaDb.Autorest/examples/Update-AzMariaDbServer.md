@@ -1,6 +1,6 @@
 ### Example 1: Update MariaDB
 ```powershell
-PS C:\> Update-AzMariaDbServer -Name mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 -StorageInMb 8192
+Update-AzMariaDbServer -Name mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 -StorageInMb 8192
 
 Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuTier SslEnforcement
 ----                -------- ------------------ ------- ----------------------- -------  ------- --------------
@@ -11,7 +11,7 @@ This command updates a MariaDB.
 
 ### Example 2: Update MariaDB
 ```powershell
-PS C:\> Get-AzMariaDbServer -Name mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 | Update-AzMariaDbServer -StorageInMb (8192+1024)
+Get-AzMariaDbServer -Name mariadb-test-4rmtig -ResourceGroupName mariadb-test-qu5ov0 | Update-AzMariaDbServer -StorageInMb (8192+1024)
 
 Name                Location AdministratorLogin Version StorageProfileStorageMb SkuName  SkuTier SslEnforcement
 ----                -------- ------------------ ------- ----------------------- -------  ------- --------------

@@ -1,6 +1,6 @@
 ### Example 1: Create Datadog marketplace agreement in the subscription
 ```powershell
-PS C:\> New-AzDatadogMarketplaceAgreement -Accepted
+New-AzDatadogMarketplaceAgreement -Accepted
 
 Name    Type
 ----    ----

@@ -161,9 +161,9 @@ This command gets a single blobs snapshot with SnapshotTime.
 
 
 ```
-PS C:\> $blobs = Get-AzStorageBlob -Container "containername" -IncludeTag
+$blobs = Get-AzStorageBlob -Container "containername" -IncludeTag
 
-PS C:\> $blobs
+$blobs
 
    AccountName: storageaccountname, ContainerName: containername
 
@@ -173,7 +173,7 @@ testblob             BlockBlob 2097152         application/octet-stream       20
 testblob2            BlockBlob 2097152         application/octet-stream       2020-07-23 09:35:04Z Hot                                     False      2020-07-23T09:35:04.0856187Z *
 
 
-PS C:\> $blobs[0].Tags
+$blobs[0].Tags
 Name          Value 
 ----          -----
 tag1          value1

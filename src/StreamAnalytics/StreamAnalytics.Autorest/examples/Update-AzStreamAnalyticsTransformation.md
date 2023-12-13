@@ -1,6 +1,6 @@
 ### Example 1: Update a transformation in a stream analytics job
 ```powershell
-PS C:\> Update-AzStreamAnalyticsTransformation -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name tranf-01 -StreamingUnit 1
+Update-AzStreamAnalyticsTransformation -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name tranf-01 -StreamingUnit 1
 
 Name     Type                                                    ETag
 ----     ----                                                    ----
@@ -11,7 +11,7 @@ This command updates a transformation in a stream analytics job.
 
 ### Example 2: Update a transformation in a stream analytics job by pipeline
 ```powershell
-PS C:\> Get-AzStreamAnalyticsTransformation -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name tranf-01 | Update-AzStreamAnalyticsTransformation -StreamingUnit 1
+Get-AzStreamAnalyticsTransformation -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name tranf-01 | Update-AzStreamAnalyticsTransformation -StreamingUnit 1
 
 Name     Type                                                    ETag
 ----     ----                                                    ----
