@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 TargetInstanceCount = instanceCount,
                 HardwareProfile = vmSize != null ? new HardwareProfile
                 {
-                    VmSize = vmSize
+                    VMSize = vmSize
                 } : null,
                 VirtualNetworkProfile = vnetProfile,
                 OsProfile = osProfile,
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
             SecurityProfile securityProfile = new SecurityProfile(DirectoryType.ActiveDirectory);
             securityProfile.Domain = Utils.GetResourceNameFromResourceId(azureHDInsightSecurityProfile.DomainResourceId);
-            securityProfile.OrganizationalUnitDN = azureHDInsightSecurityProfile.OrganizationalUnitDN;
+            securityProfile.OrganizationalUnitDn = azureHDInsightSecurityProfile.OrganizationalUnitDN;
             securityProfile.LdapsUrls = azureHDInsightSecurityProfile.LdapsUrls;
             if (azureHDInsightSecurityProfile.DomainUserCredential != null)
             {

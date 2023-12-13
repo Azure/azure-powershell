@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string StorageAccountManagedIdentity { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the encryption algorithm.")]
-        [PSArgumentCompleter(JsonWebKeyEncryptionAlgorithm.RSAOAEP, JsonWebKeyEncryptionAlgorithm.RSAOAEP256, JsonWebKeyEncryptionAlgorithm.RSA15)]
+        [PSArgumentCompleter(JsonWebKeyEncryptionAlgorithm.RSAOaep, JsonWebKeyEncryptionAlgorithm.RSAOaep256, JsonWebKeyEncryptionAlgorithm.RSA15)]
         public string EncryptionAlgorithm { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the encryption key name.")]
@@ -543,7 +543,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     KeyName = EncryptionKeyName,
                     KeyVersion = EncryptionKeyVersion,
                     VaultUri = EncryptionVaultUri,
-                    EncryptionAlgorithm = EncryptionAlgorithm != null ? EncryptionAlgorithm : JsonWebKeyEncryptionAlgorithm.RSAOAEP,
+                    EncryptionAlgorithm = EncryptionAlgorithm != null ? EncryptionAlgorithm : JsonWebKeyEncryptionAlgorithm.RSAOaep,
                     MsiResourceId = AssignedIdentity
                 };
             }

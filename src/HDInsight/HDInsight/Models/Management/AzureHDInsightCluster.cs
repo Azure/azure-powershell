@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 DomainResourceId = clusterSecurityProfile.AaddsResourceId,
                 //We should not be returning the actual password to the user
                 DomainUserCredential = new PSCredential(clusterSecurityProfile.DomainUsername, "***".ConvertToSecureString()),
-                OrganizationalUnitDN = clusterSecurityProfile.OrganizationalUnitDN,
+                OrganizationalUnitDN = clusterSecurityProfile.OrganizationalUnitDn,
                 LdapsUrls = clusterSecurityProfile.LdapsUrls != null ? clusterSecurityProfile.LdapsUrls.ToArray() : null,
                 ClusterUsersGroupDNs = clusterSecurityProfile.ClusterUsersGroupDNs != null ? clusterSecurityProfile.ClusterUsersGroupDNs.ToArray() : null,
             } : null;

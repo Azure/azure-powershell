@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             DisksPerNode = dataDisksGroups.DisksPerNode;
             StorageAccountType = dataDisksGroups.StorageAccountType;
-            DiskSizeGB = dataDisksGroups.DiskSizeGB;
+            DiskSizeGB = dataDisksGroups.DiskSizeGb;
         }
 
         /// <summary>
