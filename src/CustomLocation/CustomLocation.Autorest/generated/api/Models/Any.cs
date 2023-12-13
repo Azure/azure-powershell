@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Extensions;
 
-    /// <summary>Any object</summary>
+    /// <summary>Anything</summary>
     public partial class Any :
         Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IAny,
         Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IAnyInternal
@@ -19,13 +19,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
 
         }
     }
-    /// Any object
+    /// Anything
     public partial interface IAny :
         Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.IJsonSerializable
     {
 
     }
-    /// Any object
+    /// Anything
     internal partial interface IAnyInternal
 
     {

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PaloAltoNetworks-help.xml
 Module Name: Az.PaloAltoNetworks
 online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/new-azpaloaltonetworksfirewall
 schema: 2.0.0
@@ -13,17 +13,16 @@ Create a FirewallResource
 ## SYNTAX
 
 ```
-New-AzPaloAltoNetworksFirewall -Name <String> -ResourceGroupName <String> -Location <String>
- -MarketplaceDetailOfferId <String> -MarketplaceDetailPublisherId <String> -NetworkProfile <INetworkProfile>
- -PlanDataBillingCycle <BillingCycle> -PlanDataPlanId <String> [-SubscriptionId <String>]
+New-AzPaloAltoNetworksFirewall -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> -MarketplaceDetailOfferId <String> -MarketplaceDetailPublisherId <String>
+ -NetworkProfile <INetworkProfile> -PlanDataBillingCycle <String> -PlanDataPlanId <String>
  [-AssociatedRulestackId <String>] [-AssociatedRulestackLocation <String>]
  [-AssociatedRulestackResourceId <String>] [-DnsSettingDnsServer <IIPAddress[]>]
- [-DnsSettingEnabledDnsType <EnabledDnsType>] [-DnsSettingEnableDnsProxy <DnsProxy>]
- [-FrontEndSetting <IFrontendSetting[]>] [-IdentityType <ManagedIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-IsPanoramaManaged <BooleanEnum>]
- [-MarketplaceDetailMarketplaceSubscriptionStatus <MarketplaceSubscriptionStatus>] [-PanEtag <String>]
- [-PanoramaConfigString <String>] [-PlanDataUsageType <UsageType>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DnsSettingEnableDnsProxy <String>] [-DnsSettingEnabledDnsType <String>]
+ [-FrontEndSetting <IFrontendSetting[]>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-IsPanoramaManaged <String>] [-MarketplaceDetailMarketplaceSubscriptionStatus <String>] [-PanEtag <String>]
+ [-PanoramaConfigString <String>] [-PlanDataUsageType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -131,7 +130,7 @@ List of IPs associated with the Firewall
 To construct, see NOTES section for DNSSETTINGDNSSERVER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IIPAddress[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress[]
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +145,7 @@ Accept wildcard characters: False
 Enabled DNS proxy type, disabled by default
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.EnabledDnsType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +160,7 @@ Accept wildcard characters: False
 Enable DNS proxy, disabled by default
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.DnsProxy
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +176,7 @@ Frontend settings for Firewall
 To construct, see NOTES section for FRONTENDSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IFrontendSetting[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFrontendSetting[]
 Parameter Sets: (All)
 Aliases:
 
@@ -192,7 +191,7 @@ Accept wildcard characters: False
 The type of managed identity assigned to this resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.ManagedIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -223,7 +222,7 @@ Panorama Managed: Default is False.
 Default will be CloudSec managed
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.BooleanEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -253,7 +252,7 @@ Accept wildcard characters: False
 Marketplace Subscription Status
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.MarketplaceSubscriptionStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -314,7 +313,7 @@ Network settings
 To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.INetworkProfile
+Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfile
 Parameter Sets: (All)
 Aliases:
 
@@ -375,7 +374,7 @@ Accept wildcard characters: False
 different billing cycles like MONTHLY/WEEKLY
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.BillingCycle
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -405,7 +404,7 @@ Accept wildcard characters: False
 different usage type like PAYG/COMMITTED
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.UsageType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -551,4 +550,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[VwanConfigurationUnTrustSubnetResourceId <String>]`: Resource Id
 
 ## RELATED LINKS
-
