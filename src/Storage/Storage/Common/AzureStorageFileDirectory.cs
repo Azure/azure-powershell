@@ -24,6 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using global::Azure.Storage.Files.Shares.Models;
     using Microsoft.Azure.Storage.Auth;
+    using global::Azure.Core;
 
     /// <summary>
     /// Azure storage file object
@@ -108,7 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         {
             Name = shareDirectoryClient.Name;
             this.privateFileDirClient = shareDirectoryClient;
-            CloudFileDirectory = GetTrack1FileDirClient(shareDirectoryClient, storageContext.StorageAccount.Credentials);
+            CloudFileDirectory = GetTrack1FileDirClient(shareDirectoryClient, storageContext.StorageAccount.Credentials, clientOptions);
             if (shareFileItem != null)
             {
                 ListFileProperties = shareFileItem;
@@ -132,7 +133,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         {
             Name = shareDirectoryClient.Name;
             this.privateFileDirClient = shareDirectoryClient;
-            CloudFileDirectory = GetTrack1FileDirClient(shareDirectoryClient, storageContext.StorageAccount.Credentials);
+            CloudFileDirectory = GetTrack1FileDirClient(shareDirectoryClient, storageContext.StorageAccount.Credentials, clientOptions);
             if (shareDirectoryProperties != null)
             {
                 privateFileDirProperties = shareDirectoryProperties;
@@ -143,9 +144,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         }
 
         // Convert Track2 File Dir object to Track 1 file Dir object
-        public static CloudFileDirectory GetTrack1FileDirClient(ShareDirectoryClient shareFileDirClient, StorageCredentials credentials)
+        public static CloudFileDirectory GetTrack1FileDirClient(ShareDirectoryClient shareFileDirClient, StorageCredentials credentials, ShareClientOptions clientOptions = null)
         {
             if (credentials.IsToken)
+            {
+                return new InvalidCloudFileDirectory(shareFileDirClient.Uri, credentials);
+            }
+            // Track1 File not support Trailing Dot
+            if (Util.PathContainsTrailingDot(shareFileDirClient.Path) && (clientOptions != null && clientOptions.AllowTrailingDot != null && clientOptions.AllowTrailingDot.Value))
             {
                 return new InvalidCloudFileDirectory(shareFileDirClient.Uri, credentials);
             }

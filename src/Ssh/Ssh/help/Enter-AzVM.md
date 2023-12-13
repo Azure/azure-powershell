@@ -60,7 +60,7 @@ Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser -Private
 Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser -PrivateKeyFile ./id_rsa
 ```
 
-### Example 4: Connect to Local User on Azure Resource using interactive username and password authetication
+### Example 4: Connect to Local User on Azure Resource using interactive username and password authentication
 
 ```powershell
 Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser

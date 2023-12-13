@@ -19,7 +19,7 @@ Describe 'Get-AzDevCenterUserPool' {
         $listOfPools.Count | Should -Be 1
 
         if ($Record -or $Live) {
-            $listOfPools = Get-AzDevCenterUserPool -DevCenter $env.devCenterName -ProjectName $env.projectName
+            $listOfPools = Get-AzDevCenterUserPool -DevCenterName $env.devCenterName -ProjectName $env.projectName
             $listOfPools.Count | Should -Be 1
         }
 
@@ -43,7 +43,7 @@ Describe 'Get-AzDevCenterUserPool' {
         $pool.StopOnDisconnectStatus | Should -Be "Enabled"
 
         if ($Record -or $Live) {
-            $pool = Get-AzDevCenterUserPool -DevCenter $env.devCenterName -ProjectName $env.projectName -PoolName $env.poolName
+            $pool = Get-AzDevCenterUserPool -DevCenterName $env.devCenterName -ProjectName $env.projectName -PoolName $env.poolName
             $pool.HardwareProfileMemoryGb | Should -Be 32
             $pool.HardwareProfileSkuName | Should -Be $env.skuName
             $pool.HardwareProfileVCpUs | Should -Be 8
@@ -81,7 +81,7 @@ Describe 'Get-AzDevCenterUserPool' {
         $pool.StopOnDisconnectStatus | Should -Be "Enabled"
 
         if ($Record -or $Live) {
-            $pool = Get-AzDevCenterUserPool -DevCenter $env.devCenterName -InputObject $poolInput
+            $pool = Get-AzDevCenterUserPool -DevCenterName $env.devCenterName -InputObject $poolInput
             $pool.HardwareProfileMemoryGb | Should -Be 32
             $pool.HardwareProfileSkuName | Should -Be $env.skuName
             $pool.HardwareProfileVCpUs | Should -Be 8

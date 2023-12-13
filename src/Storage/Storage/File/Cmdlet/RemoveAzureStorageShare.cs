@@ -81,6 +81,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         private bool force;
 
+        // Overwrite the useless parameter
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
+
         /// <summary>
         /// Cmdlet begin processing
         /// </summary>

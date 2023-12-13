@@ -13,42 +13,47 @@ Uninstall Azure PowerShell modules.
 ## SYNTAX
 
 ### Default (Default)
+
 ```
 Uninstall-AzModule [-ExcludeModule <String[]>] [-PrereleaseOnly] [-RemoveAzureRm] [-Force] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByName
+
 ```
 Uninstall-AzModule [-Name] <String[]> [-RemoveAzureRm] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 Uninstall Azure PowerShell modules.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
+```powershell
 Uninstall-AzModule storage, network
 ```
 
 ### EXAMPLE 2
-```
+
+```powershell
 Uninstall-AzModule -ExcludeModule storage, network
 ```
 
 ### EXAMPLE 3
-```
+
+```powershell
 Uninstall-AzModule -PrereleaseOnly
 ```
 
 ## PARAMETERS
 
 ### -Name
-Az modules to uninstall.
-Can be the names without Az.
-prefix
+
+Az modules to uninstall. Can be the names without Az. prefix.
 
 ```yaml
 Type: String[]
@@ -63,6 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExcludeModule
+
 Az modules to exclude from uninstallation.
 
 ```yaml
@@ -78,6 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrereleaseOnly
+
 Specify to uninstall prerelease modules only.
 
 ```yaml
@@ -93,6 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -RemoveAzureRm
+
 Remove all Azure and AzureRm modules.
 
 ```yaml
@@ -108,6 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
+
 Installs modules and overrides the confirmation messages of each step.
 
 ```yaml
@@ -123,8 +132,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -139,6 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
+
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -154,7 +164,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
+-WarningAction, and -WarningVariable. For more information, see
+[about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

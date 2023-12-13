@@ -18,6 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserProvidedFunctionAppArmResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Description(@"Description for Gets the details of the user provided function app registered with a static site build")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/userProvidedFunctionApps/{functionAppName}", ApiVersion = "2020-12-01")]
     public partial class GetAzStaticWebAppUserProvidedFunctionApp_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener
     {

@@ -1,48 +1,74 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29709.97
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts", "Accounts", "{FB334B2C-AA78-4D21-8F21-CA20D8E5828E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{62843FE6-7575-4D88-B989-7DF7EEC0BC01}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{925CB5EC-DDBB-40C4-B98B-D28A69382D6A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{442C609B-A431-4A71-B289-08F0B63C83E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{D84C0134-FB2E-44BF-9E3B-EC78E2AC5060}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{59E8F6B8-8F0E-403F-B88B-9736DBC396D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{8DEEA555-062B-4C34-B051-9869DB1FE05B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.HealthBot", "Az.HealthBot.csproj", "{1C203C0C-E0FD-40D2-B79E-C6DA52E4E350}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{55BA865A-30FC-4CBB-8DE0-BB31E86888C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{FAF820B3-314E-48A9-B17E-0A4DA7D8A6A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{8D5E281B-9E63-4C4D-A90A-4E598C882AF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.HealthBot", "HealthBot.Autorest\Az.HealthBot.csproj", "{B195B6C4-D1F9-4303-B023-F6636AE39021}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthBot", "HealthBot\HealthBot.csproj", "{694A83ED-4C1B-4C4E-B7B2-16E3BEF57C89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{62843FE6-7575-4D88-B989-7DF7EEC0BC01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{62843FE6-7575-4D88-B989-7DF7EEC0BC01}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{62843FE6-7575-4D88-B989-7DF7EEC0BC01}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{62843FE6-7575-4D88-B989-7DF7EEC0BC01}.Release|Any CPU.Build.0 = Release|Any CPU
-		{442C609B-A431-4A71-B289-08F0B63C83E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{442C609B-A431-4A71-B289-08F0B63C83E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{442C609B-A431-4A71-B289-08F0B63C83E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{442C609B-A431-4A71-B289-08F0B63C83E5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59E8F6B8-8F0E-403F-B88B-9736DBC396D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59E8F6B8-8F0E-403F-B88B-9736DBC396D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59E8F6B8-8F0E-403F-B88B-9736DBC396D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59E8F6B8-8F0E-403F-B88B-9736DBC396D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C203C0C-E0FD-40D2-B79E-C6DA52E4E350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C203C0C-E0FD-40D2-B79E-C6DA52E4E350}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C203C0C-E0FD-40D2-B79E-C6DA52E4E350}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C203C0C-E0FD-40D2-B79E-C6DA52E4E350}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F9B3D96E-9680-40BE-A917-02EE655D6030}
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{925CB5EC-DDBB-40C4-B98B-D28A69382D6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{925CB5EC-DDBB-40C4-B98B-D28A69382D6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{925CB5EC-DDBB-40C4-B98B-D28A69382D6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{925CB5EC-DDBB-40C4-B98B-D28A69382D6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D84C0134-FB2E-44BF-9E3B-EC78E2AC5060}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D84C0134-FB2E-44BF-9E3B-EC78E2AC5060}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D84C0134-FB2E-44BF-9E3B-EC78E2AC5060}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D84C0134-FB2E-44BF-9E3B-EC78E2AC5060}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DEEA555-062B-4C34-B051-9869DB1FE05B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DEEA555-062B-4C34-B051-9869DB1FE05B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DEEA555-062B-4C34-B051-9869DB1FE05B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DEEA555-062B-4C34-B051-9869DB1FE05B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55BA865A-30FC-4CBB-8DE0-BB31E86888C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55BA865A-30FC-4CBB-8DE0-BB31E86888C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55BA865A-30FC-4CBB-8DE0-BB31E86888C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55BA865A-30FC-4CBB-8DE0-BB31E86888C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAF820B3-314E-48A9-B17E-0A4DA7D8A6A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAF820B3-314E-48A9-B17E-0A4DA7D8A6A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAF820B3-314E-48A9-B17E-0A4DA7D8A6A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAF820B3-314E-48A9-B17E-0A4DA7D8A6A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D5E281B-9E63-4C4D-A90A-4E598C882AF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D5E281B-9E63-4C4D-A90A-4E598C882AF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D5E281B-9E63-4C4D-A90A-4E598C882AF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D5E281B-9E63-4C4D-A90A-4E598C882AF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B195B6C4-D1F9-4303-B023-F6636AE39021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B195B6C4-D1F9-4303-B023-F6636AE39021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B195B6C4-D1F9-4303-B023-F6636AE39021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B195B6C4-D1F9-4303-B023-F6636AE39021}.Release|Any CPU.Build.0 = Release|Any CPU
+		{694A83ED-4C1B-4C4E-B7B2-16E3BEF57C89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{694A83ED-4C1B-4C4E-B7B2-16E3BEF57C89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{694A83ED-4C1B-4C4E-B7B2-16E3BEF57C89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{694A83ED-4C1B-4C4E-B7B2-16E3BEF57C89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{925CB5EC-DDBB-40C4-B98B-D28A69382D6A} = {FB334B2C-AA78-4D21-8F21-CA20D8E5828E}
+		{D84C0134-FB2E-44BF-9E3B-EC78E2AC5060} = {FB334B2C-AA78-4D21-8F21-CA20D8E5828E}
+		{8DEEA555-062B-4C34-B051-9869DB1FE05B} = {FB334B2C-AA78-4D21-8F21-CA20D8E5828E}
+		{55BA865A-30FC-4CBB-8DE0-BB31E86888C8} = {FB334B2C-AA78-4D21-8F21-CA20D8E5828E}
+		{FAF820B3-314E-48A9-B17E-0A4DA7D8A6A0} = {FB334B2C-AA78-4D21-8F21-CA20D8E5828E}
+		{8D5E281B-9E63-4C4D-A90A-4E598C882AF0} = {FB334B2C-AA78-4D21-8F21-CA20D8E5828E}
 	EndGlobalSection
 EndGlobal

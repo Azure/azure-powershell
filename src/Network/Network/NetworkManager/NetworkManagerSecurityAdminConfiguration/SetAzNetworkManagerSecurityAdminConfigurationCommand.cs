@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network
                 var securityConfigModel = NetworkResourceManagerProfile.Mapper.Map<MNM.SecurityAdminConfiguration>(this.InputObject);
 
                 // Execute the PUT NetworkManagerSecurityAdminConfiguration call
-                this.NetworkManagerSecurityAdminConfigurationClient.CreateOrUpdate(securityConfigModel, this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
+                this.NetworkManagerSecurityAdminConfigurationClient.CreateOrUpdate(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name, securityConfigModel);
                 var psSecurityConfig = this.GetNetworkManagerSecurityAdminConfiguration(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
                 WriteObject(psSecurityConfig);
             }

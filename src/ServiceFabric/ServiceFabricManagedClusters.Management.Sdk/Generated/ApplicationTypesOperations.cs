@@ -268,8 +268,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='applicationTypeName'>
         /// The name of the application type name resource.
         /// </param>
-        /// /// <param name='parameters'>
-        /// The application type name resource.
+        /// <param name='location'>
+        /// Resource location depends on the parent resource.
+        /// </param>
+        /// <param name='tags'>
+        /// Azure resource tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

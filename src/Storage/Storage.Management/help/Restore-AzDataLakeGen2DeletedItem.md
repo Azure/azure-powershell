@@ -34,9 +34,11 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ### Example 1: List all deleted files or directories from a Filesystem, and restore them by pipeline
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
-PS C:\> $items = Get-AzDataLakeGen2DeletedItem -FileSystem "filesystem1" 
-PS C:\> $items
+$items = Get-AzDataLakeGen2DeletedItem -FileSystem "filesystem1" 
+$items
 
    FileSystem Name: filesystem1
 
@@ -46,7 +48,7 @@ dir0/dir1/file1      132658816156507617   2021-05-19 07:06:55Z 3
 dir0/dir2            132658834541610122   2021-05-19 07:37:34Z 3                    
 dir0/dir2/file3      132658834534174806   2021-05-19 07:37:33Z 3   
 
-PS C:\> $items | Restore-AzDataLakeGen2DeletedItem 
+$items | Restore-AzDataLakeGen2DeletedItem 
 
    FileSystem Name: filesystem1
 
@@ -215,7 +217,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

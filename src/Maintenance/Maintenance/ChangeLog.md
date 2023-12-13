@@ -20,6 +20,12 @@
 
 ## Upcoming Release
 
+## Version 1.4.1
+* Removed outdated upcoming breaking change warning
+
+## Version 1.4.0
+* Added support for maintenance configuration cancellation.
+
 ## Version 1.3.1
 * Fixed breaking change information
   

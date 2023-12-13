@@ -121,6 +121,13 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
+        /// Gets or sets the maintenance configuration id.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The maintenance configuration id to associate with the instance")]
+        public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -182,6 +189,7 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
                 SubnetId = SubnetId,
                 VCores = VCore,
                 LicenseType = LicenseType,
+                MaintenanceConfigurationId = this.MaintenanceConfigurationId,
             };
 
             return new List<AzureSqlInstancePoolModel> { newEntity };

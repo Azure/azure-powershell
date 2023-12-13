@@ -113,7 +113,8 @@ namespace Microsoft.Azure.Management.Automation
         /// The runbook name.
         /// </param>
         /// <param name='parameters'>
-        /// The create or update parameters for runbook. Provide either content link for a published runbook or draft, not both.
+        /// The create or update parameters for runbook. Provide either content link
+        /// for a published runbook or draft, not both.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Automation
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "runbookName", "^[a-zA-Z][a-zA-Z-_0-9]*$");
                 }
             }
-            string apiVersion = "2022-08-08";
+            string apiVersion = "2023-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Management.Automation
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "runbookName", "^[a-zA-Z][a-zA-Z-_0-9]*$");
                 }
             }
-            string apiVersion = "2022-08-08";
+            string apiVersion = "2023-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -538,7 +538,8 @@ namespace Microsoft.Azure.Management.Automation
         /// The runbook name.
         /// </param>
         /// <param name='parameters'>
-        /// The create or update parameters for runbook. Provide either content link for a published runbook or draft, not both.
+        /// The create or update parameters for runbook. Provide either content link
+        /// for a published runbook or draft, not both.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -615,7 +616,7 @@ namespace Microsoft.Azure.Management.Automation
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "runbookName", "^[a-zA-Z][a-zA-Z-_0-9]*$");
                 }
             }
-            string apiVersion = "2022-08-08";
+            string apiVersion = "2023-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -882,7 +883,7 @@ namespace Microsoft.Azure.Management.Automation
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "runbookName", "^[a-zA-Z][a-zA-Z-_0-9]*$");
                 }
             }
-            string apiVersion = "2022-08-08";
+            string apiVersion = "2023-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1121,7 +1122,7 @@ namespace Microsoft.Azure.Management.Automation
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "runbookName", "^[a-zA-Z][a-zA-Z-_0-9]*$");
                 }
             }
-            string apiVersion = "2022-08-08";
+            string apiVersion = "2023-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1324,7 +1325,7 @@ namespace Microsoft.Azure.Management.Automation
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "automationAccountName");
             }
 
-            string apiVersion = "2022-08-08";
+            string apiVersion = "2023-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1554,7 +1555,7 @@ namespace Microsoft.Azure.Management.Automation
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "runbookName", "^[a-zA-Z][a-zA-Z-_0-9]*$");
                 }
             }
-            string apiVersion = "2022-08-08";
+            string apiVersion = "2023-11-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

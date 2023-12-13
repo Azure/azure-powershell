@@ -29,7 +29,7 @@ Get-AzStorageContainer -IncludeDeleted -Context $ctx | Where-Object { $_.IsDelet
 ```
 
 ```output
-   Storage Account Name: storageaccountname
+Storage Account Name: storageaccountname
 
 Name                 PublicAccess         LastModified                   IsDeleted  VersionId                                                                                                                                                                                                                                                         
 ----                 ------------         ------------                   ---------  ---------                                                                                                                                                                    
@@ -41,8 +41,10 @@ This command lists all containers include deleted containers, filter out all the
 
 ### Example 2: Restore a single deleted container
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
-PS C:\> Get-AzStorageContainer -IncludeDeleted -Context $ctx | Where-Object { $_.IsDeleted } 
+Get-AzStorageContainer -IncludeDeleted -Context $ctx | Where-Object { $_.IsDeleted } 
 
    Storage Account Name: storageaccountname
 
@@ -51,7 +53,7 @@ Name                 PublicAccess         LastModified                   IsDelet
 container1                                8/28/2020 10:18:13 AM +00:00   True       01D685BC91A88F22                                                                                                                                                                                                                                                                
 container2                                9/4/2020 12:52:37 PM +00:00    True       01D67D248986B6DA  
 
-PS C:\> Restore-AzStorageContainer -Name container1 -VersionId 01D685BC91A88F22 -Context $ctx
+Restore-AzStorageContainer -Name container1 -VersionId 01D685BC91A88F22 -Context $ctx
 
    Storage Account Name: storageaccountname
 
@@ -157,7 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

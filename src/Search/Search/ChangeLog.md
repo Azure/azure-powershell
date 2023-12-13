@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.10.0
 * Added support for semantic search option
 
 ## Version 0.9.0

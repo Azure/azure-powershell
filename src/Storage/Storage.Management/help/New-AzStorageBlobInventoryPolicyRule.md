@@ -36,16 +36,16 @@ The **New-AzStorageBlobInventoryPolicyRule** cmdlet creates a blob inventory pol
 <!-- Skip: Output cannot be splitted from code -->
 
 ```
-PS C:\> $rule1 = New-AzStorageBlobInventoryPolicyRule -Name Test1 -Destination $containerName -Disabled -Format Csv -Schedule Daily -ContainerSchemaField Name,Metadata,PublicAccess,Last-mOdified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold -PrefixMatch con1,con2
+$rule1 = New-AzStorageBlobInventoryPolicyRule -Name Test1 -Destination $containerName -Disabled -Format Csv -Schedule Daily -ContainerSchemaField Name,Metadata,PublicAccess,Last-mOdified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold -PrefixMatch con1,con2
 
-PS C:\> $rule2 = New-AzStorageBlobInventoryPolicyRule -Name Test2 -Destination $containerName -Format Parquet -Schedule Weekly  -IncludeSnapshot -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
+$rule2 = New-AzStorageBlobInventoryPolicyRule -Name Test2 -Destination $containerName -Format Parquet -Schedule Weekly  -IncludeSnapshot -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
                 -BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Expiry-Time,hdi_isfolder,Owner,Group,Permissions,Acl,Metadata -CreationTimeLastNDay 30
-PS C:\> $rule3 = New-AzStorageBlobInventoryPolicyRule -Name Test3 -Destination $containerName -Format Parquet -Schedule Weekly  -IncludeSnapshot -IncludeDeleted -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
+$rule3 = New-AzStorageBlobInventoryPolicyRule -Name Test3 -Destination $containerName -Format Parquet -Schedule Weekly  -IncludeSnapshot -IncludeDeleted -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
                  -ExcludePrefix ccc,ddd -BlobSchemaField name,Last-Modified,BlobType,AccessTier,AccessTierChangeTime,Content-Type,Content-CRC64,CopyId,DeletionId,Deleted,DeletedTime,RemainingRetentionDays
 
-PS C:\> $policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Disabled -Rule $rule1,$rule2
+$policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Disabled -Rule $rule1,$rule2
 
-PS C:\> $policy
+$policy
 
 StorageAccountName : mystorageaccount
 ResourceGroupName  : myresourcegroup
@@ -56,7 +56,7 @@ LastModifiedTime   : 5/12/2021 8:53:38 AM
 Enabled            : False
 Rules              : {Test1, Test2, Test3}
 
-PS C:\> $policy.Rules
+$policy.Rules
 
 Name  Enabled Destination   ObjectType Format  Schedule IncludeSnapshots IncludeBlobVersions IncludeDeleted BlobTypes               PrefixMatch  ExcludePrefix SchemaFields                                            CreationTime
 ----  ------- -----------   ---------- ------  -------- ---------------- ------------------- -------------- ---------               -----------  ------------- ------------                                            ------------

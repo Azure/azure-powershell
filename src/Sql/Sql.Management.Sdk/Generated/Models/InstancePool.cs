@@ -52,7 +52,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="licenseType">The license type. Possible values are &#39;LicenseIncluded&#39; (price for SQL
         /// license is included) and &#39;BasePrice&#39; (without SQL license price).
         /// Possible values include: 'LicenseIncluded', 'BasePrice'</param>
-        public InstancePool(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), string subnetId = default(string), int? vCores = default(int?), string licenseType = default(string))
+
+        /// <param name="dnsZone">The Dns Zone that the managed instance pool is in.
+        /// </param>
+
+        /// <param name="maintenanceConfigurationId">Specifies maintenance configuration id to apply to this managed instance.
+        /// </param>
+        public InstancePool(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), string subnetId = default(string), int? vCores = default(int?), string licenseType = default(string), string dnsZone = default(string), string maintenanceConfigurationId = default(string))
 
         : base(location, id, name, type, tags)
         {
@@ -60,6 +66,8 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.SubnetId = subnetId;
             this.VCores = vCores;
             this.LicenseType = licenseType;
+            this.DnsZone = dnsZone;
+            this.MaintenanceConfigurationId = maintenanceConfigurationId;
             CustomInit();
         }
 
@@ -93,6 +101,19 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.licenseType")]
         public string LicenseType {get; set; }
+
+        /// <summary>
+        /// Gets the Dns Zone that the managed instance pool is in.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.dnsZone")]
+        public string DnsZone {get; private set; }
+
+        /// <summary>
+        /// Gets or sets specifies maintenance configuration id to apply to this
+        /// managed instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maintenanceConfigurationId")]
+        public string MaintenanceConfigurationId {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -106,6 +127,8 @@ namespace Microsoft.Azure.Management.Sql.Models
             {
                 this.Sku.Validate();
             }
+
+
 
 
         }

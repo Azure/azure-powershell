@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The given storage account tenant {0} does not match with current azure tenant. We do not support cloud endpoint creation with storage account pointing to any other tenant than itself. Please try this operation again with correct tenant..
+        ///   Looks up a localized string similar to The given storage account tenant {0} does not match with current azure tenant {1}. We do not support cloud endpoint creation with storage account pointing to any other tenant than itself. Please try this operation again with correct tenant..
         /// </summary>
         internal static string NewCloudEndpointCrossTenantErrorFormat {
             get {

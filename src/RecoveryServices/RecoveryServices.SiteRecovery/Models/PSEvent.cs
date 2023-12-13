@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRInMageRcmEventDetails(InMageRcmEventDetails inMageRcmEventDetails)
         {
             this.ProtectedItemName = inMageRcmEventDetails.ProtectedItemName;
-            this.VmName = inMageRcmEventDetails.VmName;
+            this.VmName = inMageRcmEventDetails.VMName;
             this.LatestAgentVersion = inMageRcmEventDetails.LatestAgentVersion;
             this.JobId = inMageRcmEventDetails.JobId;
             this.FabricName = inMageRcmEventDetails.FabricName;
@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRInMageRcmFailbackEventDetails(InMageRcmFailbackEventDetails inMageRcmFailbackEventDetails)
         {
             this.ProtectedItemName = inMageRcmFailbackEventDetails.ProtectedItemName;
-            this.VmName = inMageRcmFailbackEventDetails.VmName;
+            this.VmName = inMageRcmFailbackEventDetails.VMName;
             this.ApplianceName = inMageRcmFailbackEventDetails.ApplianceName;
             this.ServerType = inMageRcmFailbackEventDetails.ServerType;
             this.ComponentDisplayName = inMageRcmFailbackEventDetails.ComponentDisplayName;

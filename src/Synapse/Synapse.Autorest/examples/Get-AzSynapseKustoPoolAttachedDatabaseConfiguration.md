@@ -1,6 +1,6 @@
 ### Example 1: List all the AttachedDatabaseConfigurations in a kusto pool
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testfollowerkustopool
+Get-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testfollowerkustopool
 
 Name                                               Type                                                                   Location
 ----                                               ----                                                                   --------
@@ -11,7 +11,7 @@ The above command lists all the AttachedDatabaseConfigurations in the kusto pool
 
 ### Example 2: Get a specific AttachedDatabaseConfiguration in a kusto pool
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testfollowerkustopool -Name followerconfiguration
+Get-AzSynapseKustoPoolAttachedDatabaseConfiguration -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testfollowerkustopool -Name followerconfiguration
 
 Name                                               Type                                                                   Location
 ----                                               ----                                                                   --------

@@ -26,11 +26,11 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ### Example 1: List the direct sub items from a Filesystem
 ```powershell
-Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" 
+Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1"
 ```
 
 ```output
-   FileSystem Name: filesystem1
+FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
 ----                 -----------  ------          ------------         -----------  -----                -----               
@@ -46,7 +46,7 @@ Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Path "dir1/" -Recurse -Fe
 ```
 
 ```output
-   FileSystem Name: filesystem1
+FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
 ----                 -----------  ------          ------------         -----------  -----                -----               
@@ -237,7 +237,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

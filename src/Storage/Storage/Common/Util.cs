@@ -36,6 +36,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using global::Azure.Storage.Files.DataLake;
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Queues;
+    using Microsoft.WindowsAzure.Commands.Storage.File;
+    using System.Linq;
 
     internal static class Util
     {
@@ -790,22 +792,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
         }
 
-        public static QueueClient GetTrack2QueueClient(string queueName, AzureStorageContext context, QueueClientOptions options)
+        public static QueueServiceClient GetTrack2QueueServiceClient(AzureStorageContext context, QueueClientOptions options = null)
         {
             if (context == null || string.IsNullOrEmpty(context.ConnectionString))
             {
                 throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
             }
 
-            string connectionString = context.ConnectionString;
-            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
+            QueueServiceClient queueServiceClient;
+            if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsToken)
             {
-                connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
+                queueServiceClient = new QueueServiceClient(context.StorageAccount.QueueEndpoint, context.Track2OauthToken, options);
             }
+            else
+            {
+                string connectionString = context.ConnectionString;
+                // remove the "?" at the begin of SAS if any
+                if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials != null && context.StorageAccount.Credentials.IsSAS)
+                {
+                    connectionString = connectionString.Replace("SharedAccessSignature=?", "SharedAccessSignature=");
+                }
+                queueServiceClient = new QueueServiceClient(connectionString, options);
+            }
+            return queueServiceClient;
+        }
 
-            QueueClient queueClient;
 
-            queueClient = new QueueClient(connectionString, queueName, options);
+        public static QueueClient GetTrack2QueueClient(string queueName, AzureStorageContext context, QueueClientOptions options)
+        {
+            QueueClient queueClient = GetTrack2QueueServiceClient(context, options).GetQueueClient(queueName);
             return queueClient;
         }
 
@@ -833,6 +848,38 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 return itemUri.ToString();
             }
+        }
+
+        /// <summary>
+        ///  Get if a file path in format "dir1/dir2/filename" contains trailingdot in any block of the path
+        /// </summary>
+        public static bool PathContainsTrailingDot(string filePath)
+        {
+            foreach (string block in filePath.Split(NamingUtil.PathSeparators))
+            {
+                if (block.EndsWith("."))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        ///  Remove trailingdot from dir/file name from a file Uri
+        /// </summary>
+        public static Uri RemoveFileUriTrailingDot(Uri fileUri)
+        {
+            string noLastSegment = string.Format("{0}://{1}", fileUri.Scheme, fileUri.Authority);
+            for (int i = 0; i < fileUri.Segments.Length; i++)
+            {
+                noLastSegment += fileUri.Segments[i].TrimEnd('.', '/');
+                if (fileUri.Segments[i].Substring(fileUri.Segments[i].Length - 1)[0] == '/')
+                {
+                    noLastSegment += fileUri.Segments[i].Substring(fileUri.Segments[i].Length - 1)[0];
+                }
+            }
+            return new Uri(noLastSegment);
         }
     }
 }

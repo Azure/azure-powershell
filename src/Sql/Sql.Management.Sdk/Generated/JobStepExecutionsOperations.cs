@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<JobExecution>>> ListByJobExecutionWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId, System.DateTime? createTimeMin = default(System.DateTime?), System.DateTime? createTimeMax = default(System.DateTime?), System.DateTime? endTimeMin = default(System.DateTime?), System.DateTime? endTimeMax = default(System.DateTime?), bool? isActive = default(bool?), int? skip = default(int?), int? top = default(int?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<JobExecution>>> ListByJobExecutionWithHttpMessagesAsync(string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId, System.DateTime? createTimeMin = default(System.DateTime?), System.DateTime? createTimeMax = default(System.DateTime?), System.DateTime? endTimeMin = default(System.DateTime?), System.DateTime? endTimeMax = default(System.DateTime?), bool? isActive = default(bool?), long? skip = default(long?), long? top = default(long?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Sql
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2020-11-01-preview";
+            string apiVersion = "2023-05-01-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Management.Sql
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
-            string apiVersion = "2020-11-01-preview";
+            string apiVersion = "2023-05-01-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

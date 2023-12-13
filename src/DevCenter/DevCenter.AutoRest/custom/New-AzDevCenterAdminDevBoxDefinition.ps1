@@ -25,11 +25,11 @@ Creates or updates a Dev Box definition.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevBoxDefinition
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevBoxDefinition
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevBoxDefinition
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevBoxDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -79,7 +79,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradmindevboxdefinition
 #>
 function New-AzDevCenterAdminDevBoxDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevBoxDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevBoxDefinition])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]

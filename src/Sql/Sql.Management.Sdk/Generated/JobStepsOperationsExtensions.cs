@@ -13,126 +13,6 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class JobStepsOperationsExtensions
     {
         /// <summary>
-        /// Gets all job steps in the specified job version.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='jobAgentName'>
-        /// The name of the job agent.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job to get.
-        /// </param>
-        /// <param name='jobVersion'>
-        /// The version of the job to get.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<JobStep> ListByVersion(this IJobStepsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, int jobVersion)
-        {
-                return ((IJobStepsOperations)operations).ListByVersionAsync(resourceGroupName, serverName, jobAgentName, jobName, jobVersion).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all job steps in the specified job version.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='jobAgentName'>
-        /// The name of the job agent.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job to get.
-        /// </param>
-        /// <param name='jobVersion'>
-        /// The version of the job to get.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<JobStep>> ListByVersionAsync(this IJobStepsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, int jobVersion, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByVersionWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, jobName, jobVersion, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets the specified version of a job step.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='jobAgentName'>
-        /// The name of the job agent.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job.
-        /// </param>
-        /// <param name='jobVersion'>
-        /// The version of the job to get.
-        /// </param>
-        /// <param name='stepName'>
-        /// The name of the job step.
-        /// </param>
-        public static JobStep GetByVersion(this IJobStepsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, int jobVersion, string stepName)
-        {
-                return ((IJobStepsOperations)operations).GetByVersionAsync(resourceGroupName, serverName, jobAgentName, jobName, jobVersion, stepName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified version of a job step.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='jobAgentName'>
-        /// The name of the job agent.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job.
-        /// </param>
-        /// <param name='jobVersion'>
-        /// The version of the job to get.
-        /// </param>
-        /// <param name='stepName'>
-        /// The name of the job step.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<JobStep> GetByVersionAsync(this IJobStepsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, int jobVersion, string stepName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetByVersionWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, jobName, jobVersion, stepName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all job steps for a job&#39;s current version.
         /// </summary>
         /// <param name='operations'>
@@ -357,12 +237,24 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<JobStep> ListByVersionNext(this IJobStepsOperations operations, string nextPageLink)
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='jobAgentName'>
+        /// The name of the job agent.
+        /// </param>
+        /// <param name='jobName'>
+        /// The name of the job to get.
+        /// </param>
+        /// <param name='jobVersion'>
+        /// The version of the job to get.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<JobStep> ListByVersion(this IJobStepsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, int jobVersion)
         {
-                return ((IJobStepsOperations)operations).ListByVersionNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return ((IJobStepsOperations)operations).ListByVersionAsync(resourceGroupName, serverName, jobAgentName, jobName, jobVersion).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -371,15 +263,90 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='jobAgentName'>
+        /// The name of the job agent.
+        /// </param>
+        /// <param name='jobName'>
+        /// The name of the job to get.
+        /// </param>
+        /// <param name='jobVersion'>
+        /// The version of the job to get.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<JobStep>> ListByVersionNextAsync(this IJobStepsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<JobStep>> ListByVersionAsync(this IJobStepsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, int jobVersion, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByVersionNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByVersionWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, jobName, jobVersion, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the specified version of a job step.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='jobAgentName'>
+        /// The name of the job agent.
+        /// </param>
+        /// <param name='jobName'>
+        /// The name of the job.
+        /// </param>
+        /// <param name='jobVersion'>
+        /// The version of the job to get.
+        /// </param>
+        /// <param name='stepName'>
+        /// The name of the job step.
+        /// </param>
+        public static JobStep GetByVersion(this IJobStepsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, int jobVersion, string stepName)
+        {
+                return ((IJobStepsOperations)operations).GetByVersionAsync(resourceGroupName, serverName, jobAgentName, jobName, jobVersion, stepName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified version of a job step.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='jobAgentName'>
+        /// The name of the job agent.
+        /// </param>
+        /// <param name='jobName'>
+        /// The name of the job.
+        /// </param>
+        /// <param name='jobVersion'>
+        /// The version of the job to get.
+        /// </param>
+        /// <param name='stepName'>
+        /// The name of the job step.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<JobStep> GetByVersionAsync(this IJobStepsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, int jobVersion, string stepName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetByVersionWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, jobName, jobVersion, stepName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -413,6 +380,39 @@ namespace Microsoft.Azure.Management.Sql
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<JobStep>> ListByJobNextAsync(this IJobStepsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByJobNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets all job steps in the specified job version.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<JobStep> ListByVersionNext(this IJobStepsOperations operations, string nextPageLink)
+        {
+                return ((IJobStepsOperations)operations).ListByVersionNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all job steps in the specified job version.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<JobStep>> ListByVersionNextAsync(this IJobStepsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByVersionNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

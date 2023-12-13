@@ -38,10 +38,12 @@ The cmdlet only works when the blob container has already enabled immutable Stor
 
 ### Example 1: Create or update immutability policy of a Storage blob.
 <!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\> $blob = Set-AzStorageBlobImmutabilityPolicy -Container $containerName -Blob $blobname  -ExpiresOn (Get-Date).AddDays(100) -PolicyMode Unlocked
 
-PS C:\> $blob
+
+```
+$blob = Set-AzStorageBlobImmutabilityPolicy -Container $containerName -Blob $blobname  -ExpiresOn (Get-Date).AddDays(100) -PolicyMode Unlocked
+
+$blob
 
    AccountName: mystorageaccount, ContainerName: mycontainer
 
@@ -49,7 +51,7 @@ Name                 BlobType  Length          ContentType                    La
 ----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
 testblob             BlockBlob 10485760        application/octet-stream       2021-07-19 08:56:00Z Hot                                     False      2021-07-19T08:56:01.8120788Z *   
 
-PS C:\> $blob.BlobProperties.ImmutabilityPolicy
+$blob.BlobProperties.ImmutabilityPolicy
 
 ExpiresOn                    PolicyMode
 ---------                    ----------

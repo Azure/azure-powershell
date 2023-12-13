@@ -22,7 +22,7 @@ Describe 'Restart-AzDevCenterUserDevBox' {
         $devBox.PowerState | Should -Be "Running"
 
         if ($Record -or $Live) {
-            $restartOperation = Restart-AzDevCenterUserDevBox -DevCenter $env.devCenterName -Name $env.devBoxName -ProjectName $env.projectName
+            $restartOperation = Restart-AzDevCenterUserDevBox -DevCenterName $env.devCenterName -Name $env.devBoxName -ProjectName $env.projectName
             $restartOperation.Status | Should -Be "Succeeded"
             $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
             $devBox.ActionState | Should -Be "Started"
@@ -40,7 +40,7 @@ Describe 'Restart-AzDevCenterUserDevBox' {
         $devBox.PowerState | Should -Be "Running"
 
         if ($Record -or $Live) {
-            $restartOperation = Restart-AzDevCenterUserDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput
+            $restartOperation = Restart-AzDevCenterUserDevBox -DevCenterName $env.devCenterName -InputObject $devBoxInput
             $restartOperation.Status | Should -Be "Succeeded"
             $devBox = Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -Name $env.devBoxName -ProjectName $env.projectName -UserId "me"
             $devBox.ActionState | Should -Be "Started"

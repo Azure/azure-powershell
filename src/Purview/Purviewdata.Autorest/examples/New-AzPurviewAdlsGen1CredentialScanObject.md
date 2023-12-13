@@ -1,6 +1,6 @@
 ### Example 1: Create AdlsGen1 Credential scan object
 ```powershell
-PS C:\> New-AzPurviewAdlsGen1CredentialScanObject -Kind 'AdlsGen1Credential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'svcp' -CredentialType 'ServicePrincipal' -ScanRulesetName 'AdlsGen1' -ScanRulesetType 'System'
+New-AzPurviewAdlsGen1CredentialScanObject -Kind 'AdlsGen1Credential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialReferenceName 'svcp' -CredentialType 'ServicePrincipal' -ScanRulesetName 'AdlsGen1' -ScanRulesetType 'System'
 
 CollectionLastModifiedAt  :
 CollectionReferenceName   : parv-brs-2
