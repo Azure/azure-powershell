@@ -14,7 +14,7 @@ Update the network features of a network sibling set
 
 ```
 Update-AzNetAppFilesNetworkSiblingSet -Location <String> -SubnetId <String> -NetworkSiblingSetId <String>
- -NetworkSiblingSetStateId <String> -NetworkFeatures <String> [-DefaultProfile <IAzureContextContainer>]
+ -NetworkSiblingSetStateId <String> -NetworkFeature <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update the network features of the specified network sibling set, use to update 
 ### Example 1
 ```powershell
 $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume"
-Update-AzNetAppFilesNetworkSiblingSet -Location "westus" -NetworkSiblingSetId "$retrievedVolume.NetworkSiblingSetId" -SubnetId $subnetId -NetworkSiblingSetStateId $networkSiblingSet.NetworkSiblingSetStateId -NetworkFeatures "Standard"
+Update-AzNetAppFilesNetworkSiblingSet -Location "westus" -NetworkSiblingSetId "$retrievedVolume.NetworkSiblingSetId" -SubnetId $subnetId -NetworkSiblingSetStateId $networkSiblingSet.NetworkSiblingSetStateId -NetworkFeature "Standard"
 ```
 
 This example gets a volume then uses that volumes NetworkSiblingSetId property to update the network features to standard.
