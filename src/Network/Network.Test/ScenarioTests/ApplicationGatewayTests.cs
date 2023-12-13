@@ -52,7 +52,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-WafDynamicManifest");
         }
 
-        [Fact]
+        [Fact(Skip = "Skip as creation of V1 gateways is no longer supported")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestApplicationGatewayCRUD()
@@ -100,7 +100,7 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript(string.Format("Test-KeyVaultIntegrationTest -baseDir '{0}' -spn '{1}'", AppDomain.CurrentDomain.BaseDirectory, servicePrincipal));
         }
 
-        [Fact]
+        [Fact(Skip = "Skip as creation of V1 gateways is no longer supported")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev)]
         public void TestApplicationGatewayCRUDSubItems()
