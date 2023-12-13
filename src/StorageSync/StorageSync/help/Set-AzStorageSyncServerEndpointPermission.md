@@ -15,20 +15,22 @@ This command will set the Server Endpoint permissions in a Storage Sync Service 
 ### StringParameterSet (Default)
 ```
 Set-AzStorageSyncServerEndpointPermission [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
- [-SyncGroupName] <String> [-Name] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SyncGroupName] <String> [-Name] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Set-AzStorageSyncServerEndpointPermission [-ResourceId] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ObjectParameterSet
 ```
 Set-AzStorageSyncServerEndpointPermission [-InputObject] <PSServerEndpoint> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +51,7 @@ This command will set the permissions for a Storage Sync Server Endpoint.
 Run cmdlet in the background.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -79,7 +81,7 @@ Accept wildcard characters: False
 ServerEndpoint Object, normally passed through the parameter.
 
 ```yaml
-Type: PSServerEndpoint
+Type: Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint
 Parameter Sets: ObjectParameterSet
 Aliases: ServerEndpoint
 
@@ -94,7 +96,7 @@ Accept wildcard characters: False
 Name of the ServerEndpoint.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases: ServerEndpointName
 
@@ -105,11 +107,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -124,7 +141,7 @@ Accept wildcard characters: False
 ServerEndpoint Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -139,7 +156,7 @@ Accept wildcard characters: False
 Name of the StorageSyncService.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases: ParentName
 
@@ -154,7 +171,7 @@ Accept wildcard characters: False
 Name of the SyncGroup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -169,7 +186,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -185,7 +202,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

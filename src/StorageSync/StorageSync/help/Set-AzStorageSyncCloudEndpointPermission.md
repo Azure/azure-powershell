@@ -15,19 +15,20 @@ This command will set the Cloud Endpoint permissions in a Storage Sync Service i
 ### StringParameterSet (Default)
 ```
 Set-AzStorageSyncCloudEndpointPermission [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
- [-SyncGroupName] <String> -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SyncGroupName] <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ObjectParameterSet
 ```
 Set-AzStorageSyncCloudEndpointPermission [-InputObject] <PSCloudEndpoint> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Set-AzStorageSyncCloudEndpointPermission [-ResourceId] <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,10 +38,10 @@ This command will set the Cloud Endpoint permissions in a Storage Sync Service i
 
 ### Example 1
 ```powershell
-Set-AzStorageSyncServerEndpointPermission -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName"
+Set-AzStorageSyncCloudEndpointPermission -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myCloudEndpointName"
 ```
 
-This command will set the permissions for a Storage Sync Server Endpoint.
+This command will set the permissions for a Storage Sync Cloud Endpoint.
 
 ## PARAMETERS
 
@@ -48,7 +49,7 @@ This command will set the permissions for a Storage Sync Server Endpoint.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -63,7 +64,7 @@ Accept wildcard characters: False
 StorageSyncService Object, normally passed through the parameter.
 
 ```yaml
-Type: PSCloudEndpoint
+Type: Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint
 Parameter Sets: ObjectParameterSet
 Aliases: CloudEndpoint
 
@@ -79,7 +80,7 @@ Name of the CloudEndpoint.
 To verify the cloud endpoint name, use the Get-AzStorageSyncCloudEndpoint cmdlet, and check the Name property of the returned object.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: CloudEndpointName
 
@@ -90,11 +91,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -109,7 +125,7 @@ Accept wildcard characters: False
 StorageSyncService Object, normally passed through the parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases: CloudEndpointId
 
@@ -124,7 +140,7 @@ Accept wildcard characters: False
 Name of the StorageSyncService.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases: ParentName
 
@@ -139,7 +155,7 @@ Accept wildcard characters: False
 Name of the SyncGroup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases:
 

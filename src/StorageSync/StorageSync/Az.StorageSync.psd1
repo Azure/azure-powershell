@@ -79,14 +79,14 @@ CmdletsToExport = 'Get-AzStorageSyncCloudEndpoint', 'Get-AzStorageSyncGroup',
                'Invoke-AzStorageSyncCompatibilityCheck', 
                'New-AzStorageSyncCloudEndpoint', 'New-AzStorageSyncGroup', 
                'New-AzStorageSyncServerEndpoint', 'New-AzStorageSyncService',
-               'Patch-AzStorageSyncServer',
                'Register-AzStorageSyncServer', 'Remove-AzStorageSyncCloudEndpoint',
-               'Remove-AzStorageSyncCloudEndpointPermission',
-               'Remove-AzStorageSyncGroup', 'Remove-AzStorageSyncServerEndpoint', 
+               'Remove-AzStorageSyncGroup',
+               'Remove-AzStorageSyncServerEndpoint', 'Remove-AzStorageSyncServerEndpointPermission',
                'Remove-AzStorageSyncService', 
                'Reset-AzStorageSyncServerCertificate', 
+               'Set-AzStorageSyncCloudEndpointPermission',
                'Set-AzStorageSyncServerEndpoint', 'Set-AzStorageSyncServerEndpointPermission',
-               'Set-AzStorageSyncService', 
+               'Set-AzStorageSyncService', 'Set-AzStorageSyncServiceIdentity',
                'Unregister-AzStorageSyncServer'
 
 # Variables to export from this module

@@ -70,11 +70,23 @@ This command will delete the specified storage sync service.
 ### [Reset-AzStorageSyncServerCertificate](Reset-AzStorageSyncServerCertificate.md)
 Use for troubleshooting only. This command will roll the storage sync server certificate used to describe the server identity to the storage sync service.
 
+### [Set-AzStorageSyncCloudEndpointPermission](Set-AzStorageSyncCloudEndpointPermission.md)
+This command will set the Cloud Endpoint permissions in a Storage Sync Service in a resource group.
+
+### [Set-AzStorageSyncServer](Set-AzStorageSyncServer.md)
+{{ Fill in the Synopsis }}
+
 ### [Set-AzStorageSyncServerEndpoint](Set-AzStorageSyncServerEndpoint.md)
 This command allows for changes on the adjustable parameters of a server endpoint.
 
+### [Set-AzStorageSyncServerEndpointPermission](Set-AzStorageSyncServerEndpointPermission.md)
+This command will set the Server Endpoint permissions in a Storage Sync Service in a resource group.
+
 ### [Set-AzStorageSyncService](Set-AzStorageSyncService.md)
 This command sets storage sync service in a resource group.
+
+### [Set-AzStorageSyncServiceIdentity](Set-AzStorageSyncServiceIdentity.md)
+This command sets storage sync service identity in a resource group.
 
 ### [Unregister-AzStorageSyncServer](Unregister-AzStorageSyncServer.md)
 Warning: Unregistering a server will result in cascading deletes of all server endpoints on this server. This command will unregister a server from it's storage sync service.

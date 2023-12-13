@@ -1,58 +1,57 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://learn.microsoft.com/powershell/module/az.storagesync/remove-azstoragesyncserverendpoint
+online version:
 schema: 2.0.0
 ---
 
-# Remove-AzStorageSyncServerEndpoint
+# Remove-AzStorageSyncServerEndpointPermission
 
 ## SYNOPSIS
-This command will delete the specified server endpoint. Sync to this location will stop immediately.
+This command will delete the permission associated to a server endpoint.
 
 ## SYNTAX
 
 ### StringParameterSet (Default)
 ```
-Remove-AzStorageSyncServerEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
- [-SyncGroupName] <String> [-Name] <String> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### InputObjectParameterSet
-```
-Remove-AzStorageSyncServerEndpoint [-InputObject] <PSServerEndpoint> [-Force] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzStorageSyncServerEndpointPermission [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
+ [-SyncGroupName] <String> [-Name] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzStorageSyncServerEndpoint [-ResourceId] <String> [-Force] [-PassThru] [-AsJob]
+Remove-AzStorageSyncServerEndpointPermission [-ResourceId] <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ObjectParameterSet
+```
+Remove-AzStorageSyncServerEndpointPermission [-InputObject] <PSServerEndpoint> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removing a server endpoint is a destructive operation. This server location will stop syncing. This operation should not be performed to solve sync issues. If this server location (incl. it's files) is added again to the same sync group as a server endpoint, it can lead to conflict files and other unintended consequences. This command is intended for decommissioning only.
+This command will delete the permission associated to a server endpoint.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Remove-AzStorageSyncServerEndpoint -Force -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName"
+PS C:\> Remove-AzStorageSyncServerEndpointPermission -ResourceId "myResourceId"
 ```
 
-This command will remove the server endpoint.
+This command will delete the permission associated to a server endpoint.
 
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background
+Run cmdlet in the background.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -78,28 +77,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Supply -Force to skip confirmation of this command.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
-ServerEndpoint Input Object, normally passed through the pipeline.
+ServerEndpoint Object, normally passed through the parameter.
 
 ```yaml
-Type: Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint
-Parameter Sets: InputObjectParameterSet
-Aliases:
+Type: PSServerEndpoint
+Parameter Sets: ObjectParameterSet
+Aliases: ServerEndpoint
 
 Required: True
 Position: 0
@@ -112,27 +96,12 @@ Accept wildcard characters: False
 Name of the ServerEndpoint.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
-Aliases:
+Aliases: ServerEndpointName
 
 Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-In normal execution, this cmdlet returns no value on success. If you provide the PassThru parameter, then the cmdlet will write a value to the pipeline after successful execution.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -142,7 +111,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
+Type: ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -157,7 +126,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -169,10 +138,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-ServerEndpoint Resource Id
+ServerEndpoint Resource Id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -187,9 +156,9 @@ Accept wildcard characters: False
 Name of the StorageSyncService.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
-Aliases:
+Aliases: ParentName
 
 Required: True
 Position: 1
@@ -202,9 +171,9 @@ Accept wildcard characters: False
 Name of the SyncGroup.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
-Aliases: ParentName
+Aliases:
 
 Required: True
 Position: 2
@@ -214,10 +183,10 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts for confirmation before running the cmdlet.
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -229,10 +198,11 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -248,13 +218,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint
-
 ### System.String
+
+### Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint
+
 ## NOTES
 
 ## RELATED LINKS

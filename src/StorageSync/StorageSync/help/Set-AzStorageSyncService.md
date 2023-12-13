@@ -16,22 +16,23 @@ This command sets storage sync service in a resource group.
 ```
 Set-AzStorageSyncService [-ResourceGroupName] <String> [-Name] <String> [[-IncomingTrafficPolicy] <String>]
  [-AssignIdentity] [-UserAssignedIdentityId <String>] [-IdentityType <String>] [-UseIdentity <Boolean>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Set-AzStorageSyncService [-InputObject] <PSStorageSyncService> [-AssignIdentity]
  [-UserAssignedIdentityId <String>] [-IdentityType <String>] [-UseIdentity <Boolean>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Set-AzStorageSyncService [-ResourceId] <String> [-AssignIdentity] [-UserAssignedIdentityId <String>]
  [-IdentityType <String>] [-UseIdentity <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -152,6 +153,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
