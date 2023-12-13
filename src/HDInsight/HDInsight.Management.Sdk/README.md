@@ -62,6 +62,10 @@ directive:
       property-name: OSProfile
     set:
       property-name: OsProfile
+  - where:
+      property-name: DiskSizeGb
+    set:
+      property-name: DiskSizeGB
 
 
 
