@@ -59,7 +59,6 @@ stages:
             BaseBranch = "$BaseBranch"
           }
           $jsonString = $jsonData | ConvertTo-Json
-          $jsonString | Out-File -FilePath "VersionInfo.json"
           $folderPath = "OOB"
           $fileName = "VersionInfo.json"
           New-Item -ItemType Directory -Force -Path $folderPath | Out-Null
