@@ -458,7 +458,7 @@ function Test-SqlInAccountRestoreOperationsCmdlets
 
 function Test-SqlInAccountRestoreOperationsSharedResourcesCmdlets
 {
-  $AccountName = "dbaccount60-3"
+  $AccountName = "dbaccount60-4"
   $rgName = "CosmosDBResourceGroup62"
   $DatabaseName = "sqldbName"
   $ContainerName = "container1"
@@ -538,7 +538,7 @@ function Test-SqlInAccountRestoreOperationsSharedResourcesCmdlets
       Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -RestoreTimestampInUtc $restoreTimestampInUtc
       }
       Catch {
-          Assert-AreEqual $_.Exception.Message.Contains("Partial restore of shared throughput data is not allowed. Please perform restore operation on a shared throughput database or a provisioned collection") true
+          Assert-AreEqual $_.Exception.Message.Contains("InAccount restore of individual shared database collections is not supported. Please restore shared database to restore its collections that shared the throughput.") true
       }
       # remove database
       Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
