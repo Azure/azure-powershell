@@ -23,12 +23,12 @@ Create a CertificateObjectLocalRulestackResource
 New-AzPaloAltoNetworksCertificateObjectLocalRulestack -ResourceGroupName azps_test_group_pan -LocalRulestackName azps-panlr -Name azps-pancor -CertificateSelfSigned 'TRUE'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ICertificateObjectLocalRulestackResource
+Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource
 .Link
 https://learn.microsoft.com/powershell/module/az.paloaltonetworks/new-azpaloaltonetworkscertificateobjectlocalrulestack
 #>
 function New-AzPaloAltoNetworksCertificateObjectLocalRulestack {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ICertificateObjectLocalRulestackResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -58,9 +58,9 @@ param(
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.BooleanEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("TRUE", "FALSE")]
     [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.BooleanEnum]
+    [System.String]
     # use certificate self signed
     ${CertificateSelfSigned},
 
@@ -177,11 +177,15 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.PaloAltoNetworks.private\New-AzPaloAltoNetworksCertificateObjectLocalRulestack_CreateExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

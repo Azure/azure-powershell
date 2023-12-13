@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PaloAltoNetworks-help.xml
 Module Name: Az.PaloAltoNetworks
 online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/get-azpaloaltonetworkslocalrulestackchangelog
 schema: 2.0.0
@@ -15,13 +15,13 @@ Get changelog
 ### Get (Default)
 ```
 Get-AzPaloAltoNetworksLocalRulestackChangeLog -LocalRulestackName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzPaloAltoNetworksLocalRulestackChangeLog -InputObject <IPaloAltoNetworksIdentity>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -184,4 +184,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-
