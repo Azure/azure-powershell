@@ -1,57 +1,70 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version:
+online version: https://learn.microsoft.com/powershell/module/Az.storagesync/remove-Azstoragesyncserverendpointpermission
 schema: 2.0.0
 ---
 
 # Remove-AzStorageSyncServerEndpointPermission
 
 ## SYNOPSIS
-This command will delete the permission associated to a server endpoint.
+This command removes the rbac permission required for Server endpoint to work.
 
 ## SYNTAX
 
 ### StringParameterSet (Default)
 ```
 Remove-AzStorageSyncServerEndpointPermission [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
- [-SyncGroupName] <String> [-Name] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SyncGroupName] <String> [-Name] <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Remove-AzStorageSyncServerEndpointPermission [-ResourceId] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameterSet
 ```
-Remove-AzStorageSyncServerEndpointPermission [-InputObject] <PSServerEndpoint> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+Remove-AzStorageSyncServerEndpointPermission [-InputObject] <PSServerEndpoint> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This command will delete the permission associated to a server endpoint.
+This command removes the rbac permission required for Server endpoint to work.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzStorageSyncServerEndpointPermission -ResourceId "myResourceId"
+Remove-AzStorageSyncServerEndpointPermission -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName" 
 ```
 
-This command will delete the permission associated to a server endpoint.
+This example removes a role assignment for a server managed identity against the customer's azure file share over File share role definition.
 
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background.
+Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CloudTiering
+Cloud Tiering Parameter
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +79,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -78,10 +91,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-ServerEndpoint Object, normally passed through the parameter.
+SyncGroup Object, normally passed through the parameter.
 
 ```yaml
-Type: PSServerEndpoint
+Type: Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint
 Parameter Sets: ObjectParameterSet
 Aliases: ServerEndpoint
 
@@ -92,11 +105,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -LocalCacheMode
+Local cache mode Parameter
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: DownloadNewAndModifiedFiles, UpdateLocallyCachedFiles
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the ServerEndpoint.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases: ServerEndpointName
 
@@ -107,13 +136,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -OfflineDataTransfer
+Cloud Seeded Data Parameter.
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: proga
+Aliases:
 
 Required: False
 Position: Named
@@ -126,7 +155,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -138,10 +167,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-ServerEndpoint Resource Id.
+ServerEndpoint Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -156,7 +185,7 @@ Accept wildcard characters: False
 Name of the StorageSyncService.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases: ParentName
 
@@ -171,7 +200,7 @@ Accept wildcard characters: False
 Name of the SyncGroup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -182,11 +211,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TierFilesOlderThanDays
+Tier Files Older Than Days Parameter
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VolumeFreeSpacePercent
+Volume Free Space Percent Parameter
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -198,11 +257,10 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -214,7 +272,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

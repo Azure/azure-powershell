@@ -1,48 +1,47 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
-online version: https://learn.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserviceidentity
+online version: https://learn.microsoft.com/powershell/module/Az.storagesync/set-Azstoragesyncserviceidentity
 schema: 2.0.0
 ---
 
 # Set-AzStorageSyncServiceIdentity
 
 ## SYNOPSIS
-This command sets storage sync service identity in a resource group.
+This command helps to migrate storage sync servicein a resource group to start using managed identity
 
 ## SYNTAX
 
 ### StringParameterSet (Default)
 ```
-Set-AzStorageSyncServiceIdentity [-ResourceGroupName] <String> [-Name] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+Set-AzStorageSyncServiceIdentity [-ResourceGroupName] <String> [-Name] <String>
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Set-AzStorageSyncServiceIdentity [-InputObject] <PSStorageSyncService> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Set-AzStorageSyncServiceIdentity [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzStorageSyncServiceIdentity [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This command will set the storage sync service identity in a resource group, allowing integration with Managed Identities.
+A storage sync service is the top level resource for Azure File Sync. This command helps to migrate storage sync servicein a resource group to start using managed identity. We recommend to create as few storage sync services as absolutely necessary to differentiate distinct groups of servers in your organization. A storage sync service contains sync groups and also works as a target to register your servers to. A server can only be registered to a single storage sync service. If servers ever need to participate in syncing the same set of files, register them to the same storage sync service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Set-AzStorageSyncServiceIdentity -ResourceGroupName "myResourceGroup" -Name "myStorageSyncServiceName"
+Set-AzStorageSyncServiceIdentity -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
 ```
 
-This command will set the identity on the Storage Sync Service.
+This command will set a storage sync service.
 
 ## PARAMETERS
 
@@ -92,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the StorageSyncService.
+Name of the storage sync service.
 
 ```yaml
 Type: System.String
@@ -103,21 +102,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -151,6 +135,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Tag
+Storage Sync Service Tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: StringParameterSet
+Aliases: Tags
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -167,8 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -183,13 +181,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-
-### Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService
 
 ## OUTPUTS
 

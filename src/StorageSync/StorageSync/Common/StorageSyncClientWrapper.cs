@@ -392,6 +392,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <returns>Role Assignment</returns>
         public RoleAssignment EnsureRoleAssignmentWithIdentity(string storageAccountSubscriptionId, Guid principalId, string roleDefinitionId, string scope)
         {
+            if(principalId == Guid.Empty)
+            { 
+                throw new ArgumentException(nameof(principalId));
+            }
+
             string currentSubscriptionId = AuthorizationManagementClient.SubscriptionId;
             bool hasMismatchSubscription = currentSubscriptionId != storageAccountSubscriptionId;
 
@@ -403,7 +408,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 }
 
                 var resourceIdentifier = new ResourceIdentifier(scope);
-                string roleDefinitionScope = "/";
+                string roleDefinitionScope = $"/subscriptions/{storageAccountSubscriptionId}";
                 RoleDefinition roleDefinition = AuthorizationManagementClient.RoleDefinitions.Get(roleDefinitionScope, roleDefinitionId);
                 VerboseLogger.Invoke($"Creating role assignment for Identity {principalId} RoleDef:{roleDefinition.Name} ({roleDefinition.RoleName}) and Scope: {scope}"); 
 
@@ -428,8 +433,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 
                 var roleAssignmentScope = scope;
                 Guid roleAssignmentId = StorageSyncResourceManager.GetGuid();
+                RoleAssignment roleAssignment = roleAssignments.FirstOrDefault(r => r.PrincipalId == serverPrincipalId &&
+                    string.Equals(r.RoleDefinitionId, roleDefinition.Id, StringComparison.OrdinalIgnoreCase));
 
-                RoleAssignment roleAssignment = roleAssignments.FirstOrDefault();
                 if (roleAssignment == null)
                 {
                     VerboseLogger.Invoke(StorageSyncResources.CreateRoleAssignmentMessage);
