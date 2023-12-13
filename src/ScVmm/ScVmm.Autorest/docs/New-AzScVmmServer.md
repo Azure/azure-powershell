@@ -15,7 +15,7 @@ Onboards the SCVMM fabric as an Azure VmmServer resource.
 ### CreateExpanded (Default)
 ```
 New-AzScVmmServer -Name <String> -ResourceGroupName <String> -Fqdn <String> -Location <String>
- [-SubscriptionId <String>] [-CredentialsPassword <String>] [-CredentialsUsername <String>]
+ [-SubscriptionId <String>] [-CredentialsPassword <SecureString>] [-CredentialsUsername <String>]
  [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-Port <Int32>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ New-AzScVmmServer -Name <String> -ResourceGroupName <String> -Fqdn <String> -Loc
 ### CreateViaIdentityExpanded
 ```
 New-AzScVmmServer -InputObject <IScVmmIdentity> -Fqdn <String> -Location <String>
- [-CredentialsPassword <String>] [-CredentialsUsername <String>] [-ExtendedLocationName <String>]
+ [-CredentialsPassword <SecureString>] [-CredentialsUsername <String>] [-ExtendedLocationName <String>]
  [-ExtendedLocationType <String>] [-Port <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Password to use to connect to VMMServer.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 

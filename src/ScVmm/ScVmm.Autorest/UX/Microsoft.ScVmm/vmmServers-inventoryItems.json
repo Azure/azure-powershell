@@ -16,8 +16,8 @@
         "parameterSets": [
           {
             "parameters": [
+              "-Name <String>",
               "-ResourceGroupName <String>",
-              "-ResourceName <String>",
               "[-SubscriptionId <String[]>]",
               "-VmmServerName <String>"
             ]
@@ -29,12 +29,12 @@
           "description": "Shows an inventory item.",
           "parameters": [
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "name": "-Name",
+              "value": "[Path.inventoryItemResourceName]"
             },
             {
-              "name": "-ResourceName",
-              "value": "[Path.inventoryItemResourceName]"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
               "name": "-SubscriptionId",
@@ -59,8 +59,8 @@
         "parameterSets": [
           {
             "parameters": [
+              "-Name <String>",
               "-ResourceGroupName <String>",
-              "-ResourceName <String>",
               "[-SubscriptionId <String>]",
               "-VmmServerName <String>"
             ]
@@ -72,12 +72,12 @@
           "description": "Deletes an inventoryItem.",
           "parameters": [
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "name": "-Name",
+              "value": "[Path.inventoryItemResourceName]"
             },
             {
-              "name": "-ResourceName",
-              "value": "[Path.inventoryItemResourceName]"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
               "name": "-SubscriptionId",

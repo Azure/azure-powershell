@@ -14,7 +14,7 @@ Deregisters the ScVmm availability set from Azure.
 
 ### Delete (Default)
 ```
-Remove-AzScVmmAvailabilitySet -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+Remove-AzScVmmAvailabilitySet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Force <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -117,6 +117,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the AvailabilitySet.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: AvailabilitySetResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -155,21 +170,6 @@ The name is case insensitive.
 Type: System.String
 Parameter Sets: Delete
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-Name of the AvailabilitySet.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: AvailabilitySetResourceName
 
 Required: True
 Position: Named

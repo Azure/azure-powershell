@@ -14,7 +14,7 @@ Deletes an inventoryItem.
 
 ### Delete (Default)
 ```
-Remove-AzScVmmInventoryItem -ResourceGroupName <String> -ResourceName <String> -VmmServerName <String>
+Remove-AzScVmmInventoryItem -Name <String> -ResourceGroupName <String> -VmmServerName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -26,8 +26,8 @@ Remove-AzScVmmInventoryItem -InputObject <IScVmmIdentity> [-DefaultProfile <PSOb
 
 ### DeleteViaIdentityVmmServer
 ```
-Remove-AzScVmmInventoryItem -ResourceName <String> -VmmServerInputObject <IScVmmIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzScVmmInventoryItem -Name <String> -VmmServerInputObject <IScVmmIdentity> [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,6 +91,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the inventoryItem.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentityVmmServer
+Aliases: InventoryItemResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -114,21 +129,6 @@ The name is case insensitive.
 Type: System.String
 Parameter Sets: Delete
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-Name of the inventoryItem.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityVmmServer
-Aliases: InventoryItemResourceName
 
 Required: True
 Position: Named

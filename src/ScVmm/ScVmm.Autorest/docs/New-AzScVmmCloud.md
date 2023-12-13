@@ -14,10 +14,10 @@ Onboards the ScVmm fabric cloud as an Azure cloud resource.
 
 ### CreateExpanded (Default)
 ```
-New-AzScVmmCloud -ResourceGroupName <String> -ResourceName <String> -Location <String>
- [-SubscriptionId <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
- [-InventoryItemId <String>] [-Tag <Hashtable>] [-Uuid <String>] [-VmmServerId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzScVmmCloud -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-InventoryItemId <String>]
+ [-Tag <Hashtable>] [-Uuid <String>] [-VmmServerId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -30,16 +30,14 @@ New-AzScVmmCloud -InputObject <IScVmmIdentity> -Location <String> [-ExtendedLoca
 
 ### CreateViaJsonFilePath
 ```
-New-AzScVmmCloud -ResourceGroupName <String> -ResourceName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzScVmmCloud -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzScVmmCloud -ResourceGroupName <String> -ResourceName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzScVmmCloud -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -208,6 +206,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the Cloud.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases: CloudResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -231,21 +244,6 @@ The name is case insensitive.
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-Name of the Cloud.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases: CloudResourceName
 
 Required: True
 Position: Named

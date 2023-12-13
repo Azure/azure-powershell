@@ -14,7 +14,7 @@ Create InventoryItem.
 
 ### CreateExpanded (Default)
 ```
-New-AzScVmmInventoryItem -ResourceGroupName <String> -ResourceName <String> -VmmServerName <String>
+New-AzScVmmInventoryItem -Name <String> -ResourceGroupName <String> -VmmServerName <String>
  -InventoryType <String> [-SubscriptionId <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -27,20 +27,20 @@ New-AzScVmmInventoryItem -InputObject <IScVmmIdentity> -InventoryType <String> [
 
 ### CreateViaIdentityVmmServerExpanded
 ```
-New-AzScVmmInventoryItem -ResourceName <String> -VmmServerInputObject <IScVmmIdentity> -InventoryType <String>
+New-AzScVmmInventoryItem -Name <String> -VmmServerInputObject <IScVmmIdentity> -InventoryType <String>
  [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzScVmmInventoryItem -ResourceGroupName <String> -ResourceName <String> -VmmServerName <String>
+New-AzScVmmInventoryItem -Name <String> -ResourceGroupName <String> -VmmServerName <String>
  -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzScVmmInventoryItem -ResourceGroupName <String> -ResourceName <String> -VmmServerName <String>
+New-AzScVmmInventoryItem -Name <String> -ResourceGroupName <String> -VmmServerName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -168,14 +168,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+Name of the inventoryItem.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases:
+Parameter Sets: CreateExpanded, CreateViaIdentityVmmServerExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases: InventoryItemResourceName
 
 Required: True
 Position: Named
@@ -184,13 +183,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-Name of the inventoryItem.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityVmmServerExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases: InventoryItemResourceName
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases:
 
 Required: True
 Position: Named

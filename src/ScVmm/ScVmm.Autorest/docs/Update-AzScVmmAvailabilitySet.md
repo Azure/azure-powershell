@@ -14,7 +14,7 @@ Updates the AvailabilitySets resource.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzScVmmAvailabilitySet -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+Update-AzScVmmAvailabilitySet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -26,14 +26,14 @@ Update-AzScVmmAvailabilitySet -InputObject <IScVmmIdentity> [-Tag <Hashtable>] [
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzScVmmAvailabilitySet -ResourceGroupName <String> -ResourceName <String> -JsonFilePath <String>
+Update-AzScVmmAvailabilitySet -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzScVmmAvailabilitySet -ResourceGroupName <String> -ResourceName <String> -JsonString <String>
+Update-AzScVmmAvailabilitySet -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -144,6 +144,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the AvailabilitySet.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Aliases: AvailabilitySetResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -167,21 +182,6 @@ The name is case insensitive.
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-Name of the AvailabilitySet.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
-Aliases: AvailabilitySetResourceName
 
 Required: True
 Position: Named

@@ -19,7 +19,7 @@ Get-AzScVmmAvailabilitySet [-SubscriptionId <String[]>] [-DefaultProfile <PSObje
 
 ### Get
 ```
-Get-AzScVmmAvailabilitySet -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>]
+Get-AzScVmmAvailabilitySet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -95,14 +95,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+Name of the AvailabilitySet.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
+Parameter Sets: Get
+Aliases: AvailabilitySetResourceName
 
 Required: True
 Position: Named
@@ -111,13 +110,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-Name of the AvailabilitySet.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: AvailabilitySetResourceName
+Parameter Sets: Get, List
+Aliases:
 
 Required: True
 Position: Named

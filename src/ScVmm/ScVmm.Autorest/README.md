@@ -41,12 +41,6 @@ title: ScVmm
 subject-prefix: $(service-name)
 
 identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-auto-switch-view: false
-
-use-extension:
-  "@autorest/powershell": "4.x"
 
 directive:
   - from: swagger-document 
@@ -62,6 +56,19 @@ directive:
         ],
         "x-ms-secret": true
       }
+  - from: swagger-document 
+    where: $.definitions.VMMCredential.properties.password
+    transform: >-
+      return {
+        "description": "Password to use to connect to VMMServer.",
+        "type": "string",
+        "format": "password",
+        "x-ms-mutability": [
+          "create",
+          "update"
+        ],
+        "x-ms-secret": true
+      }
 
   - where:
       variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
@@ -69,6 +76,11 @@ directive:
   - where:
       verb: Set
     remove: true
+
+  - where:
+      parameter-name: ResourceName
+    set:
+      parameter-name: Name
 
   - model-cmdlet:
     - model-name: AvailabilitySetListItem

@@ -20,7 +20,7 @@ Get-AzScVmmInventoryItem -ResourceGroupName <String> -VmmServerName <String> [-S
 
 ### Get
 ```
-Get-AzScVmmInventoryItem -ResourceGroupName <String> -ResourceName <String> -VmmServerName <String>
+Get-AzScVmmInventoryItem -Name <String> -ResourceGroupName <String> -VmmServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,8 +31,8 @@ Get-AzScVmmInventoryItem -InputObject <IScVmmIdentity> [-DefaultProfile <PSObjec
 
 ### GetViaIdentityVmmServer
 ```
-Get-AzScVmmInventoryItem -ResourceName <String> -VmmServerInputObject <IScVmmIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzScVmmInventoryItem -Name <String> -VmmServerInputObject <IScVmmIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,14 +96,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+Name of the inventoryItem.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
+Parameter Sets: Get, GetViaIdentityVmmServer
+Aliases: InventoryItemResourceName
 
 Required: True
 Position: Named
@@ -112,13 +111,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-Name of the inventoryItem.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityVmmServer
-Aliases: InventoryItemResourceName
+Parameter Sets: Get, List
+Aliases:
 
 Required: True
 Position: Named

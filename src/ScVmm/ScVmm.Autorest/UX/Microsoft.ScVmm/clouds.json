@@ -16,8 +16,8 @@
         "parameterSets": [
           {
             "parameters": [
+              "-Name <String>",
               "-ResourceGroupName <String>",
-              "-ResourceName <String>",
               "[-SubscriptionId <String[]>]"
             ]
           }
@@ -28,12 +28,12 @@
           "description": "Implements Cloud GET method.",
           "parameters": [
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "name": "-Name",
+              "value": "[Path.cloudResourceName]"
             },
             {
-              "name": "-ResourceName",
-              "value": "[Path.cloudResourceName]"
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
             },
             {
               "name": "-SubscriptionId",

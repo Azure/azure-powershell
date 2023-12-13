@@ -14,7 +14,7 @@ Create InventoryItem.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzScVmmInventoryItem -ResourceGroupName <String> -ResourceName <String> -VmmServerName <String>
+Update-AzScVmmInventoryItem -Name <String> -ResourceGroupName <String> -VmmServerName <String>
  [-SubscriptionId <String>] [-InventoryType <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -27,9 +27,8 @@ Update-AzScVmmInventoryItem -InputObject <IScVmmIdentity> [-InventoryType <Strin
 
 ### UpdateViaIdentityVmmServerExpanded
 ```
-Update-AzScVmmInventoryItem -ResourceName <String> -VmmServerInputObject <IScVmmIdentity>
- [-InventoryType <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzScVmmInventoryItem -Name <String> -VmmServerInputObject <IScVmmIdentity> [-InventoryType <String>]
+ [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,14 +124,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+Name of the inventoryItem.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
+Parameter Sets: UpdateExpanded, UpdateViaIdentityVmmServerExpanded
+Aliases: InventoryItemResourceName
 
 Required: True
 Position: Named
@@ -141,13 +139,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-Name of the inventoryItem.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityVmmServerExpanded
-Aliases: InventoryItemResourceName
+Parameter Sets: UpdateExpanded
+Aliases:
 
 Required: True
 Position: Named

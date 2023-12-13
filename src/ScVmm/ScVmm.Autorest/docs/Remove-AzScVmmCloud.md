@@ -14,9 +14,8 @@ Deregisters the ScVmm fabric cloud from Azure.
 
 ### Delete (Default)
 ```
-Remove-AzScVmmCloud -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
- [-Force <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzScVmmCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -117,6 +116,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the Cloud.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: CloudResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -155,21 +169,6 @@ The name is case insensitive.
 Type: System.String
 Parameter Sets: Delete
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-Name of the Cloud.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: CloudResourceName
 
 Required: True
 Position: Named

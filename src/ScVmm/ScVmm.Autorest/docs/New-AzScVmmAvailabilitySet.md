@@ -14,7 +14,7 @@ Onboards the ScVmm availability set as an Azure resource.
 
 ### CreateExpanded (Default)
 ```
-New-AzScVmmAvailabilitySet -ResourceGroupName <String> -ResourceName <String> -Location <String>
+New-AzScVmmAvailabilitySet -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AvailabilitySetName <String>] [-ExtendedLocationName <String>]
  [-ExtendedLocationType <String>] [-Tag <Hashtable>] [-VmmServerId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -29,14 +29,14 @@ New-AzScVmmAvailabilitySet -InputObject <IScVmmIdentity> -Location <String> [-Av
 
 ### CreateViaJsonFilePath
 ```
-New-AzScVmmAvailabilitySet -ResourceGroupName <String> -ResourceName <String> -JsonFilePath <String>
+New-AzScVmmAvailabilitySet -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzScVmmAvailabilitySet -ResourceGroupName <String> -ResourceName <String> -JsonString <String>
+New-AzScVmmAvailabilitySet -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -207,6 +207,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the AvailabilitySet.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Aliases: AvailabilitySetResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -230,21 +245,6 @@ The name is case insensitive.
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceName
-Name of the AvailabilitySet.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases: AvailabilitySetResourceName
 
 Required: True
 Position: Named
