@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network
                 var groupModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkGroup>(this.InputObject);
 
                 // Execute the PUT NetworkManagerGroup call
-                this.NetworkGroupClient.CreateOrUpdate(groupModel, this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
+                this.NetworkGroupClient.CreateOrUpdate( this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name, groupModel);
                 var psNetworGroup = this.GetNetworkGroup(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
                 WriteObject(psNetworGroup);
             }

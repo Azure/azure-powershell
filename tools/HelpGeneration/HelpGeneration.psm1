@@ -92,7 +92,15 @@ function Test-AzMarkdownHelp
         $Exceptions = Import-Csv "$SuppressedExceptionsPath\ValidateHelpIssues.csv"
         [String[]]$errors = @()
         $MarkdownFiles = Get-ChildItem -Path $HelpFolder -Filter "*.md"
-        $ModuleName = ($MarkdownFiles | where { $_.Name -notlike "*-*" }).Name -replace ".md",""
+        $HelpFolderPath = $HelpFolder.FullName.Replace("\", "/")
+        if ($HelpFolderPath -match "/artifacts/")
+        {
+            $ModuleName = $HelpFolderPath.split('/artifacts/')[1].split('/')[1]
+        }
+        else
+        {
+            $ModuleName = "Az." + $HelpFolderPath.split('src/')[1].split('/')[0]
+        }
         foreach ($file in $MarkdownFiles)
         {
             # Ignore the module page

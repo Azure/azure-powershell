@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="streamType">Gets or sets the stream type.
-        /// Possible values include: 'Progress', 'Output', 'Warning', 'Error', 'Debug',
-        /// 'Verbose', 'Any'</param>
+        /// Possible values include: &#39;Progress&#39;, &#39;Output&#39;, &#39;Warning&#39;, &#39;Error&#39;, &#39;Debug&#39;,
+        /// &#39;Verbose&#39;, &#39;Any&#39;</param>
 
         /// <param name="streamText">Gets or sets the stream text.
         /// </param>

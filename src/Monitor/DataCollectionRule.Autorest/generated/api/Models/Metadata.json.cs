@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
             {
                 return;
             }
-            {_provisionedBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("provisionedBy"), out var __jsonProvisionedBy) ? (string)__jsonProvisionedBy : (string)ProvisionedBy;}
-            {_provisionedByResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("provisionedByResourceId"), out var __jsonProvisionedByResourceId) ? (string)__jsonProvisionedByResourceId : (string)ProvisionedByResourceId;}
+            {_provisionedBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("provisionedBy"), out var __jsonProvisionedBy) ? (string)__jsonProvisionedBy : (string)_provisionedBy;}
+            {_provisionedByResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("provisionedByResourceId"), out var __jsonProvisionedByResourceId) ? (string)__jsonProvisionedByResourceId : (string)_provisionedByResourceId;}
             AfterFromJson(json);
         }
 

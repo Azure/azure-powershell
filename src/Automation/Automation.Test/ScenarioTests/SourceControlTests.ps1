@@ -66,7 +66,7 @@ $testReposInfo = @{
 
 # Automation account information
 $resourceGroupName = "to-delete-01"
-$automationAccountName = "fbs-aa-02"
+$automationAccountName = "fbs-aa-01"
 
 #region Helper functions
 

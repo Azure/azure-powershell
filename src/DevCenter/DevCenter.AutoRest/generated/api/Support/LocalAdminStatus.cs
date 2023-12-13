@@ -6,6 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support
 {
 
+    /// <summary>
+    /// Local Administrator enable or disable status. Indicates whether owners of Dev Boxes are added as local administrators
+    /// on the Dev Box.
+    /// </summary>
     public partial struct LocalAdminStatus :
         System.IEquatable<LocalAdminStatus>
     {

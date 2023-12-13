@@ -100,6 +100,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             }
         }
 
+        public static Dictionary<string, TemplateParameterFileParameter> ParseTemplateParameterJson(string json)
+        {
+            using (var reader = new StringReader(json))
+            {
+                return TemplateUtility.ParseTemplateParameterJson(reader);
+            }
+        }
+
         public static Dictionary<string, TemplateParameterFileParameter> ParseTemplateParameterJson(TextReader reader)
         {
             // Read once to avoid having to rewind the stream
@@ -303,7 +311,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                     throw new InvalidOperationException($"Invalid $ref {current.Ref}.");
                 }
                 
-                current = ResolveTypeFromPath(current.Ref, segments.Skip(2), definitions);
+                var resolved = ResolveTypeFromPath(current.Ref, segments.Skip(2), definitions);
+                // it's possible to override some of these properties: the highest-level non-null value wins
+                resolved.Nullable = current.Nullable ?? resolved.Nullable;
+                resolved.MinLength = current.MinLength ?? resolved.MinLength;
+                resolved.MaxLength = current.MaxLength ?? resolved.MaxLength;
+                resolved.AllowedValues = current.AllowedValues ?? resolved.AllowedValues;
+
+                current = resolved;
             }
 
             return current;
@@ -313,28 +328,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
         {
             const string duplicatedParameterSuffix = "FromTemplate";
             var name = parameterKvp.Key;
-            var parameter = ResolveParameterType(parameterKvp.Value, definitions);
-            var defaultValue = parameterKvp.Value.DefaultValue;
+            var paramDefinition = parameterKvp.Value;
+            var paramType = ResolveParameterType(paramDefinition, definitions);
+            var isRequired = paramDefinition.DefaultValue is null && paramType.Nullable != true;
 
             RuntimeDefinedParameter runtimeParameter = new RuntimeDefinedParameter()
             {
                 // For duplicated template parameter names, add a suffix FromTemplate to distinguish them from the cmdlet parameter.
                 Name = staticParameters.Contains(name, StringComparer.OrdinalIgnoreCase) ? name + duplicatedParameterSuffix : name,
-                ParameterType = GetParameterType(parameter.Type),
-                Value = defaultValue
+                ParameterType = GetParameterType(paramType.Type),
+                Value = paramDefinition.DefaultValue
             };
             runtimeParameter.Attributes.Add(new ParameterAttribute()
             {
-                Mandatory = defaultValue == null ? true : false,
+                Mandatory = isRequired,
                 ValueFromPipelineByPropertyName = true,
                 // Rely on the HelpMessage property to detect the original name for the dynamic parameter.
                 HelpMessage = name
             });
 
-            if (!string.IsNullOrEmpty(parameter.MinLength) &&
-                !string.IsNullOrEmpty(parameter.MaxLength))
+            if (!string.IsNullOrEmpty(paramType.MinLength) &&
+                !string.IsNullOrEmpty(paramType.MaxLength))
             {
-                runtimeParameter.Attributes.Add(new ValidateLengthAttribute(int.Parse(parameter.MinLength), int.Parse(parameter.MaxLength)));
+                runtimeParameter.Attributes.Add(new ValidateLengthAttribute(int.Parse(paramType.MinLength), int.Parse(paramType.MaxLength)));
             }
 
             return runtimeParameter;

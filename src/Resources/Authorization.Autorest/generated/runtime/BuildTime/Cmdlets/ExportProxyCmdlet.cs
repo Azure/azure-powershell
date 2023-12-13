@@ -52,9 +52,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Pow
         [Parameter(Mandatory = true, ParameterSetName = "NoDocs")]
         public SwitchParameter ExcludeDocs { get; set; }
 
-        [Parameter(ParameterSetName = "Docs")]
-        public SwitchParameter AddComplexInterfaceInfo { get; set; }
-
         protected override void ProcessRecord()
         {
             try
@@ -166,7 +163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Runtime.Pow
                         var isValidProfile = !String.IsNullOrEmpty(profileName) && profileName != NoProfiles;
                         var docsFolder = isValidProfile ? Path.Combine(DocsFolder, profileName) : DocsFolder;
                         var examplesFolder = isValidProfile ? Path.Combine(ExamplesFolder, profileName) : ExamplesFolder;
-                        WriteMarkdowns(variantGroupsByProfile, moduleInfo, docsFolder, examplesFolder, AddComplexInterfaceInfo.IsPresent);
+                        WriteMarkdowns(variantGroupsByProfile, moduleInfo, docsFolder, examplesFolder);
                     }
                 }
             }

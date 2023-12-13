@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network
                 var securityRuleCollectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AdminRuleCollection>(this.InputObject);
 
                 // Execute the PUT NetworkManagerSecurityAdminRuleCollection call
-                this.NetworkManagerSecurityAdminRuleCollectionClient.CreateOrUpdate(securityRuleCollectionModel, this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.SecurityAdminConfigurationName, this.InputObject.Name);
+                this.NetworkManagerSecurityAdminRuleCollectionClient.CreateOrUpdate(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.SecurityAdminConfigurationName, this.InputObject.Name, securityRuleCollectionModel);
                 var psSecurityRuleCollection = this.GetNetworkManagerSecurityAdminRuleCollection(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.SecurityAdminConfigurationName, this.InputObject.Name);
                 WriteObject(psSecurityRuleCollection);
             }

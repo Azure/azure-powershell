@@ -13,6 +13,7 @@ Install Azure PowerShell modules.
 ## SYNTAX
 
 ### Default (Default)
+
 ```
 Install-AzModule [[-Name] <String[]>] [-RequiredAzVersion <String>] [-Repository <String>] [-AllowPrerelease]
  [-UseExactAccountVersion] [-Scope <String>] [-RemovePrevious] [-RemoveAzureRm] [-Force] [-WhatIf] [-Confirm]
@@ -20,37 +21,41 @@ Install-AzModule [[-Name] <String[]>] [-RequiredAzVersion <String>] [-Repository
 ```
 
 ### ByPath
+
 ```
 Install-AzModule -Path <String> [-Scope <String>] [-RemovePrevious] [-RemoveAzureRm] [-Force] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 Install Azure PowerShell modules.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
+
+```powershell
 Install-AzModule -Repository PSGallery
 ```
 
 ### EXAMPLE 2
-```
+
+```powershell
 Install-AzModule Storage,Compute,Network -Repository PSGallery -AllowPrerelease
 ```
 
 ### EXAMPLE 3
-```
+
+```powershell
 Install-AzModule -Path https://my.repo.com/Az.Accounts.2.5.0.nupkg
 ```
 
 ## PARAMETERS
 
 ### -Name
-Az modules to install.
-Can be the names without Az.
-prefix
+
+Az modules to install. Can be the names without Az. prefix.
 
 ```yaml
 Type: String[]
@@ -65,6 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -RequiredAzVersion
+
 Required Az Version.
 
 ```yaml
@@ -80,9 +86,9 @@ Accept wildcard characters: False
 ```
 
 ### -Repository
-The Registered Repository to install module from.
-If only one repository is registered in PowerShell, Install-AzModule will use it.
-If more than one, please specify the Repository.
+
+The Registered Repository to install module from. If only one repository is registered in
+PowerShell, `Install-AzModule` will use it. If more than one, please specify the Repository.
 
 ```yaml
 Type: String
@@ -97,6 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowPrerelease
+
 Allow preview modules to be installed.
 
 ```yaml
@@ -112,7 +119,9 @@ Accept wildcard characters: False
 ```
 
 ### -UseExactAccountVersion
-Use the exact Az.Accounts version that meet the mininum requirement from the Az modules to install.
+
+Use the exact **Az.Accounts** version that meet the mininum requirement from the Az modules to
+install.
 
 ```yaml
 Type: SwitchParameter
@@ -127,6 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
+
 The url or local path of a nuget package to install the module from.
 
 ```yaml
@@ -142,8 +152,9 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Scope to install modules. Default value is `CurrentUser` for all the Powershell platforms.
-Accepted values: CurrentUser, AllUser.
+
+Scope to install modules. Default value is `CurrentUser` for all the PowerShell platforms. Accepted
+values: `CurrentUser`, `AllUser`.
 
 ```yaml
 Type: String
@@ -158,6 +169,7 @@ Accept wildcard characters: False
 ```
 
 ### -RemovePrevious
+
 Remove the module specified installed previously.
 
 ```yaml
@@ -173,6 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### -RemoveAzureRm
+
 Remove all Azure and AzureRm modules.
 
 ```yaml
@@ -188,6 +201,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
+
 Installs modules and overrides the confirmation messages of each step.
 
 ```yaml
@@ -203,8 +217,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -219,6 +233,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
+
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -234,13 +249,18 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
+-WarningAction, and -WarningVariable. For more information, see
+[about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
 
 ### System.Management.Automation.PSObject[]
+
 ## NOTES
 
 ## RELATED LINKS

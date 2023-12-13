@@ -14,20 +14,31 @@
 
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.DirectoryObjects;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Groups;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users.Models;
+using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Models.ADObject;
+using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
+using Newtonsoft.Json;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using PSModels = Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     internal static class ModelExtensions
     {
+        public const string UnknownType = "Unknown";
+
         public static string ConstructAccessPoliciesTableAsTable(IEnumerable<PSModels.PSKeyVaultAccessPolicy> policies)
         {
             if (policies == null || !policies.Any()) return string.Empty;
@@ -119,21 +130,22 @@ namespace Microsoft.Azure.Commands.KeyVault
                 var obj = graphClient.DirectoryObjects.GetDirectoryObject(objectId);
                 if (obj != null)
                 {
-                    if (obj.Odatatype.Equals("#microsoft.graph.user", StringComparison.InvariantCultureIgnoreCase))
+                    if (obj.IsUser())
                     {
-                        var user = graphClient.Users.GetUser(objectId);
+
+                        var user = JsonConvert.DeserializeObject<MicrosoftGraphUser>(JsonConvert.SerializeObject(obj)).ToPSADUser();
                         displayName = user.DisplayName;
                         upnOrSpn = user.UserPrincipalName;
                         objectType = "User";
                     }
-                    else if (obj.Odatatype.Equals("#microsoft.graph.serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
+                    else if (obj.IsServicePrincipal())
                     {
-                        var servicePrincipal = graphClient.ServicePrincipals.GetServicePrincipal(objectId);
+                        var servicePrincipal = JsonConvert.DeserializeObject<MicrosoftGraphServicePrincipal>(JsonConvert.SerializeObject(obj)).ToPSADServicePrincipal();
                         displayName = servicePrincipal.DisplayName;
                         upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
                         objectType = "Service Principal";
                     }
-                    else if (obj.Odatatype.Equals("#microsoft.graph.group", StringComparison.InvariantCultureIgnoreCase))
+                    else if (obj.IsGroup())
                     {
                         var group = graphClient.Groups.GetGroup(objectId);
                         displayName = group.DisplayName;
@@ -158,6 +170,92 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (id == null)
                 return string.Empty;
             return id.ToString();
+        }
+
+        private static List<PSADObject> GetObjectsByObjectIds(List<string> objectIds, IMicrosoftGraphClient graphClient)
+        {
+            // todo: do we want to use 1000 as batch count in msgraph API?
+            List<PSADObject> result = new List<PSADObject>();
+
+            if (graphClient == null || objectIds == null || !objectIds.Any())
+                return result;
+            
+            IList<Common.MSGraph.Version1_0.DirectoryObjects.Models.MicrosoftGraphDirectoryObject> adObjects;
+            int objectIdBatchCount;
+            const int batchCount = 1000;
+            for (int i = 0; i < objectIds.Count; i += batchCount)
+            {
+                if ((i + batchCount) > objectIds.Count)
+                {
+                    objectIdBatchCount = objectIds.Count - i;
+                }
+                else
+                {
+                    objectIdBatchCount = batchCount;
+                }
+                List<string> objectIdBatch = objectIds.GetRange(i, objectIdBatchCount);
+                try
+                {
+                    adObjects = graphClient.DirectoryObjects.GetByIds(
+                        new Common.MSGraph.Version1_0.DirectoryObjects.Models.Body()
+                        {
+                            Ids = objectIdBatch
+                        })?.Value;
+                    result.AddRange(adObjects?.Select(o => o.ToPSADObject()));
+                }
+                catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException)
+                {
+                    // Swallow OdataErroException
+                }
+            }
+            return result;
+        }
+
+        internal static IEnumerable<PSKeyVaultAccessPolicy> ToPSKeyVaultAccessPolicies(this IEnumerable<AccessPolicyEntry> accessPolicies, IMicrosoftGraphClient graphClient)
+        {
+            if (graphClient == null)
+            {
+                return accessPolicies.Select(s => new PSKeyVaultAccessPolicy(s, graphClient));
+            }
+            
+            List<PSKeyVaultAccessPolicy> psAccessPolicies = new List<PSKeyVaultAccessPolicy>();
+
+            // The size of accessPolicies is 0
+            if (accessPolicies == null || !accessPolicies.Any())
+                {
+                    return psAccessPolicies;
+            }
+
+            //  size of accessPolicies is 1
+            if (accessPolicies.Count() == 1)
+            {
+                // Get assignment
+                psAccessPolicies.Add(new PSKeyVaultAccessPolicy(accessPolicies.FirstOrDefault(), graphClient));
+                return psAccessPolicies;
+            }
+
+            // The size of accessPolicies > 1
+            // List ad objects
+            List<string> objectIds = accessPolicies.Select(r => r.ObjectId).Distinct().ToList();
+            List<PSADObject> adObjects = null;
+            try
+            {
+                adObjects = GetObjectsByObjectIds(objectIds, graphClient);
+            }
+            catch (Common.MSGraph.Version1_0.DirectoryObjects.Models.OdataErrorException)
+            {
+                // Swallow OdataErrorException
+                adObjects = new List<PSADObject>();
+            }
+
+
+            // Union role definition and ad objects
+            foreach (AccessPolicyEntry accessPolicy in accessPolicies)
+            {
+                PSADObject adObject = adObjects.SingleOrDefault(o => o.Id == accessPolicy.ObjectId) ?? new PSADObject() { Id = accessPolicy.ObjectId, Type = UnknownType };
+                psAccessPolicies.Add(new PSKeyVaultAccessPolicy(accessPolicy, adObject.DisplayName));
+            }
+            return psAccessPolicies;
         }
     }
 }

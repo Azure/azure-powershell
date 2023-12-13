@@ -53,7 +53,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="registrationStatus">Container registration status
         /// </param>
-        public BackupStatusResponse(string protectionStatus = default(string), string vaultId = default(string), string fabricName = default(string), string containerName = default(string), string protectedItemName = default(string), string errorCode = default(string), string errorMessage = default(string), string policyName = default(string), string registrationStatus = default(string))
+
+        /// <param name="protectedItemsCount">Number of protected items
+        /// </param>
+
+        /// <param name="acquireStorageAccountLock">Specifies whether the storage account lock has been acquired or not
+        /// Possible values include: 'Acquire', 'NotAcquire'</param>
+        public BackupStatusResponse(string protectionStatus = default(string), string vaultId = default(string), string fabricName = default(string), string containerName = default(string), string protectedItemName = default(string), string errorCode = default(string), string errorMessage = default(string), string policyName = default(string), string registrationStatus = default(string), int? protectedItemsCount = default(int?), string acquireStorageAccountLock = default(string))
 
         {
             this.ProtectionStatus = protectionStatus;
@@ -65,6 +71,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             this.ErrorMessage = errorMessage;
             this.PolicyName = policyName;
             this.RegistrationStatus = registrationStatus;
+            this.ProtectedItemsCount = protectedItemsCount;
+            this.AcquireStorageAccountLock = acquireStorageAccountLock;
             CustomInit();
         }
 
@@ -129,5 +137,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "registrationStatus")]
         public string RegistrationStatus {get; set; }
+
+        /// <summary>
+        /// Gets or sets number of protected items
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "protectedItemsCount")]
+        public int? ProtectedItemsCount {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether the storage account lock has been acquired
+        /// or not Possible values include: &#39;Acquire&#39;, &#39;NotAcquire&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "acquireStorageAccountLock")]
+        public string AcquireStorageAccountLock {get; set; }
     }
 }

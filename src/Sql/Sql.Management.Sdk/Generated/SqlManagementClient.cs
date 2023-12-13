@@ -160,6 +160,10 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         public virtual IJobVersionsOperations JobVersions { get; private set; }
         /// <summary>
+        /// Gets the IJobPrivateEndpointsOperations
+        /// </summary>
+        public virtual IJobPrivateEndpointsOperations JobPrivateEndpoints { get; private set; }
+        /// <summary>
         /// Gets the ICapabilitiesOperations
         /// </summary>
         public virtual ICapabilitiesOperations Capabilities { get; private set; }
@@ -684,6 +688,7 @@ namespace Microsoft.Azure.Management.Sql
             this.JobTargetExecutions = new JobTargetExecutionsOperations(this);
             this.JobTargetGroups = new JobTargetGroupsOperations(this);
             this.JobVersions = new JobVersionsOperations(this);
+            this.JobPrivateEndpoints = new JobPrivateEndpointsOperations(this);
             this.Capabilities = new CapabilitiesOperations(this);
             this.LongTermRetentionPolicies = new LongTermRetentionPoliciesOperations(this);
             this.ManagedBackupShortTermRetentionPolicies = new ManagedBackupShortTermRetentionPoliciesOperations(this);

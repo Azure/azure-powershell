@@ -16,15 +16,44 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Linq;
+
     using Microsoft.Azure.Commands.Network.Models.Bastion;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
     using Newtonsoft.Json;
-    using System.Linq;
 
     public class PSBastion : PSTopLevelResource
     {
         private const string BastionSubnetName = "AzureBastionSubnet";
         private const string BastionIpConfigurationName = "IpConf";
+        public const int MinimumScaleUnits = 2;
+        public const int MaximumScaleUnits = 50;
+
+        public PSBastion()
+        {
+            Sku = new PSBastionSku();
+            ScaleUnit = MinimumScaleUnits;
+            EnableKerberos = false;
+            DisableCopyPaste = false;
+            EnableTunneling = false;
+            EnableIpConnect = false;
+            EnableShareableLink = false;
+        }
+
+        public PSBastion(string name, string rgName, string location, string sku = null)
+        {
+            Name = name;
+            ResourceGroupName = rgName;
+            Location = location;
+            Sku = new PSBastionSku(sku);
+            ScaleUnit = MinimumScaleUnits;
+            EnableKerberos = false;
+            DisableCopyPaste = false;
+            EnableTunneling = false;
+            EnableIpConnect = false;
+            EnableShareableLink = false;
+        }
 
         public List<PSBastionIPConfiguration> IpConfigurations { get; set; }
 
@@ -33,10 +62,32 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProvisioningState { get; set; }
 
         [Ps1Xml(Label = "Sku Name", Target = ViewControl.List, ScriptBlock = "$_.Sku.Name")]
+        [DefaultValue(PSBastionSku.Standard)]
         public PSBastionSku Sku { get; set; }
 
         [Ps1Xml(Label = "Scale Units", Target = ViewControl.List)]
+        [DefaultValue(2)]
         public int? ScaleUnit { get; set; }
+
+        [Ps1Xml(Label = "Kerberos", Target = ViewControl.List)]
+        [DefaultValue(false)]
+        public bool? EnableKerberos { get; set; }
+
+        [Ps1Xml(Label = "Copy and Paste", Target = ViewControl.List)]
+        [DefaultValue(false)]
+        public bool? DisableCopyPaste { get; set; }
+
+        [Ps1Xml(Label = "Native Client", Target = ViewControl.List)]
+        [DefaultValue(false)]
+        public bool? EnableTunneling { get; set; }
+
+        [Ps1Xml(Label = "IP Connect", Target = ViewControl.List)]
+        [DefaultValue(false)]
+        public bool? EnableIpConnect { get; set; }
+
+        [Ps1Xml(Label = "Shareable Link", Target = ViewControl.List)]
+        [DefaultValue(false)]
+        public bool? EnableShareableLink { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationsText
@@ -74,21 +125,21 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {BastionSubnetName}");
             }
 
-            this.IpConfigurations = new List<PSBastionIPConfiguration>();
+            IpConfigurations = new List<PSBastionIPConfiguration>
+            {
+                new PSBastionIPConfiguration
+                {
+                    Name = BastionIpConfigurationName,
+                    PublicIpAddress = new PSResourceId { Id = publicIpAddress.Id },
+                }
+            };
 
-            this.IpConfigurations.Add(
-                    new PSBastionIPConfiguration
-                    {
-                        Name = BastionIpConfigurationName,
-                        PublicIpAddress = new PSResourceId { Id = publicIpAddress.Id },
-                    });
-
-            this.IpConfigurations[0].Subnet = new PSResourceId { Id = BastionSubnet.Id };
+            IpConfigurations[0].Subnet = new PSResourceId { Id = BastionSubnet.Id };
         }
 
         public void Deallocate()
         {
-            this.IpConfigurations = new List<PSBastionIPConfiguration>();
+            IpConfigurations = new List<PSBastionIPConfiguration>();
         }
     }
 }

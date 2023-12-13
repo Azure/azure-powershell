@@ -64,9 +64,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
             {
                 return;
             }
-            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)Name;}
-            {_consumerGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("consumerGroup"), out var __jsonConsumerGroup) ? (string)__jsonConsumerGroup : (string)ConsumerGroup;}
-            {_stream = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("stream"), out var __jsonStream) ? (string)__jsonStream : (string)Stream;}
+            {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
+            {_consumerGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("consumerGroup"), out var __jsonConsumerGroup) ? (string)__jsonConsumerGroup : (string)_consumerGroup;}
+            {_stream = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json.JsonString>("stream"), out var __jsonStream) ? (string)__jsonStream : (string)_stream;}
             AfterFromJson(json);
         }
 

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public bool PropagateStaticRoutes { get; set; }
         public bool EnableInternetSecurity { get; set; }
 
-        public PSRoutingConfigurationNfv RoutingConfiguration { get; set; }
+        public PSRoutingConfiguration RoutingConfiguration { get; set; }
 
         [JsonIgnore]
         public string RoutingConfigurationText

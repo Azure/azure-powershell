@@ -32,11 +32,14 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Commands.Compute.Common;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [GenericBreakingChangeWithVersion("Starting in November 2023 the \"New-AzDisk\" cmdlet will deploy with the Trusted Launch configuration by default. This includes defaulting the \"HyperVGeneration\" parameter to \"v2\". To know more about Trusted Launch, please visit https://aka.ms/TLaD",
-        "11.0.0", "7.0.0")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Disk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDisk))]
     public partial class NewAzureRmDisk : ComputeAutomationBaseCmdlet
@@ -71,27 +74,111 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                     }
 
-                    Disk result;
-                    if (auxAuthHeader != null)
+                // Default in TrustedLaunch when able.
+                // Will not trigger if the Gallery image is provided. 
+                // can't find where Lun is, seems to only be defined in GalleryImagereference. 
+                if (disk.CreationData?.CreateOption == "FromImage" 
+                    && disk.SecurityProfile?.SecurityType == null
+                    && disk.CreationData?.GalleryImageReference?.Id == null 
+                    && disk.CreationData?.ImageReference != null)
+                {
+                    
+                    ImageDiskReference imageRef = disk.CreationData?.ImageReference;
+                    // Must an ImageReference have a publisher and offer and sku and version? I think so.
+                    var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
+                        DefaultProfile.DefaultContext,
+                        AzureEnvironment.Endpoint.ResourceManager);
+                    string loc = "";
+                    if (disk.Location == null)
                     {
-                        var res = this.DisksClient.CreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            diskName,
-                            disk,
-                            auxAuthHeader).GetAwaiter().GetResult();
-
-                        result = res.Body;
+                        loc = resourceClient.ResourceGroups.GetAsync(this.ResourceGroupName).Result.Location;
                     }
                     else
                     {
-                        result = DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
+                        loc = disk.Location;
                     }
-                    var psObject = new PSDisk();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
-                    WriteObject(psObject);
+                
+                    // now call the get image api
+                    // assume publisher and offer ans sku are all here?
+                    string imageRefString = imageRef.Id.ToString();
+
+                    var parts = imageRefString.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    string imagePublisher = parts[Array.IndexOf(parts, "Publishers") + 1];
+                    string imageOffer = parts[Array.IndexOf(parts, "Offers") + 1];
+                    string imageSku = parts[Array.IndexOf(parts, "Skus") + 1];
+                    string imageVersion = parts[Array.IndexOf(parts, "Versions") + 1];
+                    
+                    var imgClient = AzureSession.Instance.ClientFactory.CreateArmClient<ComputeManagementClient>(
+                        DefaultProfile.DefaultContext,
+                        AzureEnvironment.Endpoint.ResourceManager);
+
+                    var response = imgClient.VirtualMachineImages.GetWithHttpMessagesAsync(
+                        loc.Canonicalize(),
+                        imagePublisher,
+                        imageOffer,
+                        imageSku,
+                        version: imageVersion).GetAwaiter().GetResult();
+
+                    if (response.Body.HyperVGeneration != null
+                        && response.Body.HyperVGeneration.ToString().ToUpper() == "V2")
+                    {
+                        // then assume this is TL supported as per design request.
+                        // If SecurityType already exists, so user set it, don't change it.
+                        if (disk.SecurityProfile == null)
+                        {
+                            disk.SecurityProfile = new DiskSecurityProfile();
+                        }
+                        if (disk.SecurityProfile.SecurityType == null)
+                        {
+                            disk.SecurityProfile.SecurityType = ConstantValues.TrustedLaunchSecurityType;
+                        }
+                        disk.HyperVGeneration = "V2";
+                    }
+                    else
+                    {
+                            if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                            {
+                                WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+                            }
+                    }
                 }
-            });
-        }
+                // Reset Standard value to null.
+                else if (disk.SecurityProfile?.SecurityType != null
+                    && disk.SecurityProfile?.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
+                {
+                        if (disk.SecurityProfile.SecureVMDiskEncryptionSetId == null)
+                        {
+                            disk.SecurityProfile = null;
+                        }
+                        else
+                        {
+                            disk.SecurityProfile.SecurityType = null;
+                        }
+                    
+                }
+                    
+                Disk result;
+                if (auxAuthHeader != null)
+                {
+                    var res = this.DisksClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        diskName,
+                        disk,
+                        auxAuthHeader).GetAwaiter().GetResult();
+                        
+                    result = res.Body;
+                }
+                else
+                {
+                    result = DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
+                }
+                var psObject = new PSDisk();
+                ComputeAutomationAutoMapperProfile.Mapper.Map<Disk, PSDisk>(result, psObject);
+                WriteObject(psObject);
+            }
+        });
+    }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",

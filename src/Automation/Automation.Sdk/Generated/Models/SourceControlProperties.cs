@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="sourceType">The source type. Must be one of VsoGit, VsoTfvc, GitHub.
-        /// Possible values include: 'VsoGit', 'VsoTfvc', 'GitHub'</param>
+        /// Possible values include: &#39;VsoGit&#39;, &#39;VsoTfvc&#39;, &#39;GitHub&#39;</param>
 
         /// <param name="description">The description.
         /// </param>

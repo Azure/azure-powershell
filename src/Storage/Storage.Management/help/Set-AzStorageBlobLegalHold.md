@@ -55,9 +55,9 @@ The cmdlet only works when the blob container has already enabled immutable Stor
 
 
 ```
-PS C:\> $blob = Set-AzStorageBlobLegalHold -Container $containerName -Blob $blobname  -EnableLegalHold
+$blob = Set-AzStorageBlobLegalHold -Container $containerName -Blob $blobname  -EnableLegalHold
 
-PS C:\> $blob
+$blob
 
    AccountName: mystorageaccount, ContainerName: mycontainer
 
@@ -65,7 +65,7 @@ Name                 BlobType  Length          ContentType                    La
 ----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
 testblob             BlockBlob 10485760        application/octet-stream       2021-07-19 08:56:00Z Hot                                     False      2021-07-19T08:56:01.8120788Z *
 
-PS C:\> $blob.BlobProperties.HasLegalHold
+$blob.BlobProperties.HasLegalHold
 True
 ```
 
@@ -77,9 +77,9 @@ The command only works when the blob container has already enabled immutable Sto
 
 
 ```
-PS C:\> $blob = Get-AzStorageBlob -Container $containerName -Blob $blobname | Set-AzStorageBlobLegalHold -DisableLegalHold
+$blob = Get-AzStorageBlob -Container $containerName -Blob $blobname | Set-AzStorageBlobLegalHold -DisableLegalHold
 
-PS C:\> $blob
+$blob
 
    AccountName: mystorageaccount, ContainerName: mycontainer
 
@@ -87,7 +87,7 @@ Name                 BlobType  Length          ContentType                    La
 ----                 --------  ------          -----------                    ------------         ---------- ------------                 ---------  ---------                     
 testblob             BlockBlob 10485760        application/octet-stream       2021-07-19 08:56:00Z Hot                                     False      2021-07-19T08:56:01.8120788Z *
 
-PS C:\> $blob.BlobProperties.HasLegalHold
+$blob.BlobProperties.HasLegalHold
 False
 ```
 

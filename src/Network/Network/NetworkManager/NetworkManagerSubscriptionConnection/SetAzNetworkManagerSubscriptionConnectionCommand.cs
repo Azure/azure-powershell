@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network
                 var networkManagerSubscriptionConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerConnection>(this.InputObject);
 
                 // Execute the PUT NetworkManagerSubscriptionConnection call
-                this.NetworkManagerSubscriptionConnectionClient.CreateOrUpdate(networkManagerSubscriptionConnectionModel, this.InputObject.Name);
+                this.NetworkManagerSubscriptionConnectionClient.CreateOrUpdate(this.InputObject.Name, networkManagerSubscriptionConnectionModel);
                 var psNetworkManagerConnection = this.GetNetworkManagerSubscriptionConnection(this.InputObject.Name);
                 WriteObject(psNetworkManagerConnection);
             }

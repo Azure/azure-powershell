@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="tokenType">The token type. Must be either PersonalAccessToken or Oauth.
-        /// Possible values include: 'PersonalAccessToken', 'Oauth'</param>
+        /// Possible values include: &#39;PersonalAccessToken&#39;, &#39;Oauth&#39;</param>
         public SourceControlSecurityTokenProperties(string accessToken = default(string), string refreshToken = default(string), string tokenType = default(string))
 
         {

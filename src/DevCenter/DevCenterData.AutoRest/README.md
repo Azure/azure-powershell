@@ -31,17 +31,21 @@ For information on how to develop for `Az.DevCenterdata`, see [how-to.md](how-to
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: 4f6418dca8c15697489bbe6f855558bb79ca5bf5
+commit: bce3a8d1141c8c6df26d17c94b0f5437f214141f
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/devbox.json
-  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/devcenter.json
-  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/stable/2023-04-01/environments.json
+  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/preview/2023-10-01-preview/devbox.json
+  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/preview/2023-10-01-preview/devcenter.json
+  - $(repo)/specification/devcenter/data-plane/Microsoft.DevCenter/preview/2023-10-01-preview/environments.json
 title: DevCenterdata
 subject-prefix: DevCenter
 endpoint-resource-id-key-name: https://devcenter.azure.com
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   - from: swagger-document
     where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}"].delete.responses
@@ -72,6 +76,13 @@ directive:
         "schema": {"$ref": "devcenter.json#/definitions/OperationStatus"}
       }
   - from: swagger-document
+    where: $.paths["/projects/{projectName}/users/{userId}/devboxes/{devBoxName}:repair"].post.responses
+    transform: >
+      $['200'] = {
+        "description": "OK. The request has succeeded.",
+        "schema": {"$ref": "devcenter.json#/definitions/OperationStatus"}
+      }
+  - from: swagger-document
     where: $.paths["/projects/{projectName}/users/{userId}/environments/{environmentName}"].put.responses
     transform: >
       $['200'] = {
@@ -85,6 +96,32 @@ directive:
         "description": "OK. The request has succeeded.",
         "schema": {"$ref": "devcenter.json#/definitions/OperationStatus"}
       }
+  - from: swagger-document
+    where-operation: Environments_PatchEnvironment
+    transform: >
+      $['parameters'] = [
+          {
+            "$ref": "devcenter.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "devcenter.json#/parameters/ProjectNameParameter"
+          },
+          {
+            "$ref": "devcenter.json#/parameters/UserIdParameter"
+          },
+          {
+            "$ref": "#/parameters/EnvironmentNameParameter"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Updatable environment properties.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EnvironmentPatchProperties"
+            }
+          }
+      ]
   - from: swagger-document
     where: $.paths["/devboxes"].get.operationId
     transform: return "DevBoxes_ListAllDevBoxes"
@@ -128,6 +165,11 @@ directive:
   - where:
       parameter-name: Filter
     hide: true
+  - where:
+      parameter-name: ActionName
+    set:
+      parameter-name: Name
+      alias: ActionName
   - where:
       verb: New
       variant: ^Create$|^CreateViaIdentity$

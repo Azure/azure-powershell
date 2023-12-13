@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Required if createOption is CopyFromSanSnapshot. this is the ARM id of the source elastic san volume snapshot.")]
+            HelpMessage = "Required if createOption is CopyFromSanSnapshot. This is the ARM id of the source elastic san volume snapshot.")]
         public string ElasticSanResourceId { get; set; }
 
         protected override void ProcessRecord()

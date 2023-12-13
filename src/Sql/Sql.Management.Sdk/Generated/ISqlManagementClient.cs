@@ -193,6 +193,11 @@ namespace Microsoft.Azure.Management.Sql
         IJobVersionsOperations JobVersions { get; }
 
         /// <summary>
+        /// Gets the IJobPrivateEndpointsOperations
+        /// </summary>
+        IJobPrivateEndpointsOperations JobPrivateEndpoints { get; }
+
+        /// <summary>
         /// Gets the ICapabilitiesOperations
         /// </summary>
         ICapabilitiesOperations Capabilities { get; }

@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="sku">SKU name.
         /// </param>
 
+        /// <param name="zoneRedundant">Whether or not zone redundancy is supported for the family.
+        /// </param>
+
         /// <param name="supportedLicenseTypes">List of supported license types.
         /// </param>
 
@@ -41,11 +44,12 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="reason">The reason for the capability not being available.
         /// </param>
-        public ManagedInstanceFamilyCapability(string name = default(string), string sku = default(string), System.Collections.Generic.IList<LicenseTypeCapability> supportedLicenseTypes = default(System.Collections.Generic.IList<LicenseTypeCapability>), System.Collections.Generic.IList<ManagedInstanceVcoresCapability> supportedVcoresValues = default(System.Collections.Generic.IList<ManagedInstanceVcoresCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
+        public ManagedInstanceFamilyCapability(string name = default(string), string sku = default(string), bool? zoneRedundant = default(bool?), System.Collections.Generic.IList<LicenseTypeCapability> supportedLicenseTypes = default(System.Collections.Generic.IList<LicenseTypeCapability>), System.Collections.Generic.IList<ManagedInstanceVcoresCapability> supportedVcoresValues = default(System.Collections.Generic.IList<ManagedInstanceVcoresCapability>), CapabilityStatus? status = default(CapabilityStatus?), string reason = default(string))
 
         {
             this.Name = name;
             this.Sku = sku;
+            this.ZoneRedundant = zoneRedundant;
             this.SupportedLicenseTypes = supportedLicenseTypes;
             this.SupportedVcoresValues = supportedVcoresValues;
             this.Status = status;
@@ -70,6 +74,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
         public string Sku {get; private set; }
+
+        /// <summary>
+        /// Gets whether or not zone redundancy is supported for the family.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "zoneRedundant")]
+        public bool? ZoneRedundant {get; private set; }
 
         /// <summary>
         /// Gets list of supported license types.

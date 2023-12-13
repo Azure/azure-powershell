@@ -1,24 +1,24 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/DoesntExistWebhookRG/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/webhooks?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL0RvZXNudEV4aXN0V2ViaG9va1JHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvZmJzLWFhLTAxL3dlYmhvb2tzP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
+      "RequestUri": "/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/DoesntExistWebhookRG/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/webhooks?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIzNWM1MTItZTFlYS00YzM4LWJkMjYtNDFkMGU5ZDViNTRmL3Jlc291cmNlR3JvdXBzL0RvZXNudEV4aXN0V2ViaG9va1JHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvZmJzLWFhLTAxL3dlYmhvb2tzP2FwaS12ZXJzaW9uPTIwMTUtMTAtMzE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2743ee8e-b638-47be-a5e4-d44e2f5ac4e9"
+          "3098631d-7b88-408d-a939-d45b51a0133a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.41602",
+          "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.9.1"
         ],
         "x-ms-activity-id": [
-          "df133bc6-cdce-4967-98b3-169ebddec18b"
+          "278f27ec-7002-4cee-9154-46c13272d34a"
         ]
       },
       "RequestBody": "",
@@ -33,13 +33,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "bb4a60cb-832e-43d3-934e-9a28ccee898e"
+          "49bea262-e809-471e-b6e2-43b9b5111a6c"
         ],
         "x-ms-correlation-request-id": [
-          "bb4a60cb-832e-43d3-934e-9a28ccee898e"
+          "49bea262-e809-471e-b6e2-43b9b5111a6c"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20221017T070646Z:bb4a60cb-832e-43d3-934e-9a28ccee898e"
+          "WESTINDIA:20231124T110522Z:49bea262-e809-471e-b6e2-43b9b5111a6c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -48,7 +48,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 17 Oct 2022 07:06:45 GMT"
+          "Fri, 24 Nov 2023 11:05:21 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -64,24 +64,24 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/webhooks/DoesntExistWebhook?api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS93ZWJob29rcy9Eb2VzbnRFeGlzdFdlYmhvb2s/YXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
+      "RequestUri": "/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/webhooks/DoesntExistWebhook?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIzNWM1MTItZTFlYS00YzM4LWJkMjYtNDFkMGU5ZDViNTRmL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS93ZWJob29rcy9Eb2VzbnRFeGlzdFdlYmhvb2s/YXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "097b43e7-487b-4d7a-95c5-889ca88c1449"
+          "80880012-e96f-4840-aec4-fb4994ca77ac"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.41602",
+          "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.9.1"
         ],
         "x-ms-activity-id": [
-          "19fac0b7-fbff-4f20-8734-9ffcedf2f425"
+          "d74b70da-e582-4c71-ab93-c527a2bd6f40"
         ]
       },
       "RequestBody": "",
@@ -92,17 +92,20 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
         "x-ms-request-id": [
-          "e8706cb2-174e-46fd-9b66-486602695edd"
+          "d74b70da-e582-4c71-ab93-c527a2bd6f40"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "e8706cb2-174e-46fd-9b66-486602695edd"
+          "94436ed9-41c1-4783-a41c-0500329cda81"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20221017T070647Z:e8706cb2-174e-46fd-9b66-486602695edd"
+          "WESTINDIA:20231124T110523Z:94436ed9-41c1-4783-a41c-0500329cda81"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,40 +114,40 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 17 Oct 2022 07:06:46 GMT"
+          "Fri, 24 Nov 2023 11:05:23 GMT"
+        ],
+        "Content-Length": [
+          "18"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "text/plain; charset=utf-8"
         ],
         "Expires": [
           "-1"
-        ],
-        "Content-Length": [
-          "104"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'to-delete-01' could not be found.\"\r\n  }\r\n}",
+      "ResponseBody": "Webhook not found.",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/webhooks?$filter=properties/runbook/name%20eq%20'DoesntExistWebhookRunbook'&api-version=2015-10-31",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS93ZWJob29rcz8kZmlsdGVyPXByb3BlcnRpZXMvcnVuYm9vay9uYW1lJTIwZXElMjAnRG9lc250RXhpc3RXZWJob29rUnVuYm9vaycmYXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
+      "RequestUri": "/subscriptions/0b35c512-e1ea-4c38-bd26-41d0e9d5b54f/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/webhooks?$filter=properties/runbook/name%20eq%20'DoesntExistWebhookRunbook'&api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIzNWM1MTItZTFlYS00YzM4LWJkMjYtNDFkMGU5ZDViNTRmL3Jlc291cmNlR3JvdXBzL3RvLWRlbGV0ZS0wMS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dG9tYXRpb24vYXV0b21hdGlvbkFjY291bnRzL2Zicy1hYS0wMS93ZWJob29rcz8kZmlsdGVyPXByb3BlcnRpZXMvcnVuYm9vay9uYW1lJTIwZXElMjAnRG9lc250RXhpc3RXZWJob29rUnVuYm9vaycmYXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "38060377-63e9-4619-867a-b4e6e44d3047"
+          "86f915f2-39f0-46a3-a669-bd98d4cb5349"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.41602",
+          "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.9.1"
         ],
         "x-ms-activity-id": [
-          "a785b3e2-efd7-4949-adad-086caa5a0b64"
+          "f1344eb7-7f46-466a-8db4-50b4679b6b96"
         ]
       },
       "RequestBody": "",
@@ -155,17 +158,20 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
         "x-ms-request-id": [
-          "af2107dc-c73e-49ce-bc7f-4205b3d41b5a"
+          "f1344eb7-7f46-466a-8db4-50b4679b6b96"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "af2107dc-c73e-49ce-bc7f-4205b3d41b5a"
+          "0c9b5882-48be-40df-834f-beab661cdb69"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20221017T070647Z:af2107dc-c73e-49ce-bc7f-4205b3d41b5a"
+          "WESTINDIA:20231124T110524Z:0c9b5882-48be-40df-834f-beab661cdb69"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -174,24 +180,24 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 17 Oct 2022 07:06:47 GMT"
+          "Fri, 24 Nov 2023 11:05:24 GMT"
+        ],
+        "Content-Length": [
+          "12"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
-        ],
-        "Content-Length": [
-          "104"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'to-delete-01' could not be found.\"\r\n  }\r\n}",
-      "StatusCode": 404
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "cd45f23b-b832-4fa4-a434-1bf7e6f14a5a"
+    "SubscriptionId": "0b35c512-e1ea-4c38-bd26-41d0e9d5b54f"
   }
 }

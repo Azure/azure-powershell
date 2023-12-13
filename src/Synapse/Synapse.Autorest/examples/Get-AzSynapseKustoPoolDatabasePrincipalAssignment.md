@@ -1,6 +1,6 @@
 ### Example 1:  List all PrincipalAssignments in a kusto database by name
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolDatabasePrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase
+Get-AzSynapseKustoPoolDatabasePrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase
 
 Name                                                  Type
 ----                                                  ----
@@ -12,7 +12,7 @@ The above command returns all PrincipalAssignments in the kusto database "mykust
 
 ### Example 2: Get a specific PrincipalAssignment in a kusto database by name
 ```powershell
-PS C:\>  Get-AzSynapseKustoPoolDatabasePrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase -PrincipalAssignmentName kustoprincipal1
+ Get-AzSynapseKustoPoolDatabasePrincipalAssignment -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase -PrincipalAssignmentName kustoprincipal1
 
 Name                                                  Type
 ----                                                  ----

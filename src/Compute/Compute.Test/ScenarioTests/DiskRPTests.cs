@@ -170,5 +170,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SecurityProfileStandard");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestNewDiskSecurityTypeDefaulting()
+        {
+            TestRunner.RunTestScript("Test-NewDiskSecurityTypeDefaulting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestSnapshotConfigElasticSanResourceId()
+        {
+            TestRunner.RunTestScript("Test-SnapshotConfigElasticSanResourceId");
+        }
+        
     }
 }
