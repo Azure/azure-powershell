@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
             var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object);
 
             FluentActions.Invoking(() => bicepUtility.PublishFile("foo.bicep", "br:example.azurecr.io/hello/world:v1", null, withSource: true))
-                .Should().Throw<AzPSApplicationException>().WithMessage("Please use bicep version 0.23.1 or higher.");
+                .Should().Throw<AzPSApplicationException>().WithMessage("Please use bicep 0.23.1 or higher.");
         }
     }
 }
