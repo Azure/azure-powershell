@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         {
             this.DisksPerNode = disksPerNode;
             this.StorageAccountType = storageAccountType;
-            this.DiskSizeGb = diskSizeGb;
+            this.DiskSizeGB = diskSizeGb;
             CustomInit();
         }
 
@@ -63,6 +63,6 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// Gets readOnly. The DiskSize in GB. Do not set this value.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "diskSizeGB")]
-        public int? DiskSizeGb {get; private set; }
+        public int? DiskSizeGB {get; private set; }
     }
 }
