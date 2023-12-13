@@ -69,7 +69,7 @@ function Test-NetworkSiblingSet
         Assert-NotNull $networkSiblingSet
 
         # update NetworkSiblingSet 
-        $networkSiblingSet  = Update-AzNetAppFilesNetworkSiblingSet -Location $resourceLocation -NetworkSiblingSetId $retrievedVolume.NetworkSiblingSetId -SubnetId $subnetId -NetworkSiblingSetStateId $networkSiblingSet.NetworkSiblingSetStateId -NetworkFeatures $standarNetworkFeatures
+        $networkSiblingSet  = Update-AzNetAppFilesNetworkSiblingSet -Location $resourceLocation -NetworkSiblingSetId $retrievedVolume.NetworkSiblingSetId -SubnetId $subnetId -NetworkSiblingSetStateId $networkSiblingSet.NetworkSiblingSetStateId -NetworkFeature $standarNetworkFeatures
         Assert-NotNull $networkSiblingSet
         $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
         Assert-AreEqual $standarNetworkFeatures $retrievedVolume.NetworkFeatures
