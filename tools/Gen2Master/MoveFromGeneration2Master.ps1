@@ -146,6 +146,12 @@ Function Move-Generation2Master {
                 dotnet sln $slnFilePath add $_.FullName
             }
         }
+        else
+        {
+            Get-ChildItem -Filter *.csproj -File -Path $DestPath -Recurse | ForEach-Object {
+                dotnet sln $slnFilePath add $_.FullName
+            }
+        }
         
         $Psd1Metadata.RequiredAssemblies = Unique-PathList $Psd1Metadata.RequiredAssemblies
         $Psd1Metadata.FormatsToProcess = Unique-PathList $Psd1Metadata.FormatsToProcess
