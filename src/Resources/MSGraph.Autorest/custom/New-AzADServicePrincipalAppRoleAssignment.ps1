@@ -176,17 +176,9 @@ process {
         }    
     }
 
-    if(!$PSBoundParameters['PrincipalId']){
-        $PSBoundParameters['PrincipalId'] = $PSBoundParameters['ServicePrincipalId']
-    }
-    else{
-        if ($PSBoundParameters['PrincipalId'] -ne $PSBoundParameters['ServicePrincipalId']){
-            Write-Error "PrincipalId should match ServiceprincipalId."
-        }
-    } 
+    $PSBoundParameters['PrincipalId'] = $PSBoundParameters['ServicePrincipalId']
 
-    $appRoleAssignment = Az.MSGraph.internal\New-AzADServicePrincipalAppRoleAssignment @PSBoundParameters
-    $PSCmdlet.WriteObject($appRoleAssignment)
+    . Az.MSGraph.internal\New-AzADServicePrincipalAppRoleAssignment @PSBoundParameters
     }
 
 }

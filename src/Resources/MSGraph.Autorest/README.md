@@ -212,6 +212,17 @@ directive:
     hide: true
 
   - where:
+      model-name: MicrosoftGraphAppRoleAssignment
+    set:
+      format-table:
+        properties:
+          - Id
+          - AppRoleId
+          - PrincipalDisplayName
+          - PrincipalId
+          - CreatedDateTime
+
+  - where:
       subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|GroupGraphRefMember$|grouprefmember$
     hide: true
   - where:
