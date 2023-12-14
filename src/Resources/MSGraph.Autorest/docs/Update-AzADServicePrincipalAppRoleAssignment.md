@@ -14,13 +14,14 @@ Update the navigation property appRoleAssignments in servicePrincipals
 
 ### UpdateExpanded (Default)
 ```
-Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId <String> [-AdditionalProperties <Hashtable>]
- [-AppRoleId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId <String> -ServicePrincipalId <String>
+ [-AdditionalProperties <Hashtable>] [-AppRoleId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId <String>
+Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId <String> -ServicePrincipalId <String>
  -Body <IMicrosoftGraphAppRoleAssignment> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -128,6 +129,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServicePrincipalId
+key: id of servicePrincipal
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

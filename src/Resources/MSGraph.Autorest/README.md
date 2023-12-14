@@ -202,13 +202,13 @@ directive:
 
   - where:
       subject: serviceprincipalapproleassignment$
-      parameter-name: DeletedDateTime
+      parameter-name: ^DeletedDateTime$
     hide: true
 
   - where:
       verb: Update
       subject: serviceprincipalapproleassignment$
-      parameter-name: PrincipalId|DisplayName|ResourceDisplayName|ResourceId
+      parameter-name: ^PrincipalId$|^DisplayName$|^ResourceDisplayName$|^ResourceId$
     hide: true
 
   - where:
