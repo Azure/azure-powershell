@@ -84,7 +84,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -148,7 +149,7 @@ placement policy properties
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicyProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicyProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -228,21 +229,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicy
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PROPERTY <IPlacementPolicyProperties>`: placement policy properties
-  - `Type <PlacementPolicyType>`: placement policy type
-  - `[DisplayName <String>]`: Display name of the placement policy
-  - `[State <PlacementPolicyState?>]`: Whether the placement policy is enabled or disabled
 
 ## RELATED LINKS
 

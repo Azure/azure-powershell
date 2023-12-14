@@ -1,0 +1,42 @@
+{
+  "Get-AzVMwareClusterZone+[NoContext]+List+$POST+https://management.azure.com/subscriptions/60d6b3c7-5ae0-4491-8ea3-3caf8d7afc4c/resourceGroups/TestSddc-rg/providers/Microsoft.AVS/privateClouds/SDDC2/clusters/Cluster-1/listZones?api-version=2023-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/60d6b3c7-5ae0-4491-8ea3-3caf8d7afc4c/resourceGroups/TestSddc-rg/providers/Microsoft.AVS/privateClouds/SDDC2/clusters/Cluster-1/listZones?api-version=2023-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "d00f413b-503c-4f89-9058-f0733784eb65" ],
+        "CommandName": [ "Get-AzVMwareClusterZone" ],
+        "FullCommandName": [ "Get-AzVMwareClusterZone_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "639c55fe-27e1-489a-b083-51094efd2113" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "559a8791-713d-45dc-9f9c-5c10700f8ced" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20231212T174356Z:559a8791-713d-45dc-9f9c-5c10700f8ced" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 12 Dec 2023 17:43:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "166" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"zones\":[{\"hosts\":[\"esx09-r09.p01.canadacentral.avs.azure.com\",\"esx02-r06.p01.canadacentral.avs.azure.com\",\"esx20-r08.p01.canadacentral.avs.azure.com\"],\"zone\":\"3\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

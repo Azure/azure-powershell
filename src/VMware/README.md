@@ -47,11 +47,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 2e665b044670074d91e8a9e6d04f23fbe3c8a06e
+commit: cc32510768a98cf7f0b5428f9c6422c83c9da50c
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file: 
-  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/vmware.json
+  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2023-03-01/vmware.json
 
 module-version: 0.4.0
 title: VMware

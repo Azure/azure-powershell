@@ -14,11 +14,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddon",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddon, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Property": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonProperties"
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonProperties"
             }
           },
           "ParameterSets": [
@@ -804,9 +804,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IExpressRouteAuthorization",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IExpressRouteAuthorization, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IExpressRouteAuthorization",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IExpressRouteAuthorization, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ExpressRouteAuthorizationProvisioningState]",
               "ExpressRouteAuthorizationId": "System.String",
@@ -1597,9 +1597,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudLink",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudLink, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ICloudLink",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ICloudLink, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.CloudLinkStatus]",
               "LinkedCloud": "System.String"
@@ -2388,9 +2388,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICluster, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ICluster",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ICluster, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState]",
               "ClusterId": "System.Nullable`1[System.Int32]",
@@ -3182,9 +3182,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastore",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastore, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IDatastore",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IDatastore, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.DatastoreProvisioningState]",
               "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.DatastoreStatus]",
@@ -4017,9 +4017,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IGlobalReachConnection",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IGlobalReachConnection, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IGlobalReachConnection",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IGlobalReachConnection, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.GlobalReachConnectionProvisioningState]",
               "CircuitConnectionStatus": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.GlobalReachConnectionStatus]",
@@ -4812,11 +4812,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicy, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicy",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicy, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Property": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicyProperties"
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicyProperties"
             }
           },
           "ParameterSets": [
@@ -5641,11 +5641,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPrivateCloud",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPrivateCloud, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "IdentitySource": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[]",
+              "IdentitySource": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource[]",
               "AvailabilityStrategy": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AvailabilityStrategy]",
               "ManagementClusterProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState]",
               "KeyVaultPropertyKeyState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.EncryptionKeyStatus]",
@@ -6563,9 +6563,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAdminCredentials",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAdminCredentials, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAdminCredentials",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAdminCredentials, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NsxtPassword": "System.Security.SecureString",
               "VcenterPassword": "System.Security.SecureString",
@@ -6854,9 +6854,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVirtualMachine",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVirtualMachine, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVirtualMachine",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVirtualMachine, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RestrictMovement": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.VirtualMachineRestrictMovementState]",
               "DisplayName": "System.String",
@@ -7686,11 +7686,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddon",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddon, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Property": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonProperties"
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonProperties"
             }
           },
           "ParameterSets": [
@@ -7729,9 +7729,9 @@
         {
           "Name": "Property",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonProperties",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AddonType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AddonType",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AddonProvisioningState]"
@@ -7880,9 +7880,9 @@
               "ParameterMetadata": {
                 "Name": "Property",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonProperties",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonProperties",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AddonType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AddonType",
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AddonProvisioningState]"
@@ -8052,9 +8052,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonSrmProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonSrmProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.AddonSrmProperties",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.AddonSrmProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AddonType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AddonType",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AddonProvisioningState]",
@@ -8079,7 +8079,7 @@
                     "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonSrmProperties"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonSrmProperties"
               },
               {
                 "Name": "ToJson",
@@ -8103,7 +8103,7 @@
                     "Type": "System.Collections.IDictionary"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonSrmProperties"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonSrmProperties"
               },
               {
                 "Name": "DeserializeFromPSObject",
@@ -8113,7 +8113,7 @@
                     "Type": "System.Management.Automation.PSObject"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonSrmProperties"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonSrmProperties"
               },
               {
                 "Name": "FromJsonString",
@@ -8123,7 +8123,7 @@
                     "Type": "System.String"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonSrmProperties"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonSrmProperties"
               },
               {
                 "Name": "ToJsonString",
@@ -8209,9 +8209,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonVrProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonVrProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.AddonVrProperties",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.AddonVrProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AddonType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AddonType",
               "VrsCount": "System.Int32",
@@ -8236,7 +8236,7 @@
                     "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonVrProperties"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonVrProperties"
               },
               {
                 "Name": "ToJson",
@@ -8260,7 +8260,7 @@
                     "Type": "System.Collections.IDictionary"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonVrProperties"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonVrProperties"
               },
               {
                 "Name": "DeserializeFromPSObject",
@@ -8270,7 +8270,7 @@
                     "Type": "System.Management.Automation.PSObject"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonVrProperties"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonVrProperties"
               },
               {
                 "Name": "FromJsonString",
@@ -8280,7 +8280,7 @@
                     "Type": "System.String"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonVrProperties"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonVrProperties"
               },
               {
                 "Name": "ToJsonString",
@@ -8366,9 +8366,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IExpressRouteAuthorization",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IExpressRouteAuthorization, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IExpressRouteAuthorization",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IExpressRouteAuthorization, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ExpressRouteAuthorizationProvisioningState]",
               "ExpressRouteAuthorizationId": "System.String",
@@ -8733,9 +8733,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudLink",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICloudLink, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ICloudLink",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ICloudLink, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.CloudLinkStatus]",
               "LinkedCloud": "System.String"
@@ -9122,9 +9122,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICluster, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ICluster",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ICluster, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState]",
               "ClusterId": "System.Nullable`1[System.Int32]",
@@ -9564,9 +9564,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastore",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastore, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IDatastore",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IDatastore, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.DatastoreProvisioningState]",
               "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.DatastoreStatus]",
@@ -10054,9 +10054,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IGlobalReachConnection",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IGlobalReachConnection, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IGlobalReachConnection",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IGlobalReachConnection, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.GlobalReachConnectionProvisioningState]",
               "CircuitConnectionStatus": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.GlobalReachConnectionStatus]",
@@ -10495,11 +10495,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicy, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicy",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicy, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Property": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicyProperties"
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicyProperties"
             }
           },
           "ParameterSets": [
@@ -10559,9 +10559,9 @@
         {
           "Name": "Property",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicyProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicyProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicyProperties",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicyProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyType",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyProvisioningState]",
@@ -10745,9 +10745,9 @@
               "ParameterMetadata": {
                 "Name": "Property",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicyProperties",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicyProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicyProperties",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicyProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyType",
                     "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyProvisioningState]",
@@ -10919,11 +10919,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPrivateCloud",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPrivateCloud, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "IdentitySource": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[]",
+              "IdentitySource": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource[]",
               "AvailabilityStrategy": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AvailabilityStrategy]",
               "ManagementClusterProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState]",
               "KeyVaultPropertyKeyState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.EncryptionKeyStatus]",
@@ -13024,9 +13024,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.PsCredentialExecutionParameter",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.PsCredentialExecutionParameter, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.PsCredentialExecutionParameter",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.PsCredentialExecutionParameter, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ScriptExecutionParameterType",
               "Name": "System.String",
@@ -13052,7 +13052,7 @@
                     "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPsCredentialExecutionParameter"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPsCredentialExecutionParameter"
               },
               {
                 "Name": "ToJson",
@@ -13076,7 +13076,7 @@
                     "Type": "System.Collections.IDictionary"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPsCredentialExecutionParameter"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPsCredentialExecutionParameter"
               },
               {
                 "Name": "DeserializeFromPSObject",
@@ -13086,7 +13086,7 @@
                     "Type": "System.Management.Automation.PSObject"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPsCredentialExecutionParameter"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPsCredentialExecutionParameter"
               },
               {
                 "Name": "FromJsonString",
@@ -13096,7 +13096,7 @@
                     "Type": "System.String"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPsCredentialExecutionParameter"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPsCredentialExecutionParameter"
               },
               {
                 "Name": "ToJsonString",
@@ -13230,9 +13230,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptSecureStringExecutionParameter",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptSecureStringExecutionParameter, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ScriptSecureStringExecutionParameter",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ScriptSecureStringExecutionParameter, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ScriptExecutionParameterType",
               "SecureValue": "System.String",
@@ -13257,7 +13257,7 @@
                     "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptSecureStringExecutionParameter"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IScriptSecureStringExecutionParameter"
               },
               {
                 "Name": "ToJson",
@@ -13281,7 +13281,7 @@
                     "Type": "System.Collections.IDictionary"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptSecureStringExecutionParameter"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IScriptSecureStringExecutionParameter"
               },
               {
                 "Name": "DeserializeFromPSObject",
@@ -13291,7 +13291,7 @@
                     "Type": "System.Management.Automation.PSObject"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptSecureStringExecutionParameter"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IScriptSecureStringExecutionParameter"
               },
               {
                 "Name": "FromJsonString",
@@ -13301,7 +13301,7 @@
                     "Type": "System.String"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptSecureStringExecutionParameter"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IScriptSecureStringExecutionParameter"
               },
               {
                 "Name": "ToJsonString",
@@ -13411,9 +13411,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptStringExecutionParameter",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptStringExecutionParameter, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ScriptStringExecutionParameter",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ScriptStringExecutionParameter, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ScriptExecutionParameterType",
               "Name": "System.String",
@@ -13438,7 +13438,7 @@
                     "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptStringExecutionParameter"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IScriptStringExecutionParameter"
               },
               {
                 "Name": "ToJson",
@@ -13462,7 +13462,7 @@
                     "Type": "System.Collections.IDictionary"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptStringExecutionParameter"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IScriptStringExecutionParameter"
               },
               {
                 "Name": "DeserializeFromPSObject",
@@ -13472,7 +13472,7 @@
                     "Type": "System.Management.Automation.PSObject"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptStringExecutionParameter"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IScriptStringExecutionParameter"
               },
               {
                 "Name": "FromJsonString",
@@ -13482,7 +13482,7 @@
                     "Type": "System.String"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptStringExecutionParameter"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IScriptStringExecutionParameter"
               },
               {
                 "Name": "ToJsonString",
@@ -13592,9 +13592,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VMHostPlacementPolicyProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VMHostPlacementPolicyProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.VMHostPlacementPolicyProperties",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.VMHostPlacementPolicyProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AffinityType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AffinityType",
               "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyType",
@@ -13623,7 +13623,7 @@
                     "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVMHostPlacementPolicyProperties"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVMHostPlacementPolicyProperties"
               },
               {
                 "Name": "ToJson",
@@ -13647,7 +13647,7 @@
                     "Type": "System.Collections.IDictionary"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVMHostPlacementPolicyProperties"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVMHostPlacementPolicyProperties"
               },
               {
                 "Name": "DeserializeFromPSObject",
@@ -13657,7 +13657,7 @@
                     "Type": "System.Management.Automation.PSObject"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVMHostPlacementPolicyProperties"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVMHostPlacementPolicyProperties"
               },
               {
                 "Name": "FromJsonString",
@@ -13667,7 +13667,7 @@
                     "Type": "System.String"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVMHostPlacementPolicyProperties"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVMHostPlacementPolicyProperties"
               },
               {
                 "Name": "ToJsonString",
@@ -13877,9 +13877,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VMPlacementPolicyProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VMPlacementPolicyProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.VMPlacementPolicyProperties",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.VMPlacementPolicyProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AffinityType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AffinityType",
               "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyType",
@@ -13907,7 +13907,7 @@
                     "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVMPlacementPolicyProperties"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVMPlacementPolicyProperties"
               },
               {
                 "Name": "ToJson",
@@ -13931,7 +13931,7 @@
                     "Type": "System.Collections.IDictionary"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVMPlacementPolicyProperties"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVMPlacementPolicyProperties"
               },
               {
                 "Name": "DeserializeFromPSObject",
@@ -13941,7 +13941,7 @@
                     "Type": "System.Management.Automation.PSObject"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVMPlacementPolicyProperties"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVMPlacementPolicyProperties"
               },
               {
                 "Name": "FromJsonString",
@@ -13951,7 +13951,7 @@
                     "Type": "System.String"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVMPlacementPolicyProperties"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVMPlacementPolicyProperties"
               },
               {
                 "Name": "ToJsonString",
@@ -20439,11 +20439,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IQuota",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IQuota, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IQuota",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IQuota, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "HostsRemaining": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IQuotaHostsRemaining",
+              "HostsRemaining": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IQuotaHostsRemaining",
               "Enabled": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.QuotaEnabled]"
             }
           },
@@ -20702,9 +20702,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ITrial",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ITrial, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ITrial",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ITrial, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.TrialStatus]",
               "AvailableHost": "System.Nullable`1[System.Int32]"
@@ -20965,9 +20965,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ICluster, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ICluster",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ICluster, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState]",
               "ClusterId": "System.Nullable`1[System.Int32]",
@@ -21815,11 +21815,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicy, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicy",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicy, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Property": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicyProperties"
+              "Property": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicyProperties"
             }
           },
           "ParameterSets": [
@@ -22743,11 +22743,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPrivateCloud",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPrivateCloud, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "IdentitySource": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[]",
+              "IdentitySource": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource[]",
               "AvailabilityStrategy": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AvailabilityStrategy]",
               "ManagementClusterProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState]",
               "KeyVaultPropertyKeyState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.EncryptionKeyStatus]",
@@ -22900,10 +22900,10 @@
         {
           "Name": "IdentitySource",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[], Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource[], Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -23184,10 +23184,10 @@
               "ParameterMetadata": {
                 "Name": "IdentitySource",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[], Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource[], Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -23569,10 +23569,10 @@
               "ParameterMetadata": {
                 "Name": "IdentitySource",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[], Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource[], Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -23912,10 +23912,10 @@
               "ParameterMetadata": {
                 "Name": "IdentitySource",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[], Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource[], Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -24234,10 +24234,10 @@
     "System.Char": {
       "Name": "System.Char"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonProperties": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonProperties": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AddonType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AddonType",
         "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AddonProvisioningState]"
@@ -25175,10 +25175,10 @@
         }
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicyProperties": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicyProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicyProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicyProperties": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicyProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicyProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Type": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyType",
         "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyProvisioningState]",
@@ -25397,16 +25397,16 @@
         }
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[], Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource"
+    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource[], Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IIdentitySource, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Ssl": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SslEnum]",
         "Alias": "System.String",
@@ -26087,10 +26087,10 @@
       "Name": "System.Threading.Tasks.Task",
       "AssemblyQualifiedName": "System.Threading.Tasks.Task, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonSrmProperties": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonSrmProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonSrmProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonSrmProperties": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonSrmProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonSrmProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "LicenseKey": "System.String"
       }
@@ -26127,10 +26127,10 @@
         }
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonVrProperties": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonVrProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonVrProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonVrProperties": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonVrProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IAddonVrProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "VrsCount": "System.Int32"
       }
@@ -26200,27 +26200,27 @@
         }
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPsCredentialExecutionParameter": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPsCredentialExecutionParameter",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPsCredentialExecutionParameter, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPsCredentialExecutionParameter": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPsCredentialExecutionParameter",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPsCredentialExecutionParameter, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Password": "System.String",
         "Username": "System.String"
       }
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptSecureStringExecutionParameter": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptSecureStringExecutionParameter",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptSecureStringExecutionParameter, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IScriptSecureStringExecutionParameter": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IScriptSecureStringExecutionParameter",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IScriptSecureStringExecutionParameter, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "SecureValue": "System.String"
       }
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptStringExecutionParameter": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptStringExecutionParameter",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptStringExecutionParameter, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IScriptStringExecutionParameter": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IScriptStringExecutionParameter",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IScriptStringExecutionParameter, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Value": "System.String"
       }
@@ -26290,28 +26290,28 @@
         }
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVMHostPlacementPolicyProperties": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVMHostPlacementPolicyProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVMHostPlacementPolicyProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVMHostPlacementPolicyProperties": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVMHostPlacementPolicyProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVMHostPlacementPolicyProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AffinityType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AffinityType",
         "HostMember": "System.String[]",
         "VMMember": "System.String[]"
       }
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVMPlacementPolicyProperties": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVMPlacementPolicyProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IVMPlacementPolicyProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
+    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVMPlacementPolicyProperties": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVMPlacementPolicyProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVMPlacementPolicyProperties, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AffinityType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AffinityType",
         "VMMember": "System.String[]"
       }
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IQuotaHostsRemaining": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IQuotaHostsRemaining",
+    "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IQuotaHostsRemaining": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IQuotaHostsRemaining",
       "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IQuotaHostsRemaining, Az.VMware.private, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null"
     },
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.QuotaEnabled]": {
