@@ -22,7 +22,7 @@ SystemDataLastModifiedByType : Application
 Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
-This command updates a Smb file share enpdoint's description by manual inputs.
+This command updates an Azure Storage SMB file share enpdoint's description by manual inputs.
 
 ### Example 2: Update a Smb file share endpoint by pipeline
 ```powershell
@@ -48,5 +48,5 @@ SystemDataLastModifiedByType : Application
 Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
-This command updates a Smb file share endpoint's description by pipeline
+This command updates an Azure Storage SMB file share endpoint's description by pipeline.
 
