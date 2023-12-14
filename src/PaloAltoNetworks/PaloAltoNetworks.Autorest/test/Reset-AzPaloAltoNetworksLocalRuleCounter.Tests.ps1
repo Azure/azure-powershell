@@ -19,6 +19,10 @@ Describe 'Reset-AzPaloAltoNetworksLocalRuleCounter' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'ResetViaIdentityLocalRulestack' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'ResetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

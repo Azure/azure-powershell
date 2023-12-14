@@ -12,23 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using System;
-using System.Collections.Generic;
-using NewResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
-using Microsoft.Azure.Management.Synapse;
-using Microsoft.Azure.Synapse;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Rest;
-using NewStorageManagementClient = Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient;
-using Microsoft.Azure.Management.Storage;
-using SDKMonitor = Microsoft.Azure.Management.Monitor;
-using CommonMonitor = Microsoft.Azure.Management.Monitor.Version2018_09_01;
-using Microsoft.Azure.Management.OperationalInsights;
-using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Commands.TestFx;
+using Microsoft.Azure.Synapse;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System.Collections.Generic;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
@@ -89,22 +78,12 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 
         protected static SynapseClient GetSynapseClient(MockContext context)
         {
-            string environmentConnectionString = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
             string accessToken = "fakefakefake";
 
             // When recording, we should have a connection string passed into the code from the environment
-            if (!string.IsNullOrEmpty(environmentConnectionString))
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                // Gather test client credential information from the environment
-                var connectionInfo = new ConnectionString(Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION"));
-                string servicePrincipal = connectionInfo.GetValue<string>(ConnectionStringKeys.ServicePrincipalKey);
-                string servicePrincipalSecret = connectionInfo.GetValue<string>(ConnectionStringKeys.ServicePrincipalSecretKey);
-                string aadTenant = connectionInfo.GetValue<string>(ConnectionStringKeys.TenantIdKey);
-
-                // Create credentials
-                var clientCredentials = new ClientCredential(servicePrincipal, servicePrincipalSecret);
-                var authContext = new AuthenticationContext($"https://login.windows.net/{aadTenant}", TokenCache.DefaultShared);
-                accessToken = authContext.AcquireTokenAsync("https://dev.azuresynapse.net", clientCredentials).Result.AccessToken;
+                accessToken = TestEnvironmentFactory.GetTestEnvironment().GetServicePrincipalAccessToken(new[] { "https://dev.azuresynapse.net/.default" });
             }
 
             return new SynapseClient(new TokenCredentials(accessToken), HttpMockServer.CreateInstance());

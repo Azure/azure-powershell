@@ -55,6 +55,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         private const string MinimalVersionRequirementForBicepPublishWithOptionalForceParameter = "0.17.1";
 
+        private const string MinimalVersionRequirementForBicepPublishWithOptionalWithSourceParameter = "0.23.1";
+
         private const string MinimalVersionRequirementForBicepparamFileBuild = "0.16.1";
 
         private const string MinimalVersionRequirementForBicepparamFileBuildWithInlineOverrides = "0.22.6";
@@ -136,7 +138,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             return JsonConvert.DeserializeObject<BicepBuildParamsStdout>(stdout);
         }
 
-        public void PublishFile(string bicepFilePath, string target, string documentationUri = null, bool force = false, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
+        public void PublishFile(string bicepFilePath, string target, string documentationUri = null, bool withSource = false, bool force = false, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
         {
             if (!dataStore.FileExists(bicepFilePath))
             {
@@ -148,6 +150,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             {
                 CheckMinimalVersionRequirement(MinimalVersionRequirementForBicepPublishWithOptionalDocumentationUriParameter);
                 bicepPublishCommand += $" --documentationUri {GetQuotedFilePath(documentationUri)}";
+            }
+
+            if (withSource)
+            {
+                CheckMinimalVersionRequirement(MinimalVersionRequirementForBicepPublishWithOptionalWithSourceParameter);
+                bicepPublishCommand += $" --with-source";
             }
 
             if (force)

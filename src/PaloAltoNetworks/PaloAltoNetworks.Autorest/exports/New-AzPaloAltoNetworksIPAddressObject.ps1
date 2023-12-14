@@ -23,12 +23,12 @@ Create an in-memory object for IPAddress.
 New-AzPaloAltoNetworksIPAddressObject -ResourceId /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/azps_test_group_pan/providers/Microsoft.Network/publicIPAddresses/azps-network-publicipaddresses
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IPAddress
+Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPAddress
 .Link
 https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworksipaddressobject
 #>
 function New-AzPaloAltoNetworksIPAddressObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IPAddress])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPAddress])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -74,6 +74,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

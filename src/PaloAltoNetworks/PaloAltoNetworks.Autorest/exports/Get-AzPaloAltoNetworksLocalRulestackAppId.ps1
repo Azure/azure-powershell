@@ -23,12 +23,12 @@ List of AppIds for LocalRulestack ApiVersion
 Get-AzPaloAltoNetworksLocalRulestackAppId -LocalRulestackName azps-panlr -ResourceGroupName azps_test_group_pan
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IListAppIdResponse
+System.String
 .Link
 https://learn.microsoft.com/powershell/module/az.paloaltonetworks/get-azpaloaltonetworkslocalrulestackappid
 #>
 function Get-AzPaloAltoNetworksLocalRulestackAppId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IListAppIdResponse])]
+[OutputType([System.String])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -152,11 +152,15 @@ begin {
         $mapping = @{
             List = 'Az.PaloAltoNetworks.private\Get-AzPaloAltoNetworksLocalRulestackAppId_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

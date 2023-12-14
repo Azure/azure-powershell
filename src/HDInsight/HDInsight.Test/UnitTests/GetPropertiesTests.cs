@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
             var billingResponseResult = new BillingResponseListResult()
             {
-                VmSizes = new List<string>(),
-                VmSizeFilters = new List<VmSizeCompatibilityFilterV2>()
+                VMSizes = new List<string>(),
+                VMSizeFilters = new List<VmSizeCompatibilityFilterV2>()
             };
 
             var propertiesResponse = new AzureHDInsightCapabilities(capabilitiesResult, billingResponseResult);

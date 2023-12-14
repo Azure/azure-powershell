@@ -21,12 +21,12 @@ Create an in-memory object for TagInfo.
 Create an in-memory object for TagInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.TagInfo
+Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.TagInfo
 .Link
 https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworkstaginfoobject
 #>
 function New-AzPaloAltoNetworksTagInfoObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.TagInfo')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.TagInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +39,7 @@ function New-AzPaloAltoNetworksTagInfoObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.TagInfo]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.TagInfo]::New()
 
         if ($PSBoundParameters.ContainsKey('Key')) {
             $Object.Key = $Key
