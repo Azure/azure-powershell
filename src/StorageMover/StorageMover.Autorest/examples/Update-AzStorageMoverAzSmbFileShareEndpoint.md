@@ -1,6 +1,6 @@
 ### Example 1: Update a Smb file share endpoint 
 ```powershell
-Update-AzStorageMoverSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Description "updated endpoint"
+Update-AzStorageMoverAzSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Description "updated endpoint"
 ```
 
 ```output
@@ -26,7 +26,7 @@ This command updates an Azure Storage SMB file share enpdoint's description by m
 
 ### Example 2: Update a Smb file share endpoint by pipeline
 ```powershell
-Get-AzStorageMoverEndpoint -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Name "myendpoint" | Update-AzStorageMoverSmbFileShareEndpoint -Description "updated endpoint again"
+Get-AzStorageMoverEndpoint -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Name "myendpoint" | Update-AzStorageMoverAzSmbFileShareEndpoint -Description "updated endpoint again"
 ```
 
 ```output

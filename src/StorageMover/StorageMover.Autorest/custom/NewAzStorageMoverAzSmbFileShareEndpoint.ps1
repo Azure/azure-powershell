@@ -20,7 +20,7 @@ Creates a Smb file share endpoint resource, which represents a data transfer sou
 .Description
 Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
 .Example
-New-AzStorageMoverSmbFileShareEndpoint -Name $endpointName -ResourceGroupName $rgname -StorageMoverName $storagemovername -StorageAccountResourceId $accountresourceid -FileShareName $fileshareName -Description "Description"
+New-AzStorageMoverAzSmbFileShareEndpoint -Name $endpointName -ResourceGroupName $rgname -StorageMoverName $storagemovername -StorageAccountResourceId $accountresourceid -FileShareName $fileshareName -Description "Description"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint
@@ -34,7 +34,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 .Link
-https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoversmbfileshareendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazsmbfileshareendpoint
 #>
 function New-AzStorageMoverAzSmbFileShareEndpoint {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint])]

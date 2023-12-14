@@ -1,4 +1,4 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzStorageMoverSmbFileShareEndpoint'))
+if(($null -eq $TestName) -or ($TestName -contains 'New/Update-AzStorageMoverAzSmbFileShareEndpoint'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
@@ -14,11 +14,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStorageMoverSmbFileShar
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New/Update-AzStorageMoverSmbFileShareEndpoint' {
+Describe 'New/Update-AzStorageMoverAzSmbFileShareEndpoint' {
     It 'Create and update' {
         $endpointName = "fseendpoint1" + $env.RandomString
         $fsendpoint = New-AzStorageMoverAzSmbFileShareEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -StorageAccountResourceId $env.StoraccId -FileShareName "testfs" -Description "New smb file share endpoint"
         $fsendpoint.Name | Should -Be $endpointName
+        $fsendpoint.Property.EndpointType | Should -Be "AzureStorageSmbFileShare"
+        $fsendpoint.Property.Description | Should -Be "New smb file share endpoint"
+        $fsendpoint.Property.FileShareName | Should -Be "testfs"
+        $fsendpoint.Property.StorageAccountResourceId | Should -Be $env.StoraccId
+
+        $endpointName2 = "fseendpoint2" + $env.RandomString
+        $fsendpoint = New-AzStorageMoverSmbFileShareEndpoint -Name $endpointName2 -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -StorageAccountResourceId $env.StoraccId -FileShareName "testfs" -Description "New smb file share endpoint"
+        $fsendpoint.Name | Should -Be $endpointName2
         $fsendpoint.Property.EndpointType | Should -Be "AzureStorageSmbFileShare"
         $fsendpoint.Property.Description | Should -Be "New smb file share endpoint"
         $fsendpoint.Property.FileShareName | Should -Be "testfs"
@@ -31,6 +39,13 @@ Describe 'New/Update-AzStorageMoverSmbFileShareEndpoint' {
         $fsendpoint.Property.FileShareName | Should -Be "testfs"
         $fsendpoint.Property.StorageAccountResourceId | Should -Be $env.StoraccId
 
+        $fsendpoint = Get-AzStorageMoverEndpoint -Name $endpointName2 -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName
+        $fsendpoint.Name | Should -Be $endpointName2
+        $fsendpoint.Property.EndpointType | Should -Be "AzureStorageSmbFileShare"
+        $fsendpoint.Property.Description | Should -Be "New smb file share endpoint"
+        $fsendpoint.Property.FileShareName | Should -Be "testfs"
+        $fsendpoint.Property.StorageAccountResourceId | Should -Be $env.StoraccId
+
         $fsendpoint = Update-AzStorageMoverAzSmbFileShareEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Description "updated file share endpoint"
         $fsendpoint.Name | Should -Be $endpointName
         $fsendpoint.Property.EndpointType | Should -Be "AzureStorageSmbFileShare"
@@ -38,8 +53,22 @@ Describe 'New/Update-AzStorageMoverSmbFileShareEndpoint' {
         $fsendpoint.Property.FileShareName | Should -Be "testfs"
         $fsendpoint.Property.StorageAccountResourceId | Should -Be $env.StoraccId
 
+        $fsendpoint = Update-AzStorageMoverSmbFileShareEndpoint -Name $endpointName2 -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Description "updated file share endpoint"
+        $fsendpoint.Name | Should -Be $endpointName2
+        $fsendpoint.Property.EndpointType | Should -Be "AzureStorageSmbFileShare"
+        $fsendpoint.Property.Description | Should -Be "updated file share endpoint"
+        $fsendpoint.Property.FileShareName | Should -Be "testfs"
+        $fsendpoint.Property.StorageAccountResourceId | Should -Be $env.StoraccId
+
         $fsendpoint = Get-AzStorageMoverEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName
         $fsendpoint.Name | Should -Be $endpointName
+        $fsendpoint.Property.EndpointType | Should -Be "AzureStorageSmbFileShare"
+        $fsendpoint.Property.Description | Should -Be "updated file share endpoint"
+        $fsendpoint.Property.FileShareName | Should -Be "testfs"
+        $fsendpoint.Property.StorageAccountResourceId | Should -Be $env.StoraccId
+
+        $fsendpoint = Get-AzStorageMoverEndpoint -Name $endpointName2 -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName
+        $fsendpoint.Name | Should -Be $endpointName2
         $fsendpoint.Property.EndpointType | Should -Be "AzureStorageSmbFileShare"
         $fsendpoint.Property.Description | Should -Be "updated file share endpoint"
         $fsendpoint.Property.FileShareName | Should -Be "testfs"

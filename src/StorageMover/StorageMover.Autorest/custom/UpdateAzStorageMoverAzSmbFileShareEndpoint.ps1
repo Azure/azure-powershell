@@ -22,7 +22,7 @@ Properties not specified in the request body will be unchanged.
 Updates properties for a SMB file share endpoint resource.
 Properties not specified in the request body will be unchanged.
 .Example
-Update-AzStorageMoverSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Description "updated endpoint"
+Update-AzStorageMoverAzSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Description "updated endpoint"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpointBaseUpdateParameters
@@ -51,7 +51,7 @@ INPUTOBJECT<IStorageMoverIdentity>: Identity Parameter
   [SubscriptionId<String>]: The ID of the target subscription.
 
 .Link
-https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoversmbfileshareendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverazsmbfileshareendpoint
 #>
 function Update-AzStorageMoverAzSmbFileShareEndpoint {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint])]
