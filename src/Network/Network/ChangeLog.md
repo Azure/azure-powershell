@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Fixed a few minor issues
+* Onboarded `Microsoft.DBforPostgreSQL/flexibleServers` to private link cmdlets
 * Fixed missing properties in PSBackendAddressPool
 
 ## Version 7.1.0
