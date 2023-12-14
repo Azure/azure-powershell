@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal("test0.com,test1.com", ((PSAzureTenant)OutputPipeline.First()).DefaultDomain);
         }
 
-        [Fact(Skip = "Skip as the order of subscription changes")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetTenantWithDomainParameter()
         {
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal("https://secure.fakesite.com/xxxxx-yyyy/logintenantbranding/0/bannerlogo?ts=0000000000", ((PSAzureTenant)OutputPipeline.First()).TenantBrandingLogoUrl);
         }
 
-        [Fact]
+        [Fact(Skip = "Skip as the order of subscription changes")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetTenantWithoutParameters()
         {
