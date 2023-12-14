@@ -125,6 +125,7 @@ Function Move-Generation2Master {
             }
             # Generate csproj file and add the dependency in the solution file
             Copy-Template -SourceName Az.ModuleName.csproj -DestPath (Join-Path $DestPath $submoduleDir.Name) -DestName "Az.$submoduleName.csproj" -RootModuleName $ModuleName -ModuleName $submoduleName -ModuleFolder $submoduleDir.Name
+            dotnet sln "$DestPath\$ModuleName.sln" add (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath Az.$submoduleName.csproj)
         }
 
         $slnFilePath = "$DestPath\$ModuleName.sln"
