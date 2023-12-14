@@ -136,9 +136,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
                 BillingResponseListResult billingResponseListResult = HDInsightManagementClient.ListBillingSpecs(location);
 
                 /* The result is KeyValuePair<ZOOKEEPERNODEROLE, KeyValulePair<SPARK, STANDARD_A2_V2>> */
-                var nodeTypeAndClusterTypeAndVmSizePairs = billingResponseListResult.VmSizeFilters.Where(filter => filter.FilterMode.Equals(FilterMode.Default)).SelectMany(x =>
+                var nodeTypeAndClusterTypeAndVmSizePairs = billingResponseListResult.VMSizeFilters.Where(filter => filter.FilterMode.Equals(FilterMode.Default)).SelectMany(x =>
                 {
-                    var clusterTypeAndVmSizePairs = x.ClusterFlavors.SelectMany(clusterType => x.VmSizes, (clusterType, vmSize) =>
+                    var clusterTypeAndVmSizePairs = x.ClusterFlavors.SelectMany(clusterType => x.VMSizes, (clusterType, vmSize) =>
                     {
                         return new KeyValuePair<string, string>(clusterType.ToUpper(), vmSize);
                     });

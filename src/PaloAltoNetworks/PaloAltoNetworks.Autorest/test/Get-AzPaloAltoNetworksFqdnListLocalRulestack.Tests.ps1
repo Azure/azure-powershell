@@ -23,6 +23,10 @@ Describe 'Get-AzPaloAltoNetworksFqdnListLocalRulestack' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'GetViaIdentityLocalRulestack' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'GetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
