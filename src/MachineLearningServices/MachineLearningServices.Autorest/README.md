@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the MachineLearningServices se
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -130,6 +130,34 @@ directive:
               }
             }
           }
+  # 
+  - where:
+      subject: CodeVersionStartPendingUpload|RegistryCodeVersionStartPendingUpload|RegistryDataReferenceBlobReferenceSas|RegistryDataVersionStartPendingUpload|RegistryModelVersionStartPendingUpload
+      variant: ^Get(?!.*?Expanded)
+    remove: true
+  - where:
+      subject: BackfillFeaturesetVersion
+      variant: ^Backfill(?!.*?Expanded)
+    remove: true
+  - where:
+      subject: FeaturesetVersion|FeaturestoreEntityVersion|ManagedNetworkSettingRule|Schedule
+      variant: ^Create(?!.*?Expanded)
+    remove: true
+  - where:
+      subject: ManagedNetworkProvisionManagedNetwork
+      variant: ^Provision(?!.*?Expanded)
+    remove: true
+  - where:
+      subject: CodeVersion|ComponentVersion|DataVersion|EnvironmentVersion|ModelVersion
+      variant: ^Publish(?!.*?Expanded)
+    remove: true
+    
+  #
+  - where:
+      subject: ManagedNetworkProvisionManagedNetwork
+    set: 
+      subject: ProvisionManagedNetwork
+
   # Fix the parameter 'Name' has multiple parameter types [String, String[]] defined, which is not supported.
   - where:
       verb: Get
@@ -572,9 +600,7 @@ directive:
     - UriFileJobOutput
     - UriFolderJobInput
     - UriFolderJobOutput
-
     - JobService
     - SharedPrivateLinkResource
     # - QuotaBaseProperties --> New-AzMLWorkspaceQuotaPropertiesObject
-
 ```
