@@ -22,27 +22,12 @@ Delete navigation property appRoleAssignments for servicePrincipals
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove an app role from service principal
 ```powershell
-{{ Add code here }}
+Remove-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId Zbm-cUeDXUmlicIc3eenIlTWN1A5UVFMigS0D3ED-dk -ServicePrincipalId 71beb965-8347-495d-a589-c21cdde7a722
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Remove an app role from service principal.
 
 ## PARAMETERS
 

@@ -201,6 +201,17 @@ directive:
     hide: true
 
   - where:
+      subject: serviceprincipalapproleassignment$
+      parameter-name: DeletedDateTime
+    hide: true
+
+  - where:
+      verb: Update
+      subject: serviceprincipalapproleassignment$
+      parameter-name: PrincipalId|DisplayName|ResourceDisplayName|ResourceId
+    hide: true
+
+  - where:
       subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|GroupGraphRefMember$|grouprefmember$
     hide: true
   - where:

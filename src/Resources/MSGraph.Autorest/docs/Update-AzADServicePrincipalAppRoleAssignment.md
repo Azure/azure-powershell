@@ -14,15 +14,13 @@ Update the navigation property appRoleAssignments in servicePrincipals
 
 ### UpdateExpanded (Default)
 ```
-Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId <String> -ServicePrincipalId <String>
- [-AdditionalProperties <Hashtable>] [-AppRoleId <String>] [-DeletedDateTime <DateTime>]
- [-DisplayName <String>] [-PrincipalId <String>] [-ResourceDisplayName <String>] [-ResourceId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId <String> [-AdditionalProperties <Hashtable>]
+ [-AppRoleId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId <String> -ServicePrincipalId <String>
+Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId <String>
  -Body <IMicrosoftGraphAppRoleAssignment> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -32,27 +30,12 @@ Update the navigation property appRoleAssignments in servicePrincipals
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the AppRoleId
 ```powershell
-{{ Add code here }}
+Update-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId Zbm-cUeDXUmlicIc3eenIoFW9pZ_gRBIudKgu0gaMIw -ServicePrincipalId 71beb965-8347-495d-a589-c21cdde7a722 -AppRoleId 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Update the assigned App role id.
 
 ## PARAMETERS
 
@@ -136,36 +119,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeletedDateTime
-.
-
-```yaml
-Type: System.DateTime
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-The name displayed in directory
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PassThru
 Returns true when the command succeeds
 
@@ -175,69 +128,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrincipalId
-The unique identifier (id) for the user, group or service principal being granted the app role.
-Required on create.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceDisplayName
-The display name of the resource app's service principal to which the assignment is made.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The unique identifier (id) for the resource service principal for which the assignment is made.
-Required on create.
-Supports $filter (eq only).
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServicePrincipalId
-key: id of servicePrincipal
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
