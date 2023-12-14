@@ -30,6 +30,12 @@ Get-AzPaloAltoNetworksCertificateObjectLocalRulestack -InputObject <IPaloAltoNet
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityLocalRulestack
+```
+Get-AzPaloAltoNetworksCertificateObjectLocalRulestack -LocalRulestackInputObject <IPaloAltoNetworksIdentity>
+ -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get a CertificateObjectLocalRulestackResource
 
@@ -95,6 +101,22 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -LocalRulestackInputObject
+Identity Parameter
+To construct, see NOTES section for LOCALRULESTACKINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPaloAltoNetworksIdentity
+Parameter Sets: GetViaIdentityLocalRulestack
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LocalRulestackName
 LocalRulestack resource name
 
@@ -115,7 +137,7 @@ certificate name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityLocalRulestack
 Aliases:
 
 Required: True
@@ -165,26 +187,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ICertificateObjectLocalRulestackResource
+### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IPaloAltoNetworksIdentity>`: Identity Parameter
-  - `[FirewallName <String>]`: Firewall resource name
-  - `[GlobalRulestackName <String>]`: GlobalRulestack resource name
-  - `[Id <String>]`: Resource identity path
-  - `[LocalRulestackName <String>]`: LocalRulestack resource name
-  - `[Name <String>]`: certificate name
-  - `[Priority <String>]`: Post Rule priority
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

@@ -103,10 +103,14 @@ if ($PSCmdlet.ParameterSetName -eq 'ModifiedBuildSet' -or $PSCmdlet.ParameterSet
     }
 }
 if ($PSCmdlet.ParameterSetName -eq 'PullRequestSet') {
-    $BuildCsprojList = (($BuildCsprojList -split ';' | ForEach-Object { Resolve-Path $_ }).Path) -join ';'
-    $TestCsprojList = (($TestCsprojList -split ';' | ForEach-Object { Resolve-Path $_ }).Path) -join ';'
-    $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Include $BuildCsprojList
-    $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Include $TestCsprojList
+    if ($PSBoundParameters.ContainsKey('BuildCsprojList') -and $BuildCsprojList) {
+        $BuildCsprojList = (($BuildCsprojList -split ';' | ForEach-Object { Resolve-Path $_ }).Path) -join ';'
+        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Include $BuildCsprojList
+    }
+    if ($PSBoundParameters.ContainsKey('TestCsprojList') -and $TestCsprojList) {
+        $TestCsprojList = (($TestCsprojList -split ';' | ForEach-Object { Resolve-Path $_ }).Path) -join ';'
+        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Include $TestCsprojList
+    }
 }
 & dotnet --version
 & dotnet new sln -n Azure.PowerShell -o $RepoArtifacts --force

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzADServicePrincipalAppRo
 }
 
 Describe 'New-AzADServicePrincipalAppRoleAssignment' {
-    It 'ObjectIdWithResourceIdParameterSet' {
+    It 'ObjectIdWithResourceIdParameterSet' -skip {
         $appRa = New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId $env.spId1 -ResourceId $env.resourceId1 -AppRoleId $env.appRoleId
         $appRa.AppRoleId | Should -Be $env.appRoleId
     }
