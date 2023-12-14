@@ -65,7 +65,7 @@ directive:
       verb: Set
     remove: true
   - where:
-      variant: ^Update$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$
+      variant: ^Update.*$
     remove: true
   # Hide CreateViaIdentity for customization
   - where:
