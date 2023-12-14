@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                         ? new Func<ServiceClientCredentials>(() =>
                         {
                             var testEnvironment = TestEnvironmentFactory.GetTestEnvironment();
-                            return testEnvironment.TokenInfo[TokenAudience.Management];
+                            return testEnvironment.TokenInfo[TokenAudience.Graph];
                         })()
                         : new TokenCredentials("foo");
 
