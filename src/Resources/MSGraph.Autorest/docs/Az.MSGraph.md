@@ -50,9 +50,6 @@ Retrieve a list of organization objects.
 ### [Get-AzADServicePrincipal](Get-AzADServicePrincipal.md)
 Lists entities from service principals or get entity from service principals by key
 
-### [Get-AzADServicePrincipalAppRoleAssignedTo](Get-AzADServicePrincipalAppRoleAssignedTo.md)
-Get appRoleAssignedTo from servicePrincipals
-
 ### [Get-AzADServicePrincipalAppRoleAssignment](Get-AzADServicePrincipalAppRoleAssignment.md)
 Get appRoleAssignments from servicePrincipals
 
@@ -117,9 +114,6 @@ Delete ref of navigation property owners for groups
 ### [Remove-AzADServicePrincipal](Remove-AzADServicePrincipal.md)
 Deletes entity from service principal.
 
-### [Remove-AzADServicePrincipalAppRoleAssignedTo](Remove-AzADServicePrincipalAppRoleAssignedTo.md)
-Delete navigation property appRoleAssignedTo for servicePrincipals
-
 ### [Remove-AzADServicePrincipalAppRoleAssignment](Remove-AzADServicePrincipalAppRoleAssignment.md)
 Delete navigation property appRoleAssignments for servicePrincipals
 
@@ -140,9 +134,6 @@ Update entity in groups
 
 ### [Update-AzADServicePrincipal](Update-AzADServicePrincipal.md)
 Updates entity in service principal
-
-### [Update-AzADServicePrincipalAppRoleAssignedTo](Update-AzADServicePrincipalAppRoleAssignedTo.md)
-Update the navigation property appRoleAssignedTo in servicePrincipals
 
 ### [Update-AzADServicePrincipalAppRoleAssignment](Update-AzADServicePrincipalAppRoleAssignment.md)
 Update the navigation property appRoleAssignments in servicePrincipals
