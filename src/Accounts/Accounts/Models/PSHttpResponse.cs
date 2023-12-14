@@ -53,7 +53,14 @@ namespace Microsoft.Azure.Commands.Profile.Models
             this.Version = response.Response.Version.ToString();
             this.StatusCode = (int)response.Response.StatusCode;
             this.Method = response.Response.RequestMessage.Method.Method;
-            this.Content = JObject.Parse(response.Body).ToString();
+            try
+            {
+                this.Content = JObject.Parse(response.Body).ToString();
+            }
+            catch
+            {
+                this.Content = response.Body;
+            }
             this.RequestUri = response.Request.RequestUri.ToString();
         }        
     }
