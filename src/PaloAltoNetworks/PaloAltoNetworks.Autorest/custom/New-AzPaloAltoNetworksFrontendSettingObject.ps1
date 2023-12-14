@@ -21,12 +21,12 @@ Create an in-memory object for FrontendSetting.
 Create an in-memory object for FrontendSetting.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FrontendSetting
+Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FrontendSetting
 .Link
 https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworksfrontendsettingobject
 #>
 function New-AzPaloAltoNetworksFrontendSettingObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FrontendSetting')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FrontendSetting')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -52,13 +52,13 @@ function New-AzPaloAltoNetworksFrontendSettingObject {
         [string]
         $Name,
         [Parameter(Mandatory, HelpMessage="Protocol Type.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.ProtocolType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.ProtocolType]
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("TCP", "UDP")]
+        [string]
         $Protocol
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FrontendSetting]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FrontendSetting]::New()
 
         if ($PSBoundParameters.ContainsKey('Address')) {
             $Object.Address = $Address
