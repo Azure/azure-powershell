@@ -3757,6 +3757,7 @@ function Test-ApplicationGatewayWithTLSResources
 		
 		
 		$fipconfig = Get-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw -Name $fipconfigName
+		$appgw = Set-AzApplicationGatewaySslPolicy -ApplicationGateway $appgw -PolicyType Custom -MinProtocolVersion TLSv1_0 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 		$sslPolicy = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_0 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 		Add-AzApplicationGatewaySslProfile   -ApplicationGateway $appgw   -Name $sslProfile01Name   -SslPolicy $sslPolicy
 	    $sslProfile01 = Get-AzApplicationGatewaySslProfile   -ApplicationGateway $appgw   -Name $sslProfile01Name
