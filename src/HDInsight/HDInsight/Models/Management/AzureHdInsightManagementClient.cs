@@ -101,12 +101,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         public virtual void ResizeCluster(string resourceGroupName, string clusterName, ClusterResizeParameters resizeParams)
         {
-            HdInsightManagementClient.Clusters.Resize(resourceGroupName, clusterName, resizeParams);
+            HdInsightManagementClient.Clusters.Resize(resourceGroupName, clusterName, resizeParams?.TargetInstanceCount);
         }
 
         public virtual void ExecuteScriptActions(string resourceGroupName, string clusterName, ExecuteScriptActionParameters executeScriptActionParameters)
         {
-            HdInsightManagementClient.Clusters.ExecuteScriptActions(resourceGroupName, clusterName, executeScriptActionParameters);
+            HdInsightManagementClient.Clusters.ExecuteScriptActions(resourceGroupName, clusterName, executeScriptActionParameters.PersistOnSuccess, executeScriptActionParameters?.ScriptActions);
         }
 
         public virtual RuntimeScriptActionDetail GetScriptExecutionDetail(string resourceGroupName, string clusterName, long scriptExecutionId)
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         public virtual void EnableMonitoring(string resourceGroupName, string clusterName, ClusterMonitoringRequest clusterMonitoringParameters)
         {
-            HdInsightManagementClient.Extensions.EnableMonitoring(resourceGroupName, clusterName, clusterMonitoringParameters);
+            HdInsightManagementClient.Extensions.EnableMonitoring(resourceGroupName, clusterName, clusterMonitoringParameters?.WorkspaceId, clusterMonitoringParameters?.PrimaryKey);
         }
 
         public virtual void DisableMonitoring(string resourceGroupName, string clusterName)
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         public virtual void UpdateAutoScaleConfiguration(string resourceGroupName, string clusterName, AutoscaleConfigurationUpdateParameter autoscaleConfigurationUpdateParameter)
         {
-            HdInsightManagementClient.Clusters.UpdateAutoScaleConfiguration(resourceGroupName, clusterName, autoscaleConfigurationUpdateParameter);
+            HdInsightManagementClient.Clusters.UpdateAutoScaleConfiguration(resourceGroupName, clusterName, autoscaleConfigurationUpdateParameter?.Autoscale);
         }
 
         public virtual BillingResponseListResult ListBillingSpecs(string location)
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         public virtual PrivateEndpointConnection UpdatePrivateEndpointConnection(string resourceGroupName, string clusterName, string privateEndpointConnectionName, PrivateEndpointConnection privateEndpointConnectionParameter)
         {
-            return HdInsightManagementClient.PrivateEndpointConnections.CreateOrUpdate(resourceGroupName, clusterName, privateEndpointConnectionName, privateEndpointConnectionParameter);
+            return HdInsightManagementClient.PrivateEndpointConnections.CreateOrUpdate(resourceGroupName, clusterName, privateEndpointConnectionName, privateEndpointConnectionParameter?.PrivateLinkServiceConnectionState);
         }
 
         private void ResetClusterIdentity(ClusterCreateParametersExtended createParams, string aadAuthority, string dataLakeAudience)

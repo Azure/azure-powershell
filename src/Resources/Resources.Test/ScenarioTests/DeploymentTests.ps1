@@ -897,7 +897,31 @@ function Test-NewDeploymentFromBicepFileAndBicepparamFile
     }
 }
 
+<#
+.SYNOPSIS
+Verifies that nullable parameters are not required to be passed
+#>
+function Test-NullableParametersAreNotRequired
+{
+    # Setup
+    $rname = Get-ResourceName
+    $location = "West US 2"
+    $subId = (Get-AzContext).Subscription.SubscriptionId
 
+    try
+    {
+        #Create deployment
+        $deployment = New-AzSubscriptionDeployment -Name $rname -Location $location -TemplateFile "Resources/DeploymentTests/NullableParametersAreNotRequired/main.bicep"
+
+        # Assert
+        Assert-AreEqual Succeeded $deployment.ProvisioningState
+    }
+    finally
+    {
+        # Cleanup
+        Clean-DeploymentAtSubscription $deployment
+    }
+}
 
 <#
 .SYNOPSIS
@@ -1024,7 +1048,7 @@ function Test-NewDeploymentWithCustomTypesAndInlineOverrides
         $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateParameterFile deployWithCustomTypes.bicepparam -array @(123) -enum "abc" -enumRef "abc" -int2 342 -object @{ "def" = "hello" } -objectRef @{ "abc" = "blah" }
 
         # Assert
-        Assert-AreEqual Succeesded $deployment.ProvisioningState
+        Assert-AreEqual Succeeded $deployment.ProvisioningState
     }
     finally
     {

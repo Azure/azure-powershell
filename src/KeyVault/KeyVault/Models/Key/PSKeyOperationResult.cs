@@ -1,5 +1,7 @@
 ﻿using Azure.Security.KeyVault.Keys.Cryptography;
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     /// <summary>
@@ -7,18 +9,31 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     /// </summary>
     public class PSKeyOperationResult
     {
+
         // Summary: Key identifier
+        [Ps1Xml(Target = ViewControl.List, Label = nameof(KeyId), Position = 0)]
         public string KeyId { get; }
+
+        /// <summary>
+        /// If operation is Wrap, the value is wrapped key
+        /// If operation is Unwrap, the value is unwrapped key
+        /// If operation is Encrypt, the value is encryted data
+        /// If operation is Decrypt, the value is decrypted data
+        /// </summary>
+        [Ps1Xml(Target = ViewControl.List, Label = nameof(RawResult), Position = 1)]
+        public byte[] RawResult { get; }
 
         // Summary: encryted result or wraped result is base64 format. decryted result or unwraped result is plain text
         public string Result { get; }
 
         // Summary: Algorithm used.
+        [Ps1Xml(Target = ViewControl.List, Label = nameof(Algorithm), Position = 2)]
         public string Algorithm { get; }
 
         public PSKeyOperationResult(WrapResult wrapResult)
         {
             this.KeyId = wrapResult.KeyId;
+            this.RawResult = wrapResult.EncryptedKey;
             this.Result = System.Convert.ToBase64String(wrapResult.EncryptedKey);
             this.Algorithm = wrapResult.Algorithm.ToString();
         }
@@ -26,6 +41,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyOperationResult(UnwrapResult unwrapResult)
         {
             this.KeyId = unwrapResult.KeyId;
+            this.RawResult = unwrapResult.Key;
             this.Result = System.Text.Encoding.UTF8.GetString(unwrapResult.Key);
             this.Algorithm = unwrapResult.Algorithm.ToString();
         }
@@ -33,6 +49,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyOperationResult(EncryptResult encryptResult)
         {
             this.KeyId = encryptResult.KeyId;
+            this.RawResult = encryptResult.Ciphertext;
             this.Result = System.Convert.ToBase64String(encryptResult.Ciphertext);
             this.Algorithm = encryptResult.Algorithm.ToString();
         }
@@ -40,6 +57,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyOperationResult(DecryptResult decryptResult)
         {
             this.KeyId = decryptResult.KeyId;
+            this.RawResult = decryptResult.Plaintext;
             this.Result = System.Text.Encoding.UTF8.GetString(decryptResult.Plaintext);
             this.Algorithm = decryptResult.Algorithm.ToString();
         }

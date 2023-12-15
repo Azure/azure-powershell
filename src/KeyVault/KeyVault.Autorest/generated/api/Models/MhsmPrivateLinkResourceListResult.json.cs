@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models
             {
                 return;
             }
-            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonArray>("value"), out var __jsonValue) ? If( __jsonValue as Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateLinkResource>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateLinkResource) (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmPrivateLinkResource.FromJson(__u) )) ))() : null : Value;}
+            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonArray>("value"), out var __jsonValue) ? If( __jsonValue as Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateLinkResource>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmPrivateLinkResource) (Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.MhsmPrivateLinkResource.FromJson(__u) )) ))() : null : _value;}
             AfterFromJson(json);
         }
 

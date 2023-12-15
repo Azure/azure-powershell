@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed bug in `Get-AzContainerRegistryManifest` returns only 100 results [#22922]
+
+## Version 4.1.2
 * Upgraded Azure.Core to 1.35.0.
 
 ## Version 4.1.1

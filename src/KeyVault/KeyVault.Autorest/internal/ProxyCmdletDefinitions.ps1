@@ -192,6 +192,115 @@ end {
 
 <#
 .Synopsis
+Create an in-memory object for parameter region.
+.Description
+Create an in-memory object for parameter region.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+PARAMETER <IManagedHsm>: Resource information with extended details.
+  [Location <String>]: The supported Azure location where the managed HSM Pool should be created.
+  [SkuName <String>]: SKU of the managed HSM Pool
+  [Tag <IManagedHsmResourceTags>]: Resource tags
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [CreateMode <String>]: The create mode to indicate whether the resource is being created or is being recovered from a deleted resource.
+  [EnablePurgeProtection <Boolean?>]: Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. Enabling this functionality is irreversible.
+  [EnableSoftDelete <Boolean?>]: Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. Soft delete is enabled by default for all managed HSMs and is immutable.
+  [InitialAdminObjectId <List<String>>]: Array of initial administrators object ids for this managed hsm pool.
+  [NetworkAclsBypass <String>]: Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If not specified the default is 'AzureServices'.
+  [NetworkAclsDefaultAction <String>]: The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
+  [NetworkAclsIPRule <List<IMhsmipRule>>]: The list of IP address rules.
+    Value <String>: An IPv4 address range in CIDR notation, such as '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that start with 124.56.78).
+  [NetworkAclsVirtualNetworkRule <List<IMhsmVirtualNetworkRule>>]: The list of virtual network rules.
+    Id <String>: Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
+  [PublicNetworkAccess <String>]: Control permission to the managed HSM from public networks.
+  [Region <List<IMhsmGeoReplicatedRegion>>]: List of all regions associated with the managed hsm pool.
+    [IsPrimary <Boolean?>]: A boolean value that indicates whether the region is the primary region or a secondary region.
+    [Name <String>]: Name of the geo replicated region.
+  [SoftDeleteRetentionInDay <Int32?>]: Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
+  [TenantId <String>]: The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.
+.Link
+https://learn.microsoft.com/powershell/module/az.keyvault/get-parameterforregion
+#>
+function Get-ParameterForRegion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm])]
+[CmdletBinding(PositionalBinding=$false)]
+param(
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
+    [System.String[]]
+    # List of all regions associated with the managed hsm pool.
+    ${Region},
+
+    [Parameter(Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm]
+    # Resource information with extended details.
+    # To construct, see NOTES section for PARAMETER properties and create a hash table.
+    ${Parameter},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Specify if add or remove regions to existing regions
+    ${RemoveRegion}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            __AllParameterSets = 'Az.KeyVault.private\Get-ParameterForRegion';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Update a managed HSM Pool in the specified subscription.
 .Description
 Update a managed HSM Pool in the specified subscription.

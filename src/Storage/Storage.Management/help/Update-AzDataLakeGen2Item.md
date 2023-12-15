@@ -59,7 +59,7 @@ This command first creates an ACL object with 3 acl entry (use -InputObject para
 
 
 ```
-PS C:\> $file = Update-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" `
+$file = Update-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" `
                  -Acl $acl `
                  -Property @{"ContentType" = "image/jpeg"; "ContentMD5" = "i727sP7HigloQDsqadNLHw=="; "ContentEncoding" = "UDF8"; "CacheControl" = "READ"; "ContentDisposition" = "True"; "ContentLanguage" = "EN-US"} `
                  -Metadata  @{"tag1" = "value1"; "tag2" = "value2" } `
@@ -67,7 +67,7 @@ PS C:\> $file = Update-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/
                  -Owner '$superuser' `
                  -Group '$superuser'
 
-PS C:\> $file
+$file
 
    FileSystem Name: filesystem1
 
@@ -75,7 +75,7 @@ Path                 IsDirectory  Length          LastModified         Permissio
 ----                 -----------  ------          ------------         -----------  -----                -----               
 dir1/file1           False        1024            2020-03-23 09:57:33Z rwxrw-rw-    $superuser           $superuser          
 
-PS C:\> $file.ACL
+$file.ACL
 
 DefaultScope AccessControlType EntityId Permissions
 ------------ ----------------- -------- -----------
@@ -83,7 +83,7 @@ False        User                       rwx
 False        Group                      rw-        
 False        Other                      rw-        
 
-PS C:\> $file.Permissions
+$file.Permissions
 
 Owner        : Execute, Write, Read
 Group        : Write, Read
@@ -91,14 +91,14 @@ Other        : Write, Read
 StickyBit    : False
 ExtendedAcls : False
 
-PS C:\> $file.Properties.Metadata
+$file.Properties.Metadata
 
 Key  Value 
 ---  ----- 
 tag2 value2
 tag1 value1
 
-PS C:\> $file.Properties
+$file.Properties
 
 
 LastModified          : 3/23/2020 9:57:33 AM +00:00

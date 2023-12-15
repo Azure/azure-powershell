@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="filterOperator">Filter VMs by Any or All specified tags.
-        /// Possible values include: 'All', 'Any'</param>
+        /// Possible values include: &#39;All&#39;, &#39;Any&#39;</param>
         public TagSettingsProperties(System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>> tags = default(System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>>), TagOperators? filterOperator = default(TagOperators?))
 
         {

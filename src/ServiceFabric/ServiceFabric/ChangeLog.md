@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed Az.ServiceFabric cannot be imported in arm64 platform.
+
+## Version 3.3.1
+* Fixed a bug that Get commands do not return all resources.
+* Updated SFMC to latest api preview version `2023-11-01-preview`.
+
+## Version 3.3.0
 * Fixed minor issues
 
 ## Version 3.2.0

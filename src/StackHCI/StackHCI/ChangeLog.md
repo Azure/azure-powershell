@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.3
 * Added support for ARC Onboarding using Cluster Managed Identity. 
 * Removed previous IMDS Reg Key during Registration/Repair-Registration. 
 * Removed creation of custom IMDS Reg Key during Arc Enablement.

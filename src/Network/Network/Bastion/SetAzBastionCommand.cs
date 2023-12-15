@@ -1,4 +1,18 @@
-﻿namespace Microsoft.Azure.Commands.Network.Bastion
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+namespace Microsoft.Azure.Commands.Network.Bastion
 {
     using System;
     using System.Collections;
@@ -21,14 +35,14 @@
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The Bastion Object")]
+            HelpMessage = "Bastion Object")]
         [ValidateNotNullOrEmpty]
         public PSBastion InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipeline = true,
-            HelpMessage = "The Bastion Sku Tier")]
+            HelpMessage = "Bastion Sku")]
         [PSArgumentCompleter("Basic", "Standard")]
         [ValidateSet(
             MNM.BastionHostSkuName.Basic,
@@ -39,8 +53,38 @@
         [Parameter(
             Mandatory = false,
             ValueFromPipeline = true,
-            HelpMessage = "The Bastion Scale Units")]
+            HelpMessage = "Bastion Scale Units")]
         public int? ScaleUnit { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "Kerberos")]
+        public bool? EnableKerberos { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "Copy and Paste")]
+        public bool? DisableCopyPaste { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "Native Client")]
+        public bool? EnableTunneling { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "IP Connect")]
+        public bool? EnableIpConnect { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "Shareable Link")]
+        public bool? EnableShareableLink { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -69,76 +113,82 @@
                 Properties.Resources.SettingResourceMessage,
                 InputObject.Name, () => 
                 {
-                    if (!this.IsResourcePresent(this.InputObject.ResourceGroupName, this.InputObject.Name))
+                    if (this.TryGetBastion(this.InputObject.ResourceGroupName, this.InputObject.Name, out PSBastion getBastionHost))
+                    {
+                        #region SKU Validations
+                        // If Sku parameter is present
+                        if (!string.IsNullOrWhiteSpace(this.Sku))
+                        {
+                            // Check if InputObject Sku is being downgraded
+                            if (IsSkuDowngrade(this.InputObject, this.Sku))
+                            {
+                                throw new ArgumentException("Downgrading Sku is not allowed");
+                            }
+
+                            this.InputObject.Sku = new PSBastionSku(this.Sku);
+                        }
+                        // If Sku parameter is not present
+                        else
+                        {
+                            // Check if getBastionHost Sku is being downgraded from InputObject by setting InputObject.Sku.Name
+                            if (IsSkuDowngrade(getBastionHost, this.InputObject.Sku.Name))
+                            {
+                                throw new ArgumentException("Downgrading Sku is not allowed");
+                            }
+
+                            this.InputObject.Sku = new PSBastionSku(getBastionHost.Sku.Name);
+                        }
+                        #endregion
+
+                        #region Feature validations and updates
+                        ValidateFeatures(this.InputObject, this.DisableCopyPaste, this.EnableTunneling, this.EnableIpConnect, this.EnableShareableLink);
+                        if (this.EnableKerberos.HasValue)
+                        {
+                            this.InputObject.EnableKerberos = this.EnableKerberos.Value;
+                        }
+                        if (this.DisableCopyPaste.HasValue)
+                        {
+                            this.InputObject.DisableCopyPaste = this.DisableCopyPaste.Value;
+                        }
+                        if (this.EnableTunneling.HasValue)
+                        {
+                            this.InputObject.EnableTunneling = this.EnableTunneling.Value;
+                        }
+                        if (this.EnableIpConnect.HasValue)
+                        {
+                            this.InputObject.EnableIpConnect = this.EnableIpConnect.Value;
+                        }
+                        if (this.EnableShareableLink.HasValue)
+                        {
+                            this.InputObject.EnableShareableLink = this.EnableShareableLink.Value;
+                        }
+                        #endregion
+
+                        #region Scale unit validations and update
+                        ValidateScaleUnits(this.InputObject, this.ScaleUnit);
+                        if (this.ScaleUnit.HasValue)
+                        {
+                            this.InputObject.ScaleUnit = this.ScaleUnit.Value;
+                        }
+                        #endregion
+
+                        //// Map to the sdk object
+                        MNM.BastionHost bastionHostModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BastionHost>(this.InputObject);
+                        //// PS does not allow plurals which is why there is a mismatch in property name and hence the below line
+                        bastionHostModel.ScaleUnits = this.InputObject.ScaleUnit;
+                        bastionHostModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+
+                        this.BastionClient.CreateOrUpdate(this.InputObject.ResourceGroupName, this.InputObject.Name, bastionHostModel);
+
+                        getBastionHost = this.GetBastion(this.InputObject.ResourceGroupName, this.InputObject.Name);
+                        WriteObject(getBastionHost);
+                    }
+                    else
                     {
                         throw new ArgumentException(Properties.Resources.ResourceNotFound);
                     }
-
-                    PSBastion getBastionHost = this.GetBastion(this.InputObject.ResourceGroupName, this.InputObject.Name);
-
-                    
-
-                    // If Sku parameter is present
-                    if (!String.IsNullOrEmpty(this.Sku) || !String.IsNullOrWhiteSpace(this.Sku))
-                    {
-                        // Check if InputObject Sku is being downgraded
-                        if (this.InputObject.Sku.Name.Equals(MNM.BastionHostSkuName.Standard) && this.Sku.Equals(MNM.BastionHostSkuName.Basic))
-                        {
-                            
-                            throw new ArgumentException("Downgrading Sku is not allowed");
-                        }
-
-                        this.InputObject.Sku = new PSBastionSku(this.Sku);
-                    }
-                    // If Sku parameter is not present
-                    else
-                    {
-                        // Check if getBastionHost Sku is being downgraded from InputObject by setting InputObject.Sku.Name = "Basic"
-                        if (getBastionHost.Sku.Name.Equals(MNM.BastionHostSkuName.Standard) && this.InputObject.Sku.Name.Equals(MNM.BastionHostSkuName.Basic))
-                        {
-                            throw new ArgumentException("Downgrading Sku is not allowed");
-                        }
-
-                        this.InputObject.Sku = new PSBastionSku(getBastionHost.Sku.Name);
-                    }
-
-                    if (this.ScaleUnit.HasValue)
-                    {
-                        if(this.InputObject.Sku.Name.Equals(MNM.BastionHostSkuName.Standard))
-                        {
-                            if (this.ScaleUnit >= 2 && this.ScaleUnit <= 50)
-                            {
-                                this.InputObject.ScaleUnit = this.ScaleUnit;
-                            }
-                            else
-                            {
-                                throw new ArgumentException("Please select scale units value between 2 and 50");
-                            }
-                        }
-                        else if (this.InputObject.Sku.Name.Equals(MNM.BastionHostSkuName.Basic))
-                        {
-                            throw new ArgumentException("Scale Units cannot be updated with Basic Sku");
-                        }
-                    }
-                    else
-                    {
-                        if (this.InputObject.ScaleUnit < 2 || this.InputObject.ScaleUnit > 50)
-                        {
-                            throw new ArgumentException("Please select scale units value between 2 and 50");
-                        }
-                    }
-
-                    MNM.BastionHost bastionHostModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BastionHost>(this.InputObject);
-                    bastionHostModel.ScaleUnits = this.InputObject.ScaleUnit;
-                    bastionHostModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
-
-                    this.BastionClient.CreateOrUpdate(this.InputObject.ResourceGroupName, this.InputObject.Name, bastionHostModel);
-
-                    getBastionHost = this.GetBastion(this.InputObject.ResourceGroupName, this.InputObject.Name);
-                    
-                    WriteObject(getBastionHost);
-                 });
-
+                }
+            );
         }
     }
 }

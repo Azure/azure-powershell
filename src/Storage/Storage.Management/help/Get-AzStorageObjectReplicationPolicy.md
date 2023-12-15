@@ -34,15 +34,15 @@ The **Get-AzStorageObjectReplicationPolicy** cmdlet gets or lists object replica
 
 
 ```
-PS C:\> $policy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" -PolicyId 56bfa11c-81ef-4f8d-b307-5e5386e16fba
+$policy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" -PolicyId 56bfa11c-81ef-4f8d-b307-5e5386e16fba
 
-PS C:\> $policy
+$policy
 
 ResourceGroupName StorageAccountName PolicyId                             EnabledTime SourceAccount   DestinationAccount Rules                                     
 ----------------- ------------------ --------                             ----------- -------------   ------------------ -----   
 myresourcegroup   mydestaccount      56bfa11c-81ef-4f8d-b307-5e5386e16fba             mysourceaccount mydestaccount      [5fa8b1d6-4985-4abd-a0b3-ec4d07295a43,...]
 
-PS C:\> $policy.Rules
+$policy.Rules
 
 RuleId                               SourceContainer DestinationContainer Filters.PrefixMatch Filters.MinCreationTime
 ------                               --------------- -------------------- ------------------- -----------------------

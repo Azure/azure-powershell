@@ -375,42 +375,30 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
     }
 }
 
-function Test-VirtualMachineScaleSetInEdgeZone
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set created in Edge Zone
+#>
+function Test-VirtualMachineScaleSetEdgeZone
 {
-    $ResourceGroupName = Get-ComputeTestResourceName;
-    $Location = "westus";
-    $EdgeZone = "microsoftlosangeles1";
-    $ScaleSetName = "scalesetinedgezone";
-    $stnd = "Standard";
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "EastUs2Euap";
+    $EdgeZone = "microsoftrrdclab3";
+    $vmssName = "scaleSetInEdgeZone";
+
     try
     {
-        $config = New-AzVmssConfig -Location $Location -EdgeZone $EdgeZone;
-        Assert-AreEqual $config.ExtendedLocation.Name $EdgeZone
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        New-AzResourceGroup -ResourceGroupName $ResourceGroupName -Location $Location;
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $password);
 
-        $VMLocalAdminUser = "LocalAdminUser";
-        $VMLocalAdminSecurePassword = ConvertTo-SecureString $PLACEHOLDER -AsPlainText -Force;
-
-        $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
-
-        New-AzVmss `
-          -SecurityType $stnd `
-          -ResourceGroupName $ResourceGroupName `
-          -Location $Location `
-          -EdgeZone $EdgeZone `
-          -VMScaleSetName $ScaleSetName `
-          -VirtualNetworkName "myVnet" `
-          -SubnetName "mySubnet" `
-          -PublicIpAddressName "myPublicIPAddress" `
-          -LoadBalancerName "myLoadBalancer" `
-          -UpgradePolicyMode "Automatic" `
-          -Credential $Credential `
-          -DomainNameLabel "scalesetinedgezone-70f698"
-
-        $vmss = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $ScaleSetName
-
-        Assert-AreEqual $vmss.ExtendedLocation.Name $EdgeZone
+        # Create  Vmss
+        $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -Location $loc -EdgeZone $EdgeZone -Credential $vmCred -DomainNameLabel ('pubip' + $rgname);
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        
+        Assert-AreEqual $vmssGet.ExtendedLocation.Name $EdgeZone
     }
     finally
     {
@@ -5113,6 +5101,170 @@ function Test-VirtualMachineScaleSetSecurityTypeDefaultingFromImage
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
         Assert-AreEqual $vmssGet.VirtualMachineProfile.StorageProfile.ImageReference.Sku $sku;
     
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set defaulting to OrchestrationMode: Flexible when property is not provided.
+#>
+function Test-VirtualMachineScaleSetDefaultToFlexibleOrchestrationMode
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # New VMSS Parameters
+        $vmssName1 = 'vmss1' + $rgname;
+
+        $vmssConfig = New-AzVmssConfig -Location $loc -UpgradePolicyMode 'Manual' -SinglePlacementGroup $true;
+        $vmss = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmssConfig;
+
+        # Asserts 
+        # check flexmode
+        Assert-AreEqual $vmss.OrchestrationMode "Flexible";
+        # check SinglePlacementGroup
+        Assert-AreEqual $vmss.SinglePlacementGroup $true;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+    create a VMSS in flexible mode 
+    Test Attach scenario of adding a vmss
+    Test Detach scenario of removing the VMSS
+#>
+function Test-VirtualMachineScaleSetAttachAndDetach
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # New VMSS Parameters
+        $vmssName = 'vmssAttachAndDetach' + $rgname;
+        $vmName = 'vm' + $rgname;
+
+        $adminUsername = 'Foo12';
+        $adminPassword = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $adminPassword -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $securePassword);
+
+        $VmssFlex = New-AzVmss `
+          -ResourceGroupName $rgname `
+          -Name $vmssName `
+          -OrchestrationMode 'Flexible' `
+          -Location 'eastus' `
+          -Credential $cred `
+          -DomainNameLabel "scaleset-70f699" `
+          -SecurityType "Standard"
+
+        $vm = new-azvm -resourcegroupname $rgname -location $loc -name $vmname -credential $cred -DomainNameLabel "scaleset-70f699"
+
+        # attach
+        Update-Azvm -resourcegroupname $rgname -VM $vm -VirtualMachineScaleSetId $VmssFlex.id
+        $updatedVmWithVmss = get-azvm -resourcegroupname $rgname -Name $vmname 
+        Assert-AreEqual $VmssFlex.id $updatedVmWithVmss.VirtualMachineScaleSet.Id
+
+        # detach
+        Update-Azvm -resourcegroupname $rgname -VM $updatedVmWithVmss -VirtualMachineScaleSetId $null
+        $updatedVm = get-azvm -resourcegroupname $rgname -Name $vmname 
+        Assert-Null $updatedVm.VirtualMachineScaleSet.Id
+
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set securityType TrustedLaunch is default.
+TL can only be used when a VMProfile is provided.
+This would require a lot of other vmConfig setup. 
+#>
+function Test-VirtualMachineScaleSetSecurityTypeNoVMProfile
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $vmssName = 'vmss' + $rgname;
+
+        # Create TL Vmss
+        $vmssConfig = New-AzVmssConfig -loc $loc;
+        New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmssConfig;
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+
+        Assert-Null $vmssGet.VirtualMachineProfile;
+        Assert-AreEqual $vmssGet.OrchestrationMode "Flexible"; 
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set securityType TrustedLaunch is default
+and also defaults in Vmss Flex.
+#>
+function Test-VirtualMachineScaleSetSecurityTypeAndFlexDefaults
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName1 = 'vmss1' + $rgname;
+
+        $domainNameLabel1 = "d1" + $rgname;
+        $enable = $true;
+        $securityType = "TrustedLaunch";
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+        # Requirements for the TrustedLaunch default behavior.
+        $res = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName1 -DomainNameLabel $domainNameLabel1;
+
+        Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
+        Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $enable;
+        Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
+        Assert-AreEqual $res.OrchestrationMode "Flexible";
     }
     finally
     {

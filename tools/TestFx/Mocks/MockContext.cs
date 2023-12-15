@@ -99,6 +99,13 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
         /// <returns></returns>
         public T GetServiceClient<T>(TestEnvironment currentEnvironment, bool internalBaseUri = false, params DelegatingHandler[] handlers) where T : class
         {
+            if (!currentEnvironment.TokenInfo.ContainsKey(TokenAudience.Management))
+            {
+                throw new ArgumentNullException(
+                    "currentEnvironment.TokenInfo[TokenAudience.Management]",
+                    $"Unable to create Service Client because {nameof(T)} authentication token was not acquired during Login.");
+            }
+
             return GetServiceClientWithCredentials<T>(currentEnvironment, currentEnvironment.TokenInfo[TokenAudience.Management], internalBaseUri, handlers);
         }
 
@@ -108,9 +115,7 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
         /// <typeparam name="T"></typeparam>
         /// <param name="handlers">Delegating existingHandlers</param>
         /// <returns></returns>
-        public T GetGraphServiceClient<T>(
-            bool internalBaseUri = false,
-            params DelegatingHandler[] handlers) where T : class
+        public T GetGraphServiceClient<T>(bool internalBaseUri = false, params DelegatingHandler[] handlers) where T : class
         {
             return GetGraphServiceClient<T>(TestFxEnvironment, internalBaseUri, handlers);
         }
@@ -121,52 +126,16 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
         /// <typeparam name="T"></typeparam>
         /// <param name="handlers">Delegating existingHandlers</param>
         /// <returns></returns>
-        public T GetGraphServiceClient<T>(
-            TestEnvironment currentEnvironment,
-            bool internalBaseUri = false,
-            params DelegatingHandler[] handlers) where T : class
+        public T GetGraphServiceClient<T>(TestEnvironment currentEnvironment, bool internalBaseUri = false, params DelegatingHandler[] handlers) where T : class
         {
             if (!currentEnvironment.TokenInfo.ContainsKey(TokenAudience.Graph))
             {
                 throw new ArgumentNullException(
                     "currentEnvironment.TokenInfo[TokenAudience.Graph]",
-                    "Unable to create Graph Management client because Graph authentication token was not acquired during Login.");
+                    "Unable to create Graph Client because Graph authentication token was not acquired during Login.");
             }
 
-            return GetServiceClientWithCredentials<T>(
-                currentEnvironment,
-                currentEnvironment.TokenInfo[TokenAudience.Graph],
-                currentEnvironment.Endpoints.GraphUri,
-                internalBaseUri,
-                handlers);
-        }
-
-        /// <summary>
-        /// Get a test environment using default options
-        /// </summary>
-        /// <typeparam name="T">The type of the service client to return</typeparam>
-        /// <param name="credentials">Credentials</param>
-        /// <param name="handlers">Delegating existingHandlers</param>
-        /// <returns>A Service client using credentials and base uri from the current environment</returns>
-        public T GetServiceClientWithCredentials<T>(object credentials, params DelegatingHandler[] handlers) where T : class
-        {
-            return GetServiceClientWithCredentials<T>(TestFxEnvironment, credentials, handlers: handlers);
-        }
-
-        /// <summary>
-        /// Get a test environment, allowing the test to customize the creation options
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="credentials">Credentials</param>
-        /// <param name="handlers">Delegating existingHandlers</param>
-        /// <returns></returns>
-        public T GetServiceClientWithCredentials<T>(
-            TestEnvironment currentEnvironment,
-            object credentials,
-            bool internalBaseUri = false,
-            params DelegatingHandler[] handlers) where T : class
-        {
-            return GetServiceClientWithCredentials<T>(currentEnvironment, credentials, currentEnvironment.BaseUri, internalBaseUri, handlers);
+            return GetServiceClientWithCredentials<T>(currentEnvironment, currentEnvironment.TokenInfo[TokenAudience.Graph], internalBaseUri, handlers);
         }
 
         /// <summary>
@@ -177,21 +146,14 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
         /// <param name="baseUri">Base Uri</param>
         /// <param name="handlers">Delegating existingHandlers</param>
         /// <returns></returns>
-        public T GetServiceClientWithCredentials<T>(
-            TestEnvironment currentEnvironment,
-            object credentials,
-            Uri baseUri,
-            bool internalBaseUri = false,
-            params DelegatingHandler[] handlers) where T : class
+        public T GetServiceClientWithCredentials<T>(TestEnvironment currentEnvironment, object credentials, bool internalBaseUri = false, params DelegatingHandler[] handlers) where T : class
         {
             T client;
             handlers = AddHandlers(currentEnvironment, handlers);
             var constructors = typeof(T).GetConstructors(BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance | BindingFlags.NonPublic);
 
             ConstructorInfo constructor = null;
-            //We no longer use UseCustomUri function, rather check if BaseUri is notNull
-            //UseCustomeUri use to return true when BaseUri was set to some value
-            if ((currentEnvironment.BaseUri != null) && !internalBaseUri)
+            if (!internalBaseUri && currentEnvironment.BaseUri != null)
             {
                 foreach (var c in constructors)
                 {
@@ -207,12 +169,11 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
                 }
                 if (constructor == null)
                 {
-                    throw new InvalidOperationException(
-                        "can't find constructor (uri, ServiceClientCredentials, DelegatingHandler[]) to create client");
+                    throw new InvalidOperationException("Cannot find constructor (uri, ServiceClientCredentials, DelegatingHandler[]) to create service client");
                 }
                 client = constructor.Invoke(new object[]
                 {
-                    baseUri,
+                    currentEnvironment.BaseUri,
                     credentials,
                     handlers
                 }) as T;
@@ -232,8 +193,7 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
                 }
                 if (constructor == null)
                 {
-                    throw new InvalidOperationException(
-                        "can't find constructor (ServiceClientCredentials, DelegatingHandler[]) to create client");
+                    throw new InvalidOperationException("Cannot find constructor (ServiceClientCredentials, DelegatingHandler[]) to create service client");
                 }
                 client = constructor.Invoke(new object[]
                 {
@@ -262,15 +222,11 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 PropertyInfo retryTimeout = typeof(T).GetProperty("LongRunningOperationRetryTimeout");
-                if (retryTimeout != null)
-                {
-                    retryTimeout.SetValue(client, 0);
-                }
+                retryTimeout?.SetValue(client, 0);
             }
         }
 
-        public DelegatingHandler[] AddHandlers(TestEnvironment currentEnvironment,
-            params DelegatingHandler[] existingHandlers)
+        public DelegatingHandler[] AddHandlers(TestEnvironment currentEnvironment, params DelegatingHandler[] existingHandlers)
         {
             HttpMockServer server;
 

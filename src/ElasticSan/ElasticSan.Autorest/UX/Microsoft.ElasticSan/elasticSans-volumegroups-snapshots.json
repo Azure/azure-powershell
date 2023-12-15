@@ -1,0 +1,105 @@
+{
+  "resourceType": "elasticSans/volumegroups/snapshots",
+  "apiVersion": "2023-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.elasticsan"
+  },
+  "commands": [
+    {
+      "name": "Get-AzElasticSanVolumeSnapshot",
+      "description": "Get a Volume Snapshot.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots/{snapshotName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanvolumesnapshot"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ElasticSanName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-VolumeGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a Volume Snapshot.",
+          "parameters": [
+            {
+              "name": "-ElasticSanName",
+              "value": "[Path.elasticSanName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.snapshotName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VolumeGroupName",
+              "value": "[Path.volumeGroupName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzElasticSanVolumeSnapshot",
+      "description": "Delete a Volume Snapshot.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots/{snapshotName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolumesnapshot"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ElasticSanName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-VolumeGroupName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a Volume Snapshot.",
+          "parameters": [
+            {
+              "name": "-ElasticSanName",
+              "value": "[Path.elasticSanName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.snapshotName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VolumeGroupName",
+              "value": "[Path.volumeGroupName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

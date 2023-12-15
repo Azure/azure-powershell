@@ -2218,6 +2218,24 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: Marketplace
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Marketplace
+        then:
+        - mentionUsers:
+            mentionees:
+            - saviesacov
+            - gupele
+            - mikamine
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: Marketplace Ordering
         - hasLabel:
             label: Service Attention
@@ -3571,6 +3589,23 @@ configuration:
         - mentionUsers:
             mentionees:
             - xgithubtriage
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: StorageSync
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: StorageSync
+        then:
+        - mentionUsers:
+            mentionees:
+            - ankushbindlish2
+            - afedyashov
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:

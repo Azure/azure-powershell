@@ -514,13 +514,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachinePlatformFaultDomain");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        public void TestVirtualMachineGuestAttestation()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineGuestAttestation");
-        }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -625,6 +618,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVMDefaultsToTrustedLaunchWithGen2Image()
         {
             TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchWithGen2Image");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMDefaultsToTrustedLaunchWithNullEncryptionAtHost()
+        {
+            TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchWithNullEncryptionAtHost");
         }
     }
 }

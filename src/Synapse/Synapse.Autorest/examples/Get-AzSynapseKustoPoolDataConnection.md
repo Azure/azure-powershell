@@ -1,6 +1,6 @@
 ### Example 1:  List all data connections in a specific database
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolDataConnection -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase
+Get-AzSynapseKustoPoolDataConnection -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase
 
 Kind     Location  Name                                                                                                              
 ----     --------  ----                                             
@@ -11,7 +11,7 @@ The above command returns all Kusto connections in the workspace "testws" found 
 
 ### Example 2: Get a specific data connection by name
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolDataConnection -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase -DataConnectionName mykustodataconnection
+Get-AzSynapseKustoPoolDataConnection -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName mykustodatabase -DataConnectionName mykustodataconnection
 
 Kind     Location  Name                                                                                                             
 ----     --------  ----                                             

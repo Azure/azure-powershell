@@ -1,5 +1,5 @@
 ---
-external help file: Az.Resources-help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 online version: https://learn.microsoft.com/powershell/module/az.resources/new-azpolicyexemption
 schema: 2.0.0
@@ -8,20 +8,20 @@ schema: 2.0.0
 # New-AzPolicyExemption
 
 ## SYNOPSIS
-Creates or updates a policy exemption.
+Creates a policy exemption.
 
 ## SYNTAX
 
 ```
-New-AzPolicyExemption [-Name] <String> [-ExemptionCategory] <ExemptionCategory> [-PolicyAssignment] <PSObject>
- [[-Scope] <String>] [[-PolicyDefinitionReferenceId] <String[]>]
- [[-AssignmentScopeValidation] <AssignmentScopeValidation>] [[-DisplayName] <String>] [[-Description] <String>]
- [[-ExpiresOn] <DateTime>] [[-Metadata] <String>] [-BackwardCompatible] [[-DefaultProfile] <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzPolicyExemption -Name <String> [-Scope <String>] [-DisplayName <String>] [-Description <String>]
+ -ExemptionCategory <String> -PolicyAssignment <PsPolicyAssignment> [-PolicyDefinitionReferenceId <String[]>]
+ [-ExpiresOn <DateTime>] [-Metadata <String>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzPolicyExemption** cmdlet creates a policy exemption with the given scope and name.
+The **New-AzPolicyExemption** cmdlet creates a policy exemption.
+Specify a policy assignment, exemption category and scope.
 
 ## EXAMPLES
 
@@ -49,26 +49,12 @@ The final command exempts the policy assignment in $Assignment at the level of t
 
 ## PARAMETERS
 
-### -AssignmentScopeValidation
-Whether to validate the exemption is at or under the assignment scope.
+### -ApiVersion
+When set, indicates the version of the resource provider API to use.
+If not specified, the API version is automatically determined as the latest available.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.AssignmentScopeValidation
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -BackwardCompatible
-Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -80,23 +66,22 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
-Position: 11
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Description
-This message will be part of response in case of policy violation.
+The description for the new policy exemption.
 
 ```yaml
 Type: System.String
@@ -104,14 +89,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -DisplayName
-The display name of the policy assignment.
+The display name for the new policy exemption.
 
 ```yaml
 Type: System.String
@@ -119,29 +104,31 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -ExemptionCategory
-The policy exemption category
+The policy exemption category of the new policy exemption.
+Possible values are Waiver and Mitigated.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.ExemptionCategory
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Waiver, Mitigated
 
 Required: True
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -ExpiresOn
-The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the policy exemption.
+The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the new policy exemption.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]
@@ -149,15 +136,15 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Metadata
-The policy assignment metadata.
-Metadata is an open ended object and is typically a collection of key value pairs.
+The metadata for the new policy exemption.
+This can either be a path to a file containing the metadata JSON, or the metadata as a JSON string.
 
 ```yaml
 Type: System.String
@@ -165,38 +152,37 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the policy exemption.
+The name of the new policy exemption.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: PolicyExemptionName
+Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -PolicyAssignment
-The policy assignment id filter.
-To construct, see NOTES section for POLICYASSIGNMENT properties and create a hash table.
+The referenced policy assignment Id for the new policy exemption.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -211,15 +197,30 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Pre
+When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Scope
-The scope of the policy exemption.
-Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+The scope of the new policy exemption, e.g.
+/providers/managementGroups/{managementGroupName}, defaults to current subscription.
 
 ```yaml
 Type: System.String
@@ -227,7 +228,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -249,8 +250,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -269,21 +269,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.AssignmentScopeValidation
-
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.ExemptionCategory
-
-### System.Management.Automation.PSObject
-
-### System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-
 ### System.String
+
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment
 
 ### System.String[]
 
+### System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220701Preview.IPolicyExemption
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyExemption
 
 ## NOTES
 

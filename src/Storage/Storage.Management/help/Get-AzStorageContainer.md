@@ -53,9 +53,9 @@ This example uses the *Prefix* parameter to return a list of all containers with
 
 
 ```
-PS C:\> $containers =  Get-AzStorageContainer -IncludeDeleted -Context $ctx 
+$containers =  Get-AzStorageContainer -IncludeDeleted -Context $ctx 
 
-PS C:\> $containers
+$containers
 
    Storage Account Name: storageaccountname
 
@@ -64,7 +64,7 @@ Name                 PublicAccess         LastModified                   IsDelet
 testcon              Off                  8/28/2020 10:18:13 AM +00:00                                                                                                                                                                                                                                                                   
 testcon2                                  9/4/2020 12:52:37 PM +00:00    True       01D67D248986B6DA  
 
-PS C:\> $c[1].BlobContainerProperties
+$c[1].BlobContainerProperties
 
 LastModified                   : 9/4/2020 12:52:37 PM +00:00
 LeaseStatus                    : Unlocked

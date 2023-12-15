@@ -31,13 +31,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// connection
         /// </param>
 
+        /// <param name="groupIds">Group Ids for the Private Endpoint
+        /// </param>
+
         /// <param name="privateLinkServiceConnectionState">Gets or sets private link service connection state
         /// </param>
-        public PrivateEndpointConnection(string provisioningState = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
+        public PrivateEndpointConnection(string provisioningState = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), System.Collections.Generic.IList<string> groupIds = default(System.Collections.Generic.IList<string>), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
 
         {
             this.ProvisioningState = provisioningState;
             this.PrivateEndpoint = privateEndpoint;
+            this.GroupIds = groupIds;
             this.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
             CustomInit();
         }
@@ -61,6 +65,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateEndpoint")]
         public PrivateEndpoint PrivateEndpoint {get; set; }
+
+        /// <summary>
+        /// Gets or sets group Ids for the Private Endpoint
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "groupIds")]
+        public System.Collections.Generic.IList<string> GroupIds {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets private link service connection state

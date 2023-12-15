@@ -2648,11 +2648,12 @@ end {
 
 <#
 .Synopsis
-Updates part of a data collection rule.
+Update a data collection rule.
 .Description
-Updates part of a data collection rule.
+Update a data collection rule.
 .Example
-Update-AzDataCollectionRule -Name myCollectionRule1 -ResourceGroupName AMCS-Test -Tag @{"123"="abc"}
+$syslog = New-AzSyslogDataSourceObject -FacilityName syslog -LogLevel Alert,Critical,Emergency -Name syslogBase -Stream Microsoft-Syslog
+Update-AzDataCollectionRule -Name myCollectionRule1 -ResourceGroupName Monitor-ActionGroup -DataSourceSyslog $syslog
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
@@ -2662,6 +2663,94 @@ Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollection
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DATAFLOW <IDataFlow[]>: The specification of data flows.
+  [BuiltInTransform <String>]: The builtIn transform to transform stream data
+  [Destination <List<String>>]: List of destinations for this data flow.
+  [OutputStream <String>]: The output stream of the transform. Only required if the transform changes data to a different stream.
+  [Stream <List<String>>]: List of streams for this data flow.
+  [TransformKql <String>]: The KQL query to transform stream data.
+
+DATASOURCEEXTENSION <IExtensionDataSource[]>: The list of Azure VM extension data source configurations.
+  ExtensionName <String>: The name of the VM extension.
+  [ExtensionSetting <IExtensionDataSourceExtensionSettings>]: The extension settings. The format is specific for particular extension.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [InputDataSource <List<String>>]: The list of data sources this extension needs data from.
+  [Name <String>]: A friendly name for the data source.         This name should be unique across all data sources (regardless of type) within the data collection rule.
+  [Stream <List<String>>]: List of streams that this data source will be sent to.         A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
+
+DATASOURCEIISLOG <IIisLogsDataSource[]>: The list of IIS logs source configurations.
+  Stream <List<String>>: IIS streams
+  [LogDirectory <List<String>>]: Absolute paths file location
+  [Name <String>]: A friendly name for the data source.         This name should be unique across all data sources (regardless of type) within the data collection rule.
+
+DATASOURCELOGFILE <ILogFilesDataSource[]>: The list of Log files source configurations.
+  FilePattern <List<String>>: File Patterns where the log files are located
+  Stream <List<String>>: List of streams that this data source will be sent to.         A stream indicates what schema will be used for this data source
+  [Name <String>]: A friendly name for the data source.         This name should be unique across all data sources (regardless of type) within the data collection rule.
+  [SettingTextRecordStartTimestampFormat <String>]: One of the supported timestamp formats
+
+DATASOURCEPERFORMANCECOUNTER <IPerfCounterDataSource[]>: The list of performance counter data source configurations.
+  [CounterSpecifier <List<String>>]: A list of specifier names of the performance counters you want to collect.         Use a wildcard (*) to collect a counter for all instances.         To get a list of performance counters on Windows, run the command 'typeperf'.
+  [Name <String>]: A friendly name for the data source.         This name should be unique across all data sources (regardless of type) within the data collection rule.
+  [SamplingFrequencyInSecond <Int32?>]: The number of seconds between consecutive counter measurements (samples).
+  [Stream <List<String>>]: List of streams that this data source will be sent to.         A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
+
+DATASOURCEPLATFORMTELEMETRY <IPlatformTelemetryDataSource[]>: The list of platform telemetry configurations
+  Stream <List<String>>: List of platform telemetry streams to collect
+  [Name <String>]: A friendly name for the data source.         This name should be unique across all data sources (regardless of type) within the data collection rule.
+
+DATASOURCEPROMETHEUSFORWARDER <IPrometheusForwarderDataSource[]>: The list of Prometheus forwarder data source configurations.
+  [LabelIncludeFilter <IPrometheusForwarderDataSourceLabelIncludeFilter>]: The list of label inclusion filters in the form of label "name-value" pairs.         Currently only one label is supported: 'microsoft_metrics_include_label'.         Label values are matched case-insensitively.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [Name <String>]: A friendly name for the data source.         This name should be unique across all data sources (regardless of type) within the data collection rule.
+  [Stream <List<String>>]: List of streams that this data source will be sent to.
+
+DATASOURCESYSLOG <ISyslogDataSource[]>: The list of Syslog data source configurations.
+  [FacilityName <List<String>>]: The list of facility names.
+  [LogLevel <List<String>>]: The log levels to collect.
+  [Name <String>]: A friendly name for the data source.         This name should be unique across all data sources (regardless of type) within the data collection rule.
+  [Stream <List<String>>]: List of streams that this data source will be sent to.         A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
+
+DATASOURCEWINDOWSEVENTLOG <IWindowsEventLogDataSource[]>: The list of Windows Event Log data source configurations.
+  [Name <String>]: A friendly name for the data source.         This name should be unique across all data sources (regardless of type) within the data collection rule.
+  [Stream <List<String>>]: List of streams that this data source will be sent to.         A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
+  [XPathQuery <List<String>>]: A list of Windows Event Log queries in XPATH format.
+
+DATASOURCEWINDOWSFIREWALLLOG <IWindowsFirewallLogsDataSource[]>: The list of Windows Firewall logs source configurations.
+  Stream <List<String>>: Firewall logs streams
+  [Name <String>]: A friendly name for the data source.         This name should be unique across all data sources (regardless of type) within the data collection rule.
+
+DESTINATIONEVENTHUB <IEventHubDestination[]>: List of Event Hubs destinations.
+  [EventHubResourceId <String>]: The resource ID of the event hub.
+  [Name <String>]: A friendly name for the destination.         This name should be unique across all destinations (regardless of type) within the data collection rule.
+
+DESTINATIONEVENTHUBSDIRECT <IEventHubDirectDestination[]>: List of Event Hubs Direct destinations.
+  [EventHubResourceId <String>]: The resource ID of the event hub.
+  [Name <String>]: A friendly name for the destination.         This name should be unique across all destinations (regardless of type) within the data collection rule.
+
+DESTINATIONLOGANALYTIC <ILogAnalyticsDestination[]>: List of Log Analytics destinations.
+  [Name <String>]: A friendly name for the destination.         This name should be unique across all destinations (regardless of type) within the data collection rule.
+  [WorkspaceResourceId <String>]: The resource ID of the Log Analytics workspace.
+
+DESTINATIONMONITORINGACCOUNT <IMonitoringAccountDestination[]>: List of monitoring account destinations.
+  [AccountResourceId <String>]: The resource ID of the monitoring account.
+  [Name <String>]: A friendly name for the destination.         This name should be unique across all destinations (regardless of type) within the data collection rule.
+
+DESTINATIONSTORAGEACCOUNT <IStorageBlobDestination[]>: List of storage accounts destinations.
+  [ContainerName <String>]: The container name of the Storage Blob.
+  [Name <String>]: A friendly name for the destination.         This name should be unique across all destinations (regardless of type) within the data collection rule.
+  [StorageAccountResourceId <String>]: The resource ID of the storage account.
+
+DESTINATIONSTORAGEBLOBSDIRECT <IStorageBlobDestination[]>: List of Storage Blob Direct destinations. To be used only for sending data directly to store from the agent.
+  [ContainerName <String>]: The container name of the Storage Blob.
+  [Name <String>]: A friendly name for the destination.         This name should be unique across all destinations (regardless of type) within the data collection rule.
+  [StorageAccountResourceId <String>]: The resource ID of the storage account.
+
+DESTINATIONSTORAGETABLESDIRECT <IStorageTableDestination[]>: List of Storage Table Direct destinations.
+  [Name <String>]: A friendly name for the destination.         This name should be unique across all destinations (regardless of type) within the data collection rule.
+  [StorageAccountResourceId <String>]: The resource ID of the storage account.
+  [TableName <String>]: The name of the Storage Table.
 
 INPUTOBJECT <IDataCollectionRuleIdentity>: Identity Parameter
   [AssociationName <String>]: The name of the association. The name is case insensitive.
@@ -2708,6 +2797,181 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [System.String]
+    # The resource ID of the data collection endpoint that this rule can be used with.
+    ${DataCollectionEndpointId},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataFlow[]]
+    # The specification of data flows.
+    # To construct, see NOTES section for DATAFLOW properties and create a hash table.
+    ${DataFlow},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [System.String]
+    # Event Hub consumer group name
+    ${DataSourceDataImportEventHubConsumerGroup},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [System.String]
+    # A friendly name for the data source.
+    # This name should be unique across all data sources (regardless of type) within the data collection rule.
+    ${DataSourceDataImportEventHubName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [System.String]
+    # The stream to collect from EventHub
+    ${DataSourceDataImportEventHubStream},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IExtensionDataSource[]]
+    # The list of Azure VM extension data source configurations.
+    # To construct, see NOTES section for DATASOURCEEXTENSION properties and create a hash table.
+    ${DataSourceExtension},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IIisLogsDataSource[]]
+    # The list of IIS logs source configurations.
+    # To construct, see NOTES section for DATASOURCEIISLOG properties and create a hash table.
+    ${DataSourceIisLog},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFilesDataSource[]]
+    # The list of Log files source configurations.
+    # To construct, see NOTES section for DATASOURCELOGFILE properties and create a hash table.
+    ${DataSourceLogFile},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPerfCounterDataSource[]]
+    # The list of performance counter data source configurations.
+    # To construct, see NOTES section for DATASOURCEPERFORMANCECOUNTER properties and create a hash table.
+    ${DataSourcePerformanceCounter},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPlatformTelemetryDataSource[]]
+    # The list of platform telemetry configurations
+    # To construct, see NOTES section for DATASOURCEPLATFORMTELEMETRY properties and create a hash table.
+    ${DataSourcePlatformTelemetry},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPrometheusForwarderDataSource[]]
+    # The list of Prometheus forwarder data source configurations.
+    # To construct, see NOTES section for DATASOURCEPROMETHEUSFORWARDER properties and create a hash table.
+    ${DataSourcePrometheusForwarder},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ISyslogDataSource[]]
+    # The list of Syslog data source configurations.
+    # To construct, see NOTES section for DATASOURCESYSLOG properties and create a hash table.
+    ${DataSourceSyslog},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsEventLogDataSource[]]
+    # The list of Windows Event Log data source configurations.
+    # To construct, see NOTES section for DATASOURCEWINDOWSEVENTLOG properties and create a hash table.
+    ${DataSourceWindowsEventLog},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsFirewallLogsDataSource[]]
+    # The list of Windows Firewall logs source configurations.
+    # To construct, see NOTES section for DATASOURCEWINDOWSFIREWALLLOG properties and create a hash table.
+    ${DataSourceWindowsFirewallLog},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [System.String]
+    # Description of the data collection rule.
+    ${Description},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [System.String]
+    # A friendly name for the destination.
+    # This name should be unique across all destinations (regardless of type) within the data collection rule.
+    ${DestinationAzureMonitorMetricName},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDestination[]]
+    # List of Event Hubs destinations.
+    # To construct, see NOTES section for DESTINATIONEVENTHUB properties and create a hash table.
+    ${DestinationEventHub},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDirectDestination[]]
+    # List of Event Hubs Direct destinations.
+    # To construct, see NOTES section for DESTINATIONEVENTHUBSDIRECT properties and create a hash table.
+    ${DestinationEventHubsDirect},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogAnalyticsDestination[]]
+    # List of Log Analytics destinations.
+    # To construct, see NOTES section for DESTINATIONLOGANALYTIC properties and create a hash table.
+    ${DestinationLogAnalytic},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMonitoringAccountDestination[]]
+    # List of monitoring account destinations.
+    # To construct, see NOTES section for DESTINATIONMONITORINGACCOUNT properties and create a hash table.
+    ${DestinationMonitoringAccount},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[]]
+    # List of storage accounts destinations.
+    # To construct, see NOTES section for DESTINATIONSTORAGEACCOUNT properties and create a hash table.
+    ${DestinationStorageAccount},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[]]
+    # List of Storage Blob Direct destinations.
+    # To be used only for sending data directly to store from the agent.
+    # To construct, see NOTES section for DESTINATIONSTORAGEBLOBSDIRECT properties and create a hash table.
+    ${DestinationStorageBlobsDirect},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageTableDestination[]]
+    # List of Storage Table Direct destinations.
+    # To construct, see NOTES section for DESTINATIONSTORAGETABLESDIRECT properties and create a hash table.
+    ${DestinationStorageTablesDirect},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [System.String]
@@ -2715,8 +2979,28 @@ param(
     ${IdentityType},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Linux", "Windows")]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IResourceForUpdateTags]))]
+    [System.String]
+    # The kind of the resource.
+    ${Kind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives.
+    ${Location},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleStreamDeclarations]))]
+    [System.Collections.Hashtable]
+    # Declaration of custom streams used in this rule.
+    ${StreamDeclaration},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="keySource">Encryption Key Source
-        /// Possible values include: 'Microsoft.Automation', 'Microsoft.Keyvault'</param>
+        /// Possible values include: &#39;Microsoft.Automation&#39;, &#39;Microsoft.Keyvault&#39;</param>
 
         /// <param name="identity">User identity used for CMK.
         /// </param>

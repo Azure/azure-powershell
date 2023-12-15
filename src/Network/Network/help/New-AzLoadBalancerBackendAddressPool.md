@@ -16,14 +16,16 @@ Creates a backend address pool on a loadbalancer.
 ```
 New-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
  [-TunnelInterface <PSTunnelInterface[]>] [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SyncMode <String>] [-VirtualNetworkId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectParameterSet
 ```
 New-AzLoadBalancerBackendAddressPool -LoadBalancer <PSLoadBalancer> -Name <String>
  [-TunnelInterface <PSTunnelInterface[]>] [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SyncMode <String>] [-VirtualNetworkId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,11 +163,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SyncMode
+Sync mode of the backend pool.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TunnelInterface
 Gateway Load Balancer provider configurations.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSTunnelInterface[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkId
+The virtual network associated with the backend pool.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.10.0
+* Updated Module operation cmdlets to support Powershell 7.2
+
 ## Version 1.9.1
 * Fixed bug: Runbooks Name Pattern failures. 
 

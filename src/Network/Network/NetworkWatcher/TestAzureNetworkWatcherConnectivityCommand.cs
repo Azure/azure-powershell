@@ -149,16 +149,16 @@ namespace Microsoft.Azure.Commands.Network
                 parameters.Protocol = this.ProtocolConfiguration.Protocol;
                 if (string.Equals(this.ProtocolConfiguration.Protocol, "Http", StringComparison.OrdinalIgnoreCase))
                 {
-                    IList<MNM.HTTPHeader> headers = new List<MNM.HTTPHeader>();
+                    IList<MNM.HttpHeader> headers = new List<MNM.HttpHeader>();
                     if (this.ProtocolConfiguration.Header != null)
                     {
                         foreach (DictionaryEntry entry in this.ProtocolConfiguration.Header)
                         {
-                            headers.Add(new MNM.HTTPHeader((string)entry.Key, (string)entry.Value));
+                            headers.Add(new MNM.HttpHeader((string)entry.Key, (string)entry.Value));
                         }
                     }
 
-                    MNM.HTTPConfiguration httpConfiguration = new MNM.HTTPConfiguration(this.ProtocolConfiguration.Method, headers, this.ProtocolConfiguration.ValidStatusCode.OfType<int?>().ToList());
+                    MNM.HttpConfiguration httpConfiguration = new MNM.HttpConfiguration(this.ProtocolConfiguration.Method, headers, this.ProtocolConfiguration.ValidStatusCode.OfType<int?>().ToList());
                     parameters.ProtocolConfiguration = new MNM.ProtocolConfiguration(httpConfiguration);
                 }
             }

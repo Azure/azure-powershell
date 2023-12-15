@@ -131,6 +131,7 @@ namespace StaticAnalysis.SignatureVerifier
                         Logger.WriteMessage("Processing cmdlet '{0}'", cmdlet.ClassName);
                         const string defaultRemediation = "Determine if the cmdlet should implement ShouldProcess and " +
                                                             "if so determine if it should implement Force / ShouldContinue";
+                        bool isCreateMemoryObject = (cmdlet.VerbName == VerbsCommon.New && cmdlet.Name.EndsWith("Object"));
                         if (!cmdlet.SupportsShouldProcess && cmdlet.HasForceSwitch)
                         {
                             issueLogger.LogSignatureIssue(
@@ -141,7 +142,7 @@ namespace StaticAnalysis.SignatureVerifier
                                                             "property to true in the Cmdlet attribute.", cmdlet.Name),
                                 remediation: defaultRemediation);
                         }
-                        if (!cmdlet.SupportsShouldProcess && cmdlet.ConfirmImpact != ConfirmImpact.Medium)
+                        if (!cmdlet.SupportsShouldProcess && cmdlet.ConfirmImpact != ConfirmImpact.Medium && !isCreateMemoryObject)
                         {
                             issueLogger.LogSignatureIssue(
                                 cmdlet: cmdlet,
@@ -153,7 +154,7 @@ namespace StaticAnalysis.SignatureVerifier
                                     cmdlet.Name),
                                 remediation: defaultRemediation);
                         }
-                        if (!cmdlet.SupportsShouldProcess && cmdlet.IsShouldProcessVerb)
+                        if (!cmdlet.SupportsShouldProcess && cmdlet.IsShouldProcessVerb && !isCreateMemoryObject)
                         {
                             issueLogger.LogSignatureIssue(
                                 cmdlet: cmdlet,

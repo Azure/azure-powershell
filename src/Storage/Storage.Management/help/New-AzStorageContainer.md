@@ -53,12 +53,12 @@ It uses the **Split** method of the .NET **String** class and then passes the na
 
 
 ```
-PS C:\> $container = New-AzStorageContainer  -Name "mycontainer" -DefaultEncryptionScope "myencryptscope" -PreventEncryptionScopeOverride $true 
+$container = New-AzStorageContainer  -Name "mycontainer" -DefaultEncryptionScope "myencryptscope" -PreventEncryptionScopeOverride $true 
 
-PS C:\> $container.BlobContainerProperties.DefaultEncryptionScope
+$container.BlobContainerProperties.DefaultEncryptionScope
 myencryptscope
 
-PS C:\> $container.BlobContainerProperties.PreventEncryptionScopeOverride
+$container.BlobContainerProperties.PreventEncryptionScopeOverride
 True
 ```
 
