@@ -394,20 +394,20 @@ namespace VersionController.Netcore.Models
                 {
                     if (diffInfo[i].Type == ChangeType.CmdletAdd)
                     {
-                        sb.AppendFormat("  * Added cmdlet `{0}`.\n", diffInfo[i].CmdletName);
+                        sb.AppendFormat("* Added cmdlet `{0}`\n", diffInfo[i].CmdletName);
                     }
                     else if (diffInfo[i].Type == ChangeType.CmdletRemove)
                     {
-                        sb.AppendFormat("  * Removed cmdlet `{0}`.\n", diffInfo[i].CmdletName);
+                        sb.AppendFormat("* Removed cmdlet `{0}`\n", diffInfo[i].CmdletName);
                     }
                     else
                     {
-                        sb.AppendFormat("  * Modified cmdlet `{0}`:", diffInfo[i].CmdletName);
+                        sb.AppendFormat("* Modified cmdlet `{0}`", diffInfo[i].CmdletName);
                     }
                 }
                 if (GetDescription(diffInfo[i]) != "")
                 {
-                    sb.Append("\n     * " + GetDescription(diffInfo[i]));
+                    sb.Append("\n   * " + GetDescription(diffInfo[i]));
                     if (i < diffInfo.Count - 1 && diffInfo[i + 1].CmdletName != diffInfo[i].CmdletName)
                     {
                         sb.Append("\n");
