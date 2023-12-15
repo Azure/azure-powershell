@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoversmbfileshareendpoint
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverazsmbfileshareendpoint
 schema: 2.0.0
 ---
 
-# Update-AzStorageMoverSmbFileShareEndpoint
+# Update-AzStorageMoverAzSmbFileShareEndpoint
 
 ## SYNOPSIS
 Updates properties for a SMB file share endpoint resource.
@@ -15,14 +15,14 @@ Properties not specified in the request body will be unchanged.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzStorageMoverSmbFileShareEndpoint -Name <String> -ResourceGroupName <String>
+Update-AzStorageMoverAzSmbFileShareEndpoint -Name <String> -ResourceGroupName <String>
  -StorageMoverName <String> [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStorageMoverSmbFileShareEndpoint -InputObject <IStorageMoverIdentity> [-Description <String>]
+Update-AzStorageMoverAzSmbFileShareEndpoint -InputObject <IStorageMoverIdentity> [-Description <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -34,7 +34,7 @@ Properties not specified in the request body will be unchanged.
 
 ### Example 1: Update a Smb file share endpoint 
 ```powershell
-Update-AzStorageMoverSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Description "updated endpoint"
+Update-AzStorageMoverAzSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Description "updated endpoint"
 ```
 
 ```output
@@ -56,11 +56,11 @@ SystemDataLastModifiedByType : Application
 Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
-This command updates a Smb file share enpdoint's description by manual inputs.
+This command updates an Azure Storage SMB file share enpdoint's description by manual inputs.
 
 ### Example 2: Update a Smb file share endpoint by pipeline
 ```powershell
-Get-AzStorageMoverEndpoint -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Name "myendpoint" | Update-AzStorageMoverSmbFileShareEndpoint -Description "updated endpoint again"
+Get-AzStorageMoverEndpoint -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Name "myendpoint" | Update-AzStorageMoverAzSmbFileShareEndpoint -Description "updated endpoint again"
 ```
 
 ```output
@@ -82,7 +82,7 @@ SystemDataLastModifiedByType : Application
 Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
-This command updates a Smb file share endpoint's description by pipeline
+This command updates an Azure Storage SMB file share endpoint's description by pipeline.
 
 ## PARAMETERS
 
@@ -239,21 +239,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IStorageMoverIdentity>`: Identity Parameter
-  - `[AgentName <String>]`: The name of the Agent resource.
-  - `[EndpointName <String>]`: The name of the Endpoint resource.
-  - `[Id <String>]`: Resource identity path
-  - `[JobDefinitionName <String>]`: The name of the Job Definition resource.
-  - `[JobRunName <String>]`: The name of the Job Run resource.
-  - `[ProjectName <String>]`: The name of the Project resource.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[StorageMoverName <String>]`: The name of the Storage Mover resource.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
+Update-AzStorageMoverSmbFileShareEndpoint
 
 ## RELATED LINKS
 

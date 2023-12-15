@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoversmbfileshareendpoint
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazsmbfileshareendpoint
 schema: 2.0.0
 ---
 
-# New-AzStorageMoverSmbFileShareEndpoint
+# New-AzStorageMoverAzSmbFileShareEndpoint
 
 ## SYNOPSIS
 Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
@@ -13,7 +13,7 @@ Creates a Smb file share endpoint resource, which represents a data transfer sou
 ## SYNTAX
 
 ```
-New-AzStorageMoverSmbFileShareEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
+New-AzStorageMoverAzSmbFileShareEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
  -FileShareName <String> -StorageAccountResourceId <String> [-SubscriptionId <String>] [-Description <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Creates a Smb file share endpoint resource, which represents a data transfer sou
 
 ### Example 1: Create an Smb file share endpoint
 ```powershell
-New-AzStorageMoverSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -StorageAccountResourceId $accountresourceid -FileShareName testfs -Description "New smb file share endpoint"
+New-AzStorageMoverAzSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -StorageAccountResourceId $accountresourceid -FileShareName testfs -Description "New smb file share endpoint"
 ```
 
 ```output
@@ -47,7 +47,7 @@ SystemDataLastModifiedByType : Application
 Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
-This command creats a Smb file share endpoint
+This command creats an Azure Storage SMB file share endpoint.
 
 ## PARAMETERS
 
@@ -219,6 +219,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+New-AzStorageMoverSmbFileShareEndpoint
 
 ## RELATED LINKS
 
