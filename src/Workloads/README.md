@@ -30,10 +30,11 @@ For information on how to develop for `Az.Workloads`, see [how-to.md](how-to.md)
 > see https://aka.ms/autorest
 
 ```yaml
-commit: c7c06e7e311df89b6851aa7e12142c8f0d129cd8
+commit: 13aec7f115c01ba6986ebf32488537392c0df6f5
+tag: package-preview-2023-10
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-  - $(repo)/specification/workloads/resource-manager/readme.md
+  - /src/azure-rest-api-specs/specification/workloads/resource-manager/readme.md
 
 try-require: 
   - $(repo)/specification/workloads/resource-manager/readme.powershell.md
@@ -48,6 +49,13 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
+- where:
+    subject: ^SapVirtualInstance$|^SapApplicationServerInstance$|^SapCentralInstance$|^SapDatabaseInstance$|^SapAvailabilityZoneDetail$|^SapDiskConfiguration$|^SapSizingRecommendation$|^SapSupportedSku$
+  set:
+    preview-announcement:
+      preview-message: This cmdlet is in preview.
+      estimated-ga-date: 2024-06-30
+	  
 # Monitor
 - where:
     verb: New
