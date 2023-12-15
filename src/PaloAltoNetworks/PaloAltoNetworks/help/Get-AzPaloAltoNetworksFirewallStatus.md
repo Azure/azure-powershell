@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PaloAltoNetworks-help.xml
 Module Name: Az.PaloAltoNetworks
 online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/get-azpaloaltonetworksfirewallstatus
 schema: 2.0.0
@@ -18,16 +18,16 @@ Get-AzPaloAltoNetworksFirewallStatus -FirewallName <String> -ResourceGroupName <
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzPaloAltoNetworksFirewallStatus -InputObject <IPaloAltoNetworksIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### List
 ```
 Get-AzPaloAltoNetworksFirewallStatus -FirewallName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzPaloAltoNetworksFirewallStatus -InputObject <IPaloAltoNetworksIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -159,4 +159,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-

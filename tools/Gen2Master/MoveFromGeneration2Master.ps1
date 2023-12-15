@@ -142,9 +142,9 @@ Function Move-Generation2Master {
                     dotnet sln $slnFilePath add $_.FullName --solution-folder Accounts
                 }
             }
-            Get-ChildItem -Filter *.csproj -File -Path $DestPath -Recurse | ForEach-Object {
-                dotnet sln $slnFilePath add $_.FullName
-            }
+        }
+        Get-ChildItem -Filter *.csproj -File -Path $DestPath -Recurse | ForEach-Object {
+            dotnet sln $slnFilePath add $_.FullName
         }
         
         $Psd1Metadata.RequiredAssemblies = Unique-PathList $Psd1Metadata.RequiredAssemblies

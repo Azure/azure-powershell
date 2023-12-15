@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Added `-WithSource` parameter to `Publish-AzBicepModule` for publishing source with a module (currently experimental)
+* Supported nullable Bicep parameters in Deployment cmdlets
 
 ## Version 6.12.1
 * Used utf8 encoding for reading stdout & stderr when invoking Bicep. [#23246]

@@ -138,8 +138,8 @@ function Test-AzureCrossZonalRestore
 	$targetVNetName = "hiagaNZPVNet"
 	$targetVNetRG = "hiagarg"
 	$targetSubnetName = "custom"
-	$recoveryPointId = "174747612387318" # latest vaultStandard recovery point
-
+	$recoveryPointId = "172325782667650" # latest vaultStandard recovery point
+	$snapshotRecoveryPointId = "169019845618646" # latest Snapshot (older than 4 hrs) recovery point
 	try
 	{	
 		# Setup
@@ -147,12 +147,19 @@ function Test-AzureCrossZonalRestore
 		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM `
 			-VaultId $vault.ID -Name $vmName
 
-		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] -VaultId $vault.ID  -RecoveryPointId $recoveryPointId
+		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] -VaultId $vault.ID -RecoveryPointId $recoveryPointId
 		
 		$restoreJobCZR = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location `
 			-RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -TargetZoneNumber 2 | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 		
 		Assert-True { $restoreJobCZR.Status -eq "Completed" }
+
+		# Snapshot CZR
+		# $rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] -VaultId $vault.ID  -RecoveryPointId $recoveryPointId
+		
+		# $restoreJobCZR = Restore-AzRecoveryServicesBackupItem -VaultId $vault.ID -VaultLocation $vault.Location -RecoveryPoint $rp[0] -StorageAccountName $saName -StorageAccountResourceGroupName $vault.ResourceGroupName -TargetResourceGroupName $vault.ResourceGroupName -TargetVMName $targetVMName -TargetVNetName $targetVNetName -TargetVNetResourceGroup $targetVNetRG -TargetSubnetName $targetSubnetName -TargetZoneNumber 2 | Wait-#AzRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		#Assert-True { $restoreJobCZR.Status -eq "Completed" }
 	}
 	finally
 	{
@@ -282,7 +289,7 @@ function Test-AzureManagedVMRestore
 	$location = "centraluseuap"
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiagaVault"
-	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiagavm"
+	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiaganewVM2" # hiagavm"
 	$saName = "hiagasa"
 	$targetVMName = "alr-pstest-vm"
 	$targetVNetName = "hiagarg-vnet"

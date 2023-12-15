@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageMover-help.xml
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemovernfsendpoint
 schema: 2.0.0
@@ -14,8 +14,8 @@ Creates a Nfs endpoint resource, which represents a data transfer source or dest
 
 ```
 New-AzStorageMoverNfsEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- -Export <String> -Host <String> [-SubscriptionId <String>] [-Description <String>] [-NfsVersion <NfsVersion>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -Host <String> -Export <String> [-NfsVersion <NfsVersion>] [-Description <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Creates a Nfs endpoint resource, which represents a data transfer source or dest
 
 ### Example 1: Create a NFS endpoint
 ```powershell
- New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "10.0.0.1" -Export "/" -NfsVersion NFSv3 -Description "Description"
+New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "10.0.0.1" -Export "/" -NfsVersion NFSv3 -Description "Description"
 ```
 
 ```output
@@ -233,4 +233,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
