@@ -456,6 +456,164 @@ function Test-SqlInAccountRestoreOperationsCmdlets
   }
 }
 
+function Test-SqlInAccountRestoreOperationsNoTimestampCmdlets
+{
+  $AccountName = "dbaccount60-14"
+  $rgName = "CosmosDBResourceGroup63"
+  $DatabaseName = "sqldbName5"
+  $ContainerName = "container1"
+  $location = "West US"
+  $DatabaseName2 = "dbName2"
+  $ContainerName2 = "container2"
+  $apiKind = "Sql"
+  $PartitionKeyPathValue = "/foo/bar"
+  $PartitionKeyKindValue = "Hash"
+
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -LocationName "Central US" -FailoverPriority 1 -IsZoneRedundant 0
+
+  Try{
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -BackupPolicyType Continuous
+
+      # create a new database
+      $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Name $DatabaseName
+
+      # create an existing keyspace
+      Try {
+          $NewDuplicateDatabase = New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $DatabaseName + " already exists.")
+      }
+
+      # Indexing Policy Creation
+      $ipath1 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+      $ipath2 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
+      $IncludedPath = New-AzCosmosDBSqlIncludedPath -Path "/*" -Index $ipath1, $ipath2
+      $SpatialSpec = New-AzCosmosDBSqlSpatialSpec -Path  "/mySpatialPath/*" -Type  "Point", "LineString", "Polygon", "MultiPolygon"
+      $cp1 = New-AzCosmosDBSqlCompositePath -Path "/abc" -Order Ascending
+      $cp2 = New-AzCosmosDBSqlCompositePath -Path "/aberc" -Order Descending
+      $CompositePaths = (($cp1, $cp2), ($cp2, $cp1))
+
+      $IndexingPolicy = New-AzCosmosDBSqlIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $CompositePaths -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
+
+      # UniqueKey Creation
+      $p1 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey3"
+      $p2 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey4"
+      $p3 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey2"
+      $p4 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey1"
+
+      $uk1 = New-AzCosmosDBSqlUniqueKeyPolicy -UniqueKey $p1,$p2,$p3,$p4
+      # create a new container
+      $NewContainer = New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600 -IndexingPolicy $IndexingPolicy -UniqueKeyPolicy $uk1
+      Assert-AreEqual $NewContainer.Name $ContainerName
+      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.Automatic $IndexingPolicy.Automatic
+      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.IndexingMode $IndexingPolicy.IndexingMode
+      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.IncludedPath.Path $IndexingPolicy.IncludedPath.Path
+      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.CompositeIndexes.Count 2
+      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.SpatialIndexes.Path $SpatialSpec.Path
+      Assert-AreEqual $NewContainer.Resource.UniqueKeyPolicy.UniqueKeys.Count 4
+
+      # create an existing container
+      Try {
+            $NewDuplicateContainer = New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600 -IndexingPolicy $IndexingPolicy
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $ContainerName + " already exists.")
+      }
+
+      # update non existing database, container, UDF, stored procedure, trigger
+      Try {
+          $UpdatedDatabse = Update-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName2
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $DatabaseName2 + " does not exist.")
+      }
+
+      Try {
+          $UpdatedContainer = Update-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName2
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $ContainerName2 + " does not exist.")
+      }
+
+      # get a database
+      $Database = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Id $Database.Id
+      Assert-AreEqual $NewDatabase.Name $Database.Name
+
+      # get a container
+      $Container = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+      Assert-AreEqual $NewContainer.Id $Container.Id
+      Assert-AreEqual $NewContainer.Name $Container.Name
+
+      # updating database, container, udf, trigger
+      $UpdatedDatabase =  Update-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $UpdatedDatabase.Name $DatabaseName
+
+      # update container
+      $UpdatedContainer = Update-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+      Assert-AreEqual $UpdatedContainer.Name $ContainerName
+      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.Automatic $IndexingPolicy.Automatic
+      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.IndexingMode $IndexingPolicy.IndexingMode
+      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.IncludedPath.Path $IndexingPolicy.IncludedPath.Path
+      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.CompositeIndexes.Count 2
+      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.SpatialIndexes.Path $SpatialSpec.Path
+      Assert-AreEqual $UpdatedContainer.Resource.UniqueKeyPolicy.UniqueKeys.Count 4
+
+      $restoreTimestampInUtc = [DateTime]::UtcNow.ToString('u')
+      # list containers
+      $ListContainers = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+      Assert-NotNull($ListContainers)
+
+      # list databases
+      $ListDatabases = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull($ListDatabases)
+
+      Start-Sleep -s 50
+
+      # remove container
+      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+
+      Start-Sleep -s 50
+
+      # restore deleted container
+      Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+
+      Start-Sleep -s 100
+
+      # remove database
+      Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+
+      Start-Sleep -s 100
+
+      
+      # restore deleted database
+      Restore-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+
+      Start-Sleep -s 50
+
+      #Restore collection with no timestamp after database restore
+      Try {
+          $RestoredCollection = Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message.Contains("No collection with name") true
+      }
+
+      # list databases
+      $ListDatabases = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull($ListDatabases)
+  }
+  Finally {
+    Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+    Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
 function Test-SqlInAccountRestoreOperationsSharedResourcesCmdlets
 {
   $AccountName = "dbaccount60-4"
