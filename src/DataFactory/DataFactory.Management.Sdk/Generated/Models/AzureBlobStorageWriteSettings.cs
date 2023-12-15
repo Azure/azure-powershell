@@ -44,11 +44,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// with resultType boolean).</param>
         /// <param name="copyBehavior">The type of copy behavior for copy
         /// sink.</param>
+        /// <param name="metadata">Specify the custom metadata to be added to
+        /// sink data. Type: array of objects (or Expression with resultType
+        /// array of objects).</param>
         /// <param name="blockSizeInMB">Indicates the block size(MB) when
         /// writing data to blob. Type: integer (or Expression with resultType
         /// integer).</param>
-        public AzureBlobStorageWriteSettings(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object copyBehavior = default(object), object blockSizeInMB = default(object))
-            : base(additionalProperties, maxConcurrentConnections, disableMetricsCollection, copyBehavior)
+        public AzureBlobStorageWriteSettings(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object copyBehavior = default(object), IList<MetadataItem> metadata = default(IList<MetadataItem>), object blockSizeInMB = default(object))
+            : base(additionalProperties, maxConcurrentConnections, disableMetricsCollection, copyBehavior, metadata)
         {
             BlockSizeInMB = blockSizeInMB;
             CustomInit();

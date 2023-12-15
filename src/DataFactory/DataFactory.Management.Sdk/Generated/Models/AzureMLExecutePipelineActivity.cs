@@ -74,8 +74,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="dataPathAssignments">Dictionary used for changing data
         /// path assignments without retraining. Values will be passed in the
         /// dataPathAssignments property of the published pipeline execution
-        /// request. Type: object with key value pairs (or Expression with
-        /// resultType object).</param>
+        /// request. Type: object (or Expression with resultType
+        /// object).</param>
         /// <param name="mlParentRunId">The parent Azure ML Service pipeline
         /// run id. This information will be passed in the ParentRunId property
         /// of the published pipeline execution request. Type: string (or
@@ -149,8 +149,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Gets or sets dictionary used for changing data path assignments
         /// without retraining. Values will be passed in the
         /// dataPathAssignments property of the published pipeline execution
-        /// request. Type: object with key value pairs (or Expression with
-        /// resultType object).
+        /// request. Type: object (or Expression with resultType object).
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.dataPathAssignments")]
         public object DataPathAssignments { get; set; }

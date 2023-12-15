@@ -58,8 +58,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="headers">Represents the headers that will be sent to
         /// the request. For example, to set the language and type on a
         /// request: "headers" : { "Accept-Language": "en-us", "Content-Type":
-        /// "application/json" }. Type: string (or Expression with resultType
-        /// string).</param>
+        /// "application/json" }. Type: dictionary (or Expression with
+        /// resultType dictionary).</param>
         /// <param name="body">Represents the payload that will be sent to the
         /// endpoint. Required for POST/PUT method, not allowed for GET method
         /// Type: string (or Expression with resultType string).</param>
@@ -67,12 +67,22 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// the endpoint.</param>
         /// <param name="disableCertValidation">When set to true, Certificate
         /// validation will be disabled.</param>
+        /// <param name="httpRequestTimeout">Timeout for the HTTP request to
+        /// get a response. Format is in TimeSpan (hh:mm:ss). This value is the
+        /// timeout to get a response, not the activity timeout. The default
+        /// value is 00:01:00 (1 minute). The range is from 1 to 10
+        /// minutes</param>
+        /// <param name="turnOffAsync">Option to disable invoking HTTP GET on
+        /// location given in response header of a HTTP 202 Response. If set
+        /// true, it stops invoking HTTP GET on http location given in response
+        /// header. If set false then continues to invoke HTTP GET call on
+        /// location given in http response headers.</param>
         /// <param name="datasets">List of datasets passed to web
         /// endpoint.</param>
         /// <param name="linkedServices">List of linked services passed to web
         /// endpoint.</param>
         /// <param name="connectVia">The integration runtime reference.</param>
-        public WebActivity(string name, string method, object url, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string description = default(string), string state = default(string), string onInactiveMarkAs = default(string), IList<ActivityDependency> dependsOn = default(IList<ActivityDependency>), IList<UserProperty> userProperties = default(IList<UserProperty>), LinkedServiceReference linkedServiceName = default(LinkedServiceReference), ActivityPolicy policy = default(ActivityPolicy), object headers = default(object), object body = default(object), WebActivityAuthentication authentication = default(WebActivityAuthentication), bool? disableCertValidation = default(bool?), IList<DatasetReference> datasets = default(IList<DatasetReference>), IList<LinkedServiceReference> linkedServices = default(IList<LinkedServiceReference>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference))
+        public WebActivity(string name, string method, object url, IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), string description = default(string), string state = default(string), string onInactiveMarkAs = default(string), IList<ActivityDependency> dependsOn = default(IList<ActivityDependency>), IList<UserProperty> userProperties = default(IList<UserProperty>), LinkedServiceReference linkedServiceName = default(LinkedServiceReference), ActivityPolicy policy = default(ActivityPolicy), object headers = default(object), object body = default(object), WebActivityAuthentication authentication = default(WebActivityAuthentication), bool? disableCertValidation = default(bool?), object httpRequestTimeout = default(object), bool? turnOffAsync = default(bool?), IList<DatasetReference> datasets = default(IList<DatasetReference>), IList<LinkedServiceReference> linkedServices = default(IList<LinkedServiceReference>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference))
             : base(name, additionalProperties, description, state, onInactiveMarkAs, dependsOn, userProperties, linkedServiceName, policy)
         {
             Method = method;
@@ -81,6 +91,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             Body = body;
             Authentication = authentication;
             DisableCertValidation = disableCertValidation;
+            HttpRequestTimeout = httpRequestTimeout;
+            TurnOffAsync = turnOffAsync;
             Datasets = datasets;
             LinkedServices = linkedServices;
             ConnectVia = connectVia;
@@ -110,8 +122,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Gets or sets represents the headers that will be sent to the
         /// request. For example, to set the language and type on a request:
         /// "headers" : { "Accept-Language": "en-us", "Content-Type":
-        /// "application/json" }. Type: string (or Expression with resultType
-        /// string).
+        /// "application/json" }. Type: dictionary (or Expression with
+        /// resultType dictionary).
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.headers")]
         public object Headers { get; set; }
@@ -136,6 +148,25 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.disableCertValidation")]
         public bool? DisableCertValidation { get; set; }
+
+        /// <summary>
+        /// Gets or sets timeout for the HTTP request to get a response. Format
+        /// is in TimeSpan (hh:mm:ss). This value is the timeout to get a
+        /// response, not the activity timeout. The default value is 00:01:00
+        /// (1 minute). The range is from 1 to 10 minutes
+        /// </summary>
+        [JsonProperty(PropertyName = "typeProperties.httpRequestTimeout")]
+        public object HttpRequestTimeout { get; set; }
+
+        /// <summary>
+        /// Gets or sets option to disable invoking HTTP GET on location given
+        /// in response header of a HTTP 202 Response. If set true, it stops
+        /// invoking HTTP GET on http location given in response header. If set
+        /// false then continues to invoke HTTP GET call on location given in
+        /// http response headers.
+        /// </summary>
+        [JsonProperty(PropertyName = "typeProperties.turnOffAsync")]
+        public bool? TurnOffAsync { get; set; }
 
         /// <summary>
         /// Gets or sets list of datasets passed to web endpoint.

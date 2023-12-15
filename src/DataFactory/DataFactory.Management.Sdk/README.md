@@ -23,7 +23,7 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-commit: 78eac0bd58633028293cb1ec1709baa200bed9e2
+commit: 2aaf1e85a93733499230175b1a8a8b26af0cdf4d
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/datafactory.json
 

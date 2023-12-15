@@ -37,7 +37,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         /// <param name="functionAppUrl">The endpoint of the Azure Function
         /// App. URL will be in the format
-        /// https://&lt;accountName&gt;.azurewebsites.net.</param>
+        /// https://&lt;accountName&gt;.azurewebsites.net. Type: string (or
+        /// Expression with resultType string).</param>
         /// <param name="additionalProperties">Unmatched properties from the
         /// message are deserialized this collection</param>
         /// <param name="connectVia">The integration runtime reference.</param>
@@ -53,7 +54,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="credential">The credential reference containing
         /// authentication information.</param>
         /// <param name="resourceId">Allowed token audiences for azure
-        /// function.</param>
+        /// function. Type: string (or Expression with resultType
+        /// string).</param>
         /// <param name="authentication">Type of authentication (Required to
         /// specify MSI) used to connect to AzureFunction. Type: string (or
         /// Expression with resultType string).</param>
@@ -77,6 +79,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <summary>
         /// Gets or sets the endpoint of the Azure Function App. URL will be in
         /// the format https://&amp;lt;accountName&amp;gt;.azurewebsites.net.
+        /// Type: string (or Expression with resultType string).
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.functionAppUrl")]
         public object FunctionAppUrl { get; set; }
@@ -103,7 +106,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public CredentialReference Credential { get; set; }
 
         /// <summary>
-        /// Gets or sets allowed token audiences for azure function.
+        /// Gets or sets allowed token audiences for azure function. Type:
+        /// string (or Expression with resultType string).
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.resourceId")]
         public object ResourceId { get; set; }

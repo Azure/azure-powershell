@@ -33,9 +33,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <summary>
         /// Initializes a new instance of the CmdkeySetup class.
         /// </summary>
-        /// <param name="targetName">The server name of data source
-        /// access.</param>
-        /// <param name="userName">The user name of data source access.</param>
+        /// <param name="targetName">The server name of data source access.
+        /// Type: string.</param>
+        /// <param name="userName">The user name of data source access. Type:
+        /// string.</param>
         /// <param name="password">The password of data source access.</param>
         public CmdkeySetup(object targetName, object userName, SecretBase password)
         {
@@ -51,13 +52,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the server name of data source access.
+        /// Gets or sets the server name of data source access. Type: string.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.targetName")]
         public object TargetName { get; set; }
 
         /// <summary>
-        /// Gets or sets the user name of data source access.
+        /// Gets or sets the user name of data source access. Type: string.
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.userName")]
         public object UserName { get; set; }

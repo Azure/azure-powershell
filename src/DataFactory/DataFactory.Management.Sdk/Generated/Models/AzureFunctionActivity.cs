@@ -60,8 +60,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="headers">Represents the headers that will be sent to
         /// the request. For example, to set the language and type on a
         /// request: "headers" : { "Accept-Language": "en-us", "Content-Type":
-        /// "application/json" }. Type: string (or Expression with resultType
-        /// string).</param>
+        /// "application/json" }. Type: dictionary (or Expression with
+        /// resultType dictionary).</param>
         /// <param name="body">Represents the payload that will be sent to the
         /// endpoint. Required for POST/PUT method, not allowed for GET method
         /// Type: string (or Expression with resultType string).</param>
@@ -98,8 +98,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Gets or sets represents the headers that will be sent to the
         /// request. For example, to set the language and type on a request:
         /// "headers" : { "Accept-Language": "en-us", "Content-Type":
-        /// "application/json" }. Type: string (or Expression with resultType
-        /// string).
+        /// "application/json" }. Type: dictionary (or Expression with
+        /// resultType dictionary).
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.headers")]
         public object Headers { get; set; }

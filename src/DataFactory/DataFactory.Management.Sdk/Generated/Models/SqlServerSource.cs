@@ -69,7 +69,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// produce.</param>
         /// <param name="partitionOption">The partition mechanism that will be
         /// used for Sql read in parallel. Possible values include: "None",
-        /// "PhysicalPartitionsOfTable", "DynamicRange".</param>
+        /// "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or
+        /// Expression with resultType string).</param>
         /// <param name="partitionSettings">The settings that will be leveraged
         /// for Sql source partitioning.</param>
         public SqlServerSource(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object sqlReaderQuery = default(object), object sqlReaderStoredProcedureName = default(object), object storedProcedureParameters = default(object), object isolationLevel = default(object), object produceAdditionalTypes = default(object), object partitionOption = default(object), SqlPartitionSettings partitionSettings = default(SqlPartitionSettings))
@@ -131,7 +132,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <summary>
         /// Gets or sets the partition mechanism that will be used for Sql read
         /// in parallel. Possible values include: "None",
-        /// "PhysicalPartitionsOfTable", "DynamicRange".
+        /// "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or
+        /// Expression with resultType string).
         /// </summary>
         [JsonProperty(PropertyName = "partitionOption")]
         public object PartitionOption { get; set; }

@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// class.
         /// </summary>
         /// <param name="clusterSize">Number of worker/data nodes in the
-        /// cluster. Suggestion value: 4. Type: string (or Expression with
-        /// resultType string).</param>
+        /// cluster. Suggestion value: 4. Type: int (or Expression with
+        /// resultType int).</param>
         /// <param name="timeToLive">The allowed idle time for the on-demand
         /// HDInsight cluster. Specifies how long the on-demand HDInsight
         /// cluster stays alive after completion of an activity run if there
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <summary>
         /// Gets or sets number of worker/data nodes in the cluster. Suggestion
-        /// value: 4. Type: string (or Expression with resultType string).
+        /// value: 4. Type: int (or Expression with resultType int).
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.clusterSize")]
         public object ClusterSize { get; set; }

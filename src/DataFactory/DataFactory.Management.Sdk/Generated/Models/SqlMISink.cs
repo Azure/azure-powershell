@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// during bulk copy. Type: boolean (or Expression with resultType
         /// boolean).</param>
         /// <param name="writeBehavior">White behavior when copying data into
-        /// azure SQL MI. Type: SqlWriteBehaviorEnum (or Expression with
-        /// resultType SqlWriteBehaviorEnum)</param>
+        /// azure SQL MI. Type: string (or Expression with resultType
+        /// string)</param>
         /// <param name="upsertSettings">SQL upsert settings.</param>
         public SqlMISink(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object sqlWriterStoredProcedureName = default(object), object sqlWriterTableType = default(object), object preCopyScript = default(object), object storedProcedureParameters = default(object), object storedProcedureTableTypeParameterName = default(object), object tableOption = default(object), object sqlWriterUseTableLock = default(object), object writeBehavior = default(object), SqlUpsertSettings upsertSettings = default(SqlUpsertSettings))
             : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
@@ -143,8 +143,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <summary>
         /// Gets or sets white behavior when copying data into azure SQL MI.
-        /// Type: SqlWriteBehaviorEnum (or Expression with resultType
-        /// SqlWriteBehaviorEnum)
+        /// Type: string (or Expression with resultType string)
         /// </summary>
         [JsonProperty(PropertyName = "writeBehavior")]
         public object WriteBehavior { get; set; }

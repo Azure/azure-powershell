@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// with resultType boolean).</param>
         /// <param name="copyBehavior">The type of copy behavior for copy
         /// sink.</param>
+        /// <param name="metadata">Specify the custom metadata to be added to
+        /// sink data. Type: array of objects (or Expression with resultType
+        /// array of objects).</param>
         /// <param name="operationTimeout">Specifies the timeout for writing
         /// each chunk to SFTP server. Default value: 01:00:00 (one hour).
         /// Type: string (or Expression with resultType string).</param>
@@ -49,8 +52,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// rename. Disable this option if your SFTP server doesn't support
         /// rename operation. Type: boolean (or Expression with resultType
         /// boolean).</param>
-        public SftpWriteSettings(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object copyBehavior = default(object), object operationTimeout = default(object), object useTempFileRename = default(object))
-            : base(additionalProperties, maxConcurrentConnections, disableMetricsCollection, copyBehavior)
+        public SftpWriteSettings(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object copyBehavior = default(object), IList<MetadataItem> metadata = default(IList<MetadataItem>), object operationTimeout = default(object), object useTempFileRename = default(object))
+            : base(additionalProperties, maxConcurrentConnections, disableMetricsCollection, copyBehavior, metadata)
         {
             OperationTimeout = operationTimeout;
             UseTempFileRename = useTempFileRename;

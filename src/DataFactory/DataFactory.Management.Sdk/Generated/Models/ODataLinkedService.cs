@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// (or Expression with resultType string).</param>
         /// <param name="password">Password of the OData service.</param>
         /// <param name="authHeaders">The additional HTTP headers in the
-        /// request to RESTful API used for authorization. Type: object (or
-        /// Expression with resultType object).</param>
+        /// request to RESTful API used for authorization. Type: key value
+        /// pairs (value should be string type).</param>
         /// <param name="tenant">Specify the tenant information (domain name or
         /// tenant ID) under which your application resides. Type: string (or
         /// Expression with resultType string).</param>
@@ -141,8 +141,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <summary>
         /// Gets or sets the additional HTTP headers in the request to RESTful
-        /// API used for authorization. Type: object (or Expression with
-        /// resultType object).
+        /// API used for authorization. Type: key value pairs (value should be
+        /// string type).
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.authHeaders")]
         public object AuthHeaders { get; set; }

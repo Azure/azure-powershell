@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// RESTful API. The default is POST. Type: string (or Expression with
         /// resultType string).</param>
         /// <param name="additionalHeaders">The additional HTTP headers in the
-        /// request to the RESTful API. Type: string (or Expression with
-        /// resultType string).</param>
+        /// request to the RESTful API. Type: key value pairs (value should be
+        /// string type).</param>
         /// <param name="httpRequestTimeout">The timeout (TimeSpan) to get an
         /// HTTP response. It is the timeout to get a response, not the timeout
         /// to read response data. Default value: 00:01:40. Type: string (or
@@ -65,7 +65,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// request, in milliseconds </param>
         /// <param name="httpCompressionType">Http Compression Type to Send
         /// data in compressed format with Optimal Compression Level, Default
-        /// is None. And The Only Supported option is Gzip. </param>
+        /// is None. And The Only Supported option is Gzip. Type: string (or
+        /// Expression with resultType string).</param>
         public RestSink(IDictionary<string, object> additionalProperties = default(IDictionary<string, object>), object writeBatchSize = default(object), object writeBatchTimeout = default(object), object sinkRetryCount = default(object), object sinkRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object requestMethod = default(object), object additionalHeaders = default(object), object httpRequestTimeout = default(object), object requestInterval = default(object), object httpCompressionType = default(object))
             : base(additionalProperties, writeBatchSize, writeBatchTimeout, sinkRetryCount, sinkRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
@@ -92,7 +93,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <summary>
         /// Gets or sets the additional HTTP headers in the request to the
-        /// RESTful API. Type: string (or Expression with resultType string).
+        /// RESTful API. Type: key value pairs (value should be string type).
         /// </summary>
         [JsonProperty(PropertyName = "additionalHeaders")]
         public object AdditionalHeaders { get; set; }
@@ -117,7 +118,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <summary>
         /// Gets or sets http Compression Type to Send data in compressed
         /// format with Optimal Compression Level, Default is None. And The
-        /// Only Supported option is Gzip.
+        /// Only Supported option is Gzip. Type: string (or Expression with
+        /// resultType string).
         /// </summary>
         [JsonProperty(PropertyName = "httpCompressionType")]
         public object HttpCompressionType { get; set; }

@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="password">Password for Basic, Digest, Windows, or
         /// ClientCertificate with EmbeddedCertData authentication.</param>
         /// <param name="authHeaders">The additional HTTP headers in the
-        /// request to RESTful API used for authorization. Type: object (or
-        /// Expression with resultType object).</param>
+        /// request to RESTful API used for authorization. Type: key value
+        /// pairs (value should be string type).</param>
         /// <param name="embeddedCertData">Base64 encoded certificate data for
         /// ClientCertificate authentication. For on-premises copy with
         /// ClientCertificate authentication, either CertThumbprint or
@@ -125,8 +125,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <summary>
         /// Gets or sets the additional HTTP headers in the request to RESTful
-        /// API used for authorization. Type: object (or Expression with
-        /// resultType object).
+        /// API used for authorization. Type: key value pairs (value should be
+        /// string type).
         /// </summary>
         [JsonProperty(PropertyName = "typeProperties.authHeaders")]
         public object AuthHeaders { get; set; }
