@@ -1,40 +1,31 @@
 ---
 external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoversmbfileshareendpoint
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazsmbfileshareendpoint
 schema: 2.0.0
 ---
 
-# Update-AzStorageMoverSmbFileShareEndpoint
+# New-AzStorageMoverAzSmbFileShareEndpoint
 
 ## SYNOPSIS
-Updates properties for a SMB file share endpoint resource.
-Properties not specified in the request body will be unchanged.
+Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
-Update-AzStorageMoverSmbFileShareEndpoint -Name <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzStorageMoverSmbFileShareEndpoint -InputObject <IStorageMoverIdentity> [-Description <String>]
+New-AzStorageMoverAzSmbFileShareEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
+ -FileShareName <String> -StorageAccountResourceId <String> [-SubscriptionId <String>] [-Description <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates properties for a SMB file share endpoint resource.
-Properties not specified in the request body will be unchanged.
+Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
 
 ## EXAMPLES
 
-### Example 1: Update a Smb file share endpoint 
+### Example 1: Create an Smb file share endpoint
 ```powershell
-Update-AzStorageMoverSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Description "updated endpoint"
+New-AzStorageMoverAzSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -StorageAccountResourceId $accountresourceid -FileShareName testfs -Description "New smb file share endpoint"
 ```
 
 ```output
@@ -42,47 +33,21 @@ Id                           : /subscriptions/00000000-0000-0000-0000-0000000000
 Name                         : myendpoint
 Property                     : {
                                  "endpointType": "AzureStorageSmbFileShare",
-                                 "description": "updated endpoint",
+                                 "description": "New smb file share endpoint",
                                  "provisioningState": "Succeeded",
                                  "storageAccountResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount",
                                  "fileShareName": "testfs"
                                }
 SystemDataCreatedAt          : 6/27/2023 4:30:13 AM
-SystemDataCreatedBy          : 00000000-0000-0000-0000-000000000000
+SystemDataCreatedBy          :00000000-0000-0000-0000-000000000000
 SystemDataCreatedByType      : Application
-SystemDataLastModifiedAt     : 7/13/2023 7:25:59 AM
+SystemDataLastModifiedAt     : 7/13/2023 7:21:21 AM
 SystemDataLastModifiedBy     : 00000000-0000-0000-0000-000000000000
 SystemDataLastModifiedByType : Application
 Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
-This command updates a Smb file share enpdoint's description by manual inputs.
-
-### Example 2: Update a Smb file share endpoint by pipeline
-```powershell
-Get-AzStorageMoverEndpoint -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Name "myendpoint" | Update-AzStorageMoverSmbFileShareEndpoint -Description "updated endpoint again"
-```
-
-```output
-Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
-Name                         : myendpoint
-Property                     : {
-                                 "endpointType": "AzureStorageSmbFileShare",
-                                 "description": "updated endpoint again",
-                                 "provisioningState": "Succeeded",
-                                 "storageAccountResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegorup/providers/Microsoft.Storage/storageAccounts/myaccount",
-                                 "fileShareName": "testfs"
-                               }
-SystemDataCreatedAt          : 6/27/2023 4:30:13 AM
-SystemDataCreatedBy          : 00000000-0000-0000-0000-000000000000
-SystemDataCreatedByType      : Application
-SystemDataLastModifiedAt     : 7/13/2023 8:21:51 AM
-SystemDataLastModifiedBy     : 00000000-0000-0000-0000-000000000000
-SystemDataLastModifiedByType : Application
-Type                         : microsoft.storagemover/storagemovers/endpoints
-```
-
-This command updates a Smb file share endpoint's description by pipeline
+This command creats an Azure Storage SMB file share endpoint.
 
 ## PARAMETERS
 
@@ -116,19 +81,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -FileShareName
+The name of the Azure Storage file share.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -137,7 +101,7 @@ The name of the endpoint resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases: EndpointName
 
 Required: True
@@ -153,7 +117,22 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountResourceId
+The Azure Resource ID of the storage account that is the target destination.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -168,7 +147,7 @@ The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -183,7 +162,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -229,6 +208,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint
+
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 
 ## OUTPUTS
@@ -236,6 +217,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint
 
 ## NOTES
+
+ALIASES
+
+New-AzStorageMoverSmbFileShareEndpoint
 
 ## RELATED LINKS
 
