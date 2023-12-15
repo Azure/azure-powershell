@@ -90,6 +90,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get
             {
+                if (this.GlobalConfiguration == null)
+                {
+                    this.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
+                    this.GlobalConfiguration.EnableRequestBuffering = true;
+                }
                 return this.GlobalConfiguration.EnableRequestBuffering;
             }
 
@@ -105,6 +110,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get
             {
+                if (this.GlobalConfiguration == null)
+                {
+                    this.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
+                    this.GlobalConfiguration.EnableResponseBuffering = true;
+                }
                 return this.GlobalConfiguration.EnableResponseBuffering;
             }
                 
