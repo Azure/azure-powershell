@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Renamed SmbFileShare endpoint cmdlets
 
 ## Version 1.2.0
 *  Supported SmbFileShareEndpoint and SmbEndpoint
