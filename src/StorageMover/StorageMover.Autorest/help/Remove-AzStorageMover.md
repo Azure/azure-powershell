@@ -1,41 +1,41 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/unregister-azstoragemoveragent
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/remove-azstoragemover
 schema: 2.0.0
 ---
 
-# Unregister-AzStorageMoverAgent
+# Remove-AzStorageMover
 
 ## SYNOPSIS
-Deletes an agent resource.
+Deletes a Storage Mover resource.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Unregister-AzStorageMoverAgent -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Force] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzStorageMover -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Force] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Unregister-AzStorageMoverAgent -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [-Force]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStorageMover -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-Force]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes an agent resource.
+Deletes a Storage Mover resource.
 
 ## EXAMPLES
 
-### Example 1: Unregister an agent
+### Example 1: Remove a Storage mover
 ```powershell
-Unregister-AzStorageMoverAgent -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myAgent
+Remove-AzStorageMover -ResourceGroupName myResourceGroup -Name myStorageMover
 ```
 
-This command unresgisters an agent under a Storage mover.
+This command removes a Storage mover.
 
 ## PARAMETERS
 
@@ -71,6 +71,7 @@ Accept wildcard characters: False
 
 ### -Force
 
+
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -100,12 +101,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the agent resource.
+The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: AgentName
+Aliases: StorageMoverName
 
 Required: True
 Position: Named
@@ -147,21 +148,6 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageMoverName
-The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
@@ -235,3 +221,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

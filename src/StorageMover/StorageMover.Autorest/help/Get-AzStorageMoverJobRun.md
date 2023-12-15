@@ -1,5 +1,5 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverjobrun
 schema: 2.0.0
@@ -27,7 +27,8 @@ Get-AzStorageMoverJobRun -JobDefinitionName <String> -Name <String> -ProjectName
 
 ### GetViaIdentity
 ```
-Get-AzStorageMoverJobRun -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStorageMoverJobRun -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -180,7 +181,7 @@ The name of the Job Definition resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -210,7 +211,7 @@ The name of the Project resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -226,7 +227,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -241,7 +242,7 @@ The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -256,7 +257,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -280,3 +281,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

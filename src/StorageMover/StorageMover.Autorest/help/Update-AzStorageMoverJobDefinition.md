@@ -1,5 +1,5 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverjobdefinition
 schema: 2.0.0
@@ -17,27 +17,27 @@ Properties not specified in the request body will be unchanged.
 ```
 Update-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
  -StorageMoverName <String> [-SubscriptionId <String>] [-AgentName <String>] [-CopyMode <CopyMode>]
- [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Description <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] -JobDefinition <IJobDefinitionUpdateParameters>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-AgentName <String>]
- [-CopyMode <CopyMode>] [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -StorageMoverName <String> -JobDefinition <IJobDefinitionUpdateParameters> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
 Update-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity>
- -JobDefinition <IJobDefinitionUpdateParameters> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -JobDefinition <IJobDefinitionUpdateParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-AgentName <String>]
+ [-CopyMode <CopyMode>] [-Description <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -149,7 +149,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -180,7 +180,7 @@ The name of the Job Definition resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases: JobDefinitionName
 
 Required: True
@@ -195,7 +195,7 @@ The name of the Project resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -211,7 +211,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -226,7 +226,7 @@ The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -241,7 +241,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: False
@@ -298,3 +298,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

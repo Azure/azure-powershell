@@ -1,70 +1,54 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazstoragecontainerendpoint
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemovernfsendpoint
 schema: 2.0.0
 ---
 
-# New-AzStorageMoverAzStorageContainerEndpoint
+# New-AzStorageMoverNfsEndpoint
 
 ## SYNOPSIS
-Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
+Creates a Nfs endpoint resource, which represents a data transfer source or destination.
 
 ## SYNTAX
 
 ```
-New-AzStorageMoverAzStorageContainerEndpoint -Name <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] -BlobContainerName <String>
- -StorageAccountResourceId <String> [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzStorageMoverNfsEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
+ -Export <String> -Host <String> [-SubscriptionId <String>] [-Description <String>] [-NfsVersion <NfsVersion>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
+Creates a Nfs endpoint resource, which represents a data transfer source or destination.
 
 ## EXAMPLES
 
-### Example 1: Create a AzStorageContainer endpoint
+### Example 1: Create a NFS endpoint
 ```powershell
-New-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -BlobContainerName myContainer -StorageMoverName myStorageMover -StorageAccountResourceId myAccountResourceId
+ New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "10.0.0.1" -Export "/" -NfsVersion NFSv3 -Description "Description"
 ```
 
 ```output
 Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint
 Name                         : myEndpoint
 Property                     : {
-                                 "endpointType": "AzureStorageBlobContainer",
+                                 "endpointType": "NfsMount",
                                  "provisioningState": "Succeeded",
-                                 "storageAccountResourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myStorageMover/providers/Microsoft.Storage/storageAccounts/myStorageAccount",
-                                 "blobContainerName": "myContainer"
+                                 "host": "10.0.0.1",
+                                 "export": "/"
                                }
-SystemDataCreatedAt          : 7/18/2022 7:28:29 AM
-SystemDataCreatedBy          : xxxxxxxxxx
+SystemDataCreatedAt          : 7/18/2022 7:28:30 AM
+SystemDataCreatedBy          : xxxxxxx
 SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 7/18/2022 7:28:29 AM
-SystemDataLastModifiedBy     : xxxxxxxxxxx
+SystemDataLastModifiedAt     : 7/18/2022 7:28:30 AM
+SystemDataLastModifiedBy     : xxxxxxx
 SystemDataLastModifiedByType : User
 Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
-This command creates a AzStorageContainer endpoint for a Storage mover.
+This command creates a NFS endpoint for a Storage mover.
 
 ## PARAMETERS
-
-### -BlobContainerName
-The name of the Storage blob container that is the target destination.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -96,6 +80,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Export
+The directory being exported from the server.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Host
+The host name or IP address of the server exporting the file system.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the endpoint resource.
 
@@ -111,24 +125,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -NfsVersion
+The NFS protocol version.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.NfsVersion
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageAccountResourceId
-The Azure Resource ID of the storage account that is the target destination.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -219,3 +233,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

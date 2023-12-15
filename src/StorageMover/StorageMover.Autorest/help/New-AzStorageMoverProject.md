@@ -1,59 +1,57 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemover
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverproject
 schema: 2.0.0
 ---
 
-# New-AzStorageMover
+# New-AzStorageMoverProject
 
 ## SYNOPSIS
-Creates or updates a top-level Storage Mover resource.
+Creates or updates a Project resource, which is a logical grouping of related jobs.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzStorageMover -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+New-AzStorageMoverProject -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
+ [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzStorageMover -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -StorageMover <IStorageMover> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzStorageMoverProject -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
+ -Project <IProject> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a top-level Storage Mover resource.
+Creates or updates a Project resource, which is a logical grouping of related jobs.
 
 ## EXAMPLES
 
-### Example 1: Create a Storage mover
+### Example 1: Create a project
 ```powershell
-New-AzStorageMover -ResourceGroupName myResourceGroup -Name myStorageMover -Location eastus -Description "Description"
+New-AzStorageMoverProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myProject -Description "description"
 ```
 
 ```output
-Description                  :
+Description                  : description
 Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storage
-                               Movers/myStorageMover
-Location                     : eastus
-Name                         : myStorageMover
+                               Movers/myStorageMover/projects/myProject
+Name                         : myProject
 ProvisioningState            : Succeeded
-SystemDataCreatedAt          : 7/26/2022 5:49:02 AM
-SystemDataCreatedBy          : xxxxxxxxxx
+SystemDataCreatedAt          : 7/26/2022 5:50:53 AM
+SystemDataCreatedBy          : xxxxxxxxxxxxxxxxxxxxxxxx
 SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 7/26/2022 5:49:02 AM
-SystemDataLastModifiedBy     : xxxxxxxxxx
+SystemDataLastModifiedAt     : 7/26/2022 5:50:53 AM
+SystemDataLastModifiedBy     : xxxxxxxxxxxxxxxxxxxxxxxx
 SystemDataLastModifiedByType : User
-Tag                          : {
-                               }
-Type                         : microsoft.storagemover/storagemovers
+Type                         : microsoft.storagemover/storagemovers/projects
 ```
 
-This command creates a Storage mover for a resource group.
+This command creates a project for a Storage mover.
 
 ## PARAMETERS
 
@@ -74,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-A description for the Storage Mover.
+A description for the Project.
 
 ```yaml
 Type: System.String
@@ -88,13 +86,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The geo-location where the resource lives
+### -Name
+The name of the Project resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
+Parameter Sets: (All)
+Aliases: ProjectName
 
 Required: True
 Position: Named
@@ -103,18 +101,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the Storage Mover resource.
+### -Project
+The Project resource.
+To construct, see NOTES section for PROJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: StorageMoverName
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject
+Parameter Sets: Create
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -134,19 +133,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageMover
-The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints.
-To construct, see NOTES section for STORAGEMOVER properties and create a hash table.
+### -StorageMoverName
+The name of the Storage Mover resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover
-Parameter Sets: Create
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -161,21 +159,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -216,12 +199,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IProject
 
 ## NOTES
 
 ## RELATED LINKS
+

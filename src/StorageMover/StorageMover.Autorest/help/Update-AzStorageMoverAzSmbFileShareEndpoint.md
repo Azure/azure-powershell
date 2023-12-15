@@ -1,62 +1,88 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverazstoragecontainerendpoint
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverazsmbfileshareendpoint
 schema: 2.0.0
 ---
 
-# Update-AzStorageMoverAzStorageContainerEndpoint
+# Update-AzStorageMoverAzSmbFileShareEndpoint
 
 ## SYNOPSIS
-Updates properties for an AzStorageContainer endpoint resource.
+Updates properties for a SMB file share endpoint resource.
 Properties not specified in the request body will be unchanged.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzStorageMoverAzStorageContainerEndpoint -Name <String> -ResourceGroupName <String>
+Update-AzStorageMoverAzSmbFileShareEndpoint -Name <String> -ResourceGroupName <String>
  -StorageMoverName <String> [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStorageMoverAzStorageContainerEndpoint -InputObject <IStorageMoverIdentity> [-Description <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzStorageMoverAzSmbFileShareEndpoint -InputObject <IStorageMoverIdentity> [-Description <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates properties for an AzStorageContainer endpoint resource.
+Updates properties for a SMB file share endpoint resource.
 Properties not specified in the request body will be unchanged.
 
 ## EXAMPLES
 
-### Example 1: Update an AzStorageContainer endpoint
+### Example 1: Update a Smb file share endpoint 
 ```powershell
-Update-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Description "Update Description"
+Update-AzStorageMoverAzSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Description "updated endpoint"
 ```
 
 ```output
-Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint1
-Name                         : containerEndpointo3q8xlbr
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
+Name                         : myendpoint
 Property                     : {
-                                 "endpointType": "AzureStorageBlobContainer",
-                                 "description": "Update Description",
+                                 "endpointType": "AzureStorageSmbFileShare",
+                                 "description": "updated endpoint",
                                  "provisioningState": "Succeeded",
-                                 "storageAccountResourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myStorageMover/providers/Microsoft.Storage/storageAccounts/myStorageAccount",
-                                 "blobContainerName": "myContainer"
+                                 "storageAccountResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount",
+                                 "fileShareName": "testfs"
                                }
-SystemDataCreatedAt          : 7/18/2022 7:28:29 AM
-SystemDataCreatedBy          : xxxxxxxxxx
-SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 7/18/2022 7:28:29 AM
-SystemDataLastModifiedBy     : xxxxxxxxxxx
-SystemDataLastModifiedByType : User
+SystemDataCreatedAt          : 6/27/2023 4:30:13 AM
+SystemDataCreatedBy          : 00000000-0000-0000-0000-000000000000
+SystemDataCreatedByType      : Application
+SystemDataLastModifiedAt     : 7/13/2023 7:25:59 AM
+SystemDataLastModifiedBy     : 00000000-0000-0000-0000-000000000000
+SystemDataLastModifiedByType : Application
 Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
-This command updates the description of an AzStorageContainerEndpoint.
+This command updates an Azure Storage SMB file share enpdoint's description by manual inputs.
+
+### Example 2: Update a Smb file share endpoint by pipeline
+```powershell
+Get-AzStorageMoverEndpoint -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Name "myendpoint" | Update-AzStorageMoverAzSmbFileShareEndpoint -Description "updated endpoint again"
+```
+
+```output
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
+Name                         : myendpoint
+Property                     : {
+                                 "endpointType": "AzureStorageSmbFileShare",
+                                 "description": "updated endpoint again",
+                                 "provisioningState": "Succeeded",
+                                 "storageAccountResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegorup/providers/Microsoft.Storage/storageAccounts/myaccount",
+                                 "fileShareName": "testfs"
+                               }
+SystemDataCreatedAt          : 6/27/2023 4:30:13 AM
+SystemDataCreatedBy          : 00000000-0000-0000-0000-000000000000
+SystemDataCreatedByType      : Application
+SystemDataLastModifiedAt     : 7/13/2023 8:21:51 AM
+SystemDataLastModifiedBy     : 00000000-0000-0000-0000-000000000000
+SystemDataLastModifiedByType : Application
+Type                         : microsoft.storagemover/storagemovers/endpoints
+```
+
+This command updates an Azure Storage SMB file share endpoint's description by pipeline.
 
 ## PARAMETERS
 
@@ -211,4 +237,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+ALIASES
+
+Update-AzStorageMoverSmbFileShareEndpoint
+
 ## RELATED LINKS
+

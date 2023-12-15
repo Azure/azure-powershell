@@ -1,41 +1,41 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/unregister-azstoragemoveragent
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoverjobdefinition
 schema: 2.0.0
 ---
 
-# Unregister-AzStorageMoverAgent
+# Remove-AzStorageMoverJobDefinition
 
 ## SYNOPSIS
-Deletes an agent resource.
+Deletes a Job Definition resource.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Unregister-AzStorageMoverAgent -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Force] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
+ -StorageMoverName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Unregister-AzStorageMoverAgent -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [-Force]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes an agent resource.
+Deletes a Job Definition resource.
 
 ## EXAMPLES
 
-### Example 1: Unregister an agent
+### Example 1: Remove a job definition
 ```powershell
-Unregister-AzStorageMoverAgent -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myAgent
+Remove-AzStorageMoverJobDefinition -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -ProjectName myProject -Name myJobDefinition
 ```
 
-This command unresgisters an agent under a Storage mover.
+This command removes a job definition.
 
 ## PARAMETERS
 
@@ -55,26 +55,13 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -100,12 +87,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the agent resource.
+The name of the Job Definition resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: AgentName
+Aliases: JobDefinitionName
 
 Required: True
 Position: Named
@@ -138,6 +125,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectName
+The name of the Project resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -235,3 +237,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,6 +1,6 @@
 ### Example 1: Create an Smb file share endpoint
 ```powershell
-New-AzStorageMoverSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -StorageAccountResourceId $accountresourceid -FileShareName testfs -Description "New smb file share endpoint"
+New-AzStorageMoverAzSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -StorageAccountResourceId $accountresourceid -FileShareName testfs -Description "New smb file share endpoint"
 ```
 
 ```output
@@ -22,6 +22,4 @@ SystemDataLastModifiedByType : Application
 Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
-This command creats a Smb file share endpoint
-
-
+This command creats an Azure Storage SMB file share endpoint. 

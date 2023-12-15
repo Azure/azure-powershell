@@ -1,76 +1,40 @@
 ---
 external help file: Az.StorageMover-help.xml
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazstoragecontainerendpoint
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazsmbfileshareendpoint
 schema: 2.0.0
 ---
 
-# New-AzStorageMoverAzStorageContainerEndpoint
+# New-AzStorageMoverAzSmbFileShareEndpoint
 
 ## SYNOPSIS
-Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
+Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
 
 ## SYNTAX
 
 ```
-New-AzStorageMoverAzStorageContainerEndpoint -Name <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] -BlobContainerName <String>
- -StorageAccountResourceId <String> [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzStorageMoverAzSmbFileShareEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
+ [-SubscriptionId <String>] -StorageAccountResourceId <String> -FileShareName <String> [-Description <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
+Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
 
 ## EXAMPLES
 
-### Example 1: Create a AzStorageContainer endpoint
-```powershell
-New-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -BlobContainerName myContainer -StorageMoverName myStorageMover -StorageAccountResourceId myAccountResourceId
+### EXAMPLE 1
 ```
-
-```output
-Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint
-Name                         : myEndpoint
-Property                     : {
-                                 "endpointType": "AzureStorageBlobContainer",
-                                 "provisioningState": "Succeeded",
-                                 "storageAccountResourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myStorageMover/providers/Microsoft.Storage/storageAccounts/myStorageAccount",
-                                 "blobContainerName": "myContainer"
-                               }
-SystemDataCreatedAt          : 7/18/2022 7:28:29 AM
-SystemDataCreatedBy          : xxxxxxxxxx
-SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 7/18/2022 7:28:29 AM
-SystemDataLastModifiedBy     : xxxxxxxxxxx
-SystemDataLastModifiedByType : User
-Type                         : microsoft.storagemover/storagemovers/endpoints
+New-AzStorageMoverAzSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -StorageAccountResourceId $accountresourceid -FileShareName testfs -Description "New smb file share endpoint"
 ```
-
-This command creates a AzStorageContainer endpoint for a Storage mover.
 
 ## PARAMETERS
-
-### -BlobContainerName
-The name of the Storage blob container that is the target destination.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -85,7 +49,7 @@ Accept wildcard characters: False
 A description for the endpoint.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,11 +60,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FileShareName
+The name of the Azure Storage file share.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the endpoint resource.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: EndpointName
 
@@ -116,7 +95,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -131,7 +110,7 @@ Accept wildcard characters: False
 The Azure Resource ID of the storage account that is the target destination.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +125,7 @@ Accept wildcard characters: False
 The name of the Storage Mover resource.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -161,13 +140,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -176,7 +155,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -192,7 +171,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -209,13 +188,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint
-
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint
-
 ## NOTES
 
 ## RELATED LINKS
+
+[https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazsmbfileshareendpoint](https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazsmbfileshareendpoint)
+

@@ -1,55 +1,92 @@
 ---
 external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoversmbfileshareendpoint
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoversmbendpoint
 schema: 2.0.0
 ---
 
-# New-AzStorageMoverSmbFileShareEndpoint
+# New-AzStorageMoverSmbEndpoint
 
 ## SYNOPSIS
-Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
+Creates an SMB endpoint resource, which represents a data transfer source or destination.
 
 ## SYNTAX
 
 ```
-New-AzStorageMoverSmbFileShareEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- -FileShareName <String> -StorageAccountResourceId <String> [-SubscriptionId <String>] [-Description <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStorageMoverSmbEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
+ -Host <String> -ShareName <String> [-SubscriptionId <String>] [-CredentialsPasswordUri <String>]
+ [-CredentialsUsernameUri <String>] [-Description <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
+Creates an SMB endpoint resource, which represents a data transfer source or destination.
 
 ## EXAMPLES
 
-### Example 1: Create an Smb file share endpoint
+### Example 1: Create a SMB endpoint
 ```powershell
-New-AzStorageMoverSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -StorageAccountResourceId $accountresourceid -FileShareName testfs -Description "New smb file share endpoint"
+New-AzStorageMoverSmbEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Host "10.0.0.1" -ShareName "testshare" -CredentialsUsernameUri "https://examples-azureKeyVault.vault.azure.net/secrets/username1" -CredentialsPasswordUri "https://examples-azureKeyVault.vault.azure.net/secrets/password1"
 ```
 
 ```output
 Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
 Name                         : myendpoint
 Property                     : {
-                                 "endpointType": "AzureStorageSmbFileShare",
-                                 "description": "New smb file share endpoint",
+                                 "endpointType": "SmbMount",
                                  "provisioningState": "Succeeded",
-                                 "storageAccountResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount",
-                                 "fileShareName": "testfs"
+                                 "credentials": {
+                                   "type": "AzureKeyVaultSmb",
+                                   "usernameUri": "https://examples-azureKeyVault.vault.azure.net/secrets/username1",
+                                   "passwordUri": "https://examples-azureKeyVault.vault.azure.net/secrets/password1"
+                                 },
+                                 "host": "10.0.0.1",
+                                 "shareName": "testshare"
                                }
-SystemDataCreatedAt          : 6/27/2023 4:30:13 AM
-SystemDataCreatedBy          :00000000-0000-0000-0000-000000000000
+SystemDataCreatedAt          : 6/27/2023 4:30:50 AM
+SystemDataCreatedBy          : 00000000-0000-0000-0000-000000000000
 SystemDataCreatedByType      : Application
-SystemDataLastModifiedAt     : 7/13/2023 7:21:21 AM
+SystemDataLastModifiedAt     : 7/13/2023 8:19:34 AM
 SystemDataLastModifiedBy     : 00000000-0000-0000-0000-000000000000
 SystemDataLastModifiedByType : Application
 Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
-This command creats a Smb file share endpoint
+This command creates a SMB endpoint for a Storage mover named "mystoragemover".
 
 ## PARAMETERS
+
+### -CredentialsPasswordUri
+The secret URI which stores the password.
+Use empty string to clean-up existing value.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CredentialsUsernameUri
+The secret URI which stores the username.
+Use empty string to clean-up existing value.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -81,8 +118,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FileShareName
-The name of the Azure Storage file share.
+### -Host
+The host name or IP address of the server exporting the file system.
 
 ```yaml
 Type: System.String
@@ -127,8 +164,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageAccountResourceId
-The Azure Resource ID of the storage account that is the target destination.
+### -ShareName
+The name of the SMB share being exported from the server
 
 ```yaml
 Type: System.String

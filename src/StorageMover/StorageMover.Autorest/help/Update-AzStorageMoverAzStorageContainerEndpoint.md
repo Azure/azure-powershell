@@ -1,39 +1,48 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazstoragecontainerendpoint
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverazstoragecontainerendpoint
 schema: 2.0.0
 ---
 
-# New-AzStorageMoverAzStorageContainerEndpoint
+# Update-AzStorageMoverAzStorageContainerEndpoint
 
 ## SYNOPSIS
-Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
+Updates properties for an AzStorageContainer endpoint resource.
+Properties not specified in the request body will be unchanged.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-New-AzStorageMoverAzStorageContainerEndpoint -Name <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] -BlobContainerName <String>
- -StorageAccountResourceId <String> [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzStorageMoverAzStorageContainerEndpoint -Name <String> -ResourceGroupName <String>
+ -StorageMoverName <String> [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzStorageMoverAzStorageContainerEndpoint -InputObject <IStorageMoverIdentity> [-Description <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
+Updates properties for an AzStorageContainer endpoint resource.
+Properties not specified in the request body will be unchanged.
 
 ## EXAMPLES
 
-### Example 1: Create a AzStorageContainer endpoint
+### Example 1: Update an AzStorageContainer endpoint
 ```powershell
-New-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -BlobContainerName myContainer -StorageMoverName myStorageMover -StorageAccountResourceId myAccountResourceId
+Update-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Description "Update Description"
 ```
 
 ```output
-Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint
-Name                         : myEndpoint
+Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint1
+Name                         : containerEndpointo3q8xlbr
 Property                     : {
                                  "endpointType": "AzureStorageBlobContainer",
+                                 "description": "Update Description",
                                  "provisioningState": "Succeeded",
                                  "storageAccountResourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myStorageMover/providers/Microsoft.Storage/storageAccounts/myStorageAccount",
                                  "blobContainerName": "myContainer"
@@ -47,24 +56,9 @@ SystemDataLastModifiedByType : User
 Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
-This command creates a AzStorageContainer endpoint for a Storage mover.
+This command updates the description of an AzStorageContainerEndpoint.
 
 ## PARAMETERS
-
-### -BlobContainerName
-The name of the Storage blob container that is the target destination.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -96,12 +90,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the endpoint resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: EndpointName
 
 Required: True
@@ -117,22 +127,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageAccountResourceId
-The Azure Resource ID of the storage account that is the target destination.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -147,7 +142,7 @@ The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -162,7 +157,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -208,8 +203,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint
-
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 
 ## OUTPUTS
@@ -219,3 +212,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

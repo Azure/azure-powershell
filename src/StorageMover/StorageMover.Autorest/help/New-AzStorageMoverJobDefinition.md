@@ -1,84 +1,70 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverjobdefinition
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverjobdefinition
 schema: 2.0.0
 ---
 
-# Update-AzStorageMoverJobDefinition
+# New-AzStorageMoverJobDefinition
 
 ## SYNOPSIS
-Updates properties for a Job Definition resource.
-Properties not specified in the request body will be unchanged.
+Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### CreateExpanded (Default)
 ```
-Update-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] [-AgentName <String>] [-CopyMode <CopyMode>]
- [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] -JobDefinition <IJobDefinitionUpdateParameters>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
+ -StorageMoverName <String> -CopyMode <CopyMode> -SourceName <String> -TargetName <String>
+ [-SubscriptionId <String>] [-AgentName <String>] [-Description <String>] [-SourceSubpath <String>]
+ [-TargetSubpath <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### Create
 ```
-Update-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-AgentName <String>]
- [-CopyMode <CopyMode>] [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity>
- -JobDefinition <IJobDefinitionUpdateParameters> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
+ -StorageMoverName <String> -JobDefinition <IJobDefinition> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates properties for a Job Definition resource.
-Properties not specified in the request body will be unchanged.
+Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
 
 ## EXAMPLES
 
-### Example 1: Update a job definition
+### Example 1: Create a job definition
 ```powershell
-Update-AzStorageMoverJobDefinition -Name myJob -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Description "Update Description"
+New-AzStorageMoverJobDefinition -Name myJob -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -AgentName myAgent -SourceName myNfsEndpoint -TargetName myContainerEndpoint -CopyMode "Additive" -Description "job definition"
 ```
 
 ```output
 AgentName                    : myAgent
 AgentResourceId              :
 CopyMode                     : Additive
-Description                  : Update description
-Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/projects/myProject/jobDefinitions/myJob
-LatestJobRunName             : 12345678-1234-1234-1234-111111111111
-LatestJobRunResourceId       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/projects/myProject/jobDefinitions/myJob/jobRuns/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
-LatestJobRunStatus           : Queued
+Description                  : job definition
+Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageM
+                               overs/myStorageMover/projects/myProject/jobDefinitions/myJob
+LatestJobRunName             :
+LatestJobRunResourceId       :
+LatestJobRunStatus           :
 Name                         : myJob
 ProvisioningState            : Succeeded
-SourceName                   : nfsEndpoint1
+SourceName                   : myNfsEndpoint
 SourceResourceId             :
 SourceSubpath                :
-SystemDataCreatedAt          : 7/28/2022 5:47:29 AM
-SystemDataCreatedBy          : bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb
-SystemDataCreatedByType      : Application
-SystemDataLastModifiedAt     : 8/2/2022 3:09:15 AM
-SystemDataLastModifiedBy     : bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb
-SystemDataLastModifiedByType : Application
-TargetName                   : containerEndpoint1
+SystemDataCreatedAt          : 7/26/2022 6:14:43 AM
+SystemDataCreatedBy          : xxxxxxxxxxxxxxxxxxxx
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 7/26/2022 6:14:43 AM
+SystemDataLastModifiedBy     : xxxxxxxxxxxxxxxxxxxx
+SystemDataLastModifiedByType : User
+TargetName                   : myContainerEndpoint
 TargetResourceId             :
 TargetSubpath                :
 Type                         : microsoft.storagemover/storagemovers/projects/jobdefinitions
 ```
 
-This command updates the description of a job definition.
+This command creates a job definition.
 
 ## PARAMETERS
 
@@ -87,7 +73,7 @@ Name of the Agent to assign for new Job Runs of this Job Definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -102,10 +88,10 @@ Strategy to use for copy.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -133,7 +119,7 @@ A description for the Job Definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -143,29 +129,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -JobDefinition
 The Job Definition resource.
 To construct, see NOTES section for JOBDEFINITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinitionUpdateParameters
-Parameter Sets: Update, UpdateViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinition
+Parameter Sets: Create
 Aliases:
 
 Required: True
@@ -180,7 +150,7 @@ The name of the Job Definition resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: (All)
 Aliases: JobDefinitionName
 
 Required: True
@@ -195,7 +165,7 @@ The name of the Project resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -211,10 +181,40 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceName
+The name of the source Endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceSubpath
+The subpath to use when reading from the source Endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -226,7 +226,7 @@ The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -241,12 +241,42 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetName
+The name of the target Endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetSubpath
+The subpath to use when writing to the target Endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -287,9 +317,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinitionUpdateParameters
-
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IJobDefinition
 
 ## OUTPUTS
 
@@ -298,3 +326,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

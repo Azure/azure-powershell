@@ -1,59 +1,72 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemover
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemover
 schema: 2.0.0
 ---
 
-# New-AzStorageMover
+# Update-AzStorageMover
 
 ## SYNOPSIS
-Creates or updates a top-level Storage Mover resource.
+Updates properties for a Storage Mover resource.
+Properties not specified in the request body will be unchanged.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzStorageMover -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+Update-AzStorageMover -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### Create
+### Update
 ```
-New-AzStorageMover -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -StorageMover <IStorageMover> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzStorageMover -Name <String> -ResourceGroupName <String> -StorageMover <IStorageMoverUpdateParameters>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzStorageMover -InputObject <IStorageMoverIdentity> -StorageMover <IStorageMoverUpdateParameters>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzStorageMover -InputObject <IStorageMoverIdentity> [-Description <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a top-level Storage Mover resource.
+Updates properties for a Storage Mover resource.
+Properties not specified in the request body will be unchanged.
 
 ## EXAMPLES
 
-### Example 1: Create a Storage mover
+### Example 1: Update a Storage mover
 ```powershell
-New-AzStorageMover -ResourceGroupName myResourceGroup -Name myStorageMover -Location eastus -Description "Description"
+Update-AzStorageMover -ResourceGroupName myResourceGroup -Name myStorageMover -Description "Update description"
 ```
 
 ```output
-Description                  :
-Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storage
-                               Movers/myStorageMover
+Description                  : Update description
+Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover
 Location                     : eastus
 Name                         : myStorageMover
 ProvisioningState            : Succeeded
-SystemDataCreatedAt          : 7/26/2022 5:49:02 AM
-SystemDataCreatedBy          : xxxxxxxxxx
-SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 7/26/2022 5:49:02 AM
-SystemDataLastModifiedBy     : xxxxxxxxxx
-SystemDataLastModifiedByType : User
+SystemDataCreatedAt          : 8/2/2022 3:32:45 AM
+SystemDataCreatedBy          : aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+SystemDataCreatedByType      : Application
+SystemDataLastModifiedAt     : 8/3/2022 3:10:31 AM
+SystemDataLastModifiedBy     : aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+SystemDataLastModifiedByType : Application
 Tag                          : {
                                }
 Type                         : microsoft.storagemover/storagemovers
 ```
 
-This command creates a Storage mover for a resource group.
+This command updates the description of a Storage mover.
 
 ## PARAMETERS
 
@@ -78,7 +91,7 @@ A description for the Storage Mover.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -88,18 +101,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The geo-location where the resource lives
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -108,7 +122,7 @@ The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases: StorageMoverName
 
 Required: True
@@ -124,7 +138,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -135,12 +149,12 @@ Accept wildcard characters: False
 ```
 
 ### -StorageMover
-The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints.
+The Storage Mover resource.
 To construct, see NOTES section for STORAGEMOVER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover
-Parameter Sets: Create
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMoverUpdateParameters
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -155,7 +169,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: False
@@ -170,7 +184,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -216,7 +230,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMover
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IStorageMoverUpdateParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 
 ## OUTPUTS
 
@@ -225,3 +241,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

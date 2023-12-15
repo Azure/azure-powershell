@@ -1,44 +1,54 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoversmbendpoint
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoversmbendpoint
 schema: 2.0.0
 ---
 
-# New-AzStorageMoverSmbEndpoint
+# Update-AzStorageMoverSmbEndpoint
 
 ## SYNOPSIS
-Creates an SMB endpoint resource, which represents a data transfer source or destination.
+Updates properties for a SMB endpoint resource.
+Properties not specified in the request body will be unchanged.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-New-AzStorageMoverSmbEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- [-SubscriptionId <String>] -Host <String> -ShareName <String> [-CredentialsUsernameUri <String>]
- [-CredentialsPasswordUri <String>] [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+Update-AzStorageMoverSmbEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
+ [-SubscriptionId <String>] [-CredentialsPasswordUri <String>] [-CredentialsUsernameUri <String>]
+ [-Description <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzStorageMoverSmbEndpoint -InputObject <IStorageMoverIdentity> [-CredentialsPasswordUri <String>]
+ [-CredentialsUsernameUri <String>] [-Description <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates an SMB endpoint resource, which represents a data transfer source or destination.
+Updates properties for a SMB endpoint resource.
+Properties not specified in the request body will be unchanged.
 
 ## EXAMPLES
 
-### Example 1: Create a SMB endpoint
+### Example 1: Update a SMB endpoint
 ```powershell
-New-AzStorageMoverSmbEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Host "10.0.0.1" -ShareName "testshare" -CredentialsUsernameUri "https://examples-azureKeyVault.vault.azure.net/secrets/username1" -CredentialsPasswordUri "https://examples-azureKeyVault.vault.azure.net/secrets/password1"
+Update-AzStorageMoverSmbEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -CredentialsUsernameUri "https://examples-azureKeyVault.vault.azure.net/secrets/username2" -CredentialsPasswordUri "https://examples-azureKeyVault.vault.azure.net/secrets/password2" -Description "update endpoint"
 ```
 
 ```output
-Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000e/resourceGroups/myresourcegroup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
 Name                         : myendpoint
 Property                     : {
                                  "endpointType": "SmbMount",
+                                 "description": "update endpoint",
                                  "provisioningState": "Succeeded",
                                  "credentials": {
                                    "type": "AzureKeyVaultSmb",
-                                   "usernameUri": "https://examples-azureKeyVault.vault.azure.net/secrets/username1",
-                                   "passwordUri": "https://examples-azureKeyVault.vault.azure.net/secrets/password1"
+                                   "usernameUri": "https://examples-azureKeyVault.vault.azure.net/secrets/username2",
+                                   "passwordUri": "https://examples-azureKeyVault.vault.azure.net/secrets/password2"
                                  },
                                  "host": "10.0.0.1",
                                  "shareName": "testshare"
@@ -46,13 +56,44 @@ Property                     : {
 SystemDataCreatedAt          : 6/27/2023 4:30:50 AM
 SystemDataCreatedBy          : 00000000-0000-0000-0000-000000000000
 SystemDataCreatedByType      : Application
-SystemDataLastModifiedAt     : 7/13/2023 8:19:34 AM
+SystemDataLastModifiedAt     : 7/13/2023 8:26:34 AM
 SystemDataLastModifiedBy     : 00000000-0000-0000-0000-000000000000
 SystemDataLastModifiedByType : Application
 Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
-This command creates a SMB endpoint for a Storage mover named "mystoragemover".
+This command updates the description, credential username, and credential password of a SMB endpoint by manual inputs.
+
+### Example 2: Update a SMB endpoint by pipeline
+```powershell
+Get-AzStorageMoverEndpoint -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Name "myendpoint" | Update-AzStorageMoverSmbEndpoint -CredentialsPasswordUri "" -CredentialsUsernameUri "" -Description "update endpoint again"
+```
+
+```output
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegorup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
+Name                         : myendpoint
+Property                     : {
+                                 "endpointType": "SmbMount",
+                                 "description": "update endpoint again",
+                                 "provisioningState": "Succeeded",
+                                 "credentials": {
+                                   "type": "AzureKeyVaultSmb",
+                                   "usernameUri": "",
+                                   "passwordUri": ""
+                                 },
+                                 "host": "10.0.0.1",
+                                 "shareName": "testshare"
+                               }
+SystemDataCreatedAt          : 6/27/2023 4:30:50 AM
+SystemDataCreatedBy          : 00000000-0000-0000-0000-000000000000
+SystemDataCreatedByType      : Application
+SystemDataLastModifiedAt     : 7/13/2023 8:29:10 AM
+SystemDataLastModifiedBy     : 00000000-0000-0000-0000-000000000000
+SystemDataLastModifiedByType : Application
+Type                         : microsoft.storagemover/storagemovers/endpoints
+```
+
+This command updates the description and clears the credential username and password of a SMB endpoint by pipeline.
 
 ## PARAMETERS
 
@@ -118,18 +159,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Host
-The host name or IP address of the server exporting the file system.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -138,7 +180,7 @@ The name of the endpoint resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: EndpointName
 
 Required: True
@@ -154,22 +196,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ShareName
-The name of the SMB share being exported from the server
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -184,7 +211,7 @@ The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -199,7 +226,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -245,8 +272,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint
-
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 
 ## OUTPUTS
@@ -256,3 +281,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,70 +1,64 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazstoragecontainerendpoint
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemovernfsendpoint
 schema: 2.0.0
 ---
 
-# New-AzStorageMoverAzStorageContainerEndpoint
+# Update-AzStorageMoverNfsEndpoint
 
 ## SYNOPSIS
-Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
+Updates properties for a Nfs endpoint resource.
+Properties not specified in the request body will be unchanged.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-New-AzStorageMoverAzStorageContainerEndpoint -Name <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] -BlobContainerName <String>
- -StorageAccountResourceId <String> [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+Update-AzStorageMoverNfsEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
+ [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### UpdateViaIdentityExpanded
+```
+Update-AzStorageMoverNfsEndpoint -InputObject <IStorageMoverIdentity> [-Description <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
+Updates properties for a Nfs endpoint resource.
+Properties not specified in the request body will be unchanged.
 
 ## EXAMPLES
 
-### Example 1: Create a AzStorageContainer endpoint
+### Example 1: Update a NFS endpoint
 ```powershell
-New-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -BlobContainerName myContainer -StorageMoverName myStorageMover -StorageAccountResourceId myAccountResourceId
+Update-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Description "Update Description"
 ```
 
 ```output
 Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint
 Name                         : myEndpoint
 Property                     : {
-                                 "endpointType": "AzureStorageBlobContainer",
+                                 "endpointType": "NfsMount",
+                                 "description": "Update Description"
                                  "provisioningState": "Succeeded",
-                                 "storageAccountResourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myStorageMover/providers/Microsoft.Storage/storageAccounts/myStorageAccount",
-                                 "blobContainerName": "myContainer"
+                                 "host": "10.0.0.1",
+                                 "export": "/"
                                }
-SystemDataCreatedAt          : 7/18/2022 7:28:29 AM
-SystemDataCreatedBy          : xxxxxxxxxx
+SystemDataCreatedAt          : 7/18/2022 7:28:30 AM
+SystemDataCreatedBy          : xxxxxxx
 SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 7/18/2022 7:28:29 AM
-SystemDataLastModifiedBy     : xxxxxxxxxxx
+SystemDataLastModifiedAt     : 7/18/2022 7:28:30 AM
+SystemDataLastModifiedBy     : xxxxxxx
 SystemDataLastModifiedByType : User
 Type                         : microsoft.storagemover/storagemovers/endpoints
 ```
 
-This command creates a AzStorageContainer endpoint for a Storage mover.
+This command updates the description of a NFS endpoint.
 
 ## PARAMETERS
-
-### -BlobContainerName
-The name of the Storage blob container that is the target destination.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -96,12 +90,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the endpoint resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases: EndpointName
 
 Required: True
@@ -117,22 +127,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StorageAccountResourceId
-The Azure Resource ID of the storage account that is the target destination.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -147,7 +142,7 @@ The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -162,7 +157,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -208,8 +203,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint
-
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 
 ## OUTPUTS
@@ -219,3 +212,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

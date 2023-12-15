@@ -1,80 +1,62 @@
 ---
-external help file: Az.StorageMover-help.xml
+external help file:
 Module Name: Az.StorageMover
-online version: https://learn.microsoft.com/powershell/module/az.storagemover/unregister-azstoragemoveragent
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/start-azstoragemoverjobdefinition
 schema: 2.0.0
 ---
 
-# Unregister-AzStorageMoverAgent
+# Start-AzStorageMoverJobDefinition
 
 ## SYNOPSIS
-Deletes an agent resource.
+Requests an Agent to start a new instance of this Job Definition, generating a new Job Run resource.
 
 ## SYNTAX
 
-### Delete (Default)
+### Start (Default)
 ```
-Unregister-AzStorageMoverAgent -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Force] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Start-AzStorageMoverJobDefinition -JobDefinitionName <String> -ProjectName <String>
+ -ResourceGroupName <String> -StorageMoverName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### StartViaIdentity
 ```
-Unregister-AzStorageMoverAgent -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [-Force]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes an agent resource.
+Requests an Agent to start a new instance of this Job Definition, generating a new Job Run resource.
 
 ## EXAMPLES
 
-### Example 1: Unregister an agent
+### Example 1: Start a job definition
 ```powershell
-Unregister-AzStorageMoverAgent -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myAgent
+New-AzStorageMoverProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myProject -Description "description"
+
+New-AzStorageMoverAzStorageContainerEndpoint -Name myContainerEndpoint -ResourceGroupName myResourceGroup -BlobContainerName myContainer -StorageMoverName myStorageMover -StorageAccountResourceId myAccountResourceId
+New-AzStorageMoverNfsEndpoint -Name myNfsEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "x.x.x.x" -Export "/" -NfsVersion NFSv3 -Description "Description"
+
+New-AzStorageMoverJobDefinition -Name myJob -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -AgentName myAgent -SourceName myNfsEndpoint -TargetName myContainerEndpoint -CopyMode Additive
+Start-AzStorageMoverJobDefinition -JobDefinitionName myJobDefinition -ProjectName myProject -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover
 ```
 
-This command unresgisters an agent under a Storage mover.
+```output
+/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroupName/providers/Microsoft.StorageMover/storageMovers/myStorageMover/projects/myProject/jobDefinitions/myJobDefinition/jobRuns/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+```
+
+This command starts a job definition.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -89,7 +71,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: StartViaIdentity
 Aliases:
 
 Required: True
@@ -99,13 +81,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the agent resource.
+### -JobDefinitionName
+The name of the Job Definition resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: AgentName
+Parameter Sets: Start
+Aliases:
 
 Required: True
 Position: Named
@@ -114,30 +96,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -ProjectName
+The name of the Project resource.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Start
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -150,7 +117,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Start
 Aliases:
 
 Required: True
@@ -165,7 +132,7 @@ The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Start
 Aliases:
 
 Required: True
@@ -180,7 +147,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Start
 Aliases:
 
 Required: False
@@ -230,8 +197,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### System.String
 
 ## NOTES
 
 ## RELATED LINKS
+
