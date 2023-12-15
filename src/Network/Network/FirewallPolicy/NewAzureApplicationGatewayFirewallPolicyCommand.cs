@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         new PSApplicationGatewayFirewallPolicyManagedRuleSet()
                         {
-                            RuleSetType = "DRS",
+                            RuleSetType = "Microsoft_DefaultRuleSet",
                             RuleSetVersion = "2.1"
                         }
                     }
