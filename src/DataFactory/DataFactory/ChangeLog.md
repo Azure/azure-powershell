@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added metadata Into StoreWriteSettings For Bug Fix
 
 ## Version 1.18.0
 * Supported GoogleAds and LakeHouse in ADF
