@@ -300,6 +300,23 @@ function Test-TableInAccountRestoreOperationsCmdlets
       $ListTables = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName
       Assert-NotNull($ListTables)
 
+      Start-Sleep -s 100
+
+      # delete table
+      $IsTableRemoved = Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -PassThru
+      Assert-AreEqual $IsTableRemoved true
+
+      Start-Sleep -s 50
+
+      # restore the deleted table
+      Restore-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
+
+      Start-Sleep -s 100
+
+      # list tables 
+      $ListTables = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull($ListTables)
+
       # delete table
       $IsTableRemoved = Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -PassThru
       Assert-AreEqual $IsTableRemoved true

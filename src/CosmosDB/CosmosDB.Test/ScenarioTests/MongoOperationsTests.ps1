@@ -420,6 +420,126 @@ Try {
 	}
 }
 
+function Test-MongoInAccountRestoreOperationsNoTimestampCmdlets
+{
+  $AccountName = "mongo-db00049"
+  $rgName = "CosmosDBResourceGroup49"
+  $DatabaseName = "dbName"
+  $CollectionName = "collection1"
+  $location = "West US"
+  $apiKind = "MongoDB"
+  $consistencyLevel = "Session"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
+Try {
+
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
+
+
+      # create a new database
+      $NewDatabase =  New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Name $DatabaseName
+
+      # create an existing database
+      Try {
+          $NewDuplicateDatabase = New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $DatabaseName + " already exists.")
+      }
+
+      #create a new Collection
+      $NewCollection = New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+      Assert-AreEqual $NewCollection.Name $CollectionName
+
+      #create an existing Collection
+      Try {
+          $NewDuplicateCollection = New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $CollectionName + " already exists.")
+      }
+
+      #get an existing database
+      $Database = Get-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Id $Database.Id
+      Assert-AreEqual $NewDatabase.Name $Database.Name
+      Assert-AreEqual $NewDatabase.Resource.Id $Database.Resource.Id
+      Assert-AreEqual $NewDatabase.Resource._rid $Database.Resource._rid
+      Assert-AreEqual $NewDatabase.Resource._ts $Database.Resource._ts
+      Assert-AreEqual $NewDatabase.Resource._etag $Database.Resource._etag
+
+      #get an existing Collection
+      $Collection = Get-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+      Assert-AreEqual $NewCollection.Id $Collection.Id
+      Assert-AreEqual $NewCollection.Name $Collection.Name
+      Assert-AreEqual $NewCollection.Resource.Id $Collection.Resource.Id
+      Assert-AreEqual $NewCollection.Resource._rid $Collection.Resource._rid
+      Assert-AreEqual $NewCollection.Resource._ts $Collection.Resource._ts
+      Assert-AreEqual $NewCollection.Resource._etag $Collection.Resource._etag
+
+      #list all Collections under a database
+      $ListCollections = Get-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+      Assert-NotNull($ListCollections)
+
+      #list all databases under the account
+      $Lists = Get-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull($Lists)
+
+      Start-Sleep -s 50
+
+      #delete a Collection
+      $IsCollectionRemoved =  Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -PassThru
+      Assert-AreEqual $IsCollectionRemoved true
+
+      Start-Sleep -s 50
+
+      # restore deleted collection
+      Restore-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+
+      Start-Sleep -s 100
+
+      #list all Collections under a database
+      $ListCollections = Get-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+      Assert-NotNull($ListCollections)
+
+      #delete a database
+      $IsRemoved = Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
+      Assert-AreEqual $IsRemoved true
+
+      Start-Sleep -s 100
+
+      # restore deleted database
+      Restore-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+
+      Start-Sleep -s 100
+
+      #list all databases under the account
+      $Lists = Get-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull($Lists)
+
+      #Restore collection with no timestamp after database restore
+      Try {
+          $RestoredCollection = Restore-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message.Contains("No collection with name") true
+      }
+
+      Start-Sleep -s 50
+
+      #delete a database
+      $IsRemoved = Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
+      Assert-AreEqual $IsRemoved true
+    }
+
+    Finally {
+        Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+        Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+	}
+}
+
 <#
 .SYNOPSIS
 Test MongoDB CRUD cmdlets using Parent Object and InputObject paramter set

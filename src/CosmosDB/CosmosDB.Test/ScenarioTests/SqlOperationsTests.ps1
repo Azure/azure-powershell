@@ -460,7 +460,7 @@ function Test-SqlInAccountRestoreOperationsNoTimestampCmdlets
 {
   $AccountName = "dbaccount60-14"
   $rgName = "CosmosDBResourceGroup63"
-  $DatabaseName = "sqldbName5"
+  $DatabaseName = "sqldbName6"
   $ContainerName = "container1"
   $location = "West US"
   $DatabaseName2 = "dbName2"
@@ -601,7 +601,7 @@ function Test-SqlInAccountRestoreOperationsNoTimestampCmdlets
           $RestoredCollection = Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
       }
       Catch {
-          Assert-AreEqual $_.Exception.Message.Contains("No collection with name") true
+          Assert-AreEqual $_.Exception.Message.Contains("No container with name") true
       }
 
       # list databases
