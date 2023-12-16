@@ -1,0 +1,69 @@
+name: ✒️ Documentation issue or question
+description: Report documentation related issue
+title: '[Doc]: '
+labels: [needs-triage]
+
+body:
+- type: markdown
+  attributes:
+    value: >
+      Azure PowerShell documentation includes 3 categories:
+
+      - Conceptual doc about Azure PowerShell: https://docs.microsoft.com/en-us/powershell/azure 
+      
+      - Cmdlet reference doc: https://docs.microsoft.com/en-us/powershell/module
+      
+      - Engineering doc on Github repo: https://github.com/Azure/azure-powershell
+- type: markdown
+  attributes:
+    value: Select the issue type, and describe the issue in the text box below. Add as much detail as needed to help us resolve the issue.
+- type: dropdown
+  id: issue-type
+  attributes:
+    label: Type of issue
+    options:
+      - Other (describe below)
+      - Code doesn't work
+      - Missing information
+      - Outdated article
+      - Typo
+  validations:
+    required: true
+- type: textarea
+  id: userfeedback
+  validations:
+    required: true
+  attributes:
+    label: Feedback
+    description: >-
+      If possible, please provide extended details that will add context and help the team update
+      the documentation. Additional details may not be useful for typos, grammar, formatting, etc.
+      For technical or factual errors, please include code snippets and output to show how the
+      documentation is incorrect.
+- type: markdown
+  attributes:
+    value: Article information
+- type: markdown
+  attributes:
+    value: "*If the following fields are automatically filled in for you, please don't modify them*"
+- type: input
+  id: pageUrl
+  attributes:
+    label: Page URL
+- type: input
+  id: contentSourceUrl
+  attributes:
+    label: Content source URL
+- type: input
+  id: author
+  attributes:
+    label: Author
+    description: GitHub Id of the author
+- type: input
+  id: documentVersionIndependentId
+  attributes:
+    label: Document Id
+- type: markdown
+  attributes:
+    value: >
+      The Azure PowerShell team is listening, please let us know how we are doing: https://aka.ms/azpssurvey?Q_CHL=REPO.

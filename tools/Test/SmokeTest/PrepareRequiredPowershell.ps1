@@ -75,7 +75,6 @@ function Install-PowerShell {
 }
 
 # Image "macOS-10.15" preinstalled Az modules
-# Image "vs2017-win2016" and "ubuntu-18.04" preinstalled AzureRM modules. 
 
 # Remove Az.* modules
 . "$PSScriptRoot/Common.ps1"

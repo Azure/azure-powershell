@@ -28,21 +28,21 @@ Describe 'Set-AzEventHubNetworkRuleSet' {
         $networkRuleSet.VirtualNetworkRule.Count | Should -Be 3
         $networkRuleSet.IPRule.Count | Should -Be 2
         $networkRuleSet.PublicNetworkAccess | Should -Be "Enabled"
-        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $null
+        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $false
 
         $networkRuleSet = Set-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -DefaultAction Deny
         $networkRuleSet.DefaultAction | Should -Be "Deny"
         $networkRuleSet.VirtualNetworkRule.Count | Should -Be 3
         $networkRuleSet.IPRule.Count | Should -Be 2
         $networkRuleSet.PublicNetworkAccess | Should -Be "Enabled"
-        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $null
+        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $false
 
         $networkRuleSet = Set-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -PublicNetworkAccess Disabled
         $networkRuleSet.DefaultAction | Should -Be "Deny"
         $networkRuleSet.VirtualNetworkRule.Count | Should -Be 3
         $networkRuleSet.IPRule.Count | Should -Be 2
         $networkRuleSet.PublicNetworkAccess | Should -Be "Disabled"
-        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $null
+        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $false
 
         $networkRuleSet = Set-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TrustedServiceAccessEnabled
         $networkRuleSet.DefaultAction | Should -Be "Deny"
@@ -63,6 +63,6 @@ Describe 'Set-AzEventHubNetworkRuleSet' {
         $networkRuleSet.VirtualNetworkRule.Count | Should -Be 3
         $networkRuleSet.IPRule.Count | Should -Be 2
         $networkRuleSet.PublicNetworkAccess | Should -Be "Disabled"
-        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $null
+        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $false
     }
 }

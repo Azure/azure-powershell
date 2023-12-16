@@ -114,6 +114,13 @@ jobs:
       filePath: ./tools/TestFx/Coverage/AnalyzeTestCoverage.ps1
       arguments: -CalcBaseline
 
+  - template: util/get-keyvault-secret-steps.yml
+    parameters:
+      serviceConnectionName: $(AzureSubscription)
+      keyVaultName: $(KustoServicePrincipalKeyVaultName)
+      secretName: $(KustoServicePrincipalSecretName)
+      outVar: 'KustoServicePrincipalSecret'
+
   - task: PowerShell@2
     displayName: Save Test Coverage Results
     condition: succeeded()
@@ -122,6 +129,8 @@ jobs:
       targetType: filePath
       filePath: ./tools/TestFx/Coverage/SaveTestCoverageResult.ps1
       arguments: CITest $(KustoTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion)
+
+  - template: util/get-github-pat-steps.yml
 
   - task: PowerShell@2
     displayName: Update Test Coverage Baseline
@@ -138,14 +147,14 @@ jobs:
         git config user.name "azure-powershell-bot"
         git add $blCsv
         git commit -m "Update with the latest test coverage data"
-        git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git
+        git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git
         git push origin testcoverage-baseline --force
 
         $title = "Update test coverage baseline"
         $headBranch = "testcoverage-baseline"
         $targetBranch = "main"
         $description = "Update with the latest test coverage baseline data"
-        ./tools/Github/CreatePR.ps1 -Title $title -HeadBranch $headBranch -BaseBranch $targetBranch -BotAccessToken $(BotAccessToken) -Description $description
+        ./tools/Github/CreatePR.ps1 -Title $title -HeadBranch $headBranch -BaseBranch $targetBranch -BotAccessToken $(GithubToken) -Description $description
 
   - task: PublishPipelineArtifact@1
     displayName: Publish Test Coverage Result

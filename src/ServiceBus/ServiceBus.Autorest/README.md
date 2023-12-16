@@ -31,23 +31,23 @@ For information on how to develop for `Az.ServiceBus`, see [how-to.md](how-to.md
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-branch: 1e790cfc5ee4e7ff98f99dd19a3174c4dd58432b
+commit: 1e790cfc5ee4e7ff98f99dd19a3174c4dd58432b
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/Queue.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/topics.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/namespace-preview.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/AuthorizationRules.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/CheckNameAvailability.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/DisasterRecoveryConfig.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/migrationconfigs.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/networksets.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/operations.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/Rules.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/subscriptions.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/Queue.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/topics.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/namespace-preview.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/AuthorizationRules.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/CheckNameAvailability.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/DisasterRecoveryConfig.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/migrationconfigs.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/networksets.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/operations.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/Rules.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/subscriptions.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger
 
@@ -62,6 +62,10 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

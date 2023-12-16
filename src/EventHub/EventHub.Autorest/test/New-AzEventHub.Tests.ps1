@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHub'))
 Describe 'New-AzEventHub' {
     It 'CreateExpanded' {
         #create Premium Namespace
-        $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV1 -SkuName Premium -Location eastus
+        $eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV1 -SkuName Premium -Location eastus -IdentityType UserAssigned -UserAssignedIdentityId $env.msi2
         #create EventHub with Compact CleanUpPolicy
         $eventhub = New-AzEventHub -Name $env.eventHub2 -ResourceGroupName $env.resourceGroup -NamespaceName $eventHubNamespace.Name -PartitionCount 2 -CleanupPolicy Compact
         $eventhub.Name | Should -Be $env.eventHub2
@@ -52,5 +52,22 @@ Describe 'New-AzEventHub' {
         $eventhub.IntervalInSeconds | Should -Be 600
         $eventhub.SizeLimitInBytes | Should -Be 11000000
         $eventhub.StorageAccountResourceId | Should -Be $eventhub.StorageAccountResourceId
+
+        # Create EventHub with MSI Capture Enabled
+        $eventhub = New-AzEventHub -Name $env.eventHub4 -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespaceV1 -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer $env.blobContainer -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId $env.storageAccountId -IdentityType UserAssigned -UserAssignedIdentityId $env.msi2
+        $eventhub.Name | Should -Be $env.eventHub4
+        $eventhub.ResourceGroupName | Should -Be $env.resourceGroup
+        $eventhub.PartitionCount | Should -Be 4
+        $eventhub.ArchiveNameFormat | Should -Be "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
+        $eventhub.BlobContainer | Should -Be $env.blobContainer
+        $eventhub.CaptureEnabled | Should -Be $true
+        $eventhub.SkipEmptyArchive | Should -Be $true
+        $eventhub.DestinationName | Should -Be "EventHubArchive.AzureBlockBlob"
+        $eventhub.Encoding | Should -Be "Avro"
+        $eventhub.IntervalInSeconds | Should -Be 600
+        $eventhub.SizeLimitInBytes | Should -Be 11000000
+        $eventhub.StorageAccountResourceId | Should -Be $eventhub.StorageAccountResourceId
+        $eventhub.IdentityType | Should -Be $eventhub.IdentityType
+        $eventhub.UserAssignedIdentityId | Should -be $eventhub.UserAssignedIdentityId
     }
 }

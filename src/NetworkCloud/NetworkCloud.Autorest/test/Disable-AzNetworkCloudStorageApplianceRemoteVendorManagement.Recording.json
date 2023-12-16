@@ -1,0 +1,128 @@
+{
+  "Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement+[NoContext]+Disable+$POST+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-2bb5c1f33a7f-HostedResources-0FB08C6D/providers/Microsoft.NetworkCloud/storageAppliances/b37dev07purestor1/disableRemoteVendorManagement?api-version=2023-07-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-2bb5c1f33a7f-HostedResources-0FB08C6D/providers/Microsoft.NetworkCloud/storageAppliances/b37dev07purestor1/disableRemoteVendorManagement?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "024424f2-68a9-4b66-95b0-967419d23eb4" ],
+        "CommandName": [ "Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement" ],
+        "FullCommandName": [ "Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement_Disable" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/b5af6521-a5f5-4571-a2ba-fb248d9f8afd*6AEFECFA3E3556128C3E856E5E3C24DA5A341B137037F5D04D8745B934922818?api-version=2023-07-01" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "708a13f6-544d-4797-8869-1b04c13a9607" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/b5af6521-a5f5-4571-a2ba-fb248d9f8afd*6AEFECFA3E3556128C3E856E5E3C24DA5A341B137037F5D04D8745B934922818?api-version=2023-07-01" ],
+        "x-ms-correlation-request-id": [ "b085276b-09c1-4cfd-9fad-bab8b92705d8" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20230728T202514Z:b085276b-09c1-4cfd-9fad-bab8b92705d8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 28 Jul 2023 20:25:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement+[NoContext]+Disable+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/b5af6521-a5f5-4571-a2ba-fb248d9f8afd*6AEFECFA3E3556128C3E856E5E3C24DA5A341B137037F5D04D8745B934922818?api-version=2023-07-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/b5af6521-a5f5-4571-a2ba-fb248d9f8afd*6AEFECFA3E3556128C3E856E5E3C24DA5A341B137037F5D04D8745B934922818?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "024424f2-68a9-4b66-95b0-967419d23eb4" ],
+        "CommandName": [ "Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement" ],
+        "FullCommandName": [ "Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement_Disable" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"d6059b3f-0000-0100-0000-64c4242e0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-request-id": [ "fd9d6e49-516e-44c5-a1e8-870e8b8db370" ],
+        "x-ms-correlation-request-id": [ "ff1e6a23-e8a7-4fbe-9eba-3b34d848939c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20230728T202544Z:ff1e6a23-e8a7-4fbe-9eba-3b34d848939c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 28 Jul 2023 20:25:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "659" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/b5af6521-a5f5-4571-a2ba-fb248d9f8afd*6AEFECFA3E3556128C3E856E5E3C24DA5A341B137037F5D04D8745B934922818\",\"name\":\"b5af6521-a5f5-4571-a2ba-fb248d9f8afd*6AEFECFA3E3556128C3E856E5E3C24DA5A341B137037F5D04D8745B934922818\",\"resourceId\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-2bb5c1f33a7f-HostedResources-0FB08C6D/providers/Microsoft.NetworkCloud/storageAppliances/b37dev07purestor1\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-28T20:25:14.0622522Z\",\"endTime\":\"2023-07-28T20:25:18.1217967Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement+[NoContext]+Disable+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/b5af6521-a5f5-4571-a2ba-fb248d9f8afd*6AEFECFA3E3556128C3E856E5E3C24DA5A341B137037F5D04D8745B934922818?api-version=2023-07-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/b5af6521-a5f5-4571-a2ba-fb248d9f8afd*6AEFECFA3E3556128C3E856E5E3C24DA5A341B137037F5D04D8745B934922818?api-version=2023-07-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "024424f2-68a9-4b66-95b0-967419d23eb4" ],
+        "CommandName": [ "Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement" ],
+        "FullCommandName": [ "Disable-AzNetworkCloudStorageApplianceRemoteVendorManagement_Disable" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.4", "Az.NetworkCloud/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"d6059b3f-0000-0100-0000-64c4242e0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-request-id": [ "4752d97f-54da-4dc8-8012-e14936b32f8a" ],
+        "x-ms-correlation-request-id": [ "0fb412d2-ad35-43d7-8e06-bd69918f5b6a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20230728T202544Z:0fb412d2-ad35-43d7-8e06-bd69918f5b6a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 28 Jul 2023 20:25:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "659" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/locations/EASTUS/operationStatuses/b5af6521-a5f5-4571-a2ba-fb248d9f8afd*6AEFECFA3E3556128C3E856E5E3C24DA5A341B137037F5D04D8745B934922818\",\"name\":\"b5af6521-a5f5-4571-a2ba-fb248d9f8afd*6AEFECFA3E3556128C3E856E5E3C24DA5A341B137037F5D04D8745B934922818\",\"resourceId\":\"/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev07-2bb5c1f33a7f-HostedResources-0FB08C6D/providers/Microsoft.NetworkCloud/storageAppliances/b37dev07purestor1\",\"status\":\"Succeeded\",\"startTime\":\"2023-07-28T20:25:14.0622522Z\",\"endTime\":\"2023-07-28T20:25:18.1217967Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  }
+}
