@@ -1,0 +1,2 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.Security","Set-AzSecurityPricing","3","1","Invalid_Parameter_Name","5011","1","Set-AzSecurityPricing -Extension is not a valid parameter name.","-Extension","Check validity of the parameter -Extension."

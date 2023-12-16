@@ -87,22 +87,59 @@ function New-AzDataMigrationSqlServerSchema
             #Testing Whether Console App is downloaded or not
             $TestExePath =  Test-Path -Path $ExePath;
 
-            #Downloading and extracting SchemaMigration Zip file
+            #Console app download address
+            $ZipSource = "https://migrationapps.blob.core.windows.net/schemamigration/SqlSchemaMigration.zip";
+            $ZipDestination = Join-Path -Path $BaseFolder -ChildPath "SqlSchemaMigration.zip";
+            
             if(-Not $TestExePath)
             {
-                $ZipSource = "https://migrationapps.blob.core.windows.net/schemamigration/SqlSchemaMigration.zip";
-                $ZipDestination = Join-Path -Path $BaseFolder -ChildPath "SqlSchemaMigration.zip";
+                Write-Host "Downloading and extracting latest SchemaMigration Zip file..."
+                
+                #Downloading and extracting SchemaMigration Zip file
                 Invoke-RestMethod -Uri $ZipSource -OutFile $ZipDestination;
-
                 Expand-Archive -Path $ZipDestination -DestinationPath $BaseFolder -Force;
             }
-            # To do:
-            # else
-            # {
-                # check local exe version; 
-                # call storage account API to get latest version
-                # if version does not match, pop up to choose download Yes/No
-            # }
+            else 
+            {
+                # Get local exe version
+                Write-Host "Checking installed SqlSchemaMigration.exe version...";
+                $installedVersion = (Get-Item $ExePath).VersionInfo.FileVersion;
+                Write-Host "Installed version: $installedVersion";
+
+                # Get latest console app version
+                Write-Host "Checking whether there is newer version...";
+                $VersionFileSource = "https://migrationapps.blob.core.windows.net/schemamigration/consoleappversion.json";
+                $VersionFileDestination = Join-Path -Path $BaseFolder -ChildPath "consoleappversion.json";
+                Invoke-RestMethod -Uri $VersionFileSource -OutFile $VersionFileDestination;
+                $jsonObj = Get-Content $VersionFileDestination | Out-String | ConvertFrom-Json;
+                $latestVersion = $jsonObj.version;
+
+                # Compare the latest exe version with the local exe version
+                if([System.Version]$installedVersion -lt [System.Version]$latestVersion)
+                {
+                    Write-Host "Found newer version SqlSchemaMigration.exe '$latestVersion'";
+                    
+                    Write-Host "Removing old SqlSchemaMigration.exe..."
+                    # Remove old zip file
+                    Remove-Item -Path $ZipDestination;
+
+                    # Remove existing folder and contents
+                    $ConsoleAppDestination = Join-Path -Path $BaseFolder -ChildPath "SchemaMigration.Console.csproj";
+                    Remove-Item -Path $ConsoleAppDestination -Recurse;
+
+                    # Remove version file
+                    Remove-Item -Path $VersionFileDestination;
+
+                    #Downloading and extracting SchemaMigration Zip file
+                    Write-Host "Downloading and extracting latest SchemaMigration Zip file..."
+                    Invoke-RestMethod -Uri $ZipSource -OutFile $ZipDestination;
+                    Expand-Archive -Path $ZipDestination -DestinationPath $BaseFolder -Force;
+                }
+                else
+                {
+                    Write-Host "Installed SqlSchemaMigration.exe is the latest one...";
+                }
+            }
 
             #Collecting data
             if($PSCmdlet.ParameterSetName -eq 'CommandLine')

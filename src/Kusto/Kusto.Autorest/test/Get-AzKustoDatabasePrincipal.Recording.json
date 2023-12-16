@@ -1,0 +1,43 @@
+{
+  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/listPrincipals?api-version=2023-08-15+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/listPrincipals?api-version=2023-08-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "100" ],
+        "x-ms-client-request-id": [ "43335954-e6d0-4bfe-a267-7f76a944b778" ],
+        "CommandName": [ "Get-AzKustoDatabasePrincipal" ],
+        "FullCommandName": [ "Get-AzKustoDatabasePrincipal_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.Kusto/0.1.4" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "f095f7eb-948d-418e-a7d5-1967da6f2bdd" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-correlation-request-id": [ "7179f3bd-a653-404a-9ecb-24e51ae2afab" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T194355Z:7179f3bd-a653-404a-9ecb-24e51ae2afab" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 24 Oct 2023 19:43:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "493" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"name\":\"Michael Shikh (michaelshikh@microsoft.com)\",\"role\":\"Admin\",\"type\":\"User\",\"fqn\":\"aaduser=820e4e6a-1583-44fd-879c-e3f7fa9997ca;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"michaelshikh@microsoft.com\",\"appId\":\"\",\"tenantName\":\"Microsoft\"},{\"name\":\"KustoClientsScenarioTest\",\"role\":\"Admin\",\"type\":\"App\",\"fqn\":\"aadapp=713c3475-5021-4f3b-a650-eaa9a83f25a4;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"\",\"appId\":\"713c3475-5021-4f3b-a650-eaa9a83f25a4\",\"tenantName\":\"Microsoft\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

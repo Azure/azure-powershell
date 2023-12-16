@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
@@ -33,17 +58,17 @@ function setupEnv() {
     $DatabaseMigrationTestVariablesMi = @{
         ResourceGroupName = "MigrationTesting"
         ManagedInstanceName = "migrationtestmi"
-        TargetDbName = "discMiOn" 
+        TargetDbName = "discMiOn"
     }
     $DatabaseMigrationTestVariablesVm = @{
         ResourceGroupName = "tsum38RG"
         SqlVirtualMachineName = "unitTest"
-        TargetDbName = "unitTestVm" 
+        TargetDbName = "unitTestVm"
     }
     $DatabaseMigrationTestVariablesDb = @{
         ResourceGroupName = "tsum38RG"
         SqlDbInstanceName = "dmstestsqldb"
-        TargetDbName = "at_sqldbtrgt3" 
+        TargetDbName = "at_sqldbtrgt3"
     }
     $newDatabaseMigrationNameMi = "MiUnitTest" + $randomstring
     $NewDatabaseMigrationTestVariablesMi = @{
@@ -53,53 +78,53 @@ function setupEnv() {
         Kind = "SqlMi"
         Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/MigrationTesting/providers/Microsoft.Sql/managedInstances/migrationtestmi"
         MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/alias"
-        TargetLocationStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest" 
+        TargetLocationStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest"
         TargetLocationAccountKey = "accountKey"
-        FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman" 
-        FileShareUsername = "domainUserName" 
-        FileSharePassword = "password" 
-        SourceSqlConnectionAuthentication = "SqlAuthentication" 
-        SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com" 
-        SourceSqlConnectionUserName = "domainUserName" 
-        SourceSqlConnectionPassword = "password" 
+        FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman"
+        FileShareUsername = "domainUserName"
+        FileSharePassword = "password"
+        SourceSqlConnectionAuthentication = "SqlAuthentication"
+        SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com"
+        SourceSqlConnectionUserName = "domainUserName"
+        SourceSqlConnectionPassword = "password"
         SourceDatabaseName = "AdventureWorks"
     }
     $newDatabaseMigrationNameVm = "VmUnitTest" + $randomstring
     $NewDatabaseMigrationTestVariablesVm = @{
-        ResourceGroupName = "tsum38RG" 
-        SqlVirtualMachineName = "unitTest" 
+        ResourceGroupName = "tsum38RG"
+        SqlVirtualMachineName = "unitTest"
         TargetDbName = $newDatabaseMigrationNameVm
-        Kind = "SqlVm" 
-        Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest" 
-        MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/alias" 
-        TargetLocationStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest" 
+        Kind = "SqlVm"
+        Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest"
+        MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/alias"
+        TargetLocationStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest"
         TargetLocationAccountKey = "accountKey"
-        FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman" 
-        FileShareUsername = "domainUserName" 
+        FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman"
+        FileShareUsername = "domainUserName"
         FileSharePassword = "password"
-        SourceSqlConnectionAuthentication = "SqlAuthentication" 
-        SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com" 
-        SourceSqlConnectionUserName = "domainUserName" 
-        SourceSqlConnectionPassword = "password" 
+        SourceSqlConnectionAuthentication = "SqlAuthentication"
+        SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com"
+        SourceSqlConnectionUserName = "domainUserName"
+        SourceSqlConnectionPassword = "password"
         SourceDatabaseName = "AdventureWorks"
     }
-    
+
     $NewDatabaseMigrationTestVariablesDb = @{
-        ResourceGroupName = "tsum38RG" 
+        ResourceGroupName = "tsum38RG"
         SqlDbInstanceName = "dmstestsqldb"
         TargetDbName = "at_sqldbtrgt3"
-        Kind = "SqlDb" 
-        Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb" 
+        Kind = "SqlDb"
+        Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb"
         MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/dms20211030"
-        TargetSqlConnectionAuthentication = "SqlAuthentication" 
-        TargetSqlConnectionDataSource = "db.windows.net" 
-        TargetSqlConnectionPassword = "password" 
-        TargetSqlConnectionUserName = "username" 
-        SourceSqlConnectionAuthentication = "SqlAuthentication" 
-        SourceSqlConnectionDataSource = "sampledomain.microsoft.com" 
-        SourceSqlConnectionUserName = "user" 
-        SourceSqlConnectionPassword = "password" 
-        SourceDatabaseName = "AdventureWorks"  
+        TargetSqlConnectionAuthentication = "SqlAuthentication"
+        TargetSqlConnectionDataSource = "db.windows.net"
+        TargetSqlConnectionPassword = "password"
+        TargetSqlConnectionUserName = "username"
+        SourceSqlConnectionAuthentication = "SqlAuthentication"
+        SourceSqlConnectionDataSource = "sampledomain.microsoft.com"
+        SourceSqlConnectionUserName = "user"
+        SourceSqlConnectionPassword = "password"
+        SourceDatabaseName = "AdventureWorks"
     }
     $cutDatabaseMigrationNameMi = "MiUnitTestCut" + $randomstring
     $CutDatabaseMigrationTestVariablesMi = @{
@@ -109,34 +134,34 @@ function setupEnv() {
         Kind = "SqlMi"
         Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/MigrationTesting/providers/Microsoft.Sql/managedInstances/migrationtestmi"
         MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/alias"
-        TargetLocationStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest" 
+        TargetLocationStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest"
         TargetLocationAccountKey = "accountKey"
-        FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman" 
-        FileShareUsername = "domainUserName" 
-        FileSharePassword = "password" 
-        SourceSqlConnectionAuthentication = "SqlAuthentication" 
-        SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com" 
-        SourceSqlConnectionUserName = "domainUserName" 
-        SourceSqlConnectionPassword = "password" 
+        FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman"
+        FileShareUsername = "domainUserName"
+        FileSharePassword = "password"
+        SourceSqlConnectionAuthentication = "SqlAuthentication"
+        SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com"
+        SourceSqlConnectionUserName = "domainUserName"
+        SourceSqlConnectionPassword = "password"
         SourceDatabaseName = "AdventureWorks"
     }
     $cutDatabaseMigrationNameVm = "VmUnitTestCut" + $randomstring
     $CutDatabaseMigrationTestVariablesVm = @{
-        ResourceGroupName = "tsum38RG" 
-        SqlVirtualMachineName = "unitTest" 
+        ResourceGroupName = "tsum38RG"
+        SqlVirtualMachineName = "unitTest"
         TargetDbName = $cutDatabaseMigrationNameVm
-        Kind = "SqlVm" 
-        Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest" 
-        MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/alias" 
-        TargetLocationStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest" 
+        Kind = "SqlVm"
+        Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest"
+        MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/alias"
+        TargetLocationStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest"
         TargetLocationAccountKey = "accountKey"
-        FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman" 
-        FileShareUsername = "domainUserName" 
-        FileSharePassword = "password" 
-        SourceSqlConnectionAuthentication = "SqlAuthentication" 
-        SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com" 
-        SourceSqlConnectionUserName = "domainUserName" 
-        SourceSqlConnectionPassword = "password" 
+        FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman"
+        FileShareUsername = "domainUserName"
+        FileSharePassword = "password"
+        SourceSqlConnectionAuthentication = "SqlAuthentication"
+        SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com"
+        SourceSqlConnectionUserName = "domainUserName"
+        SourceSqlConnectionPassword = "password"
         SourceDatabaseName = "AdventureWorks"
     }
     $stopDatabaseMigrationNameMi = "MiUnitTestStop" + $randomstring
@@ -147,70 +172,70 @@ function setupEnv() {
         Kind = "SqlMi"
         Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/MigrationTesting/providers/Microsoft.Sql/managedInstances/migrationtestmi"
         MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/alias"
-        TargetLocationStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest" 
+        TargetLocationStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest"
         TargetLocationAccountKey = "accountKey"
-        FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman" 
-        FileShareUsername = "domainUserName" 
-        FileSharePassword = "password" 
-        SourceSqlConnectionAuthentication = "SqlAuthentication" 
-        SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com" 
-        SourceSqlConnectionUserName = "domainUserName" 
-        SourceSqlConnectionPassword = "password" 
+        FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman"
+        FileShareUsername = "domainUserName"
+        FileSharePassword = "password"
+        SourceSqlConnectionAuthentication = "SqlAuthentication"
+        SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com"
+        SourceSqlConnectionUserName = "domainUserName"
+        SourceSqlConnectionPassword = "password"
         SourceDatabaseName = "AdventureWorks"
     }
     $stopDatabaseMigrationNameVm = "VmUnitTestStop" + $randomstring
     $StopDatabaseMigrationTestVariablesVm = @{
-        ResourceGroupName = "tsum38RG" 
-        SqlVirtualMachineName = "unitTest" 
+        ResourceGroupName = "tsum38RG"
+        SqlVirtualMachineName = "unitTest"
         TargetDbName = $stopDatabaseMigrationNameVm
-        Kind = "SqlVm" 
-        Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest" 
-        MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/alias" 
-        TargetLocationStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest" 
+        Kind = "SqlVm"
+        Scope = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/unitTest"
+        MigrationService = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/alias"
+        TargetLocationStorageAccountResourceId = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/aaskhan/providers/Microsoft.Storage/storageAccounts/aasimmigrationtest"
         TargetLocationAccountKey = "accountKey"
-        FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman" 
-        FileShareUsername = "domainUserName" 
-        FileSharePassword = "password" 
-        SourceSqlConnectionAuthentication = "SqlAuthentication" 
-        SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com" 
-        SourceSqlConnectionUserName = "domainUserName" 
-        SourceSqlConnectionPassword = "password" 
+        FileSharePath = "\\sampledomain.onmicrosoft.com\SharedBackup\tsuman"
+        FileShareUsername = "domainUserName"
+        FileSharePassword = "password"
+        SourceSqlConnectionAuthentication = "SqlAuthentication"
+        SourceSqlConnectionDataSource = "sampledomain.onmicrosoft.com"
+        SourceSqlConnectionUserName = "domainUserName"
+        SourceSqlConnectionPassword = "password"
         SourceDatabaseName = "AdventureWorks"
     }
-    
+
     $StopDatabaseMigrationTestVariablesDb = @{
         ResourceGroupName = "tsum38RG"
-        SqlDbInstanceName = "dmstestsqldb" 
+        SqlDbInstanceName = "dmstestsqldb"
         MigrationService  = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/dms20211030"
-        TargetSqlConnectionAuthentication = "SqlAuthentication" 
-        TargetSqlConnectionDataSource = "db.windows.net" 
-        TargetSqlConnectionPassword = "password" 
-        TargetSqlConnectionUserName = "username" 
-        SourceSqlConnectionAuthentication = "SqlAuthentication" 
-        SourceSqlConnectionDataSource = "sampledomain.microsoft.com" 
-        SourceSqlConnectionUserName = "user" 
+        TargetSqlConnectionAuthentication = "SqlAuthentication"
+        TargetSqlConnectionDataSource = "db.windows.net"
+        TargetSqlConnectionPassword = "password"
+        TargetSqlConnectionUserName = "username"
+        SourceSqlConnectionAuthentication = "SqlAuthentication"
+        SourceSqlConnectionDataSource = "sampledomain.microsoft.com"
+        SourceSqlConnectionUserName = "user"
         SourceSqlConnectionPassword = "password"
-        SourceDatabaseName = "AdventureWorks" 
+        SourceDatabaseName = "AdventureWorks"
         TargetDbName = "at_sqldbtrgt2"
-        Scope =  "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb" 
-        
+        Scope =  "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb"
+
     }
 
     $DeleteDatabaseMigrationTestVariablesDb = @{
         ResourceGroupName = "tsum38RG"
-        SqlDbInstanceName = "dmstestsqldb" 
+        SqlDbInstanceName = "dmstestsqldb"
         MigrationService  = "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.DataMigration/SqlMigrationServices/dms20211030"
-        TargetSqlConnectionAuthentication = "SqlAuthentication" 
-        TargetSqlConnectionDataSource = "db.windows.net" 
-        TargetSqlConnectionPassword = "password" 
-        TargetSqlConnectionUserName = "username" 
-        SourceSqlConnectionAuthentication = "SqlAuthentication" 
-        SourceSqlConnectionDataSource = "sampledomain.microsoft.com" 
-        SourceSqlConnectionUserName = "user" 
-        SourceSqlConnectionPassword = "password" 
-        SourceDatabaseName = "AdventureWorks" 
+        TargetSqlConnectionAuthentication = "SqlAuthentication"
+        TargetSqlConnectionDataSource = "db.windows.net"
+        TargetSqlConnectionPassword = "password"
+        TargetSqlConnectionUserName = "username"
+        SourceSqlConnectionAuthentication = "SqlAuthentication"
+        SourceSqlConnectionDataSource = "sampledomain.microsoft.com"
+        SourceSqlConnectionUserName = "user"
+        SourceSqlConnectionPassword = "password"
+        SourceDatabaseName = "AdventureWorks"
         TargetDbName = "at_sqldbtrgt1"
-        Scope =  "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb"       
+        Scope =  "/subscriptions/f133ff51-53dc-4486-a487-47049d50ab9e/resourceGroups/tsum38RG/providers/Microsoft.Sql/servers/dmstestsqldb"
     }
 
     $env.add("TestSqlMigrationService", $SqlMigrationServiceTestVariables) | Out-Null
@@ -229,7 +254,7 @@ function setupEnv() {
     $env.add("TestCutDatabaseMigrationMi", $CutDatabaseMigrationTestVariablesMi) | Out-Null
     $env.add("TestCutDatabaseMigrationVm", $CutDatabaseMigrationTestVariablesVm) | Out-Null
     $env.add("TestDeleteDatabaseMigrationDb", $DeleteDatabaseMigrationTestVariablesDb) | Out-Null
-    
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

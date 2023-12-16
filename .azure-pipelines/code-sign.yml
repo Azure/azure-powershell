@@ -3,6 +3,14 @@ parameters:
   displayName: Branch for OOB pipeline
   type: string
   default: 'none'
+- name: TargetModule
+  displayName: Build Module List(Split by ':')
+  type: string
+  default: 'none'
+- name: BuildInstaller
+  displayName: Build Installer
+  type: boolean
+  default: true
 jobs:
 - job: Release
   timeoutInMinutes: 180
@@ -12,13 +20,14 @@ jobs:
   variables:
     LocalRepoName: 'LocalRepo'
   steps:
+  - template: util/get-github-pat-steps.yml
   - task: PowerShell@2
     displayName: checkout OOBbranch
     inputs:
       targetType: 'inline'
       script: |
           if ('${{ parameters.OOBBranch }}' -ne 'none') {
-            git remote set-url origin https://azure-powershell-bot:$Token@github.com/Azure/azure-powershell.git;
+            git remote set-url origin https://azure-powershell-bot:$GithubToken@github.com/Azure/azure-powershell.git;
             git fetch origin
             git checkout -b ${{ parameters.OOBBranch }} origin/${{ parameters.OOBBranch }}
           }
@@ -30,10 +39,19 @@ jobs:
 
   - task: DotNetCoreCLI@2
     displayName: Build
+    condition: ne('${{ parameters.TargetModule }}', 'none') 
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true"'
+      arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true;TargetModule=${{ parameters.TargetModule }}"'
+  - task: DotNetCoreCLI@2
+    displayName: Build
+    condition: eq('${{ parameters.TargetModule }}', 'none') 
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true;ModifiedModuleBuild=true"'
+
 
   - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
     displayName: 'Manifest Generator '
@@ -53,7 +71,7 @@ jobs:
       Copy-Item .\setup\InstallerChecks.dll -Destination $Env:RepoArtifacts/
       Copy-Item .\setup\Microsoft.Deployment.WindowsInstaller.dll -Destination $Env:RepoArtifacts/
     displayName: 'Before Signing'
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Sign Dll [Authenticode + Strong Name]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -110,7 +128,7 @@ jobs:
           }
         ]
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Sign Scripts [Authenticode]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -146,7 +164,7 @@ jobs:
           }
         ]
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Sign 3rd Party [Strong Name]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -172,7 +190,7 @@ jobs:
           }
         ]
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Sign 3rd Party [Authenticode]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -235,7 +253,7 @@ jobs:
   - script: '"%wix%\sdk\MakeSfxCA.exe" "%cd%\setup\InstallerChecks.CA.dll" "%cd%\setup\SfxCA.dll" "%cd%\setup\InstallerChecks.dll" "%cd%\setup\Microsoft.Deployment.WindowsInstaller.dll;%cd%\setup\InstallerChecks\InstallerChecks\CustomAction.config"'
     displayName: 'Generate InstallerCheck.CA.dll'
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Sign Installercheck.CA.dll [Authenticode]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -308,7 +326,7 @@ jobs:
     displayName: 'Expand modules'
     condition: and(succeeded(), ne(variables['SignPsd1'], 'false'))
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Psd1 Signing [Authenticode]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -358,9 +376,11 @@ jobs:
       ./setup/generate.ps1 -repository MSIcreationrepository
       Unregister-PSRepository -Name MSIcreationrepository
     displayName: 'Build Installer'
+    condition: eq(${{ parameters.buildInstaller }}, true)
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Installer Signing [Authenticode]'
+    condition: eq(${{ parameters.buildInstaller }}, true)
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
       FolderPath: setup
@@ -403,9 +423,11 @@ jobs:
       Get-ChildItem $Env:RepoArtifacts/$folderName
       Copy-Item $Env:RepoArtifacts/$Env:Configuration/InstallModule.ps1 -Destination $Env:RepoArtifacts/$folderName
     displayName: 'Gather nuget packages and install script'
+    condition: eq(${{ parameters.buildInstaller }}, true)
 
   - task: ArchiveFiles@2
     displayName: 'Pack nuget packages as Az-Cmdlets-latest.tar.gz'
+    condition: eq(${{ parameters.buildInstaller }}, true)
     inputs:
       rootFolderOrFile: 'artifacts/$(LocalRepoName)'
       includeRootFolder: false
@@ -431,9 +453,11 @@ jobs:
                   "  - "+$sha256.Hash+"`n"
       New-Item -Path "setup" -Name "ReleaseNotes.txt" -ItemType File -Force -Value $value
     displayName: 'Rename Az-Cmdlets-latest.tar.gz and Calculate SHA256'
+    condition: eq(${{ parameters.buildInstaller }}, true)
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: installer'
+    condition: eq(${{ parameters.buildInstaller }}, true)
     inputs:
       PathtoPublish: setup
       ArtifactName: setup
@@ -467,4 +491,4 @@ jobs:
         Get-ChildItem -Path $Env:RepoArtifacts -Filter Az.*.0.*.*.nupkg | Compress-Archive -DestinationPath "$buildName-preview.zip" -PassThru | Set-AzStorageBlobContent -Container $(ContainerName) -Context $context -Force
       azurePowerShellVersion: LatestVersion
       pwsh: true
-    condition: and(succeeded(), eq(variables['PushPackageToStorageAccount'], 'true'))
+    condition: and(succeeded(), eq(variables['PushPackageToStorageAccount'], 'true'), eq(${{ parameters.buildInstaller }}, true))

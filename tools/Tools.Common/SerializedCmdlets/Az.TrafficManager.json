@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.TrafficManager",
-  "ModuleVersion": "1.2.1",
+  "ModuleVersion": "1.2.2",
   "Cmdlets": [
     {
       "VerbName": "Add",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -125,7 +125,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -211,7 +211,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -278,7 +278,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -352,7 +352,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -436,7 +436,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -521,7 +521,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -587,7 +587,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -660,7 +660,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -735,7 +735,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -903,7 +903,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange"
             ]
@@ -915,7 +915,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader"
             ]
@@ -968,7 +968,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -1214,7 +1214,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange"
                   ]
@@ -1232,7 +1232,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader"
                   ]
@@ -1288,7 +1288,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -1372,7 +1372,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -1457,7 +1457,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -1523,7 +1523,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -1596,7 +1596,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -1717,7 +1717,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -1821,7 +1821,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -1888,7 +1888,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -2016,7 +2016,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -2046,7 +2046,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -2146,7 +2146,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2192,7 +2192,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -2228,7 +2228,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2274,7 +2274,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2358,7 +2358,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -2387,7 +2387,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -2452,7 +2452,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2498,7 +2498,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -2533,7 +2533,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2579,7 +2579,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2686,7 +2686,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -2838,7 +2838,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -2974,7 +2974,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -3090,7 +3090,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -3194,7 +3194,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -3326,7 +3326,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -3478,7 +3478,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -3583,7 +3583,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -3838,7 +3838,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -4095,7 +4095,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange"
             ]
@@ -4107,7 +4107,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader"
             ]
@@ -4401,7 +4401,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange"
                   ]
@@ -4419,7 +4419,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader"
                   ]
@@ -4475,7 +4475,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -4717,7 +4717,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader"
             ]
@@ -4729,7 +4729,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange"
             ]
@@ -5027,7 +5027,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader"
                   ]
@@ -5045,7 +5045,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "GenericTypeArguments": [
                     "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange"
                   ]
@@ -5101,7 +5101,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -5201,7 +5201,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -5272,7 +5272,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -5346,7 +5346,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -5421,7 +5421,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -5491,7 +5491,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -5618,7 +5618,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -5648,7 +5648,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -5748,7 +5748,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5794,7 +5794,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -5830,7 +5830,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5876,7 +5876,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5929,7 +5929,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -6004,7 +6004,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -6074,7 +6074,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -6147,7 +6147,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -6222,7 +6222,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -6292,7 +6292,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -6358,7 +6358,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -6431,7 +6431,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -6531,7 +6531,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -6602,7 +6602,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -6669,7 +6669,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -6774,7 +6774,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -6803,7 +6803,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -6868,7 +6868,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6914,7 +6914,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -6949,7 +6949,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6995,7 +6995,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7048,7 +7048,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -7139,7 +7139,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -7195,7 +7195,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -7269,7 +7269,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -7335,7 +7335,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
             "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -7390,7 +7390,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
@@ -7496,7 +7496,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader"
       ]
@@ -7504,7 +7504,7 @@
     "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader": {
       "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
       "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Value": "System.String"
@@ -7570,7 +7570,7 @@
     "Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesCustomHeadersItem": {
       "Namespace": "Microsoft.Azure.Management.TrafficManager.Models",
       "Name": "Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesCustomHeadersItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesCustomHeadersItem, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesCustomHeadersItem, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Value": "System.String"
@@ -7626,7 +7626,7 @@
     "Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigCustomHeadersItem": {
       "Namespace": "Microsoft.Azure.Management.TrafficManager.Models",
       "Name": "Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigCustomHeadersItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigCustomHeadersItem, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigCustomHeadersItem, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Value": "System.String"
@@ -7677,7 +7677,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange"
       ]
@@ -7685,7 +7685,7 @@
     "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange": {
       "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
       "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Scope": "System.Nullable`1[System.Int32]",
         "Last": "System.String",
@@ -7746,7 +7746,7 @@
     "Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesSubnetsItem": {
       "Namespace": "Microsoft.Azure.Management.TrafficManager.Models",
       "Name": "Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesSubnetsItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesSubnetsItem, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesSubnetsItem, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Scope": "System.Nullable`1[System.Int32]",
         "Last": "System.String",
@@ -7818,23 +7818,23 @@
     "Microsoft.Azure.Management.TrafficManager.Models.Endpoint": {
       "Namespace": "Microsoft.Azure.Management.TrafficManager.Models",
       "Name": "Microsoft.Azure.Management.TrafficManager.Models.Endpoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.TrafficManager.Models.Endpoint, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.TrafficManager.Models.Endpoint, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CustomHeaders": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesCustomHeadersItem]",
         "Subnets": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesSubnetsItem]",
         "GeoMapping": "System.Collections.Generic.IList`1[System.String]",
-        "MinChildEndpointsIPv4": "System.Nullable`1[System.Int64]",
+        "MinChildEndpoints": "System.Nullable`1[System.Int64]",
         "Weight": "System.Nullable`1[System.Int64]",
         "Priority": "System.Nullable`1[System.Int64]",
-        "MinChildEndpoints": "System.Nullable`1[System.Int64]",
         "MinChildEndpointsIPv6": "System.Nullable`1[System.Int64]",
+        "MinChildEndpointsIPv4": "System.Nullable`1[System.Int64]",
         "Id": "System.String",
-        "AlwaysServe": "System.String",
-        "TargetResourceId": "System.String",
+        "EndpointStatus": "System.String",
         "EndpointMonitorStatus": "System.String",
         "EndpointLocation": "System.String",
-        "EndpointStatus": "System.String",
         "Target": "System.String",
+        "TargetResourceId": "System.String",
+        "AlwaysServe": "System.String",
         "Name": "System.String",
         "Type": "System.String"
       },
@@ -7882,15 +7882,19 @@
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
+              "Name": "endpointStatus",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "alwaysServe",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
               "Name": "targetResourceId",
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
               "Name": "target",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "endpointStatus",
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
@@ -7932,10 +7936,6 @@
             {
               "Name": "customHeaders",
               "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "alwaysServe",
-              "Type": "System.Reflection.RuntimeParameterInfo"
             }
           ]
         }
@@ -7944,7 +7944,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesCustomHeadersItem]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesCustomHeadersItem]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesCustomHeadersItem, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesCustomHeadersItem, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesCustomHeadersItem"
       ]
@@ -7952,7 +7952,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesSubnetsItem]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesSubnetsItem]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesSubnetsItem, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesSubnetsItem, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.TrafficManager.Models.EndpointPropertiesSubnetsItem"
       ]
@@ -8106,7 +8106,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint"
       ]
@@ -8114,7 +8114,7 @@
     "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint": {
       "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
       "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CustomHeaders": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerCustomHeader]",
         "SubnetMapping": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerIpAddressRange]",
@@ -8197,7 +8197,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange"
       ]
@@ -8205,7 +8205,7 @@
     "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange": {
       "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
       "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerExpectedStatusCodeRange, Microsoft.Azure.PowerShell.Cmdlets.TrafficManager, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Min": "System.Int32",
         "Max": "System.Int32"
@@ -8257,7 +8257,7 @@
     "Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigExpectedStatusCodeRangesItem": {
       "Namespace": "Microsoft.Azure.Management.TrafficManager.Models",
       "Name": "Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigExpectedStatusCodeRangesItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigExpectedStatusCodeRangesItem, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigExpectedStatusCodeRangesItem, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Min": "System.Nullable`1[System.Int32]",
         "Max": "System.Nullable`1[System.Int32]"
@@ -8313,7 +8313,7 @@
     "Microsoft.Azure.Management.TrafficManager.Models.Profile": {
       "Namespace": "Microsoft.Azure.Management.TrafficManager.Models",
       "Name": "Microsoft.Azure.Management.TrafficManager.Models.Profile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.TrafficManager.Models.Profile, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.TrafficManager.Models.Profile, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DnsConfig": "Microsoft.Azure.Management.TrafficManager.Models.DnsConfig",
         "MonitorConfig": "Microsoft.Azure.Management.TrafficManager.Models.MonitorConfig",
@@ -8385,15 +8385,15 @@
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
-              "Name": "trafficRoutingMethod",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
               "Name": "dnsConfig",
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
               "Name": "monitorConfig",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "trafficRoutingMethod",
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
@@ -8419,7 +8419,7 @@
     "Microsoft.Azure.Management.TrafficManager.Models.DnsConfig": {
       "Namespace": "Microsoft.Azure.Management.TrafficManager.Models",
       "Name": "Microsoft.Azure.Management.TrafficManager.Models.DnsConfig",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.TrafficManager.Models.DnsConfig, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.TrafficManager.Models.DnsConfig, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Ttl": "System.Nullable`1[System.Int64]",
         "Fqdn": "System.String",
@@ -8475,7 +8475,7 @@
     "Microsoft.Azure.Management.TrafficManager.Models.MonitorConfig": {
       "Namespace": "Microsoft.Azure.Management.TrafficManager.Models",
       "Name": "Microsoft.Azure.Management.TrafficManager.Models.MonitorConfig",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.TrafficManager.Models.MonitorConfig, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.TrafficManager.Models.MonitorConfig, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CustomHeaders": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigCustomHeadersItem]",
         "ExpectedStatusCodeRanges": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigExpectedStatusCodeRangesItem]",
@@ -8561,7 +8561,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigCustomHeadersItem]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigCustomHeadersItem]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigCustomHeadersItem, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigCustomHeadersItem, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigCustomHeadersItem"
       ]
@@ -8569,7 +8569,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigExpectedStatusCodeRangesItem]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigExpectedStatusCodeRangesItem]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigExpectedStatusCodeRangesItem, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigExpectedStatusCodeRangesItem, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.TrafficManager.Models.MonitorConfigExpectedStatusCodeRangesItem"
       ]
@@ -8577,7 +8577,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.TrafficManager.Models.Endpoint]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.TrafficManager.Models.Endpoint]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.TrafficManager.Models.Endpoint, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.TrafficManager.Models.Endpoint, Microsoft.Azure.PowerShell.TrafficManager.Management.Sdk, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.TrafficManager.Models.Endpoint"
       ]

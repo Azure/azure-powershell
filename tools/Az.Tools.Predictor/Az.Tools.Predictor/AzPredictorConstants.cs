@@ -16,6 +16,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -226,6 +228,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             // Other Verbs
             "Use"
         }, StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>
+        /// The regex pattern to match the noun in an Az cmdlet.
+        /// </summary>
+        public static readonly Regex AzNounPattern = new Regex($"^{AzCommandMoniker}[a-zA-Z]*$",
+                RegexOptions.Compiled
+                | RegexOptions.Singleline
+                | RegexOptions.IgnoreCase,
+                TimeSpan.FromMilliseconds(10));
     }
 }
 
