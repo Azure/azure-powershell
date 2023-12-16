@@ -22,11 +22,10 @@ Describe 'Update-AzNetworkSecurityPerimeter' {
         } | Should -Not -Throw
     }
 
-    It 'PatchViaIdentityExpanded' -skip {
+    It 'PatchViaIdentityExpanded' {
         {
            $nspName = $env.randomStr + '-' + $env.nsp1
-           $nsp = Get-AzNetworkSecurityPerimeter -Name $env.nsp1 -ResourceGroupName $env.rgname
-           $GETObj = Get-AzNetworkSecurityPerimeter -Name $env.nsp1 -ResourceGroupName $env.rgname
+           $GETObj = Get-AzNetworkSecurityPerimeter -Name $nspName -ResourceGroupName $env.rgname
            $UpdateObj = Update-AzNetworkSecurityPerimeter -InputObject $GETObj
         } | Should -Not -Throw
     }
