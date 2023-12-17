@@ -178,16 +178,6 @@ namespace Microsoft.Azure.Management.Authorization.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "PrincipalId");
             }
-
-
-
-
-
-
-
-
-
-
         }
     }
 }
