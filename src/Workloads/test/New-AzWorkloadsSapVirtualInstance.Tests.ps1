@@ -23,7 +23,7 @@ Describe 'New-AzWorkloadsSapVirtualInstance' {
     It 'CreateWithConfiguration' -skip {
         $configPath = Join-Path $PSScriptRoot $env.ConfigPath
         $createResponse = New-AzWorkloadsSapVirtualInstance -Name $env.CreateSVI -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $configPath
-        $createResponse.provisioningState | Should -Be $env.ProvisioningState
+        $createResponse.provisioningState | Should -Be $env.ProvisioningState 
     }
 
     It 'CreateWithJsonString' -skip {
