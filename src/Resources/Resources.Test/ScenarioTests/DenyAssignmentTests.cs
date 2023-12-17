@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Resources.PrivateLinks;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -77,6 +79,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void GetDaByObjectIdAndGroupExpansion()
         {
             TestRunner.RunTestScript("Test-GetDaByObjectIdAndGroupExpansion");
+            Console.WriteLine("Delete this!!");
         }
 
         [Fact]
