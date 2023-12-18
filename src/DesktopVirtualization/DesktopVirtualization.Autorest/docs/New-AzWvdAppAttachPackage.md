@@ -14,19 +14,16 @@ Create or update an App Attach package.
 
 ### CreateExpanded (Default)
 ```
-New-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-FailHealthCheckOnStagingFailure <FailHealthCheckOnStagingFailure>] [-HostPoolReference <String[]>]
- [-IdentityType <ResourceIdentityType>] [-ImageCertificateExpiry <DateTime>] [-ImageCertificateName <String>]
+New-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-FailHealthCheckOnStagingFailure <FailHealthCheckOnStagingFailure>]
+ [-HostPoolReference <String[]>] [-ImageCertificateExpiry <DateTime>] [-ImageCertificateName <String>]
  [-ImageDisplayName <String>] [-ImageIsActive] [-ImageIsPackageTimestamped <PackageTimestamped>]
  [-ImageIsRegularRegistration] [-ImageLastUpdated <DateTime>] [-ImagePackageAlias <String>]
  [-ImagePackageApplication <IMsixPackageApplications[]>]
  [-ImagePackageDependency <IMsixPackageDependencies[]>] [-ImagePackageFamilyName <String>]
  [-ImagePackageFullName <String>] [-ImagePackageName <String>] [-ImagePackageRelativePath <String>]
- [-ImagePath <String>] [-ImageVersion <String>] [-KeyVaultUrl <String>] [-Kind <String>] [-Location <String>]
- [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [-PlanPublisher <String>] [-PlanVersion <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ImagePath <String>] [-ImageVersion <String>] [-KeyVaultUrl <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ImageObject
@@ -107,7 +104,7 @@ This command creates or updates an Azure Virtual Desktop App Attach Package in a
 To construct, see NOTES section for APPATTACHPACKAGE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.AppAttachPackage
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.AppAttachPackage
 Parameter Sets: ImageObject
 Aliases:
 
@@ -155,21 +152,6 @@ List of Hostpool resource Ids.
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-The identity type.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ResourceIdentityType
-Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -306,7 +288,7 @@ List of package applications.
 To construct, see NOTES section for IMAGEPACKAGEAPPLICATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IMsixPackageApplications[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IMsixPackageApplications[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -323,7 +305,7 @@ List of package dependencies.
 To construct, see NOTES section for IMAGEPACKAGEDEPENDENCY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IMsixPackageDependencies[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IMsixPackageDependencies[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -440,23 +422,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g.
-ApiApps are a kind of Microsoft.Web/sites type.
-If supported, the resource provider must validate and persist this value.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Location
 The geo-location where the resource lives
 
@@ -466,23 +431,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedBy
-The fully qualified resource ID of the resource that manages this resource.
-Indicates if this resource is managed by another Azure resource.
-If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -519,86 +467,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PlanName
-A user defined name of the 3rd Party Artifact that is being procured.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PlanProduct
-The 3rd Party artifact that is being procured.
-E.g.
-NewRelic.
-Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PlanPromotionCode
-A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PlanPublisher
-The publisher of the 3rd Party Artifact that is being bought.
-E.g.
-NewRelic
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PlanVersion
-The version of the desired product/artifact.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -609,85 +477,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuCapacity
-If the SKU supports scale out/in then the capacity integer should be included.
-If scale out/in is not possible for the resource this may be omitted.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuFamily
-If the service has different generations of hardware, for the same SKU, then that can be captured here.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuName
-The name of the SKU.
-Ex - P3.
-It is typically a letter+number code
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuSize
-The SKU size.
-When the name field is the combination of tier and some other value, this would be the standalone code.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuTier
-This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SkuTier
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -760,11 +549,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.AppAttachPackage
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.AppAttachPackage
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IAppAttachPackage
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IAppAttachPackage
 
 ## NOTES
 

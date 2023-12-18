@@ -20,7 +20,7 @@ New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerTy
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <SessionHostComponentUpdateType>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
  [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-IdentityType <ResourceIdentityType>] [-Kind <String>]
- [-ManagedBy <String>] [-MaxSessionLimit <Int32>]
+ [-ManagedBy <String>] [-ManagementType <ManagementType>] [-MaxSessionLimit <Int32>]
  [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>] [-PlanName <String>] [-PlanProduct <String>]
  [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
  [-PublicNetworkAccess <HostpoolPublicNetworkAccess>] [-RegistrationInfoToken <String>]
@@ -112,7 +112,7 @@ Maintenance windows are 2 hours long.
 To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IMaintenanceWindowProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IMaintenanceWindowProperties[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -344,6 +344,22 @@ If this is present, complete mode deployment will not delete the resource if it 
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagementType
+The type of management for this hostpool, Automated or Standard.
+The default value is Automated.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ManagementType
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -837,7 +853,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IHostPool
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IHostPool
 
 ## NOTES
 

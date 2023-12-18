@@ -1,6 +1,6 @@
 function New-AzWvdMsixPackage_PackageAlias {
 
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004preview.IMsixPackage')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101preview.IMsixPackage')]
     [CmdletBinding( PositionalBinding = $false, ConfirmImpact = 'Medium')]
     param(
         [Parameter()]

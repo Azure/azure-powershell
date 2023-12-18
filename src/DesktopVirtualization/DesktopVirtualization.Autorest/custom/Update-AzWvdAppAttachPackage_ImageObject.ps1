@@ -1,5 +1,5 @@
 function Update-AzWvdAppAttachPackage_ImageObject {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004preview.IAppAttachPackage])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101preview.IAppAttachPackage])]
     [CmdletBinding(PositionalBinding=$false, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -32,7 +32,7 @@ function Update-AzWvdAppAttachPackage_ImageObject {
 
         [Parameter(Mandatory, Position = 0, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004preview.AppAttachPackage]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101preview.AppAttachPackage]
         # App Attach Package object that can be the output of import-azwvdappattachpackageinfo
         ${AppAttachPackage},
 
