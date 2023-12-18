@@ -30,7 +30,7 @@ For information on how to develop for `Az.Purview`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: ebe90b1dfef9ec9706dee06e84676a6c6979ab53
+commit: ebe90b1dfef9ec9706dee06e84676a6c6979ab53
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
@@ -43,6 +43,10 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true 
 nested-object-to-string: true
 resourcegroup-append: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

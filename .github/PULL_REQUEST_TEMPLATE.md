@@ -2,15 +2,24 @@
 
 ## Description
 
-<!-- Please add a brief description of the changes made in this PR -->
+<!-- Please add a brief description of the changes made in this PR. If you have an ongoing or finished cmdlet design, please paste the link below. -->
 
-## Checklist
+## Mandatory Checklist
 
-- [ ] I have read the [_Submitting Changes_](https://github.com/Azure/azure-powershell/blob/master/CONTRIBUTING.md#submitting-changes) section of [`CONTRIBUTING.md`](https://github.com/Azure/azure-powershell/blob/master/CONTRIBUTING.md)
-- [ ] The title of the PR is clear and informative
-- [ ] The appropriate [change log has been updated](https://github.com/Azure/azure-powershell/blob/master/CONTRIBUTING.md#updating-the-change-log)
-- [ ] The PR does not introduce [breaking changes](https://github.com/Azure/azure-powershell/blob/master/documentation/breaking-changes/breaking-changes-definition.md)
-- [ ] If applicable, the changes made in the PR have proper test coverage
-- [ ] For public API changes to cmdlets:
-    - [ ] the changes have gone through a [cmdlet design review](https://github.com/Azure/azure-powershell-cmdlet-review-pr) (Microsoft internal partners only)
-    - [ ] the cmdlet markdown files were [generated using the `platyPS` module](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/help-generation.md)
+- Please choose the target release of Azure PowerShell
+  - [ ] [General release](../blob/main/CONTRIBUTING.md#target-release-types)
+  - [ ] [Public preview](../blob/main/CONTRIBUTING.md#target-release-types)
+  - [ ] [Private preview](../blob/main/CONTRIBUTING.md#target-release-types)
+  - [ ] [Engineering build](../blob/main/CONTRIBUTING.md#target-release-types)
+  - [ ] N/A
+
+- [ ] Check this box to confirm: **I have read the [_Submitting Changes_](../blob/main/CONTRIBUTING.md#submitting-changes) section of [`CONTRIBUTING.md`](../blob/main/CONTRIBUTING.md) and reviewed the following information:**
+
+* **SHOULD** update `ChangeLog.md` file(s) appropriately
+    * For SDK-based development mode, update `src/{{SERVICE}}/{{SERVICE}}/ChangeLog.md`.
+        * A snippet outlining the change(s) made in the PR should be written under the `## Upcoming Release` header in the past tense. 
+    * For autorest-based development mode, include the changelog in the PR description.
+    * Should **not** change `ChangeLog.md` if no new release is required, such as fixing test case only.
+* **SHOULD** regenerate markdown help files if there is cmdlet API change. [Instruction](../blob/main/documentation/development-docs/help-generation.md#updating-all-markdown-files-in-a-module)
+* **SHOULD** have proper test coverage for changes in pull request.
+* **SHOULD NOT** adjust version of module manually in pull request

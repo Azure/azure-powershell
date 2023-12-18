@@ -30,7 +30,7 @@ For information on how to develop for `Az.MonitorWorkspace`, see [how-to.md](how
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 14268abc2d999d7c0425490f8ecf0c91b46ea44b
+commit: 14268abc2d999d7c0425490f8ecf0c91b46ea44b
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
@@ -46,6 +46,10 @@ namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
 resourcegroup-append: true
 identity-correction-for-post: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

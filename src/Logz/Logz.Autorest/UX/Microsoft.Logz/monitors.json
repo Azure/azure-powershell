@@ -1,0 +1,123 @@
+{
+  "resourceType": "monitors",
+  "apiVersion": "2020-10-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.logz"
+  },
+  "commands": [
+    {
+      "name": "Get-AzLogzMonitor",
+      "description": "Get the properties of a specific monitor resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitor"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the properties of a specific monitor resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.monitorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzLogzHostMonitor",
+      "description": "Returns the payload that needs to be passed in the request body for installing Logz.io agent on a VM.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}/vmHostPayload",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.logz/invoke-azlogzhostmonitor"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MonitorName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns the payload that needs to be passed in the request body for installing Logz.io agent on a VM.",
+          "parameters": [
+            {
+              "name": "-MonitorName",
+              "value": "[Path.monitorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzLogzMonitor",
+      "description": "Delete a monitor resource.\nThis delete operation can take upto 10 minutes to complete.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.logz/remove-azlogzmonitor"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a monitor resource. This delete operation can take upto 10 minutes to complete.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.monitorName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -44,14 +44,39 @@ function Send-EmailServiceMail {
         [string] $Subject,
 
         [Parameter(Mandatory)]
-        $Body
+        $Content, # The type of this parameter is dynamic. Omitting the type here to avoid exception.
+
+        [Parameter()]
+        [switch] $IsHtml
     )
 
     $emailClient = [Azure.Communication.Email.EmailClient]::new($EmailServiceConnectionString)
 
-    Write-Host "Sending email..."
-    $emailClient.SendAsync([Azure.WaitUntil]::Completed, $EmailFrom, $To, $Subject, $Body).GetAwaiter().GetResult()
-    Write-Host "Finished sending email."
+    $emailContent = [Azure.Communication.Email.EmailContent]::new($Subject)
+    if ($IsHtml.IsPresent) {
+        $emailContent.Html = $Content
+    }
+    else {
+        $emailContent.PlainText = $Content
+    }
+
+    $emailTo = $To.Split(";", [StringSplitOptions]::RemoveEmptyEntries) | ForEach-Object {
+        [Azure.Communication.Email.EmailAddress]::new($_)
+    }
+    $emailRecipients = [Azure.Communication.Email.EmailRecipients]::new([System.Collections.Generic.List[Azure.Communication.Email.EmailAddress]]$emailTo)
+
+    $emailMessage = [Azure.Communication.Email.EmailMessage]::new($EmailFrom, $emailRecipients, $emailContent)
+
+    Write-Host "##[section]Start sending email notification."
+
+    try {
+        $emailClient.Send([Azure.WaitUntil]::Completed, $emailMessage)
+    }
+    catch {
+        Write-Error "Failed to send email notification with error message: $($_.Exception.Message)."
+    }
+
+    Write-Host "##[section]Finished sending email notification."
 }
 
 InitializeEmailServicePackages

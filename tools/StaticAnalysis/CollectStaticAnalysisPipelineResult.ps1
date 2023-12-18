@@ -168,7 +168,7 @@ ForEach ($Step In $Steps) {
                         $Content += "|$ErrorTypeEmoji|$($Issue.Target)|$($Issue.Description)|$($Issue.Remediation)|`n"
                     }
                     ElseIf ($PhaseName -Eq "help-example") {
-                        $Content += "|$ErrorTypeEmoji|$($Issue.Target)|$($Issue.Example)|$($Issue.Line)|$($Issue.RuleName)|$($Issue.Description)|$($Issue.Extent)|$($Issue.Remediation)|`n"
+                        $Content += "|$ErrorTypeEmoji|$($Issue.Cmdlet)|$($Issue.Example)|$($Issue.Line)|$($Issue.RuleName)|$($Issue.Description)|$($Issue.Extent)|$($Issue.Remediation)|`n"
                     }
                     ElseIf ($PhaseName -Eq "ux") {
                         $Content += "|$ErrorTypeEmoji|$($Issue.Module)|$($Issue.ResourceType)|$($Issue.SubResourceType)|$($Issue.Command)|$($Issue.Description)|`n"

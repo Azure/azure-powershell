@@ -38,11 +38,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         public string[] FilesChanged { get; set; }
 
         /// <summary>
-        /// Gets or set the TargetModule, e.g. Storage
-        /// </summary>
-        public string TargetModule { get; set; }
-
-        /// <summary>
         /// Gets or set the Mode, e.g. Release
         /// </summary>
         [Required]
@@ -179,36 +174,8 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         {
             List<string> csprojList = GetRelatedCsprojList(moduleName, csprojMap)
                 .Where(x => x.Contains("Test")).ToList();
-            if (csprojList.Count == 0)
-            {
-                csprojList.Add(moduleName);
-            }
+
             return csprojList;
-        }
-
-        private bool ProcessTargetModule(Dictionary<string, string[]> csprojMap)
-        {
-            Dictionary<string, HashSet<string>> influencedModuleInfo = new Dictionary<string, HashSet<string>>
-            {
-                [BUILD_PHASE] = new HashSet<string>(GetBuildCsprojList(TargetModule, csprojMap).ToList()),
-                [TEST_PHASE] = new HashSet<string>(GetTestCsprojList(TargetModule, csprojMap).ToList())
-            };
-            foreach (var analysisPhase in ANALYSIS_PHASE_LIST)
-            {
-                influencedModuleInfo.Add(analysisPhase, new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()));
-            }
-
-            Console.WriteLine("----------------- InfluencedModuleInfo TargetModule -----------------");
-            foreach (string phaseName in influencedModuleInfo.Keys)
-            {
-                Console.WriteLine(string.Format("{0}: [{1}]", phaseName, string.Join(", ", influencedModuleInfo[phaseName].ToList())));
-            }
-            Console.WriteLine("--------------------------------------------------------");
-
-            BuildCsprojList = influencedModuleInfo[BUILD_PHASE].ToArray();
-            TestCsprojList = influencedModuleInfo[TEST_PHASE].ToArray();
-
-            return true;
         }
 
         private string ProcessSinglePattern(string pattern)
@@ -395,25 +362,28 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             Dictionary<string, HashSet<string>> influencedModuleInfo = CalculateInfluencedModuleInfoForEachPhase(ruleList, csprojMap);
             DateTime endOfRegularExpressionTime = DateTime.Now;
+            
+            #region Record the CI plan info to CIPlan.json under the artifacts folder
+            Dictionary<string, List<string>> CIPlan = new Dictionary<string, List<string>>
+            {
+                [BUILD_PHASE] = new List<string>(influencedModuleInfo[BUILD_PHASE]),
+                [TEST_PHASE] = new List<string>(influencedModuleInfo[TEST_PHASE])
+            };
+            foreach (var analysisPhase in ANALYSIS_PHASE_LIST)
+            {
+                CIPlan.Add(analysisPhase, new List<string>(influencedModuleInfo[analysisPhase]));
+            }
+            if (!Directory.Exists(config.ArtifactPipelineInfoFolder))
+            {
+                Directory.CreateDirectory(config.ArtifactPipelineInfoFolder);
+            }
+            File.WriteAllText(Path.Combine(config.ArtifactPipelineInfoFolder, "CIPlan.json"), JsonConvert.SerializeObject(CIPlan, Formatting.Indented));
+            #endregion
 
             influencedModuleInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);
             DateTime endTime = DateTime.Now;
             Console.WriteLine(string.Format("Takes {0} seconds for RE match, {1} seconds for phase config.", (endOfRegularExpressionTime - startTime).TotalSeconds, (endTime - endOfRegularExpressionTime).TotalSeconds));
 
-            if (!Directory.Exists(config.ArtifactPipelineInfoFolder))
-            {
-                Directory.CreateDirectory(config.ArtifactPipelineInfoFolder);
-            }
-            Dictionary<string, HashSet<string>> CIPlan = new Dictionary<string, HashSet<string>>
-            {
-                [BUILD_PHASE] = new HashSet<string>(influencedModuleInfo[BUILD_PHASE].Select(GetModuleNameFromPath).Where(x => x != null)),
-                [TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Select(GetModuleNameFromPath).Where(x => x != null))
-            };
-            foreach (var analysisPhase in ANALYSIS_PHASE_LIST)
-            {
-                CIPlan.Add(analysisPhase, influencedModuleInfo[analysisPhase]);
-            }
-            File.WriteAllText(Path.Combine(config.ArtifactPipelineInfoFolder, "CIPlan.json"), JsonConvert.SerializeObject(CIPlan, Formatting.Indented));
             influencedModuleInfo[TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Where(x => x.EndsWith(".csproj")));
 
             BuildCsprojList = influencedModuleInfo[BUILD_PHASE].ToArray();
@@ -453,11 +423,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             var csprojMap = ReadMapFile(CsprojMapFilePath, "CsprojMapFilePath");
 
             Console.WriteLine(string.Format("FilesChanged: {0}", FilesChanged.Length));
-            if (!string.IsNullOrWhiteSpace(TargetModule))
-            {
-                return ProcessTargetModule(csprojMap);
-            }
-            else if (FilesChanged != null)
+            if (FilesChanged != null)
             {
                 if (FilesChanged.Length <= 0)
                 {

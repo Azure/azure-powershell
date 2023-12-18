@@ -30,7 +30,7 @@ For information on how to develop for `Az.ResourceGraph`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: e521d49bb1d1f262bd2131b57eea5c1436047650
+commit: e521d49bb1d1f262bd2131b57eea5c1436047650
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
@@ -39,6 +39,10 @@ input-file:
 title: ResourceGraph
 module-version: 0.1.0
 subject-prefix: $(service-name)
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document

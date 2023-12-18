@@ -1,0 +1,115 @@
+{
+  "[NoDescription]+[NoContext]+RemoveExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/listPrincipals?api-version=2023-08-15+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/listPrincipals?api-version=2023-08-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "531" ],
+        "x-ms-client-request-id": [ "d1914759-05d8-4bf5-bf25-3c7924b23aa0" ],
+        "CommandName": [ "Get-AzKustoDatabasePrincipal" ],
+        "FullCommandName": [ "Get-AzKustoDatabasePrincipal_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.8", "Az.Kusto/0.1.4" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "e002ec3f-5458-45e2-aee9-dfe7642efa57" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "34581904-194c-487b-a38b-8c1e0e9babfa" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T215557Z:34581904-194c-487b-a38b-8c1e0e9babfa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 24 Oct 2023 21:55:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "730" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"name\":\"Michael Shikh (michaelshikh@microsoft.com)\",\"role\":\"Admin\",\"type\":\"User\",\"fqn\":\"aaduser=820e4e6a-1583-44fd-879c-e3f7fa9997ca;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"michaelshikh@microsoft.com\",\"appId\":\"\",\"tenantName\":\"Microsoft\"},{\"name\":\"KustoClientsScenarioTest\",\"role\":\"Admin\",\"type\":\"App\",\"fqn\":\"aadapp=713c3475-5021-4f3b-a650-eaa9a83f25a4;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"\",\"appId\":\"713c3475-5021-4f3b-a650-eaa9a83f25a4\",\"tenantName\":\"Microsoft\"},{\"name\":\"KustoClientsScenarioTest\",\"role\":\"Viewer\",\"type\":\"App\",\"fqn\":\"aadapp=713c3475-5021-4f3b-a650-eaa9a83f25a4;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"\",\"appId\":\"713c3475-5021-4f3b-a650-eaa9a83f25a4\",\"tenantName\":\"Microsoft\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+RemoveExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/removePrincipals?api-version=2023-08-15+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/removePrincipals?api-version=2023-08-15",
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"role\": \"Admin\",\r\n      \"name\": \"Michael Shikh (michaelshikh@microsoft.com)\",\r\n      \"type\": \"User\",\r\n      \"email\": \"michaelshikh@microsoft.com\",\r\n      \"appId\": \"\"\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "210" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "e7a421fa-285a-43e5-892e-ecc66939d2db" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-correlation-request-id": [ "906137a3-fd2f-4f73-8e9d-0242d3144ace" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T215558Z:906137a3-fd2f-4f73-8e9d-0242d3144ace" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 24 Oct 2023 21:55:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "484" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"name\":\"KustoClientsScenarioTest\",\"role\":\"Admin\",\"type\":\"App\",\"fqn\":\"aadapp=713c3475-5021-4f3b-a650-eaa9a83f25a4;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"\",\"appId\":\"713c3475-5021-4f3b-a650-eaa9a83f25a4\",\"tenantName\":\"Microsoft\"},{\"name\":\"KustoClientsScenarioTest\",\"role\":\"Viewer\",\"type\":\"App\",\"fqn\":\"aadapp=713c3475-5021-4f3b-a650-eaa9a83f25a4;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"\",\"appId\":\"713c3475-5021-4f3b-a650-eaa9a83f25a4\",\"tenantName\":\"Microsoft\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "[NoDescription]+[NoContext]+RemoveExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/addPrincipals?api-version=2023-08-15+3": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-3w8cj7/providers/Microsoft.Kusto/Clusters/pssdk3w8cj7/Databases/TestDb/addPrincipals?api-version=2023-08-15",
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"role\": \"Admin\",\r\n      \"name\": \"Michael Shikh (michaelshikh@microsoft.com)\",\r\n      \"type\": \"User\",\r\n      \"email\": \"michaelshikh@microsoft.com\",\r\n      \"appId\": \"\"\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "210" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "364c880e-8bab-48a6-bad4-d85365ce2bc2" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-correlation-request-id": [ "ab2276ef-5884-4054-8540-58ad4127f16d" ],
+        "x-ms-routing-request-id": [ "QATARCENTRAL:20231024T215600Z:ab2276ef-5884-4054-8540-58ad4127f16d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 24 Oct 2023 21:55:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "730" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"name\":\"KustoClientsScenarioTest\",\"role\":\"Admin\",\"type\":\"App\",\"fqn\":\"aadapp=713c3475-5021-4f3b-a650-eaa9a83f25a4;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"\",\"appId\":\"713c3475-5021-4f3b-a650-eaa9a83f25a4\",\"tenantName\":\"Microsoft\"},{\"name\":\"KustoClientsScenarioTest\",\"role\":\"Viewer\",\"type\":\"App\",\"fqn\":\"aadapp=713c3475-5021-4f3b-a650-eaa9a83f25a4;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"\",\"appId\":\"713c3475-5021-4f3b-a650-eaa9a83f25a4\",\"tenantName\":\"Microsoft\"},{\"name\":\"Michael Shikh (michaelshikh@microsoft.com)\",\"role\":\"Admin\",\"type\":\"User\",\"fqn\":\"aaduser=820e4e6a-1583-44fd-879c-e3f7fa9997ca;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"michaelshikh@microsoft.com\",\"appId\":\"\",\"tenantName\":\"Microsoft\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -254,6 +254,17 @@ If ($Build)
         $Template.Build.Details += $BuildDetail
 
         $DependencyStepList = $Template | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" }
+        
+        # In generated based branch, the Accounts is cloned from latest main branch but the environment will be cleaned after build job.
+        # Also the analysis check and test is not necessary for Az.Accounts in these branches.
+        If ($Env:IsGenerateBased -eq "true")
+        {
+            ForEach ($phase In ($CIPlan | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | Where-Object { $_ -Ne "build" }))
+            {
+                $CIPlan.$phase = $CIPlan.$phase | Where-Object { $_ -Ne "Accounts" }
+            }
+            ConvertTo-Json -Depth 10 -InputObject $CIPlan | Out-File -FilePath $CIPlanPath
+        }
 
         ForEach ($DependencyStep In $DependencyStepList)
         {
@@ -300,11 +311,7 @@ If ($TestAutorest)
         Write-Warning "There is no test-module.ps1 found in the folder: $AutorestDirectory"
         Return
     }
-    $ModuleName = Split-Path -Path $AutorestDirectory -Leaf
-    If ($ModuleName.EndsWith(".Autorest"))
-    {
-        $ModuleName = Split-Path -Path $AutorestDirectory | Split-Path -Leaf
-    }
+    $ModuleName = Split-Path -Path $AutorestDirectory | Split-Path -Leaf
     $ModuleFolderName = $ModuleName.Split(".")[1]
     If (Test-Path $CIPlanPath)
     {

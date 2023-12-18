@@ -37,7 +37,11 @@ namespace Microsoft.Azure.Commands.TestFx.Recorder
         static RecorderUtilities()
         {
             JsonPathSanitizers.Add("$..primaryKey");
+            JsonPathSanitizers.Add("$..primaryMasterKey");
+            JsonPathSanitizers.Add("$..primaryReadonlyMasterKey");
             JsonPathSanitizers.Add("$..secondaryKey");
+            JsonPathSanitizers.Add("$..secondaryMasterKey");
+            JsonPathSanitizers.Add("$..secondaryReadonlyMasterKey");
             JsonPathSanitizers.Add("$..primaryConnectionString");
             JsonPathSanitizers.Add("$..secondaryConnectionString");
             JsonPathSanitizers.Add("$..connectionString");
@@ -205,7 +209,10 @@ namespace Microsoft.Azure.Commands.TestFx.Recorder
                 {
                     foreach (JToken token in parsedJson.SelectTokens(jsonPath))
                     {
-                        token.Replace(SanitizeValue);
+                        if (token.Type == JTokenType.String && token.Value<string>() != string.Empty)
+                        {
+                            token.Replace(SanitizeValue);
+                        }
                     }
                 }
                 return JsonConvert.SerializeObject(parsedJson, Formatting.Indented);

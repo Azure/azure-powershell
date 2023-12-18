@@ -4,6 +4,7 @@ parameters:
   powerShellPlatform: ''
 
 steps:
+- template: get-github-pat-steps.yml
 - task: NodeTool@0
   condition: eq(variables.IsGenerateBased, true)
   displayName: Install Autorest
@@ -36,7 +37,7 @@ steps:
     custom: msbuild
     arguments: 'build.proj /t:Build /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
   env:
-      OCTOKITPAT: $(OCTOKITPAT)
+      OCTOKITPAT: $(GithubToken)
       PowerShellPlatform: ${{ parameters.powerShellPlatform }}
 
 - task: PowerShell@2

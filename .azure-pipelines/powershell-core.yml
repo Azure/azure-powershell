@@ -12,7 +12,7 @@ variables:
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
-  IsGenerateBased: $[eq(variables['system.pullRequest.targetBranch'], 'generation')]
+  IsGenerateBased: $[startsWith(variables['system.pullRequest.targetBranch'], 'generation')]
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
   TestTimeoutInMinutes: 180
@@ -57,6 +57,7 @@ jobs:
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
+      IsGenerateBased: ${{ variables.IsGenerateBased }}
 
 - job: Test
   displayName: Test
