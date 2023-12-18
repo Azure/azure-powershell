@@ -2043,7 +2043,7 @@ function Test-AzureFirewallPolicyIDPSProfiles {
 
     try {
         # Create the resource group
-        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
 
         # Intrusion Detection Settings
         $sigOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
