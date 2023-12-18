@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed the authentication issue when using `FederatedToken` in non-Azure public Cloud Environment [#23742]
 * Adjusted output format to be more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`
 * Added upcoming breaking change warning for deprecation of config parameter `DisableErrorRecordsPersistence`.
 
