@@ -15,7 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWvdSessionHostManagemen
 }
 
 Describe 'New-AzWvdSessionHostManagement' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $management = New-AzWvdSessionHostManagement -SubscriptionId $env.SubscriptionId `
+            -ResourceGroupName $env.ResourceGroupPersistent `
+            -HostPoolName $env.AutomatedHostpoolPersistent `
+            -ScheduledDateTimeZone "UTC" `
+            -UpdateLogOffDelayMinute 1 `
+            -UpdateMaxVmsRemoved 1 `
+            -UpdateLogoffMessage "HostpoolUpdate is great!"
+
+        $management = Get-AzWvdSessionHostManagement -SubscriptionId $env.SubscriptionId `
+            -ResourceGroupName $env.ResourceGroupPersistent `
+            -HostPoolName $env.AutomatedHostpoolPersistent 
+
+        $management.ScheduledDateTimeZone | Should -Be "UTC"
+        $management.UpdateLogOffDelayMinute | Should -Be 1
+        $management.UpdateMaxVmsRemoved | Should -Be 1
+        $management.UpdateLogoffMessage | Should -Be "HostpoolUpdate is great!"
     }
 }

@@ -15,15 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWvdSessionHostManagemen
 }
 
 Describe 'Get-AzWvdSessionHostManagement' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $sessionHostManagement = Get-AzWvdSessionHostManagement -SubscriptionId $env.SubscriptionId `
+            -ResourceGroupName $env.ResourceGroupPersistent `
+            -HostPoolName $env.AutomatedHostpoolPersistent 
+        $sessionHostManagement.Name | Should -Be "default"
     }
 }

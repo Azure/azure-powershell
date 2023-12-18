@@ -15,11 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzWvdSessionHostManage
 }
 
 Describe 'Update-AzWvdSessionHostManagement' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'UpdateExpanded'  {
+        $management = Update-AzWvdSessionHostManagement -SubscriptionId $env.SubscriptionId `
+            -ResourceGroupName $env.ResourceGroupPersistent `
+            -HostPoolName $env.AutomatedHostpoolPersistent `
+            -UpdateLogoffMessage "Updating HostpoolUpdate is great!"
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $management.UpdateLogoffMessage | Should -Be "Updating HostpoolUpdate is great!"
+
     }
 }
