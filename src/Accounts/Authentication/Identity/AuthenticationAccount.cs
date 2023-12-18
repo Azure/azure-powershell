@@ -1,5 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
-//
+﻿//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,13 +11,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 //
-
-using Azure.Identity;
+using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.PowerShell.Authenticators.Identity
 {
-    internal interface ITokenCacheOptions
+    internal class AuthenticationAccount : IAccount
     {
-        TokenCachePersistenceOptions TokenCachePersistenceOptions { get; }
+        private AuthenticationRecord _profile;
+
+        internal AuthenticationAccount(AuthenticationRecord profile)
+        {
+            _profile = profile;
+        }
+
+        string IAccount.Username => _profile.Username;
+
+        string IAccount.Environment => _profile.Authority;
+
+        AccountId IAccount.HomeAccountId => _profile.AccountId;
+
+        public static explicit operator AuthenticationAccount(AuthenticationRecord profile) => new AuthenticationAccount(profile);
+        public static explicit operator AuthenticationRecord(AuthenticationAccount account) => account._profile;
     }
 }
