@@ -57,7 +57,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.13.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Authorization.Autorest/bin/Az.Authorization.private.dll', 
-               'Microsoft.Azure.Management.Authorization.dll', 
+               'Microsoft.Azure.PowerShell.Authorization.Management.Sdk.dll', 
                'Microsoft.Azure.Management.ManagementGroups.dll', 
                'Microsoft.Azure.Management.ResourceManager.dll', 
                'Microsoft.Azure.PowerShell.Resources.Management.Sdk.dll', 
