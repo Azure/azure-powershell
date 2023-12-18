@@ -16,16 +16,14 @@
 
 <#
 .Synopsis
-Updates properties for a SMB file share endpoint resource.
-Properties not specified in the request body will be unchanged.
+Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
 .Description
-Updates properties for a SMB file share endpoint resource.
-Properties not specified in the request body will be unchanged.
+Creates a Smb file share endpoint resource, which represents a data transfer source or destination.
 .Example
-Update-AzStorageMoverSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -Description "updated endpoint"
+New-AzStorageMoverAzSmbFileShareEndpoint -Name $endpointName -ResourceGroupName $rgname -StorageMoverName $storagemovername -StorageAccountResourceId $accountresourceid -FileShareName $fileshareName -Description "Description"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpointBaseUpdateParameters
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
@@ -35,67 +33,55 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-ENDPOINT<IEndpointBaseUpdateParameters>: The endpoint resource.
-  [Property<IEndpointBaseUpdateProperties>]: The endpoint resource, which contains information about file sources and targets.
-    [Description<String>]: A description for the endpoint.
-
-INPUTOBJECT<IStorageMoverIdentity>: Identity Parameter
-  [AgentName<String>]: The name of the agent resource.
-  [EndpointName<String>]: The name of the endpoint resource.
-  [Id<String>]: Resource identity path
-  [JobDefinitionName<String>]: The name of the job definition resource.
-  [JobRunName<String>]: The name of the job run.
-  [ProjectName<String>]: The name of the project resource.
-  [ResourceGroupName<String>]: The name of the resource group. The name is case insensitive.
-  [StorageMoverName<String>]: The name of the Storage Mover resource.
-  [SubscriptionId<String>]: The ID of the target subscription.
-
 .Link
-https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoversmbfileshareendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazsmbfileshareendpoint
 #>
-function Update-AzStorageMoverSmbFileShareEndpoint {
+function New-AzStorageMoverAzSmbFileShareEndpoint {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint])]
-    [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [Alias("New-AzStorageMoverSmbFileShareEndpoint")]
     param(
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Alias('EndpointName')]
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
         [System.String]
         # The name of the endpoint resource.
         ${Name},
 
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
         [System.String]
         # The name of the Storage Mover resource.
         ${StorageMoverName},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
-        [Parameter(HelpMessage = "A description for the endpoint.")]
+        [Parameter(ParameterSetName = 'CreateExpanded')]
+        [Parameter(Mandatory, HelpMessage="The Azure Resource ID of the storage account that is the target destination.")]
+        [string]
+        ${StorageAccountResourceId},
+
+        [Parameter(ParameterSetName = 'CreateExpanded')]
+        [Parameter(Mandatory, HelpMessage="The name of the Azure Storage file share.")]
+        [string]
+        ${FileShareName},
+    
+        [Parameter(ParameterSetName = 'CreateExpanded')]
+        [Parameter(HelpMessage="A description for the endpoint.")]
         [string]
         ${Description},
 
-        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
-
-        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity]
-        # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-        ${InputObject},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -146,18 +132,24 @@ function Update-AzStorageMoverSmbFileShareEndpoint {
     )
 
     process {
-        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.AzureStorageSmbFileShareEndpointUpdateProperties]::New()
-        $Properties.EndpointType = 'AzureStorageSmbFileShare'
+        $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.AzureStorageSmbFileShareEndpointProperties]::New()
 
+        if ($PSBoundParameters.ContainsKey('FileShareName')) {
+            $Properties.FileShareName = $FileShareName
+            $null = $PSBoundParameters.Remove("FileShareName")
+        }
+        if ($PSBoundParameters.ContainsKey('StorageAccountResourceId')) {
+            $Properties.StorageAccountResourceId = $StorageAccountResourceId
+            $null = $PSBoundParameters.Remove("StorageAccountResourceId")
+        }
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Properties.Description = $Description
-        }
-        
-        $PSBoundParameters.Add("Property", $Properties)
-        if ($PSBoundParameters.ContainsKey('Description')) {
-            $null = $PSBoundParameters.Remove('Description')
+            $null = $PSBoundParameters.Remove("Description")
         }
 
-        Az.StorageMover.internal\Update-AzStorageMoverEndpoint @PSBoundParameters
+        $Properties.EndpointType = "AzureStorageSmbFileShare"
+        $PSBoundParameters.Add("Property", $Properties)
+
+        Az.StorageMover.internal\New-AzStorageMoverEndpoint @PSBoundParameters
     }
 }
