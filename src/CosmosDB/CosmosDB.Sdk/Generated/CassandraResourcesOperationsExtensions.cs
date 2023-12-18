@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.CosmosDB
     public static partial class CassandraResourcesOperationsExtensions
     {
         /// <summary>
-        /// Lists the Cassandra keyspaces under an existing Azure Cosmos DB database account.
+        /// Lists the Cassandra keyspaces under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Lists the Cassandra keyspaces under an existing Azure Cosmos DB database account.
+        /// Lists the Cassandra keyspaces under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -52,7 +54,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Gets the Cassandra keyspaces under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the Cassandra keyspaces under an existing Azure Cosmos DB database
+        /// account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -72,7 +75,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the Cassandra keyspaces under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the Cassandra keyspaces under an existing Azure Cosmos DB database
+        /// account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -187,7 +191,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Gets the RUs per second of the Cassandra Keyspace under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the Cassandra Keyspace under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -207,7 +212,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the RUs per second of the Cassandra Keyspace under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the Cassandra Keyspace under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -277,7 +283,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -297,7 +304,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -322,7 +330,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -342,7 +351,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -367,7 +377,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Lists the Cassandra table under an existing Azure Cosmos DB database account.
+        /// Lists the Cassandra table under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -387,7 +398,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Lists the Cassandra table under an existing Azure Cosmos DB database account.
+        /// Lists the Cassandra table under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -412,7 +424,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Gets the Cassandra table under an existing Azure Cosmos DB database account.
+        /// Gets the Cassandra table under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -435,7 +448,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the Cassandra table under an existing Azure Cosmos DB database account.
+        /// Gets the Cassandra table under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -565,7 +579,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Gets the RUs per second of the Cassandra table under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the Cassandra table under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -588,7 +603,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the RUs per second of the Cassandra table under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the Cassandra table under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -667,7 +683,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -690,7 +707,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -718,7 +736,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -741,7 +760,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -904,7 +924,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -924,7 +945,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -949,7 +971,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -969,7 +992,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1147,7 +1171,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1170,7 +1195,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1198,7 +1224,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1221,7 +1248,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
