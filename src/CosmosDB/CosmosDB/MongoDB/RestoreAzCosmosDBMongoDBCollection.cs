@@ -25,6 +25,8 @@ using Microsoft.Azure.Commands.CosmosDB.Exceptions;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 using Microsoft.Azure.Management.CosmosDB;
+using System.Text.RegularExpressions;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -48,53 +50,162 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.RestoreTimestampHelpMessage)]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, HelpMessage = Constants.ResourceRestoreTimestampHelpMessage)]
         public DateTime RestoreTimestampInUtc { get; set; }
 
         public override void ExecuteCmdlet()
         {
-
+            
             DateTime utcRestoreDateTime;
-            if (this.RestoreTimestampInUtc.Kind == DateTimeKind.Unspecified)
-            {
-                utcRestoreDateTime = this.RestoreTimestampInUtc;
-            }
-            else
-            {
-                utcRestoreDateTime = this.RestoreTimestampInUtc.ToUniversalTime();
-            }
-
-            // Fail if provided restoretimesamp is greater than current timestamp
-            if (utcRestoreDateTime > DateTime.UtcNow)
-            {
-                this.WriteWarning($"Restore timestamp {utcRestoreDateTime} should be less than current timestamp {DateTime.UtcNow}");
-                return;
-            }
-
             RestorableDatabaseAccountGetResult databaseAccount = null;
             List<RestorableDatabaseAccountGetResult> restorableDatabaseAccounts = this.CosmosDBManagementClient.RestorableDatabaseAccounts.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body.ToList();
             List<RestorableDatabaseAccountGetResult> accountsWithMatchingName = restorableDatabaseAccounts.Where(account => account.AccountName.Equals(this.AccountName, StringComparison.OrdinalIgnoreCase)).ToList();
-            if (accountsWithMatchingName.Count > 0)
+
+            if (this.RestoreTimestampInUtc != null && this.RestoreTimestampInUtc != default(DateTime))
             {
-                foreach (RestorableDatabaseAccountGetResult restorableAccount in accountsWithMatchingName)
+                if (this.RestoreTimestampInUtc.Kind == DateTimeKind.Unspecified)
                 {
-                    if (restorableAccount.CreationTime.HasValue &&
-                        restorableAccount.CreationTime < utcRestoreDateTime)
+                    utcRestoreDateTime = this.RestoreTimestampInUtc;
+                }
+                else
+                {
+                    utcRestoreDateTime = this.RestoreTimestampInUtc.ToUniversalTime();
+                }
+
+                // Fail if provided restoretimesamp is greater than current timestamp
+                if (utcRestoreDateTime > DateTime.UtcNow)
+                {
+                    this.WriteWarning($"Restore timestamp {utcRestoreDateTime} should be less than current timestamp {DateTime.UtcNow}");
+                    return;
+                }
+
+                if (accountsWithMatchingName.Count > 0)
+                {
+                    foreach (RestorableDatabaseAccountGetResult restorableAccount in accountsWithMatchingName)
                     {
-                        if (!restorableAccount.DeletionTime.HasValue)
+                        if (restorableAccount.CreationTime.HasValue &&
+                            restorableAccount.CreationTime < utcRestoreDateTime)
                         {
-                            databaseAccount = restorableAccount;
-                            break;
+                            if (!restorableAccount.DeletionTime.HasValue)
+                            {
+                                databaseAccount = restorableAccount;
+                                break;
+                            }
                         }
                     }
                 }
-            }
 
-            if (databaseAccount == null)
+                if (databaseAccount == null)
+                {
+                    this.WriteWarning($"No database accounts found with matching account name {this.AccountName} that was alive at given utc-timestamp {utcRestoreDateTime}");
+                    return;
+                }
+            }
+            else
             {
-                this.WriteWarning($"No database accounts found with matching account name {this.AccountName} that was alive at given utc-timestamp {utcRestoreDateTime}");
-                return;
+                if (accountsWithMatchingName.Count > 0)
+                {
+                    RestorableDatabaseAccountGetResult lastestAccountToRestore = null;
+                    foreach (RestorableDatabaseAccountGetResult restorableAccount in accountsWithMatchingName)
+                    {
+                        if (lastestAccountToRestore == null)
+                        {
+                            lastestAccountToRestore = restorableAccount;
+                        }
+
+                        if (restorableAccount.CreationTime.HasValue &&
+                            restorableAccount.CreationTime > lastestAccountToRestore.CreationTime)
+                        {
+                            if (!restorableAccount.DeletionTime.HasValue)
+                            {
+                                lastestAccountToRestore = restorableAccount;
+                            }
+                        }
+                    }
+
+                    databaseAccount = lastestAccountToRestore;
+                }
+                else
+                {
+                    this.WriteWarning($"No database accounts found with matching account name {this.AccountName} that was alive");
+                    return;
+                }
+
+                Regex regex = new Regex(@"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}");
+                var matches = regex.Matches(databaseAccount.Id);
+
+                string accountInstanceId = string.Empty;
+                if (matches.Count > 1)
+                {
+                    accountInstanceId = matches[1].Value;
+                }
+
+                IEnumerable restorableMongoDBDatabases = CosmosDBManagementClient.RestorableMongodbDatabases.ListWithHttpMessagesAsync(databaseAccount.Location, accountInstanceId).GetAwaiter().GetResult().Body;
+                DateTime latestDatabaseDeleteTime = DateTime.MinValue;
+                DateTime latestDatabaseCreateOrRecreateTime = DateTime.MinValue;
+                DateTime latestCollectionDeleteTime = DateTime.MinValue;
+                DateTime latestCollectionCreateOrRecreateTime = DateTime.MinValue;
+                string databaseRid = string.Empty;
+                string collectionRid = string.Empty;
+
+                foreach (RestorableMongodbDatabaseGetResult restorableMongoDBDatabase in restorableMongoDBDatabases)
+                {
+                    if (restorableMongoDBDatabase.Resource.OwnerId.Equals(DatabaseName))
+                    {
+                        databaseRid = restorableMongoDBDatabase.Resource.OwnerResourceId;
+
+                        DateTime eventDateTime = DateTime.Parse(restorableMongoDBDatabase.Resource.EventTimestamp);
+                        if (restorableMongoDBDatabase.Resource.OperationType.Equals(OperationType.Delete) && latestDatabaseDeleteTime < eventDateTime)
+                        {
+                            latestDatabaseDeleteTime = eventDateTime;
+                        }
+
+                        if ((restorableMongoDBDatabase.Resource.OperationType.Equals(OperationType.Create) || restorableMongoDBDatabase.Resource.OperationType.Equals(OperationType.Recreate)) && latestDatabaseCreateOrRecreateTime < eventDateTime)
+                        {
+                            latestDatabaseCreateOrRecreateTime = eventDateTime;
+                        }
+                    }
+                }
+
+                latestDatabaseDeleteTime = latestDatabaseDeleteTime == default(DateTime) ? DateTime.MaxValue : latestDatabaseDeleteTime;
+                IEnumerable restorableMongoDBCollections = CosmosDBManagementClient.RestorableMongodbCollections.ListWithHttpMessagesAsync(
+                    databaseAccount.Location,
+                    accountInstanceId,
+                    databaseRid,
+                    latestDatabaseCreateOrRecreateTime.ToString(),
+                    (latestDatabaseCreateOrRecreateTime < latestDatabaseDeleteTime) ? latestDatabaseDeleteTime.ToString() : DateTime.MaxValue.ToString()).GetAwaiter().GetResult().Body;
+
+                foreach (RestorableMongodbCollectionGetResult restorableMongoDBCollection in restorableMongoDBCollections)
+                {
+                    if (restorableMongoDBCollection.Resource.OwnerId.Equals(Name))
+                    {
+                        collectionRid = restorableMongoDBCollection.Resource.Rid;
+                        DateTime eventDateTime = DateTime.Parse(restorableMongoDBCollection.Resource.EventTimestamp);
+                        if (restorableMongoDBCollection.Resource.OperationType.Equals(OperationType.Delete) && latestCollectionDeleteTime < eventDateTime && eventDateTime <= latestDatabaseDeleteTime)
+                        {
+                            latestCollectionDeleteTime = eventDateTime;
+                        }
+
+                        if ((restorableMongoDBCollection.Resource.OperationType.Equals(OperationType.Create) || restorableMongoDBCollection.Resource.OperationType.Equals(OperationType.Recreate)) && latestCollectionDeleteTime < eventDateTime)
+                        {
+                            latestCollectionCreateOrRecreateTime = eventDateTime;
+                        }
+                    }
+                }
+
+                if (latestCollectionDeleteTime < latestCollectionCreateOrRecreateTime && latestCollectionCreateOrRecreateTime < latestDatabaseDeleteTime)
+                {
+                    utcRestoreDateTime = latestDatabaseDeleteTime.AddSeconds(-2);
+                }
+                else if (latestCollectionCreateOrRecreateTime < latestCollectionDeleteTime && latestCollectionDeleteTime <= latestDatabaseDeleteTime)
+                {
+                    utcRestoreDateTime = latestCollectionDeleteTime.AddSeconds(-2);
+                }
+                else
+                {
+                    this.WriteWarning($"No collection with name {Name} existed in the current version of database. Please provide a restore timestamp for restoring the collection from different instance of the database");
+                    return;
+                }
             }
 
             MongoDBCollectionResource mongoDBCollectionResource = new MongoDBCollectionResource

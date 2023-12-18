@@ -46,6 +46,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlInAccountRestoreOperationsNoTimestampCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlInAccountRestoreOperationsNoTimestampCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlInAccountRestoreOperationsSharedResourcesCmdlets()
         {
             TestRunner.RunTestScript("Test-SqlInAccountRestoreOperationsSharedResourcesCmdlets");

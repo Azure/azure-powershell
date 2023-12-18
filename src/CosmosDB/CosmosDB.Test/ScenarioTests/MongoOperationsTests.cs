@@ -68,6 +68,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMongoInAccountRestoreOperationsNoTimestampCmdlets()
+        {
+            TestRunner.RunTestScript("Test-MongoInAccountRestoreOperationsNoTimestampCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMongoInAccountRestoreOperationsSharedRUResourcesCmdlets()
         {
             TestRunner.RunTestScript("Test-MongoInAccountRestoreOperationsSharedRUResourcesCmdlets");
