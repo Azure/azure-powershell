@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.14.0
 * Fixed the authentication issue when using `FederatedToken` in Sovereign Clouds. [#23742]
 * Adjusted output format to be more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`.
 * Upgraded Azure.Identity to 1.10.3 [#23018].
