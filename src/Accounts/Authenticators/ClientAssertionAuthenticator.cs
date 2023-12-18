@@ -42,6 +42,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
             var options = new ClientAssertionCredentialOptions()
             {
+                AuthorityHost = new Uri(authority),
                 TokenCachePersistenceOptions = spParameters.TokenCacheProvider.GetTokenCachePersistenceOptions()
             };
             options.Diagnostics.IsTelemetryEnabled = false; // disable telemetry to avoid error thrown from Azure.Core that AssemblyInformationalVersion is null
