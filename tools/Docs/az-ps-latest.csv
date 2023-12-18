@@ -12,7 +12,7 @@ pac10,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac11,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ArcResourceBridge.1.0.0.nupkg;sourceType=sa]Az.ArcResourceBridge,1.0.0
 pac12,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Attestation.2.0.0.nupkg;sourceType=sa]Az.Attestation,2.0.0
 pac13,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Automanage.1.0.0.nupkg;sourceType=sa]Az.Automanage,1.0.0
-pac14,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Automation.1.9.1.nupkg;sourceType=sa]Az.Automation,1.9.1
+pac14,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Automation.1.10.0.nupkg;sourceType=sa]Az.Automation,1.10.0
 pac15,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.BareMetal.0.1.0.nupkg;sourceType=sa]Az.BareMetal,0.1.0
 pac16,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Batch.3.5.0.nupkg;sourceType=sa]Az.Batch,3.5.0
 pac17,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Billing.2.0.3.nupkg;sourceType=sa]Az.Billing,2.0.3
