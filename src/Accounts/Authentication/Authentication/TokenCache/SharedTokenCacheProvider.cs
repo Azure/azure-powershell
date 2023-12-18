@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AdalTokenCache = adalTokenCache;
             TokenCachePersistenceOptions = new TokenCachePersistenceOptions()
             {
-                UnsafeAllowUnencryptedStorage = true
+                UnsafeAllowUnencryptedStorage = true,
+                Name = MsalCacheHelperProvider.GetTokenCacheNameWithoutSuffix(AzureSession.Instance.TokenCacheFile)
             };
         }
 
@@ -136,7 +137,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private static MsalCacheHelper CreateCacheHelper()
         {
-            return MsalCacheHelperProvider.GetCacheHelper();
+            return MsalCacheHelperProvider.GetCacheHelper(AzureSession.Instance.TokenCacheFile);
         }
 
         public override TokenCachePersistenceOptions GetTokenCachePersistenceOptions()

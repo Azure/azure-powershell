@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 using Azure.Core;
 using Azure.Identity;
-using Azure.Identity.BrokeredAuthentication;
+using Azure.Identity.Broker;
 
 using Hyak.Common;
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = Constants.PowerShellClientId;
 
-            var requestContext = new TokenRequestContext(scopes);
+            var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
             var authority = interactiveParameters.Environment.ActiveDirectoryAuthority;
 
             var options = new InteractiveBrowserCredentialBrokerOptions(WindowHandleUtilities.GetConsoleOrTerminalWindow())
