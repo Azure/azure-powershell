@@ -84,8 +84,8 @@ namespace Microsoft.Azure.Commands.Network
             {
                 var resourceInfo = new ResourceIdentifier(ResourceId);
                 ResourceGroupName = resourceInfo.ResourceGroupName;
-                AzureFirewallPolicyName = resourceInfo.ResouceName1;
-                Name = resourceInfo.ResourceName2;
+                AzureFirewallPolicyName = resourceInfo.ParentResource;
+                Name = resourceInfo.ResourceName;
 
                 var azureFirewallPolicyRuleGroup = this.GetAzureFirewallPolicyRuleGroup(this.ResourceGroupName, this.AzureFirewallPolicyName, this.Name);
                 WriteObject(azureFirewallPolicyRuleGroup);
