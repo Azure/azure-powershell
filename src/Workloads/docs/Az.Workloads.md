@@ -118,17 +118,12 @@ Patches the Tags field of a SAP monitor for the specified subscription, resource
 
 ### [Update-AzWorkloadsSapApplicationInstance](Update-AzWorkloadsSapApplicationInstance.md)
 Updates the SAP Application server instance resource.
-This can be used to update tags on the resource.
 
 ### [Update-AzWorkloadsSapCentralInstance](Update-AzWorkloadsSapCentralInstance.md)
 Updates the SAP Central Services Instance resource.
 
-
-This can be used to update tags on the resource.
-
 ### [Update-AzWorkloadsSapDatabaseInstance](Update-AzWorkloadsSapDatabaseInstance.md)
 Updates the Database instance resource.
-This can be used to update tags on the resource.
 
 ### [Update-AzWorkloadsSapLandscapeMonitor](Update-AzWorkloadsSapLandscapeMonitor.md)
 Patches the SAP Landscape Monitor Dashboard for the specified subscription, resource group, and SAP monitor name.
