@@ -163,14 +163,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
 
             var snapshotPolicyPatch = new Management.NetApp.Models.SnapshotPolicyPatch()
             {
-                Location = Location,
-                Enabled = Enabled,
+                Location = Location,                
                 HourlySchedule = (HourlySchedule != null) ? HourlySchedule.ConvertFromPs() : null,
                 DailySchedule = (DailySchedule != null) ? DailySchedule.ConvertFromPs() : null,
                 WeeklySchedule = (WeeklySchedule != null) ? WeeklySchedule.ConvertFromPs() : null,
-                MonthlySchedule = (MonthlySchedule != null) ? MonthlySchedule.ConvertFromPs() : null
-            };
-
+                MonthlySchedule = (MonthlySchedule != null) ? MonthlySchedule.ConvertFromPs() : null,
+                Enabled = Enabled
+            };                    
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
                 var anfSnapshotPolicy = AzureNetAppFilesManagementClient.SnapshotPolicies.Update(ResourceGroupName, AccountName, snapshotPolicyName: Name, snapshotPolicyPatch);

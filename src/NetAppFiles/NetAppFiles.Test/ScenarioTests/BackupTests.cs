@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         }
 
         [Fact]
+        //[Fact(Skip = "Backups has been deprecated, new backup API is in 2023-05-01-preview")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBackupCrud()
         {
@@ -31,12 +32,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         }
 
         [Fact]
+        //[Fact(Skip = "Backups has been deprecated, new backup API is in 2023-05-01-preview")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBackupPipelines()
         {
             TestRunner.RunTestScript("Test-BackupPipelines");
         }
-        
+
+        //[Fact(Skip = "Backups has been deprecated, new backup API is in 2023-05-01-preview")]
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVolumeBackupStatusCrud()
