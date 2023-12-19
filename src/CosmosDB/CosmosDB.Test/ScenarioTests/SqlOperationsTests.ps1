@@ -391,12 +391,12 @@ function Test-SqlInAccountRestoreOperationsCmdlets
       $ListDatabases = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName
       Assert-NotNull($ListDatabases)
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # remove container
       Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # restore deleted container
       Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -RestoreTimestampInUtc $restoreTimestampInUtc
@@ -409,7 +409,7 @@ function Test-SqlInAccountRestoreOperationsCmdlets
       # remove database
       Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       #Restore collection when database is deleted
       Try {
@@ -437,7 +437,7 @@ function Test-SqlInAccountRestoreOperationsCmdlets
       # restore deleted database
       Restore-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -RestoreTimestampInUtc $restoreTimestampInUtc
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # restore deleted container
       Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -RestoreTimestampInUtc $restoreTimestampInUtc
@@ -573,28 +573,28 @@ function Test-SqlInAccountRestoreOperationsNoTimestampCmdlets
       $ListDatabases = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName
       Assert-NotNull($ListDatabases)
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # remove container
       Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # restore deleted container
       Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       # remove database
       Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       
       # restore deleted database
       Restore-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       #Restore collection with no timestamp after database restore
       Try {
@@ -684,12 +684,12 @@ function Test-SqlInAccountRestoreOperationsSharedResourcesCmdlets
       $ListDatabases = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName
       Assert-NotNull($ListDatabases)
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # remove container
       Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # restore deleted container
       Try {
@@ -701,7 +701,7 @@ function Test-SqlInAccountRestoreOperationsSharedResourcesCmdlets
       # remove database
       Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       $invalidRestoreTimestampInUtc = [DateTime]::UtcNow.ToString('u')
       #Restore database with invalid timestamp
@@ -715,7 +715,7 @@ function Test-SqlInAccountRestoreOperationsSharedResourcesCmdlets
       # restore deleted database
       Restore-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -RestoreTimestampInUtc $restoreTimestampInUtc
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # list containers
       $ListContainers = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName

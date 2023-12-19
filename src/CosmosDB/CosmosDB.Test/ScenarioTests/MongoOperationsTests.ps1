@@ -229,13 +229,13 @@ Try {
       $Lists = Get-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName
       Assert-NotNull($Lists)
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       #delete a Collection
       $IsCollectionRemoved =  Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -PassThru
       Assert-AreEqual $IsCollectionRemoved true
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       Try {
           $RestoredCollection = Restore-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -RestoreTimestampInUtc $restoreTimestampInUtc
@@ -248,12 +248,12 @@ Try {
       $IsRemoved = Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
       Assert-AreEqual $IsRemoved true
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       # restore deleted database
       Restore-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -RestoreTimestampInUtc $restoreTimestampInUtc
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       #list all Collections under a database
       $ListCollections = Get-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
@@ -347,18 +347,18 @@ Try {
       $Lists = Get-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName
       Assert-NotNull($Lists)
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       #delete a Collection
       $IsCollectionRemoved =  Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -PassThru
       Assert-AreEqual $IsCollectionRemoved true
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # restore deleted collection
       Restore-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -RestoreTimestampInUtc $restoreTimestampInUtc
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       #list all Collections under a database
       $ListCollections = Get-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
@@ -368,7 +368,7 @@ Try {
       $IsRemoved = Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
       Assert-AreEqual $IsRemoved true
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       #Restore collection when database is deleted
       Try {
@@ -390,12 +390,12 @@ Try {
       # restore deleted database
       Restore-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -RestoreTimestampInUtc $restoreTimestampInUtc
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       # restore deleted collection
       Restore-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -RestoreTimestampInUtc $restoreTimestampInUtc
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       #list all Collections under a database
       $ListCollections = Get-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
@@ -487,18 +487,18 @@ Try {
       $Lists = Get-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName
       Assert-NotNull($Lists)
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       #delete a Collection
       $IsCollectionRemoved =  Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -PassThru
       Assert-AreEqual $IsCollectionRemoved true
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # restore deleted collection
       Restore-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       #list all Collections under a database
       $ListCollections = Get-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
@@ -508,12 +508,12 @@ Try {
       $IsRemoved = Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
       Assert-AreEqual $IsRemoved true
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       # restore deleted database
       Restore-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       #list all databases under the account
       $Lists = Get-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName
@@ -527,7 +527,7 @@ Try {
           Assert-AreEqual $_.Exception.Message.Contains("No collection with name") true
       }
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       #delete a database
       $IsRemoved = Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
