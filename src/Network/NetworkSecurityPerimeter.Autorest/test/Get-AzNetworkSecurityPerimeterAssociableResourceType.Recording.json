@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "e2b165fd-c87f-4a26-9f90-eb044c50fe28" ],
+        "x-ms-client-request-id": [ "1127a186-d6c6-4e60-b2fc-146e7eede2c3" ],
         "CommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType" ],
         "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,13 +22,13 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "a9b6f7c4-58ca-4ff9-a230-3667ae18d2ab" ],
-        "x-ms-correlation-request-id": [ "a9b6f7c4-58ca-4ff9-a230-3667ae18d2ab" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20231216T195253Z:a9b6f7c4-58ca-4ff9-a230-3667ae18d2ab" ],
+        "x-ms-request-id": [ "bb04392c-c1af-4f2d-8455-d49f460ffe4f" ],
+        "x-ms-correlation-request-id": [ "bb04392c-c1af-4f2d-8455-d49f460ffe4f" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20231219T110509Z:bb04392c-c1af-4f2d-8455-d49f460ffe4f" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 16 Dec 2023 19:52:53 GMT" ]
+        "Date": [ "Tue, 19 Dec 2023 11:05:08 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "4959" ],
@@ -48,7 +48,7 @@
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "e2b165fd-c87f-4a26-9f90-eb044c50fe28" ],
+        "x-ms-client-request-id": [ "1127a186-d6c6-4e60-b2fc-146e7eede2c3" ],
         "CommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType" ],
         "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -62,13 +62,13 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "68c6b12c-ad81-459c-86f5-08f37283271e" ],
-        "x-ms-correlation-request-id": [ "68c6b12c-ad81-459c-86f5-08f37283271e" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20231216T195254Z:68c6b12c-ad81-459c-86f5-08f37283271e" ],
+        "x-ms-request-id": [ "3760d4a0-24fa-4dac-a55e-2b396fc0772f" ],
+        "x-ms-correlation-request-id": [ "3760d4a0-24fa-4dac-a55e-2b396fc0772f" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20231219T110509Z:3760d4a0-24fa-4dac-a55e-2b396fc0772f" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 16 Dec 2023 19:52:53 GMT" ]
+        "Date": [ "Tue, 19 Dec 2023 11:05:08 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "5126" ],
@@ -88,7 +88,7 @@
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "13" ],
-        "x-ms-client-request-id": [ "e2b165fd-c87f-4a26-9f90-eb044c50fe28" ],
+        "x-ms-client-request-id": [ "1127a186-d6c6-4e60-b2fc-146e7eede2c3" ],
         "CommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType" ],
         "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAssociableResourceType_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -102,13 +102,13 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "73a04dc6-2a84-406b-9f92-1fce9cb5ca61" ],
-        "x-ms-correlation-request-id": [ "73a04dc6-2a84-406b-9f92-1fce9cb5ca61" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20231216T195254Z:73a04dc6-2a84-406b-9f92-1fce9cb5ca61" ],
+        "x-ms-request-id": [ "ae8a8c23-fde3-4d3b-b02a-df6f515c38c4" ],
+        "x-ms-correlation-request-id": [ "ae8a8c23-fde3-4d3b-b02a-df6f515c38c4" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20231219T110510Z:ae8a8c23-fde3-4d3b-b02a-df6f515c38c4" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 16 Dec 2023 19:52:54 GMT" ]
+        "Date": [ "Tue, 19 Dec 2023 11:05:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2368" ],

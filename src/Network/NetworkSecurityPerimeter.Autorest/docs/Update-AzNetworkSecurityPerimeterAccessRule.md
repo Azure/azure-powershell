@@ -15,17 +15,17 @@ Updates an access rule.
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <ArrayList>] [-Direction <String>]
- [-EmailAddress <ArrayList>] [-FullyQualifiedDomainName <ArrayList>] [-Location <String>]
- [-PhoneNumber <ArrayList>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <String[]>] [-Direction <String>]
+ [-EmailAddress <String[]>] [-FullyQualifiedDomainName <String[]>] [-Location <String>]
+ [-PhoneNumber <String[]>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
- [-AddressPrefix <ArrayList>] [-Direction <String>] [-EmailAddress <ArrayList>]
- [-FullyQualifiedDomainName <ArrayList>] [-Location <String>] [-PhoneNumber <ArrayList>]
+ [-AddressPrefix <String[]>] [-Direction <String>] [-EmailAddress <String[]>]
+ [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-PhoneNumber <String[]>]
  [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -77,7 +77,7 @@ Updates a NetworkSecurityPerimeterAccessRule by identity (using pipe)
 Address Prefix
 
 ```yaml
-Type: System.Collections.ArrayList
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 Email Addresses
 
 ```yaml
-Type: System.Collections.ArrayList
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 Fully qualified domain name
 
 ```yaml
-Type: System.Collections.ArrayList
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -228,7 +228,7 @@ Accept wildcard characters: False
 Phone Numbers
 
 ```yaml
-Type: System.Collections.ArrayList
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -290,7 +290,7 @@ Subscription ids
 To construct, see NOTES section for SUBSCRIPTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20230701Preview.ISubscriptionId[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubscriptionId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -371,31 +371,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20230701Preview.INspAccessRule
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <INetworkSecurityPerimeterIdentity>`: Identity parameter.
-  - `[AccessRuleName <String>]`: The name of the NSP access rule.
-  - `[AssociationName <String>]`: The name of the NSP association.
-  - `[Id <String>]`: Resource identity path
-  - `[LinkName <String>]`: The name of the NSP link.
-  - `[LinkReferenceName <String>]`: The name of the NSP linkReference.
-  - `[Location <String>]`: The location of network security perimeter.
-  - `[NetworkSecurityPerimeterName <String>]`: The name of the network security perimeter.
-  - `[ProfileName <String>]`: The name of the NSP profile.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-`SUBSCRIPTION <ISubscriptionId[]>`: Subscription ids
-  - `[Id <String>]`: Subscription id in the ARM id format.
 
 ## RELATED LINKS
 

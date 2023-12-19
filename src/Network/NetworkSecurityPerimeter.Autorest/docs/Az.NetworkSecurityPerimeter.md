@@ -34,19 +34,19 @@ Gets the specified NSP linkReference resource.
 Gets the specified NSP profile.
 
 ### [New-AzNetworkSecurityPerimeter](New-AzNetworkSecurityPerimeter.md)
-Creates or updates a Network Security Perimeter.
+Create a Network Security Perimeter.
 
 ### [New-AzNetworkSecurityPerimeterAccessRule](New-AzNetworkSecurityPerimeterAccessRule.md)
-Creates or updates a network access rule.
+Create a network access rule.
 
 ### [New-AzNetworkSecurityPerimeterAssociation](New-AzNetworkSecurityPerimeterAssociation.md)
-Creates or updates a NSP resource association.
+Create a NSP resource association.
 
 ### [New-AzNetworkSecurityPerimeterLink](New-AzNetworkSecurityPerimeterLink.md)
-Creates or updates NSP link resource.
+Create NSP link resource.
 
 ### [New-AzNetworkSecurityPerimeterProfile](New-AzNetworkSecurityPerimeterProfile.md)
-Creates or updates a network profile.
+Create a network profile.
 
 ### [Remove-AzNetworkSecurityPerimeter](Remove-AzNetworkSecurityPerimeter.md)
 Deletes a network security perimeter.
@@ -65,9 +65,6 @@ Deletes an NSP LinkReference resource.
 
 ### [Remove-AzNetworkSecurityPerimeterProfile](Remove-AzNetworkSecurityPerimeterProfile.md)
 Deletes an NSP profile.
-
-### [Update-AzNetworkSecurityPerimeter](Update-AzNetworkSecurityPerimeter.md)
-Patch Tags for a Network Security Perimeter.
 
 ### [Update-AzNetworkSecurityPerimeterAccessRule](Update-AzNetworkSecurityPerimeterAccessRule.md)
 Updates an access rule.
