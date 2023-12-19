@@ -34,7 +34,7 @@ New-AzIotHubSasToken [-ResourceId] <String> [-DeviceId <String>] [-ModuleId <Str
 ```
 
 ## DESCRIPTION
-For device SAS tokens, the policy parameter is used to access the the device registry only. Therefore the policy should have read access to the registry.
+For device SAS tokens, the policy parameter is used to access the device registry only. Therefore the policy should have read access to the registry.
 For IoT Hub tokens the policy is part of the SAS.
 
 ## EXAMPLES

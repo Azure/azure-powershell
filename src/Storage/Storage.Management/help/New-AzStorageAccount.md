@@ -188,7 +188,7 @@ $a.AllowSharedKeyAccess
 False
 ```
 
-The command create account with MinimumTlsVersion, AllowBlobPublicAccess, and disable SharedKey access to the account, and then show the the 3 properties of the created account 
+The command create account with MinimumTlsVersion, AllowBlobPublicAccess, and disable SharedKey access to the account, and then show the 3 properties of the created account 
 
 ### Example 10: Create a Storage account with RoutingPreference setting
 <!-- Skip: Output cannot be splitted from code -->
@@ -1252,7 +1252,7 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentityId
-Set resource ids for the the new Storage Account user assigned Identity, the identity will be used with key management services like Azure KeyVault.
+Set resource ids for the new Storage Account user assigned Identity, the identity will be used with key management services like Azure KeyVault.
 
 ```yaml
 Type: System.String
