@@ -80,6 +80,17 @@ namespace Microsoft.Azure.Commands.Network
                 WriteObject(azureFirewallPolicyRuleGroup);
             }
 
+            else if (this.IsParameterBound(c => c.ResourceId))
+            {
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = resourceInfo.ResourceGroupName;
+                AzureFirewallPolicyName = resourceInfo.ResouceName1;
+                Name = resourceInfo.ResourceName2;
+
+                var azureFirewallPolicyRuleGroup = this.GetAzureFirewallPolicyRuleGroup(this.ResourceGroupName, this.AzureFirewallPolicyName, this.Name);
+                WriteObject(azureFirewallPolicyRuleGroup);
+            }
+
             else if (this.IsParameterBound(c => c.AzureFirewallPolicyName))
             {
                 var ruleGroup = this.GetAzureFirewallPolicyRuleGroup(this.ResourceGroupName, AzureFirewallPolicyName, this.Name);
