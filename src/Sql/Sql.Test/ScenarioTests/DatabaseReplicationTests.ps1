@@ -133,7 +133,7 @@ function Test-CreateSecondaryDatabase()
 	{
 		# Create Readable Secondary
 		$readSecondary = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -SecondaryComputeGeneration Gen5 -SecondaryVCore 2 -AllowConnections All
 		Assert-NotNull $readSecondary.LinkId
 		Assert-AreEqual $readSecondary.ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $readSecondary.ServerName $server.ServerName
@@ -175,7 +175,7 @@ function Test-CreateNamedSecondaryDatabase()
 	{
 		# Create Geo Secondary
 		$geoSecondary = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -PartnerDatabaseName "secondary" -AllowConnections All -SecondaryType "Geo"
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -PartnerDatabaseName "secondary" -SecondaryComputeGeneration Gen5 -SecondaryVCore 2 -AllowConnections All -SecondaryType "Geo"
 		Assert-NotNull $geoSecondary.LinkId
 		Assert-AreEqual $geoSecondary.ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $geoSecondary.ServerName $server.ServerName
@@ -196,12 +196,14 @@ function Test-CreateNamedSecondaryDatabase()
 
 		# Create Named Replica
 		$namedReplica = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $hsDatabase.DatabaseName `
-		 -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName -PartnerDatabaseName "secondary" -SecondaryType "Named" `
-		 -HighAvailabilityReplicaCount 2
+		 -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName -PartnerDatabaseName "secondary" -SecondaryComputeGeneration Gen5 -SecondaryType "Named" `
+		 -HighAvailabilityReplicaCount 2 -SecondaryComputeModel Serverless -AutoPauseDelayInMinutes 60 -MinimumCapacity 1
 
 		$newDb = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName "secondary"
 		Assert-AreEqual "Named" $newDb.SecondaryType
 		Assert-AreEqual 2 $newDb.HighAvailabilityReplicaCount
+		Assert-AreEqual 60 $newDb.AutoPauseDelayInMinutes
+		Assert-AreEqual 1 $newDb.MinimumCapacity
 	}
 	finally
 	{
@@ -229,7 +231,7 @@ function Test-CreateNamedSecondaryDatabaseNegative()
 	{
 		# Attempt to Create Named Readable Secondary Using Existing Database Name
 		$readSecondary = New-AzSqlDatabaseSecondary -ResourceGroupName $partRg.ResourceGroupName -ServerName $partServer.ServerName -DatabaseName "secondary" `
-		 -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName -PartnerDatabaseName $database.DatabaseName -AllowConnections All
+		 -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName -PartnerDatabaseName $database.DatabaseName -SecondaryComputeGeneration Gen5 -SecondaryVCore 2 -AllowConnections All
 		Assert-Null $readSecondary
 	}
 	catch
@@ -263,7 +265,7 @@ function Test-GetReplicationLink()
 	{
 		# Get Secondary
 		$job = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-			-PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -AsJob
+			-PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -SecondaryComputeGeneration Gen5 -SecondaryVCore 2 -AllowConnections All -AsJob
 		$job | Wait-Job
 
 		$secondary = Get-AzSqlDatabaseReplicationLink -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
@@ -308,7 +310,7 @@ function Test-RemoveSecondaryDatabase()
 	{
 		# remove Secondary
 		New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -SecondaryComputeGeneration Gen5 -SecondaryVCore 2 -AllowConnections All
 
 		Remove-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName
@@ -339,7 +341,7 @@ function Test-FailoverSecondaryDatabase()
 	{
 		# failover Secondary
 		New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -SecondaryComputeGeneration Gen5 -SecondaryVCore 2 -AllowConnections All
 
 		$secondary = Get-AzSqlDatabaseReplicationLink -ResourceGroupName $partRg.ResourceGroupName -ServerName $partServer.ServerName -DatabaseName $database.DatabaseName -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName
 
@@ -436,7 +438,7 @@ function Test-CreateSecondaryDatabaseWithBackupStorageRedundancy()
 	{
 		# Create Readable Secondary
 		$readSecondary = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -BackupStorageRedundancy 'Local'
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -SecondaryComputeGeneration Gen5 -SecondaryVCore 2 -BackupStorageRedundancy 'Local'
 
 		$secondaryDb = Get-AzSqlDatabase -ResourceGroupName $readSecondary.PartnerResourceGroupName -ServerName $readSecondary.PartnerServerName -DatabaseName $readSecondary.DatabaseName
 		Assert-AreEqual $secondaryDb.CurrentBackupStorageRedundancy "Local"
@@ -499,7 +501,7 @@ function Test-CreateSecondaryDatabaseWithGeoZoneBackupStorageRedundancy()
 	{
 		# Create Readable Secondary
 		$readSecondary = New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -BackupStorageRedundancy 'GeoZone'
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -SecondaryComputeGeneration Gen5 -SecondaryVCore 2 -BackupStorageRedundancy 'GeoZone'
 
 		$secondaryDb = Get-AzSqlDatabase -ResourceGroupName $readSecondary.PartnerResourceGroupName -ServerName $readSecondary.PartnerServerName -DatabaseName $readSecondary.DatabaseName
 		Assert-AreEqual $secondaryDb.CurrentBackupStorageRedundancy "GeoZone"
@@ -707,7 +709,7 @@ function Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceNotZoneRed
 		# Create geo secondary vldb with zone redundancy == true and backup storage redundancy == Zone
 		New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceNonZRDatabase.DatabaseName `
 		 -PartnerResourceGroupName $rgSecondary.ResourceGroupName -PartnerServerName $serverSecondary.ServerName -PartnerDatabaseName $secondaryTrueZRParamDatabaseName `
-		 -BackupStorageRedundancy "Zone" -ZoneRedundant
+		 -SecondaryComputeGeneration Gen5 -SecondaryVCore 2 -BackupStorageRedundancy "Zone" -ZoneRedundant
 		
 		# Retrieve the created geo secondary vldb
 		$secondaryTrueZRParamDatabase = Get-AzSqlDatabase -ResourceGroupName $rgSecondary.ResourceGroupName -ServerName $serverSecondary.ServerName -DatabaseName $secondaryTrueZRParamDatabaseName
@@ -734,7 +736,7 @@ function Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceNotZoneRed
 
 		# Create geo secondary vldb with no parameters passed in
 		New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceNonZRDatabase2.DatabaseName `
-		 -PartnerResourceGroupName $rgSecondary.ResourceGroupName -PartnerServerName $serverSecondary.ServerName -PartnerDatabaseName $secondaryNoZRParamDatabaseName
+		 -PartnerResourceGroupName $rgSecondary.ResourceGroupName -PartnerServerName $serverSecondary.ServerName -SecondaryComputeGeneration Gen5 -SecondaryVCore 2 -PartnerDatabaseName $secondaryNoZRParamDatabaseName
 		
 		# Retrieve the created geo secondary vldb
 		$secondaryNoZRParamDatabase = Get-AzSqlDatabase -ResourceGroupName $rgSecondary.ResourceGroupName -ServerName $serverSecondary.ServerName -DatabaseName $secondaryNoZRParamDatabaseName
@@ -796,7 +798,7 @@ function Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedund
 		# Create geo secondary vldb with zone redundancy == false
 		New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceZRDatabase.DatabaseName `
 		 -PartnerResourceGroupName $rgSecondary.ResourceGroupName -PartnerServerName $serverSecondary.ServerName -PartnerDatabaseName $secondaryFalseZRParamDatabaseName `
-		 -ZoneRedundant:$false
+		 -SecondaryComputeGeneration Gen5 -SecondaryVCore 2 -ZoneRedundant:$false
 
 		# Retrieve the created geo secondary vldb
 		$secondaryFalseZRParamDatabase = Get-AzSqlDatabase -ResourceGroupName $rgSecondary.ResourceGroupName -ServerName $serverSecondary.ServerName -DatabaseName $secondaryFalseZRParamDatabaseName
@@ -823,7 +825,7 @@ function Test-CreateSecondaryRegularAndZoneRedundantDatabaseWithSourceZoneRedund
 
 		# Create geo secondary vldb with no parameters passed in
 		New-AzSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceZRDatabase2.DatabaseName `
-		 -PartnerResourceGroupName $rgSecondary.ResourceGroupName -PartnerServerName $serverSecondary.ServerName -PartnerDatabaseName $secondaryNoZRParamDatabaseName
+		 -PartnerResourceGroupName $rgSecondary.ResourceGroupName -PartnerServerName $serverSecondary.ServerName -PartnerDatabaseName $secondaryNoZRParamDatabaseName -SecondaryComputeGeneration Gen5 -SecondaryVCore 2
 
 		# Retrieve the created geo secondary vldb
 		$secondaryNoZRParamDatabase = Get-AzSqlDatabase -ResourceGroupName $rgSecondary.ResourceGroupName -ServerName $serverSecondary.ServerName -DatabaseName $secondaryNoZRParamDatabaseName
