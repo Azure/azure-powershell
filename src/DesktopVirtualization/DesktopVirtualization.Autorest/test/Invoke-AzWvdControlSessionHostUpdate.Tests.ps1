@@ -15,19 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzWvdControlSessionHos
 }
 
 Describe 'Invoke-AzWvdControlSessionHostUpdate' {
-    It 'PostExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'PostExpanded' {
+        Invoke-AzWvdInitiateSessionHostUpdate -HostPoolName $env.AutomatedHostpoolPersistent -ResourceGroupName $env.ResourceGroupPersistent `
+        -SubscriptionId $env.subscriptionId -ScheduledDateTimeZone 'Pacific Standard Time' `
+        -UpdateDeleteOriginalVM `
+        -UpdateLogOffDelayMinute 0 `
+        -UpdateLogOffMessage 'Updating Session Hosts. Will Log off' `
+        -UpdateMaxVmsRemoved 1 `
+        -NoWait
 
-    It 'Post' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PostViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PostViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        Invoke-AzWvdControlSessionHostUpdate -HostPoolName $env.AutomatedHostpoolPersistent -ResourceGroupName $env.ResourceGroupPersistent `
+        -SubscriptionId $env.subscriptionId `
+        -Action Cancel `
+        -CancelMessage "Giving up" `
+        -NoWait
     }
 }

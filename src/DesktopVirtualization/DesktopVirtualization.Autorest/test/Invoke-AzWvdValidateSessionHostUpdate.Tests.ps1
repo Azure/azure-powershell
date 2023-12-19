@@ -15,19 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzWvdValidateSessionHo
 }
 
 Describe 'Invoke-AzWvdValidateSessionHostUpdate' {
-    It 'PostExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Post' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PostViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PostViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'PostExpanded' {
+        Invoke-AzWvdValidateSessionHostUpdate -HostPoolName $env.AutomatedHostpoolPersistent -ResourceGroupName $env.ResourceGroupPersistent `
+        -SubscriptionId $env.subscriptionId `
+        -Debug -NoWait
     }
 }

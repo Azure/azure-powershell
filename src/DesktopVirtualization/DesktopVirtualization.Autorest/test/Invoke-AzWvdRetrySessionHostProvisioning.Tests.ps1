@@ -15,11 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzWvdRetrySessionHostP
 }
 
 Describe 'Invoke-AzWvdRetrySessionHostProvisioning' {
-    It 'Retry' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RetryViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Retry' {
+        Invoke-AzWvdRetrySessionHostProvisioning -HostPoolName $env.AutomatedHostpoolPersistent -ResourceGroupName $env.ResourceGroupPersistent `
+        -SubscriptionId $env.subscriptionId `
+        -SessionHostName 'updateTest-0'
     }
 }
