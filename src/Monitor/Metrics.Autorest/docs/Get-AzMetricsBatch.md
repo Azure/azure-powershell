@@ -16,16 +16,16 @@ Lists the metric values for multiple resources.
 ```
 Get-AzMetricsBatch -Endpoint <String> -Name <List<String>> -Namespace <String> [-SubscriptionId <String[]>]
  [-Aggregation <String>] [-EndTime <String>] [-Filter <String>] [-Interval <String>] [-Orderby <String>]
- [-StartTime <String>] [-Top <Int32>] [-ResourceId <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Rollupby <String>] [-StartTime <String>] [-Top <Int32>] [-ResourceId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### BatchViaIdentityExpanded
 ```
-Get-AzMetricsBatch -Endpoint <String> -InputObject <IMetricIdentity> -Name <List<String>> -Namespace <String>
+Get-AzMetricsBatch -Endpoint <String> -InputObject <IMetricsIdentity> -Name <List<String>> -Namespace <String>
  [-Aggregation <String>] [-EndTime <String>] [-Filter <String>] [-Interval <String>] [-Orderby <String>]
- [-StartTime <String>] [-Top <Int32>] [-ResourceId <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Rollupby <String>] [-StartTime <String>] [-Top <Int32>] [-ResourceId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -668,7 +668,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Metrics.Models.IMetricsIdentity
 Parameter Sets: BatchViaIdentityExpanded
 Aliases:
 
@@ -681,8 +681,10 @@ Accept wildcard characters: False
 
 ### -Interval
 The interval (i.e.
-timegrain) of the query.
-*Examples: PT15M, PT1H, P1D*
+timegrain) of the query in ISO 8601 duration format.
+Defaults to PT1M.
+Special case for 'FULL' value that returns single datapoint for entire time span requested.
+*Examples: PT15M, PT1H, P1D, FULL*
 
 ```yaml
 Type: System.String
@@ -748,6 +750,22 @@ The list of resource IDs to query metrics for.
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Rollupby
+Dimension name(s) to rollup results by.
+For example if you only want to see metric values with a filter like 'City eq Seattle or City eq Tacoma' but don't want to see separate values for each city, you can specify 'RollUpBy=City' to see the results for Seattle and Tacoma rolled up into one timeseries.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -845,11 +863,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Metrics.Models.IMetricsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricResultsResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Metrics.Models.IMetricResultsResponse
 
 ## NOTES
 

@@ -20,7 +20,7 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
 
-    $env.resourceGroup = 'Monitor-MetricBatch'
+    $env.resourceGroup = 'Monitor-Metric'
     $env.Location = 'eastus'
     $env.accountName = 'monitortestps01'
     Write-Host "Start to create test resource group" $env.resourceGroup
@@ -35,7 +35,7 @@ function setupEnv() {
         $account = Get-AzStorageAccount -ResourceGroupName $env.resourceGroup -Name $env.accountName -ErrorAction Stop
         Write-Host "Get created storage account"
     } catch {
-        $account = New-AzStorageAccount -ResourceGroupName $env.resourceGroup -Name $env.accountName -SkuName Standard_LRS -Location $env.Location -Kind StorageV2 -PublicNetworkAccess Disabled
+        $account = New-AzStorageAccount -ResourceGroupName $env.resourceGroup -Name $env.accountName -SkuName Standard_GRS -Location $env.Location -Kind StorageV2 -PublicNetworkAccess Disabled
     }
     
     $env.resourceId = $account.id

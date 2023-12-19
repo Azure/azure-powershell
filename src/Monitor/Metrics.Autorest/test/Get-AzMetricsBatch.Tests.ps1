@@ -19,10 +19,11 @@ Describe 'Get-AzMetricsBatch' {
         {
             $endpoint = 'https://'+$env.Location+'.metrics.monitor.azure.com'
             #Get-Date -AsUTC
-            $start = "2023-12-07T02:00:00.000Z"
-            $end = "2023-12-07T02:30:00.000Z"
+            $start = "2023-12-19T02:00:00.000Z"
+            $end = "2023-12-19T02:30:00.000Z"
             $expect = '"name": { "value": "Ingress", "localizedValue": "Ingress" }'
-            $a = Get-AzMetricsBatch -Endpoint $endpoint -Name 'ingress','egress' -Namespace "Microsoft.Storage/storageAccounts" -EndTime $end -StartTime $start -ResourceId $env.resourceId
+            $a = Get-AzMetricsBatch -Endpoint $endpoint -Name 'ingress','egress' -Namespace "Microsoft.Storage/storageAccounts" `
+            -EndTime $end -StartTime $start -ResourceId $env.resourceId
             $a.value.ToString().Contains($expect)
         } | Should -Not -Throw
     }
