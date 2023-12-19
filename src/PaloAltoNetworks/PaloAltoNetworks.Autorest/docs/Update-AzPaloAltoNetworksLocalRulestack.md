@@ -15,27 +15,27 @@ Update a LocalRulestackResource
 ### UpdateExpanded (Default)
 ```
 Update-AzPaloAltoNetworksLocalRulestack -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AssociatedSubscription <String[]>] [-DefaultMode <DefaultMode>] [-Description <String>]
- [-IdentityType <ManagedIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-MinAppIdVersion <String>]
- [-PanEtag <String>] [-PanLocation <String>] [-Scope <ScopeType>]
- [-SecurityServiceAntiSpywareProfile <String>] [-SecurityServiceAntiVirusProfile <String>]
- [-SecurityServiceDnsSubscription <String>] [-SecurityServiceFileBlockingProfile <String>]
- [-SecurityServiceOutboundTrustCertificate <String>] [-SecurityServiceOutboundUnTrustCertificate <String>]
- [-SecurityServiceUrlFilteringProfile <String>] [-SecurityServiceVulnerabilityProfile <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AssociatedSubscription <String[]>] [-DefaultMode <String>] [-Description <String>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-MinAppIdVersion <String>] [-PanEtag <String>]
+ [-PanLocation <String>] [-Scope <String>] [-SecurityServiceAntiSpywareProfile <String>]
+ [-SecurityServiceAntiVirusProfile <String>] [-SecurityServiceDnsSubscription <String>]
+ [-SecurityServiceFileBlockingProfile <String>] [-SecurityServiceOutboundTrustCertificate <String>]
+ [-SecurityServiceOutboundUnTrustCertificate <String>] [-SecurityServiceUrlFilteringProfile <String>]
+ [-SecurityServiceVulnerabilityProfile <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzPaloAltoNetworksLocalRulestack -InputObject <IPaloAltoNetworksIdentity>
- [-AssociatedSubscription <String[]>] [-DefaultMode <DefaultMode>] [-Description <String>]
- [-IdentityType <ManagedIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-MinAppIdVersion <String>]
- [-PanEtag <String>] [-PanLocation <String>] [-Scope <ScopeType>]
- [-SecurityServiceAntiSpywareProfile <String>] [-SecurityServiceAntiVirusProfile <String>]
- [-SecurityServiceDnsSubscription <String>] [-SecurityServiceFileBlockingProfile <String>]
- [-SecurityServiceOutboundTrustCertificate <String>] [-SecurityServiceOutboundUnTrustCertificate <String>]
- [-SecurityServiceUrlFilteringProfile <String>] [-SecurityServiceVulnerabilityProfile <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AssociatedSubscription <String[]>] [-DefaultMode <String>] [-Description <String>] [-IdentityType <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-MinAppIdVersion <String>] [-PanEtag <String>]
+ [-PanLocation <String>] [-Scope <String>] [-SecurityServiceAntiSpywareProfile <String>]
+ [-SecurityServiceAntiVirusProfile <String>] [-SecurityServiceDnsSubscription <String>]
+ [-SecurityServiceFileBlockingProfile <String>] [-SecurityServiceOutboundTrustCertificate <String>]
+ [-SecurityServiceOutboundUnTrustCertificate <String>] [-SecurityServiceUrlFilteringProfile <String>]
+ [-SecurityServiceVulnerabilityProfile <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 Mode for default rules creation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.DefaultMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 The type of managed identity assigned to this resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.ManagedIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -245,7 +245,7 @@ Accept wildcard characters: False
 Rulestack Type
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.ScopeType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -446,26 +446,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ILocalRulestackResource
+### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ILocalRulestackResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IPaloAltoNetworksIdentity>`: Identity Parameter
-  - `[FirewallName <String>]`: Firewall resource name
-  - `[GlobalRulestackName <String>]`: GlobalRulestack resource name
-  - `[Id <String>]`: Resource identity path
-  - `[LocalRulestackName <String>]`: LocalRulestack resource name
-  - `[Name <String>]`: certificate name
-  - `[Priority <String>]`: Post Rule priority
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

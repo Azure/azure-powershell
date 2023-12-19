@@ -126,10 +126,10 @@ function Get-AzApplicationInsights {
             'GetByResourceId' {
                 $resourceId = $PSBoundParameters['ResourceId']
                 $null = $PSBoundParameters.Remove('ResourceId')
-                $component = ($resourceId | . Az.ApplicationInsights.internal\Get-AzApplicationInsights)
+                $component = (. Az.ApplicationInsights.internal\Get-AzApplicationInsights -InputObject $resourceId @PSBoundParameters)
                 if ($full) {
-                    $pricingPlan = $resourceId | . Az.ApplicationInsights.internal\Get-AzApplicationInsightsComponentCurrentBillingFeature
-                    $dailyCapStatus  = $resourceId | . Az.ApplicationInsights.internal\Get-AzApplicationInsightsComponentQuotaStatus
+                    $pricingPlan = . Az.ApplicationInsights.internal\Get-AzApplicationInsightsComponentCurrentBillingFeature -InputObject $resourceId @PSBoundParameters
+                    $dailyCapStatus  = . Az.ApplicationInsights.internal\Get-AzApplicationInsightsComponentQuotaStatus -InputObject $resourceId @PSBoundParameters
                 }
                 break
             }
