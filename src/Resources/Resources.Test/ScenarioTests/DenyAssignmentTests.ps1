@@ -123,7 +123,7 @@ function Test-GetDaByObjectIdAndScope
 
 function Test-GetDaBySignInName
 {
-    $signInName = 'ryanren2_aquanticryangmail.onmicrosoft.com#EXT#@rbacCliTest.onmicrosoft.com'
+    $signInName = 'test2@rbacCliTest.onmicrosoft.com'
     $assignments = Get-AzDenyAssignment -SignInName $signInName
     
     Assert-NotNull $assignments

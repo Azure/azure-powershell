@@ -120,7 +120,7 @@ function Test-RaByScope
     $definitionName = 'Automation Job Operator'
     $userId = "e9da4467-12ff-4334-8179-c99abf0ffd5a" # powershell-testmember
     $subscription = $(Get-AzContext).Subscription
-    $resourceGroupName = "nori-resource-test"
+    $resourceGroupName = "PowershellTest"
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroupName
     $assignmentScope = $scope +"/"
     # Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
@@ -152,7 +152,7 @@ function Test-RaById
     $definitionName = 'Reader'
     $userId = "e9da4467-12ff-4334-8179-c99abf0ffd5a"
     $subscription = $(Get-AzContext).Subscription
-    $resourceGroupName = "nori-resource-test"
+    $resourceGroupName = "PowershellTest"
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroupName
     $assignmentScope = $scope +"/"
 
@@ -187,7 +187,7 @@ function Test-RaByResourceGroup
     # powershell-testmember for testing
     $userId = "e9da4467-12ff-4334-8179-c99abf0ffd5a"
     $subscription = $(Get-AzContext).Subscription
-    $resourceGroupName = "nori-resource-test"
+    $resourceGroupName = "PowershellTest"
 
     # Test
     $newAssignment = New-AzRoleAssignmentWithId -ObjectId $userId -RoleDefinitionName $definitionName -ResourceGroupName $resourceGroupName -RoleAssignmentId 7b30dd13-c4fd-4083-b1e3-5ab3ae0ae574
@@ -466,7 +466,7 @@ function Test-RaPropertiesValidation
 
     VerifyRoleAssignmentDeleted $newAssignment
     # cleanup
-    Remove-AzRoleDefinition -Id $rd.Id -Force
+    Remove-AzRoleDefinition -Id 14347f95-76d9-48f6-932e-7997d99a45b2 -Force
 }
 
 <#
@@ -621,8 +621,8 @@ function Test-RaCreatedBySP
 {
     # Prerequisite: Conect to azure with SP
     # Create role assignment
-    # bez's PrincipalId
-    $testUser = "2f153a9e-5be9-4f43-abd2-04561777c8b0"
+    # powershell-testmember's PrincipalId
+    $testUser = "e9da4467-12ff-4334-8179-c99abf0ffd5a"
     $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
 
     $assignment = New-AzRoleAssignment -ObjectId $testUser -RoleDefinitionName 'Reader' -Scope $Scope
@@ -639,9 +639,9 @@ function Test-RaWithV1Conditions{
     #Given
     # Built-in role "Storage Blob Data Reader"'s Id
     $RoleDefinitionId = "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1"
-    # bez's PrincipalId
-    $PrincipalId ="2f153a9e-5be9-4f43-abd2-04561777c8b0"
-    $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
+    # powershell-testmember's PrincipalId
+    $PrincipalId ="e9da4467-12ff-4334-8179-c99abf0ffd5a"
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
     $Description = "This test should not fail"
     $StorageAccount = 'storagecontainer4test'
     $Condition = "@Resource[Microsoft.Storage/storageAccounts:name] StringEquals '$StorageAccount'"
@@ -722,9 +722,9 @@ function Test-RaWithV2ConditionVersionOnly{
     #Given
     # Built-in role "Storage Blob Data Reader"'s Id
     $RoleDefinitionId = "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1"
-    # bez's PrincipalId
-    $PrincipalId ="2f153a9e-5be9-4f43-abd2-04561777c8b0"
-    $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
+    # powershell-testmember's PrincipalId
+    $PrincipalId ="e9da4467-12ff-4334-8179-c99abf0ffd5a"
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
     $Description = "This test should not fail"
     $ConditionVersion = "2.0"
 
@@ -869,15 +869,15 @@ function Test-CreateRAWithObjectType
 {
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    # bez's PrincipalId
-    $PrincipalId ="2f153a9e-5be9-4f43-abd2-04561777c8b0"
+    # powershell-testmember's PrincipalId
+    $PrincipalId ="e9da4467-12ff-4334-8179-c99abf0ffd5a"
     $subscription =  (Get-AzContext).Subscription.Id
     $Scope = "/subscriptions/$subscription"
     $ObjectType = "User"
 
     #When
     $data = New-AzRoleAssignmentWithId -ObjectId $PrincipalId -ObjectType $ObjectType -Scope $Scope -RoleDefinitionId $RoleDefinitionId -RoleAssignmentId "2f153333-5be9-4f43-abd2-04561777c8b0"
-
+    $data
     Assert-True {$data.ObjectType -eq "User"}
 
     #cleanup
