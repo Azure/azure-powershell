@@ -30,11 +30,11 @@ For information on how to develop for `Az.Workloads`, see [how-to.md](how-to.md)
 > see https://aka.ms/autorest
 
 ```yaml
-commit: 13aec7f115c01ba6986ebf32488537392c0df6f5
+commit: dfbe76b052675596dabcc1daa79a9cec214ffc8f
 tag: package-preview-2023-10
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-  - /src/azure-rest-api-specs/specification/workloads/resource-manager/readme.md
+  - $(repo)/specification/workloads/resource-manager/readme.md
 
 try-require: 
   - $(repo)/specification/workloads/resource-manager/readme.powershell.md
