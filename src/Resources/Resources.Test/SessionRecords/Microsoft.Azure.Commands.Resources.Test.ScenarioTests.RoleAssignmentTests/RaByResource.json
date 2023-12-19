@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bfb7cb61-72c0-40b9-b94c-1e9a57595d9e"
+          "8e272e15-aae8-4dc2-bb36-60f2ab2f04d3"
         ],
         "Accept-Language": [
           "en-US"
@@ -30,13 +30,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "96116b53-d2ef-47bf-a328-8f0146bd9f66"
+          "acaf2fb0-8508-470e-8169-90badd8a3760"
         ],
         "x-ms-correlation-request-id": [
-          "96116b53-d2ef-47bf-a328-8f0146bd9f66"
+          "acaf2fb0-8508-470e-8169-90badd8a3760"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20231219T055531Z:96116b53-d2ef-47bf-a328-8f0146bd9f66"
+          "WESTUS2:20231219T075925Z:acaf2fb0-8508-470e-8169-90badd8a3760"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 19 Dec 2023 05:55:30 GMT"
+          "Tue, 19 Dec 2023 07:59:24 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,7 +69,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4ac0c750-2130-41d6-89bf-8c24d0749c3e"
+          "dd8d5727-efc7-4a47-b700-9a024d952e33"
         ],
         "Accept-Language": [
           "en-US"
@@ -93,13 +93,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "3382a59f-cbcb-4568-bc85-cf01c67f3f0d"
+          "bb3ca781-3076-4376-90f8-3bb772275578"
         ],
         "x-ms-correlation-request-id": [
-          "3382a59f-cbcb-4568-bc85-cf01c67f3f0d"
+          "bb3ca781-3076-4376-90f8-3bb772275578"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20231219T055531Z:3382a59f-cbcb-4568-bc85-cf01c67f3f0d"
+          "WESTUS2:20231219T075925Z:bb3ca781-3076-4376-90f8-3bb772275578"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -108,10 +108,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 19 Dec 2023 05:55:30 GMT"
-        ],
-        "Connection": [
-          "close"
+          "Tue, 19 Dec 2023 07:59:25 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -135,7 +132,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bdc57da8-7cfd-4220-a193-d6f22d2ed3f7"
+          "f07d000e-d438-42b3-ba19-570910790173"
         ],
         "Accept-Language": [
           "en-US"
@@ -150,7 +147,7 @@
       "RequestBody": "",
       "ResponseHeaders": {
         "Date": [
-          "Tue, 19 Dec 2023 05:55:31 GMT"
+          "Tue, 19 Dec 2023 07:59:26 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
@@ -165,13 +162,13 @@
           "max-age=31536000"
         ],
         "request-id": [
-          "fbff86f4-b0a8-4ca7-8e3d-69ad8fd86998"
+          "7ac8519f-bcfb-4f36-82de-19dda7b8fa70"
         ],
         "client-request-id": [
-          "fbff86f4-b0a8-4ca7-8e3d-69ad8fd86998"
+          "7ac8519f-bcfb-4f36-82de-19dda7b8fa70"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"005\",\"RoleInstance\":\"MWH0EPF0009ACB3\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"004\",\"RoleInstance\":\"MW2PEPF0000E056\"}}"
         ],
         "x-ms-resource-unit": [
           "1"
@@ -186,7 +183,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource 'f9e08843-d2b7-4dbc-a584-5e88a7e229a6' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T05:55:31\",\r\n      \"request-id\": \"fbff86f4-b0a8-4ca7-8e3d-69ad8fd86998\",\r\n      \"client-request-id\": \"fbff86f4-b0a8-4ca7-8e3d-69ad8fd86998\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource 'f9e08843-d2b7-4dbc-a584-5e88a7e229a6' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T07:59:26\",\r\n      \"request-id\": \"7ac8519f-bcfb-4f36-82de-19dda7b8fa70\",\r\n      \"client-request-id\": \"7ac8519f-bcfb-4f36-82de-19dda7b8fa70\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
@@ -195,7 +192,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8b2c699d-3805-4732-b43c-0272df494a9f"
+          "cbdbe879-58d4-4a0e-8e0d-666ccdc0e4fe"
         ],
         "Accept-Language": [
           "en-US"
@@ -210,7 +207,7 @@
       "RequestBody": "",
       "ResponseHeaders": {
         "Date": [
-          "Tue, 19 Dec 2023 05:55:32 GMT"
+          "Tue, 19 Dec 2023 07:59:26 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
@@ -225,13 +222,13 @@
           "max-age=31536000"
         ],
         "request-id": [
-          "9a8701cd-b312-4297-a22b-0186f56aa77f"
+          "fa20b64c-8ed9-4553-850b-e996719bb56b"
         ],
         "client-request-id": [
-          "9a8701cd-b312-4297-a22b-0186f56aa77f"
+          "fa20b64c-8ed9-4553-850b-e996719bb56b"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"005\",\"RoleInstance\":\"MWH0EPF0009ACB3\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"004\",\"RoleInstance\":\"MW2PEPF0000E056\"}}"
         ],
         "x-ms-resource-unit": [
           "1"
@@ -246,7 +243,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource 'f9e08843-d2b7-4dbc-a584-5e88a7e229a6' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T05:55:32\",\r\n      \"request-id\": \"9a8701cd-b312-4297-a22b-0186f56aa77f\",\r\n      \"client-request-id\": \"9a8701cd-b312-4297-a22b-0186f56aa77f\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource 'f9e08843-d2b7-4dbc-a584-5e88a7e229a6' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T07:59:26\",\r\n      \"request-id\": \"fa20b64c-8ed9-4553-850b-e996719bb56b\",\r\n      \"client-request-id\": \"fa20b64c-8ed9-4553-850b-e996719bb56b\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
@@ -255,7 +252,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4921da16-3ef6-408d-a8d1-7fce35dfb207"
+          "053b3a41-6987-44f0-9299-84bd796bffe3"
         ],
         "Accept-Language": [
           "en-US"
@@ -270,7 +267,7 @@
       "RequestBody": "",
       "ResponseHeaders": {
         "Date": [
-          "Tue, 19 Dec 2023 05:55:32 GMT"
+          "Tue, 19 Dec 2023 07:59:26 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
@@ -285,13 +282,13 @@
           "max-age=31536000"
         ],
         "request-id": [
-          "aead4d8b-711a-421b-93c7-bb52f55721d4"
+          "c444437d-cf38-4de6-9a56-aa64413d6a68"
         ],
         "client-request-id": [
-          "aead4d8b-711a-421b-93c7-bb52f55721d4"
+          "c444437d-cf38-4de6-9a56-aa64413d6a68"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"005\",\"RoleInstance\":\"MWH0EPF0009ACB3\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"004\",\"RoleInstance\":\"MW2PEPF0000E056\"}}"
         ],
         "x-ms-resource-unit": [
           "1"
@@ -318,7 +315,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c15b091e-8ee4-4eb1-b704-f839c52b6d0b"
+          "04e34253-6419-4e69-bbf2-4a58054ac256"
         ],
         "Accept-Language": [
           "en-US"
@@ -333,7 +330,7 @@
       "RequestBody": "",
       "ResponseHeaders": {
         "Date": [
-          "Tue, 19 Dec 2023 05:55:39 GMT"
+          "Tue, 19 Dec 2023 07:59:31 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
@@ -348,13 +345,13 @@
           "max-age=31536000"
         ],
         "request-id": [
-          "48b29d7d-cfee-4c6b-9219-e08bfe55779c"
+          "c3993d35-6ef3-4209-a47d-4a152e43ced0"
         ],
         "client-request-id": [
-          "48b29d7d-cfee-4c6b-9219-e08bfe55779c"
+          "c3993d35-6ef3-4209-a47d-4a152e43ced0"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"005\",\"RoleInstance\":\"MWH0EPF0009ACAB\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"004\",\"RoleInstance\":\"MW2PEPF0000E056\"}}"
         ],
         "x-ms-resource-unit": [
           "1"
@@ -381,7 +378,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fd57f9ee-8b94-432e-a89a-c2203a68fc03"
+          "1ed04139-21be-423a-9d50-530ecc385365"
         ],
         "Accept-Language": [
           "en-US"
@@ -396,7 +393,7 @@
       "RequestBody": "",
       "ResponseHeaders": {
         "Date": [
-          "Tue, 19 Dec 2023 05:55:40 GMT"
+          "Tue, 19 Dec 2023 07:59:32 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
@@ -411,13 +408,13 @@
           "max-age=31536000"
         ],
         "request-id": [
-          "2839ab12-78f3-4b8f-acfc-d2a3d729d609"
+          "e3a02cc5-6e35-40d5-a7b1-705ed05ecc14"
         ],
         "client-request-id": [
-          "2839ab12-78f3-4b8f-acfc-d2a3d729d609"
+          "e3a02cc5-6e35-40d5-a7b1-705ed05ecc14"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"005\",\"RoleInstance\":\"MWH0EPF0009ACB3\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"004\",\"RoleInstance\":\"MW2PEPF0000E056\"}}"
         ],
         "x-ms-resource-unit": [
           "1"
@@ -444,7 +441,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2d822ed7-a6b4-42cd-8b0a-1b38860cc538"
+          "ecb212ea-1a90-4871-bab7-fc07b788f7f2"
         ],
         "Accept-Language": [
           "en-US"
@@ -465,7 +462,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "426d9f5b-f688-4e60-aa3f-e15286909e15"
+          "def90dc9-cdcd-46e8-8b21-9435875452da"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -480,13 +477,13 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "60a5e8f8-9cc1-49ec-98d1-a03ab90708ef"
+          "88b8e3f8-c4db-45a9-a0e5-289fb35035f9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20231219T055533Z:60a5e8f8-9cc1-49ec-98d1-a03ab90708ef"
+          "WESTUS2:20231219T075926Z:88b8e3f8-c4db-45a9-a0e5-289fb35035f9"
         ],
         "Date": [
-          "Tue, 19 Dec 2023 05:55:32 GMT"
+          "Tue, 19 Dec 2023 07:59:25 GMT"
         ],
         "Content-Length": [
           "1050"
@@ -510,7 +507,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "390ceccd-a8c6-423f-bb5c-e5201051b764"
+          "e5a0e3d4-512c-4ea1-8b5e-54bb1423ce50"
         ],
         "Accept-Language": [
           "en-US"
@@ -537,7 +534,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "64e1f5cd-4c8b-4e7f-be55-ca9b7e62f4fb"
+          "f2fc86c1-cbe0-4524-a274-a3eee82e8f7d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -549,13 +546,13 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "731eac3c-4740-46f3-9950-e340ddee58dc"
+          "98d28c55-f0db-42eb-b46d-b74354cb4043"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20231219T055539Z:731eac3c-4740-46f3-9950-e340ddee58dc"
+          "WESTUS2:20231219T075931Z:98d28c55-f0db-42eb-b46d-b74354cb4043"
         ],
         "Date": [
-          "Tue, 19 Dec 2023 05:55:39 GMT"
+          "Tue, 19 Dec 2023 07:59:30 GMT"
         ],
         "Content-Length": [
           "988"
@@ -570,7 +567,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/fb879df8-f326-4884-b1cf-06f3ad86be52\",\r\n    \"principalId\": \"f9e08843-d2b7-4dbc-a584-5e88a7e229a6\",\r\n    \"principalType\": \"Group\",\r\n    \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/ߜ/providers/Microsoft.Storage/storageAccounts/reproaccountyd2\",\r\n    \"condition\": null,\r\n    \"conditionVersion\": null,\r\n    \"createdOn\": \"2023-12-19T05:55:33.3230089Z\",\r\n    \"updatedOn\": \"2023-12-19T05:55:34.3064423Z\",\r\n    \"createdBy\": null,\r\n    \"updatedBy\": \"f2dc21ac-702a-4bde-a4ce-146edf751d81\",\r\n    \"canDelegate\": false,\r\n    \"delegatedManagedIdentityResourceId\": null,\r\n    \"description\": null\r\n  },\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/ߜ/providers/Microsoft.Storage/storageAccounts/reproaccountyd2/providers/Microsoft.Authorization/roleAssignments/db6e0231-1be9-4bcd-bf16-79de537439fe\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"db6e0231-1be9-4bcd-bf16-79de537439fe\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/fb879df8-f326-4884-b1cf-06f3ad86be52\",\r\n    \"principalId\": \"f9e08843-d2b7-4dbc-a584-5e88a7e229a6\",\r\n    \"principalType\": \"Group\",\r\n    \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/ߜ/providers/Microsoft.Storage/storageAccounts/reproaccountyd2\",\r\n    \"condition\": null,\r\n    \"conditionVersion\": null,\r\n    \"createdOn\": \"2023-12-19T07:59:27.1071199Z\",\r\n    \"updatedOn\": \"2023-12-19T07:59:28.223656Z\",\r\n    \"createdBy\": null,\r\n    \"updatedBy\": \"f2dc21ac-702a-4bde-a4ce-146edf751d81\",\r\n    \"canDelegate\": false,\r\n    \"delegatedManagedIdentityResourceId\": null,\r\n    \"description\": null\r\n  },\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/ߜ/providers/Microsoft.Storage/storageAccounts/reproaccountyd2/providers/Microsoft.Authorization/roleAssignments/db6e0231-1be9-4bcd-bf16-79de537439fe\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"db6e0231-1be9-4bcd-bf16-79de537439fe\"\r\n}",
       "StatusCode": 201
     },
     {
@@ -579,7 +576,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "914d7123-8bf2-4601-8fd9-69fab7750b75"
+          "cba9b734-7f5f-402e-bdae-b4597ed3acd6"
         ],
         "Accept-Language": [
           "en-US"
@@ -600,7 +597,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "21d6553e-2908-43ec-ae1d-494878521e77"
+          "0a1cbf2e-e070-4f6b-bc83-b5f2ed8ae4d5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -612,13 +609,13 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "2934db41-79b5-482f-a279-a91e0467383a"
+          "3c56224b-e201-4b01-b7d9-6a890780d536"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20231219T055539Z:2934db41-79b5-482f-a279-a91e0467383a"
+          "WESTUS2:20231219T075931Z:3c56224b-e201-4b01-b7d9-6a890780d536"
         ],
         "Date": [
-          "Tue, 19 Dec 2023 05:55:39 GMT"
+          "Tue, 19 Dec 2023 07:59:30 GMT"
         ],
         "Content-Length": [
           "1038"
@@ -642,7 +639,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fd57f9ee-8b94-432e-a89a-c2203a68fc03"
+          "1ed04139-21be-423a-9d50-530ecc385365"
         ],
         "Accept-Language": [
           "en-US"
@@ -663,7 +660,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "0b7968c6-63e8-4780-b664-3064470af5c0"
+          "d308bc9a-5712-4b70-ad4f-92c892cdefa1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -675,16 +672,16 @@
           "x-ms-gateway-slice=Production; path=/; secure; samesite=none; httponly"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "9b4f9835-d792-49bd-880f-0225620cc5ac"
+          "2e277b17-d087-4b9b-afd5-fa53b59932ac"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20231219T055540Z:9b4f9835-d792-49bd-880f-0225620cc5ac"
+          "WESTUS2:20231219T075931Z:2e277b17-d087-4b9b-afd5-fa53b59932ac"
         ],
         "Date": [
-          "Tue, 19 Dec 2023 05:55:39 GMT"
+          "Tue, 19 Dec 2023 07:59:31 GMT"
         ],
         "Content-Length": [
           "1034"
@@ -699,7 +696,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/fb879df8-f326-4884-b1cf-06f3ad86be52\",\r\n        \"principalId\": \"f9e08843-d2b7-4dbc-a584-5e88a7e229a6\",\r\n        \"principalType\": \"Group\",\r\n        \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/ߜ/providers/Microsoft.Storage/storageAccounts/reproaccountyd2\",\r\n        \"condition\": null,\r\n        \"conditionVersion\": null,\r\n        \"createdOn\": \"2023-12-19T05:55:34.5154407Z\",\r\n        \"updatedOn\": \"2023-12-19T05:55:34.5154407Z\",\r\n        \"createdBy\": \"f2dc21ac-702a-4bde-a4ce-146edf751d81\",\r\n        \"updatedBy\": \"f2dc21ac-702a-4bde-a4ce-146edf751d81\",\r\n        \"canDelegate\": false,\r\n        \"delegatedManagedIdentityResourceId\": null,\r\n        \"description\": null\r\n      },\r\n      \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/ߜ/providers/Microsoft.Storage/storageAccounts/reproaccountyd2/providers/Microsoft.Authorization/roleAssignments/db6e0231-1be9-4bcd-bf16-79de537439fe\",\r\n      \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n      \"name\": \"db6e0231-1be9-4bcd-bf16-79de537439fe\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/fb879df8-f326-4884-b1cf-06f3ad86be52\",\r\n        \"principalId\": \"f9e08843-d2b7-4dbc-a584-5e88a7e229a6\",\r\n        \"principalType\": \"Group\",\r\n        \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/ߜ/providers/Microsoft.Storage/storageAccounts/reproaccountyd2\",\r\n        \"condition\": null,\r\n        \"conditionVersion\": null,\r\n        \"createdOn\": \"2023-12-19T07:59:28.4326594Z\",\r\n        \"updatedOn\": \"2023-12-19T07:59:28.4326594Z\",\r\n        \"createdBy\": \"f2dc21ac-702a-4bde-a4ce-146edf751d81\",\r\n        \"updatedBy\": \"f2dc21ac-702a-4bde-a4ce-146edf751d81\",\r\n        \"canDelegate\": false,\r\n        \"delegatedManagedIdentityResourceId\": null,\r\n        \"description\": null\r\n      },\r\n      \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/ߜ/providers/Microsoft.Storage/storageAccounts/reproaccountyd2/providers/Microsoft.Authorization/roleAssignments/db6e0231-1be9-4bcd-bf16-79de537439fe\",\r\n      \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n      \"name\": \"db6e0231-1be9-4bcd-bf16-79de537439fe\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -708,7 +705,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c12d782a-d03e-4b68-94ce-ed5e0b054933"
+          "b42d22e1-8d91-48c9-8531-51d93967719d"
         ],
         "Accept-Language": [
           "en-US"
@@ -729,7 +726,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9d64194e-2ae8-4099-90f5-5d7a72c980e6"
+          "ca66a421-686b-4bc7-a0c8-0ae737a748fb"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -744,13 +741,13 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "a2af8bef-1b21-4d94-a9ca-3db1bbe0ec21"
+          "023be693-8c1d-4d81-a98b-88c1c75d597a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20231219T055544Z:a2af8bef-1b21-4d94-a9ca-3db1bbe0ec21"
+          "WESTUS2:20231219T075937Z:023be693-8c1d-4d81-a98b-88c1c75d597a"
         ],
         "Date": [
-          "Tue, 19 Dec 2023 05:55:43 GMT"
+          "Tue, 19 Dec 2023 07:59:36 GMT"
         ],
         "Content-Length": [
           "12"
@@ -774,7 +771,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fd57f9ee-8b94-432e-a89a-c2203a68fc03"
+          "1ed04139-21be-423a-9d50-530ecc385365"
         ],
         "Accept-Language": [
           "en-US"
@@ -795,7 +792,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e708b464-a8da-4acc-903b-61295b63c9c8"
+          "4106b38c-4240-447c-b855-399581a5e064"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -804,16 +801,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "a94dbd0f-d914-4e6a-9902-a24ce9c7221a"
+          "8b4d968b-e5b4-4d5d-a2ce-e7fb56b5d27f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20231219T055540Z:a94dbd0f-d914-4e6a-9902-a24ce9c7221a"
+          "WESTUS2:20231219T075931Z:8b4d968b-e5b4-4d5d-a2ce-e7fb56b5d27f"
         ],
         "Date": [
-          "Tue, 19 Dec 2023 05:55:39 GMT"
+          "Tue, 19 Dec 2023 07:59:31 GMT"
         ],
         "Content-Length": [
           "1038"
@@ -837,7 +834,7 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fd57f9ee-8b94-432e-a89a-c2203a68fc03"
+          "1ed04139-21be-423a-9d50-530ecc385365"
         ],
         "Accept-Language": [
           "en-US"
@@ -858,7 +855,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9e95204a-479d-4e91-8c46-dabb18809017"
+          "af3fc456-e28c-415c-9574-1cd78a556773"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -870,13 +867,13 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "8a4df691-8db2-4a91-8dc7-acd17a4925e4"
+          "c7dad43b-e3e8-4273-87d5-e53cffb8f962"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20231219T055544Z:8a4df691-8db2-4a91-8dc7-acd17a4925e4"
+          "WESTUS2:20231219T075937Z:c7dad43b-e3e8-4273-87d5-e53cffb8f962"
         ],
         "Date": [
-          "Tue, 19 Dec 2023 05:55:43 GMT"
+          "Tue, 19 Dec 2023 07:59:36 GMT"
         ],
         "Content-Length": [
           "1022"
@@ -891,7 +888,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/fb879df8-f326-4884-b1cf-06f3ad86be52\",\r\n    \"principalId\": \"f9e08843-d2b7-4dbc-a584-5e88a7e229a6\",\r\n    \"principalType\": \"Group\",\r\n    \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/ߜ/providers/Microsoft.Storage/storageAccounts/reproaccountyd2\",\r\n    \"condition\": null,\r\n    \"conditionVersion\": null,\r\n    \"createdOn\": \"2023-12-19T05:55:34.5154407Z\",\r\n    \"updatedOn\": \"2023-12-19T05:55:41.2124639Z\",\r\n    \"createdBy\": \"f2dc21ac-702a-4bde-a4ce-146edf751d81\",\r\n    \"updatedBy\": \"f2dc21ac-702a-4bde-a4ce-146edf751d81\",\r\n    \"canDelegate\": false,\r\n    \"delegatedManagedIdentityResourceId\": null,\r\n    \"description\": null\r\n  },\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/ߜ/providers/Microsoft.Storage/storageAccounts/reproaccountyd2/providers/Microsoft.Authorization/roleAssignments/db6e0231-1be9-4bcd-bf16-79de537439fe\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"db6e0231-1be9-4bcd-bf16-79de537439fe\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/fb879df8-f326-4884-b1cf-06f3ad86be52\",\r\n    \"principalId\": \"f9e08843-d2b7-4dbc-a584-5e88a7e229a6\",\r\n    \"principalType\": \"Group\",\r\n    \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/ߜ/providers/Microsoft.Storage/storageAccounts/reproaccountyd2\",\r\n    \"condition\": null,\r\n    \"conditionVersion\": null,\r\n    \"createdOn\": \"2023-12-19T07:59:28.4326594Z\",\r\n    \"updatedOn\": \"2023-12-19T07:59:32.5126185Z\",\r\n    \"createdBy\": \"f2dc21ac-702a-4bde-a4ce-146edf751d81\",\r\n    \"updatedBy\": \"f2dc21ac-702a-4bde-a4ce-146edf751d81\",\r\n    \"canDelegate\": false,\r\n    \"delegatedManagedIdentityResourceId\": null,\r\n    \"description\": null\r\n  },\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/ߜ/providers/Microsoft.Storage/storageAccounts/reproaccountyd2/providers/Microsoft.Authorization/roleAssignments/db6e0231-1be9-4bcd-bf16-79de537439fe\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"db6e0231-1be9-4bcd-bf16-79de537439fe\"\r\n}",
       "StatusCode": 200
     }
   ],
