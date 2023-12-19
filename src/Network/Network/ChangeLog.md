@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Fixed a few minor issues
+* Changed the Default Rule Set from CRS3.0 to DRS2.1 in `NewAzureApplicationGatewayFirewallPolicy`
 
 ## Version 7.1.0
 * Added DefaultOutboundAccess parameter on subnet creation
