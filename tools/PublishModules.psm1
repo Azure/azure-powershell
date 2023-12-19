@@ -590,16 +590,19 @@ function Add-AllModules {
     foreach ($package in $packages) {
         $fileName = $package.Name
         $versionString = $fileName.Replace('Az.Accounts.', '').Replace('.nupkg', '')
-        $version = [version]$versionString
+        if(-not ($versionString -match 'preview'))
+        {
+            $version = [version]$versionString
         
-        if ($version -gt $latestVersion) {
-            $latestVersion = $version
-            $latestPackage = $package
+            if ($version -gt $latestVersion) {
+                $latestVersion = $version
+                $latestPackage = $package
+            }
         }
     }
     
     foreach ($package in $packages) {
-        if ($package.FullName -ne $latestPackage.FullName) {
+        if (($package.FullName -ne $latestPackage.FullName) -and -not ($package.FullName -match 'preview')) {
             Remove-Item $package.FullName -Force
         }
     }
