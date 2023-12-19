@@ -37,7 +37,8 @@ Describe 'New-AzWvdMsixPackage' {
                 -CustomRdpProperty $null `
                 -Ring $null `
                 -ValidationEnvironment:$false `
-                -PreferredAppGroupType 'Desktop'
+                -PreferredAppGroupType 'Desktop' `
+                -ManagementType 'Standard'
 
             $package_created = New-AzWvdMsixPackage -FullName 'MsixTest_FullName_UnitTest' `
                 -HostPoolName $env.HostPool `

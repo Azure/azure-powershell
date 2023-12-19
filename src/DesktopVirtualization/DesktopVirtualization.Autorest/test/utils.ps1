@@ -119,7 +119,8 @@ function setupEnv() {
             -Ring $null `
             -ValidationEnvironment:$false `
             -PreferredAppGroupType 'Desktop' `
-            -StartVMOnConnect:$false
+            -StartVMOnConnect:$false `
+            -ManagementType 'Standard'
 
         $privateLinkServiceConnectionHP = New-AzPrivateLinkServiceConnection -Name $env.PrivateEndpointConnectionNameHP `
                                             -PrivateLinkServiceId $hostpool.ID `

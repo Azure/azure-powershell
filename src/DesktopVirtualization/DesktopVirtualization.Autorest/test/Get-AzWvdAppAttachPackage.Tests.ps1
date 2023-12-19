@@ -130,6 +130,8 @@ Describe 'Get-AzWvdAppAttachPackage' {
                 -ImagePackageRelativePath 'MsixUnitTest_RelativePackageRoot2' `
                 -ImageVersion '0.0.18838.722'
 
+            Start-Sleep -Seconds 10
+
             $packages = Get-AzWvdAppAttachPackage `
                 -SubscriptionId $env.SubscriptionId  
             
