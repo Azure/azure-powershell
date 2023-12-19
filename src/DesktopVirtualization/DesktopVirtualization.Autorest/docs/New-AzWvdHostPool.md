@@ -16,11 +16,12 @@ Create or update a host pool.
 ```
 New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerType> -Name <String>
  -PreferredAppGroupType <PreferredAppGroupType> -ResourceGroupName <String> [-Location <String>]
- [-SubscriptionId <String>] [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
+ [-ManagementType <ManagementType>] [-SubscriptionId <String>]
+ [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <SessionHostComponentUpdateType>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
  [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-IdentityType <ResourceIdentityType>] [-Kind <String>]
- [-ManagedBy <String>] [-ManagementType <ManagementType>] [-MaxSessionLimit <Int32>]
+ [-ManagedBy <String>] [-MaxSessionLimit <Int32>]
  [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>] [-PlanName <String>] [-PlanProduct <String>]
  [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
  [-PublicNetworkAccess <HostpoolPublicNetworkAccess>] [-RegistrationInfoToken <String>]
@@ -35,8 +36,8 @@ New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerTy
 ```
 New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerType> -Location <String>
  -Name <String> -PreferredAppGroupType <PreferredAppGroupType> -ResourceGroupName <String>
- [-DesktopAppGroupName <String>] [-SubscriptionId <String>] [-WorkspaceName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DesktopAppGroupName <String>] [-ManagementType <ManagementType>] [-SubscriptionId <String>]
+ [-WorkspaceName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -360,7 +361,7 @@ The default value is Automated.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ManagementType
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
