@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.VMware Module
 ## Description
-Microsoft Azure PowerShell: Azure VMware Solution cmdlets
+Microsoft Azure PowerShell: VMware cmdlets
 
 ## Az.VMware Cmdlets
 ### [Get-AzVMwareAddon](Get-AzVMwareAddon.md)
@@ -22,6 +22,9 @@ Get an cloud link by name in a private cloud
 
 ### [Get-AzVMwareCluster](Get-AzVMwareCluster.md)
 Get a cluster by name in a private cloud
+
+### [Get-AzVMwareClusterZone](Get-AzVMwareClusterZone.md)
+List hosts by zone in a cluster
 
 ### [Get-AzVMwareDatastore](Get-AzVMwareDatastore.md)
 Get a datastore in a private cloud cluster
@@ -40,6 +43,9 @@ List the admin credentials for the private cloud
 
 ### [Get-AzVMwareVirtualMachine](Get-AzVMwareVirtualMachine.md)
 Get a virtual machine by id in a private cloud cluster
+
+### [Get-AzVMwareWorkloadNetwork](Get-AzVMwareWorkloadNetwork.md)
+Get a private cloud workload network.
 
 ### [New-AzVMwareAddon](New-AzVMwareAddon.md)
 Create or update a addon in a private cloud
@@ -130,3 +136,4 @@ Update a placement policy in a private cloud cluster
 
 ### [Update-AzVMwarePrivateCloud](Update-AzVMwarePrivateCloud.md)
 Update a private cloud
+
