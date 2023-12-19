@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.13.2'
+ModuleVersion = '2.14.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -147,11 +147,15 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Enabled in-tool notification for version upgrade by default.
-* Upgraded Azure.Core to 1.35.0.'
+        ReleaseNotes = '* Fixed the authentication issue when using `FederatedToken` in Sovereign Clouds. [#23742]
+* Adjusted output format to be more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`.
+* Upgraded Azure.Identity to 1.10.3 [#23018].
+  - Renamed token cache from `msal.cache` to `msal.cache.cae` or `masl.cache.nocae`.
+* Enable Continue Access Evalution (CAE) for Service Principal and Federated Token login method.
+* Added upcoming breaking change warning for deprecation of config parameter `DisableErrorRecordsPersistence`.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
