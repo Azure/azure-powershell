@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.1.0
 * Added parameter `ByteArrayValue` in `Invoke-AzKeyVaultKeyOperation` to support operating byte array without conversion to secure string.
 * Added Property `RawResult` in the output type `PSKeyOperationResult` of `Invoke-AzKeyVaultKeyOperation`. 
 * [Upcoming Breaking Change] Added breaking change warning message for parameter `Value` in `Invoke-AzKeyVaultKeyOperation`. 

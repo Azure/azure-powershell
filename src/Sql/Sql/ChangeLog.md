@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.12.1
 * Fixed `Set-AzSqlDatabaseFailoverGroup` when going from multi-secondary to single secondary
 
 ## Version 4.12.0

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.3
 * Enabled common parameter in get-azapplicationinsights 
 
 ## Version 2.2.2
