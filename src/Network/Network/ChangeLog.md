@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 * Fixed a few minor issues
+* Added optional property 'Profile' to `New-AzFirewallPolicyIntrusionDetection` 
+
 
 ## Version 7.1.0
 * Added DefaultOutboundAccess parameter on subnet creation
@@ -35,7 +37,6 @@
 * Added support for new ErGWScale SKU - ErGwScale
 * Added property 'size' to firewallPolicy and firewallPolicyRuleCollectionGroup.
 * Updated cmdlet `New-AzBastion`, `Set-AzBastion` and `Get-AzBastion` to support Bastion features for CRUD operations
-* Added optional property 'Profile' to `New-AzFirewallPolicyIntrusionDetection` 
 
 ## Version 7.0.0
 * [Breaking Change] Removed `Geo` as a valid input for parameter `VariableName` in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
