@@ -34,3 +34,5 @@ Invoke-LiveTestScenario -Name "Removes a Storage account" -Description "Test rem
     Assert-Null $removedAccount
 
 }
+
+& "$PSScriptRoot\QueueTests.ps1"
