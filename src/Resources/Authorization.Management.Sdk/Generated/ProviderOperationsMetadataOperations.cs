@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// </exception>
         internal ProviderOperationsMetadataOperations (AuthorizationManagementClient client)
         {
-            if (client == null) 
+            if (client == null)
             {
                 throw new System.ArgumentNullException("client");
             }
@@ -68,12 +68,12 @@ namespace Microsoft.Azure.Management.Authorization
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProviderOperationsMetadata>> GetWithHttpMessagesAsync(string resourceProviderNamespace, string expand = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProviderOperationsMetadata>> GetWithHttpMessagesAsync(string resourceProviderNamespace, string expand = "resourceTypes", System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
- 
+
             if (resourceProviderNamespace == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceProviderNamespace");
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.Authorization
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ProviderOperationsMetadata>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-            
+
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -263,12 +263,12 @@ namespace Microsoft.Azure.Management.Authorization
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProviderOperationsMetadata>>> ListWithHttpMessagesAsync(string expand = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProviderOperationsMetadata>>> ListWithHttpMessagesAsync(string expand = "resourceTypes", System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
- 
+
 
             string apiVersion = "2018-01-01-preview";
             // Tracing
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Management.Authorization
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProviderOperationsMetadata>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-            
+
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Management.Authorization
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("nextPageLink", nextPageLink);
-               
+
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListNext", tracingParameters);
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.Management.Authorization
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ProviderOperationsMetadata>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-            
+
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();

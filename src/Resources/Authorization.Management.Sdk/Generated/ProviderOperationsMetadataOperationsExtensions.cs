@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// <param name='expand'>
         /// Specifies whether to expand the values.
         /// </param>
-        public static ProviderOperationsMetadata Get(this IProviderOperationsMetadataOperations operations, string resourceProviderNamespace, string expand = default(string))
+        public static ProviderOperationsMetadata Get(this IProviderOperationsMetadataOperations operations, string resourceProviderNamespace, string expand = "resourceTypes")
         {
                 return ((IProviderOperationsMetadataOperations)operations).GetAsync(resourceProviderNamespace, expand).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ProviderOperationsMetadata> GetAsync(this IProviderOperationsMetadataOperations operations, string resourceProviderNamespace, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ProviderOperationsMetadata> GetAsync(this IProviderOperationsMetadataOperations operations, string resourceProviderNamespace, string expand = "resourceTypes", System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceProviderNamespace, expand, null, cancellationToken).ConfigureAwait(false))
             {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// <param name='expand'>
         /// Specifies whether to expand the values.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ProviderOperationsMetadata> List(this IProviderOperationsMetadataOperations operations, string expand = default(string))
+        public static Microsoft.Rest.Azure.IPage<ProviderOperationsMetadata> List(this IProviderOperationsMetadataOperations operations, string expand = "resourceTypes")
         {
                 return ((IProviderOperationsMetadataOperations)operations).ListAsync(expand).GetAwaiter().GetResult();
         }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ProviderOperationsMetadata>> ListAsync(this IProviderOperationsMetadataOperations operations, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ProviderOperationsMetadata>> ListAsync(this IProviderOperationsMetadataOperations operations, string expand = "resourceTypes", System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(expand, null, cancellationToken).ConfigureAwait(false))
             {
