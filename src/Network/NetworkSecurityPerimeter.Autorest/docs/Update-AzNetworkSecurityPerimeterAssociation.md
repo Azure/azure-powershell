@@ -305,28 +305,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAssociation
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAssociation
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <INetworkSecurityPerimeterIdentity>`: Identity parameter.
-  - `[AccessRuleName <String>]`: The name of the NSP access rule.
-  - `[AssociationName <String>]`: The name of the NSP association.
-  - `[Id <String>]`: Resource identity path
-  - `[LinkName <String>]`: The name of the NSP link.
-  - `[LinkReferenceName <String>]`: The name of the NSP linkReference.
-  - `[Location <String>]`: The location of network security perimeter.
-  - `[NetworkSecurityPerimeterName <String>]`: The name of the network security perimeter.
-  - `[ProfileName <String>]`: The name of the NSP profile.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
 

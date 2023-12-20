@@ -20,7 +20,7 @@ Updates a NSP Link
 Updates a NSP Link
 #>
 function Update-AzNetworkSecurityPerimeterLink {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspLink])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLink])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
@@ -132,7 +132,7 @@ function Update-AzNetworkSecurityPerimeterLink {
 
         [Parameter(HelpMessage = "Resource tags.")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
@@ -151,13 +151,13 @@ function Update-AzNetworkSecurityPerimeterLink {
 
         [Parameter(HelpMessage = "Local inbound profiles")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [System.Collections.ArrayList]
+        [System.String[]]
         # local inbound profiles
         ${LocalInboundProfile},
 
         [Parameter(HelpMessage = "Remote inbound profiles")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [System.Collections.ArrayList]
+        [System.String[]]
         # remote inbound profiles
         ${RemoteInboundProfile}
 

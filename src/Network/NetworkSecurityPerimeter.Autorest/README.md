@@ -36,8 +36,8 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/kaushal087/azure-rest-api-specs/blob/01701c5f89029cedfb89e9e34a43fdedfeb8ab25/specification/network/resource-manager/Microsoft.Network/preview/2021-02-01-preview/networkSecurityPerimeter.json
-#  - C:\repo\azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/preview/2021-02-01-preview/networkSecurityPerimeter.json
+  - https://github.com/kaushal087/azure-rest-api-specs/blob/7de3d5b29bb67401acd1a799cf7c55b1b7b07185/specification/network/resource-manager/Microsoft.Network/preview/2023-07-01-preview/networkSecurityPerimeter.json
+#  - C:\repo\azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/preview/2023-07-01-preview/networkSecurityPerimeter.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -65,7 +65,7 @@ directive:
       verb: Set
     remove: true
   - where:
-      variant: ^Update$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$
+      variant: ^Update.*$
     remove: true
   # Hide CreateViaIdentity for customization
   - where:

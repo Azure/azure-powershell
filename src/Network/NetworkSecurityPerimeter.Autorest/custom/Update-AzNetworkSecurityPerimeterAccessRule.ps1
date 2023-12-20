@@ -20,7 +20,7 @@ Updates an access rule.
 Updates an access rule.
 #>
 function Update-AzNetworkSecurityPerimeterAccessRule {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAccessRule])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspAccessRule])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
@@ -137,7 +137,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
 
         [Parameter(HelpMessage = "Resource tags.")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
@@ -150,25 +150,25 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         
         [Parameter(HelpMessage = "Address Prefix")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [System.Collections.ArrayList]
+        [System.String[]]
         # Address Prefix
         ${AddressPrefix},
 
         [Parameter(HelpMessage = "Fully qualified domain name")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [System.Collections.ArrayList]
+        [System.String[]]
         # Fully qualified domain name
         ${FullyQualifiedDomainName},
 
         [Parameter(HelpMessage = "Email Addresses")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [System.Collections.ArrayList]
+        [System.String[]]
         # Email Addresses
         ${EmailAddress},
 
         [Parameter(HelpMessage = "Phone Numbers")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [System.Collections.ArrayList]
+        [System.String[]]
         # Phone Numbers
         ${PhoneNumber},
 
@@ -180,7 +180,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
 
         [Parameter(HelpMessage = "Subscription ids")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.ISubscriptionId[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.ISubscriptionId[]]
         # Subscription ids
         ${Subscription}
 
