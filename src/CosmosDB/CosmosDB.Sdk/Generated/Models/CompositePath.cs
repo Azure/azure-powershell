@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
 
         /// <param name="order">Sort order for composite paths.
-        /// Possible values include: 'ascending', 'descending'</param>
+        /// Possible values include: &#39;ascending&#39;, &#39;descending&#39;</param>
         public CompositePath(string path = default(string), string order = default(string))
 
         {

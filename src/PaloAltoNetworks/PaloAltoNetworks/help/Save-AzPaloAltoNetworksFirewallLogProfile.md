@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PaloAltoNetworks-help.xml
 Module Name: Az.PaloAltoNetworks
 online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/save-azpaloaltonetworksfirewalllogprofile
 schema: 2.0.0
@@ -40,8 +40,8 @@ Save-AzPaloAltoNetworksFirewallLogProfile -FirewallName <String> -ResourceGroupN
  [-DecryptLogDestinationMonitorConfigurationsWorkspace <String>]
  [-DecryptLogDestinationStorageConfigurationsAccountName <String>]
  [-DecryptLogDestinationStorageConfigurationsId <String>]
- [-DecryptLogDestinationStorageConfigurationsSubscriptionId <String>] [-LogOption <LogOption>]
- [-LogType <LogType>] [-ThreatLogDestinationEventHubConfigurationsId <String>]
+ [-DecryptLogDestinationStorageConfigurationsSubscriptionId <String>] [-LogOption <String>] [-LogType <String>]
+ [-ThreatLogDestinationEventHubConfigurationsId <String>]
  [-ThreatLogDestinationEventHubConfigurationsName <String>]
  [-ThreatLogDestinationEventHubConfigurationsNameSpace <String>]
  [-ThreatLogDestinationEventHubConfigurationsPolicyName <String>]
@@ -67,7 +67,7 @@ Save-AzPaloAltoNetworksFirewallLogProfile -FirewallName <String> -ResourceGroupN
  [-TrafficLogDestinationStorageConfigurationsAccountName <String>]
  [-TrafficLogDestinationStorageConfigurationsId <String>]
  [-TrafficLogDestinationStorageConfigurationsSubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SaveViaIdentityExpanded
@@ -98,8 +98,8 @@ Save-AzPaloAltoNetworksFirewallLogProfile -InputObject <IPaloAltoNetworksIdentit
  [-DecryptLogDestinationMonitorConfigurationsWorkspace <String>]
  [-DecryptLogDestinationStorageConfigurationsAccountName <String>]
  [-DecryptLogDestinationStorageConfigurationsId <String>]
- [-DecryptLogDestinationStorageConfigurationsSubscriptionId <String>] [-LogOption <LogOption>]
- [-LogType <LogType>] [-ThreatLogDestinationEventHubConfigurationsId <String>]
+ [-DecryptLogDestinationStorageConfigurationsSubscriptionId <String>] [-LogOption <String>] [-LogType <String>]
+ [-ThreatLogDestinationEventHubConfigurationsId <String>]
  [-ThreatLogDestinationEventHubConfigurationsName <String>]
  [-ThreatLogDestinationEventHubConfigurationsNameSpace <String>]
  [-ThreatLogDestinationEventHubConfigurationsPolicyName <String>]
@@ -125,7 +125,7 @@ Save-AzPaloAltoNetworksFirewallLogProfile -InputObject <IPaloAltoNetworksIdentit
  [-TrafficLogDestinationStorageConfigurationsAccountName <String>]
  [-TrafficLogDestinationStorageConfigurationsId <String>]
  [-TrafficLogDestinationStorageConfigurationsSubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -617,7 +617,7 @@ Accept wildcard characters: False
 Log option SAME/INDIVIDUAL
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.LogOption
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -632,7 +632,7 @@ Accept wildcard characters: False
 One of possible log type
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.LogType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -1141,4 +1141,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-

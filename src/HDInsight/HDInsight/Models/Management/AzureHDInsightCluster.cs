@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 DomainResourceId = clusterSecurityProfile.AaddsResourceId,
                 //We should not be returning the actual password to the user
                 DomainUserCredential = new PSCredential(clusterSecurityProfile.DomainUsername, "***".ConvertToSecureString()),
-                OrganizationalUnitDN = clusterSecurityProfile.OrganizationalUnitDN,
+                OrganizationalUnitDN = clusterSecurityProfile.OrganizationalUnitDn,
                 LdapsUrls = clusterSecurityProfile.LdapsUrls != null ? clusterSecurityProfile.LdapsUrls.ToArray() : null,
                 ClusterUsersGroupDNs = clusterSecurityProfile.ClusterUsersGroupDNs != null ? clusterSecurityProfile.ClusterUsersGroupDNs.ToArray() : null,
             } : null;
@@ -73,6 +73,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             DiskEncryption = cluster.Properties.DiskEncryptionProperties;
             AssignedIdentity = new AzureHDInsightClusterIdentity(cluster.Identity);
             EncryptionInTransit =cluster.Properties?.EncryptionInTransitProperties?.IsEncryptionInTransitEnabled;
+            if(cluster.Properties?.StorageProfile?.Storageaccounts != null && cluster.Properties?.StorageProfile?.Storageaccounts.Count > 0)
+            {
+                EnableSecureChannel = cluster.Properties?.StorageProfile.Storageaccounts[0]?.EnableSecureChannel;
+            }
             PrivateEndpoint = cluster.Properties?.ConnectivityEndpoints?.FirstOrDefault(endpoint => endpoint.Name.Equals("HTTPS-INTERNAL"))?.Location;
             var vnet = Utils.ExtractRole(AzureHDInsightClusterNodeType.WorkerNode.ToString(),cluster.Properties.ComputeProfile)?.VirtualNetworkProfile;
             VirtualNetworkId = vnet?.Id;
@@ -201,6 +205,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Default storage file system for this cluster.
         /// </summary>
         public string StorageFileSystem { get; set; }
+
+        /// <summary>
+        /// Enable secure channel or not, it's an optional field. Default value is false when cluster version less 5.1 and true when cluster version great or equal 5.1.
+        /// </summary>
+        public bool? EnableSecureChannel { get; set; }
 
         /// <summary>
         /// Default storage container for this cluster.

@@ -129,7 +129,7 @@ function Test-BackupPolicyPipelines
     $dailyBackupsToKeep = 4
     $weeklyBackupsToKeep = 3
     $monthlyBackupsToKeep = 2    
-    $backupLocation = "eastus2euap"
+    $backupLocation = "southcentralus"
 
     try
     {

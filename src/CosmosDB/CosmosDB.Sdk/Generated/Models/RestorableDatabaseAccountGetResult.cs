@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
 
         /// <param name="apiType">The API type of the restorable database account.
-        /// Possible values include: 'MongoDB', 'Gremlin', 'Cassandra', 'Table', 'Sql',
-        /// 'GremlinV2'</param>
+        /// Possible values include: &#39;MongoDB&#39;, &#39;Gremlin&#39;, &#39;Cassandra&#39;, &#39;Table&#39;, &#39;Sql&#39;,
+        /// &#39;GremlinV2&#39;</param>
 
         /// <param name="accountName">The name of the global database account
         /// </param>

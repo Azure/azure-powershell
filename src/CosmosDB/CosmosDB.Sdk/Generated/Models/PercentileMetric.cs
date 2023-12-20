@@ -34,8 +34,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
 
         /// <param name="unit">The unit of the metric.
-        /// Possible values include: 'Count', 'Bytes', 'Seconds', 'Percent',
-        /// 'CountPerSecond', 'BytesPerSecond', 'Milliseconds'</param>
+        /// Possible values include: &#39;Count&#39;, &#39;Bytes&#39;, &#39;Seconds&#39;, &#39;Percent&#39;,
+        /// &#39;CountPerSecond&#39;, &#39;BytesPerSecond&#39;, &#39;Milliseconds&#39;</param>
 
         /// <param name="name">The name information for the metric.
         /// </param>

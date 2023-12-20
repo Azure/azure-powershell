@@ -43,6 +43,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>AppRoleAssignmentId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ApplicationId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -70,6 +73,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AppRoleAssignmentId</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ApplicationId</PropertyName>
               </TableColumnItem>
@@ -531,25 +537,10 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>DeletedDateTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DisplayName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Id</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>OdataId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>OdataType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>AppRoleId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedDateTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PrincipalDisplayName</Label>
@@ -558,38 +549,17 @@
             <Label>PrincipalId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>PrincipalType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceDisplayName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceId</Label>
+            <Label>CreatedDateTime</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>DeletedDateTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DisplayName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Id</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>OdataId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>OdataType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>AppRoleId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedDateTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PrincipalDisplayName</PropertyName>
@@ -598,13 +568,7 @@
                 <PropertyName>PrincipalId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>PrincipalType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceDisplayName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceId</PropertyName>
+                <PropertyName>CreatedDateTime</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -693,6 +657,28 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphAppRoleAssignmentCollectionResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphAppRoleAssignmentCollectionResponse</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>OdataNextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>OdataNextLink</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

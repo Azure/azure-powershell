@@ -14,10 +14,16 @@ namespace Microsoft.Azure.Management.CosmosDB
     public partial interface IRestorableDatabaseAccountsOperations
     {
         /// <summary>
-        /// Lists all the restorable Azure Cosmos DB database accounts available under the subscription and in a region.  This call requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39; permission.
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription and in a region.  This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
         /// </summary>
         /// <remarks>
-        /// Lists all the restorable Azure Cosmos DB database accounts available under the subscription and in a region.  This call requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39; permission.
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription and in a region.  This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
         /// </remarks>
         /// <param name='location'>
         /// Cosmos DB region, with spaces between words and each word capitalized.
@@ -37,10 +43,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<RestorableDatabaseAccountGetResult>>> ListByLocationWithHttpMessagesAsync(string location, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all the restorable Azure Cosmos DB database accounts available under the subscription. This call requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39; permission.
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription. This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
         /// </summary>
         /// <remarks>
-        /// Lists all the restorable Azure Cosmos DB database accounts available under the subscription. This call requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39; permission.
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription. This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -57,10 +69,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<RestorableDatabaseAccountGetResult>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB restorable database account.  This call requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read/*&#39; permission.
+        /// Retrieves the properties of an existing Azure Cosmos DB restorable database
+        /// account.  This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read/*&#39;
+        /// permission.
         /// </summary>
         /// <remarks>
-        /// Retrieves the properties of an existing Azure Cosmos DB restorable database account.  This call requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read/*&#39; permission.
+        /// Retrieves the properties of an existing Azure Cosmos DB restorable database
+        /// account.  This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read/*&#39;
+        /// permission.
         /// </remarks>
         /// <param name='location'>
         /// Cosmos DB region, with spaces between words and each word capitalized.

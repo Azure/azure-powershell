@@ -12,6 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="AppRoleAssignmentId" /> property.</summary>
+        private string _appRoleAssignmentId;
+
+        /// <summary>key: id of appRoleAssignment</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
+        public string AppRoleAssignmentId { get => this._appRoleAssignmentId; set => this._appRoleAssignmentId = value; }
+
         /// <summary>Backing field for <see cref="ApplicationId" /> property.</summary>
         private string _applicationId;
 
@@ -77,6 +84,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
     public partial interface IMSGraphIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IJsonSerializable
     {
+        /// <summary>key: id of appRoleAssignment</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"key: id of appRoleAssignment",
+        SerializedName = @"appRoleAssignment-id",
+        PossibleTypes = new [] { typeof(string) })]
+        string AppRoleAssignmentId { get; set; }
         /// <summary>key: id of application</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
@@ -170,6 +188,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
     internal partial interface IMSGraphIdentityInternal
 
     {
+        /// <summary>key: id of appRoleAssignment</summary>
+        string AppRoleAssignmentId { get; set; }
         /// <summary>key: id of application</summary>
         string ApplicationId { get; set; }
         /// <summary>The unique identifier of directoryObject</summary>
