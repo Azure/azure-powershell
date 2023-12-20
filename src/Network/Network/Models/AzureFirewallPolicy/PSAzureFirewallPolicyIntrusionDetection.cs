@@ -19,6 +19,8 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string Mode { get; set; }
 
+        public string Profile { get; set; }
+
         public PSAzureFirewallPolicyIntrusionDetectionConfiguration Configuration { get; set; }
     }
 }
