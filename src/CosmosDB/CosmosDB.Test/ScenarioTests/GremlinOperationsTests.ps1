@@ -714,17 +714,17 @@ function Test-GremlinInAccountRestoreOperationsCmdlets
       $ListDatabases = Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName
       Assert-NotNull($ListDatabases)
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # Delete the graph
       $IsGraphRemoved = Remove-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -PassThru
       Assert-AreEqual $IsGraphRemoved true
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       Restore-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -RestoreTimestampInUtc $restoreTimestampInUtc
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       # list graphs
       $Listgraphs = Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
@@ -734,7 +734,7 @@ function Test-GremlinInAccountRestoreOperationsCmdlets
       $IsDatabaseRemoved = Remove-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
       Assert-AreEqual $IsDatabaseRemoved true
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       Try {
           Restore-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -RestoreTimestampInUtc $restoreTimestampInUtc
@@ -755,12 +755,12 @@ function Test-GremlinInAccountRestoreOperationsCmdlets
       # Restore the deleted database
       Restore-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -RestoreTimestampInUtc $restoreTimestampInUtc
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       # Restore the deleted graph
       Restore-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -RestoreTimestampInUtc $restoreTimestampInUtc
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # List graphs
       $Listgraphs = Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
@@ -849,17 +849,17 @@ function Test-GremlinInAccountRestoreOperationsNoTimestampCmdlets
       $ListDatabases = Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName
       Assert-NotNull($ListDatabases)
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # Delete the graph
       $IsGraphRemoved = Remove-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -PassThru
       Assert-AreEqual $IsGraphRemoved true
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       $Restoredgraph = Restore-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       # list graphs
       $Listgraphs = Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
@@ -869,12 +869,12 @@ function Test-GremlinInAccountRestoreOperationsNoTimestampCmdlets
       $IsDatabaseRemoved = Remove-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
       Assert-AreEqual $IsDatabaseRemoved true
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       # Restore the deleted database
       Restore-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       # Restore the deleted graph with no timestamp after database restore
       Try {
@@ -884,7 +884,7 @@ function Test-GremlinInAccountRestoreOperationsNoTimestampCmdlets
           Assert-AreEqual $_.Exception.Message.Contains("No graph with name") true
       }
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # List graphs
       $Listgraphs = Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
@@ -972,13 +972,13 @@ function Test-GremlinInAccountRestoreOperationsSharedRUResourcesCmdlets
       $ListDatabases = Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName
       Assert-NotNull($ListDatabases)
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # Delete the graph
       $IsGraphRemoved = Remove-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -PassThru
       Assert-AreEqual $IsGraphRemoved true
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       Try {
           Restore-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $graphName -RestoreTimestampInUtc $restoreTimestampInUtc
@@ -991,12 +991,12 @@ function Test-GremlinInAccountRestoreOperationsSharedRUResourcesCmdlets
       $IsDatabaseRemoved = Remove-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
       Assert-AreEqual $IsDatabaseRemoved true
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       # Restore the deleted database
       Restore-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -RestoreTimestampInUtc $restoreTimestampInUtc
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       # List graphs
       $Listgraphs = Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
