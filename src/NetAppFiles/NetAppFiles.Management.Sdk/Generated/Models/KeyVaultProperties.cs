@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="status">Status of the KeyVault connection.
-        /// Possible values include: 'Created', 'InUse', 'Deleted', 'Error', 'Updating'</param>
+        /// Possible values include: &#39;Created&#39;, &#39;InUse&#39;, &#39;Deleted&#39;, &#39;Error&#39;, &#39;Updating&#39;</param>
         public KeyVaultProperties(string keyVaultUri, string keyName, string keyVaultResourceId, string keyVaultId = default(string), string status = default(string))
 
         {

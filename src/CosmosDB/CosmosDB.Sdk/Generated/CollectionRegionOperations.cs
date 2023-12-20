@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         public CosmosDBManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Retrieves the metrics determined by the given filter for the given database account, collection and region.
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account, collection and region.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -57,7 +58,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB collection rid.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
+        /// An OData filter expression that describes a subset of metrics to return.
+        /// The parameters that can be filtered are name.value (name of the metric, can
+        /// have an or of multiple names), startTime, endTime, and timeGrain. The
+        /// supported operator is eq.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

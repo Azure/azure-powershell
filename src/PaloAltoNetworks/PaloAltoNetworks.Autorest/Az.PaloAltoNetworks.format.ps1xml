@@ -2,181 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PaloAltoNetworksIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.AdvSecurityObjectListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PaloAltoNetworksIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>FirewallName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>GlobalRulestackName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LocalRulestackName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Priority</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>FirewallName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>GlobalRulestackName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LocalRulestackName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Priority</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.ErrorDetail</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.ErrorDetail</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.Operation</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.Operation</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ActionType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>IsDataAction</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Origin</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ActionType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>IsDataAction</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Origin</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.OperationDisplay</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.OperationDisplay</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Operation</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Provider</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Resource</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Operation</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Provider</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Resource</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.OperationListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.AdvSecurityObjectListResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -196,249 +24,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ApplicationInsights</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.ProxyResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.Resource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.Resource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.SystemData</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.SystemData</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.TrackedResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.TrackedResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.TrackedResourceTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.TrackedResourceTags</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.AdvSecurityObjectListResponse</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.AdvSecurityObjectListResponse</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ApplicationInsights</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ApplicationInsights</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ApplicationInsights#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -458,9 +46,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.AppSeenData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.AppSeenData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.AppSeenData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.AppSeenData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -480,9 +68,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.AppSeenInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.AppSeenInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.AppSeenInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.AppSeenInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -538,9 +126,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.AzureResourceManagerManagedIdentityProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.AzureResourceManagerManagedIdentityProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.AzureResourceManagerManagedIdentityProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.AzureResourceManagerManagedIdentityProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -566,9 +154,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.AzureResourceManagerUserAssignedIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.AzureResourceManagerUserAssignedIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.AzureResourceManagerUserAssignedIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.AzureResourceManagerUserAssignedIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -594,37 +182,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.Category</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.CertificateObject</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.Category</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Feed</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UrlCustom</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Feed</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UrlCustom</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.CertificateObject</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.CertificateObject</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.CertificateObject#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -674,9 +234,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.CertificateObjectGlobalRulestackResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.CertificateObjectGlobalRulestackResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.CertificateObjectGlobalRulestackResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.CertificateObjectGlobalRulestackResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -738,9 +298,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.CertificateObjectGlobalRulestackResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.CertificateObjectGlobalRulestackResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.CertificateObjectGlobalRulestackResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.CertificateObjectGlobalRulestackResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -760,9 +320,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.CertificateObjectLocalRulestackResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.CertificateObjectLocalRulestackResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.CertificateObjectLocalRulestackResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.CertificateObjectLocalRulestackResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -800,9 +360,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.CertificateObjectLocalRulestackResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.CertificateObjectLocalRulestackResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.CertificateObjectLocalRulestackResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.CertificateObjectLocalRulestackResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -822,15 +382,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.Changelog</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Changelog</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.Changelog</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Changelog#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>Change</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>LastCommitted</Label>
           </TableColumnHeader>
@@ -841,9 +398,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Change</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LastCommitted</PropertyName>
               </TableColumnItem>
@@ -856,9 +410,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.CountriesResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.CountriesResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.CountriesResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.CountriesResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -878,9 +432,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.Country</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Country</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.Country</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Country#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -906,55 +460,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.DestinationAddr</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.DnsSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.DestinationAddr</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Cidr</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Country</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Feed</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>FqdnList</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PrefixList</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Cidr</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Country</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Feed</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>FqdnList</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PrefixList</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.DnsSettings</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.DnsSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.DnsSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -980,9 +488,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.EndpointConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.EndpointConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.EndpointConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.EndpointConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1002,9 +510,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.EventHub</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.EventHub</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ErrorDetail#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.EventHub</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.EventHub#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1042,9 +584,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FirewallDeploymentProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallDeploymentProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FirewallDeploymentProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallDeploymentProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1076,9 +618,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FirewallResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FirewallResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1122,9 +664,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FirewallResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FirewallResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1144,9 +686,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FirewallResourceUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallResourceUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FirewallResourceUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallResourceUpdateProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1172,9 +714,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FirewallResourceUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallResourceUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FirewallResourceUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallResourceUpdateTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1194,9 +736,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FirewallStatusProperty</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallStatusProperty</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FirewallStatusProperty</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallStatusProperty#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1234,9 +776,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FirewallStatusResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallStatusResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FirewallStatusResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallStatusResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1274,9 +816,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FirewallStatusResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallStatusResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FirewallStatusResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FirewallStatusResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1296,9 +838,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FqdnListGlobalRulestackResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FqdnListGlobalRulestackResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FqdnListGlobalRulestackResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FqdnListGlobalRulestackResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1360,9 +902,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FqdnListGlobalRulestackResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FqdnListGlobalRulestackResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FqdnListGlobalRulestackResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FqdnListGlobalRulestackResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1382,9 +924,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FqdnListLocalRulestackResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FqdnListLocalRulestackResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FqdnListLocalRulestackResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FqdnListLocalRulestackResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1416,9 +958,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FqdnListLocalRulestackResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FqdnListLocalRulestackResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FqdnListLocalRulestackResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FqdnListLocalRulestackResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1438,9 +980,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FqdnObject</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FqdnObject</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FqdnObject</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FqdnObject#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1452,9 +994,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Etag</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>FqdnList</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
@@ -1473,9 +1012,6 @@
                 <PropertyName>Etag</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>FqdnList</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -1484,9 +1020,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FrontendSetting</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FrontendSetting</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.FrontendSetting</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.FrontendSetting#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1512,9 +1048,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.GlobalRulestackInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.GlobalRulestackInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.GlobalRulestackInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.GlobalRulestackInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1534,9 +1070,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.GlobalRulestackResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.GlobalRulestackResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.GlobalRulestackResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.GlobalRulestackResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1604,9 +1140,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.GlobalRulestackResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.GlobalRulestackResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.GlobalRulestackResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.GlobalRulestackResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1626,9 +1162,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.GlobalRulestackResourceUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.GlobalRulestackResourceUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.GlobalRulestackResourceUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.GlobalRulestackResourceUpdate#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1648,15 +1184,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.GlobalRulestackResourceUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.GlobalRulestackResourceUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.GlobalRulestackResourceUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.GlobalRulestackResourceUpdateProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>AssociatedSubscription</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>DefaultMode</Label>
           </TableColumnHeader>
@@ -1679,9 +1212,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AssociatedSubscription</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DefaultMode</PropertyName>
               </TableColumnItem>
@@ -1706,9 +1236,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IPAddress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPAddress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IPAddress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPAddress#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1734,9 +1264,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IPAddressSpace</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPAddressSpace</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IPAddressSpace</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPAddressSpace#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1762,17 +1292,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ListAppIdResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ListAppIdResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ListAppIdResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ListAppIdResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>NextLink</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Value</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1781,26 +1308,20 @@
               <TableColumnItem>
                 <PropertyName>NextLink</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Value</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ListFirewallsResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ListFirewallsResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ListFirewallsResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ListFirewallsResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>NextLink</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Value</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1809,18 +1330,15 @@
               <TableColumnItem>
                 <PropertyName>NextLink</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Value</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.LocalRulesResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.LocalRulesResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.LocalRulesResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.LocalRulesResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1858,9 +1376,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.LocalRulesResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.LocalRulesResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.LocalRulesResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.LocalRulesResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1880,9 +1398,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.LocalRulestackResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.LocalRulestackResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.LocalRulestackResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.LocalRulestackResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1920,9 +1438,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.LocalRulestackResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.LocalRulestackResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.LocalRulestackResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.LocalRulestackResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1942,15 +1460,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.LocalRulestackResourceUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.LocalRulestackResourceUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.LocalRulestackResourceUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.LocalRulestackResourceUpdateProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>AssociatedSubscription</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>DefaultMode</Label>
           </TableColumnHeader>
@@ -1973,9 +1488,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AssociatedSubscription</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DefaultMode</PropertyName>
               </TableColumnItem>
@@ -2000,9 +1512,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.LocalRulestackResourceUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.LocalRulestackResourceUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.LocalRulestackResourceUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.LocalRulestackResourceUpdateTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2022,9 +1534,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.LogSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.LogSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.LogSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.LogSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2050,9 +1562,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.MarketplaceDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MarketplaceDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.MarketplaceDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MarketplaceDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2090,9 +1602,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.MonitorLog</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MonitorLog</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.MonitorLog</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MonitorLog#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2130,9 +1642,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.NameDescriptionObject</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.NameDescriptionObject</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.NameDescriptionObject</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.NameDescriptionObject#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2158,9 +1670,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.NetworkProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.NetworkProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.NetworkProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.NetworkProfile#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2186,9 +1698,169 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PanoramaConfig</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PanoramaConfig</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Operation#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ActionType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsDataAction</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Origin</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ActionType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IsDataAction</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Origin</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.OperationDisplay</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.OperationDisplay#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Operation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Provider</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Resource</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Operation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Provider</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Resource</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.OperationListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.OperationListResult#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PaloAltoNetworksIdentity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PaloAltoNetworksIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>FirewallName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>GlobalRulestackName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LocalRulestackName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Priority</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FirewallName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>GlobalRulestackName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LocalRulestackName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Priority</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PanoramaConfig</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PanoramaConfig#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2250,9 +1922,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PanoramaStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PanoramaStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PanoramaStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PanoramaStatus#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2278,9 +1950,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PlanData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PlanData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PlanData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PlanData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2318,9 +1990,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PostRulesResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PostRulesResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PostRulesResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PostRulesResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2382,9 +2054,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PostRulesResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PostRulesResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PostRulesResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PostRulesResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2404,9 +2076,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PredefinedUrlCategoriesResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PredefinedUrlCategoriesResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PredefinedUrlCategoriesResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PredefinedUrlCategoriesResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2426,9 +2098,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PredefinedUrlCategory</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PredefinedUrlCategory</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PredefinedUrlCategory</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PredefinedUrlCategory#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2454,9 +2126,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PrefixListGlobalRulestackResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PrefixListGlobalRulestackResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PrefixListGlobalRulestackResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PrefixListGlobalRulestackResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2518,9 +2190,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PrefixListGlobalRulestackResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PrefixListGlobalRulestackResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PrefixListGlobalRulestackResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PrefixListGlobalRulestackResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2540,9 +2212,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PrefixListResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PrefixListResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PrefixListResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PrefixListResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2574,9 +2246,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PrefixListResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PrefixListResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PrefixListResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PrefixListResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2596,9 +2268,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PrefixObject</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PrefixObject</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PrefixObject</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PrefixObject#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2610,9 +2282,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Etag</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PrefixList</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
@@ -2631,9 +2300,6 @@
                 <PropertyName>Etag</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>PrefixList</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -2642,9 +2308,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PreRulesResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PreRulesResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PreRulesResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PreRulesResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2706,9 +2372,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PreRulesResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PreRulesResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.PreRulesResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PreRulesResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2728,9 +2394,89 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.RuleCounter</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.RuleCounter</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ProxyResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Resource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Resource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.RuleCounter</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.RuleCounter#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2798,9 +2544,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.RuleCounterReset</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.RuleCounterReset</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.RuleCounterReset</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.RuleCounterReset#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2844,17 +2590,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.RuleEntry</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.RuleEntry</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.RuleEntry</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.RuleEntry#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>ActionType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Application</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>AuditComment</Label>
@@ -2887,9 +2630,6 @@
             <Label>Protocol</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ProtocolPortList</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -2904,9 +2644,6 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>ActionType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Application</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>AuditComment</PropertyName>
@@ -2939,9 +2676,6 @@
                 <PropertyName>Protocol</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ProtocolPortList</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2956,9 +2690,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.RulestackDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.RulestackDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.RulestackDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.RulestackDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2990,15 +2724,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.RulestackProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.RulestackProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.RulestackProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.RulestackProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>AssociatedSubscription</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>DefaultMode</Label>
           </TableColumnHeader>
@@ -3024,9 +2755,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AssociatedSubscription</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DefaultMode</PropertyName>
               </TableColumnItem>
@@ -3054,9 +2782,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.SecurityServices</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.SecurityServices</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.SecurityServices</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.SecurityServices#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3118,9 +2846,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.SecurityServicesResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.SecurityServicesResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.SecurityServicesResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.SecurityServicesResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3140,49 +2868,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.SourceAddr</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.StorageAccount</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.SourceAddr</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Cidr</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Country</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Feed</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PrefixList</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Cidr</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Country</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Feed</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PrefixList</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.StorageAccount</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.StorageAccount</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.StorageAccount#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3208,9 +2896,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.SupportInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.SupportInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.SupportInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.SupportInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3296,9 +2984,61 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.TagInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.TagInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.SystemData#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.TagInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.TagInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3324,9 +3064,95 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.VwanConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.TrackedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.VwanConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.TrackedResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.TrackedResourceTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.TrackedResourceTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.VwanConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.VwanConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

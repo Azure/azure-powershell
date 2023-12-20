@@ -50,15 +50,15 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="serviceLevel">The service level of the file system
-        /// Possible values include: 'Standard', 'Premium', 'Ultra', 'StandardZRS'</param>
+        /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;</param>
 
         /// <param name="qosType">The qos type of the pool
-        /// Possible values include: 'Auto', 'Manual'</param>
+        /// Possible values include: &#39;Auto&#39;, &#39;Manual&#39;</param>
 
         /// <param name="encryptionType">Encryption type of the capacity pool, set encryption type for data at rest
         /// for this pool and all volumes in it. This value can only be set when
         /// creating new pool.
-        /// Possible values include: 'Single', 'Double'</param>
+        /// Possible values include: &#39;Single&#39;, &#39;Double&#39;</param>
 
         /// <param name="poolId">UUID v4 used to identify the Pool
         /// </param>

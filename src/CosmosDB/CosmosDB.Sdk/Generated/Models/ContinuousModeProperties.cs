@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
 
         /// <param name="tier">Enum to indicate type of Continuous backup mode
-        /// Possible values include: 'Continuous7Days', 'Continuous30Days'</param>
+        /// Possible values include: &#39;Continuous7Days&#39;, &#39;Continuous30Days&#39;</param>
         public ContinuousModeProperties(string tier = default(string))
 
         {

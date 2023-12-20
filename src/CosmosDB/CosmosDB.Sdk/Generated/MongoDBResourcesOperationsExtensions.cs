@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.CosmosDB
     public static partial class MongoDbResourcesOperationsExtensions
     {
         /// <summary>
-        /// Lists the MongoDB databases under an existing Azure Cosmos DB database account.
+        /// Lists the MongoDB databases under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Lists the MongoDB databases under an existing Azure Cosmos DB database account.
+        /// Lists the MongoDB databases under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -52,7 +54,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Gets the MongoDB databases under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the MongoDB databases under an existing Azure Cosmos DB database
+        /// account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -72,7 +75,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the MongoDB databases under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the MongoDB databases under an existing Azure Cosmos DB database
+        /// account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -187,7 +191,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Gets the RUs per second of the MongoDB database under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the MongoDB database under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -207,7 +212,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the RUs per second of the MongoDB database under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the MongoDB database under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -277,7 +283,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -297,7 +304,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -322,7 +330,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -342,7 +351,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -367,7 +377,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Lists the MongoDB collection under an existing Azure Cosmos DB database account.
+        /// Lists the MongoDB collection under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -387,7 +398,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Lists the MongoDB collection under an existing Azure Cosmos DB database account.
+        /// Lists the MongoDB collection under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -412,7 +424,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Gets the MongoDB collection under an existing Azure Cosmos DB database account.
+        /// Gets the MongoDB collection under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -435,7 +448,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the MongoDB collection under an existing Azure Cosmos DB database account.
+        /// Gets the MongoDB collection under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -565,7 +579,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Gets the RUs per second of the MongoDB collection under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the MongoDB collection under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -588,7 +603,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the RUs per second of the MongoDB collection under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the MongoDB collection under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -667,7 +683,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -690,7 +707,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -718,7 +736,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -741,7 +760,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -769,7 +789,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Mongo Role Definition with the given Id.
+        /// Retrieves the properties of an existing Azure Cosmos DB Mongo Role
+        /// Definition with the given Id.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -789,7 +810,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Mongo Role Definition with the given Id.
+        /// Retrieves the properties of an existing Azure Cosmos DB Mongo Role
+        /// Definition with the given Id.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -940,7 +962,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Mongo User Definition with the given Id.
+        /// Retrieves the properties of an existing Azure Cosmos DB Mongo User
+        /// Definition with the given Id.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -960,7 +983,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Mongo User Definition with the given Id.
+        /// Retrieves the properties of an existing Azure Cosmos DB Mongo User
+        /// Definition with the given Id.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1297,7 +1321,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1317,7 +1342,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1342,7 +1368,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1362,7 +1389,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1540,7 +1568,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1563,7 +1592,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1591,7 +1621,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1614,7 +1645,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

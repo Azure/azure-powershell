@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// &#39;SystemAssigned,UserAssigned&#39; includes both an implicitly created identity
         /// and a set of user assigned identities. The type &#39;None&#39; will remove any
         /// identities from the service.
-        /// Possible values include: 'SystemAssigned', 'UserAssigned',
-        /// 'SystemAssigned,UserAssigned', 'None'</param>
+        /// Possible values include: &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;,
+        /// &#39;SystemAssigned,UserAssigned&#39;, &#39;None&#39;</param>
 
         /// <param name="userAssignedIdentities">The list of user identities associated with resource. The user identity
         /// dictionary key references will be ARM resource ids in the form:

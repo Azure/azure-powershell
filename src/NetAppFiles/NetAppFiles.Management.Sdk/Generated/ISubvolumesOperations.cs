@@ -81,10 +81,12 @@ namespace Microsoft.Azure.Management.NetApp
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SubvolumeInfo>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string subvolumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates a subvolume in the path or clones the subvolume mentioned in the parentPath
+        /// Creates a subvolume in the path or clones the subvolume mentioned in the
+        /// parentPath
         /// </summary>
         /// <remarks>
-        /// Creates a subvolume in the path or clones the subvolume mentioned in the parentPath
+        /// Creates a subvolume in the path or clones the subvolume mentioned in the
+        /// parentPath
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -224,10 +226,12 @@ namespace Microsoft.Azure.Management.NetApp
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SubvolumeModel>> GetMetadataWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string subvolumeName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates a subvolume in the path or clones the subvolume mentioned in the parentPath
+        /// Creates a subvolume in the path or clones the subvolume mentioned in the
+        /// parentPath
         /// </summary>
         /// <remarks>
-        /// Creates a subvolume in the path or clones the subvolume mentioned in the parentPath
+        /// Creates a subvolume in the path or clones the subvolume mentioned in the
+        /// parentPath
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

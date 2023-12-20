@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                 success = true;                
             }
 
-            if (PassThru)
+            if (PassThru.IsPresent)
             {
                 WriteObject(success);
             }

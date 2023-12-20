@@ -112,5 +112,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ManagedIpBasedLoadBalancerBackendPoolCreate");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestManagedIpBasedLoadBalancerBackendPoolUpdate()
+        {
+            TestRunner.RunTestScript("Test-ManagedIpBasedLoadBalancerBackendPoolUpdate");
+        }
     }
 }

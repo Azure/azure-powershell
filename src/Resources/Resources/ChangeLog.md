@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Added AppRoleAssigment related commands for service principal. [#18412]
+* Added `-WithSource` parameter to `Publish-AzBicepModule` for publishing source with a module (currently experimental)
 * Supported nullable Bicep parameters in Deployment cmdlets
 
 ## Version 6.12.1

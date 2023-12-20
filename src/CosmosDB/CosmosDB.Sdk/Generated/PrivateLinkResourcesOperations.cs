@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         public CosmosDBManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets the private link resources that need to be created for a Cosmos DB account.
+        /// Gets the private link resources that need to be created for a Cosmos DB
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -282,7 +283,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Gets the private link resources that need to be created for a Cosmos DB account.
+        /// Gets the private link resources that need to be created for a Cosmos DB
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

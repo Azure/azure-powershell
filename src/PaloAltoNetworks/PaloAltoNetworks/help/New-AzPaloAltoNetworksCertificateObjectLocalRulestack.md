@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PaloAltoNetworks-help.xml
 Module Name: Az.PaloAltoNetworks
 online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/new-azpaloaltonetworkscertificateobjectlocalrulestack
 schema: 2.0.0
@@ -14,9 +14,9 @@ Create a CertificateObjectLocalRulestackResource
 
 ```
 New-AzPaloAltoNetworksCertificateObjectLocalRulestack -LocalRulestackName <String> -Name <String>
- -ResourceGroupName <String> -CertificateSelfSigned <BooleanEnum> [-SubscriptionId <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -CertificateSelfSigned <String>
  [-AuditComment <String>] [-CertificateSignerResourceId <String>] [-Description <String>] [-Etag <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 use certificate self signed
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.BooleanEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -266,4 +266,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

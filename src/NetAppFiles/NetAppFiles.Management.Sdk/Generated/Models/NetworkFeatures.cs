@@ -14,12 +14,20 @@ namespace Microsoft.Azure.Management.NetApp.Models
     public static class NetworkFeatures
     {
         /// <summary>
-        /// Basic network feature.
+        /// Basic network features.
         /// </summary>
         public const string Basic = "Basic";
         /// <summary>
-        /// Standard network feature.
+        /// Standard network features.
         /// </summary>
         public const string Standard = "Standard";
+        /// <summary>
+        /// Updating from Basic to Standard network features.
+        /// </summary>
+        public const string BasicStandard = "Basic_Standard";
+        /// <summary>
+        /// Updating from Standard to Basic network features.
+        /// </summary>
+        public const string StandardBasic = "Standard_Basic";
     }
 }

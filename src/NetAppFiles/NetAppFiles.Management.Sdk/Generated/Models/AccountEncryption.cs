@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="keySource">The encryption keySource (provider). Possible values (case-insensitive): 
         /// Microsoft.NetApp, Microsoft.KeyVault
-        /// Possible values include: 'Microsoft.NetApp', 'Microsoft.KeyVault'</param>
+        /// Possible values include: &#39;Microsoft.NetApp&#39;, &#39;Microsoft.KeyVault&#39;</param>
 
         /// <param name="keyVaultProperties">Properties provided by KeVault. Applicable if keySource is
         /// &#39;Microsoft.KeyVault&#39;.
