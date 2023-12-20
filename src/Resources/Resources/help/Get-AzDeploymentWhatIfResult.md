@@ -75,6 +75,13 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ByParameterFileWithNoTemplate
+```
+Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
+ [-ExcludeChangeType <String[]>] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ByTemplateObjectAndParameterUri
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
@@ -121,13 +128,6 @@ Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat 
 ```
 Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
  [-ExcludeChangeType <String[]>] -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByParameterFileWithNoTemplate
-```
-Get-AzDeploymentWhatIfResult [-Name <String>] -Location <String> [-ResultFormat <WhatIfResultFormat>]
- [-ExcludeChangeType <String[]>] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 

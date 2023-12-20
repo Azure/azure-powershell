@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="relationshipStatus">Status of the restore SnapMirror relationship
-        /// Possible values include: 'Idle', 'Transferring'</param>
+        /// Possible values include: &#39;Idle&#39;, &#39;Transferring&#39;</param>
 
         /// <param name="mirrorState">The status of the restore
-        /// Possible values include: 'Uninitialized', 'Mirrored', 'Broken'</param>
+        /// Possible values include: &#39;Uninitialized&#39;, &#39;Mirrored&#39;, &#39;Broken&#39;</param>
 
         /// <param name="unhealthyReason">Reason for the unhealthy restore relationship
         /// </param>

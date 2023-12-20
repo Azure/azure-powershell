@@ -20,7 +20,7 @@ using System.Linq;
 namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
 {
     public static class BackupExtensions
-    {       
+    {
         public static PSNetAppFilesBackup ConvertToPs(this Management.NetApp.Models.Backup backup)
         {
             var psBackup = new PSNetAppFilesBackup
@@ -51,14 +51,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         {
             var psBackupStatus = new PSNetAppFilesVolumeBackupStatus
             {
-               Healthy = backupStatus.Healthy,
-               MirrorState = backupStatus.MirrorState,
-               RelationshipStatus = backupStatus.RelationshipStatus,
-               UnhealthyReason = backupStatus.UnhealthyReason,
-               ErrorMessage = backupStatus.ErrorMessage,
-               LastTransferSize = backupStatus.LastTransferSize,
-               LastTransferType = backupStatus.LastTransferType,
-               TotalTransferBytes = backupStatus.TotalTransferBytes
+                Healthy = backupStatus.Healthy,
+                MirrorState = backupStatus.MirrorState,
+                RelationshipStatus = backupStatus.RelationshipStatus,
+                UnhealthyReason = backupStatus.UnhealthyReason,
+                ErrorMessage = backupStatus.ErrorMessage,
+                LastTransferSize = backupStatus.LastTransferSize,
+                LastTransferType = backupStatus.LastTransferType,
+                TotalTransferBytes = backupStatus.TotalTransferBytes
             };
             return psBackupStatus;
         }

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
 
         /// <param name="type">Indicates whether the Role Definition was built-in or user created.
-        /// Possible values include: 'BuiltInRole', 'CustomRole'</param>
+        /// Possible values include: &#39;BuiltInRole&#39;, &#39;CustomRole&#39;</param>
 
         /// <param name="databaseName">The database name for which access is being granted for this Role
         /// Definition.

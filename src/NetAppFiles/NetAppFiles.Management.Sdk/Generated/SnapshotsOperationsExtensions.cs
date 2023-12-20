@@ -289,7 +289,8 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Restore the specified files from the specified snapshot to the active filesystem
+        /// Restore the specified files from the specified snapshot to the active
+        /// filesystem
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -315,7 +316,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Restore the specified files from the specified snapshot to the active filesystem
+        /// Restore the specified files from the specified snapshot to the active
+        /// filesystem
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -511,7 +513,8 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, snapshotName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Restore the specified files from the specified snapshot to the active filesystem
+        /// Restore the specified files from the specified snapshot to the active
+        /// filesystem
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -537,7 +540,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Restore the specified files from the specified snapshot to the active filesystem
+        /// Restore the specified files from the specified snapshot to the active
+        /// filesystem
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

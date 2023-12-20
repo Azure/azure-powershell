@@ -492,3 +492,23 @@ Update an existing Azure Managed Instances for Apache Cassandra cluster.
 ### [Update-AzManagedCassandraDatacenter](Update-AzManagedCassandraDatacenter.md)
 Update an existing Azure Managed Instances for Apache Cassandra data center.
 
+### [Restore-AzCosmosDBSqlDatabase](Restore-AzCosmosDBSqlDatabase)
+Restore a deleted sql database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBSqlContainer](Restore-AzCosmosDBSqlContainer)
+Restore a deleted sql container in a database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBMongoDBDatabase](Restore-AzCosmosDBMongoDBDatabase)
+Restore a deleted mongodb database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBMongoDBCollection](Restore-AzCosmosDBMongoDBCollection)
+Restore a deleted mongodb collection in a database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBGremlinDatabase](Restore-AzCosmosDBGremlinDatabase.md)
+Restore a deleted gremlin database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBGremlinGraph](Restore-AzCosmosDBGremlinGraph.md)
+Restore a deleted gremlin graph in a database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBTable](Restore-AzCosmosDBTable.md)
+Restore a deleted table to a given timestamp in the same account

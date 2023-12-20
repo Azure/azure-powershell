@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.CosmosDB
     public partial interface IMongoDbResourcesOperations
     {
         /// <summary>
-        /// Lists the MongoDB databases under an existing Azure Cosmos DB database account.
+        /// Lists the MongoDB databases under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Lists the MongoDB databases under an existing Azure Cosmos DB database account.
+        /// Lists the MongoDB databases under an existing Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -40,10 +42,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<MongoDBDatabaseGetResults>>> ListMongoDBDatabasesWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the MongoDB databases under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the MongoDB databases under an existing Azure Cosmos DB database
+        /// account with the provided name.
         /// </summary>
         /// <remarks>
-        /// Gets the MongoDB databases under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the MongoDB databases under an existing Azure Cosmos DB database
+        /// account with the provided name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -127,10 +131,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<MongoDbResourcesDeleteMongoDbdatabaseHeaders>> DeleteMongoDBDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the RUs per second of the MongoDB database under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the MongoDB database under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <remarks>
-        /// Gets the RUs per second of the MongoDB database under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the MongoDB database under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -171,7 +177,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The RUs per second of the parameters to provide for the current MongoDB database.
+        /// The RUs per second of the parameters to provide for the current MongoDB
+        /// database.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -188,10 +195,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,MongoDbResourcesUpdateMongoDbdatabaseThroughputHeaders>> UpdateMongoDBDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
+        /// autoscale
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
+        /// autoscale
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -217,10 +226,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,MongoDbResourcesMigrateMongoDbdatabaseToAutoscaleHeaders>> MigrateMongoDBDatabaseToAutoscaleWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
+        /// throughput
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
+        /// throughput
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -246,10 +257,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,MongoDbResourcesMigrateMongoDbdatabaseToManualThroughputHeaders>> MigrateMongoDBDatabaseToManualThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the MongoDB collection under an existing Azure Cosmos DB database account.
+        /// Lists the MongoDB collection under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Lists the MongoDB collection under an existing Azure Cosmos DB database account.
+        /// Lists the MongoDB collection under an existing Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -275,10 +288,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<MongoDBCollectionGetResults>>> ListMongoDBCollectionsWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the MongoDB collection under an existing Azure Cosmos DB database account.
+        /// Gets the MongoDB collection under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Gets the MongoDB collection under an existing Azure Cosmos DB database account.
+        /// Gets the MongoDB collection under an existing Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -371,10 +386,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<MongoDbResourcesDeleteMongoDbcollectionHeaders>> DeleteMongoDBCollectionWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string collectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the RUs per second of the MongoDB collection under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the MongoDB collection under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <remarks>
-        /// Gets the RUs per second of the MongoDB collection under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the MongoDB collection under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -421,7 +438,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB collection name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The RUs per second of the parameters to provide for the current MongoDB collection.
+        /// The RUs per second of the parameters to provide for the current MongoDB
+        /// collection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -438,10 +456,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,MongoDbResourcesUpdateMongoDbcollectionThroughputHeaders>> UpdateMongoDBCollectionThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string collectionName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to
+        /// autoscale
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to
+        /// autoscale
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -470,10 +490,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,MongoDbResourcesMigrateMongoDbcollectionToAutoscaleHeaders>> MigrateMongoDBCollectionToAutoscaleWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string collectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual
+        /// throughput
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual
+        /// throughput
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -502,10 +524,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,MongoDbResourcesMigrateMongoDbcollectionToManualThroughputHeaders>> MigrateMongoDBCollectionToManualThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string collectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Mongo Role Definition with the given Id.
+        /// Retrieves the properties of an existing Azure Cosmos DB Mongo Role
+        /// Definition with the given Id.
         /// </summary>
         /// <remarks>
-        /// Retrieves the properties of an existing Azure Cosmos DB Mongo Role Definition with the given Id.
+        /// Retrieves the properties of an existing Azure Cosmos DB Mongo Role
+        /// Definition with the given Id.
         /// </remarks>
         /// <param name='mongoRoleDefinitionId'>
         /// The ID for the Role Definition {dbName.roleName}.
@@ -615,10 +639,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<MongoRoleDefinitionGetResults>>> ListMongoRoleDefinitionsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Mongo User Definition with the given Id.
+        /// Retrieves the properties of an existing Azure Cosmos DB Mongo User
+        /// Definition with the given Id.
         /// </summary>
         /// <remarks>
-        /// Retrieves the properties of an existing Azure Cosmos DB Mongo User Definition with the given Id.
+        /// Retrieves the properties of an existing Azure Cosmos DB Mongo User
+        /// Definition with the given Id.
         /// </remarks>
         /// <param name='mongoUserDefinitionId'>
         /// The ID for the User Definition {dbName.userName}.
@@ -836,7 +862,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The RUs per second of the parameters to provide for the current MongoDB database.
+        /// The RUs per second of the parameters to provide for the current MongoDB
+        /// database.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -853,10 +880,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,MongoDbResourcesUpdateMongoDbdatabaseThroughputHeaders>> BeginUpdateMongoDBDatabaseThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
+        /// autoscale
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
+        /// autoscale
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -882,10 +911,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,MongoDbResourcesMigrateMongoDbdatabaseToAutoscaleHeaders>> BeginMigrateMongoDBDatabaseToAutoscaleWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
+        /// throughput
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
+        /// throughput
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -993,7 +1024,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB collection name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The RUs per second of the parameters to provide for the current MongoDB collection.
+        /// The RUs per second of the parameters to provide for the current MongoDB
+        /// collection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1010,10 +1042,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,MongoDbResourcesUpdateMongoDbcollectionThroughputHeaders>> BeginUpdateMongoDBCollectionThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string collectionName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to
+        /// autoscale
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to
+        /// autoscale
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1042,10 +1076,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,MongoDbResourcesMigrateMongoDbcollectionToAutoscaleHeaders>> BeginMigrateMongoDBCollectionToAutoscaleWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string collectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual
+        /// throughput
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual
+        /// throughput
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

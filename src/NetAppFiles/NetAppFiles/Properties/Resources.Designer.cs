@@ -169,6 +169,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating network sibling set on {0}.
+        /// </summary>
+        internal static string UpdateNetworkSiblingSet {
+            get {
+                return ResourceManager.GetString("UpdateNetworkSiblingSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating the {0}.
         /// </summary>
         internal static string UpdateResourceMessage {

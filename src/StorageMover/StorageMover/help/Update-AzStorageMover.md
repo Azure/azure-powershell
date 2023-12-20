@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageMover-help.xml
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemover
 schema: 2.0.0
@@ -16,26 +16,27 @@ Properties not specified in the request body will be unchanged.
 ### UpdateExpanded (Default)
 ```
 Update-AzStorageMover -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### Update
 ```
-Update-AzStorageMover -Name <String> -ResourceGroupName <String> -StorageMover <IStorageMoverUpdateParameters>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzStorageMover -InputObject <IStorageMoverIdentity> -StorageMover <IStorageMoverUpdateParameters>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzStorageMover -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -StorageMover <IStorageMoverUpdateParameters> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStorageMover -InputObject <IStorageMoverIdentity> [-Description <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzStorageMover -InputObject <IStorageMoverIdentity> -StorageMover <IStorageMoverUpdateParameters>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,7 +108,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -122,7 +123,7 @@ The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases: StorageMoverName
 
 Required: True
@@ -138,7 +139,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -169,7 +170,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: False
@@ -241,4 +242,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

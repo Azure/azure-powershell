@@ -112,9 +112,9 @@ namespace Microsoft.Azure.Management.NetApp
             }
             if (accountName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$");
                 }
             }
             if (poolName == null)
@@ -398,9 +398,9 @@ namespace Microsoft.Azure.Management.NetApp
             }
             if (accountName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$");
                 }
             }
             if (poolName == null)
@@ -835,9 +835,9 @@ namespace Microsoft.Azure.Management.NetApp
             }
             if (accountName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$");
                 }
             }
             if (poolName == null)
@@ -1142,9 +1142,9 @@ namespace Microsoft.Azure.Management.NetApp
             }
             if (accountName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$");
                 }
             }
             if (poolName == null)
@@ -1439,9 +1439,9 @@ namespace Microsoft.Azure.Management.NetApp
             }
             if (accountName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$");
                 }
             }
             if (poolName == null)
@@ -1638,7 +1638,8 @@ namespace Microsoft.Azure.Management.NetApp
 
         }
         /// <summary>
-        /// Restore the specified files from the specified snapshot to the active filesystem
+        /// Restore the specified files from the specified snapshot to the active
+        /// filesystem
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1722,9 +1723,9 @@ namespace Microsoft.Azure.Management.NetApp
             }
             if (accountName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$");
                 }
             }
             if (poolName == null)

@@ -34,7 +34,7 @@ Starts the cloud service.
 Start-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 ```
 
-This command starts all the role instances that belong to the the cloud service named ContosoCS.
+This command starts all the role instances that belong to the cloud service named ContosoCS.
 
 ## PARAMETERS
 
