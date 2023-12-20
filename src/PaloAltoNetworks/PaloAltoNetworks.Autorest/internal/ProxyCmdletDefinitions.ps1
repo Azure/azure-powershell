@@ -25,12 +25,12 @@ List the operations for the provider
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.paloaltonetworks/get-azpaloaltonetworksoperation
 #>
 function Get-AzPaloAltoNetworksOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api30.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

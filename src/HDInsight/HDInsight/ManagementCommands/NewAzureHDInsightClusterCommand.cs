@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         private const string CertificateFilePathSet = "CertificateFilePath";
         private const string CertificateFileContentsSet = "CertificateFileContents";
         private const string DefaultParameterSet = "Default";
+        private const string DefaultClusterVersion = "4.0";
 
         #region These fields are marked obsolete in ClusterCreateParameters
         private string _osType;
@@ -97,6 +98,10 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "Gets or sets the type of the storage account.")]
         public StorageType? StorageAccountType { get; set; }
 
+        [Parameter(
+            HelpMessage = "Enable secure channel or not, it's an optional field.")]
+        public bool? EnableSecureChannel { get; set; }
+
         [Parameter(ValueFromPipeline = true,
             HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster.")]
         public AzureHDInsightConfig Config
@@ -110,6 +115,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     StorageAccountType = StorageAccountType ?? StorageType.AzureStorage,
                     StorageAccountResourceId = StorageAccountResourceId,
                     StorageAccountKey = StorageAccountKey,
+                    EnableSecureChannel = EnableSecureChannel,
                     WorkerNodeSize = WorkerNodeSize,
                     HeadNodeSize = HeadNodeSize,
                     EdgeNodeSize = EdgeNodeSize,
@@ -172,6 +178,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     StorageAccountKey = value.StorageAccountKey;
                 }
+                EnableSecureChannel = value.EnableSecureChannel;
                 WorkerNodeSize = value.WorkerNodeSize;
                 HeadNodeSize = value.HeadNodeSize;
                 EdgeNodeSize = value.EdgeNodeSize;
@@ -330,7 +337,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public string StorageAccountManagedIdentity { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the encryption algorithm.")]
-        [PSArgumentCompleter(JsonWebKeyEncryptionAlgorithm.RSAOAEP, JsonWebKeyEncryptionAlgorithm.RSAOAEP256, JsonWebKeyEncryptionAlgorithm.RSA15)]
+        [PSArgumentCompleter(JsonWebKeyEncryptionAlgorithm.RSAOaep, JsonWebKeyEncryptionAlgorithm.RSAOaep256, JsonWebKeyEncryptionAlgorithm.RSA15)]
         public string EncryptionAlgorithm { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the encryption key name.")]
@@ -421,7 +428,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             if (StorageAccountType == null || StorageAccountType == StorageType.AzureStorage)
             {
-                var azureStorageAccount = ClusterCreateHelper.CreateAzureStorageAccount(ClusterName, StorageAccountResourceId, StorageAccountKey, StorageContainer, this.DefaultContext.Environment.StorageEndpointSuffix);
+                var azureStorageAccount = ClusterCreateHelper.CreateAzureStorageAccount(ClusterName, StorageAccountResourceId, StorageAccountKey, StorageContainer, EnableSecureChannel, this.DefaultContext.Environment.StorageEndpointSuffix);
                 storageProfile.Storageaccounts.Add(azureStorageAccount);
             }
             else if (StorageAccountType == StorageType.AzureDataLakeStore)
@@ -430,7 +437,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
             else if (StorageAccountType == StorageType.AzureDataLakeStorageGen2)
             {
-                var adlsgen2Account = ClusterCreateHelper.CreateAdlsGen2StorageAccount(ClusterName, StorageAccountResourceId, StorageAccountKey, StorageFileSystem, StorageAccountManagedIdentity, this.DefaultContext.Environment.StorageEndpointSuffix);
+                var adlsgen2Account = ClusterCreateHelper.CreateAdlsGen2StorageAccount(ClusterName, StorageAccountResourceId, StorageAccountKey, StorageFileSystem, EnableSecureChannel, StorageAccountManagedIdentity, this.DefaultContext.Environment.StorageEndpointSuffix);
                 storageProfile.Storageaccounts.Add(adlsgen2Account);
             }
 
@@ -540,7 +547,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     KeyName = EncryptionKeyName,
                     KeyVersion = EncryptionKeyVersion,
                     VaultUri = EncryptionVaultUri,
-                    EncryptionAlgorithm = EncryptionAlgorithm != null ? EncryptionAlgorithm : JsonWebKeyEncryptionAlgorithm.RSAOAEP,
+                    EncryptionAlgorithm = EncryptionAlgorithm != null ? EncryptionAlgorithm : JsonWebKeyEncryptionAlgorithm.RSAOaep,
                     MsiResourceId = AssignedIdentity
                 };
             }
@@ -598,7 +605,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                         ComponentVersion = clusterComponentVersion,
                         Configurations = clusterConfigurations
                     },
-                    ClusterVersion = Version ?? "default",
+                    ClusterVersion = Version ?? DefaultClusterVersion,
                     KafkaRestProperties = kafkaRestProperties,
                     ComputeProfile = computeProfile,
                     OsType = OSType,

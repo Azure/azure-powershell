@@ -179,8 +179,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 
             var backupPatch = new Management.NetApp.Models.BackupPatch()
             {
-                Label = Label,
-                Tags = tagPairs
+                Label = Label                
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

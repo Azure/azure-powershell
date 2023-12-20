@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
 
         /// <param name="backupStorageRedundancy">Enum to indicate type of backup residency
-        /// Possible values include: 'Geo', 'Local', 'Zone'</param>
+        /// Possible values include: &#39;Geo&#39;, &#39;Local&#39;, &#39;Zone&#39;</param>
         public PeriodicModeProperties(int? backupIntervalInMinutes = default(int?), int? backupRetentionIntervalInHours = default(int?), string backupStorageRedundancy = default(string))
 
         {

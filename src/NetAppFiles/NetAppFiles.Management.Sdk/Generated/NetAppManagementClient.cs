@@ -49,14 +49,14 @@ namespace Microsoft.Azure.Management.NetApp
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set;}
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set;}
 
@@ -96,10 +96,6 @@ namespace Microsoft.Azure.Management.NetApp
         /// Gets the IBackupsOperations
         /// </summary>
         public virtual IBackupsOperations Backups { get; private set; }
-        /// <summary>
-        /// Gets the IAccountBackupsOperations
-        /// </summary>
-        public virtual IAccountBackupsOperations AccountBackups { get; private set; }
         /// <summary>
         /// Gets the IBackupPoliciesOperations
         /// </summary>
@@ -360,13 +356,12 @@ namespace Microsoft.Azure.Management.NetApp
             this.Snapshots = new SnapshotsOperations(this);
             this.SnapshotPolicies = new SnapshotPoliciesOperations(this);
             this.Backups = new BackupsOperations(this);
-            this.AccountBackups = new AccountBackupsOperations(this);
             this.BackupPolicies = new BackupPoliciesOperations(this);
             this.VolumeQuotaRules = new VolumeQuotaRulesOperations(this);
             this.VolumeGroups = new VolumeGroupsOperations(this);
             this.Subvolumes = new SubvolumesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2022-11-01";
+            this.ApiVersion = "2023-05-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

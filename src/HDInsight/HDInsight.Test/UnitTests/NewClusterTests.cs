@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     Domain = "domain.com",
                     DomainUsername = "username",
                     DomainUserPassword = "pass",
-                    OrganizationalUnitDN = "OUDN",
+                    OrganizationalUnitDn = "OUDN",
                     LdapsUrls = new[]
                     {
                         "ldapsurl"

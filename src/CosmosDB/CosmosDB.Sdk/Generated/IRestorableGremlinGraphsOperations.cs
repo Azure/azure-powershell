@@ -14,10 +14,18 @@ namespace Microsoft.Azure.Management.CosmosDB
     public partial interface IRestorableGremlinGraphsOperations
     {
         /// <summary>
-        /// Show the event feed of all mutations done on all the Azure Cosmos DB Gremlin graphs under a specific database. This helps in scenario where container was accidentally deleted. This API requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39; permission
+        /// Show the event feed of all mutations done on all the Azure Cosmos DB
+        /// Gremlin graphs under a specific database. This helps in scenario where
+        /// container was accidentally deleted. This API requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39;
+        /// permission
         /// </summary>
         /// <remarks>
-        /// Show the event feed of all mutations done on all the Azure Cosmos DB Gremlin graphs under a specific database. This helps in scenario where container was accidentally deleted. This API requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39; permission
+        /// Show the event feed of all mutations done on all the Azure Cosmos DB
+        /// Gremlin graphs under a specific database. This helps in scenario where
+        /// container was accidentally deleted. This API requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39;
+        /// permission
         /// </remarks>
         /// <param name='location'>
         /// Cosmos DB region, with spaces between words and each word capitalized.

@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
 
         /// <param name="status">Enum to indicate current buildout status of the region.
-        /// Possible values include: 'Uninitialized', 'Initializing',
-        /// 'InternallyReady', 'Online', 'Deleting'</param>
+        /// Possible values include: &#39;Uninitialized&#39;, &#39;Initializing&#39;,
+        /// &#39;InternallyReady&#39;, &#39;Online&#39;, &#39;Deleting&#39;</param>
         public LocationProperties(bool? supportsAvailabilityZone = default(bool?), bool? isResidencyRestricted = default(bool?), System.Collections.Generic.IList<string> backupStorageRedundancies = default(System.Collections.Generic.IList<string>), bool? isSubscriptionRegionAccessAllowedForRegular = default(bool?), bool? isSubscriptionRegionAccessAllowedForAz = default(bool?), string status = default(string))
 
         {

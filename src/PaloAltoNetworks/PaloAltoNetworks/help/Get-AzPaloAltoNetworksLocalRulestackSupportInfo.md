@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PaloAltoNetworks-help.xml
 Module Name: Az.PaloAltoNetworks
 online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/get-azpaloaltonetworkslocalrulestacksupportinfo
 schema: 2.0.0
@@ -15,14 +15,14 @@ support info for rulestack.
 ### Get (Default)
 ```
 Get-AzPaloAltoNetworksLocalRulestackSupportInfo -LocalRulestackName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-Email <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String[]>] [-Email <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzPaloAltoNetworksLocalRulestackSupportInfo -InputObject <IPaloAltoNetworksIdentity> [-Email <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -200,4 +200,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-

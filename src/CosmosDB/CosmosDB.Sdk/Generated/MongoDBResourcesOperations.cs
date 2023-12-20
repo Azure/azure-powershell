@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         public CosmosDBManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Lists the MongoDB databases under an existing Azure Cosmos DB database account.
+        /// Lists the MongoDB databases under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -282,7 +283,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Gets the MongoDB databases under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the MongoDB databases under an existing Azure Cosmos DB database
+        /// account with the provided name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -588,7 +590,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the RUs per second of the MongoDB database under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the MongoDB database under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -853,7 +856,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The RUs per second of the parameters to provide for the current MongoDB database.
+        /// The RUs per second of the parameters to provide for the current MongoDB
+        /// database.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -919,7 +923,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Lists the MongoDB collection under an existing Azure Cosmos DB database account.
+        /// Lists the MongoDB collection under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1172,7 +1177,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Gets the MongoDB collection under an existing Azure Cosmos DB database account.
+        /// Gets the MongoDB collection under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1494,7 +1500,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the RUs per second of the MongoDB collection under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the MongoDB collection under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1772,7 +1779,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB collection name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The RUs per second of the parameters to provide for the current MongoDB collection.
+        /// The RUs per second of the parameters to provide for the current MongoDB
+        /// collection.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1844,7 +1852,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Mongo Role Definition with the given Id.
+        /// Retrieves the properties of an existing Azure Cosmos DB Mongo Role
+        /// Definition with the given Id.
         /// </summary>
         /// <param name='mongoRoleDefinitionId'>
         /// The ID for the Role Definition {dbName.roleName}.
@@ -2393,7 +2402,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB Mongo User Definition with the given Id.
+        /// Retrieves the properties of an existing Azure Cosmos DB Mongo User
+        /// Definition with the given Id.
         /// </summary>
         /// <param name='mongoUserDefinitionId'>
         /// The ID for the User Definition {dbName.userName}.
@@ -3514,7 +3524,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The RUs per second of the parameters to provide for the current MongoDB database.
+        /// The RUs per second of the parameters to provide for the current MongoDB
+        /// database.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3786,7 +3797,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB database from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -4052,7 +4064,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB database from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -4882,7 +4895,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB collection name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The RUs per second of the parameters to provide for the current MongoDB collection.
+        /// The RUs per second of the parameters to provide for the current MongoDB
+        /// collection.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -5161,7 +5175,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB MongoDB collection from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -5437,7 +5452,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB MongoDB collection from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

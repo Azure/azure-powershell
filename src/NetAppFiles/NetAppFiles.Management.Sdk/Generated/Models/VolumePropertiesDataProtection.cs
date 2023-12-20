@@ -29,9 +29,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Initializes a new instance of the VolumePropertiesDataProtection class.
         /// </summary>
 
-        /// <param name="backup">Backup Properties
-        /// </param>
-
         /// <param name="replication">Replication properties
         /// </param>
 
@@ -40,10 +37,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="volumeRelocation">VolumeRelocation properties
         /// </param>
-        public VolumePropertiesDataProtection(VolumeBackupProperties backup = default(VolumeBackupProperties), ReplicationObject replication = default(ReplicationObject), VolumeSnapshotProperties snapshot = default(VolumeSnapshotProperties), VolumeRelocationProperties volumeRelocation = default(VolumeRelocationProperties))
+        public VolumePropertiesDataProtection(ReplicationObject replication = default(ReplicationObject), VolumeSnapshotProperties snapshot = default(VolumeSnapshotProperties), VolumeRelocationProperties volumeRelocation = default(VolumeRelocationProperties))
 
         {
-            this.Backup = backup;
             this.Replication = replication;
             this.Snapshot = snapshot;
             this.VolumeRelocation = volumeRelocation;
@@ -55,12 +51,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets backup Properties
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "backup")]
-        public VolumeBackupProperties Backup {get; set; }
 
         /// <summary>
         /// Gets or sets replication properties
@@ -87,7 +77,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </exception>
         public virtual void Validate()
         {
-
             if (this.Replication != null)
             {
                 this.Replication.Validate();

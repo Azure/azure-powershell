@@ -101,7 +101,7 @@ $role.Actions = @(
     "Microsoft.Support/*"
 )
 
-New-AzRoleDefinition -Role $role 
+New-AzRoleDefinition -Role $role
 ```
 
 ### Example 2: Create using JSON file

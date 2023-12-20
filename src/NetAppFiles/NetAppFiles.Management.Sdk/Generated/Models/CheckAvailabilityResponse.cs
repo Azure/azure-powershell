@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="reason">&lt;code&gt;Invalid&lt;/code&gt; indicates the name provided does not match Azure App
         /// Service naming requirements. &lt;code&gt;AlreadyExists&lt;/code&gt; indicates that the
         /// name is already in use and is therefore unavailable.
-        /// Possible values include: 'Invalid', 'AlreadyExists'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;AlreadyExists&#39;</param>
 
         /// <param name="message">If reason == invalid, provide the user with the reason why the given name
         /// is invalid, and provide the resource naming requirements so that the user

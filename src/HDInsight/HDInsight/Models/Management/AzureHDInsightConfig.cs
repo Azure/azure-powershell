@@ -43,8 +43,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public string StorageAccountKey { get; set; }
 
         /// <summary>
+        /// Enable secure channel or not, it's an optional field.
+        /// </summary>
+        public bool? EnableSecureChannel { get; set; }
+
+        /// <summary>
         /// Gets or sets the size of the Head Node.
         /// </summary>
+        /// 
         public string HeadNodeSize { get; set; }
 
         /// <summary>
