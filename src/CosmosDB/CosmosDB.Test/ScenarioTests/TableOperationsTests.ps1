@@ -269,7 +269,7 @@ function Test-TableInAccountRestoreOperationsCmdlets
           Assert-AreEqual $_.Exception.Message ("Resource with Name " + $TableName + " already exists.")
       }
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # get an existing table
       $Table = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
@@ -283,35 +283,35 @@ function Test-TableInAccountRestoreOperationsCmdlets
       $ListTables = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName
       Assert-NotNull($ListTables)
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # delete table
       $IsTableRemoved = Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -PassThru
       Assert-AreEqual $IsTableRemoved true
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # restore the deleted table
       Restore-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -RestoreTimestampInUtc $restoreTimestampInUtc
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       # list tables 
       $ListTables = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName
       Assert-NotNull($ListTables)
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       # delete table
       $IsTableRemoved = Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -PassThru
       Assert-AreEqual $IsTableRemoved true
 
-      Start-Sleep -s 50
+      Start-TestSleep -s 50
 
       # restore the deleted table
       Restore-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
 
-      Start-Sleep -s 100
+      Start-TestSleep -s 100
 
       # list tables 
       $ListTables = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName
