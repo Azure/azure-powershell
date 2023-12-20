@@ -26,6 +26,7 @@ using Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
+using System.Threading;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
@@ -249,7 +250,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 {
                     throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
                 }
-
+                bool shouldSleep = false;
                 if (storageSyncService.Identity != null && storageSyncService.Identity.PrincipalId.GetValueOrDefault(Guid.Empty) != Guid.Empty
                 && storageSyncService.UseIdentity.GetValueOrDefault(false))
                 {
@@ -265,12 +266,18 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                        storageSyncService.Identity.PrincipalId.Value,
                        Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
                        scope);
+                    shouldSleep = true;
                 }
 
                     Target = string.Join("/", resourceGroupName, storageSyncServiceName, syncGroupName, Name);
 
                 if (ShouldProcess(Target, ActionMessage))
                 {
+                    if (shouldSleep)
+                    {
+                        StorageSyncClientWrapper.VerboseLogger.Invoke($"Giving time for role assignments to reflect. Sleeping for 120 seconds...");
+                        Thread.Sleep(TimeSpan.FromSeconds(120));
+                    }
                     StorageSyncModels.CloudEndpoint resource = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.Create(
                         resourceGroupName,
                         storageSyncServiceName,

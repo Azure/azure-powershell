@@ -146,8 +146,18 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                 if (ShouldProcess(Target, ActionMessage))
                 {
-                    RegisteredServer resource = PerformServerRegistration(resourceGroupName, SubscriptionId, parentResourceName);
-                    WriteObject(resource);
+                    try
+                    {
+                        RegisteredServer resource = PerformServerRegistration(resourceGroupName, SubscriptionId, parentResourceName);
+                        WriteObject(resource);
+                    }
+                    catch(ServerRegistrationException ex)
+                    {
+                        this.StorageSyncClientWrapper.VerboseLogger.Invoke($"Registration failed with Category : {ex.Category} , ErrorCode : {ex.ExternalErrorCode} ");
+                        this.StorageSyncClientWrapper.VerboseLogger.Invoke($"Exception details : {ex}");
+                        throw;
+                    }
+                    
                 }
             });
         }
