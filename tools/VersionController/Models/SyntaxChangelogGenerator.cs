@@ -277,9 +277,25 @@ namespace VersionController.Netcore.Models
             {
                 CompareChangedParameterAliases(moduleName, oldCmdletMetadata.Name, oldParameterMetadata, newParameterMetadata);
                 CompareChangedParameterType(moduleName, oldCmdletMetadata, oldParameterMetadata, newParameterMetadata);
+                CompareChangedParameterAttribute(moduleName, oldCmdletMetadata, oldParameterMetadata, newParameterMetadata);
             }
         }
-
+        void CompareChangedParameterAttribute(string moduleName, CmdletMetadata oldCmdletMetadata, ParameterMetadata oldParameterMetadata,
+            ParameterMetadata newParameterMetadata)
+        {
+            if (oldParameterMetadata.ValidateNotNullOrEmpty != newParameterMetadata.ValidateNotNullOrEmpty)
+            {
+                diffInfo.Add(new CmdletDiffInformation()
+                {
+                    ModuleName = moduleName,
+                    CmdletName = oldCmdletMetadata.Name,
+                    Type = ChangeType.ParameterAttributeChange,
+                    ParameterName = newParameterMetadata.Name,
+                    Before = new List<string> { oldParameterMetadata.ValidateNotNullOrEmpty.ToString() },
+                    After = new List<string> { newParameterMetadata.ValidateNotNullOrEmpty.ToString() },
+                });
+            }
+        }
         private void CompareChangedParameterAliases(string moduleName, string cmdletName, ParameterMetadata oldParameterMetadata, ParameterMetadata newParameterMetadata)
         {
             if (!(oldParameterMetadata.AliasList.Count == newParameterMetadata.AliasList.Count
@@ -393,11 +409,25 @@ namespace VersionController.Netcore.Models
                 {
                     if (diffInfo[i].Type == ChangeType.CmdletAdd)
                     {
-                        sb.AppendFormat("* Added cmdlet `{0}`\n", diffInfo[i].CmdletName);
+                        if (diffInfo[i].Type == diffInfo[i-1].Type) {
+                            sb.AppendFormat(", `{0}`",diffInfo[i].CmdletName);
+                            if (i + 1 == diffInfo.Count ||diffInfo[i].Type != diffInfo[i+1].Type) {
+                                sb.AppendFormat("\n");
+                            }
+                        } else {
+                            sb.AppendFormat("* Added cmdlet `{0}`", diffInfo[i].CmdletName);
+                        }
                     }
                     else if (diffInfo[i].Type == ChangeType.CmdletRemove)
                     {
-                        sb.AppendFormat("* Removed cmdlet `{0}`\n", diffInfo[i].CmdletName);
+                        if (diffInfo[i].Type == diffInfo[i-1].Type) {
+                            sb.AppendFormat(", `{0}`",diffInfo[i].CmdletName);
+                            if (i + 1 == diffInfo.Count ||diffInfo[i].Type != diffInfo[i+1].Type) {
+                                sb.AppendFormat("\n");
+                            }
+                        } else {
+                            sb.AppendFormat("* Removed cmdlet `{0}`", diffInfo[i].CmdletName);
+                        }
                     }
                     else
                     {
