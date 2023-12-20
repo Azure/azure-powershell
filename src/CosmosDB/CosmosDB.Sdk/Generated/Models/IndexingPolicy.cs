@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
 
         /// <param name="indexingMode">Indicates the indexing mode.
-        /// Possible values include: 'consistent', 'lazy', 'none'</param>
+        /// Possible values include: &#39;consistent&#39;, &#39;lazy&#39;, &#39;none&#39;</param>
 
         /// <param name="includedPaths">List of paths to include in the indexing
         /// </param>

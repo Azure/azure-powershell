@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
                 Management.NetApp.Models.Backup anfBackup = null;
                 if (accountBackup)
                 {
-                    anfBackup = AzureNetAppFilesManagementClient.AccountBackups.Get(ResourceGroupName, AccountName,  backupName: Name);
+                    anfBackup = AzureNetAppFilesManagementClient.AccountBackups.Get(ResourceGroupName, AccountName, backupName: Name);
                 }
                 else
                 {
@@ -185,12 +185,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
                 List<PSNetAppFilesBackup> anfBackups = null;
                 if (accountBackup)
                 {
-                    var backups = AzureNetAppFilesManagementClient.AccountBackups.List(ResourceGroupName, accountName: AccountName).ToList(); 
+                    var backups = AzureNetAppFilesManagementClient.AccountBackups.List(ResourceGroupName, accountName: AccountName).ToList();
                     anfBackups = backups.ConvertToPS();
                 }
                 else
                 {
-                    //anfBackups = AzureNetAppFilesManagementClient.Backups.List(ResourceGroupName, accountName: AccountName, poolName: PoolName, volumeName: VolumeName)..Select(e => e.ConvertToPs());
                     var backups = AzureNetAppFilesManagementClient.Backups.List(ResourceGroupName, accountName: AccountName, poolName: PoolName, volumeName: VolumeName).ToList();
                     anfBackups = backups.ConvertToPS();
                 }

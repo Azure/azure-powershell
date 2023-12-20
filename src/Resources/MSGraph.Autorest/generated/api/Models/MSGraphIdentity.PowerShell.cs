@@ -120,6 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ServicePrincipalId = (string) content.GetValueForProperty("ServicePrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ServicePrincipalId, global::System.Convert.ToString);
             }
+            if (content.Contains("AppRoleAssignmentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).AppRoleAssignmentId = (string) content.GetValueForProperty("AppRoleAssignmentId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).AppRoleAssignmentId, global::System.Convert.ToString);
+            }
             if (content.Contains("GroupId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).GroupId = (string) content.GetValueForProperty("GroupId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).GroupId, global::System.Convert.ToString);
@@ -168,6 +172,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
             if (content.Contains("ServicePrincipalId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ServicePrincipalId = (string) content.GetValueForProperty("ServicePrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).ServicePrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AppRoleAssignmentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).AppRoleAssignmentId = (string) content.GetValueForProperty("AppRoleAssignmentId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMSGraphIdentityInternal)this).AppRoleAssignmentId, global::System.Convert.ToString);
             }
             if (content.Contains("GroupId"))
             {

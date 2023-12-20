@@ -26,15 +26,15 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="provisioningState">Gets the status of the VolumeQuotaRule at the time the operation was
         /// called.
-        /// Possible values include: 'Accepted', 'Creating', 'Patching', 'Deleting',
-        /// 'Moving', 'Failed', 'Succeeded'</param>
+        /// Possible values include: &#39;Accepted&#39;, &#39;Creating&#39;, &#39;Patching&#39;, &#39;Deleting&#39;,
+        /// &#39;Moving&#39;, &#39;Failed&#39;, &#39;Succeeded&#39;</param>
 
         /// <param name="quotaSizeInKiBs">Size of quota
         /// </param>
 
         /// <param name="quotaType">Type of quota
-        /// Possible values include: 'DefaultUserQuota', 'DefaultGroupQuota',
-        /// 'IndividualUserQuota', 'IndividualGroupQuota'</param>
+        /// Possible values include: &#39;DefaultUserQuota&#39;, &#39;DefaultGroupQuota&#39;,
+        /// &#39;IndividualUserQuota&#39;, &#39;IndividualGroupQuota&#39;</param>
 
         /// <param name="quotaTarget">UserID/GroupID/SID based on the quota target type. UserID and groupID can
         /// be found by running ‘id’ or ‘getent’ command for the user or group and SID

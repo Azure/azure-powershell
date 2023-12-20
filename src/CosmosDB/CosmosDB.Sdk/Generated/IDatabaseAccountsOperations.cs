@@ -69,10 +69,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DatabaseAccountGetResults>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, DatabaseAccountUpdateParameters updateParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method is preferred when performing updates on an account.
+        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method
+        /// is preferred when performing updates on an account.
         /// </summary>
         /// <remarks>
-        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method is preferred when performing updates on an account.
+        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method
+        /// is preferred when performing updates on an account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -121,10 +123,18 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DatabaseAccountsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Changes the failover priority for the Azure Cosmos DB database account. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+        /// Changes the failover priority for the Azure Cosmos DB database account. A
+        /// failover priority of 0 indicates a write region. The maximum value for a
+        /// failover priority = (total number of regions - 1). Failover priority values
+        /// must be unique for each of the regions in which the database account
+        /// exists.
         /// </summary>
         /// <remarks>
-        /// Changes the failover priority for the Azure Cosmos DB database account. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+        /// Changes the failover priority for the Azure Cosmos DB database account. A
+        /// failover priority of 0 indicates a write region. The maximum value for a
+        /// failover priority = (total number of regions - 1). Failover priority values
+        /// must be unique for each of the regions in which the database account
+        /// exists.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -147,10 +157,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DatabaseAccountsFailoverPriorityChangeHeaders>> FailoverPriorityChangeWithHttpMessagesAsync(string resourceGroupName, string accountName, FailoverPolicies failoverParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all the Azure Cosmos DB database accounts available under the subscription.
+        /// Lists all the Azure Cosmos DB database accounts available under the
+        /// subscription.
         /// </summary>
         /// <remarks>
-        /// Lists all the Azure Cosmos DB database accounts available under the subscription.
+        /// Lists all the Azure Cosmos DB database accounts available under the
+        /// subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -167,10 +179,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<DatabaseAccountGetResults>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all the Azure Cosmos DB database accounts available under the given resource group.
+        /// Lists all the Azure Cosmos DB database accounts available under the given
+        /// resource group.
         /// </summary>
         /// <remarks>
-        /// Lists all the Azure Cosmos DB database accounts available under the given resource group.
+        /// Lists all the Azure Cosmos DB database accounts available under the given
+        /// resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -216,10 +230,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DatabaseAccountListKeysResult>> ListKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the connection strings for the specified Azure Cosmos DB database account.
+        /// Lists the connection strings for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Lists the connection strings for the specified Azure Cosmos DB database account.
+        /// Lists the connection strings for the specified Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -242,10 +258,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DatabaseAccountListConnectionStringsResult>> ListConnectionStringsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Offline the specified region for the specified Azure Cosmos DB database account.
+        /// Offline the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Offline the specified region for the specified Azure Cosmos DB database account.
+        /// Offline the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -268,10 +286,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DatabaseAccountsOfflineRegionHeaders>> OfflineRegionWithHttpMessagesAsync(string resourceGroupName, string accountName, RegionForOnlineOffline regionParameterForOffline, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Online the specified region for the specified Azure Cosmos DB database account.
+        /// Online the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Online the specified region for the specified Azure Cosmos DB database account.
+        /// Online the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -294,10 +314,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DatabaseAccountsOnlineRegionHeaders>> OnlineRegionWithHttpMessagesAsync(string resourceGroupName, string accountName, RegionForOnlineOffline regionParameterForOnline, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the read-only access keys for the specified Azure Cosmos DB database account.
+        /// Lists the read-only access keys for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Lists the read-only access keys for the specified Azure Cosmos DB database account.
+        /// Lists the read-only access keys for the specified Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -320,10 +342,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DatabaseAccountListReadOnlyKeysResult>> GetReadOnlyKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the read-only access keys for the specified Azure Cosmos DB database account.
+        /// Lists the read-only access keys for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Lists the read-only access keys for the specified Azure Cosmos DB database account.
+        /// Lists the read-only access keys for the specified Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -346,10 +370,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DatabaseAccountListReadOnlyKeysResult>> ListReadOnlyKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Regenerates an access key for the specified Azure Cosmos DB database account.
+        /// Regenerates an access key for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Regenerates an access key for the specified Azure Cosmos DB database account.
+        /// Regenerates an access key for the specified Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -372,10 +398,14 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DatabaseAccountsRegenerateKeyHeaders>> RegenerateKeyWithHttpMessagesAsync(string resourceGroupName, string accountName, DatabaseAccountRegenerateKeyParameters keyToRegenerate, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Checks that the Azure Cosmos DB account name already exists. A valid account name may contain only lowercase letters, numbers, and the &#39;-&#39; character, and must be between 3 and 50 characters.
+        /// Checks that the Azure Cosmos DB account name already exists. A valid
+        /// account name may contain only lowercase letters, numbers, and the &#39;-&#39;
+        /// character, and must be between 3 and 50 characters.
         /// </summary>
         /// <remarks>
-        /// Checks that the Azure Cosmos DB account name already exists. A valid account name may contain only lowercase letters, numbers, and the &#39;-&#39; character, and must be between 3 and 50 characters.
+        /// Checks that the Azure Cosmos DB account name already exists. A valid
+        /// account name may contain only lowercase letters, numbers, and the &#39;-&#39;
+        /// character, and must be between 3 and 50 characters.
         /// </remarks>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
@@ -392,10 +422,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<bool>> CheckNameExistsWithHttpMessagesAsync(string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieves the metrics determined by the given filter for the given database account.
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Retrieves the metrics determined by the given filter for the given database account.
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -404,7 +436,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database account name.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
+        /// An OData filter expression that describes a subset of metrics to return.
+        /// The parameters that can be filtered are name.value (name of the metric, can
+        /// have an or of multiple names), startTime, endTime, and timeGrain. The
+        /// supported operator is eq.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -433,7 +468,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database account name.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
+        /// An OData filter expression that describes a subset of usages to return. The
+        /// supported parameter is name.value (name of the metric, can have an or of
+        /// multiple names).
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -505,10 +542,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DatabaseAccountGetResults>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, DatabaseAccountUpdateParameters updateParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method is preferred when performing updates on an account.
+        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method
+        /// is preferred when performing updates on an account.
         /// </summary>
         /// <remarks>
-        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method is preferred when performing updates on an account.
+        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method
+        /// is preferred when performing updates on an account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -557,10 +596,18 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DatabaseAccountsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Changes the failover priority for the Azure Cosmos DB database account. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+        /// Changes the failover priority for the Azure Cosmos DB database account. A
+        /// failover priority of 0 indicates a write region. The maximum value for a
+        /// failover priority = (total number of regions - 1). Failover priority values
+        /// must be unique for each of the regions in which the database account
+        /// exists.
         /// </summary>
         /// <remarks>
-        /// Changes the failover priority for the Azure Cosmos DB database account. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+        /// Changes the failover priority for the Azure Cosmos DB database account. A
+        /// failover priority of 0 indicates a write region. The maximum value for a
+        /// failover priority = (total number of regions - 1). Failover priority values
+        /// must be unique for each of the regions in which the database account
+        /// exists.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -583,10 +630,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DatabaseAccountsFailoverPriorityChangeHeaders>> BeginFailoverPriorityChangeWithHttpMessagesAsync(string resourceGroupName, string accountName, FailoverPolicies failoverParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Offline the specified region for the specified Azure Cosmos DB database account.
+        /// Offline the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Offline the specified region for the specified Azure Cosmos DB database account.
+        /// Offline the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -609,10 +658,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DatabaseAccountsOfflineRegionHeaders>> BeginOfflineRegionWithHttpMessagesAsync(string resourceGroupName, string accountName, RegionForOnlineOffline regionParameterForOffline, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Online the specified region for the specified Azure Cosmos DB database account.
+        /// Online the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Online the specified region for the specified Azure Cosmos DB database account.
+        /// Online the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -635,10 +686,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<DatabaseAccountsOnlineRegionHeaders>> BeginOnlineRegionWithHttpMessagesAsync(string resourceGroupName, string accountName, RegionForOnlineOffline regionParameterForOnline, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Regenerates an access key for the specified Azure Cosmos DB database account.
+        /// Regenerates an access key for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Regenerates an access key for the specified Azure Cosmos DB database account.
+        /// Regenerates an access key for the specified Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

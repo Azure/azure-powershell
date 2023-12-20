@@ -39,7 +39,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         public CosmosDBManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Show the event feed of all mutations done on all the Azure Cosmos DB SQL databases under the restorable account.  This helps in scenario where database was accidentally deleted to get the deletion time.  This API requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39; permission
+        /// Show the event feed of all mutations done on all the Azure Cosmos DB SQL
+        /// databases under the restorable account.  This helps in scenario where
+        /// database was accidentally deleted to get the deletion time.  This API
+        /// requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39;
+        /// permission
         /// </summary>
         /// <param name='location'>
         /// Cosmos DB region, with spaces between words and each word capitalized.

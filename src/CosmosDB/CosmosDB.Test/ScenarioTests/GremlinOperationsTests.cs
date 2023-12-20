@@ -50,5 +50,26 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("Test-GremlinMigrateThroughputCmdlets");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGremlinInAccountRestoreOperationsCmdlets()
+        {
+            TestRunner.RunTestScript("Test-GremlinInAccountRestoreOperationsCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGremlinInAccountRestoreOperationsNoTimestampCmdlets()
+        {
+            TestRunner.RunTestScript("Test-GremlinInAccountRestoreOperationsNoTimestampCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGremlinInAccountRestoreOperationsSharedRUResourcesCmdlets()
+        {
+            TestRunner.RunTestScript("Test-GremlinInAccountRestoreOperationsSharedRUResourcesCmdlets");
+        }
     }
 }

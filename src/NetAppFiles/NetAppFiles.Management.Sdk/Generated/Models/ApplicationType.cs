@@ -14,5 +14,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
     public static class ApplicationType
     {
         public const string SAPHana = "SAP-HANA";
+        public const string Oracle = "ORACLE";
     }
 }
