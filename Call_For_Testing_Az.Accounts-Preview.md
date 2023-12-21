@@ -35,7 +35,8 @@ In this preview version, we enable CAE when you login using Service Principal re
 
 We highly recommend you try the new feature as it improves security. You need to do some configuration on your tenant. Please refer to https://learn.microsoft.com/entra/identity/conditional-access/concept-continuous-access-evaluation for more information. 
 
-## Optimize output UX of cmdlets in Az.Accounts 
+## Optimized output UX of cmdlets in Az.Accounts 
+
 We adjusted cmdlet output format to make it more user-friendly based on the feedback of UX study of Az.Accounts. Adjustments include:
 - ordering and grouping output items to make items easy to find
 - re-prioritizing positions for output properties to highlight valuable properties
