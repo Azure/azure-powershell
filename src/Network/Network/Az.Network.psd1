@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '7.1.0'
+ModuleVersion = '7.2.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -61,10 +61,10 @@ RequiredAssemblies = 'Microsoft.Azure.PowerShell.AutoMapper.dll',
                'NetworkSecurityPerimeter.Autorest/bin/Az.NetworkSecurityPerimeter.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Network.generated.format.ps1xml', 
@@ -703,7 +703,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'Network', 'VirtualNetwork'
+        Tags = 'Azure','ResourceManager','ARM','Network','VirtualNetwork'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -715,22 +715,13 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added DefaultOutboundAccess parameter on subnet creation
-* Updated cmdlet ''New-AzPublicIpPrefix'' and ''New-PublicIpAddress'' to require Location parameter
-* Updated cmdlet ''New-AzLoadBalancerBackendAddressPool'' to support managed IP based backend
-* Added cmdlet ''New-AzSaaSNetworkVirtualAppliance'' for creating a NetworkVirtualAppliance of SaaS type.
-* Added control knobs to virtual network gateways and ExpressRoute gateways as well to cmdlets operating on those.
-* Updated cmdlets to add Hostnames property for Application gateway Listener Configuration
-	- ''Set-AzApplicationGatewayListener''
-	- ''Add-AzApplicationGatewayListener''
-	- ''New-AzApplicationGatewayListener''
-* Added cmdlet ''Remove-AzApplicationGatewayFirewallCustomRule'' to support removing custom rule in Firewall Policy.
-* Added support for new ErGWScale SKU - ErGwScale
-* Added property ''size'' to firewallPolicy and firewallPolicyRuleCollectionGroup.
-* Updated cmdlet ''New-AzBastion'', ''Set-AzBastion'' and ''Get-AzBastion'' to support Bastion features for CRUD operations'
+        ReleaseNotes = '* Fixed a few minor issues
+* Onboarded ''Microsoft.DBforPostgreSQL/flexibleServers'' to private link cmdlets
+* Fixed missing properties in PSBackendAddressPool
+* Added cmdlets of NetworkSecurityPerimeter for preview'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
@@ -740,7 +731,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
