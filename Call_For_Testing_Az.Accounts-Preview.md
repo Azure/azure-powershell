@@ -41,7 +41,8 @@ Affected cmdlets include `Get-AzContext`, `Get-AzTenant`, `Get-AzSubscription` a
 
 
 ## Fixed the authentication issue when using `FederatedToken` in Sovereign Clouds
-In Soverign Clouds, `Connect-AzAccounts` fails when using `Service Principal + Federated Token`.  The issue is currently reported on [GitHub Actions](https://github.com/Azure/login/issues/355).  
+In Soverign Clouds, `Connect-AzAccounts` fails when using `Service Principal + Federated Token`.  The issue is currently reported on [Azure Login Action](https://github.com/Azure/login/issues/355).  
+
 If you login Soverign Clouds using federated token, Please run the following cmdlet on powershell
 ```pwsh
 Connect-AzAccount -ServicePrincipal -Application $appId -FederatedToken $token -Environment $SoverignCloudName
