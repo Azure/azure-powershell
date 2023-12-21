@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed `Set-AzSqlDatabaseFailoverGroup` when going from multi-secondary to single secondary
+* Added `SecondaryComputeModel`, `AutoPauseDelayInMinutes` and `MinimumCapacity` parameters within `New-AzSqlDatabaseSecondary`
 
 ## Version 4.12.0
 * Added new parameters `MaintenanceConfigurationId`, `DnsZone` to `AzSqlInstancePool` cmdlets
