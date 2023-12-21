@@ -21,7 +21,8 @@ Azure.Identity 1.6.1 is reported with [high vulnerability](https://github.com/ad
 - Service Principal + Federated Token
 
 If you are using any of them, please try the new version to see whether everything goes well. 
-## Enable Continuous Access Evaluation (CAE) for Service Principal login methods.  
+## Enabled Continuous Access Evaluation (CAE) for Service Principal login methods.  
+
 In **Azure PowerShell client side**, we already enabled CAE for the following login method
 - Interactive 
 - Device Code 
