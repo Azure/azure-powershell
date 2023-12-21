@@ -24,9 +24,9 @@ namespace VersionController.Netcore.Models
             "ProxyCredential", "ProxyUseDefaultCredentials", "Verbose", "WarningAction", "WarningVariable"
         };
         private List<CmdletDiffInformation> diffInfo = new List<CmdletDiffInformation>();
-        public void Analyze(String srcDirs)
+        public void Analyze(String rootDirectory)
         {
-            var savedDirectory = Directory.GetCurrentDirectory();
+            var srcDirs = Path.Combine(rootDirectory, @"src\");
             var manifestFiles = Directory.EnumerateFiles(srcDirs, "*.psd1", SearchOption.AllDirectories)
                                          .Where(file =>
                                              !Path.GetDirectoryName(file)
@@ -48,8 +48,7 @@ namespace VersionController.Netcore.Models
                 CmdletLoader.ModuleMetadata = newModuleMetadata;
                 CompareModuleMetedata(oldModuleMetadata, newModuleMetadata, moduleName);
             }
-            Directory.SetCurrentDirectory(savedDirectory);
-            var markDownPath = Path.Combine(savedDirectory, "documentation/SyntaxChangelog.md");
+            var markDownPath = Path.Combine(rootDirectory, "documentation/SyntaxChangeLog.md");
             GenerateMarkdown(markDownPath);
             Console.WriteLine("Cmdlets Differences written to {0}", markDownPath);
         }
@@ -407,7 +406,7 @@ namespace VersionController.Netcore.Models
                 }
                 if (GetDescription(diffInfo[i]) != "")
                 {
-                    sb.Append("\n   * " + GetDescription(diffInfo[i]));
+                    sb.Append("\n   - " + GetDescription(diffInfo[i]));
                     if (i < diffInfo.Count - 1 && diffInfo[i + 1].CmdletName != diffInfo[i].CmdletName)
                     {
                         sb.Append("\n");

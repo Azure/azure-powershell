@@ -397,11 +397,11 @@ function Update-AzPreviewChangelog
 
 function Update-AzSyntaxChangelog
 {
-    Write-Host "starting revise SyntaxChangelog"
+    Write-Host "starting revise SyntaxChangeLog"
     $rootPath = "$PSScriptRoot\.."
     $NewVersion = (Import-PowerShellDataFile "$PSScriptRoot\Az\Az.psd1").ModuleVersion
-    Update-ChangeLog -Content "## $NewVersion - $Release" -FilePath "$rootPath\documentation\SyntaxChangelog.md"
-    $changeLog = Get-Content "$rootPath\documentation\SyntaxChangelog.md" -Raw
+    Update-ChangeLog -Content "## $NewVersion - $Release" -FilePath "$rootPath\documentation\SyntaxChangeLog.md"
+    $changeLog = Get-Content "$rootPath\documentation\SyntaxChangeLog.md" -Raw
     $regex = '####\s+(Az\.\w+)\s+(?![\d\.])'
     $matches = Select-String -Pattern $regex -InputObject $changelog -AllMatches
     foreach ($match in $matches.Matches) {
@@ -411,7 +411,7 @@ function Update-AzSyntaxChangelog
         $replacement = "#### $moduleName $newVersion `r`n"
         $changelog = $changelog -replace [regex]::Escape($match.Value), $replacement
     }
-    Set-Content -Path "$rootPath\documentation\SyntaxChangelog.md" -Value $changelog
+    Set-Content -Path "$rootPath\documentation\SyntaxChangeLog.md" -Value $changelog
 }
 
 function New-CommandMappingFile
