@@ -521,6 +521,9 @@ Lists network usages for a subscription
 ### [Get-AzNetworkVirtualAppliance](Get-AzNetworkVirtualAppliance.md)
 Get or List Network Virtual Appliances.
 
+### [Get-AzNetworkVirtualApplianceConnection](Get-AzNetworkVirtualApplianceConnection.md)
+Get or List Network Virtual Appliances connections connected to a Network Virtual Appliance.
+
 ### [Get-AzNetworkVirtualApplianceSku](Get-AzNetworkVirtualApplianceSku.md)
 Get or List available Network Virtual Appliance Skus in the inventory.
 
@@ -1329,6 +1332,9 @@ Creates a routing intent resource associated with a VirtualHub.
 ### [New-AzRoutingPolicy](New-AzRoutingPolicy.md)
 Returns an in-memory routing policy object. 
 
+### [New-AzSaaSNetworkVirtualAppliance](New-AzSaaSNetworkVirtualAppliance.md)
+Create a SaaS Network Virtual Appliance resource.
+
 ### [New-AzSecurityPartnerProvider](New-AzSecurityPartnerProvider.md)
 Creates an Azure SecurityPartnerProvider.
 
@@ -1476,6 +1482,9 @@ Removes the connection draining configuration of a back-end HTTP settings object
 
 ### [Remove-AzApplicationGatewayCustomError](Remove-AzApplicationGatewayCustomError.md)
 Removes a custom error from an application gateway.
+
+### [Remove-AzApplicationGatewayFirewallCustomRule](Remove-AzApplicationGatewayFirewallCustomRule.md)
+Removes an application gateway firewall custom rule.
 
 ### [Remove-AzApplicationGatewayFirewallPolicy](Remove-AzApplicationGatewayFirewallPolicy.md)
 Removes an application gateway firewall policy.

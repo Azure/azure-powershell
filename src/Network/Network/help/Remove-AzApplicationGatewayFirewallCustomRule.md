@@ -13,8 +13,8 @@ Removes an application gateway firewall custom rule.
 ## SYNTAX
 
 ```
-Remove-AzApplicationGatewayFirewallCustomRule -Name <String> -ResourceGroupName <String> -PolicyName <String> [-Force] [-PassThru]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzApplicationGatewayFirewallCustomRule -Name <String> -ResourceGroupName <String> -PolicyName <String>
+ [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,21 +30,6 @@ Remove-AzApplicationGatewayFirewallCustomRule -Name "ApplicationGatewayFirewallC
 This command removes the application gateway firewall custom rule named ApplicationGatewayFirewallCustomRule01 in the resource group named ResourceGroup01 in policy named PolicyName01.
 
 ## PARAMETERS
-
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -72,17 +57,16 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
-
 
 ### -Name
 The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFactoryName
+Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: True
@@ -108,12 +92,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The resource group name.
+### -PolicyName
+The policy name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFactoryName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -123,12 +107,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PolicyName
-The policy name.
+### -ResourceGroupName
+The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFactoryName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
