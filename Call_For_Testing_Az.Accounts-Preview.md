@@ -47,7 +47,7 @@ If you login Soverign Clouds using federated token, Please run the following cmd
 ```pwsh
 Connect-AzAccount -ServicePrincipal -Application $appId -FederatedToken $token -Environment $SoverignCloudName
 ```
-Please you are using GitHub action, please refer to [how to test Az.Accounts-2.14.0-preivew in GitHub Actions](https://github.com/Azure/login/issues/355#issuecomment-1865516832) for more details.
+Please you are using GitHub Actions, please refer to [how to test Az.Accounts-2.14.0-preivew in GitHub Actions](https://github.com/Azure/login/issues/355#issuecomment-1865516832) for more details.
 
 **Most of the customers will be affected and so we invite you to test the new version.**
 # How to Test 
