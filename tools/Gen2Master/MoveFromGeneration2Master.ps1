@@ -196,7 +196,7 @@ Function Move-Generation2Master {
                     }
                 }
                 Write-Host "$ScriptRoot/../ResolveTools/Resolve-Psd1.ps1"
-                & "$ScriptRoot/../ResolveTools/Resolve-Psd1.ps1" -ModuleName $ModuleName -Psd1Folder "$DestPath/$ModuleName$Psd1FolderPostfix"
+                & "$ScriptRoot/../ResolveTools/Resolve-Psd1.ps1" -ModuleName $ModuleName -ArtifactFolder "$DestPath\..\..\artifacts" -Psd1Folder "$DestPath/$ModuleName$Psd1FolderPostfix"
             }
             else
             {
