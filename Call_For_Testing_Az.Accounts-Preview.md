@@ -40,7 +40,8 @@ Affected cmdlets include `Get-AzContext`, `Get-AzTenant`, `Get-AzSubscription` a
 
 **Please note** 
 - We only adjust the visual display of output in the preview version, which means no breaking changes are introduced in output object and script will not be broken due to the lack of property even if the property is moved or hidden in display.
-- Script may be broken logically if the script assumes the certain order of outputs since we adjusted the order of output items. 
+- **Script may be broken logically** if the script assumes the certain order of outputs since we adjusted the order of output items. 
+
 
 ## Fixed the authentication issue when using “FederatedToken” in Sovereign Clouds. 
 In Soverign Clouds, `Connect-AzAccounts` is found to fail when using `Service Principal + federated token`. We also include the fix into this preivew. Please refer to https://github.com/Azure/azure-powershell/issues/23742 for more details.
