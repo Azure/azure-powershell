@@ -180,11 +180,19 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             {
                 Location = Location,
                 ActiveDirectories = (ActiveDirectory != null) ? ActiveDirectory.ConvertFromPs() : null,
-                Tags =tagPairs,
-                Encryption = Encryption?.ConvertFromPs(),
-                Identity = (IdentityType != null) ? new ManagedServiceIdentity() { Type = IdentityType, UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity> { [null] = new UserAssignedIdentity(new Guid(UserAssignedIdentity)) } } : null
+                Tags = tagPairs,
+                Encryption = Encryption?.ConvertFromPs()
             };
-
+            if (IdentityType != null)
+            {
+                var userAssingedIdentitiesDict = new Dictionary<string, UserAssignedIdentity>();
+                userAssingedIdentitiesDict.Add(UserAssignedIdentity, null);
+                netAppAccountBody.Identity = new ManagedServiceIdentity()
+                {
+                    Type = IdentityType,
+                    UserAssignedIdentities = userAssingedIdentitiesDict
+                };
+            }
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
                 var anfAccount = AzureNetAppFilesManagementClient.Accounts.Update(ResourceGroupName, Name, netAppAccountBody);
