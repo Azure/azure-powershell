@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Fixed a few minor issues
+* Onboarded `Microsoft.DBforPostgreSQL/flexibleServers` to private link cmdlets
+* Fixed missing properties in PSBackendAddressPool
 * Added cmdlets of NetworkSecurityPerimeter for preview
 
 ## Version 7.1.0
