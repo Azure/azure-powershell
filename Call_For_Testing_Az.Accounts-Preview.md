@@ -54,7 +54,7 @@ Install-Module -Name Az.Accounts -Repository PSGallery -AllowPrerelease –Force
 Run your script or `Connect-AzAccount`
 
 # When to Release the Preview features
-We are going to release these preview feature in next regular release in January.
+We are going to release these preview features in next regular release in January.
 
 # Send Feedback 
 Report your findings on [GitHub](https://github.com/Azure/azure-powershell/issues).
