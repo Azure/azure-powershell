@@ -2,7 +2,9 @@ We have just released **Az.Accounts-2.14.0-preivew**, which contains the followi
 ## Updated Az.Identity 1.6.1 to 1.10.3 to fix high vulnerability issue.  
 Azure.Identity 1.6.1, which we currently depend on, is reported with [high vulnerability](https://github.com/advisories/GHSA-5mfx-4wcx-rv27). 
 
->Please Note: Azure-PoweShell doesn't depend on the data types of Azure.Identity that cause the vulnerabiltity. Therefore it is safe to use Azure-PowerShell even it depends on Azure.Identity 1.6.1.
+> [!NOTE]  
+> Azure-PoweShell doesn't depend on the data types of Azure.Identity that cause the vulnerabiltity. Therefore it is safe to use Azure-PowerShell even it depends on Azure.Identity 1.6.1.
+
 
 To fix the issue, we update Azure.Identity to 1.10.3. However tht new version renames the token cache file from `msal.cache` to `msal.cache.cae` (or `msal.cache.cae`). In the Az.Accounts preview, we do the migration to eliminate the influence of renaming. Our customers are not expected to depend on the token cache file directly. We emphasize here again that it is highly not recommended to do so. Currently, we use token cache only in the following login methods.  
 - Interactive 
