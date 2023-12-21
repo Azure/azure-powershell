@@ -76,7 +76,7 @@ namespace VersionController
 
             ConsolidateExceptionFiles(exceptionsDirectory);
             ValidateManifest();
-            GenerateSyntaxChangelog(Path.Combine(_rootDirectory, @"src\"));
+            GenerateSyntaxChangelog(_rootDirectory);
             BumpVersions();
         }
         private static void GenerateSyntaxChangelog(string _projectDirectories)
