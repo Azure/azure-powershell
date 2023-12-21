@@ -157,7 +157,7 @@ Function Move-Generation2Master {
             New-Item "$DestPath\$ModuleName\Properties" -ItemType Directory
             # Copy the assemblyinfo file
             Copy-Template -SourceName AssemblyInfo.cs -DestPath "$DestPath\$ModuleName\Properties" -DestName AssemblyInfo.cs -ModuleName $submoduleName
-            
+            Update-MappingJson $ModuleName
         }
         # update module page
         dotnet build $slnFilePath
