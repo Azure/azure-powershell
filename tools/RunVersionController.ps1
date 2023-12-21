@@ -21,7 +21,10 @@ Param(
     [string]$GalleryName = "PSGallery",
 
     [Parameter()]
-    [string]$ArtifactsOutputPath = "$PSScriptRoot/../artifacts/Release/"
+    [string]$ArtifactsOutputPath = "$PSScriptRoot/../artifacts/Release/",
+
+    [Parameter()]
+    [switch]$GenerateSyntaxChangelog
 )
 
 enum PSVersion
@@ -520,7 +523,9 @@ switch ($PSCmdlet.ParameterSetName)
         # Refresh AzPreview.psd1
         Update-AzPreview
         Update-AzPreviewChangelog
-        Update-AzSyntaxChangelog
+        if ($GenerateSyntaxChangelog){
+            Update-AzSyntaxChangelog
+        }
         # We need to generate the upcoming-breaking-changes.md after the process of bump version in minor release
         if ([PSVersion]::MINOR -Eq $versionBump)
         {

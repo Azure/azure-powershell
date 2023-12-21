@@ -40,8 +40,10 @@ namespace VersionController.Netcore.Models
                 var moduleName = psd1FileName.Replace(".psd1", "");
                 if (ModuleFilter.IsAzureStackModule(moduleName.Replace("Az.", ""))) continue;
                 Console.WriteLine("Analyzing module: {0}", moduleName);
-                var newModuleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
                 var executingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).AbsolutePath);
+                Directory.SetCurrentDirectory(executingPath);
+                var newModuleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
+                Console.WriteLine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", ".."));
                 var filePath = Path.Combine(executingPath, "SerializedCmdlets", $"{moduleName}.json");
                 if (!File.Exists(filePath))  continue;
                 var oldModuleMetadata = ModuleMetadata.DeserializeCmdlets(filePath);
@@ -513,6 +515,10 @@ namespace VersionController.Netcore.Models
         private string GetDescription_ParameterTypeChange(CmdletDiffInformation info)
         {
             return $"Changed the type of parameter `-{info.ParameterName}` from `{info.Before[0]}` to `{info.After[0]}`";
+        }
+        private string GetDescription_ParameterAttributeChange(CmdletDiffInformation info)
+        {
+            return $"Parameter `-{info.ParameterName}` ValidateNotNullOrEmpty changed from {info.Before[0]} to {info.After[0]}";
         }
 
         private string GetDescription_OutputTypeChange(CmdletDiffInformation info)
