@@ -57,4 +57,4 @@ Run your script or `Connect-AzAccount`
 We are going to release these preview feature in next regular release in January.
 
 # Send Feedback 
-Report your findings on [GitHub](https://github.com/Azure/azure-powershell/issues)
+Report your findings on [GitHub](https://github.com/Azure/azure-powershell/issues).
