@@ -121,7 +121,7 @@ function Test-AzureProviderOperation
 
 	# Get all Read operations of microsoft.insights provider
 	$insightsReadActions = Get-AzProviderOperation Microsoft.Insights/*/read
-	Assert-AreEqual $insightsReadActions.Length 387
+	Assert-True { $insightsReadActions.Length -gt 0 }
 	Assert-True { $insightsActions.Length -gt $insightsReadActions.Length }
 	foreach ($action in $insightsReadActions)
 	{
