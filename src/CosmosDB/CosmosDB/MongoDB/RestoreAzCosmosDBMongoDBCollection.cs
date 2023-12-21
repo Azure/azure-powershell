@@ -105,13 +105,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     RestorableDatabaseAccountGetResult lastestAccountToRestore = null;
                     foreach (RestorableDatabaseAccountGetResult restorableAccount in accountsWithMatchingName)
                     {
-                        if (lastestAccountToRestore == null)
-                        {
-                            lastestAccountToRestore = restorableAccount;
-                        }
-
-                        if (restorableAccount.CreationTime.HasValue &&
-                            restorableAccount.CreationTime > lastestAccountToRestore.CreationTime)
+                        if (lastestAccountToRestore == null || (restorableAccount.CreationTime.HasValue &&
+                            restorableAccount.CreationTime > lastestAccountToRestore.CreationTime))
                         {
                             if (!restorableAccount.DeletionTime.HasValue)
                             {
@@ -122,7 +117,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
                     databaseAccount = lastestAccountToRestore;
                 }
-                else
+                
+                if (databaseAccount == null)
                 {
                     this.WriteWarning($"No database accounts found with matching account name {this.AccountName} that was alive");
                     return;
@@ -190,13 +186,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     }
                 }
 
+                //Subtracting 1 second from delete timestamp to restore till end of logchain in no timestamp restore.
                 if (latestCollectionDeleteTime < latestCollectionCreateOrRecreateTime && latestCollectionCreateOrRecreateTime < latestDatabaseDeleteTime)
                 {
-                    utcRestoreDateTime = latestDatabaseDeleteTime.AddSeconds(-2);
+                    utcRestoreDateTime = latestDatabaseDeleteTime.AddSeconds(-1);
                 }
                 else if (latestCollectionCreateOrRecreateTime < latestCollectionDeleteTime && latestCollectionDeleteTime <= latestDatabaseDeleteTime)
                 {
-                    utcRestoreDateTime = latestCollectionDeleteTime.AddSeconds(-2);
+                    utcRestoreDateTime = latestCollectionDeleteTime.AddSeconds(-1);
                 }
                 else
                 {
