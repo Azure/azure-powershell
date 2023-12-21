@@ -28,7 +28,8 @@ In this preview version, we enable CAE when you login using Service Principal re
 - Service Principal + Certificate
 - Service Principal + Federated Token.
 
-We highly recommend you try the new feature as it improves security. You need to do some configuration on your tenant. Please refer to https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-continuous-access-evaluation for more information. 
+We highly recommend you try the new feature as it improves security. You need to do some configuration on your tenant. Please refer to https://learn.microsoft.com/entra/identity/conditional-access/concept-continuous-access-evaluation for more information. 
+
 ## Optimize output UX of cmdlets in Az.Accounts 
 We decided to adjust cmdlet output format to make it more user-friendly based on the feedback of UX study of Az.Accounts. Adjustments include ordering and grouping output items to make items easy to find, re-prioritizing positions for output properties to highlight valuable properties and so on. Affected cmdlets are `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`. Take cmdlet `Get-AzContext` for example, we group outputs by TenantId and alphabetically order them then. 
 
