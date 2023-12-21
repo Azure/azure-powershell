@@ -55,7 +55,7 @@ Run the following cmdlet on PowerShell to install Az.Accounts-2.14.0-preivew
 ```pwsh
 Install-Module -Name Az.Accounts -Repository PSGallery -AllowPrerelease –Force 
 ```
-Run your script or `Connect-AzAccount`
+Run your script or `Connect-AzAccount`.
 
 # When to Release the Preview features
 We are going to release these preview features in next regular release in January.
