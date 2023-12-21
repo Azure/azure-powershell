@@ -1097,7 +1097,7 @@ namespace Microsoft.Azure.Commands.Compute
                         result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.VM.Name,
-                        parameters,
+                        parameters,null,null,
                         auxAuthHeader).GetAwaiter().GetResult();
                     }
                     catch (Exception ex)

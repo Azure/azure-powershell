@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Management.Compute
     {
         /// <summary>
         /// The operation to create or update a capacity reservation group.
-        /// When updating a capacity reservation group, only tags may be
-        /// modified. Please refer to https://aka.ms/CapacityReservation for
-        /// more details.
+        /// When updating a capacity reservation group, only tags and sharing
+        /// profile may be modified. Please refer to
+        /// https://aka.ms/CapacityReservation for more details.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -56,7 +56,8 @@ namespace Microsoft.Azure.Management.Compute
         Task<AzureOperationResponse<CapacityReservationGroup>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, CapacityReservationGroup parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The operation to update a capacity reservation group. When updating
-        /// a capacity reservation group, only tags may be modified.
+        /// a capacity reservation group, only tags and sharing profile may be
+        /// modified.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -64,8 +65,9 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='capacityReservationGroupName'>
         /// The name of the capacity reservation group.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags
+        /// <param name='parameters'>
+        /// Parameters supplied to the Update capacity reservation Group
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<CapacityReservationGroup>> UpdateWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<CapacityReservationGroup>> UpdateWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, CapacityReservationGroupUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// The operation to delete a capacity reservation group. This
         /// operation is allowed only if all the associated resources are

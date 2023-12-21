@@ -52,8 +52,9 @@ namespace Microsoft.Azure.Management.Compute
 
         /// <summary>
         /// The operation to create or update a capacity reservation group. When
-        /// updating a capacity reservation group, only tags may be modified. Please
-        /// refer to https://aka.ms/CapacityReservation for more details.
+        /// updating a capacity reservation group, only tags and sharing profile may be
+        /// modified. Please refer to https://aka.ms/CapacityReservation for more
+        /// details.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -107,7 +108,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-07-01";
+            string apiVersion = "2023-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -284,7 +285,7 @@ namespace Microsoft.Azure.Management.Compute
 
         /// <summary>
         /// The operation to update a capacity reservation group. When updating a
-        /// capacity reservation group, only tags may be modified.
+        /// capacity reservation group, only tags and sharing profile may be modified.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -292,8 +293,8 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='capacityReservationGroupName'>
         /// The name of the capacity reservation group.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags
+        /// <param name='parameters'>
+        /// Parameters supplied to the Update capacity reservation Group operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -316,7 +317,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<CapacityReservationGroup>> UpdateWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<CapacityReservationGroup>> UpdateWithHttpMessagesAsync(string resourceGroupName, string capacityReservationGroupName, CapacityReservationGroupUpdate parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -326,16 +327,15 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "capacityReservationGroupName");
             }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-07-01";
-            CapacityReservationGroupUpdate parameters = new CapacityReservationGroupUpdate();
-            if (tags != null)
-            {
-                parameters.Tags = tags;
-            }
+            string apiVersion = "2023-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -345,8 +345,8 @@ namespace Microsoft.Azure.Management.Compute
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("capacityReservationGroupName", capacityReservationGroupName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Update", tracingParameters);
             }
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-07-01";
+            string apiVersion = "2023-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -722,7 +722,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-07-01";
+            string apiVersion = "2023-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -923,7 +923,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-07-01";
+            string apiVersion = "2023-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1115,7 +1115,7 @@ namespace Microsoft.Azure.Management.Compute
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            string apiVersion = "2023-07-01";
+            string apiVersion = "2023-09-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
