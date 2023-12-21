@@ -35,9 +35,10 @@ We adjusted cmdlet output format to make it more user-friendly based on the feed
 
 Affected cmdlets include `Get-AzContext`, `Get-AzTenant`, `Get-AzSubscription` and `Invoke-AzRestMethod`. Take cmdlet `Get-AzContext` for example, we group outputs by TenantId and alphabetically order them then. 
 
-**Please note** 
-- We only adjust the visual display of output in the preview version, which means no breaking changes are introduced in output object and script will not be broken due to the lack of property even if the property is moved or hidden in display.
-- **Script may be broken logically** if the script assumes the certain order of outputs since we adjusted the order of output items. 
+> [!NOTE]  
+> - We only adjust the visual display of output in the preview version, which means no breaking changes are introduced in output object and script will not be broken due to the lack of property even if the property is moved or hidden in display.
+> - **Script may be broken logically** if the script assumes the certain order of outputs since we adjusted the order of output items. 
+
 
 ## Fixed the authentication issue when using `FederatedToken` in Sovereign Clouds
 In Soverign Clouds, `Connect-AzAccounts` fails when using `Service Principal + Federated Token`.  The issue is currently reported on [GitHub Actions](https://github.com/Azure/login/issues/355).  
