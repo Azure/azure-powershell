@@ -223,5 +223,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`GROUPINGLANDSCAPE <ISapLandscapeMonitorSidMapping[]>`: Gets or sets the list of landscape to SID mappings.
+  - `[Name <String>]`: Gets or sets the name of the grouping.
+  - `[TopSid <String[]>]`: Gets or sets the list of SID's.
+
+`GROUPINGSAPAPPLICATION <ISapLandscapeMonitorSidMapping[]>`: Gets or sets the list of Sap Applications to SID mappings.
+  - `[Name <String>]`: Gets or sets the name of the grouping.
+  - `[TopSid <String[]>]`: Gets or sets the list of SID's.
+
+`TOPMETRICSTHRESHOLD <ISapLandscapeMonitorMetricThresholds[]>`: Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
+  - `[Green <Single?>]`: Gets or sets the threshold value for Green.
+  - `[Name <String>]`: Gets or sets the name of the threshold.
+  - `[Red <Single?>]`: Gets or sets the threshold value for Red.
+  - `[Yellow <Single?>]`: Gets or sets the threshold value for Yellow.
+
 ## RELATED LINKS
 

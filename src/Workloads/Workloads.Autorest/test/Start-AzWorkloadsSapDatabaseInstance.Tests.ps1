@@ -24,4 +24,14 @@ Describe 'Start-AzWorkloadsSapDatabaseInstance' {
         $startResponseId = Start-AzWorkloadsSapDatabaseInstance -InputObject $env.DbServerIdSub2
         $startResponseId.Status | Should -Be $env.ProvisioningState
     }
+	
+	It 'StartWithVM' {
+        $startResponse = Start-AzWorkloadsSapDatabaseInstance -Name $env.SapDatabseInstanceName -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName -StartVM
+        $startResponse.Status | Should -Be $env.ProvisioningState
+    }
+
+    It 'StartViaIdentityWithVM' {
+        $startResponseId = Start-AzWorkloadsSapDatabaseInstance -InputObject $env.DbServerIdSub2 -StartVM
+        $startResponseId.Status | Should -Be $env.ProvisioningState
+    }
 }

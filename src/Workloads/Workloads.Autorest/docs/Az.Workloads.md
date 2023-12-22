@@ -117,16 +117,13 @@ Stops the SAP Application, that is the Application server instances and Central 
 Patches the Tags field of a SAP monitor for the specified subscription, resource group, and SAP monitor name.
 
 ### [Update-AzWorkloadsSapApplicationInstance](Update-AzWorkloadsSapApplicationInstance.md)
-Puts the SAP Application Server Instance resource.
+Updates the SAP Application server instance resource.
 
 ### [Update-AzWorkloadsSapCentralInstance](Update-AzWorkloadsSapCentralInstance.md)
 Updates the SAP Central Services Instance resource.
 
-
-This can be used to update tags on the resource.
-
 ### [Update-AzWorkloadsSapDatabaseInstance](Update-AzWorkloadsSapDatabaseInstance.md)
-Updates the Database resource.
+Updates the Database instance resource.
 
 ### [Update-AzWorkloadsSapLandscapeMonitor](Update-AzWorkloadsSapLandscapeMonitor.md)
 Patches the SAP Landscape Monitor Dashboard for the specified subscription, resource group, and SAP monitor name.
