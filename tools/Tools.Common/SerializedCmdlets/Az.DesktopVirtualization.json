@@ -55244,7 +55244,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IMaintenanceWindowPatchProperties": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IMaintenanceWindowPatchProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowPatchProperties, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IMaintenanceWindowPatchProperties, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DayOfWeek": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek]",
         "Hour": "System.Nullable`1[System.Int32]"
