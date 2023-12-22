@@ -39,12 +39,12 @@ New-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                             -ShowInFeed
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IApplicationGroup
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroup
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdapplicationgroup
 #>
 function New-AzWvdApplicationGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IApplicationGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
