@@ -695,12 +695,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IExpandMsixImage",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IExpandMsixImage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IExpandMsixImage",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IExpandMsixImage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "PackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-              "PackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
+              "PackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+              "PackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
               "IsActive": "System.Nullable`1[System.Boolean]",
               "IsRegularRegistration": "System.Nullable`1[System.Boolean]",
               "CertificateExpiry": "System.Nullable`1[System.DateTime]",
@@ -778,9 +778,9 @@
         {
           "Name": "MsixImageUri",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixImageUri",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixImageUri, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixImageUri",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixImageUri, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Uri": "System.String"
             }
@@ -1095,9 +1095,9 @@
               "ParameterMetadata": {
                 "Name": "MsixImageUri",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixImageUri",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixImageUri, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixImageUri",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixImageUri, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Uri": "System.String"
                   }
@@ -1424,9 +1424,9 @@
               "ParameterMetadata": {
                 "Name": "MsixImageUri",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixImageUri",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixImageUri, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixImageUri",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixImageUri, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Uri": "System.String"
                   }
@@ -1681,12 +1681,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IAppAttachPackage",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IAppAttachPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IAppAttachPackage",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IAppAttachPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "ImagePackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-              "ImagePackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
+              "ImagePackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+              "ImagePackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "FailHealthCheckOnStagingFailure": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.FailHealthCheckOnStagingFailure]",
@@ -2608,9 +2608,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IApplication",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IApplication, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CommandLineSetting": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting",
               "IconContent": "System.Byte[]",
@@ -3478,9 +3478,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroup, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IApplicationGroup",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IApplicationGroup, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ApplicationGroupType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -4465,9 +4465,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IDesktop",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IDesktop, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IDesktop",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IDesktop, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IconContent": "System.Byte[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -5317,12 +5317,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IHostPool",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IHostPool, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20.IPrivateEndpointConnection[]",
-              "AgentUpdateMaintenanceWindow": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties[]",
+              "AgentUpdateMaintenanceWindow": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowProperties[]",
               "HostPoolType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType",
               "LoadBalancerType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType",
               "PreferredAppGroupType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType",
@@ -6331,9 +6331,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IRegistrationInfo",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IRegistrationInfo, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RegistrationTokenOperation": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RegistrationTokenOperation]",
               "ExpirationTime": "System.Nullable`1[System.DateTime]",
@@ -6911,12 +6911,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackage",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackage",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "PackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-              "PackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
+              "PackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+              "PackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "IsActive": "System.Nullable`1[System.Boolean]",
@@ -7769,9 +7769,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IPrivateEndpointConnectionWithSystemData",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IPrivateEndpointConnectionWithSystemData, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IPrivateEndpointConnectionWithSystemData",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IPrivateEndpointConnectionWithSystemData, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -9115,9 +9115,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IPrivateLinkResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IPrivateLinkResource, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IPrivateLinkResource",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IPrivateLinkResource, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "GroupId": "System.String",
               "RequiredMember": "System.String[]",
@@ -9885,9 +9885,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.RegistrationInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.RegistrationInfo, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .RegistrationInfo",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .RegistrationInfo, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RegistrationTokenOperation": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RegistrationTokenOperation]",
               "ExpirationTime": "System.Nullable`1[System.DateTime]",
@@ -9902,7 +9902,7 @@
                     "Type": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IRegistrationInfo"
               },
               {
                 "Name": "ToJson",
@@ -9926,7 +9926,7 @@
                     "Type": "System.Collections.IDictionary"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IRegistrationInfo"
               },
               {
                 "Name": "DeserializeFromPSObject",
@@ -9936,7 +9936,7 @@
                     "Type": "System.Management.Automation.PSObject"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IRegistrationInfo"
               },
               {
                 "Name": "FromJsonString",
@@ -9946,7 +9946,7 @@
                     "Type": "System.String"
                   }
                 ],
-                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo"
+                "ReturnType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IRegistrationInfo"
               },
               {
                 "Name": "ToJsonString",
@@ -10260,12 +10260,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlan",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlan, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "HostPoolReference": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]",
-              "Schedule": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]",
+              "HostPoolReference": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[]",
+              "Schedule": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "HostPoolType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ScalingHostPoolType]",
@@ -11469,9 +11469,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlanPersonalSchedule",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlanPersonalSchedule, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DaysOfWeek": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -12340,9 +12340,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPooledSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPooledSchedule, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlanPooledSchedule",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlanPooledSchedule, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DaysOfWeek": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -13202,11 +13202,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHost",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHost, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .ISessionHost",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .ISessionHost, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "HealthCheckResult": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHostHealthCheckReport[]",
+              "HealthCheckResult": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .ISessionHostHealthCheckReport[]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status]",
@@ -14066,9 +14066,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IStartMenuItem",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IStartMenuItem, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IStartMenuItem",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IStartMenuItem, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IconIndex": "System.Nullable`1[System.Int32]",
               "AppAlias": "System.String",
@@ -14430,9 +14430,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IUserSession",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IUserSession, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IUserSession",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IUserSession, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ApplicationType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationType]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -15553,9 +15553,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IWorkspace",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IWorkspace, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20.IPrivateEndpointConnection[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -16500,12 +16500,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IAppAttachPackage",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IAppAttachPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IAppAttachPackage",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IAppAttachPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "ImagePackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-              "ImagePackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
+              "ImagePackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+              "ImagePackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "FailHealthCheckOnStagingFailure": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.FailHealthCheckOnStagingFailure]",
@@ -16594,9 +16594,9 @@
         {
           "Name": "ImportPackageInfoRequest",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IImportPackageInfoRequest",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IImportPackageInfoRequest, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IImportPackageInfoRequest",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IImportPackageInfoRequest, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PackageArchitecture": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.AppAttachPackageArchitectures]",
               "Path": "System.String"
@@ -16936,9 +16936,9 @@
               "ParameterMetadata": {
                 "Name": "ImportPackageInfoRequest",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IImportPackageInfoRequest",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IImportPackageInfoRequest, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IImportPackageInfoRequest",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IImportPackageInfoRequest, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "PackageArchitecture": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.AppAttachPackageArchitectures]",
                     "Path": "System.String"
@@ -17281,9 +17281,9 @@
               "ParameterMetadata": {
                 "Name": "ImportPackageInfoRequest",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IImportPackageInfoRequest",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IImportPackageInfoRequest, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IImportPackageInfoRequest",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IImportPackageInfoRequest, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "PackageArchitecture": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.AppAttachPackageArchitectures]",
                     "Path": "System.String"
@@ -17539,12 +17539,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IAppAttachPackage",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IAppAttachPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IAppAttachPackage",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IAppAttachPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "ImagePackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-              "ImagePackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
+              "ImagePackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+              "ImagePackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "FailHealthCheckOnStagingFailure": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.FailHealthCheckOnStagingFailure]",
@@ -17729,20 +17729,20 @@
         {
           "Name": "ImagePackageApplication",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications"
           },
           "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "ImagePackageDependency",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -17929,16 +17929,16 @@
         {
           "Name": "AppAttachPackage",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.AppAttachPackage",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.AppAttachPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .AppAttachPackage",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .AppAttachPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IIdentity",
               "Plan": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IPlan",
               "Tag": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceModelWithAllowedPropertySetTags",
               "Sku": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISku",
-              "ImagePackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-              "ImagePackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
+              "ImagePackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+              "ImagePackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "FailHealthCheckOnStagingFailure": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.FailHealthCheckOnStagingFailure]",
@@ -18444,10 +18444,10 @@
               "ParameterMetadata": {
                 "Name": "ImagePackageApplication",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -18460,10 +18460,10 @@
               "ParameterMetadata": {
                 "Name": "ImagePackageDependency",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -19041,16 +19041,16 @@
               "ParameterMetadata": {
                 "Name": "AppAttachPackage",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.AppAttachPackage",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.AppAttachPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .AppAttachPackage",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .AppAttachPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IIdentity",
                     "Plan": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IPlan",
                     "Tag": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceModelWithAllowedPropertySetTags",
                     "Sku": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISku",
-                    "ImagePackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-                    "ImagePackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
+                    "ImagePackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+                    "ImagePackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
                     "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
                     "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
                     "FailHealthCheckOnStagingFailure": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.FailHealthCheckOnStagingFailure]",
@@ -19410,9 +19410,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IApplication",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IApplication, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CommandLineSetting": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting",
               "IconContent": "System.Byte[]",
@@ -20523,9 +20523,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroup, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IApplicationGroup",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IApplicationGroup, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ApplicationGroupType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -21308,12 +21308,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IHostPool",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IHostPool, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20.IPrivateEndpointConnection[]",
-              "AgentUpdateMaintenanceWindow": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties[]",
+              "AgentUpdateMaintenanceWindow": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowProperties[]",
               "HostPoolType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType",
               "LoadBalancerType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType",
               "PreferredAppGroupType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType",
@@ -21442,10 +21442,10 @@
         {
           "Name": "AgentUpdateMaintenanceWindow",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowProperties[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowProperties[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowProperties"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -22311,10 +22311,10 @@
               "ParameterMetadata": {
                 "Name": "AgentUpdateMaintenanceWindow",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowProperties[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowProperties[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowProperties"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -23068,12 +23068,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackage",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackage",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "PackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-              "PackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
+              "PackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+              "PackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "IsActive": "System.Nullable`1[System.Boolean]",
@@ -23193,20 +23193,20 @@
         {
           "Name": "PackageApplication",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications"
           },
           "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "PackageDependency",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -23578,10 +23578,10 @@
               "ParameterMetadata": {
                 "Name": "PackageApplication",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -23594,10 +23594,10 @@
               "ParameterMetadata": {
                 "Name": "PackageDependency",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -24134,9 +24134,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IRegistrationInfo",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IRegistrationInfo, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RegistrationTokenOperation": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RegistrationTokenOperation]",
               "ExpirationTime": "System.Nullable`1[System.DateTime]",
@@ -24446,12 +24446,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlan",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlan, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "HostPoolReference": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]",
-              "Schedule": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]",
+              "HostPoolReference": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[]",
+              "Schedule": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "HostPoolType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ScalingHostPoolType]",
@@ -24541,10 +24541,10 @@
         {
           "Name": "HostPoolReference",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -24641,10 +24641,10 @@
         {
           "Name": "Schedule",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -24888,10 +24888,10 @@
               "ParameterMetadata": {
                 "Name": "HostPoolReference",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -25054,10 +25054,10 @@
               "ParameterMetadata": {
                 "Name": "Schedule",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -25283,9 +25283,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlanPersonalSchedule",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlanPersonalSchedule, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DaysOfWeek": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -26350,9 +26350,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPooledSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPooledSchedule, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlanPooledSchedule",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlanPooledSchedule, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DaysOfWeek": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -27192,9 +27192,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IWorkspace",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IWorkspace, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20.IPrivateEndpointConnection[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -27954,9 +27954,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IWorkspace",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IWorkspace, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20.IPrivateEndpointConnection[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -37694,9 +37694,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IWorkspace",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IWorkspace, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20.IPrivateEndpointConnection[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -38016,12 +38016,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IAppAttachPackage",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IAppAttachPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IAppAttachPackage",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IAppAttachPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "ImagePackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-              "ImagePackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
+              "ImagePackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+              "ImagePackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "FailHealthCheckOnStagingFailure": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.FailHealthCheckOnStagingFailure]",
@@ -38214,20 +38214,20 @@
         {
           "Name": "ImagePackageApplication",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications"
           },
           "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "ImagePackageDependency",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -38306,16 +38306,16 @@
         {
           "Name": "AppAttachPackage",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.AppAttachPackage",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.AppAttachPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .AppAttachPackage",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .AppAttachPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IIdentity",
               "Plan": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IPlan",
               "Tag": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceModelWithAllowedPropertySetTags",
               "Sku": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISku",
-              "ImagePackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-              "ImagePackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
+              "ImagePackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+              "ImagePackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "FailHealthCheckOnStagingFailure": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.FailHealthCheckOnStagingFailure]",
@@ -38499,16 +38499,16 @@
               "ParameterMetadata": {
                 "Name": "AppAttachPackage",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.AppAttachPackage",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.AppAttachPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .AppAttachPackage",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .AppAttachPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IIdentity",
                     "Plan": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IPlan",
                     "Tag": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.IResourceModelWithAllowedPropertySetTags",
                     "Sku": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api10.ISku",
-                    "ImagePackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-                    "ImagePackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
+                    "ImagePackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+                    "ImagePackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
                     "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
                     "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
                     "FailHealthCheckOnStagingFailure": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.FailHealthCheckOnStagingFailure]",
@@ -38921,10 +38921,10 @@
               "ParameterMetadata": {
                 "Name": "ImagePackageApplication",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -38937,10 +38937,10 @@
               "ParameterMetadata": {
                 "Name": "ImagePackageDependency",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -39382,10 +39382,10 @@
               "ParameterMetadata": {
                 "Name": "ImagePackageApplication",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -39398,10 +39398,10 @@
               "ParameterMetadata": {
                 "Name": "ImagePackageDependency",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -39960,9 +39960,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IApplication",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IApplication, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CommandLineSetting": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting",
               "IconContent": "System.Byte[]",
@@ -41355,9 +41355,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplicationGroup, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IApplicationGroup",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IApplicationGroup, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ApplicationGroupType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -42166,9 +42166,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IDesktop",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IDesktop, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IDesktop",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IDesktop, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IconContent": "System.Byte[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -42944,12 +42944,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IHostPool",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IHostPool, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20.IPrivateEndpointConnection[]",
-              "AgentUpdateMaintenanceWindow": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties[]",
+              "AgentUpdateMaintenanceWindow": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowProperties[]",
               "HostPoolType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType",
               "LoadBalancerType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType",
               "PreferredAppGroupType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType",
@@ -43050,10 +43050,10 @@
         {
           "Name": "AgentUpdateMaintenanceWindow",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowPatchProperties[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowPatchProperties[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowPatchProperties"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -43381,10 +43381,10 @@
               "ParameterMetadata": {
                 "Name": "AgentUpdateMaintenanceWindow",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowPatchProperties[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowPatchProperties[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowPatchProperties"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -43875,10 +43875,10 @@
               "ParameterMetadata": {
                 "Name": "AgentUpdateMaintenanceWindow",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowPatchProperties[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowPatchProperties[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowPatchProperties"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -44337,10 +44337,10 @@
               "ParameterMetadata": {
                 "Name": "AgentUpdateMaintenanceWindow",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowPatchProperties[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowPatchProperties[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowPatchProperties"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -44806,12 +44806,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackage",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackage",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackage, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "PackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-              "PackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
+              "PackageApplication": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+              "PackageDependency": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "IsActive": "System.Nullable`1[System.Boolean]",
@@ -45590,12 +45590,12 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlan",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlan, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "HostPoolReference": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]",
-              "Schedule": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]",
+              "HostPoolReference": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[]",
+              "Schedule": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "HostPoolType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ScalingHostPoolType]",
@@ -45702,20 +45702,20 @@
         {
           "Name": "HostPoolReference",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference"
           },
           "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "Schedule",
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule"
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -45908,10 +45908,10 @@
               "ParameterMetadata": {
                 "Name": "HostPoolReference",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -45924,10 +45924,10 @@
               "ParameterMetadata": {
                 "Name": "Schedule",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -46163,10 +46163,10 @@
               "ParameterMetadata": {
                 "Name": "HostPoolReference",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -46179,10 +46179,10 @@
               "ParameterMetadata": {
                 "Name": "Schedule",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -46386,10 +46386,10 @@
               "ParameterMetadata": {
                 "Name": "HostPoolReference",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -46402,10 +46402,10 @@
               "ParameterMetadata": {
                 "Name": "Schedule",
                 "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule"
+                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -46571,9 +46571,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlanPersonalSchedule",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlanPersonalSchedule, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DaysOfWeek": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -48830,9 +48830,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPooledSchedule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPooledSchedule, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlanPooledSchedule",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingPlanPooledSchedule, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DaysOfWeek": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -50594,11 +50594,11 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHost",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHost, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .ISessionHost",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .ISessionHost, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "HealthCheckResult": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHostHealthCheckReport[]",
+              "HealthCheckResult": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .ISessionHostHealthCheckReport[]",
               "SystemDataLastModifiedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
               "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status]",
@@ -51438,9 +51438,9 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+            "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IWorkspace",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IWorkspace, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20.IPrivateEndpointConnection[]",
               "SystemDataCreatedByType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CreatedByType]",
@@ -52521,16 +52521,16 @@
       "Name": "System.Type",
       "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications"
+    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageApplications, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "RawIcon": "System.Byte[]",
         "RawPng": "System.Byte[]",
@@ -52547,16 +52547,16 @@
       "AssemblyQualifiedName": "System.Byte[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "ElementType": "System.Byte"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies"
+    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMsixPackageDependencies, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DependencyName": "System.String",
         "MinVersion": "System.String",
@@ -53270,16 +53270,16 @@
         }
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties"
+    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowProperties[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowProperties[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowProperties[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowProperties"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowProperties": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowProperties, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DayOfWeek": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek]",
         "Hour": "System.Nullable`1[System.Int32]"
@@ -53918,10 +53918,10 @@
         }
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IRegistrationInfo": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IRegistrationInfo",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IRegistrationInfo, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "RegistrationTokenOperation": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RegistrationTokenOperation]",
         "ExpirationTime": "System.Nullable`1[System.DateTime]",
@@ -53960,31 +53960,31 @@
         }
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference"
+    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingHostPoolReference, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ScalingPlanEnabled": "System.Nullable`1[System.Boolean]",
         "HostPoolArmPath": "System.String"
       }
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule"
+    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IScalingSchedule, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "RampDownLoadBalancingAlgorithm": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm]",
         "OffPeakLoadBalancingAlgorithm": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostLoadBalancingAlgorithm]",
@@ -54454,16 +54454,16 @@
         }
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHostHealthCheckReport[]": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHostHealthCheckReport[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHostHealthCheckReport[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHostHealthCheckReport"
+    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .ISessionHostHealthCheckReport[]": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .ISessionHostHealthCheckReport[]",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .ISessionHostHealthCheckReport[], Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .ISessionHostHealthCheckReport"
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHostHealthCheckReport": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHostHealthCheckReport",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHostHealthCheckReport, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .ISessionHostHealthCheckReport": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .ISessionHostHealthCheckReport",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .ISessionHostHealthCheckReport, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "HealthCheckName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HealthCheckName]",
         "HealthCheckResult": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HealthCheckResult]",
@@ -55241,10 +55241,10 @@
         }
       ]
     },
-    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties": {
-      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905",
-      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowPatchProperties": {
+      "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview ",
+      "Name": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowPatchProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview .IMaintenanceWindowPatchProperties, Az.DesktopVirtualization.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DayOfWeek": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DayOfWeek]",
         "Hour": "System.Nullable`1[System.Int32]"
