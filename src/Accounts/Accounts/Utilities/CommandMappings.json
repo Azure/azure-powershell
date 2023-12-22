@@ -4662,6 +4662,7 @@
       "Remove-AzNetworkVirtualAppliance": {},
       "Update-AzNetworkVirtualAppliance": {},
       "Get-AzNetworkVirtualApplianceConnection": {},
+      "Update-AzNetworkVirtualApplianceConnection": {},
       "Get-AzVirtualApplianceSite": {},
       "New-AzVirtualApplianceSite": {},
       "Remove-AzVirtualApplianceSite": {},

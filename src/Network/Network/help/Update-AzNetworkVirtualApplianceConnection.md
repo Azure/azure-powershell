@@ -1,59 +1,73 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworkvirtualapplianceconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/update-aznetworkvirtualappliance
 schema: 2.0.0
 ---
 
-# Get-AzNetworkVirtualApplianceConnection
+# Update-AzNetworkVirtualApplianceConnection
 
 ## SYNOPSIS
-Get or List Network Virtual Appliances connections connected to a Network Virtual Appliance.
+Update or Change a Network Virtual Appliance resource.
 
 ## SYNTAX
 
+
 ### ResourceNameParameterSet (Default)
 ```
-Get-AzNetworkVirtualApplianceConnection -ResourceGroupName <String> -VirtualApplianceName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Update-AzNetworkVirtualApplianceConnection -ResourceGroupName <string> -VirtualApplianceName <string> -Name <string> 
+ [-RoutingConfiguration <PSRoutingConfiguration> ]  [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceObjectParameterSet
 ```
-Get-AzNetworkVirtualApplianceConnection -VirtualAppliance <PSNetworkVirtualAppliance> [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Update-AzNetworkVirtualApplianceConnection -ResourceGroupName <string> -VirtualAppliance <PSNetworkVirtualAppliance> -Name <string> 
+ [-RoutingConfiguration <PSRoutingConfiguration> ]  [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzNetworkVirtualApplianceConnection -VirtualApplianceResourceId <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]  [<CommonParameters>]
+Update-AzNetworkVirtualApplianceConnection -ResourceGroupName <string> -VirtualApplianceResourceId <string> -Name <string> 
+ [-RoutingConfiguration <PSRoutingConfiguration> ]  [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+
 ## DESCRIPTION
-The Get-AzNetworkVirtualApplianceConnection commands gets or lists connections connected to a Network Virtual Appliance.
+The Update-AzNetworkVirtualApplianceConnectiuon modifies a Network Virtual Appliance Connection resource.
 
 ## EXAMPLES
 
 ### Example 1
-
 ```powershell
-Get-AzNetworkVirtualApplianceConnection -ResourceGroupName testrg -VirtualApplianceName nva
+$rt1 = Get-AzVHubRouteTable -ResourceGroupName testrg -VirtualHubName vhub1 -Name "noneRouteTable"  
+$routingconfig = New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -Label @("none") -Id @($rt1.Id)       
+Update-AzNetworkVirtualApplianceConnection -ResourceGroupName testrg -VirtualApplianceName nva -Name defaultConnection -RoutingConfiguration $routingconfig
 ```
 
+Modify the connection Routing Configuration. Set Associated Route table to none and Propagate to none route Table
 ```output
 Name                   : defaultConnection
 ProvisioningState      : Succeeded
 EnableInternetSecurity : False
-BgpPeerAddress         : []
-Asn                    : 65222
+BgpPeerAddress         : {10.2.112.5, 10.2.112.6}
+Asn                    : 64512
 TunnelIdentifier       : 0
 RoutingConfiguration   : {
                            "AssociatedRouteTable": {
-                             "Id":"/subscriptions/{subid}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualHubs/{hub-name}//hubRouteTables/defaultRouteTable"
+                             "Id": "/subscriptions/{subscriptionId}/resourceGroups/testrg/providers/Microsoft.Network/virtualHubs
+                         /vhub1/hubRouteTables/noneRouteTable"
                            },
                            "PropagatedRouteTables": {
-                             "Labels": [],
+                             "Labels": [
+                               "none"
+                             ],
                              "Ids": [
                                {
-                                 "Id": "/subscriptions/{subid}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualHubs/{hub-name}//hubRouteTables/defaultRouteTable"
+                                 "Id": "/subscriptions/{subscriptionId}/resourceGroups/testrg/providers/Microsoft.Network/virtualHubs
+                         /vhub1/hubRouteTables/noneRouteTable"
                                }
                              ]
                            },
@@ -62,41 +76,7 @@ RoutingConfiguration   : {
                          }
 ```
 
-The above will gets the connection from "testRG" resource group using Resource group and Parent NVA name
 
-
-### Example 2
-
-```powershell
-$nva = Get-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva
-Get-AzNetworkVirtualApplianceConnection -VirtualAppliance $nva
-```
-
-```output
-Name                   : defaultConnection
-ProvisioningState      : Succeeded
-EnableInternetSecurity : False
-BgpPeerAddress         : []
-Asn                    : 65222
-TunnelIdentifier       : 0
-RoutingConfiguration   : {
-                           "AssociatedRouteTable": {
-                             "Id":"/subscriptions/{subid}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualHubs/{hub-name}//hubRouteTables/defaultRouteTable"
-                           },
-                           "PropagatedRouteTables": {
-                             "Labels": [],
-                             "Ids": [
-                               {
-                                 "Id": "/subscriptions/{subid}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualHubs/{hub-name}//hubRouteTables/defaultRouteTable"
-                               }
-                             ]
-                           },
-                           "InboundRouteMap": {},
-                           "OutboundRouteMap": {}
-                         }
-```
-
-This cmdlet gets the NVA connection using Network Virtual Appliance object.
 
 ## PARAMETERS
 
@@ -190,6 +170,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+
+### -RoutingConfiguration
+Routing configuration for this connection
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSRoutingConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -206,4 +202,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzRoutingConfiguration](./New-AzRoutingConfiguration.md)
+
+[Get-AzNetworkVirtualAppliance](./Get-AzNetworkVirtualAppliance.md)
+
+[Get-AzNetworkVirtualApplianceConnection](./Get-AzNetworkVirtualApplianceConnection.md)
 
