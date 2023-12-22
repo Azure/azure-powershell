@@ -188,7 +188,7 @@ List of ScalingHostPoolReference definitions.
 To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IScalingHostPoolReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -394,7 +394,7 @@ List of ScalingPlanPooledSchedule definitions.
 To construct, see NOTES section for SCHEDULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IScalingSchedule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]
 Parameter Sets: (All)
 Aliases:
 
