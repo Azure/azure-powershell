@@ -216,7 +216,7 @@ function Test-AccountCMK
     $keyVaultResourceId = "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/resourceGroups/akvTestRG/providers/Microsoft.KeyVault/vaults/akvTestVault2"
     $kvResourceGroup = "akvTestRG"
     # $userAssignedIdentity = "/subscriptions/$subsid/resourcegroups/$resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/FakeUserIdentity"
-    # $userAssignedIdentity = "/subscriptions/$subsid/resourcegroups/ab_sdk_test_rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/abAkvIdenity"
+    $userAssignedIdentity = "/subscriptions/$subsid/resourcegroups/akvTestRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/abAkvIdenity"
 
     $identityType = "UserAssigned"
 
@@ -225,12 +225,12 @@ function Test-AccountCMK
         # create the resource group
         New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
 
-        #New-AzResourceGroup -Name $resourceGroup -Tags @{Owner = 'b-aubald'} -Location $resourceLocation
-        $userAssignedIdenity = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroup -Name $identityName -Location $resourceLocation
+        # New-AzResourceGroup -Name $resourceGroup -Tags @{Owner = 'b-aubald'} -Location $resourceLocation
+        # $userAssignedIdenity = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroup -Name $identityName -Location $resourceLocation
         # Create keyvault and userIdeneity then give the identity access to the keyvault
-        #$azKeyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $resourceGroup -Location $resourceLocation -EnablePurgeProtection                
+        # $azKeyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $resourceGroup -Location $resourceLocation -EnablePurgeProtection                
         
-        Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupname $kvResourceGroup -ObjectId $userAssignedIdenity.PrincipalId -PermissionsToKeys create,get,encrypt,decrypt  -BypassObjectIdValidation
+        #Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupname $kvResourceGroup -ObjectId $userAssignedIdenity.PrincipalId -PermissionsToKeys create,get,encrypt,decrypt  -BypassObjectIdValidation
         # Create key
         #$keyVaultKey = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination "Software"
 
@@ -239,13 +239,13 @@ function Test-AccountCMK
         $newTagValue = "tagValue1"
 
         # $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue}
-        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -EncryptionKeySource $keySource -IdentityType $identityType -KeyVaultKeyName $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultUri $keyVaultUri -UserAssignedIdentity $userAssignedIdenity.Id
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $accName1 -Tag @{$newTagName = $newTagValue} -EncryptionKeySource $keySource -IdentityType $identityType -KeyVaultKeyName $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultUri $keyVaultUri -UserAssignedIdentity $userAssignedIdentity
         Assert-AreEqual $accName1 $retrievedAcc.Name
         Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
         Assert-AreEqual "tagValue1" $retrievedAcc.Tags[$newTagName].ToString()
         Assert-NotNull $retrievedAcc.Identity.UserAssignedIdentities
         Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
-        Assert-AreEqual True $retrievedAcc.Identity.UserAssignedIdentities.ContainsKey($userAssignedIdenity.Id)
+        Assert-AreEqual True $retrievedAcc.Identity.UserAssignedIdentities.ContainsKey($userAssignedIdentity)
 
         # create and check account 2 using the Confirm flag
         $retrievedAcc2 = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName2 -Confirm:$false
@@ -256,7 +256,7 @@ function Test-AccountCMK
         Assert-AreEqual $accName2 $retrievedAcc2.Name
         Assert-NotNull $retrievedAcc.Identity.UserAssignedIdentities
         Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
-        Assert-AreEqual True $retrievedAcc.Identity.UserAssignedIdentities.ContainsKey($userAssignedIdenity.Id)
+        Assert-AreEqual True $retrievedAcc.Identity.UserAssignedIdentities.ContainsKey($userAssignedIdentity)
 
         # Assert-ThrowsContains{$retrievedAcc = Update-AzNetAppFilesAccountCredential -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 } 'NetApp account does not have an MSI credentials, therefore it is ineligible for renewal of credentials'
         Update-AzNetAppFilesAccountCredential -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 
