@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Workloads-help.xml
 Module Name: Az.Workloads
 online version: https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadssaplandscapemonitor
 schema: 2.0.0
@@ -13,11 +13,11 @@ Creates a SAP Landscape Monitor Dashboard for the specified subscription, resour
 ## SYNTAX
 
 ```
-New-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-GroupingLandscape <ISapLandscapeMonitorSidMapping[]>]
+New-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-GroupingLandscape <ISapLandscapeMonitorSidMapping[]>]
  [-GroupingSapApplication <ISapLandscapeMonitorSidMapping[]>]
- [-TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -245,4 +245,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[Yellow <Single?>]`: Gets or sets the threshold value for Yellow.
 
 ## RELATED LINKS
-

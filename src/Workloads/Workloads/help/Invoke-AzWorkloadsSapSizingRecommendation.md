@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Workloads-help.xml
 Module Name: Az.Workloads
 online version: https://learn.microsoft.com/powershell/module/az.workloads/invoke-azworkloadssapsizingrecommendation
 schema: 2.0.0
@@ -14,11 +14,11 @@ Get SAP sizing recommendations by providing input SAPS for application tier and 
 
 ### SapExpanded (Default)
 ```
-Invoke-AzWorkloadsSapSizingRecommendation -Location <String> -AppLocation <String>
+Invoke-AzWorkloadsSapSizingRecommendation -Location <String> [-SubscriptionId <String>] -AppLocation <String>
  -DatabaseType <SapDatabaseType> -DbMemory <Int64> -DeploymentType <SapDeploymentType>
- -Environment <SapEnvironmentType> -Sap <Int64> -SapProduct <SapProductType> [-SubscriptionId <String>]
+ -Environment <SapEnvironmentType> -Sap <Int64> -SapProduct <SapProductType>
  [-DbScaleMethod <SapDatabaseScaleMethod>] [-HighAvailabilityType <SapHighAvailabilityType>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SapViaIdentityExpanded
@@ -27,7 +27,7 @@ Invoke-AzWorkloadsSapSizingRecommendation -InputObject <IWorkloadsIdentity> -App
  -DatabaseType <SapDatabaseType> -DbMemory <Int64> -DeploymentType <SapDeploymentType>
  -Environment <SapEnvironmentType> -Sap <Int64> -SapProduct <SapProductType>
  [-DbScaleMethod <SapDatabaseScaleMethod>] [-HighAvailabilityType <SapHighAvailabilityType>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -312,4 +312,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-

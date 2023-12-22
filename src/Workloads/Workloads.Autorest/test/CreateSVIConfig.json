@@ -10,7 +10,7 @@
           "imageReference": {
             "sku": "82sapha-gen2",
             "publisher": "RedHat",
-            "version": "8.2.2021091202",
+            "version": "latest",
             "offer": "RHEL-SAP-HA"
           },
           "osProfile": {
@@ -37,7 +37,7 @@
           "imageReference": {
             "sku": "82sapha-gen2",
             "publisher": "RedHat",
-            "version": "8.2.2021091202",
+            "version": "latest",
             "offer": "RHEL-SAP-HA"
           },
           "osProfile": {
@@ -60,11 +60,11 @@
       "databaseServer": {
         "subnetId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/SAP-E2ETest-rg/providers/Microsoft.Network/virtualNetworks/loop-test-vnet/subnets/loopsubnet-db",
         "virtualMachineConfiguration": {
-          "vmSize": "Standard_E16ds_v5",
+          "vmSize": "Standard_E32ds_v4",
           "imageReference": {
             "sku": "82sapha-gen2",
             "publisher": "RedHat",
-            "version": "8.2.2021091202",
+            "version": "latest",
             "offer": "RHEL-SAP-HA"
           },
           "osProfile": {
@@ -89,6 +89,6 @@
           "configurationType": "Skip"
         }
       },
-      "appResourceGroup": "PSTEST"
+      "appResourceGroup": "PS_CLI_TF_RG"
     }
   }

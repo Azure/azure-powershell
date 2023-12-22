@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Workloads-help.xml
 Module Name: Az.Workloads
 online version: https://learn.microsoft.com/powershell/module/az.workloads/update-azworkloadssapvirtualinstance
 schema: 2.0.0
@@ -15,15 +15,19 @@ Updates a Virtual Instance for SAP solutions resource
 ### UpdateExpanded (Default)
 ```
 Update-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityType <ManagedServiceIdentityType>]
+ [-ManagedResourcesNetworkAccessType <ManagedResourcesNetworkAccessType>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWorkloadsSapVirtualInstance -InputObject <IWorkloadsIdentity>
- [-IdentityType <ManagedServiceIdentityType>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityType <ManagedServiceIdentityType>]
+ [-ManagedResourcesNetworkAccessType <ManagedResourcesNetworkAccessType>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +64,21 @@ This cmdlet adds new tag name, value pairs to the existing VIS resource DB0.
 Here VIS Azure resource ID is used as the input parameter.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -108,6 +127,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ManagedResourcesNetworkAccessType
+Specifies the network access configuration for the resources that will be deployed in the Managed Resource Group.
+The options to choose from are Public and Private.
+If 'Private' is chosen, the Storage Account service tag should be enabled on the subnets in which the SAP VMs exist.
+This is required for establishing connectivity between VM extensions and the managed resource group storage account.
+This setting is currently applicable only to Storage Account.
+Learn more here https://go.microsoft.com/fwlink/linkid=2247228
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedResourcesNetworkAccessType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the Virtual Instances for SAP solutions resource
 
@@ -119,6 +158,21 @@ Aliases: SapVirtualInstanceName
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -248,4 +302,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-

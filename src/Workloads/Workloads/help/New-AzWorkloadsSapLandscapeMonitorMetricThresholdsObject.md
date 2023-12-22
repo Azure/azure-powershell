@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Workloads-help.xml
 Module Name: Az.Workloads
 online version: https://learn.microsoft.com/powershell/module/Az.Workloads/new-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject
 schema: 2.0.0
@@ -31,7 +31,6 @@ New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject -Green 90 -Name X00 -Re
 Green Name Red Yellow
 ----- ---- --- ------
 90    X00  50  80
-
 ```
 
 Create a new Metrics Threshold object to be used for creating a SAP Landscape Monitor
@@ -112,4 +111,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-
