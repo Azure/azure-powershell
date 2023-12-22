@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed AppAttach Cmdlets and ResetIcon parameter to Update-AzWvdApplication
 
 ## Version 4.2.1
 * Marked AppAttach cmdlets as preview
