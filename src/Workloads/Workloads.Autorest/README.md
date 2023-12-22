@@ -30,8 +30,9 @@ For information on how to develop for `Az.Workloads`, see [how-to.md](how-to.md)
 > see https://aka.ms/autorest
 
 ```yaml
-commit: dfbe76b052675596dabcc1daa79a9cec214ffc8f
+commit: 202321f386ea5b0c103b46902d43b3d3c50e029c
 tag: package-preview-2023-10
+# tag: package-2023-04
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/workloads/resource-manager/readme.md
@@ -49,13 +50,6 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
-- where:
-    subject: ^SapVirtualInstance$|^SapApplicationServerInstance$|^SapCentralInstance$|^SapDatabaseInstance$|^SapAvailabilityZoneDetail$|^SapDiskConfiguration$|^SapSizingRecommendation$|^SapSupportedSku$
-  set:
-    preview-announcement:
-      preview-message: This cmdlet is in preview.
-      estimated-ga-date: 2024-06-30
-	  
 # Monitor
 - where:
     verb: New
@@ -367,7 +361,7 @@ directive:
 - from: swagger-document
   where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}"].delete.responses
   transform: >-
-    return { "200": { "description": "OK" }, "202": { "description": "Accepted", "headers": { "Location": { "description": "The URL of the resource used to check the status of the asynchronous operation.", "type": "string" }, "Retry-After": { "description": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation.", "type": "integer",	"format": "int32" }, "Azure-AsyncOperation": { "description": "The URI to poll for completion status.", "type": "string" } } }, "204": { "description": "No Content" }, "default": { "description": "Error response describing why the operation failed.", "schema": { "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/dfbe76b052675596dabcc1daa79a9cec214ffc8f/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse" } } }
+    return { "200": { "description": "OK" }, "202": { "description": "Accepted", "headers": { "Location": { "description": "The URL of the resource used to check the status of the asynchronous operation.", "type": "string" }, "Retry-After": { "description": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation.", "type": "integer",	"format": "int32" }, "Azure-AsyncOperation": { "description": "The URI to poll for completion status.", "type": "string" } } }, "204": { "description": "No Content" }, "default": { "description": "Error response describing why the operation failed.", "schema": { "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/202321f386ea5b0c103b46902d43b3d3c50e029c/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse" } } }
  	  
 # Result shoule be in SingleServerRecommendationResult and ThreeTierRecommendationResult
 - from: source-file-csharp
