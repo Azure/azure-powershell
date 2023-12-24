@@ -346,44 +346,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "Invoke-AzWvdValidateSessionHostUpdate",
-      "description": "Validates a session host update operation for validation errors.\nWhen Session Host Configuration and Session Host Management values are not provided the ones saved in the Host Pool will be used.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/validateSessionHostUpdate",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/invoke-azwvdvalidatesessionhostupdate"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-HostPoolName <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Validates a session host update operation for validation errors. When Session Host Configuration and Session Host Management values are not provided the ones saved in the Host Pool will be used.",
-          "parameters": [
-            {
-              "name": "-HostPoolName",
-              "value": "[Path.hostPoolName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
     }
   ]
 }

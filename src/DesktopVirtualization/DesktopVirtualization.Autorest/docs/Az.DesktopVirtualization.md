@@ -95,10 +95,6 @@ Initiates a hostpool update or schedule an update for the future.
 ### [Invoke-AzWvdRetrySessionHostProvisioning](Invoke-AzWvdRetrySessionHostProvisioning.md)
 Retry provisioning on a SessionHost.
 
-### [Invoke-AzWvdValidateSessionHostUpdate](Invoke-AzWvdValidateSessionHostUpdate.md)
-Validates a session host update operation for validation errors.
-When Session Host Configuration and Session Host Management values are not provided the ones saved in the Host Pool will be used.
-
 ### [New-AzWvdAppAttachPackage](New-AzWvdAppAttachPackage.md)
 Create or update an App Attach package.
 
