@@ -27,7 +27,6 @@ Describe 'Invoke-AzWvdControlSessionHostUpdate' {
         Invoke-AzWvdControlSessionHostUpdate -HostPoolName $env.AutomatedHostpoolPersistent -ResourceGroupName $env.ResourceGroupPersistent `
         -SubscriptionId $env.subscriptionId `
         -Action Cancel `
-        -CancelMessage "Giving up" `
-        -NoWait
+        -CancelMessage "Giving up"
     }
 }
