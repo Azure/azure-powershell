@@ -383,9 +383,9 @@ directive:
           - Type
           - IdentityType
   - no-inline:
-    - AzureBackupRestoreRequest
     - BackupInstance
     - CrossRegionRestoreDetails
+    - CrossRegionRestoreRequestObject
     - DeletionInfo
     - InnerError
     - ItemLevelRestoreTargetInfo

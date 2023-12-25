@@ -110,20 +110,7 @@ function Start-AzDataProtectionBackupInstanceRestore
     process
     {
         $hasRestoreToSecondaryRegion = $PSBoundParameters.Remove("RestoreToSecondaryRegion")
-
-        $hasIdentityDetailUserAssignedIdentityArmUrl = $PSBoundParameters.Remove("IdentityDetailUserAssignedIdentityArmUrl")
-        $hasIdentityDetailUseSystemAssignedIdentity = $PSBoundParameters.Remove("IdentityDetailUseSystemAssignedIdentity")
-
-        if($hasIdentityDetailUserAssignedIdentityArmUrl -or $hasIdentityDetailUseSystemAssignedIdentity){
-            
-            $identityDetails = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IdentityDetails]::new()
-            $identityDetails.IdentityDetailUserAssignedIdentityArmUrl = $IdentityDetailUserAssignedIdentityArmUrl
-            $identityDetails.IdentityDetailUseSystemAssignedIdentity = $IdentityDetailUseSystemAssignedIdentity         
-
-            $null = $PSBoundParameters.Add("IdentityDetail", $identityDetails)
-        }
-
-        # $null = $PSBoundParameters.Remove("RestoreRequest")
+                
         if($hasRestoreToSecondaryRegion){
             
             $hasParameter = $PSBoundParameters.Remove("Parameter")
@@ -131,8 +118,9 @@ function Start-AzDataProtectionBackupInstanceRestore
             $hasRestoreTargetInfo = $PSBoundParameters.Remove("RestoreTargetInfo")
             $hasSourceDataStoreType = $PSBoundParameters.Remove("SourceDataStoreType")
             $hasSourceResourceId = $PSBoundParameters.Remove("SourceResourceId")
-            $hasIdentityDetail = $PSBoundParameters.Remove("IdentityDetail")
-            
+            $hasIdentityDetailUserAssignedIdentityArmUrl = $PSBoundParameters.Remove("IdentityDetailUserAssignedIdentityArmUrl")
+            $hasIdentityDetailUseSystemAssignedIdentity = $PSBoundParameters.Remove("IdentityDetailUseSystemAssignedIdentity")
+                        
             # fetch vault from ARG            
             $hasSubscriptionId = $PSBoundParameters.Remove("SubscriptionId")
             $null = $PSBoundParameters.Remove("ResourceGroupName")
@@ -156,11 +144,11 @@ function Start-AzDataProtectionBackupInstanceRestore
             $crossRegionRestoreDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.CrossRegionRestoreDetails]::new()
             $crossRegionRestoreDetail.SourceBackupInstanceId = $backupInstanceId
             $crossRegionRestoreDetail.SourceRegion = $vault.Location
-
-            $PSBoundParameters.Add("CrossRegionRestoreDetail", $crossRegionRestoreDetail)
+            
             $PSBoundParameters.Add('Location', $vault.ReplicatedRegion[0])
+            $PSBoundParameters.Add("CrossRegionRestoreDetail", $crossRegionRestoreDetail)
 
-            if($hasParameter){
+            if($hasParameter){                
                 $PSBoundParameters.Add("RestoreRequestObject", $Parameter)
             }
             else{
@@ -169,10 +157,11 @@ function Start-AzDataProtectionBackupInstanceRestore
                 if($hasRestoreTargetInfo) { $restoreRequestObject.RestoreTargetInfo = $RestoreTargetInfo }
                 if($hasSourceDataStoreType) { $restoreRequestObject.SourceDataStoreType = $SourceDataStoreType }
                 if($hasSourceResourceId) { $restoreRequestObject.SourceResourceId = $SourceResourceId }
-                if($hasIdentityDetail) { $restoreRequestObject.IdentityDetail = $IdentityDetail }
+                if($hasIdentityDetailUseSystemAssignedIdentity) { $restoreRequestObject.IdentityDetailUseSystemAssignedIdentity = $IdentityDetailUseSystemAssignedIdentity }
+                if($hasIdentityDetailUserAssignedIdentityArmUrl) { $restoreRequestObject.IdentityDetailUserAssignedIdentityArmUrl = $IdentityDetailUserAssignedIdentityArmUrl }
 
                 $PSBoundParameters.Add("RestoreRequestObject", $restoreRequestObject)
-            }
+            }           
 
             Az.DataProtection.Internal\Start-AzDataProtectionBackupInstanceCrossRegionRestore @PSBoundParameters
         }

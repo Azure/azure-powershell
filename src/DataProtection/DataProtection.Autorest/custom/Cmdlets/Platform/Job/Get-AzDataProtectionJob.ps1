@@ -21,10 +21,11 @@
         ${VaultName},
 
         [Parameter(ParameterSetName="Get", Mandatory=$true, HelpMessage='Job ID to get a particular Job')]
+        [Alias('JobId')]
         [System.String]
         ${Id},
 
-        [Parameter(ParameterSetName="GetViaIdentity", Mandatory=$true, HelpMessage='Identity Parameter')]
+        [Parameter(ParameterSetName="GetViaIdentity", Mandatory=$true, HelpMessage='Identity Parameter', ValueFromPipeline=$true)]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity]
         ${InputObject},
 
