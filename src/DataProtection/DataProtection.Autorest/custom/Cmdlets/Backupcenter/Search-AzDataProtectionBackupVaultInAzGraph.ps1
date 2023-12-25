@@ -1,8 +1,8 @@
-﻿function Search-AzDataProtectionBackupInstanceInAzGraph
+﻿function Search-AzDataProtectionBackupVaultInAzGraph
 {
 	[OutputType('PSObject')]
     [CmdletBinding(PositionalBinding=$false)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Searches for Backup instances in Azure Resource Graph and retrieves the expected entries')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Searches for Backup vaults in Azure Resource Graph and retrieves the expected entries')]
     
     param (
         [Parameter(Mandatory, HelpMessage='Subscription of Vault')]
@@ -16,14 +16,6 @@
         [Parameter(Mandatory=$false, HelpMessage='Name of the vault')]
         [System.String[]]
         ${Vault},
-
-        [Parameter(Mandatory, HelpMessage='Datasource Type')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
-        ${DatasourceType},
-
-        [Parameter(Mandatory=$false, HelpMessage='Protection Status of the item')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProtectionStatus[]]
-        ${ProtectionStatus},
         
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -76,34 +68,31 @@
     {
         CheckResourceGraphModuleDependency
 
-        $manifest = LoadManifest -DatasourceType $DatasourceType
-        $query = GetBackupInstanceARGQuery
-        $query = AddFilterToQuery -Query $query -FilterKey "properties.dataSourceInfo.datasourceType" -FilterValues $manifest.datasourceType
+        # $manifest = LoadManifest -DatasourceType $DatasourceType
+        $query = GetBackupVaultARGQuery
 
-        if($PSBoundParameters.ContainsKey("ResourceGroup")){ $query = AddFilterToQuery -Query $query -FilterKey "resourceGroup" -FilterValues  $resourceGroup }
-        if($PSBoundParameters.ContainsKey("Vault")){ $query = AddFilterToQuery -Query $query -FilterKey "vaultName" -FilterValues  $Vault }
-        if($PSBoundParameters.ContainsKey("ProtectionStatus")){ $query = AddFilterToQuery -Query $query -FilterKey "protectionState" -FilterValues $ProtectionStatus }
+        if($PSBoundParameters.ContainsKey("ResourceGroup")){ $query = AddFilterToQuery -Query $query -FilterKey "resourceGroup" -FilterValues  $ResourceGroup }
+        if($PSBoundParameters.ContainsKey("Vault")){ $query = AddFilterToQuery -Query $query -FilterKey "name" -FilterValues  $Vault }
 
-        foreach($param in @("Subscription", "ResourceGroup", "Vault", "DatasourceType", "ProtectionStatus"))
+        foreach($param in @("Subscription", "ResourceGroup", "Vault"))
         {
             if($PSBoundParameters.ContainsKey($param))
             {
                 $null = $PSBoundParameters.Remove($param)
             }
         }
-
         $null = $PSBoundParameters.Add("Subscription", $Subscription)
         $null = $PSBoundParameters.Add("query", $query)
         $null = $PSBoundParameters.Add("First", 1000)
         $null = $PSBoundParameters.Remove("HttpPipelinePrepend")
 
-        $argInstanceResponse = Az.ResourceGraph\Search-AzGraph @PSBoundParameters
-        $backupInstances = @()
-        foreach($argResponse in $argInstanceResponse)
+        $argAllVaults = Az.ResourceGraph\Search-AzGraph @PSBoundParameters
+        $backupVaults = @()
+        foreach($argVault in $argAllVaults)
         {
-            $jsonStringResponse = $argResponse | ConvertTo-Json -Depth 100
-            $backupInstances += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.BackupInstanceResource]::FromJsonString($jsonStringResponse)
+            $jsonStringResponse = $argVault | ConvertTo-Json -Depth 100                                                 
+            $backupVaults += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.BackupVaultResource]::FromJsonString($jsonStringResponse)
         }
-        return $backupInstances
+        return $backupVaults
     }
 }
