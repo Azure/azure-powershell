@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Fixed a few minor issues
+* Updated `New-AzApplicationGateway` to include `EnableRequestBuffering` and `EnableResponseBuffering` parameters
 * Changed the Default Rule Set from CRS3.0 to DRS2.1 in `NewAzureApplicationGatewayFirewallPolicy`
 * Added optional property 'Profile' to `New-AzFirewallPolicyIntrusionDetection` 
 
