@@ -397,7 +397,8 @@ directive:
     - SecretStoreResource    
     - SystemData
     - UserFacingError    
-    - ValidateRestoreRequestObject    
+    - ValidateRestoreRequestObject
+    - ValidateCrossRegionRestoreRequestObject
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBaseBackupPolicy Property');
