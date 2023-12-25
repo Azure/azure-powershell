@@ -122,6 +122,7 @@
         $null = $PSBoundParameters.Add("Subscription", $Subscription)
         $null = $PSBoundParameters.Add("query", $query)
         $null = $PSBoundParameters.Add("First", 1000)
+        $null = $PSBoundParameters.Remove("HttpPipelinePrepend")
 
         $argJobResponse = Az.ResourceGraph\Search-AzGraph @PSBoundParameters
 

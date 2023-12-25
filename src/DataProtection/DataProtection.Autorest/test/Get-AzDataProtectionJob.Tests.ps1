@@ -11,7 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Get-AzDataProtectionJob' {
+Describe 'Get-AzDataProtectionJob' -Tag 'LiveOnly' {
     It 'List' -skip {
         $jobs = Get-AzDataProtectionJob -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestBackupJob.ResourceGroupName -VaultName $env.TestBackupJob.VaultName
         $jobs.Length | Should -BeGreaterThan 0

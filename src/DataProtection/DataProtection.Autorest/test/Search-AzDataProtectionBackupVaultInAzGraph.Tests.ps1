@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Search-AzDataProtectionBackup
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Search-AzDataProtectionBackupVaultInAzGraph' {
+Describe 'Search-AzDataProtectionBackupVaultInAzGraph' -Tag 'LiveOnly' {
     It '__AllParameterSets' {
         $resourceGroupName  = $env.TestCrossRegionRestoreScenario.ResourceGroupName
         $vaultName = $env.TestCrossRegionRestoreScenario.VaultName

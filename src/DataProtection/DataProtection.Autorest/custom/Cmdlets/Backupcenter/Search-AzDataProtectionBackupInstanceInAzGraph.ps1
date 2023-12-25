@@ -95,6 +95,7 @@
         $null = $PSBoundParameters.Add("Subscription", $Subscription)
         $null = $PSBoundParameters.Add("query", $query)
         $null = $PSBoundParameters.Add("First", 1000)
+        $null = $PSBoundParameters.Remove("HttpPipelinePrepend")
 
         $argInstanceResponse = Az.ResourceGraph\Search-AzGraph @PSBoundParameters
         $backupInstances = @()

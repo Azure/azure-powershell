@@ -11,7 +11,7 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Get-AzDataProtectionRecoveryPoint' {
+Describe 'Get-AzDataProtectionRecoveryPoint' -Tag 'LiveOnly' {
     It 'ListCRRRecoveryPoints' {
         $resourceGroupName  = $env.TestCrossRegionRestoreScenario.ResourceGroupName
         $vaultName = $env.TestCrossRegionRestoreScenario.VaultName
@@ -23,7 +23,7 @@ Describe 'Get-AzDataProtectionRecoveryPoint' {
 
         $recoveryPointsCRR = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -UseSecondaryRegion
 
-        ($recoveryPointsCRR -ne $null) | Should be $true
+        ($recoveryPointsCRR.Length -gt 0) | Should be $true
     }
 
     It 'Get' -skip {
