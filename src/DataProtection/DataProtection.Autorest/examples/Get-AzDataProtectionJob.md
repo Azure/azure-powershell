@@ -16,7 +16,7 @@ a6a4879d-f914-4174-b129-0e27da8a4fb0 Microsoft.DataProtection/backupVaults/backu
 
 This command gets all the backup jobs in a given backup vault.
 
-### Example 2: Get a single Job 
+### Example 2: Get a single Job with Id
 ```powershell
 Get-AzDataProtectionJob -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -Id 4abaea8c-f53a-4bb1-9963-59f96b597165
 ```
@@ -29,3 +29,16 @@ Name                                 Type
 
 This command returns a single job entity with given Id.
 
+### Example 3: Get backup Jobs in a backup vault from secondary region
+```powershell
+Get-AzDataProtectionJob -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -UseSecondaryRegion
+```
+
+```output
+Name                                 Type
+----                                 ----
+a6a4879d-f914-4174-b129-0e27da8a4fb0 Microsoft.DataProtection/backupVaults/backupJobs
+1a402664-a245-4a9d-8bb5-a6bafbb40d26 Microsoft.DataProtection/backupVaults/backupJobs
+```
+
+This command gets cross region restore jobs in a backup vault from secondary region.
