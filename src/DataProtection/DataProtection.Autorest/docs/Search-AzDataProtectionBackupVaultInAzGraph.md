@@ -13,8 +13,8 @@ Searches for Backup vaults in Azure Resource Graph and retrieves the expected en
 ## SYNTAX
 
 ```
-Search-AzDataProtectionBackupVaultInAzGraph -Subscription <String[]> [-ResourceGroup <String[]>]
- [-Vault <String[]>] [<CommonParameters>]
+Search-AzDataProtectionBackupVaultInAzGraph -Subscription <String[]> [-DefaultProfile <PSObject>]
+ [-ResourceGroup <String[]>] [-Vault <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +36,21 @@ ETag IdentityPrincipalId                  IdentityTenantId                     I
 This command gets a specific vault by given vault name from ARG (Azure Resource Graph).
 
 ## PARAMETERS
+
+### -DefaultProfile
+
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ResourceGroup
 Resource Group of Vault

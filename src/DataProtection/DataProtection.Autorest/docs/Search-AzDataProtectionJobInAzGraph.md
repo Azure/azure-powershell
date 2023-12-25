@@ -14,8 +14,8 @@ Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entr
 
 ```
 Search-AzDataProtectionJobInAzGraph -DatasourceType <DatasourceTypes> -Subscription <String[]>
- [-EndTime <DateTime>] [-Operation <JobOperation[]>] [-ResourceGroup <String[]>] [-StartTime <DateTime>]
- [-Status <JobStatus[]>] [-Vault <String[]>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-EndTime <DateTime>] [-Operation <JobOperation[]>] [-ResourceGroup <String[]>]
+ [-StartTime <DateTime>] [-Status <JobStatus[]>] [-Vault <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +66,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

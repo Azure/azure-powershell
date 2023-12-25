@@ -42,34 +42,40 @@
         ${DefaultProfile},
     
         [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
     
         [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
     
         [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
