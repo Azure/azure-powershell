@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/edit-azdataprotectionpolicytriggerclientobject
 schema: 2.0.0
@@ -14,7 +14,7 @@ Updates Backup schedule of an existing backup policy.
 
 ### RemoveBackupSchedule (Default)
 ```
-Edit-AzDataProtectionPolicyTriggerClientObject -Policy <IBackupPolicy> -RemoveSchedule [<CommonParameters>]
+Edit-AzDataProtectionPolicyTriggerClientObject -Policy <IBackupPolicy> [-RemoveSchedule] [<CommonParameters>]
 ```
 
 ### ModifyBackupSchedule
@@ -49,7 +49,7 @@ Backup Policy object.
 To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -130,4 +130,3 @@ To create the parameters described below, construct a hash table containing the 
     - `[IsDefault <Boolean?>]`: 
 
 ## RELATED LINKS
-

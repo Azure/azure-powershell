@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/search-azdataprotectionjobinazgraph
 schema: 2.0.0
@@ -13,9 +13,9 @@ Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entr
 ## SYNTAX
 
 ```
-Search-AzDataProtectionJobInAzGraph -DatasourceType <DatasourceTypes> -Subscription <String[]>
- [-EndTime <DateTime>] [-Operation <JobOperation[]>] [-ResourceGroup <String[]>] [-StartTime <DateTime>]
- [-Status <JobStatus[]>] [-Vault <String[]>] [<CommonParameters>]
+Search-AzDataProtectionJobInAzGraph -Subscription <String[]> -DatasourceType <DatasourceTypes>
+ [-ResourceGroup <String[]>] [-Vault <String[]>] [-StartTime <DateTime>] [-EndTime <DateTime>]
+ [-Operation <JobOperation[]>] [-Status <JobStatus[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,8 +64,24 @@ Datasource Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
+Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureKubernetesService
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+{{ Fill DefaultProfile Description }}
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -94,6 +110,7 @@ Operation filter for the backup job
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperation[]
 Parameter Sets: (All)
 Aliases:
+Accepted values: OnDemandBackup, ScheduledBackup, Restore
 
 Required: False
 Position: Named
@@ -139,6 +156,7 @@ Status filter for the backup job
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobStatus[]
 Parameter Sets: (All)
 Aliases:
+Accepted values: InProgress, Completed, Failed
 
 Required: False
 Position: Named
@@ -191,4 +209,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-
