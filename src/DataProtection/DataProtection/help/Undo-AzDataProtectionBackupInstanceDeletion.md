@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/undo-azdataprotectionbackupinstancedeletion
 schema: 2.0.0
@@ -15,14 +15,14 @@ Undeletes a soft deleted backup instance
 ### Undelete (Default)
 ```
 Undo-AzDataProtectionBackupInstanceDeletion -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -VaultName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UndeleteViaIdentity
 ```
-Undo-AzDataProtectionBackupInstanceDeletion -InputObject <IDataProtectionIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Undo-AzDataProtectionBackupInstanceDeletion -InputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +33,7 @@ Undeletes a soft deleted backup instance
 ### Example 1: Undelete the soft deleted backup instance
 ```powershell
 $softDeletedBI = Get-AzDataProtectionSoftDeletedBackupInstance -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName
-Undo-AzDataProtectionBackupInstanceDeletion -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $softDeletedBI[0].Name 
+Undo-AzDataProtectionBackupInstanceDeletion -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $softDeletedBI[0].Name
 ```
 
 The first comamnd is used to fetch the backup instances which are in soft deleted for a give backup vault.
@@ -247,4 +247,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[VaultName <String>]`: The name of the backup vault.
 
 ## RELATED LINKS
-

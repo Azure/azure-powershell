@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionresourceguard
 schema: 2.0.0
@@ -13,10 +13,9 @@ Updates a resource guard belonging to a resource group
 ## SYNTAX
 
 ```
-Update-AzDataProtectionResourceGuard -Name <String> -ResourceGroupName <String>
- [-CriticalOperationExclusionList <String[]>] [-DefaultProfile <PSObject>] [-ETag <String>]
- [-IdentityType <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzDataProtectionResourceGuard -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
+ [-ETag <String>] [-IdentityType <String>] [-Tag <Hashtable>] [-CriticalOperationExclusionList <String[]>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +61,6 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -211,4 +209,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-
