@@ -574,6 +574,24 @@ namespace Microsoft.Azure.Management.Sql.Models
                 this.Sku.Validate();
             }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             if (this.PrivateEndpointConnections != null)
             {
                 foreach (var element in this.PrivateEndpointConnections)
@@ -584,6 +602,17 @@ namespace Microsoft.Azure.Management.Sql.Models
                     }
                 }
             }
+
+
+
+
+
+
+
+
+
+
+
         }
     }
 }
