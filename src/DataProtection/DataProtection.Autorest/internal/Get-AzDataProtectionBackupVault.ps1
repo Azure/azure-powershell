@@ -32,7 +32,7 @@ $vault.SecureScore
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupVaultResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,7 +56,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionbackupvault
 #>
 function Get-AzDataProtectionBackupVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupVaultResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupVaultResource])]
 [CmdletBinding(DefaultParameterSetName='GetViaIdentity1', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]

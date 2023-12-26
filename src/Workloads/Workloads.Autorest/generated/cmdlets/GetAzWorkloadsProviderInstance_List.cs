@@ -19,6 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IProviderInstance))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Description(@"Gets a list of provider instances in the specified SAP monitor. The operations returns various properties of each provider instances.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/providerInstances", ApiVersion = "2023-04-01")]
     public partial class GetAzWorkloadsProviderInstance_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener
     {

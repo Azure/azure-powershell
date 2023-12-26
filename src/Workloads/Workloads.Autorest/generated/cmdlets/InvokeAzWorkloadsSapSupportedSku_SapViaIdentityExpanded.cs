@@ -13,9 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
     /// [OpenAPI] SAPSupportedSku=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getSapSupportedSku"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzWorkloadsSapSupportedSku_SapViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSupportedSku))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapSupportedSku))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Description(@"Get a list of SAP supported SKUs for ASCS, Application and Database tier.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getSapSupportedSku", ApiVersion = "2023-10-01-preview")]
     public partial class InvokeAzWorkloadsSapSupportedSku_SapViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener
     {
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>The SAP request to get list of supported SKUs.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSupportedSkusRequest _sapSupportedSkuBody = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.SapSupportedSkusRequest();
+        private Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapSupportedSkusRequest _sapSupportedSkuBody = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.SapSupportedSkusRequest();
 
         /// <summary>The geo-location where the resource is to be created.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The geo-location where the resource is to be created.")]
@@ -194,12 +195,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSupportedResourceSkusResult">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSupportedResourceSkusResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapSupportedResourceSkusResult">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapSupportedResourceSkusResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSupportedResourceSkusResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapSupportedResourceSkusResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -431,12 +432,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSupportedResourceSkusResult">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSupportedResourceSkusResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapSupportedResourceSkusResult">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapSupportedResourceSkusResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSupportedResourceSkusResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapSupportedResourceSkusResult> response)
         {
             using( NoSynchronizationContext )
             {

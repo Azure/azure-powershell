@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Workloads-help.xml
 Module Name: Az.Workloads
 online version: https://learn.microsoft.com/powershell/module/az.workloads/get-azworkloadssapdatabaseinstance
 schema: 2.0.0
@@ -116,7 +116,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -131,7 +131,7 @@ The name of the Virtual Instances for SAP solutions resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -146,7 +146,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -189,4 +189,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-

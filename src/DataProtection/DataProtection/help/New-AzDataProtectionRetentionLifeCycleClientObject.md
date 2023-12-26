@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionretentionlifecycleclientobject
 schema: 2.0.0
@@ -14,8 +14,8 @@ Creates new Lifecycle object
 
 ```
 New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore <DataStoreType>
- -SourceRetentionDurationCount <Int32> -SourceRetentionDurationType <DurationType> [-CopyOption <CopyOption>]
- [-TargetDataStore <DataStoreType>] [<CommonParameters>]
+ -SourceRetentionDurationType <DurationType> -SourceRetentionDurationCount <Int32>
+ [-TargetDataStore <DataStoreType>] [-CopyOption <CopyOption>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,6 +62,7 @@ CopyOption
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CopyOption
 Parameter Sets: (All)
 Aliases:
+Accepted values: CustomCopyOption, ImmediateCopyOption, CopyOnExpiryOption
 
 Required: False
 Position: Named
@@ -77,6 +78,7 @@ Source Datastore
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType
 Parameter Sets: (All)
 Aliases:
+Accepted values: ArchiveStore, OperationalStore, VaultStore
 
 Required: True
 Position: Named
@@ -107,6 +109,7 @@ Retention Duration Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DurationType
 Parameter Sets: (All)
 Aliases:
+Accepted values: Days, Weeks, Months, Years
 
 Required: True
 Position: Named
@@ -122,6 +125,7 @@ Target Datastore
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType
 Parameter Sets: (All)
 Aliases:
+Accepted values: ArchiveStore, OperationalStore, VaultStore
 
 Required: False
 Position: Named
@@ -144,4 +148,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

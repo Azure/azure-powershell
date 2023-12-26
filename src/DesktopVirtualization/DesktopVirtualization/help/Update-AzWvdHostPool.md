@@ -78,7 +78,7 @@ Maintenance windows are 2 hours long.
 To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IMaintenanceWindowPatchProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowPatchProperties[]
 Parameter Sets: (All)
 Aliases:
 

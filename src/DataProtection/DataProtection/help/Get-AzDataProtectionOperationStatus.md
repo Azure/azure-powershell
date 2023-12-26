@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionoperationstatus
 schema: 2.0.0
@@ -167,4 +167,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[VaultName <String>]`: The name of the backup vault.
 
 ## RELATED LINKS
-

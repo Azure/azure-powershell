@@ -18,6 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapLandscapeMonitor))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Description(@"Patches the SAP Landscape Monitor Dashboard for the specified subscription, resource group, and SAP monitor name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/sapLandscapeMonitor/default", ApiVersion = "2023-04-01")]
     public partial class UpdateAzWorkloadsSapLandscapeMonitor_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener
     {

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionresourceguard
 schema: 2.0.0
@@ -119,7 +119,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1
+Parameter Sets: Get1, Get
 Aliases:
 
 Required: True
@@ -135,7 +135,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, Get1
+Parameter Sets: Get1, Get
 Aliases:
 
 Required: False
@@ -181,4 +181,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[VaultName <String>]`: The name of the backup vault.
 
 ## RELATED LINKS
-

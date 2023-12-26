@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/backup-azdataprotectionbackupinstanceadhoc
 schema: 2.0.0
@@ -15,16 +15,16 @@ Trigger adhoc backup
 ### BackupExpanded (Default)
 ```
 Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> -BackupRuleOptionRuleName <String> [-SubscriptionId <String>]
- [-TriggerOptionRetentionTagOverride <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -VaultName <String> -BackupRuleOptionRuleName <String>
+ [-TriggerOptionRetentionTagOverride <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### BackupViaIdentityExpanded
 ```
 Backup-AzDataProtectionBackupInstanceAdhoc -InputObject <IDataProtectionIdentity>
  -BackupRuleOptionRuleName <String> [-TriggerOptionRetentionTagOverride <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -281,4 +281,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[VaultName <String>]`: The name of the backup vault.
 
 ## RELATED LINKS
-

@@ -18,6 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IProviderInstance))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Description(@"Creates a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/providerInstances/{providerInstanceName}", ApiVersion = "2023-04-01")]
     public partial class NewAzWorkloadsProviderInstance_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener
     {
@@ -94,8 +95,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
         ReadOnly = false,
         Description = @"User assigned identities dictionary",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IUserAssignedIdentities IdentityUserAssignedIdentity { get => _providerInstanceParameterBody.IdentityUserAssignedIdentity ?? null /* object */; set => _providerInstanceParameterBody.IdentityUserAssignedIdentity = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IUserAssignedIdentities1) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IUserAssignedIdentities1 IdentityUserAssignedIdentity { get => _providerInstanceParameterBody.IdentityUserAssignedIdentity ?? null /* object */; set => _providerInstanceParameterBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
