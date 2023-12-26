@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
         {
             get
             {
-                return this.pipelineRun.DurationInMs;
+                return this.pipelineRun.DurationInMS;
             }
         }
 

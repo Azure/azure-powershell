@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
         {
             get
             {
-                return this.activityRun.DurationInMs;
+                return this.activityRun.DurationInMS;
             }
         }
 
