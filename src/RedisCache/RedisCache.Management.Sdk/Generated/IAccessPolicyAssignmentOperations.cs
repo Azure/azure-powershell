@@ -9,27 +9,28 @@ namespace Microsoft.Azure.Management.RedisCache
     using Models;
 
     /// <summary>
-    /// LinkedServerOperations operations.
+    /// AccessPolicyAssignmentOperations operations.
     /// </summary>
-    public partial interface ILinkedServerOperations
+    public partial interface IAccessPolicyAssignmentOperations
     {
         /// <summary>
-        /// Adds a linked server to the Redis cache (requires Premium SKU).
+        /// Adds the access policy assignment to the specified users
         /// </summary>
         /// <remarks>
-        /// Adds a linked server to the Redis cache (requires Premium SKU).
+        /// Adds the access policy assignment to the specified users
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='name'>
+        /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
-        /// <param name='linkedServerName'>
-        /// The name of the linked server that is being added to the Redis cache.
+        /// <param name='accessPolicyAssignmentName'>
+        /// The name of the access policy assignment.
         /// </param>
         /// <param name='parameters'>
-        /// Parameters supplied to the Create Linked server operation.
+        /// Parameters supplied to the Create Update Access Policy Assignment
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,110 +44,48 @@ namespace Microsoft.Azure.Management.RedisCache
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RedisLinkedServerWithProperties>> CreateWithHttpMessagesAsync(string resourceGroupName, string name, string linkedServerName, RedisLinkedServerCreateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RedisCacheAccessPolicyAssignment>> CreateUpdateWithHttpMessagesAsync(string resourceGroupName, string cacheName, string accessPolicyAssignmentName, RedisCacheAccessPolicyAssignment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes the linked server from a redis cache (requires Premium SKU).
+        /// Deletes the access policy assignment from a redis cache
         /// </summary>
         /// <remarks>
-        /// Deletes the linked server from a redis cache (requires Premium SKU).
+        /// Deletes the access policy assignment from a redis cache
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='name'>
-        /// The name of the redis cache.
-        /// </param>
-        /// <param name='linkedServerName'>
-        /// The name of the linked server that is being added to the Redis cache.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<LinkedServerDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string name, string linkedServerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets the detailed information about a linked server of a redis cache
-        /// (requires Premium SKU).
-        /// </summary>
-        /// <remarks>
-        /// Gets the detailed information about a linked server of a redis cache
-        /// (requires Premium SKU).
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the redis cache.
-        /// </param>
-        /// <param name='linkedServerName'>
-        /// The name of the linked server.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RedisLinkedServerWithProperties>> GetWithHttpMessagesAsync(string resourceGroupName, string name, string linkedServerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets the list of linked servers associated with this redis cache (requires
-        /// Premium SKU).
-        /// </summary>
-        /// <remarks>
-        /// Gets the list of linked servers associated with this redis cache (requires
-        /// Premium SKU).
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the redis cache.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RedisLinkedServerWithProperties>>> ListWithHttpMessagesAsync(string resourceGroupName, string name, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Adds a linked server to the Redis cache (requires Premium SKU).
-        /// </summary>
-        /// <remarks>
-        /// Adds a linked server to the Redis cache (requires Premium SKU).
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='name'>
+        /// <param name='cacheName'>
         /// The name of the Redis cache.
         /// </param>
-        /// <param name='linkedServerName'>
-        /// The name of the linked server that is being added to the Redis cache.
+        /// <param name='accessPolicyAssignmentName'>
+        /// The name of the access policy assignment.
         /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the Create Linked server operation.
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<AccessPolicyAssignmentDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string cacheName, string accessPolicyAssignmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets the list of assignments for an access policy of a redis cache
+        /// </summary>
+        /// <remarks>
+        /// Gets the list of assignments for an access policy of a redis cache
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cacheName'>
+        /// The name of the Redis cache.
+        /// </param>
+        /// <param name='accessPolicyAssignmentName'>
+        /// The name of the access policy assignment.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -160,22 +99,19 @@ namespace Microsoft.Azure.Management.RedisCache
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RedisLinkedServerWithProperties>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string name, string linkedServerName, RedisLinkedServerCreateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RedisCacheAccessPolicyAssignment>> GetWithHttpMessagesAsync(string resourceGroupName, string cacheName, string accessPolicyAssignmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes the linked server from a redis cache (requires Premium SKU).
+        /// Gets the list of access policy assignments associated with this redis cache
         /// </summary>
         /// <remarks>
-        /// Deletes the linked server from a redis cache (requires Premium SKU).
+        /// Gets the list of access policy assignments associated with this redis cache
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='name'>
-        /// The name of the redis cache.
-        /// </param>
-        /// <param name='linkedServerName'>
-        /// The name of the linked server that is being added to the Redis cache.
+        /// <param name='cacheName'>
+        /// The name of the Redis cache.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -186,15 +122,75 @@ namespace Microsoft.Azure.Management.RedisCache
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<LinkedServerDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string name, string linkedServerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RedisCacheAccessPolicyAssignment>>> ListWithHttpMessagesAsync(string resourceGroupName, string cacheName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the list of linked servers associated with this redis cache (requires
-        /// Premium SKU).
+        /// Adds the access policy assignment to the specified users
         /// </summary>
         /// <remarks>
-        /// Gets the list of linked servers associated with this redis cache (requires
-        /// Premium SKU).
+        /// Adds the access policy assignment to the specified users
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cacheName'>
+        /// The name of the Redis cache.
+        /// </param>
+        /// <param name='accessPolicyAssignmentName'>
+        /// The name of the access policy assignment.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Create Update Access Policy Assignment
+        /// operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RedisCacheAccessPolicyAssignment>> BeginCreateUpdateWithHttpMessagesAsync(string resourceGroupName, string cacheName, string accessPolicyAssignmentName, RedisCacheAccessPolicyAssignment parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes the access policy assignment from a redis cache
+        /// </summary>
+        /// <remarks>
+        /// Deletes the access policy assignment from a redis cache
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cacheName'>
+        /// The name of the Redis cache.
+        /// </param>
+        /// <param name='accessPolicyAssignmentName'>
+        /// The name of the access policy assignment.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<AccessPolicyAssignmentDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string cacheName, string accessPolicyAssignmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Gets the list of access policy assignments associated with this redis cache
+        /// </summary>
+        /// <remarks>
+        /// Gets the list of access policy assignments associated with this redis cache
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -211,7 +207,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RedisLinkedServerWithProperties>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RedisCacheAccessPolicyAssignment>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }
