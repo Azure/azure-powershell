@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Workloads-help.xml
 Module Name: Az.Workloads
 online version: https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsprovidersqlserverinstanceobject
 schema: 2.0.0
@@ -13,9 +13,9 @@ Create an in-memory object for MsSqlServerProviderInstanceProperties.
 ## SYNTAX
 
 ```
-New-AzWorkloadsProviderSqlServerInstanceObject [-Hostname <String>] [-Password <String>]
- [-PasswordUri <String>] [-Port <String>] [-SapSid <String>] [-SslCertificateUri <String>]
- [-SslPreference <SslPreference>] [-Username <String>] [<CommonParameters>]
+New-AzWorkloadsProviderSqlServerInstanceObject [-Password <String>] [-PasswordUri <String>] [-Port <String>]
+ [-Username <String>] [-Hostname <String>] [-SapSid <String>] [-SslCertificateUri <String>]
+ [-SslPreference <SslPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,4 +172,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

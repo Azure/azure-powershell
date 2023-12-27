@@ -140,3 +140,35 @@ function Test-LinkedServicePiping
         CleanUp $rgname $dfname
     }
 }
+
+<#
+.SYNOPSIS
+Creates a linked service and then does a Get to compare the results.
+Delete sthe created linked service at the end.
+#>
+function Test-LinkedService-SqlServer
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+        
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+     
+        $lsname = "foo"
+        $expected = Set-AzDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname -File .\Resources\linkedService-SqlServer.json -Force
+        $actual = Get-AzDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname
+
+        Verify-AdfSubResource $expected $actual $rgname $dfname $lsname
+
+        Remove-AzDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname -Force
+    }
+    finally
+    {
+        CleanUp $rgname $dfname
+    }
+}

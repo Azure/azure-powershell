@@ -117,7 +117,10 @@ CmdletsToExport = 'Approve-AzNetAppFilesReplication', 'Get-AzNetAppFilesAccount'
                'Update-AzNetAppFilesBackupPolicy', 'Update-AzNetAppFilesPool', 
                'Update-AzNetAppFilesSnapshotPolicy', 
                'Update-AzNetAppFilesSubvolume', 'Update-AzNetAppFilesVolume', 
-               'Update-AzNetAppFilesVolumeQuotaRule'
+               'Update-AzNetAppFilesVolumeQuotaRule',
+               'Get-AzNetAppFilesVolumeGroupIdListForLDAPUser', 
+               'Get-AzNetAppFilesRegionInfo',               
+               'Get-AzNetAppFilesNetworkSiblingSet', 'Update-AzNetAppFilesNetworkSiblingSet'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -147,7 +150,10 @@ AliasesToExport = 'Approve-AnfReplication', 'Get-AnfAccount', 'Get-AnfBackup',
                'Update-AnfAccountCredential', 'Update-AnfActiveDirectory', 
                'Update-AnfBackup', 'Update-AnfBackupPolicy', 'Update-AnfPool', 
                'Update-AnfSnapshotPolicy', 'Update-AnfSubvolume', 'Update-AnfVolume', 
-               'Update-AnfVolumeQuotaRule'
+               'Update-AnfVolumeQuotaRule',
+               'Get-AnfVolumeGroupIdListForLDAPUser', 
+               'Get-AnfRegionInfo',
+               'Get-AnfNetworkSiblingSet', 'Update-AnfNetworkSiblingSet' 
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

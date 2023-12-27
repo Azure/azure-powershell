@@ -100,13 +100,14 @@ function Test-BackupCrud
         }               
         until ($getRetrievedBackup.ProvisioningState -eq "Succeeded" -or $i -eq 3);
 
+        $i = 0
         do
         {
             $backupStatus = Get-AzNetAppFilesVolumeBackupStatus -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -Name $volName1 
-            Start-TestSleep -Seconds 10
+            Start-TestSleep -Seconds 20
             $i++
         }               
-        until ($backupStatus.MirrorState -eq "Mirrored" -or $i -eq 3);
+        until ($backupStatus.MirrorState -eq "Mirrored" -or $i -eq 10);
     }
 
     try

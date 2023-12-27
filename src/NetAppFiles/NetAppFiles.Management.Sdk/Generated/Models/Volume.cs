@@ -53,17 +53,18 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="serviceLevel">The service level of the file system
-        /// Possible values include: 'Standard', 'Premium', 'Ultra', 'StandardZRS'</param>
+        /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;</param>
 
-        /// <param name="networkFeatures">Basic network, or Standard features available to the volume.
-        /// Possible values include: 'Basic', 'Standard'</param>
+        /// <param name="networkFeatures">Network features available to the volume, or current state of update.
+        /// Possible values include: &#39;Basic&#39;, &#39;Standard&#39;, &#39;Basic_Standard&#39;,
+        /// &#39;Standard_Basic&#39;</param>
 
         /// <param name="securityStyle">The security style of volume, default unix, defaults to ntfs for dual
         /// protocol or CIFS protocol
-        /// Possible values include: 'ntfs', 'unix'</param>
+        /// Possible values include: &#39;ntfs&#39;, &#39;unix&#39;</param>
 
         /// <param name="enableSubvolumes">Flag indicating whether subvolume operations are enabled on the volume
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="fileSystemId">Unique FileSystem Identifier.
         /// </param>
@@ -73,7 +74,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="usageThreshold">Maximum storage quota allowed for a file system in bytes. This is a soft
         /// quota used for alerting only. Minimum size is 100 GiB. Upper limit is
-        /// 100TiB, 500Tib for LargeVolume. Specified in bytes.
+        /// 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on exceptional
+        /// basis. Specified in bytes.
         /// </param>
 
         /// <param name="exportPolicy">Set of export policy rules
@@ -108,7 +110,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="storageToNetworkProximity">Provides storage to network proximity information for the volume.
-        /// Possible values include: 'Default', 'T1', 'T2', 'AcrossT2'</param>
+        /// Possible values include: &#39;Default&#39;, &#39;T1&#39;, &#39;T2&#39;, &#39;AcrossT2&#39;</param>
 
         /// <param name="mountTargets">List of mount targets
         /// </param>
@@ -137,13 +139,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// later
         /// </param>
 
-        /// <param name="smbAccessBasedEnumeration">Enables access based enumeration share property for SMB Shares. Only
+        /// <param name="smbAccessBasedEnumeration">Enables access-based enumeration share property for SMB Shares. Only
         /// applicable for SMB/DualProtocol volume
-        /// Possible values include: 'Disabled', 'Enabled'</param>
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
-        /// <param name="smbNonBrowsable">Enables non browsable property for SMB Shares. Only applicable for
+        /// <param name="smbNonBrowsable">Enables non-browsable property for SMB Shares. Only applicable for
         /// SMB/DualProtocol volume
-        /// Possible values include: 'Disabled', 'Enabled'</param>
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
         /// <param name="smbContinuouslyAvailable">Enables continuously available share property for smb volume. Only
         /// applicable for SMB volume
@@ -160,7 +162,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="encryptionKeySource">Source of key used to encrypt data in volume. Applicable if NetApp account
         /// has encryption.keySource = &#39;Microsoft.KeyVault&#39;. Possible values
         /// (case-insensitive) are: &#39;Microsoft.NetApp, Microsoft.KeyVault&#39;
-        /// Possible values include: 'Microsoft.NetApp', 'Microsoft.KeyVault'</param>
+        /// Possible values include: &#39;Microsoft.NetApp&#39;, &#39;Microsoft.KeyVault&#39;</param>
 
         /// <param name="keyVaultPrivateEndpointResourceId">The resource ID of private endpoint for KeyVault. It must reside in the
         /// same VNET as the volume. Only applicable if encryptionKeySource =
@@ -176,6 +178,16 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="coolnessPeriod">Specifies the number of days after which data that is not accessed by
         /// clients will be tiered.
         /// </param>
+
+        /// <param name="coolAccessRetrievalPolicy">coolAccessRetrievalPolicy determines the data retrieval behavior from the
+        /// cool tier to standard storage based on the read pattern for cool access
+        /// enabled volumes. The possible values for this field are:
+        /// Default - Data will be pulled from cool tier to standard storage on random
+        /// reads. This policy is the default.
+        /// OnRead - All client-driven data read is pulled from cool tier to standard
+        /// storage on both sequential and random reads.
+        /// Never - No client-driven data is pulled from cool tier to standard storage.
+        /// Possible values include: &#39;Default&#39;, &#39;OnRead&#39;, &#39;Never&#39;</param>
 
         /// <param name="unixPermissions">UNIX permissions for NFS volume accepted in octal 4 digit format. First
         /// digit selects the set user ID(4), set group ID (2) and sticky (1)
@@ -194,11 +206,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="fileAccessLogs">Flag indicating whether file access logs are enabled for the volume, based
         /// on active diagnostic settings present on the volume.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="avsDataStore">Specifies whether the volume is enabled for Azure VMware Solution (AVS)
         /// datastore purpose
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="dataStoreResourceId">Data store resource unique identifier
         /// </param>
@@ -250,7 +262,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="originatingResourceId">Id of the snapshot or backup that the volume is restored from.
         /// </param>
-        public Volume(string location, string creationToken, long usageThreshold, string subnetId, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string serviceLevel = default(string), string networkFeatures = default(string), string securityStyle = default(string), string enableSubvolumes = default(string), string fileSystemId = default(string), VolumePropertiesExportPolicy exportPolicy = default(VolumePropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), string snapshotId = default(string), bool? deleteBaseSnapshot = default(bool?), string backupId = default(string), string baremetalTenantId = default(string), string networkSiblingSetId = default(string), string storageToNetworkProximity = default(string), System.Collections.Generic.IList<MountTargetProperties> mountTargets = default(System.Collections.Generic.IList<MountTargetProperties>), string volumeType = default(string), VolumePropertiesDataProtection dataProtection = default(VolumePropertiesDataProtection), bool? isRestoring = default(bool?), bool? snapshotDirectoryVisible = default(bool?), bool? kerberosEnabled = default(bool?), bool? smbEncryption = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string), bool? smbContinuouslyAvailable = default(bool?), double? throughputMibps = default(double?), double? actualThroughputMibps = default(double?), string encryptionKeySource = default(string), string keyVaultPrivateEndpointResourceId = default(string), bool? ldapEnabled = default(bool?), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string unixPermissions = default(string), int? cloneProgress = default(int?), string fileAccessLogs = default(string), string avsDataStore = default(string), System.Collections.Generic.IList<string> dataStoreResourceId = default(System.Collections.Generic.IList<string>), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), long? maximumNumberOfFiles = default(long?), string volumeGroupName = default(string), string capacityPoolResourceId = default(string), string proximityPlacementGroup = default(string), string t2Network = default(string), string volumeSpecName = default(string), bool? encrypted = default(bool?), System.Collections.Generic.IList<PlacementKeyValuePairs> placementRules = default(System.Collections.Generic.IList<PlacementKeyValuePairs>), string provisionedAvailabilityZone = default(string), bool? isLargeVolume = default(bool?), string originatingResourceId = default(string))
+        public Volume(string location, string creationToken, long usageThreshold, string subnetId, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string serviceLevel = default(string), string networkFeatures = default(string), string securityStyle = default(string), string enableSubvolumes = default(string), string fileSystemId = default(string), VolumePropertiesExportPolicy exportPolicy = default(VolumePropertiesExportPolicy), System.Collections.Generic.IList<string> protocolTypes = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), string snapshotId = default(string), bool? deleteBaseSnapshot = default(bool?), string backupId = default(string), string baremetalTenantId = default(string), string networkSiblingSetId = default(string), string storageToNetworkProximity = default(string), System.Collections.Generic.IList<MountTargetProperties> mountTargets = default(System.Collections.Generic.IList<MountTargetProperties>), string volumeType = default(string), VolumePropertiesDataProtection dataProtection = default(VolumePropertiesDataProtection), bool? isRestoring = default(bool?), bool? snapshotDirectoryVisible = default(bool?), bool? kerberosEnabled = default(bool?), bool? smbEncryption = default(bool?), string smbAccessBasedEnumeration = default(string), string smbNonBrowsable = default(string), bool? smbContinuouslyAvailable = default(bool?), double? throughputMibps = default(double?), double? actualThroughputMibps = default(double?), string encryptionKeySource = default(string), string keyVaultPrivateEndpointResourceId = default(string), bool? ldapEnabled = default(bool?), bool? coolAccess = default(bool?), int? coolnessPeriod = default(int?), string coolAccessRetrievalPolicy = default(string), string unixPermissions = default(string), int? cloneProgress = default(int?), string fileAccessLogs = default(string), string avsDataStore = default(string), System.Collections.Generic.IList<string> dataStoreResourceId = default(System.Collections.Generic.IList<string>), bool? isDefaultQuotaEnabled = default(bool?), long? defaultUserQuotaInKiBs = default(long?), long? defaultGroupQuotaInKiBs = default(long?), long? maximumNumberOfFiles = default(long?), string volumeGroupName = default(string), string capacityPoolResourceId = default(string), string proximityPlacementGroup = default(string), string t2Network = default(string), string volumeSpecName = default(string), bool? encrypted = default(bool?), System.Collections.Generic.IList<PlacementKeyValuePairs> placementRules = default(System.Collections.Generic.IList<PlacementKeyValuePairs>), string provisionedAvailabilityZone = default(string), bool? isLargeVolume = default(bool?), string originatingResourceId = default(string))
 
         : base(location, id, name, type, systemData, tags)
         {
@@ -290,6 +302,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.LdapEnabled = ldapEnabled;
             this.CoolAccess = coolAccess;
             this.CoolnessPeriod = coolnessPeriod;
+            this.CoolAccessRetrievalPolicy = coolAccessRetrievalPolicy;
             this.UnixPermissions = unixPermissions;
             this.CloneProgress = cloneProgress;
             this.FileAccessLogs = fileAccessLogs;
@@ -338,7 +351,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string ServiceLevel {get; set; }
 
         /// <summary>
-        /// Gets or sets basic network, or Standard features available to the volume. Possible values include: &#39;Basic&#39;, &#39;Standard&#39;
+        /// Gets or sets network features available to the volume, or current state of
+        /// update. Possible values include: &#39;Basic&#39;, &#39;Standard&#39;, &#39;Basic_Standard&#39;, &#39;Standard_Basic&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.networkFeatures")]
         public string NetworkFeatures {get; set; }
@@ -373,7 +387,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <summary>
         /// Gets or sets maximum storage quota allowed for a file system in bytes. This
         /// is a soft quota used for alerting only. Minimum size is 100 GiB. Upper
-        /// limit is 100TiB, 500Tib for LargeVolume. Specified in bytes.
+        /// limit is 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on
+        /// exceptional basis. Specified in bytes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.usageThreshold")]
         public long UsageThreshold {get; set; }
@@ -492,14 +507,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public bool? SmbEncryption {get; set; }
 
         /// <summary>
-        /// Gets or sets enables access based enumeration share property for SMB
+        /// Gets or sets enables access-based enumeration share property for SMB
         /// Shares. Only applicable for SMB/DualProtocol volume Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.smbAccessBasedEnumeration")]
         public string SmbAccessBasedEnumeration {get; set; }
 
         /// <summary>
-        /// Gets or sets enables non browsable property for SMB Shares. Only applicable
+        /// Gets or sets enables non-browsable property for SMB Shares. Only applicable
         /// for SMB/DualProtocol volume Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.smbNonBrowsable")]
@@ -562,6 +577,19 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.coolnessPeriod")]
         public int? CoolnessPeriod {get; set; }
+
+        /// <summary>
+        /// Gets or sets coolAccessRetrievalPolicy determines the data retrieval
+        /// behavior from the cool tier to standard storage based on the read pattern
+        /// for cool access enabled volumes. The possible values for this field are:
+        /// Default - Data will be pulled from cool tier to standard storage on random
+        /// reads. This policy is the default.
+        /// OnRead - All client-driven data read is pulled from cool tier to standard
+        /// storage on both sequential and random reads.
+        /// Never - No client-driven data is pulled from cool tier to standard storage. Possible values include: &#39;Default&#39;, &#39;OnRead&#39;, &#39;Never&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.coolAccessRetrievalPolicy")]
+        public string CoolAccessRetrievalPolicy {get; set; }
 
         /// <summary>
         /// Gets or sets uNIX permissions for NFS volume accepted in octal 4 digit
@@ -747,9 +775,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "CreationToken", "^[a-zA-Z][a-zA-Z0-9\\-]{0,79}$");
                 }
             }
-            if (this.UsageThreshold > 549755813888000)
+            if (this.UsageThreshold > 2638827906662400)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "UsageThreshold", 549755813888000);
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "UsageThreshold", 2638827906662400);
             }
             if (this.UsageThreshold < 107374182400)
             {
@@ -808,6 +836,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "CoolnessPeriod", 7);
                 }
             }
+
             if (this.UnixPermissions != null)
             {
                 if (this.UnixPermissions.Length > 4)

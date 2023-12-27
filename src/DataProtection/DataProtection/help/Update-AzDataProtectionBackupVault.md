@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionbackupvault
 schema: 2.0.0
@@ -15,12 +15,12 @@ For example, updating tags for a resource.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String>]
+Update-AzDataProtectionBackupVault -ResourceGroupName <String> [-SubscriptionId <String>] -VaultName <String>
  [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CrossRegionRestoreState <CrossRegionRestoreState>]
  [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>]
  [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -30,7 +30,7 @@ Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity>
  [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>]
  [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -401,4 +401,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[VaultName <String>]`: The name of the backup vault.
 
 ## RELATED LINKS
-

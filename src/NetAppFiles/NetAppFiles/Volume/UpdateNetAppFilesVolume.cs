@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB, 500 GiB for large volumes. Upper limit is 100TiB. Specified in bytes.")]
+            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on exceptional basis. Specified in bytes.")]
         [ValidateNotNullOrEmpty]
         public long? UsageThreshold { get; set; }
         
@@ -162,8 +162,26 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "CoolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are: \n Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.\n OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.\n Never - No client-driven data is pulled from cool tier to standard storage.")]
+        [PSArgumentCompleter("Default", "OnRead", "Never")]
+        public string CoolAccessRetrievalPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "If enabled (true) the volume will contain a read-only .snapshot directory which provides access to each of the volume's snapshots (default to true)")]
         public SwitchParameter SnapshotDirectoryVisible { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume")]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        public string SmbAccessBasedEnumeration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume")]
+        [PSArgumentCompleter("Disabled", "Enabled")]
+        public string SmbNonBrowsable { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -229,14 +247,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }
-
+            if (Backup != null)
+            {
+                ExecuteCmdlet_2022_11_01(tagPairs);
+            }
             PSNetAppFilesVolumeDataProtection dataProtection = null;
-            if (!string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null)
+            if (!string.IsNullOrWhiteSpace(SnapshotPolicyId))
             {
                 dataProtection = new PSNetAppFilesVolumeDataProtection
                 {
-                    Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId },
-                    Backup = Backup
+                    Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId }                    
                 };
             }
 
@@ -247,19 +267,79 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 ExportPolicy = (ExportPolicy != null) ? ModelExtensions.ConvertExportPolicyPatchFromPs(ExportPolicy) : null,
                 Tags = tagPairs,
                 ThroughputMibps = ThroughputMibps,
-                DataProtection = (dataProtection != null) ? dataProtection.ConvertToPatchFromPs() : null,
-                IsDefaultQuotaEnabled = IsDefaultQuotaEnabled,
+                DataProtection = (dataProtection != null) ? dataProtection.ConvertToPatchFromPs() : null,               
                 DefaultUserQuotaInKiBs = DefaultUserQuotaInKiB,
                 DefaultGroupQuotaInKiBs = DefaultGroupQuotaInKiB,
-                UnixPermissions = UnixPermission,
-                CoolAccess = CoolAccess,
-                CoolnessPeriod = CoolnessPeriod,
-                SnapshotDirectoryVisible = SnapshotDirectoryVisible
+                UnixPermissions = UnixPermission,                
+                CoolnessPeriod = CoolnessPeriod,                
+                SmbAccessBasedEnumeration = SmbAccessBasedEnumeration,
+                SmbNonBrowsable = SmbNonBrowsable,
+                CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy
             };
+            if (IsDefaultQuotaEnabled.IsPresent)
+            {
+                volumePatchBody.IsDefaultQuotaEnabled = IsDefaultQuotaEnabled;
+            }
+            if (SnapshotDirectoryVisible.IsPresent)
+            {
+                volumePatchBody.SnapshotDirectoryVisible = SnapshotDirectoryVisible;
+            }
+            if (CoolAccess.IsPresent)
+            {
+                volumePatchBody.CoolAccess = CoolAccess;
+            }
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
                 var anfVolume = AzureNetAppFilesManagementClient.Volumes.Update(ResourceGroupName, AccountName, PoolName, Name, volumePatchBody);
+                WriteObject(anfVolume.ToPsNetAppFilesVolume());
+            }
+        }
+
+        private void ExecuteCmdlet_2022_11_01(IDictionary<string, string> tagPairs)
+        {
+            PSNetAppFilesVolumeDataProtection dataProtection = null;
+            if (!string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null)
+            {
+                dataProtection = new PSNetAppFilesVolumeDataProtection
+                {
+                    Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId },
+                    Backup = Backup
+                };
+            }
+
+            var volumePatchBody = new VolumePatch_2022_11_01()
+            {
+                ServiceLevel = ServiceLevel,
+                UsageThreshold = UsageThreshold,
+                ExportPolicy = (ExportPolicy != null) ? ModelExtensions.ConvertExportPolicyPatchFromPs(ExportPolicy) : null,
+                Tags = tagPairs,
+                ThroughputMibps = ThroughputMibps,
+                DataProtection = (dataProtection != null) ? dataProtection.ConvertToPatch_2022_11_01_FromPs() : null,
+                DefaultUserQuotaInKiBs = DefaultUserQuotaInKiB,
+                DefaultGroupQuotaInKiBs = DefaultGroupQuotaInKiB,
+                UnixPermissions = UnixPermission,
+                CoolnessPeriod = CoolnessPeriod,
+                SmbAccessBasedEnumeration = SmbAccessBasedEnumeration,
+                SmbNonBrowsable = SmbNonBrowsable,
+                CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy
+            };
+            if (IsDefaultQuotaEnabled.IsPresent)
+            {
+                volumePatchBody.IsDefaultQuotaEnabled = IsDefaultQuotaEnabled;
+            }
+            if (SnapshotDirectoryVisible.IsPresent)
+            {
+                volumePatchBody.SnapshotDirectoryVisible = SnapshotDirectoryVisible;
+            }
+            if (CoolAccess.IsPresent)
+            {
+                volumePatchBody.CoolAccess = CoolAccess;
+            }
+
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
+            {
+                var anfVolume = AzureNetAppFilesManagementClient.Volume_2022_11_01.Update(ResourceGroupName, AccountName, PoolName, Name, volumePatchBody);
                 WriteObject(anfVolume.ToPsNetAppFilesVolume());
             }
         }

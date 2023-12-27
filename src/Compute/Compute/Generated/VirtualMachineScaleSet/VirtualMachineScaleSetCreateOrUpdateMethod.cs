@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 var res = VirtualMachineScaleSetsClient.CreateOrUpdateWithHttpMessagesAsync(
                                         resourceGroupName,
                                         vmScaleSetName,
-                                        parameters,
+                                        parameters,null,null,
                                         auxAuthHeader).GetAwaiter().GetResult();
 
                                 result = res.Body;

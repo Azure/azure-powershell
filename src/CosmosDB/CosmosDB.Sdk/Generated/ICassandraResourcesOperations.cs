@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.CosmosDB
     public partial interface ICassandraResourcesOperations
     {
         /// <summary>
-        /// Lists the Cassandra keyspaces under an existing Azure Cosmos DB database account.
+        /// Lists the Cassandra keyspaces under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Lists the Cassandra keyspaces under an existing Azure Cosmos DB database account.
+        /// Lists the Cassandra keyspaces under an existing Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -40,10 +42,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<CassandraKeyspaceGetResults>>> ListCassandraKeyspacesWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the Cassandra keyspaces under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the Cassandra keyspaces under an existing Azure Cosmos DB database
+        /// account with the provided name.
         /// </summary>
         /// <remarks>
-        /// Gets the Cassandra keyspaces under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the Cassandra keyspaces under an existing Azure Cosmos DB database
+        /// account with the provided name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -127,10 +131,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CassandraResourcesDeleteCassandraKeyspaceHeaders>> DeleteCassandraKeyspaceWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the RUs per second of the Cassandra Keyspace under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the Cassandra Keyspace under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <remarks>
-        /// Gets the RUs per second of the Cassandra Keyspace under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the Cassandra Keyspace under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -171,7 +177,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB keyspace name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The RUs per second of the parameters to provide for the current Cassandra Keyspace.
+        /// The RUs per second of the parameters to provide for the current Cassandra
+        /// Keyspace.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -188,10 +195,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,CassandraResourcesUpdateCassandraKeyspaceThroughputHeaders>> UpdateCassandraKeyspaceThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to
+        /// autoscale
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to
+        /// autoscale
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -217,10 +226,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,CassandraResourcesMigrateCassandraKeyspaceToAutoscaleHeaders>> MigrateCassandraKeyspaceToAutoscaleWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual
+        /// throughput
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual
+        /// throughput
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -246,10 +257,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,CassandraResourcesMigrateCassandraKeyspaceToManualThroughputHeaders>> MigrateCassandraKeyspaceToManualThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the Cassandra table under an existing Azure Cosmos DB database account.
+        /// Lists the Cassandra table under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Lists the Cassandra table under an existing Azure Cosmos DB database account.
+        /// Lists the Cassandra table under an existing Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -275,10 +288,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<CassandraTableGetResults>>> ListCassandraTablesWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the Cassandra table under an existing Azure Cosmos DB database account.
+        /// Gets the Cassandra table under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Gets the Cassandra table under an existing Azure Cosmos DB database account.
+        /// Gets the Cassandra table under an existing Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -371,10 +386,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<CassandraResourcesDeleteCassandraTableHeaders>> DeleteCassandraTableWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, string tableName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the RUs per second of the Cassandra table under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the Cassandra table under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <remarks>
-        /// Gets the RUs per second of the Cassandra table under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the Cassandra table under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -421,7 +438,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB table name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The RUs per second of the parameters to provide for the current Cassandra table.
+        /// The RUs per second of the parameters to provide for the current Cassandra
+        /// table.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -438,10 +456,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,CassandraResourcesUpdateCassandraTableThroughputHeaders>> UpdateCassandraTableThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, string tableName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to
+        /// autoscale
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to
+        /// autoscale
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -470,10 +490,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,CassandraResourcesMigrateCassandraTableToAutoscaleHeaders>> MigrateCassandraTableToAutoscaleWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, string tableName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual
+        /// throughput
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual
+        /// throughput
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -575,7 +597,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB keyspace name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The RUs per second of the parameters to provide for the current Cassandra Keyspace.
+        /// The RUs per second of the parameters to provide for the current Cassandra
+        /// Keyspace.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -592,10 +615,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,CassandraResourcesUpdateCassandraKeyspaceThroughputHeaders>> BeginUpdateCassandraKeyspaceThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to
+        /// autoscale
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to
+        /// autoscale
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -621,10 +646,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,CassandraResourcesMigrateCassandraKeyspaceToAutoscaleHeaders>> BeginMigrateCassandraKeyspaceToAutoscaleWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual
+        /// throughput
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual
+        /// throughput
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -732,7 +759,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB table name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The RUs per second of the parameters to provide for the current Cassandra table.
+        /// The RUs per second of the parameters to provide for the current Cassandra
+        /// table.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -749,10 +777,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,CassandraResourcesUpdateCassandraTableThroughputHeaders>> BeginUpdateCassandraTableThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, string tableName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to
+        /// autoscale
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to
+        /// autoscale
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -781,10 +811,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,CassandraResourcesMigrateCassandraTableToAutoscaleHeaders>> BeginMigrateCassandraTableToAutoscaleWithHttpMessagesAsync(string resourceGroupName, string accountName, string keyspaceName, string tableName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual
+        /// throughput
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual
+        /// throughput
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

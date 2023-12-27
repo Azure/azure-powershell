@@ -218,7 +218,7 @@ List of package applications.
 To construct, see NOTES section for PACKAGEAPPLICATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IMsixPackageApplications[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageApplications[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -235,7 +235,7 @@ List of package dependencies.
 To construct, see NOTES section for PACKAGEDEPENDENCY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IMsixPackageDependencies[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackageDependencies[]
 Parameter Sets: CreateExpanded
 Aliases:
 

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="status">Status of the Active Directory
-        /// Possible values include: 'Created', 'InUse', 'Deleted', 'Error', 'Updating'</param>
+        /// Possible values include: &#39;Created&#39;, &#39;InUse&#39;, &#39;Deleted&#39;, &#39;Error&#39;, &#39;Updating&#39;</param>
 
         /// <param name="statusDetails">Any details in regards to the Status of the Active Directory
         /// </param>
@@ -310,7 +310,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
         {
 
 
-
+            if (this.Password != null)
+            {
+                if (this.Password.Length > 64)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "Password", 64);
+                }
+            }
 
             if (this.Dns != null)
             {

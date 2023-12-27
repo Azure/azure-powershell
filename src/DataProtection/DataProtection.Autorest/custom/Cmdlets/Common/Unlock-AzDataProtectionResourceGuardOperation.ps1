@@ -82,7 +82,7 @@ function Unlock-AzDataProtectionResourceGuardOperation
             $ResGuardProxy = Get-AzDataProtectionResourceGuardMapping -VaultName $VaultName -ResourceGroupName $ResourceGroupName
         }
 
-        # DppRef : Add new operations
+        # TODO : Add new operations
         $CriticalOperationsMap = @{ DisableMUA = "deleteResourceGuardProxyRequests"; DeleteBackupInstance = "deleteBackupInstanceRequests" }          
         
         # modify Critical operation exclusion list         

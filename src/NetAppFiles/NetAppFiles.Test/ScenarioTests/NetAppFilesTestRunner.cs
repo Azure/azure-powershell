@@ -36,7 +36,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests
                 {
                     helper.RMProfileModule,
                     helper.RMNetworkModule,
-                    helper.GetRMModulePath("Az.NetAppFiles.psd1")
+                    helper.GetRMModulePath("Az.NetAppFiles.psd1"),
+                    helper.GetRMModulePath("Az.ManagedServiceIdentity.psd1")
                 })
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>
@@ -49,7 +50,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null},
                         {"Microsoft.Network", null},
-                        {"Microsoft.Compute", null}
+                        {"Microsoft.Compute", null},
+                        {"Microsoft.ManagedServiceIdentity", null}
                     }
                 )
                 .Build();

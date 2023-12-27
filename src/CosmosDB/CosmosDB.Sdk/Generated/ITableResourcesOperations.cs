@@ -40,10 +40,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<TableGetResults>>> ListTablesWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the Tables under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the Tables under an existing Azure Cosmos DB database account with the
+        /// provided name.
         /// </summary>
         /// <remarks>
-        /// Gets the Tables under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the Tables under an existing Azure Cosmos DB database account with the
+        /// provided name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -127,10 +129,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<TableResourcesDeleteTableHeaders>> DeleteTableWithHttpMessagesAsync(string resourceGroupName, string accountName, string tableName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the RUs per second of the Table under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the Table under an existing Azure Cosmos DB
+        /// database account with the provided name.
         /// </summary>
         /// <remarks>
-        /// Gets the RUs per second of the Table under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the Table under an existing Azure Cosmos DB
+        /// database account with the provided name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

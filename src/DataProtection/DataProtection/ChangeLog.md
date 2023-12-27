@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for Cross region restore for Backup vaults
 
 ## Version 2.1.0
 * Added soft delete and MUA feature for Backup vaults

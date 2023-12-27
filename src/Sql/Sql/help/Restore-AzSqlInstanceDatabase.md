@@ -170,7 +170,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup -Name $deletedDatabase.Name
 ```
 
 The first command gets the deleted instance databases named 'DB1' on Instance 'managedInstance1'.
-The second command restores the the fetched database, from the specified point-in-time backup to the instance database named Database01_restored.
+The second command restores the fetched database, from the specified point-in-time backup to the instance database named Database01_restored.
 
 ### Example 5: Restore a deleted instance database from a point in time
 ```powershell
@@ -179,7 +179,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup -InputObject $deletedDataba
 ```
 
 The first command gets the deleted instance databases named 'DB1' on Instance 'managedInstance1'.
-The second command restores the the fetched database, from the specified point-in-time backup to the instance database named Database01_restored using input object.
+The second command restores the fetched database, from the specified point-in-time backup to the instance database named Database01_restored using input object.
 
 ### Example 6: Restore a database from LTR backup.
 ```powershell

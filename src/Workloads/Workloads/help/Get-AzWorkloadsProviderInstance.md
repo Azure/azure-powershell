@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Workloads-help.xml
 Module Name: Az.Workloads
 online version: https://learn.microsoft.com/powershell/module/az.workloads/get-azworkloadsproviderinstance
 schema: 2.0.0
@@ -51,7 +51,7 @@ SAP-NETWEAVER     ad-ams-rg         Failed
 HA3-HANA-HighAvl  ad-ams-rg         Succeeded         
 lh-28022023-host  ad-ams-rg         Failed            
 as1-sysdb         ad-ams-rg         Succeeded         
-h2-test           ad-ams-rg         Failed            
+h2-test           ad-ams-rg         Failed
 ```
 
 List all the providers created for an AMS Instance
@@ -64,7 +64,7 @@ Get-AzWorkloadsProviderInstance -ResourceGroupName ad-ams-rg -MonitorName ad-ams
 ```output
 Name        ResourceGroupName ProvisioningState IdentityType
 ----        ----------------- -----------------  ------------
-hana-test-2 ad-ams-rg         Succeeded         
+hana-test-2 ad-ams-rg         Succeeded
 ```
 
 Gets information about a specific AMS Provider
@@ -75,7 +75,6 @@ Get-AzWorkloadsProviderInstance -InputObject "/subscriptions/49d64d54-e966-4c46-
 ```
 
 ```output
-
 Name       ResourceGroupName ProvisioningState IdentityType
 ----       ----------------- ----------------- ------------
 suha-db2-1 suha-0802-rg1     Succeeded
@@ -122,7 +121,7 @@ Name of the SAP monitor resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -153,7 +152,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -168,7 +167,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -211,4 +210,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-
