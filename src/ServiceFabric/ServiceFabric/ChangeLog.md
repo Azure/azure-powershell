@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.3.2
 * Fixed Az.ServiceFabric cannot be imported in arm64 platform.
 
 ## Version 3.3.1

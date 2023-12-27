@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
 * Added support for Cross region restore for Backup vaults
 
 ## Version 2.1.0
