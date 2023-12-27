@@ -24,8 +24,33 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the MySqlLinkedServiceTypeProperties class.
         /// </summary>
 
+        /// <param name="driverVersion">The version of the MySQL driver. Type: string. V1 or empty for legacy
+        /// driver, V2 for new driver. V1 can support connection string and property
+        /// bag, V2 can only support connection string.
+        /// </param>
+
         /// <param name="connectionString">The connection string. Type: string, SecureString or
         /// AzureKeyVaultSecretReference.
+        /// </param>
+
+        /// <param name="server">Server name for connection. Type: string.
+        /// </param>
+
+        /// <param name="port">The port for the connection. Type: integer.
+        /// </param>
+
+        /// <param name="username">Username for authentication. Type: string.
+        /// </param>
+
+        /// <param name="database">Database name for connection. Type: string.
+        /// </param>
+
+        /// <param name="sslMode">SSL mode for connection. Type: integer. 0: disable, 1: prefer, 2: require,
+        /// 3: verify-ca, 4: verify-full.
+        /// </param>
+
+        /// <param name="useSystemTrustStore">Use system trust store for connection. Type: integer. 0: enable, 1:
+        /// disable.
         /// </param>
 
         /// <param name="password">The Azure key vault secret reference of password in connection string.
@@ -34,10 +59,17 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public MySqlLinkedServiceTypeProperties(object connectionString, AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
+        public MySqlLinkedServiceTypeProperties(object driverVersion = default(object), object connectionString = default(object), object server = default(object), object port = default(object), object username = default(object), object database = default(object), object sslMode = default(object), object useSystemTrustStore = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
 
         {
+            this.DriverVersion = driverVersion;
             this.ConnectionString = connectionString;
+            this.Server = server;
+            this.Port = port;
+            this.Username = username;
+            this.Database = database;
+            this.SslMode = sslMode;
+            this.UseSystemTrustStore = useSystemTrustStore;
             this.Password = password;
             this.EncryptedCredential = encryptedCredential;
             CustomInit();
@@ -50,11 +82,57 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
         /// <summary>
+        /// Gets or sets the version of the MySQL driver. Type: string. V1 or empty for
+        /// legacy driver, V2 for new driver. V1 can support connection string and
+        /// property bag, V2 can only support connection string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "driverVersion")]
+        public object DriverVersion {get; set; }
+
+        /// <summary>
         /// Gets or sets the connection string. Type: string, SecureString or
         /// AzureKeyVaultSecretReference.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "connectionString")]
         public object ConnectionString {get; set; }
+
+        /// <summary>
+        /// Gets or sets server name for connection. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "server")]
+        public object Server {get; set; }
+
+        /// <summary>
+        /// Gets or sets the port for the connection. Type: integer.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "port")]
+        public object Port {get; set; }
+
+        /// <summary>
+        /// Gets or sets username for authentication. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "username")]
+        public object Username {get; set; }
+
+        /// <summary>
+        /// Gets or sets database name for connection. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "database")]
+        public object Database {get; set; }
+
+        /// <summary>
+        /// Gets or sets sSL mode for connection. Type: integer. 0: disable, 1: prefer,
+        /// 2: require, 3: verify-ca, 4: verify-full.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sslMode")]
+        public object SslMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets use system trust store for connection. Type: integer. 0:
+        /// enable, 1: disable.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "useSystemTrustStore")]
+        public object UseSystemTrustStore {get; set; }
 
         /// <summary>
         /// Gets or sets the Azure key vault secret reference of password in connection
@@ -78,10 +156,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (this.ConnectionString == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ConnectionString");
-            }
+
+
+
+
+
+
+
 
             if (this.Password != null)
             {

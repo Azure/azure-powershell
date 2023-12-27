@@ -42,22 +42,44 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="annotations">List of tags that can be used for describing the linked service.
         /// </param>
 
+        /// <param name="driverVersion">The version of the MariaDB driver. Type: string. V1 or empty for legacy
+        /// driver, V2 for new driver. V1 can support connection string and property
+        /// bag, V2 can only support connection string.
+        /// </param>
+
         /// <param name="connectionString">An ODBC connection string. Type: string, SecureString or
         /// AzureKeyVaultSecretReference.
         /// </param>
 
-        /// <param name="pwd">The Azure key vault secret reference of password in connection string.
+        /// <param name="server">Server name for connection. Type: string.
+        /// </param>
+
+        /// <param name="port">The port for the connection. Type: integer.
+        /// </param>
+
+        /// <param name="username">Username for authentication. Type: string.
+        /// </param>
+
+        /// <param name="database">Database name for connection. Type: string.
+        /// </param>
+
+        /// <param name="password">The Azure key vault secret reference of password in connection string.
         /// </param>
 
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public MariaDBLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object connectionString = default(object), AzureKeyVaultSecretReference pwd = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
+        public MariaDBLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object driverVersion = default(object), object connectionString = default(object), object server = default(object), object port = default(object), object username = default(object), object database = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
 
         : base(additionalProperties, connectVia, description, parameters, annotations)
         {
+            this.DriverVersion = driverVersion;
             this.ConnectionString = connectionString;
-            this.Pwd = pwd;
+            this.Server = server;
+            this.Port = port;
+            this.Username = username;
+            this.Database = database;
+            this.Password = password;
             this.EncryptedCredential = encryptedCredential;
             CustomInit();
         }
@@ -69,6 +91,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
         /// <summary>
+        /// Gets or sets the version of the MariaDB driver. Type: string. V1 or empty
+        /// for legacy driver, V2 for new driver. V1 can support connection string and
+        /// property bag, V2 can only support connection string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.driverVersion")]
+        public object DriverVersion {get; set; }
+
+        /// <summary>
         /// Gets or sets an ODBC connection string. Type: string, SecureString or
         /// AzureKeyVaultSecretReference.
         /// </summary>
@@ -76,11 +106,35 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object ConnectionString {get; set; }
 
         /// <summary>
+        /// Gets or sets server name for connection. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.server")]
+        public object Server {get; set; }
+
+        /// <summary>
+        /// Gets or sets the port for the connection. Type: integer.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.port")]
+        public object Port {get; set; }
+
+        /// <summary>
+        /// Gets or sets username for authentication. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.username")]
+        public object Username {get; set; }
+
+        /// <summary>
+        /// Gets or sets database name for connection. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.database")]
+        public object Database {get; set; }
+
+        /// <summary>
         /// Gets or sets the Azure key vault secret reference of password in connection
         /// string.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.pwd")]
-        public AzureKeyVaultSecretReference Pwd {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.password")]
+        public AzureKeyVaultSecretReference Password {get; set; }
 
         /// <summary>
         /// Gets or sets the encrypted credential used for authentication. Credentials
@@ -99,9 +153,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         {
             base.Validate();
 
-            if (this.Pwd != null)
+
+
+
+
+
+            if (this.Password != null)
             {
-                this.Pwd.Validate();
+                this.Password.Validate();
             }
 
         }

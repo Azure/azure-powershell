@@ -42,8 +42,33 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="annotations">List of tags that can be used for describing the linked service.
         /// </param>
 
+        /// <param name="driverVersion">The version of the MySQL driver. Type: string. V1 or empty for legacy
+        /// driver, V2 for new driver. V1 can support connection string and property
+        /// bag, V2 can only support connection string.
+        /// </param>
+
         /// <param name="connectionString">The connection string. Type: string, SecureString or
         /// AzureKeyVaultSecretReference.
+        /// </param>
+
+        /// <param name="server">Server name for connection. Type: string.
+        /// </param>
+
+        /// <param name="port">The port for the connection. Type: integer.
+        /// </param>
+
+        /// <param name="username">Username for authentication. Type: string.
+        /// </param>
+
+        /// <param name="database">Database name for connection. Type: string.
+        /// </param>
+
+        /// <param name="sslMode">SSL mode for connection. Type: integer. 0: disable, 1: prefer, 2: require,
+        /// 3: verify-ca, 4: verify-full.
+        /// </param>
+
+        /// <param name="useSystemTrustStore">Use system trust store for connection. Type: integer. 0: enable, 1:
+        /// disable.
         /// </param>
 
         /// <param name="password">The Azure key vault secret reference of password in connection string.
@@ -52,11 +77,18 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public MySqlLinkedService(object connectionString, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
+        public MySqlLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object driverVersion = default(object), object connectionString = default(object), object server = default(object), object port = default(object), object username = default(object), object database = default(object), object sslMode = default(object), object useSystemTrustStore = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
 
         : base(additionalProperties, connectVia, description, parameters, annotations)
         {
+            this.DriverVersion = driverVersion;
             this.ConnectionString = connectionString;
+            this.Server = server;
+            this.Port = port;
+            this.Username = username;
+            this.Database = database;
+            this.SslMode = sslMode;
+            this.UseSystemTrustStore = useSystemTrustStore;
             this.Password = password;
             this.EncryptedCredential = encryptedCredential;
             CustomInit();
@@ -69,11 +101,57 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
         /// <summary>
+        /// Gets or sets the version of the MySQL driver. Type: string. V1 or empty for
+        /// legacy driver, V2 for new driver. V1 can support connection string and
+        /// property bag, V2 can only support connection string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.driverVersion")]
+        public object DriverVersion {get; set; }
+
+        /// <summary>
         /// Gets or sets the connection string. Type: string, SecureString or
         /// AzureKeyVaultSecretReference.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.connectionString")]
         public object ConnectionString {get; set; }
+
+        /// <summary>
+        /// Gets or sets server name for connection. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.server")]
+        public object Server {get; set; }
+
+        /// <summary>
+        /// Gets or sets the port for the connection. Type: integer.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.port")]
+        public object Port {get; set; }
+
+        /// <summary>
+        /// Gets or sets username for authentication. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.username")]
+        public object Username {get; set; }
+
+        /// <summary>
+        /// Gets or sets database name for connection. Type: string.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.database")]
+        public object Database {get; set; }
+
+        /// <summary>
+        /// Gets or sets sSL mode for connection. Type: integer. 0: disable, 1: prefer,
+        /// 2: require, 3: verify-ca, 4: verify-full.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.sslMode")]
+        public object SslMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets use system trust store for connection. Type: integer. 0:
+        /// enable, 1: disable.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.useSystemTrustStore")]
+        public object UseSystemTrustStore {get; set; }
 
         /// <summary>
         /// Gets or sets the Azure key vault secret reference of password in connection
@@ -98,10 +176,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public override void Validate()
         {
             base.Validate();
-            if (this.ConnectionString == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ConnectionString");
-            }
+
+
+
+
+
+
+
 
             if (this.Password != null)
             {
