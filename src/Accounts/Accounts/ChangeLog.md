@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed the authentication issue when using `FederatedToken` in Sovereign Clouds. [#23742]
 * Added upcoming breaking change warning for deprecation of config parameter `DisableErrorRecordsPersistence`.
 
 ## Version 2.13.2
