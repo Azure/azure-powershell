@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.13.0
 * Fixed `Set-AzSqlDatabaseFailoverGroup` when going from multi-secondary to single secondary
 * Added `SecondaryComputeModel`, `AutoPauseDelayInMinutes` and `MinimumCapacity` parameters within `New-AzSqlDatabaseSecondary`
 
