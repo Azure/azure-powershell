@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.ARMProfileFile = autoSave.ContextFile;
             session.TokenCacheDirectory = autoSave.CacheDirectory;
             session.TokenCacheFile = MsalCacheHelperProvider.GetTokenCacheName(autoSave.CacheFile, true);
-            session.KeyStoreFile = autoSave.CacheFile ?? "keystore.cache";
+            session.KeyStoreFile = autoSave.KeyStoreFile ?? "keystore.cache";
             autoSave.Settings.TryGetValue("InstallationId", out string installationId);
             session.ExtendedProperties.Add("InstallationId", installationId);
             InitializeConfigs(session, profilePath, writeWarning);
