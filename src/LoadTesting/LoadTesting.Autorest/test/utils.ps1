@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -46,12 +71,12 @@ function setupEnv() {
     $env.Add("loadTestResource1", $loadTestResource1)
     $env.Add("loadTestResource2", $loadTestResource2)
     $env.Add("resourceGroup", $resourceGroup)
-    
+
     Write-Host -ForegroundColor Green "Creating new resource group:" $env.resourceGroup
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
     # Deploy managed identity for test
-    Write-Host -ForegroundColor Green "Deloying Managed identities -" $identityName1 "," $identityName2 
+    Write-Host -ForegroundColor Green "Deloying Managed identities -" $identityName1 "," $identityName2
     $miPara = Get-Content .\test\deployment-templates\managed-identity\parameters.json | ConvertFrom-Json
     $miPara.parameters.idname1.value = $identityName1
     $miPara.parameters.idname2.value = $identityName2
@@ -59,7 +84,7 @@ function setupEnv() {
     set-content -Path .\test\deployment-templates\managed-identity\parameters.json -Value (ConvertTo-Json $miPara)
     $null = New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\managed-identity\template.json -TemplateParameterFile .\test\deployment-templates\managed-identity\parameters.json -ResourceGroupName $resourceGroup
     Write-Host -ForegroundColor Green "Deloyment of Managed identity succeeded."
-    
+
     $mi1 = Get-AzUserAssignedIdentity -Name $identityName1 -ResourceGroupName $env.resourceGroup
     $mi2 = Get-AzUserAssignedIdentity -Name $identityName2 -ResourceGroupName $env.resourceGroup
 
@@ -80,7 +105,7 @@ function setupEnv() {
     $key2 = Add-AzKeyVaultKey -VaultName $pwshKeyVault -Name $cmkkey2name -Destination 'Software'
     Write-Host -ForegroundColor Green "CMK Key 1:" $key1.Id
     Write-Host -ForegroundColor Green "CMK Key 2:" $key2.Id
-    
+
     $id1 = Get-AzUserAssignedIdentity -Name $identityName1 -ResourceGroupName $env.resourceGroup
     $id2 = Get-AzUserAssignedIdentity -Name $identityName2 -ResourceGroupName $env.resourceGroup
     Write-Host -ForegroundColor Green "UAMI 1:" $id1.Id
@@ -90,7 +115,7 @@ function setupEnv() {
     $env.Add("cmkkeyid2", $key2.Id)
     $env.Add("identityid1", $id1.Id)
     $env.Add("identityid2", $id2.Id)
-    
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

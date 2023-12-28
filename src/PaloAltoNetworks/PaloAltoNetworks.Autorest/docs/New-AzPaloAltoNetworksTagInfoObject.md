@@ -73,11 +73,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.TagInfo
+### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.TagInfo
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

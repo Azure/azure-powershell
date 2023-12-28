@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
@@ -14,7 +39,7 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
     # Generate some random strings for use in the test.
-    $rstr1 = RandomString -allChars $false -len 6	
+    $rstr1 = RandomString -allChars $false -len 6
     $rstr2 = RandomString -allChars $false -len 6
     $rstr3 = RandomString -allChars $false -len 6
     # Follow random strings will be used in the test directly, so add it to $env
@@ -49,7 +74,7 @@ function setupEnv() {
     $workspaceParams.parameters.workspaceName.value = $workspaceName
     set-content -Path .\test\deployment-templates\workspace\parameters.json -Value (ConvertTo-Json $workspaceParams)
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\workspace\template.json -TemplateParameterFile .\test\deployment-templates\workspace\parameters.json -Name workspace -ResourceGroupName $resourceGroupName
-    
+
     # Deploy kusto pool
     $kustoPoolName = "testkustopool" + $rstr1
     $databaseName = "testdatabase" + $rstr1
@@ -82,7 +107,7 @@ function setupEnv() {
     Write-Host "Start to create 2nd Kusto pool" $kustoPoolName
     $null = $env.Add("plainKustoPoolName", $kustoPoolName)
     New-AzSynapseKustoPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $kustoPoolName -Location $env.location -SkuName $env.skuName -SkuSize $env.skuSize
-    
+
     # Create event hub and Iot hub to test data connection
     $eventhubNS = "eventhubNS" + $rstr1
     $eventhub = "eventhub" + $rstr1
@@ -105,9 +130,9 @@ function setupEnv() {
     $iothubParams.parameters.hubname.value = $iothub
     set-content -Path .\test\deployment-templates\iot-hub\parameters.json -Value (ConvertTo-Json $iothubParams)
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\iot-hub\template.json -TemplateParameterFile .\test\deployment-templates\iot-hub\parameters.json -Name iothub -ResourceGroupName $resourceGroupName
-    
+
     $null = $env.Add("dataConnectionName", "testdataconnection" + $rstr1)
-    
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

@@ -74,9 +74,9 @@ jobs:
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:Build /p:Configuration=Release;TurnOnTestCoverage=true'
+      arguments: 'build.proj /t:Build /p:Configuration=Release;TurnOnTestCoverage=true;ModifiedModuleBuild=true'
 
-  - task: EsrpCodeSigning@1
+  - task: EsrpCodeSigning@4
     inputs:
       ConnectedServiceName: '$(signServiceConnection)'
       FolderPath: 'artifacts'
@@ -134,7 +134,7 @@ jobs:
       MaxConcurrency: '50'
       MaxRetryAttempts: '5'
 
-  - task: EsrpCodeSigning@1
+  - task: EsrpCodeSigning@4
     displayName: 'Sign 3rd Party [Strong Name]'
     inputs:
       ConnectedServiceName: '$(signServiceConnection)'
