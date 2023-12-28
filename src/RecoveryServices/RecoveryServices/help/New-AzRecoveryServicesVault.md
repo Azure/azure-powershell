@@ -102,6 +102,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Locked state: True
 ```
 
 ### -Location
