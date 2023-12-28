@@ -501,10 +501,10 @@ function Get-AzMigrateServerMigrationStatus {
                     $op = $output.Add("No warnings or critical errors for this server.")
                 }
                 else {
-                    $op = $output.Add("List of warning or critical errors for this server with their resolutions:")
+                    $op = $output.Add("List of warning or critical errors for this server with their resolutions: `n")
                     $healthError = $ReplicationMigrationItem.HealthError
                     foreach ($error in $healthError) {
-                        $op = $output.Add("Error Message: $($error.ErrorMessage)`n`nPossible Causes: $($error.PossibleCaus)`n`nRecommended Actions: $($error.RecommendedAction)`n`n")
+                        $op = $output.Add("Error Message: $($error.ErrorMessage)`nPossible Causes: $($error.PossibleCaus)`nRecommended Actions: $($error.RecommendedAction)`n`n")
                     }
                 }
             }
