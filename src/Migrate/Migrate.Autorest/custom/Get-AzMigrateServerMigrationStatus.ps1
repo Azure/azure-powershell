@@ -22,6 +22,7 @@ The Get-AzMigrateServerMigrationStatus cmdlet retrieves the replication status f
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateservermigrationstatus
 #>
 function Get-AzMigrateServerMigrationStatus {
+    [OutputType([PSCustomObject[]])]
     [CmdletBinding(DefaultParameterSetName = 'ListByName', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'ListByName', Mandatory)]
