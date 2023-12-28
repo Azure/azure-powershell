@@ -12,10 +12,11 @@
   "allowedRestoreTargetTypes": [ "AlternateLocation", "OriginalLocation" ],
   "itemLevelRecoveyEnabled": true,
   "addBackupDatasourceParametersList": true,
-  "backupConfigurationRequired":  true,
+  "backupConfigurationRequired": true,
   "addDataStoreParametersList": true,
   "friendlyNameRequired": true,
   "supportSecretStoreAuthentication": false,
+  "supportCrossRegionRestore": false,
   "policySettings": {
     "supportedRetentionTags": [ "Daily", "Weekly" ],
     "supportedDatastoreTypes": [ "OperationalStore" ],

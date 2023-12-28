@@ -22,13 +22,14 @@ using Tools.Common.Loaders;
 using Tools.Common.Models;
 using Tools.Common.Utilities;
 using VersionController.Models;
+using VersionController.Netcore.Models;
 
 namespace VersionController
 {
     public class Program
     {
         private static VersionBumper _versionBumper;
-
+        private static SyntaxChangelogGenerator _syntaxChangelogGenerator = new SyntaxChangelogGenerator();
         private static Dictionary<string, AzurePSVersion> _minimalVersion = new Dictionary<string, AzurePSVersion>();
         private static List<string> _projectDirectories, _outputDirectories;
         private static string _rootDirectory, _moduleNameFilter;
@@ -45,13 +46,12 @@ namespace VersionController
             "SignatureIssues.csv",
             "ExampleIssues.csv"
         };
-
         public static void Main(string[] args)
         {
             var executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
             var versionControllerDirectory = Directory.GetParent(executingAssemblyPath).FullName;
             var artifactsDirectory = Directory.GetParent(versionControllerDirectory).FullName;
-
+            var syntaxChangelog = "false";
              _rootDirectory = Directory.GetParent(artifactsDirectory).FullName;
             _projectDirectories = new List<string>{ Path.Combine(_rootDirectory, @"src\") }.Where((d) => Directory.Exists(d)).ToList();
             _outputDirectories = new List<string>{ Path.Combine(_rootDirectory, @"artifacts\Release\") }.Where((d) => Directory.Exists(d)).ToList();
@@ -74,11 +74,22 @@ namespace VersionController
                 _moduleNameFilter = args[1] + Psd1NameExtension;
             }
 
+            if (args != null && args.Length > 2)
+            {
+                syntaxChangelog = args[2];
+            }
+
             ConsolidateExceptionFiles(exceptionsDirectory);
             ValidateManifest();
+            if (syntaxChangelog.Equals("true", System.StringComparison.OrdinalIgnoreCase)) {
+                GenerateSyntaxChangelog(_rootDirectory);
+            }
             BumpVersions();
         }
-
+        private static void GenerateSyntaxChangelog(string _projectDirectories)
+        {
+            _syntaxChangelogGenerator.Analyze(_projectDirectories);
+        }
         private static void ValidateManifest()
         {
             foreach (var directory in _projectDirectories)

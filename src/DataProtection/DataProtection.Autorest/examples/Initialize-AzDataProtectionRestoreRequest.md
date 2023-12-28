@@ -77,3 +77,41 @@ FromPrefix           ToPrefix
                     
 Note: The ranges shouldn't overlap with each other. Reference: https://learn.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata
 
+### Example 5: Get cross region restore request object for restore as database for datasource type AzureDatabaseForPostgreSQL
+
+```powershell
+$vault = Search-AzDataProtectionBackupVaultInAzGraph -ResourceGroup $ResourceGroupName -Subscription $SubscriptionId -Vault $VaultName
+$instance = Search-AzDataProtectionBackupInstanceInAzGraph -Subscription $subscriptionId  -ResourceGroup  $resourceGroupName  -Vault $vaultName -DatasourceType AzureDatabaseForPostgreSQL
+$recoveryPointsCrr = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -UseSecondaryRegion
+$targetResourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/{targetResourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{targetServerName}/databases/{targetDatabaseName}"
+$secretURI = "https://{crr-key-vault}.vault.azure.net/secrets/{secret-for-crr}"
+$OssRestoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPostgreSQL -SourceDataStore VaultStore -RestoreLocation $vault.ReplicatedRegion[0] -RestoreType AlternateLocation -RecoveryPoint $recoveryPointsCrr[0].Property.RecoveryPointId -TargetResourceId $targetResourceId -SecretStoreURI $secretURI -SecretStoreType AzureKeyVault
+```
+
+```output
+ObjectType                                  SourceDataStoreType SourceResourceId RecoveryPointId
+----------                                  ------------------- ---------------- ---------------
+AzureBackupRecoveryPointBasedRestoreRequest VaultStore                           d49aeb83264456ccab92a105cade9afe
+```
+
+First and second commands fetch the vault and backup instance from Azure resource graph. Third command is used to fetch recovery points from secondary region for cross region restore. Last command constructs the cross region restore request object for restore to alternate location as database for datasourcetype AzureDatabaseForPostgreSQL. Please note that we set RestoreLocation parameter to $vault.ReplicatedRegion[0] (paired region) instead of $vault.Location for normal restore.
+Use Test-AzDataProtectionBackupInstanceRestore, Start-AzDataProtectionBackupInstanceRestore commands to validate and trigger restore.
+
+### Example 6: Get cross region restore request object for restore as database for datasource type AzureDatabaseForPostgreSQL
+
+```powershell
+$vault = Search-AzDataProtectionBackupVaultInAzGraph -ResourceGroup $ResourceGroupName -Subscription $SubscriptionId -Vault $VaultName
+$instance = Search-AzDataProtectionBackupInstanceInAzGraph -Subscription $subscriptionId  -ResourceGroup  $resourceGroupName  -Vault $vaultName -DatasourceType AzureDatabaseForPostgreSQL
+$recoveryPointsCrr = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -UseSecondaryRegion
+$targetContainerURI = "https://{targetStorageAccountName}.blob.core.windows.net/{targetContainerName}"
+$fileNamePrefix = "oss-pstest-crrasfiles"
+$OssRestoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPostgreSQL -SourceDataStore VaultStore -RestoreLocation $vault.ReplicatedRegion[0] -RestoreType RestoreAsFiles -RecoveryPoint $recoveryPointsCrr[0].Property.RecoveryPointId -TargetContainerURI $targetContainerURI -FileNamePrefix $fileNamePrefix
+```
+
+```output
+ObjectType                                  SourceDataStoreType SourceResourceId RecoveryPointId
+----------                                  ------------------- ---------------- ---------------
+AzureBackupRecoveryPointBasedRestoreRequest VaultStore                           d49aeb83264456ccab92a105cade9afe
+```
+
+First and second commands fetch the vault and backup instance from Azure resource graph. Third command is used to fetch recovery points from secondary region for cross region restore. Last command constructs the cross region restore request object for restore as files for datasourcetype AzureDatabaseForPostgreSQL. Please note that we set RestoreLocation parameter to $vault.ReplicatedRegion[0] (paired region) instead of $vault.Location for normal restore. Use Test-AzDataProtectionBackupInstanceRestore, Start-AzDataProtectionBackupInstanceRestore commands to validate and trigger restore.

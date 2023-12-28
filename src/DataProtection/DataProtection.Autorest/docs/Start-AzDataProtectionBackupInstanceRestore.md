@@ -14,18 +14,19 @@ Triggers restore for a BackupInstance
 
 ### Trigger (Default)
 ```
-Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> -Parameter <IAzureBackupRestoreRequest> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String>
+ -Parameter <IAzureBackupRestoreRequest> -ResourceGroupName <String> -VaultName <String> [-AsJob]
+ [-DefaultProfile <PSObject>] [-NoWait] [-RestoreToSecondaryRegion] [-SubscriptionId <String>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### TriggerExpanded
 ```
-Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> -ObjectType <String> -RestoreTargetInfo <IRestoreTargetInfoBase>
- -SourceDataStoreType <SourceDataStoreType> [-SubscriptionId <String>]
- [-IdentityDetailUserAssignedIdentityArmUrl <String>] [-IdentityDetailUseSystemAssignedIdentity]
- [-SourceResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -ObjectType <String>
+ -ResourceGroupName <String> -RestoreTargetInfo <IRestoreTargetInfoBase>
+ -SourceDataStoreType <SourceDataStoreType> -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>]
+ [-IdentityDetailUserAssignedIdentityArmUrl <String>] [-IdentityDetailUseSystemAssignedIdentity] [-NoWait]
+ [-RestoreToSecondaryRegion] [-SourceResourceId <String>] [-SubscriptionId <String>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -174,6 +175,22 @@ The sixth command initializes the restore request object for AzureDatabaseForPos
 The seventh command triggers validate before restore.
 The last command triggers the cross subscription restore as files for AzureDatabaseForPostgreSQL.
 
+### Example 8: Trigger cross region restore for AzureDatabaseForPostgreSQL.
+```powershell
+$restoreJobCRR = Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName $instance.Name -ResourceGroupName $ResourceGroupName -VaultName $vaultName -SubscriptionId $SubscriptionId -Parameter $OssRestoreReq -RestoreToSecondaryRegion
+$jobid = $restoreJobCRR.JobId.Split("/")[-1]
+$jobstatus = "InProgress"
+while($jobstatus -ne "Completed")
+{
+    Start-Sleep -Seconds 10
+    $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -UseSecondaryRegion
+    $jobstatus = $currentjob.Status
+}
+```
+
+This command command triggers the cross region restore for AzureDatabaseForPostgreSQL.
+For triggering cross region restore to secondary region, use RestoreToSecondaryRegion switch.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -192,7 +209,7 @@ Accept wildcard characters: False
 ```
 
 ### -BackupInstanceName
-The name of the backup instance.
+The name of the backup instance
 
 ```yaml
 Type: System.String
@@ -207,8 +224,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -223,7 +239,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityDetailUserAssignedIdentityArmUrl
-ARM URL for User Assigned Identity.
+ARM URL for User Assigned Identity
 
 ```yaml
 Type: System.String
@@ -238,7 +254,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityDetailUseSystemAssignedIdentity
-Specifies if the BI is protected by System Identity.
+Specifies if the BI is protected by System Identity
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -268,7 +284,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectType
-.
+Object type of the restore request
 
 ```yaml
 Type: System.String
@@ -283,11 +299,11 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-Azure backup restore request
+Restore request object to be initialized using Initialize-AzDataProtectionRestoreRequest cmdlet
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest
 Parameter Sets: Trigger
 Aliases:
 
@@ -299,8 +315,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+The name of the resource group where the backup vault is present
 
 ```yaml
 Type: System.String
@@ -315,11 +330,11 @@ Accept wildcard characters: False
 ```
 
 ### -RestoreTargetInfo
-Gets or sets the restore target information.
+Gets or sets the restore target information
 To construct, see NOTES section for RESTORETARGETINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IRestoreTargetInfoBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IRestoreTargetInfoBase
 Parameter Sets: TriggerExpanded
 Aliases:
 
@@ -330,8 +345,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RestoreToSecondaryRegion
+Switch parameter to trigger restore to secondary region (Cross region restore)
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SourceDataStoreType
-Gets or sets the type of the source data store.
+Type of the source data store
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SourceDataStoreType
@@ -346,7 +376,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourceResourceId
-Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
+Fully qualified Azure Resource Manager ID of the datasource which is being recovered
 
 ```yaml
 Type: System.String
@@ -361,8 +391,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
-The value must be an UUID.
+Subscription Id of the backup vault
 
 ```yaml
 Type: System.String
@@ -371,13 +400,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -VaultName
-The name of the backup vault.
+The name of the backup vault
 
 ```yaml
 Type: System.String
@@ -427,34 +456,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IOperationJobExtendedInfo
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PARAMETER <IAzureBackupRestoreRequest>`: Azure backup restore request
-  - `ObjectType <String>`: 
-  - `RestoreTargetInfo <IRestoreTargetInfoBase>`: Gets or sets the restore target information.
-    - `ObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
-    - `[RestoreLocation <String>]`: Target Restore region
-  - `SourceDataStoreType <SourceDataStoreType>`: Gets or sets the type of the source data store.
-  - `[IdentityDetailUseSystemAssignedIdentity <Boolean?>]`: Specifies if the BI is protected by System Identity.
-  - `[IdentityDetailUserAssignedIdentityArmUrl <String>]`: ARM URL for User Assigned Identity.
-  - `[SourceResourceId <String>]`: Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
-
-`RESTORETARGETINFO <IRestoreTargetInfoBase>`: Gets or sets the restore target information.
-  - `ObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
-  - `[RestoreLocation <String>]`: Target Restore region
 
 ## RELATED LINKS
 

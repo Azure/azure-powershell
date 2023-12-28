@@ -36,7 +36,7 @@ Gets a backup policy belonging to a backup vault
 Returns resource collection belonging to a subscription.
 
 ### [Get-AzDataProtectionJob](Get-AzDataProtectionJob.md)
-Gets a job with id in a backup vault
+Gets or lists jobs in a backup vault
 
 ### [Get-AzDataProtectionOperation](Get-AzDataProtectionOperation.md)
 Returns the list of available operations.
@@ -115,6 +115,9 @@ This operation will resume protection for a stopped backup instance
 
 ### [Search-AzDataProtectionBackupInstanceInAzGraph](Search-AzDataProtectionBackupInstanceInAzGraph.md)
 Searches for Backup instances in Azure Resource Graph and retrieves the expected entries
+
+### [Search-AzDataProtectionBackupVaultInAzGraph](Search-AzDataProtectionBackupVaultInAzGraph.md)
+Searches for Backup vaults in Azure Resource Graph and retrieves the expected entries
 
 ### [Search-AzDataProtectionJobInAzGraph](Search-AzDataProtectionJobInAzGraph.md)
 Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entries

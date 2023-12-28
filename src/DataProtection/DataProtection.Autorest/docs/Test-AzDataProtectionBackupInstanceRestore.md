@@ -15,7 +15,7 @@ Validates if Restore can be triggered for a DataSource
 ```
 Test-AzDataProtectionBackupInstanceRestore -Name <String> -ResourceGroupName <String>
  -RestoreRequest <IAzureBackupRestoreRequest> -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>]
- [-NoWait] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-RestoreToSecondaryRegion] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +33,14 @@ $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instances[0
 ```
 
 The command tests the restore request object is valid for restore
+
+### Example 2: Validate cross region restore
+```powershell
+$validateRestore = Test-AzDataProtectionBackupInstanceRestore -ResourceGroupName $ResourceGroupName -Name $instance[0].Name -VaultName $VaultName -RestoreRequest $RestoreRequestObject -SubscriptionId $SubscriptionId -RestoreToSecondaryRegion
+```
+
+The command tests the restore request object is valid for cross region restore.
+For normal restore (non-CRR), DO NOT use RestoreToSecondaryRegion switch.
 
 ## PARAMETERS
 
@@ -116,11 +124,26 @@ Restore request object for which to validate
 To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestoreToSecondaryRegion
+Switch parameter to trigger restore to secondary region
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -195,26 +218,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IOperationJobExtendedInfo
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`RESTOREREQUEST <IAzureBackupRestoreRequest>`: Restore request object for which to validate
-  - `ObjectType <String>`: 
-  - `RestoreTargetInfo <IRestoreTargetInfoBase>`: Gets or sets the restore target information.
-    - `ObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
-    - `[RestoreLocation <String>]`: Target Restore region
-  - `SourceDataStoreType <SourceDataStoreType>`: Gets or sets the type of the source data store.
-  - `[IdentityDetailUseSystemAssignedIdentity <Boolean?>]`: Specifies if the BI is protected by System Identity.
-  - `[IdentityDetailUserAssignedIdentityArmUrl <String>]`: ARM URL for User Assigned Identity.
-  - `[SourceResourceId <String>]`: Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
 
 ## RELATED LINKS
 

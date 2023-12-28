@@ -16,6 +16,7 @@
   "addDataStoreParametersList": true,
   "friendlyNameRequired": false,
   "supportSecretStoreAuthentication": false,
+  "supportCrossRegionRestore": false,
   "policySettings": {
     "supportedRetentionTags": [ "Daily", "Weekly" ],
     "supportedDatastoreTypes": [ "OperationalStore" ],

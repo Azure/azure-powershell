@@ -288,3 +288,14 @@ function GetBackupJobARGQuery {
         return $query
     }
 }
+
+function GetBackupVaultARGQuery {
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+    param()
+
+    process {
+        $query = "Resources | where type =~ 'microsoft.dataprotection/backupvaults'"
+
+        return $query
+    }
+}

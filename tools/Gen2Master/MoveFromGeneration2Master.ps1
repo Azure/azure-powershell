@@ -157,7 +157,7 @@ Function Move-Generation2Master {
             New-Item "$DestPath\$ModuleName\Properties" -ItemType Directory
             # Copy the assemblyinfo file
             Copy-Template -SourceName AssemblyInfo.cs -DestPath "$DestPath\$ModuleName\Properties" -DestName AssemblyInfo.cs -ModuleName $submoduleName
-            
+            Update-MappingJson $ModuleName
         }
         # update module page
         dotnet build $slnFilePath
@@ -196,7 +196,7 @@ Function Move-Generation2Master {
                     }
                 }
                 Write-Host "$ScriptRoot/../ResolveTools/Resolve-Psd1.ps1"
-                & "$ScriptRoot/../ResolveTools/Resolve-Psd1.ps1" -ModuleName $ModuleName -Psd1Folder "$DestPath/$ModuleName$Psd1FolderPostfix"
+                & "$ScriptRoot/../ResolveTools/Resolve-Psd1.ps1" -ModuleName $ModuleName -ArtifactFolder "$DestPath\..\..\artifacts" -Psd1Folder "$DestPath/$ModuleName$Psd1FolderPostfix"
             }
             else
             {

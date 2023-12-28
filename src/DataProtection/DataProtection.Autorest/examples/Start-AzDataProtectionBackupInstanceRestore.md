@@ -134,3 +134,19 @@ The fourth, fifth command initializes targetContainerURI and fileNamePrefix for 
 The sixth command initializes the restore request object for AzureDatabaseForPostgreSQL restore.
 The seventh command triggers validate before restore.
 The last command triggers the cross subscription restore as files for AzureDatabaseForPostgreSQL.
+
+### Example 8: Trigger cross region restore for AzureDatabaseForPostgreSQL.
+```powershell
+$restoreJobCRR = Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName $instance.Name -ResourceGroupName $ResourceGroupName -VaultName $vaultName -SubscriptionId $SubscriptionId -Parameter $OssRestoreReq -RestoreToSecondaryRegion
+$jobid = $restoreJobCRR.JobId.Split("/")[-1]
+$jobstatus = "InProgress"
+while($jobstatus -ne "Completed")
+{
+    Start-Sleep -Seconds 10
+    $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -UseSecondaryRegion
+    $jobstatus = $currentjob.Status
+}
+```
+
+
+This command command triggers the cross region restore for AzureDatabaseForPostgreSQL. For triggering cross region restore to secondary region, use RestoreToSecondaryRegion switch.

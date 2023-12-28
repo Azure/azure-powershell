@@ -11,7 +11,21 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'Get-AzDataProtectionRecoveryPoint' {
+Describe 'Get-AzDataProtectionRecoveryPoint' -Tag 'LiveOnly' {
+    It 'ListCRRRecoveryPoints' {
+        $resourceGroupName  = $env.TestCrossRegionRestoreScenario.ResourceGroupName
+        $vaultName = $env.TestCrossRegionRestoreScenario.VaultName
+        $subscriptionId = $env.TestCrossRegionRestoreScenario.SubscriptionId
+
+        $instance = Search-AzDataProtectionBackupInstanceInAzGraph -Subscription $subscriptionId  -ResourceGroup $resourceGroupName  -Vault $vaultName -DatasourceType AzureDatabaseForPostgreSQL
+
+        ($instance[0] -ne $null) | Should be $true
+
+        $recoveryPointsCRR = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -UseSecondaryRegion
+
+        ($recoveryPointsCRR.Length -gt 0) | Should be $true
+    }
+
     It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

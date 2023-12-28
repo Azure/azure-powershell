@@ -14,7 +14,8 @@ Searches for Backup instances in Azure Resource Graph and retrieves the expected
 
 ```
 Search-AzDataProtectionBackupInstanceInAzGraph -DatasourceType <DatasourceTypes> -Subscription <String[]>
- [-ProtectionStatus <ProtectionStatus[]>] [-ResourceGroup <String[]>] [-Vault <String[]>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProtectionStatus <ProtectionStatus[]>] [-ResourceGroup <String[]>]
+ [-Vault <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,6 +84,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -159,8 +175,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Management.Automation.PSObject
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

@@ -8,3 +8,10 @@ $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instances[0
 ``` 
 
 The command tests the restore request object is valid for restore
+
+### Example 2: Validate cross region restore
+```powershell
+$validateRestore = Test-AzDataProtectionBackupInstanceRestore -ResourceGroupName $ResourceGroupName -Name $instance[0].Name -VaultName $VaultName -RestoreRequest $RestoreRequestObject -SubscriptionId $SubscriptionId -RestoreToSecondaryRegion
+``` 
+
+The command tests the restore request object is valid for cross region restore. For normal restore (non-CRR), DO NOT use RestoreToSecondaryRegion switch.

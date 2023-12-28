@@ -21,7 +21,10 @@ Param(
     [string]$GalleryName = "PSGallery",
 
     [Parameter()]
-    [string]$ArtifactsOutputPath = "$PSScriptRoot/../artifacts/Release/"
+    [string]$ArtifactsOutputPath = "$PSScriptRoot/../artifacts/Release/",
+
+    [Parameter()]
+    [switch]$GenerateSyntaxChangelog
 )
 
 enum PSVersion
@@ -164,10 +167,10 @@ function Update-ChangeLog
         [Parameter(Mandatory = $true)]
         [string[]]$Content,
         [Parameter(Mandatory = $true)]
-        [string]$RootPath
+        [string]$FilePath
     )
 
-    $ChangeLogFile = Get-Item -Path "$RootPath\ChangeLog.md"
+    $ChangeLogFile = Get-Item -Path $FilePath
     $ChangeLogContent = Get-Content -Path $ChangeLogFile.FullName
     ($Content + $ChangeLogContent) | Set-Content -Path $ChangeLogFile.FullName -Encoding UTF8
 }
@@ -295,7 +298,7 @@ function Bump-AzVersion
     }
 
     Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
-    Update-ChangeLog -Content $changeLog -RootPath $rootPath
+    Update-ChangeLog -Content $changeLog -FilePath "$rootPath\ChangeLog.md"
 
     New-CommandMappingFile
 
@@ -392,8 +395,26 @@ function Update-AzPreviewChangelog
         $changeLog += "#### $updatedModule $($moduleMetadata.ModuleVersion)"
         $changeLog += $moduleReleaseNotes + "`n"
     }
-    Update-ChangeLog -Content $changeLog -RootPath $rootPath/tools/AzPreview
+    Update-ChangeLog -Content $changeLog -FilePath "$rootPath/tools/AzPreview/ChangeLog.md"
+}
 
+function Update-AzSyntaxChangelog
+{
+    Write-Host "starting revise SyntaxChangeLog"
+    $rootPath = "$PSScriptRoot\.."
+    $NewVersion = (Import-PowerShellDataFile "$PSScriptRoot\Az\Az.psd1").ModuleVersion
+    Update-ChangeLog -Content "## $NewVersion - $Release" -FilePath "$rootPath\documentation\SyntaxChangeLog.md"
+    $changeLog = Get-Content "$rootPath\documentation\SyntaxChangeLog.md" -Raw
+    $regex = '####\s+(Az\.\w+)\s+(?![\d\.])'
+    $matches = Select-String -Pattern $regex -InputObject $changelog -AllMatches
+    foreach ($match in $matches.Matches) {
+        $moduleName = $match.Groups[1].Value
+        $moduleMetadata = Get-ModuleMetadata -Module $moduleName -RootPath $rootPath
+        $newVersion = $moduleMetadata.ModuleVersion
+        $replacement = "#### $moduleName $newVersion `r`n"
+        $changelog = $changelog -replace [regex]::Escape($match.Value), $replacement
+    }
+    Set-Content -Path "$rootPath\documentation\SyntaxChangeLog.md" -Value $changelog
 }
 
 function New-CommandMappingFile
@@ -502,6 +523,9 @@ switch ($PSCmdlet.ParameterSetName)
         # Refresh AzPreview.psd1
         Update-AzPreview
         Update-AzPreviewChangelog
+        if ($GenerateSyntaxChangelog){
+            Update-AzSyntaxChangelog
+        }
         # We need to generate the upcoming-breaking-changes.md after the process of bump version in minor release
         if ([PSVersion]::MINOR -Eq $versionBump)
         {

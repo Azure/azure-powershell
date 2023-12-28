@@ -1,0 +1,169 @@
+{
+  "TestTriggerBackup": {
+    "ResourceGroupName": "pstest-diskrg",
+    "BackupRuleName": "BackupHourly",
+    "DiskId": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstest-diskrg/providers/Microsoft.Compute/disks/pstest-disk",
+    "VaultName": "pstest-disk-vault",
+    "SubscriptionId": "38304e13-357e-405e-9e9a-220351dcce8c"
+  },
+  "TestAksBackupScenario": {
+    "ResourceGroupName": "aksbackuptestrg-rajat",
+    "DataSourceLocation": "eastus",
+    "FriendlyName": "pstest-aks-cluster",
+    "PolicyName": "demoaksbackuppolicy",
+    "NewPolicyName": "pstest-aks-policy",
+    "SubscriptionId": "62b829ee-7936-40c9-a1c9-47a93f9f3965",
+    "TargetClusterId": "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksbackuptestrg-rajat/providers/Microsoft.ContainerService/managedClusters/aks-clitest-cluster",
+    "SnapshotResourceGroupId": "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksbackuptestrg-rajat",
+    "SourceClusterId": "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksbackuptestrg-rajat/providers/Microsoft.ContainerService/managedClusters/aks-pstest-cluster",
+    "VaultName": "demobackupvault"
+  },
+  "TestBackupJob": {
+    "VaultName": "sarath-vault",
+    "ResourceGroupName": "sarath-rg"
+  },
+  "TestAksRestoreScenario": {
+    "ResourceGroupName": "azk8ssvcs-cluster-r-ecy",
+    "ClusterName": "azk8ssvcs-bi-backupecy",
+    "DataSourceLocation": "eastus2euap",
+    "FriendlyName": "aksCluster3-ecy-araj-BI",
+    "PolicyName": "azk8ssvcs-ad-policy-backupecy",
+    "NewPolicyName": "",
+    "SubscriptionId": "f0c630e0-2995-4853-b056-0b3c09cb673f",
+    "SnapshotResourceGroupId": "/subscriptions/f0c630e0-2995-4853-b056-0b3c09cb673f/resourceGroups/MC_azk8ssvcs-cluster-r-ecy_azk8ssvcs-cluster-ecy_eastus2euap",
+    "SourceClusterId": "/subscriptions/f0c630e0-2995-4853-b056-0b3c09cb673f/resourcegroups/azk8ssvcs-cluster-r-ecy/providers/Microsoft.ContainerService/managedClusters/azk8ssvcs-cluster-ecy",
+    "VaultName": "azk8ssvcs-vault-ecy"
+  },
+  "TestBlobHardeningScenario": {
+    "TargetCrossSubStorageAccId": "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/hiagaTestRG/providers/Microsoft.Storage/storageAccounts/hiagatestsa",
+    "OperationalVaultedPolicyName": "op-vault-pstest-policy",
+    "SubscriptionId": "38304e13-357e-405e-9e9a-220351dcce8c",
+    "Location": "eastus",
+    "TargetStorageAccountName": "hiagaeussa",
+    "PolicyName": "operational-vaulted-policy",
+    "CrossSubscriptionId": "62b829ee-7936-40c9-a1c9-47a93f9f3965",
+    "VaultPolicyName": "vaulted-pstest-policy",
+    "TargetCrossSubStorageAccountRGName": "hiagaTestRG",
+    "StorageAccId": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/blob-eus-pstest-rg/providers/Microsoft.Storage/storageAccounts/blobeuspstestsa",
+    "VaultName": "blob-eus-pstest-vault",
+    "TargetStorageAccId": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Storage/storageAccounts/hiagaeussa",
+    "OperationalPolicyName": "op-pstest-policy",
+    "ResourceGroupName": "blob-eus-pstest-rg",
+    "StorageAccountName": "blobeuspstestsa",
+    "TargetCrossSubStorageAccountName": "hiagatestsa",
+    "TargetStorageAccountRGName": "hiagarg"
+  },
+  "TestDiskBackupScenario": {
+    "RestoreRG": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstest-diskrg",
+    "SnapshotRG": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstest-diskrg",
+    "RestoreDiskId": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstest-diskrg/providers/Microsoft.Compute/disks/pstest-restoreddisk-25-12-2023-11-11-11",
+    "SubscriptionId": "38304e13-357e-405e-9e9a-220351dcce8c",
+    "NewPolicyName": "newdiskpolicy-25-12-2023-11-11-11",
+    "ResourceGroupName": "pstest-diskrg",
+    "DiskId": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourcegroups/pstest-diskrg/providers/Microsoft.Compute/disks/pstest-disk",
+    "VaultName": "pstest-disk-vault"
+  },
+  "TestResourceGuard": {
+    "ResourceGroupName": "hiagarg",
+    "ResourceGuardName": "pstest-resourceguard",
+    "Location": "centraluseuap",
+    "SubscriptionId": "38304e13-357e-405e-9e9a-220351dcce8c"
+  },
+  "TestGrantPermission": {
+    "DiskPolicyName": "diskBkpPolicy",
+    "VaultRG": "testBkpVaultRG",
+    "SubscriptionId": "62b829ee-7936-40c9-a1c9-47a93f9f3965",
+    "OssPolicyName": "TestOSSPolicy2",
+    "KeyVaultId": "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Sqlrg/providers/Microsoft.KeyVault/vaults/rishitkeyvault3",
+    "BlobId": "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Blobrg/providers/Microsoft.Storage/storageAccounts/testblobacc4",
+    "Blobrg": "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Blobrg",
+    "OssId": "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Ossrg/providers/Microsoft.DBforPostgreSQL/servers/rishitserver3/databases/postgres",
+    "Snapshotrg": "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG",
+    "KeyURI": "https://rishitkeyvault3.vault.azure.net/secrets/rishitnewsecret",
+    "BlobPolicyName": "blobBkpPolicy",
+    "DiskId": "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Diskrg/providers/Microsoft.Compute/disks/Mydisk2",
+    "Ossrg": "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Ossrg",
+    "VaultName": "TestBkpVault",
+    "Diskrg": "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Diskrg"
+  },
+  "TestBackupVault": {
+    "ResourceGroupName": "sarath-rg",
+    "NewVaultName": "new-pstest-vault",
+    "VaultName": "sarath-vault",
+    "SubscriptionId": "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+  },
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "RecordDate": "25-12-2023-11-11-11",
+  "TestSoftDelete": {
+    "ResourceGroupName": "pstest-diskrg",
+    "BackupRuleName": "BackupDaily",
+    "DiskId": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstest-diskrg/providers/Microsoft.Compute/disks/pstest-disk2",
+    "VaultName": "pstest-disk-vault2",
+    "SubscriptionId": "38304e13-357e-405e-9e9a-220351dcce8c"
+  },
+  "TestOssBackupScenario": {
+    "TargetResourceId": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/oss-pstest-dbrestore",
+    "TargetContainerURI": "https://osspstestsa.blob.core.windows.net/oss-pstest-container",
+    "OssDbId": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres",
+    "SubscriptionId": "38304e13-357e-405e-9e9a-220351dcce8c",
+    "PolicyName": "oss-pstest-policy",
+    "OssDbName": "oss-pstest-db",
+    "OssServerName": "oss-pstest-server",
+    "NewPolicyName": "oss-pstest-policy-archive",
+    "FileNamePrefix": "oss-pstest-restoreasfiles",
+    "ResourceGroupName": "oss-pstest-rg",
+    "SecretURI": "https://oss-pstest-keyvault.vault.azure.net/secrets/oss-pstest-secret",
+    "KeyVault": "oss-pstest-keyvault",
+    "VaultName": "oss-pstest-vault"
+  },
+  "TestCrossSubscriptionRestoreScenario": {
+    "SubscriptionId": "62b829ee-7936-40c9-a1c9-47a93f9f3965",
+    "VaultName": "CSRPortalTestVault",
+    "ResourceGroupName": "CSRTestRg",
+    "FileNamePrefix": "oss-csr-pstest-restoreasfiles",
+    "TargetContainerURI": "https://akneemasaecy.blob.core.windows.net/oss-csr-container",
+    "TargetContainerArmId": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.Storage/storageAccounts/akneemasaecy/blobServices/default/containers/oss-csr-container"
+  },
+  "TestBackupConfig": {
+    "StorageAccountName": "blobpstestsa",
+    "StorageAccountResourceGroup": "blob-pstest-rg",
+    "SubscriptionId": "38304e13-357e-405e-9e9a-220351dcce8c"
+  },
+  "TestBackupPolicy": {
+    "ResourceGroupName": "sarath-rg",
+    "VaultName": "sarath-vault",
+    "DiskNewPolicyName": "sarath-disk-generated-policy",
+    "SubscriptionId": "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+  },
+  "SubscriptionId": "38304e13-357e-405e-9e9a-220351dcce8c",
+  "TestBlobsRestore": {
+    "ResourceGroupName": "BlobBackup-BugBash",
+    "VaultName": "jecECYBlobVault",
+    "SubscriptionId": "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+  },
+  "TestBackupInstance": {
+    "ResourceGroupName": "sarath-rg",
+    "VaultName": "sarath-vault",
+    "SubscriptionId": "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+  },
+  "TestMUA": {
+    "ResourceGuardRGName": "hiaga-rg",
+    "ResourceGroupName": "hiagarg",
+    "Location": "centraluseuap",
+    "ResourceGuardSubscription": "62b829ee-7936-40c9-a1c9-47a93f9f3965",
+    "ResourceGuardName": "mua-pstest-dpp-ccy-resguard",
+    "SubscriptionId": "38304e13-357e-405e-9e9a-220351dcce8c",
+    "ResourceGuardId": "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/hiaga-rg/providers/Microsoft.DataProtection/ResourceGuards/mua-pstest-dpp-ccy-resguard",
+    "BackupInstanceName": "alrpstestvm-datadisk-000-20220808-115835",
+    "VaultName": "mua-pstest-backupvault"
+  },
+  "TestCrossRegionRestoreScenario": {
+    "SubscriptionId": "62b829ee-7936-40c9-a1c9-47a93f9f3965",
+    "VaultName": "crr-wala-ecy-vault",
+    "TargetResourceId": "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/DppCrrRG/providers/Microsoft.DBforPostgreSQL/servers/crr-ccy-1/databases/oss-pstestrun-crr-1",
+    "ResourceGroupName": "adigupt-rg",
+    "FileNamePrefix": "oss-pstest-crrasfiles-1",
+    "SecretURI": "https://crr-ccy-kv.vault.azure.net/secrets/secret-for-crr-ccy-1",
+    "TargetContainerURI": "https://zftccypod01otds1.blob.core.windows.net/oss-crr-pstest"
+  }
+}
