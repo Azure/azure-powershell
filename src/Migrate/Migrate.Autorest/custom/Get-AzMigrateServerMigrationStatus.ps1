@@ -64,13 +64,6 @@ function Get-AzMigrateServerMigrationStatus {
         # Specifies whether the health issues to show for replicating server.
         ${Health},
 
-        #[Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
-        [Parameter(ParameterSetName = 'GetBySRSID', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [System.Management.Automation.SwitchParameter]
-        # Specifies list of steps customers can take to prioritize the migration operation of the given server.
-        ${Expedite},
-
         [Parameter(ParameterSetName = 'ListByName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Query')]
         [System.String]
@@ -185,6 +178,34 @@ function Get-AzMigrateServerMigrationStatus {
             return $appMap[$site]
         }
 
+        Function GetState {
+            param(
+                [string]$State,
+                [object]$ReplicationMigrationItem
+            )
+
+            if ([string]::IsNullOrEmpty($State)) {
+                if ($ReplicationMigrationItem.MigrationState -match "InitialSeedingInProgress" -or $ReplicationMigrationItem.MigrationState -match "EnableMigrationInProgress" -or $ReplicationMigrationItem.MigrationState -match "Replicating") {
+                    return "InitialReplication Queued"
+                }
+                elseif ($ReplicationMigrationItem.MigrationState -match "InitialSeedingFailed") {
+                    return "InitialReplication Failed"
+                }
+                return $ReplicationMigrationItem.MigrationState
+            }
+
+            if ($ReplicationMigrationItem.MigrationState -match "MigrationInProgress" -and $ReplicationMigrationItem.migrationProgressPercentage -eq $null) {
+                return "FinalDeltaReplication Queued"
+            }
+
+            if ($ReplicationMigrationItem.MigrationState -eq "MigrationSucceeded") {
+                return "Migration Completed"
+            }
+
+            $State = $State -replace "PlannedFailoverOverDeltaReplication", "FinalDeltaReplication"
+            return $State
+        }
+
         function Convert-MillisecondsToTime {
             param (
                 [int]$Milliseconds
@@ -201,12 +222,60 @@ function Get-AzMigrateServerMigrationStatus {
             if ($Hours -eq 0) {
                 if ($Minutes -eq 0)
                 {
-                    return "    -"
+                    return "-"
                 }
                 return "$Minutes min"
             } else {
                 return "$Hours hr $Minutes min"
             }
+        }
+
+        function Convert-ToMbps {
+            param (
+                [double]$UploadSpeedInBytesPerSecond
+            )
+
+            if ($UploadSpeedInBytesPerSecond -eq $null -or $UploadSpeedInBytesPerSecond -eq 0) {
+                return "-"
+            }
+
+            # Conversion factor: 1 byte = 8 bits
+            $UploadSpeedInBitsPerSecond = $UploadSpeedInBytesPerSecond * 8
+
+            # Conversion factor: 1 megabit = 1,000,000 bits
+            $UploadSpeedInMbps = [math]::Round($UploadSpeedInBitsPerSecond / 1e6)
+
+            return "$UploadSpeedInMbps Mbps"
+        }
+
+        function Add-Percent {
+            param (
+                [double]$Value
+            )
+
+            if ($Value -ne $null -and $Value -ne 0) {
+                return "$Value%"
+            } else {
+                return "-"
+            }
+        }
+
+        function ConvertToCustomTimeFormat {
+            param (
+                [string]$LocalTimeString
+            )
+            
+            if ([string]::IsNullOrEmpty($LocalTimeString)) {
+                return "-"
+            }
+
+            # Parse the input string
+            $localTime = [datetime]::ParseExact($LocalTimeString, "MM/dd/yyyy HH:mm:ss", $null)
+
+            # Format the local time as desired
+            $formattedTime = Get-Date $localTime -Format "M/d/yyyy, h:mm:ss tt"
+
+            return $formattedTime
         }
 
         $parameterSet = $PSCmdlet.ParameterSetName
@@ -219,7 +288,7 @@ function Get-AzMigrateServerMigrationStatus {
         $null = $PSBoundParameters.Remove('MachineName')
         $null = $PSBoundParameters.Remove('ApplianceName')
         $null = $PSBoundParameters.Remove('Health')
-        $null = $PSBoundParameters.Remove('Expedite')
+        #$null = $PSBoundParameters.Remove('Expedite')
 
         $output = New-Object System.Collections.ArrayList  # Create a hashtable to store the output.
 
@@ -274,10 +343,13 @@ function Get-AzMigrateServerMigrationStatus {
         $vmMigrationStatusTable = New-Object System.Data.DataTable("")
 
         if ($parameterSet -eq "GetByApplianceName") {
-            $column = @("Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "Datastore")
+            $column = @("Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "Health", "LastSync", "Datastore")
+        }
+        elseif ($parameterSet -eq "ListByName") {
+            $column = @("Appliance", "Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "Health", "LastSync", "Datastore")
         }
         else {
-            $column = @("Appliance", "Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "Datastore")
+            $column = @("Appliance", "Server", "State", "Progress", "TimeElapsed", "TimeRemaining", "UploadSpeed", "LastSync", "Datastore")
         }
 
         MakeTable $vmMigrationStatusTable $column
@@ -310,40 +382,52 @@ function Get-AzMigrateServerMigrationStatus {
             }
 
             $row1["Server"] = $ReplicationMigrationItem.MachineName
-            $row1["State"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailState
-            if ($ReplicationMigrationItem.ReplicationStatus -match "Pause") {
+            $row1["State"] = GetState -State $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailState -ReplicationMigrationItem $ReplicationMigrationItem
+            if ($ReplicationMigrationItem.ReplicationStatus -match "Pause" -and $ReplicationMigrationItem.MigrationState -notmatch "migration") {
                 $row1["State"] = $ReplicationMigrationItem.ReplicationStatus
-                $row1["TimeRemaining"] = "     -"
-                $row1["UploadSpeed"] = "     -"
-                $row1["Progress"] = "    -"
-                $row1["TimeElapsed"] = "     -"
+                $row1["TimeRemaining"] = "-"
+                $row1["UploadSpeed"] = "-"
+                $row1["Progress"] = "-"
+                $row1["TimeElapsed"] = "-"
             }
             elseif ($ReplicationMigrationItem.ReplicationStatus -match "Resum") {
                 $row1["State"] = $ReplicationMigrationItem.ReplicationStatus
-                $row1["TimeRemaining"] = "     -"
-                $row1["UploadSpeed"] = "     -"
-                if ($ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage -ne $null) {
-                    $row1["Progress"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage
-                }
-                else {
-                    $row1["Progress"] = "    -"
-                }
-                $row1["TimeElapsed"] = "     -"
+                $row1["TimeRemaining"] = Convert-MillisecondsToTime -Milliseconds $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeRemaining
+                $row1["UploadSpeed"] = Convert-ToMbps -UploadSpeedInBytesPerSecond $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailUploadSpeed
+                $row1["Progress"] = Add-Percent -Value $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage
+                $row1["TimeElapsed"] = Convert-MillisecondsToTime -Milliseconds $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeElapsed
             }
             elseif ($ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailState -match "Completed") {
-                $row1["TimeRemaining"] = "     -"
-                $row1["UploadSpeed"] = "     -"
-                $row1["Progress"] = "    -"
-                $row1["TimeElapsed"] = "     -"
+                $row1["TimeRemaining"] = "-"
+                $row1["UploadSpeed"] = "-"
+                $row1["Progress"] = "-"
+                $row1["TimeElapsed"] = "-"
             }
             else {
                 $row1["TimeRemaining"] = Convert-MillisecondsToTime -Milliseconds $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeRemaining
-                $row1["UploadSpeed"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailUploadSpeed
-            $row1["Progress"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage
+                $row1["UploadSpeed"] = Convert-ToMbps -UploadSpeedInBytesPerSecond $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailUploadSpeed
+                $row1["Progress"] = Add-Percent -Value $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailProgressPercentage
                 $row1["TimeElapsed"] = Convert-MillisecondsToTime -Milliseconds $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailTimeElapsed
             }
+
+            if ($parameterSet -eq "ListByName" -or $parameterSet -eq "GetByApplianceName") {
+                if ([string]::IsNullOrEmpty($ReplicationMigrationItem.health) -or $ReplicationMigrationItem.health -eq "None") {
+                    $row1["Health"] = "-"
+                }
+                else {
+                    $row1["Health"] = $ReplicationMigrationItem.health
+                }
+            }
+            $row1["LastSync"] = ConvertToCustomTimeFormat -LocalTimeString $ReplicationMigrationItem.ProviderSpecificDetail.lastRecoveryPointReceived
+
             #$row1["ESXiHost"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailHostName
-            $row1["Datastore"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailDataStore -join ', '
+            if (-not [string]::IsNullOrEmpty($ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailDataStore)) {
+                $row1["Datastore"] = $ReplicationMigrationItem.ProviderSpecificDetail.GatewayOperationDetailDataStore -join ', '
+            }
+            else {
+                $row1["Datastore"] = "-"
+            }
+
             $vmMigrationStatusTable.Rows.Add($row1)
 
             if( $parameterSet -eq "GetByMachineName" -or $parameterSet -eq "GetHealthByMachineName" -or $parameterSet -eq "GetByPrioritiseServer") {
@@ -362,46 +446,45 @@ function Get-AzMigrateServerMigrationStatus {
                 foreach($disk in $ReplicationMigrationItem.ProviderSpecificDetail.ProtectedDisk) {
                     $row = $diskStatusTable.NewRow()
                     $row["Disk"] = $disk.DiskName
-                    $row["State"] = $disk.GatewayOperationDetailState
+                    $row["State"] = GetState -State $disk.GatewayOperationDetailState -ReplicationMigrationItem $ReplicationMigrationItem
 
-                    if ($ReplicationMigrationItem.ReplicationStatus -match "Pause") {
+                    if ($ReplicationMigrationItem.ReplicationStatus -match "Pause" -and $ReplicationMigrationItem.MigrationState -notmatch "migration") {
                         $row["State"] = $ReplicationMigrationItem.ReplicationStatus
-                        $row["TimeRemaining"] = "     -"
-                        $row["UploadSpeed"] = "     -"
-                        $row["Progress"] = "    -"
-                        $row["TimeElapsed"] = "     -"
+                        $row["TimeRemaining"] = "-"
+                        $row["UploadSpeed"] = "-"
+                        $row["Progress"] = "-"
+                        $row["TimeElapsed"] = "-"
                     }
                     elseif ($ReplicationMigrationItem.ReplicationStatus -match "Resum") {
                         $row["State"] = $ReplicationMigrationItem.ReplicationStatus
-                        $row["TimeRemaining"] = "     -"
-                        $row["UploadSpeed"] = "     -"
-                        if ($disk.GatewayOperationDetailProgressPercentage -ne $null) {
-                            $row["Progress"] = $disk.GatewayOperationDetailProgressPercentage
-                        }
-                        else {
-                            $row["Progress"] = "    -"
-                        }
-                        $row["TimeElapsed"] = "     -"
-                        if ($disk.GatewayOperationDetailProgressPercentage -ne $null) {
-                            $row["Progress"] =$disk.GatewayOperationDetailProgressPercentage
-                        }
-                        else {
-                :           $row["Progress"] = "    -"
-                       }
+                        #$row["TimeRemaining"] = Convert-MillisecondsToTime -Milliseconds $disk.GatewayOperationDetailTimeRemaining
+                        $row["TimeRemaining"] = "-"
+                        $row["UploadSpeed"] = "-"
+                        #$row["UploadSpeed"] = Convert-ToMbps -UploadSpeedInBytesPerSecond $disk.GatewayOperationDetailUploadSpeed
+                        #$row["Progress"] = Add-Percent -Value $disk.GatewayOperationDetailProgressPercentage
+                        $row["Progress"] = "-"
+                        $row["TimeElapsed"] = "-"
+                        #$row["TimeElapsed"] = Convert-MillisecondsToTime -Milliseconds $disk.GatewayOperationDetailTimeElapsed
                     }
                     elseif ($disk.GatewayOperationDetailState -match "Completed") {
-                        $row["Progress"] = "    -"
-                        $row["TimeElapsed"] = "     -"
-                        $row["TimeRemaining"] = "     -"
-                        $row["UploadSpeed"] = "     -"
+                        $row["Progress"] = "-"
+                        $row["TimeElapsed"] = "-"
+                        $row["TimeRemaining"] = "-"
+                        $row["UploadSpeed"] = "-"
                     }
                     else {
                         $row["TimeRemaining"] = Convert-MillisecondsToTime -Milliseconds $disk.GatewayOperationDetailTimeRemaining
-                        $row["UploadSpeed"] = $disk.GatewayOperationDetailUploadSpeed
-                    $row["Progress"] = $disk.GatewayOperationDetailProgressPercentage
+                        $row["UploadSpeed"] = Convert-ToMbps -UploadSpeedInBytesPerSecond $disk.GatewayOperationDetailUploadSpeed
+                        $row["Progress"] = Add-Percent -Value $disk.GatewayOperationDetailProgressPercentage
                         $row["TimeElapsed"] = Convert-MillisecondsToTime -Milliseconds $disk.GatewayOperationDetailTimeElapsed
                     }
-                    $row["Datastore"] = $disk.GatewayOperationDetailDataStore[0]
+
+                    if (-not [string]::IsNullOrEmpty($disk.GatewayOperationDetailDataStore)) {
+                        $row["Datastore"] = $disk.GatewayOperationDetailDataStore -join ', '
+                    }
+                    else {
+                        $row["Datastore"] = "-"
+                    }
                     $diskStatusTable.Rows.Add($row)
                 }
 
@@ -414,10 +497,15 @@ function Get-AzMigrateServerMigrationStatus {
             }
 
             if ($parameterSet -eq "GetHealthByMachineName") {
-                $op = $output.Add("List of warning or critical errors for this server with their resolutions:")
-                $healthError = $ReplicationMigrationItem.HealthError
-                foreach ($error in $healthError) {
-                    $op = $output.Add("Error Message: $($error.ErrorMessage)`n`nPossible Causes: $($error.PossibleCaus)`n`nRecommended Actions: $($error.RecommendedAction)`n`n")
+                if ($ReplicationMigrationItem.health -eq "Normal") {
+                    $op = $output.Add("No warnings or critical errors for this server.")
+                }
+                else {
+                    $op = $output.Add("List of warning or critical errors for this server with their resolutions: `n")
+                    $healthError = $ReplicationMigrationItem.HealthError
+                    foreach ($error in $healthError) {
+                        $op = $output.Add("Error Message: $($error.ErrorMessage)`nPossible Causes: $($error.PossibleCaus)`nRecommended Actions: $($error.RecommendedAction)`n`n")
+                    }
                 }
             }
 
@@ -522,8 +610,8 @@ function Get-AzMigrateServerMigrationStatus {
 
             $diskStatusTable = $diskStatusTable | Format-Table -AutoSize | Out-String
             $op = $output.Add($diskStatusTable)
-            $op = $output.Add("To check expedite the operation of a server use the command")
-            $op = $output.Add("Get-AzMigrateServerMigrationStatus  -ProjectName <String> -ResourceGroupName <String> -MachineName <String> -Expedite`n")
+#            $op = $output.Add("To check expedite the operation of a server use the command")
+#            $op = $output.Add("Get-AzMigrateServerMigrationStatus  -ProjectName <String> -ResourceGroupName <String> -MachineName <String> -Expedite`n")
             $op = $output.Add("To resolve the health issue use the command")
             $op = $output.Add("Get-AzMigrateServerMigrationStatus -ProjectName <String> -ResourceGroupName <String> -MachineName <String> -Health`n")
         }
