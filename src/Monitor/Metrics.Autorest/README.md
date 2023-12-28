@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.Metrics
-This directory contains the PowerShell module for the Metrics service.
+# Az.Metric
+This directory contains the PowerShell module for the Metric service.
 
 ---
 ## Status
-[![Az.Metrics](https://img.shields.io/powershellgallery/v/Az.Metrics.svg?style=flat-square&label=Az.Metrics "Az.Metrics")](https://www.powershellgallery.com/packages/Az.Metrics/)
+[![Az.Metric](https://img.shields.io/powershellgallery/v/Az.Metric.svg?style=flat-square&label=Az.Metric "Az.Metric")](https://www.powershellgallery.com/packages/Az.Metric/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.Metrics`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.Metric`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ### AutoRest Configuration
@@ -38,64 +38,25 @@ commit: 0373f0edc4414fd402603fac51d0df93f1f70507
 
 input-file:
     - $(repo)/specification/monitor/data-plane/Microsoft.Insights/stable/2023-10-01/metricBatch.json
-    - $(repo)/specification/monitor/resource-manager/Microsoft.Insights/stable/2023-10-01/metricDefinitions_API.json
-    - $(repo)/specification/monitor/resource-manager/Microsoft.Insights/stable/2023-10-01/metrics_API.json
 
 root-module-name: $(prefix).Monitor
-title: Metrics
-module-name: Az.Metrics
+title: Metric
+module-name: Az.Metric
 module-version: 0.1.0
-subject-prefix: Metrics
+subject-prefix: ""
 
 directive:
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/providers/Microsoft.Insights/metrics"].post.parameters
-    transform: >-
-      return [
-          {
-            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/SubscriptionIdParameter"
-          },
-          {
-            "$ref": "../../../../../common-types/resource-management/v2/types.json#/parameters/ApiVersionParameter"
-          },
-          {
-            "$ref": "../../../../common-types/v2/commonMonitoringTypes.json#/parameters/RegionParameter"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Parameters serialized in the body",
-            "schema": {
-              "$ref": "#/definitions/SubscriptionScopeMetricsRequestBodyParameters"
-            }
-          }
-      ]
-  # remove non post variant
-  - remove-operation: Metrics_ListAtSubscriptionScope
   - where:
-      subject: Metric
-      variant: ^List$|ListViaJsonFilePath|ListViaJsonString
-    remove: true
-  # rollupby and orderby rename
-  - where:
-      subject: Metric
-      parameter-name: rollUpBy
+      subject: BatchMetricsBatch
+      verb: Invoke
     set:
-      parameter-name: Rollupby
-  - where:
-      subject: Metric
-      parameter-name: orderBy
-    set:
-      parameter-name: Orderby
+      verb: Get
+      subject: MetricsBatch
   - where:
       subject: MetricsBatch
       variant: ^(Batch)(?!.*?Expanded)
     remove: true
-  - where:
-      subject: MetricsBatch
-      verb: Invoke
-    set:
-      verb: Get
+  # Case Sensitive
   - where:
       parameter-name: Metricname
     set:

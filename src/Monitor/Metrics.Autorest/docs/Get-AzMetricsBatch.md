@@ -22,7 +22,7 @@ Get-AzMetricsBatch -Endpoint <String> -Name <List<String>> -Namespace <String> [
 
 ### BatchViaIdentityExpanded
 ```
-Get-AzMetricsBatch -Endpoint <String> -InputObject <IMetricsIdentity> -Name <List<String>> -Namespace <String>
+Get-AzMetricsBatch -Endpoint <String> -InputObject <IMetricIdentity> -Name <List<String>> -Namespace <String>
  [-Aggregation <String>] [-EndTime <String>] [-Filter <String>] [-Interval <String>] [-Orderby <String>]
  [-Rollupby <String>] [-StartTime <String>] [-Top <Int32>] [-ResourceId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -668,7 +668,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Metrics.Models.IMetricsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity
 Parameter Sets: BatchViaIdentityExpanded
 Aliases:
 
@@ -863,11 +863,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Metrics.Models.IMetricsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Metrics.Models.IMetricResultsResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricResultsResponse
 
 ## NOTES
 
