@@ -352,7 +352,8 @@ namespace Microsoft.Azure.Commands.Aks
                     desensitizedMessage: Resources.CouldNotCreateAServicePrincipalWithTheRightPermissionsAreYouAnOwner);
             }
 
-            AddSubscriptionRoleAssignment("Contributor", sp.Id);
+            // Adding Contributor access to the ManagedCluster resourceGroup
+            AddClusterResourceGroupRoleAssignment("Contributor", sp.Id, this.ResourceGroupName);
             return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret, ObjectId = sp.Id };
         }
 
@@ -466,6 +467,24 @@ namespace Microsoft.Azure.Commands.Aks
         protected void AddSubscriptionRoleAssignment(string role, string appId)
         {
             var scope = $"/subscriptions/{DefaultContext.Subscription.Id}";
+            var roleId = GetRoleId(role, scope);
+            var success = RetryAction(() =>
+                AuthClient.RoleAssignments.Create(scope, appId, new RoleAssignmentCreateParameters()
+                {
+                    Properties = new RoleAssignmentProperties(roleId, appId)
+                }), Resources.AddRoleAssignment);
+
+            if (!success)
+            {
+                throw new AzPSInvalidOperationException(
+                    Resources.CouldNotAssignServicePrincipalWithSubsContributorPermission,
+                    desensitizedMessage: Resources.CouldNotAssignServicePrincipalWithSubsContributorPermission);
+            }
+        }
+
+        protected void AddClusterResourceGroupRoleAssignment(string role, string appId, string clusterResourceGroupname )
+        {
+            var scope = $"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{clusterResourceGroupname}";
             var roleId = GetRoleId(role, scope);
             var success = RetryAction(() =>
                 AuthClient.RoleAssignments.Create(scope, appId, new RoleAssignmentCreateParameters()
