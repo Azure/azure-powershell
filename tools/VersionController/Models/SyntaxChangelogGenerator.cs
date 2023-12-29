@@ -43,14 +43,13 @@ namespace VersionController.Netcore.Models
                 var executingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).AbsolutePath);
                 Directory.SetCurrentDirectory(executingPath);
                 var newModuleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
-                Console.WriteLine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", ".."));
                 var filePath = Path.Combine(executingPath, "SerializedCmdlets", $"{moduleName}.json");
                 if (!File.Exists(filePath))  continue;
                 var oldModuleMetadata = ModuleMetadata.DeserializeCmdlets(filePath);
                 CmdletLoader.ModuleMetadata = newModuleMetadata;
                 CompareModuleMetedata(oldModuleMetadata, newModuleMetadata, moduleName);
             }
-            var markDownPath = Path.Combine(rootDirectory, "documentation/SyntaxChangeLog.md");
+            var markDownPath = Path.Combine(rootDirectory, "documentation/SyntaxChangeLog/SyntaxChangeLog.md");
             GenerateMarkdown(markDownPath);
             Console.WriteLine("Cmdlets Differences written to {0}", markDownPath);
         }
@@ -445,6 +444,7 @@ namespace VersionController.Netcore.Models
                     }
                 }
             }
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
             File.AppendAllText(filePath, sb.ToString());
         }
         private string FormatListString(List<string> list, Func<string, string> formatter)
