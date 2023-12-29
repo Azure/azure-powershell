@@ -464,24 +464,6 @@ namespace Microsoft.Azure.Commands.Aks
             }
         }
 
-        protected void AddSubscriptionRoleAssignment(string role, string appId)
-        {
-            var scope = $"/subscriptions/{DefaultContext.Subscription.Id}";
-            var roleId = GetRoleId(role, scope);
-            var success = RetryAction(() =>
-                AuthClient.RoleAssignments.Create(scope, appId, new RoleAssignmentCreateParameters()
-                {
-                    Properties = new RoleAssignmentProperties(roleId, appId)
-                }), Resources.AddRoleAssignment);
-
-            if (!success)
-            {
-                throw new AzPSInvalidOperationException(
-                    Resources.CouldNotAssignServicePrincipalWithSubsContributorPermission,
-                    desensitizedMessage: Resources.CouldNotAssignServicePrincipalWithSubsContributorPermission);
-            }
-        }
-
         protected void AddClusterResourceGroupRoleAssignment(string role, string appId, string clusterResourceGroupname )
         {
             var scope = $"/subscriptions/{DefaultContext.Subscription.Id}/resourceGroups/{clusterResourceGroupname}";
