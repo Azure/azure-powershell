@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+## Version 2.14.1
+* Fixed the issue of not being able to acquire token silently when login with service principal + secret.[23831]
 
 ## Version 2.14.0
 * Fixed the authentication issue when using `FederatedToken` in Sovereign Clouds. [#23742]
