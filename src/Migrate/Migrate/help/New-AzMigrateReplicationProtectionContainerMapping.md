@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationprotectioncontainermapping
 schema: 2.0.0
@@ -17,7 +17,7 @@ New-AzMigrateReplicationProtectionContainerMapping -FabricName <String> -Mapping
  -ProtectionContainerName <String> -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String>] [-PolicyId <String>]
  [-ProviderSpecificInput <IReplicationProviderSpecificContainerMappingInput>]
- [-TargetProtectionContainerId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-TargetProtectionContainerId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -161,7 +161,7 @@ Provider specific input for pairing.
 To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProviderSpecificContainerMappingInput
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IReplicationProviderSpecificContainerMappingInput
 Parameter Sets: (All)
 Aliases:
 
@@ -285,4 +285,3 @@ To create the parameters described below, construct a hash table containing the 
   - `InstanceType <String>`: The class type.
 
 ## RELATED LINKS
-

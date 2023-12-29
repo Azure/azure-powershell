@@ -29,7 +29,7 @@ $DisksToInclude += $DataDisk
 New-AzMigrateServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.OffAzure/VMwareSites/AzMigratePWSHTc8d1site/machines/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f" -LicenseType NoLicenseType -TargetResourceGroupId "/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG" -TargetNetworkId  "/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork" -TargetSubnetName default -TargetVMName "prsadhu-TestVM" -DiskToInclude $DisksToInclude -PerformAutoResync true
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -58,7 +58,7 @@ VMTAG <IVMwareCbtEnableMigrationInputTargetVmtags>: Specifies the tag to be used
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigrateserverreplication
 #>
 function New-AzMigrateServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIdDefaultUser', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -172,21 +172,21 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtEnableMigrationInputTargetVmtags]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IVMwareCbtEnableMigrationInputTargetVmtags]
     # Specifies the tag to be used for VM creation.
     # To construct, see NOTES section for VMTAG properties and create a hash table.
     ${VMTag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtEnableMigrationInputTargetNicTags]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IVMwareCbtEnableMigrationInputTargetNicTags]
     # Specifies the tag to be used for NIC creation.
     # To construct, see NOTES section for NICTAG properties and create a hash table.
     ${NicTag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtEnableMigrationInputTargetDiskTags]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IVMwareCbtEnableMigrationInputTargetDiskTags]
     # Specifies the tag to be used for disk creation.
     # To construct, see NOTES section for DISKTAG properties and create a hash table.
     ${DiskTag},
@@ -220,7 +220,7 @@ param(
     [Parameter(ParameterSetName='ByIdPowerUser', Mandatory)]
     [Parameter(ParameterSetName='ByInputObjectPowerUser', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtDiskInput[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IVMwareCbtDiskInput[]]
     # Specifies the disks on the source server to be included for replication.
     # To construct, see NOTES section for DISKTOINCLUDE properties and create a hash table.
     ${DiskToInclude},
@@ -318,6 +318,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

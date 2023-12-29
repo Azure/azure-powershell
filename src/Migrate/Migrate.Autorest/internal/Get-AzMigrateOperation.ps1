@@ -27,12 +27,12 @@ Get list of operations supported in the API.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperation
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IOperationsDiscovery
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IOperationsDiscovery
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigrateoperation
 #>
 function Get-AzMigrateOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperation], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IOperationsDiscovery])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperation], [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IOperationsDiscovery])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='List2', Mandatory)]

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigration
 schema: 2.0.0
@@ -14,15 +14,15 @@ Starts the test migration for the replicating server.
 
 ### ByIDVMwareCbt (Default)
 ```
-Start-AzMigrateTestMigration -TargetObjectID <String> -TestNetworkID <String>
- [-NicToUpdate <IVMwareCbtNicInput[]>] [-OsUpgradeVersion <String>] [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Start-AzMigrateTestMigration -TestNetworkID <String> -TargetObjectID <String> [-OsUpgradeVersion <String>]
+ [-NicToUpdate <IVMwareCbtNicInput[]>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
-Start-AzMigrateTestMigration -InputObject <IMigrationItem> -TestNetworkID <String>
- [-NicToUpdate <IVMwareCbtNicInput[]>] [-OsUpgradeVersion <String>] [-SubscriptionId <String>]
+Start-AzMigrateTestMigration -TestNetworkID <String> [-OsUpgradeVersion <String>]
+ [-NicToUpdate <IVMwareCbtNicInput[]>] [-SubscriptionId <String>] -InputObject <IMigrationItem>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -57,7 +57,6 @@ TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
 TargetObjectName                 : prsadhu-TestVM
 Task                             : {DisableProtectionOnPrimary, UpdateDraState}
 Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
-
 ```
 
 By machine id.
@@ -89,7 +88,6 @@ TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
 TargetObjectName                 : prsadhu-TestVM
 Task                             : {DisableProtectionOnPrimary, UpdateDraState}
 Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
-
 ```
 
 By input object.
@@ -117,7 +115,7 @@ The server object can be retrieved using the Get-AzMigrateServerReplication cmdl
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IMigrationItem
 Parameter Sets: ByInputObjectVMwareCbt
 Aliases:
 
@@ -133,7 +131,7 @@ Updates the NIC for the Azure VM to be created.
 To construct, see NOTES section for NICTOUPDATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtNicInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IVMwareCbtNicInput[]
 Parameter Sets: (All)
 Aliases:
 
@@ -240,4 +238,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[TestSubnetName <String>]`: The test subnet name.
 
 ## RELATED LINKS
-

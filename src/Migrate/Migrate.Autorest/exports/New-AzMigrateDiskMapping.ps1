@@ -23,12 +23,12 @@ The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attache
 New-AzMigrateDiskMapping -DiskID a -DiskType Standard -IsOSDisk 'true'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtDiskInput
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IVMwareCbtDiskInput
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
 #>
 function New-AzMigrateDiskMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtDiskInput])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IVMwareCbtDiskInput])]
 [CmdletBinding(DefaultParameterSetName='VMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -88,6 +88,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

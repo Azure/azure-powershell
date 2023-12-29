@@ -28,7 +28,7 @@ $providerSpecificPolicy.CrashConsistentFrequencyInMinute = 60
 New-AzMigrateReplicationPolicy -PolicyName TestPolicy -ResourceGroupName ResourceGroup -ResourceName VaultName -SubscriptionId SubscriptionId -ProviderSpecificInput $providerSpecificPolicy
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,7 +40,7 @@ PROVIDERSPECIFICINPUT <IPolicyProviderSpecificInput>: The ReplicationProviderSet
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationpolicy
 #>
 function New-AzMigrateReplicationPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IPolicy])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -70,7 +70,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicyProviderSpecificInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IPolicyProviderSpecificInput]
     # The ReplicationProviderSettings.
     # To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
     ${ProviderSpecificInput},
@@ -169,6 +169,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

@@ -26,7 +26,7 @@ $obj = Get-AzMigrateServerReplication -ProjectName "signoffccyproj" -ResourceGro
 Suspend-AzMigrateServerReplication -InputObject $obj
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,7 +40,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the sus
 https://learn.microsoft.com/powershell/module/az.migrate/suspend-azmigrateserverreplication
 #>
 function Suspend-AzMigrateServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
@@ -59,7 +59,7 @@ param(
 
     [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IMigrationItem]
     # Specifies the replicating server for which the suspend replication needs to be initiated.
     # The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -147,6 +147,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

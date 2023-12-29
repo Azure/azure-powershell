@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigrateserverreplication
 schema: 2.0.0
@@ -20,7 +20,7 @@ Remove-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <Str
 
 ### ByInputObjectVMwareCbt
 ```
-Remove-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <String>]
+Remove-AzMigrateServerReplication [-SubscriptionId <String>] -InputObject <IMigrationItem>
  [-ForceRemove <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -55,7 +55,6 @@ TargetObjectId                   : 101883a0-23f7-538a-bbd5-6d8b4fa900e2
 TargetObjectName                 : prsadhu-TestVM
 Task                             : {DisableProtectionOnPrimary, UpdateDraState}
 Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
-
 ```
 
 Resync by id.
@@ -128,7 +127,7 @@ Specifies the machine object of the replicating server.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IMigrationItem
 Parameter Sets: ByInputObjectVMwareCbt
 Aliases:
 
@@ -194,4 +193,3 @@ To create the parameters described below, construct a hash table containing the 
     - `InstanceType <String>`: Gets the instance type.
 
 ## RELATED LINKS
-

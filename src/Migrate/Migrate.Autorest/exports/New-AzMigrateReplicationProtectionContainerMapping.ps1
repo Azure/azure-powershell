@@ -32,7 +32,7 @@ $providerSpecificInput.TargetLocation = "centraluseuap"
 New-AzMigrateReplicationProtectionContainerMapping -FabricName "AzMigratePWSHTc8d1replicationfabric" -MappingName "containermapping" -ProtectionContainerName "AzMigratePWSHTc8d1replicationcontainer" -ResourceGroupName "azmigratepwshtestasr13072020" -ResourceName "AzMigrateTestProjectPWSH02aarsvault"  -PolicyId "/subscriptionsxxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationPolicies/migrateAzMigratePWSHTc8d1sitepolicy"  -ProviderSpecificInput $providerSpecificInput -TargetProtectionContainerId  "Microsoft Azure"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMapping
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IProtectionContainerMapping
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,7 +44,7 @@ PROVIDERSPECIFICINPUT <IReplicationProviderSpecificContainerMappingInput>: Provi
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationprotectioncontainermapping
 #>
 function New-AzMigrateReplicationProtectionContainerMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMapping])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IProtectionContainerMapping])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -92,7 +92,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProviderSpecificContainerMappingInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IReplicationProviderSpecificContainerMappingInput]
     # Provider specific input for pairing.
     # To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
     ${ProviderSpecificInput},
@@ -197,6 +197,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

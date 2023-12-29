@@ -23,7 +23,7 @@ Starts the migration for the replicating server.
 Start-AzMigrateServerMigration -TargetObjectID "/Subscriptions/7xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationFabrics/AzMigratePWSHTc8d1replicationfabric/replicationProtectionContainers/AzMigratePWSHTc8d1replicationcontainer/replicationMigrationItems/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_52f42ee7-8eb3-1aa4-e2d5-1ae83f86b085"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,7 +37,7 @@ INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which migrati
 https://learn.microsoft.com/powershell/module/az.migrate/start-azmigrateservermigration
 #>
 function Start-AzMigrateServerMigration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ByIDVMwareCbt', Mandatory)]
@@ -69,7 +69,7 @@ param(
 
     [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IMigrationItem]
     # Specifies the replicating server for which migration needs to be initiated.
     # The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -157,6 +157,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

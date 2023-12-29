@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/set-azmigrateserverreplication
 schema: 2.0.0
@@ -14,29 +14,29 @@ Updates the target properties for the replicating server.
 
 ### ByIDVMwareCbt (Default)
 ```
-Set-AzMigrateServerReplication -TargetObjectID <String> [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>]
- [-NicToUpdate <IVMwareCbtNicInput[]>] [-SqlServerLicenseType <String>] [-SubscriptionId <String>]
- [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetDiskName <String>] [-TargetNetworkId <String>]
- [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
- [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
- [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
- [-UpdateTag <Hashtable>] [-UpdateTagOperation <String>]
- [-UpdateVMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-UpdateVMTagOperation <String>]
+Set-AzMigrateServerReplication -TargetObjectID <String> [-TargetVMName <String>] [-TargetDiskName <String>]
+ [-TargetVMSize <String>] [-TargetNetworkId <String>] [-TestNetworkId <String>]
+ [-TargetResourceGroupID <String>] [-NicToUpdate <IVMwareCbtNicInput[]>]
+ [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>] [-TargetAvailabilitySet <String>]
+ [-TargetAvailabilityZone <String>] [-SqlServerLicenseType <String>] [-UpdateTag <Hashtable>]
+ [-UpdateTagOperation <String>] [-UpdateVMTag <IVMwareCbtEnableMigrationInputTargetVmtags>]
+ [-UpdateVMTagOperation <String>] [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
+ [-UpdateNicTagOperation <String>] [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>]
+ [-UpdateDiskTagOperation <String>] [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
-Set-AzMigrateServerReplication -InputObject <IMigrationItem> [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>]
- [-NicToUpdate <IVMwareCbtNicInput[]>] [-SqlServerLicenseType <String>] [-SubscriptionId <String>]
- [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-TargetDiskName <String>] [-TargetNetworkId <String>]
- [-TargetResourceGroupID <String>] [-TargetVMName <String>] [-TargetVMSize <String>] [-TestNetworkId <String>]
- [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
- [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
+Set-AzMigrateServerReplication [-TargetVMName <String>] [-TargetDiskName <String>] [-TargetVMSize <String>]
+ [-TargetNetworkId <String>] [-TestNetworkId <String>] [-TargetResourceGroupID <String>]
+ [-NicToUpdate <IVMwareCbtNicInput[]>] [-DiskToUpdate <IVMwareCbtUpdateDiskInput[]>]
+ [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>] [-SqlServerLicenseType <String>]
  [-UpdateTag <Hashtable>] [-UpdateTagOperation <String>]
  [-UpdateVMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-UpdateVMTagOperation <String>]
+ [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
+ [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>] -InputObject <IMigrationItem>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -132,7 +132,7 @@ Updates the disk for the Azure VM to be created.
 To construct, see NOTES section for DISKTOUPDATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtUpdateDiskInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IVMwareCbtUpdateDiskInput[]
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +149,7 @@ The server object can be retrieved using the Get-AzMigrateServerReplication cmdl
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IMigrationItem
 Parameter Sets: ByInputObjectVMwareCbt
 Aliases:
 
@@ -165,7 +165,7 @@ Updates the NIC for the Azure VM to be created.
 To construct, see NOTES section for NICTOUPDATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtNicInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IVMwareCbtNicInput[]
 Parameter Sets: (All)
 Aliases:
 
@@ -363,7 +363,7 @@ Specifies the tag to be used for disk creation.
 To construct, see NOTES section for UPDATEDISKTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtEnableMigrationInputTargetDiskTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IVMwareCbtEnableMigrationInputTargetDiskTags
 Parameter Sets: (All)
 Aliases:
 
@@ -394,7 +394,7 @@ Specifies the tag to be used for NIC creation.
 To construct, see NOTES section for UPDATENICTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtEnableMigrationInputTargetNicTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IVMwareCbtEnableMigrationInputTargetNicTags
 Parameter Sets: (All)
 Aliases:
 
@@ -455,7 +455,7 @@ Specifies the tag to be used for VM creation.
 To construct, see NOTES section for UPDATEVMTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtEnableMigrationInputTargetVmtags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IVMwareCbtEnableMigrationInputTargetVmtags
 Parameter Sets: (All)
 Aliases:
 
@@ -529,4 +529,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
-

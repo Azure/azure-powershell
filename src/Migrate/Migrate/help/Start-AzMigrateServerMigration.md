@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/start-azmigrateservermigration
 schema: 2.0.0
@@ -14,14 +14,14 @@ Starts the migration for the replicating server.
 
 ### ByIDVMwareCbt (Default)
 ```
-Start-AzMigrateServerMigration -TargetObjectID <String> [-OsUpgradeVersion <String>]
- [-SubscriptionId <String>] [-TurnOffSourceServer] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Start-AzMigrateServerMigration -TargetObjectID <String> [-OsUpgradeVersion <String>] [-TurnOffSourceServer]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
-Start-AzMigrateServerMigration -InputObject <IMigrationItem> [-OsUpgradeVersion <String>]
- [-SubscriptionId <String>] [-TurnOffSourceServer] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Start-AzMigrateServerMigration [-OsUpgradeVersion <String>] [-TurnOffSourceServer] [-SubscriptionId <String>]
+ -InputObject <IMigrationItem> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,7 +82,7 @@ The server object can be retrieved using the Get-AzMigrateServerReplication cmdl
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IMigrationItem
 Parameter Sets: ByInputObjectVMwareCbt
 Aliases:
 
@@ -179,4 +179,3 @@ To create the parameters described below, construct a hash table containing the 
     - `InstanceType <String>`: Gets the instance type.
 
 ## RELATED LINKS
-

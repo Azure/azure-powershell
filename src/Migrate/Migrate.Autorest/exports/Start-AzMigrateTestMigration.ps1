@@ -26,7 +26,7 @@ $obj = Get-AzMigrateServerReplication -TargetObjectID $env.srsMachineId -Subscri
 Start-AzMigrateTestMigration -InputObject $obj -TestNetworkId '/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,7 +50,7 @@ NICTOUPDATE <IVMwareCbtNicInput[]>: Updates the NIC for the Azure VM to be creat
 https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigration
 #>
 function Start-AzMigrateTestMigration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IJob])]
 [CmdletBinding(DefaultParameterSetName='ByIDVMwareCbt', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -75,7 +75,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtNicInput[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IVMwareCbtNicInput[]]
     # Updates the NIC for the Azure VM to be created.
     # To construct, see NOTES section for NICTOUPDATE properties and create a hash table.
     ${NicToUpdate},
@@ -89,7 +89,7 @@ param(
 
     [Parameter(ParameterSetName='ByInputObjectVMwareCbt', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20230601.IMigrationItem]
     # Specifies the replicating server for which the test migration needs to be initiated.
     # The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -177,6 +177,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
