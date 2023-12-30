@@ -2,7 +2,7 @@
 # Variable 'NugetSecurityAnalysisWarningLevel' was defined in the Variables tab
 # Cron Schedules have been converted using UTC Time Zone and may need to be updated for your location
 schedules:
-- cron: 0 1 * * * 
+- cron: 0 4 * * 1,2,3,4,5
   branches:
     include:
     - main
