@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+* Updated Azure RBAC Contributor access scope to target the Managed Cluster resource group instead of subscription-level in `New-AzAksCluster`.
+
 ## Version 6.0.0
 * Removed parameter `DockerBridgeCidr` from `New-AzAksCluster`
 * Fixed the resolve path issue in `Install-AzAksCliTool`. [#22853]
