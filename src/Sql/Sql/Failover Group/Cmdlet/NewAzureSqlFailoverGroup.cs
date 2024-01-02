@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
+//using Hyak.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
 using Microsoft.Azure.Management.Sql.Models;
@@ -23,6 +23,7 @@ using System.Linq;
 using System.Management.Automation;
 using System;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
