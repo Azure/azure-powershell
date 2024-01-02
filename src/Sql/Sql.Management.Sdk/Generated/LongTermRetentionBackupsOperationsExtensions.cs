@@ -232,7 +232,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<LongTermRetentionBackup> ListByDatabase(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
         {
@@ -258,7 +259,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -283,7 +285,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<LongTermRetentionBackup> ListByLocation(this ILongTermRetentionBackupsOperations operations, string locationName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
         {
@@ -303,7 +306,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -331,7 +335,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<LongTermRetentionBackup> ListByServer(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
         {
@@ -354,7 +359,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -373,7 +379,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -399,7 +406,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -430,7 +438,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -456,7 +465,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -487,7 +497,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -513,7 +524,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -544,7 +556,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -570,7 +583,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -598,7 +612,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -613,7 +628,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<LongTermRetentionBackup> ListByResourceGroupDatabase(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
         {
@@ -627,7 +643,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -642,7 +659,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -661,7 +679,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -670,7 +689,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<LongTermRetentionBackup> ListByResourceGroupLocation(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
         {
@@ -684,7 +704,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -693,7 +714,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -712,7 +734,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -724,7 +747,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<LongTermRetentionBackup> ListByResourceGroupServer(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, bool? onlyLatestPerDatabase = default(bool?), string databaseState = default(string))
         {
@@ -738,7 +762,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -750,7 +775,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Whether or not to only get the latest backup for each database.
         /// </param>
         /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// Whether to query against just live databases, just deleted databases, or
+        /// all databases.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -919,7 +945,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -945,7 +972,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -976,7 +1004,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -1002,7 +1031,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database.
@@ -1033,7 +1063,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database
@@ -1059,7 +1090,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// The location of the database

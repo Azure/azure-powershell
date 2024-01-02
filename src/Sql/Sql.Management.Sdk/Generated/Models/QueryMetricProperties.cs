@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="unit">The unit of the metric.
-        /// Possible values include: 'percentage', 'KB', 'microseconds', 'count'</param>
+        /// Possible values include: &#39;percentage&#39;, &#39;KB&#39;, &#39;microseconds&#39;, &#39;count&#39;</param>
 
         /// <param name="value">The value of the metric.
         /// </param>

@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="backupStorageRedundancy">The storage account type used to store backups for this database.
-        /// Possible values include: 'Geo', 'Local', 'Zone', 'GeoZone'</param>
+        /// Possible values include: &#39;Geo&#39;, &#39;Local&#39;, &#39;Zone&#39;, &#39;GeoZone&#39;</param>
 
         /// <param name="keys">The resource ids of the user assigned identities to use
         /// </param>
