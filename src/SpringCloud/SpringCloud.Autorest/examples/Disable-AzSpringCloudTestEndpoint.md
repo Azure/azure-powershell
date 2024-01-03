@@ -17,4 +17,3 @@ Get-AzSpringCloud -ResourceGroupName lucas-rg-test -Name springapp-pwsh01 | Disa
 ```
 
 Disable test endpoint functionality for a Service by pipeline.
-
