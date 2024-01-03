@@ -75,24 +75,20 @@ jobs:
         }
         git checkout src/${{ parameters.ServiceName }};
         git checkout -b codegen/${{ parameters.ServiceName }} origin/${{ parameters.TargetBranch }};
-  - task: PowerShell@2.232.1
-    displayName: Create codegen/${{ parameters.ServiceName }} branch
-    inputs:
-      targetType: inline
-      script: >-
-        #Uninstall-Module -Name PackageManagement -AllVersions
-        Install-Module -Name PowerShellGet -RequiredVersion 2.2.3 -Force;
-        Install-Module -Name platyPS -RequiredVersion 0.14.2 -Force;
-        Install-Module -Name Az.Accounts -Force;
-        Import-Module .\tools\Gen2Master\MoveFromGeneration2Master.ps1;
-        Move-Generation2Master -SourcePath .\artifacts\src\${{ parameters.ServiceName }} -DestPath .\src\${{ parameters.ServiceName }};
-        git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
-        git config user.name "azure-powershell-bot";
-        git add ./src;
-        git add tools/CreateMappings_rules.json;
-        git commit -m "Move ${{ parameters.ServiceName }} to ${{ parameters.TargetBranch }}";
-        git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git;
-        git push origin codegen/${{ parameters.ServiceName }} --force;
+  - pwsh: |
+      #Uninstall-Module -Name PackageManagement -AllVersions
+      Install-Module -Name PowerShellGet -RequiredVersion 2.2.3 -Force;
+      Install-Module -Name platyPS -RequiredVersion 0.14.2 -Force;
+      Install-Module -Name Az.Accounts -Force;
+      Import-Module .\tools\Gen2Master\MoveFromGeneration2Master.ps1;
+      Move-Generation2Master -SourcePath .\artifacts\src\${{ parameters.ServiceName }} -DestPath .\src\${{ parameters.ServiceName }};
+      git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
+      git config user.name "azure-powershell-bot";
+      git add ./src;
+      git add tools/CreateMappings_rules.json;
+      git commit -m "Move ${{ parameters.ServiceName }} to ${{ parameters.TargetBranch }}";
+      git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git;
+      git push origin codegen/${{ parameters.ServiceName }} --force;
   - pwsh: |
       $SourceBranch = "$(Build.SourceBranch)"
       $SourceBranch = $SourceBranch.Replace("refs/heads/", "")
