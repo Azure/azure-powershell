@@ -448,8 +448,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 DatabaseName = response.DatabaseName,
                 BackupName = model.BackupName,
                 ResourceGroupName = model.ResourceGroupName,
-                BackupStorageAccessTier = response.BackupStorageAccessTier,
-                OperationMode = model.OperationMode
+                BackupStorageAccessTier = updateParameters.BackupStorageAccessTier,
+                OperationMode = updateParameters.OperationMode
             };
         }
 
@@ -575,7 +575,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ServerName = backup.ServerName,
                 ResourceGroupName = GetResourceGroupNameFromResourceId(backup.Id),
                 BackupStorageRedundancy = backup.BackupStorageRedundancy,
-                IsBackupImmutable = backup.IsBackupImmutable
+                IsBackupImmutable = backup.IsBackupImmutable,
+                BackupStorageAccessTier = backup.BackupStorageAccessTier
             };
         }
 

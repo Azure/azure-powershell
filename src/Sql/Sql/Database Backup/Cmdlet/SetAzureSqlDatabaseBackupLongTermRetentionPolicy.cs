@@ -117,13 +117,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets the setting whether to make LTR backups immutable.
         /// </summary>
         [Parameter(Mandatory = false,
-            ParameterSetName = WeeklyRetentionRequiredSet,
-            HelpMessage = "Whether to make LTR backups immutable.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = MonthlyRetentionRequiredSet,
-            HelpMessage = "Whether to make LTR backups immutable.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = YearlyRetentionRequiredSet,
             HelpMessage = "Whether to make LTR backups immutable.")]
         public SwitchParameter MakeBackupsImmutable { get; set; }
 
@@ -131,15 +124,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets the setting to make future LTR backups to the target storage access tier.
         /// </summary>
         [Parameter(Mandatory = false,
-            ParameterSetName = WeeklyRetentionRequiredSet,
             HelpMessage = "Set future LTR backups to the target backup storage access tier.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = MonthlyRetentionRequiredSet,
-            HelpMessage = "Set future LTR backups to the target backup storage access tier.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = YearlyRetentionRequiredSet,
-            HelpMessage = "Set future LTR backups to the target backup storage access tier.")]
-        [ValidateNotNullOrEmpty]
         public string BackupStorageAccessTier { get; set; }
 
         /// <summary>
