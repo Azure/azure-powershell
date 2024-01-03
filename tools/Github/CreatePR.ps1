@@ -40,6 +40,8 @@ param(
 )
 
 $Headers = @{"Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $BotAccessToken" }
+Write-Host $Headers
+Write-Host $Description
 $PrBody = @"
 <!-- DO NOT DELETE THIS TEMPLATE -->
 
