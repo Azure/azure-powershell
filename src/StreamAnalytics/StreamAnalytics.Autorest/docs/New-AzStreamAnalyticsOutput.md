@@ -27,6 +27,7 @@ Creates an output or replaces an already existing output under an existing strea
 ```powershell
 New-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name output-01 -File .\test\template-json\StroageAccount.json
 ```
+
 ```output
 Name      Type                                            ETag
 ----      ----                                            ----
@@ -235,8 +236,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IOutput
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

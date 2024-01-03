@@ -30,6 +30,7 @@ Creates a streaming job or replaces an already existing streaming job.
 ```powershell
 New-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-02-pwsh -Location westcentralus -SkuName Standard
 ```
+
 ```output
 Location        Name          Type                                    ETag
 --------        ----          ----                                    ----
@@ -364,8 +365,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

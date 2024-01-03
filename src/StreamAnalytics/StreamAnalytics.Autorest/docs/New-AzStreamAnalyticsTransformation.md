@@ -27,6 +27,7 @@ Creates a transformation or replaces an already existing transformation under an
 ```powershell
 New-AzStreamAnalyticsTransformation -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name tranf-01 -StreamingUnit 6 -Query "Select Id, Name from input-01"
 ```
+
 ```output
 Name     Type                                                    ETag
 ----     ----                                                    ----
@@ -38,7 +39,8 @@ This command creates a transformation in the stream analytics job called.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -219,8 +221,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.ITransformation
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

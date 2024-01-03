@@ -26,6 +26,7 @@ Lists all of the streaming jobs in the given cluster.
 ```powershell
 Get-AzStreamAnalyticsClusterStreamingJob -ResourceGroupName pwshaz-rg-test -ClusterName sac-m-test01
 ```
+
 ```output
 JobState StreamingUnit
 -------- -------------
@@ -52,7 +53,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -138,8 +140,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.IClusterJob
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

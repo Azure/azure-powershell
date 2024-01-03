@@ -28,6 +28,7 @@ This can range from testing the connection to the underlying web service behind 
 ```powershell
 Test-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name mlsfunction-01
 ```
+
 ```output
 Status
 ------
@@ -174,8 +175,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IResourceTestStatus
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

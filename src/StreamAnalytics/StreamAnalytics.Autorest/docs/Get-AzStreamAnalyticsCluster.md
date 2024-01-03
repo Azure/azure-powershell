@@ -44,6 +44,7 @@ Gets information about the specified cluster.
 ```powershell
 Get-AzStreamAnalyticsCluster
 ```
+
 ```output
 Location        Name         Type                               Etag
 --------        ----         ----                               ----
@@ -56,6 +57,7 @@ This command gets all the stream analytics clusters under a subscription.
 ```powershell
 Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test
 ```
+
 ```output
 Location        Name         Type                               Etag
 --------        ----         ----                               ----
@@ -68,6 +70,7 @@ This command gets all the stream analytics clusters under a resource group.
 ```powershell
 Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01
 ```
+
 ```output
 Location        Name         Type                               Etag
 --------        ----         ----                               ----
@@ -80,6 +83,7 @@ This command gets a stream analytics cluster by name.
 ```powershell
 Get-AzStreamAnalyticsCluster -ResourceGroupName pwshaz-rg-test -Name sac-m-test01 | Get-AzStreamAnalyticsCluster
 ```
+
 ```output
 Location        Name         Type                               Etag
 --------        ----         ----                               ----
@@ -91,7 +95,8 @@ This command gets a stream analytics cluster by pipeline.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -179,25 +184,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20200301Preview.ICluster
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
-  - `[ClusterName <String>]`: The name of the cluster.
-  - `[FunctionName <String>]`: The name of the function.
-  - `[Id <String>]`: Resource identity path
-  - `[InputName <String>]`: The name of the input.
-  - `[JobName <String>]`: The name of the streaming job.
-  - `[Location <String>]`: The region in which to retrieve the subscription's quota information. You can find out which regions Azure Stream Analytics is supported in here: https://azure.microsoft.com/en-us/regions/
-  - `[OutputName <String>]`: The name of the output.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[TransformationName <String>]`: The name of the transformation.
 
 ## RELATED LINKS
 

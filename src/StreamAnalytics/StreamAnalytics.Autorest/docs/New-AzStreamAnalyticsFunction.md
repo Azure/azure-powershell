@@ -27,6 +27,7 @@ Creates a function or replaces an already existing function under an existing st
 ```powershell
 New-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name function-01 -File .\test\template-json\Function_JavascriptUdf.json
 ```
+
 ```output
 Name        Type                                              ETag
 ----        ----                                              ----
@@ -66,6 +67,7 @@ This command creates a function from the file Function_JavascriptUdf.json.
 ```powershell
 New-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name function-01 -File .\test\template-json\MachineLearningServices.json
 ```
+
 ```output
 Name        Type                                              ETag
 ----        ----                                              ----
@@ -285,8 +287,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
