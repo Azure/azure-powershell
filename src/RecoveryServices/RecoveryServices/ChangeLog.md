@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Added breaking change notification for cmdlets whose output type is `ASRVaultSettings`.
+* Added warning for Standard to Enhanced policy migration for AzureVMs.
+* Updated Unregister-AzRecoveryServicesBackupContainer command to ouptput Job object if PassThru not given.
 
 ## Version 6.7.0
 * Added support Edge zone VM restore
