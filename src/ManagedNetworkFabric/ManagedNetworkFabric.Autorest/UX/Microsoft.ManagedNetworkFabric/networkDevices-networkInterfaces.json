@@ -1,0 +1,167 @@
+{
+  "resourceType": "networkDevices/networkInterfaces",
+  "apiVersion": "2023-06-15",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkFabricInterface",
+      "description": "Get the Network Interface resource details.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricinterface"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-NetworkDeviceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the Network Interface resource details.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.networkInterfaceName]"
+            },
+            {
+              "name": "-NetworkDeviceName",
+              "value": "[Path.networkDeviceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNetworkFabricInterfaceUpdateAdminState",
+      "description": "Update the admin state of the Network Interface.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}/updateAdministrativeState",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabricinterfaceupdateadminstate"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NetworkDeviceName <String>",
+              "-NetworkInterfaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          },
+          {
+            "parameters": [
+              "-NetworkDeviceName <String>",
+              "-NetworkInterfaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Update the admin state of the Network Interface.",
+          "parameters": [
+            {
+              "name": "-NetworkDeviceName",
+              "value": "[Path.networkDeviceName]"
+            },
+            {
+              "name": "-NetworkInterfaceName",
+              "value": "[Path.networkInterfaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
+        {
+          "description": "Update the admin state of the Network Interface.",
+          "parameters": [
+            {
+              "name": "-NetworkDeviceName",
+              "value": "[Path.networkDeviceName]"
+            },
+            {
+              "name": "-NetworkInterfaceName",
+              "value": "[Path.networkInterfaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNetworkFabricInterface",
+      "description": "Delete the Network Interface resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/remove-aznetworkfabricinterface"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-NetworkDeviceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete the Network Interface resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.networkInterfaceName]"
+            },
+            {
+              "name": "-NetworkDeviceName",
+              "value": "[Path.networkDeviceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
