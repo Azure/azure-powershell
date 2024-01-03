@@ -10,7 +10,7 @@ Invoke-LiveTestScenario -Name "Blob basics" -Description "Test blob basic operat
     $ContentMD5 = "i727sP7HigloQDsqadNLHw=="
     $testfile512path = "$PSScriptRoot\TestFiles\testfile512"
 
-    $account = New-AzStorageAccount -ResourceGroupName $rgName -Name $storageAccountName -Location $location -SkuName Standard_GRS 
+    $account = New-AzStorageAccount -ResourceGroupName $rgName -Name $storageAccountName -Location $location -SkuName Standard_GRS -AllowBlobPublicAccess $true
     $ctx = $account.Context 
     $container = New-AzStorageContainer -Name $containerName -Context $ctx 
 
