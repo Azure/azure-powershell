@@ -98,13 +98,13 @@ jobs:
     inputs:
       targetType: inline
       script: >-
-        $SourceBranch = "$(Build.SourceBranch)"
-        $SourceBranch = $SourceBranch.Replace("refs/heads/", "")
-        $Title = "Migrate ${{ parameters.ServiceName }} from $SourceBranch to ${{ parameters.TargetBranch }}"
-        $HeadBranch = "codegen/${{ parameters.ServiceName }}"
-        $BaseBranch = "${{ parameters.TargetBranch }}"
+        $SourceBranch = "$(Build.SourceBranch)";
+        $SourceBranch = $SourceBranch.Replace("refs/heads/", "");
+        $Title = "Migrate ${{ parameters.ServiceName }} from $SourceBranch to ${{ parameters.TargetBranch }}";
+        $HeadBranch = "codegen/${{ parameters.ServiceName }}";
+        $BaseBranch = "${{ parameters.TargetBranch }}";
         $Description = "Migrate ${{ parameters.ServiceName }} from $SourceBranch to ${{ parameters.TargetBranch }}
         The last commit of src/${{ parameters.ServiceName }} in $SourceBranch is:
         $(git log -1  origin/$SourceBranch -- ./src/${{ parameters.ServiceName }})
-        "
-        ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GithubToken) -Description $Description
+        ";
+        ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GithubToken) -Description $Description;
