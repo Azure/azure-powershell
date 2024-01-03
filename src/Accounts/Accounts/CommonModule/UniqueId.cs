@@ -43,9 +43,11 @@ namespace Microsoft.Azure.Commands.Common
         /// <returns>Amended pipeline for retrieving a response</returns>
         public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken token, Action cancel, SignalDelegate signal, NextDelegate next)
         {
-            // add a header...
-            request.Headers.Add("x-ms-unique-id", Interlocked.Increment(ref this.count).ToString());
-
+            if (!request.Headers.Contains("x-ms-unique-id"))
+            {
+                // add a header...
+                request.Headers.Add("x-ms-unique-id", Interlocked.Increment(ref this.count).ToString());
+            }
             // continue with pipeline.
             return next(request, token, cancel, signal);
         }
