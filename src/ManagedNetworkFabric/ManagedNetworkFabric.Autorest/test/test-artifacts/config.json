@@ -2,7 +2,7 @@
     "common": {
         "resourceGroupName": "nfa-tool-ts-powershell-rg092123",
         "location": "eastus",
-        "subscriptionId": "9531faa8-8c39-4165-b033-48697fe943db"
+        "subscriptionId": "6b085460-5f21-477e-ba44-1035046e9101"
     },
     "ACL": {
         "name": "aclName",
