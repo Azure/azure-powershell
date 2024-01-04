@@ -31,7 +31,7 @@ For information on how to develop for `Az.ManagedNetworkFabric`, see [how-to.md]
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: 0d7b535d1273b18623ca0d63a6ebb0456dab95ba
+commit: 0d7b535d1273b18623ca0d63a6ebb0456dab95ba
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
