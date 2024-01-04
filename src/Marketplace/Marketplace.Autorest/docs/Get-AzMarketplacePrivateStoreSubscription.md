@@ -1,37 +1,24 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://learn.microsoft.com/powershell/module/az.marketplace/invoke-azmarketplacequeryrule
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestoresubscription
 schema: 2.0.0
 ---
 
-# Invoke-AzMarketplaceQueryRule
+# Get-AzMarketplacePrivateStoreSubscription
 
 ## SYNOPSIS
-Get a list of all private store rules in the given private store and collection
+List all the subscriptions in the private store context
 
 ## SYNTAX
 
-### Query (Default)
 ```
-Invoke-AzMarketplaceQueryRule -CollectionId <String> -PrivateStoreId <String> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### QueryViaIdentity
-```
-Invoke-AzMarketplaceQueryRule -InputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>] [-Confirm]
+Get-AzMarketplacePrivateStoreSubscription -PrivateStoreId <String> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
-### QueryViaIdentityPrivateStore
-```
-Invoke-AzMarketplaceQueryRule -CollectionId <String> -PrivateStoreInputObject <IMarketplaceIdentity>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Get a list of all private store rules in the given private store and collection
+List all the subscriptions in the private store context
 
 ## EXAMPLES
 
@@ -59,21 +46,6 @@ Get a list of all private store rules in the given private store and collection
 
 ## PARAMETERS
 
-### -CollectionId
-The collection ID
-
-```yaml
-Type: System.String
-Parameter Sets: Query, QueryViaIdentityPrivateStore
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -90,50 +62,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: QueryViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PrivateStoreId
 The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Query
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrivateStoreInputObject
-Identity Parameter
-To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: QueryViaIdentityPrivateStore
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -173,11 +113,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IRuleListResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISubscriptionsContextList
 
 ## NOTES
 

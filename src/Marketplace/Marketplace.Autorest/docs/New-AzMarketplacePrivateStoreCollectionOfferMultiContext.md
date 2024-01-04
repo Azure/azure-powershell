@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://learn.microsoft.com/powershell/module/az.marketplace/invoke-azmarketplaceofferprivatestorecollectionofferupsert
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollectionoffermulticontext
 schema: 2.0.0
 ---
 
-# Invoke-AzMarketplaceOfferPrivateStoreCollectionOfferUpsert
+# New-AzMarketplacePrivateStoreCollectionOfferMultiContext
 
 ## SYNOPSIS
 Upsert an offer with multiple context details.
@@ -14,72 +14,30 @@ Upsert an offer with multiple context details.
 
 ### OfferExpanded (Default)
 ```
-Invoke-AzMarketplaceOfferPrivateStoreCollectionOfferUpsert -CollectionId <String> -OfferId <String>
+New-AzMarketplacePrivateStoreCollectionOfferMultiContext -CollectionId <String> -OfferId <String>
  -PrivateStoreId <String> [-ETag <String>] [-PlansContext <IContextAndPlansDetails[]>]
  [-PropertiesOfferId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Offer
-```
-Invoke-AzMarketplaceOfferPrivateStoreCollectionOfferUpsert -CollectionId <String> -OfferId <String>
- -PrivateStoreId <String> -Payload <IMultiContextAndPlansPayload> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### OfferViaIdentity
-```
-Invoke-AzMarketplaceOfferPrivateStoreCollectionOfferUpsert -InputObject <IMarketplaceIdentity>
- -Payload <IMultiContextAndPlansPayload> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### OfferViaIdentityCollection
-```
-Invoke-AzMarketplaceOfferPrivateStoreCollectionOfferUpsert -CollectionInputObject <IMarketplaceIdentity>
- -OfferId <String> -Payload <IMultiContextAndPlansPayload> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### OfferViaIdentityCollectionExpanded
 ```
-Invoke-AzMarketplaceOfferPrivateStoreCollectionOfferUpsert -CollectionInputObject <IMarketplaceIdentity>
+New-AzMarketplacePrivateStoreCollectionOfferMultiContext -CollectionInputObject <IMarketplaceIdentity>
  -OfferId <String> [-ETag <String>] [-PlansContext <IContextAndPlansDetails[]>] [-PropertiesOfferId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### OfferViaIdentityExpanded
 ```
-Invoke-AzMarketplaceOfferPrivateStoreCollectionOfferUpsert -InputObject <IMarketplaceIdentity>
+New-AzMarketplacePrivateStoreCollectionOfferMultiContext -InputObject <IMarketplaceIdentity>
  [-OfferId <String>] [-ETag <String>] [-PlansContext <IContextAndPlansDetails[]>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### OfferViaIdentityPrivateStore
-```
-Invoke-AzMarketplaceOfferPrivateStoreCollectionOfferUpsert -CollectionId <String> -OfferId <String>
- -PrivateStoreInputObject <IMarketplaceIdentity> -Payload <IMultiContextAndPlansPayload>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### OfferViaIdentityPrivateStoreExpanded
 ```
-Invoke-AzMarketplaceOfferPrivateStoreCollectionOfferUpsert -CollectionId <String> -OfferId <String>
+New-AzMarketplacePrivateStoreCollectionOfferMultiContext -CollectionId <String> -OfferId <String>
  -PrivateStoreInputObject <IMarketplaceIdentity> [-ETag <String>] [-PlansContext <IContextAndPlansDetails[]>]
  [-PropertiesOfferId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### OfferViaJsonFilePath
-```
-Invoke-AzMarketplaceOfferPrivateStoreCollectionOfferUpsert -CollectionId <String> -OfferId <String>
- -PrivateStoreId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### OfferViaJsonString
-```
-Invoke-AzMarketplaceOfferPrivateStoreCollectionOfferUpsert -CollectionId <String> -OfferId <String>
- -PrivateStoreId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,7 +74,7 @@ The collection ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Offer, OfferExpanded, OfferViaIdentityPrivateStore, OfferViaIdentityPrivateStoreExpanded, OfferViaJsonFilePath, OfferViaJsonString
+Parameter Sets: OfferExpanded, OfferViaIdentityPrivateStoreExpanded
 Aliases:
 
 Required: True
@@ -132,7 +90,7 @@ To construct, see NOTES section for COLLECTIONINPUTOBJECT properties and create 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: OfferViaIdentityCollection, OfferViaIdentityCollectionExpanded
+Parameter Sets: OfferViaIdentityCollectionExpanded
 Aliases:
 
 Required: True
@@ -163,7 +121,7 @@ The offer's eTag.
 
 ```yaml
 Type: System.String
-Parameter Sets: OfferExpanded, OfferViaIdentityCollectionExpanded, OfferViaIdentityExpanded, OfferViaIdentityPrivateStoreExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -179,43 +137,13 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: OfferViaIdentity, OfferViaIdentityExpanded
+Parameter Sets: OfferViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Offer operation
-
-```yaml
-Type: System.String
-Parameter Sets: OfferViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Offer operation
-
-```yaml
-Type: System.String
-Parameter Sets: OfferViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -224,29 +152,13 @@ The offer ID to update or delete
 
 ```yaml
 Type: System.String
-Parameter Sets: Offer, OfferExpanded, OfferViaIdentityCollection, OfferViaIdentityCollectionExpanded, OfferViaIdentityExpanded, OfferViaIdentityPrivateStore, OfferViaIdentityPrivateStoreExpanded, OfferViaJsonFilePath, OfferViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Payload
-Payload object for upsert offer with multiple context and plans.
-To construct, see NOTES section for PAYLOAD properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMultiContextAndPlansPayload
-Parameter Sets: Offer, OfferViaIdentity, OfferViaIdentityCollection, OfferViaIdentityPrivateStore
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -256,7 +168,7 @@ To construct, see NOTES section for PLANSCONTEXT properties and create a hash ta
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IContextAndPlansDetails[]
-Parameter Sets: OfferExpanded, OfferViaIdentityCollectionExpanded, OfferViaIdentityExpanded, OfferViaIdentityPrivateStoreExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -271,7 +183,7 @@ The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Offer, OfferExpanded, OfferViaJsonFilePath, OfferViaJsonString
+Parameter Sets: OfferExpanded
 Aliases:
 
 Required: True
@@ -287,7 +199,7 @@ To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and creat
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: OfferViaIdentityPrivateStore, OfferViaIdentityPrivateStoreExpanded
+Parameter Sets: OfferViaIdentityPrivateStoreExpanded
 Aliases:
 
 Required: True
@@ -349,8 +261,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMultiContextAndPlansPayload
 
 ## OUTPUTS
 

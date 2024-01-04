@@ -1,38 +1,31 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://learn.microsoft.com/powershell/module/az.marketplace/approve-azmarketplaceprivatestorecollectionitem
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/test-azmarketplaceprivatestoreanyexistingoffer
 schema: 2.0.0
 ---
 
-# Approve-AzMarketplacePrivateStoreCollectionItem
+# Test-AzMarketplacePrivateStoreAnyExistingOffer
 
 ## SYNOPSIS
-Delete all existing offers from the collection and enable approve all items.
+Query whether exists any offer in the collections.
 
 ## SYNTAX
 
-### Approve (Default)
+### Any (Default)
 ```
-Approve-AzMarketplacePrivateStoreCollectionItem -CollectionId <String> -PrivateStoreId <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ApproveViaIdentity
-```
-Approve-AzMarketplacePrivateStoreCollectionItem -InputObject <IMarketplaceIdentity>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzMarketplacePrivateStoreAnyExistingOffer -PrivateStoreId <String> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ApproveViaIdentityPrivateStore
+### AnyViaIdentity
 ```
-Approve-AzMarketplacePrivateStoreCollectionItem -CollectionId <String>
- -PrivateStoreInputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Test-AzMarketplacePrivateStoreAnyExistingOffer -InputObject <IMarketplaceIdentity>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete all existing offers from the collection and enable approve all items.
+Query whether exists any offer in the collections.
 
 ## EXAMPLES
 
@@ -60,21 +53,6 @@ Delete all existing offers from the collection and enable approve all items.
 
 ## PARAMETERS
 
-### -CollectionId
-The collection ID
-
-```yaml
-Type: System.String
-Parameter Sets: Approve, ApproveViaIdentityPrivateStore
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -97,7 +75,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: ApproveViaIdentity
+Parameter Sets: AnyViaIdentity
 Aliases:
 
 Required: True
@@ -112,29 +90,13 @@ The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Approve
+Parameter Sets: Any
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrivateStoreInputObject
-Identity Parameter
-To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: ApproveViaIdentityPrivateStore
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -178,7 +140,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IAnyExistingOffersInTheCollectionsResponse
 
 ## NOTES
 

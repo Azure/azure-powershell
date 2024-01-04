@@ -1,0 +1,44 @@
+{
+  "Get-AzMarketplacePrivateStoreStopSellOfferPlanNotification+[NoContext]+List+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/listStopSellOffersPlansNotifications?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/listStopSellOffersPlansNotifications?api-version=2023-01-01",
+      "Content": "{\r\n  \"subscriptions\": [ \"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\" ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "67" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "Set-Cookie": [ "ARRAffinity=0167904c093642b6eb1372d43ab24808f2271061b5c98f5a81aaceaaff5f0ca1;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=0167904c093642b6eb1372d43ab24808f2271061b5c98f5a81aaceaaff5f0ca1;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.02536.29-012fd621" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-azure-ref": [ "20240103T145019Z-rmdc0a6tp969m4pm26v6zv7rtc0000000cvg000000003h9n" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "b41c5c11-0f5f-4232-899c-57435b0a8678" ],
+        "x-ms-correlation-request-id": [ "b41c5c11-0f5f-4232-899c-57435b0a8678" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240103T145019Z:b41c5c11-0f5f-4232-899c-57435b0a8678" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 03 Jan 2024 14:50:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "57" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"Invalid Input\"}}",
+      "isContentBase64": false
+    }
+  }
+}

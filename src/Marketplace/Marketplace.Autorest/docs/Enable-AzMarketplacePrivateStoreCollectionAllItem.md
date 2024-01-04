@@ -1,24 +1,38 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorestopsellofferplannotification
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/enable-azmarketplaceprivatestorecollectionallitem
 schema: 2.0.0
 ---
 
-# Get-AzMarketplacePrivateStoreStopSellOfferPlanNotification
+# Enable-AzMarketplacePrivateStoreCollectionAllItem
 
 ## SYNOPSIS
-List stop sell notifications for both stop sell offers and stop sell plans
+Delete all existing offers from the collection and enable approve all items.
 
 ## SYNTAX
 
+### Approve (Default)
 ```
-Get-AzMarketplacePrivateStoreStopSellOfferPlanNotification -PrivateStoreId <String> [-Subscription <String[]>]
+Enable-AzMarketplacePrivateStoreCollectionAllItem -CollectionId <String> -PrivateStoreId <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### ApproveViaIdentity
+```
+Enable-AzMarketplacePrivateStoreCollectionAllItem -InputObject <IMarketplaceIdentity>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ApproveViaIdentityPrivateStore
+```
+Enable-AzMarketplacePrivateStoreCollectionAllItem -CollectionId <String>
+ -PrivateStoreInputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-List stop sell notifications for both stop sell offers and stop sell plans
+Delete all existing offers from the collection and enable approve all items.
 
 ## EXAMPLES
 
@@ -46,6 +60,21 @@ List stop sell notifications for both stop sell offers and stop sell plans
 
 ## PARAMETERS
 
+### -CollectionId
+The collection ID
+
+```yaml
+Type: System.String
+Parameter Sets: Approve, ApproveViaIdentityPrivateStore
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -62,12 +91,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+Parameter Sets: ApproveViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PrivateStoreId
 The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Approve
 Aliases:
 
 Required: True
@@ -77,18 +122,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Subscription
-.
+### -PrivateStoreInputObject
+Identity Parameter
+To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+Parameter Sets: ApproveViaIdentityPrivateStore
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -128,9 +174,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IStopSellOffersPlansNotificationsList
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection
 
 ## NOTES
 

@@ -1,55 +1,31 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://learn.microsoft.com/powershell/module/az.marketplace/invoke-azmarketplacequeryprivatestoreuseroffer
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestoreuserrule
 schema: 2.0.0
 ---
 
-# Invoke-AzMarketplaceQueryPrivateStoreUserOffer
+# Get-AzMarketplacePrivateStoreUserRule
 
 ## SYNOPSIS
-List of user's approved offers for the provided offers and subscriptions
+All rules approved in the private store that are relevant for user subscriptions
 
 ## SYNTAX
 
 ### QueryExpanded (Default)
 ```
-Invoke-AzMarketplaceQueryPrivateStoreUserOffer -PrivateStoreId <String> [-OfferId <String[]>]
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Query
-```
-Invoke-AzMarketplaceQueryPrivateStoreUserOffer -PrivateStoreId <String> -Payload <IQueryUserOffersProperties>
+Get-AzMarketplacePrivateStoreUserRule -PrivateStoreId <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### QueryViaIdentity
-```
-Invoke-AzMarketplaceQueryPrivateStoreUserOffer -InputObject <IMarketplaceIdentity>
- -Payload <IQueryUserOffersProperties> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### QueryViaIdentityExpanded
 ```
-Invoke-AzMarketplaceQueryPrivateStoreUserOffer -InputObject <IMarketplaceIdentity> [-OfferId <String[]>]
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### QueryViaJsonFilePath
-```
-Invoke-AzMarketplaceQueryPrivateStoreUserOffer -PrivateStoreId <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### QueryViaJsonString
-```
-Invoke-AzMarketplaceQueryPrivateStoreUserOffer -PrivateStoreId <String> -JsonString <String>
+Get-AzMarketplacePrivateStoreUserRule -InputObject <IMarketplaceIdentity> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List of user's approved offers for the provided offers and subscriptions
+All rules approved in the private store that are relevant for user subscriptions
 
 ## EXAMPLES
 
@@ -99,68 +75,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: QueryViaIdentity, QueryViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Query operation
-
-```yaml
-Type: System.String
-Parameter Sets: QueryViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Query operation
-
-```yaml
-Type: System.String
-Parameter Sets: QueryViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OfferId
-List of offer IDs
-
-```yaml
-Type: System.String[]
-Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Payload
-Query user's offers properties
-To construct, see NOTES section for PAYLOAD properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IQueryUserOffersProperties
-Parameter Sets: Query, QueryViaIdentity
+Parameter Sets: QueryViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -175,7 +90,7 @@ The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Query, QueryExpanded, QueryViaJsonFilePath, QueryViaJsonString
+Parameter Sets: QueryExpanded
 Aliases:
 
 Required: True
@@ -190,7 +105,7 @@ List of subscription IDs
 
 ```yaml
 Type: System.String[]
-Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -238,11 +153,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IQueryUserOffersProperties
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IQueryOffers
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IRuleListResponse
 
 ## NOTES
 

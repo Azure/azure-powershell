@@ -1,55 +1,31 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://learn.microsoft.com/powershell/module/az.marketplace/invoke-azmarketplacequeryuserrule
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestoreallsubscriptionintenant
 schema: 2.0.0
 ---
 
-# Invoke-AzMarketplaceQueryUserRule
+# Get-AzMarketplacePrivateStoreAllSubscriptionInTenant
 
 ## SYNOPSIS
-All rules approved in the private store that are relevant for user subscriptions
+Fetch all subscriptions in tenant, only for marketplace admin
 
 ## SYNTAX
 
-### QueryExpanded (Default)
+### Fetch (Default)
 ```
-Invoke-AzMarketplaceQueryUserRule -PrivateStoreId <String> [-SubscriptionId <String[]>]
+Get-AzMarketplacePrivateStoreAllSubscriptionInTenant -PrivateStoreId <String> [-NextPageToken <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Query
+### FetchViaIdentity
 ```
-Invoke-AzMarketplaceQueryUserRule -PrivateStoreId <String> -Payload <IQueryUserRulesProperties>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### QueryViaIdentity
-```
-Invoke-AzMarketplaceQueryUserRule -InputObject <IMarketplaceIdentity> -Payload <IQueryUserRulesProperties>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### QueryViaIdentityExpanded
-```
-Invoke-AzMarketplaceQueryUserRule -InputObject <IMarketplaceIdentity> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### QueryViaJsonFilePath
-```
-Invoke-AzMarketplaceQueryUserRule -PrivateStoreId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### QueryViaJsonString
-```
-Invoke-AzMarketplaceQueryUserRule -PrivateStoreId <String> -JsonString <String> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzMarketplacePrivateStoreAllSubscriptionInTenant -InputObject <IMarketplaceIdentity>
+ [-NextPageToken <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-All rules approved in the private store that are relevant for user subscriptions
+Fetch all subscriptions in tenant, only for marketplace admin
 
 ## EXAMPLES
 
@@ -99,7 +75,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: QueryViaIdentity, QueryViaIdentityExpanded
+Parameter Sets: FetchViaIdentity
 Aliases:
 
 Required: True
@@ -109,49 +85,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Query operation
+### -NextPageToken
+The skip token to get the next page.
 
 ```yaml
 Type: System.String
-Parameter Sets: QueryViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Query operation
-
-```yaml
-Type: System.String
-Parameter Sets: QueryViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Payload
-Query user's rules properties
-To construct, see NOTES section for PAYLOAD properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IQueryUserRulesProperties
-Parameter Sets: Query, QueryViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -160,27 +105,12 @@ The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Query, QueryExpanded, QueryViaJsonFilePath, QueryViaJsonString
+Parameter Sets: Fetch
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-List of subscription IDs
-
-```yaml
-Type: System.String[]
-Parameter Sets: QueryExpanded, QueryViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -223,11 +153,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IQueryUserRulesProperties
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IRuleListResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISubscriptionsResponse
 
 ## NOTES
 

@@ -1,31 +1,39 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://learn.microsoft.com/powershell/module/az.marketplace/invoke-azmarketplacefetchprivatestoresubscription
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollectionrule
 schema: 2.0.0
 ---
 
-# Invoke-AzMarketplaceFetchPrivateStoreSubscription
+# New-AzMarketplacePrivateStoreCollectionRule
 
 ## SYNOPSIS
-Fetch all subscriptions in tenant, only for marketplace admin
+Set rule for specific private store and collection
 
 ## SYNTAX
 
-### Fetch (Default)
+### SetExpanded (Default)
 ```
-Invoke-AzMarketplaceFetchPrivateStoreSubscription -PrivateStoreId <String> [-NextPageToken <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMarketplacePrivateStoreCollectionRule -CollectionId <String> -PrivateStoreId <String>
+ [-NextLink <String>] [-Value <IRule[]>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### FetchViaIdentity
+### SetViaIdentityExpanded
 ```
-Invoke-AzMarketplaceFetchPrivateStoreSubscription -InputObject <IMarketplaceIdentity>
- [-NextPageToken <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMarketplacePrivateStoreCollectionRule -InputObject <IMarketplaceIdentity> [-NextLink <String>]
+ [-Value <IRule[]>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SetViaIdentityPrivateStoreExpanded
+```
+New-AzMarketplacePrivateStoreCollectionRule -CollectionId <String>
+ -PrivateStoreInputObject <IMarketplaceIdentity> [-NextLink <String>] [-Value <IRule[]>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Fetch all subscriptions in tenant, only for marketplace admin
+Set rule for specific private store and collection
 
 ## EXAMPLES
 
@@ -53,6 +61,21 @@ Fetch all subscriptions in tenant, only for marketplace admin
 
 ## PARAMETERS
 
+### -CollectionId
+The collection ID
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded, SetViaIdentityPrivateStoreExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -75,7 +98,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: FetchViaIdentity
+Parameter Sets: SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -85,11 +108,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NextPageToken
-The skip token to get the next page.
+### -NextLink
+URL to get the next set of rules list results if there are any.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -105,10 +143,42 @@ The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Fetch
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateStoreInputObject
+Identity Parameter
+To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+Parameter Sets: SetViaIdentityPrivateStoreExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Value
+.
+To construct, see NOTES section for VALUE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -155,7 +225,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISubscriptionsResponse
+### System.Boolean
 
 ## NOTES
 

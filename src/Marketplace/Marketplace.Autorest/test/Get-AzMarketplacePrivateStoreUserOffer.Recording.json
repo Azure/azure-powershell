@@ -1,0 +1,46 @@
+{
+  "Get-AzMarketplacePrivateStoreUserOffer+[NoContext]+QueryExpanded+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/queryUserOffers?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/queryUserOffers?api-version=2023-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"offerIds\": [ \"sendgrid.tsg-saas-offer\", \"kali-linux.kali\" ],\r\n    \"subscriptionIds\": [ \"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\" ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "162" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
+        "Set-Cookie": [ "ARRAffinity=422ac376cf9a5b730208f246fe2886eb9014a2316736b65af73d6017dda009cc;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=422ac376cf9a5b730208f246fe2886eb9014a2316736b65af73d6017dda009cc;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.02536.29-012fd621" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-azure-ref": [ "20240104T085150Z-zct03wh6f14k3dg3kkx43g3qnc0000000e1g00000000071a" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "928bfd28-f543-4150-94cf-aebc2d2c9fa8" ],
+        "x-ms-correlation-request-id": [ "928bfd28-f543-4150-94cf-aebc2d2c9fa8" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240104T085151Z:928bfd28-f543-4150-94cf-aebc2d2c9fa8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Thu, 04 Jan 2024 08:51:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "532" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"uniqueOfferId\":\"sendgrid.tsg-saas-offer\",\"specificPlanIdsLimitation\":[\"essentials100k\",\"pro-100k\",\"pro-1p5m\",\"pro-2p5m\",\"pro-300k\",\"pro-700k\",\"essentials-50k\",\"free-100-2022\"],\"eTag\":null,\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false},{\"uniqueOfferId\":\"kali-linux.kali\",\"specificPlanIdsLimitation\":[\"kali-2023-2\",\"kali-2023-3\",\"kali-2023-4\",\"kali-2023-4-arm64\"],\"eTag\":null,\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}]}",
+      "isContentBase64": false
+    }
+  }
+}

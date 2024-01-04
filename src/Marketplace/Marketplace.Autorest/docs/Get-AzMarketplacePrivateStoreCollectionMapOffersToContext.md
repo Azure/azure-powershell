@@ -1,31 +1,24 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://learn.microsoft.com/powershell/module/az.marketplace/invoke-azmarketplaceanyprivatestoreexistingoffer
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorecollectionmapofferstocontext
 schema: 2.0.0
 ---
 
-# Invoke-AzMarketplaceAnyPrivateStoreExistingOffer
+# Get-AzMarketplacePrivateStoreCollectionMapOffersToContext
 
 ## SYNOPSIS
-Query whether exists any offer in the collections.
+Get a list of all offers in the given collection according to the required contexts.
 
 ## SYNTAX
 
-### Any (Default)
 ```
-Invoke-AzMarketplaceAnyPrivateStoreExistingOffer -PrivateStoreId <String> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AnyViaIdentity
-```
-Invoke-AzMarketplaceAnyPrivateStoreExistingOffer -InputObject <IMarketplaceIdentity>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzMarketplacePrivateStoreCollectionMapOffersToContext -CollectionId <String> -PrivateStoreId <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Query whether exists any offer in the collections.
+Get a list of all offers in the given collection according to the required contexts.
 
 ## EXAMPLES
 
@@ -53,6 +46,21 @@ Query whether exists any offer in the collections.
 
 ## PARAMETERS
 
+### -CollectionId
+The collection ID
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -69,33 +77,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: AnyViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PrivateStoreId
 The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Any
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription ids list
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -136,11 +143,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IAnyExistingOffersInTheCollectionsResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollectionOffersByContext
 
 ## NOTES
 

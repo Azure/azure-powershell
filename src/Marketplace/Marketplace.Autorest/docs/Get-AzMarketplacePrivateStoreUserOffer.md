@@ -1,38 +1,31 @@
 ---
 external help file:
 Module Name: Az.Marketplace
-online version: https://learn.microsoft.com/powershell/module/az.marketplace/disable-azmarketplaceprivatestorecollectionapproveitem
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestoreuseroffer
 schema: 2.0.0
 ---
 
-# Disable-AzMarketplacePrivateStoreCollectionApproveItem
+# Get-AzMarketplacePrivateStoreUserOffer
 
 ## SYNOPSIS
-Disable approve all items for the collection.
+List of user's approved offers for the provided offers and subscriptions
 
 ## SYNTAX
 
-### Disable (Default)
+### QueryExpanded (Default)
 ```
-Disable-AzMarketplacePrivateStoreCollectionApproveItem -CollectionId <String> -PrivateStoreId <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DisableViaIdentity
-```
-Disable-AzMarketplacePrivateStoreCollectionApproveItem -InputObject <IMarketplaceIdentity>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzMarketplacePrivateStoreUserOffer -PrivateStoreId <String> [-OfferId <String[]>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DisableViaIdentityPrivateStore
+### QueryViaIdentityExpanded
 ```
-Disable-AzMarketplacePrivateStoreCollectionApproveItem -CollectionId <String>
- -PrivateStoreInputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzMarketplacePrivateStoreUserOffer -InputObject <IMarketplaceIdentity> [-OfferId <String[]>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Disable approve all items for the collection.
+List of user's approved offers for the provided offers and subscriptions
 
 ## EXAMPLES
 
@@ -60,21 +53,6 @@ Disable approve all items for the collection.
 
 ## PARAMETERS
 
-### -CollectionId
-The collection ID
-
-```yaml
-Type: System.String
-Parameter Sets: Disable, DisableViaIdentityPrivateStore
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -97,7 +75,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: DisableViaIdentity
+Parameter Sets: QueryViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -107,12 +85,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -OfferId
+List of offer IDs
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PrivateStoreId
 The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Disable
+Parameter Sets: QueryExpanded
 Aliases:
 
 Required: True
@@ -122,19 +115,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrivateStoreInputObject
-Identity Parameter
-To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
+### -SubscriptionId
+List of subscription IDs
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: DisableViaIdentityPrivateStore
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -178,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IQueryOffers
 
 ## NOTES
 
