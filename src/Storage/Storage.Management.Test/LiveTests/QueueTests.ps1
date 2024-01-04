@@ -36,7 +36,7 @@ Invoke-LiveTestScenario -Name "Queue basics" -Description "Test queue basic oper
     $q = Get-AzStorageQueue -Name $queuename -Context $sasctx
     Assert-AreEqual $queueName $q.Name
 
-    $sas = New-AzStorageQueueSASToken -Name $queueName -Context $ctx -Permission raup -Protocol HttpsOnly -IPAddressOrRange 0.0.0.0-255.255.255.255 -ExpiryTime 2223-08-05
+    $sas = New-AzStorageQueueSASToken -Name $queueName -Context $ctx -Permission raup -Protocol HttpsOnly -ExpiryTime 2223-08-05
     $sasctx = New-AzStorageContext -StorageAccountName $storageAccountName -SasToken $sas 
     $q = Get-AzStorageQueue -Name $queuename -Context $sasctx
     Assert-AreEqual $queueName $q.Name
