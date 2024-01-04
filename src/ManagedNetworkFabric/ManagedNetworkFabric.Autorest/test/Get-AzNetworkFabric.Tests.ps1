@@ -23,7 +23,7 @@ Describe 'Get-AzNetworkFabric' {
 
     It 'Get' {
         {
-            Get-AzNetworkFabric -Name $global:config.fabric.name -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabric -SubscriptionId $global:config.common.subscriptionId -Name $global:config.fabric.name -ResourceGroupName $global:config.common.resourceGroupName
         } | Should -Not -Throw
     }
 
