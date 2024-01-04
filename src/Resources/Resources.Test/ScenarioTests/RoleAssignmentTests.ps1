@@ -241,18 +241,18 @@ Tests verifies creation and deletion of a RoleAssignments for Service principal 
 function Test-RaByServicePrincipal
 {
     # Setup
-    $servicePrincipals = "7059a716-3bd8-405e-ac54-4fe098aba140" # powershell-test-uami
+    $servicePrincipals = "3d9979c5-7de9-4cc5-bc9c-d63d365c5b5c"
 
     $definitionName = 'Reader'
-    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
+    $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
 
     # Test
-    $newAssignment1 = New-AzRoleAssignment -ObjectId $servicePrincipals -RoleDefinitionName $definitionName -Scope $scope
+    $newAssignment1 = New-AzRoleAssignmentWithId -ObjectId $servicePrincipals -RoleDefinitionName $definitionName -Scope $scope -RoleAssignmentId 238799bf-1a93-45d7-120d-f3edbaeb3bc7
 
     $definitionName = 'Contributor'
     # Test
-    $appId = "306d85f9-f885-4bdf-a20e-36d6ee8eddad" # PowershellTestingApp
-    $newAssignment2 = New-AzRoleAssignment -ApplicationId $appId -RoleDefinitionName $definitionName -Scope $scope
+    $appId = "2076eb2d-7a68-41f8-9645-4a77d9057d94"
+    $newAssignment2 = New-AzRoleAssignmentWithId -ApplicationId $appId -RoleDefinitionName $definitionName -Scope $scope -RoleAssignmentId 238799bf-1593-45d7-120d-f3edbceb3bc7
 
     $assignments = Get-AzRoleAssignment -ObjectId $newAssignment2.ObjectId
     Assert-NotNull $assignments
@@ -267,7 +267,6 @@ function Test-RaByServicePrincipal
     Assert-NotNull $newAssignment2
     Assert-AreEqual $definitionName $newAssignment2.RoleDefinitionName
     Assert-AreEqual $scope $newAssignment2.Scope
-    # Assert-AreEqual $servicePrincipals[0].DisplayName $newAssignment2.DisplayName
 
     #Start-TestSleep -Seconds 300
 
@@ -622,10 +621,10 @@ function Test-RaCreatedBySP
     # Prerequisite: Conect to azure with SP
     # Create role assignment
     # powershell-testmember's PrincipalId
-    $testUser = "e9da4467-12ff-4334-8179-c99abf0ffd5a"
-    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
+    $testUser = "3d9979c5-7de9-4cc5-bc9c-d63d365c5b5c"
+    $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
 
-    $assignment = New-AzRoleAssignment -ObjectId $testUser -RoleDefinitionName 'Reader' -Scope $Scope
+    $assignment = New-AzRoleAssignmentWithId -ObjectId $testUser -RoleDefinitionName 'Reader' -Scope $Scope -RoleAssignmentId 3d9979c5-7de9-4cc5-bc9c-d63d365c5b44
 
     Assert-NotNull $assignment
 }
