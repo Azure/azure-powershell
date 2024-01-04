@@ -26,7 +26,7 @@ Describe 'New-AzNetworkFabricNeighborGroup' {
                 )
             }
 
-            New-AzNetworkFabricNeighborGroup -Name $global:config.neighborGroup.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -Destination $destination
+            New-AzNetworkFabricNeighborGroup -SubscriptionId $global:config.common.subscriptionId -Name $global:config.neighborGroup.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -Destination $destination
 
         } | Should -Not -Throw
     }

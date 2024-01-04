@@ -36,7 +36,7 @@ Describe 'New-AzNetworkFabricNni' {
                 ExportIpv6RoutePolicyId = $global:config.nni.exportIpv6RoutePolicyId
             }
 
-            New-AzNetworkFabricNni -Name $global:config.nni.name -NetworkFabricName $global:config.nni.nfName -ResourceGroupName $global:config.common.resourceGroupName -UseOptionB $global:config.nni.useOptionB -ExportRoutePolicy $ExportRoutePolicy -ImportRoutePolicy $importRoutePolicy -IngressAclId $global:config.nni.ingressAclId -IsManagementType $global:config.nni.isManagementType -Layer2Configuration $layer2Configuration -NniType $global:config.nni.nniType -NpbStaticRouteConfiguration $npbStaticRouteConfiguration -OptionBLayer3Configuration $optionBLayer3Configuration
+            New-AzNetworkFabricNni -SubscriptionId $global:config.common.subscriptionId -Name $global:config.nni.name -NetworkFabricName $global:config.nni.nfName -ResourceGroupName $global:config.common.resourceGroupName -UseOptionB $global:config.nni.useOptionB -ExportRoutePolicy $ExportRoutePolicy -ImportRoutePolicy $importRoutePolicy -IngressAclId $global:config.nni.ingressAclId -IsManagementType $global:config.nni.isManagementType -Layer2Configuration $layer2Configuration -NniType $global:config.nni.nniType -NpbStaticRouteConfiguration $npbStaticRouteConfiguration -OptionBLayer3Configuration $optionBLayer3Configuration
 
         } | Should -Not -Throw
     }

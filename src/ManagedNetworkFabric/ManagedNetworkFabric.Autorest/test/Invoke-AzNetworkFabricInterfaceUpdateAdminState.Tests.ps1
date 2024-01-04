@@ -17,13 +17,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzNetworkFabricInterfa
 Describe 'Invoke-AzNetworkFabricInterfaceUpdateAdminState' {
     It 'Disable' {
         {
-            Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkDeviceName $global:config.networkInterface.deviceName -NetworkInterfaceName $global:config.networkInterface.name -ResourceGroupName $global:config.common.resourceGroupName -State $global:config.networkInterface.disable
+            Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkDeviceName $global:config.networkInterface.deviceName -NetworkInterfaceName $global:config.networkInterface.name -ResourceGroupName $global:config.common.resourceGroupName -State $global:config.networkInterface.disable -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 
     It 'Enable' {
         {
-            Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkDeviceName $global:config.networkInterface.deviceName -NetworkInterfaceName $global:config.networkInterface.name -ResourceGroupName $global:config.common.resourceGroupName -State $global:config.networkInterface.enable
+            Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkDeviceName $global:config.networkInterface.deviceName -NetworkInterfaceName $global:config.networkInterface.name -ResourceGroupName $global:config.common.resourceGroupName -State $global:config.networkInterface.enable -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

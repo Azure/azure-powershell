@@ -17,13 +17,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzNetworkFabricTapUpda
 Describe 'Invoke-AzNetworkFabricTapUpdateAdminState' {
     It 'Enable' {
         {
-            Invoke-AzNetworkFabricTapUpdateAdminState -NetworkTapName $global:config.networkTap.enableTapName -ResourceGroupName $global:config.networkTap.resourceGroupName -State $global:config.networkTap.enable
+            Invoke-AzNetworkFabricTapUpdateAdminState -NetworkTapName $global:config.networkTap.enableTapName -ResourceGroupName $global:config.networkTap.resourceGroupName -State $global:config.networkTap.enable -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 
     It 'Disable' {
         {
-            Invoke-AzNetworkFabricTapUpdateAdminState -NetworkTapName $global:config.networkTap.enableTapName -ResourceGroupName $global:config.networkTap.resourceGroupName -State $global:config.networkTap.disable
+            Invoke-AzNetworkFabricTapUpdateAdminState -NetworkTapName $global:config.networkTap.enableTapName -ResourceGroupName $global:config.networkTap.resourceGroupName -State $global:config.networkTap.disable -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

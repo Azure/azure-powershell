@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNetworkFabricRoutePo
 Describe 'Remove-AzNetworkFabricRoutePolicy' {
     It 'Delete' {
         {
-            Remove-AzNetworkFabricRoutePolicy -Name $global:config.routePolicy.name -ResourceGroupName $global:config.common.resourceGroupName
+            Remove-AzNetworkFabricRoutePolicy -SubscriptionId $global:config.common.subscriptionId -Name $global:config.routePolicy.name -ResourceGroupName $global:config.common.resourceGroupName
         } | Should -Not -Throw
     }
 

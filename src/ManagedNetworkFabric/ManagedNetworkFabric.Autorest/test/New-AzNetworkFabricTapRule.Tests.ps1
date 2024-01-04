@@ -44,9 +44,9 @@ Describe 'New-AzNetworkFabricTapRule' {
                 SequenceNumber = 12
             })
 
-            New-AzNetworkFabricTapRule -Name $global:config.networkTapRule.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -ConfigurationType $global:config.networkTapRule.configurationType -DynamicMatchConfiguration $dynamicConfiguration -MatchConfiguration $matchConfiguration
+            New-AzNetworkFabricTapRule -SubscriptionId $global:config.common.subscriptionId -Name $global:config.networkTapRule.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -ConfigurationType $global:config.networkTapRule.configurationType -DynamicMatchConfiguration $dynamicConfiguration -MatchConfiguration $matchConfiguration
 
-            New-AzNetworkFabricTapRule -Name $global:config.networkTapRule.name1 -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -ConfigurationType $global:config.networkTapRule.configurationType1 -PollingIntervalInSecond 30 -TapRulesUrl "https://fileurl.com" -DynamicMatchConfiguration $dynamicConfiguration -MatchConfiguration $matchConfiguration
+            New-AzNetworkFabricTapRule -SubscriptionId $global:config.common.subscriptionId -Name $global:config.networkTapRule.name1 -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -ConfigurationType $global:config.networkTapRule.configurationType1 -PollingIntervalInSecond 30 -TapRulesUrl "https://fileurl.com" -DynamicMatchConfiguration $dynamicConfiguration -MatchConfiguration $matchConfiguration
 
         } | Should -Not -Throw
     }

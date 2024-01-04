@@ -23,13 +23,13 @@ Describe 'Get-AzNetworkFabricL2Domain' {
 
     It 'Get' {
         {
-            Get-AzNetworkFabricL2Domain -Name $global:config.l2domain.name -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricL2Domain -Name $global:config.l2domain.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 
     It 'ListByResourceGroup' {
         {
-            Get-AzNetworkFabricL2Domain -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricL2Domain -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

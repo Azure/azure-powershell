@@ -24,7 +24,7 @@ Describe 'New-AzNetworkFabricIPCommunity' {
                 wellKnownCommunity = $global:config.IpCommunity.wellKnownCommunities
             })
 
-            New-AzNetworkFabricIPCommunity -Name $global:config.IpCommunity.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -IPCommunityRule $ipCommunityRule
+            New-AzNetworkFabricIPCommunity -SubscriptionId $global:config.common.subscriptionId -Name $global:config.IpCommunity.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -IPCommunityRule $ipCommunityRule
 
         } | Should -Not -Throw
     }

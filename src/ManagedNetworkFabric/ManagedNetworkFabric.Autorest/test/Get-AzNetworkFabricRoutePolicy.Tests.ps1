@@ -23,13 +23,13 @@ Describe 'Get-AzNetworkFabricRoutePolicy' {
 
     It 'Get' {
         {
-            Get-AzNetworkFabricRoutePolicy -Name $global:config.routePolicy.name -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricRoutePolicy -Name $global:config.routePolicy.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 
     It 'ListByResourceGroup' {
         {
-            Get-AzNetworkFabricRoutePolicy -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricRoutePolicy -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

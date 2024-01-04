@@ -23,13 +23,13 @@ Describe 'Get-AzNetworkFabricDevice' {
 
     It 'Get' {
         {
-            Get-AzNetworkFabricDevice -Name $global:config.networkDevice.name -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricDevice -Name $global:config.networkDevice.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 
     It 'ListByResourceGroup' {
         {
-            Get-AzNetworkFabricDevice -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricDevice -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

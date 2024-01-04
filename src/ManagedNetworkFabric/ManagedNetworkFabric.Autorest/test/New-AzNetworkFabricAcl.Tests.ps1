@@ -62,7 +62,7 @@ Describe 'New-AzNetworkFabricAcl' {
                 SequenceNumber = 13
             })
 
-            New-AzNetworkFabricAcl -Name $global:config.ACL.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -ConfigurationType $global:config.ACL.configurationType -DefaultAction $global:config.ACL.defaultAction -DynamicMatchConfiguration $dynamicMatchConfiguration -MatchConfiguration $matchConfiguration
+            New-AzNetworkFabricAcl -SubscriptionId $global:config.common.subscriptionId -Name $global:config.ACL.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -ConfigurationType $global:config.ACL.configurationType -DefaultAction $global:config.ACL.defaultAction -DynamicMatchConfiguration $dynamicMatchConfiguration -MatchConfiguration $matchConfiguration
 
         } | Should -Not -Throw
     }

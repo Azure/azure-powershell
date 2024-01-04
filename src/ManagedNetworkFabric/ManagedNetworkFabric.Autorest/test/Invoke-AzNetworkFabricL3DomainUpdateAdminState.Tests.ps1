@@ -17,13 +17,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzNetworkFabricL3Domai
 Describe 'Invoke-AzNetworkFabricL3DomainUpdateAdminState' {
     It 'Enable' {
         {
-            Invoke-AzNetworkFabricL3DomainUpdateAdminState -L3IsolationDomainName $global:config.l3domain.name -ResourceGroupName $global:config.common.resourceGroupName -State $global:config.l3domain.enable
+            Invoke-AzNetworkFabricL3DomainUpdateAdminState -L3IsolationDomainName $global:config.l3domain.name -ResourceGroupName $global:config.common.resourceGroupName -State $global:config.l3domain.enable -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 
     It 'Disable' {
         {
-            Invoke-AzNetworkFabricL3DomainUpdateAdminState -L3IsolationDomainName $global:config.l3domain.name -ResourceGroupName $global:config.common.resourceGroupName -State $global:config.l3domain.disable
+            Invoke-AzNetworkFabricL3DomainUpdateAdminState -L3IsolationDomainName $global:config.l3domain.name -ResourceGroupName $global:config.common.resourceGroupName -State $global:config.l3domain.disable -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

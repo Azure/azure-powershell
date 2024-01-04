@@ -26,7 +26,7 @@ Describe 'Update-AzNetworkFabricNeighborGroup' {
                 )
             }
 
-            Update-AzNetworkFabricNeighborGroup -Name $global:config.neighborGroup.name -ResourceGroupName $global:config.common.resourceGroupName -Destination $destination
+            Update-AzNetworkFabricNeighborGroup -SubscriptionId $global:config.common.subscriptionId -Name $global:config.neighborGroup.name -ResourceGroupName $global:config.common.resourceGroupName -Destination $destination
 
         } | Should -Not -Throw
     }

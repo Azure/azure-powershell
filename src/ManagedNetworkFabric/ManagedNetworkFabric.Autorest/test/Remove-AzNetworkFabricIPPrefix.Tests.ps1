@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNetworkFabricIPPrefi
 Describe 'Remove-AzNetworkFabricIPPrefix' {
     It 'Delete' {
         {
-            Remove-AzNetworkFabricIPPrefix -Name $global:config.IpPrefix.name -ResourceGroupName $global:config.common.resourceGroupName
+            Remove-AzNetworkFabricIPPrefix -Name $global:config.IpPrefix.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

@@ -23,13 +23,13 @@ Describe 'Get-AzNetworkFabricTapRule' {
 
     It 'Get' {
         {
-            Get-AzNetworkFabricTapRule -Name $global:config.networkTapRule.name -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricTapRule -Name $global:config.networkTapRule.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 
     It 'ListByResourceGroup' {
         {
-            Get-AzNetworkFabricTapRule -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricTapRule -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

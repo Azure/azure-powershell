@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzNetworkFabricInterne
 Describe 'Update-AzNetworkFabricInternetGateway' {
     It 'Update' {
         {
-            Update-AzNetworkFabricInternetGateway -Name $global:config.internetgateway.name -ResourceGroupName $global:config.common.resourceGroupName -InternetGatewayRuleId $global:config.internetgateway.gatewayRuleId
+            Update-AzNetworkFabricInternetGateway -SubscriptionId $global:config.common.subscriptionId -Name $global:config.internetgateway.name -ResourceGroupName $global:config.common.resourceGroupName -InternetGatewayRuleId $global:config.internetgateway.gatewayRuleId
         } | Should -Not -Throw
     }
 

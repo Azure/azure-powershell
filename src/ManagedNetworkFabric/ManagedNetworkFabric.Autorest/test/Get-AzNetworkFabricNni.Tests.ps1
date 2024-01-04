@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNetworkFabricNni'))
 Describe 'Get-AzNetworkFabricNni' {
     It 'ListByResourceGroup' {
         {
-            Get-AzNetworkFabricNni -NetworkFabricName $global:config.nni.nfName -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricNni -NetworkFabricName $global:config.nni.nfName -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 
@@ -27,7 +27,7 @@ Describe 'Get-AzNetworkFabricNni' {
 
     It 'Get' {
         {
-            Get-AzNetworkFabricNni -Name $global:config.nni.name -NetworkFabricName $global:config.nni.nfName -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricNni -Name $global:config.nni.name -NetworkFabricName $global:config.nni.nfName -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

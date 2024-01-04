@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNetworkFabricAcl'))
 Describe 'Remove-AzNetworkFabricAcl' {
     It 'Delete' {
         {
-            Remove-AzNetworkFabricAcl -Name $global:config.ACL.name -ResourceGroupName $global:config.common.resourceGroupName
+            Remove-AzNetworkFabricAcl -Name $global:config.ACL.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

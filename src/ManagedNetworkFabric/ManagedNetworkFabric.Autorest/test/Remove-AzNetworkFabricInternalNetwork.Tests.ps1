@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNetworkFabricInterna
 Describe 'Remove-AzNetworkFabricInternalNetwork' {
     It 'Delete' {
         {
-            Remove-AzNetworkFabricInternalNetwork -L3IsolationDomainName $global:config.l3domain.name -Name $global:config.internalNetwork.name -ResourceGroupName $global:config.common.resourceGroupName
+            Remove-AzNetworkFabricInternalNetwork -SubscriptionId $global:config.common.subscriptionId -L3IsolationDomainName $global:config.l3domain.name -Name $global:config.internalNetwork.name -ResourceGroupName $global:config.common.resourceGroupName
         } | Should -Not -Throw
     }
 

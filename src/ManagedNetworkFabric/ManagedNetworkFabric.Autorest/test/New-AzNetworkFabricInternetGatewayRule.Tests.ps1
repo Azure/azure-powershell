@@ -24,7 +24,7 @@ Describe 'New-AzNetworkFabricInternetGatewayRule' {
                 )
             }
 
-            New-AzNetworkFabricInternetGatewayRule -Name $global:config.internetGatewayRule.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -RuleProperty $ruleProperty
+            New-AzNetworkFabricInternetGatewayRule -SubscriptionId $global:config.common.subscriptionId -Name $global:config.internetGatewayRule.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -RuleProperty $ruleProperty
 
         } | Should -Not -Throw
     }

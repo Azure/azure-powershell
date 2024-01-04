@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzNetworkFabricL2Domain')
 Describe 'New-AzNetworkFabricL2Domain' {
     It 'Create' {
         {
-            New-AzNetworkFabricL2Domain -Name $global:config.l2domain.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -NetworkFabricId $global:config.l2domain.nfId -VlanId $global:config.l2domain.vlanId -Mtu $global:config.l2domain.mtu
+            New-AzNetworkFabricL2Domain -SubscriptionId $global:config.common.subscriptionId -Name $global:config.l2domain.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -NetworkFabricId $global:config.l2domain.nfId -VlanId $global:config.l2domain.vlanId -Mtu $global:config.l2domain.mtu
         } | Should -Not -Throw
     }
 

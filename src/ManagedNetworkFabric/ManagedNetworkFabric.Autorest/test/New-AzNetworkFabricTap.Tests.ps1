@@ -26,7 +26,7 @@ Describe 'New-AzNetworkFabricTap' {
                 Name = "destinationName"
             })
 
-            New-AzNetworkFabricTap -Name $global:config.networkTap.name -ResourceGroupName $global:config.common.resourceGroupName -Destination $destinations -Location $global:config.common.location -NetworkPacketBrokerId $global:config.networkTap.npbId -PollingType $global:config.networkTap.pollingType
+            New-AzNetworkFabricTap -SubscriptionId $global:config.common.subscriptionId -Name $global:config.networkTap.name -ResourceGroupName $global:config.common.resourceGroupName -Destination $destinations -Location $global:config.common.location -NetworkPacketBrokerId $global:config.networkTap.npbId -PollingType $global:config.networkTap.pollingType
         } | Should -Not -Throw
     }
 

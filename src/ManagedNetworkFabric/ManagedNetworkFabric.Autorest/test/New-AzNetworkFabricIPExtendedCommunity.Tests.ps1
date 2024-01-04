@@ -23,7 +23,7 @@ Describe 'New-AzNetworkFabricIPExtendedCommunity' {
                 routeTarget = $global:config.IpExtendedCommunity.routeTargets
             })
 
-            New-AzNetworkFabricIPExtendedCommunity -Name $global:config.IpExtendedCommunity.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -IPExtendedCommunityRule $ipExtendedCommunityRule
+            New-AzNetworkFabricIPExtendedCommunity -SubscriptionId $global:config.common.subscriptionId -Name $global:config.IpExtendedCommunity.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -IPExtendedCommunityRule $ipExtendedCommunityRule
 
         } | Should -Not -Throw
     }

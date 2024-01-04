@@ -25,7 +25,7 @@ Describe 'New-AzNetworkFabricIPPrefix' {
                 subnetMaskLength = $global:config.IpPrefix.subnetMaskLength
             })
 
-            New-AzNetworkFabricIPPrefix -Name $global:config.IpPrefix.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -IPPrefixRule $ipPrefixRules
+            New-AzNetworkFabricIPPrefix -SubscriptionId $global:config.common.subscriptionId -Name $global:config.IpPrefix.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -IPPrefixRule $ipPrefixRules
 
         } | Should -Not -Throw
     }

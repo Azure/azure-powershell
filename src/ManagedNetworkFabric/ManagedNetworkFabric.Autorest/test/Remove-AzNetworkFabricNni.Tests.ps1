@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNetworkFabricNni'))
 Describe 'Remove-AzNetworkFabricNni' {
     It 'Delete' {
         {
-            Remove-AzNetworkFabricNni -Name $global:config.nni.name -NetworkFabricName $global:config.nni.nfName -ResourceGroupName $global:config.common.resourceGroupName
+            Remove-AzNetworkFabricNni -SubscriptionId $global:config.common.subscriptionId -Name $global:config.nni.name -NetworkFabricName $global:config.nni.nfName -ResourceGroupName $global:config.common.resourceGroupName
         } | Should -Not -Throw
     }
 

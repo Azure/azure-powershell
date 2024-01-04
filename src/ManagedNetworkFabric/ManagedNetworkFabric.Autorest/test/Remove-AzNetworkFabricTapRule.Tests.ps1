@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNetworkFabricTapRule
 Describe 'Remove-AzNetworkFabricTapRule' {
     It 'Delete' {
         {
-            Remove-AzNetworkFabricTapRule -Name $global:config.networkTapRule.name -ResourceGroupName $global:config.common.resourceGroupName
+            Remove-AzNetworkFabricTapRule -SubscriptionId $global:config.common.subscriptionId -Name $global:config.networkTapRule.name -ResourceGroupName $global:config.common.resourceGroupName
         } | Should -Not -Throw
     }
 

@@ -23,13 +23,13 @@ Describe 'Get-AzNetworkFabricInternetGatewayRule' {
 
     It 'Get' {
         {
-            Get-AzNetworkFabricInternetGatewayRule -Name $global:config.internetGatewayRule.name -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricInternetGatewayRule -Name $global:config.internetGatewayRule.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 
     It 'ListByResourceGroup' {
         {
-            Get-AzNetworkFabricInternetGatewayRule -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricInternetGatewayRule -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

@@ -17,13 +17,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNetworkFabricInternalNe
 Describe 'Get-AzNetworkFabricInternalNetwork' {
     It 'ListByResourceGroup' {
         {
-            Get-AzNetworkFabricInternalNetwork -L3IsolationDomainName $global:config.l3domain.name -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricInternalNetwork -L3IsolationDomainName $global:config.l3domain.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
-            Get-AzNetworkFabricInternalNetwork -L3IsolationDomainName $global:config.l3domain.name -Name $global:config.internalnetwork.name -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricInternalNetwork -L3IsolationDomainName $global:config.l3domain.name -Name $global:config.internalnetwork.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

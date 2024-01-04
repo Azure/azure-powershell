@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNetworkFabricNeighbo
 Describe 'Remove-AzNetworkFabricNeighborGroup' {
     It 'Delete' {
         {
-            Remove-AzNetworkFabricNeighborGroup -Name $global:config.neighborGroup.name -ResourceGroupName $global:config.common.resourceGroupName
+            Remove-AzNetworkFabricNeighborGroup -Name $global:config.neighborGroup.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

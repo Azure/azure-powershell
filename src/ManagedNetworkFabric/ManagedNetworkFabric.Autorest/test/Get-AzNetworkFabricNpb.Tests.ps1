@@ -23,13 +23,13 @@ Describe 'Get-AzNetworkFabricNpb' {
 
     It 'Get' {
         {
-            Get-AzNetworkFabricNpb -Name $global:config.npb.name -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricNpb -Name $global:config.npb.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 
     It 'ListByResourceGroup' {
         {
-            Get-AzNetworkFabricNpb -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricNpb -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

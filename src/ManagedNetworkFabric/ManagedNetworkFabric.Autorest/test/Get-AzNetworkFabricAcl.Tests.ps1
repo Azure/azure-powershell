@@ -23,13 +23,13 @@ Describe 'Get-AzNetworkFabricAcl' {
 
     It 'Get' {
         {
-            Get-AzNetworkFabricAcl -Name $global:config.ACL.name -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricAcl -Name $global:config.ACL.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 
     It 'ListByResourceGroup' {
         {
-            Get-AzNetworkFabricAcl -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricAcl -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

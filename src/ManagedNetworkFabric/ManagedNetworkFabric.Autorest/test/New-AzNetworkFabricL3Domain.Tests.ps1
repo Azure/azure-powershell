@@ -32,7 +32,7 @@ Describe 'New-AzNetworkFabricL3Domain' {
                 })
             }
 
-            New-AzNetworkFabricL3Domain -Name $global:config.l3domain.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -NetworkFabricId $global:config.l3domain.nfId -AggregateRouteConfiguration $aggregateRouteConfiguration -ConnectedSubnetRoutePolicy $connectedSubnetRoutePolicy -RedistributeConnectedSubnet $global:config.l3domain.redistributeConnectedSubnets -RedistributeStaticRoute $global:config.l3domain.redistributeStaticRoutes
+            New-AzNetworkFabricL3Domain -SubscriptionId $global:config.common.subscriptionId -Name $global:config.l3domain.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -NetworkFabricId $global:config.l3domain.nfId -AggregateRouteConfiguration $aggregateRouteConfiguration -ConnectedSubnetRoutePolicy $connectedSubnetRoutePolicy -RedistributeConnectedSubnet $global:config.l3domain.redistributeConnectedSubnets -RedistributeStaticRoute $global:config.l3domain.redistributeStaticRoutes
 
         } | Should -Not -Throw
     }

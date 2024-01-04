@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNetworkFabricInterne
 Describe 'Remove-AzNetworkFabricInternetGatewayRule' {
     It 'Delete' {
         {
-            Remove-AzNetworkFabricInternetGatewayRule -Name $global:config.internetGatewayRule.name -ResourceGroupName $global:config.common.resourceGroupName
+            Remove-AzNetworkFabricInternetGatewayRule -Name $global:config.internetGatewayRule.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

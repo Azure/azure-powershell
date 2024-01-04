@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNetworkFabric'))
 Describe 'Remove-AzNetworkFabric' {
     It 'Delete' {
         {
-            Remove-AzNetworkFabric -Name $global:config.fabric.name -ResourceGroupName $global:config.common.resourceGroupName
+            Remove-AzNetworkFabric -SubscriptionId $global:config.common.subscriptionId -Name $global:config.fabric.name -ResourceGroupName $global:config.common.resourceGroupName
         } | Should -Not -Throw
     }
 

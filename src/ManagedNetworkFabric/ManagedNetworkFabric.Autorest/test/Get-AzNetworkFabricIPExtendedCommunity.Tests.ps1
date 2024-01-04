@@ -23,13 +23,13 @@ Describe 'Get-AzNetworkFabricIPExtendedCommunity' {
 
     It 'Get' {
         {
-            Get-AzNetworkFabricIPExtendedCommunity -Name $global:config.IpExtendedCommunity.name -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricIPExtendedCommunity -Name $global:config.IpExtendedCommunity.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 
     It 'ListByResourceGroup' {
         {
-            Get-AzNetworkFabricIPExtendedCommunity -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricIPExtendedCommunity -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

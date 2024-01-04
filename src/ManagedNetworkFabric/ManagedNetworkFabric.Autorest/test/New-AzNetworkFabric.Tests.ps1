@@ -38,7 +38,7 @@ Describe 'New-AzNetworkFabric' {
                 SecondaryIpv4Prefix = "172.31.0.20/30"
             }
 
-            New-AzNetworkFabric -Name $global:config.fabric.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -ManagementNetworkConfiguration $managementNetworkConfiguration -NetworkFabricControllerId $global:config.fabric.nfcId -NetworkFabricSku $global:config.fabric.nfSku -ServerCountPerRack $global:config.fabric.serverCountPerRack -Ipv6Prefix $global:config.fabric.ipv6Prefix -RackCount $global:config.fabric.rackCount -FabricAsn $global:config.fabric.fabricASN -Ipv4Prefix $global:config.fabric.ipv4Prefix -TerminalServerConfiguration $terminalServerConfiguration
+            New-AzNetworkFabric -SubscriptionId $global:config.common.subscriptionId -Name $global:config.fabric.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -ManagementNetworkConfiguration $managementNetworkConfiguration -NetworkFabricControllerId $global:config.fabric.nfcId -NetworkFabricSku $global:config.fabric.nfSku -ServerCountPerRack $global:config.fabric.serverCountPerRack -Ipv6Prefix $global:config.fabric.ipv6Prefix -RackCount $global:config.fabric.rackCount -FabricAsn $global:config.fabric.fabricASN -Ipv4Prefix $global:config.fabric.ipv4Prefix -TerminalServerConfiguration $terminalServerConfiguration
 
         } | Should -Not -Throw
     }

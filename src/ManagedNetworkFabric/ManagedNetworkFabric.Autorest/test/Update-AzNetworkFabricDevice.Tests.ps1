@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzNetworkFabricDevice'
 Describe 'Update-AzNetworkFabricDevice' {
     It 'Update' {
         {
-            Update-AzNetworkFabricDevice -Name $global:config.networkDevice.name -ResourceGroupName $global:config.common.resourceGroupName -SerialNumber $global:config.networkDevice.serialNumber
+            Update-AzNetworkFabricDevice -SubscriptionId $global:config.common.subscriptionId -Name $global:config.networkDevice.name -ResourceGroupName $global:config.common.resourceGroupName -SerialNumber $global:config.networkDevice.serialNumber
         } | Should -Not -Throw
     }
 

@@ -23,13 +23,13 @@ Describe 'Get-AzNetworkFabricIPPrefix' {
 
     It 'Get' {
         {
-            Get-AzNetworkFabricIPPrefix -Name $global:config.IpPrefix.name -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricIPPrefix -Name $global:config.IpPrefix.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 
     It 'ListByResourceGroup' {
         {
-            Get-AzNetworkFabricIPPrefix -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricIPPrefix -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 

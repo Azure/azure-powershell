@@ -29,7 +29,7 @@ Describe 'New-AzNetworkFabricRoutePolicy' {
                 IPExtendedCommunityPropertyAddIpextendedCommunityId = @($global:config.routePolicy.ipExtendedCommunityId)
             })
 
-            New-AzNetworkFabricRoutePolicy -Name $global:config.routePolicy.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -NetworkFabricId $global:config.routePolicy.nfId -AddressFamilyType $global:config.routePolicy.addressFamilyType -DefaultAction $global:config.routePolicy.defaultAction -Statement $statements
+            New-AzNetworkFabricRoutePolicy -SubscriptionId $global:config.common.subscriptionId -Name $global:config.routePolicy.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -NetworkFabricId $global:config.routePolicy.nfId -AddressFamilyType $global:config.routePolicy.addressFamilyType -DefaultAction $global:config.routePolicy.defaultAction -Statement $statements
 
         } | Should -Not -Throw
     }

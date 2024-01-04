@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzNetworkFabricProvisi
 Describe 'Invoke-AzNetworkFabricProvision' {
     It 'Provision' {
         {
-            Invoke-AzNetworkFabricProvision -Name $global:config.fabric.name -ResourceGroupName $global:config.common.resourceGroupName
+            Invoke-AzNetworkFabricProvision -Name $global:config.fabric.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Throw
     }
 

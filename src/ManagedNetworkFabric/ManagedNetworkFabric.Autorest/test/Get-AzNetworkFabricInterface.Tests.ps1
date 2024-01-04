@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNetworkFabricInterface'
 Describe 'Get-AzNetworkFabricInterface' {
     It 'ListByResourceGroup' {
         {
-            Get-AzNetworkFabricInterface -NetworkDeviceName $global:config.networkInterface.deviceName -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricInterface -NetworkDeviceName $global:config.networkInterface.deviceName -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 
@@ -27,7 +27,7 @@ Describe 'Get-AzNetworkFabricInterface' {
 
     It 'Get' {
         {
-            Get-AzNetworkFabricInterface -Name $global:config.networkInterface.name -NetworkDeviceName $global:config.networkInterface.deviceName -ResourceGroupName $global:config.common.resourceGroupName
+            Get-AzNetworkFabricInterface -Name $global:config.networkInterface.name -NetworkDeviceName $global:config.networkInterface.deviceName -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
         } | Should -Not -Throw
     }
 
