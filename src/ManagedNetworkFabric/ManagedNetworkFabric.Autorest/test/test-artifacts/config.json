@@ -157,7 +157,7 @@
         "configurationType1": "File"
     },
     "networkTap": {
-        "name": "aytl3-networktapIpv4VProbe",
+        "name": "networkTapName",
         "npbId": "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/Fab1LabNF-4-1-oct7/providers/microsoft.managednetworkfabric/networkpacketbrokers/nffab1-4-1-gf-oct9-1-npb",
         "pollingType": "Push",
         "enableTapName": "aytl3-networktapIpv4VProbe",
