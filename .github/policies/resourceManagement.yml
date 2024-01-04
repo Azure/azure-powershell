@@ -2861,7 +2861,9 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - fwsuppgithub
+            - gopimsft
+            - gimotwanMSFT
+            - avripintoms
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3033,6 +3035,22 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: Nginx
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Nginx
+        then:
+        - mentionUsers:
+            mentionees:
+            - limingu
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: Notification Hub
         - hasLabel:
             label: Service Attention
@@ -3175,8 +3193,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - pvrk
-            - adityabalaji-msft
+            - Daya-Patil
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
