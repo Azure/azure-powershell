@@ -252,7 +252,7 @@ function Test-AccountCMK
         Assert-AreEqual $accName2 $retrievedAcc2.Name
 
         # update and check account setting Encryption CMK properties
-        Assert-ThrowsContains{$retrievedAcc = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName2 -EncryptionKeySource $keySource -IdentityType $identityType -KeyVaultKeyName $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultUri $keyVaultUri -UserAssignedIdentity $userAssignedIdenity}
+        $retrievedAcc2 = Update-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName2 -EncryptionKeySource $keySource -IdentityType $identityType -KeyVaultKeyName $keyName -KeyVaultResourceId $keyVaultResourceId -KeyVaultUri $keyVaultUri -UserAssignedIdentity $userAssignedIdentity
         Assert-AreEqual $accName2 $retrievedAcc2.Name
         Assert-NotNull $retrievedAcc.Identity.UserAssignedIdentities
         Assert-AreEqual True $retrievedAcc.Tags.ContainsKey($newTagName)
