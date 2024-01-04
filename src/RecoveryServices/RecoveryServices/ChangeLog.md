@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Breaking Change] Renamed the property `ResouceType` of `ASRVaultSettings` to `ResourceType`.
 * Added breaking change notification for cmdlets whose output type is `ASRVaultSettings`.
 
 ## Version 6.7.0
