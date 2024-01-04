@@ -47,9 +47,9 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 0ae34dbf19d039effd9d366e6c12df38ca4c1c2a
+commit: 0ae34dbf19d039effd9d366e6c12df38ca4c1c2a
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-04-01/appplatform.json
     
@@ -58,6 +58,10 @@ module-version: 0.1.0
 resourcegroup-append: true
 nested-object-to-string: true
 identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:
@@ -553,4 +557,9 @@ directive:
     # - SourceUploadedUserSourceInfo
     # --> rename New-AzSpringCloudDeploymentSourceUploadedObject --> New-AzSpringCloudAppDeploymentSourceUploadedObject
       # - BuildResultUserSourceInfo --> New-AzSpringCloudAppDeploymentBuildResultObject
+
+  - where:
+      subject-prefix: SpringCloud
+    set:
+      preview-message: Az.SpringCloud last version update, Az.SpringCloud will be renamed to Az.Spring.
 ```

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudcertificate
 schema: 2.0.0
@@ -15,7 +15,7 @@ Create or update certificate resource.
 ```
 New-AzSpringCloudCertificate -Name <String> -ResourceGroupName <String> -ServiceName <String>
  [-SubscriptionId <String>] [-Property <ICertificateProperties>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -215,4 +215,3 @@ To create the parameters described below, construct a hash table containing the 
   - `Type <String>`: The type of the certificate source.
 
 ## RELATED LINKS
-
