@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     using Newtonsoft.Json;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
-    [CmdletDeprecationWithVersion("11.0.0", "1.1.1")]
+    [CmdletDeprecationWithVersion("12.0.0", "2.0.0")]
     [Cmdlet(
         VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzurePrefix + "DeploymentManagerStep",
