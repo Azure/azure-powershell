@@ -40,6 +40,7 @@ input-file:
 
 root-module-name: $(prefix).Nginx
 title: Nginx
+module-version: 0.1.0
 subject-prefix: Nginx
 nested-object-to-string: true
 
