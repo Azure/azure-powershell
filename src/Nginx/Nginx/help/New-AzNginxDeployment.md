@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Nginx-help.xml
 Module Name: Az.Nginx
 online version: https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxdeployment
 schema: 2.0.0
@@ -13,11 +13,12 @@ Create or update the Nginx deployment
 ## SYNTAX
 
 ```
-New-AzNginxDeployment -Name <String> -ResourceGroupName <String> -Location <String>
- -NetworkProfile <INginxNetworkProfile> -SkuName <String> [-SubscriptionId <String>]
- [-EnableDiagnosticsSupport] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-ManagedResourceGroup <String>] [-StorageAccountContainerName <String>] [-StorageAccountName <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNginxDeployment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+ -NetworkProfile <INginxNetworkProfile> -SkuName <String> [-EnableDiagnosticsSupport]
+ [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-ManagedResourceGroup <String>]
+ [-ScalingPropertyCapacity <Int32>] [-StorageAccountContainerName <String>] [-StorageAccountName <String>]
+ [-Tag <Hashtable>] [-UserProfilePreferredEmail <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -165,7 +166,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxNetworkProfile
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxNetworkProfile
 Parameter Sets: (All)
 Aliases:
 
@@ -203,6 +204,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScalingPropertyCapacity
+.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -282,6 +298,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UserProfilePreferredEmail
+The preferred support contact email address of the user used for sending alerts and notification.
+Can be an empty string or a valid email address.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -343,4 +375,3 @@ To create the parameters described below, construct a hash table containing the 
     - `[SubnetId <String>]`: 
 
 ## RELATED LINKS
-
