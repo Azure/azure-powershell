@@ -112,7 +112,7 @@ pac110,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac111,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetworkCloud.1.0.0.nupkg;sourceType=sa]Az.NetworkCloud,1.0.0
 pac112,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetworkFunction.0.1.2.nupkg;sourceType=sa]Az.NetworkFunction,0.1.2
 pac113,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NewRelic.0.1.0.nupkg;sourceType=sa]Az.NewRelic,0.1.0
-pac114,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Nginx.0.1.0.nupkg;sourceType=sa]Az.Nginx,0.1.0
+pac114,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Nginx.1.0.0.nupkg;sourceType=sa]Az.Nginx,1.0.0
 pac115,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NotificationHubs.1.1.2.nupkg;sourceType=sa]Az.NotificationHubs,1.1.2
 pac116,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.OperationalInsights.3.2.0.nupkg;sourceType=sa]Az.OperationalInsights,3.2.0
 pac117,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Orbital.0.1.1.nupkg;sourceType=sa]Az.Orbital,0.1.1
