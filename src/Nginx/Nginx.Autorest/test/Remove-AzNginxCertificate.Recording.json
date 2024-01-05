@@ -1,8 +1,8 @@
 {
-  "Remove-AzNginxCertificate+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2022-08-01+1": {
+  "Remove-AzNginxCertificate+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2023-04-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -23,13 +23,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"94009411-0000-0200-0000-632a86470000\"" ],
-        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/f02ac5ef-df8a-4352-ba78-402fd3e88d40*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01" ],
+        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/f02ac5ef-df8a-4352-ba78-402fd3e88d40*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0d872b79-fbba-4031-abaa-ef9aa3e0050d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/f02ac5ef-df8a-4352-ba78-402fd3e88d40*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/f02ac5ef-df8a-4352-ba78-402fd3e88d40*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01" ],
         "x-ms-request-id": [ "f02ac5ef-df8a-4352-ba78-402fd3e88d40" ],
         "x-ms-correlation-request-id": [ "7e97d41b-3bee-437c-bbed-35f3a0e3c095" ],
         "x-ms-routing-request-id": [ "WESTCENTRALUS:20220921T033431Z:7e97d41b-3bee-437c-bbed-35f3a0e3c095" ],
@@ -44,10 +44,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxCertificate+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/f02ac5ef-df8a-4352-ba78-402fd3e88d40*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01+2": {
+  "Remove-AzNginxCertificate+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/f02ac5ef-df8a-4352-ba78-402fd3e88d40*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/f02ac5ef-df8a-4352-ba78-402fd3e88d40*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/f02ac5ef-df8a-4352-ba78-402fd3e88d40*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -85,10 +85,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxCertificate+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/f02ac5ef-df8a-4352-ba78-402fd3e88d40*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01+3": {
+  "Remove-AzNginxCertificate+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/f02ac5ef-df8a-4352-ba78-402fd3e88d40*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/f02ac5ef-df8a-4352-ba78-402fd3e88d40*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/f02ac5ef-df8a-4352-ba78-402fd3e88d40*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -126,10 +126,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxCertificate+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/f02ac5ef-df8a-4352-ba78-402fd3e88d40*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01+4": {
+  "Remove-AzNginxCertificate+[NoContext]+Delete+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/f02ac5ef-df8a-4352-ba78-402fd3e88d40*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/f02ac5ef-df8a-4352-ba78-402fd3e88d40*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/f02ac5ef-df8a-4352-ba78-402fd3e88d40*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -167,10 +167,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxCertificate+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates?api-version=2022-08-01+5": {
+  "Remove-AzNginxCertificate+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates?api-version=2023-04-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -208,10 +208,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2022-08-01+1": {
+  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2023-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2023-04-01",
       "Content": "{\n  \"properties\": {\n    \"keyVirtualPath\": \"test.key\",\n    \"certificateVirtualPath\": \"test.cert\",\n    \"keyVaultSecretId\": \"https://integration-tests-kv.vault.azure.net/secrets/newcert\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -227,13 +227,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"94001212-0000-0200-0000-632a86850000\"" ],
-        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/7da1519f-2216-4a8d-bad6-7be0191d6fa0*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01" ],
+        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/7da1519f-2216-4a8d-bad6-7be0191d6fa0*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0d872b79-fbba-4031-abaa-ef9aa3e0050d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/7da1519f-2216-4a8d-bad6-7be0191d6fa0*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/7da1519f-2216-4a8d-bad6-7be0191d6fa0*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01" ],
         "x-ms-request-id": [ "7da1519f-2216-4a8d-bad6-7be0191d6fa0" ],
         "x-ms-correlation-request-id": [ "c9e0f09d-1718-41d2-b380-f18fb89fc52b" ],
         "x-ms-routing-request-id": [ "WESTCENTRALUS:20220921T033533Z:c9e0f09d-1718-41d2-b380-f18fb89fc52b" ],
@@ -248,10 +248,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/7da1519f-2216-4a8d-bad6-7be0191d6fa0*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01+2": {
+  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/7da1519f-2216-4a8d-bad6-7be0191d6fa0*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/7da1519f-2216-4a8d-bad6-7be0191d6fa0*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/7da1519f-2216-4a8d-bad6-7be0191d6fa0*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -289,10 +289,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/7da1519f-2216-4a8d-bad6-7be0191d6fa0*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01+3": {
+  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/7da1519f-2216-4a8d-bad6-7be0191d6fa0*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/7da1519f-2216-4a8d-bad6-7be0191d6fa0*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/7da1519f-2216-4a8d-bad6-7be0191d6fa0*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -330,10 +330,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2022-08-01+4": {
+  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2023-04-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -372,10 +372,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2022-08-01+5": {
+  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2023-04-01+5": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates/testNewCert?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -396,13 +396,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"94009c12-0000-0200-0000-632a86c30000\"" ],
-        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/8da749c6-2aa0-47c4-9b11-7802fd56f589*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01" ],
+        "Location": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/8da749c6-2aa0-47c4-9b11-7802fd56f589*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:0d872b79-fbba-4031-abaa-ef9aa3e0050d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/8da749c6-2aa0-47c4-9b11-7802fd56f589*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/8da749c6-2aa0-47c4-9b11-7802fd56f589*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01" ],
         "x-ms-request-id": [ "8da749c6-2aa0-47c4-9b11-7802fd56f589" ],
         "x-ms-correlation-request-id": [ "51c508b1-2b55-4e7a-a29c-b707f10178f7" ],
         "x-ms-routing-request-id": [ "WESTCENTRALUS:20220921T033635Z:51c508b1-2b55-4e7a-a29c-b707f10178f7" ],
@@ -417,10 +417,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/8da749c6-2aa0-47c4-9b11-7802fd56f589*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01+6": {
+  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/8da749c6-2aa0-47c4-9b11-7802fd56f589*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/8da749c6-2aa0-47c4-9b11-7802fd56f589*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/8da749c6-2aa0-47c4-9b11-7802fd56f589*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -458,10 +458,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/8da749c6-2aa0-47c4-9b11-7802fd56f589*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01+7": {
+  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/8da749c6-2aa0-47c4-9b11-7802fd56f589*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/8da749c6-2aa0-47c4-9b11-7802fd56f589*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/8da749c6-2aa0-47c4-9b11-7802fd56f589*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -499,10 +499,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/8da749c6-2aa0-47c4-9b11-7802fd56f589*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01+8": {
+  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/8da749c6-2aa0-47c4-9b11-7802fd56f589*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/8da749c6-2aa0-47c4-9b11-7802fd56f589*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/providers/Nginx.NginxPlus/locations/EASTUS2/operationStatuses/8da749c6-2aa0-47c4-9b11-7802fd56f589*C16B00F1D22646D5AC69E5E20978B86264888EF0E88E3B5ECA5A479B5BDED668?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -540,10 +540,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates?api-version=2022-08-01+9": {
+  "Remove-AzNginxCertificate+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates?api-version=2023-04-01+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates?api-version=2022-08-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e3853e83-0d02-4fb3-b88f-05b5fd21aee2/resourceGroups/limgu_rg/providers/Nginx.NginxPlus/nginxDeployments/test920/certificates?api-version=2023-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

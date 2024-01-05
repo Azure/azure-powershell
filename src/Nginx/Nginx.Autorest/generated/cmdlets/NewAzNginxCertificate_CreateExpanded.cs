@@ -8,14 +8,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Extensions;
     using System;
 
-    /// <summary>Create or update the Nginx certificates for given Nginx deployment</summary>
+    /// <summary>Create or update the NGINX certificates for given NGINX deployment</summary>
     /// <remarks>
-    /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/certificates/{certificateName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/certificates/{certificateName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzNginxCertificate_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.Description(@"Create or update the Nginx certificates for given Nginx deployment")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.Description(@"Create or update the NGINX certificates for given NGINX deployment")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/certificates/{certificateName}", ApiVersion = "2023-04-01")]
     public partial class NewAzNginxCertificate_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener
     {
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
-        private Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate _body = new Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxCertificate();
+        private Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate _body = new Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxCertificate();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -60,9 +61,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Nginx.Nginx Client => Microsoft.Azure.PowerShell.Cmdlets.Nginx.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.ParameterCategory.Azure)]
@@ -71,12 +73,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
         /// <summary>Backing field for <see cref="DeploymentName" /> property.</summary>
         private string _deploymentName;
 
-        /// <summary>The name of targeted Nginx deployment</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of targeted Nginx deployment")]
+        /// <summary>The name of targeted NGINX deployment</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of targeted NGINX deployment")]
         [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The name of targeted Nginx deployment",
+        Description = @"The name of targeted NGINX deployment",
         SerializedName = @"deploymentName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.ParameterCategory.Path)]
@@ -214,41 +216,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
-        /// <summary>Dictionary of <string></summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Dictionary of <string>")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Nginx.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Dictionary of <string>",
-        SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificateTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
-
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate">Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate">Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -387,7 +377,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'CertificatesCreate' operation"))
+                if (ShouldProcess($"Call remote 'CertificatesCreateOrUpdate' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -451,7 +441,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.CertificatesCreate(SubscriptionId, ResourceGroupName, DeploymentName, Name, _body, onOk, onDefault, this, Pipeline);
+                    await this.Client.CertificatesCreateOrUpdate(SubscriptionId, ResourceGroupName, DeploymentName, Name, _body, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.UndeclaredResponseException urexception)
@@ -479,12 +469,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -501,7 +491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IResourceProviderDefaultErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IResourceProviderDefaultErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, DeploymentName=DeploymentName, Name=Name, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -519,12 +509,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate">Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate">Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate> response)
         {
             using( NoSynchronizationContext )
             {
@@ -536,7 +526,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate
                 WriteObject((await response));
             }
         }
