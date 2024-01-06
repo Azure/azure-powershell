@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="replicationState">Replication state (PENDING, SEEDING, CATCHUP, SUSPENDED).
-        /// Possible values include: 'PENDING', 'SEEDING', 'CATCH_UP', 'SUSPENDED'</param>
+        /// Possible values include: &#39;PENDING&#39;, &#39;SEEDING&#39;, &#39;CATCH_UP&#39;, &#39;SUSPENDED&#39;</param>
 
         /// <param name="partnerServer">Resource partner server.
         /// </param>
@@ -47,12 +47,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="role">Local replication role.
-        /// Possible values include: 'Primary', 'Secondary', 'NonReadableSecondary',
-        /// 'Source', 'Copy'</param>
+        /// Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;, &#39;NonReadableSecondary&#39;,
+        /// &#39;Source&#39;, &#39;Copy&#39;</param>
 
         /// <param name="partnerRole">Partner replication role.
-        /// Possible values include: 'Primary', 'Secondary', 'NonReadableSecondary',
-        /// 'Source', 'Copy'</param>
+        /// Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;, &#39;NonReadableSecondary&#39;,
+        /// &#39;Source&#39;, &#39;Copy&#39;</param>
 
         /// <param name="replicationMode">Replication mode.
         /// </param>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="linkType">Link type (GEO, NAMED, STANDBY).
-        /// Possible values include: 'GEO', 'NAMED', 'STANDBY'</param>
+        /// Possible values include: &#39;GEO&#39;, &#39;NAMED&#39;, &#39;STANDBY&#39;</param>
         public ReplicationLink(string id = default(string), string name = default(string), string type = default(string), string replicationState = default(string), string partnerServer = default(string), string partnerDatabase = default(string), string partnerLocation = default(string), ReplicationRole? role = default(ReplicationRole?), ReplicationRole? partnerRole = default(ReplicationRole?), string replicationMode = default(string), System.DateTime? startTime = default(System.DateTime?), int? percentComplete = default(int?), bool? isTerminationAllowed = default(bool?), string linkType = default(string))
 
         : base(id, name, type)

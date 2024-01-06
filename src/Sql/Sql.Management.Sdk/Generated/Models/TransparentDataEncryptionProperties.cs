@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="state">Specifies the state of the transparent data encryption.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
         public TransparentDataEncryptionProperties(TransparentDataEncryptionState state)
 
         {

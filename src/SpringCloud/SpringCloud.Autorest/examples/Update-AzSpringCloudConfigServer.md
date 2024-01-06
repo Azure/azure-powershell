@@ -25,4 +25,3 @@ default 2022/7/1 7:22:54    *********@microsoft.com User                    2022
 ```
 
 Update the config server by pipeline.
-

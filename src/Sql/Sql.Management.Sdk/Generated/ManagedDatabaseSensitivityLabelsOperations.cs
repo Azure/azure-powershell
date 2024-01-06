@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the sensitivity label of a given column
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -298,7 +299,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates the sensitivity label of a given column
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -584,7 +586,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes the sensitivity label of a given column
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -816,7 +819,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Disables sensitivity recommendations on a given column
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -1045,10 +1049,12 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Enables sensitivity recommendations on a given column (recommendations are enabled by default on all columns)
+        /// Enables sensitivity recommendations on a given column (recommendations are
+        /// enabled by default on all columns)
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -1283,7 +1289,8 @@ namespace Microsoft.Azure.Management.Sql
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -1531,7 +1538,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Update sensitivity labels of a given database using an operations batch.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -1747,7 +1755,8 @@ namespace Microsoft.Azure.Management.Sql
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.

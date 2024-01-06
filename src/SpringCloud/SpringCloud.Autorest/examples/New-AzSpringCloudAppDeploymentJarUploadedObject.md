@@ -10,4 +10,3 @@ RelativePath                     Version JvmOption RuntimeVersion
 ```
 
 Create an in-memory object for JarUploadedUserSourceInfo.
-

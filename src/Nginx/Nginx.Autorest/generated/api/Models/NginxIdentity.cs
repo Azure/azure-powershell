@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models
         private string _configurationName;
 
         /// <summary>
-        /// The name of configuration, only 'default' is supported value due to the singleton of Nginx conf
+        /// The name of configuration, only 'default' is supported value due to the singleton of NGINX conf
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Origin(Microsoft.Azure.PowerShell.Cmdlets.Nginx.PropertyOrigin.Owned)]
         public string ConfigurationName { get => this._configurationName; set => this._configurationName = value; }
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models
         /// <summary>Backing field for <see cref="DeploymentName" /> property.</summary>
         private string _deploymentName;
 
-        /// <summary>The name of targeted Nginx deployment</summary>
+        /// <summary>The name of targeted NGINX deployment</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Origin(Microsoft.Azure.PowerShell.Cmdlets.Nginx.PropertyOrigin.Owned)]
         public string DeploymentName { get => this._deploymentName; set => this._deploymentName = value; }
 
@@ -74,20 +74,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models
         PossibleTypes = new [] { typeof(string) })]
         string CertificateName { get; set; }
         /// <summary>
-        /// The name of configuration, only 'default' is supported value due to the singleton of Nginx conf
+        /// The name of configuration, only 'default' is supported value due to the singleton of NGINX conf
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of configuration, only 'default' is supported value due to the singleton of Nginx conf",
+        Description = @"The name of configuration, only 'default' is supported value due to the singleton of NGINX conf",
         SerializedName = @"configurationName",
         PossibleTypes = new [] { typeof(string) })]
         string ConfigurationName { get; set; }
-        /// <summary>The name of targeted Nginx deployment</summary>
+        /// <summary>The name of targeted NGINX deployment</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The name of targeted Nginx deployment",
+        Description = @"The name of targeted NGINX deployment",
         SerializedName = @"deploymentName",
         PossibleTypes = new [] { typeof(string) })]
         string DeploymentName { get; set; }
@@ -123,10 +123,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models
         /// <summary>The name of certificate</summary>
         string CertificateName { get; set; }
         /// <summary>
-        /// The name of configuration, only 'default' is supported value due to the singleton of Nginx conf
+        /// The name of configuration, only 'default' is supported value due to the singleton of NGINX conf
         /// </summary>
         string ConfigurationName { get; set; }
-        /// <summary>The name of targeted Nginx deployment</summary>
+        /// <summary>The name of targeted NGINX deployment</summary>
         string DeploymentName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
