@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudbuildservicebuilder
 schema: 2.0.0
@@ -15,7 +15,7 @@ Create or update a KPack builder.
 ```
 New-AzSpringCloudBuildServiceBuilder -Name <String> -ResourceGroupName <String> -ServiceName <String>
  [-SubscriptionId <String>] [-BuildpackGroup <IBuildpacksGroupProperties[]>] [-StackId <String>]
- [-StackVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-StackVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -247,4 +247,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[Name <String>]`: Buildpack group name
 
 ## RELATED LINKS
-

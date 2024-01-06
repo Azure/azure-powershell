@@ -16,14 +16,14 @@
 
 <#
 .Synopsis
-Create or update the Nginx deployment
+Create or update the NGINX deployment
 .Description
-Create or update the Nginx deployment
+Create or update the NGINX deployment
 .Example
 New-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg -Location westcentralus -NetworkProfile $networkProfile -SkuName preview_Monthly_gmz7xq9ge3py
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,14 +43,14 @@ NETWORKPROFILE <INginxNetworkProfile>: .
 https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxdeployment
 #>
 function New-AzNginxDeployment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeployment])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('DeploymentName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Path')]
     [System.String]
-    # The name of targeted Nginx deployment
+    # The name of targeted NGINX deployment
     ${Name},
 
     [Parameter(Mandatory)]
@@ -75,7 +75,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxNetworkProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxNetworkProfile]
     # .
     # To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
     ${NetworkProfile},
@@ -101,7 +101,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.IIdentityPropertiesUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IIdentityPropertiesUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # Dictionary of <UserIdentityProperties>
     ${IdentityUserAssignedIdentity},
@@ -111,6 +111,12 @@ param(
     [System.String]
     # The managed resource group to deploy VNet injection related network resources.
     ${ManagedResourceGroup},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [System.Int32]
+    # .
+    ${ScalingPropertyCapacity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
@@ -126,17 +132,25 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeploymentTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxDeploymentTags]))]
     [System.Collections.Hashtable]
     # Dictionary of <string>
     ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Body')]
+    [System.String]
+    # The preferred support contact email address of the user used for sending alerts and notification.
+    # Can be an empty string or a valid email address.
+    ${UserProfilePreferredEmail},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -200,7 +214,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -224,6 +238,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

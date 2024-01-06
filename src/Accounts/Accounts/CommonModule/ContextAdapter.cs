@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <param name="appendStep">a delegate which allows the module to append a step in the HTTP Pipeline</param>
         public void OnNewRequest(InvocationInfo invocationInfo, string correlationId, string processRecordId, PipelineChangeDelegate prependStep, PipelineChangeDelegate appendStep)
         {
+            prependStep(UniqueId.Instance.SendAsync);
             appendStep(new UserAgent(invocationInfo).SendAsync);
             appendStep(this.SendHandler(GetDefaultContext(_provider, invocationInfo), AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId));
         }

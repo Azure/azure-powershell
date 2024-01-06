@@ -10,4 +10,3 @@ ActivateDate DnsName ExpirationDate IssuedDate Issuer SubjectName Thumbprint Con
 ```
 
 Create an in-memory object for ContentCertificateProperties.
-

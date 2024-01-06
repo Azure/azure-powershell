@@ -23,13 +23,15 @@ namespace Microsoft.Azure.Management.Sql
         /// 
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// 
         /// </param>
         /// <param name='onlyLatestPerDatabase'>
-        /// Whether or not to only get the latest operation for each database. Has higher priority than $filter.
+        /// Whether or not to only get the latest operation for each database. Has
+        /// higher priority than $filter.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -52,7 +54,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a managed database move operation.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='locationName'>
         /// 

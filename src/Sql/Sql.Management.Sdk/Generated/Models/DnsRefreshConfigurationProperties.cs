@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="status">The status of the DNS refresh operation.
-        /// Possible values include: 'Succeeded', 'Failed'</param>
+        /// Possible values include: &#39;Succeeded&#39;, &#39;Failed&#39;</param>
         public DnsRefreshConfigurationProperties(string status = default(string))
 
         {
