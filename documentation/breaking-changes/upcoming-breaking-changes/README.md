@@ -1,6 +1,7 @@
 Here is the list of modules which contain the breaking changes. The detailed information is listed on individual module page.
 
 * [Az.Accounts](Az.Accounts-UpcomingBreakingChanges.md)
+* [Az.Aks](Az.Aks-UpcomingBreakingChanges.md)
 * [Az.AnalysisServices](Az.AnalysisServices-UpcomingBreakingChanges.md)
 * [Az.Batch](Az.Batch-UpcomingBreakingChanges.md)
 * [Az.Cdn](Az.Cdn-UpcomingBreakingChanges.md)
