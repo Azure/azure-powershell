@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9cf9c002-32c9-41aa-9fb9-6bbfc44f6d86"
+          "ecf787cb-8520-4e8e-a60c-cf71fd4135ba"
         ],
         "Accept-Language": [
           "en-US"
@@ -14,14 +14,14 @@
         "User-Agent": [
           "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
+          "OSVersion/Microsoft.Windows.10.0.23612",
           "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
         "Date": [
-          "Tue, 19 Dec 2023 07:59:57 GMT"
+          "Sun, 07 Jan 2024 21:45:43 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
@@ -36,13 +36,13 @@
           "max-age=31536000"
         ],
         "request-id": [
-          "e4f0035d-7b5d-4935-bb5a-41f0bf01b4ed"
+          "4b939aa0-21c9-48e9-854e-a5c64af27326"
         ],
         "client-request-id": [
-          "e4f0035d-7b5d-4935-bb5a-41f0bf01b4ed"
+          "4b939aa0-21c9-48e9-854e-a5c64af27326"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"003\",\"RoleInstance\":\"CO1PEPF00004A99\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"005\",\"RoleInstance\":\"MWH0EPF0009ACAC\"}}"
         ],
         "x-ms-resource-unit": [
           "1"
@@ -57,7 +57,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource '6d764d35-6b3b-49ea-83f8-5c223b56eac5' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T07:59:57\",\r\n      \"request-id\": \"e4f0035d-7b5d-4935-bb5a-41f0bf01b4ed\",\r\n      \"client-request-id\": \"e4f0035d-7b5d-4935-bb5a-41f0bf01b4ed\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource '6d764d35-6b3b-49ea-83f8-5c223b56eac5' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2024-01-07T21:45:43\",\r\n      \"request-id\": \"4b939aa0-21c9-48e9-854e-a5c64af27326\",\r\n      \"client-request-id\": \"4b939aa0-21c9-48e9-854e-a5c64af27326\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
@@ -66,7 +66,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9ef61c14-b844-46f5-a314-cf975f1ff943"
+          "d854db37-bc83-40da-b493-e8dafc5e6556"
         ],
         "Accept-Language": [
           "en-US"
@@ -74,14 +74,14 @@
         "User-Agent": [
           "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
+          "OSVersion/Microsoft.Windows.10.0.23612",
           "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
         "Date": [
-          "Tue, 19 Dec 2023 07:59:57 GMT"
+          "Sun, 07 Jan 2024 21:45:43 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
@@ -96,13 +96,13 @@
           "max-age=31536000"
         ],
         "request-id": [
-          "9bbb8fd6-f214-4783-bcf4-d5da1ffb16d0"
+          "76612583-af4e-43d9-a50e-aababce73bfd"
         ],
         "client-request-id": [
-          "9bbb8fd6-f214-4783-bcf4-d5da1ffb16d0"
+          "76612583-af4e-43d9-a50e-aababce73bfd"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"003\",\"RoleInstance\":\"CO1PEPF00004A99\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"005\",\"RoleInstance\":\"MWH0EPF0009ACAC\"}}"
         ],
         "x-ms-resource-unit": [
           "1"
@@ -117,7 +117,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource '6d764d35-6b3b-49ea-83f8-5c223b56eac5' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T07:59:57\",\r\n      \"request-id\": \"9bbb8fd6-f214-4783-bcf4-d5da1ffb16d0\",\r\n      \"client-request-id\": \"9bbb8fd6-f214-4783-bcf4-d5da1ffb16d0\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource '6d764d35-6b3b-49ea-83f8-5c223b56eac5' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2024-01-07T21:45:43\",\r\n      \"request-id\": \"76612583-af4e-43d9-a50e-aababce73bfd\",\r\n      \"client-request-id\": \"76612583-af4e-43d9-a50e-aababce73bfd\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
@@ -126,7 +126,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a46815b2-407f-4a41-b6a4-3968107eaebd"
+          "d08d4355-6187-4461-9a9a-355c63489587"
         ],
         "Accept-Language": [
           "en-US"
@@ -134,14 +134,14 @@
         "User-Agent": [
           "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
+          "OSVersion/Microsoft.Windows.10.0.23612",
           "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
         "Date": [
-          "Tue, 19 Dec 2023 07:59:57 GMT"
+          "Sun, 07 Jan 2024 21:45:43 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
@@ -156,13 +156,13 @@
           "max-age=31536000"
         ],
         "request-id": [
-          "35f8be95-90da-42b5-a1e3-d81aa0594f47"
+          "172bfb20-3ee4-4434-8914-2be79a368b44"
         ],
         "client-request-id": [
-          "35f8be95-90da-42b5-a1e3-d81aa0594f47"
+          "172bfb20-3ee4-4434-8914-2be79a368b44"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"003\",\"RoleInstance\":\"CO1PEPF00004A99\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"005\",\"RoleInstance\":\"MWH0EPF0009ACAC\"}}"
         ],
         "x-ms-resource-unit": [
           "1"
@@ -177,7 +177,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource '6d764d35-6b3b-49ea-83f8-5c223b56eac5' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T07:59:57\",\r\n      \"request-id\": \"35f8be95-90da-42b5-a1e3-d81aa0594f47\",\r\n      \"client-request-id\": \"35f8be95-90da-42b5-a1e3-d81aa0594f47\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource '6d764d35-6b3b-49ea-83f8-5c223b56eac5' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2024-01-07T21:45:43\",\r\n      \"request-id\": \"172bfb20-3ee4-4434-8914-2be79a368b44\",\r\n      \"client-request-id\": \"172bfb20-3ee4-4434-8914-2be79a368b44\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
@@ -186,7 +186,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0811044f-721a-4019-9059-6459c49f6784"
+          "f9a65ba7-fe48-4475-8834-ef540ea8fe1d"
         ],
         "Accept-Language": [
           "en-US"
@@ -194,8 +194,8 @@
         "User-Agent": [
           "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/6.12.0"
+          "OSVersion/Microsoft.Windows.10.0.23612",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/6.13.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -213,7 +213,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "91b03a6f-95a5-4f19-817a-39c478b8f7be"
+          "66ef6a97-a661-4c49-add3-8880b1d5616e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -228,13 +228,13 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "90c34555-f4e3-445c-b9cf-a7a66c6d9001"
+          "3bafefc2-d1ae-4301-befd-5372694adff4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20231219T075957Z:90c34555-f4e3-445c-b9cf-a7a66c6d9001"
+          "WESTUS2:20240107T214544Z:3bafefc2-d1ae-4301-befd-5372694adff4"
         ],
         "Date": [
-          "Tue, 19 Dec 2023 07:59:57 GMT"
+          "Sun, 07 Jan 2024 21:45:43 GMT"
         ],
         "Content-Length": [
           "489"

@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a1ab78fc-4ee4-4874-9df3-2492b455b06b"
+          "2ea5da2a-a74e-4424-97b8-3b4185f61431"
         ],
         "Accept-Language": [
           "en-US"
@@ -14,8 +14,8 @@
         "User-Agent": [
           "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/6.12.0"
+          "OSVersion/Microsoft.Windows.10.0.23612",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/6.13.0"
         ]
       },
       "RequestBody": "",
@@ -27,7 +27,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8eb41552-2106-455a-abf1-124180cbb34d"
+          "5ce3111a-f142-4f66-a173-e3e6b19bf923"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -42,13 +42,13 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "ce31f172-3276-47a5-b72f-d784f72a8f62"
+          "fddf894c-8f1c-4f29-b98b-61dbdc85a63a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20231219T075917Z:ce31f172-3276-47a5-b72f-d784f72a8f62"
+          "WESTUS2:20240107T214503Z:fddf894c-8f1c-4f29-b98b-61dbdc85a63a"
         ],
         "Date": [
-          "Tue, 19 Dec 2023 07:59:17 GMT"
+          "Sun, 07 Jan 2024 21:45:03 GMT"
         ],
         "Content-Length": [
           "12"
@@ -72,7 +72,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d8b9935d-77b5-4789-ae2f-94f67fd31ade"
+          "e380199b-6990-4f62-a957-4ba0cf19d541"
         ],
         "Accept-Language": [
           "en-US"
@@ -80,14 +80,14 @@
         "User-Agent": [
           "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
+          "OSVersion/Microsoft.Windows.10.0.23612",
           "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
         "Date": [
-          "Tue, 19 Dec 2023 07:59:18 GMT"
+          "Sun, 07 Jan 2024 21:45:04 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
@@ -102,13 +102,13 @@
           "max-age=31536000"
         ],
         "request-id": [
-          "05f7bf16-f978-41ab-a8fe-ace9731749f4"
+          "81aece43-3fba-45d0-a0aa-0ee3c1f5c7fe"
         ],
         "client-request-id": [
-          "05f7bf16-f978-41ab-a8fe-ace9731749f4"
+          "81aece43-3fba-45d0-a0aa-0ee3c1f5c7fe"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"004\",\"RoleInstance\":\"MW2PEPF0000E056\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"000\",\"RoleInstance\":\"CO1PEPF0000164F\"}}"
         ],
         "x-ms-resource-unit": [
           "1"
@@ -123,7 +123,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T07:59:18\",\r\n      \"request-id\": \"05f7bf16-f978-41ab-a8fe-ace9731749f4\",\r\n      \"client-request-id\": \"05f7bf16-f978-41ab-a8fe-ace9731749f4\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2024-01-07T21:45:04\",\r\n      \"request-id\": \"81aece43-3fba-45d0-a0aa-0ee3c1f5c7fe\",\r\n      \"client-request-id\": \"81aece43-3fba-45d0-a0aa-0ee3c1f5c7fe\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
@@ -132,7 +132,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d8b9935d-77b5-4789-ae2f-94f67fd31ade"
+          "e380199b-6990-4f62-a957-4ba0cf19d541"
         ],
         "Accept-Language": [
           "en-US"
@@ -140,14 +140,14 @@
         "User-Agent": [
           "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
+          "OSVersion/Microsoft.Windows.10.0.23612",
           "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
         "Date": [
-          "Tue, 19 Dec 2023 07:59:18 GMT"
+          "Sun, 07 Jan 2024 21:45:04 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
@@ -162,13 +162,13 @@
           "max-age=31536000"
         ],
         "request-id": [
-          "1ec4389b-d7f0-4e56-8f4a-9a91f08ed10e"
+          "910f4aff-f081-42df-a211-0873c5df66da"
         ],
         "client-request-id": [
-          "1ec4389b-d7f0-4e56-8f4a-9a91f08ed10e"
+          "910f4aff-f081-42df-a211-0873c5df66da"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"004\",\"RoleInstance\":\"MW2PEPF0000E056\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"000\",\"RoleInstance\":\"CO1PEPF0000164F\"}}"
         ],
         "x-ms-resource-unit": [
           "1"
@@ -183,7 +183,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T07:59:18\",\r\n      \"request-id\": \"1ec4389b-d7f0-4e56-8f4a-9a91f08ed10e\",\r\n      \"client-request-id\": \"1ec4389b-d7f0-4e56-8f4a-9a91f08ed10e\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2024-01-07T21:45:04\",\r\n      \"request-id\": \"910f4aff-f081-42df-a211-0873c5df66da\",\r\n      \"client-request-id\": \"910f4aff-f081-42df-a211-0873c5df66da\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
@@ -192,7 +192,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d8b9935d-77b5-4789-ae2f-94f67fd31ade"
+          "e380199b-6990-4f62-a957-4ba0cf19d541"
         ],
         "Accept-Language": [
           "en-US"
@@ -200,14 +200,14 @@
         "User-Agent": [
           "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
+          "OSVersion/Microsoft.Windows.10.0.23612",
           "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
         "Date": [
-          "Tue, 19 Dec 2023 07:59:18 GMT"
+          "Sun, 07 Jan 2024 21:45:04 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
@@ -222,13 +222,13 @@
           "max-age=31536000"
         ],
         "request-id": [
-          "edfd30cc-2057-48a7-a6ec-3560e2f47d56"
+          "b1c510c0-28c1-495b-9ba0-1340e19bdcdf"
         ],
         "client-request-id": [
-          "edfd30cc-2057-48a7-a6ec-3560e2f47d56"
+          "b1c510c0-28c1-495b-9ba0-1340e19bdcdf"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"004\",\"RoleInstance\":\"MW2PEPF0000E056\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"000\",\"RoleInstance\":\"CO1PEPF0000164F\"}}"
         ],
         "x-ms-resource-unit": [
           "1"
@@ -243,7 +243,7 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T07:59:18\",\r\n      \"request-id\": \"edfd30cc-2057-48a7-a6ec-3560e2f47d56\",\r\n      \"client-request-id\": \"edfd30cc-2057-48a7-a6ec-3560e2f47d56\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2024-01-07T21:45:04\",\r\n      \"request-id\": \"b1c510c0-28c1-495b-9ba0-1340e19bdcdf\",\r\n      \"client-request-id\": \"b1c510c0-28c1-495b-9ba0-1340e19bdcdf\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
@@ -252,7 +252,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "550c27c3-5957-44a3-b7f2-c64ff980b260"
+          "e82e5f7b-3dc2-451f-b2d3-3e378aa36c88"
         ],
         "Accept-Language": [
           "en-US"
@@ -263,14 +263,14 @@
         "User-Agent": [
           "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
+          "OSVersion/Microsoft.Windows.10.0.23612",
           "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
         "Date": [
-          "Tue, 19 Dec 2023 07:59:18 GMT"
+          "Sun, 07 Jan 2024 21:45:04 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
@@ -285,13 +285,13 @@
           "max-age=31536000"
         ],
         "request-id": [
-          "c5bd7086-606b-448d-836a-1252bfb24f0e"
+          "76e8ca49-7937-4dd6-a835-6b5e26424302"
         ],
         "client-request-id": [
-          "c5bd7086-606b-448d-836a-1252bfb24f0e"
+          "76e8ca49-7937-4dd6-a835-6b5e26424302"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"004\",\"RoleInstance\":\"MW2PEPF0000E056\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"000\",\"RoleInstance\":\"CO1PEPF0000164F\"}}"
         ],
         "x-ms-resource-unit": [
           "2"
@@ -318,7 +318,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "90d8f2f9-edbb-49fc-b397-9c21e72aaa63"
+          "7c252dff-d78b-4445-b1ed-e268c7bbad50"
         ],
         "Accept-Language": [
           "en-US"
@@ -326,14 +326,14 @@
         "User-Agent": [
           "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
+          "OSVersion/Microsoft.Windows.10.0.23612",
           "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
         "Date": [
-          "Tue, 19 Dec 2023 07:59:19 GMT"
+          "Sun, 07 Jan 2024 21:45:04 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
@@ -348,13 +348,13 @@
           "max-age=31536000"
         ],
         "request-id": [
-          "870b8bfd-1b26-4c76-b314-c20b41ccca77"
+          "7ec14dbe-9f7e-4f10-8bd8-b0175b5336fc"
         ],
         "client-request-id": [
-          "870b8bfd-1b26-4c76-b314-c20b41ccca77"
+          "7ec14dbe-9f7e-4f10-8bd8-b0175b5336fc"
         ],
         "x-ms-ags-diagnostic": [
-          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"004\",\"RoleInstance\":\"MW2PEPF0000E056\"}}"
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"000\",\"RoleInstance\":\"CO1PEPF0000164F\"}}"
         ],
         "x-ms-resource-unit": [
           "1"

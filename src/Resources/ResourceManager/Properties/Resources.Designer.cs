@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please use bicep &apos;{0}&apos; or higher..
+        ///   Looks up a localized string similar to Please use bicep {0} or higher..
         /// </summary>
         internal static string BicepVersionRequirement {
             get {
