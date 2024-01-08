@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetworkVirtualApplianceConnection
 
 ## SYNOPSIS
-Update or Change a Network Virtual Appliance resource.
+Update or Change a Network Virtual Appliance Connection resource.
 
 ## SYNTAX
 
