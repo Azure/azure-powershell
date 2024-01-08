@@ -13,14 +13,16 @@
 // limitations under the License.
 //
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicyIntrusionDetection
+    public class PSApplicationGatewayGlobalConfiguration
     {
-        public string Mode { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableRequestBuffering { get; set; }
 
-        public string Profile { get; set; }
-
-        public PSAzureFirewallPolicyIntrusionDetectionConfiguration Configuration { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableResponseBuffering { get; set; }
     }
 }
