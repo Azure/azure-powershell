@@ -557,4 +557,9 @@ directive:
     # - SourceUploadedUserSourceInfo
     # --> rename New-AzSpringCloudDeploymentSourceUploadedObject --> New-AzSpringCloudAppDeploymentSourceUploadedObject
       # - BuildResultUserSourceInfo --> New-AzSpringCloudAppDeploymentBuildResultObject
+
+  - where:
+      subject-prefix: SpringCloud
+    set:
+      preview-message: Az.SpringCloud last version update, Az.SpringCloud will be renamed to Az.Spring.
 ```
