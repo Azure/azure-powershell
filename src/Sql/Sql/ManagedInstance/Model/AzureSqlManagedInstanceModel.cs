@@ -190,5 +190,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Possible values include: &#39;Regular&#39;, &#39;Freemium&#39;
         /// </summary>
         public string PricingModel { get; set; }
+
+        /// <summary>
+        /// Gets or sets the external governance status of the managed instance.
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        public string ExternalGovernanceStatus { get; set; }
     }
 }
