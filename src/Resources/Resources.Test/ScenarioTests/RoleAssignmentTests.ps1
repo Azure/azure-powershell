@@ -507,27 +507,26 @@ Tests verifies get of RoleAssignment by Scope
 function Test-RaGetByScope
 {
     # Setup
-    $definitionName = 'Automation Operator'
+    $definitionName = 'AcrPull'
     # $users = Get-AzADUser | Select-Object -First 1 -Wait
     $userId = "e9da4467-12ff-4334-8179-c99abf0ffd5a"
     $subscription = $(Get-AzContext).Subscription
-    $resourceGroups = Get-AzResourceGroup | Select-Object -Last 2 -Wait
-    $scope1 = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
-    $scope2 = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[1].ResourceGroupName
+    # attempts to get a resource group under subscription. Will not work if resource groups were not created beforehand
+    $resourceGroupScope1 = Get-AzResourceGroup -Name "PowershellTest"
+    $resourceGroupScope2 = Get-AzResourceGroup -Name "PowershellTest2"
+    $scope1 = $resourceGroupScope1.ResourceId
+    $scope2 = $resourceGroupScope2.ResourceId
     # Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
 
     # Test
-    $newAssignment1 = New-AzRoleAssignmentWithId `
+    $newAssignment1 = New-AzRoleAssignment `
                         -ObjectId $userId `
                         -RoleDefinitionName $definitionName `
-                        -Scope $scope1 `
-                        -RoleAssignmentId 08fe91d5-b917-4d76-81d7-581ff5a99cab
-
-    $newAssignment2 = New-AzRoleAssignmentWithId `
+                        -Scope $scope1
+    $newAssignment2 = New-AzRoleAssignment `
                         -ObjectId $userId `
                         -RoleDefinitionName $definitionName `
-                        -Scope $scope2 `
-                        -RoleAssignmentId fa1a4d3b-2cca-406b-8956-6b6b32377641
+                        -Scope $scope2
 
     $ras = Get-AzRoleAssignment -ObjectId $userId `
             -RoleDefinitionName $definitionName `
