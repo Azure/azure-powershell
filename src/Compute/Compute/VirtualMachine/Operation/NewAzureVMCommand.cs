@@ -54,6 +54,8 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Security.AccessControl;
 using System.Security.Principal;
 using Microsoft.Azure.Commands.Common.Strategies.Compute;
+using System.Security.Policy;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -977,28 +979,64 @@ namespace Microsoft.Azure.Commands.Compute
             
 
             // ImageReference provided, TL defaulting occurs if image is Gen2. 
+            // This will handle when the Id is provided in a URI format and 
+            // when the image segments are provided individually.
             if (this.VM.SecurityProfile?.SecurityType == null
                 && this.VM.StorageProfile?.ImageReference != null)
             {
-                if (this.VM.StorageProfile?.ImageReference?.Id != null)//This code should never happen apparently
-                {
+                if (this.VM.StorageProfile?.ImageReference?.Id != null)
+                { 
                     string imageRefString = this.VM.StorageProfile.ImageReference.Id.ToString();
 
-                    var parts = imageRefString.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                    string galleryImgIdPattern = @"/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroup>[^/]+)/providers/Microsoft.Compute/galleries/(?<gallery>[^/]+)/images/(?<image>[^/]+)/versions/(?<version>[^/]+)";
+                    string managedImageIdPattern = @"/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroup>[^/]+)/providers/Microsoft.Compute/images/(?<image>[^/]+)";
+                    string defaultExistingImagePattern = @"/Subscriptions/(?<subscriptionId>[^/]+)/Providers/Microsoft.Compute/Locations/(?<location>[^/]+)/Publishers/(?<publisher>[^/]+)/ArtifactTypes/VMImage/Offers/(?<offer>[^/]+)/Skus/(?<sku>[^/]+)/Versions/(?<version>[^/]+)";
 
-                    string imagePublisher = parts[Array.IndexOf(parts, "Publishers") + 1];
-                    string imageOffer = parts[Array.IndexOf(parts, "Offers") + 1];
-                    string imageSku = parts[Array.IndexOf(parts, "Skus") + 1];
-                    string imageVersion = parts[Array.IndexOf(parts, "Versions") + 1];
-                    //location is required when config object provided. 
-                    var imgResponse = ComputeClient.ComputeManagementClient.VirtualMachineImages.GetWithHttpMessagesAsync(
-                            this.Location.Canonicalize(),
-                            imagePublisher,
-                            imageOffer,
-                            imageSku,
-                            version: imageVersion).GetAwaiter().GetResult();
+                    //Gallery Id
+                    Regex galleryRgx = new Regex(galleryImgIdPattern, RegexOptions.IgnoreCase);
+                    Match galleryMatch = galleryRgx.Match(imageRefString);
+                    // Managed Image Id
+                    Regex managedImageRgx = new Regex(managedImageIdPattern, RegexOptions.IgnoreCase);
+                    Match managedImageMatch = managedImageRgx.Match(imageRefString);
+                    // Default Image Id
+                    Regex defaultImageRgx = new Regex(defaultExistingImagePattern, RegexOptions.IgnoreCase);
+                    Match defaultImageMatch = defaultImageRgx.Match(imageRefString);
+                    if (galleryMatch.Success)
+                    {
+                        // It's a Gallery Image Id
+                        // do nothing, send message to use TL.
+                        if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                        {
+                            WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+                        }
+                    }
+                    else if (managedImageMatch.Success)
+                    {
+                        // It's a Managed Image Id  
+                        // do nothing, send message to use TL.
+                        if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                        {
+                            WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+                        }
+                    }
+                    else if (defaultImageMatch.Success)
+                    {
+                        var parts = imageRefString.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                        // It's a default existing image  
+                        string imagePublisher = parts[Array.IndexOf(parts, "Publishers") + 1];
+                        string imageOffer = parts[Array.IndexOf(parts, "Offers") + 1];
+                        string imageSku = parts[Array.IndexOf(parts, "Skus") + 1];
+                        string imageVersion = parts[Array.IndexOf(parts, "Versions") + 1];
+                        //location is required when config object provided. 
+                        var imgResponse = ComputeClient.ComputeManagementClient.VirtualMachineImages.GetWithHttpMessagesAsync(
+                                this.Location.Canonicalize(),
+                                imagePublisher,
+                                imageOffer,
+                                imageSku,
+                                version: imageVersion).GetAwaiter().GetResult();
 
-                    setHyperVGenForImageCheckAndTLDefaulting(imgResponse);
+                        setHyperVGenForImageCheckAndTLDefaulting(imgResponse);
+                    }
                 }
                 else
                 {
@@ -1009,12 +1047,11 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             if (this.VM.SecurityProfile?.SecurityType == ConstantValues.TrustedLaunchSecurityType
-             && this.VM.StorageProfile?.ImageReference == null
-             && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id == null //had to add this
-             && this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId == null) 
+                && this.VM.StorageProfile?.ImageReference == null
+                && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id == null //had to add this
+                && this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId == null) 
             {
                 defaultTrustedLaunchAndUefi();
-
                 setTrustedLaunchImage();
             }
 
