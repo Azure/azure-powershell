@@ -23,6 +23,7 @@
 * Updated `New-AzApplicationGateway` to include `EnableRequestBuffering` and `EnableResponseBuffering` parameters
 * Changed the Default Rule Set from CRS3.0 to DRS2.1 in `NewAzureApplicationGatewayFirewallPolicy`
 * Added optional property 'Profile' to `New-AzFirewallPolicyIntrusionDetection` 
+* Added new cmdlet to updateConnection child resource of Network Virtual Appliance. - `Update-AzNetworkVirtualApplianceConnection`
 
 ## Version 7.1.0
 * Added DefaultOutboundAccess parameter on subnet creation
