@@ -140,3 +140,29 @@ eastus		sqlvm1		ResourceGroup01
 ```
 
 Update a SQL virtual machine's tag as a background job.
+
+### Example 11
+```powershell
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingEnable -AzureAdAuthenticationSettingClientId ''
+```
+
+```output
+Location	Name		ResourceGroupName
+--------	----		-----------------
+eastus		sqlvm1		ResourceGroup01	
+```
+
+Update a SQL virtual machine to enable "authentication with Microsoft Entra ID" using "System-assigned managed identity"
+
+### Example 12
+```powershell
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingEnable -AzureAdAuthenticationSettingClientId '11111111-2222-3333-4444-555555555555'
+```
+
+```output
+Location	Name		ResourceGroupName
+--------	----		-----------------
+eastus		sqlvm1		ResourceGroup01	
+```
+
+Update a SQL virtual machine to enable "authentication with Microsoft Entra ID" using "User-assigned managed identity"

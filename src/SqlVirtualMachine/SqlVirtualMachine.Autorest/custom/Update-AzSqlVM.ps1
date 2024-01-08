@@ -318,7 +318,20 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Enable automatic upgrade of Sql IaaS extension Agent.
     ${EnableAutomaticUpgrade},
-
+	
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable Azure Ad Authentication on SQL virtual machine.
+    ${AzureAdAuthenticationSettingEnable},
+	
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # The client Id of the Managed Identity to query Microsoft Graph API.
+    # An empty string must be used for the system assigned Managed Identity
+    ${AzureAdAuthenticationSettingClientId},
+	
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -420,6 +433,8 @@ process {
         $hasWsfcDomainCredentialsSqlServiceAccountPassword = $PSBoundParameters.Remove('WsfcDomainCredentialsSqlServiceAccountPassword')
         $hasWsfcStaticIP = $PSBoundParameters.Remove('WsfcStaticIP')
         $hasEnableAutomaticUpgrade = $PSBoundParameters.Remove('EnableAutomaticUpgrade')
+		$hasAzureAdAuthenticationSettingEnable = $PSBoundParameters.Remove('AzureAdAuthenticationSettingEnable')
+        $hasAzureAdAuthenticationSettingClientId = $PSBoundParameters.Remove('AzureAdAuthenticationSettingClientId')		
         
         $hasAsJob = $PSBoundParameters.Remove('AsJob')
         $null = $PSBoundParameters.Remove('WhatIf')
@@ -546,14 +561,27 @@ process {
         if ($hasEnableAutomaticUpgrade) {
             $sqlvm.EnableAutomaticUpgrade=$EnableAutomaticUpgrade
         }
-		
+        if ($hasAzureAdAuthenticationSettingClientId -or $AzureAdAuthenticationSettingEnable) {
+            $sqlvm.AzureAdAuthenticationSettingClientId=$AzureAdAuthenticationSettingClientId
+        }		
         if ($hasAsJob) {
             $PSBoundParameters.Add('AsJob', $true)
         }
 		
-        if ($PSCmdlet.ShouldProcess("SQL virtual machine $($sqlvm.Name)", "Update")) {
+        if ($hasAzureAdAuthenticationSettingEnable -and !$AzureAdAuthenticationSettingEnable)
+		{
+			$azError = "Disable Azure AD authentication on SQL VM is not allowed."
+			throw $azError
+		}	
+		
+        if ($AzureAdAuthenticationSettingEnable -or $hasAzureAdAuthenticationSettingClientId)
+		{		
+		Assert-AzSqlVMADAuth -ResourceGroupName $sqlVM.ResourceGroupName -Name $sqlVM.Name -AzureAdAuthenticationSettingClientId $AzureAdAuthenticationSettingClientId
+		}
+		if ($PSCmdlet.ShouldProcess("SQL virtual machine $($sqlvm.Name)", "Update")) {
             Az.SqlVirtualMachine.internal\New-AzSqlVM -InputObject $sqlvm -Parameter $sqlvm @PSBoundParameters
-        }
+        }		
+		
 	} catch {
 		throw
 	}
