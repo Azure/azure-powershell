@@ -1,5 +1,7 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication;
+﻿using Microsoft.Azure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -39,8 +41,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             HelpMessage = "Name of the blob container where the backup is going to be stored.")]
         public string StorageContainerName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The shared access signature (SAS) token to authenticate the storage account.")]
+        [Parameter(Mandatory = false, HelpMessage = "The shared access signature (SAS) token to authenticate the storage account.")]
         public SecureString SasToken { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Specified to use User Managed Identity to authenticate the storage account. Only valid when SasToken is not set.")]
+        public SwitchParameter UseUserManagedIdentity { get; set; }
 
         [Parameter(ParameterSetName = InputObjectStorageUri, Mandatory = true, ValueFromPipeline = true, HelpMessage = "Managed HSM object")]
         [Parameter(ParameterSetName = InputObjectStorageName, Mandatory = true, ValueFromPipeline = true, HelpMessage = "Managed HSM object")]
@@ -65,6 +70,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             if (this.IsParameterBound(c => c.StorageAccountName))
             {
                 StorageContainerUri = new Uri($"https://{StorageAccountName}.{DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix)}/{StorageContainerName}");
+            }
+
+            if (this.IsParameterBound(c => c.SasToken) && this.IsParameterBound(c => c.UseUserManagedIdentity))
+            {
+                throw new AzPSArgumentException("Parameter SasToken and UseUserManagedIdentity can not exist at the same time. Please choose either one as authentication method.", ErrorKind.UserError);
             }
         }
 
