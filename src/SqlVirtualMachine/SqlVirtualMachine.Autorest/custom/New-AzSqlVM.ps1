@@ -19,6 +19,8 @@
 Creates or updates a SQL virtual machine.
 .Description
 Creates or updates a SQL virtual machine.
+
+If you are updating an existing SQL virtual machine and a parameter such as -Tag is omitted, then the previously defined values may be removed. For this reason, it is recommended to use [Update-AzSqlVM](https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azsqlvm) to prevent overwriting of unintended parameters.
 .Example
 {{ Add code here }}
 .Example
@@ -524,12 +526,6 @@ function New-AzSqlVM {
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-        [System.String]
-        # ARM Resource id of underlying virtual machine created from SQL marketplace image.
-        ${VirtualMachineResourceId},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
