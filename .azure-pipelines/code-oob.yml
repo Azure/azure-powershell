@@ -131,7 +131,7 @@ stages:
       displayName: 'Generation Task'
       inputs:
         PackageName: 'Azure PowerShell - ${{ parameters.ServiceName }}'
-        BuildDropPath: '$(System.ArtifactsDirectory)/OOB'
+        BuildDropPath: OOB
 
     - task: PublishBuildArtifacts@1
       inputs:
