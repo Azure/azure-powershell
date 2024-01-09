@@ -26,10 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="C:\Users\dawang\Source\Repos\DawnWang17\azure-powershell-acs\src\shared\ConfigKeys.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CodeSigning\CodeSigning.csproj" />
   </ItemGroup>
 
@@ -38,7 +34,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Update="Azure.Core" Version="1.36.0" />
     <PackageReference Update="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Update="Microsoft.Identity.Client" Version="4.56.0" />
   </ItemGroup>
 
 </Project>

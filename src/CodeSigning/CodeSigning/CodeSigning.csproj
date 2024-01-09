@@ -6,8 +6,8 @@
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
-  <PropertyGroup>    
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>    
+  <PropertyGroup>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <OutputType>Library</OutputType>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
@@ -22,10 +22,10 @@
     <NoWarn>1701;1702;CS0214;</NoWarn>
   </PropertyGroup>
 
-  <ItemGroup>    
-    <PackageReference Include="Moq" Version="4.18.4" />    
-    <PackageReference Include="Polly" Version="7.2.3" />    
-    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="6.0.0" />    
+  <ItemGroup>
+    <PackageReference Include="Moq" Version="4.18.4" />
+    <PackageReference Include="Polly" Version="7.2.3" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="6.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,16 +52,17 @@
       <HintPath>Libraries\Azure.CodeSigning.Client.CryptoProvider.Utilities.dll</HintPath>
     </Reference>
   </ItemGroup>
-  
+
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
     </Compile>
   </ItemGroup>
-  
+
   <ItemGroup>
-    <PackageReference Update="Azure.Core" Version="1.28.0" />
-    <PackageReference Update="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Update="Azure.Core" Version="1.36.0" />
+    <PackageReference Update="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Update="Microsoft.Identity.Client" Version="4.56.0" />
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
