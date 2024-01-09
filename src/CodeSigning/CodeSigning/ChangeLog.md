@@ -19,6 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 1.0.0
-* General availability of `Az.CodeSigning` module
-* Remove deprecated PurgeDisabled property from PS models
+## Version 0.1.0
+* First preview release for module Az.CodeSigning
+
