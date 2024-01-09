@@ -71,7 +71,7 @@ steps:
   displayName: 'Generation Task'
     inputs:
       PackageName: 'Azure PowerShell - Az Tools Installer'
-      BuildDropPath: '$(System.ArtifactsDirectory)/artifacts'
+      BuildDropPath: artifacts
 
 - task: PublishPipelineArtifact@0
   displayName: 'Save artifacts'
