@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Added `DatabaseFormat` and `PricingModel` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance`
+* Added multi-secondary support for `Get-AzSqlDatabaseFailoverGroup`, `Remove-AzSqlDatabaseFromFailoverGroup` and `Add-AzSqlDatabaseFromFailoverGroup`
+* Change default FailoverPolicy value for `New-AzSqlDatabaseFailoverGroup`, `Set-AzSqlDatabaseFailoverGroup`
 
 ## Version 4.13.0
 * Fixed `Set-AzSqlDatabaseFailoverGroup` when going from multi-secondary to single secondary
