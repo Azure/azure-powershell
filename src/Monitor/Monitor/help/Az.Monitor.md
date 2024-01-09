@@ -7,7 +7,8 @@ Locale: en-US
 ---
 
 # Az.Monitor Module
-## Description
+## Description 
+
 This topic displays help topics for the Azure Insights Cmdlets.
 
 ## Az.Monitor Cmdlets
