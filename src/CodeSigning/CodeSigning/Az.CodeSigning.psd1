@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0.0'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -111,7 +111,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated Azure.Core to 1.36.0.'
+        ReleaseNotes = '* Initial release for public preview.'
 
         # Prerelease string of this module
         # Prerelease = ''
