@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 online version: https://learn.microsoft.com/powershell/module/az.network/update-aznetworkvirtualapplianceconnection
@@ -12,28 +12,26 @@ Update or Change a Network Virtual Appliance Connection resource.
 
 ## SYNTAX
 
-
-### ResourceNameParameterSet (Default)
+### ResourceNameParameterSet
 ```
-Update-AzNetworkVirtualApplianceConnection -ResourceGroupName <string> -VirtualApplianceName <string> -Name <string> 
- [-RoutingConfiguration <PSRoutingConfiguration> ]  [-Tag <Hashtable>] [-Force] [-AsJob]
+Update-AzNetworkVirtualApplianceConnection -ResourceGroupName <String> -VirtualApplianceName <String>
+ -Name <String> [-RoutingConfiguration <PSRoutingConfiguration>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceObjectParameterSet
 ```
-Update-AzNetworkVirtualApplianceConnection -ResourceGroupName <string> -VirtualAppliance <PSNetworkVirtualAppliance> -Name <string> 
- [-RoutingConfiguration <PSRoutingConfiguration> ]  [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzNetworkVirtualApplianceConnection -VirtualAppliance <PSNetworkVirtualAppliance> -Name <String>
+ [-RoutingConfiguration <PSRoutingConfiguration>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Update-AzNetworkVirtualApplianceConnection -ResourceGroupName <string> -VirtualApplianceResourceId <string> -Name <string> 
- [-RoutingConfiguration <PSRoutingConfiguration> ]  [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzNetworkVirtualApplianceConnection -VirtualApplianceResourceId <String> -Name <String>
+ [-RoutingConfiguration <PSRoutingConfiguration>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
-
 
 ## DESCRIPTION
 The Update-AzNetworkVirtualApplianceConnectiuon modifies a Network Virtual Appliance Connection resource.
@@ -47,7 +45,6 @@ $routingconfig = New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -Label
 Update-AzNetworkVirtualApplianceConnection -ResourceGroupName testrg -VirtualApplianceName nva -Name defaultConnection -RoutingConfiguration $routingconfig
 ```
 
-Modify the connection Routing Configuration. Set Associated Route table to none and Propagate to none route Table
 ```output
 Name                   : defaultConnection
 ProvisioningState      : Succeeded
@@ -95,6 +92,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Do not ask for confirmation if you want to overwrite a resource
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The resource name.
 
@@ -103,15 +115,45 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName, NetworkVirtualApplianceConnectionName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: True
 ```
 
+### -ResourceGroupName
+The resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RoutingConfiguration
+The routing configuration for this nva connection
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSRoutingConfiguration
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VirtualAppliance
-The parent Network Virtual Appliance for this connection.
+The parent Network Virtual Appliance object for this connection.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNetworkVirtualAppliance
@@ -122,6 +164,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -VirtualApplianceName
+The parent Network Virtual Appliance name.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceNameParameterSet
+Aliases: ParentNvaName, NetworkVirtualApplianceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -140,44 +197,29 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VirtualApplianceName
-The parent virtual appliance resource name.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.String
-Parameter Sets: ResourceNameParameterSet
-Aliases: ParentNvaName, NetworkVirtualApplianceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-
-### -RoutingConfiguration
-Routing configuration for this connection
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRoutingConfiguration
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
