@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-
 * Fixed ABAC condition not included in role definition payload. `Get-AzRoleDefinition` will now contain ABAC Condition and ConditionVersion info when applicable.
 
 ## Version 6.13.0
