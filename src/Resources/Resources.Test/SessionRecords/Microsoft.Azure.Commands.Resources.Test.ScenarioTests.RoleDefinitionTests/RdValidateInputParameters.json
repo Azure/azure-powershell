@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "52b0848c-d1ea-4dab-ba8f-c184653a8fe1"
+          "e25f6d92-1ec9-4066-bfd3-d8a757135c2f"
         ],
         "Accept-Language": [
           "en-US"
@@ -14,8 +14,8 @@
         "User-Agent": [
           "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.23606",
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/6.12.0"
+          "OSVersion/Microsoft.Windows.10.0.23612",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/6.13.0"
         ]
       },
       "RequestBody": "",
@@ -27,7 +27,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "114e07fe-23da-4ce7-87c6-ed5db1a5e7ac"
+          "5be5268c-0f3e-41dc-9f77-a6c5e6504c52"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -39,16 +39,16 @@
           "x-ms-gateway-slice=Production; path=/; secure; samesite=none; httponly"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "29557753-5a8f-41a0-82fb-d7930ea9922c"
+          "62b497e1-3ba6-4cfb-b2b1-89b6ac272835"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20231219T080540Z:29557753-5a8f-41a0-82fb-d7930ea9922c"
+          "WESTUS2:20240109T031331Z:62b497e1-3ba6-4cfb-b2b1-89b6ac272835"
         ],
         "Date": [
-          "Tue, 19 Dec 2023 08:05:39 GMT"
+          "Tue, 09 Jan 2024 03:13:31 GMT"
         ],
         "Content-Length": [
           "627"
