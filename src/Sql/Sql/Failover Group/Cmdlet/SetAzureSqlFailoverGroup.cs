@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The failover policy of the Azure SQL Database Failover Group.")]
         [ValidateNotNullOrEmpty]
-        [PSDefaultValue(Help = "Automatic")]
+        [PSDefaultValue(Help = "Manual")]
         public FailoverPolicy FailoverPolicy { get; set; }
 
         /// <summary>
