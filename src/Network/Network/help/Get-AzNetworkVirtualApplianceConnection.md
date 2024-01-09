@@ -41,6 +41,7 @@ Get-AzNetworkVirtualApplianceConnection -ResourceGroupName testrg -VirtualApplia
 ```output
 Name                   : defaultConnection
 ProvisioningState      : Succeeded
+PropagateStaticRoutes  : False
 EnableInternetSecurity : False
 BgpPeerAddress         : []
 Asn                    : 65222
@@ -75,6 +76,7 @@ Get-AzNetworkVirtualApplianceConnection -VirtualAppliance $nva
 ```output
 Name                   : defaultConnection
 ProvisioningState      : Succeeded
+PropagateStaticRoutes  : False
 EnableInternetSecurity : False
 BgpPeerAddress         : []
 Asn                    : 65222

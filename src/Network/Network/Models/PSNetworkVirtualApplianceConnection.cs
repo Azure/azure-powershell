@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public IList<string> BgpPeerAddress { get; set; }
 
+        public bool PropagateStaticRoutes { get; set; }
         public bool EnableInternetSecurity { get; set; }
 
         public PSRoutingConfiguration RoutingConfiguration { get; set; }

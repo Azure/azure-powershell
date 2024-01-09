@@ -7180,6 +7180,10 @@
 							  <PropertyName>ProvisioningState</PropertyName>
 						  </ListItem>
 						  <ListItem>
+							  <Label>PropagateStaticRoutes</Label>
+							  <PropertyName>PropagateStaticRoutes</PropertyName>
+						  </ListItem>
+						  <ListItem>
 							  <Label>EnableInternetSecurity</Label>
 							  <PropertyName>EnableInternetSecurity</PropertyName>
 						  </ListItem>

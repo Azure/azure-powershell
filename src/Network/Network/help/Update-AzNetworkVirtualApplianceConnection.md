@@ -12,7 +12,7 @@ Update or Change a Network Virtual Appliance Connection resource.
 
 ## SYNTAX
 
-### ResourceNameParameterSet
+### ResourceNameParameterSet (Default)
 ```
 Update-AzNetworkVirtualApplianceConnection -ResourceGroupName <String> -VirtualApplianceName <String>
  -Name <String> [-RoutingConfiguration <PSRoutingConfiguration>] [-Force]
