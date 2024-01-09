@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public string AseName { get; set; }
 
-        [Parameter(Position = 9, Mandatory = false, HelpMessage = "Resource group of Application Service environment")]
+        [Parameter(Position = 10, Mandatory = false, HelpMessage = "Resource group of Application Service environment")]
         [ValidateNotNullOrEmpty]
         public string AseResourceGroupName { get; set; }
 
