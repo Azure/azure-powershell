@@ -1,4 +1,6 @@
-$Modules = Get-ChildItem -Recurse -Depth 2 -Path src -File -Filter *.sln | ForEach-Object {$_.BaseName}
+$ProjectRoot = "$PSScriptRoot/../.."
+
+$Modules = Get-ChildItem -Recurse -Depth 2 -Path "$ProjectRoot/src" -File -Filter *.sln | ForEach-Object {$_.BaseName}
 
 $Content = @"
 # Azure PowerShell Modules
@@ -8,7 +10,7 @@ $Content = @"
 | Description                           | Module Name | PowerShell Gallery Link          |
 | ------------------------------------- | ----------- | -------------------------------- |
 | Azure PowerShell                      | ``Az``        | [![Az]][AzGallery]               |
-| Azure PowerShell with preview modules | ``AzPreview`` | [![AzPreview]][AzPreviewGallery] |
+| Azure PowerShell with preview Modules | ``AzPreview`` | [![AzPreview]][AzPreviewGallery] |
 
 ## Service Modules
 
@@ -17,16 +19,18 @@ $Content = @"
 
 "@
 
-foreach ($module in $Modules)
+# Table
+foreach ($Module in $Modules)
 {
-    $serviceName = $module
-    $moduleName = "``Az.$module``"
-    $PSGalleryLink = "[![$module]][${module}Gallery]"
-    $changeLogLink = "[Changelog][${module}ChangeLog]"
-    $content += "| {0, -30} | {1, -31} | {2, -66} | {3, -48} |`n" -f $serviceName, $moduleName, $PSGalleryLink, $changeLogLink
+    $ServiceName = $Module
+    $ModuleName = "``Az.$Module``"
+    $PSGalleryLink = "[![$Module]][${Module}Gallery]"
+    $ChangeLogLink = "[Changelog][${Module}ChangeLog]"
+    $Content += "| {0,-30} | {1,-31} | {2,-66} | {3,-48} |`n" -f $ServiceName, $ModuleName, $PSGalleryLink, $ChangeLogLink
 }
 
-$content += @"
+# Shields
+$Content += @"
 
 <!-- References -->
 
@@ -35,35 +39,36 @@ $content += @"
 [AzPreview]:                  https://img.shields.io/powershellgallery/v/AzPreview.svg?style=flat-square&label=AzPreview
 
 "@
-
-foreach ($module in $Modules)
+foreach ($Module in $Modules)
 {
-    $ShieldsLink = "[${module}]:"
-    $content += "{0, -29} https://img.shields.io/powershellgallery/v/Az.$Module.svg?style=flat-square&label=Az.$Module`n" -f $ShieldsLink
+    $ShieldsLink = "[${Module}]:"
+    $Content += "{0,-29} https://img.shields.io/powershellgallery/v/Az.$Module.svg?style=flat-square&label=Az.$Module`n" -f $ShieldsLink
 }
 
-$content += @"
+# PowerShell Gallery
+$Content += @"
 
 <!-- PS Gallery -->
 [AzGallery]:                         https://www.powershellgallery.com/packages/Az/
 [AzPreviewGallery]:                  https://www.powershellgallery.com/packages/AzPreview/
 
 "@
-
-foreach ($module in $Modules)
+foreach ($Module in $Modules)
 {
-    $PSGalleryLink = "[${module}Gallery]:"
-    $content += "{0, -36} https://www.powershellgallery.com/packages/Az.$Module/`n" -f $PSGalleryLink
+    $PSGalleryLink = "[${Module}Gallery]:"
+    $Content += "{0,-36} https://www.powershellgallery.com/packages/Az.$Module/`n" -f $PSGalleryLink
 }
-$content += @"
+
+# ChangeLog
+$Content += @"
 
 <!-- ChangeLog -->
 
 "@
-foreach ($module in $Modules)
+foreach ($Module in $Modules)
 {
     $ChangeLogLink = "[${Module}ChangeLog]:"
-    $content += "{0, -38} ../src/$Module/$Module/ChangeLog.md`n" -f $ChangeLogLink
+    $Content += "{0,-38} ../src/$Module/$Module/ChangeLog.md`n" -f $ChangeLogLink
 }
 
-$content | Out-File -FilePath .\documentation\azure-powershell-modules.md -Encoding utf8
+$Content | Out-File -FilePath "$ProjectRoot/documentation/azure-powershell-Modules.md" -Encoding utf8
