@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.Network
     using System.Management.Automation;
 
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkVirtualApplianceConnection",
-        SupportsShouldProcess = true),
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = ResourceNameParameterSet),
         OutputType(typeof(PSNetworkVirtualApplianceConnection))]
     public class UpdateAzureNetworkVirtualConnectionCommand : VirtualConnectionBaseCmdlet
     {
