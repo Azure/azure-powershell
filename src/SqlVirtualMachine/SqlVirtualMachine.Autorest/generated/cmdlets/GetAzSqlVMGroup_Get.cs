@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Description(@"Gets a SQL virtual machine group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/{sqlVirtualMachineGroupName}", ApiVersion = "2022-08-01-preview")]
     public partial class GetAzSqlVMGroup_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.IEventListener
     {
