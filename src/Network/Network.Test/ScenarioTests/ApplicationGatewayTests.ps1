@@ -2042,8 +2042,8 @@ function Test-ApplicationGatewaySkuFamilyGet
 		$sku01 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw
 		Assert-NotNull $sku01
 		Assert-AreEqual $sku01.Capacity 2
-		Assert-AreEqual $sku01.Name Basic
-		Assert-AreEqual $sku01.Tier Basic
+		Assert-AreEqual $sku01.Name Standard_v2
+		Assert-AreEqual $sku01.Tier Standard_v2
 		Assert-AreEqual $sku01.Family Generation_1
 
 		# Set Application Gateway
