@@ -1,7 +1,7 @@
 ### Example 1: Fetch the Key for the specified Communcation service
 
 ```powershell
-PS C:\> Get-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+Get-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 
 PrimaryConnectionString              PrimaryKey            SecondaryConnectionString               SecondaryKey
 -----------------------              ----------            -----------------------                 ----------

@@ -18,10 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `DatabaseFormat` and `PricingModel` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance`
+
+## Version 4.13.0
+* Fixed `Set-AzSqlDatabaseFailoverGroup` when going from multi-secondary to single secondary
+* Added `SecondaryComputeModel`, `AutoPauseDelayInMinutes` and `MinimumCapacity` parameters within `New-AzSqlDatabaseSecondary`
 
 ## Version 4.12.0
 * Added new parameters `MaintenanceConfigurationId`, `DnsZone` to `AzSqlInstancePool` cmdlets
-* Fixed `Set-AzSqlDatabaseFailoverGroup` when going from multi-secondary to single secondary
 
 ## Version 4.11.0
 * Added new parameters to `New-AzSqlDatabaseFailoverGroup`, `Set-AzSqlDatabaseFailoverGroup`

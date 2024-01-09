@@ -13,7 +13,7 @@ Invalidates the previous Primary key, regenerate a new one and return it.
 ### Example 2: Regenerates the Secondary key using a KeyType
 
 ```powershell
-PS C:\> New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -KeyType Secondary
+New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -KeyType Secondary
 
 SecondaryConnectionString               SecondaryKey
 -----------------------                 ----------

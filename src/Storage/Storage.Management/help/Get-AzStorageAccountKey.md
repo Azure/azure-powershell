@@ -36,14 +36,14 @@ This command gets the keys for the specified Azure Storage account.
 
 ```
 This command gets a specific key for a Storage account.
-PS C:\>(Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount")| Where-Object {$_.KeyName -eq "key1"}
+(Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount")| Where-Object {$_.KeyName -eq "key1"}
 
 KeyName Value             Permissions CreationTime
 ------- -----             ----------- ------------
 key1    <KeyValue>        Full             
 
 This command gets a specific key value for a Storage account. 
-PS C:\>(Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount")[0].Value
+(Get-AzStorageAccountKey -ResourceGroupName "RG01" -Name "mystorageaccount")[0].Value
 
 <KeyValue>
 ```

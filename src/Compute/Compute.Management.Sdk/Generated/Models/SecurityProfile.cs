@@ -45,11 +45,18 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// UefiSettings. The default behavior is: UefiSettings will not be
         /// enabled unless this property is set. Possible values include:
         /// 'TrustedLaunch', 'ConfidentialVM'</param>
-        public SecurityProfile(UefiSettings uefiSettings = default(UefiSettings), bool? encryptionAtHost = default(bool?), string securityType = default(string))
+        /// <param name="encryptionIdentity">Specifies the Managed Identity
+        /// used by ADE to get access token for keyvault operations.</param>
+        /// <param name="proxyAgentSettings">Specifies ProxyAgent settings
+        /// while creating the virtual machine. Minimum api-version:
+        /// 2023-09-01.</param>
+        public SecurityProfile(UefiSettings uefiSettings = default(UefiSettings), bool? encryptionAtHost = default(bool?), string securityType = default(string), EncryptionIdentity encryptionIdentity = default(EncryptionIdentity), ProxyAgentSettings proxyAgentSettings = default(ProxyAgentSettings))
         {
             UefiSettings = uefiSettings;
             EncryptionAtHost = encryptionAtHost;
             SecurityType = securityType;
+            EncryptionIdentity = encryptionIdentity;
+            ProxyAgentSettings = proxyAgentSettings;
             CustomInit();
         }
 
@@ -86,6 +93,20 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "securityType")]
         public string SecurityType { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the Managed Identity used by ADE to get
+        /// access token for keyvault operations.
+        /// </summary>
+        [JsonProperty(PropertyName = "encryptionIdentity")]
+        public EncryptionIdentity EncryptionIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies ProxyAgent settings while creating the
+        /// virtual machine. Minimum api-version: 2023-09-01.
+        /// </summary>
+        [JsonProperty(PropertyName = "proxyAgentSettings")]
+        public ProxyAgentSettings ProxyAgentSettings { get; set; }
 
     }
 }

@@ -210,15 +210,11 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [PSArgumentCompleter(
-            "CentOS",
             "CentOS85Gen2",
-            "Debian",
             "Debian11",
             "OpenSuseLeap154Gen2",
-            "RHEL",
             "RHELRaw8LVMGen2",
             "SuseSles15SP3",
-            "UbuntuLTS",
             "Ubuntu2204",
             "FlatcarLinuxFreeGen2",
             "Win2022Datacenter",
@@ -1101,7 +1097,7 @@ namespace Microsoft.Azure.Commands.Compute
                         result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.VM.Name,
-                        parameters,
+                        parameters,null,null,
                         auxAuthHeader).GetAwaiter().GetResult();
                     }
                     catch (Exception ex)

@@ -166,9 +166,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 Size = PoolSize,
                 Location = Location,
                 Tags = tagPairs,
-                QosType = QosType,
-                CoolAccess = CoolAccess
+                QosType = QosType                
             };
+            if (CoolAccess.IsPresent)
+            {
+                capacityPoolBody.CoolAccess = CoolAccess;
+            }
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {

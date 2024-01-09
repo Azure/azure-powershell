@@ -106,10 +106,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update a managed Cassandra cluster. When updating, you must specify all writable properties. To update only some properties, use PATCH.
+        /// Create or update a managed Cassandra cluster. When updating, you must
+        /// specify all writable properties. To update only some properties, use PATCH.
         /// </summary>
         /// <remarks>
-        /// Create or update a managed Cassandra cluster. When updating, you must specify all writable properties. To update only some properties, use PATCH.
+        /// Create or update a managed Cassandra cluster. When updating, you must
+        /// specify all writable properties. To update only some properties, use PATCH.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -118,7 +120,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Managed Cassandra cluster name.
         /// </param>
         /// <param name='body'>
-        /// The properties specifying the desired state of the managed Cassandra cluster.
+        /// The properties specifying the desired state of the managed Cassandra
+        /// cluster.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -164,10 +167,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ClusterResource>> UpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, ClusterResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Invoke a command like nodetool for cassandra maintenance 
+        /// Invoke a command like nodetool for cassandra maintenance
         /// </summary>
         /// <remarks>
-        /// Invoke a command like nodetool for cassandra maintenance 
+        /// Invoke a command like nodetool for cassandra maintenance
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -193,10 +196,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CommandOutput>> InvokeCommandWithHttpMessagesAsync(string resourceGroupName, string clusterName, CommandPostBody body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deallocate the Managed Cassandra Cluster and Associated Data Centers. Deallocation will deallocate the host virtual machine of this cluster, and reserved the data disk. This won&#39;t do anything on an already deallocated cluster. Use Start to restart the cluster.
+        /// Deallocate the Managed Cassandra Cluster and Associated Data Centers.
+        /// Deallocation will deallocate the host virtual machine of this cluster, and
+        /// reserved the data disk. This won&#39;t do anything on an already deallocated
+        /// cluster. Use Start to restart the cluster.
         /// </summary>
         /// <remarks>
-        /// Deallocate the Managed Cassandra Cluster and Associated Data Centers. Deallocation will deallocate the host virtual machine of this cluster, and reserved the data disk. This won&#39;t do anything on an already deallocated cluster. Use Start to restart the cluster.
+        /// Deallocate the Managed Cassandra Cluster and Associated Data Centers.
+        /// Deallocation will deallocate the host virtual machine of this cluster, and
+        /// reserved the data disk. This won&#39;t do anything on an already deallocated
+        /// cluster. Use Start to restart the cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -216,10 +225,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeallocateWithHttpMessagesAsync(string resourceGroupName, string clusterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Start the Managed Cassandra Cluster and Associated Data Centers. Start will start the host virtual machine of this cluster with reserved data disk. This won&#39;t do anything on an already running cluster. Use Deallocate to deallocate the cluster.
+        /// Start the Managed Cassandra Cluster and Associated Data Centers. Start will
+        /// start the host virtual machine of this cluster with reserved data disk.
+        /// This won&#39;t do anything on an already running cluster. Use Deallocate to
+        /// deallocate the cluster.
         /// </summary>
         /// <remarks>
-        /// Start the Managed Cassandra Cluster and Associated Data Centers. Start will start the host virtual machine of this cluster with reserved data disk. This won&#39;t do anything on an already running cluster. Use Deallocate to deallocate the cluster.
+        /// Start the Managed Cassandra Cluster and Associated Data Centers. Start will
+        /// start the host virtual machine of this cluster with reserved data disk.
+        /// This won&#39;t do anything on an already running cluster. Use Deallocate to
+        /// deallocate the cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -239,10 +254,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> StartWithHttpMessagesAsync(string resourceGroupName, string clusterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the CPU, memory, and disk usage statistics for each Cassandra node in a cluster.
+        /// Gets the CPU, memory, and disk usage statistics for each Cassandra node in
+        /// a cluster.
         /// </summary>
         /// <remarks>
-        /// Gets the CPU, memory, and disk usage statistics for each Cassandra node in a cluster.
+        /// Gets the CPU, memory, and disk usage statistics for each Cassandra node in
+        /// a cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -288,10 +305,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update a managed Cassandra cluster. When updating, you must specify all writable properties. To update only some properties, use PATCH.
+        /// Create or update a managed Cassandra cluster. When updating, you must
+        /// specify all writable properties. To update only some properties, use PATCH.
         /// </summary>
         /// <remarks>
-        /// Create or update a managed Cassandra cluster. When updating, you must specify all writable properties. To update only some properties, use PATCH.
+        /// Create or update a managed Cassandra cluster. When updating, you must
+        /// specify all writable properties. To update only some properties, use PATCH.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -300,7 +319,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Managed Cassandra cluster name.
         /// </param>
         /// <param name='body'>
-        /// The properties specifying the desired state of the managed Cassandra cluster.
+        /// The properties specifying the desired state of the managed Cassandra
+        /// cluster.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -346,10 +366,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ClusterResource>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, ClusterResource body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Invoke a command like nodetool for cassandra maintenance 
+        /// Invoke a command like nodetool for cassandra maintenance
         /// </summary>
         /// <remarks>
-        /// Invoke a command like nodetool for cassandra maintenance 
+        /// Invoke a command like nodetool for cassandra maintenance
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -375,10 +395,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CommandOutput>> BeginInvokeCommandWithHttpMessagesAsync(string resourceGroupName, string clusterName, CommandPostBody body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deallocate the Managed Cassandra Cluster and Associated Data Centers. Deallocation will deallocate the host virtual machine of this cluster, and reserved the data disk. This won&#39;t do anything on an already deallocated cluster. Use Start to restart the cluster.
+        /// Deallocate the Managed Cassandra Cluster and Associated Data Centers.
+        /// Deallocation will deallocate the host virtual machine of this cluster, and
+        /// reserved the data disk. This won&#39;t do anything on an already deallocated
+        /// cluster. Use Start to restart the cluster.
         /// </summary>
         /// <remarks>
-        /// Deallocate the Managed Cassandra Cluster and Associated Data Centers. Deallocation will deallocate the host virtual machine of this cluster, and reserved the data disk. This won&#39;t do anything on an already deallocated cluster. Use Start to restart the cluster.
+        /// Deallocate the Managed Cassandra Cluster and Associated Data Centers.
+        /// Deallocation will deallocate the host virtual machine of this cluster, and
+        /// reserved the data disk. This won&#39;t do anything on an already deallocated
+        /// cluster. Use Start to restart the cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -398,10 +424,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeallocateWithHttpMessagesAsync(string resourceGroupName, string clusterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Start the Managed Cassandra Cluster and Associated Data Centers. Start will start the host virtual machine of this cluster with reserved data disk. This won&#39;t do anything on an already running cluster. Use Deallocate to deallocate the cluster.
+        /// Start the Managed Cassandra Cluster and Associated Data Centers. Start will
+        /// start the host virtual machine of this cluster with reserved data disk.
+        /// This won&#39;t do anything on an already running cluster. Use Deallocate to
+        /// deallocate the cluster.
         /// </summary>
         /// <remarks>
-        /// Start the Managed Cassandra Cluster and Associated Data Centers. Start will start the host virtual machine of this cluster with reserved data disk. This won&#39;t do anything on an already running cluster. Use Deallocate to deallocate the cluster.
+        /// Start the Managed Cassandra Cluster and Associated Data Centers. Start will
+        /// start the host virtual machine of this cluster with reserved data disk.
+        /// This won&#39;t do anything on an already running cluster. Use Deallocate to
+        /// deallocate the cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

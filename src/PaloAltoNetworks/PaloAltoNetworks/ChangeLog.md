@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.1
+* Upgraded API version to 2023-09-01
+
 ## Version 0.1.0
 * First preview release for module Az.PaloAltoNetworks
 

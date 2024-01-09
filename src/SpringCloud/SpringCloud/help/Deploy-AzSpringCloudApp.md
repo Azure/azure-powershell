@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.SpringCloud/deploy-azSpringCloudapp
 schema: 2.0.0
@@ -14,16 +14,16 @@ Deploy the build file to an existing deployment.
 
 ### DeployAppForStandard (Default)
 ```
-Deploy-AzSpringCloudApp -FilePath <String> -Name <String> -ResourceGroupName <String> -ServiceName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Deploy-AzSpringCloudApp -Name <String> -ResourceGroupName <String> -ServiceName <String> -FilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DeployAppForEnterprise
 ```
-Deploy-AzSpringCloudApp -AgentPoolId <String> -BuilderId <String> -FilePath <String> -Name <String>
- -ResourceGroupName <String> -ServiceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Deploy-AzSpringCloudApp -Name <String> -ResourceGroupName <String> -ServiceName <String> -FilePath <String>
+ [-SubscriptionId <String>] -BuilderId <String> -AgentPoolId <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -273,4 +273,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

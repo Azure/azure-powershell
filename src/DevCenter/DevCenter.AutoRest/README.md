@@ -31,14 +31,18 @@ For information on how to develop for `Az.DevCenter`, see [how-to.md](how-to.md)
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: 4f6418dca8c15697489bbe6f855558bb79ca5bf5
+commit: b5e14f2fcc1e0de74c4dcf1d6e518f9faf743417
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/commonDefinitions.json
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/devcenter.json
-  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/vdi.json
+  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2023-10-01-preview/commonDefinitions.json
+  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2023-10-01-preview/devcenter.json
+  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2023-10-01-preview/vdi.json
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/sync"].post.responses
@@ -112,15 +116,26 @@ directive:
     set:
       default:
         script: '"Windows_Client"'
+  - where:
+      subject: DevCenter
+      parameter-name: CustomerManagedKeyEncryptionKeyUrl
+    hide: true
+  - where:
+      subject: DevCenter
+      parameter-name: KeyEncryptionKeyIdentityDelegatedIdentityClientId
+    hide: true
+  - where:
+      subject: DevCenter
+      parameter-name: KeyEncryptionKeyIdentityType
+    hide: true
+  - where:
+      subject: DevCenter
+      parameter-name: KeyEncryptionKeyIdentityUserAssignedIdentityResourceId
+    hide: true
 # Remove Set per design review
   - where:
       verb: Set
     remove: true
-# API not available yet
-  - where:
-      verb: Start
-      subject: PoolHealthCheck
-    hide: true
 # Remove extra input object variant 
   - where:
       verb: Get 
@@ -173,6 +188,13 @@ directive:
   - where:
       verb: New
       subject: ^AttachedNetwork$|^Catalog$|^DevBoxDefinition$|^Gallery$|^NetworkConnection$|^Pool$|^Project$|^ProjectEnvironmentType$
+    hide: true
+  - where:
+      subject: ^CatalogDevBoxDefinition$|^CatalogDevBoxDefinitionErrorDetail$|^CustomizationTask|^CustomizationTaskErrorDetail$
+    hide: true
+  - where:
+      verb: Connect
+      subject: Catalog
     hide: true
   - where:
       subject: OperationStatuses

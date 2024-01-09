@@ -31,8 +31,7 @@ Get-AzRecoveryServicesBackupStatus -ResourceId <String> [-DefaultProfile <IAzure
 ```
 
 ## DESCRIPTION
-The command returns null/empty if the specified resource is not protected under any Recovery Services vault in the subscription.
-If it is protected, the relevant vault details will be returned.
+The command returns null/empty if the specified resource is not protected under any Recovery Services vault in the subscription. When configuring backup fails, it may return vault details. If Azure Backup is failing, then look for the corresponding error code in the [common issues](https://learn.microsoft.com/en-us/azure/backup/backup-azure-vms-troubleshoot#common-issues) section. If it is protected, the relevant vault details will be returned.
 
 ## EXAMPLES
 

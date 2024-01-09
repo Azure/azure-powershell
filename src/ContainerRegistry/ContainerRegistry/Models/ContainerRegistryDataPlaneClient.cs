@@ -26,6 +26,7 @@ using Azure.Containers.ContainerRegistry;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.ContainerRegistry.Track2Models;
 using Azure;
+using Azure.Core.Serialization;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
@@ -168,9 +169,35 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             return GetRepository(repository);
         }
 
-        public PSAcrManifest ListManifest(string repository)
+        public PSAcrManifest ListManifest(string repositoryName)
         {
-            return new ContainerRegistryManifestListOperation(this, repository).ProcessRequest();
+            ContainerRepository repository = _track2Client.GetRepository(repositoryName);
+            Pageable<ArtifactManifestProperties> properties = repository.GetAllManifestProperties();
+            PSAcrManifest result = new PSAcrManifest();
+            IEnumerable<Page<ArtifactManifestProperties>> pages = properties.AsPages();
+            result.ManifestsAttributes = new List<PSManifestAttributeBase>();
+            foreach (Page<ArtifactManifestProperties> page in pages)
+            {
+                Response httpPageResponse = page.GetRawResponse();
+                dynamic pageContent = httpPageResponse.Content.ToDynamicFromJson(JsonPropertyNames.CamelCase);
+                result.ImageName = pageContent.ImageName;
+                result.Registry = pageContent.registry;
+                // Iterate over items in Manifests collection
+                foreach (dynamic property in pageContent.Manifests)
+                {
+                    List<string> tagList = new List<string>();
+                    if (property.Tags != null)
+                    {
+                        tagList.AddRange((List<string>)property.Tags);
+                    }
+                    result.ManifestsAttributes.Add(new PSManifestAttributeBase(property.Digest, property.ImageSize, property.CreatedTime, property.LastUpdateTime, 
+                    property.Architecture, property.Os,property.MediaType, property.ConfigMediaType, tagList, 
+                    new PSChangeableAttribute(property.ChangeableAttributes.DeleteEnabled, property.ChangeableAttributes.WriteEnabled, property.ChangeableAttributes.ListEnabled, property.ChangeableAttributes.ReadEnabled)));
+                }
+            }
+
+            
+            return result;
         }
 
         public PSManifestAttribute GetManifest(string repository, string manifest)

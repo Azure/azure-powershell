@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Updated the default parameter set for Get-AzDevCenterUserSchedule to "list"
+
 ## Version 1.0.0
 * General availability for module Az.DevCenter
 

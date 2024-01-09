@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
     /// command whose predicate includes all user identities that require purging. Use the in operator to specify multiple identities.
     /// You should run the query prior to using for a purge request to verify that the results are expected.\nNote: this operation
     /// is intended for Classic resources, for workspace-based Application Insights resource please run purge operation (directly
-    /// on the workspace)(https://learn.microsoft.com/en-us/rest/api/loganalytics/workspace-purge/purge) , scoped to specific resource
+    /// on the workspace)(https://docs.microsoft.com/en-us/rest/api/loganalytics/workspace-purge/purge) , scoped to specific resource
     /// id.
     /// </summary>
     /// <remarks>
@@ -23,8 +23,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Clear, @"AzApplicationInsights_PurgeViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(string))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Description(@"Purges data in an Application Insights component by a set of user-defined filters.\n\nIn order to manage system resources, purge requests are throttled at 50 requests per hour. You should batch the execution of purge requests by sending a single command whose predicate includes all user identities that require purging. Use the in operator to specify multiple identities. You should run the query prior to using for a purge request to verify that the results are expected.\nNote: this operation is intended for Classic resources, for  workspace-based Application Insights resource please run purge operation (directly on the workspace)(https://learn.microsoft.com/en-us/rest/api/loganalytics/workspace-purge/purge) , scoped to specific resource id.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Description(@"Purges data in an Application Insights component by a set of user-defined filters.\n\nIn order to manage system resources, purge requests are throttled at 50 requests per hour. You should batch the execution of purge requests by sending a single command whose predicate includes all user identities that require purging. Use the in operator to specify multiple identities. You should run the query prior to using for a purge request to verify that the results are expected.\nNote: this operation is intended for Classic resources, for  workspace-based Application Insights resource please run purge operation (directly on the workspace)(https://docs.microsoft.com/en-us/rest/api/loganalytics/workspace-purge/purge) , scoped to specific resource id.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}/purge", ApiVersion = "2020-02-02")]
     public partial class ClearAzApplicationInsights_PurgeViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.IEventListener
     {
@@ -54,9 +55,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.ApplicationInsightsManagementClient Client => Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.ParameterCategory.Azure)]

@@ -105,7 +105,7 @@ class ClusterCommonCreateParameter{
 function Prepare-ClusterCreateParameter{
     param(
       [string] $clusterName="hdi-ps-test",
-      [string] $location="East US",
+      [string] $location="japaneast",
       [string] $resourceGroupName="group-ps-test",
 	  [string] $storageAccountName="storagepstest",
       [string] $clusterType="Spark"

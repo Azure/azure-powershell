@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
 
         /// <param name="serviceType">ServiceType for the service.
-        /// Possible values include: 'SqlDedicatedGateway', 'DataTransfer',
-        /// 'GraphAPICompute', 'MaterializedViewsBuilder'</param>
+        /// Possible values include: &#39;SqlDedicatedGateway&#39;, &#39;DataTransfer&#39;,
+        /// &#39;GraphAPICompute&#39;, &#39;MaterializedViewsBuilder&#39;</param>
 
         /// <param name="instanceSize">Instance type for the service.
-        /// Possible values include: 'Cosmos.D4s', 'Cosmos.D8s', 'Cosmos.D16s'</param>
+        /// Possible values include: &#39;Cosmos.D4s&#39;, &#39;Cosmos.D8s&#39;, &#39;Cosmos.D16s&#39;</param>
 
         /// <param name="instanceCount">Instance count for the service.
         /// </param>

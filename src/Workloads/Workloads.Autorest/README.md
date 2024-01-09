@@ -30,9 +30,11 @@ For information on how to develop for `Az.Workloads`, see [how-to.md](how-to.md)
 > see https://aka.ms/autorest
 
 ```yaml
-branch: c7c06e7e311df89b6851aa7e12142c8f0d129cd8 
+commit: 202321f386ea5b0c103b46902d43b3d3c50e029c
+tag: package-preview-2023-10
+# tag: package-2023-04
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/workloads/resource-manager/readme.md
 
 try-require: 
@@ -42,6 +44,10 @@ resourcegroup-append: true
 identity-correction-for-post: true
 nested-object-to-string: true
 inlining-threshold: 100
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
 # Monitor
@@ -352,6 +358,11 @@ directive:
 #   - PrometheusHaClusterProviderInstanceProperties
 #   - MsSqlServerProviderInstanceProperties
 
+- from: swagger-document
+  where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}"].delete.responses
+  transform: >-
+    return { "200": { "description": "OK" }, "202": { "description": "Accepted", "headers": { "Location": { "description": "The URL of the resource used to check the status of the asynchronous operation.", "type": "string" }, "Retry-After": { "description": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation.", "type": "integer",	"format": "int32" }, "Azure-AsyncOperation": { "description": "The URI to poll for completion status.", "type": "string" } } }, "204": { "description": "No Content" }, "default": { "description": "Error response describing why the operation failed.", "schema": { "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/202321f386ea5b0c103b46902d43b3d3c50e029c/specification/common-types/resource-management/v3/types.json#/definitions/ErrorResponse" } } }
+ 	  
 # Result shoule be in SingleServerRecommendationResult and ThreeTierRecommendationResult
 - from: source-file-csharp
   where: $

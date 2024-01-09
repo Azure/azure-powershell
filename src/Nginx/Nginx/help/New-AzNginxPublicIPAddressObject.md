@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Nginx-help.xml
 Module Name: Az.Nginx
 online version: https://learn.microsoft.com/powershell/module/az.Nginx/new-AzNginxPublicIPAddressObject
 schema: 2.0.0
@@ -38,7 +38,6 @@ Create an in-memory object for NginxPublicIPAddress.
 
 ### -Id
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -65,4 +64,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

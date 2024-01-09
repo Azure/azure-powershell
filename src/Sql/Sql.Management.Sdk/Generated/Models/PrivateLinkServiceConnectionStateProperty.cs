@@ -22,13 +22,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="status">The private link service connection status.
-        /// Possible values include: 'Approved', 'Pending', 'Rejected', 'Disconnected'</param>
+        /// Possible values include: &#39;Approved&#39;, &#39;Pending&#39;, &#39;Rejected&#39;, &#39;Disconnected&#39;</param>
 
         /// <param name="description">The private link service connection description.
         /// </param>
 
         /// <param name="actionsRequired">The actions required for private link service connection.
-        /// Possible values include: 'None'</param>
+        /// Possible values include: &#39;None&#39;</param>
         public PrivateLinkServiceConnectionStateProperty(string status, string description, string actionsRequired = default(string))
 
         {

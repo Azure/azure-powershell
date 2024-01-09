@@ -1,6 +1,6 @@
 ### Example 1: Remove-AzConnectedNetworkDevice via resource name and resource group
 ```powershell
-PS C:\> Remove-AzConnectedNetworkDevice -Name myMecDevice -ResourceGroupName myResources
+Remove-AzConnectedNetworkDevice -Name myMecDevice -ResourceGroupName myResources
 
 ```
 
@@ -8,8 +8,8 @@ Deleting the NFM device with device name myMecDevice in resource group myResourc
 
 ### Example 2: Remove-AzConnectedNetworkDevice via Identity
 ```powershell
-PS C:\> $mecDevice = Get-AzConnectedNetworkDevice -Name myMecDevice2 -ResourceGroupName myResources
-PS C:\> Remove-AzConnectedNetworkDevice -InputObject $mecDevice
+$mecDevice = Get-AzConnectedNetworkDevice -Name myMecDevice2 -ResourceGroupName myResources
+Remove-AzConnectedNetworkDevice -InputObject $mecDevice
 
 ```
 

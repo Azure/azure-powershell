@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 6.1.0
+* Defaults of AllowBlobPublicAccess and AllowCrossTenantReplication when creating a storage account were set to false by server changes. Please refer to https://techcommunity.microsoft.com/t5/azure-storage-blog/azure-storage-updating-some-default-security-settings-on-new/ba-p/3819554
+    - `New-AzStorageAccount`
+* Supprted filter when listing file shares with management plane cmdlet 
+    - `Get-AzRmStorageShare`
+
 ## Version 6.0.1
 * Updated error message when storage context is missing in a cmdlet input 
 

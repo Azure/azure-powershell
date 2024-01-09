@@ -15,6 +15,12 @@
             <Label>CatalogName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>CustomizationGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CustomizationTaskId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DefinitionName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -24,6 +30,9 @@
             <Label>EnvironmentName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>OperationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>PoolName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -31,6 +40,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ScheduleName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TaskName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>UserId</Label>
@@ -46,6 +58,12 @@
                 <PropertyName>CatalogName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>CustomizationGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CustomizationTaskId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>DefinitionName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -53,6 +71,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EnvironmentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PoolName</PropertyName>
@@ -64,6 +85,9 @@
                 <PropertyName>ScheduleName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>TaskName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>UserId</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -72,14 +96,17 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Catalog</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Catalog</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Catalog</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Catalog</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -88,15 +115,18 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CatalogListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CatalogListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CatalogListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CatalogListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -116,9 +146,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudErrorBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudErrorBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.CloudErrorBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CloudErrorBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -150,9 +180,373 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBox</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationGroup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBox</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationGroup</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationGroupListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationGroupListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTask</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTask</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LogUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LogUri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTaskDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTaskDefinition</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CatalogName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CatalogName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTaskDefinitionListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTaskDefinitionListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTaskDefinitionParameter</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTaskDefinitionParameter</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Allowed</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Default</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Required</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Allowed</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Default</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Required</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTaskListValidationErrorDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTaskListValidationErrorDetails</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTaskListValidationOperationResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTaskListValidationOperationResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationLocation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PercentComplete</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationLocation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PercentComplete</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTaskListValidationResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTaskListValidationResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ValidationResult</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ValidationResult</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTaskParameters</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.CustomizationTaskParameters</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBox</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBox</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -191,6 +585,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>UniqueId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>User</Label>
@@ -236,6 +633,9 @@
                 <PropertyName>UniqueId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>User</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -244,9 +644,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxAction</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxAction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxAction</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxAction</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -260,7 +660,16 @@
             <Label>SourceId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>SourceType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>SuspendedUntil</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -276,7 +685,16 @@
                 <PropertyName>SourceId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>SourceType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceUri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>SuspendedUntil</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -284,9 +702,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxActionDelayResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxActionDelayResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxActionDelayResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxActionDelayResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -295,6 +713,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Result</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -306,15 +727,18 @@
               <TableColumnItem>
                 <PropertyName>Result</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxActionsDelayMultipleResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxActionsDelayMultipleResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxActionsDelayMultipleResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxActionsDelayMultipleResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -334,9 +758,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxActionsListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxActionsListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxActionsListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxActionsListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -356,9 +780,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -378,9 +802,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxNextAction</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxNextAction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.DevBoxNextAction</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxNextAction</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -400,12 +824,433 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Environment</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxOperation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Environment</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxOperation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedByObjectId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Kind</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedByObjectId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Kind</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxOperationListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxOperationListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxRepairOperation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxRepairOperation</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByObjectId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Kind</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByObjectId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Kind</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxRepairOperationResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxRepairOperationResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RepairOutcome</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RepairOutcome</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxRestartOperation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxRestartOperation</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByObjectId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Kind</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByObjectId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Kind</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxStartOperation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxStartOperation</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByObjectId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Kind</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByObjectId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Kind</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxStopOperation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.DevBoxStopOperation</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByObjectId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Kind</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByObjectId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Kind</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Environment</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Environment</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ExpirationDate</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>CatalogName</Label>
           </TableColumnHeader>
@@ -425,12 +1270,18 @@
             <Label>ResourceGroupId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>Uri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>User</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ExpirationDate</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>CatalogName</PropertyName>
               </TableColumnItem>
@@ -450,6 +1301,9 @@
                 <PropertyName>ResourceGroupId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>User</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
@@ -458,9 +1312,77 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentAction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentAction</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ActionType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ActionType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentActionsListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentActionsListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentDefinition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -478,6 +1400,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TemplatePath</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -498,15 +1423,18 @@
               <TableColumnItem>
                 <PropertyName>TemplatePath</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentDefinitionListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentDefinitionListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentDefinitionListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentDefinitionListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -526,9 +1454,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentDefinitionParameter</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentDefinitionParameter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentDefinitionParameter</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentDefinitionParameter</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -578,9 +1506,161 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentDeleteOperation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentDeleteOperation</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByObjectId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Kind</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByObjectId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Kind</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentDeployOperation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentDeployOperation</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByObjectId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Kind</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByObjectId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Kind</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -600,9 +1680,155 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentType</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentNextAction</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentType</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentNextAction</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ScheduledTime</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ScheduledTime</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentOperation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentOperation</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedByObjectId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Kind</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OperationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedByObjectId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Kind</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OperationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentOperationListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentOperationListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentOutput</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentOutput</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Sensitive</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Sensitive</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentPatchProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentPatchProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ExpirationDate</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ExpirationDate</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentType</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentType</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -610,10 +1836,16 @@
             <Label>DeploymentTargetId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Status</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -623,10 +1855,16 @@
                 <PropertyName>DeploymentTargetId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -634,9 +1872,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentTypeListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentTypeListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.EnvironmentTypeListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentTypeListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -656,9 +1894,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.HardwareProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.HardwareProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.EnvironmentUpdateProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ExpirationDate</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ExpirationDate</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.HardwareProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.HardwareProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -690,9 +1950,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ImageReference</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ImageReference</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ImageReference</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ImageReference</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -736,9 +1996,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.OperationStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.OperationStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.OperationStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.OperationStatus</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -794,9 +2054,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.OperationStatusError</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.OperationStatusError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.OperationStatusError</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.OperationStatusError</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -822,9 +2082,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.OSDisk</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.OSDisk</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.OSDisk</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.OSDisk</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -844,12 +2104,15 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Pool</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Pool</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Pool</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Pool</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>HealthStatus</Label>
           </TableColumnHeader>
@@ -868,10 +2131,16 @@
           <TableColumnHeader>
             <Label>OSType</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>HealthStatus</PropertyName>
               </TableColumnItem>
@@ -890,15 +2159,18 @@
               <TableColumnItem>
                 <PropertyName>OSType</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.PoolListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.PoolListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.PoolListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.PoolListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -918,9 +2190,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Project</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Project</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Project</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Project</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -928,10 +2200,16 @@
             <Label>Description</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>DisplayName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>MaxDevBoxesPerUser</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -941,10 +2219,16 @@
                 <PropertyName>Description</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DisplayName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>MaxDevBoxesPerUser</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -952,9 +2236,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ProjectListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ProjectListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ProjectListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ProjectListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -974,9 +2258,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.RemoteConnection</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.RemoteConnection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.RemoteConnection</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.RemoteConnection</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1002,9 +2286,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Schedule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Schedule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.Schedule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.Schedule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1015,10 +2299,19 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>SourceType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Time</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TimeZone</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Uri</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1031,10 +2324,19 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>SourceType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceUri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Time</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TimeZone</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Uri</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1042,9 +2344,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ScheduleListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ScheduleListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.ScheduleListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ScheduleListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1064,9 +2366,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.StopOnDisconnectConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.StopOnDisconnectConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.StopOnDisconnectConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.StopOnDisconnectConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

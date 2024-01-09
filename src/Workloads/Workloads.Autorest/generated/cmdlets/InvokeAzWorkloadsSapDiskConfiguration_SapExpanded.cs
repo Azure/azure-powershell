@@ -13,9 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
     /// [OpenAPI] SAPDiskConfigurations=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getDiskConfigurations"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzWorkloadsSapDiskConfiguration_SapExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDiskConfigurationsResultVolumeConfigurations))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDiskConfigurationsResultVolumeConfigurations))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Description(@"Get the SAP Disk Configuration Layout prod/non-prod SAP System.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Workloads/locations/{location}/sapVirtualInstanceMetadata/default/getDiskConfigurations", ApiVersion = "2023-10-01-preview")]
     public partial class InvokeAzWorkloadsSapDiskConfiguration_SapExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener
     {
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>The SAP request to get list of disk configurations.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDiskConfigurationsRequest _sapDiskConfigurationsBody = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.SapDiskConfigurationsRequest();
+        private Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDiskConfigurationsRequest _sapDiskConfigurationsBody = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.SapDiskConfigurationsRequest();
 
         /// <summary>The geo-location where the SAP resources will be created.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The geo-location where the SAP resources will be created.")]
@@ -217,12 +218,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDiskConfigurationsResult">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDiskConfigurationsResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDiskConfigurationsResult">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDiskConfigurationsResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDiskConfigurationsResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDiskConfigurationsResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -438,12 +439,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDiskConfigurationsResult">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDiskConfigurationsResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDiskConfigurationsResult">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDiskConfigurationsResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDiskConfigurationsResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDiskConfigurationsResult> response)
         {
             using( NoSynchronizationContext )
             {
@@ -455,7 +456,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDiskConfigurationsResult
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDiskConfigurationsResult
                 WriteObject((await response).VolumeConfiguration);
             }
         }

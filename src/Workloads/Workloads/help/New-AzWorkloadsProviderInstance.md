@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Workloads-help.xml
 Module Name: Az.Workloads
 online version: https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderinstance
 schema: 2.0.0
@@ -16,7 +16,7 @@ Creates a provider instance for the specified subscription, resource group, SAP 
 New-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-ProviderSetting <IProviderSpecificProperties>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -261,4 +261,3 @@ To create the parameters described below, construct a hash table containing the 
   - `ProviderType <String>`: The provider type. For example, the value can be SapHana.
 
 ## RELATED LINKS
-

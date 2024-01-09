@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.1
+* Upgraded API version to 2023-10-01-preview
+
 ## Version 0.1.0
 * First preview release for module Az.Workloads
 

@@ -13,7 +13,10 @@ namespace Microsoft.Azure.Management.CosmosDB
     public static partial class RestorableDatabaseAccountsOperationsExtensions
     {
         /// <summary>
-        /// Lists all the restorable Azure Cosmos DB database accounts available under the subscription and in a region.  This call requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39; permission.
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription and in a region.  This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -27,7 +30,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Lists all the restorable Azure Cosmos DB database accounts available under the subscription and in a region.  This call requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39; permission.
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription and in a region.  This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -46,7 +52,10 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Lists all the restorable Azure Cosmos DB database accounts available under the subscription. This call requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39; permission.
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription. This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -57,7 +66,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Lists all the restorable Azure Cosmos DB database accounts available under the subscription. This call requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39; permission.
+        /// Lists all the restorable Azure Cosmos DB database accounts available under
+        /// the subscription. This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read&#39;
+        /// permission.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -73,7 +85,10 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB restorable database account.  This call requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read/*&#39; permission.
+        /// Retrieves the properties of an existing Azure Cosmos DB restorable database
+        /// account.  This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read/*&#39;
+        /// permission.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -90,7 +105,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB restorable database account.  This call requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read/*&#39; permission.
+        /// Retrieves the properties of an existing Azure Cosmos DB restorable database
+        /// account.  This call requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read/*&#39;
+        /// permission.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

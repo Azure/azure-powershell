@@ -108,16 +108,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
 
                 CapacityReservationGroup result;
+                CapacityReservationGroupUpdate capacityReservationGroupUpdate = new CapacityReservationGroupUpdate();
+                capacityReservationGroupUpdate.Tags = new Dictionary<string, string>();
 
                 if (this.IsParameterBound(c => c.Tag))
                 {
                     var tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
-                    result = CapacityReservationGroupClient.Update(resourceGroupName, name, tags);
+                    capacityReservationGroupUpdate.Tags = tags;
                 }
-                else
-                {
-                    result = CapacityReservationGroupClient.Update(resourceGroupName, name);
-                }
+
+                result = CapacityReservationGroupClient.Update(resourceGroupName, name, capacityReservationGroupUpdate);
+
 
                 var psObject = new PSCapacityReservationGroup();
                 ComputeAutomationAutoMapperProfile.Mapper.Map<CapacityReservationGroup, PSCapacityReservationGroup>(result, psObject);

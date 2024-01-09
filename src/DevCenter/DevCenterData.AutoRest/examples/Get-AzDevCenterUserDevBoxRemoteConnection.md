@@ -6,7 +6,7 @@ This commands gets the remote connection for the dev box "myDevBox".
 
 ### Example 2: Get the remote connection on the dev box by dev center
 ```powershell
-Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject
+Get-AzDevCenterUserDevBoxRemoteConnection -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject
 ```
 This commands gets the remote connection for the dev box "myDevBox". 
 
@@ -20,6 +20,6 @@ This commands gets the remote connection for the dev box "myDevBox".
 ### Example 4: Get the remote connection on the dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject" }
-Get-AzDevCenterUserDevBoxRemoteConnection -DevCenter Contoso -InputObject $devBoxInput
+Get-AzDevCenterUserDevBoxRemoteConnection -DevCenterName Contoso -InputObject $devBoxInput
 ```
 This commands gets the remote connection for the dev box "myDevBox". 

@@ -192,7 +192,7 @@ The command update a Storage account by enable Azure Files Microsoft Entra Domai
 
 
 ```
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -EnableActiveDirectoryDomainServicesForFile $true `
+$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -EnableActiveDirectoryDomainServicesForFile $true `
         -ActiveDirectoryDomainName "mydomain.com" `
         -ActiveDirectoryNetBiosDomainName "mydomain.com" `
         -ActiveDirectoryForestName "mydomain.com" `
@@ -202,10 +202,10 @@ PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Na
         -ActiveDirectorySamAccountName "samaccountname" `
         -ActiveDirectoryAccountType Computer 
 		
-PS C:\> $account.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
+$account.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
 AD
 
-PS C:\> $account.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
+$account.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
 
 DomainName        : mydomain.com
 NetBiosDomainName : mydomain.com
@@ -224,15 +224,15 @@ The command updates a Storage account by enable Azure Files Active Directory Dom
 
 
 ```
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -MinimumTlsVersion TLS1_1 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $true
+$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -MinimumTlsVersion TLS1_1 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $true
 
-PS C:\> $account.MinimumTlsVersion
+$account.MinimumTlsVersion
 TLS1_1
 
-PS C:\> $account.AllowBlobPublicAccess
+$account.AllowBlobPublicAccess
 False
 
-PS C:\> $a.AllowSharedKeyAccess
+$a.AllowSharedKeyAccess
 True
 ```
 
@@ -243,15 +243,15 @@ The command sets MinimumTlsVersion, AllowBlobPublicAccess and AllowSharedKeyAcce
 
 
 ```powershell
-PS C:\>$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -PublishMicrosoftEndpoint $false -PublishInternetEndpoint $true -RoutingChoice InternetRouting
+$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -PublishMicrosoftEndpoint $false -PublishInternetEndpoint $true -RoutingChoice InternetRouting
 
-PS C:\>$account.RoutingPreference
+$account.RoutingPreference
 
 RoutingChoice   PublishMicrosoftEndpoints PublishInternetEndpoints
 -------------   ------------------------- ------------------------
 InternetRouting                     False                     True
 
-PS C:\>$account.PrimaryEndpoints
+$account.PrimaryEndpoints
 
 Blob               : https://mystorageaccount.blob.core.windows.net/
 Queue              : https://mystorageaccount.queue.core.windows.net/
@@ -271,12 +271,12 @@ This command updates a Storage account with RoutingPreference setting: PublishMi
 
 
 ```powershell
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06" -EnableHttpsTrafficOnly $true
+$account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06" -EnableHttpsTrafficOnly $true
 
-PS C:\> $account.KeyPolicy.KeyExpirationPeriodInDays
+$account.KeyPolicy.KeyExpirationPeriodInDays
 5
 
-PS C:\> $account.SasPolicy.SasExpirationPeriod
+$account.SasPolicy.SasExpirationPeriod
 1.12:05:06
 ```
 
@@ -288,23 +288,23 @@ This command updates a Storage account with KeyExpirationPeriod and SasExpiratio
 
 ```powershell
 # Create KeyVault (no need if using exist keyvault)
-PS C:\> $keyVault = New-AzKeyVault -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -Location eastus2euap -EnablePurgeProtection
-PS C:\> $key = Add-AzKeyVaultKey -VaultName $keyvaultName -Name $keyname -Destination 'Software'
+$keyVault = New-AzKeyVault -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -Location eastus2euap -EnablePurgeProtection
+$key = Add-AzKeyVaultKey -VaultName $keyvaultName -Name $keyname -Destination 'Software'
 
 # create user assigned identity and grant access to keyvault (no need if using exist user assigned identity)
-PS C:\> $userId = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $userIdName
-PS C:\> Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -ObjectId $userId.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
-PS C:\> $useridentityId= $userId.Id
+$userId = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $userIdName
+Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -ObjectId $userId.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
+$useridentityId= $userId.Id
 
 # Update Storage account with Keyvault encryption and access Keyvault with user assigned identity, then show properties
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName `
+$account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName `
                 -IdentityType UserAssigned  -UserAssignedIdentityId $useridentityId  `
                 -KeyVaultUri $keyVault.VaultUri -KeyName $keyname -KeyVaultUserAssignedIdentityId $useridentityId
 
-PS C:\> $account.Encryption.EncryptionIdentity.EncryptionUserAssignedIdentity
+$account.Encryption.EncryptionIdentity.EncryptionUserAssignedIdentity
 /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserid
 
-PS C:\> $account.Encryption.KeyVaultProperties
+$account.Encryption.KeyVaultProperties
 
 KeyName                       : wrappingKey
 KeyVersion                    : 
@@ -321,19 +321,19 @@ This command first creates a keyvault and a user assigned identity, then updates
 
 ```powershell
 # Assign System identity to the account, and give the system assigned identity acces to the keyvault
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName  -IdentityType SystemAssignedUserAssigned
-PS C:\> Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -ObjectId $account.Identity.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
+$account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName  -IdentityType SystemAssignedUserAssigned
+Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -ObjectId $account.Identity.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
 
 # Update account from access Keyvault with user assigned identity to access Keyvault with system assigned identity
 $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -IdentityType SystemAssignedUserAssigned -KeyName $keyname -KeyVaultUri $keyvaultUri -KeyVaultUserAssignedIdentityId ""
 
 # EncryptionUserAssignedIdentity is empty, so the account access keyvault with system assigned identity
-PS C:\> $account.Encryption.EncryptionIdentity
+$account.Encryption.EncryptionIdentity
 
 EncryptionUserAssignedIdentity                                                                                                                 
 ------------------------------ 
 
-PS C:\> $account.Encryption.KeyVaultProperties
+$account.Encryption.KeyVaultProperties
 
 KeyName                       : wrappingKey
 KeyVersion                    : 
@@ -387,12 +387,12 @@ This command updates a Storage account by set PublicNetworkAccess as enabled.
 
 
 ```
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -ImmutabilityPeriod 2 -ImmutabilityPolicyState Unlocked
+$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -ImmutabilityPeriod 2 -ImmutabilityPolicyState Unlocked
 
-PS C:\> $account.ImmutableStorageWithVersioning.Enabled
+$account.ImmutableStorageWithVersioning.Enabled
 True
 
-PS C:\> $account.ImmutableStorageWithVersioning.ImmutabilityPolicy
+$account.ImmutableStorageWithVersioning.ImmutabilityPolicy
 
 ImmutabilityPeriodSinceCreationInDays State    
 ------------------------------------- -----    
@@ -408,12 +408,12 @@ The account-level immutability policy will be inherited and applied to objects t
 
 
 ```powershell
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableSftp $true -EnableLocalUser $true 
+$account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableSftp $true -EnableLocalUser $true 
 
-PS C:\> $account.EnableSftp
+$account.EnableSftp
 True
 
-PS C:\> $account.EnableLocalUser
+$account.EnableLocalUser
 True
 ```
 
@@ -426,16 +426,16 @@ To run the command succssfully, the Storage account should already enable Hierar
 
 ```powershell
 # create Storage account with Keyvault encryption (access Keyvault with FederatedClientId), then show properties
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName  `
+$account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName  `
                 -KeyVaultUri $keyVault.VaultUri -KeyName $keyname -KeyVaultUserAssignedIdentityId $useridentityId -KeyVaultFederatedClientId $federatedClientId
 
-PS C:\> $account.Encryption.EncryptionIdentity
+$account.Encryption.EncryptionIdentity
 
 EncryptionUserAssignedIdentity                                                                                                      EncryptionFederatedIdentityClientId                                                                                                                 
 ------------------------------                                                                                                      ----------------------------------- 
 /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserid ********-****-****-****-************
 
-PS C:\> $account.Encryption.KeyVaultProperties
+$account.Encryption.KeyVaultProperties
 
 KeyName                       : wrappingKey
 KeyVersion                    : 
@@ -590,7 +590,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowBlobPublicAccess
-Allow or disallow public access to all blobs or containers in the storage account.
+Allow or disallow anonymous access to all blobs or containers in the storage account.
 
 ```yaml
 Type: System.Boolean

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="replicationRole">Replication role of the partner managed instances.
-        /// Possible values include: 'Primary', 'Secondary'</param>
+        /// Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;</param>
         public PartnerRegionInfo(string location = default(string), string replicationRole = default(string))
 
         {

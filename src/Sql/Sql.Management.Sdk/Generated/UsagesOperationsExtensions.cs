@@ -19,13 +19,15 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='instancePoolName'>
         /// The name of the instance pool to be retrieved.
         /// </param>
         /// <param name='expandChildren'>
-        /// Optional request parameter to include managed instance usages within the instance pool.
+        /// Optional request parameter to include managed instance usages within the
+        /// instance pool.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<Usage> ListByInstancePool(this IUsagesOperations operations, string resourceGroupName, string instancePoolName, bool? expandChildren = default(bool?))
         {
@@ -39,13 +41,15 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='instancePoolName'>
         /// The name of the instance pool to be retrieved.
         /// </param>
         /// <param name='expandChildren'>
-        /// Optional request parameter to include managed instance usages within the instance pool.
+        /// Optional request parameter to include managed instance usages within the
+        /// instance pool.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

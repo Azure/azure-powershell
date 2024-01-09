@@ -19,7 +19,7 @@ Describe 'Remove-AzDevCenterUserEnvironment' {
         { Get-AzDevCenterUserEnvironment -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.envNameToDelete } | Should -Throw
 
         if ($Record -or $Live) {
-            Remove-AzDevCenterUserEnvironment -DevCenter $env.devCenterName -Name $env.envNameToDelete2  -ProjectName $env.projectName
+            Remove-AzDevCenterUserEnvironment -DevCenterName $env.devCenterName -Name $env.envNameToDelete2  -ProjectName $env.projectName
             { Get-AzDevCenterUserEnvironment -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.envNameToDelete2 } | Should -Throw
         }
 
@@ -33,7 +33,7 @@ Describe 'Remove-AzDevCenterUserEnvironment' {
         { Get-AzDevCenterUserEnvironment -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.envNameToDelete3 } | Should -Throw
 
         if ($Record -or $Live) {
-            Remove-AzDevCenterUserEnvironment -DevCenter $env.devCenterName  -InputObject $envInput2
+            Remove-AzDevCenterUserEnvironment -DevCenterName $env.devCenterName  -InputObject $envInput2
             { Get-AzDevCenterUserEnvironment -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.envNameToDelete4 } | Should -Throw
         }
 

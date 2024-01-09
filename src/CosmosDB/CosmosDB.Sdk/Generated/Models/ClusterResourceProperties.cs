@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
 
         /// <param name="provisioningState">The status of the resource at the time the operation was called.
-        /// Possible values include: 'Creating', 'Updating', 'Deleting', 'Succeeded',
-        /// 'Failed', 'Canceled'</param>
+        /// Possible values include: &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Succeeded&#39;,
+        /// &#39;Failed&#39;, &#39;Canceled&#39;</param>
 
         /// <param name="restoreFromBackupId">To create an empty cluster, omit this field or set it to null. To restore a
         /// backup into a new cluster, set this field to the resource id of the backup.
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// &#39;None&#39; turns off authentication, so should not be used except in
         /// emergencies. &#39;Cassandra&#39; is the default password based authentication. The
         /// default is &#39;Cassandra&#39;.
-        /// Possible values include: 'None', 'Cassandra', 'Ldap'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Cassandra&#39;, &#39;Ldap&#39;</param>
 
         /// <param name="initialCassandraAdminPassword">Initial password for clients connecting as admin to the cluster. Should be
         /// changed after cluster creation. Returns null on GET. This field only

@@ -55,8 +55,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "Win2019Datacenter", 
             "Win2016Datacenter", 
             "Win2012R2Datacenter", 
-            "Win2012Datacenter", 
-            "Win2008R2SP1")]
+            "Win2012Datacenter")]
         [Alias("Image")]
         public string ImageName { get; set; } = "Win2016Datacenter";
 
@@ -332,7 +331,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     //sku.Basic is not compatible with multiple placement groups
                     sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
                         ? LoadBalancerStrategy.Sku.Basic
-                        : LoadBalancerStrategy.Sku.Standard);
+                        : LoadBalancerStrategy.Sku.Standard,
+                    edgeZone : _cmdlet.EdgeZone);
 
                 var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
                     name: _cmdlet.FrontendPoolName,
@@ -508,7 +508,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     //sku.Basic is not compatible with multiple placement groups
                     sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
                         ? LoadBalancerStrategy.Sku.Basic
-                        : LoadBalancerStrategy.Sku.Standard);
+                        : LoadBalancerStrategy.Sku.Standard,
+                    edgeZone: _cmdlet.EdgeZone);
 
                 var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
                     name: _cmdlet.FrontendPoolName,

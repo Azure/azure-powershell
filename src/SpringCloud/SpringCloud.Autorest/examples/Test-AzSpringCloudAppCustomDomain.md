@@ -23,4 +23,3 @@ True
 ```
 
 Check the resource name is valid as well as not in use by pipeline.
-
