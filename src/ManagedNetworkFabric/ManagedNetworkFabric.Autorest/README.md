@@ -382,7 +382,7 @@ directive:
     - Layer3IpPrefixProperties
     # NNI
     - Layer2Configuration
-    - OptionBLayer3Configuration
+    - NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration
     - NpbStaticRouteConfiguration
     - ImportRoutePolicyInformation
     - ExportRoutePolicyInformation
@@ -399,7 +399,7 @@ directive:
     - ImportRoutePolicy
     - ExportRoutePolicy
     # Internal Network
-    - BgpConfiguration
+    - InternalNetworkPropertiesBgpConfiguration
     - NeighborAddress
     - StaticRouteConfiguration
     - ExtensionEnumProperty
