@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Network
                Mandatory = true,
                HelpMessage = "Application gateway SKU family")]
         [ValidateSet("Generation_1", "Generation_2", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
 
         public string Family { get; set; }
 
