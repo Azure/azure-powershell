@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Added `DatabaseFormat` and `PricingModel` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance`
+* Added breaking change message for `New-AzSqlDatabaseFailoverGroup` and `Set-AzSqlDatabaseFailoverGroup`
+    - The default value of `FailoverPolicy` parameter will be changed from `Automatic` to `Manual`
 
 ## Version 4.13.0
 * Fixed `Set-AzSqlDatabaseFailoverGroup` when going from multi-secondary to single secondary
