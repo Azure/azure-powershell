@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public RedisResource UpdateCache(string resourceGroupName, string cacheName, string skuFamily, int skuCapacity, string skuName,
                 Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string MinimumTlsVersion,
-                string redisVersion, Hashtable tags, string identityType, string[] userAssignedIdentities)
+                string redisVersion, Hashtable tags, string identityType, string[] userAssignedIdentities, string updateChannel)
         {
             try
             {
@@ -171,7 +171,17 @@ namespace Microsoft.Azure.Commands.RedisCache
             parameters.Identity = Utility.BuildManagedServiceIdentity(identityType, userAssignedIdentities);
 
             parameters.EnableNonSslPort = enableNonSslPort;
-            parameters.RedisVersion = redisVersion;
+
+            if (!string.IsNullOrEmpty(updateChannel))
+            {
+                parameters.UpdateChannel = updateChannel;
+                parameters.RedisVersion = "latest";
+            }
+
+            if (!string.IsNullOrEmpty(redisVersion))
+            {
+                parameters.RedisVersion = redisVersion;
+            }
 
             if (tenantSettings != null)
             {

@@ -12,19 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RedisCache.Models;
+using Microsoft.Azure.Commands.RedisCache.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.RedisCache.Models;
+using System.Collections;
+using System.Management.Automation;
+using SkuStrings = Microsoft.Azure.Management.RedisCache.Models.SkuName;
+using TlsStrings = Microsoft.Azure.Management.RedisCache.Models.TlsVersion;
 
 namespace Microsoft.Azure.Commands.RedisCache
 {
-    using Microsoft.Azure.Commands.RedisCache.Models;
-    using Microsoft.Azure.Commands.RedisCache.Properties;
-    using ResourceManager.Common.ArgumentCompleters;
-    using System;
-    using System.Collections;
-    using System.Management.Automation;
-    using SkuStrings = SkuName;
-    using TlsStrings = TlsVersion;
-
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCache", SupportsShouldProcess = true), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class SetAzureRedisCache : RedisCacheCmdletBase
     {
@@ -65,6 +63,9 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Redis version. This should be in the form 'major[.minor]' (only 'major' is required) or the value 'latest' which refers to the latest stable Redis version that is available. Supported versions: 4.0, 6.0 (latest). Default value is 'latest'.")]
         public string RedisVersion { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Optional: Specifies the update channel for the monthly Redis updates your Redis Cache will receive. Caches using 'Preview' update channel get latest Redis updates at least 4 weeks ahead of 'Stable' channel caches. Default value is 'Stable'. Possible values include: 'Stable', 'Preview'")]
+        public string UpdateChannel { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "A hash table which represents tags.")]
         public Hashtable Tag { get; set; }
@@ -119,7 +120,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             if (!ShardCount.HasValue && response.ShardCount.HasValue)
             {
                 ShardCount = response.ShardCount;
-            }            
+            }
 
             ConfirmAction(
               string.Format(Resources.UpdateRedisCache, Name),
@@ -127,7 +128,7 @@ namespace Microsoft.Azure.Commands.RedisCache
               () =>
               {
                   var redisResource = CacheClient.UpdateCache(ResourceGroupName, Name, skuFamily, skuCapacity,
-                      skuName, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, MinimumTlsVersion, RedisVersion, Tag, IdentityType, UserAssignedIdentity);
+                      skuName, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, MinimumTlsVersion, RedisVersion, Tag, IdentityType, UserAssignedIdentity, UpdateChannel);
                   var redisAccessKeys = CacheClient.GetAccessKeys(ResourceGroupName, Name);
                   WriteObject(new RedisCacheAttributesWithAccessKeys(redisResource, redisAccessKeys, ResourceGroupName));
               });
