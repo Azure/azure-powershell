@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
         }
 
         private ICodeSigningServiceClient codeSigningServiceClient;
-                
+
         public List<T> ResourceWildcardFilter<T>(string name, IEnumerable<T> resources)
         {
             if (!string.IsNullOrEmpty(name))

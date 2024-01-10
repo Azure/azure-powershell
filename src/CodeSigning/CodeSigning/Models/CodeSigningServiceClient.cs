@@ -24,7 +24,7 @@ using Newtonsoft.Json;
 namespace Microsoft.Azure.Commands.CodeSigning.Models
 {
     internal class CodeSigningServiceClient : ICodeSigningServiceClient
-    {        
+    {
         /// <summary>
         /// Parameterless constructor for Mocking.
         /// </summary>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
 
         private void Initialize(IAuthenticationFactory authFactory, IAzureContext context)
         {
-            user_creds = new UserSuppliedCredential(new CodeSigningServiceCredential(authFactory, context, "api://cf2ab426-f71a-4b61-bb8a-9e505b85bc2e"));            
+            user_creds = new UserSuppliedCredential(new CodeSigningServiceCredential(authFactory, context, "api://cf2ab426-f71a-4b61-bb8a-9e505b85bc2e"));
         }
 
         private void GetCertificateProfileClient(string endpoint)
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
             GetCertificateProfileClient(endpoint);
 
             var eku = CertificateProfileClient.GetSignEku(accountName, profileName);
-            return string.Join(",", ((List<string>)eku).ToArray()); 
+            return string.Join(",", ((List<string>)eku).ToArray());
         }
         public string GetCodeSigningEku(string metadataPath)
         {
@@ -109,9 +109,9 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
             return rootCert;
         }
 
-        public void SubmitCIPolicySigning(string accountName, string profileName, string endpoint, 
+        public void SubmitCIPolicySigning(string accountName, string profileName, string endpoint,
             string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl = null)
-        {            
+        {
            var cipolicySigner = new CmsSigner();
            cipolicySigner.SignCIPolicy(user_creds, accountName, profileName, endpoint, unsignedCIFilePath, signedCIFilePath, timeStamperUrl);
         }

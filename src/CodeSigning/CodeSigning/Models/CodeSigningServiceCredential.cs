@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
         /// <param name="scope"></param>
         /// <returns></returns>
         public Task<string> OnAuthentication(string authority, string resource, string scope)
-        {   
-            var tokenStr = GetTokenInternal(this.TenantId, this._authenticationFactory, this._context, this._endpointName);           
+        {
+            var tokenStr = GetTokenInternal(this.TenantId, this._authenticationFactory, this._context, this._endpointName);
             return Task.FromResult<string>(tokenStr.ToString());
         }
 

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
 
         void SubmitCIPolicySigning(string accountName, string profileName, string endpoint,
                 string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl);
-        void SubmitCIPolicySigning(string metadataPath, 
+        void SubmitCIPolicySigning(string metadataPath,
                 string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl);
 
     }

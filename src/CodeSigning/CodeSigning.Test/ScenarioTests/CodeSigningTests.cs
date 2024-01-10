@@ -29,6 +29,6 @@ namespace Microsoft.Azure.Commands.CodeSigning.Test.ScenarioTests
         public void TestCodeSigningEku()
         {
             TestRunner.RunTestScript("Test-CodeSigningEku");
-        }        
+        }
     }
 }

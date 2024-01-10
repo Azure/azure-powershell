@@ -104,18 +104,18 @@ namespace Microsoft.Azure.Commands.CodeSigning
             }
         }
         private void WriteRootCert(Stream rootcert)
-        {   
+        {
             var downloadPath = ResolvePath(Destination);
 
             var fileStream = new FileStream(downloadPath, FileMode.Create, FileAccess.Write);
             rootcert.CopyTo(fileStream);
             fileStream.Dispose();
 
-            //read thumbprint and subject namme                      
+            //read thumbprint and subject namme
             byte[] rawData = File.ReadAllBytes(downloadPath);
             X509Certificate2 x509 = new X509Certificate2(rawData);
-         
-            WriteObject(downloadPath.Replace("\\", @"\"));           
+
+            WriteObject(downloadPath.Replace("\\", @"\"));
 
             PSSigningCertificate pscert = new PSSigningCertificate();
             pscert.Subject = x509.Subject;
@@ -123,5 +123,5 @@ namespace Microsoft.Azure.Commands.CodeSigning
 
             WriteObject(pscert, false);
         }
-    }   
+    }
 }

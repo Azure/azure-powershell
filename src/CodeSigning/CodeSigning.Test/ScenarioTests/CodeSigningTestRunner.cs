@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Commands.CodeSigning.Test.ScenarioTests
                 .WithNewRmModules(helper => new[]
                 {
                     helper.RMProfileModule,
-                    helper.GetRMModulePath("Az.CodeSigning.psd1"),                    
-                })               
+                    helper.GetRMModulePath("Az.CodeSigning.psd1"),
+                })
                 .Build();
         }
     }

@@ -109,25 +109,25 @@ namespace Microsoft.Azure.Commands.CodeSigning
                    Position = 5,
                    ParameterSetName = ByMetadataFileParameterSet,
                     ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Time Stamper Url.")]        
+                   HelpMessage = "Time Stamper Url.")]
         public string TimeStamperUrl { get; set; }
 
         #endregion
 
         public override void ExecuteCmdlet()
-        {           
+        {
             ValidateFileType(ResolvePath(Path));
 
-            
+
             WriteMessage("CI Policy signing in progress....");
-            
+
             if (!string.IsNullOrEmpty(AccountName))
             {
-                CodeSigningServiceClient.SubmitCIPolicySigning(AccountName, ProfileName, EndpointUrl, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl);                
+                CodeSigningServiceClient.SubmitCIPolicySigning(AccountName, ProfileName, EndpointUrl, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl);
             }
             else if (!string.IsNullOrEmpty(MetadataFilePath))
             {
-                CodeSigningServiceClient.SubmitCIPolicySigning(MetadataFilePath, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl);                
+                CodeSigningServiceClient.SubmitCIPolicySigning(MetadataFilePath, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl);
             }
 
             WriteMessage("CI Policy is successfully signed. " + ResolvePath(Destination));

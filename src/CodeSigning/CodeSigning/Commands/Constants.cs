@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
     {
         // certificates
         public const string AzureCodeSigningCertificateEku = "AzureCodeSigningCertificateEku";
-        public const string AzureCodeSigningCertificateRootCert = "AzureCodeSigningCertificateRootCert";        
+        public const string AzureCodeSigningCertificateRootCert = "AzureCodeSigningCertificateRootCert";
     }
 
 }
