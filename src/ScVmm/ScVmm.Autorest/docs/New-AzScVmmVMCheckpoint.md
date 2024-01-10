@@ -1,32 +1,37 @@
 ---
 external help file:
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/remove-azscvmmvirtualmachinetemplate
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/new-azscvmmvmcheckpoint
 schema: 2.0.0
 ---
 
-# Remove-AzScVmmVirtualMachineTemplate
+# New-AzScVmmVMCheckpoint
 
 ## SYNOPSIS
-Deregisters the ScVmm VM Template from Azure.
+Creates a checkpoint in virtual machine instance.
 
 ## SYNTAX
 
-### Delete (Default)
+### CreateExpanded (Default)
 ```
-Remove-AzScVmmVirtualMachineTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Force <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzScVmmVirtualMachineTemplate -InputObject <IScVmmIdentity> [-Force <String>]
+New-AzScVmmVMCheckpoint -ResourceUri <String> [-Description <String>] [-Name <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzScVmmVMCheckpoint -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzScVmmVMCheckpoint -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Deregisters the ScVmm VM Template from Azure.
+Creates a checkpoint in virtual machine instance.
 
 ## EXAMPLES
 
@@ -85,13 +90,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Forces the resource to be deleted from azure.
-The corresponding CR would be attempted to be deleted too.
+### -Description
+Description of the checkpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -101,31 +105,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IScVmmIdentity
-Parameter Sets: DeleteViaIdentity
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the VirtualMachineTemplate.
+Name of the checkpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: VirtualMachineTemplateName
+Parameter Sets: CreateExpanded
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -162,34 +180,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -ResourceUri
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-The ID of the target subscription.
-The value must be an UUID.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -229,8 +230,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IScVmmIdentity
 
 ## OUTPUTS
 

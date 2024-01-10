@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmvirtualmachinetemplate
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmvmtemplate
 schema: 2.0.0
 ---
 
-# Get-AzScVmmVirtualMachineTemplate
+# Get-AzScVmmVMTemplate
 
 ## SYNOPSIS
 Implements VirtualMachineTemplate GET method.
@@ -14,26 +14,24 @@ Implements VirtualMachineTemplate GET method.
 
 ### List1 (Default)
 ```
-Get-AzScVmmVirtualMachineTemplate [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzScVmmVMTemplate [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzScVmmVirtualMachineTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzScVmmVMTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzScVmmVirtualMachineTemplate -InputObject <IScVmmIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzScVmmVMTemplate -InputObject <IScVmmIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzScVmmVirtualMachineTemplate -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzScVmmVMTemplate -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

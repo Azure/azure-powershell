@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmvminstanceguestagent
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmvmguestagent
 schema: 2.0.0
 ---
 
-# Get-AzScVmmVMInstanceGuestAgent
+# Get-AzScVmmVMGuestAgent
 
 ## SYNOPSIS
 Implements GuestAgent GET method.
@@ -14,12 +14,12 @@ Implements GuestAgent GET method.
 
 ### Get (Default)
 ```
-Get-AzScVmmVMInstanceGuestAgent -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzScVmmVMGuestAgent -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzScVmmVMInstanceGuestAgent -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzScVmmVMGuestAgent -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -1,29 +1,29 @@
 ---
 external help file:
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmvirtualmachineinstance
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmvmhybrididentitymetadata
 schema: 2.0.0
 ---
 
-# Get-AzScVmmVirtualMachineInstance
+# Get-AzScVmmVMHybridIdentityMetadata
 
 ## SYNOPSIS
-Retrieves information about a virtual machine instance.
+Implements HybridIdentityMetadata GET method.
 
 ## SYNTAX
 
 ### Get (Default)
 ```
-Get-AzScVmmVirtualMachineInstance -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzScVmmVMHybridIdentityMetadata -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzScVmmVirtualMachineInstance -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzScVmmVMHybridIdentityMetadata -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Retrieves information about a virtual machine instance.
+Implements HybridIdentityMetadata GET method.
 
 ## EXAMPLES
 
@@ -89,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineInstance
+### Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVMInstanceHybridIdentityMetadata
 
 ## NOTES
 

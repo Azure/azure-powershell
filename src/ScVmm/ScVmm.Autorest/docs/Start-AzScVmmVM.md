@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/remove-azscvmmvminstanceguestagent
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/start-azscvmmvm
 schema: 2.0.0
 ---
 
-# Remove-AzScVmmVMInstanceGuestAgent
+# Start-AzScVmmVM
 
 ## SYNOPSIS
-Implements GuestAgent DELETE method.
+The operation to start a virtual machine instance.
 
 ## SYNTAX
 
 ```
-Remove-AzScVmmVMInstanceGuestAgent -ResourceUri <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+Start-AzScVmmVM -ResourceUri <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Implements GuestAgent DELETE method.
+The operation to start a virtual machine instance.
 
 ## EXAMPLES
 
@@ -46,6 +46,21 @@ Implements GuestAgent DELETE method.
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -54,6 +69,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

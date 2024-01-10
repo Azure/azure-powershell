@@ -1,43 +1,25 @@
 ---
 external help file:
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/remove-azscvmmvirtualmachineinstancecheckpoint
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvmguestagent
 schema: 2.0.0
 ---
 
-# Remove-AzScVmmVirtualMachineInstanceCheckpoint
+# Update-AzScVmmVMGuestAgent
 
 ## SYNOPSIS
-Deletes a checkpoint in virtual machine instance.
+Create GuestAgent.
 
 ## SYNTAX
 
-### DeleteExpanded (Default)
 ```
-Remove-AzScVmmVirtualMachineInstanceCheckpoint -ResourceUri <String> [-Id <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Delete
-```
-Remove-AzScVmmVirtualMachineInstanceCheckpoint -ResourceUri <String> -Body <IVirtualMachineDeleteCheckpoint>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaJsonFilePath
-```
-Remove-AzScVmmVirtualMachineInstanceCheckpoint -ResourceUri <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaJsonString
-```
-Remove-AzScVmmVirtualMachineInstanceCheckpoint -ResourceUri <String> -JsonString <String>
+Update-AzScVmmVMGuestAgent -ResourceUri <String> [-CredentialsPassword <SecureString>]
+ [-CredentialsUsername <String>] [-HttpProxyConfigHttpsProxy <String>] [-ProvisioningAction <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a checkpoint in virtual machine instance.
+Create GuestAgent.
 
 ## EXAMPLES
 
@@ -80,19 +62,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Defines the delete checkpoint action properties.
-To construct, see NOTES section for BODY properties and create a hash table.
+### -CredentialsPassword
+Gets or sets the password to connect with the guest.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineDeleteCheckpoint
-Parameter Sets: Delete
+Type: System.Security.SecureString
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CredentialsUsername
+Gets or sets username to connect with the guest.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -112,45 +108,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-ID of the checkpoint to be deleted.
+### -HttpProxyConfigHttpsProxy
+Gets or sets httpsProxy url.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Delete operation
-
-```yaml
-Type: System.String
-Parameter Sets: DeleteViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Delete operation
-
-```yaml
-Type: System.String
-Parameter Sets: DeleteViaJsonString
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -162,6 +128,21 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProvisioningAction
+Gets or sets the guest agent provisioning action.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -223,11 +204,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineDeleteCheckpoint
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgent
 
 ## NOTES
 

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/new-azscvmmvirtualmachineinstance
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/new-azscvmmvm
 schema: 2.0.0
 ---
 
-# New-AzScVmmVirtualMachineInstance
+# New-AzScVmmVM
 
 ## SYNOPSIS
 The operation to Create a virtual machine instance.
@@ -15,7 +15,7 @@ Please note some properties can be set only during virtual machine instance crea
 
 ### CreateExpanded (Default)
 ```
-New-AzScVmmVirtualMachineInstance -ResourceUri <String> [-AvailabilitySet <IAvailabilitySetListItem[]>]
+New-AzScVmmVM -ResourceUri <String> [-AvailabilitySet <IAvailabilitySetListItem[]>]
  [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-HardwareProfileCpuCount <Int32>]
  [-HardwareProfileDynamicMemoryEnabled <String>] [-HardwareProfileDynamicMemoryMaxMb <Int32>]
  [-HardwareProfileDynamicMemoryMinMb <Int32>] [-HardwareProfileLimitCpuForMigration <String>]
@@ -31,14 +31,14 @@ New-AzScVmmVirtualMachineInstance -ResourceUri <String> [-AvailabilitySet <IAvai
 
 ### CreateViaJsonFilePath
 ```
-New-AzScVmmVirtualMachineInstance -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzScVmmVM -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzScVmmVirtualMachineInstance -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzScVmmVM -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

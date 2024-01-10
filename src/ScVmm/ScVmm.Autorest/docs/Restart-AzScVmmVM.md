@@ -1,25 +1,24 @@
 ---
 external help file:
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvminstanceguestagent
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/restart-azscvmmvm
 schema: 2.0.0
 ---
 
-# Update-AzScVmmVMInstanceGuestAgent
+# Restart-AzScVmmVM
 
 ## SYNOPSIS
-Create GuestAgent.
+The operation to restart a virtual machine instance.
 
 ## SYNTAX
 
 ```
-Update-AzScVmmVMInstanceGuestAgent -ResourceUri <String> [-CredentialsPassword <SecureString>]
- [-CredentialsUsername <String>] [-HttpProxyConfigHttpsProxy <String>] [-ProvisioningAction <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restart-AzScVmmVM -ResourceUri <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create GuestAgent.
+The operation to restart a virtual machine instance.
 
 ## EXAMPLES
 
@@ -62,36 +61,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CredentialsPassword
-Gets or sets the password to connect with the guest.
-
-```yaml
-Type: System.Security.SecureString
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CredentialsUsername
-Gets or sets username to connect with the guest.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -100,21 +69,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpProxyConfigHttpsProxy
-Gets or sets httpsProxy url.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -138,11 +92,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProvisioningAction
-Gets or sets the guest agent provisioning action.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -206,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgent
+### System.Boolean
 
 ## NOTES
 

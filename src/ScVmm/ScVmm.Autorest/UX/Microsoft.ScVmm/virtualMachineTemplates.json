@@ -6,12 +6,12 @@
   },
   "commands": [
     {
-      "name": "Get-AzScVmmVirtualMachineTemplate",
+      "name": "Get-AzScVmmVMTemplate",
       "description": "Implements VirtualMachineTemplate GET method.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmvirtualmachinetemplate"
+          "url": "https://learn.microsoft.com/powershell/module/az.scvmm/get-azscvmmvmtemplate"
         },
         "parameterSets": [
           {

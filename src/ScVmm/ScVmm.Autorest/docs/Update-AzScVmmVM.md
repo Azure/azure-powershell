@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvirtualmachineinstance
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvm
 schema: 2.0.0
 ---
 
-# Update-AzScVmmVirtualMachineInstance
+# Update-AzScVmmVM
 
 ## SYNOPSIS
 The operation to update a virtual machine instance.
@@ -14,7 +14,7 @@ The operation to update a virtual machine instance.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzScVmmVirtualMachineInstance -ResourceUri <String> [-AvailabilitySet <IAvailabilitySetListItem[]>]
+Update-AzScVmmVM -ResourceUri <String> [-AvailabilitySet <IAvailabilitySetListItem[]>]
  [-HardwareProfileCpuCount <Int32>] [-HardwareProfileDynamicMemoryEnabled <String>]
  [-HardwareProfileDynamicMemoryMaxMb <Int32>] [-HardwareProfileDynamicMemoryMinMb <Int32>]
  [-HardwareProfileLimitCpuForMigration <String>] [-HardwareProfileMemoryMb <Int32>]
@@ -25,14 +25,14 @@ Update-AzScVmmVirtualMachineInstance -ResourceUri <String> [-AvailabilitySet <IA
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzScVmmVirtualMachineInstance -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzScVmmVM -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzScVmmVirtualMachineInstance -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzScVmmVM -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

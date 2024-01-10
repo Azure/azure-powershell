@@ -1,37 +1,24 @@
 ---
 external help file:
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/new-azscvmmvirtualmachineinstancecheckpoint
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/remove-azscvmmvm
 schema: 2.0.0
 ---
 
-# New-AzScVmmVirtualMachineInstanceCheckpoint
+# Remove-AzScVmmVM
 
 ## SYNOPSIS
-Creates a checkpoint in virtual machine instance.
+The operation to delete a virtual machine instance.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
-New-AzScVmmVirtualMachineInstanceCheckpoint -ResourceUri <String> [-Description <String>] [-Name <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzScVmmVirtualMachineInstanceCheckpoint -ResourceUri <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzScVmmVirtualMachineInstanceCheckpoint -ResourceUri <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzScVmmVM -ResourceUri <String> [-DeleteFromHost <String>] [-Force <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a checkpoint in virtual machine instance.
+The operation to delete a virtual machine instance.
 
 ## EXAMPLES
 
@@ -90,12 +77,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-Description of the checkpoint.
+### -DeleteFromHost
+Whether to disable the VM from azure and also delete it from VMM.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -105,42 +92,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -Force
+Whether force delete was specified.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the checkpoint.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -152,6 +109,21 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

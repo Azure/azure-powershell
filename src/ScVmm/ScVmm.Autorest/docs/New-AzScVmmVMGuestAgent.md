@@ -1,43 +1,38 @@
 ---
 external help file:
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/restore-azscvmmvirtualmachineinstancecheckpoint
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/new-azscvmmvmguestagent
 schema: 2.0.0
 ---
 
-# Restore-AzScVmmVirtualMachineInstanceCheckpoint
+# New-AzScVmmVMGuestAgent
 
 ## SYNOPSIS
-Restores to a checkpoint in virtual machine instance.
+Create GuestAgent.
 
 ## SYNTAX
 
-### RestoreExpanded (Default)
+### CreateExpanded (Default)
 ```
-Restore-AzScVmmVirtualMachineInstanceCheckpoint -ResourceUri <String> [-Id <String>]
+New-AzScVmmVMGuestAgent -ResourceUri <String> [-CredentialsPassword <SecureString>]
+ [-CredentialsUsername <String>] [-HttpProxyConfigHttpsProxy <String>] [-ProvisioningAction <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Restore
+### CreateViaJsonFilePath
 ```
-Restore-AzScVmmVirtualMachineInstanceCheckpoint -ResourceUri <String> -Body <IVirtualMachineRestoreCheckpoint>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RestoreViaJsonFilePath
-```
-Restore-AzScVmmVirtualMachineInstanceCheckpoint -ResourceUri <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzScVmmVMGuestAgent -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### RestoreViaJsonString
+### CreateViaJsonString
 ```
-Restore-AzScVmmVirtualMachineInstanceCheckpoint -ResourceUri <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzScVmmVMGuestAgent -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Restores to a checkpoint in virtual machine instance.
+Create GuestAgent.
 
 ## EXAMPLES
 
@@ -80,19 +75,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Defines the restore checkpoint action properties.
-To construct, see NOTES section for BODY properties and create a hash table.
+### -CredentialsPassword
+Gets or sets the password to connect with the guest.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineRestoreCheckpoint
-Parameter Sets: Restore
+Type: System.Security.SecureString
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CredentialsUsername
+Gets or sets username to connect with the guest.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -112,12 +121,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-ID of the checkpoint to be restored to.
+### -HttpProxyConfigHttpsProxy
+Gets or sets httpsProxy url.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -128,11 +137,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-Path of Json file supplied to the Restore operation
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreViaJsonFilePath
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -143,11 +152,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Restore operation
+Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreViaJsonString
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -163,6 +172,21 @@ Run the command asynchronously
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProvisioningAction
+Gets or sets the guest agent provisioning action.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -223,11 +247,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineRestoreCheckpoint
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgent
 
 ## NOTES
 

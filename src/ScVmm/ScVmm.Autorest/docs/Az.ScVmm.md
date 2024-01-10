@@ -23,20 +23,20 @@ Shows an inventory item.
 ### [Get-AzScVmmServer](Get-AzScVmmServer.md)
 Implements VMMServer GET method.
 
-### [Get-AzScVmmVirtualMachineInstance](Get-AzScVmmVirtualMachineInstance.md)
-Retrieves information about a virtual machine instance.
-
-### [Get-AzScVmmVirtualMachineInstanceHybridIdentityMetadata](Get-AzScVmmVirtualMachineInstanceHybridIdentityMetadata.md)
-Implements HybridIdentityMetadata GET method.
-
-### [Get-AzScVmmVirtualMachineTemplate](Get-AzScVmmVirtualMachineTemplate.md)
-Implements VirtualMachineTemplate GET method.
-
 ### [Get-AzScVmmVirtualNetwork](Get-AzScVmmVirtualNetwork.md)
 Implements VirtualNetwork GET method.
 
-### [Get-AzScVmmVMInstanceGuestAgent](Get-AzScVmmVMInstanceGuestAgent.md)
+### [Get-AzScVmmVM](Get-AzScVmmVM.md)
+Retrieves information about a virtual machine instance.
+
+### [Get-AzScVmmVMGuestAgent](Get-AzScVmmVMGuestAgent.md)
 Implements GuestAgent GET method.
+
+### [Get-AzScVmmVMHybridIdentityMetadata](Get-AzScVmmVMHybridIdentityMetadata.md)
+Implements HybridIdentityMetadata GET method.
+
+### [Get-AzScVmmVMTemplate](Get-AzScVmmVMTemplate.md)
+Implements VirtualMachineTemplate GET method.
 
 ### [New-AzScVmmAvailabilitySet](New-AzScVmmAvailabilitySet.md)
 Onboards the ScVmm availability set as an Azure resource.
@@ -68,21 +68,21 @@ Create an in-memory object for VirtualDisk.
 ### [New-AzScVmmVirtualDiskUpdateObject](New-AzScVmmVirtualDiskUpdateObject.md)
 Create an in-memory object for VirtualDiskUpdate.
 
-### [New-AzScVmmVirtualMachineInstance](New-AzScVmmVirtualMachineInstance.md)
-The operation to Create a virtual machine instance.
-Please note some properties can be set only during virtual machine instance creation.
-
-### [New-AzScVmmVirtualMachineInstanceCheckpoint](New-AzScVmmVirtualMachineInstanceCheckpoint.md)
-Creates a checkpoint in virtual machine instance.
-
-### [New-AzScVmmVirtualMachineTemplate](New-AzScVmmVirtualMachineTemplate.md)
-Onboards the ScVmm VM Template as an Azure VM Template resource.
-
 ### [New-AzScVmmVirtualNetwork](New-AzScVmmVirtualNetwork.md)
 Onboards the ScVmm virtual network as an Azure virtual network resource.
 
-### [New-AzScVmmVMInstanceGuestAgent](New-AzScVmmVMInstanceGuestAgent.md)
+### [New-AzScVmmVM](New-AzScVmmVM.md)
+The operation to Create a virtual machine instance.
+Please note some properties can be set only during virtual machine instance creation.
+
+### [New-AzScVmmVMCheckpoint](New-AzScVmmVMCheckpoint.md)
+Creates a checkpoint in virtual machine instance.
+
+### [New-AzScVmmVMGuestAgent](New-AzScVmmVMGuestAgent.md)
 Create GuestAgent.
+
+### [New-AzScVmmVMTemplate](New-AzScVmmVMTemplate.md)
+Onboards the ScVmm VM Template as an Azure VM Template resource.
 
 ### [Remove-AzScVmmAvailabilitySet](Remove-AzScVmmAvailabilitySet.md)
 Deregisters the ScVmm availability set from Azure.
@@ -96,31 +96,31 @@ Deletes an inventoryItem.
 ### [Remove-AzScVmmServer](Remove-AzScVmmServer.md)
 Removes the SCVMM fabric from Azure.
 
-### [Remove-AzScVmmVirtualMachineInstance](Remove-AzScVmmVirtualMachineInstance.md)
-The operation to delete a virtual machine instance.
-
-### [Remove-AzScVmmVirtualMachineInstanceCheckpoint](Remove-AzScVmmVirtualMachineInstanceCheckpoint.md)
-Deletes a checkpoint in virtual machine instance.
-
-### [Remove-AzScVmmVirtualMachineTemplate](Remove-AzScVmmVirtualMachineTemplate.md)
-Deregisters the ScVmm VM Template from Azure.
-
 ### [Remove-AzScVmmVirtualNetwork](Remove-AzScVmmVirtualNetwork.md)
 Deregisters the ScVmm virtual network from Azure.
 
-### [Remove-AzScVmmVMInstanceGuestAgent](Remove-AzScVmmVMInstanceGuestAgent.md)
+### [Remove-AzScVmmVM](Remove-AzScVmmVM.md)
+The operation to delete a virtual machine instance.
+
+### [Remove-AzScVmmVMCheckpoint](Remove-AzScVmmVMCheckpoint.md)
+Deletes a checkpoint in virtual machine instance.
+
+### [Remove-AzScVmmVMGuestAgent](Remove-AzScVmmVMGuestAgent.md)
 Implements GuestAgent DELETE method.
 
-### [Restart-AzScVmmVirtualMachineInstance](Restart-AzScVmmVirtualMachineInstance.md)
+### [Remove-AzScVmmVMTemplate](Remove-AzScVmmVMTemplate.md)
+Deregisters the ScVmm VM Template from Azure.
+
+### [Restart-AzScVmmVM](Restart-AzScVmmVM.md)
 The operation to restart a virtual machine instance.
 
-### [Restore-AzScVmmVirtualMachineInstanceCheckpoint](Restore-AzScVmmVirtualMachineInstanceCheckpoint.md)
+### [Restore-AzScVmmVMCheckpoint](Restore-AzScVmmVMCheckpoint.md)
 Restores to a checkpoint in virtual machine instance.
 
-### [Start-AzScVmmVirtualMachineInstance](Start-AzScVmmVirtualMachineInstance.md)
+### [Start-AzScVmmVM](Start-AzScVmmVM.md)
 The operation to start a virtual machine instance.
 
-### [Stop-AzScVmmVirtualMachineInstance](Stop-AzScVmmVirtualMachineInstance.md)
+### [Stop-AzScVmmVM](Stop-AzScVmmVM.md)
 The operation to power off (stop) a virtual machine instance.
 
 ### [Update-AzScVmmAvailabilitySet](Update-AzScVmmAvailabilitySet.md)
@@ -129,21 +129,18 @@ Updates the AvailabilitySets resource.
 ### [Update-AzScVmmCloud](Update-AzScVmmCloud.md)
 Updates the Clouds resource.
 
-### [Update-AzScVmmInventoryItem](Update-AzScVmmInventoryItem.md)
-Create InventoryItem.
-
 ### [Update-AzScVmmServer](Update-AzScVmmServer.md)
 Updates the VmmServers resource.
-
-### [Update-AzScVmmVirtualMachineInstance](Update-AzScVmmVirtualMachineInstance.md)
-The operation to update a virtual machine instance.
-
-### [Update-AzScVmmVirtualMachineTemplate](Update-AzScVmmVirtualMachineTemplate.md)
-Updates the VirtualMachineTemplate resource.
 
 ### [Update-AzScVmmVirtualNetwork](Update-AzScVmmVirtualNetwork.md)
 Updates the VirtualNetworks resource.
 
-### [Update-AzScVmmVMInstanceGuestAgent](Update-AzScVmmVMInstanceGuestAgent.md)
+### [Update-AzScVmmVM](Update-AzScVmmVM.md)
+The operation to update a virtual machine instance.
+
+### [Update-AzScVmmVMGuestAgent](Update-AzScVmmVMGuestAgent.md)
 Create GuestAgent.
+
+### [Update-AzScVmmVMTemplate](Update-AzScVmmVMTemplate.md)
+Updates the VirtualMachineTemplate resource.
 

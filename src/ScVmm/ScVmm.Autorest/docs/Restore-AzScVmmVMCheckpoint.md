@@ -1,43 +1,43 @@
 ---
 external help file:
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/stop-azscvmmvirtualmachineinstance
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/restore-azscvmmvmcheckpoint
 schema: 2.0.0
 ---
 
-# Stop-AzScVmmVirtualMachineInstance
+# Restore-AzScVmmVMCheckpoint
 
 ## SYNOPSIS
-The operation to power off (stop) a virtual machine instance.
+Restores to a checkpoint in virtual machine instance.
 
 ## SYNTAX
 
-### StopExpanded (Default)
+### RestoreExpanded (Default)
 ```
-Stop-AzScVmmVirtualMachineInstance -ResourceUri <String> [-SkipShutdown <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Stop
-```
-Stop-AzScVmmVirtualMachineInstance -ResourceUri <String> -Body <IStopVirtualMachineOptions>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzScVmmVMCheckpoint -ResourceUri <String> [-Id <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StopViaJsonFilePath
+### Restore
 ```
-Stop-AzScVmmVirtualMachineInstance -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzScVmmVMCheckpoint -ResourceUri <String> -Body <IVirtualMachineRestoreCheckpoint>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StopViaJsonString
+### RestoreViaJsonFilePath
 ```
-Stop-AzScVmmVirtualMachineInstance -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzScVmmVMCheckpoint -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RestoreViaJsonString
+```
+Restore-AzScVmmVMCheckpoint -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to power off (stop) a virtual machine instance.
+Restores to a checkpoint in virtual machine instance.
 
 ## EXAMPLES
 
@@ -81,12 +81,12 @@ Accept wildcard characters: False
 ```
 
 ### -Body
-Defines the stop action properties.
+Defines the restore checkpoint action properties.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IStopVirtualMachineOptions
-Parameter Sets: Stop
+Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineRestoreCheckpoint
+Parameter Sets: Restore
 Aliases:
 
 Required: True
@@ -112,12 +112,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Stop operation
+### -Id
+ID of the checkpoint to be restored to.
 
 ```yaml
 Type: System.String
-Parameter Sets: StopViaJsonFilePath
+Parameter Sets: RestoreExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Restore operation
+
+```yaml
+Type: System.String
+Parameter Sets: RestoreViaJsonFilePath
 Aliases:
 
 Required: True
@@ -128,11 +143,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Stop operation
+Json string supplied to the Restore operation
 
 ```yaml
 Type: System.String
-Parameter Sets: StopViaJsonString
+Parameter Sets: RestoreViaJsonString
 Aliases:
 
 Required: True
@@ -157,6 +172,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceUri
 The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
 
@@ -166,23 +196,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkipShutdown
-Gets or sets a value indicating whether to request non-graceful VM shutdown.
-True value for this flag indicates non-graceful shutdown whereas false indicates otherwise.
-Defaults to false.
-
-```yaml
-Type: System.String
-Parameter Sets: StopExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -225,7 +238,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IStopVirtualMachineOptions
+### Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualMachineRestoreCheckpoint
 
 ## OUTPUTS
 

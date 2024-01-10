@@ -1,38 +1,43 @@
 ---
 external help file:
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/new-azscvmmvminstanceguestagent
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/stop-azscvmmvm
 schema: 2.0.0
 ---
 
-# New-AzScVmmVMInstanceGuestAgent
+# Stop-AzScVmmVM
 
 ## SYNOPSIS
-Create GuestAgent.
+The operation to power off (stop) a virtual machine instance.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### StopExpanded (Default)
 ```
-New-AzScVmmVMInstanceGuestAgent -ResourceUri <String> [-CredentialsPassword <SecureString>]
- [-CredentialsUsername <String>] [-HttpProxyConfigHttpsProxy <String>] [-ProvisioningAction <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzScVmmVMInstanceGuestAgent -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzScVmmVM -ResourceUri <String> [-SkipShutdown <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### Stop
 ```
-New-AzScVmmVMInstanceGuestAgent -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzScVmmVM -ResourceUri <String> -Body <IStopVirtualMachineOptions> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### StopViaJsonFilePath
+```
+Stop-AzScVmmVM -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### StopViaJsonString
+```
+Stop-AzScVmmVM -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create GuestAgent.
+The operation to power off (stop) a virtual machine instance.
 
 ## EXAMPLES
 
@@ -75,33 +80,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CredentialsPassword
-Gets or sets the password to connect with the guest.
+### -Body
+Defines the stop action properties.
+To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: System.Security.SecureString
-Parameter Sets: CreateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IStopVirtualMachineOptions
+Parameter Sets: Stop
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CredentialsUsername
-Gets or sets username to connect with the guest.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -121,27 +112,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpProxyConfigHttpsProxy
-Gets or sets httpsProxy url.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -JsonFilePath
-Path of Json file supplied to the Create operation
+Path of Json file supplied to the Stop operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Parameter Sets: StopViaJsonFilePath
 Aliases:
 
 Required: True
@@ -152,11 +128,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Create operation
+Json string supplied to the Stop operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: StopViaJsonString
 Aliases:
 
 Required: True
@@ -181,12 +157,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProvisioningAction
-Gets or sets the guest agent provisioning action.
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -205,6 +181,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipShutdown
+Gets or sets a value indicating whether to request non-graceful VM shutdown.
+True value for this flag indicates non-graceful shutdown whereas false indicates otherwise.
+Defaults to false.
+
+```yaml
+Type: System.String
+Parameter Sets: StopExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -247,9 +240,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IStopVirtualMachineOptions
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IGuestAgent
+### System.Boolean
 
 ## NOTES
 

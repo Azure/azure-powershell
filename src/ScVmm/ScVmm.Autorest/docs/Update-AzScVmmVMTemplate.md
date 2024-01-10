@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvirtualmachinetemplate
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/update-azscvmmvmtemplate
 schema: 2.0.0
 ---
 
-# Update-AzScVmmVirtualMachineTemplate
+# Update-AzScVmmVMTemplate
 
 ## SYNOPSIS
 Updates the VirtualMachineTemplate resource.
@@ -14,26 +14,26 @@ Updates the VirtualMachineTemplate resource.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzScVmmVirtualMachineTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzScVmmVMTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzScVmmVirtualMachineTemplate -InputObject <IScVmmIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzScVmmVMTemplate -InputObject <IScVmmIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzScVmmVirtualMachineTemplate -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+Update-AzScVmmVMTemplate -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzScVmmVirtualMachineTemplate -Name <String> -ResourceGroupName <String> -JsonString <String>
+Update-AzScVmmVMTemplate -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```

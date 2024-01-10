@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/remove-azscvmmvirtualmachineinstance
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/remove-azscvmmvmguestagent
 schema: 2.0.0
 ---
 
-# Remove-AzScVmmVirtualMachineInstance
+# Remove-AzScVmmVMGuestAgent
 
 ## SYNOPSIS
-The operation to delete a virtual machine instance.
+Implements GuestAgent DELETE method.
 
 ## SYNTAX
 
 ```
-Remove-AzScVmmVirtualMachineInstance -ResourceUri <String> [-DeleteFromHost <String>] [-Force <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzScVmmVMGuestAgent -ResourceUri <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to delete a virtual machine instance.
+Implements GuestAgent DELETE method.
 
 ## EXAMPLES
 
@@ -46,21 +46,6 @@ The operation to delete a virtual machine instance.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -69,51 +54,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DeleteFromHost
-Whether to disable the VM from azure and also delete it from VMM.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Whether force delete was specified.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named

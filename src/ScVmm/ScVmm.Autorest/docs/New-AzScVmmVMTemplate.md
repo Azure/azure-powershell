@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ScVmm
-online version: https://learn.microsoft.com/powershell/module/az.scvmm/new-azscvmmvirtualmachinetemplate
+online version: https://learn.microsoft.com/powershell/module/az.scvmm/new-azscvmmvmtemplate
 schema: 2.0.0
 ---
 
-# New-AzScVmmVirtualMachineTemplate
+# New-AzScVmmVMTemplate
 
 ## SYNOPSIS
 Onboards the ScVmm VM Template as an Azure VM Template resource.
@@ -14,30 +14,30 @@ Onboards the ScVmm VM Template as an Azure VM Template resource.
 
 ### CreateExpanded (Default)
 ```
-New-AzScVmmVirtualMachineTemplate -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
- [-InventoryItemId <String>] [-Tag <Hashtable>] [-Uuid <String>] [-VmmServerId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzScVmmVirtualMachineTemplate -InputObject <IScVmmIdentity> -Location <String>
+New-AzScVmmVMTemplate -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-InventoryItemId <String>]
  [-Tag <Hashtable>] [-Uuid <String>] [-VmmServerId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityExpanded
+```
+New-AzScVmmVMTemplate -InputObject <IScVmmIdentity> -Location <String> [-ExtendedLocationName <String>]
+ [-ExtendedLocationType <String>] [-InventoryItemId <String>] [-Tag <Hashtable>] [-Uuid <String>]
+ [-VmmServerId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### CreateViaJsonFilePath
 ```
-New-AzScVmmVirtualMachineTemplate -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+New-AzScVmmVMTemplate -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzScVmmVirtualMachineTemplate -Name <String> -ResourceGroupName <String> -JsonString <String>
+New-AzScVmmVMTemplate -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
