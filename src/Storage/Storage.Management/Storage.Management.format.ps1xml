@@ -579,7 +579,7 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>snapshotTime</Label>
+            <Label>SnapshotTime</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -615,7 +615,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>$_.snapshotTime.ToUniversalTime().ToString("s")+"Z"</ScriptBlock>
+                <ScriptBlock>$_.SnapshotTime.ToUniversalTime().ToString("s")+"Z"</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
