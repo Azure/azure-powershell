@@ -105,9 +105,6 @@ The operation to delete a virtual machine instance.
 ### [Remove-AzScVmmVMCheckpoint](Remove-AzScVmmVMCheckpoint.md)
 Deletes a checkpoint in virtual machine instance.
 
-### [Remove-AzScVmmVMGuestAgent](Remove-AzScVmmVMGuestAgent.md)
-Implements GuestAgent DELETE method.
-
 ### [Remove-AzScVmmVMTemplate](Remove-AzScVmmVMTemplate.md)
 Deregisters the ScVmm VM Template from Azure.
 
@@ -137,9 +134,6 @@ Updates the VirtualNetworks resource.
 
 ### [Update-AzScVmmVM](Update-AzScVmmVM.md)
 The operation to update a virtual machine instance.
-
-### [Update-AzScVmmVMGuestAgent](Update-AzScVmmVMGuestAgent.md)
-Create GuestAgent.
 
 ### [Update-AzScVmmVMTemplate](Update-AzScVmmVMTemplate.md)
 Updates the VirtualMachineTemplate resource.

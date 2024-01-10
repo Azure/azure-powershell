@@ -36,7 +36,7 @@ require:
 input-file:
   - $(repo)/specification/scvmm/resource-manager/Microsoft.ScVmm/stable/2023-10-07/scvmm.json
 
-module-version: 0.1.0
+module-version: 0.3.0
 title: ScVmm
 subject-prefix: $(service-name)
 
@@ -388,7 +388,7 @@ directive:
     remove: true
   - where:
       verb: Update|Remove
-      subject: VMInstanceGuestAgent
+      subject: VMGuestAgent
     remove: true
 
   - where:
