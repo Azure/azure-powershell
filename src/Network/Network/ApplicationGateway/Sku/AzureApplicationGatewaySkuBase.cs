@@ -37,12 +37,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public int? Capacity { get; set; }
 
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Application gateway SKU family")]
-        [ValidateSet("Generation_1", "Generation_2", IgnoreCase = true)]
-        public string Family { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
