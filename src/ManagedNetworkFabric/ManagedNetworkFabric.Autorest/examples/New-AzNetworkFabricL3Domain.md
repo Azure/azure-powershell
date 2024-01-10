@@ -1,10 +1,10 @@
 ### Example 1: Create the L3 Isolation Domain Resource
 ```powershell
 $connectedSubnetRoutePolicy = @{
-    ExportRoutePolicy = @{
+    ExportRoutePolicy = @(@{
         ExportIpv4RoutePolicyId = "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
-        ExportIpv6RoutePolicyId = "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
-    }
+        ExportIpv6RoutePolicyId ="/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
+    })
 }
 $aggregateRouteConfiguration = @{
     Ipv4Route = @(@{
