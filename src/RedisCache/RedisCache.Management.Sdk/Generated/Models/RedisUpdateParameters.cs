@@ -5,6 +5,8 @@
 
 namespace Microsoft.Azure.Management.RedisCache.Models
 {
+    using System.Linq;
+
     /// <summary>
     /// Parameters supplied to the Update Redis operation.
     /// </summary>
@@ -102,13 +104,13 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// Gets or sets resource tags.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
-        public System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
         /// Gets or sets the identity of the resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
-        public ManagedServiceIdentity Identity { get; set; }
+        public ManagedServiceIdentity Identity {get; set; }
 
         /// <summary>
         /// Gets or sets optional: Specifies the update channel for the monthly Redis
@@ -117,13 +119,13 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// caches. Default value is &#39;Stable&#39;. Possible values include: &#39;Stable&#39;, &#39;Preview&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.updateChannel")]
-        public string UpdateChannel { get; set; }
+        public string UpdateChannel {get; set; }
 
         /// <summary>
         /// Gets or sets the SKU of the Redis cache to deploy.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sku")]
-        public Sku Sku { get; set; }
+        public Sku Sku {get; set; }
 
         /// <summary>
         /// Gets or sets all Redis Settings. Few possible keys:
@@ -131,7 +133,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// etc.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.redisConfiguration")]
-        public RedisCommonPropertiesRedisConfiguration RedisConfiguration { get; set; }
+        public RedisCommonPropertiesRedisConfiguration RedisConfiguration {get; set; }
 
         /// <summary>
         /// Gets or sets redis version. This should be in the form &#39;major[.minor]&#39;
@@ -140,45 +142,45 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// (latest). Default value is &#39;latest&#39;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.redisVersion")]
-        public string RedisVersion { get; set; }
+        public string RedisVersion {get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether the non-ssl Redis server port (6379) is
         /// enabled.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableNonSslPort")]
-        public bool? EnableNonSslPort { get; set; }
+        public bool? EnableNonSslPort {get; set; }
 
         /// <summary>
         /// Gets or sets the number of replicas to be created per primary.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.replicasPerMaster")]
-        public int? ReplicasPerMaster { get; set; }
+        public int? ReplicasPerMaster {get; set; }
 
         /// <summary>
         /// Gets or sets the number of replicas to be created per primary.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.replicasPerPrimary")]
-        public int? ReplicasPerPrimary { get; set; }
+        public int? ReplicasPerPrimary {get; set; }
 
         /// <summary>
         /// Gets or sets a dictionary of tenant settings
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.tenantSettings")]
-        public System.Collections.Generic.IDictionary<string, string> TenantSettings { get; set; }
+        public System.Collections.Generic.IDictionary<string, string> TenantSettings {get; set; }
 
         /// <summary>
         /// Gets or sets the number of shards to be created on a Premium Cluster Cache.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.shardCount")]
-        public int? ShardCount { get; set; }
+        public int? ShardCount {get; set; }
 
         /// <summary>
         /// Gets or sets optional: requires clients to use a specified TLS version (or
         /// higher) to connect (e,g, &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;) Possible values include: &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.minimumTlsVersion")]
-        public string MinimumTlsVersion { get; set; }
+        public string MinimumTlsVersion {get; set; }
 
         /// <summary>
         /// Gets or sets whether or not public endpoint access is allowed for this
@@ -187,7 +189,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// method. Default value is &#39;Enabled&#39; Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicNetworkAccess")]
-        public string PublicNetworkAccess { get; set; }
+        public string PublicNetworkAccess {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -197,9 +199,15 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         public virtual void Validate()
         {
 
-            this.Identity?.Validate();
+            if (this.Identity != null)
+            {
+                this.Identity.Validate();
+            }
 
-            this.Sku?.Validate();
+            if (this.Sku != null)
+            {
+                this.Sku.Validate();
+            }
 
 
 
