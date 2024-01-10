@@ -32,10 +32,8 @@
     <ProjectReference Include="$(RepoSrc)Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
   </ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Update="Azure.Core" Version="1.36.0" />
-		<PackageReference Include="Moq" Version="4.7.145" />
-		<PackageReference Update="Microsoft.Identity.Client" Version="4.56.0" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Moq" Version="4.7.145" />
+  </ItemGroup>
 
 </Project>

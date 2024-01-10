@@ -3,7 +3,7 @@
   <PropertyGroup>
     <PsModuleName>Accounts</PsModuleName>
   </PropertyGroup>
-
+  
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
     <PropertyGroup>
@@ -28,10 +28,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="Azure.Core" Version="1.36.0" />
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />

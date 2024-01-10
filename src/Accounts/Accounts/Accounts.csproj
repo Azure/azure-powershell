@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Accounts</PsModuleName>
@@ -53,9 +53,7 @@
     <ProjectReference Include="..\Authentication\Authentication.csproj" />
     <ProjectReference Include="..\Authenticators\Authenticators.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Update="Azure.Core" Version="1.36.0" />
-  </ItemGroup>
+
   <ItemGroup>
     <Reference Include="FuzzySharp">
       <HintPath>..\..\lib\FuzzySharp.dll</HintPath>

@@ -65,9 +65,6 @@
   </ItemGroup>
 
   <!-- Assets -->
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.4.1" />
-  </ItemGroup>
 
   <ItemGroup>
         <ModuleCustomFiles Include="$(MSBuildThisFileDirectory)$(PsRootModuleName)\$(PsModuleFolder)\custom\**\*.*"/>

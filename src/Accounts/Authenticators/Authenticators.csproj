@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="$(MSBuildThisFileDirectory)\..\..\..\Repo.props" />
   <Import Project="$(MSBuildThisFileDirectory)\..\..\Az.Shared.props" />
   <PropertyGroup>
@@ -25,10 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Authentication\Authentication.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Update="Azure.Core" Version="1.36.0" />
-    <PackageReference Update="Microsoft.Identity.Client" Version="4.56.0" />
-  </ItemGroup>
+
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>
