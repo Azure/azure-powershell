@@ -12,17 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RedisCache.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.RedisCache.Models;
+using Microsoft.Rest.Azure;
+using System.Collections.Generic;
+using System.Management.Automation;
+
 namespace Microsoft.Azure.Commands.RedisCache
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using Microsoft.Azure.Commands.RedisCache.Models;
-    using Microsoft.Azure.Management.RedisCache.Models;
-    using Microsoft.Rest.Azure;
-    using Properties;
-    using ResourceManager.Common.ArgumentCompleters;
-
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCache"), OutputType(typeof(RedisCacheAttributes))]
     public class GetAzureRedisCache : RedisCacheCmdletBase
     {

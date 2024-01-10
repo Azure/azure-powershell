@@ -13,24 +13,21 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.RedisCache.Properties;
+using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.RedisCache;
+using Microsoft.Azure.Management.RedisCache.Models;
+using Microsoft.Rest.Azure;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Microsoft.Azure.Commands.RedisCache
 {
-    using Common.Authentication.Abstractions;
-    using Microsoft.Azure.Management.Insights;
-    using Microsoft.Azure.Management.Insights.Models;
-    using Microsoft.Azure.Management.Internal.Resources;
-    using Microsoft.Rest.Azure;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Models;
-    using System;
-    using Properties;
-    using Microsoft.Azure.Management.RedisCache;
-    using Microsoft.Azure.Management.RedisCache.Models;
-
     public class RedisCacheClient
     {
         private RedisManagementClient _client;
@@ -47,7 +44,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public RedisResource CreateCache(string resourceGroupName, string cacheName, string location, string skuFamily, int skuCapacity, string skuName,
                 Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string minimumTlsVersion, string subnetId,
-                string staticIP, Hashtable tags, IList<string> zones, string redisVersion, string identityType, string[] userAssignedIdentities)
+                string staticIP, Hashtable tags, IList<string> zones, string redisVersion, string identityType, string[] userAssignedIdentities, string updateChannel)
         {
             try
             {
@@ -65,7 +62,8 @@ namespace Microsoft.Azure.Commands.RedisCache
                     Family = skuFamily,
                     Capacity = skuCapacity
                 },
-                RedisVersion = redisVersion
+                RedisVersion = redisVersion,
+                UpdateChannel = updateChannel
             };
 
             parameters.Identity = Utility.BuildManagedServiceIdentity(identityType, userAssignedIdentities);
@@ -112,7 +110,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                 parameters.ShardCount = shardCount.Value;
             }
 
-            if(!string.IsNullOrEmpty(minimumTlsVersion))
+            if (!string.IsNullOrEmpty(minimumTlsVersion))
             {
                 parameters.MinimumTlsVersion = minimumTlsVersion;
             }
@@ -189,10 +187,10 @@ namespace Microsoft.Azure.Commands.RedisCache
                     parameters.TenantSettings.Add(key.ToString(), tenantSettings[key].ToString());
                 }
             }
-            
+
             parameters.ShardCount = shardCount;
 
-            if(!string.IsNullOrEmpty(MinimumTlsVersion))
+            if (!string.IsNullOrEmpty(MinimumTlsVersion))
             {
                 parameters.MinimumTlsVersion = MinimumTlsVersion;
             }
@@ -364,7 +362,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             _client.FirewallRules.Delete(resourceGroupName, cacheName, ruleName);
         }
 
-        internal RedisLinkedServerWithProperties SetLinkedServer(string resourceGroupName, string cacheName, 
+        internal RedisLinkedServerWithProperties SetLinkedServer(string resourceGroupName, string cacheName,
             string linkedCacheName, string linkedCacheId, string linkedCacheLocation, ReplicationRole serverRole)
         {
             return _client.LinkedServer.BeginCreate(resourceGroupName, cacheName, linkedCacheName, new RedisLinkedServerCreateParameters
