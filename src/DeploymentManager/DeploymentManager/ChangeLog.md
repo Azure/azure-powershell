@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* All operations for resources have been flagged as deprecated. Deployment manager module will be retired soon.
 
 ## Version 1.1.0
 * Adds LIST operations for resources

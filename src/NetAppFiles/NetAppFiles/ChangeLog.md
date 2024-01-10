@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed some minor issues
 
 ## Version 0.14.0
 * Fixed some minor issues
