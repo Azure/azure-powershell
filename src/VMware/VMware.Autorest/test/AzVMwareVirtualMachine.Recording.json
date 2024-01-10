@@ -1,8 +1,8 @@
 {
-  "AzVMwareVirtualMachine+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/virtualMachines?api-version=2021-12-01+1": {
+  "AzVMwareVirtualMachine+[NoContext]+List+$GET+https://management.azure.com/subscriptions/33b83be5-faf7-42ea-a712-320a5f9dd111/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/virtualMachines?api-version=2023-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/virtualMachines?api-version=2021-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/33b83be5-faf7-42ea-a712-320a5f9dd111/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/virtualMachines?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -11,7 +11,7 @@
         "CommandName": [ "Get-AzVMwareVirtualMachine" ],
         "FullCommandName": [ "Get-AzVMwareVirtualMachine_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -20,7 +20,7 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:18:39 GMT" ],
+        "Date": [ "Thu, 21 Dec 2023 16:20:20 GMT" ],
         "Server": [ "Rocket" ]
       },
       "ContentHeaders": {
@@ -31,10 +31,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareVirtualMachine+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/virtualMachines/vm-209?api-version=2021-12-01+1": {
+  "AzVMwareVirtualMachine+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/33b83be5-faf7-42ea-a712-320a5f9dd111/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/virtualMachines/vm-209?api-version=2023-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/virtualMachines/vm-209?api-version=2021-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/33b83be5-faf7-42ea-a712-320a5f9dd111/resourceGroups/testgroup5q2kvd/providers/Microsoft.AVS/privateClouds/azps_test_cloudme6g/clusters/xdn238/virtualMachines/vm-209?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -43,7 +43,7 @@
         "CommandName": [ "Get-AzVMwareVirtualMachine" ],
         "FullCommandName": [ "Get-AzVMwareVirtualMachine_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -52,7 +52,7 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:18:39 GMT" ],
+        "Date": [ "Thu, 21 Dec 2023 16:20:44 GMT" ],
         "Server": [ "Rocket" ]
       },
       "ContentHeaders": {
