@@ -10,4 +10,3 @@ LoadTrustStore ResourceId
 ```
 
 Create an in-memory object for LoadedCertificate.
-

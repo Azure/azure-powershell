@@ -406,6 +406,7 @@ namespace Microsoft.Azure.Commands.TestFx
             environment.StorageEndpointSuffix = AzureEnvironmentConstants.AzureStorageEndpointSuffix;
             environment.AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.AzureKeyVaultDnsSuffix;
             environment.AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId;
+            environment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl, currentEnvironment.Endpoints.GraphUri.AbsoluteUri);
             environment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, "https://api.loganalytics.io/v1");
             environment.ExtendedProperties.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId, "https://api.loganalytics.io");
             if (!AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable.ContainsKey(TestEnvironmentName))

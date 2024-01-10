@@ -36,7 +36,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.RecordDate = (Get-Date -Year 2023 -Month 08 -Day 28 -Hour 15 -Minute 11 -Second 11).ToString('dd-MM-yyyy-h-m-s')
+    $env.RecordDate = (Get-Date -Year 2023 -Month 12 -Day 25 -Hour 11 -Minute 11 -Second 11).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
 
     $BackupInstanceTestVariables = @{
@@ -159,15 +159,15 @@ function setupEnv() {
 
     $AksRestoreVariables = @{
         SubscriptionId = "f0c630e0-2995-4853-b056-0b3c09cb673f" #"62b829ee-7936-40c9-a1c9-47a93f9f3965"
-        ResourceGroupName = "araj-rg" #"aksbackuptestrg-rajat"
-        VaultName = "ecy-vault" #"demobackupvault"
+        ResourceGroupName = "azk8ssvcs-cluster-r-ecy" #"aksbackuptestrg-rajat"
+        VaultName = "azk8ssvcs-vault-ecy" #"demobackupvault"
         NewPolicyName = "" #"pstest-aks-policy"
-        PolicyName = "h4-w1"
+        PolicyName = "azk8ssvcs-ad-policy-backupecy"
         DataSourceLocation = "eastus2euap"
-        SourceClusterId = "/subscriptions/f0c630e0-2995-4853-b056-0b3c09cb673f/resourceGroups/araj-rg/providers/Microsoft.ContainerService/managedClusters/aksCluster3-ecy-araj"
-        SnapshotResourceGroupId = "/subscriptions/f0c630e0-2995-4853-b056-0b3c09cb673f/resourceGroups/araj-srg"
+        SourceClusterId = "/subscriptions/f0c630e0-2995-4853-b056-0b3c09cb673f/resourcegroups/azk8ssvcs-cluster-r-ecy/providers/Microsoft.ContainerService/managedClusters/azk8ssvcs-cluster-ecy"
+        SnapshotResourceGroupId = "/subscriptions/f0c630e0-2995-4853-b056-0b3c09cb673f/resourceGroups/MC_azk8ssvcs-cluster-r-ecy_azk8ssvcs-cluster-ecy_eastus2euap"
         FriendlyName = "aksCluster3-ecy-araj-BI"
-        ClusterName = "aksCluster3-ecy-araj"
+        ClusterName = "azk8ssvcs-bi-backupecy"
     }
 
     $BlobHardeningVariables = @{
@@ -205,6 +205,16 @@ function setupEnv() {
         FileNamePrefix = "oss-csr-pstest-restoreasfiles"
     }
 
+    $CrossRegionRestoreVariables = @{
+        ResourceGroupName =  "adigupt-rg"
+        VaultName = "crr-wala-ecy-vault"
+        SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        TargetResourceId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/DppCrrRG/providers/Microsoft.DBforPostgreSQL/servers/crr-ccy-1/databases/oss-pstestrun-crr-1"
+        SecretURI = "https://crr-ccy-kv.vault.azure.net/secrets/secret-for-crr-ccy-1"
+        TargetContainerURI = "https://zftccypod01otds1.blob.core.windows.net/oss-crr-pstest"
+        FileNamePrefix = "oss-pstest-crrasfiles-1"
+    }
+
     $MUAVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         ResourceGroupName = "hiagarg"
@@ -231,6 +241,7 @@ function setupEnv() {
     $env.add("TestAksRestoreScenario", $AksRestoreVariables) | Out-Null
     $env.add("TestBlobHardeningScenario", $BlobHardeningVariables) | Out-Null
     $env.add("TestCrossSubscriptionRestoreScenario", $CrossSubscriptionRestoreVariables) | Out-Null
+    $env.add("TestCrossRegionRestoreScenario", $CrossRegionRestoreVariables) | Out-Null
     $env.add("TestSoftDelete", $SoftDeleteVariables) | Out-Null
     $env.add("TestBackupConfig", $BackupConfigVariables) | Out-Null
     $env.add("TestMUA", $MUAVariables) | Out-Null

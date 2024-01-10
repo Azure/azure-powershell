@@ -12,6 +12,83 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Start-AzDataProtectionBackupInstanceRestore' {
+    It 'CrossRegionRestoreAsDatabase' -skip {        
+        $resourceGroupName  = $env.TestCrossRegionRestoreScenario.ResourceGroupName
+        $vaultName = $env.TestCrossRegionRestoreScenario.VaultName
+        $subscriptionId = $env.TestCrossRegionRestoreScenario.SubscriptionId
+        $targetResourceId = $env.TestCrossRegionRestoreScenario.TargetResourceId
+        $secretURI = $env.TestCrossRegionRestoreScenario.SecretURI
+        
+        $vault = Search-AzDataProtectionBackupVaultInAzGraph -ResourceGroup $resourceGroupName -Subscription $subscriptionId -Vault $vaultName -UseSecondaryRegion
+
+        $instance = Search-AzDataProtectionBackupInstanceInAzGraph -Subscription $subscriptionId  -ResourceGroup  $resourceGroupName  -Vault $vaultName -DatasourceType AzureDatabaseForPostgreSQL
+
+        $recoveryPointsCrr = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance[0].Name -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -UseSecondaryRegion   
+        
+        $OssRestoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPostgreSQL -SourceDataStore VaultStore -RestoreLocation $vault.ReplicatedRegion[0] -RestoreType AlternateLocation -RecoveryPoint $recoveryPointsCrr[0].Property.RecoveryPointId -TargetResourceId $targetResourceId -SecretStoreURI $secretURI -SecretStoreType AzureKeyVault
+               
+        # assumes permissions are preassigned
+        $validateCRR = Test-AzDataProtectionBackupInstanceRestore -Name $instance[0].Name -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName -RestoreRequest $OssRestoreReq -RestoreToSecondaryRegion
+
+        $validateCRR.ObjectType | Should be "OperationJobExtendedInfo"
+
+        $restoreJobCRR = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance[0].Name -Parameter $OssRestoreReq -RestoreToSecondaryRegion
+
+        $jobid = $restoreJobCRR.JobId.Split("/")[-1]
+        ($jobid -ne $null) | Should be $true
+
+        $jobstatus = "InProgress"
+        while($jobstatus -ne "Completed")
+        {
+            Start-Sleep -Seconds 10
+
+            $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -UseSecondaryRegion
+
+            ($currentjob.OperationCategory -eq "CrossRegionRestore") | Should be $true
+            
+            $jobstatus = $currentjob.Status
+        }
+    }
+
+    It 'CrossRegionRestoreAsFiles' -skip {
+        $recordDate = $env.RecordDate
+        $resourceGroupName  = $env.TestCrossRegionRestoreScenario.ResourceGroupName
+        $vaultName = $env.TestCrossRegionRestoreScenario.VaultName
+        $subscriptionId = $env.TestCrossRegionRestoreScenario.SubscriptionId
+        $targetContainerURI = $env.TestCrossRegionRestoreScenario.TargetContainerURI
+        $fileNamePrefix = $env.TestCrossRegionRestoreScenario.FileNamePrefix + "-" + $recordDate
+        
+        $vault = Search-AzDataProtectionBackupVaultInAzGraph -ResourceGroup $resourceGroupName -Subscription $subscriptionId -Vault $vaultName -UseSecondaryRegion
+
+        $instance = Search-AzDataProtectionBackupInstanceInAzGraph -Subscription $subscriptionId  -ResourceGroup  $resourceGroupName  -Vault $vaultName -DatasourceType AzureDatabaseForPostgreSQL
+
+        $recoveryPointsCrr = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance[0].Name -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -UseSecondaryRegion   
+        
+        $OssRestoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPostgreSQL -SourceDataStore VaultStore -RestoreLocation $vault.ReplicatedRegion[0] -RestoreType RestoreAsFiles -RecoveryPoint $recoveryPointsCrr[0].Property.RecoveryPointId -TargetContainerURI $targetContainerURI -FileNamePrefix $fileNamePrefix 
+               
+        # assumes permissions are preassigned
+        $validateCRR = Test-AzDataProtectionBackupInstanceRestore -Name $instance[0].Name -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName -RestoreRequest $OssRestoreReq -RestoreToSecondaryRegion
+
+        $validateCRR.ObjectType | Should be "OperationJobExtendedInfo"
+
+        $restoreJobCRR = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance[0].Name -Parameter $OssRestoreReq -RestoreToSecondaryRegion
+
+        $jobid = $restoreJobCRR.JobId.Split("/")[-1]
+        ($jobid -ne $null) | Should be $true
+
+        $jobstatus = "InProgress"
+        while($jobstatus -ne "Completed")
+        {
+            Start-Sleep -Seconds 10
+
+            $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -UseSecondaryRegion
+
+            ($currentjob.OperationCategory -eq "CrossRegionRestore") | Should be $true
+            
+            $jobstatus = $currentjob.Status
+        }
+    }
+
     It 'CrossSubscriptionRestore' {
         $recordDate = $env.RecordDate
         $resourceGroupName  = $env.TestCrossSubscriptionRestoreScenario.ResourceGroupName

@@ -10,5 +10,3 @@ springcloud-service.azuremicroservices.io
 ```
 
 Create or update custom domain of one lifecycle application.
-
-

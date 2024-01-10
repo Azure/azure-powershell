@@ -82,7 +82,7 @@ Describe 'BlobHardeningScenario' {
     }
 
     It 'TriggerRestore' -skip {
-        # DppRef: OLR should throw an error in case of vaulted backups 
+        # TODO: OLR should throw an error in case of vaulted backups 
 
         $subId = $env.TestBlobHardeningScenario.SubscriptionId
         $crossSubscriptionId = $env.TestBlobHardeningScenario.CrossSubscriptionId
