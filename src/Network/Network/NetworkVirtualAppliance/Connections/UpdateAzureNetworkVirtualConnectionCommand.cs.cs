@@ -177,12 +177,6 @@ namespace Microsoft.Azure.Commands.Network
                         WriteObject(this.CreateOrUpdateNetworkVirtualApplianceConnection(this.ResourceGroupName, this.VirtualApplianceName, this.Name, nvaConnectionToModify));
                     }
                 );
-
-
             }
-
-
-
-
     }
 }
