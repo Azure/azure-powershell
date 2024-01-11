@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the prompt message when deleting a share snapshot and the output format when listing 
+    - `Remove-AzStorageShare`
+    - `Remove-AzRmStorageSahre`
+    - `Get-AzRmStorageShare`
 
 ## Version 6.1.0
 * Defaults of AllowBlobPublicAccess and AllowCrossTenantReplication when creating a storage account were set to false by server changes. Please refer to https://techcommunity.microsoft.com/t5/azure-storage-blog/azure-storage-updating-some-default-security-settings-on-new/ba-p/3819554
