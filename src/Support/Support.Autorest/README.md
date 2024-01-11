@@ -60,39 +60,42 @@ directive:
     set:
       format-table:
         properties:
-          # - Id
           - DisplayName
           - Name
           - SecondaryConsentEnabled # Do we need this? 
-          # - Type
   - where:
       model-name: Service
     set:
       format-table:
         properties:
-          # - Id
           - DisplayName
           - Name
           - ResourceType # Do we need this? 
-          # - Type
   - where:
       model-name: FileDetails
     set:
       format-table:
         properties:
-          # - Id
           - Name
           - CreatedOn
           - ChunkSize
           - FileSize
           - NumberOfChunks 
-          # - Type
   # Following are common directives which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required
   # Following two directives are v4 specific
+  # - where:
+  #     verb: New
+  #     subject: AzSupportFileWorkspace
+  #   remove: false
+  # - where: 
+  #     verb: New
+  #     subject: AzSupportFileWorkspacesNoSubscription
+  #   remove: false
   - where:
-      variant: ^(Create|Update)(?!.*?Expanded)
+      variant: ^(Create|Update)(?!.*?Expanded|JsonFilePath|JsonString)
+      subject: ^(?!FileWorkspace|FileWorkspacesNoSubscription$).*
     remove: true
   - where:
       variant: ^CreateViaIdentity.*$
