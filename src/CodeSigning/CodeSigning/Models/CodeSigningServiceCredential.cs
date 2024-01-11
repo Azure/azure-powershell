@@ -17,8 +17,6 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Azure.Core;
-using System.Threading;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Models
 {
@@ -52,7 +50,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
         public Task<string> OnAuthentication(string authority, string resource, string scope)
         {
             var tokenStr = GetTokenInternal(this.TenantId, this._authenticationFactory, this._context, this._endpointName);
-            return Task.FromResult<string>(tokenStr.ToString());
+            return Task.FromResult(tokenStr.ToString());
         }
 
         public string GetToken()

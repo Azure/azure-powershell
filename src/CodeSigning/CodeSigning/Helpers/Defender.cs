@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Helpers
-{  
+{
     public class DefenderHelper
     {
         [DllImport("wintrust.dll", ExactSpelling = true, SetLastError = true, CharSet = CharSet.Unicode)]
@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Commands.CodeSigning.Helpers
         {
             IntPtr hFile = safeFileHandle.DangerousGetHandle();
             IntPtr phCatAdmin = IntPtr.Zero;
-            // Get phCatAdmin handle.  First use the function CryptCATAdminAcquireContext2, then use the normal function            
+            // Get phCatAdmin handle.  First use the function CryptCATAdminAcquireContext2, then use the normal function
             if (!CryptCATAdminAcquireContext2(out phCatAdmin, IntPtr.Zero, "SHA256", IntPtr.Zero, 0)) { }
 
-            // Calc hash            
+            // Calc hash
             //define file hash and file hash lengeh
             UInt32 fileHashLength = 16;
             IntPtr fileHash = Marshal.AllocHGlobal((int)fileHashLength);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Helpers
 
                 if (!CryptCATAdminCalcHashFromFileHandle2(phCatAdmin, hFile, ref fileHashLength, fileHash, 0))
                 {
-                    // clean                   
+                    // clean
                     CryptCATAdminReleaseContext(phCatAdmin, 0);
                     Marshal.FreeHGlobal(fileHash);
                 }

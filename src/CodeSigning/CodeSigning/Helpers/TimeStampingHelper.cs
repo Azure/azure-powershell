@@ -13,12 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography;
-using System.Text;
 using Microsoft.Win32.SafeHandles;
 using static Microsoft.Azure.Commands.CodeSigning.Helpers.NativeMethod;
 using static Microsoft.Azure.Commands.CodeSigning.Helpers.CapiUtil;
@@ -26,7 +22,7 @@ using static Microsoft.Azure.Commands.CodeSigning.Helpers.CapiUtil;
 namespace Microsoft.Azure.Commands.CodeSigning.Helpers
 {
     public unsafe static class TimeStampingHelper
-    {   
+    {
         private static readonly Oid _rfc3161CountersignOid = new Oid("1.3.6.1.4.1.311.3.3.1");
         internal static readonly Oid Sha384RsaOid = new Oid("1.2.840.113549.1.1.12");
 

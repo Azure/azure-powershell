@@ -14,16 +14,14 @@
 
 using Microsoft.Win32.SafeHandles;
 using System;
-using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Security;
-using System.Text;
 using System.Runtime.CompilerServices;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Helpers
-{   
+{
     [SuppressUnmanagedCodeSecurity]
     internal unsafe static class NativeMethod
     {
@@ -58,13 +56,13 @@ namespace Microsoft.Azure.Commands.CodeSigning.Helpers
             [In] IntPtr pbData,
             [In] uint cbData,
             [In] bool fFinal);
-        
+
         // https://msdn.microsoft.com/en-us/library/windows/desktop/aa380216(v=vs.85).aspx
         [DllImport(CRYPT32_LIB, CallingConvention = CallingConvention.Winapi)]
         [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
         public static extern void CryptMemFree(
             [In] IntPtr pv);
-        
+
         // https://msdn.microsoft.com/en-us/library/windows/desktop/dd433803(v=vs.85).aspx
         [DllImport(CRYPT32_LIB, CallingConvention = CallingConvention.Winapi, SetLastError = true)]
         public static extern bool CryptRetrieveTimeStamp(

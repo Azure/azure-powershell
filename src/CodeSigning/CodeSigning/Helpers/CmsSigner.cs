@@ -14,16 +14,10 @@
 
 using Azure.CodeSigning.Client.CryptoProvider;
 using Azure.Core;
-using Microsoft.Rest;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Security;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Pkcs;
-using System.Text;
-using Azure.CodeSigning;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Helpers
 {
@@ -89,7 +83,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Helpers
                 {
                     retry--;
                     if (retry == 0 || ex.Message == "Input TimeStamperUrl is not valid Uri. Please check.")
-                    { 
+                    {
                         throw ex;
                     }
                 }
