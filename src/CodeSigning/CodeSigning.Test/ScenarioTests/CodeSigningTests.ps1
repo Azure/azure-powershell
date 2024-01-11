@@ -21,16 +21,16 @@ function Test-CodeSigningEku {
     $profileName = "dawangarmeus110Cert02"
     $endPointUrl = "https://localhost:5001/"
     $expectedEku = "1.3.6.1.4.1.311.97.1.3.1.29433.35007.34545.16815.37291.11644.53265.56135"
-   
+
     try {
         # Test Get CodeSigning Eku
         $eku = Get-AzCodeSigningEku -AccountNameName $accountName -ProfileName $profileName -EndpointUrl $$endPointUrl
-        Assert-AreEqual $eku 
-        Assert-AreEqual $rgName $$expectedEku      
+        Assert-AreEqual $eku
+        Assert-AreEqual $rgName $$expectedEku
     }
 
     finally {
-       
+
     }
 
 }

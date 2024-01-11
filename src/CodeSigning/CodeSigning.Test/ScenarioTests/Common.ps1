@@ -57,22 +57,22 @@ function Get-ProviderLocation($provider)
 {
 	if ((Get-KeyVaultTestMode) -ne 'Playback')
 	{
-		$namespace = $provider.Split("/")[0]  
-		if($provider.Contains("/"))  
-		{  
-			$type = $provider.Substring($namespace.Length + 1)  
-			$location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
-  
-			if ($location -eq $null) 
-			{  
-				return "East US"  
-			} 
-            else 
-			{  
-				return $location.Locations[0]  
-			}  
+		$namespace = $provider.Split("/")[0]
+		if($provider.Contains("/"))
+		{
+			$type = $provider.Substring($namespace.Length + 1)
+			$location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+
+			if ($location -eq $null)
+			{
+				return "East US"
+			}
+            else
+			{
+				return $location.Locations[0]
+			}
 		}
-		
+
 		return "East US"
 	}
 
