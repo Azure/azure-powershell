@@ -16,18 +16,22 @@
 
 <#
 .Synopsis
-Create or update a private cloud
+Create a private cloud
 .Description
-Create or update a private cloud
+Create a private cloud
 .Example
-PS C:\> New-AzVMwarePrivateCloud -Name azps_test_cloud -ResourceGroupName azps_test_group -NetworkBlock 192.168.48.0/22 -Sku av36 -ManagementClusterSize 3 -Location australiaeast
+New-AzVMwarePrivateCloud -Name azps_test_cloud -ResourceGroupName azps_test_group -NetworkBlock 192.168.48.0/22 -Sku av36 -ManagementClusterSize 3 -Location australiaeast
 
 Location      Name            Type                        ResourceGroupName
 --------      ----            ----                        -----------------
 australiaeast azps_test_cloud Microsoft.AVS/privateClouds azps_test_group
+.Example
+{{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,13 +46,13 @@ IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources
   [Password <String>]: The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
   [PrimaryServer <String>]: Primary server URL
   [SecondaryServer <String>]: Secondary server URL
-  [Ssl <SslEnum?>]: Protect LDAP communication using SSL certificate (LDAPS)
+  [Ssl <String>]: Protect LDAP communication using SSL certificate (LDAPS)
   [Username <String>]: The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloud
 #>
 function New-AzVMwarePrivateCloud {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -57,14 +61,14 @@ function New-AzVMwarePrivateCloud {
         [System.String]
         # Name of the private cloud
         ${Name},
-
+    
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
-
+    
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -78,45 +82,122 @@ function New-AzVMwarePrivateCloud {
         # The block of addresses should be unique across VNet in your subscription as well as on-premise.
         # Make sure the CIDR format is conformed to (A.B.C.D/X) where A,B,C,D are between 0 and 255, and X is between 0 and 22
         ${NetworkBlock},
-
+    
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
         [System.String]
         # The name of the SKU.
         ${Sku},
-
+    
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum])]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum]
+        [System.Int32]
+        # The secondary availability zone for the private cloud
+        ${AvailabilitySecondaryZone},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("SingleZone", "DualZone")]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+        [System.String]
+        # The availability strategy for the private cloud
+        ${AvailabilityStrategy},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+        [System.Int32]
+        # The primary availability zone for the private cloud
+        ${AvailabilityZone},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+        [System.String]
+        # Status of customer managed encryption key
+        ${EncryptionStatus},
+    
+        [Parameter()]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+        [System.String[]]
+        # Array of additional networks noncontiguous with networkBlock.
+        # Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute.
+        # Make sure the CIDR format conforms to (A.B.C.D/X).
+        ${ExtendedNetworkBlock},
+    
+        [Parameter()]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource[]]
+        # vCenter Single Sign On Identity Sources
+        # To construct, see NOTES section for IDENTITYSOURCE properties and create a hash table.
+        ${IdentitySource},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("SystemAssigned", "None")]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+        [System.String]
+        # The type of identity used for the private cloud.
+        # The type 'SystemAssigned' refers to an implicitly created identity.
+        # The type 'None' will remove any identities from the Private Cloud.
+        ${IdentityType},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+        [System.String]
         # Connectivity to internet is enabled or disabled
         ${Internet},
-
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+        [System.String]
+        # The name of the key.
+        ${KeyVaultPropertyKeyName},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+        [System.String]
+        # The URL of the vault.
+        ${KeyVaultPropertyKeyVaultUrl},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+        [System.String]
+        # The version of the key.
+        ${KeyVaultPropertyKeyVersion},
+    
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
         [System.String]
         # Resource location
         ${Location},
-
+    
+        [Parameter()]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+        [System.String[]]
+        # The hosts
+        ${ManagementClusterHost},
+    
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
         [System.Int32]
         # The cluster size
         ${ManagementClusterSize},
-
+    
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
         [System.String]
         # Optionally, set the NSX-T Manager password when the private cloud is created
         ${NsxtPassword},
-
+    
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},
-
+    
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
         [System.String]
@@ -133,62 +214,63 @@ function New-AzVMwarePrivateCloud {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
-
+    
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command as a job
         ${AsJob},
-
+    
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
-
+    
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
-
+    
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-
+    
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Run the command asynchronously
         ${NoWait},
-
+    
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
-
+    
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
-
+    
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
-
-    process {
+    
+process {
         if(!$AcceptEULA){
             $legalTermPath = Join-Path $PSScriptRoot -ChildPath "LegalTerm.txt"
             try {
@@ -220,6 +302,6 @@ function New-AzVMwarePrivateCloud {
         } catch {
             throw
         }
+    } 
     }
-}
     

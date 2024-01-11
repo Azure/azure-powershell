@@ -1,116 +1,82 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareplacementpolicy
+online version: https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwaredatastore
 schema: 2.0.0
 ---
 
-# Update-AzVMwarePlacementPolicy
+# Update-AzVMwareDatastore
 
 ## SYNOPSIS
-Update a placement policy in a private cloud cluster
+Create a datastore in a private cloud cluster
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateCloudName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-AffinityStrength <String>]
- [-AzureHybridBenefitType <String>] [-HostMember <String[]>] [-State <String>] [-VMMember <String[]>]
+Update-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DiskPoolVolumeLunName <String>]
+ [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>] [-NetAppVolumeId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityClusterExpanded
 ```
-Update-AzVMwarePlacementPolicy -ClusterInputObject <IVMwareIdentity> -Name <String>
- [-AffinityStrength <String>] [-AzureHybridBenefitType <String>] [-HostMember <String[]>] [-State <String>]
- [-VMMember <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Update-AzVMwareDatastore -ClusterInputObject <IVMwareIdentity> -Name <String>
+ [-DiskPoolVolumeLunName <String>] [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>]
+ [-NetAppVolumeId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzVMwarePlacementPolicy -InputObject <IVMwareIdentity> [-AffinityStrength <String>]
- [-AzureHybridBenefitType <String>] [-HostMember <String[]>] [-State <String>] [-VMMember <String[]>]
+Update-AzVMwareDatastore -InputObject <IVMwareIdentity> [-DiskPoolVolumeLunName <String>]
+ [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>] [-NetAppVolumeId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPrivateCloudExpanded
 ```
-Update-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
- [-AffinityStrength <String>] [-AzureHybridBenefitType <String>] [-HostMember <String[]>] [-State <String>]
- [-VMMember <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Update-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
+ [-DiskPoolVolumeLunName <String>] [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>]
+ [-NetAppVolumeId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a placement policy in a private cloud cluster
+Create a datastore in a private cloud cluster
 
 ## EXAMPLES
 
-### Example 1: Update a placement policy in a private cloud cluster
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzVMwarePlacementPolicy -ClusterName cluster1 -Name policy1 -PrivateCloudName cloud1 -ResourceGroupName group1 -State 'Enabled'
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName
-----    -----------------
-policy1 group1
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update a placement policy in a private cloud cluster
+{{ Add description here }}
 
-### Example 2: Update a placement policy in a private cloud cluster
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzVMwarePlacementPolicy -ClusterName cluster1 -Name policy1 -PrivateCloudName cloud1 -ResourceGroupName group1 | Update-AzVMwarePlacementPolicy -State 'Enabled'
+{{ Add code here }}
 ```
 
 ```output
-Name    ResourceGroupName
-----    -----------------
-policy1 group1
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update a placement policy in a private cloud cluster
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -AffinityStrength
-vm-host placement policy affinity strength (should/must)
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureHybridBenefitType
-placement policy azure hybrid benefit opt-in type
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -168,11 +134,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HostMember
-Host members list
+### -DiskPoolVolumeLunName
+Name of the LUN to be used for datastore
 
 ```yaml
-Type: System.String[]
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiskPoolVolumeMountOption
+Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiskPoolVolumeTargetId
+Azure resource ID of the iSCSI target
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -200,14 +196,29 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+Name of the datastore in the private cloud cluster
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterExpanded, UpdateViaIdentityPrivateCloudExpanded
-Aliases: PlacementPolicyName
+Aliases: DatastoreName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetAppVolumeId
+Azure resource ID of the NetApp volume
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -276,21 +287,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -State
-Whether the placement policy is enabled or disabled
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -302,21 +298,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VMMember
-Virtual machine members list
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -361,7 +342,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore
 
 ## NOTES
 

@@ -1,61 +1,60 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareprivatecloud
+online version: https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareclusterzone
 schema: 2.0.0
 ---
 
-# Remove-AzVMwarePrivateCloud
+# Get-AzVMwareClusterZone
 
 ## SYNOPSIS
-Delete a private cloud
+List hosts by zone in a cluster
 
 ## SYNTAX
 
-### Delete (Default)
 ```
-Remove-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzVMwareClusterZone -ClusterName <String> -PrivateCloudName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a private cloud
+List hosts by zone in a cluster
 
 ## EXAMPLES
 
-### Example 1: Delete private cloud
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud
-
+{{ Add code here }}
 ```
 
-Delete private cloud
-
-### Example 2: Delete private cloud
-```powershell
-Get-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud | Remove-AzVMwarePrivateCloud
-
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Delete private cloud
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -ClusterName
+Name of the cluster in the private cloud
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -63,7 +62,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -77,61 +77,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
-Parameter Sets: DeleteViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
+### -PrivateCloudName
 Name of the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: PrivateCloudName
+Parameter Sets: (All)
+Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -144,7 +98,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -158,8 +112,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -205,11 +159,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterZoneList
 
 ## NOTES
 

@@ -1,85 +1,60 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareaddon
+online version: https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetwork
 schema: 2.0.0
 ---
 
-# Get-AzVMwareAddon
+# Get-AzVMwareWorkloadNetwork
 
 ## SYNOPSIS
-Get an addon by name in a private cloud
+Get a private cloud workload network.
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
-Get-AzVMwareAddon -PrivateCloudName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzVMwareAddon -AddonType <String> -PrivateCloudName <String> -ResourceGroupName <String>
+Get-AzVMwareWorkloadNetwork -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzVMwareAddon -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVMwareWorkloadNetwork -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get an addon by name in a private cloud
+Get a private cloud workload network.
 
 ## EXAMPLES
 
-### Example 1: List addon under resource group
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzVMwareAddon -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+{{ Add code here }}
 ```
 
 ```output
-Name Type                               ResourceGroupName
----- ----                               -----------------
-srm  Microsoft.AVS/privateClouds/addons azps_test_group
-vr   Microsoft.AVS/privateClouds/addons azps_test_group
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-List addon under resource group
+{{ Add description here }}
 
-### Example 2: Get an addon by name in a private cloud
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzVMwareAddon -AddonType vr -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+{{ Add code here }}
 ```
 
 ```output
-Name Type                               ResourceGroupName
----- ----                               -----------------
-vr   Microsoft.AVS/privateClouds/addons azps_test_group
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Get an addon by name in a private cloud
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -AddonType
-Name of the addon for the private cloud
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: AddonName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -114,7 +89,7 @@ Name of the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -130,7 +105,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -145,7 +120,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False
@@ -164,7 +139,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetwork
 
 ## NOTES
 

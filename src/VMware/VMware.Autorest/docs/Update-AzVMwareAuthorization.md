@@ -1,49 +1,62 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareprivatecloud
+online version: https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareauthorization
 schema: 2.0.0
 ---
 
-# Remove-AzVMwarePrivateCloud
+# Update-AzVMwareAuthorization
 
 ## SYNOPSIS
-Delete a private cloud
+Create an ExpressRoute Circuit Authorization in a private cloud
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzVMwareAuthorization -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Remove-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzVMwareAuthorization -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityPrivateCloudExpanded
+```
+Update-AzVMwareAuthorization -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a private cloud
+Create an ExpressRoute Circuit Authorization in a private cloud
 
 ## EXAMPLES
 
-### Example 1: Delete private cloud
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud
-
+{{ Add code here }}
 ```
 
-Delete private cloud
-
-### Example 2: Delete private cloud
-```powershell
-Get-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud | Remove-AzVMwarePrivateCloud
-
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Delete private cloud
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -63,7 +76,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -83,7 +97,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -94,12 +108,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the private cloud
+Name of the ExpressRoute Circuit Authorization in the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: PrivateCloudName
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateCloudExpanded
+Aliases: AuthorizationName
 
 Required: True
 Position: Named
@@ -123,15 +137,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -PrivateCloudInputObject
+Identity Parameter
+To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Parameter Sets: UpdateViaIdentityPrivateCloudExpanded
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PrivateCloudName
+The name of the private cloud.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -144,7 +174,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -159,7 +189,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -209,7 +239,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IExpressRouteAuthorization
 
 ## NOTES
 

@@ -1,22 +1,22 @@
 {
-  "resourceType": "privateClouds",
+  "resourceType": "privateClouds/workloadNetworks",
   "apiVersion": "2023-03-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.vmware"
   },
   "commands": [
     {
-      "name": "Get-AzVMwarePrivateCloud",
-      "description": "Get a private cloud",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}",
+      "name": "Get-AzVMwareWorkloadNetwork",
+      "description": "Get a private cloud workload network.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/workloadNetworks/{workloadNetworkName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareprivatecloud"
+          "url": "https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetwork"
         },
         "parameterSets": [
           {
             "parameters": [
-              "-Name <String>",
+              "-PrivateCloudName <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
@@ -25,10 +25,10 @@
       },
       "examples": [
         {
-          "description": "Get a private cloud",
+          "description": "Get a private cloud workload network.",
           "parameters": [
             {
-              "name": "-Name",
+              "name": "-PrivateCloudName",
               "value": "[Path.privateCloudName]"
             },
             {

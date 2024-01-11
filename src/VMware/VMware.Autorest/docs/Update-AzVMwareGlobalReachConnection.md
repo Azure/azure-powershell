@@ -1,56 +1,65 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareglobalreachconnection
+online version: https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareglobalreachconnection
 schema: 2.0.0
 ---
 
-# Remove-AzVMwareGlobalReachConnection
+# Update-AzVMwareGlobalReachConnection
 
 ## SYNOPSIS
-Delete a global reach connection in a private cloud
+Create a global reach connection in a private cloud
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Update-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-AuthorizationKey <String>] [-ExpressRouteId <String>]
+ [-PeerExpressRouteCircuit <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Remove-AzVMwareGlobalReachConnection -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzVMwareGlobalReachConnection -InputObject <IVMwareIdentity> [-AuthorizationKey <String>]
+ [-ExpressRouteId <String>] [-PeerExpressRouteCircuit <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityPrivateCloud
+### UpdateViaIdentityPrivateCloudExpanded
 ```
-Remove-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
+ [-AuthorizationKey <String>] [-ExpressRouteId <String>] [-PeerExpressRouteCircuit <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a global reach connection in a private cloud
+Create a global reach connection in a private cloud
 
 ## EXAMPLES
 
-### Example 1: Delete a global reach connection in a private cloud
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzVMwareGlobalReachConnection -Name azps_test_grc -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
-
+{{ Add code here }}
 ```
 
-Delete a global reach connection in a private cloud
-
-### Example 2: Delete a global reach connection in a private cloud
-```powershell
-Get-AzVMwareGlobalReachConnection -Name azps_test_grc -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group | Remove-AzVMwareGlobalReachConnection
-
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Delete a global reach connection in a private cloud
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -59,6 +68,21 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AuthorizationKey
+Authorization key from the peer express route used for the global reach connection
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -85,13 +109,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ExpressRouteId
+The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -106,7 +145,7 @@ Name of the global reach connection in the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityPrivateCloud
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateCloudExpanded
 Aliases: GlobalReachConnectionName
 
 Required: True
@@ -131,11 +170,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -PeerExpressRouteCircuit
+Identifier of the ExpressRoute Circuit to peer with in the global reach connection
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -152,7 +191,7 @@ To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and creat
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
-Parameter Sets: DeleteViaIdentityPrivateCloud
+Parameter Sets: UpdateViaIdentityPrivateCloudExpanded
 Aliases:
 
 Required: True
@@ -163,11 +202,11 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudName
-Name of the private cloud
+The name of the private cloud.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -183,7 +222,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -198,7 +237,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -248,7 +287,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnection
 
 ## NOTES
 
