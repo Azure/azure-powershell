@@ -2007,7 +2007,7 @@ function Test-ApplicationGatewaySkuFamilyGet
 		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
 
 		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
-		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
+		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
 		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
 
 		# backend part
@@ -2022,13 +2022,13 @@ function Test-ApplicationGatewaySkuFamilyGet
 		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -Priority 100 -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
 
 		# sku
-		$sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
+		$sku = New-AzApplicationGatewaySku -Name Basic -Tier Basic -Capacity 2
 
 		# Create Application Gateway
 		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -TrustedRootCertificate $trustedRoot01
 
 		# Get Application Gateway
-		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 
 		# Operational State
 		Assert-AreEqual "Running" $getgw.OperationalState
@@ -2042,9 +2042,18 @@ function Test-ApplicationGatewaySkuFamilyGet
 		$sku01 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw
 		Assert-NotNull $sku01
 		Assert-AreEqual $sku01.Capacity 2
-		Assert-AreEqual $sku01.Name Standard_v2
-		Assert-AreEqual $sku01.Tier Standard_v2
+		Assert-AreEqual $sku01.Name Basic
+		Assert-AreEqual $sku01.Tier Basic
 		Assert-AreEqual $sku01.Family Generation_1
+
+		Set-AzApplicationGatewaySku -Name Basic -Tier Basic -Capacity 1 -ApplicationGateway $getgw
+
+		$sku02 = Get-AzApplicationGatewaySku -ApplicationGateway $getgw
+		Assert-NotNull $sku02
+		Assert-AreEqual $sku02.Capacity 1
+		Assert-AreEqual $sku02.Name Basic
+		Assert-AreEqual $sku02.Tier Basic
+		Assert-AreEqual $sku02.Family Generation_1
 
 		# Set Application Gateway
 		$getgw02 = Set-AzApplicationGateway -ApplicationGateway $getgw
