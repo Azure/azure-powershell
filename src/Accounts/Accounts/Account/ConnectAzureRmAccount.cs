@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         private void WriteInformationSender(object sender, StreamEventArgs args)
         {
-            _tasks.Enqueue(new Task(() => this.WriteInformation(args.Message)));
+            _tasks.Enqueue(new Task(() => this.WriteHighlightedInformation(args.Message)));
         }
 
         protected override void StopProcessing()
@@ -806,6 +806,9 @@ namespace Microsoft.Azure.Commands.Profile
             // unregister the thread-safe write warning, because it won't work out of this cmdlet
             AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteWarningKey);
             AzureSession.Instance.RegisterComponent(WriteWarningKey, () => _originalWriteWarning);
+            // unregister the thread-safe write information, because it won't work out of this cmdlet
+            AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteInformationKey);
+            AzureSession.Instance.RegisterComponent(WriteInformationKey, () => _originalWriteInformation);
         }
     }
 }
