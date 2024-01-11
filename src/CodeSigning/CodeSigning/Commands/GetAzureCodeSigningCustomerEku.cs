@@ -13,15 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.CodeSigning.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Runtime.InteropServices;
-using System.Security;
 
 namespace Microsoft.Azure.Commands.CodeSigning
 {

@@ -12,12 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.CodeSigning.Helpers;
 using Microsoft.Azure.Commands.CodeSigning.Models;
-using Newtonsoft.Json;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
@@ -80,7 +75,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
           ValueFromPipelineByPropertyName = true,
           HelpMessage = "Downloaded Root Cert file full path, including file name")]
         [Parameter(Mandatory = true,
-          Position = 3,
+          Position = 1,
           ParameterSetName = ByMetadataFileParameterSet,
           ValueFromPipelineByPropertyName = true,
           HelpMessage = "Downloaded Root Cert file full path, including file name")]
