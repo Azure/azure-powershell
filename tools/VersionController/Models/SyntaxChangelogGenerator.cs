@@ -27,6 +27,7 @@ namespace VersionController.Netcore.Models
         public void Analyze(String rootDirectory)
         {
             var srcDirs = Path.Combine(rootDirectory, @"src\");
+            var toolsCommonDirs = Path.Combine(rootDirectory, @"tools\Tools.Common");
             var manifestFiles = Directory.EnumerateFiles(srcDirs, "*.psd1", SearchOption.AllDirectories)
                                          .Where(file =>
                                              !Path.GetDirectoryName(file)
@@ -43,13 +44,13 @@ namespace VersionController.Netcore.Models
                 var executingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).AbsolutePath);
                 Directory.SetCurrentDirectory(executingPath);
                 var newModuleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
-                var filePath = Path.Combine(executingPath, "SerializedCmdlets", $"{moduleName}.json");
+                var filePath = Path.Combine(toolsCommonDirs, "SerializedCmdlets", $"{moduleName}.json");
                 if (!File.Exists(filePath))  continue;
                 var oldModuleMetadata = ModuleMetadata.DeserializeCmdlets(filePath);
-                CmdletLoader.ModuleMetadata = newModuleMetadata;
+                CmdletLoader.ModuleMetadata = oldModuleMetadata;
                 CompareModuleMetedata(oldModuleMetadata, newModuleMetadata, moduleName);
             }
-            var markDownPath = Path.Combine(rootDirectory, "documentation/SyntaxChangeLog/SyntaxChangeLog.md");
+            var markDownPath = Path.Combine(rootDirectory, @"documentation/SyntaxChangeLog/SyntaxChangeLog.md");
             GenerateMarkdown(markDownPath);
             Console.WriteLine("Cmdlets Differences written to {0}", markDownPath);
         }
@@ -410,25 +411,26 @@ namespace VersionController.Netcore.Models
                 {
                     if (diffInfo[i].Type == ChangeType.CmdletAdd)
                     {
-                        if (diffInfo[i].Type == diffInfo[i-1].Type) {
+                        if (i != 0 && diffInfo[i].Type == diffInfo[i-1].Type) {
                             sb.AppendFormat(", `{0}`",diffInfo[i].CmdletName);
-                            if (i + 1 == diffInfo.Count ||diffInfo[i].Type != diffInfo[i+1].Type) {
-                                sb.AppendFormat("\n");
-                            }
                         } else {
                             sb.AppendFormat("* Added cmdlet `{0}`", diffInfo[i].CmdletName);
+                        }
+                        if (i + 1 == diffInfo.Count ||diffInfo[i].Type != diffInfo[i+1].Type) {
+                                sb.AppendFormat("\n");
                         }
                     }
                     else if (diffInfo[i].Type == ChangeType.CmdletRemove)
                     {
-                        if (diffInfo[i].Type == diffInfo[i-1].Type) {
+                        if (i != 0 && diffInfo[i].Type == diffInfo[i-1].Type) {
                             sb.AppendFormat(", `{0}`",diffInfo[i].CmdletName);
-                            if (i + 1 == diffInfo.Count ||diffInfo[i].Type != diffInfo[i+1].Type) {
-                                sb.AppendFormat("\n");
-                            }
+
                         } else {
                             sb.AppendFormat("* Removed cmdlet `{0}`", diffInfo[i].CmdletName);
                         }
+                        if (i + 1 == diffInfo.Count ||diffInfo[i].Type != diffInfo[i+1].Type) {
+                            sb.AppendFormat("\n");
+                        }                        
                     }
                     else
                     {
@@ -518,7 +520,7 @@ namespace VersionController.Netcore.Models
         }
         private string GetDescription_ParameterAttributeChange(CmdletDiffInformation info)
         {
-            return $"Parameter `-{info.ParameterName}` ValidateNotNullOrEmpty changed from {info.Before[0]} to {info.After[0]}";
+            return $"Parameter `-{info.ParameterName}` ValidateNotNullOrEmpty changed from `{info.Before[0]}` to `{info.After[0]}`";
         }
 
         private string GetDescription_OutputTypeChange(CmdletDiffInformation info)
@@ -540,6 +542,7 @@ namespace VersionController.Netcore.Models
             mapper.Add(ChangeType.ParameterAliasRemove, GetDescription_ParameterAliasRemove);
             mapper.Add(ChangeType.ParameterTypeChange, GetDescription_ParameterTypeChange);
             mapper.Add(ChangeType.OutputTypeChange, GetDescription_OutputTypeChange);
+            mapper.Add(ChangeType.ParameterAttributeChange, GetDescription_ParameterAttributeChange);
 
             if (mapper.ContainsKey(info.Type))
             {
