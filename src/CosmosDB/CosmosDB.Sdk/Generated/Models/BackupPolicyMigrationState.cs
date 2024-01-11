@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
 
         /// <param name="status">Describes the status of migration between backup policy types.
-        /// Possible values include: 'Invalid', 'InProgress', 'Completed', 'Failed'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;InProgress&#39;, &#39;Completed&#39;, &#39;Failed&#39;</param>
 
         /// <param name="targetType">Describes the target backup policy type of the backup policy migration.
-        /// Possible values include: 'Periodic', 'Continuous'</param>
+        /// Possible values include: &#39;Periodic&#39;, &#39;Continuous&#39;</param>
 
         /// <param name="startTime">Time at which the backup policy migration started (ISO-8601 format).
         /// </param>

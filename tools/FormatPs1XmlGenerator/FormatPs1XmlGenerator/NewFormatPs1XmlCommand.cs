@@ -101,7 +101,7 @@ namespace FormatPs1XmlGenerator
 
                 var nestedModules = (object[])moduleInfo["NestedModules"];
                 var moduleBase = Path.GetDirectoryName(manifestPath) ?? throw new InvalidOperationException("Unable to get module base directory from the manifest path");
-                list.AddRange(nestedModules.Select(nestedModule => Path.GetFullPath(Path.Combine(artifactsPath, nestedModule.ToString()))));
+                list.AddRange(nestedModules.Where(nestedModule => Path.GetExtension(nestedModule.ToString()).ToLower().Equals(".dll")).Select(nestedModule => Path.GetFullPath(Path.Combine(artifactsPath, nestedModule.ToString()))));
             }
 
             return list;

@@ -21,28 +21,28 @@ Create an in-memory object for NetworkProfile.
 Create an in-memory object for NetworkProfile.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.NetworkProfile
+Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.NetworkProfile
 .Link
 https://learn.microsoft.com/powershell/module/Az.PaloAltoNetworks/new-azpaloaltonetworksprofileobject
 #>
 function New-AzPaloAltoNetworksProfileObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.NetworkProfile')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.NetworkProfile')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Egress nat IP to use.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IIPAddress[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress[]]
         $EgressNatIP,
         [Parameter(Mandatory, HelpMessage="Enable egress NAT, enabled by default.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.EgressNat])]
-        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.EgressNat]
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("DISABLED", "ENABLED")]
+        [string]
         $EnableEgressNat,
         [Parameter(Mandatory, HelpMessage="vnet or vwan, cannot be updated.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.NetworkType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.NetworkType]
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("VNET", "VWAN")]
+        [string]
         $NetworkType,
         [Parameter(Mandatory, HelpMessage="List of IPs associated with the Firewall.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IIPAddress[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress[]]
         $PublicIP,
         [Parameter(HelpMessage="Address Space.")]
         [string]
@@ -98,7 +98,7 @@ function New-AzPaloAltoNetworksProfileObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.NetworkProfile]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.NetworkProfile]::New()
 
         if ($PSBoundParameters.ContainsKey('EgressNatIP')) {
             $Object.EgressNatIP = $EgressNatIP

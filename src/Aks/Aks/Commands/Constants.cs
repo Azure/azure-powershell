@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Aks
             { "HttpApplicationRouting", "httpapplicationrouting" },
             { "Monitoring", "omsagent" },
             { "VirtualNode", "aciConnector" },
-            { "AzurePolicy", "azurepolicy " },
+            { "AzurePolicy", "azurepolicy" },
             { "KubeDashboard", "kubeDashboard" },
         };
         public const string AddOnNameMonitoring = "Monitoring";

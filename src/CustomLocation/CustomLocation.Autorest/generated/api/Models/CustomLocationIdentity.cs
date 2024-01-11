@@ -12,6 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="ChildResourceName" /> property.</summary>
+        private string _childResourceName;
+
+        /// <summary>Resource Sync Rule name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Origin(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PropertyOrigin.Owned)]
+        public string ChildResourceName { get => this._childResourceName; set => this._childResourceName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -49,10 +56,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
     public partial interface ICustomLocationIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.IJsonSerializable
     {
+        /// <summary>Resource Sync Rule name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Resource Sync Rule name.",
+        SerializedName = @"childResourceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ChildResourceName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -61,6 +82,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -69,6 +93,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Custom Locations name.",
         SerializedName = @"resourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -77,6 +104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -86,6 +116,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models
     internal partial interface ICustomLocationIdentityInternal
 
     {
+        /// <summary>Resource Sync Rule name.</summary>
+        string ChildResourceName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>

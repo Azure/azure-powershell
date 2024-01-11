@@ -26,10 +26,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="id">Name of the Cosmos DB MongoDB database
         /// </param>
-        public MongoDBDatabaseResource(string id)
+
+        /// <param name="restoreParameters">Parameters to indicate the information about the restore
+        /// </param>
+
+        /// <param name="createMode">Enum to indicate the mode of resource creation.
+        /// Possible values include: &#39;Default&#39;, &#39;Restore&#39;</param>
+        public MongoDBDatabaseResource(string id, ResourceRestoreParameters restoreParameters = default(ResourceRestoreParameters), string createMode = default(string))
 
         {
             this.Id = id;
+            this.RestoreParameters = restoreParameters;
+            this.CreateMode = createMode;
             CustomInit();
         }
 
@@ -44,6 +52,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
         public string Id {get; set; }
+
+        /// <summary>
+        /// Gets or sets parameters to indicate the information about the restore
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "restoreParameters")]
+        public ResourceRestoreParameters RestoreParameters {get; set; }
+
+        /// <summary>
+        /// Gets or sets enum to indicate the mode of resource creation. Possible values include: &#39;Default&#39;, &#39;Restore&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "createMode")]
+        public string CreateMode {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -56,6 +76,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Id");
             }
+
+
 
         }
     }
