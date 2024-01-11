@@ -13,7 +13,7 @@ Return trial status for subscription by region
 ## SYNTAX
 
 ```
-Test-AzVMwareLocationTrialAvailability -Location <String> -Name <String> [-SubscriptionId <String>]
+Test-AzVMwareLocationTrialAvailability -Location <String> [-SubscriptionId <String>] [-Name <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -76,7 +76,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
