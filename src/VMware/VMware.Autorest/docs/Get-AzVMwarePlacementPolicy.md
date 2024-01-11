@@ -29,6 +29,18 @@ Get-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateCloudNa
 Get-AzVMwarePlacementPolicy -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityCluster
+```
+Get-AzVMwarePlacementPolicy -ClusterInputObject <IVMwareIdentity> -Name <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityPrivateCloud
+```
+Get-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get a placement policy by name in a private cloud cluster
 
@@ -63,12 +75,28 @@ Get a placement policy by name in a private cloud cluster
 
 ## PARAMETERS
 
+### -ClusterInputObject
+Identity Parameter
+To construct, see NOTES section for CLUSTERINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Parameter Sets: GetViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 Name of the cluster in the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityPrivateCloud, List
 Aliases:
 
 Required: True
@@ -115,13 +143,29 @@ Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityCluster, GetViaIdentityPrivateCloud
 Aliases: PlacementPolicyName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateCloudInputObject
+Identity Parameter
+To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Parameter Sets: GetViaIdentityPrivateCloud
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -180,7 +224,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy
 
 ## NOTES
 

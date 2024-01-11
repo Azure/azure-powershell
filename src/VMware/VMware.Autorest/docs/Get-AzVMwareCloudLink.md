@@ -29,6 +29,12 @@ Get-AzVMwareCloudLink -Name <String> -PrivateCloudName <String> -ResourceGroupNa
 Get-AzVMwareCloudLink -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityPrivateCloud
+```
+Get-AzVMwareCloudLink -Name <String> -PrivateCloudInputObject <IVMwareIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get an cloud link by name in a private cloud
 
@@ -99,13 +105,29 @@ Name of the cloud link resource
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityPrivateCloud
 Aliases: CloudLinkName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateCloudInputObject
+Identity Parameter
+To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Parameter Sets: GetViaIdentityPrivateCloud
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -164,7 +186,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.ICloudLink
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICloudLink
 
 ## NOTES
 

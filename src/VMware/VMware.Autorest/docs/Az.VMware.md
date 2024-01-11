@@ -57,25 +57,28 @@ Create a in-memory object for AddonSrmProperties
 Create a in-memory object for AddonVrProperties
 
 ### [New-AzVMwareAuthorization](New-AzVMwareAuthorization.md)
-Create or update an ExpressRoute Circuit Authorization in a private cloud
+Create an ExpressRoute Circuit Authorization in a private cloud
 
 ### [New-AzVMwareCloudLink](New-AzVMwareCloudLink.md)
-Create or update a cloud link in a private cloud
+Create a cloud link in a private cloud
 
 ### [New-AzVMwareCluster](New-AzVMwareCluster.md)
-Create or update a cluster in a private cloud
+Create a cluster in a private cloud
 
 ### [New-AzVMwareDatastore](New-AzVMwareDatastore.md)
-Create or update a datastore in a private cloud cluster
+Create a datastore in a private cloud cluster
 
 ### [New-AzVMwareGlobalReachConnection](New-AzVMwareGlobalReachConnection.md)
-Create or update a global reach connection in a private cloud
+Create a global reach connection in a private cloud
+
+### [New-AzVMwareIdentitySourceObject](New-AzVMwareIdentitySourceObject.md)
+Create an in-memory object for IdentitySource.
 
 ### [New-AzVMwarePlacementPolicy](New-AzVMwarePlacementPolicy.md)
-Create or update a placement policy in a private cloud cluster
+Create a placement policy in a private cloud cluster
 
 ### [New-AzVMwarePrivateCloud](New-AzVMwarePrivateCloud.md)
-Create or update a private cloud
+Create a private cloud
 
 ### [New-AzVMwarePrivateCloudNsxtPassword](New-AzVMwarePrivateCloudNsxtPassword.md)
 Rotate the NSX-T Manager password
@@ -128,8 +131,20 @@ Return quota for subscription by region
 ### [Test-AzVMwareLocationTrialAvailability](Test-AzVMwareLocationTrialAvailability.md)
 Return trial status for subscription by region
 
+### [Update-AzVMwareAuthorization](Update-AzVMwareAuthorization.md)
+Create an ExpressRoute Circuit Authorization in a private cloud
+
+### [Update-AzVMwareCloudLink](Update-AzVMwareCloudLink.md)
+Create a cloud link in a private cloud
+
 ### [Update-AzVMwareCluster](Update-AzVMwareCluster.md)
 Update a cluster in a private cloud
+
+### [Update-AzVMwareDatastore](Update-AzVMwareDatastore.md)
+Create a datastore in a private cloud cluster
+
+### [Update-AzVMwareGlobalReachConnection](Update-AzVMwareGlobalReachConnection.md)
+Create a global reach connection in a private cloud
 
 ### [Update-AzVMwarePlacementPolicy](Update-AzVMwarePlacementPolicy.md)
 Update a placement policy in a private cloud cluster

@@ -1,11 +1,22 @@
-### Example 1: Create a local Script String Execution object
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzVMwareScriptStringExecutionParameterObject -Name azps_test_stringvalue -Value "stringValue"
-```
-```output
-Name                  Type   Value
-----                  ----   -----
-azps_test_stringvalue Value  stringValue
+{{ Add code here }}
 ```
 
-Create a local Script String Execution object
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

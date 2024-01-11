@@ -37,39 +37,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "Test-AzVMwareLocationTrialAvailability",
-      "description": "Return trial status for subscription by region",
-      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.AVS/locations/{location}/checkTrialAvailability",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.vmware/test-azvmwarelocationtrialavailability"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-Location <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Return trial status for subscription by region",
-          "parameters": [
-            {
-              "name": "-Location",
-              "value": "[Path.location]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
     }
   ]
 }

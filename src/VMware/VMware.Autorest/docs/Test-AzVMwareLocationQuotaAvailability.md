@@ -121,7 +121,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IQuota
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IQuota
 
 ## NOTES
 

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@autorest/powershell": "^4.0.671"
+  }
+}

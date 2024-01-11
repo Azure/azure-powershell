@@ -1,11 +1,22 @@
-### Example 1: Create an in-memory object for VMPlacementPolicyProperties.
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzVMwareVMPlacementPolicyPropertiesObject -AffinityType 'Affinity' -Type 'VmVm' -VMMember @{"abc"="123"}
-```
-```output
-DisplayName ProvisioningState State AffinityType VMMember
------------ ----------------- ----- ------------ --------
-                                    Affinity     {System.Collections.Hashtable}
+{{ Add code here }}
 ```
 
-Create an in-memory object for VMPlacementPolicyProperties.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

@@ -21,18 +21,27 @@ Create a in-memory object for AddonSrmProperties
 
 ## EXAMPLES
 
-### Example 1: Create a local SRM object for the Addon Property parameter
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
+{{ Add code here }}
 ```
 
 ```output
-AddonType ProvisioningState LicenseKey
---------- ----------------- ----------
-SRM                         YourLicenseKeyValue
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create a local SRM object for the Addon Property parameter
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -58,7 +67,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.AddonSrmProperties
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AddonSrmProperties
 
 ## NOTES
 

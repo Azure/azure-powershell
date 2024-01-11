@@ -29,6 +29,18 @@ Get-AzVMwareVirtualMachine -ClusterName <String> -Id <String> -PrivateCloudName 
 Get-AzVMwareVirtualMachine -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityCluster
+```
+Get-AzVMwareVirtualMachine -ClusterInputObject <IVMwareIdentity> -Id <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityPrivateCloud
+```
+Get-AzVMwareVirtualMachine -ClusterName <String> -Id <String> -PrivateCloudInputObject <IVMwareIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get a virtual machine by id in a private cloud cluster
 
@@ -63,12 +75,28 @@ Get a virtual machine by id in a private cloud cluster
 
 ## PARAMETERS
 
+### -ClusterInputObject
+Identity Parameter
+To construct, see NOTES section for CLUSTERINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Parameter Sets: GetViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 Name of the cluster in the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityPrivateCloud, List
 Aliases:
 
 Required: True
@@ -99,7 +127,7 @@ Virtual Machine identifier
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityCluster, GetViaIdentityPrivateCloud
 Aliases: VirtualMachineId
 
 Required: True
@@ -116,6 +144,22 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PrivateCloudInputObject
+Identity Parameter
+To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Parameter Sets: GetViaIdentityPrivateCloud
 Aliases:
 
 Required: True
@@ -180,7 +224,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVirtualMachine
 
 ## NOTES
 

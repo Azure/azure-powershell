@@ -1,11 +1,22 @@
-### Example 1: Create a local VR object for the Addon Property parameter
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzVMwareAddonVrPropertiesObject -VrsCount 2
-```
-```output
-AddonType ProvisioningState VrsCount
---------- ----------------- --------
-VR                          2
+{{ Add code here }}
 ```
 
-Create a local VR object for the Addon Property parameter
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

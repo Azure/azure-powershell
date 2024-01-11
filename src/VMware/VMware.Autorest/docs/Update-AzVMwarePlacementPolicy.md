@@ -15,16 +15,30 @@ Update a placement policy in a private cloud cluster
 ### UpdateExpanded (Default)
 ```
 Update-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateCloudName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-AffinityStrength <AffinityStrength>]
- [-AzureHybridBenefitType <AzureHybridBenefitType>] [-HostMember <String[]>] [-State <PlacementPolicyState>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AffinityStrength <String>]
+ [-AzureHybridBenefitType <String>] [-HostMember <String[]>] [-State <String>] [-VMMember <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityClusterExpanded
+```
+Update-AzVMwarePlacementPolicy -ClusterInputObject <IVMwareIdentity> -Name <String>
+ [-AffinityStrength <String>] [-AzureHybridBenefitType <String>] [-HostMember <String[]>] [-State <String>]
  [-VMMember <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzVMwarePlacementPolicy -InputObject <IVMwareIdentity> [-AffinityStrength <AffinityStrength>]
- [-AzureHybridBenefitType <AzureHybridBenefitType>] [-HostMember <String[]>] [-State <PlacementPolicyState>]
+Update-AzVMwarePlacementPolicy -InputObject <IVMwareIdentity> [-AffinityStrength <String>]
+ [-AzureHybridBenefitType <String>] [-HostMember <String[]>] [-State <String>] [-VMMember <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityPrivateCloudExpanded
+```
+Update-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
+ [-AffinityStrength <String>] [-AzureHybridBenefitType <String>] [-HostMember <String[]>] [-State <String>]
  [-VMMember <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -66,7 +80,7 @@ Update a placement policy in a private cloud cluster
 vm-host placement policy affinity strength (should/must)
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AffinityStrength
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +110,7 @@ Accept wildcard characters: False
 placement policy azure hybrid benefit opt-in type
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AzureHybridBenefitType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -107,12 +121,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ClusterInputObject
+Identity Parameter
+To construct, see NOTES section for CLUSTERINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Parameter Sets: UpdateViaIdentityClusterExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 Name of the cluster in the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateCloudExpanded
 Aliases:
 
 Required: True
@@ -174,7 +204,7 @@ Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityClusterExpanded, UpdateViaIdentityPrivateCloudExpanded
 Aliases: PlacementPolicyName
 
 Required: True
@@ -196,6 +226,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateCloudInputObject
+Identity Parameter
+To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Parameter Sets: UpdateViaIdentityPrivateCloudExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -234,7 +280,7 @@ Accept wildcard characters: False
 Whether the placement policy is enabled or disabled
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -315,7 +361,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.IPlacementPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy
 
 ## NOTES
 

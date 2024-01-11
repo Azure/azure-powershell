@@ -13,8 +13,8 @@ Create an in-memory object for VMPlacementPolicyProperties.
 ## SYNTAX
 
 ```
-New-AzVMwareVMPlacementPolicyPropertiesObject -AffinityType <AffinityType> -Type <PlacementPolicyType>
- -VMMember <String[]> [-DisplayName <String>] [-State <PlacementPolicyState>] [<CommonParameters>]
+New-AzVMwareVMPlacementPolicyPropertiesObject -AffinityType <String> -Type <String> -VMMember <String[]>
+ [-DisplayName <String>] [-State <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,18 +22,27 @@ Create an in-memory object for VMPlacementPolicyProperties.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for VMPlacementPolicyProperties.
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzVMwareVMPlacementPolicyPropertiesObject -AffinityType 'Affinity' -Type 'VmVm' -VMMember @{"abc"="123"}
+{{ Add code here }}
 ```
 
 ```output
-DisplayName ProvisioningState State AffinityType VMMember
------------ ----------------- ----- ------------ --------
-                                    Affinity     {System.Collections.Hashtable}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for VMPlacementPolicyProperties.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -41,7 +50,7 @@ Create an in-memory object for VMPlacementPolicyProperties.
 placement policy affinity type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AffinityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +80,7 @@ Accept wildcard characters: False
 Whether the placement policy is enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +95,7 @@ Accept wildcard characters: False
 placement policy type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +128,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20230301.VMPlacementPolicyProperties
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VMPlacementPolicyProperties
 
 ## NOTES
 
