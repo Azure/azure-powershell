@@ -314,7 +314,7 @@ $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
 #$vm1.SecurityProfile.UefiSettings.VTpmEnabled $true;
 #$vm1.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 ```
-This example Creates a new VM with the TrustedLaunch Security Type and sets flags EnableSecureBoot and EnableVtpm as True by default. A Trusted Launch VM requires a Gen2 image. Please check [the Trusted Launch feature page](aka.ms/trustedlaunch) for more information.
+This example Creates a new VM with the TrustedLaunch Security Type and sets flags EnableSecureBoot and EnableVtpm as True by default. A Trusted Launch VM requires a Gen2 image. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
 ### Example 9: Create a VM with Trusted Launch turned on by defualt using New-AzVMConfig.
 ```powershell
@@ -356,7 +356,7 @@ $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
 # Verify $vm.SecurityProfile.UefiSettings.SecureBootEnabled is true.
 # Verify $vm.SecurityProfile.UefiSettings.VTpmEnabled is true. 
 ```
-This example shows how to create a VM with a valid Gen2 image, allowing the VM to default to TrustedLaunch which requires Gen2 images. Please check [the Trusted Launch feature page](aka.ms/trustedlaunch) for more information.
+This example shows how to create a VM with a valid Gen2 image, allowing the VM to default to TrustedLaunch which requires Gen2 images. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
 ### Example 10: Creates a VM with TrustedLaunch turned on by default.
 ```powershell
@@ -374,7 +374,7 @@ $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
 # Verify $vm.SecurityProfile.SecurityType is TrustedLaunch.
 # Verify the $vm.StorageProfile.ImageReference.Sku has defaulted to "2022-datacenter-azure-edition", a Gen2 image.
 ```
-This example shows how the simple cmdlet call with minimal parameters will result in a TrustedLaunch enabled VM with a Gen2 image. Please check [the Trusted Launch feature page](aka.ms/trustedlaunch) for more information.
+This example shows how the simple cmdlet call with minimal parameters will result in a TrustedLaunch enabled VM with a Gen2 image. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
 
 ## PARAMETERS
