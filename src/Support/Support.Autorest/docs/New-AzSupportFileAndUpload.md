@@ -5,21 +5,20 @@ online version: https://learn.microsoft.com/powershell/module/az.support/new-azs
 schema: 2.0.0
 ---
 
-# New-AzSupportFile
+# New-AzSupportFileAndUpload
 
 ## SYNOPSIS
-Creates a new file under a workspace for the specified subscription.
+Creates and uploads a new file under a workspace for the specified subscription.
 
 ## SYNTAX
 
 ```
-New-AzSupportFile -Name <String> -WorkspaceName <String> [-SubscriptionId <String>] [-ChunkSize <Single>]
- [-FileSize <Single>] [-NumberOfChunk <Single>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzSupportFileAndUpload -Name <String> -WorkspaceName <String> -FilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new file under a workspace for the specified subscription.
+Creates and uploads a new file under a workspace for the specified subscription.
 
 ## EXAMPLES
 
@@ -47,21 +46,6 @@ Creates a new file under a workspace for the specified subscription.
 
 ## PARAMETERS
 
-### -ChunkSize
-Size of each chunk
-
-```yaml
-Type: System.Single
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -78,15 +62,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FileSize
-Size of the file to be uploaded
+### -FilePath
+[Parameter(Mandatory)]
+[Microsoft.Azure.PowerShell.Cmdlets.Support.Category('Body')]
+[System.Single]
+# Number of chunks to be uploaded
+${NumberOfChunk},
+Path of the file to be uploaded
 
 ```yaml
-Type: System.Single
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -102,21 +91,6 @@ Parameter Sets: (All)
 Aliases: FileName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NumberOfChunk
-Number of chunks to be uploaded
-
-```yaml
-Type: System.Single
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
