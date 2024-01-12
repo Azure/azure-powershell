@@ -14,7 +14,7 @@ Create a CertificateObjectLocalRulestackResource
 
 ```
 New-AzPaloAltoNetworksCertificateObjectLocalRulestack -LocalRulestackName <String> -Name <String>
- -ResourceGroupName <String> -CertificateSelfSigned <BooleanEnum> [-SubscriptionId <String>]
+ -ResourceGroupName <String> -CertificateSelfSigned <String> [-SubscriptionId <String>]
  [-AuditComment <String>] [-CertificateSignerResourceId <String>] [-Description <String>] [-Etag <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 use certificate self signed
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.BooleanEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -259,11 +259,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ICertificateObjectLocalRulestackResource
+### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

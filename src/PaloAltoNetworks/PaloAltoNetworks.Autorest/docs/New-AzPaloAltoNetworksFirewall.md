@@ -15,14 +15,13 @@ Create a FirewallResource
 ```
 New-AzPaloAltoNetworksFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  -MarketplaceDetailOfferId <String> -MarketplaceDetailPublisherId <String> -NetworkProfile <INetworkProfile>
- -PlanDataBillingCycle <BillingCycle> -PlanDataPlanId <String> [-SubscriptionId <String>]
+ -PlanDataBillingCycle <String> -PlanDataPlanId <String> [-SubscriptionId <String>]
  [-AssociatedRulestackId <String>] [-AssociatedRulestackLocation <String>]
  [-AssociatedRulestackResourceId <String>] [-DnsSettingDnsServer <IIPAddress[]>]
- [-DnsSettingEnabledDnsType <EnabledDnsType>] [-DnsSettingEnableDnsProxy <DnsProxy>]
- [-FrontEndSetting <IFrontendSetting[]>] [-IdentityType <ManagedIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-IsPanoramaManaged <BooleanEnum>]
- [-MarketplaceDetailMarketplaceSubscriptionStatus <MarketplaceSubscriptionStatus>] [-PanEtag <String>]
- [-PanoramaConfigString <String>] [-PlanDataUsageType <UsageType>] [-Tag <Hashtable>]
+ [-DnsSettingEnabledDnsType <String>] [-DnsSettingEnableDnsProxy <String>]
+ [-FrontEndSetting <IFrontendSetting[]>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-IsPanoramaManaged <String>] [-MarketplaceDetailMarketplaceSubscriptionStatus <String>] [-PanEtag <String>]
+ [-PanoramaConfigString <String>] [-PlanDataUsageType <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -131,7 +130,7 @@ List of IPs associated with the Firewall
 To construct, see NOTES section for DNSSETTINGDNSSERVER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IIPAddress[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress[]
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +145,7 @@ Accept wildcard characters: False
 Enabled DNS proxy type, disabled by default
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.EnabledDnsType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +160,7 @@ Accept wildcard characters: False
 Enable DNS proxy, disabled by default
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.DnsProxy
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +176,7 @@ Frontend settings for Firewall
 To construct, see NOTES section for FRONTENDSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IFrontendSetting[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFrontendSetting[]
 Parameter Sets: (All)
 Aliases:
 
@@ -192,7 +191,7 @@ Accept wildcard characters: False
 The type of managed identity assigned to this resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.ManagedIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -223,7 +222,7 @@ Panorama Managed: Default is False.
 Default will be CloudSec managed
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.BooleanEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -253,7 +252,7 @@ Accept wildcard characters: False
 Marketplace Subscription Status
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.MarketplaceSubscriptionStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -314,7 +313,7 @@ Network settings
 To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.INetworkProfile
+Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfile
 Parameter Sets: (All)
 Aliases:
 
@@ -375,7 +374,7 @@ Accept wildcard characters: False
 different billing cycles like MONTHLY/WEEKLY
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.BillingCycle
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -405,7 +404,7 @@ Accept wildcard characters: False
 different usage type like PAYG/COMMITTED
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.UsageType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -500,55 +499,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IFirewallResource
+### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`DNSSETTINGDNSSERVER <IIPAddress[]>`: List of IPs associated with the Firewall
-  - `[Address <String>]`: Address value
-  - `[ResourceId <String>]`: Resource Id
-
-`FRONTENDSETTING <IFrontendSetting[]>`: Frontend settings for Firewall
-  - `BackendConfigurationPort <String>`: port ID
-  - `FrontendConfigurationPort <String>`: port ID
-  - `Name <String>`: Settings name
-  - `Protocol <ProtocolType>`: Protocol Type
-  - `[Address <String>]`: Address value
-  - `[BackendConfigurationAddress1 <String>]`: Address value
-  - `[BackendConfigurationAddressResourceId <String>]`: Resource Id
-  - `[FrontendConfigurationAddressResourceId <String>]`: Resource Id
-
-`NETWORKPROFILE <INetworkProfile>`: Network settings
-  - `EnableEgressNat <EgressNat>`: Enable egress NAT, enabled by default
-  - `NetworkType <NetworkType>`: vnet or vwan, cannot be updated
-  - `PublicIP <IIPAddress[]>`: List of IPs associated with the Firewall
-  - `[EgressNatIP <IIPAddress[]>]`: Egress nat IP to use
-    - `[Address <String>]`: Address value
-    - `[ResourceId <String>]`: Resource Id
-  - `[VHubAddressSpace <String>]`: Address Space
-  - `[VHubResourceId <String>]`: Resource Id
-  - `[VnetAddressSpace <String>]`: Address Space
-  - `[VnetConfigurationIPOfTrustSubnetForUdrAddress <String>]`: Address value
-  - `[VnetConfigurationIPOfTrustSubnetForUdrResourceId <String>]`: Resource Id
-  - `[VnetConfigurationTrustSubnetAddressSpace <String>]`: Address Space
-  - `[VnetConfigurationTrustSubnetResourceId <String>]`: Resource Id
-  - `[VnetConfigurationUnTrustSubnetAddressSpace <String>]`: Address Space
-  - `[VnetConfigurationUnTrustSubnetResourceId <String>]`: Resource Id
-  - `[VnetResourceId <String>]`: Resource Id
-  - `[VwanConfigurationIPOfTrustSubnetForUdrAddress <String>]`: Address value
-  - `[VwanConfigurationIPOfTrustSubnetForUdrResourceId <String>]`: Resource Id
-  - `[VwanConfigurationNetworkVirtualApplianceId <String>]`: Network Virtual Appliance resource ID 
-  - `[VwanConfigurationTrustSubnetAddressSpace <String>]`: Address Space
-  - `[VwanConfigurationTrustSubnetResourceId <String>]`: Resource Id
-  - `[VwanConfigurationUnTrustSubnetAddressSpace <String>]`: Address Space
-  - `[VwanConfigurationUnTrustSubnetResourceId <String>]`: Resource Id
 
 ## RELATED LINKS
 

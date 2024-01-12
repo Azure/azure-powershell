@@ -24,7 +24,7 @@ stages:
       inputs:
         command: custom
         custom: msbuild
-        arguments: 'build.proj "/t:Clean;Build" /p:Configuration=Release'
+        arguments: 'build.proj "/t:Clean;Build" /p:Configuration=Release;TargetModule=${{ parameters.ServiceName }}'
     - pwsh: |
           .\tools\RunVersionController.ps1 -ModuleName "Az.${{ parameters.ServiceName }}”
       displayName: 'Bump up version'
@@ -59,7 +59,6 @@ stages:
             BaseBranch = "$BaseBranch"
           }
           $jsonString = $jsonData | ConvertTo-Json
-          $jsonString | Out-File -FilePath "VersionInfo.json"
           $folderPath = "OOB"
           $fileName = "VersionInfo.json"
           New-Item -ItemType Directory -Force -Path $folderPath | Out-Null
@@ -75,7 +74,7 @@ stages:
                 ``````
             - Install the latest Az.Accounts module unless the OOB build requires a specific version.
                 ``````powershell
-                Install-Module Az.Accounts -Repository PSGallery 
+                Install-Module Az.Accounts -Repository PSGallery
                 ``````
             - Use Az.Tools.Installer to install the OOB build.
                 ``````powershell
@@ -119,7 +118,6 @@ stages:
       displayName: Create PR to main branch
       condition: and(succeeded(), eq(variables['NeedBumpUp'], 'true'))
 
-
     - task: PowerShell@2
       displayName: publish oob tools
       inputs:
@@ -128,6 +126,13 @@ stages:
           Copy-Item .\tools\ModulePublisher.psd1 -Destination OOB
           Copy-Item .\tools\ModulePublisher.psm1 -Destination OOB
           Copy-Item .\tools\NuGet.exe -Destination OOB
+
+    - task: ManifestGeneratorTask@0
+      displayName: 'Generation Task'
+      inputs:
+        PackageName: 'Azure PowerShell - ${{ parameters.ServiceName }}'
+        BuildDropPath: OOB
+
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: OOB
@@ -140,6 +145,8 @@ stages:
   - template: ./code-sign.yml
     parameters:
       OOBBranch: $(BumpUpBranch)
+      TargetModule: ${{ parameters.ServiceName }}
+      BuildInstaller: false
   - job: PulishForTest
     dependsOn: Release
     steps:

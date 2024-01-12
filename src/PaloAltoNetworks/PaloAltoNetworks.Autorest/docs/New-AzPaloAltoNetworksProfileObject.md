@@ -13,10 +13,9 @@ Create an in-memory object for NetworkProfile.
 ## SYNTAX
 
 ```
-New-AzPaloAltoNetworksProfileObject -EnableEgressNat <EgressNat> -NetworkType <NetworkType>
- -PublicIP <IIPAddress[]> [-EgressNatIP <IIPAddress[]>] [-VHubAddressSpace <String>]
- [-VHubResourceId <String>] [-VnetAddressSpace <String>]
- [-VnetConfigurationIPOfTrustSubnetForUdrAddress <String>]
+New-AzPaloAltoNetworksProfileObject -EnableEgressNat <String> -NetworkType <String> -PublicIP <IIPAddress[]>
+ [-EgressNatIP <IIPAddress[]>] [-VHubAddressSpace <String>] [-VHubResourceId <String>]
+ [-VnetAddressSpace <String>] [-VnetConfigurationIPOfTrustSubnetForUdrAddress <String>]
  [-VnetConfigurationIPOfTrustSubnetForUdrResourceId <String>]
  [-VnetConfigurationTrustSubnetAddressSpace <String>] [-VnetConfigurationTrustSubnetResourceId <String>]
  [-VnetConfigurationUnTrustSubnetAddressSpace <String>] [-VnetConfigurationUnTrustSubnetResourceId <String>]
@@ -54,7 +53,7 @@ Egress nat IP to use.
 To construct, see NOTES section for EGRESSNATIP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IIPAddress[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress[]
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +68,7 @@ Accept wildcard characters: False
 Enable egress NAT, enabled by default.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.EgressNat
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +83,7 @@ Accept wildcard characters: False
 vnet or vwan, cannot be updated.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.NetworkType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +99,7 @@ List of IPs associated with the Firewall.
 To construct, see NOTES section for PUBLICIP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IIPAddress[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress[]
 Parameter Sets: (All)
 Aliases:
 
@@ -373,24 +372,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.NetworkProfile
+### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.NetworkProfile
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`EGRESSNATIP <IIPAddress[]>`: Egress nat IP to use.
-  - `[Address <String>]`: Address value
-  - `[ResourceId <String>]`: Resource Id
-
-`PUBLICIP <IIPAddress[]>`: List of IPs associated with the Firewall.
-  - `[Address <String>]`: Address value
-  - `[ResourceId <String>]`: Resource Id
 
 ## RELATED LINKS
 
