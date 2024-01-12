@@ -17,6 +17,8 @@ using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.WebSites.Version2016_09_01.Models;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
@@ -343,7 +345,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 WeeklyRetention = response.WeeklyRetention,
                 MonthlyRetention = response.MonthlyRetention,
                 YearlyRetention = response.YearlyRetention,
-                WeekOfYear = response.WeekOfYear
+                WeekOfYear = response.WeekOfYear,
+                MakeBackupsImmutable = response.MakeBackupsImmutable,
+                BackupStorageAccessTier = response.BackupStorageAccessTier
             };
         }
 
@@ -421,6 +425,35 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
+        /// Update a Long Term Retention backup storage access tier.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="updateParameters"></param>
+        internal AzureSqlDatabaseLongTermRetentionBackupModel UpdateDatabaeLongTermRetentionBackupAccessTier(
+            AzureSqlDatabaseLongTermRetentionBackupModel model,
+            Management.Sql.Models.ChangeLongTermRetentionBackupAccessTierParameters updateParameters)
+        {
+            LongTermRetentionBackup response = Communicator.UpdateDatabaseLongTermRetentionBackupAccessTier(
+                model.Location,
+                model.ServerName,
+                model.DatabaseName,
+                model.BackupName,
+                model.ResourceGroupName,
+                updateParameters);
+
+            return new AzureSqlDatabaseLongTermRetentionBackupModel()
+            {
+                Location = model.Location,
+                ServerName = response.ServerName,
+                DatabaseName = response.DatabaseName,
+                BackupName = model.BackupName,
+                ResourceGroupName = model.ResourceGroupName,
+                BackupStorageAccessTier = response.BackupStorageAccessTier,
+                OperationMode = model.OperationMode
+            };
+        }
+
+        /// <summary>
         /// Create or update a backup LongTermRetention vault for a given Azure SQL Server
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
@@ -476,7 +509,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                         WeeklyRetention = model.WeeklyRetention,
                         MonthlyRetention = model.MonthlyRetention,
                         YearlyRetention = model.YearlyRetention,
-                        WeekOfYear = model.WeekOfYear
+                        WeekOfYear = model.WeekOfYear,
+                        MakeBackupsImmutable = model.MakeBackupsImmutable,
+                        BackupStorageAccessTier = model.BackupStorageAccessTier
                     });
             return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
             {
@@ -486,7 +521,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 WeeklyRetention = response.WeeklyRetention,
                 MonthlyRetention = response.MonthlyRetention,
                 YearlyRetention = response.YearlyRetention,
-                WeekOfYear = response.WeekOfYear
+                WeekOfYear = response.WeekOfYear,
+                MakeBackupsImmutable = response.MakeBackupsImmutable,
+                BackupStorageAccessTier = response.BackupStorageAccessTier
             };
         }
 
@@ -537,7 +574,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ServerCreateTime = backup.ServerCreateTime,
                 ServerName = backup.ServerName,
                 ResourceGroupName = GetResourceGroupNameFromResourceId(backup.Id),
-                BackupStorageRedundancy = backup.BackupStorageRedundancy
+                BackupStorageRedundancy = backup.BackupStorageRedundancy,
+                IsBackupImmutable = backup.IsBackupImmutable
             };
         }
 

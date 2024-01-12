@@ -37,9 +37,9 @@ WeeklyRetention                        : P2W
 MonthlyRetention                       : PT0S
 YearlyRetention                        : PT0S
 WeekOfYear                             : 0
-State                                  :
-RecoveryServicesBackupPolicyResourceId :
 Location                               :
+MakeBackupsImmutable                   : False
+BackupStorageAccessTier                : Hot
 ```
 
 This command gets the current version of the long term retention policy for database01

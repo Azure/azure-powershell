@@ -19,6 +19,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
@@ -113,6 +114,35 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public int WeekOfYear { get; set; }
 
         /// <summary>
+        /// Gets or sets the setting whether to make LTR backups immutable.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ParameterSetName = WeeklyRetentionRequiredSet,
+            HelpMessage = "Whether to make LTR backups immutable.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = MonthlyRetentionRequiredSet,
+            HelpMessage = "Whether to make LTR backups immutable.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = YearlyRetentionRequiredSet,
+            HelpMessage = "Whether to make LTR backups immutable.")]
+        public SwitchParameter MakeBackupsImmutable { get; set; }
+
+        /// <summary>
+        /// Gets or sets the setting to make future LTR backups to the target storage access tier.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ParameterSetName = WeeklyRetentionRequiredSet,
+            HelpMessage = "Set future LTR backups to the target backup storage access tier.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = MonthlyRetentionRequiredSet,
+            HelpMessage = "Set future LTR backups to the target backup storage access tier.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = YearlyRetentionRequiredSet,
+            HelpMessage = "Set future LTR backups to the target backup storage access tier.")]
+        [ValidateNotNullOrEmpty]
+        public string BackupStorageAccessTier { get; set; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -170,7 +200,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     WeeklyRetention = WeeklyRetention,
                     MonthlyRetention = MonthlyRetention,
                     YearlyRetention = YearlyRetention,
-                    WeekOfYear = WeekOfYear
+                    WeekOfYear = WeekOfYear,
+                    MakeBackupsImmutable = this.IsParameterBound(p => p.MakeBackupsImmutable) ? MakeBackupsImmutable.ToBool() : (bool?)null,
+                    BackupStorageAccessTier = BackupStorageAccessTier
                 }
             };
         }

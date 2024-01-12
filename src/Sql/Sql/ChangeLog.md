@@ -23,6 +23,8 @@
 ## Version 4.13.0
 * Fixed `Set-AzSqlDatabaseFailoverGroup` when going from multi-secondary to single secondary
 * Added `SecondaryComputeModel`, `AutoPauseDelayInMinutes` and `MinimumCapacity` parameters within `New-AzSqlDatabaseSecondary`
+* Updated exist cmdlets 'Update-AzSqlDatabaseLongTermRetentionBackup' for Azure SQL sterling DB to update long-term retention backup's BackupStorageAccessTier
+* Updated exist cmdlets 'Set-AzSqlDatabaseBackupLongTermRetentionPolicy' for Azure SQL sterling DB to set long-term retention policy with new parameter BackupStorageAccessTier
 
 ## Version 4.12.0
 * Added new parameters `MaintenanceConfigurationId`, `DnsZone` to `AzSqlInstancePool` cmdlets
@@ -46,6 +48,7 @@
 * Added `EncryptionProtectorAutoRotation` parameter to `New-AzSqlDatabase`, `Get-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary`, `Restore-AzSqlDatabase` cmdlets
 
 ## Version 4.9.0
+* Added `makeBackupsImmutable` optional parameter to `Set-SqlDatabaseLongTermRetentionPolicy`
 * Added new cmdlets for Azure SQL Managed Instance start/stop schedule
     - 'Start-AzSqlInstance',
     - 'Stop-AzSqlInstance',
