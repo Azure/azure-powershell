@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-
 using Xunit;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Test.ScenarioTests

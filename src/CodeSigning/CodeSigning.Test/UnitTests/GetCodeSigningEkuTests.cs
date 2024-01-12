@@ -12,10 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.CodeSigning;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
-using System;
 using Xunit;
 
 

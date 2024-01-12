@@ -13,9 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.TestFx;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Test.ScenarioTests
