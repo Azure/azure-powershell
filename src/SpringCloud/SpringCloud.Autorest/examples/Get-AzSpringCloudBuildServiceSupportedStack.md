@@ -24,4 +24,3 @@ io.buildpacks.stacks.bionic-base springcloudrg     io.buildpacks.stacks.bionic b
 ```
 
 Get the supported stack resource.
-
