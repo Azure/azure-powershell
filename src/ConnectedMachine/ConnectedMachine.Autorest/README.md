@@ -361,7 +361,7 @@ directive:
         description: Gets the list of ResourceGroupName's available for this subscription.
         script: Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName
  
-  # These APIs are used by the agent so they do not need to be in the cmdlets.
+  # These APIs are used by the agent so they do not need to be in the cmdlets
   - remove-operation: Machines_CreateOrUpdate
   - remove-operation: MachineRunCommands_Update
 ```
