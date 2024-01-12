@@ -145,7 +145,7 @@ pac143,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac144,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ServiceLinker.0.2.0.nupkg;sourceType=sa]Az.ServiceLinker,0.2.0
 pac145,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SignalR.2.0.0.nupkg;sourceType=sa]Az.SignalR,2.0.0
 pac146,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SpringCloud.0.3.0.nupkg;sourceType=sa]Az.SpringCloud,0.3.0
-pac147,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Sql.4.13.0.nupkg;sourceType=sa]Az.Sql,4.13.0
+pac147,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Sql.4.14.0.nupkg;sourceType=sa]Az.Sql,4.14.0
 pac148,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SqlVirtualMachine.2.1.0.nupkg;sourceType=sa]Az.SqlVirtualMachine,2.1.0
 pac149,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Ssh.0.2.0.nupkg;sourceType=sa]Az.Ssh,0.2.0
 pac150,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.2.3.nupkg;sourceType=sa]Az.StackHCI,2.2.3
