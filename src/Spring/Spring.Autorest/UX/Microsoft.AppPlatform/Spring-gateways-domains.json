@@ -1,0 +1,105 @@
+{
+  "resourceType": "Spring/gateways/domains",
+  "apiVersion": "2022-12-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.springapps"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSpringCloudGatewayCustomDomain",
+      "description": "Get the Spring Cloud Gateway custom domain.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/get-azspringcloudgatewaycustomdomain"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DomainName <String>",
+              "-GatewayName <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the Spring Cloud Gateway custom domain.",
+          "parameters": [
+            {
+              "name": "-DomainName",
+              "value": "[Path.domainName]"
+            },
+            {
+              "name": "-GatewayName",
+              "value": "[Path.gatewayName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzSpringCloudGatewayCustomDomain",
+      "description": "Delete the Spring Cloud Gateway custom domain.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/gateways/{gatewayName}/domains/{domainName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.springapps/remove-azspringcloudgatewaycustomdomain"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DomainName <String>",
+              "-GatewayName <String>",
+              "-ResourceGroupName <String>",
+              "-ServiceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete the Spring Cloud Gateway custom domain.",
+          "parameters": [
+            {
+              "name": "-DomainName",
+              "value": "[Path.domainName]"
+            },
+            {
+              "name": "-GatewayName",
+              "value": "[Path.gatewayName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServiceName",
+              "value": "[Path.serviceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
