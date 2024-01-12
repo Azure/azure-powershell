@@ -54,11 +54,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="servicePrincipal">The managed instance&#39;s service principal.
         /// </param>
 
-        /// <param name="provisioningState">
-        /// Possible values include: &#39;Creating&#39;, &#39;Deleting&#39;, &#39;Updating&#39;, &#39;Unknown&#39;,
-        /// &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Accepted&#39;, &#39;Created&#39;, &#39;Deleted&#39;, &#39;Unrecognized&#39;,
-        /// &#39;Running&#39;, &#39;Canceled&#39;, &#39;NotSpecified&#39;, &#39;Registering&#39;, &#39;TimedOut&#39;</param>
-
         /// <param name="managedInstanceCreateMode">Specifies the mode of database creation.
         /// Default: Regular instance creation.
         /// Restore: Creates an instance by restoring a set of backups to specific
@@ -88,7 +83,17 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="licenseType">The license type. Possible values are &#39;LicenseIncluded&#39; (regular price
         /// inclusive of a new SQL license) and &#39;BasePrice&#39; (discounted AHB price for
         /// bringing your own SQL licenses).
-        /// Possible values include: 'LicenseIncluded', 'BasePrice'</param>
+        /// Possible values include: &#39;LicenseIncluded&#39;, &#39;BasePrice&#39;</param>
+
+        /// <param name="hybridSecondaryUsage">Hybrid secondary usage. Possible values are &#39;Active&#39; (default value) and
+        /// &#39;Passive&#39; (customer uses the secondary as Passive DR).
+        /// Possible values include: &#39;Active&#39;, &#39;Passive&#39;</param>
+
+        /// <param name="hybridSecondaryUsageDetected">Hybrid secondary usage detected. Possible values are &#39;Active&#39; (customer
+        /// does not meet the requirements to use the secondary as Passive DR) and
+        /// &#39;Passive&#39; (customer meets the requirements to use the secondary as Passive
+        /// DR).
+        /// Possible values include: &#39;Active&#39;, &#39;Passive&#39;</param>
 
         /// <param name="vCores">The number of vCores. Allowed values: 8, 16, 24, 32, 40, 64, 80.
         /// </param>

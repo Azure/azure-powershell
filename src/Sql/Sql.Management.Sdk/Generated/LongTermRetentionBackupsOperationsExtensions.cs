@@ -410,11 +410,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='longTermRetentionDatabaseName'>
         /// The name of the database
         /// </param>
-        /// <param name='onlyLatestPerDatabase'>
-        /// Whether or not to only get the latest backup for each database.
-        /// </param>
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// <param name='backupName'>
+        /// The backup name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -867,11 +864,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='longTermRetentionDatabaseName'>
         /// The name of the database
         /// </param>
-        /// <param name='onlyLatestPerDatabase'>
-        /// Whether or not to only get the latest backup for each database.
-        /// </param>
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// <param name='backupName'>
+        /// The backup name.
         /// </param>
         public static LongTermRetentionBackupOperationResult UpdateByResourceGroup(this ILongTermRetentionBackupsOperations operations, string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, UpdateLongTermRetentionBackupParameters parameters)
         {
@@ -897,11 +891,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='longTermRetentionDatabaseName'>
         /// The name of the database
         /// </param>
-        /// <param name='onlyLatestPerDatabase'>
-        /// Whether or not to only get the latest backup for each database.
-        /// </param>
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// <param name='backupName'>
+        /// The backup name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -919,9 +910,6 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
         /// <param name='locationName'>
         /// The location of the database
         /// </param>
@@ -931,8 +919,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='longTermRetentionDatabaseName'>
         /// The name of the database
         /// </param>
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// <param name='backupName'>
+        /// The backup name.
         /// </param>
         public static void BeginDelete(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName)
         {
@@ -945,9 +933,6 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
         /// <param name='locationName'>
         /// The location of the database
         /// </param>
@@ -957,8 +942,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='longTermRetentionDatabaseName'>
         /// The name of the database
         /// </param>
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// <param name='backupName'>
+        /// The backup name.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -973,9 +958,6 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
         /// <param name='locationName'>
         /// 
         /// </param>
@@ -985,8 +967,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='longTermRetentionDatabaseName'>
         /// 
         /// </param>
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// <param name='backupName'>
+        /// 
         /// </param>
         public static LongTermRetentionBackup BeginChangeAccessTier(this ILongTermRetentionBackupsOperations operations, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, ChangeLongTermRetentionBackupAccessTierParameters parameters)
         {
@@ -999,9 +981,6 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
         /// <param name='locationName'>
         /// 
         /// </param>
@@ -1011,8 +990,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='longTermRetentionDatabaseName'>
         /// 
         /// </param>
-        /// <param name='databaseState'>
-        /// Whether to query against just live databases, just deleted databases, or all databases.
+        /// <param name='backupName'>
+        /// 
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

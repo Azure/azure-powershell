@@ -24,10 +24,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Initializes a new instance of the ManagedInstanceProperties class.
         /// </summary>
 
-        /// <param name="provisioningState">
-        /// Possible values include: &#39;Creating&#39;, &#39;Deleting&#39;, &#39;Updating&#39;, &#39;Unknown&#39;,
-        /// &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Accepted&#39;, &#39;Created&#39;, &#39;Deleted&#39;, &#39;Unrecognized&#39;,
-        /// &#39;Running&#39;, &#39;Canceled&#39;, &#39;NotSpecified&#39;, &#39;Registering&#39;, &#39;TimedOut&#39;</param>
+        /// <param name="provisioningState">Provisioning state of managed instance.
+        /// Possible values include: &#39;Created&#39;, &#39;InProgress&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;,
+        /// &#39;Canceled&#39;</param>
 
         /// <param name="managedInstanceCreateMode">Specifies the mode of database creation.
         /// Default: Regular instance creation.
