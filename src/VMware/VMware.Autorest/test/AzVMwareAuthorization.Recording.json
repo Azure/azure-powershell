@@ -1,8 +1,8 @@
 {
-  "AzVMwareAuthorization+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/authorizations/gusna9?api-version=2023-03-01+1": {
+  "AzVMwareAuthorization+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/authorizations/authorization1?api-version=2023-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/authorizations/gusna9?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/authorizations/authorization1?api-version=2023-03-01",
       "Content": "{\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -16,7 +16,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:02:06 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:01:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -26,16 +26,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareAuthorization+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/authorizations/gusna9?api-version=2023-03-01+2": {
+  "AzVMwareAuthorization+[NoContext]+List+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/authorizations/authorization1?api-version=2023-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/authorizations/gusna9?api-version=2023-03-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/authorizations/authorization1?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "eba0ca38-b54c-4b47-aeb9-a8e0b51bb7a2" ],
+        "x-ms-client-request-id": [ "17cc8c6b-a606-479b-9ab0-640b401c7d8b" ],
         "CommandName": [ "New-AzVMwareAuthorization" ],
         "FullCommandName": [ "New-AzVMwareAuthorization_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -48,7 +48,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:02:36 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:02:23 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -58,16 +58,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareAuthorization+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/authorizations/gusna9?api-version=2023-03-01+3": {
+  "AzVMwareAuthorization+[NoContext]+List+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/authorizations/authorization1?api-version=2023-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/authorizations/gusna9?api-version=2023-03-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/authorizations/authorization1?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "eba0ca38-b54c-4b47-aeb9-a8e0b51bb7a2" ],
+        "x-ms-client-request-id": [ "17cc8c6b-a606-479b-9ab0-640b401c7d8b" ],
         "CommandName": [ "New-AzVMwareAuthorization" ],
         "FullCommandName": [ "New-AzVMwareAuthorization_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -80,7 +80,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:02:36 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:02:23 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -90,15 +90,47 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareAuthorization+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/authorizations/gusna9?api-version=2023-03-01+1": {
+  "AzVMwareAuthorization+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/authorizations?api-version=2023-03-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/authorizations/gusna9?api-version=2023-03-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/authorizations?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "13" ],
-        "x-ms-client-request-id": [ "7405600a-486d-4936-be59-eaeb0d01e20a" ],
+        "x-ms-client-request-id": [ "24fc2b5d-3fdf-4ea4-9c62-31a5dc2cf40a" ],
+        "CommandName": [ "Get-AzVMwareAuthorization" ],
+        "FullCommandName": [ "Get-AzVMwareAuthorization_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Fri, 12 Jan 2024 19:02:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "841" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/authorizations/authorization1\",\"name\":\"authorization1\",\"type\":\"Microsoft.AVS/privateClouds/authorizations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"expressRouteAuthorizationId\":\"/subscriptions/5206f269-120b-41ef-a95b-0dce7109de61/resourceGroups/tnt34-cust-mockp02-spearj2dev/providers/Microsoft.Network/expressroutecircuits/tnt34-cust-mockp02-spearj2dev-er/authorizations/myauth\",\"expressRouteAuthorizationKey\":\"37b0db3b-3b17-4c7b-bf76-bf13b01bcadc\",\"expressRouteId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareAuthorization+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/authorizations/authorization1?api-version=2023-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/authorizations/authorization1?api-version=2023-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "32256120-169f-404a-8de2-88b6018814b9" ],
         "CommandName": [ "Get-AzVMwareAuthorization" ],
         "FullCommandName": [ "Get-AzVMwareAuthorization_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -112,7 +144,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:02:36 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:02:23 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -122,10 +154,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareAuthorization+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloud1zru/authorizations/xgmipe?api-version=2023-03-01+1": {
+  "AzVMwareAuthorization+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudaoz1/authorizations/authorization1?api-version=2023-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloud1zru/authorizations/xgmipe?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudaoz1/authorizations/authorization1?api-version=2023-03-01",
       "Content": "{\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -139,7 +171,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:02:36 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:02:23 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -149,48 +181,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloud1zru/authorizations/xgmipe?api-version=2023-03-01+2": {
+  "AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudaoz1/authorizations/authorization1?api-version=2023-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloud1zru/authorizations/xgmipe?api-version=2023-03-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "15" ],
-        "x-ms-client-request-id": [ "0943e32a-f145-4710-ae83-9466876c7c44" ],
-        "CommandName": [ "New-AzVMwareAuthorization" ],
-        "FullCommandName": [ "New-AzVMwareAuthorization_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:03:07 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "829" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/authorizations/authorization1\",\"name\":\"authorization1\",\"type\":\"Microsoft.AVS/privateClouds/authorizations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"expressRouteAuthorizationId\":\"/subscriptions/5206f269-120b-41ef-a95b-0dce7109de61/resourceGroups/tnt34-cust-mockp02-spearj2dev/providers/Microsoft.Network/expressroutecircuits/tnt34-cust-mockp02-spearj2dev-er/authorizations/myauth\",\"expressRouteAuthorizationKey\":\"37b0db3b-3b17-4c7b-bf76-bf13b01bcadc\",\"expressRouteId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\"}}",
-      "isContentBase64": false
-    }
-  },
-  "AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloud1zru/authorizations/xgmipe?api-version=2023-03-01+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloud1zru/authorizations/xgmipe?api-version=2023-03-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudaoz1/authorizations/authorization1?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "16" ],
-        "x-ms-client-request-id": [ "0943e32a-f145-4710-ae83-9466876c7c44" ],
+        "x-ms-client-request-id": [ "e64e184b-e247-4732-b001-222da1b5f373" ],
         "CommandName": [ "New-AzVMwareAuthorization" ],
         "FullCommandName": [ "New-AzVMwareAuthorization_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -203,7 +203,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:03:07 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:02:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -213,15 +213,47 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareAuthorization+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/authorizations/gusna9?api-version=2023-03-01+1": {
+  "AzVMwareAuthorization+[NoContext]+CreateExpanded+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudaoz1/authorizations/authorization1?api-version=2023-03-01+3": {
     "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/authorizations/gusna9?api-version=2023-03-01",
+      "Method": "GET",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudaoz1/authorizations/authorization1?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
+        "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "17" ],
-        "x-ms-client-request-id": [ "774a9448-b0d6-45b9-bbe8-6b3dbcf4e778" ],
+        "x-ms-client-request-id": [ "e64e184b-e247-4732-b001-222da1b5f373" ],
+        "CommandName": [ "New-AzVMwareAuthorization" ],
+        "FullCommandName": [ "New-AzVMwareAuthorization_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Fri, 12 Jan 2024 19:02:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "829" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/authorizations/authorization1\",\"name\":\"authorization1\",\"type\":\"Microsoft.AVS/privateClouds/authorizations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"expressRouteAuthorizationId\":\"/subscriptions/5206f269-120b-41ef-a95b-0dce7109de61/resourceGroups/tnt34-cust-mockp02-spearj2dev/providers/Microsoft.Network/expressroutecircuits/tnt34-cust-mockp02-spearj2dev-er/authorizations/myauth\",\"expressRouteAuthorizationKey\":\"37b0db3b-3b17-4c7b-bf76-bf13b01bcadc\",\"expressRouteId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzVMwareAuthorization+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/authorizations/2hlsk5?api-version=2023-03-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/authorizations/2hlsk5?api-version=2023-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "5a53dd0a-5fb8-4a34-ad70-8f789ad7ee2a" ],
         "CommandName": [ "Remove-AzVMwareAuthorization" ],
         "FullCommandName": [ "Remove-AzVMwareAuthorization_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -235,7 +267,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:03:07 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:02:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "0" ]

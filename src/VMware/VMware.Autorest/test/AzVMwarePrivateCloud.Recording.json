@@ -1,8 +1,8 @@
 {
-  "AzVMwarePrivateCloud+[NoContext]+List1+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/covbs4?api-version=2023-03-01+1": {
+  "AzVMwarePrivateCloud+[NoContext]+List1+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/covbs4?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01",
       "Content": "{\r\n  \"location\": \"centralus\",\r\n  \"sku\": {\r\n    \"name\": \"av36\"\r\n  },\r\n  \"properties\": {\r\n    \"managementCluster\": {\r\n      \"clusterSize\": 3\r\n    },\r\n    \"networkBlock\": \"192.168.48.0/22\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -16,7 +16,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:08:13 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:08:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -26,16 +26,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/covbs4?api-version=2023-03-01+2": {
+  "AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/covbs4?api-version=2023-03-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "76" ],
-        "x-ms-client-request-id": [ "03e4ad23-f75d-48c0-a597-434a3e566d0a" ],
+        "x-ms-unique-id": [ "78" ],
+        "x-ms-client-request-id": [ "6c1a9bc7-2552-4c9b-ae70-65dcb5847336" ],
         "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -48,7 +48,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:08:43 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:08:32 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -58,16 +58,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/covbs4?api-version=2023-03-01+3": {
+  "AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/covbs4?api-version=2023-03-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "77" ],
-        "x-ms-client-request-id": [ "03e4ad23-f75d-48c0-a597-434a3e566d0a" ],
+        "x-ms-unique-id": [ "79" ],
+        "x-ms-client-request-id": [ "6c1a9bc7-2552-4c9b-ae70-65dcb5847336" ],
         "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -80,7 +80,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:08:43 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:08:32 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -93,12 +93,12 @@
   "AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "78" ],
-        "x-ms-client-request-id": [ "a6d19e94-efe6-43e9-9071-f57f5ee552e5" ],
+        "x-ms-unique-id": [ "80" ],
+        "x-ms-client-request-id": [ "dbba201c-c843-4bd5-adbe-e2347bda2c1d" ],
         "CommandName": [ "Get-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "Get-AzVMwarePrivateCloud_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -112,7 +112,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:08:43 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:08:32 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -122,15 +122,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/covbs4?api-version=2023-03-01+1": {
+  "AzVMwarePrivateCloud+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/covbs4?api-version=2023-03-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "79" ],
-        "x-ms-client-request-id": [ "ebd69906-30cb-46b6-a176-bcf42de0d4c2" ],
+        "x-ms-unique-id": [ "81" ],
+        "x-ms-client-request-id": [ "448e7e05-97bf-43b2-9b4c-55fb059e743e" ],
         "CommandName": [ "Get-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "Get-AzVMwarePrivateCloud_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -144,7 +144,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:08:43 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:08:32 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -154,15 +154,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01+1": {
+  "AzVMwarePrivateCloud+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "80" ],
-        "x-ms-client-request-id": [ "1c13115c-4aa9-4cd6-a15e-e2fce20ba688" ],
+        "x-ms-unique-id": [ "82" ],
+        "x-ms-client-request-id": [ "a80c955e-704d-41b8-880f-766401fd3d2f" ],
         "CommandName": [ "Get-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "Get-AzVMwarePrivateCloud_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -176,7 +176,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:08:43 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:08:32 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -186,10 +186,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/x7hcjg?api-version=2023-03-01+1": {
+  "AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/x7hcjg?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01",
       "Content": "{\r\n  \"location\": \"centralus\",\r\n  \"sku\": {\r\n    \"name\": \"av20\"\r\n  },\r\n  \"properties\": {\r\n    \"managementCluster\": {\r\n      \"clusterSize\": 3\r\n    },\r\n    \"networkBlock\": \"192.168.48.0/22\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -203,7 +203,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:08:43 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:08:32 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -213,16 +213,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/x7hcjg?api-version=2023-03-01+2": {
+  "AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/x7hcjg?api-version=2023-03-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "82" ],
-        "x-ms-client-request-id": [ "40f30a44-754d-40dd-8ef2-2d0a9890239c" ],
+        "x-ms-unique-id": [ "84" ],
+        "x-ms-client-request-id": [ "79018c20-51d1-45f7-9de6-ad4511a75afc" ],
         "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -235,7 +235,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:09:13 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:09:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -245,16 +245,16 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/x7hcjg?api-version=2023-03-01+3": {
+  "AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/x7hcjg?api-version=2023-03-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "83" ],
-        "x-ms-client-request-id": [ "40f30a44-754d-40dd-8ef2-2d0a9890239c" ],
+        "x-ms-unique-id": [ "85" ],
+        "x-ms-client-request-id": [ "79018c20-51d1-45f7-9de6-ad4511a75afc" ],
         "CommandName": [ "Az.VMware.internal\\New-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "New-AzVMwarePrivateCloud_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -267,7 +267,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:09:13 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:09:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -277,10 +277,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/x7hcjg?api-version=2023-03-01+1": {
+  "AzVMwarePrivateCloud+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/x7hcjg?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"managementCluster\": {\r\n      \"clusterSize\": 4\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -294,7 +294,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:09:13 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:09:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -304,10 +304,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68?api-version=2023-03-01+1": {
+  "AzVMwarePrivateCloud+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudukel?api-version=2023-03-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudukel?api-version=2023-03-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"managementCluster\": {\r\n      \"clusterSize\": 4\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -321,7 +321,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:09:13 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:09:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -331,15 +331,15 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/x7hcjg?api-version=2023-03-01+1": {
+  "AzVMwarePrivateCloud+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/x7hcjg?api-version=2023-03-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "86" ],
-        "x-ms-client-request-id": [ "8959e076-b393-44cd-b075-eb32ac555039" ],
+        "x-ms-unique-id": [ "88" ],
+        "x-ms-client-request-id": [ "d58fe77d-3d1f-4f50-a19e-773ee4e4fa33" ],
         "CommandName": [ "Az.VMware.internal\\Remove-AzVMwarePrivateCloud" ],
         "FullCommandName": [ "Remove-AzVMwarePrivateCloud_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -353,7 +353,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:09:13 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:09:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "0" ]

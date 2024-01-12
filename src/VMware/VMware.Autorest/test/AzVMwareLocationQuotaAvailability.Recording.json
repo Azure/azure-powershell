@@ -2,12 +2,12 @@
   "AzVMwareLocationQuotaAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/checkQuotaAvailability?api-version=2023-03-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/checkQuotaAvailability?api-version=2023-03-01",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/checkQuotaAvailability?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "59" ],
-        "x-ms-client-request-id": [ "bcdf9051-13cc-435a-bf47-2bc1571ae3dd" ],
+        "x-ms-unique-id": [ "61" ],
+        "x-ms-client-request-id": [ "a3613664-6224-4cbd-a144-192f660e69d7" ],
         "CommandName": [ "Test-AzVMwareLocationQuotaAvailability" ],
         "FullCommandName": [ "Test-AzVMwareLocationQuotaAvailability_Check" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,7 +21,7 @@
       "StatusCode": 200,
       "Headers": {
         "Server": [ "Rocket" ],
-        "Date": [ "Thu, 11 Jan 2024 23:07:10 GMT" ]
+        "Date": [ "Fri, 12 Jan 2024 19:06:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],

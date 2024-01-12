@@ -15,7 +15,7 @@ Describe 'AzVMwareLocationTrialAvailability' {
     It 'Check' {
         {
             $config = Test-AzVMwareLocationTrialAvailability -Location "eastus2" -Name av36
-            $config.Status | Should -Be "TrialDisabled"
+            $config.Status | Should -Be "TrialAvailable"
         } | Should -Not -Throw
     }
 }
