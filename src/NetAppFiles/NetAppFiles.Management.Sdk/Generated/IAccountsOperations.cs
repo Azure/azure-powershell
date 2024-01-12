@@ -164,10 +164,14 @@ namespace Microsoft.Azure.Management.NetApp
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetAppAccount>> UpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, NetAppAccountPatch body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Renew identity credentials that are used to authenticate to key vault, for customer-managed key encryption. If encryption.identity.principalId does not match identity.principalId, running this operation will fix it.
+        /// Renew identity credentials that are used to authenticate to key vault, for
+        /// customer-managed key encryption. If encryption.identity.principalId does
+        /// not match identity.principalId, running this operation will fix it.
         /// </summary>
         /// <remarks>
-        /// Renew identity credentials that are used to authenticate to key vault, for customer-managed key encryption. If encryption.identity.principalId does not match identity.principalId, running this operation will fix it.
+        /// Renew identity credentials that are used to authenticate to key vault, for
+        /// customer-managed key encryption. If encryption.identity.principalId does
+        /// not match identity.principalId, running this operation will fix it.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -268,10 +272,14 @@ namespace Microsoft.Azure.Management.NetApp
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NetAppAccount>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string accountName, NetAppAccountPatch body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Renew identity credentials that are used to authenticate to key vault, for customer-managed key encryption. If encryption.identity.principalId does not match identity.principalId, running this operation will fix it.
+        /// Renew identity credentials that are used to authenticate to key vault, for
+        /// customer-managed key encryption. If encryption.identity.principalId does
+        /// not match identity.principalId, running this operation will fix it.
         /// </summary>
         /// <remarks>
-        /// Renew identity credentials that are used to authenticate to key vault, for customer-managed key encryption. If encryption.identity.principalId does not match identity.principalId, running this operation will fix it.
+        /// Renew identity credentials that are used to authenticate to key vault, for
+        /// customer-managed key encryption. If encryption.identity.principalId does
+        /// not match identity.principalId, running this operation will fix it.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

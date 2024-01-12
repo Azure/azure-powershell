@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{4839A5E2-2EE9-4E27-A171-90BA555A5237}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceFabric.Management.Sdk", "ServiceFabric.Management.sdk\ServiceFabric.Management.Sdk.csproj", "{01F0FA5D-AC6F-47F9-BB65-220F60D5CB32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceFabric.Management.Sdk", "ServiceFabric.Management.Sdk\ServiceFabric.Management.Sdk.csproj", "{01F0FA5D-AC6F-47F9-BB65-220F60D5CB32}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{7D95AB4F-91BC-4120-8C67-580EF748FDF4}"
 EndProject
@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceFabric.Test", "Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceFabric", "ServiceFabric\ServiceFabric.csproj", "{A6D65551-1992-4BC9-8605-904FB9375885}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceFabricManagedClusters.Management.sdk", "ServiceFabricManagedClusters.Management.Sdk\ServiceFabricManagedClusters.Management.sdk.csproj", "{428ED0C8-8FAA-4166-ACAC-6AC10C170E13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceFabricManagedClusters.Management.sdk", "ServiceFabricManagedClusters.Management.Sdk\ServiceFabricManagedClusters.Management.Sdk.csproj", "{428ED0C8-8FAA-4166-ACAC-6AC10C170E13}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{5A70ECA9-827A-4397-9022-68E5858C03DA}"
 EndProject

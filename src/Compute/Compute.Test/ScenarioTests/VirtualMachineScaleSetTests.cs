@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetInEdgeZone()
+        public void TestVirtualMachineScaleSetEdgeZone()
         {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetInEdgeZone");
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetEdgeZone");
         }
 
         [Fact]

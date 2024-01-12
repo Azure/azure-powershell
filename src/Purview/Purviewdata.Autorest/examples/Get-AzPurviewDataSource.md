@@ -1,6 +1,6 @@
 ### Example 1: Get a data source by name
 ```powershell
-PS C:\> Get-AzPurviewDataSource -Endpoint 'https://brs-2.purview.azure.com/' -Name 'NewDataSource'
+Get-AzPurviewDataSource -Endpoint 'https://brs-2.purview.azure.com/' -Name 'NewDataSource'
 
 CollectionLastModifiedAt : 2/9/2022 2:49:14 AM
 CollectionReferenceName  : brs-2
@@ -22,7 +22,7 @@ Get a data source named 'NewDataSource'
 
 ### Example 2: Get all data sources
 ```powershell
-PS C:\>  Get-AzPurviewDataSource -Endpoint 'https://brs-2.purview.azure.com/'
+ Get-AzPurviewDataSource -Endpoint 'https://brs-2.purview.azure.com/'
 
 CollectionLastModifiedAt : 1/31/2022 10:28:16 AM
 CollectionReferenceName  : brs-2

@@ -141,8 +141,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     }
                     else
                     {
-                        vaultCreateArgs.Properties.PublicNetworkAccess = "Enabled";
-                        Logger.Instance.WriteWarning("Public Network Access is by default enabled for this vault and can be updated using Update-AzRecoveryServicesVault cmdlet");// resx
+                        vaultCreateArgs.Properties.PublicNetworkAccess = "Enabled";                        
+                        Logger.Instance.WriteWarning(String.Format(Resources.PublicNetworkAccessEnabledByDefault));
                     }
 
                     if (ImmutabilityState != null)

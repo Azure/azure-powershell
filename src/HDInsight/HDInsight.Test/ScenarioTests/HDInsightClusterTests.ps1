@@ -104,7 +104,7 @@ function Test-CreateClusterWithEncryptionInTransit{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -Location "South Central US"
+		$params= Prepare-ClusterCreateParameter
 		$encryptionInTransit=$true
 
 		# create cluster
@@ -136,7 +136,7 @@ function Test-CreateClusterWithEncryptionAtHost{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "South Central US"
+		$params= Prepare-ClusterCreateParameter
 		$encryptionAtHost=$true
 		$workerNodeSize="Standard_DS14_v2"
 		$headNodeSize="Standard_DS14_v2"
@@ -287,7 +287,7 @@ function Test-CreateClusterWithRelayOutoundAndPrivateLink{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "South Central US"
+		$params= Prepare-ClusterCreateParameter -location "Japan East"
 
 		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
 		$vnetId= "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/zzy-test-rg/providers/Microsoft.Network/virtualNetworks/zzytestvnet"#"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
@@ -325,7 +325,7 @@ function Test-CreateClusterWithCustomAmbariDatabase{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "South Central US"
+		$params= Prepare-ClusterCreateParameter -location "Japaneast"
 
 		# prepare custom ambari database
 		$databaseUserName="yourusername"
@@ -345,7 +345,6 @@ function Test-CreateClusterWithCustomAmbariDatabase{
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion `
 		-AmbariDatabase $config.AmbariDatabase
 
 		Assert-NotNull $cluster
@@ -396,6 +395,38 @@ function Test-CreateClusterWithComputeIsolation{
 
 <#
 .SYNOPSIS
+Test Create Enable Secure Channel HDInsight Cluster
+#>
+
+function Test-ClusterEnableSecureChannelCommands{
+
+	# Create some resources that will be used throughout test
+	try
+	{
+		# prepare parameter for creating parameter
+		$params= Prepare-ClusterCreateParameter
+		$enableSecureChannel = $true
+
+		# test create cluster
+		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EnableSecureChannel $enableSecureChannel
+
+		Assert-NotNull $cluster
+		Assert-AreEqual $cluster.EnableSecureChannel $enableSecureChannel
+	}
+	finally
+	{
+		# Delete cluster and resource group
+		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		# Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+	}
+}
+
+<#
+.SYNOPSIS
 Test Create Azure HDInsight Cluster with availability zones
 #>
 
@@ -405,7 +436,7 @@ function Test-CreateClusterWithAvailabilityZones{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "South Central US"
+		$params= Prepare-ClusterCreateParameter -location "Japan East"
 
 		# prepare custom ambari database
 		$databaseUserName="yourusername"
@@ -464,7 +495,7 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "South Central US"
+		$params= Prepare-ClusterCreateParameter -location "Japan East"
 
 		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
 		$vnetId= "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/zzy-test-rg/providers/Microsoft.Network/virtualNetworks/zzytestvnet"#"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
@@ -487,7 +518,7 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion `
-		-VirtualNetworkId $vnetId -SubnetName $subnetName -Version 3.6 `
+		-VirtualNetworkId $vnetId -SubnetName $subnetName `
 		-ResourceProviderConnection Outbound -PrivateLink Enabled -PrivateLinkConfiguration $privateLinkConfiguration
 
 		Assert-AreEqual $cluster.NetworkProperties.ResourceProviderConnection Outbound

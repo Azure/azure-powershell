@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudconfigurationservice
 schema: 2.0.0
@@ -15,7 +15,7 @@ Create the default Application Configuration Service or update the existing Appl
 ```
 New-AzSpringCloudConfigurationService -ResourceGroupName <String> -ServiceName <String>
  [-SubscriptionId <String>] [-GitRepository <IConfigurationServiceGitRepository[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -210,4 +210,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[Username <String>]`: Username of git repository basic auth.
 
 ## RELATED LINKS
-

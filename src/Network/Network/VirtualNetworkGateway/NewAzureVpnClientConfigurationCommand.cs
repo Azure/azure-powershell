@@ -59,8 +59,8 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Authentication Method")]
         [ValidateSet(
-            MNM.AuthenticationMethod.EAPTLS,
-            MNM.AuthenticationMethod.EAPMSCHAPv2,
+            MNM.AuthenticationMethod.Eaptls,
+            MNM.AuthenticationMethod.EapmschaPv2,
             IgnoreCase = true)]
         public string AuthenticationMethod { get; set; }
 
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.ProcessorArchitecture;
 
                 vpnClientParams.AuthenticationMethod = string.IsNullOrWhiteSpace(this.AuthenticationMethod)
-                    ? MNM.AuthenticationMethod.EAPTLS.ToString()
+                    ? MNM.AuthenticationMethod.Eaptls.ToString()
                     : this.AuthenticationMethod;
 
                 // Read the radius server root certificate if present

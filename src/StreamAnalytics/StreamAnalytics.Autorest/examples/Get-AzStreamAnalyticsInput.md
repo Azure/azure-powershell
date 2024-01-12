@@ -1,6 +1,6 @@
 ### Example 1: Get information about the inputs defined on a job
 ```powershell
-PS C:\> Get-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh
+Get-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh
 
 Name     Type                                           ETag
 ----     ----                                           ----
@@ -11,7 +11,7 @@ This command returns information about all the inputs defined on the job Streami
 
 ### Example 2: Get information about a specific input defined on a job
 ```powershell
-PS C:\> Get-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name input-01
+Get-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name input-01
 
 Name     Type                                           ETag
 ----     ----                                           ----
@@ -22,7 +22,7 @@ This command returns information about the input named EntryStream defined on th
 
 ### Example 3: Get information about a specific input defined on a job by pipeline
 ```powershell
-PS C:\> New-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-01-portal -Name input-05 -File .\test\template-json\IotHub.json | Get-AzStreamAnalyticsInput
+New-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-01-portal -Name input-05 -File .\test\template-json\IotHub.json | Get-AzStreamAnalyticsInput
 
 Name     Type                                           ETag
 ----     ----                                           ----

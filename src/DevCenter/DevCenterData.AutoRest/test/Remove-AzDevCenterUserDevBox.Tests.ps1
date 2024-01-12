@@ -19,7 +19,7 @@ Describe 'Remove-AzDevCenterUserDevBox' {
         { Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.deleteDevBox1 } | Should -Throw
 
         if ($Record -or $Live) {
-            Remove-AzDevCenterUserDevBox -DevCenter $env.devCenterName -Name $env.deleteDevBox2 -ProjectName $env.projectName
+            Remove-AzDevCenterUserDevBox -DevCenterName $env.devCenterName -Name $env.deleteDevBox2 -ProjectName $env.projectName
             { Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.deleteDevBox2 } | Should -Throw
         }
 
@@ -33,7 +33,7 @@ Describe 'Remove-AzDevCenterUserDevBox' {
         { Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.deleteDevBox3 } | Should -Throw
 
         if ($Record -or $Live) {
-            Remove-AzDevCenterUserDevBox -DevCenter $env.devCenterName -InputObject $devBoxInput2
+            Remove-AzDevCenterUserDevBox -DevCenterName $env.devCenterName -InputObject $devBoxInput2
             { Get-AzDevCenterUserDevBox -Endpoint $env.endpoint -ProjectName $env.projectName -UserId "me" -Name $env.deleteDevBox4 } | Should -Throw
         }
     }

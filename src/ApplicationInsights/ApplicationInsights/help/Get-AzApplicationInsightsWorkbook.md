@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.Applicationinsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightsworkbook
 schema: 2.0.0
 ---
@@ -14,7 +14,7 @@ Get a single workbook by its resourceName.
 
 ### List (Default)
 ```
-Get-AzApplicationInsightsWorkbook -Category <CategoryType> [-SubscriptionId <String[]>] [-CanFetchContent]
+Get-AzApplicationInsightsWorkbook [-SubscriptionId <String[]>] [-CanFetchContent] -Category <CategoryType>
  [-Tag <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -24,16 +24,16 @@ Get-AzApplicationInsightsWorkbook -Name <String> -ResourceGroupName <String> [-S
  [-CanFetchContent] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List1
+```
+Get-AzApplicationInsightsWorkbook -ResourceGroupName <String> [-SubscriptionId <String[]>] [-CanFetchContent]
+ -Category <CategoryType> [-Tag <String[]>] [-LinkedSourceId <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzApplicationInsightsWorkbook -InputObject <IApplicationInsightsIdentity> [-CanFetchContent]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzApplicationInsightsWorkbook -ResourceGroupName <String> -Category <CategoryType>
- [-SubscriptionId <String[]>] [-CanFetchContent] [-LinkedSourceId <String>] [-Tag <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -226,7 +226,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -286,4 +286,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[WebTestName <String>]`: The name of the Application Insights WebTest resource.
 
 ## RELATED LINKS
-

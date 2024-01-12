@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Workloads-help.xml
 Module Name: Az.Workloads
 online version: https://learn.microsoft.com/powershell/module/az.workloads/invoke-azworkloadssapsupportedsku
 schema: 2.0.0
@@ -14,10 +14,10 @@ Get a list of SAP supported SKUs for ASCS, Application and Database tier.
 
 ### SapExpanded (Default)
 ```
-Invoke-AzWorkloadsSapSupportedSku -Location <String> -AppLocation <String> -DatabaseType <SapDatabaseType>
- -DeploymentType <SapDeploymentType> -Environment <SapEnvironmentType> -SapProduct <SapProductType>
- [-SubscriptionId <String>] [-HighAvailabilityType <SapHighAvailabilityType>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzWorkloadsSapSupportedSku -Location <String> [-SubscriptionId <String>] -AppLocation <String>
+ -DatabaseType <SapDatabaseType> -DeploymentType <SapDeploymentType> -Environment <SapEnvironmentType>
+ -SapProduct <SapProductType> [-HighAvailabilityType <SapHighAvailabilityType>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SapViaIdentityExpanded
@@ -25,7 +25,7 @@ Invoke-AzWorkloadsSapSupportedSku -Location <String> -AppLocation <String> -Data
 Invoke-AzWorkloadsSapSupportedSku -InputObject <IWorkloadsIdentity> -AppLocation <String>
  -DatabaseType <SapDatabaseType> -DeploymentType <SapDeploymentType> -Environment <SapEnvironmentType>
  -SapProduct <SapProductType> [-HighAvailabilityType <SapHighAvailabilityType>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -271,4 +271,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-

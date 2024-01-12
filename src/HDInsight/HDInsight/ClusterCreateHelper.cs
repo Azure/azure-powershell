@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             configurations[Constants.ConfigurationKey.ClusterIdentity] = datalakeConfig;
         }
 
-        public static StorageAccount CreateAzureStorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageContainer, string defaultStorageSuffix)
+        public static StorageAccount CreateAzureStorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageContainer, bool? enableSecureChannel, string defaultStorageSuffix)
         {
             storageContainer = storageContainer ?? clusterName.ToLower();
             string storageAccountName = Utils.GetResourceNameFromResourceId(storageResourceId);
@@ -109,11 +109,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 IsDefault = true,
                 Container = storageContainer,
                 Key = storageAccountkey,
-                ResourceId = storageResourceId
+                ResourceId = storageResourceId,
+                EnableSecureChannel = enableSecureChannel
             };
         }
 
-        public static StorageAccount CreateAdlsGen2StorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageFileSystem, string msiResourceId, string defaultStorageSuffix)
+        public static StorageAccount CreateAdlsGen2StorageAccount(string clusterName, string storageResourceId, string storageAccountkey, string storageFileSystem, bool? enableSecureChannel, string msiResourceId, string defaultStorageSuffix)
         {
             storageFileSystem = storageFileSystem ?? clusterName.ToLower();
 
@@ -127,7 +128,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 FileSystem = storageFileSystem,
                 Key = storageAccountkey,
                 MsiResourceId = msiResourceId,
-                ResourceId = storageResourceId
+                ResourceId = storageResourceId,
+                EnableSecureChannel = enableSecureChannel
             };
         }
 
@@ -341,7 +343,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 TargetInstanceCount = instanceCount,
                 HardwareProfile = vmSize != null ? new HardwareProfile
                 {
-                    VmSize = vmSize
+                    VMSize = vmSize
                 } : null,
                 VirtualNetworkProfile = vnetProfile,
                 OsProfile = osProfile,
@@ -386,7 +388,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
             SecurityProfile securityProfile = new SecurityProfile(DirectoryType.ActiveDirectory);
             securityProfile.Domain = Utils.GetResourceNameFromResourceId(azureHDInsightSecurityProfile.DomainResourceId);
-            securityProfile.OrganizationalUnitDN = azureHDInsightSecurityProfile.OrganizationalUnitDN;
+            securityProfile.OrganizationalUnitDn = azureHDInsightSecurityProfile.OrganizationalUnitDN;
             securityProfile.LdapsUrls = azureHDInsightSecurityProfile.LdapsUrls;
             if (azureHDInsightSecurityProfile.DomainUserCredential != null)
             {

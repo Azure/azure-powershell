@@ -50,7 +50,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="analyticalStorageTtl">Analytical TTL.
         /// </param>
-        public SqlContainerResource(string id, IndexingPolicy indexingPolicy = default(IndexingPolicy), ContainerPartitionKey partitionKey = default(ContainerPartitionKey), int? defaultTtl = default(int?), UniqueKeyPolicy uniqueKeyPolicy = default(UniqueKeyPolicy), ConflictResolutionPolicy conflictResolutionPolicy = default(ConflictResolutionPolicy), ClientEncryptionPolicy clientEncryptionPolicy = default(ClientEncryptionPolicy), long? analyticalStorageTtl = default(long?))
+
+        /// <param name="restoreParameters">Parameters to indicate the information about the restore
+        /// </param>
+
+        /// <param name="createMode">Enum to indicate the mode of resource creation.
+        /// Possible values include: &#39;Default&#39;, &#39;Restore&#39;</param>
+
+        /// <param name="computedProperties">List of computed properties
+        /// </param>
+        public SqlContainerResource(string id, IndexingPolicy indexingPolicy = default(IndexingPolicy), ContainerPartitionKey partitionKey = default(ContainerPartitionKey), int? defaultTtl = default(int?), UniqueKeyPolicy uniqueKeyPolicy = default(UniqueKeyPolicy), ConflictResolutionPolicy conflictResolutionPolicy = default(ConflictResolutionPolicy), ClientEncryptionPolicy clientEncryptionPolicy = default(ClientEncryptionPolicy), long? analyticalStorageTtl = default(long?), ResourceRestoreParameters restoreParameters = default(ResourceRestoreParameters), string createMode = default(string), System.Collections.Generic.IList<ComputedProperty> computedProperties = default(System.Collections.Generic.IList<ComputedProperty>))
 
         {
             this.Id = id;
@@ -61,6 +70,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.ConflictResolutionPolicy = conflictResolutionPolicy;
             this.ClientEncryptionPolicy = clientEncryptionPolicy;
             this.AnalyticalStorageTtl = analyticalStorageTtl;
+            this.RestoreParameters = restoreParameters;
+            this.CreateMode = createMode;
+            this.ComputedProperties = computedProperties;
             CustomInit();
         }
 
@@ -120,6 +132,24 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "analyticalStorageTtl")]
         public long? AnalyticalStorageTtl {get; set; }
+
+        /// <summary>
+        /// Gets or sets parameters to indicate the information about the restore
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "restoreParameters")]
+        public ResourceRestoreParameters RestoreParameters {get; set; }
+
+        /// <summary>
+        /// Gets or sets enum to indicate the mode of resource creation. Possible values include: &#39;Default&#39;, &#39;Restore&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "createMode")]
+        public string CreateMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of computed properties
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "computedProperties")]
+        public System.Collections.Generic.IList<ComputedProperty> ComputedProperties {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -144,6 +174,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 this.ClientEncryptionPolicy.Validate();
             }
+
+
+
         }
     }
 }

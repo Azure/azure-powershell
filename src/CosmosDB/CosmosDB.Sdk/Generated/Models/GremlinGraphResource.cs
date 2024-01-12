@@ -47,7 +47,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="analyticalStorageTtl">Analytical TTL.
         /// </param>
-        public GremlinGraphResource(string id, IndexingPolicy indexingPolicy = default(IndexingPolicy), ContainerPartitionKey partitionKey = default(ContainerPartitionKey), int? defaultTtl = default(int?), UniqueKeyPolicy uniqueKeyPolicy = default(UniqueKeyPolicy), ConflictResolutionPolicy conflictResolutionPolicy = default(ConflictResolutionPolicy), long? analyticalStorageTtl = default(long?))
+
+        /// <param name="restoreParameters">Parameters to indicate the information about the restore
+        /// </param>
+
+        /// <param name="createMode">Enum to indicate the mode of resource creation.
+        /// Possible values include: &#39;Default&#39;, &#39;Restore&#39;</param>
+        public GremlinGraphResource(string id, IndexingPolicy indexingPolicy = default(IndexingPolicy), ContainerPartitionKey partitionKey = default(ContainerPartitionKey), int? defaultTtl = default(int?), UniqueKeyPolicy uniqueKeyPolicy = default(UniqueKeyPolicy), ConflictResolutionPolicy conflictResolutionPolicy = default(ConflictResolutionPolicy), long? analyticalStorageTtl = default(long?), ResourceRestoreParameters restoreParameters = default(ResourceRestoreParameters), string createMode = default(string))
 
         {
             this.Id = id;
@@ -57,6 +63,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.UniqueKeyPolicy = uniqueKeyPolicy;
             this.ConflictResolutionPolicy = conflictResolutionPolicy;
             this.AnalyticalStorageTtl = analyticalStorageTtl;
+            this.RestoreParameters = restoreParameters;
+            this.CreateMode = createMode;
             CustomInit();
         }
 
@@ -110,6 +118,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "analyticalStorageTtl")]
         public long? AnalyticalStorageTtl {get; set; }
+
+        /// <summary>
+        /// Gets or sets parameters to indicate the information about the restore
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "restoreParameters")]
+        public ResourceRestoreParameters RestoreParameters {get; set; }
+
+        /// <summary>
+        /// Gets or sets enum to indicate the mode of resource creation. Possible values include: &#39;Default&#39;, &#39;Restore&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "createMode")]
+        public string CreateMode {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -128,6 +148,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 this.PartitionKey.Validate();
             }
+
+
 
 
         }

@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             var req = new P2SVpnConnectionRequest(new List<string>(VpnConnectionId));
-            this.P2SVpnGatewayClient.DisconnectP2sVpnConnections(ResourceGroupName, Name, req);
+            this.P2SVpnGatewayClient.DisconnectP2SVpnConnections(ResourceGroupName, Name, req);
 
             WriteObject(existingP2SVpnGateway);
         }

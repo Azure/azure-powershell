@@ -20,6 +20,10 @@
 
 ## Upcoming Release
 * Redirected device code login details from warning stream to information stream if use device authentication in `Connect-AzAccount`.
+* Fixed the multiple `x-ms-unique-id` values issue
+
+## Version 2.15.0
+* Fixed the authentication issue when using `FederatedToken` in Sovereign Clouds. [#23742]
 * Added upcoming breaking change warning for deprecation of config parameter `DisableErrorRecordsPersistence`.
 
 ## Version 2.13.2

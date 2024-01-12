@@ -16,14 +16,12 @@ using Microsoft.Azure.Management.ResourceManager.Version2021_01_01;
 using Microsoft.Azure.Management.ResourceManager.Version2021_01_01.Models;
 using Microsoft.Rest.Azure;
 using Moq;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management.Automation.Language;
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {

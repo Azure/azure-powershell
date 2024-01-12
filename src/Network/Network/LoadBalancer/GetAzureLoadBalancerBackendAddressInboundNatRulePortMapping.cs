@@ -104,13 +104,13 @@ namespace Microsoft.Azure.Commands.Network
             MNM.QueryInboundNatRulePortMappingRequest parameters = new MNM.QueryInboundNatRulePortMappingRequest();
             if (!string.IsNullOrEmpty(this.IpAddress))
             {
-                parameters.IpAddress = this.IpAddress;
+                parameters.IPAddress = this.IpAddress;
             }
 
             if (!string.IsNullOrEmpty(this.NetworkInterfaceIpConfigurationId))
             {
                 SubResource nic = new SubResource(this.NetworkInterfaceIpConfigurationId);
-                parameters.IpConfiguration = nic;
+                parameters.IPConfiguration = nic;
             }
 
             // Response

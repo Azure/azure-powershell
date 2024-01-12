@@ -40,10 +40,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<SqlDatabaseGetResults>>> ListSqlDatabasesWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the SQL database under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the SQL database under an existing Azure Cosmos DB database account
+        /// with the provided name.
         /// </summary>
         /// <remarks>
-        /// Gets the SQL database under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the SQL database under an existing Azure Cosmos DB database account
+        /// with the provided name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -127,10 +129,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlDatabaseHeaders>> DeleteSqlDatabaseWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the RUs per second of the SQL database under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the SQL database under an existing Azure Cosmos
+        /// DB database account with the provided name.
         /// </summary>
         /// <remarks>
-        /// Gets the RUs per second of the SQL database under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the SQL database under an existing Azure Cosmos
+        /// DB database account with the provided name.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -171,7 +175,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The parameters to provide for the RUs per second of the current SQL database.
+        /// The parameters to provide for the RUs per second of the current SQL
+        /// database.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -371,10 +376,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlContainerHeaders>> DeleteSqlContainerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the RUs per second of the SQL container under an existing Azure Cosmos DB database account.
+        /// Gets the RUs per second of the SQL container under an existing Azure Cosmos
+        /// DB database account.
         /// </summary>
         /// <remarks>
-        /// Gets the RUs per second of the SQL container under an existing Azure Cosmos DB database account.
+        /// Gets the RUs per second of the SQL container under an existing Azure Cosmos
+        /// DB database account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -421,7 +428,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB container name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The parameters to provide for the RUs per second of the current SQL container.
+        /// The parameters to provide for the RUs per second of the current SQL
+        /// container.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -438,10 +446,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesUpdateSqlContainerThroughputHeaders>> UpdateSqlContainerThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB SQL container from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB SQL container from manual throughput to
+        /// autoscale
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB SQL container from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB SQL container from manual throughput to
+        /// autoscale
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -470,10 +480,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesMigrateSqlContainerToAutoscaleHeaders>> MigrateSqlContainerToAutoscaleWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB SQL container from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB SQL container from autoscale to manual
+        /// throughput
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB SQL container from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB SQL container from autoscale to manual
+        /// throughput
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -502,10 +514,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesMigrateSqlContainerToManualThroughputHeaders>> MigrateSqlContainerToManualThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL database.
+        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
+        /// database.
         /// </summary>
         /// <remarks>
-        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL database.
+        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
+        /// database.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -531,10 +545,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<ClientEncryptionKeyGetResults>>> ListClientEncryptionKeysWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL database.
+        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL
+        /// database.
         /// </summary>
         /// <remarks>
-        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL database.
+        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL
+        /// database.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -563,10 +579,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ClientEncryptionKeyGetResults>> GetClientEncryptionKeyWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via tools such as the Azure Powershell (instead of directly).
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
         /// </summary>
         /// <remarks>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via tools such as the Azure Powershell (instead of directly).
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -598,10 +616,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ClientEncryptionKeyGetResults,SqlResourcesCreateUpdateClientEncryptionKeyHeaders>> CreateUpdateClientEncryptionKeyWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string clientEncryptionKeyName, ClientEncryptionKeyCreateUpdateParameters createUpdateClientEncryptionKeyParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database account.
+        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database account.
+        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -630,10 +650,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<SqlStoredProcedureGetResults>>> ListSqlStoredProceduresWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the SQL storedProcedure under an existing Azure Cosmos DB database account.
+        /// Gets the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Gets the SQL storedProcedure under an existing Azure Cosmos DB database account.
+        /// Gets the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -735,10 +757,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlStoredProcedureHeaders>> DeleteSqlStoredProcedureWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists the SQL userDefinedFunction under an existing Azure Cosmos DB database account.
+        /// Lists the SQL userDefinedFunction under an existing Azure Cosmos DB
+        /// database account.
         /// </summary>
         /// <remarks>
-        /// Lists the SQL userDefinedFunction under an existing Azure Cosmos DB database account.
+        /// Lists the SQL userDefinedFunction under an existing Azure Cosmos DB
+        /// database account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -767,10 +791,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<SqlUserDefinedFunctionGetResults>>> ListSqlUserDefinedFunctionsWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the SQL userDefinedFunction under an existing Azure Cosmos DB database account.
+        /// Gets the SQL userDefinedFunction under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Gets the SQL userDefinedFunction under an existing Azure Cosmos DB database account.
+        /// Gets the SQL userDefinedFunction under an existing Azure Cosmos DB database
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1009,10 +1035,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<SqlResourcesDeleteSqlTriggerHeaders>> DeleteSqlTriggerWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition with the given Id.
+        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition
+        /// with the given Id.
         /// </summary>
         /// <remarks>
-        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition with the given Id.
+        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition
+        /// with the given Id.
         /// </remarks>
         /// <param name='roleDefinitionId'>
         /// The GUID for the Role Definition.
@@ -1122,10 +1150,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<SqlRoleDefinitionGetResults>>> ListSqlRoleDefinitionsWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment with the given Id.
+        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment
+        /// with the given Id.
         /// </summary>
         /// <remarks>
-        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment with the given Id.
+        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment
+        /// with the given Id.
         /// </remarks>
         /// <param name='roleAssignmentId'>
         /// The GUID for the Role Assignment.
@@ -1343,7 +1373,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The parameters to provide for the RUs per second of the current SQL database.
+        /// The parameters to provide for the RUs per second of the current SQL
+        /// database.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1500,7 +1531,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB container name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The parameters to provide for the RUs per second of the current SQL container.
+        /// The parameters to provide for the RUs per second of the current SQL
+        /// container.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1517,10 +1549,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesUpdateSqlContainerThroughputHeaders>> BeginUpdateSqlContainerThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, ThroughputSettingsUpdateParameters updateThroughputParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB SQL container from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB SQL container from manual throughput to
+        /// autoscale
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB SQL container from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB SQL container from manual throughput to
+        /// autoscale
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1549,10 +1583,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesMigrateSqlContainerToAutoscaleHeaders>> BeginMigrateSqlContainerToAutoscaleWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Migrate an Azure Cosmos DB SQL container from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB SQL container from autoscale to manual
+        /// throughput
         /// </summary>
         /// <remarks>
-        /// Migrate an Azure Cosmos DB SQL container from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB SQL container from autoscale to manual
+        /// throughput
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1581,10 +1617,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ThroughputSettingsGetResults,SqlResourcesMigrateSqlContainerToManualThroughputHeaders>> BeginMigrateSqlContainerToManualThroughputWithHttpMessagesAsync(string resourceGroupName, string accountName, string databaseName, string containerName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via tools such as the Azure Powershell (instead of directly).
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
         /// </summary>
         /// <remarks>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via tools such as the Azure Powershell (instead of directly).
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

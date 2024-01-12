@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PaloAltoNetworks-help.xml
 Module Name: Az.PaloAltoNetworks
 online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/new-azpaloaltonetworkslocalrule
 schema: 2.0.0
@@ -14,15 +14,15 @@ Create a LocalRulesResource
 
 ```
 New-AzPaloAltoNetworksLocalRule -LocalRulestackName <String> -Priority <String> -ResourceGroupName <String>
- -RuleName <String> [-SubscriptionId <String>] [-ActionType <ActionEnum>] [-Application <String[]>]
+ [-SubscriptionId <String>] -RuleName <String> [-ActionType <String>] [-Application <String[]>]
  [-AuditComment <String>] [-CategoryFeed <String[]>] [-CategoryUrlCustom <String[]>]
- [-DecryptionRuleType <DecryptionRuleTypeEnum>] [-Description <String>] [-DestinationCidr <String[]>]
+ [-DecryptionRuleType <String>] [-Description <String>] [-DestinationCidr <String[]>]
  [-DestinationCountry <String[]>] [-DestinationFeed <String[]>] [-DestinationFqdnList <String[]>]
- [-DestinationPrefixList <String[]>] [-EnableLogging <StateEnum>] [-Etag <String>]
- [-InboundInspectionCertificate <String>] [-NegateDestination <BooleanEnum>] [-NegateSource <BooleanEnum>]
- [-Protocol <String>] [-ProtocolPortList <String[]>] [-RuleState <StateEnum>] [-SourceCidr <String[]>]
+ [-DestinationPrefixList <String[]>] [-EnableLogging <String>] [-Etag <String>]
+ [-InboundInspectionCertificate <String>] [-NegateDestination <String>] [-NegateSource <String>]
+ [-Protocol <String>] [-ProtocolPortList <String[]>] [-RuleState <String>] [-SourceCidr <String[]>]
  [-SourceCountry <String[]>] [-SourceFeed <String[]>] [-SourcePrefixList <String[]>] [-Tag <ITagInfo[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +49,7 @@ Create a LocalRulesResource.
 rule action
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.ActionEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 enable or disable decryption
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.DecryptionRuleTypeEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -260,7 +260,7 @@ Accept wildcard characters: False
 enable or disable logging
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.StateEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -320,7 +320,7 @@ Accept wildcard characters: False
 cidr should not be 'any'
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.BooleanEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -335,7 +335,7 @@ Accept wildcard characters: False
 cidr should not be 'any'
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.BooleanEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -441,7 +441,7 @@ Accept wildcard characters: False
 state of this rule
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.StateEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -532,7 +532,7 @@ tag for rule
 To construct, see NOTES section for TAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ITagInfo[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ITagInfo[]
 Parameter Sets: (All)
 Aliases:
 
@@ -597,4 +597,3 @@ To create the parameters described below, construct a hash table containing the 
   - `Value <String>`: tag value
 
 ## RELATED LINKS
-

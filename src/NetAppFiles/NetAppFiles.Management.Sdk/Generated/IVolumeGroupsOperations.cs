@@ -101,10 +101,12 @@ namespace Microsoft.Azure.Management.NetApp
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VolumeGroupDetails>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string volumeGroupName, VolumeGroupDetails body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Delete the specified volume group only if there are no volumes under volume group.
+        /// Delete the specified volume group only if there are no volumes under volume
+        /// group.
         /// </summary>
         /// <remarks>
-        /// Delete the specified volume group only if there are no volumes under volume group.
+        /// Delete the specified volume group only if there are no volumes under volume
+        /// group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -159,10 +161,12 @@ namespace Microsoft.Azure.Management.NetApp
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VolumeGroupDetails>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string volumeGroupName, VolumeGroupDetails body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Delete the specified volume group only if there are no volumes under volume group.
+        /// Delete the specified volume group only if there are no volumes under volume
+        /// group.
         /// </summary>
         /// <remarks>
-        /// Delete the specified volume group only if there are no volumes under volume group.
+        /// Delete the specified volume group only if there are no volumes under volume
+        /// group.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.Network
                                                     string resourceGroupName,
                                                     string routerName)
         {
-            var ipConfigModels = this.NetworkClient.NetworkManagementClient.VirtualHubIpConfiguration.List(resourceGroupName, routerName);
-            var ipConfigList = ListNextLink<HubIpConfiguration>.GetAllResourcesByPollingNextLink(ipConfigModels, this.NetworkClient.NetworkManagementClient.VirtualHubIpConfiguration.ListNext);
+            var ipConfigModels = this.NetworkClient.NetworkManagementClient.VirtualHubIPConfiguration.List(resourceGroupName, routerName);
+            var ipConfigList = ListNextLink<HubIpConfiguration>.GetAllResourcesByPollingNextLink(ipConfigModels, this.NetworkClient.NetworkManagementClient.VirtualHubIPConfiguration.ListNext);
             HubIpConfiguration ipConfigModel = null;
             if (ipConfigList.Count > 0)
             {

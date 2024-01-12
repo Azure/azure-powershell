@@ -1,6 +1,6 @@
 ### Example 1: Gets the default Logz single sign-on resource for the given Monitor
 ```powershell
-PS C:\> Get-AzLogzMonitorSSOConfiguration -ResourceGroupName LPTrials -MonitorName lpatlogz
+Get-AzLogzMonitorSSOConfiguration -ResourceGroupName LPTrials -MonitorName lpatlogz
 
 Name    ProvisioningState SingleSignOnState SingleSignOnUrl                                ResourceGroupName
 ----    ----------------- ----------------- ---------------                                -----------------
@@ -11,7 +11,7 @@ This command gets the default Logz single sign-on resource for the given Monitor
 
 ### Example 2: Gets the default Logz single sign-on resource for the given Monitor by pipeline
 ```powershell
-PS C:\> New-AzLogzMonitorSSOConfiguration -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 | Get-AzLogzMonitorSSOConfiguration
+New-AzLogzMonitorSSOConfiguration -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 | Get-AzLogzMonitorSSOConfiguration
 
 Name    ProvisioningState SingleSignOnState SingleSignOnUrl             ResourceGroupName
 ----    ----------------- ----------------- ---------------             -----------------

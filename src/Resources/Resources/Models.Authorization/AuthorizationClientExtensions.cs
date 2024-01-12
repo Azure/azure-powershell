@@ -57,7 +57,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     Id = role.Id.GuidFromFullyQualifiedId(),
                     AssignableScopes = role.AssignableScopes.ToList(),
                     Description = role.Description,
-                    IsCustom = role.RoleType == CustomRole ? true : false
+                    IsCustom = role.RoleType == CustomRole ? true : false,
+                    Condition = role.Permissions[0].Condition,
+                    ConditionVersion = role.Permissions[0].ConditionVersion
                 };
             }
 

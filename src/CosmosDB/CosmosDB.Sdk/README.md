@@ -26,8 +26,8 @@ title: CosmosDBManagementClient
 
 ### 
 ``` yaml 
-commit: 51ad5ff1eff4dc413cfd7e01c206133494cd28ea
-apiversion: "2023-09-15"
+commit: 99139d0fae73a2a4a884c0ef307dc6eb8d290457
+apiversion: "2023-11-15"
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/cosmos-db.json
   - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/managedCassandra.json

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloudmonitoringsetting
 schema: 2.0.0
@@ -16,7 +16,7 @@ Update the Monitoring Setting.
 ```
 Update-AzSpringCloudMonitoringSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AppInsightsInstrumentationKey <String>] [-AppInsightsSamplingRate <Double>] [-Code <String>]
- [-Message <String>] [-TraceEnabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-Message <String>] [-TraceEnabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Update-AzSpringCloudMonitoringSetting -Name <String> -ResourceGroupName <String>
 ```
 Update-AzSpringCloudMonitoringSetting -InputObject <ISpringCloudIdentity>
  [-AppInsightsInstrumentationKey <String>] [-AppInsightsSamplingRate <Double>] [-Code <String>]
- [-Message <String>] [-TraceEnabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-Message <String>] [-TraceEnabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -319,4 +319,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
-

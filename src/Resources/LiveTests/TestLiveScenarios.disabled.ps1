@@ -126,3 +126,51 @@ Invoke-LiveTestScenario -Name "Test Group Member" -Description "Test the process
         }
     }
 }
+
+Invoke-LiveTestScenario -Name "Test Service Principal app role assignment" -Description "Test the process of service principal app role assignment." -NoResourceGroup -ScenarioScript `
+{
+    try {
+        $today = (Get-Date).tostring('yyyy-MM-dd')
+        $appName1 = $today + 'testapp' + (New-LiveTestRandomName)
+        $approleName1 = $today + 'testapprole' + (New-LiveTestRandomName)
+        $approleName2 = $today + 'testapprole' + (New-LiveTestRandomName)
+    
+        $spName1 = $today + 'testsp' + (New-LiveTestRandomName)
+    
+        $approle = New-Object Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphAppRole
+        $approle.id = New-Guid
+        $approle.DisplayName = $approleName1
+        $approle.Description = $approleName1 + "for test"
+        $approle.IsEnabled = $true
+        $approle.AllowedMemberType = @("User", "Application")
+        $approle.value = New-Guid
+
+        $app1 = New-AzADApplication -DisplayName $appName1 -StartDate (Get-Date) -AppRole $approle
+        $app1 = Get-AzADApplication -DisplayName $appName1
+        Assert-NotNullOrEmpty $app1.AppRole
+        $approleId = $app1.AppRole.Id
+        
+        $resourceSp = New-AzADServicePrincipal -ApplicationObject $app1
+        $sp1 = New-AzADServicePrincipal -DisplayName $spName1     
+        $sp1 = Get-AzADServicePrincipal -DisplayName $spName1
+        $approleAssignment1 = New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalDisplayName $spName1 -ResourceId $resourceSp.Id -AppRoleId $approleId
+        $approleAssignmentId1 = $approleAssignment1.Id
+        Assert-AreEqual $approleId $approleAssignment1.AppRoleId
+
+        $approleAssignment1 = Get-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId $approleAssignmentId1 -ServicePrincipalId $sp1.Id
+        Assert-AreEqual $approleId $approleAssignment1.AppRoleId
+        Assert-AreEqual $spName1 $approleAssignment1.PrincipalDisplayName
+
+        $null = Remove-AzADServicePrincipalAppRoleAssignment -AppRoleAssignmentId $approleAssignmentId1 -ServicePrincipalId $sp1.Id
+    } finally {
+        if ($sp1) {
+            Remove-AzADServicePrincipal -ServicePrincipalName $sp1.ServicePrincipalName[0]
+        }
+        if ($resourceSp) {
+            Remove-AzADServicePrincipal -ObjectId $resourceSp.Id
+        }
+        if ($app1) {
+            Remove-AzADApplication -DisplayName $appName1
+        }
+    }
+}

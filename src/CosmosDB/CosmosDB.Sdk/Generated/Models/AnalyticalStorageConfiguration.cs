@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
 
         /// <param name="schemaType">Describes the types of schema for analytical storage.
-        /// Possible values include: 'WellDefined', 'FullFidelity'</param>
+        /// Possible values include: &#39;WellDefined&#39;, &#39;FullFidelity&#39;</param>
         public AnalyticalStorageConfiguration(string schemaType = default(string))
 
         {

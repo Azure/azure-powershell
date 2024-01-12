@@ -19,13 +19,15 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the transparent data encryption is defined.
+        /// The name of the logical database for which the transparent data encryption
+        /// is defined.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<LogicalDatabaseTransparentDataEncryption> ListByDatabase(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName)
         {
@@ -39,13 +41,15 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the transparent data encryption is defined.
+        /// The name of the logical database for which the transparent data encryption
+        /// is defined.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -64,13 +68,15 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the transparent data encryption is defined.
+        /// The name of the logical database for which the transparent data encryption
+        /// is defined.
         /// </param>
         public static LogicalDatabaseTransparentDataEncryption Get(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName)
         {
@@ -84,13 +90,15 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the transparent data encryption is defined.
+        /// The name of the logical database for which the transparent data encryption
+        /// is defined.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -109,13 +117,15 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the security alert policy is defined.
+        /// The name of the logical database for which the security alert policy is
+        /// defined.
         /// </param>
         public static LogicalDatabaseTransparentDataEncryption CreateOrUpdate(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName, LogicalDatabaseTransparentDataEncryption parameters)
         {
@@ -129,13 +139,15 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the security alert policy is defined.
+        /// The name of the logical database for which the security alert policy is
+        /// defined.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -154,13 +166,15 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the security alert policy is defined.
+        /// The name of the logical database for which the security alert policy is
+        /// defined.
         /// </param>
         public static LogicalDatabaseTransparentDataEncryption BeginCreateOrUpdate(this ITransparentDataEncryptionsOperations operations, string resourceGroupName, string serverName, string databaseName, LogicalDatabaseTransparentDataEncryption parameters)
         {
@@ -174,13 +188,15 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
         /// </param>
         /// <param name='databaseName'>
-        /// The name of the logical database for which the security alert policy is defined.
+        /// The name of the logical database for which the security alert policy is
+        /// defined.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageMover-help.xml
 Module Name: Az.StorageMover
 online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemover
 schema: 2.0.0
@@ -14,15 +14,15 @@ Creates or updates a top-level Storage Mover resource.
 
 ### CreateExpanded (Default)
 ```
-New-AzStorageMover -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+New-AzStorageMover -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+ [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzStorageMover -Name <String> -ResourceGroupName <String> -StorageMover <IStorageMover>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStorageMover -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -StorageMover <IStorageMover> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -225,4 +225,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

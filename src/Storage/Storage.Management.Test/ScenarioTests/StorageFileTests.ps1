@@ -85,6 +85,15 @@ function Test-StorageFileShare
 		Assert-AreEqual $shareName  $shares[1].Name
 		Assert-AreEqual $shareName2  $shares[0].Name
 
+		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Filter "startswith(name, share)" 
+		Assert-AreEqual 2 $shares.Count
+		Assert-AreEqual $shareName  $shares[1].Name
+		Assert-AreEqual $shareName2  $shares[0].Name
+
+		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Filter "startswith(name, share2)" 
+		Assert-AreEqual 1 $shares.Count 
+		Assert-AreEqual $shareName2 $shares[0].Name
+
 		Remove-AzRmStorageShare -Force -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName
 		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname
 		Assert-AreEqual 1 $shares.Count

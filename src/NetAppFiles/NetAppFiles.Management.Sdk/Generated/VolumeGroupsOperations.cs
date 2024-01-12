@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Management.NetApp
             }
             if (accountName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$");
                 }
             }
             if (this.Client.ApiVersion == null)
@@ -344,9 +344,9 @@ namespace Microsoft.Azure.Management.NetApp
             }
             if (accountName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$");
                 }
             }
             if (volumeGroupName == null)
@@ -664,9 +664,9 @@ namespace Microsoft.Azure.Management.NetApp
             }
             if (accountName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$");
                 }
             }
             if (volumeGroupName == null)
@@ -860,7 +860,8 @@ namespace Microsoft.Azure.Management.NetApp
 
         }
         /// <summary>
-        /// Delete the specified volume group only if there are no volumes under volume group.
+        /// Delete the specified volume group only if there are no volumes under volume
+        /// group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -927,9 +928,9 @@ namespace Microsoft.Azure.Management.NetApp
             }
             if (accountName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(accountName, "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,63}$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "accountName", "^[a-zA-Z0-9][a-zA-Z0-9\\-_]{0,127}$");
                 }
             }
             if (volumeGroupName == null)

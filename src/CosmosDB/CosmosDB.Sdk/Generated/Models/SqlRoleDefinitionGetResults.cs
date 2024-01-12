@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
 
         /// <param name="propertiesType">Indicates whether the Role Definition was built-in or user created.
-        /// Possible values include: 'BuiltInRole', 'CustomRole'</param>
+        /// Possible values include: &#39;BuiltInRole&#39;, &#39;CustomRole&#39;</param>
 
         /// <param name="assignableScopes">A set of fully qualified Scopes at or below which Role Assignments may be
         /// created using this Role Definition. This will allow application of this

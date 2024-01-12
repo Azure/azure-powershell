@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             Type = privateLinkConfiguration.Type;
             GroupId = privateLinkConfiguration.GroupId;
             ProvisioningState = privateLinkConfiguration.ProvisioningState;
-            IpConfigurations = privateLinkConfiguration.IpConfigurations?.Select(item => new AzureHDInsightIPConfiguration(item)).ToList();
+            IpConfigurations = privateLinkConfiguration.IPConfigurations?.Select(item => new AzureHDInsightIPConfiguration(item)).ToList();
         }
 
         public PrivateLinkConfiguration ToPrivateLinkConfiguration()
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             {
                 Name = this.Name,
                 GroupId = this.GroupId,
-                IpConfigurations = this.IpConfigurations.Select(item=> item.ToIPConfiguration()).ToList()
+                IPConfigurations = this.IpConfigurations.Select(item=> item.ToIPConfiguration()).ToList()
             };
         }
 

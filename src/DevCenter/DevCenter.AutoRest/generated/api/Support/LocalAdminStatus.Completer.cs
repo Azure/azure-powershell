@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support
 {
 
-    /// <summary>Argument completer implementation for LocalAdminStatus.</summary>
+    /// <summary>
+    /// Local Administrator enable or disable status. Indicates whether owners of Dev Boxes are added as local administrators
+    /// on the Dev Box.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatusTypeConverter))]
     public partial struct LocalAdminStatus :
         System.Management.Automation.IArgumentCompleter

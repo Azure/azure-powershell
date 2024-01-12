@@ -153,6 +153,9 @@
   <data name="SuspendVolumeReplicationMessage" xml:space="preserve">
     <value>Suspending volume replication on {0}</value>
   </data>
+  <data name="UpdateNetworkSiblingSet" xml:space="preserve">
+    <value>Updating network sibling set on {0}</value>
+  </data>
   <data name="UpdateResourceMessage" xml:space="preserve">
     <value>Updating the {0}</value>
   </data>

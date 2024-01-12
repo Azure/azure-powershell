@@ -282,7 +282,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Gets the SQL database under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the SQL database under an existing Azure Cosmos DB database account
+        /// with the provided name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -588,7 +589,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the RUs per second of the SQL database under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the SQL database under an existing Azure Cosmos
+        /// DB database account with the provided name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -853,7 +855,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The parameters to provide for the RUs per second of the current SQL database.
+        /// The parameters to provide for the RUs per second of the current SQL
+        /// database.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1494,7 +1497,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the RUs per second of the SQL container under an existing Azure Cosmos DB database account.
+        /// Gets the RUs per second of the SQL container under an existing Azure Cosmos
+        /// DB database account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1772,7 +1776,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB container name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The parameters to provide for the RUs per second of the current SQL container.
+        /// The parameters to provide for the RUs per second of the current SQL
+        /// container.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1844,7 +1849,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL database.
+        /// Lists the ClientEncryptionKeys under an existing Azure Cosmos DB SQL
+        /// database.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2097,7 +2103,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL database.
+        /// Gets the ClientEncryptionKey under an existing Azure Cosmos DB SQL
+        /// database.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2391,7 +2398,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database account.
+        /// Lists the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2654,7 +2662,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Gets the SQL storedProcedure under an existing Azure Cosmos DB database account.
+        /// Gets the SQL storedProcedure under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2992,7 +3001,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Lists the SQL userDefinedFunction under an existing Azure Cosmos DB database account.
+        /// Lists the SQL userDefinedFunction under an existing Azure Cosmos DB
+        /// database account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -3255,7 +3265,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Gets the SQL userDefinedFunction under an existing Azure Cosmos DB database account.
+        /// Gets the SQL userDefinedFunction under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -4194,7 +4205,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition with the given Id.
+        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition
+        /// with the given Id.
         /// </summary>
         /// <param name='roleDefinitionId'>
         /// The GUID for the Role Definition.
@@ -4743,7 +4755,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment with the given Id.
+        /// Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment
+        /// with the given Id.
         /// </summary>
         /// <param name='roleAssignmentId'>
         /// The GUID for the Role Assignment.
@@ -5864,7 +5877,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The parameters to provide for the RUs per second of the current SQL database.
+        /// The parameters to provide for the RUs per second of the current SQL
+        /// database.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -7232,7 +7246,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB container name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The parameters to provide for the RUs per second of the current SQL container.
+        /// The parameters to provide for the RUs per second of the current SQL
+        /// container.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -7511,7 +7526,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB SQL container from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB SQL container from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -7787,7 +7803,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB SQL container from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB SQL container from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -8063,7 +8080,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via tools such as the Azure Powershell (instead of directly).
+        /// Create or update a ClientEncryptionKey. This API is meant to be invoked via
+        /// tools such as the Azure Powershell (instead of directly).
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

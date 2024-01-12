@@ -51,7 +51,7 @@ This command gets a single encryption scope.
 
 
 ```
-PS C:\> Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" 
+Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" 
 
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount

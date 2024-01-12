@@ -1,3 +1,151 @@
+## 11.2.0 - January 2024
+#### Az.Accounts 2.15.0
+* Fixed the authentication issue when using 'FederatedToken' in Sovereign Clouds. [#23742]
+* Added upcoming breaking change warning for deprecation of config parameter 'DisableErrorRecordsPersistence'.
+
+#### Az.ApplicationInsights 2.2.3
+* Enabled common parameter in get-azapplicationinsights 
+
+#### Az.Automation 1.10.0
+* Updated Module operation cmdlets to support Powershell 7.2
+
+#### Az.Compute 7.1.1
+* Fixed 'New-AzVmss' to correctly work when using '-EdgeZone' by creating the Load Balancer in the correct edge zone.
+* Removed references to image aliases in 'New-AzVM' and 'New-AzVmss' to images that were removed.
+* Az.Compute is updated to use the 2023-09-01 ComputeRP REST API calls. 
+
+#### Az.ContainerRegistry 4.1.3
+* Fixed bug in 'Get-AzContainerRegistryManifest' returns only 100 results [#22922]
+
+#### Az.CosmosDB 1.14.0
+* Introduced Restore-AzCosmosDBSqlDatabase, Restore-AzCosmosDBSqlContainer to restore deleted database and containers in the same account for SQL.
+* Introduced Restore-AzCosmosDBMongoDBDatabase, Restore-AzCosmosDBMongoDBCollection to restore deleted database and collections in the same account for MongoDB.
+* Introduced Restore-AzCosmosDBGremlinDatabase, Restore-AzCosmosDBGremlinGraph to restore deleted database and graph in the same account for Gremlin.
+* Introduced Restore-AzCosmosDBTable to restore deleted table in the same account.
+
+#### Az.DataProtection 2.2.0
+* Added support for Cross region restore for Backup vaults
+
+#### Az.DesktopVirtualization 4.3.0
+* Removed AppAttach Cmdlets and ResetIcon parameter to Update-AzWvdApplication
+
+#### Az.DevCenter 1.1.0
+* Updated the default parameter set for Get-AzDevCenterUserSchedule to 'list'
+
+#### Az.HDInsight 6.1.0
+* Added new feature: Enable secure channels while creating a new cluster.
+* Fixed a bug: When creating a cluster without passing the version, the default version cannot be set to 'default'.
+
+#### Az.KeyVault 5.1.0
+* Added parameter 'ByteArrayValue' in 'Invoke-AzKeyVaultKeyOperation' to support operating byte array without conversion to secure string.
+* Added Property 'RawResult' in the output type 'PSKeyOperationResult' of 'Invoke-AzKeyVaultKeyOperation'. 
+* [Upcoming Breaking Change] Added breaking change warning message for parameter 'Value' in 'Invoke-AzKeyVaultKeyOperation'. 
+    - Parameter 'Value' is expected to be removed in Az.KeyVault 6.0.0
+    - 'ByteArrayValue' is the alternative of parameter 'Value' in byte array format
+* [Upcoming Breaking Change] Added breaking change warning message for the output type 'PSKeyOperationResult' of 'Invoke-AzKeyVaultKeyOperation'. 
+    - Property 'Result' is expected to be removed in Az.KeyVault 6.0.0
+    - Property 'RawResult' is the alternative of parameter 'Result' in byte array format
+
+#### Az.Network 7.3.0
+* Fixed a few minor issues
+* Onboarded 'Microsoft.DBforPostgreSQL/flexibleServers' to private link cmdlets
+* Fixed missing properties in PSBackendAddressPool
+
+#### Az.RecoveryServices 6.7.0
+* Added support Edge zone VM restore
+* Added cross zonal restore for snapshot recovery point
+
+#### Az.Resources 6.13.0
+* Added AppRoleAssigment related commands for service principal. [#18412]
+* Added '-WithSource' parameter to 'Publish-AzBicepModule' for publishing source with a module (currently experimental)
+* Supported nullable Bicep parameters in Deployment cmdlets
+* Updated Get-AzRoleDefinition to api-version '2022-05-01-preview' and returns ABAC condition information
+* Added a couple missing validators and completers to Deployment Stack cmdlets.
+
+#### Az.ServiceFabric 3.3.2
+* Fixed Az.ServiceFabric cannot be imported in arm64 platform.
+
+#### Az.Sql 4.13.0
+* Fixed 'Set-AzSqlDatabaseFailoverGroup' when going from multi-secondary to single secondary
+* Added 'SecondaryComputeModel', 'AutoPauseDelayInMinutes' and 'MinimumCapacity' parameters within 'New-AzSqlDatabaseSecondary'
+
+#### Az.Storage 6.1.0
+* Defaults of AllowBlobPublicAccess and AllowCrossTenantReplication when creating a storage account were set to false by server changes. Please refer to https://techcommunity.microsoft.com/t5/azure-storage-blog/azure-storage-updating-some-default-security-settings-on-new/ba-p/3819554
+    - 'New-AzStorageAccount'
+* Supprted filter when listing file shares with management plane cmdlet 
+    - 'Get-AzRmStorageShare'
+
+#### Az.StorageMover 1.3.0
+* Renamed SmbFileShare endpoint cmdlets
+
+#### Az.StorageSync 2.1.1
+* Updated dataset limit from 5 Tb to 100 Tib.
+
+#### Az.Synapse 3.0.5
+* Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.19
+* Added ActionOnExistingTargetTable property for Synapse Link Connection
+
+### Thanks to our community contributors
+* @omahs, Fix typos (#23759)
+* @Petri-X, Update New-AzVM.md for one line break (#23577)
+
+## 11.1.0 - December 2023
+#### Az.Compute 7.1.0
+* Added new parameter '-ElasticSanResourceId' to 'New-AzSnapshotConfig' cmdlet.
+* Added new parameter '-OptimizedForFrequentAttach' to 'New-AzDiskConfig' cmdlet.
+* Added new examples in 'New-AzVM' and 'New-AzVmss' for TrustedLaunch default usage.
+* Fixed the 'New-AzVM' bug to avoid accessing the 'EncryptionAtHost' property for subscriptions who cannot access it since it is behind a feature flag.
+* Updated 'Get-AzVmExtension' to return instanceView when used with '-Status'.
+* Reverted SSH Private Key File permission changes in 'New-AzVm'.
+
+#### Az.DataFactory 1.18.0
+* Supported GoogleAds and LakeHouse in ADF
+* Supported copyComputeScale and pipelineExternalComputeScale in 'Set-AzDataFactoryV2IntegrationRuntime' Command
+
+#### Az.KeyVault 5.0.1
+* Removed redundant Microsoft Graph API calls for access policy in 'Get-AzKeyVault'.
+
+#### Az.Maintenance 1.4.1
+* Removed outdated upcoming breaking change warning
+
+#### Az.ManagedServiceIdentity 1.2.0
+* Renamed '*-AzFederatedIdentityCredentials' to '*-AzFederatedIdentityCredential', and kept '*-AzFederatedIdentityCredentials' as an alias.
+
+#### Az.Network 7.1.0
+* Added DefaultOutboundAccess parameter on subnet creation
+* Updated cmdlet 'New-AzPublicIpPrefix' and 'New-PublicIpAddress' to require Location parameter
+* Updated cmdlet 'New-AzLoadBalancerBackendAddressPool' to support managed IP based backend
+* Added cmdlet 'New-AzSaaSNetworkVirtualAppliance' for creating a NetworkVirtualAppliance of SaaS type.
+* Added control knobs to virtual network gateways and ExpressRoute gateways as well to cmdlets operating on those.
+* Updated cmdlets to add Hostnames property for Application gateway Listener Configuration
+	- 'Set-AzApplicationGatewayListener'
+	- 'Add-AzApplicationGatewayListener'
+	- 'New-AzApplicationGatewayListener'
+* Added cmdlet 'Remove-AzApplicationGatewayFirewallCustomRule' to support removing custom rule in Firewall Policy.
+* Added support for new ErGWScale SKU - ErGwScale
+* Added property 'size' to firewallPolicy and firewallPolicyRuleCollectionGroup.
+* Updated cmdlet 'New-AzBastion', 'Set-AzBastion' and 'Get-AzBastion' to support Bastion features for CRUD operations
+
+#### Az.RecoveryServices 6.6.2
+* Removed outdated upcoming breaking change warning
+
+#### Az.Resources 6.12.1
+* Used utf8 encoding for reading stdout & stderr when invoking Bicep. [#23246]
+* Fixed regression in 'Publish-AzBicepModule' [Azure/bicep/12461](https://github.com/Azure/bicep/issues/12461)
+
+#### Az.Security 1.5.1
+* Fixed bug for 'Set-AzSecurityPricing'
+
+#### Az.ServiceFabric 3.3.1
+* Fixed a bug that Get commands do not return all resources.
+* Updated SFMC to latest api preview version '2023-11-01-preview'.
+
+#### Az.Sql 4.12.0
+* Added new parameters 'MaintenanceConfigurationId', 'DnsZone' to 'AzSqlInstancePool' cmdlets
+
+#### Az.Storage 6.0.1
+* Updated error message when storage context is missing in a cmdlet input 
+
 ## 11.0.0 - November 2023
 #### Az.Accounts 2.13.2
 * Enabled in-tool notification for version upgrade by default.

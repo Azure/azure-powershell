@@ -1,6 +1,6 @@
 ### Example 1: Remove-AzConnectedNetworkVendorSku via Sku name and Vendor name
 ```powershell
-PS C:\> Remove-AzConnectedNetworkVendorSku -SkuName MySku -VendorName MyVendor
+Remove-AzConnectedNetworkVendorSku -SkuName MySku -VendorName MyVendor
 
 ```
 
@@ -9,7 +9,7 @@ Deleting the sku MySku with Vendor name MyVendor.
 ### Example 2: Remove-AzConnectedNetworkVendorSku via Identity
 ```powershell
 $sku = Get-AzConnectedNetworkVendorSku -SkuName MySku1 -VendorName MyVendor
-PS C:\> Remove-AzConnectedNetworkVendorSku -InputObject $sku
+Remove-AzConnectedNetworkVendorSku -InputObject $sku
 
 ```
 

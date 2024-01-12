@@ -1,6 +1,6 @@
 ### Example 1: Create a Maps Creator resource
 ```powershell
-PS C:\> New-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount02 -Name creator-01 -Location eastus2 -StorageUnit 3
+New-AzMapsCreator -ResourceGroupName azure-rg-test -AccountName pwsh-mapsAccount02 -Name creator-01 -Location eastus2 -StorageUnit 3
 
 Location Name       Type
 -------- ----       ----
