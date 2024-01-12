@@ -10,7 +10,7 @@
                 "imageReference": {
                     "sku": "82sapha-gen2",
                     "publisher": "RedHat",
-                    "version": "8.2.2021091202",
+                    "version": "latest",
                     "offer": "RHEL-SAP-HA"
                 },
                 "osProfile": {
@@ -33,7 +33,7 @@
                 "imageReference": {
                     "sku": "82sapha-gen2",
                     "publisher": "RedHat",
-                    "version": "8.2.2021091202",
+                    "version": "latest",
                     "offer": "RHEL-SAP-HA"
                 },
                 "osProfile": {
@@ -56,7 +56,7 @@
                 "imageReference": {
                     "sku": "82sapha-gen2",
                     "publisher": "RedHat",
-                    "version": "8.2.2021091202",
+                    "version": "latest",
                     "offer": "RHEL-SAP-HA"
                 },
                 "osProfile": {

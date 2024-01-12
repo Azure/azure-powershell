@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             HelpMessage = "The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities")]
         [ValidateNotNullOrEmpty]
         public string UserAssignedIdentity { get; set; }
-        
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             {
                 throw new AzPSResourceNotFoundCloudException($"A NetAppAccount with name '{this.Name}' in resource group '{this.ResourceGroupName}' already exists. Only one active directory allowed. Please use Set/Update-AzNetAppFilesAccount to update an existing NetAppAccount.");
             }
-            if ((new object[] { EncryptionKeySource, KeyVaultKeyName, KeyVaultResourceId, KeyVaultUri }).Any(v => v != null))                
+            if ((new object[] { EncryptionKeySource, KeyVaultKeyName, KeyVaultResourceId, KeyVaultUri }).Any(v => v != null))
             {
                 if (Encryption == null)
                 {
@@ -164,10 +164,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                 Location = Location,
                 ActiveDirectories = ActiveDirectory?.ConvertFromPs(),
                 Tags = tagPairs,
-                Encryption = Encryption?.ConvertFromPs(),
-                Identity = (IdentityType != null) ? new ManagedServiceIdentity() { Type = IdentityType, UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity> { [null] = new UserAssignedIdentity(new Guid(UserAssignedIdentity)) }} : null 
+                Encryption = Encryption?.ConvertFromPs()
             };
-
+            if (IdentityType != null)
+            {
+                var userAssingedIdentitiesDict = new Dictionary<string, UserAssignedIdentity>();
+                userAssingedIdentitiesDict.Add(UserAssignedIdentity, new Management.NetApp.Models.UserAssignedIdentity());
+                netAppAccountBody.Identity = new ManagedServiceIdentity()
+                {
+                    Type = IdentityType,
+                    UserAssignedIdentities = userAssingedIdentitiesDict
+                };
+            }
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
                 var anfAccount = AzureNetAppFilesManagementClient.Accounts.CreateOrUpdate(ResourceGroupName, Name, netAppAccountBody);

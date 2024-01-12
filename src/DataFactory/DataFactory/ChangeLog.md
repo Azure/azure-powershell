@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added metadata Into StoreWriteSettings For Bug Fix
+* Supported ADF Warehouse, Mysql V2 and Salesforce V2 in ADF
 
 ## Version 1.18.0
 * Supported GoogleAds and LakeHouse in ADF

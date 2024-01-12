@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvault
 schema: 2.0.0
@@ -13,13 +13,13 @@ Creates or updates a BackupVault resource belonging to a resource group.
 ## SYNTAX
 
 ```
-New-AzDataProtectionBackupVault -Location <String> -ResourceGroupName <String>
- -StorageSetting <IStorageSetting[]> -VaultName <String> [-AsJob]
- [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CrossRegionRestoreState <CrossRegionRestoreState>]
- [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <PSObject>]
- [-ETag <String>] [-IdentityType <String>] [-ImmutabilityState <ImmutabilityState>] [-NoWait]
- [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <SoftDeleteState>] [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <String> -Location <String>
+ -StorageSetting <IStorageSetting[]> [-SubscriptionId <String>] [-ETag <String>] [-IdentityType <String>]
+ [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-ImmutabilityState <ImmutabilityState>]
+ [-CrossRegionRestoreState <CrossRegionRestoreState>]
+ [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-SoftDeleteRetentionDurationInDay <Double>]
+ [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +60,6 @@ This command creates a new backup vault while setting Immutability state, cross 
 ## PARAMETERS
 
 ### -AsJob
-
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -123,7 +122,6 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -200,7 +198,6 @@ Accept wildcard characters: False
 
 ### -NoWait
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -265,7 +262,7 @@ Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
 To construct, see NOTES section for STORAGESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IStorageSetting[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IStorageSetting[]
 Parameter Sets: (All)
 Aliases:
 
@@ -375,4 +372,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[Type <StorageSettingTypes?>]`: Gets or sets the type.
 
 ## RELATED LINKS
-

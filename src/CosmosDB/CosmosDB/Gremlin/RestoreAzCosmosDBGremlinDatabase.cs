@@ -99,13 +99,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     RestorableDatabaseAccountGetResult lastestAccountToRestore = null;
                     foreach (RestorableDatabaseAccountGetResult restorableAccount in accountsWithMatchingName)
                     {
-                        if (lastestAccountToRestore == null)
-                        {
-                            lastestAccountToRestore = restorableAccount;
-                        }
-
-                        if (restorableAccount.CreationTime.HasValue &&
-                            restorableAccount.CreationTime > lastestAccountToRestore.CreationTime)
+                        if (lastestAccountToRestore == null || (restorableAccount.CreationTime.HasValue &&
+                            restorableAccount.CreationTime > lastestAccountToRestore.CreationTime))
                         {
                             if (!restorableAccount.DeletionTime.HasValue)
                             {
@@ -116,21 +111,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
                     databaseAccount = lastestAccountToRestore;
                 }
-                else
+
+                if (databaseAccount == null)
                 {
                     this.WriteWarning($"No database accounts found with matching account name {this.AccountName} that was alive");
                     return;
                 }
 
-                Regex regex = new Regex(@"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}");
-                var matches = regex.Matches(databaseAccount.Id);
-
-                string accountInstanceId = string.Empty;
-                if (matches.Count > 1)
-                {
-                    accountInstanceId = matches[1].Value;
-                }
-
+                string accountInstanceId = databaseAccount.Name;
                 DateTime latestDeleteTime = DateTime.MinValue;
                 IEnumerable restorableGremlinDatabases = CosmosDBManagementClient.RestorableGremlinDatabases.ListWithHttpMessagesAsync(databaseAccount.Location, accountInstanceId).GetAwaiter().GetResult().Body;
                 foreach (RestorableGremlinDatabaseGetResult restorableGremlinDatabase in restorableGremlinDatabases)
@@ -145,7 +133,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     }
                 }
 
-                utcRestoreDateTime = latestDeleteTime.AddSeconds(-2);
+                if (latestDeleteTime == DateTime.MinValue)
+                {
+                    this.WriteWarning($"No deleted database with name {this.Name} found in the account name {this.AccountName}");
+                }
+
+                //Subtracting 1 second from delete timestamp to restore till end of logchain in no timestamp restore.
+                utcRestoreDateTime = latestDeleteTime.AddSeconds(-1);
             }
             
 

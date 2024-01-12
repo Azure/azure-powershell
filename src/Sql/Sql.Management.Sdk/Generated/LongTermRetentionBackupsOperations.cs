@@ -938,6 +938,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <summary>
         /// Deletes a long term retention backup.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// </param>
         /// <param name='locationName'>
         /// The location of the database
         /// </param>
@@ -997,6 +1000,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <summary>
         /// Copy an existing long term retention backup.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// </param>
         /// <param name='locationName'>
         /// The location of the database.
         /// </param>
@@ -1028,6 +1034,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <summary>
         /// Updates an existing long term retention backup.
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// </param>
         /// <param name='locationName'>
         /// The location of the database.
         /// </param>
@@ -1777,8 +1786,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='longTermRetentionServerName'>
         /// The name of the server
         /// </param>
-        /// <param name='longTermRetentionDatabaseName'>
-        /// The name of the database
+        /// <param name='databaseState'>
+        /// Whether to query against just live databases, just deleted databases, or all databases.
         /// </param>
         /// <param name='backupName'>
         /// The backup name.
@@ -2106,29 +2115,7 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates an existing long term retention backup.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain
-        /// this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='locationName'>
-        /// The location of the database.
-        /// </param>
-        /// <param name='longTermRetentionServerName'>
-        /// The name of the server
-        /// </param>
-        /// <param name='longTermRetentionDatabaseName'>
-        /// The name of the database
-        /// </param>
-        /// <param name='backupName'>
-        /// The backup name.
-        /// </param>
-        /// <param name='parameters'>
-        /// The requested backup resource state
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
+        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
         /// </param>
         public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<LongTermRetentionBackupOperationResult>> UpdateByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string locationName, string longTermRetentionServerName, string longTermRetentionDatabaseName, string backupName, UpdateLongTermRetentionBackupParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
@@ -2356,8 +2343,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='backupName'>
         /// 
         /// </param>
-        /// <param name='parameters'>
-        /// 
+        /// <param name='databaseState'>
+        /// Whether to query against just live databases, just deleted databases, or all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

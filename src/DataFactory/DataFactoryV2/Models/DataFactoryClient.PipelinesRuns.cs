@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 runFilters.OrderBy.Add(
                     new RunQueryOrderBy()
                     {
-                        Order = RunQueryOrder.DESC,
+                        Order = RunQueryOrder.Desc,
                         OrderBy = RunQueryOrderByField.RunEnd
                     });
             }

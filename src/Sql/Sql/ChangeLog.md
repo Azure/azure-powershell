@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `DatabaseFormat` and `PricingModel` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance`
+
+## Version 4.13.0
 * Fixed `Set-AzSqlDatabaseFailoverGroup` when going from multi-secondary to single secondary
+* Added `SecondaryComputeModel`, `AutoPauseDelayInMinutes` and `MinimumCapacity` parameters within `New-AzSqlDatabaseSecondary`
 * Updated exist cmdlets 'Update-AzSqlDatabaseLongTermRetentionBackup' for Azure SQL sterling DB to update long-term retention backup's BackupStorageAccessTier
 * Updated exist cmdlets 'Set-AzSqlDatabaseBackupLongTermRetentionPolicy' for Azure SQL sterling DB to set long-term retention policy with new parameter BackupStorageAccessTier
 

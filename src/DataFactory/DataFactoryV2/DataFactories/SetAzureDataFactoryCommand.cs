@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             FactoryRepoConfiguration repoConfiguration = null;
             if (!string.IsNullOrWhiteSpace(this.ProjectName) || !string.IsNullOrWhiteSpace(this.TenantId))
             {
-                var factoryVSTSConfiguration = new FactoryVSTSConfiguration();
+                var factoryVSTSConfiguration = new FactoryVstsConfiguration();
                 factoryVSTSConfiguration.ProjectName = this.ProjectName;
                 factoryVSTSConfiguration.TenantId = this.TenantId;
 
@@ -592,7 +592,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     }
 
 
-                    var factoryVSTSConfiguration = InputObject.RepoConfiguration as FactoryVSTSConfiguration;
+                    var factoryVSTSConfiguration = InputObject.RepoConfiguration as FactoryVstsConfiguration;
                     if (factoryVSTSConfiguration != null)
                     {
                         this.ProjectName = this.ProjectName ?? factoryVSTSConfiguration.ProjectName;

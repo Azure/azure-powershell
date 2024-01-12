@@ -19,9 +19,16 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.14.0
+* Fixed ABAC condition not included in role definition payload. Get-AzRoleDefinition will now contain ABAC Condition and ConditionVersion info when applicable.
+
+## Version 6.13.0
 * Added AppRoleAssigment related commands for service principal. [#18412]
 * Added `-WithSource` parameter to `Publish-AzBicepModule` for publishing source with a module (currently experimental)
 * Supported nullable Bicep parameters in Deployment cmdlets
+* Updated Get-AzRoleDefinition to api-version "2022-05-01-preview" and returns ABAC condition information
+* Added a couple missing validators and completers to Deployment Stack cmdlets.
 
 ## Version 6.12.1
 * Used utf8 encoding for reading stdout & stderr when invoking Bicep. [#23246]

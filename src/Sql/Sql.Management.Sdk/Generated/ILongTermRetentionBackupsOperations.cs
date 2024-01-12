@@ -261,8 +261,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='backupName'>
         /// The backup name.
         /// </param>
-        /// <param name='parameters'>
-        /// The requested backup resource state
+        /// <param name='databaseState'>
+        /// Whether to query against just live databases, just deleted databases, or all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -525,8 +525,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='backupName'>
         /// The backup name.
         /// </param>
-        /// <param name='parameters'>
-        /// The parameters needed for long term retention copy request
+        /// <param name='databaseState'>
+        /// Whether to query against just live databases, just deleted databases, or all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -564,8 +564,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='backupName'>
         /// The backup name.
         /// </param>
-        /// <param name='parameters'>
-        /// The requested backup resource state
+        /// <param name='databaseState'>
+        /// Whether to query against just live databases, just deleted databases, or all databases.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -587,6 +587,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <remarks>
         /// Deletes a long term retention backup.
         /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// </param>
         /// <param name='locationName'>
         /// The location of the database
         /// </param>
@@ -622,8 +625,8 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='longTermRetentionServerName'>
         /// 
         /// </param>
-        /// <param name='longTermRetentionDatabaseName'>
-        /// 
+        /// <param name='databaseState'>
+        /// Whether to query against just live databases, just deleted databases, or all databases.
         /// </param>
         /// <param name='backupName'>
         /// 

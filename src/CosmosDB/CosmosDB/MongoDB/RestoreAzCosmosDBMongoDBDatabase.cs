@@ -144,7 +144,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     }
                 }
 
-                utcRestoreDateTime = latestDeleteTime.AddSeconds(-2);
+                if (latestDeleteTime == DateTime.MinValue)
+                {
+                    this.WriteWarning($"No deleted database with name {this.Name} found in the account name {this.AccountName}");
+                }
+
+                //Subtracting 1 second from delete timestamp to restore till end of logchain in no timestamp restore.
+                utcRestoreDateTime = latestDeleteTime.AddSeconds(-1);
             }
             
 

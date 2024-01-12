@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloudconfigserver
 schema: 2.0.0
@@ -18,7 +18,7 @@ Update-AzSpringCloudConfigServer -Name <String> -ResourceGroupName <String> [-Su
  [-Code <String>] [-GitHostKey <String>] [-GitHostKeyAlgorithm <String>] [-GitLabel <String>]
  [-GitPassword <String>] [-GitPrivateKey <String>] [-GitRepository <IGitPatternRepository[]>]
  [-GitSearchPath <String[]>] [-GitStrictHostKeyChecking] [-GitUri <String>] [-GitUsername <String>]
- [-Message <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Message <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -26,8 +26,8 @@ Update-AzSpringCloudConfigServer -Name <String> -ResourceGroupName <String> [-Su
 Update-AzSpringCloudConfigServer -InputObject <ISpringCloudIdentity> [-Code <String>] [-GitHostKey <String>]
  [-GitHostKeyAlgorithm <String>] [-GitLabel <String>] [-GitPassword <String>] [-GitPrivateKey <String>]
  [-GitRepository <IGitPatternRepository[]>] [-GitSearchPath <String[]>] [-GitStrictHostKeyChecking]
- [-GitUri <String>] [-GitUsername <String>] [-Message <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GitUri <String>] [-GitUsername <String>] [-Message <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -441,4 +441,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
-

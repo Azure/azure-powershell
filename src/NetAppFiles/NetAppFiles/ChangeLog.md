@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 * Fixed some minor issues
+
+## Version 0.14.0
+* Fixed some minor issues
 * Updated to api-version 2023-05-01
 * Added `EncryptionKeySource`, `KeyVaultKeyName`, `KeyVaultResourceId`, `KeyVaultUri`, `IdentityType`, `UserAssignedIdentity` to `New-AzNetAppFilesAccount` and `Update-AzNetAppFilesAccount`
 * Added new cmdlets `Get-AzNetAppFilesNetworkSiblingSet` and `Update-AzNetAppFilesNetworkSiblingSet` to query and update the network features of a network sibling set
