@@ -1,37 +1,29 @@
 {
-    "AzVMwareLocationTrialAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/33b83be5-faf7-42ea-a712-320a5f9dd111/providers/Microsoft.AVS/locations/eastus2/checkTrialAvailability?api-version=2023-03-01+1": {
-      "Request": {
-        "Method": "POST",
-        "RequestUri": "https://management.azure.com/subscriptions/33b83be5-faf7-42ea-a712-320a5f9dd111/providers/Microsoft.AVS/locations/eastus2/checkTrialAvailability?api-version=2023-03-01",
-        "Content": "{\r\n  \"name\": \"av36\"\r\n}",
-        "isContentBase64": false,
-        "Headers": {
-        },
-        "ContentHeaders": {
-          "Content-Type": [ "application/json" ],
-          "Content-Length": [ "22" ]
-        }
+  "AzVMwareLocationTrialAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/eastus2/checkTrialAvailability?api-version=2023-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/eastus2/checkTrialAvailability?api-version=2023-03-01",
+      "Content": "{\r\n  \"name\": \"av36\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
       },
-      "Response": {
-        "StatusCode": 200,
-        "Headers": {
-          "Cache-Control": [ "no-cache" ],
-          "Pragma": [ "no-cache" ],
-          "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-          "x-ms-request-id": [ "60327107-8c3c-415a-9f6c-4a64b4f751c1" ],
-          "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-          "x-ms-correlation-request-id": [ "167c4a26-12d7-43e0-9eaf-ac577762c477" ],
-          "x-ms-routing-request-id": [ "EASTUS:20231221T164724Z:167c4a26-12d7-43e0-9eaf-ac577762c477" ],
-          "X-Content-Type-Options": [ "nosniff" ],
-          "Date": [ "Thu, 21 Dec 2023 16:47:23 GMT" ]
-        },
-        "ContentHeaders": {
-          "Content-Length": [ "45" ],
-          "Content-Type": [ "application/json; charset=utf-8" ],
-          "Expires": [ "-1" ]
-        },
-        "Content": "{\"availableHosts\":0,\"status\":\"TrialDisabled\"}",
-        "isContentBase64": false
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "22" ]
       }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Thu, 11 Jan 2024 23:07:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "46" ]
+      },
+      "Content": "{\"status\":\"TrialAvailable\",\"availableHosts\":4}",
+      "isContentBase64": false
     }
   }
+}

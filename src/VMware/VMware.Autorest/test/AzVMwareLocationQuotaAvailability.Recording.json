@@ -1,42 +1,34 @@
 {
-    "AzVMwareLocationQuotaAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/33b83be5-faf7-42ea-a712-320a5f9dd111/providers/Microsoft.AVS/locations/canadacentral/checkQuotaAvailability?api-version=2023-03-01+1": {
-      "Request": {
-        "Method": "POST",
-        "RequestUri": "https://management.azure.com/subscriptions/33b83be5-faf7-42ea-a712-320a5f9dd111/providers/Microsoft.AVS/locations/canadacentral/checkQuotaAvailability?api-version=2023-03-01",
-        "Content": null,
-        "isContentBase64": false,
-        "Headers": {
-          "x-ms-unique-id": [ "1" ],
-          "x-ms-client-request-id": [ "fa0cec7c-8a25-412d-aa28-ffcf68f9941c" ],
-          "CommandName": [ "Test-AzVMwareLocationQuotaAvailability" ],
-          "FullCommandName": [ "Test-AzVMwareLocationQuotaAvailability_Check" ],
-          "ParameterSetName": [ "__AllParameterSets" ],
-          "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ],
-          "Authorization": [ "[Filtered]" ]
-        },
-        "ContentHeaders": {
-        }
+  "AzVMwareLocationQuotaAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/checkQuotaAvailability?api-version=2023-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/checkQuotaAvailability?api-version=2023-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "59" ],
+        "x-ms-client-request-id": [ "bcdf9051-13cc-435a-bf47-2bc1571ae3dd" ],
+        "CommandName": [ "Test-AzVMwareLocationQuotaAvailability" ],
+        "FullCommandName": [ "Test-AzVMwareLocationQuotaAvailability_Check" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ],
+        "Authorization": [ "[Filtered]" ]
       },
-      "Response": {
-        "StatusCode": 200,
-        "Headers": {
-          "Cache-Control": [ "no-cache" ],
-          "Pragma": [ "no-cache" ],
-          "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-          "x-ms-request-id": [ "14715dd3-1a1c-4cf2-9541-ca0af4e5a1b7" ],
-          "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-          "x-ms-correlation-request-id": [ "b69540d3-f3b8-43e5-afde-efa8432da8b3" ],
-          "x-ms-routing-request-id": [ "EASTUS:20231221T164555Z:b69540d3-f3b8-43e5-afde-efa8432da8b3" ],
-          "X-Content-Type-Options": [ "nosniff" ],
-          "Date": [ "Thu, 21 Dec 2023 16:45:55 GMT" ]
-        },
-        "ContentHeaders": {
-          "Content-Length": [ "83" ],
-          "Content-Type": [ "application/json; charset=utf-8" ],
-          "Expires": [ "-1" ]
-        },
-        "Content": "{\"hostsRemaining\":{\"av64\":0,\"gp\":0,\"he\":0,\"he2\":1,\"hv\":0},\"quotaEnabled\":\"Enabled\"}",
-        "isContentBase64": false
+      "ContentHeaders": {
       }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Thu, 11 Jan 2024 23:07:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "65" ]
+      },
+      "Content": "{\"hostsRemaining\":{\"AV20\":0,\"AV36\":999},\"quotaEnabled\":\"Enabled\"}",
+      "isContentBase64": false
     }
   }
+}
