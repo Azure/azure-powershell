@@ -46,13 +46,23 @@ Use `Backup-AzKeyVault` to backup.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Restore a Key Vault
 ```powershell
 $sasToken = ConvertTo-SecureString -AsPlainText -Force "?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-12T14:42:19Z&st=2020-10-12T06:42:19Z&spr=https&sig=******"
 Restore-AzKeyVault -HsmName myHsm -StorageContainerUri "https://{accountName}.blob.core.windows.net/{containerName}" -BackupFolder "mhsm-myHsm-2020101308504935" -SasToken $sasToken
 ```
 
 The example restores a backup stored in a folder named "mhsm-myHsm-2020101308504935" of a storage container "https://{accountName}.blob.core.windows.net/{containerName}".
+
+### Example 2 Restore a Key Vault via User Assigned Managed Identity Authentication
+```powershell
+# Make sure an identity is assigend to the Hsm
+Update-AzKeyVaultManagedHsm -UserAssignedIdentity /subscriptions/{sub-id}/resourceGroups/{rg-name}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identity-name}
+Restore-AzKeyVault -HsmName myHsm -StorageContainerUri "https://{accountName}.blob.core.windows.net/{containerName}" -BackupFolder "mhsm-myHsm-2020101308504935" -UseUserManagedIdentity
+```
+
+The example restores an HSM via User Assigned Managed Identity Authentication.
+
 
 ## PARAMETERS
 

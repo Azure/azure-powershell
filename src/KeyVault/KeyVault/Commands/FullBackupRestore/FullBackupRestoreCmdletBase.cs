@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
             if (this.IsParameterBound(c => c.StorageAccountName))
             {
-                StorageContainerUri = new Uri($"https://{StorageAccountName}.{DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix)}/{StorageContainerName}");
+                StorageContainerUri = new Uri($"https://{StorageAccountName}.blob.{DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix)}/{StorageContainerName}");
             }
 
             if (this.IsParameterBound(c => c.SasToken) && this.IsParameterBound(c => c.UseUserManagedIdentity))
