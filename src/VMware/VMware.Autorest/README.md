@@ -142,8 +142,8 @@ directive:
   - where:
       verb: Get
       subject: WorkloadNetwork
-      variant: List
-    remove: true
+  #   variant: List
+    hide: true
   # Hide parent object variant to fix 'multiple types define RestrictMovement [string, IVirtualMachineRestrictMovement]'
   - where:
       verb: Lock

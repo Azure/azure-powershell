@@ -44,9 +44,6 @@ List the admin credentials for the private cloud
 ### [Get-AzVMwareVirtualMachine](Get-AzVMwareVirtualMachine.md)
 Get a virtual machine by id in a private cloud cluster
 
-### [Get-AzVMwareWorkloadNetwork](Get-AzVMwareWorkloadNetwork.md)
-Get a private cloud workload network.
-
 ### [New-AzVMwareAddon](New-AzVMwareAddon.md)
 Create or update a addon in a private cloud
 
