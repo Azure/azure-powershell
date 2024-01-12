@@ -72,7 +72,7 @@ The cmdlet will backup the hsm in specific Storage Container and output the fold
 
 ### Example 3 Backup an HSM to Storage Container using Storage Account Name and Storage Container
 ```powershell
-Backup-AzKeyVault -HsmName myHsm -StorageAccountName {accountName} -StorageContainerName {containerName} -UseUserManagedIdentity
+Backup-AzKeyVault -HsmName myHsm -StorageAccountName "{accountName}" -StorageContainerName "{containerName}" -UseUserManagedIdentity
 ```
 
 ```output
