@@ -60,6 +60,8 @@ MonthlyRetention                       : PT0S
 YearlyRetention                        : PT0S
 WeekOfYear                             : 0
 Location                               :
+MakeBackupsImmutable                   : False
+BackupStorageAccessTier                : Hot
 ```
 
 This sets the long term retention policy of database01 to save every weekly full backup for 2 weeks
@@ -78,6 +80,8 @@ MonthlyRetention                       : P5Y
 YearlyRetention                        : PT0S
 WeekOfYear                             : 0
 Location                               :
+MakeBackupsImmutable                   : False
+BackupStorageAccessTier                : Hot
 ```
 
 This sets the long term retention policy of database01 to save the first full backup of each month for 5 years
@@ -96,6 +100,8 @@ MonthlyRetention                       : PT0S
 YearlyRetention                        : P10Y
 WeekOfYear                             : 26
 Location                               :
+MakeBackupsImmutable                   : False
+BackupStorageAccessTier                : Hot
 ```
 
 This sets the long term retention policy of database01 to save the full backup taken on the 26th week of the year for 10 years
@@ -114,6 +120,8 @@ MonthlyRetention                       : P24W
 YearlyRetention                        : P10Y
 WeekOfYear                             : 26
 Location                               :
+MakeBackupsImmutable                   : False
+BackupStorageAccessTier                : Hot
 ```
 
 This sets the long term retention policy of database01 to save each full backup for 14 days, the first full backup of each month for 24 weeks, and the full backup taken on the 26th week of the year for 10 years
@@ -132,6 +140,8 @@ MonthlyRetention                       : PT0S
 YearlyRetention                        : PT0S
 WeekOfYear                             : 0
 Location                               :
+MakeBackupsImmutable                   : False
+BackupStorageAccessTier                : Hot
 ```
 
 Removes the policy for database01 so it no longer saves any long term retention backups.
@@ -151,6 +161,8 @@ MonthlyRetention                       : PT0S
 YearlyRetention                        : PT0S
 WeekOfYear                             : 0
 Location                               :
+MakeBackupsImmutable                   : False
+BackupStorageAccessTier                : Hot
 ```
 
 This is another way of removing the policy for database01 so it no longer saves any long term retention backups.
@@ -158,14 +170,14 @@ This will not affect backups that have already been taken
 
 ### Example 6: Update the long term retention policy to set future LTR backups to be immutable.
 ```powershell
-Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -WeeklyRetention P0D -MakeBackupsImmutable $true
+Set-AzSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -WeeklyRetention P1W -MakeBackupsImmutable
 ```
 
 ```output
 ResourceGroupName                      : resourcegroup01
 ServerName                             : server01
 DatabaseName                           : database01
-WeeklyRetention                        : PT0S
+WeeklyRetention                        : P1W
 MonthlyRetention                       : PT0S
 YearlyRetention                        : PT0S
 WeekOfYear                             : 0

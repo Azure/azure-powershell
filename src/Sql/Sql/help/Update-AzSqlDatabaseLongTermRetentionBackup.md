@@ -48,56 +48,99 @@ Updates the properties of a long term retention backup.
 
 ### Example 1: Update Backup Storage Redundancy of a long term retention backup.
 ```powershell
-Update-AzSqlDatabaseLongTermRetentionBackup -Location southeastasia -ServerName ayang-stage-seas -DatabaseName ltr3 -BackupName 'e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000' -ResourceGroupName testrg -BackupStorageRedundancy Geo
+Update-AzSqlDatabaseLongTermRetentionBackup -Location southeastasia -ServerName ayang-stage-seas -DatabaseName ltr3 -BackupName 'e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000;Hot' -ResourceGroupName testrg -BackupStorageRedundancy Geo
 ```
 
 ```output
 BackupExpirationTime             : 3/19/2021 1:33:52 AM
-BackupName                       : e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000
+BackupName                       : e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000;Hot
 BackupTime                       : 2/17/2021 1:33:52 AM
 DatabaseName                     : ltr3
 DatabaseDeletionTime             : 3/16/2021 6:28:11 AM
 Location                         : southeastasia
-ResourceId                       : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000
+ResourceId                       : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000;Hot
 ServerName                       : ayang-stage-seas
 ServerCreateTime                 : 4/22/2020 9:58:33 PM
 ResourceGroupName                : testrg
-BackupStorageRedundancy			 : Geo
+BackupStorageRedundancy          : Geo
+IsBackupImmutable                : False
+BackupStorageAccessTier          : Hot
+OperationMode                    :
 ```
 
 This command sets the Backup Storage Redundancy of the specified backup using location and Resource Group, Server, Database, and Backup names.  
 
 ### Example 2: Update Backup Storage Redundancy of a long term retention backup (using Resource Id).
 ```powershell
-Update-AzSqlDatabaseLongTermRetentionBackup -ResourceId '/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000' -BackupStorageRedundancy Geo
+Update-AzSqlDatabaseLongTermRetentionBackup -ResourceId '/subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000;Hot' -BackupStorageRedundancy Geo
 ```
 
 ```output
 BackupExpirationTime             : 3/19/2021 1:33:52 AM
-BackupName                       : e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000
+BackupName                       : e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000;Hot
 BackupTime                       : 2/17/2021 1:33:52 AM
 DatabaseName                     : ltr3
 DatabaseDeletionTime             : 3/16/2021 6:28:11 AM
 Location                         : southeastasia
-ResourceId                       : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000
+ResourceId                       : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000;Hot
 ServerName                       : ayang-stage-seas
 ServerCreateTime                 : 4/22/2020 9:58:33 PM
 ResourceGroupName                : testrg
-BackupStorageRedundancy			 : Geo
+BackupStorageRedundancy          : Geo
+IsBackupImmutable                : False
+BackupStorageAccessTier          : Hot
+OperationMode                    :
 ```
 
 This command sets the Backup Storage Redundancy of the specified backup using a backup Resource Id. 
 
-### Example 3: Update Backup Storage Access Tier and Operation Mode of a long term retention backup.
+### Example 3: Archive a long term retention backup.
 ```powershell
-Update-AzSqlDatabaseLongTermRetentionBackup -Location southeastasia -ServerName testsvr -DatabaseName testdb -BackupName 'e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000;Hot' -ResourceGroupName testrg -BackupStorageAccessTier Archive -OperationMode Copy
+Update-AzSqlDatabaseLongTermRetentionBackup -Location southeastasia -ServerName testsvr -DatabaseName testdb -BackupName 'e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000;Hot' -ResourceGroupName testrg -BackupStorageAccessTier Archive -OperationMode Move
 ```
 
 ```output
-Request Id = 9849cc7e-0d08-4adb-8946-68b7ed9b0ad8
+BackupExpirationTime             : 3/19/2021 1:33:52 AM
+BackupName                       : e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000;Archive
+BackupTime                       : 2/17/2021 1:33:52 AM
+DatabaseName                     : testdb
+DatabaseDeletionTime             : 3/16/2021 6:28:11 AM
+Location                         : southeastasia
+ResourceId                       : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionServers/testsvr/longTermRetentionDatabases/testdb/longTermRetentionBackups/e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000;Archive
+ServerName                       : testsvr
+ServerCreateTime                 : 4/22/2020 9:58:33 PM
+ResourceGroupName                : testrg
+BackupStorageRedundancy          : Geo
+IsBackupImmutable                : False
+BackupStorageAccessTier          : Archive
+OperationMode                    :
 ```
 
-This command sets the Backup Storage Access Tier of the specified backup.
+This command sets the Backup Storage Access Tier from Hot to Archive of the specified backup.
+
+### Example 3: Rehydrate a long term retention backup.
+```powershell
+Update-AzSqlDatabaseLongTermRetentionBackup -Location southeastasia -ServerName testsvr -DatabaseName testdb -BackupName 'e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000;Archive' -ResourceGroupName testrg -BackupStorageAccessTier Hot -OperationMode Copy
+```
+
+```output
+BackupExpirationTime             : 3/19/2021 1:33:52 AM
+BackupName                       : e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000;Hot
+BackupTime                       : 2/17/2021 1:33:52 AM
+DatabaseName                     : testdb
+DatabaseDeletionTime             : 3/16/2021 6:28:11 AM
+Location                         : southeastasia
+ResourceId                       : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/southeastasia/longTermRetentionServers/testsvr/longTermRetentionDatabases/testdb/longTermRetentionBackups/e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000;Hot
+ServerName                       : testsvr
+ServerCreateTime                 : 4/22/2020 9:58:33 PM
+ResourceGroupName                : testrg
+BackupStorageRedundancy          : Geo
+IsBackupImmutable                : False
+BackupStorageAccessTier          : Hot
+OperationMode                    :
+```
+
+This command sets the Backup Storage Access Tier from Archive to Hot of the specified backup.
 
 ## PARAMETERS
 
@@ -133,6 +176,21 @@ Accept wildcard characters: False
 
 ### -BackupStorageAccessTier
 The target storage access tier of the backup.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateBackupStorageAccessTierSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### OperationMode
+The operation mode when change backup storage access tier
 
 ```yaml
 Type: System.String

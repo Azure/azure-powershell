@@ -79,8 +79,9 @@ ServerName						  : server01
 ServerCreateTime				  : 2/29/2018 12:12:19 AM
 ResourceGroupName				  : 
 BackupStorageRedundancy			  : Geo
-IsBackupImmutable				  : false
+IsBackupImmutable				  : False
 BackupStorageAccessTier			  : Hot
+OperationMode					  : 
 
 BackupExpirationTime			  : 3/22/2018 11:43:18 PM
 BackupName						  : 55970792-164c-4a4a-88e5-7158d092d503;131656309980000000;Hot
@@ -93,8 +94,9 @@ ServerName						  : server02
 ServerCreateTime				  : 2/28/2018 12:12:19 AM
 ResourceGroupName				  : 
 BackupStorageRedundancy			  : Geo
-IsBackupImmutable				  : false
+IsBackupImmutable				  : False
 BackupStorageAccessTier			  : Hot
+OperationMode					  : 
 ```
 
 This command gets all long term retention backups for all databases (which may be alive or deleted) in southeastasia, resource group will be set only if server is live.
@@ -116,8 +118,9 @@ ServerName						  : server01
 ServerCreateTime				  : 2/29/2018 12:12:19 AM
 ResourceGroupName				  : resourceGroup01
 BackupStorageRedundancy			  : Geo
-IsBackupImmutable				  : false
+IsBackupImmutable				  : False
 BackupStorageAccessTier			  : Hot
+OperationMode					  : 
 ```
 
 This command gets all long term retention backups for all databases (which may be alive or deleted) under a resource group in northeurope.
@@ -139,8 +142,9 @@ ServerName						  : server01
 ServerCreateTime				  : 2/29/2018 12:12:19 AM
 ResourceGroupName				  : 
 BackupStorageRedundancy			  : Geo
-IsBackupImmutable				  : false
+IsBackupImmutable				  : False
 BackupStorageAccessTier			  : Hot
+OperationMode					  : 
 ```
 
 This command gets the backup with name 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000;Hot
@@ -162,8 +166,9 @@ ServerName						  : server01
 ServerCreateTime				  : 2/29/2018 12:12:19 AM
 ResourceGroupName				  : 
 BackupStorageRedundancy			  : Geo
-IsBackupImmutable				  : false
+IsBackupImmutable				  : False
 BackupStorageAccessTier			  : Hot
+OperationMode					  : 
 ```
 
 This command gets all long term retention backups for database01
@@ -185,8 +190,9 @@ ServerName						  : server01
 ServerCreateTime				  : 2/28/2018 12:12:19 AM
 ResourceGroupName				  : 
 BackupStorageRedundancy			  : Geo
-IsBackupImmutable				  : false
+IsBackupImmutable				  : False
 BackupStorageAccessTier			  : Hot
+OperationMode					  : 
 
 BackupExpirationTime			  : 3/22/2018 5:50:55 AM
 BackupName						  : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000;Hot
@@ -199,8 +205,9 @@ ServerName						  : server01
 ServerCreateTime				  : 2/29/2018 12:12:19 AM
 ResourceGroupName				  : 
 BackupStorageRedundancy			  : Geo
-IsBackupImmutable				  : false
+IsBackupImmutable				  : False
 BackupStorageAccessTier			  : Hot
+OperationMode					  : 
 ```
 
 This command gets all backups with name that starts with "601061b7"
