@@ -26,10 +26,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+List+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/clusters/covbs4?api-version=2023-03-01+2": {
+  "AzVMwareCluster+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/clusters/covbs4?api-version=2023-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/clusters/covbs4?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/clusters/covbs4?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -58,10 +58,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+List+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/clusters/covbs4?api-version=2023-03-01+3": {
+  "AzVMwareCluster+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/clusters/covbs4?api-version=2023-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/clusters/covbs4?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/clusters/covbs4?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -93,7 +93,7 @@
   "AzVMwareCluster+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/clusters?api-version=2023-03-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/clusters?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/clusters?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -125,7 +125,7 @@
   "AzVMwareCluster+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/clusters/covbs4?api-version=2023-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/clusters/covbs4?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudr3c6/clusters/covbs4?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -181,10 +181,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+CreateExpanded+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01+2": {
+  "AzVMwareCluster+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -213,10 +213,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+CreateExpanded+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01+3": {
+  "AzVMwareCluster+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -272,10 +272,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+UpdateExpanded+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01+2": {
+  "AzVMwareCluster+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -304,10 +304,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCluster+[NoContext]+UpdateExpanded+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01+3": {
+  "AzVMwareCluster+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -366,7 +366,7 @@
   "AzVMwareCluster+[NoContext]+UpdateExpanded+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01+5": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -397,7 +397,7 @@
   "AzVMwareCluster+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupxgmipe/providers/Microsoft.AVS/privateClouds/azps_test_cloudrs68/clusters/x7hcjg?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
