@@ -10,8 +10,12 @@
         "defaultAction": "Permit"
     },
     "controller": {
+        "resourceGroupName": "Fab2LabNFC-5-0",
+        "location":"eastus",
+        "subscriptionId": "89a70903-42a2-4ff6-b437-688a27893711",
+        "newNFCName": "nfcfab2-5-0",
         "name": "controllerName",
-        "ipv4Address": "10.0.0.0/19",
+        "ipv4Address": "10.248.32.0/19",
         "isWorkloadManagementNetworkEnabled": "True",
         "nfcSku": "Basic"
     },

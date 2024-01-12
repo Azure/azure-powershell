@@ -26,7 +26,7 @@ Describe 'New-AzNetworkFabricController' {
                 ExpressRouteAuthorizationKey = "b256be71-d296-4e0e-99a1-408d9edc8718"
             })
 
-            New-AzNetworkFabricController -SubscriptionId $global:config.common.subscriptionId -Name $global:config.controller.name -ResourceGroupName $global:config.common.resourceGroupName -Location $global:config.common.location -Ipv4AddressSpace $global:config.controller.ipv4Address -IsWorkloadManagementNetworkEnabled $global:config.controller.isWorkloadManagementNetworkEnabled  -NfcSku $global:config.controller.nfcSku -WorkloadExpressRouteConnection $workLoad -InfrastructureExpressRouteConnection $infra
+            New-AzNetworkFabricController -SubscriptionId $global:config.controller.subscriptionId -Name $global:config.controller.newNFCName -ResourceGroupName $global:config.controller.resourceGroupName -Location $global:config.controller.location -Ipv4AddressSpace $global:config.controller.ipv4Address -IsWorkloadManagementNetworkEnabled $global:config.controller.isWorkloadManagementNetworkEnabled  -NfcSku $global:config.controller.nfcSku -WorkloadExpressRouteConnection $workLoad -InfrastructureExpressRouteConnection $infra
 
         } | Should -Not -Throw
     }
