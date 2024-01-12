@@ -736,7 +736,7 @@ Accept wildcard characters: False
 A path to a file containing JSON policy definition. The policy rules under which a key can be exported.
 
 ```yaml
-Type: System.String-Expir
+Type: System.String
 Parameter Sets: InteractiveCreate, HsmInteractiveCreate, InputObjectCreate, HsmInputObjectCreate, ResourceIdCreate, HsmResourceIdCreate
 Aliases:
 
