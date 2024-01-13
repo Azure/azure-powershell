@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MariaDb-help.xml
 Module Name: Az.MariaDb
 online version: https://learn.microsoft.com/powershell/module/az.mariadb/new-azmariadbserver
 schema: 2.0.0
@@ -13,12 +13,12 @@ Creates a new MariaDB.
 ## SYNTAX
 
 ```
-New-AzMariaDbServer -Name <String> -ResourceGroupName <String> -AdministratorLoginPassword <SecureString>
- -AdministratorUsername <String> -Location <String> -Sku <String> [-SubscriptionId <String>]
- [-BackupRetentionDay <Int32>] [-GeoRedundantBackup <GeoRedundantBackup>]
- [-SslEnforcement <SslEnforcementEnum>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>]
- [-Tag <Hashtable>] [-Version <ServerVersion>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzMariaDbServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+ -Sku <String> -AdministratorUsername <String> -AdministratorLoginPassword <SecureString>
+ [-SslEnforcement <SslEnforcementEnum>] [-BackupRetentionDay <Int32>]
+ [-GeoRedundantBackup <GeoRedundantBackup>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>]
+ [-Tag <Hashtable>] [-Version <ServerVersion>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -348,4 +348,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

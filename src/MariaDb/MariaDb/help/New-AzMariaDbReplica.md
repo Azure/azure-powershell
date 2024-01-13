@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MariaDb-help.xml
 Module Name: Az.MariaDb
 online version: https://learn.microsoft.com/powershell/module/az.mariadb/new-azmariadbreplica
 schema: 2.0.0
@@ -14,15 +14,15 @@ Creates a replica of a MariaDB server.
 
 ### ServerName (Default)
 ```
-New-AzMariaDbReplica -MasterName <String> -ReplicaName <String> -ResourceGroupName <String>
+New-AzMariaDbReplica -ReplicaName <String> -MasterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Location <String>] [-Sku <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServerObject
 ```
-New-AzMariaDbReplica -Master <IServer> -ReplicaName <String> [-SubscriptionId <String>] [-Location <String>]
- [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzMariaDbReplica -ReplicaName <String> [-SubscriptionId <String>] -Master <IServer> [-Location <String>]
+ [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
