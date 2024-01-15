@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MariaDb-help.xml
 Module Name: Az.MariaDb
 online version: https://learn.microsoft.com/powershell/module/az.mariadb/update-azmariadbserver
 schema: 2.0.0
@@ -17,19 +17,20 @@ Use Update-AzMariaDbConfiguration instead if you want update server parameters s
 ### ServerName (Default)
 ```
 Update-AzMariaDbServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AdministratorLoginPassword <SecureString>] [-BackupRetentionDay <Int32>]
- [-GeoRedundantBackup <GeoRedundantBackup>] [-ReplicationRole <String>] [-Sku <String>]
- [-SslEnforcement <SslEnforcementEnum>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ReplicationRole <String>] [-AdministratorLoginPassword <SecureString>]
+ [-SslEnforcement <SslEnforcementEnum>] [-BackupRetentionDay <Int32>]
+ [-GeoRedundantBackup <GeoRedundantBackup>] [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>]
+ [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ServerObject
 ```
-Update-AzMariaDbServer -InputObject <IMariaDbIdentity> [-AdministratorLoginPassword <SecureString>]
- [-BackupRetentionDay <Int32>] [-GeoRedundantBackup <GeoRedundantBackup>] [-ReplicationRole <String>]
- [-Sku <String>] [-SslEnforcement <SslEnforcementEnum>] [-StorageAutogrow <StorageAutogrow>]
- [-StorageInMb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzMariaDbServer -InputObject <IMariaDbIdentity> [-ReplicationRole <String>]
+ [-AdministratorLoginPassword <SecureString>] [-SslEnforcement <SslEnforcementEnum>]
+ [-BackupRetentionDay <Int32>] [-GeoRedundantBackup <GeoRedundantBackup>] [-StorageAutogrow <StorageAutogrow>]
+ [-StorageInMb <Int32>] [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -374,4 +375,3 @@ INPUTOBJECT `<IMariaDbIdentity>`: Identity Parameter
   - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
 
 ## RELATED LINKS
-
