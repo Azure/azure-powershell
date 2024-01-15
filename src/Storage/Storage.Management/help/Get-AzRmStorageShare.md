@@ -173,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -Filter
-The filter of share name. When specified, only share names starting with the filter will be listed. The filter must be in format: startswith(name, <prefix>)
+The filter of share name. When specified, only share names starting with the filter will be listed. The filter must be in format: startswith(name, `<prefix>`)
 
 ```yaml
 Type: System.String

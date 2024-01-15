@@ -2698,5 +2698,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("UnbakedSnapshotRecoveryPoint", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Upgrading to enhanced policy can incur additional charges. Once upgraded to the enhanced policy, it is not possible to revert back to the standard policy.
+        /// </summary>
+        public static string StdToEnhPolicyMigrationWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("StdToEnhPolicyMigrationWarning", resourceCulture);
+            }
+        }
     }
 }

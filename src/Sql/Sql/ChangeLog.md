@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Added `DatabaseFormat` and `PricingModel` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance`
+* Added breaking change message for `New-AzSqlDatabaseFailoverGroup` and `Set-AzSqlDatabaseFailoverGroup`
+    - The default value of `FailoverPolicy` parameter will be changed from `Automatic` to `Manual`
 * Added a new cmdlet for Azure SQL Managed Instance refresh external governance status
   - 'Invoke-AzSqlInstanceExternalGovernanceStatusRefresh'
 * Updated `Get-AzSqlInstance` to support returning the `ExternalGovernanceStatus` property

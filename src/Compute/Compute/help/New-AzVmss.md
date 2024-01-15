@@ -227,7 +227,7 @@ $result = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $
 # $result.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled;
 ```
 
-This example Creates a new VMSS with the new Security Type 'TrustedLaunch' and the necessary UEFISettings values, VTpmEnabled and SecureBootEnalbed are true. Please check [the Trusted Launch feature page](aka.ms/trustedlaunch) for more information.
+This example Creates a new VMSS with the new Security Type 'TrustedLaunch' and the necessary UEFISettings values, VTpmEnabled and SecureBootEnalbed are true. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
 ### Example 5: Create a Vmss in Orchestration Mode: Flexible by default
 ```powershell
@@ -277,7 +277,7 @@ $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 # Verify $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled is True.
 # Verify $vmssGet.VirtualMachineProfile.StorageProfile.ImageReference.Sku is 2022-Datacenter-Azure-Edition.
 ```
-The virtual machine scale set above has Trusted Launch enabled by default. Please check [the Trusted Launch feature page](aka.ms/trustedlaunch) for more information.
+The virtual machine scale set above has Trusted Launch enabled by default. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
 ## PARAMETERS
 
