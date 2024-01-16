@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported authentication via User Managed Identity by adding parameter `UseUserManagedIdentity` and making `SasToken` optional.
 
 ## Version 5.1.0
 * Added parameter `ByteArrayValue` in `Invoke-AzKeyVaultKeyOperation` to support operating byte array without conversion to secure string.
