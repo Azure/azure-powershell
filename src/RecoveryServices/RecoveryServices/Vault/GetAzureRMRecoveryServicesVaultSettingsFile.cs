@@ -87,7 +87,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Certificate.
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("Certificate", "11.0.0", "7.0.0", ChangeDescription = "Parameter is being deprecated without being replaced")]
         [Parameter(ParameterSetName = ARSParameterSets.ForSiteWithCertificate, Mandatory = false)]
         [Parameter(ParameterSetName = ARSParameterSets.ByDefaultWithCertificate, Mandatory = false)]
         [Parameter(ParameterSetName = ARSParameterSets.ForBackupVaultTypeWithCertificate, Mandatory = false)]
@@ -581,7 +580,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         Location = Vault.Location,
                         Version = VaultCredentialVersionAad,
                         ResourceType = RecoveryServicesVaultType,
-                        AgentLinks = GetAgentLinks()
+                        AgentLinks = GetAgentLinks(),
+                        PrivateEndpointStateForBackup = (Vault.Properties.PrivateEndpointStateForBackup ?? "None")
                     };
 
                     var serializer = new DataContractSerializer(typeof(RSBackupVaultAADCreds));

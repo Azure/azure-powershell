@@ -30,6 +30,7 @@ $ExceptionList = @()
 $SavePath = $PWD
 
 $MissReadMe = 9000
+$AutorestCSharpDetected = 9080
 $GenSdkChanged = 9090
 
 function EnsureModuleName {
@@ -47,7 +48,8 @@ function Get-NonExceptionSdkRecord{
     )
     $exceptionPaths = "$PSScriptRoot\..\..\..\tools\StaticAnalysis\Exceptions"
     $errors = @()
-    foreach($record in $records){        
+    foreach($record in $records){    
+        $needAdd = $true    
         $exceptionPath = Join-Path -Path $exceptionPaths -ChildPath (EnsureModuleName($record.Module)) -AdditionalChildPath "GeneratedSdkIssues.csv"
         if(Test-Path -Path $exceptionPath){
             $exceptionContents = Import-Csv -Path $exceptionPath
@@ -72,7 +74,7 @@ try {
         # Collect Sdk paths whose files under Generated folder change.
         $ChangedSdks = New-Object System.Collections.Generic.List[System.Object]
         foreach ($_ in $FilesChanged) {
-            $ChangedSdks.Add($_.Substring(0,$_.IndexOf('.Sdk'))+'.Sdk')
+            $ChangedSdks.Add($_.Substring(0,$_.IndexOf('.Sdk', [System.StringComparison]::OrdinalIgnoreCase))+'.Sdk')
         }
         # Remove duplicated Sdks.
         $ChangedSdks = $ChangedSdks | select -unique
@@ -107,10 +109,27 @@ try {
                 Write-Host "Using autorest powershell v4:`nRe-generating SDK under Generated folder for $ModuleName..."
                 npx autorest
             }
+            elseif ([regex]::Matches($readMeContent, '\s*csharp\s*:\s*true\s*'))
+            {
+                $ExceptionList += [GeneratedSdkIssue]@{
+                    Module = $ModuleName;
+                    Sdk = $_;
+                    Severity = 1;
+                    ProblemId = $AutorestCSharpDetected
+                    Description = "Do not support updating SDK using autorest csharp v3."
+                    Remediation = "Please update the Readme.md to generate code by autorest powershell v4."
+                }
+            }
             else
             {
-                Write-Host "Using autorest csharp v3:`nRe-generating SDK under Generated folder for $ModuleName..."
-                npx autorest --use:@microsoft.azure/autorest.csharp@2.3.90 --memory=16g
+                $ExceptionList += [GeneratedSdkIssue]@{
+                    Module = $ModuleName;
+                    Sdk = $_;
+                    Severity = 1;
+                    ProblemId = $GenSdkChanged
+                    Description = "Do not find correct autorest version, please check Readme.md"
+                    Remediation = "Please determine autorest v4 in Readme file."
+                }
             }
             
             If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
@@ -147,6 +166,7 @@ try {
                     Remediation = "Make sure that the ReadMe file of Sdk is loaded."
             }
         }
+
 
         # See if the code is completely the same as we generated
         $changes = git status ".\Generated" --porcelain

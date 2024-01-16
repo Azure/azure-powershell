@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.CosmosDB
     public static partial class PartitionKeyRangeIdRegionOperationsExtensions
     {
         /// <summary>
-        /// Retrieves the metrics determined by the given filter for the given partition key range id and region.
+        /// Retrieves the metrics determined by the given filter for the given
+        /// partition key range id and region.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -37,7 +38,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Partition Key Range Id for which to get data.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
+        /// An OData filter expression that describes a subset of metrics to return.
+        /// The parameters that can be filtered are name.value (name of the metric, can
+        /// have an or of multiple names), startTime, endTime, and timeGrain. The
+        /// supported operator is eq.
         /// </param>
         public static System.Collections.Generic.IEnumerable<PartitionMetric> ListMetrics(this IPartitionKeyRangeIdRegionOperations operations, string resourceGroupName, string accountName, string region, string databaseRid, string collectionRid, string partitionKeyRangeId, string filter)
         {
@@ -45,7 +49,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Retrieves the metrics determined by the given filter for the given partition key range id and region.
+        /// Retrieves the metrics determined by the given filter for the given
+        /// partition key range id and region.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -69,7 +74,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Partition Key Range Id for which to get data.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
+        /// An OData filter expression that describes a subset of metrics to return.
+        /// The parameters that can be filtered are name.value (name of the metric, can
+        /// have an or of multiple names), startTime, endTime, and timeGrain. The
+        /// supported operator is eq.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

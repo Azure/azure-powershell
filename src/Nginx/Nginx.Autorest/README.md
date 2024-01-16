@@ -29,12 +29,14 @@ For information on how to develop for `Az.Nginx`, see [how-to.md](how-to.md).
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
+commit: e38e7dd462571865266d320bd7cec9804c67f70b
+tag: package-2023-04-01
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/5dd50f3a923888cae5b77a4d4a48cb57430ba9de/specification/nginx/resource-manager/NGINX.NGINXPLUS/stable/2022-08-01/swagger.json
+  - $(repo)/specification/nginx/resource-manager/NGINX.NGINXPLUS/stable/2023-04-01/swagger.json
 
 root-module-name: $(prefix).Nginx
 title: Nginx
@@ -46,6 +48,10 @@ nested-object-to-string: true
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
 
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
@@ -54,7 +60,7 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
   - where:
-      subject: Configuration
+      subject: Configuration|Certificate|Deployment
       verb: Set
     remove: true
   # ProvisioningState readonly
@@ -111,6 +117,12 @@ directive:
           },
           "logging": {
             "$ref": "#/definitions/NginxLogging"
+          },
+          "scalingProperties": {
+            "$ref": "#/definitions/NginxDeploymentScalingProperties"
+          },
+          "userProfile": {
+            "$ref": "#/definitions/NginxDeploymentUserProfile"
           }
         },
         "required": [
@@ -187,12 +199,6 @@ directive:
           },
           "properties": {
             "$ref": "#/definitions/NginxCertificateProperties"
-          },
-          "tags": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            }
           },
           "location": {
             "type": "string"

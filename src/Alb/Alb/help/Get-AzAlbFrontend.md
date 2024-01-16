@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Alb-help.xml
 Module Name: Az.Alb
 online version: https://learn.microsoft.com/powershell/module/az.alb/get-azalbfrontend
 schema: 2.0.0
@@ -22,6 +22,12 @@ Get-AzAlbFrontend -AlbName <String> -ResourceGroupName <String> [-SubscriptionId
 ```
 Get-AzAlbFrontend -AlbName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityTrafficController
+```
+Get-AzAlbFrontend -Name <String> -TrafficControllerInputObject <IAlbIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -68,7 +74,7 @@ traffic controller name for path
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -115,7 +121,7 @@ Frontends
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityTrafficController
 Aliases:
 
 Required: True
@@ -131,7 +137,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -146,13 +152,29 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TrafficControllerInputObject
+Identity Parameter
+To construct, see NOTES section for TRAFFICCONTROLLERINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity
+Parameter Sets: GetViaIdentityTrafficController
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -185,4 +207,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[TrafficControllerName <String>]`: traffic controller name for path
 
 ## RELATED LINKS
-

@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the encryption algorithm.")]
-        [PSArgumentCompleter(JsonWebKeyEncryptionAlgorithm.RSAOAEP, JsonWebKeyEncryptionAlgorithm.RSAOAEP256, JsonWebKeyEncryptionAlgorithm.RSA15)]
+        [PSArgumentCompleter(JsonWebKeyEncryptionAlgorithm.RSAOaep, JsonWebKeyEncryptionAlgorithm.RSAOaep256, JsonWebKeyEncryptionAlgorithm.RSA15)]
         public string EncryptionAlgorithm
         {
             get { return _config.EncryptionAlgorithm; }

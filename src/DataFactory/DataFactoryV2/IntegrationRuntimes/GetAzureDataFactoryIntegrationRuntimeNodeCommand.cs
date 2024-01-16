@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         DataFactoryName,
                         IntegrationRuntimeName,
                         Name).ConfigureAwait(false).GetAwaiter().GetResult();
-                    ipAddress = ip.IpAddress;
+                    ipAddress = ip.IPAddress;
                 }
 
                 WriteObject(new PSSelfHostedIntegrationRuntimeNode(ResourceGroupName, DataFactoryName, IntegrationRuntimeName, Name, node, ipAddress));

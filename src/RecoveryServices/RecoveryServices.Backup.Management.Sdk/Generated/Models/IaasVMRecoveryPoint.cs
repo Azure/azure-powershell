@@ -72,9 +72,20 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="recoveryPointMoveReadinessInfo">Eligibility of RP to be moved to another tier
         /// </param>
 
+        /// <param name="securityType">Security Type of the Disk
+        /// </param>
+
         /// <param name="recoveryPointProperties">Properties of Recovery Point
         /// </param>
-        public IaasVMRecoveryPoint(string recoveryPointType = default(string), System.DateTime? recoveryPointTime = default(System.DateTime?), string recoveryPointAdditionalInfo = default(string), string sourceVMStorageType = default(string), bool? isSourceVMEncrypted = default(bool?), KeyAndSecretDetails keyAndSecret = default(KeyAndSecretDetails), bool? isInstantIlrSessionActive = default(bool?), System.Collections.Generic.IList<RecoveryPointTierInformationV2> recoveryPointTierDetails = default(System.Collections.Generic.IList<RecoveryPointTierInformationV2>), bool? isManagedVirtualMachine = default(bool?), string virtualMachineSize = default(string), bool? originalStorageAccountOption = default(bool?), string osType = default(string), RecoveryPointDiskConfiguration recoveryPointDiskConfiguration = default(RecoveryPointDiskConfiguration), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IDictionary<string, RecoveryPointMoveReadinessInfo> recoveryPointMoveReadinessInfo = default(System.Collections.Generic.IDictionary<string, RecoveryPointMoveReadinessInfo>), RecoveryPointProperties recoveryPointProperties = default(RecoveryPointProperties))
+
+        /// <param name="isPrivateAccessEnabledOnAnyDisk">This flag denotes if any of the disks in the VM are using Private access
+        /// network setting
+        /// </param>
+
+        /// <param name="extendedLocation">Extended location of the VM recovery point,
+        /// should be null if VM is in public cloud
+        /// </param>
+        public IaasVMRecoveryPoint(string recoveryPointType = default(string), System.DateTime? recoveryPointTime = default(System.DateTime?), string recoveryPointAdditionalInfo = default(string), string sourceVMStorageType = default(string), bool? isSourceVMEncrypted = default(bool?), KeyAndSecretDetails keyAndSecret = default(KeyAndSecretDetails), bool? isInstantIlrSessionActive = default(bool?), System.Collections.Generic.IList<RecoveryPointTierInformationV2> recoveryPointTierDetails = default(System.Collections.Generic.IList<RecoveryPointTierInformationV2>), bool? isManagedVirtualMachine = default(bool?), string virtualMachineSize = default(string), bool? originalStorageAccountOption = default(bool?), string osType = default(string), RecoveryPointDiskConfiguration recoveryPointDiskConfiguration = default(RecoveryPointDiskConfiguration), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IDictionary<string, RecoveryPointMoveReadinessInfo> recoveryPointMoveReadinessInfo = default(System.Collections.Generic.IDictionary<string, RecoveryPointMoveReadinessInfo>), string securityType = default(string), RecoveryPointProperties recoveryPointProperties = default(RecoveryPointProperties), bool? isPrivateAccessEnabledOnAnyDisk = default(bool?), ExtendedLocation extendedLocation = default(ExtendedLocation))
 
         {
             this.RecoveryPointType = recoveryPointType;
@@ -92,7 +103,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             this.RecoveryPointDiskConfiguration = recoveryPointDiskConfiguration;
             this.Zones = zones;
             this.RecoveryPointMoveReadinessInfo = recoveryPointMoveReadinessInfo;
+            this.SecurityType = securityType;
             this.RecoveryPointProperties = recoveryPointProperties;
+            this.IsPrivateAccessEnabledOnAnyDisk = isPrivateAccessEnabledOnAnyDisk;
+            this.ExtendedLocation = extendedLocation;
             CustomInit();
         }
 
@@ -197,9 +211,29 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public System.Collections.Generic.IDictionary<string, RecoveryPointMoveReadinessInfo> RecoveryPointMoveReadinessInfo {get; set; }
 
         /// <summary>
+        /// Gets or sets security Type of the Disk
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "securityType")]
+        public string SecurityType {get; set; }
+
+        /// <summary>
         /// Gets or sets properties of Recovery Point
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryPointProperties")]
         public RecoveryPointProperties RecoveryPointProperties {get; set; }
+
+        /// <summary>
+        /// Gets or sets this flag denotes if any of the disks in the VM are using
+        /// Private access network setting
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isPrivateAccessEnabledOnAnyDisk")]
+        public bool? IsPrivateAccessEnabledOnAnyDisk {get; set; }
+
+        /// <summary>
+        /// Gets or sets extended location of the VM recovery point,
+        /// should be null if VM is in public cloud
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "extendedLocation")]
+        public ExtendedLocation ExtendedLocation {get; set; }
     }
 }

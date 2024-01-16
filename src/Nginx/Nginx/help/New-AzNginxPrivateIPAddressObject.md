@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Nginx-help.xml
 Module Name: Az.Nginx
 online version: https://learn.microsoft.com/powershell/module/az.Nginx/new-AzNginxPrivateIPAddressObject
 schema: 2.0.0
@@ -39,7 +39,6 @@ Create an in-memory object for NginxPrivateIPAddress.
 
 ### -PrivateIPAddress
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -54,7 +53,6 @@ Accept wildcard characters: False
 
 ### -PrivateIPAllocationMethod
 
-
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Support.NginxPrivateIPAllocationMethod
 Parameter Sets: (All)
@@ -68,7 +66,6 @@ Accept wildcard characters: False
 ```
 
 ### -SubnetId
-
 
 ```yaml
 Type: System.String
@@ -96,4 +93,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

@@ -6,6 +6,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
 
@@ -34,7 +59,7 @@ function setupEnv() {
     $planNameWorkerTypeWindows = "Functions-Windows-Premium-" + (RandomString -len 6)
     $storageAccountWindows = "functionswinstorage" + (RandomString -len 3)
     $storageAccountLinux = "functionslinuxstorage" + (RandomString -len 3)
-    
+
     # Create resource groups
     $resourceGroupsToCreate = @(
         @{
@@ -154,7 +179,7 @@ function setupEnv() {
             FunctionsVersion = 4
         },
         @{
-            ResourceGroupName = $resourceGroupNameLinuxConsumption      
+            ResourceGroupName = $resourceGroupNameLinuxConsumption
             StorageAccountName = $storageAccountLinux
             Location = $location
             OSType = "Linux"

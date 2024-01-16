@@ -25,12 +25,12 @@ Gets a list of hybrid compute operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IOperationValue
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationValue
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedoperation
 #>
 function Get-AzConnectedOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IOperationValue])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOperationValue])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

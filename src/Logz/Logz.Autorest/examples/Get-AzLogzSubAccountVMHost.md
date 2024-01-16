@@ -1,6 +1,6 @@
 ### Example 1: List the compute resources currently being monitored by the logz sub account resource
 ```powershell
-PS C:\> Get-AzLogzSubAccountVMHost -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -Name logz-pwshsub01
+Get-AzLogzSubAccountVMHost -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04 -Name logz-pwshsub01
 
 AgentVersion Id
 ------------ --

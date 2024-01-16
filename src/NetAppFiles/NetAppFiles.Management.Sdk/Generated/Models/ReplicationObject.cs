@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="endpointType">Indicates whether the local volume is the source or destination for the
         /// Volume Replication
-        /// Possible values include: 'src', 'dst'</param>
+        /// Possible values include: &#39;src&#39;, &#39;dst&#39;</param>
 
         /// <param name="replicationSchedule">Schedule
-        /// Possible values include: '_10minutely', 'hourly', 'daily'</param>
+        /// Possible values include: &#39;_10minutely&#39;, &#39;hourly&#39;, &#39;daily&#39;</param>
 
         /// <param name="remoteVolumeResourceId">The resource ID of the remote volume.
         /// </param>
@@ -57,10 +57,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
 
         /// <summary>
-        /// Gets or sets id
+        /// Gets id
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "replicationId")]
-        public string ReplicationId {get; set; }
+        public string ReplicationId {get; private set; }
 
         /// <summary>
         /// Gets or sets indicates whether the local volume is the source or

@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.Applicationinsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsworkbooktemplate
 schema: 2.0.0
 ---
@@ -13,10 +13,10 @@ Create a new workbook template.
 ## SYNTAX
 
 ```
-New-AzApplicationInsightsWorkbookTemplate -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Author <String>] [-Gallery <IWorkbookTemplateGallery[]>]
- [-Localized <Hashtable>] [-Priority <Int32>] [-Tag <Hashtable>] [-TemplateData <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzApplicationInsightsWorkbookTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-Author <String>] [-Gallery <IWorkbookTemplateGallery[]>] [-Localized <Hashtable>]
+ [-Priority <Int32>] [-Tag <Hashtable>] [-TemplateData <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -293,4 +293,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[Type <String>]`: Type of workbook supported by the workbook template.
 
 ## RELATED LINKS
-

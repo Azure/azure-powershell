@@ -1,6 +1,6 @@
 ### Example 1: List all language extensions set for a workspace
 ```powershell
-PS C:\> Get-AzSynapseKustoPoolLanguageExtension -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testpool
+Get-AzSynapseKustoPoolLanguageExtension -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testpool
 
 Name
 ----

@@ -189,10 +189,12 @@ namespace Microsoft.Azure.Management.NetApp
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Restore the specified files from the specified snapshot to the active filesystem
+        /// Restore the specified files from the specified snapshot to the active
+        /// filesystem
         /// </summary>
         /// <remarks>
-        /// Restore the specified files from the specified snapshot to the active filesystem
+        /// Restore the specified files from the specified snapshot to the active
+        /// filesystem
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -332,10 +334,12 @@ namespace Microsoft.Azure.Management.NetApp
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string snapshotName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Restore the specified files from the specified snapshot to the active filesystem
+        /// Restore the specified files from the specified snapshot to the active
+        /// filesystem
         /// </summary>
         /// <remarks>
-        /// Restore the specified files from the specified snapshot to the active filesystem
+        /// Restore the specified files from the specified snapshot to the active
+        /// filesystem
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

@@ -33,7 +33,7 @@ Tests retrieval of classic administrators with subscription scope
 function Test-RaClassicAdminsWithScope
 {
     # Setup
-    $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
 
     # Test
     $classic = Get-AzRoleAssignment -Scope $Scope -IncludeClassicAdministrators
@@ -46,13 +46,13 @@ function Test-RaClassicAdminsWithScope
 <#
 .SYNOPSIS
 Tests retrieval of assignments to unknown principals/Users/Groups
-This test will fail if the objectId is changed, the role assignment deleted or user is unable to know the type of 
+This test will fail if the objectId is changed, the role assignment deleted or user is unable to know the type of
 #>
 function Test-UnknowndPrincipals
 {
     # $objectId = "6f58a770-c06e-4012-b9f9-e5479c03d43f"
     # deleted PrincipalId
-    $objectlId = "2f153a9e-5be9-4f43-abd2-04561777c8b0"
+    $objectId = "aa77a68b-9acc-4b24-9e93-6e54f79f1820"
     $assignment = Get-AzRoleAssignment -ObjectId $objectId
     Assert-NotNull $assignment
     Assert-NotNull $assignment.ObjectType
@@ -94,11 +94,11 @@ function Test-RaDeleteByPSRoleAssignment
 {
     # Setup
     $definitionName = 'Reader'
-    $principalId = "66486765-477a-4243-880c-7e1fb3c80f2b" # Change this if testing in another tenant
+    $principalId = "e9da4467-12ff-4334-8179-c99abf0ffd5a" # Change this if testing in another tenant
     $subscription = $(Get-AzContext).Subscription
-    $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/nori-resource-test'
+    $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/PowershellTest'
 
-    $expectedMessage = "Succesfully removed role assignment for AD object '66486765-477a-4243-880c-7e1fb3c80f2b' on scope '/subscriptions/" + $subscription[0].Id + "/resourceGroups/nori-resource-test' with role definition 'Reader'"
+    $expectedMessage = "Succesfully removed role assignment for AD object 'e9da4467-12ff-4334-8179-c99abf0ffd5a' on scope '/subscriptions/" + $subscription[0].Id + "/resourceGroups/PowershellTest' with role definition 'Reader'"
 
     # Test
     $newAssignment = New-AzRoleAssignmentWithId -ObjectId $principalId -RoleDefinitionName $definitionName -Scope $scope -RoleAssignmentId 50fd727d-d1af-44ef-9a32-2431b835605e
@@ -118,9 +118,9 @@ function Test-RaByScope
 {
     # Setup
     $definitionName = 'Automation Job Operator'
-    $userId = "b436a2b3-24c4-46f9-a79d-f9585a8d6f6e"
+    $userId = "e9da4467-12ff-4334-8179-c99abf0ffd5a" # powershell-testmember
     $subscription = $(Get-AzContext).Subscription
-    $resourceGroupName = "nori-resource-test"
+    $resourceGroupName = "PowershellTest"
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroupName
     $assignmentScope = $scope +"/"
     # Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
@@ -137,7 +137,7 @@ function Test-RaByScope
     Assert-AreEqual $scope $newAssignment.Scope
     # Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
 
-    # Start-Sleep -Seconds 300
+    # Start-TestSleep -Seconds 300
 
     VerifyRoleAssignmentDeleted $newAssignment
 }
@@ -150,9 +150,9 @@ function Test-RaById
 {
     # Setup
     $definitionName = 'Reader'
-    $userId = "b436a2b3-24c4-46f9-a79d-f9585a8d6f6e"
+    $userId = "e9da4467-12ff-4334-8179-c99abf0ffd5a"
     $subscription = $(Get-AzContext).Subscription
-    $resourceGroupName = "nori-resource-test"
+    $resourceGroupName = "PowershellTest"
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroupName
     $assignmentScope = $scope +"/"
 
@@ -184,9 +184,10 @@ function Test-RaByResourceGroup
     # Setup
     $definitionName = 'Contributor'
     $resourceGroups = Get-AzResourceGroup | Select-Object -Last 1 -Wait
-    $userId = "b436a2b3-24c4-46f9-a79d-f9585a8d6f6e"
+    # powershell-testmember for testing
+    $userId = "e9da4467-12ff-4334-8179-c99abf0ffd5a"
     $subscription = $(Get-AzContext).Subscription
-    $resourceGroupName = "nori-resource-test"
+    $resourceGroupName = "PowershellTest"
 
     # Test
     $newAssignment = New-AzRoleAssignmentWithId -ObjectId $userId -RoleDefinitionName $definitionName -ResourceGroupName $resourceGroupName -RoleAssignmentId 7b30dd13-c4fd-4083-b1e3-5ab3ae0ae574
@@ -199,7 +200,7 @@ function Test-RaByResourceGroup
     Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName
     # Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
 
-    # Start-Sleep -Seconds 300
+    # Start-TestSleep -Seconds 300
 
     VerifyRoleAssignmentDeleted $newAssignment
 }
@@ -212,8 +213,8 @@ function Test-RaByResource
 {
     # Setup
     $definitionName = 'Virtual Machine User Login'
-    # group123 for test
-    $groupId = "001e3c56-caf3-486c-bfe4-9878c6882912"
+    # powershellgroup for test
+    $groupId = "f9e08843-d2b7-4dbc-a584-5e88a7e229a6"
     $resourceGroups = Get-AzResourceGroup | Select-Object -Last 1 -Wait
     Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
     $resource = Get-AzResource | Select-Object -Last 1 -Wait
@@ -235,76 +236,23 @@ function Test-RaByResource
 
 <#
 .SYNOPSIS
-Tests validate input parameters
-#>
-function Test-RaValidateInputParameters ($cmdName)
-{
-    # Setup
-    $definitionName = 'Owner'
-    # $groups = Get-AzADGroup | Select-Object -Last 1 -Wait
-    $groupId = "ffa6ed11-e137-4081-ad6e-77a25ddd685a"
-    # Assert-AreEqual 1 $groups.Count "There should be at least one group to run the test."
-    $resourceGroups = Get-AzResourceGroup | Select-Object -Last 1 -Wait
-    Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
-    $resource = Get-AzResource | Select-Object -Last 1 -Wait
-    Assert-NotNull $resource "Cannot find any resource to continue test execution."
-
-    # Test
-    # Check if Scope is valid.
-    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/Should be 'ResourceGroups'/any group name"
-    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/Should be 'ResourceGroups'/any group name' should begin with '/subscriptions/<subid>/resourceGroups'."
-    Assert-Throws { invoke-expression ($cmdName + " -Scope `"" + $scope  + "`" -ObjectId " + $groups[0].Id + " -RoleDefinitionName " + $definitionName) } $invalidScope
-
-    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups"
-    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
-    Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id -RoleDefinitionName $definitionName } $invalidScope
-
-    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/"
-    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
-    Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id -RoleDefinitionName $definitionName } $invalidScope
-
-    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name"
-    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name' should begin with '/subscriptions/<subid>/resourceGroups/<groupname>/providers'."
-    Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id -RoleDefinitionName $definitionName } $invalidScope
-
-    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Providers/providername"
-    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Providers/providername' should have at least one pair of resource type and resource name. e.g. '/subscriptions/<subid>/resourceGroups/<groupname>/providers/<providername>/<resourcetype>/<resourcename>'."
-    Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id -RoleDefinitionName $definitionName } $invalidScope
-
-    # Check if ResourceType is valid
-    Assert-AreEqual $resource.ResourceType "Microsoft.Web/sites"
-    $subscription = $(Get-AzContext).Subscription
-    # Below invalid resource type should not return 'Not supported api version'.
-    $resource.ResourceType = "Microsoft.KeyVault/"
-    $invalidResourceType = "Scope '/subscriptions/"+$subscription.Id+"/resourceGroups/"+$resource.ResourceGroupName+"/providers/Microsoft.KeyVault/"+$resource.Name+"' should have even number of parts."
-    Assert-Throws { &$cmdName `
-                        -ObjectId $groups[0].Id `
-                        -RoleDefinitionName $definitionName `
-                        -ResourceGroupName $resource.ResourceGroupName `
-                        -ResourceType $resource.ResourceType `
-                        -ResourceName $resource.Name } $invalidResourceType
-}
-
-<#
-.SYNOPSIS
 Tests verifies creation and deletion of a RoleAssignments for Service principal name
 #>
 function Test-RaByServicePrincipal
 {
     # Setup
-    $servicePrincipals = "ab60f8c9-2b63-497f-9009-45c9e47c3c19"
-
-    # Assert-AreEqual 1 $servicePrincipals.Count "No service principals found. Unable to run the test."
+    $servicePrincipals = "3d9979c5-7de9-4cc5-bc9c-d63d365c5b5c"
 
     $definitionName = 'Reader'
     $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
 
     # Test
-    $newAssignment1 = New-AzRoleAssignment -ServicePrincipalName $servicePrincipals -RoleDefinitionName $definitionName -Scope $scope 
+    $newAssignment1 = New-AzRoleAssignmentWithId -ObjectId $servicePrincipals -RoleDefinitionName $definitionName -Scope $scope -RoleAssignmentId 238799bf-1a93-45d7-120d-f3edbaeb3bc7
 
     $definitionName = 'Contributor'
     # Test
-    $newAssignment2 = New-AzRoleAssignment -ApplicationId $servicePrincipals -RoleDefinitionName $definitionName -Scope $scope
+    $appId = "2076eb2d-7a68-41f8-9645-4a77d9057d94"
+    $newAssignment2 = New-AzRoleAssignmentWithId -ApplicationId $appId -RoleDefinitionName $definitionName -Scope $scope -RoleAssignmentId 238799bf-1593-45d7-120d-f3edbceb3bc7
 
     $assignments = Get-AzRoleAssignment -ObjectId $newAssignment2.ObjectId
     Assert-NotNull $assignments
@@ -319,9 +267,8 @@ function Test-RaByServicePrincipal
     Assert-NotNull $newAssignment2
     Assert-AreEqual $definitionName $newAssignment2.RoleDefinitionName
     Assert-AreEqual $scope $newAssignment2.Scope
-    # Assert-AreEqual $servicePrincipals[0].DisplayName $newAssignment2.DisplayName
-    
-    #Start-Sleep -Seconds 300
+
+    #Start-TestSleep -Seconds 300
 
     VerifyRoleAssignmentDeleted $newAssignment1
     VerifyRoleAssignmentDeleted $newAssignment2
@@ -341,9 +288,9 @@ function Test-RaByUpn
     Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
 
     # Test
-    $newAssignment = New-AzRoleAssignment -SignInName $users[0].UserPrincipalName `
+    $newAssignment = New-AzRoleAssignment -SignInName $users.UserPrincipalName `
                         -RoleDefinitionName $definitionName `
-                        -ResourceGroupName $resourceGroups[0].ResourceGroupName
+                        -ResourceGroupName $resourceGroups.ResourceGroupName
 
     # cleanup
     DeleteRoleAssignment $newAssignment
@@ -386,7 +333,7 @@ function Test-RaGetByUPNWithExpandPrincipalGroups
     # cleanup
     DeleteRoleAssignment $newAssignment
 
-    # Start-Sleep -Seconds 300
+    # Start-TestSleep -Seconds 300
 
     VerifyRoleAssignmentDeleted $newAssignment
 }
@@ -413,7 +360,7 @@ function Test-RaDeletionByScope
     # Setup
     $definitionName = 'Backup Operator'
     # $users = Get-AzADUser | Select-Object -First 1 -Wait
-    $userId = "66486765-477a-4243-880c-7e1fb3c80f2b"
+    $userId = "e9da4467-12ff-4334-8179-c99abf0ffd5a"
     $subscription = $(Get-AzContext).Subscription
     $resourceGroups = Get-AzResourceGroup | Select-Object -Last 1 -Wait
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
@@ -436,7 +383,7 @@ function Test-RaDeletionByScope
     Assert-AreEqual $scope $newAssignment.Scope
     # Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
 
-    # Start-Sleep -Seconds 300
+    # Start-TestSleep -Seconds 300
 
     VerifyRoleAssignmentDeleted $newAssignment
 }
@@ -457,7 +404,7 @@ function Test-RaDeletionByScopeAtRootScope
 
     # Test
     $newAssignment = New-AzRoleAssignmentWithId `
-                        -ObjectId $users[0].Id `
+                        -ObjectId $users.Id `
                         -RoleDefinitionName $definitionName `
                         -Scope $scope `
                         -RoleAssignmentId f3c560f8-afaa-4263-b1d7-e34e0ab49fc7
@@ -482,22 +429,22 @@ Tests verifies creation and validation of RoleAssignment properties for not null
 function Test-RaPropertiesValidation
 {
     # Setup
-    $userId = "66486765-477a-4243-880c-7e1fb3c80f2b"
+    $userId = "e9da4467-12ff-4334-8179-c99abf0ffd5a"
     $subscription = $(Get-AzContext).Subscription
     $scope = '/subscriptions/'+$subscription[0].Id
     $roleDef = Get-AzRoleDefinition -Name "Reader"
     $roleDef.Id = "ff9cd1ab-d763-486f-b253-51a816c92aaf"
-    $roleDef.Name = "Reader vm For Test 1024"
+    $roleDef.Name = "Reader vm For Test"
     $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
     $roleDef.Description = "Read, monitor and restart virtual machines"
-    $roleDef.AssignableScopes[0] = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
+    $roleDef.AssignableScopes[0] = '/subscriptions/'+$subscription[0].Id
 
     New-AzRoleDefinitionWithId -Role $roleDef -RoleDefinitionId 14347f95-76d9-48f6-932e-7997d99a45b2
-    $rd = Get-AzRoleDefinition -Name "Reader vm For Test 1023"
+    $rd = Get-AzRoleDefinition -Name "Reader vm For Test"
 
     $newAssignment = New-AzRoleAssignmentWithId `
                         -ObjectId $userId `
-                        -RoleDefinitionName "Reader vm For Test 1023" `
+                        -RoleDefinitionName "Reader vm For Test" `
                         -Scope $scope `
                         -RoleAssignmentId 584d33a3-b14d-4eb4-863e-0df67b178389
 
@@ -518,7 +465,7 @@ function Test-RaPropertiesValidation
 
     VerifyRoleAssignmentDeleted $newAssignment
     # cleanup
-    Remove-AzRoleDefinition -Id $rd.Id -Force
+    Remove-AzRoleDefinition -Id 14347f95-76d9-48f6-932e-7997d99a45b2 -Force
 }
 
 <#
@@ -529,9 +476,9 @@ function Test-RaDelegation
 {
     # Setup
     $definitionName = 'Automation Runbook Operator'
-    $userId = "66486765-477a-4243-880c-7e1fb3c80f2b"
+    $userId = "e9da4467-12ff-4334-8179-c99abf0ffd5a" # powershell-testmember
     $subscription = $(Get-AzContext).Subscription
-    $resourceGroupName = "nori-resource-test"
+    $resourceGroupName = "PowershellTest"
     $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroupName
     $assignmentScope = $scope +"/"
 
@@ -562,7 +509,7 @@ function Test-RaGetByScope
     # Setup
     $definitionName = 'Automation Operator'
     # $users = Get-AzADUser | Select-Object -First 1 -Wait
-    $userId = "66486765-477a-4243-880c-7e1fb3c80f2b"
+    $userId = "e9da4467-12ff-4334-8179-c99abf0ffd5a"
     $subscription = $(Get-AzContext).Subscription
     $resourceGroups = Get-AzResourceGroup | Select-Object -Last 2 -Wait
     $scope1 = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
@@ -612,7 +559,7 @@ function Test-RaGetOnlyByRoleDefinitionName
 {
     # Setup
     $definitionName = 'Owner'
-    
+
     $ras = Get-AzRoleAssignment -RoleDefinitionName $definitionName
 
     Assert-NotNull $ras
@@ -657,7 +604,7 @@ function VerifyRoleAssignmentDeleted
 {
     param([Parameter(Mandatory=$true)] [object] $roleAssignment)
 
-    # Start-Sleep -Seconds 600
+    # Start-TestSleep -Seconds 600
 
     $deletedRoleAssignment = Get-AzRoleAssignment -ObjectId $roleAssignment.ObjectId `
                                                      -Scope $roleAssignment.Scope `
@@ -673,11 +620,11 @@ function Test-RaCreatedBySP
 {
     # Prerequisite: Conect to azure with SP
     # Create role assignment
-    # bez's PrincipalId
-    $testUser = "2f153a9e-5be9-4f43-abd2-04561777c8b0"
+    # powershell-testmember's PrincipalId
+    $testUser = "3d9979c5-7de9-4cc5-bc9c-d63d365c5b5c"
     $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
 
-    $assignment = New-AzRoleAssignment -ObjectId $testUser -RoleDefinitionName 'Reader' -Scope $Scope
+    $assignment = New-AzRoleAssignmentWithId -ObjectId $testUser -RoleDefinitionName 'Reader' -Scope $Scope -RoleAssignmentId 3d9979c5-7de9-4cc5-bc9c-d63d365c5b44
 
     Assert-NotNull $assignment
 }
@@ -691,14 +638,14 @@ function Test-RaWithV1Conditions{
     #Given
     # Built-in role "Storage Blob Data Reader"'s Id
     $RoleDefinitionId = "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1"
-    # bez's PrincipalId
-    $PrincipalId ="2f153a9e-5be9-4f43-abd2-04561777c8b0"
-    $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
+    # powershell-testmember's PrincipalId
+    $PrincipalId ="e9da4467-12ff-4334-8179-c99abf0ffd5a"
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
     $Description = "This test should not fail"
     $StorageAccount = 'storagecontainer4test'
     $Condition = "@Resource[Microsoft.Storage/storageAccounts:name] StringEquals '$StorageAccount'"
     $ConditionVersion = "1.0"
-    
+
     Assert-Throws {New-AzRoleAssignment -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -Description $Description -Condition $Condition -ConditionVersion $ConditionVersion} "Argument -ConditionVersion must be greater or equal than 2.0"
 }
 
@@ -710,9 +657,9 @@ function Test-RaWithV2Conditions{
     #Given
     # Built-in role "Storage Blob Data Reader"'s Id
     $RoleDefinitionId = "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1"
-    # bez's PrincipalId
-    $PrincipalId ="2f153a9e-5be9-4f43-abd2-04561777c8b0"
-    $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
+    # powershellgroup's PrincipalId
+    $PrincipalId ="f9e08843-d2b7-4dbc-a584-5e88a7e229a6"
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
     $Description = "This test should not fail"
     $StorageAccount = 'storagecontainer4test'
     $Condition = "@Resource[Microsoft.Storage/storageAccounts:name] StringEquals '$StorageAccount'"
@@ -743,9 +690,9 @@ function Test-RaWithV2ConditionsOnly{
     #Given
     # Built-in role "Storage Blob Data Reader"'s Id
     $RoleDefinitionId = "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1"
-    # bez's PrincipalId
-    $PrincipalId ="2f153a9e-5be9-4f43-abd2-04561777c8b0"
-    $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
+    # powershellgroup's PrincipalId
+    $PrincipalId ="f9e08843-d2b7-4dbc-a584-5e88a7e229a6"
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
     $Description = "This test should not fail"
     $StorageAccount = 'storagecontainer4test'
     $Condition = "@Resource[Microsoft.Storage/storageAccounts:name] StringEquals '$StorageAccount'"
@@ -774,9 +721,9 @@ function Test-RaWithV2ConditionVersionOnly{
     #Given
     # Built-in role "Storage Blob Data Reader"'s Id
     $RoleDefinitionId = "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1"
-    # bez's PrincipalId
-    $PrincipalId ="2f153a9e-5be9-4f43-abd2-04561777c8b0"
-    $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
+    # powershell-testmember's PrincipalId
+    $PrincipalId ="e9da4467-12ff-4334-8179-c99abf0ffd5a"
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
     $Description = "This test should not fail"
     $ConditionVersion = "2.0"
 
@@ -792,9 +739,9 @@ function Test-UpdateRa{
     # Given
     # Built-in role "Storage Blob Data Reader"'s Id
     $RoleDefinitionId = "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1"
-    # nori's PrincipalId
-    $PrincipalId = "351fa797-c81a-4998-9720-4c2ecb6c7abc"
-    $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
+    # powershellgroup's PrincipalId
+    $PrincipalId = "f9e08843-d2b7-4dbc-a584-5e88a7e229a6"
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
     $Description1 = "This test should not fail"
     $StorageAccount = 'storagecontainer4test'
     $Condition1 = "@Resource[Microsoft.Storage/storageAccounts:name] StringEquals '$StorageAccount'"
@@ -803,7 +750,7 @@ function Test-UpdateRa{
     # When
     $assignment = New-AzRoleAssignmentWithId -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -Description $Description1 `
     -Condition $Condition1 -ConditionVersion $ConditionVersion -RoleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d2
-    
+
     $Description2 = "This test should have completed"
     $Condition2 = "true"
 
@@ -811,7 +758,6 @@ function Test-UpdateRa{
     $assignment.Condition = $Condition2
 
     $updatedAssignment = Set-AzRoleAssignment -InputObject $assignment -PassThru
-    
 
     # Then
     # Assert intended target changed
@@ -824,7 +770,7 @@ function Test-UpdateRa{
     Assert-AreEqual $PrincipalId $updatedAssignment.ObjectId "Test failed: ObjectId shouldn't have changed after update call"
     Assert-AreEqual $Scope $updatedAssignment.Scope "Test failed: Scope shouldn't have changed after update call"
     Assert-AreEqual $RoleDefinitionId $updatedAssignment.RoleDefinitionId "Test failed: RoleDefinitionId shouldn't have changed after update call"
-    
+
     # Consider deleting  bellow assert for certain tests as we might overwrite condition version behind the seams
     Assert-AreEqual $ConditionVersion $updatedAssignment.ConditionVersion "Test failed: ConditionVersion shouldn't have changed after update call"
     Assert-AreEqual $assignment.RoleAssignmentId $updatedAssignment.RoleAssignmentId "Test failed: RoleAssignmentId shouldn't have changed after update call"
@@ -838,11 +784,11 @@ function Test-UpdateRa{
 Verifies that role assignment maps to a group
 #>
 function Test-CreateRAForGroup
-{   
+{
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId ="ffa6ed11-e137-4081-ad6e-77a25ddd685a"
-    $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
+    $PrincipalId ="f9e08843-d2b7-4dbc-a584-5e88a7e229a6"
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
 
     #When
     $data = New-AzRoleAssignmentWithId -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -RoleAssignmentId 238799bf-1593-45d7-a90d-f3edbceb3b77
@@ -858,11 +804,11 @@ function Test-CreateRAForGroup
 Verifies that role assignment maps to a user (not "Guest")
 #>
 function Test-CreateRAForGuest
-{    
+{
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId ="b436a2b3-24c4-46f9-a79d-f9585a8d6f6e"
-    $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
+    $PrincipalId ="6a8f900b-a032-4f5e-b8e8-89e0f57e8e0d"
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
 
     #When
     $data = New-AzRoleAssignmentWithId -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -RoleAssignmentId 238799bf-1593-45d7-a90d-f3edbceb3b79
@@ -878,11 +824,11 @@ function Test-CreateRAForGuest
 Verifies that role assignment maps to a user (not "Member")
 #>
 function Test-CreateRAForMember
-{    
+{
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId ="2f153a9e-5be9-4f43-abd2-04561777c8b0"
-    $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
+    $PrincipalId ="e9da4467-12ff-4334-8179-c99abf0ffd5a"
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
 
     #When
     $data = New-AzRoleAssignmentWithId -ObjectId $PrincipalId  -Scope $Scope  -RoleDefinitionId $RoleDefinitionId -RoleAssignmentId 238799bf-1593-45d7-a90d-f3edbceb3b79
@@ -898,12 +844,12 @@ function Test-CreateRAForMember
 Verifies that role assignment maps to a ServicePrincipal
 #>
 function Test-CreateRAForServicePrincipal
-{    
+{
     #Given
     # Built-in role "Storage Blob Data Reader"'s Id
     $RoleDefinitionId = "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1"
-    $PrincipalId ="66486765-477a-4243-880c-7e1fb3c80f2b"
-    $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
+    $PrincipalId ="f2dc21ac-702a-4bde-a4ce-146edf751d81"
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
 
     #When
     $data = New-AzRoleAssignmentWithId -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -RoleAssignmentId 238799bf-1593-45d7-a90d-f30dbceb3b79
@@ -919,18 +865,18 @@ function Test-CreateRAForServicePrincipal
 Verifies that role assignment gets created properly when using objectype
 #>
 function Test-CreateRAWithObjectType
-{    
+{
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    # bez's PrincipalId
-    $PrincipalId ="2f153a9e-5be9-4f43-abd2-04561777c8b0"
+    # powershell-testmember's PrincipalId
+    $PrincipalId ="e9da4467-12ff-4334-8179-c99abf0ffd5a"
     $subscription =  (Get-AzContext).Subscription.Id
     $Scope = "/subscriptions/$subscription"
     $ObjectType = "User"
 
     #When
     $data = New-AzRoleAssignmentWithId -ObjectId $PrincipalId -ObjectType $ObjectType -Scope $Scope -RoleDefinitionId $RoleDefinitionId -RoleAssignmentId "2f153333-5be9-4f43-abd2-04561777c8b0"
-
+    $data
     Assert-True {$data.ObjectType -eq "User"}
 
     #cleanup
@@ -942,11 +888,11 @@ function Test-CreateRAWithObjectType
 Verifies that role assignment does not get created for a principal ID that doesn't exist'
 #>
 function Test-CreateRAWhenIdNotExist
-{    
+{
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     $PrincipalId ="6d764d35-6b3b-49ea-83f8-5c223b56eac5"
-    $Scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590'
+    $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
     $ExpectedError = 'Exception calling "ExecuteCmdlet" with "0" argument(s): "Operation returned an invalid status code ''BadRequest''"'
 
     #When

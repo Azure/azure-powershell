@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
 online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azsqlvmgroup
 schema: 2.0.0
@@ -13,12 +13,12 @@ Creates or updates a SQL virtual machine group.
 ## SYNTAX
 
 ```
-New-AzSqlVMGroup -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+New-AzSqlVMGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-ClusterBootstrapAccount <String>] [-ClusterOperatorAccount <String>]
  [-ClusterSubnetType <ClusterSubnetType>] [-DomainFqdn <String>] [-FileShareWitnessPath <String>]
  [-Offer <String>] [-OuPath <String>] [-Sku <SqlVMGroupImageSku>] [-SqlServiceAccount <String>]
  [-StorageAccountPrimaryKey <SecureString>] [-StorageAccountUrl <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -377,4 +377,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

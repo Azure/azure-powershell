@@ -25,7 +25,7 @@ Invoke-AzWorkloadsSapDiskConfiguration -Location eastus -AppLocation eastus -Dat
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDiskConfigurationsResultVolumeConfigurations
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDiskConfigurationsResultVolumeConfigurations
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,7 +46,7 @@ INPUTOBJECT <IWorkloadsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.workloads/invoke-azworkloadssapdiskconfiguration
 #>
 function Invoke-AzWorkloadsSapDiskConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDiskConfigurationsResultVolumeConfigurations])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDiskConfigurationsResultVolumeConfigurations])]
 [CmdletBinding(DefaultParameterSetName='SapExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='SapExpanded', Mandatory)]
@@ -194,6 +194,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

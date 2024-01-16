@@ -375,42 +375,30 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
     }
 }
 
-function Test-VirtualMachineScaleSetInEdgeZone
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set created in Edge Zone
+#>
+function Test-VirtualMachineScaleSetEdgeZone
 {
-    $ResourceGroupName = Get-ComputeTestResourceName;
-    $Location = "westus";
-    $EdgeZone = "microsoftlosangeles1";
-    $ScaleSetName = "scalesetinedgezone";
-    $stnd = "Standard";
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "EastUs2Euap";
+    $EdgeZone = "microsoftrrdclab3";
+    $vmssName = "scaleSetInEdgeZone";
+
     try
     {
-        $config = New-AzVmssConfig -Location $Location -EdgeZone $EdgeZone;
-        Assert-AreEqual $config.ExtendedLocation.Name $EdgeZone
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        New-AzResourceGroup -ResourceGroupName $ResourceGroupName -Location $Location;
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $password);
 
-        $VMLocalAdminUser = "LocalAdminUser";
-        $VMLocalAdminSecurePassword = ConvertTo-SecureString $PLACEHOLDER -AsPlainText -Force;
-
-        $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
-
-        New-AzVmss `
-          -SecurityType $stnd `
-          -ResourceGroupName $ResourceGroupName `
-          -Location $Location `
-          -EdgeZone $EdgeZone `
-          -VMScaleSetName $ScaleSetName `
-          -VirtualNetworkName "myVnet" `
-          -SubnetName "mySubnet" `
-          -PublicIpAddressName "myPublicIPAddress" `
-          -LoadBalancerName "myLoadBalancer" `
-          -UpgradePolicyMode "Automatic" `
-          -Credential $Credential `
-          -DomainNameLabel "scalesetinedgezone-70f698"
-
-        $vmss = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $ScaleSetName
-
-        Assert-AreEqual $vmss.ExtendedLocation.Name $EdgeZone
+        # Create  Vmss
+        $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -Location $loc -EdgeZone $EdgeZone -Credential $vmCred -DomainNameLabel ('pubip' + $rgname);
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        
+        Assert-AreEqual $vmssGet.ExtendedLocation.Name $EdgeZone
     }
     finally
     {

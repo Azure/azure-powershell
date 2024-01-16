@@ -22,26 +22,26 @@ Gets an environment
 .Example
 
 .Example
-Get-AzDevCenterUserEnvironment -DevCenter Contoso -ProjectName DevProject
+Get-AzDevCenterUserEnvironment -DevCenterName Contoso -ProjectName DevProject
 .Example
 Get-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -UserId "me" 
 .Example
-Get-AzDevCenterUserEnvironment -DevCenter Contoso -ProjectName DevProject -UserId "786a823c-8037-48ab-89b8-8599901e67d0"
+Get-AzDevCenterUserEnvironment -DevCenterName Contoso -ProjectName DevProject -UserId "786a823c-8037-48ab-89b8-8599901e67d0"
 .Example
 Get-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -UserId "me"  -Name myEnv
 .Example
-Get-AzDevCenterUserEnvironment -DevCenter Contoso -ProjectName DevProject -UserId "786a823c-8037-48ab-89b8-8599901e67d0" -Name myEnv
+Get-AzDevCenterUserEnvironment -DevCenterName Contoso -ProjectName DevProject -UserId "786a823c-8037-48ab-89b8-8599901e67d0" -Name myEnv
 .Example
 $envInput = @{"UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject"; "EnvironmentName" = "myEnv" }
 Get-AzDevCenterUserEnvironment -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $envInput
 .Example
 $envInput = @{"UserId" = "me"; "ProjectName" = "DevProject"; "EnvironmentName" = "myEnv" }
-Get-AzDevCenterUserEnvironment -DevCenter Contoso -InputObject $envInput
+Get-AzDevCenterUserEnvironment -DevCenterName Contoso -InputObject $envInput
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,19 +50,23 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of an action that will take place on a Dev Box.
   [CatalogName <String>]: The name of the catalog
+  [CustomizationGroupName <String>]: A customization group name.
+  [CustomizationTaskId <String>]: A customization task ID.
   [DefinitionName <String>]: The name of the environment definition
   [DevBoxName <String>]: The name of a Dev Box.
   [EnvironmentName <String>]: The name of the environment.
   [Id <String>]: Resource identity path
+  [OperationId <String>]: The id of the operation on a Dev Box.
   [PoolName <String>]: The name of a pool of Dev Boxes.
   [ProjectName <String>]: The DevCenter Project upon which to execute operations.
   [ScheduleName <String>]: The name of a schedule.
+  [TaskName <String>]: A customization task name.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenterdata/get-azdevcenteruserenvironment
 #>
 function Get-AzDevCenterUserEnvironment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

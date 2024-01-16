@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionjob
 schema: 2.0.0
@@ -15,18 +15,18 @@ Gets a job with id in a backup vault
 ### List (Default)
 ```
 Get-AzDataProtectionJob -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UseSecondaryRegion] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDataProtectionJob -Id <String> -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDataProtectionJob -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String[]>]
+ [-UseSecondaryRegion] [-DefaultProfile <PSObject>] -Id <String> [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDataProtectionJob -InputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
+Get-AzDataProtectionJob [-DefaultProfile <PSObject>] -InputObject <IDataProtectionIdentity>
  [<CommonParameters>]
 ```
 
@@ -53,7 +53,7 @@ a6a4879d-f914-4174-b129-0e27da8a4fb0 Microsoft.DataProtection/backupVaults/backu
 
 This command gets all the backup jobs in a given backup vault.
 
-### Example 2: Get a single Job 
+### Example 2: Get a single Job
 ```powershell
 Get-AzDataProtectionJob -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -Id 4abaea8c-f53a-4bb1-9963-59f96b597165
 ```
@@ -123,7 +123,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -139,7 +139,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -149,12 +149,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UseSecondaryRegion
+Switch parameter to fetch dataprotection job from secondary region (Cross Region Restore)
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List, Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VaultName
 The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -200,4 +215,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[VaultName <String>]`: The name of the backup vault.
 
 ## RELATED LINKS
-

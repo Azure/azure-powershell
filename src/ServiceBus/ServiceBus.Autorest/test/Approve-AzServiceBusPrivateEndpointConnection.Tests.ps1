@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Approve-AzServiceBusPrivateEn
 
 Describe 'Approve-AzServiceBusPrivateEndpointConnection' {
     $privateEndpoint = Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
-    
+
     It 'SetExpanded' {
         $privateEndpoint[0].ConnectionState | Should -Be "Pending"
         $privateEndpoint[0].Description | Should -Be "Hello"
@@ -27,7 +27,7 @@ Describe 'Approve-AzServiceBusPrivateEndpointConnection' {
 
         while($firstPrivateEndpoint.ProvisioningState -ne "Succeeded"){
             $firstPrivateEndpoint = Get-AzServiceBusPrivateEndpointConnection -Name $privateEndpoint[0].Name -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
-            Start-Sleep 10
+            Start-TestSleep 10
         }
     }
 
@@ -40,7 +40,7 @@ Describe 'Approve-AzServiceBusPrivateEndpointConnection' {
 
         while($secondPrivateEndpoint.ProvisioningState -ne "Succeeded"){
             $secondPrivateEndpoint = Get-AzServiceBusPrivateEndpointConnection -Name $privateEndpoint[1].Name -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
-            Start-Sleep 10
+            Start-TestSleep 10
         }
     }
 }

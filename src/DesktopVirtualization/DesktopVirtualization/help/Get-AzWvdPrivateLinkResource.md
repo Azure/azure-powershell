@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdprivatelinkresource
 schema: 2.0.0
@@ -14,13 +14,13 @@ List the private link resources available for this workspace.
 
 ### List (Default)
 ```
-Get-AzWvdPrivateLinkResource -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>]
+Get-AzWvdPrivateLinkResource -ResourceGroupName <String> [-SubscriptionId <String[]>] -WorkspaceName <String>
  [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzWvdPrivateLinkResource -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzWvdPrivateLinkResource -ResourceGroupName <String> [-SubscriptionId <String[]>] -HostPoolName <String>
  [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -192,4 +192,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

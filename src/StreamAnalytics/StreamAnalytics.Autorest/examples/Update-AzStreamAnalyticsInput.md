@@ -1,6 +1,6 @@
 ### Example 1: Update a job input with a definition from a file
 ```powershell
-PS C:\> Update-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name input-01 -File .\test\template-json\EventHub.json
+Update-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name input-01 -File .\test\template-json\EventHub.json
 
 Name     Type                                           ETag
 ----     ----                                           ----
@@ -11,7 +11,7 @@ This command updates an input from the file EventHub.json.
 
 ### Example 2: Update a job input with a definition from a file by pipeline
 ```powershell
-PS C:\> Get-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name input-01 | Update-AzStreamAnalyticsInput -File .\test\template-json\IotHub.json
+Get-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-01-pwsh -Name input-01 | Update-AzStreamAnalyticsInput -File .\test\template-json\IotHub.json
 
 Name     Type                                           ETag
 ----     ----                                           ----

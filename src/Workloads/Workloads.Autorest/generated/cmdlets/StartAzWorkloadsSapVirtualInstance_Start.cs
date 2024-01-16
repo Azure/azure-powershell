@@ -18,6 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IOperationStatusResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Description(@"Starts the SAP application, that is the Central Services instance and Application server instances.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/start", ApiVersion = "2023-10-01-preview")]
     public partial class StartAzWorkloadsSapVirtualInstance_Start : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener
     {
@@ -39,6 +40,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
+
+        /// <summary>Backing field for <see cref="Body" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IStartRequest _body;
+
+        /// <summary>Start SAP instance(s) request body.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Start SAP instance(s) request body.", ValueFromPipeline = true)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"Start SAP instance(s) request body.",
+        SerializedName = @"body",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IStartRequest) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IStartRequest Body { get => this._body; set => this._body = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -219,6 +233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Name = this.Name;
+            clone.Body = this.Body;
             return clone;
         }
 
@@ -372,12 +387,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.SapVirtualInstancesStart(SubscriptionId, ResourceGroupName, Name, onOk, onDefault, this, Pipeline);
+                    await this.Client.SapVirtualInstancesStart(SubscriptionId, ResourceGroupName, Name, Body, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=Body})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -431,14 +446,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=Body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=Body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

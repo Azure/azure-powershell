@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="state">The state of the job agent.
-        /// Possible values include: 'Creating', 'Ready', 'Updating', 'Deleting',
-        /// 'Disabled'</param>
+        /// Possible values include: &#39;Creating&#39;, &#39;Ready&#39;, &#39;Updating&#39;, &#39;Deleting&#39;,
+        /// &#39;Disabled&#39;</param>
         public JobAgent(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Sku sku = default(Sku), JobAgentIdentity identity = default(JobAgentIdentity), string databaseId = default(string), string state = default(string))
 
         : base(location, id, name, type, tags)

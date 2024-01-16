@@ -46,6 +46,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId OutboundRule { get; set; }
         [JsonProperty(Order = 1)]
         public List<PSTunnelInterface> TunnelInterfaces { get; set; }
+        [JsonProperty(Order = 1)]
+        public string SyncMode { get; set; }
+        [JsonProperty(Order = 1)]
+        public SubResource VirtualNetwork { get; set; }
 
         [JsonIgnore]
         public string BackendIpConfigurationsText
@@ -77,6 +81,18 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(TunnelInterfaces, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
+        [JsonIgnore]
+        public string SyncModeText
+        {
+            get { return JsonConvert.SerializeObject(SyncMode, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string VirtualNetworkText
+        {
+            get { return JsonConvert.SerializeObject(VirtualNetwork, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
         public bool ShouldSerializeTunnelInterfaces()
         {
             return !string.IsNullOrEmpty(this.Name);
@@ -88,6 +104,16 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         public bool ShouldSerializeLoadBalancingRules()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeSyncMode()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeVirtualNetwork()
         {
             return !string.IsNullOrEmpty(this.Name);
         }

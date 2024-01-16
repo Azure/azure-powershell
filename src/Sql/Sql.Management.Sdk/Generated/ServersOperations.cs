@@ -449,7 +449,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of servers in a resource groups.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='expand'>
         /// The child resources to include in the response.
@@ -658,7 +659,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a server.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -877,7 +879,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a server.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -902,7 +905,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a server.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -924,7 +928,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates a server.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -949,7 +954,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Imports a bacpac into a new database.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -974,7 +980,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Refresh external governance enablement status.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -996,7 +1003,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a server.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -1242,7 +1250,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a server.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -1431,7 +1440,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates a server.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -1655,7 +1665,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Imports a bacpac into a new database.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -1883,7 +1894,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Refresh external governance enablement status.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudbuildserviceagentpool
 schema: 2.0.0
@@ -15,14 +15,14 @@ Create or update build service agent pool.
 ### UpdateExpanded (Default)
 ```
 New-AzSpringCloudBuildServiceAgentPool -ResourceGroupName <String> -ServiceName <String>
- [-SubscriptionId <String>] [-PoolSizeName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-PoolSizeName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 New-AzSpringCloudBuildServiceAgentPool -InputObject <ISpringCloudIdentity> [-PoolSizeName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -242,4 +242,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
-

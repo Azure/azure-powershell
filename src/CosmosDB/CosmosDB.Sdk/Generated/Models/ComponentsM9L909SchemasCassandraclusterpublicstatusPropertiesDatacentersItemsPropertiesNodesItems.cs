@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
 
         /// <param name="state">The state of the node in Cassandra ring.
-        /// Possible values include: 'Normal', 'Leaving', 'Joining', 'Moving',
-        /// 'Stopped'</param>
+        /// Possible values include: &#39;Normal&#39;, &#39;Leaving&#39;, &#39;Joining&#39;, &#39;Moving&#39;,
+        /// &#39;Stopped&#39;</param>
 
         /// <param name="status">
         /// </param>

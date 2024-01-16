@@ -13,7 +13,12 @@ namespace Microsoft.Azure.Management.CosmosDB
     public static partial class RestorableGremlinDatabasesOperationsExtensions
     {
         /// <summary>
-        /// Show the event feed of all mutations done on all the Azure Cosmos DB Gremlin databases under the restorable account. This helps in scenario where database was accidentally deleted to get the deletion time. This API requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39; permission
+        /// Show the event feed of all mutations done on all the Azure Cosmos DB
+        /// Gremlin databases under the restorable account. This helps in scenario
+        /// where database was accidentally deleted to get the deletion time. This API
+        /// requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39;
+        /// permission
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -30,7 +35,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Show the event feed of all mutations done on all the Azure Cosmos DB Gremlin databases under the restorable account. This helps in scenario where database was accidentally deleted to get the deletion time. This API requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39; permission
+        /// Show the event feed of all mutations done on all the Azure Cosmos DB
+        /// Gremlin databases under the restorable account. This helps in scenario
+        /// where database was accidentally deleted to get the deletion time. This API
+        /// requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39;
+        /// permission
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

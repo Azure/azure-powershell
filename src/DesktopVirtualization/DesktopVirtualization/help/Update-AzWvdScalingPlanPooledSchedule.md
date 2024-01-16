@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdscalingplanpooledschedule
 schema: 2.0.0
@@ -24,22 +24,21 @@ Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanNa
  [-RampDownStartTimeMinute <Int32>] [-RampDownStopHostsWhen <StopHostsWhen>] [-RampDownWaitTimeMinute <Int32>]
  [-RampUpCapacityThresholdPct <Int32>] [-RampUpLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm>]
  [-RampUpMinimumHostsPct <Int32>] [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWvdScalingPlanPooledSchedule -InputObject <IDesktopVirtualizationIdentity>
- [-DaysOfWeek <DayOfWeek[]>] [-OffPeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm>]
- [-OffPeakStartTimeHour <Int32>] [-OffPeakStartTimeMinute <Int32>]
- [-PeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm>] [-PeakStartTimeHour <Int32>]
- [-PeakStartTimeMinute <Int32>] [-RampDownCapacityThresholdPct <Int32>] [-RampDownForceLogoffUser]
- [-RampDownLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm>] [-RampDownMinimumHostsPct <Int32>]
- [-RampDownNotificationMessage <String>] [-RampDownStartTimeHour <Int32>] [-RampDownStartTimeMinute <Int32>]
- [-RampDownStopHostsWhen <StopHostsWhen>] [-RampDownWaitTimeMinute <Int32>]
+Update-AzWvdScalingPlanPooledSchedule -InputObject <IDesktopVirtualizationIdentity> [-DaysOfWeek <DayOfWeek[]>]
+ [-OffPeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm>] [-OffPeakStartTimeHour <Int32>]
+ [-OffPeakStartTimeMinute <Int32>] [-PeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm>]
+ [-PeakStartTimeHour <Int32>] [-PeakStartTimeMinute <Int32>] [-RampDownCapacityThresholdPct <Int32>]
+ [-RampDownForceLogoffUser] [-RampDownLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm>]
+ [-RampDownMinimumHostsPct <Int32>] [-RampDownNotificationMessage <String>] [-RampDownStartTimeHour <Int32>]
+ [-RampDownStartTimeMinute <Int32>] [-RampDownStopHostsWhen <StopHostsWhen>] [-RampDownWaitTimeMinute <Int32>]
  [-RampUpCapacityThresholdPct <Int32>] [-RampUpLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm>]
  [-RampUpMinimumHostsPct <Int32>] [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -538,4 +537,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

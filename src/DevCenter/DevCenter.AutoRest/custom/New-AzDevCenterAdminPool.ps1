@@ -25,11 +25,11 @@ Creates or updates a machine pool
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IPool
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IPool
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IPool
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -74,7 +74,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminpool
 #>
 function New-AzDevCenterAdminPool {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IPool])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IPool])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
@@ -111,60 +111,66 @@ function New-AzDevCenterAdminPool {
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
     
-        [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
-        [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
         [System.String]
         # The geo-location where the resource lives
         ${Location},
     
-        [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
-        [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
         [System.String]
         # Name of a Dev Box definition in parent Project of this Pool
         ${DevBoxDefinitionName},
     
-        [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
-        [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
+        [Parameter(Mandatory)]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus])]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus]
         # Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
         ${LocalAdministrator},
     
-        [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
-        [Parameter(ParameterSetName = 'CreateViaIdentityExpanded', Mandatory)]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
         [System.String]
         # Name of a Network Connection in parent Project of this Pool
         ${NetworkConnectionName},
 
-        # Feature in preview, uncomment when available
-        # [Parameter(ParameterSetName = 'CreateExpanded')]
-        # [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
-        # [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        # [System.Int32]
-        # # The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
-        # ${StopOnDisconnectGracePeriodMinute},
-    
-        # [Parameter(ParameterSetName = 'CreateExpanded')]
-        # [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
-        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus])]
-        # [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
-        # [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.StopOnDisconnectEnableStatus]
-        # # Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
-        # ${StopOnDisconnectStatus},
-        
-    
-        [Parameter(ParameterSetName = 'CreateExpanded')]
-        [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+        [System.String]
+        # The display name of the pool.
+        ${DisplayName},
+
+        [Parameter()]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+        [System.String[]]
+        # The regions of the managed virtual network (required when managedNetworkType is Managed).
+        ${ManagedVirtualNetworkRegion},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api30.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
-    
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SingleSignOnStatus])]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.SingleSignOnStatus]
+        # Indicates whether Dev Boxes in this pool are created with single sign on enabled.
+        # The also requires that single sign on be enabled on the tenant.
+        ${SingleSignOnStatus},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.VirtualNetworkType])]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.VirtualNetworkType]
+        # Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network.
+        ${VirtualNetworkType},
+
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]

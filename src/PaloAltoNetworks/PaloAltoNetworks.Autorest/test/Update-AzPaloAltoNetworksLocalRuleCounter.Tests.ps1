@@ -19,6 +19,10 @@ Describe 'Update-AzPaloAltoNetworksLocalRuleCounter' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'RefreshViaIdentityLocalRulestack' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'RefreshViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

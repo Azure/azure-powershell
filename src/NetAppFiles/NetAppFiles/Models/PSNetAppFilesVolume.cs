@@ -254,6 +254,22 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public int? CoolnessPeriod { get; set; }
 
         /// <summary>
+        /// Gets or sets CoolAccessRetrievalPolicy
+        /// </summary>
+        /// <value>
+        /// CoolAccessRetrievalPolicy determines the data retrieval behavior from the
+        /// cool tier to standard storage based on the read pattern for cool access
+        /// enabled volumes. The possible values for this field are:
+        /// Default - Data will be pulled from cool tier to standard storage on random
+        /// reads. This policy is the default.
+        /// OnRead - All client-driven data read is pulled from cool tier to standard
+        /// storage on both sequential and random reads.
+        /// Never - No client-driven data is pulled from cool tier to standard storage.
+        /// Possible values include: 'Default', 'OnRead', 'Never'
+        /// </value>
+        public string CoolAccessRetrievalPolicy { get; set; }
+
+        /// <summary>
         /// Gets or sets UnixPermission
         /// </summary>
         /// <value>

@@ -1,6 +1,6 @@
 ### Example 1: Configures single-sign-on for this resource
 ```powershell
-PS C:\> New-AzLogzMonitorSSOConfiguration -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04
+New-AzLogzMonitorSSOConfiguration -ResourceGroupName logz-rg-test -MonitorName pwsh-logz04
 
 Name    ProvisioningState SingleSignOnState SingleSignOnUrl             ResourceGroupName
 ----    ----------------- ----------------- ---------------             -----------------

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.springcloud/enable-azspringcloudtestendpoint
 schema: 2.0.0
@@ -15,13 +15,13 @@ Enable test endpoint functionality for a Service.
 ### Enable (Default)
 ```
 Enable-AzSpringCloudTestEndpoint -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EnableViaIdentity
 ```
-Enable-AzSpringCloudTestEndpoint -InputObject <ISpringCloudIdentity> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Enable-AzSpringCloudTestEndpoint -InputObject <ISpringCloudIdentity> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +44,7 @@ Enable test endpoint functionality for a Service.
 
 ### Example 2: Enable test endpoint functionality for a Service by pipeline
 ```powershell
-Get-AzSpringCloud -ResourceGroupName lucas-rg-test -Name springapp-pwsh01 | Disable-AzSpringCloudTestEndpoint 
+Get-AzSpringCloud -ResourceGroupName lucas-rg-test -Name springapp-pwsh01 | Disable-AzSpringCloudTestEndpoint
 ```
 
 ```output
@@ -209,4 +209,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
-

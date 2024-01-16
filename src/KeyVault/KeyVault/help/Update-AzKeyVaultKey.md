@@ -126,6 +126,7 @@ Accept wildcard characters: False
 ### -Expires
 The expiration time of a key in UTC time.
 If not specified, the existing expiration time of the key remains unchanged.
+Please notice that expirys is ignored for Key Exchange Key used in BYOK process.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]

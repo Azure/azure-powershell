@@ -1,6 +1,6 @@
 ### Example 1: Get the scope filters of the scan
 ```powershell
-PS C:\> Get-AzPurviewFilter -Endpoint 'https://brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData' -ScanName 'Scan1ForDemo'
+Get-AzPurviewFilter -Endpoint 'https://brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData' -ScanName 'Scan1ForDemo'
 
 ExcludeUriPrefix  : {https://foo.file.core.windows.net/share1/user/temp}
 Id                : datasources/DataScanTestData/scans/Scan1ForDemo/filters/custom

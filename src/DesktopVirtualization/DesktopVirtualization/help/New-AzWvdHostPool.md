@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DesktopVirtualization-help.xml
 Module Name: Az.DesktopVirtualization
 online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdhostpool
 schema: 2.0.0
@@ -14,8 +14,8 @@ Create or update a host pool.
 
 ### CreateExpanded (Default)
 ```
-New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerType> -Name <String>
- -PreferredAppGroupType <PreferredAppGroupType> -ResourceGroupName <String> [-Location <String>]
+New-AzWvdHostPool -Name <String> -ResourceGroupName <String> -HostPoolType <HostPoolType>
+ -LoadBalancerType <LoadBalancerType> -PreferredAppGroupType <PreferredAppGroupType> [-Location <String>]
  [-SubscriptionId <String>] [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <SessionHostComponentUpdateType>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
@@ -25,18 +25,18 @@ New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerTy
  [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
  [-PublicNetworkAccess <HostpoolPublicNetworkAccess>] [-RegistrationInfoToken <String>]
  [-RegistrationTokenOperation <RegistrationTokenOperation>] [-Ring <Int32>] [-SkuCapacity <Int32>]
- [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
- [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
- [-SsoSecretType <SsoSecretType>] [-StartVMOnConnect] [-Tag <Hashtable>] [-ValidationEnvironment]
- [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-SsoClientId <String>]
+ [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <SsoSecretType>] [-SsoadfsAuthority <String>]
+ [-StartVMOnConnect] [-Tag <Hashtable>] [-VMTemplate <String>] [-ValidationEnvironment]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FullSenerioCreate
 ```
-New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerType> -Location <String>
- -Name <String> -PreferredAppGroupType <PreferredAppGroupType> -ResourceGroupName <String>
- [-DesktopAppGroupName <String>] [-SubscriptionId <String>] [-WorkspaceName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzWvdHostPool -Name <String> -ResourceGroupName <String> -HostPoolType <HostPoolType>
+ -LoadBalancerType <LoadBalancerType> -PreferredAppGroupType <PreferredAppGroupType> [-Location <String>]
+ [-SubscriptionId <String>] [-DesktopAppGroupName <String>] [-WorkspaceName <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,7 +112,7 @@ Maintenance windows are 2 hours long.
 To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IMaintenanceWindowProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -AgentUpdateMaintenanceWindowTimeZone
-Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyidview=net-5.0.
+Time zone for maintenance as defined in https://learn.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid.
 Must be set if useLocalTime is true.
 
 ```yaml
@@ -330,7 +330,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -842,4 +842,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

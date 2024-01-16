@@ -1,6 +1,6 @@
 ### Example 1: Remove custom scanruleset by name
 ```powershell
-PS C:\> Remove-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/ -Name TestRule
+Remove-AzPurviewScanRuleset -Endpoint https://parv-brs-2.purview.azure.com/ -Name TestRule
 
 CreatedAt                            : 2/17/2022 2:30:15 PM
 Description                          : test desc

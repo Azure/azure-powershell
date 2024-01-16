@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
 
         /// <param name="keyKind">The access key to regenerate.
-        /// Possible values include: 'primary', 'secondary', 'primaryReadonly',
-        /// 'secondaryReadonly'</param>
+        /// Possible values include: &#39;primary&#39;, &#39;secondary&#39;, &#39;primaryReadonly&#39;,
+        /// &#39;secondaryReadonly&#39;</param>
         public DatabaseAccountRegenerateKeyParameters(string keyKind)
 
         {

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
 online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/invoke-azredeploysqlvm
 schema: 2.0.0
@@ -15,13 +15,13 @@ Uninstalls and reinstalls the SQL IaaS Extension.
 ### Redeploy (Default)
 ```
 Invoke-AzRedeploySqlVM -ResourceGroupName <String> -SqlVirtualMachineName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RedeployViaIdentity
 ```
 Invoke-AzRedeploySqlVM -InputObject <ISqlVirtualMachineIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,15 +34,11 @@ Uninstalls and reinstalls the SQL IaaS Extension.
 Invoke-AzRedeploySqlVM -ResourceGroupName 'ResourceGroup01' -SqlVirtualMachineName 'sqlvm1'
 ```
 
-
-
 ### Example 2
 ```powershell
 $sqlvm = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -GroupName 'sqlvmgroup01'
 $sqlvm | Invoke-AzRedeploySqlVM
 ```
-
-
 
 ## PARAMETERS
 
@@ -229,4 +225,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
 online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azsqlvm
 schema: 2.0.0
@@ -15,7 +15,8 @@ Updates a SQL virtual machine.
 ### UpdateExpanded (Default)
 ```
 Update-AzSqlVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AssessmentSettingEnable] [-AssessmentSettingRunImmediately]
+ [-LicenseType <SqlServerLicenseType>] [-Offer <String>] [-Sku <SqlImageSku>]
+ [-SqlManagementType <SqlManagementMode>] [-Tag <Hashtable>]
  [-AutoBackupSettingBackupScheduleType <BackupScheduleType>] [-AutoBackupSettingBackupSystemDb]
  [-AutoBackupSettingDaysOfWeek <AutoBackupDaysOfWeek[]>] [-AutoBackupSettingEnable]
  [-AutoBackupSettingEnableEncryption] [-AutoBackupSettingFullBackupFrequency <FullBackupFrequencyType>]
@@ -25,39 +26,39 @@ Update-AzSqlVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <Stri
  [-AutoBackupSettingStorageAccountUrl <String>] [-AutoBackupSettingStorageContainerName <String>]
  [-AutoPatchingSettingDayOfWeek <DayOfWeek>] [-AutoPatchingSettingEnable]
  [-AutoPatchingSettingMaintenanceWindowDuration <Int32>]
- [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-EnableAutomaticUpgrade]
- [-LicenseType <SqlServerLicenseType>] [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>]
- [-ScheduleEnable] [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>]
- [-ScheduleWeeklyInterval <Int32>] [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>]
- [-SqlVirtualMachineGroupResourceId <String>] [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
+ [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-AssessmentSettingEnable]
+ [-AssessmentSettingRunImmediately] [-ScheduleDayOfWeek <AssessmentDayOfWeek>] [-ScheduleEnable]
+ [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>] [-ScheduleWeeklyInterval <Int32>]
+ [-SqlVirtualMachineGroupResourceId <String>] [-VirtualMachineResourceId <String>]
  [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnableAutomaticUpgrade] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzSqlVM -InputObject <ISqlVirtualMachineIdentity> [-AssessmentSettingEnable]
- [-AssessmentSettingRunImmediately] [-AutoBackupSettingBackupScheduleType <BackupScheduleType>]
- [-AutoBackupSettingBackupSystemDb] [-AutoBackupSettingDaysOfWeek <AutoBackupDaysOfWeek[]>]
- [-AutoBackupSettingEnable] [-AutoBackupSettingEnableEncryption]
- [-AutoBackupSettingFullBackupFrequency <FullBackupFrequencyType>]
+Update-AzSqlVM -InputObject <ISqlVirtualMachineIdentity> [-LicenseType <SqlServerLicenseType>]
+ [-Offer <String>] [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>] [-Tag <Hashtable>]
+ [-AutoBackupSettingBackupScheduleType <BackupScheduleType>] [-AutoBackupSettingBackupSystemDb]
+ [-AutoBackupSettingDaysOfWeek <AutoBackupDaysOfWeek[]>] [-AutoBackupSettingEnable]
+ [-AutoBackupSettingEnableEncryption] [-AutoBackupSettingFullBackupFrequency <FullBackupFrequencyType>]
  [-AutoBackupSettingFullBackupStartTime <Int32>] [-AutoBackupSettingFullBackupWindowHour <Int32>]
  [-AutoBackupSettingLogBackupFrequency <Int32>] [-AutoBackupSettingPassword <SecureString>]
  [-AutoBackupSettingRetentionPeriod <Int32>] [-AutoBackupSettingStorageAccessKey <String>]
  [-AutoBackupSettingStorageAccountUrl <String>] [-AutoBackupSettingStorageContainerName <String>]
  [-AutoPatchingSettingDayOfWeek <DayOfWeek>] [-AutoPatchingSettingEnable]
  [-AutoPatchingSettingMaintenanceWindowDuration <Int32>]
- [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-EnableAutomaticUpgrade]
- [-LicenseType <SqlServerLicenseType>] [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>]
- [-ScheduleEnable] [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>]
- [-ScheduleWeeklyInterval <Int32>] [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>]
- [-SqlVirtualMachineGroupResourceId <String>] [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
+ [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-AssessmentSettingEnable]
+ [-AssessmentSettingRunImmediately] [-ScheduleDayOfWeek <AssessmentDayOfWeek>] [-ScheduleEnable]
+ [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>] [-ScheduleWeeklyInterval <Int32>]
+ [-SqlVirtualMachineGroupResourceId <String>] [-VirtualMachineResourceId <String>]
  [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnableAutomaticUpgrade] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +74,7 @@ Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -LicenseType 
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Update a SQL virtual machine with AHUB billing and add a tag.
@@ -87,7 +88,7 @@ $sqlVM | Update-AzSqlVM -Sku 'Standard' -LicenseType 'AHUB'
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Update a SQL virtual machine's sku and license type via identity.
@@ -104,7 +105,7 @@ Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AutoBackupSe
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Update a SQL virtual machine to enable auto backup.
@@ -117,7 +118,7 @@ Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AutoBackupSe
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Update a SQL virtual machine to disable auto backup.
@@ -132,7 +133,7 @@ Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' `
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Update a SQL virtual machine to enable auto patching.
@@ -145,7 +146,7 @@ Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AutoPatching
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Update a SQL virtual machine to disable auto patching.
@@ -158,7 +159,7 @@ Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AssessmentSe
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Update a SQL virtual machine to enable assessment.
@@ -171,13 +172,13 @@ Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' `
 -SqlVirtualMachineGroupResourceId '<group resource id>' `
 -WsfcDomainCredentialsClusterBootstrapAccountPassword $securepwd `
 -WsfcDomainCredentialsClusterOperatorAccountPassword $securepwd `
--WsfcDomainCredentialsSqlServiceAccountPassword $securepwd 
+-WsfcDomainCredentialsSqlServiceAccountPassword $securepwd
 ```
 
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Update a SQL virtual machine to add it to a SQL VM group.
@@ -190,7 +191,7 @@ Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -SqlVirtualMa
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Update a SQL virtual machine to remove it from a SQL VM group.
@@ -203,7 +204,7 @@ Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'  -Tag @{'newk
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Update a SQL virtual machine's tag as a background job.
@@ -943,4 +944,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
 online version: https://learn.microsoft.com/powershell/module/Az.SqlVirtualMachine/new-AzSqlVirtualMachineMultiSubnetIPConfigurationObject
 schema: 2.0.0
@@ -31,7 +31,7 @@ $multiSubnetIpConfig | Format-List
 ```output
 PrivateIPAddressIpaddress        : 192.168.16.7
 PrivateIPAddressSubnetResourceId : 
-SqlVirtualMachineInstance        : 
+SqlVirtualMachineInstance        :
 ```
 
 *New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject* creates an in-memory object of type *MultiSubnetIPConfiguration*.
@@ -99,4 +99,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

@@ -30,10 +30,10 @@ For information on how to develop for `Az.SqlVirtualMachine`, see [how-to.md](ho
 > see https://aka.ms/autorest
 
 ```yaml
-branch: 0e20dd2e4e2a40e83840c30cce2efc4847fd9cb9
+commit: 0e20dd2e4e2a40e83840c30cce2efc4847fd9cb9
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/sqlvirtualmachine/resource-manager/readme.md
 
 try-require: 
@@ -44,6 +44,10 @@ resourcegroup-append: true
 nested-object-to-string: true
 identity-correction-for-post: true
 	
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   #1. [swagger] define password parameters as password type
   - from: swagger-document
