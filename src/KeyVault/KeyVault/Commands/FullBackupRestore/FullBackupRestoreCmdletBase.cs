@@ -72,9 +72,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                 StorageContainerUri = new Uri($"https://{StorageAccountName}.blob.{DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix)}/{StorageContainerName}");
             }
 
+            if (this.IsParameterBound(c => c.SasToken) && SasToken == null)
+            {
+                throw new AzPSArgumentException("Please provide a valid SasToken or use Managed Identity for authentication.", ErrorKind.UserError);
+            }
+
             if (this.IsParameterBound(c => c.SasToken) && this.IsParameterBound(c => c.UseUserManagedIdentity))
             {
                 throw new AzPSArgumentException("Parameter SasToken and UseUserManagedIdentity can not exist at the same time. Please choose either one as authentication method.", ErrorKind.UserError);
+            }
+
+            if (!this.IsParameterBound(c => c.SasToken) && !this.IsParameterBound(c => c.UseUserManagedIdentity))
+            {
+                throw new AzPSArgumentException("Please choose either SasToken or UseUserManagedIdentity as authentication method.", ErrorKind.UserError);
             }
         }
 
