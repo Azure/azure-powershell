@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Commands.Common;
+﻿using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
@@ -74,17 +75,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
             if (this.IsParameterBound(c => c.SasToken) && SasToken == null)
             {
-                throw new AzPSArgumentException("Please provide a valid SasToken or use Managed Identity for authentication.", ErrorKind.UserError);
+                throw new AzPSArgumentException(Resources.SasTokenNotNull, ErrorKind.UserError);
             }
 
-            if (this.IsParameterBound(c => c.SasToken) && this.IsParameterBound(c => c.UseUserManagedIdentity))
+            if (this.IsParameterBound(c => c.SasToken) && this.UseUserManagedIdentity.IsPresent)
             {
-                throw new AzPSArgumentException("Parameter SasToken and UseUserManagedIdentity can not exist at the same time. Please choose either one as authentication method.", ErrorKind.UserError);
+                throw new AzPSArgumentException(Resources.UseManagedIdentityAndSasTokenBothExist, ErrorKind.UserError);
             }
 
-            if (!this.IsParameterBound(c => c.SasToken) && !this.IsParameterBound(c => c.UseUserManagedIdentity))
+            if (!this.IsParameterBound(c => c.SasToken) && !this.UseUserManagedIdentity.IsPresent)
             {
-                throw new AzPSArgumentException("Please choose either SasToken or UseUserManagedIdentity as authentication method.", ErrorKind.UserError);
+                throw new AzPSArgumentException(Resources.UseManagedIdentityAndSasTokenNeitherExist, ErrorKind.UserError);
             }
         }
 
