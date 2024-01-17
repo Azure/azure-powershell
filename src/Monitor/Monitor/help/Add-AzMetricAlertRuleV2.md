@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.monitor/add-azm
 schema: 2.0.0
 ---
 
-# Add-AzMetricAlertRuleV2
+# Add-AzMetricAlertRuleV22
 
 ## SYNOPSIS
 Adds or updates a V2 (non-classic) metric-based alert rule.
