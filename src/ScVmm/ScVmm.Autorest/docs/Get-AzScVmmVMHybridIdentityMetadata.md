@@ -14,12 +14,12 @@ Implements HybridIdentityMetadata GET method.
 
 ### Get (Default)
 ```
-Get-AzScVmmVMHybridIdentityMetadata -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzScVmmVMHybridIdentityMetadata -MachineId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzScVmmVMHybridIdentityMetadata -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzScVmmVMHybridIdentityMetadata -MachineId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +67,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceUri
+### -MachineId
 The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
 
 ```yaml

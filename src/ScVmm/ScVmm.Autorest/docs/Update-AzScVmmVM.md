@@ -14,24 +14,21 @@ The operation to update a virtual machine instance.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzScVmmVM -ResourceUri <String> [-AvailabilitySet <IAvailabilitySetListItem[]>]
- [-HardwareProfileCpuCount <Int32>] [-HardwareProfileDynamicMemoryEnabled <String>]
- [-HardwareProfileDynamicMemoryMaxMb <Int32>] [-HardwareProfileDynamicMemoryMinMb <Int32>]
- [-HardwareProfileLimitCpuForMigration <String>] [-HardwareProfileMemoryMb <Int32>]
- [-InfrastructureProfileCheckpointType <String>] [-NetworkProfileNetworkInterface <INetworkInterfaceUpdate[]>]
- [-StorageProfileDisk <IVirtualDiskUpdate[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzScVmmVM -MachineId <String> [-HardwareProfileCpuCount <Int32>]
+ [-HardwareProfileDynamicMemoryEnabled <String>] [-HardwareProfileDynamicMemoryMaxMb <Int32>]
+ [-HardwareProfileDynamicMemoryMinMb <Int32>] [-HardwareProfileMemoryMb <Int32>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzScVmmVM -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Update-AzScVmmVM -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzScVmmVM -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Update-AzScVmmVM -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -70,22 +67,6 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AvailabilitySet
-Availability Sets in vm.
-To construct, see NOTES section for AVAILABILITYSET properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem[]
-Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -171,41 +152,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HardwareProfileLimitCpuForMigration
-Gets or sets a value indicating whether to enable processor compatibility mode for live migration of VMs.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -HardwareProfileMemoryMb
 MemoryMB is the size of a virtual machine's memory, in MB.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InfrastructureProfileCheckpointType
-Type of checkpoint supported for the vm.
-
-```yaml
-Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -246,38 +197,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkProfileNetworkInterface
-Gets or sets the list of network interfaces associated with the virtual machine.
-To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterfaceUpdate[]
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
+### -MachineId
 The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
 
 ```yaml
@@ -292,13 +212,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageProfileDisk
-Gets or sets the list of virtual disks associated with the virtual machine.
-To construct, see NOTES section for STORAGEPROFILEDISK properties and create a hash table.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualDiskUpdate[]
-Parameter Sets: UpdateExpanded
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False

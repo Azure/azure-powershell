@@ -14,12 +14,12 @@ Retrieves information about a virtual machine instance.
 
 ### Get (Default)
 ```
-Get-AzScVmmVM -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzScVmmVM -MachineId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzScVmmVM -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzScVmmVM -MachineId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +67,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceUri
+### -MachineId
 The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
 
 ```yaml

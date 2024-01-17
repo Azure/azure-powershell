@@ -14,25 +14,25 @@ Restores to a checkpoint in virtual machine instance.
 
 ### RestoreExpanded (Default)
 ```
-Restore-AzScVmmVMCheckpoint -ResourceUri <String> [-Id <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzScVmmVMCheckpoint -MachineId <String> [-Id <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Restore
 ```
-Restore-AzScVmmVMCheckpoint -ResourceUri <String> -Body <IVirtualMachineRestoreCheckpoint>
+Restore-AzScVmmVMCheckpoint -MachineId <String> -Body <IVirtualMachineRestoreCheckpoint>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaJsonFilePath
 ```
-Restore-AzScVmmVMCheckpoint -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
+Restore-AzScVmmVMCheckpoint -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaJsonString
 ```
-Restore-AzScVmmVMCheckpoint -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
+Restore-AzScVmmVMCheckpoint -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -157,6 +157,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MachineId
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -181,21 +196,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

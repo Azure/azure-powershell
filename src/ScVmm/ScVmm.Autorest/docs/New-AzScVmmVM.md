@@ -15,7 +15,7 @@ Please note some properties can be set only during virtual machine instance crea
 
 ### CreateExpanded (Default)
 ```
-New-AzScVmmVM -ResourceUri <String> [-AvailabilitySet <IAvailabilitySetListItem[]>]
+New-AzScVmmVM -MachineId <String> [-AvailabilitySet <IAvailabilitySetListItem[]>]
  [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-HardwareProfileCpuCount <Int32>]
  [-HardwareProfileDynamicMemoryEnabled <String>] [-HardwareProfileDynamicMemoryMaxMb <Int32>]
  [-HardwareProfileDynamicMemoryMinMb <Int32>] [-HardwareProfileLimitCpuForMigration <String>]
@@ -25,19 +25,20 @@ New-AzScVmmVM -ResourceUri <String> [-AvailabilitySet <IAvailabilitySetListItem[
  [-InfrastructureProfileInventoryItemId <String>] [-InfrastructureProfileTemplateId <String>]
  [-InfrastructureProfileUuid <String>] [-InfrastructureProfileVmmServerId <String>]
  [-InfrastructureProfileVMName <String>] [-NetworkProfileNetworkInterface <INetworkInterface[]>]
- [-OSProfileAdminPassword <String>] [-OSProfileComputerName <String>] [-StorageProfileDisk <IVirtualDisk[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-OSProfileAdminPassword <SecureString>] [-OSProfileComputerName <String>]
+ [-StorageProfileDisk <IVirtualDisk[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzScVmmVM -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+New-AzScVmmVM -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzScVmmVM -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+New-AzScVmmVM -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -419,6 +420,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MachineId
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NetworkProfileNetworkInterface
 Gets or sets the list of network interfaces associated with the virtual machine.
 To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
@@ -454,7 +470,7 @@ Accept wildcard characters: False
 Admin password of the virtual machine.
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -474,21 +490,6 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

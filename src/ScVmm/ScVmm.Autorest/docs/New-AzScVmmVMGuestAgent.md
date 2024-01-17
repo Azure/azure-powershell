@@ -14,20 +14,20 @@ Create GuestAgent.
 
 ### CreateExpanded (Default)
 ```
-New-AzScVmmVMGuestAgent -ResourceUri <String> [-CredentialsPassword <SecureString>]
+New-AzScVmmVMGuestAgent -MachineId <String> [-CredentialsPassword <SecureString>]
  [-CredentialsUsername <String>] [-HttpProxyConfigHttpsProxy <String>] [-ProvisioningAction <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzScVmmVMGuestAgent -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
+New-AzScVmmVMGuestAgent -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzScVmmVMGuestAgent -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
+New-AzScVmmVMGuestAgent -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -166,6 +166,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MachineId
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -190,21 +205,6 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

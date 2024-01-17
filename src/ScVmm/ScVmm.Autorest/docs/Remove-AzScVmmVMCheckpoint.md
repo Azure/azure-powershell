@@ -14,25 +14,25 @@ Deletes a checkpoint in virtual machine instance.
 
 ### DeleteExpanded (Default)
 ```
-Remove-AzScVmmVMCheckpoint -ResourceUri <String> [-Id <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzScVmmVMCheckpoint -MachineId <String> [-Id <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete
 ```
-Remove-AzScVmmVMCheckpoint -ResourceUri <String> -Body <IVirtualMachineDeleteCheckpoint>
+Remove-AzScVmmVMCheckpoint -MachineId <String> -Body <IVirtualMachineDeleteCheckpoint>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaJsonFilePath
 ```
-Remove-AzScVmmVMCheckpoint -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzScVmmVMCheckpoint -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaJsonString
 ```
-Remove-AzScVmmVMCheckpoint -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzScVmmVMCheckpoint -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -157,6 +157,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MachineId
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -181,21 +196,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

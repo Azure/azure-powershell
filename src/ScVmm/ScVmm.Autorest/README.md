@@ -353,6 +353,19 @@ directive:
         ],
         "x-ms-secret": true
       }
+  - from: swagger-document 
+    where: $.definitions.OsProfileForVMInstance.properties.adminPassword
+    transform: >-
+      return {
+        "description": "Admin password of the virtual machine.",
+        "type": "string",
+        "format": "password",
+        "x-ms-mutability": [
+          "create",
+          "update"
+        ],
+        "x-ms-secret": true
+      }
 
   - where:
       variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
@@ -365,6 +378,11 @@ directive:
       subject: VirtualMachineInstance
     set:
       subject: VM
+  # New-AzScVmmVM Change logic. Update-AzScVmmVM just save this parameters: MachineId,HardwareProfileCpuCount,HardwareProfileDynamicMemoryEnabled,HardwareProfileDynamicMemoryMaxMb,HardwareProfileDynamicMemoryMinMb,HardwareProfileMemoryMb,DefaultProfile
+  - where:
+      verb: New|Update
+      subject: VM
+    hide: true
   - where:
       subject: VirtualMachineInstanceHybridIdentityMetadata
     set:
@@ -395,6 +413,11 @@ directive:
       parameter-name: ResourceName
     set:
       parameter-name: Name
+
+  - where:
+      parameter-name: ResourceUri
+    set:
+      parameter-name: MachineId
 
   - model-cmdlet:
     - model-name: AvailabilitySetListItem

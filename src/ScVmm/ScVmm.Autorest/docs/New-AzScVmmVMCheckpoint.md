@@ -14,19 +14,19 @@ Creates a checkpoint in virtual machine instance.
 
 ### CreateExpanded (Default)
 ```
-New-AzScVmmVMCheckpoint -ResourceUri <String> [-Description <String>] [-Name <String>]
+New-AzScVmmVMCheckpoint -MachineId <String> [-Description <String>] [-Name <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzScVmmVMCheckpoint -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
+New-AzScVmmVMCheckpoint -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzScVmmVMCheckpoint -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
+New-AzScVmmVMCheckpoint -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -135,6 +135,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MachineId
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the checkpoint.
 
@@ -174,21 +189,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

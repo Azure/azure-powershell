@@ -14,25 +14,25 @@ The operation to power off (stop) a virtual machine instance.
 
 ### StopExpanded (Default)
 ```
-Stop-AzScVmmVM -ResourceUri <String> [-SkipShutdown <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Stop-AzScVmmVM -MachineId <String> [-SkipShutdown <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Stop
 ```
-Stop-AzScVmmVM -ResourceUri <String> -Body <IStopVirtualMachineOptions> [-DefaultProfile <PSObject>] [-AsJob]
+Stop-AzScVmmVM -MachineId <String> -Body <IStopVirtualMachineOptions> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StopViaJsonFilePath
 ```
-Stop-AzScVmmVM -ResourceUri <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Stop-AzScVmmVM -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StopViaJsonString
 ```
-Stop-AzScVmmVM -ResourceUri <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Stop-AzScVmmVM -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -142,6 +142,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MachineId
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -166,21 +181,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceUri
-The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
