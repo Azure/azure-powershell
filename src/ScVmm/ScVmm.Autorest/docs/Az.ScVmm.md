@@ -56,17 +56,11 @@ Create InventoryItem.
 ### [New-AzScVmmNetworkInterfaceObject](New-AzScVmmNetworkInterfaceObject.md)
 Create an in-memory object for NetworkInterface.
 
-### [New-AzScVmmNetworkInterfaceUpdateObject](New-AzScVmmNetworkInterfaceUpdateObject.md)
-Create an in-memory object for NetworkInterfaceUpdate.
-
 ### [New-AzScVmmServer](New-AzScVmmServer.md)
 Onboards the SCVMM fabric as an Azure VmmServer resource.
 
 ### [New-AzScVmmVirtualDiskObject](New-AzScVmmVirtualDiskObject.md)
 Create an in-memory object for VirtualDisk.
-
-### [New-AzScVmmVirtualDiskUpdateObject](New-AzScVmmVirtualDiskUpdateObject.md)
-Create an in-memory object for VirtualDiskUpdate.
 
 ### [New-AzScVmmVirtualNetwork](New-AzScVmmVirtualNetwork.md)
 Onboards the ScVmm virtual network as an Azure virtual network resource.
