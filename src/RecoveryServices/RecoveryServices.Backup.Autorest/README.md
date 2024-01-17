@@ -57,6 +57,9 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers"].post
     transform: $["x-ms-long-running-operation"] = true
   - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire"].post
+    transform: $["x-ms-long-running-operation"] = true
+  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}"].put
     transform: $["x-ms-long-running-operation"] = true
   - from: swagger-document
@@ -92,7 +95,7 @@ directive:
     set:
       subject: BackupPolicy
   - where:      
-      subject: Job|BackupEngine|EncryptionConfig|StorageConfigsNonCrr|VaultConfig|BackupUsageSummary|JobDetail|PrivateEndpointConnection|RecoveryPoint|RecommendedForMove|ResourceGuardProxy|SecurityPiN|ItemLevelRecoveryConnection|Restore|Cancellation|ValidateOperation|ResourceGuardProxyDelete|Prepare|FeatureSupport|WorkloadItem|DeletedProtectionContainer|InquireProtectionContainer|PrivateEndpointOperationStatus|^ProtectionIntent
+      subject: Job|BackupEngine|EncryptionConfig|StorageConfigsNonCrr|VaultConfig|BackupUsageSummary|JobDetail|PrivateEndpointConnection|RecoveryPoint|RecommendedForMove|ResourceGuardProxy|SecurityPiN|ItemLevelRecoveryConnection|Restore|Cancellation|ValidateOperation|ResourceGuardProxyDelete|Prepare|FeatureSupport|WorkloadItem|DeletedProtectionContainer|PrivateEndpointOperationStatus|^ProtectionIntent
     remove: true
   - where:      
       verb: Start
@@ -162,7 +165,7 @@ directive:
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IWorkloadProtectableItem Property', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IWorkloadProtectableItem Property');  
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.IRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IRecoveryPoint Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IRecoveryPoint Property');
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IOperationStatusExtendedInfo Property', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IOperationStatusExtendedInfo Property');

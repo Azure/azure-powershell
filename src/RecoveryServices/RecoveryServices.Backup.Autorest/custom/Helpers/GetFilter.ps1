@@ -177,7 +177,7 @@ function Get-ProtectionIntentFilter {
     }
 }
 
-# Summary: takes backupManagementType as input & gives filter. This works for refresh container APIs.
+# Summary: takes DatasourceType as input & gives filter. This works for refresh container APIs.
 function Get-BackupManagementTypeFilter {
     [OutputType('string')]
     [CmdletBinding(PositionalBinding=$false)]
@@ -195,3 +195,20 @@ function Get-BackupManagementTypeFilter {
     }
 }
 
+# Summary: takes DatasourceType as input & gives workload type filter. This works for inquire container APIs.
+function Get-WorkloadTypeFilter {
+    [OutputType('string')]
+    [CmdletBinding(PositionalBinding=$false)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.DoNotExportAttribute()]
+
+    param(
+        [Parameter(Mandatory=$true)]
+        [System.String]
+        $DatasourceType
+    )
+
+    process {
+        $workloadType = GetItemTypeFromDatasourceType -DatasourceType $DatasourceType
+        return "workloadType eq '$workloadType'"
+    }
+}

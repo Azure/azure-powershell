@@ -9,7 +9,6 @@ function Enable-AzRecoveryServicesBackupProtection {
         [System.String]
         ${SubscriptionId},
 
-        # TODO: update help text ?? 
         [Parameter(Mandatory, HelpMessage='The name of the resource group where the recovery services vault is present.')]
         [System.String]
         ${ResourceGroupName},
@@ -213,32 +212,62 @@ function Enable-AzRecoveryServicesBackupProtection {
         
         $fabricName="Azure"
         $protectedItemType = "[Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201." + $manifest.protectedItemType + "]::new()"
-        $Object =  Invoke-Expression $protectedItemType
+        $Object =  Invoke-Expression $protectedItemType # equivalent to properties        
 
         $containerUri = ""
-        $protectedItemUri = ""
-        $isComputeAzureVM = $false
+        $protectedItemUri = ""        
         $sourceResourceId = ""
+                
+        # IaasVM specific variables
+        $isComputeAzureVM = $false 
+        $azureVMRGName = ""
         
         if(-not($Item)) #configure backup
-        {
-            $isComputeAzureVM = ($ServiceName -eq $null -or $ServiceName -eq "") ? $true : $false
-            $azureVMRGName = ($isComputeAzureVM) ? $VMResourceGroupName : $ServiceName
-            
-            # ValidateProtectionRequest
-            Validate-AzureVMEnableProtectionRequest -AzureVMName $Name -CloudServiceName $ServiceName -VMResourceGroupName $VMResourceGroupName -Policy $Policy
+        {            
+            $protectableObjectResource = $null
+            if($manifest.fetchAzureVMProperties){
+                $isComputeAzureVM = ($ServiceName -eq $null -or $ServiceName -eq "") ? $true : $false
+                $azureVMRGName = ($isComputeAzureVM) ? $VMResourceGroupName : $ServiceName
 
-            # PSBoundParameters            
-            $PSBoundParameters.Add('AzureVMName', $Name)
-            $PSBoundParameters.Add('VMResourceGroupName', $VMResourceGroupName)
-            $PSBoundParameters.Add('IsComputeAzureVM', $IsComputeAzureVM)
-            $PSBoundParameters.Add('DatasourceType', $DatasourceType)
-            $protectableObjectResource = Get-AzureVMProtectableObject @PSBoundParameters
+                # ValidateProtectionRequest
+                Validate-AzureVMEnableProtectionRequest -AzureVMName $Name -CloudServiceName $ServiceName -VMResourceGroupName $VMResourceGroupName -Policy $Policy
 
-            $null = $PSBoundParameters.Remove('AzureVMName')
-            $null = $PSBoundParameters.Remove('VMResourceGroupName')
-            $null = $PSBoundParameters.Remove('IsComputeAzureVM')
-            $null = $PSBoundParameters.Remove('DatasourceType')
+                # PSBoundParameters            
+                $PSBoundParameters.Add('AzureVMName', $Name)
+                $PSBoundParameters.Add('VMResourceGroupName', $VMResourceGroupName)
+                $PSBoundParameters.Add('IsComputeAzureVM', $IsComputeAzureVM)
+                $PSBoundParameters.Add('DatasourceType', $DatasourceType)
+                $protectableObjectResource = Get-AzureVMProtectableObject @PSBoundParameters
+
+                $null = $PSBoundParameters.Remove('AzureVMName')
+                $null = $PSBoundParameters.Remove('VMResourceGroupName')
+                $null = $PSBoundParameters.Remove('IsComputeAzureVM')
+                $null = $PSBoundParameters.Remove('DatasourceType')
+                
+                if($protectableObjectResource.Property -ne $null){
+                    $sourceResourceId = $protectableObjectResource.Property.VirtualMachineId
+                }                
+            }
+            elseif($manifest.fetchAzureFileShareProperties){
+                Validate-AzureFileShareEnableProtectionRequest -AzureFileShareName $Name -StorageAccountName $StorageAccountName
+
+                $PSBoundParameters.Add('AzureFileShareName', $Name)
+                $PSBoundParameters.Add('StorageAccountName', $StorageAccountName)
+
+                $protectableObjectResource = Get-AzureFileShareProtectableObject @PSBoundParameters
+
+                $null = $PSBoundParameters.Remove('AzureFileShareName')
+                $null = $PSBoundParameters.Remove('StorageAccountName')
+
+                if($protectableObjectResource.Property -ne $null){
+                    $sourceResourceId = $protectableObjectResource.Property.ParentContainerFabricId #TODO: check this field
+                }
+            }
+            else{
+                if($parameterSetName -eq "AzureWorkloadEnableProtection"){
+                    $protectableObjectResource = $ProtectableItem
+                }
+            }           
 
             Write-Debug "protectableObjectResource.Id: $($protectableObjectResource.Id)"
 
@@ -246,35 +275,35 @@ function Enable-AzRecoveryServicesBackupProtection {
             $protectedItemUri = Get-ProtectableItemNameFromArmId -Id $protectableObjectResource.Id
 
             Write-Debug "Container URI: $containerUri"
-            Write-Debug "Protected Item URI: $protectedItemUri"
-
-            $iaasVmProtectableItem = $protectableObjectResource.Property
-
-            if ($iaasVmProtectableItem -ne $null)
-            {
-                $sourceResourceId = $iaasVmProtectableItem.VirtualMachineId                
-            }
+            Write-Debug "Protected Item URI: $protectedItemUri"            
             Write-Debug "sourceResourceId: $sourceResourceId"
         }
         elseif($Item -ne $null) #modify backup
         {
-            if([string]::IsNullOrEmpty($Item.Property.VirtualMachineId)){
-                throw "VirtualMachineId is NULL or Empty. Please enter valid VirtualMachineId"
-            }
+            if($manifest.fetchAzureVMProperties){
+                if([string]::IsNullOrEmpty($Item.Property.VirtualMachineId)){
+                    throw "VirtualMachineId is NULL or Empty. Please enter valid VirtualMachineId"
+                }
 
+                $isComputeAzureVM = IsComputeAzureVM($Item.Property.VirtualMachineId)
+            }
+            elseif($manifest.fetchAzureFileShareProperties){ 
+                if(-not($Item.Property.GetType() -match "FileShare")){
+                    throw "Invalid type of parameter Item. Expected type is AzureFileShareItem"
+                }
+            }
+            
             $protectedItemUri = Get-ProtectedItemNameFromArmId -Id $Item.Id
-            $containerUri = Get-ContainerNameFromArmId -Id $Item.Id
-
-            $isComputeAzureVM = IsComputeAzureVM($Item.Property.VirtualMachineId)
-
-            if($Item.SourceResourceId -ne "" -and $Item.SourceResourceId -ne $null)
+            $containerUri = Get-ContainerNameFromArmId -Id $Item.Id            
+                        
+            if(($manifest.fetchAzureVMProperties -or $manifest.fetchAzureFileShareProperties) -and ($Item.SourceResourceId -ne "" -and $Item.SourceResourceId -ne $null))
             {
-                $sourceResourceId= $Item.SourceResourceId
+                $sourceResourceId = $Item.SourceResourceId
             }
-            else
+            elseif($manifest.fetchAzureVMProperties)
             {
                 $sourceResourceId= $Item.Property.VirtualMachineId
-            }            
+            }
         }
         else
         {
@@ -282,7 +311,8 @@ function Enable-AzRecoveryServicesBackupProtection {
             throw $errormsg
         }
         
-        if(-not $isComputeAzureVM){                
+        
+        if($manifest.fetchAzureVMProperties -and -not $isComputeAzureVM){                
             $protectedItemType = "[Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.AzureIaaSClassicComputeVmprotectedItem]::new()"
             
             $Object =  Invoke-Expression $protectedItemType
@@ -303,13 +333,9 @@ function Enable-AzRecoveryServicesBackupProtection {
         else
         {
             $Object.PolicyId = $Item.PolicyId
-        }
+        }                
 
-        # only for AzureVM ?
-        $Object.SourceResourceId = $sourceResourceId
-
-        # NOTE: The OS disk is by default added to the VM backup and can't be excluded.
-        # TODO: execute this code only when selective disk params are given
+        # NOTE: The OS disk is by default added to the VM backup and can't be excluded.        
         if($ResetExclusionSettings)
         {    
              $Object.ExtendedProperty=[Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ExtendedProperties]::new()
@@ -339,8 +365,11 @@ function Enable-AzRecoveryServicesBackupProtection {
 
         $ItemObject = [Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.ProtectedItemResource]::new()
         $ItemObject.Property=$Object
-
-        $ItemObject.SourceResourceId=$Object.SourceResourceId        
+        
+        if($sourceResourceId -ne ""){
+            $Object.SourceResourceId = $sourceResourceId
+            $ItemObject.SourceResourceId = $Object.SourceResourceId
+        }
 
         Write-Debug "ItemObject.ProtectedItemType $($ItemObject.ProtectedItemType)"
 
@@ -360,10 +389,9 @@ function Enable-AzRecoveryServicesBackupProtection {
         $PSBoundParameters.Add('Parameter', $ItemObject)
         $PSBoundParameters.Add('NoWait', $true)
 
-        # TODO: handle MUA
-        # TODO: handle output
+        # TODO: handle MUA        
         $newItem = New-AzRecoveryServicesProtectedItem @PSBoundParameters
-        $jobId = "job Id for configure backup"
+        $jobId = ""
 
         $null = $PSBoundParameters.Remove('ContainerName')
         $null = $PSBoundParameters.Remove('FabricName')
@@ -384,7 +412,6 @@ function Enable-AzRecoveryServicesBackupProtection {
             throw $errormsg
         }
         
-        Write-Output $jobId
-        # getJobID
+        Write-Output $jobId # TODO: need to give Job as output?
     }
 }

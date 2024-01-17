@@ -16,6 +16,8 @@
   "classicComputeProtectedItemResourceType": "Microsoft.ClassicCompute/virtualMachines",
   "allowSelectiveDiskBackup": true,
   "validateProtectedItemsCount": true,
+  "fetchAzureVMProperties": true,
+  "fetchAzureFileShareProperties": false,
   "policySettings": {
     "defaultPolicy": {
       "backupManagementType": "AzureIaasVM",

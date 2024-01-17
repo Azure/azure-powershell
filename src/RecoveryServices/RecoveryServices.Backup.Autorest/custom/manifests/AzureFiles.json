@@ -16,6 +16,8 @@
   "classicComputeProtectedItemResourceType": "Microsoft.ClassicCompute/virtualMachines",
   "allowSelectiveDiskBackup": false,
   "validateProtectedItemsCount": false,
+  "fetchAzureVMProperties": false,
+  "fetchAzureFileShareProperties": true,
   "policySettings": {
     "defaultPolicy": {
       "backupManagementType": "AzureStorage",
