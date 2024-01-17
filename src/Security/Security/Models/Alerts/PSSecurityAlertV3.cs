@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.SecurityCenter.Models.Alerts
 
         public List<IDictionary<string, string>> ExtendedLinks { get; set; }
 
-        public List<AlertResourceIdentifier> ResourceIdentifiers { get; set; }
+        public List<ResourceIdentifier> ResourceIdentifiers { get; set; }
 
         public string Intent { get; set; }
 
