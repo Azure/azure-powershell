@@ -15,13 +15,53 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
     [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceExternalGovernanceStatusRefresh", SupportsShouldProcess = true), OutputType(typeof(RefreshExternalGovernanceMIModel))]
     public class InvokeAzSqlInstanceExternalGovernanceStatusRefresh : AzureSqlInstanceRefreshExternalGovernanceCmdletBase
     {
+        private const string SetByNameParameterSet = "SetByNameParameterSet";
+        private const string SetByParentObjectParameterSet = "SetByParentObjectParameterSet";
+        private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
+        
+        /// <summary>
+        /// Sets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = true, ParameterSetName = SetByNameParameterSet, Position = 0,
+            HelpMessage = "Name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the name of the Azure Sql Managed Instance to use
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = SetByNameParameterSet,
+            Position = 1,
+            HelpMessage = "The Azure Sql managed instance name.")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
+        [ValidateNotNullOrEmpty]
+        public string InstanceName { get; set; }
+        
+        /// <summary>
+        /// Sets the instance Object
+        /// </summary>
+        [Parameter(Mandatory = true, ParameterSetName = SetByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Input object of the managed instance.")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlManagedInstanceModel InstanceObject { get; set; }
+        
+        /// <summary>
+        /// Sets the instance resource id
+        /// </summary>
+        [Parameter(Mandatory = true, ParameterSetName = SetByResourceIdParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Resource ID of the managed instance DTC.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+        
         /// <summary>
         /// Get the refresh external governance status.
         /// </summary>
@@ -29,6 +69,24 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         protected override RefreshExternalGovernanceMIModel GetEntity()
         {
             return new RefreshExternalGovernanceMIModel();
+        }
+
+        public override void ExecuteCmdlet()
+        {
+            switch (ParameterSetName)
+            {
+                case SetByParentObjectParameterSet:
+                    ResourceGroupName = InstanceObject.ResourceGroupName;
+                    InstanceName = InstanceObject.ManagedInstanceName;
+                    break;
+                case SetByResourceIdParameterSet:
+                    var identifier = new ResourceIdentifier(ResourceId);
+                    ResourceGroupName = identifier.ResourceGroupName;
+                    InstanceName = identifier.ResourceName;
+                    break;
+            }
+            
+            base.ExecuteCmdlet();
         }
 
         /// <summary>

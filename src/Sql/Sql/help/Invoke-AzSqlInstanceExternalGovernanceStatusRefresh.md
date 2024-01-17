@@ -12,9 +12,25 @@ Refreshes the value of external governance on the managed instance.
 
 ## SYNTAX
 
+### SetByNameParameterSet
 ```
-Invoke-AzSqlInstanceExternalGovernanceStatusRefresh [-InstanceName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzSqlInstanceExternalGovernanceStatusRefresh [-ResourceGroupName] <String> [-InstanceName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### SetByParentObjectParameterSet
+```
+Invoke-AzSqlInstanceExternalGovernanceStatusRefresh [-InstanceObject] <AzureSqlManagedInstanceModel>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### SetByResourceIdParameterSet
+```
+Invoke-AzSqlInstanceExternalGovernanceStatusRefresh [-ResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +51,7 @@ Successfully refreshed external governance enablement status.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -50,14 +66,44 @@ Accept wildcard characters: False
 The Azure Sql managed instance name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceObject
+Input object of the managed instance.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+Parameter Sets: SetByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -65,14 +111,29 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: SetByNameParameterSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Resource ID of the managed instance.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -80,7 +141,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -96,7 +157,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Services;
@@ -25,17 +24,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
     public abstract class AzureSqlInstanceRefreshExternalGovernanceCmdletBase : AzureSqlCmdletBase<RefreshExternalGovernanceMIModel, RefreshExternalGovernanceAdapter>
     {
-        /// <summary>
-        /// Gets or sets the name of the Azure Sql Managed Instance to use
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "The Azure Sql managed instance name.")]
-        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
-        [ValidateNotNullOrEmpty]
-        public string InstanceName { get; set; }
-
         protected override RefreshExternalGovernanceAdapter InitModelAdapter()
         {
             return new RefreshExternalGovernanceAdapter(DefaultProfile.DefaultContext);
