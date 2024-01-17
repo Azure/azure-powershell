@@ -103,9 +103,9 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateMicrosoftEntraAuthCache()
+        public void TestMicrosoftEntraAuthCache()
         {
-            TestRunner.RunTestScript("Test-CreateMicrosoftEntraAuthCache");
+            TestRunner.RunTestScript("Test-MicrosoftEntraAuthCache");
         }
     }
 }

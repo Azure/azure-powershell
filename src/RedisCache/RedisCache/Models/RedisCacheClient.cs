@@ -394,5 +394,61 @@ namespace Microsoft.Azure.Commands.RedisCache
         {
             _client.LinkedServer.BeginDelete(resourceGroupName, cacheName, linkedCacheName);
         }
+
+        internal RedisCacheAccessPolicy SetAccessPolicy(string resourceGroupName, string cacheName, string accessPolicyName, string permissions)
+        {
+            return _client.AccessPolicy.CreateUpdate(resourceGroupName, cacheName, accessPolicyName, permissions);
+        }
+
+        internal RedisCacheAccessPolicy GetAccessPolicy(string resourceGroupName, string cacheName, string accessPolicyName)
+        {
+            return _client.AccessPolicy.Get(resourceGroupName, cacheName, accessPolicyName);
+        }
+
+        internal IPage<RedisCacheAccessPolicy> ListAccessPolicies(string resourceGroupName, string cacheName)
+        {
+            return _client.AccessPolicy.List(resourceGroupName, cacheName);
+        }
+
+        internal IPage<RedisCacheAccessPolicy> ListAccessPolicies(string nextLink)
+        {
+            return _client.AccessPolicy.ListNext(nextLink);
+        }
+
+        internal void RemoveAccessPolicy(string resourceGroupName, string cacheName, string accessPolicyName)
+        {
+            _client.AccessPolicy.Delete(resourceGroupName, cacheName, accessPolicyName);
+        }
+
+        internal RedisCacheAccessPolicyAssignment SetAccessPolicyAssignment(string resourceGroupName, string cacheName, string accessPolicyAssignmentName, string accessPolicyName, string objectId, string objectIdAlias)
+        {
+            RedisCacheAccessPolicyAssignment parameters = new RedisCacheAccessPolicyAssignment
+            {
+                AccessPolicyName = accessPolicyName,
+                ObjectId = objectId,
+                ObjectIdAlias = objectIdAlias
+            };
+            return _client.AccessPolicyAssignment.CreateUpdate(resourceGroupName, cacheName, accessPolicyAssignmentName, parameters);
+        }
+
+        internal RedisCacheAccessPolicyAssignment GetAccessPolicyAssignment(string resourceGroupName, string cacheName, string accessPolicyAssignmentName)
+        {
+            return _client.AccessPolicyAssignment.Get(resourceGroupName, cacheName, accessPolicyAssignmentName);
+        }
+
+        internal IPage<RedisCacheAccessPolicyAssignment> ListAccessPolicyAssignments(string resourceGroupName, string cacheName)
+        {
+            return _client.AccessPolicyAssignment.List(resourceGroupName, cacheName);
+        }
+
+        internal IPage<RedisCacheAccessPolicyAssignment> ListAccessPolicyAssignments(string nextLink)
+        {
+            return _client.AccessPolicyAssignment.ListNext(nextLink);
+        }
+
+        internal void RemoveAccessPolicyAssignment(string resourceGroupName, string cacheName, string accessPolicyAssignmentName)
+        {
+            _client.AccessPolicyAssignment.Delete(resourceGroupName, cacheName, accessPolicyAssignmentName);
+        }
     }
 }
