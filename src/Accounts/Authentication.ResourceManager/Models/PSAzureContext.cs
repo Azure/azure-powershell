@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Profile.Models.Core
         /// <summary>
         /// The targeted tenant in Azure.
         /// </summary>
-        [Ps1Xml(Label = "TenantId", GroupByThis = true, Target = ViewControl.Table, ScriptBlock = "$_.Tenant.Id")]
+        [Ps1Xml(Label = "Tenant", GroupByThis = true, Target = ViewControl.Table, ScriptBlock = "if([System.String]::IsNullOrEmpty($_.Tenant.Name)){$_.Tenant.Id}else{\"$($_.Tenant.Name) ($($_.Tenant.Id))\"}")]
         public IAzureTenant Tenant { get; set; }
 
         public IAzureTokenCache TokenCache { get; set; } = null;

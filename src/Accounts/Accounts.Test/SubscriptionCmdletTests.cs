@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             TestRunner.RunTestScript("Test-PipingWithContext");
         }
 
-        [Fact(Skip = "Skip as the order of subscription changes")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureRmContextWithoutSubscription()
         {
