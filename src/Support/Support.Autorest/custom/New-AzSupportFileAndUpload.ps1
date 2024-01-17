@@ -176,20 +176,49 @@ param(
 
 process {
     Write-Output "file path: " $FilePath
+    $MaxChunkSize = 2.5 * 1024 * 1024 #2.5 MB
+    $MaxFileSize = 5 * 1024 * 1024 #5 MB
     $FileContentBytes = Get-Content -Path $FilePath -Raw
     $FileContentByteArray = [System.Text.Encoding]::UTF8.GetBytes($FileContentBytes)
-    Write-Output "Length of byte array: " $FileContentByteArray.Length
-    $FileContent = [convert]::ToBase64String($FileContentByteArray)
-    # $FileContent = [convert]::ToBase64String((Get-Content -path $FilePath -Encoding byte))
-    Write-Output "contents of file: " $FileContent
-    try{
-        New-AzSupportFile -Name $Name -WorkspaceName $WorkspaceName -FileSize $FileContentByteArray.Length -ChunkSize $FileContentByteArray.Length -NumberOfChunk 1
+    $FileSize = $FileContentByteArray.Length
+    $ChunkSize = If($FileSize -gt $MaxChunkSize) {$MaxChunkSize} Else {$FileSize}
+    Write-Output "Length of byte array: " $FileSize
+    Write-Output "Max chunk size: " $MaxChunkSize
+    Write-Output "Chunk Size: " $ChunkSize
+    $NumberOfChunks = [int][Math]::Floor($FileSize / $ChunkSize);
+    If($FileSize % $ChunkSize -gt 0) 
+    {
+        $NumberOfChunks++
     }
-    catch{
-        throw
-    }
+    Write-Output "Number of chunks: " $NumberOfChunks
+    
+    # try{
+        New-AzSupportFile -Name $Name -WorkspaceName $WorkspaceName -FileSize $FileSize -ChunkSize $ChunkSize -NumberOfChunk $NumberOfChunks
+    # }
+    # catch{
+    #     Write-Host $_
+    #     throw
+    # }
+
+    Write-Output "successfully created file"
     $chunkIndex = 0
-    Invoke-AzSupportUploadFile -FileName $Name -FileWorkspaceName $WorkspaceName -ChunkIndex $chunkIndex -Content $FileContent
+    $startIndex = 0
+    $endIndex = $ChunkSize - 1
+    
+    # $FileContent = [convert]::ToBase64String((Get-Content -path $FilePath -Encoding byte))
+    
+    while($chunkIndex -lt $NumberOfChunks){
+        Write-Output "chunk index: " + $chunkIndex
+        Write-Output "start index: " + $startIndex
+        Write-Output "end index: " + $endIndex
+        $FileContent = [convert]::ToBase64String($FileContentByteArray[$startIndex..$endIndex])
+        #Write-Output "contents of file: " $FileContent
+        Invoke-AzSupportUploadFile -FileName $Name -FileWorkspaceName $WorkspaceName -ChunkIndex $chunkIndex -Content $FileContent
+        $chunkIndex++
+        $startIndex = $endIndex + 1
+        $endIndex = $FileSize - 1
+    }
+    
 
     # try {
     #     $steppablePipeline.Process($_)
