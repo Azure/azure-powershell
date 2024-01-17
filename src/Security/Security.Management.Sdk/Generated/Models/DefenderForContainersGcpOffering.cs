@@ -42,7 +42,13 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="policyAgentAutoProvisioningFlag">Is Policy Kubernetes agent auto provisioning enabled
         /// </param>
-        public DefenderForContainersGcpOffering(string description = default(string), DefenderForContainersGcpOfferingNativeCloudConnection nativeCloudConnection = default(DefenderForContainersGcpOfferingNativeCloudConnection), DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection dataPipelineNativeCloudConnection = default(DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection), bool? auditLogsAutoProvisioningFlag = default(bool?), bool? defenderAgentAutoProvisioningFlag = default(bool?), bool? policyAgentAutoProvisioningFlag = default(bool?))
+
+        /// <param name="mdcContainersImageAssessment">The Microsoft Defender Container image assessment configuration
+        /// </param>
+
+        /// <param name="mdcContainersAgentlessDiscoveryK8S">The Microsoft Defender Container agentless discovery configuration
+        /// </param>
+        public DefenderForContainersGcpOffering(string description = default(string), DefenderForContainersGcpOfferingNativeCloudConnection nativeCloudConnection = default(DefenderForContainersGcpOfferingNativeCloudConnection), DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection dataPipelineNativeCloudConnection = default(DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection), bool? auditLogsAutoProvisioningFlag = default(bool?), bool? defenderAgentAutoProvisioningFlag = default(bool?), bool? policyAgentAutoProvisioningFlag = default(bool?), DefenderForContainersGcpOfferingMdcContainersImageAssessment mdcContainersImageAssessment = default(DefenderForContainersGcpOfferingMdcContainersImageAssessment), DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8S mdcContainersAgentlessDiscoveryK8S = default(DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8S))
 
         : base(description)
         {
@@ -51,6 +57,8 @@ namespace Microsoft.Azure.Management.Security.Models
             this.AuditLogsAutoProvisioningFlag = auditLogsAutoProvisioningFlag;
             this.DefenderAgentAutoProvisioningFlag = defenderAgentAutoProvisioningFlag;
             this.PolicyAgentAutoProvisioningFlag = policyAgentAutoProvisioningFlag;
+            this.MdcContainersImageAssessment = mdcContainersImageAssessment;
+            this.MdcContainersAgentlessDiscoveryK8S = mdcContainersAgentlessDiscoveryK8S;
             CustomInit();
         }
 
@@ -90,5 +98,19 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "policyAgentAutoProvisioningFlag")]
         public bool? PolicyAgentAutoProvisioningFlag {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Microsoft Defender Container image assessment
+        /// configuration
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "mdcContainersImageAssessment")]
+        public DefenderForContainersGcpOfferingMdcContainersImageAssessment MdcContainersImageAssessment {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Microsoft Defender Container agentless discovery
+        /// configuration
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "mdcContainersAgentlessDiscoveryK8s")]
+        public DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8S MdcContainersAgentlessDiscoveryK8S {get; set; }
     }
 }

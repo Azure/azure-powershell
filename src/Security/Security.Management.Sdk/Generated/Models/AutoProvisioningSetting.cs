@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="autoProvision">Describes what kind of security agent provisioning action to take
-        /// Possible values include: 'On', 'Off'</param>
+        /// Possible values include: &#39;On&#39;, &#39;Off&#39;</param>
         public AutoProvisioningSetting(string id = default(string), string name = default(string), string type = default(string), string autoProvision = default(string))
 
         : base(id, name, type)

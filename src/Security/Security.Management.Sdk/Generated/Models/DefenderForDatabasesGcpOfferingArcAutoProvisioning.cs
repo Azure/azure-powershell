@@ -26,10 +26,14 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="enabled">Is arc auto provisioning enabled
         /// </param>
-        public DefenderForDatabasesGcpOfferingArcAutoProvisioning(bool? enabled = default(bool?))
+
+        /// <param name="configuration">Configuration for servers Arc auto provisioning
+        /// </param>
+        public DefenderForDatabasesGcpOfferingArcAutoProvisioning(bool? enabled = default(bool?), DefenderForDatabasesGcpOfferingArcAutoProvisioningConfiguration configuration = default(DefenderForDatabasesGcpOfferingArcAutoProvisioningConfiguration))
 
         {
             this.Enabled = enabled;
+            this.Configuration = configuration;
             CustomInit();
         }
 
@@ -44,5 +48,11 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enabled")]
         public bool? Enabled {get; set; }
+
+        /// <summary>
+        /// Gets or sets configuration for servers Arc auto provisioning
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "configuration")]
+        public DefenderForDatabasesGcpOfferingArcAutoProvisioningConfiguration Configuration {get; set; }
     }
 }

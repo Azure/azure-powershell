@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.Security
     public static partial class CustomAssessmentAutomationsOperationsExtensions
     {
         /// <summary>
-        /// Gets a single custom assessment automation by name for the provided subscription and resource group.
+        /// Gets a single custom assessment automation by name for the provided
+        /// subscription and resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customAssessmentAutomationName'>
         /// Name of the Custom Assessment Automation.
@@ -30,13 +32,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Gets a single custom assessment automation by name for the provided subscription and resource group.
+        /// Gets a single custom assessment automation by name for the provided
+        /// subscription and resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customAssessmentAutomationName'>
         /// Name of the Custom Assessment Automation.
@@ -52,13 +56,16 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Creates or updates a custom assessment automation for the provided subscription. Please note that providing an existing custom assessment automation will replace the existing record.
+        /// Creates or updates a custom assessment automation for the provided
+        /// subscription. Please note that providing an existing custom assessment
+        /// automation will replace the existing record.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customAssessmentAutomationName'>
         /// Name of the Custom Assessment Automation.
@@ -69,13 +76,16 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Creates or updates a custom assessment automation for the provided subscription. Please note that providing an existing custom assessment automation will replace the existing record.
+        /// Creates or updates a custom assessment automation for the provided
+        /// subscription. Please note that providing an existing custom assessment
+        /// automation will replace the existing record.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customAssessmentAutomationName'>
         /// Name of the Custom Assessment Automation.
@@ -97,7 +107,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customAssessmentAutomationName'>
         /// Name of the Custom Assessment Automation.
@@ -114,7 +125,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customAssessmentAutomationName'>
         /// Name of the Custom Assessment Automation.
@@ -127,13 +139,15 @@ namespace Microsoft.Azure.Management.Security
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, customAssessmentAutomationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// List custom assessment automations by provided subscription and resource group
+        /// List custom assessment automations by provided subscription and resource
+        /// group
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<CustomAssessmentAutomation> ListByResourceGroup(this ICustomAssessmentAutomationsOperations operations, string resourceGroupName)
         {
@@ -141,13 +155,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// List custom assessment automations by provided subscription and resource group
+        /// List custom assessment automations by provided subscription and resource
+        /// group
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -187,7 +203,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// List custom assessment automations by provided subscription and resource group
+        /// List custom assessment automations by provided subscription and resource
+        /// group
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -201,7 +218,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// List custom assessment automations by provided subscription and resource group
+        /// List custom assessment automations by provided subscription and resource
+        /// group
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

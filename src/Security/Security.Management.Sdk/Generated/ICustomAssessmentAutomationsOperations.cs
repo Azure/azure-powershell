@@ -14,13 +14,16 @@ namespace Microsoft.Azure.Management.Security
     public partial interface ICustomAssessmentAutomationsOperations
     {
         /// <summary>
-        /// Gets a single custom assessment automation by name for the provided subscription and resource group.
+        /// Gets a single custom assessment automation by name for the provided
+        /// subscription and resource group.
         /// </summary>
         /// <remarks>
-        /// Gets a single custom assessment automation by name for the provided subscription and resource group.
+        /// Gets a single custom assessment automation by name for the provided
+        /// subscription and resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customAssessmentAutomationName'>
         /// Name of the Custom Assessment Automation.
@@ -40,13 +43,18 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CustomAssessmentAutomation>> GetWithHttpMessagesAsync(string resourceGroupName, string customAssessmentAutomationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates or updates a custom assessment automation for the provided subscription. Please note that providing an existing custom assessment automation will replace the existing record.
+        /// Creates or updates a custom assessment automation for the provided
+        /// subscription. Please note that providing an existing custom assessment
+        /// automation will replace the existing record.
         /// </summary>
         /// <remarks>
-        /// Creates or updates a custom assessment automation for the provided subscription. Please note that providing an existing custom assessment automation will replace the existing record.
+        /// Creates or updates a custom assessment automation for the provided
+        /// subscription. Please note that providing an existing custom assessment
+        /// automation will replace the existing record.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customAssessmentAutomationName'>
         /// Name of the Custom Assessment Automation.
@@ -75,7 +83,8 @@ namespace Microsoft.Azure.Management.Security
         /// Deletes a custom assessment automation by name for a provided subscription
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customAssessmentAutomationName'>
         /// Name of the Custom Assessment Automation.
@@ -92,13 +101,16 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string customAssessmentAutomationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List custom assessment automations by provided subscription and resource group
+        /// List custom assessment automations by provided subscription and resource
+        /// group
         /// </summary>
         /// <remarks>
-        /// List custom assessment automations by provided subscription and resource group
+        /// List custom assessment automations by provided subscription and resource
+        /// group
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -135,10 +147,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CustomAssessmentAutomation>>> ListBySubscriptionWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List custom assessment automations by provided subscription and resource group
+        /// List custom assessment automations by provided subscription and resource
+        /// group
         /// </summary>
         /// <remarks>
-        /// List custom assessment automations by provided subscription and resource group
+        /// List custom assessment automations by provided subscription and resource
+        /// group
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -25,17 +25,17 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
 
         /// <param name="configurationStatus">The configuration status of the machines group or machine or rule
-        /// Possible values include: 'Configured', 'NotConfigured', 'InProgress',
-        /// 'Failed', 'NoStatus'</param>
+        /// Possible values include: &#39;Configured&#39;, &#39;NotConfigured&#39;, &#39;InProgress&#39;,
+        /// &#39;Failed&#39;, &#39;NoStatus&#39;</param>
 
         /// <param name="recommendationAction">The recommendation action of the machine or rule
-        /// Possible values include: 'Recommended', 'Add', 'Remove'</param>
+        /// Possible values include: &#39;Recommended&#39;, &#39;Add&#39;, &#39;Remove&#39;</param>
 
         /// <param name="resourceId">The full resource id of the machine
         /// </param>
 
         /// <param name="enforcementSupport">The machine supportability of Enforce feature
-        /// Possible values include: 'Supported', 'NotSupported', 'Unknown'</param>
+        /// Possible values include: &#39;Supported&#39;, &#39;NotSupported&#39;, &#39;Unknown&#39;</param>
         public VmRecommendation(string configurationStatus = default(string), string recommendationAction = default(string), string resourceId = default(string), string enforcementSupport = default(string))
 
         {

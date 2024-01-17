@@ -14,10 +14,14 @@ namespace Microsoft.Azure.Management.Security
     public partial interface IAutomationsOperations
     {
         /// <summary>
-        /// Lists all the security automations in the specified subscription. Use the &#39;nextLink&#39; property in the response to get the next page of security automations for the specified subscription.
+        /// Lists all the security automations in the specified subscription. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// automations for the specified subscription.
         /// </summary>
         /// <remarks>
-        /// Lists all the security automations in the specified subscription. Use the &#39;nextLink&#39; property in the response to get the next page of security automations for the specified subscription.
+        /// Lists all the security automations in the specified subscription. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// automations for the specified subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -34,13 +38,18 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Automation>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all the security automations in the specified resource group. Use the &#39;nextLink&#39; property in the response to get the next page of security automations for the specified resource group.
+        /// Lists all the security automations in the specified resource group. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// automations for the specified resource group.
         /// </summary>
         /// <remarks>
-        /// Lists all the security automations in the specified resource group. Use the &#39;nextLink&#39; property in the response to get the next page of security automations for the specified resource group.
+        /// Lists all the security automations in the specified resource group. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// automations for the specified resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -63,7 +72,8 @@ namespace Microsoft.Azure.Management.Security
         /// Retrieves information about the model of a security automation.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='automationName'>
         /// The security automation name.
@@ -83,13 +93,18 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Automation>> GetWithHttpMessagesAsync(string resourceGroupName, string automationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates or updates a security automation. If a security automation is already created and a subsequent request is issued for the same automation id, then it will be updated.
+        /// Creates or updates a security automation. If a security automation is
+        /// already created and a subsequent request is issued for the same automation
+        /// id, then it will be updated.
         /// </summary>
         /// <remarks>
-        /// Creates or updates a security automation. If a security automation is already created and a subsequent request is issued for the same automation id, then it will be updated.
+        /// Creates or updates a security automation. If a security automation is
+        /// already created and a subsequent request is issued for the same automation
+        /// id, then it will be updated.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='automationName'>
         /// The security automation name.
@@ -118,7 +133,8 @@ namespace Microsoft.Azure.Management.Security
         /// Deletes a security automation.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='automationName'>
         /// The security automation name.
@@ -135,13 +151,16 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string automationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Validates the security automation model before create or update. Any validation errors are returned to the client.
+        /// Validates the security automation model before create or update. Any
+        /// validation errors are returned to the client.
         /// </summary>
         /// <remarks>
-        /// Validates the security automation model before create or update. Any validation errors are returned to the client.
+        /// Validates the security automation model before create or update. Any
+        /// validation errors are returned to the client.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='automationName'>
         /// The security automation name.
@@ -164,10 +183,14 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AutomationValidationStatus>> ValidateWithHttpMessagesAsync(string resourceGroupName, string automationName, Automation automation, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all the security automations in the specified subscription. Use the &#39;nextLink&#39; property in the response to get the next page of security automations for the specified subscription.
+        /// Lists all the security automations in the specified subscription. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// automations for the specified subscription.
         /// </summary>
         /// <remarks>
-        /// Lists all the security automations in the specified subscription. Use the &#39;nextLink&#39; property in the response to get the next page of security automations for the specified subscription.
+        /// Lists all the security automations in the specified subscription. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// automations for the specified subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -187,10 +210,14 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Automation>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all the security automations in the specified resource group. Use the &#39;nextLink&#39; property in the response to get the next page of security automations for the specified resource group.
+        /// Lists all the security automations in the specified resource group. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// automations for the specified resource group.
         /// </summary>
         /// <remarks>
-        /// Lists all the security automations in the specified resource group. Use the &#39;nextLink&#39; property in the response to get the next page of security automations for the specified resource group.
+        /// Lists all the security automations in the specified resource group. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// automations for the specified resource group.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -31,16 +31,16 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="propertyType">The data type of the compared operands (string, integer, floating point
         /// number or a boolean [true/false]]
-        /// Possible values include: 'String', 'Integer', 'Number', 'Boolean'</param>
+        /// Possible values include: &#39;String&#39;, &#39;Integer&#39;, &#39;Number&#39;, &#39;Boolean&#39;</param>
 
         /// <param name="expectedValue">The expected value.
         /// </param>
 
         /// <param name="operatorProperty">A valid comparer operator to use. A case-insensitive comparison will be
         /// applied for String PropertyType.
-        /// Possible values include: 'Equals', 'GreaterThan', 'GreaterThanOrEqualTo',
-        /// 'LesserThan', 'LesserThanOrEqualTo', 'NotEquals', 'Contains', 'StartsWith',
-        /// 'EndsWith'</param>
+        /// Possible values include: &#39;Equals&#39;, &#39;GreaterThan&#39;, &#39;GreaterThanOrEqualTo&#39;,
+        /// &#39;LesserThan&#39;, &#39;LesserThanOrEqualTo&#39;, &#39;NotEquals&#39;, &#39;Contains&#39;, &#39;StartsWith&#39;,
+        /// &#39;EndsWith&#39;</param>
         public AutomationTriggeringRule(string propertyJPath = default(string), string propertyType = default(string), string expectedValue = default(string), string operatorProperty = default(string))
 
         {

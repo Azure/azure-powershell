@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.Security
     public static partial class PricingsOperationsExtensions
     {
         /// <summary>
-        /// Lists Microsoft Defender for Cloud pricing configurations in the subscription.
+        /// Lists Microsoft Defender for Cloud pricing configurations in the
+        /// subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -24,7 +25,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Lists Microsoft Defender for Cloud pricing configurations in the subscription.
+        /// Lists Microsoft Defender for Cloud pricing configurations in the
+        /// subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -40,7 +42,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Gets a provided Microsoft Defender for Cloud pricing configuration in the subscription.
+        /// Gets a provided Microsoft Defender for Cloud pricing configuration in the
+        /// subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -54,7 +57,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Gets a provided Microsoft Defender for Cloud pricing configuration in the subscription.
+        /// Gets a provided Microsoft Defender for Cloud pricing configuration in the
+        /// subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -73,7 +77,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Updates a provided Microsoft Defender for Cloud pricing configuration in the subscription.
+        /// Updates a provided Microsoft Defender for Cloud pricing configuration in
+        /// the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -87,7 +92,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Updates a provided Microsoft Defender for Cloud pricing configuration in the subscription.
+        /// Updates a provided Microsoft Defender for Cloud pricing configuration in
+        /// the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

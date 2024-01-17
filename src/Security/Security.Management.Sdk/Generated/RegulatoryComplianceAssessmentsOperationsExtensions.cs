@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.Security
     public static partial class RegulatoryComplianceAssessmentsOperationsExtensions
     {
         /// <summary>
-        /// Details and state of assessments mapped to selected regulatory compliance control
+        /// Details and state of assessments mapped to selected regulatory compliance
+        /// control
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -33,7 +34,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Details and state of assessments mapped to selected regulatory compliance control
+        /// Details and state of assessments mapped to selected regulatory compliance
+        /// control
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -103,7 +105,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Details and state of assessments mapped to selected regulatory compliance control
+        /// Details and state of assessments mapped to selected regulatory compliance
+        /// control
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -117,7 +120,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Details and state of assessments mapped to selected regulatory compliance control
+        /// Details and state of assessments mapped to selected regulatory compliance
+        /// control
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

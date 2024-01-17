@@ -20,7 +20,9 @@ namespace Microsoft.Azure.Management.Security
         /// Get governance assignments on all of your resources inside a scope
         /// </remarks>
         /// <param name='scope'>
-        /// The scope of the Governance assignments. Valid scopes are: subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance assignments. Valid scopes are: subscription
+        /// (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - A unique key for the assessment type
@@ -40,19 +42,24 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<GovernanceAssignment>>> ListWithHttpMessagesAsync(string scope, string assessmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get a specific governanceAssignment for the requested scope by AssignmentKey
+        /// Get a specific governanceAssignment for the requested scope by
+        /// AssignmentKey
         /// </summary>
         /// <remarks>
-        /// Get a specific governanceAssignment for the requested scope by AssignmentKey
+        /// Get a specific governanceAssignment for the requested scope by
+        /// AssignmentKey
         /// </remarks>
         /// <param name='scope'>
-        /// The scope of the Governance assignments. Valid scopes are: subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance assignments. Valid scopes are: subscription
+        /// (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - A unique key for the assessment type
         /// </param>
         /// <param name='assignmentKey'>
-        /// The governance assignment key - the assessment key of the required governance assignment
+        /// The governance assignment key - the assessment key of the required
+        /// governance assignment
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -75,13 +82,16 @@ namespace Microsoft.Azure.Management.Security
         /// Creates or updates a governance assignment on the given subscription.
         /// </remarks>
         /// <param name='scope'>
-        /// The scope of the Governance assignments. Valid scopes are: subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance assignments. Valid scopes are: subscription
+        /// (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - A unique key for the assessment type
         /// </param>
         /// <param name='assignmentKey'>
-        /// The governance assignment key - the assessment key of the required governance assignment
+        /// The governance assignment key - the assessment key of the required
+        /// governance assignment
         /// </param>
         /// <param name='governanceAssignment'>
         /// Governance assignment over a subscription scope
@@ -107,13 +117,16 @@ namespace Microsoft.Azure.Management.Security
         /// Delete a GovernanceAssignment over a given scope
         /// </remarks>
         /// <param name='scope'>
-        /// The scope of the Governance assignments. Valid scopes are: subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance assignments. Valid scopes are: subscription
+        /// (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - A unique key for the assessment type
         /// </param>
         /// <param name='assignmentKey'>
-        /// The governance assignment key - the assessment key of the required governance assignment
+        /// The governance assignment key - the assessment key of the required
+        /// governance assignment
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

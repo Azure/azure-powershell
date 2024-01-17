@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Security.Models
     public static class ValueType
     {
         /// <summary>
-        /// An IP range in CIDR format (e.g. '192.168.0.1/8').
+        /// An IP range in CIDR format (e.g. &#39;192.168.0.1/8&#39;).
         /// </summary>
         public const string IpCidr = "IpCidr";
         /// <summary>

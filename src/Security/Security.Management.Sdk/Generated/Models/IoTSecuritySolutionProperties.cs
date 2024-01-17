@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="status">Status of the IoT Security solution.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="export">List of additional options for exporting to workspace data.
         /// </param>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="unmaskedIPLoggingStatus">Unmasked IP address logging status
-        /// Possible values include: 'Disabled', 'Enabled'</param>
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
         /// <param name="additionalWorkspaces">List of additional workspaces
         /// </param>

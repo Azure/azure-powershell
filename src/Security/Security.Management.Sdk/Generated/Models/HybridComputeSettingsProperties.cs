@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
 
         /// <param name="hybridComputeProvisioningState">State of the service principal and its secret
-        /// Possible values include: 'Valid', 'Invalid', 'Expired'</param>
+        /// Possible values include: &#39;Valid&#39;, &#39;Invalid&#39;, &#39;Expired&#39;</param>
 
         /// <param name="autoProvision">Whether or not to automatically install Azure Arc (hybrid compute) agents
         /// on machines
-        /// Possible values include: 'On', 'Off'</param>
+        /// Possible values include: &#39;On&#39;, &#39;Off&#39;</param>
 
         /// <param name="resourceGroupName">The name of the resource group where Arc (Hybrid Compute) connectors are
         /// connected.

@@ -59,10 +59,10 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="ruleType">The rule type of the governance rule, defines the source of the rule e.g.
         /// Integrated
-        /// Possible values include: 'Integrated', 'ServiceNow'</param>
+        /// Possible values include: &#39;Integrated&#39;, &#39;ServiceNow&#39;</param>
 
         /// <param name="sourceResourceType">The governance rule source, what the rule affects, e.g. Assessments
-        /// Possible values include: 'Assessments'</param>
+        /// Possible values include: &#39;Assessments&#39;</param>
 
         /// <param name="excludedScopes">Excluded scopes, filter out the descendants of the scope (on management
         /// scopes)

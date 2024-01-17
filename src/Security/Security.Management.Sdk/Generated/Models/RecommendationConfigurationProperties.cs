@@ -25,21 +25,21 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
 
         /// <param name="recommendationType">The type of IoT Security recommendation.
-        /// Possible values include: 'IoT_ACRAuthentication',
-        /// 'IoT_AgentSendsUnutilizedMessages', 'IoT_Baseline',
-        /// 'IoT_EdgeHubMemOptimize', 'IoT_EdgeLoggingOptions',
-        /// 'IoT_InconsistentModuleSettings', 'IoT_InstallAgent',
-        /// 'IoT_IPFilter_DenyAll', 'IoT_IPFilter_PermissiveRule', 'IoT_OpenPorts',
-        /// 'IoT_PermissiveFirewallPolicy', 'IoT_PermissiveInputFirewallRules',
-        /// 'IoT_PermissiveOutputFirewallRules', 'IoT_PrivilegedDockerOptions',
-        /// 'IoT_SharedCredentials', 'IoT_VulnerableTLSCipherSuite'</param>
+        /// Possible values include: &#39;IoT_ACRAuthentication&#39;,
+        /// &#39;IoT_AgentSendsUnutilizedMessages&#39;, &#39;IoT_Baseline&#39;,
+        /// &#39;IoT_EdgeHubMemOptimize&#39;, &#39;IoT_EdgeLoggingOptions&#39;,
+        /// &#39;IoT_InconsistentModuleSettings&#39;, &#39;IoT_InstallAgent&#39;,
+        /// &#39;IoT_IPFilter_DenyAll&#39;, &#39;IoT_IPFilter_PermissiveRule&#39;, &#39;IoT_OpenPorts&#39;,
+        /// &#39;IoT_PermissiveFirewallPolicy&#39;, &#39;IoT_PermissiveInputFirewallRules&#39;,
+        /// &#39;IoT_PermissiveOutputFirewallRules&#39;, &#39;IoT_PrivilegedDockerOptions&#39;,
+        /// &#39;IoT_SharedCredentials&#39;, &#39;IoT_VulnerableTLSCipherSuite&#39;</param>
 
         /// <param name="name">
         /// </param>
 
         /// <param name="status">Recommendation status. When the recommendation status is disabled
         /// recommendations are not generated.
-        /// Possible values include: 'Disabled', 'Enabled'</param>
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
         public RecommendationConfigurationProperties(string recommendationType, string status, string name = default(string))
 
         {

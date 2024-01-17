@@ -42,7 +42,9 @@ namespace Microsoft.Azure.Management.Security
         /// Get governance assignments on all of your resources inside a scope
         /// </summary>
         /// <param name='scope'>
-        /// The scope of the Governance assignments. Valid scopes are: subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance assignments. Valid scopes are: subscription
+        /// (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - A unique key for the assessment type
@@ -110,7 +112,7 @@ namespace Microsoft.Azure.Management.Security
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "{scope}/providers/Microsoft.Security/assessments/{assessmentName}/governanceAssignments").ToString();
-            _url = _url.Replace("{scope}", System.Uri.EscapeDataString(scope));
+            _url = _url.Replace("{scope}", scope);
             _url = _url.Replace("{assessmentName}", System.Uri.EscapeDataString(assessmentName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
@@ -249,16 +251,20 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Get a specific governanceAssignment for the requested scope by AssignmentKey
+        /// Get a specific governanceAssignment for the requested scope by
+        /// AssignmentKey
         /// </summary>
         /// <param name='scope'>
-        /// The scope of the Governance assignments. Valid scopes are: subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance assignments. Valid scopes are: subscription
+        /// (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - A unique key for the assessment type
         /// </param>
         /// <param name='assignmentKey'>
-        /// The governance assignment key - the assessment key of the required governance assignment
+        /// The governance assignment key - the assessment key of the required
+        /// governance assignment
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -329,7 +335,7 @@ namespace Microsoft.Azure.Management.Security
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "{scope}/providers/Microsoft.Security/assessments/{assessmentName}/governanceAssignments/{assignmentKey}").ToString();
-            _url = _url.Replace("{scope}", System.Uri.EscapeDataString(scope));
+            _url = _url.Replace("{scope}", scope);
             _url = _url.Replace("{assessmentName}", System.Uri.EscapeDataString(assessmentName));
             _url = _url.Replace("{assignmentKey}", System.Uri.EscapeDataString(assignmentKey));
 
@@ -472,13 +478,16 @@ namespace Microsoft.Azure.Management.Security
         /// Creates or updates a governance assignment on the given subscription.
         /// </summary>
         /// <param name='scope'>
-        /// The scope of the Governance assignments. Valid scopes are: subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance assignments. Valid scopes are: subscription
+        /// (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - A unique key for the assessment type
         /// </param>
         /// <param name='assignmentKey'>
-        /// The governance assignment key - the assessment key of the required governance assignment
+        /// The governance assignment key - the assessment key of the required
+        /// governance assignment
         /// </param>
         /// <param name='governanceAssignment'>
         /// Governance assignment over a subscription scope
@@ -561,7 +570,7 @@ namespace Microsoft.Azure.Management.Security
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "{scope}/providers/Microsoft.Security/assessments/{assessmentName}/governanceAssignments/{assignmentKey}").ToString();
-            _url = _url.Replace("{scope}", System.Uri.EscapeDataString(scope));
+            _url = _url.Replace("{scope}", scope);
             _url = _url.Replace("{assessmentName}", System.Uri.EscapeDataString(assessmentName));
             _url = _url.Replace("{assignmentKey}", System.Uri.EscapeDataString(assignmentKey));
 
@@ -728,13 +737,16 @@ namespace Microsoft.Azure.Management.Security
         /// Delete a GovernanceAssignment over a given scope
         /// </summary>
         /// <param name='scope'>
-        /// The scope of the Governance assignments. Valid scopes are: subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance assignments. Valid scopes are: subscription
+        /// (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - A unique key for the assessment type
         /// </param>
         /// <param name='assignmentKey'>
-        /// The governance assignment key - the assessment key of the required governance assignment
+        /// The governance assignment key - the assessment key of the required
+        /// governance assignment
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -802,7 +814,7 @@ namespace Microsoft.Azure.Management.Security
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "{scope}/providers/Microsoft.Security/assessments/{assessmentName}/governanceAssignments/{assignmentKey}").ToString();
-            _url = _url.Replace("{scope}", System.Uri.EscapeDataString(scope));
+            _url = _url.Replace("{scope}", scope);
             _url = _url.Replace("{assessmentName}", System.Uri.EscapeDataString(assessmentName));
             _url = _url.Replace("{assignmentKey}", System.Uri.EscapeDataString(assignmentKey));
 

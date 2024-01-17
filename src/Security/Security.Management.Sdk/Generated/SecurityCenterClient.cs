@@ -38,7 +38,8 @@ namespace Microsoft.Azure.Management.Security
         public string SubscriptionId { get; set;}
 
         /// <summary>
-        /// The location where ASC stores the data of the subscription. can be retrieved from Get locations
+        /// The location where ASC stores the data of the subscription. can be
+        /// retrieved from Get locations
         /// </summary>
         public string AscLocation { get; set;}
 
@@ -49,61 +50,17 @@ namespace Microsoft.Azure.Management.Security
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set;}
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set;}
 
-        /// <summary>
-        /// Gets the IMdeOnboardingsOperations
-        /// </summary>
-        public virtual IMdeOnboardingsOperations MdeOnboardings { get; private set; }
-        /// <summary>
-        /// Gets the ICustomAssessmentAutomationsOperations
-        /// </summary>
-        public virtual ICustomAssessmentAutomationsOperations CustomAssessmentAutomations { get; private set; }
-        /// <summary>
-        /// Gets the ICustomEntityStoreAssignmentsOperations
-        /// </summary>
-        public virtual ICustomEntityStoreAssignmentsOperations CustomEntityStoreAssignments { get; private set; }
-        /// <summary>
-        /// Gets the IComplianceResultsOperations
-        /// </summary>
-        public virtual IComplianceResultsOperations ComplianceResults { get; private set; }
-        /// <summary>
-        /// Gets the IPricingsOperations
-        /// </summary>
-        public virtual IPricingsOperations Pricings { get; private set; }
-        /// <summary>
-        /// Gets the IAdvancedThreatProtectionOperations
-        /// </summary>
-        public virtual IAdvancedThreatProtectionOperations AdvancedThreatProtection { get; private set; }
-        /// <summary>
-        /// Gets the IDeviceSecurityGroupsOperations
-        /// </summary>
-        public virtual IDeviceSecurityGroupsOperations DeviceSecurityGroups { get; private set; }
-        /// <summary>
-        /// Gets the IIotSecuritySolutionOperations
-        /// </summary>
-        public virtual IIotSecuritySolutionOperations IotSecuritySolution { get; private set; }
-        /// <summary>
-        /// Gets the IIotSecuritySolutionAnalyticsOperations
-        /// </summary>
-        public virtual IIotSecuritySolutionAnalyticsOperations IotSecuritySolutionAnalytics { get; private set; }
-        /// <summary>
-        /// Gets the IIotSecuritySolutionsAnalyticsAggregatedAlertOperations
-        /// </summary>
-        public virtual IIotSecuritySolutionsAnalyticsAggregatedAlertOperations IotSecuritySolutionsAnalyticsAggregatedAlert { get; private set; }
-        /// <summary>
-        /// Gets the IIotSecuritySolutionsAnalyticsRecommendationOperations
-        /// </summary>
-        public virtual IIotSecuritySolutionsAnalyticsRecommendationOperations IotSecuritySolutionsAnalyticsRecommendation { get; private set; }
         /// <summary>
         /// Gets the ILocationsOperations
         /// </summary>
@@ -129,13 +86,17 @@ namespace Microsoft.Azure.Management.Security
         /// </summary>
         public virtual IInformationProtectionPoliciesOperations InformationProtectionPolicies { get; private set; }
         /// <summary>
-        /// Gets the ISecurityContactsOperations
-        /// </summary>
-        public virtual ISecurityContactsOperations SecurityContacts { get; private set; }
-        /// <summary>
         /// Gets the IWorkspaceSettingsOperations
         /// </summary>
         public virtual IWorkspaceSettingsOperations WorkspaceSettings { get; private set; }
+        /// <summary>
+        /// Gets the IAlertsSuppressionRulesOperations
+        /// </summary>
+        public virtual IAlertsSuppressionRulesOperations AlertsSuppressionRules { get; private set; }
+        /// <summary>
+        /// Gets the IAutomationsOperations
+        /// </summary>
+        public virtual IAutomationsOperations Automations { get; private set; }
         /// <summary>
         /// Gets the IRegulatoryComplianceStandardsOperations
         /// </summary>
@@ -153,29 +114,149 @@ namespace Microsoft.Azure.Management.Security
         /// </summary>
         public virtual ISubAssessmentsOperations SubAssessments { get; private set; }
         /// <summary>
-        /// Gets the IAutomationsOperations
+        /// Gets the IConnectorsOperations
         /// </summary>
-        public virtual IAutomationsOperations Automations { get; private set; }
+        public virtual IConnectorsOperations Connectors { get; private set; }
         /// <summary>
-        /// Gets the IAlertsSuppressionRulesOperations
+        /// Gets the ISecurityContactsOperations
         /// </summary>
-        public virtual IAlertsSuppressionRulesOperations AlertsSuppressionRules { get; private set; }
+        public virtual ISecurityContactsOperations SecurityContacts { get; private set; }
         /// <summary>
-        /// Gets the IServerVulnerabilityAssessmentOperations
+        /// Gets the ISoftwareInventoriesOperations
         /// </summary>
-        public virtual IServerVulnerabilityAssessmentOperations ServerVulnerabilityAssessment { get; private set; }
+        public virtual ISoftwareInventoriesOperations SoftwareInventories { get; private set; }
         /// <summary>
-        /// Gets the IAssessmentsMetadataOperations
+        /// Gets the ICustomAssessmentAutomationsOperations
         /// </summary>
-        public virtual IAssessmentsMetadataOperations AssessmentsMetadata { get; private set; }
+        public virtual ICustomAssessmentAutomationsOperations CustomAssessmentAutomations { get; private set; }
         /// <summary>
-        /// Gets the IAssessmentsOperations
+        /// Gets the ICustomEntityStoreAssignmentsOperations
         /// </summary>
-        public virtual IAssessmentsOperations Assessments { get; private set; }
+        public virtual ICustomEntityStoreAssignmentsOperations CustomEntityStoreAssignments { get; private set; }
         /// <summary>
-        /// Gets the IAdaptiveApplicationControlsOperations
+        /// Gets the IMdeOnboardingsOperations
         /// </summary>
-        public virtual IAdaptiveApplicationControlsOperations AdaptiveApplicationControls { get; private set; }
+        public virtual IMdeOnboardingsOperations MdeOnboardings { get; private set; }
+        /// <summary>
+        /// Gets the IGovernanceAssignmentsOperations
+        /// </summary>
+        public virtual IGovernanceAssignmentsOperations GovernanceAssignments { get; private set; }
+        /// <summary>
+        /// Gets the IGovernanceRulesOperations
+        /// </summary>
+        public virtual IGovernanceRulesOperations GovernanceRules { get; private set; }
+        /// <summary>
+        /// Gets the IApplicationsOperations
+        /// </summary>
+        public virtual IApplicationsOperations Applications { get; private set; }
+        /// <summary>
+        /// Gets the IApplicationOperations
+        /// </summary>
+        public virtual IApplicationOperations Application { get; private set; }
+        /// <summary>
+        /// Gets the ISecurityConnectorApplicationsOperations
+        /// </summary>
+        public virtual ISecurityConnectorApplicationsOperations SecurityConnectorApplications { get; private set; }
+        /// <summary>
+        /// Gets the IDefenderForStorageOperations
+        /// </summary>
+        public virtual IDefenderForStorageOperations DefenderForStorage { get; private set; }
+        /// <summary>
+        /// Gets the ISecurityOperatorsOperations
+        /// </summary>
+        public virtual ISecurityOperatorsOperations SecurityOperators { get; private set; }
+        /// <summary>
+        /// Gets the ISqlVulnerabilityAssessmentBaselineRulesOperations
+        /// </summary>
+        public virtual ISqlVulnerabilityAssessmentBaselineRulesOperations SqlVulnerabilityAssessmentBaselineRules { get; private set; }
+        /// <summary>
+        /// Gets the ISqlVulnerabilityAssessmentScansOperations
+        /// </summary>
+        public virtual ISqlVulnerabilityAssessmentScansOperations SqlVulnerabilityAssessmentScans { get; private set; }
+        /// <summary>
+        /// Gets the ISqlVulnerabilityAssessmentScanResultsOperations
+        /// </summary>
+        public virtual ISqlVulnerabilityAssessmentScanResultsOperations SqlVulnerabilityAssessmentScanResults { get; private set; }
+        /// <summary>
+        /// Gets the ISensitivitySettingsOperations
+        /// </summary>
+        public virtual ISensitivitySettingsOperations SensitivitySettings { get; private set; }
+        /// <summary>
+        /// Gets the IHealthReportsOperations
+        /// </summary>
+        public virtual IHealthReportsOperations HealthReports { get; private set; }
+        /// <summary>
+        /// Gets the IAzureDevOpsOrgsOperations
+        /// </summary>
+        public virtual IAzureDevOpsOrgsOperations AzureDevOpsOrgs { get; private set; }
+        /// <summary>
+        /// Gets the IAzureDevOpsProjectsOperations
+        /// </summary>
+        public virtual IAzureDevOpsProjectsOperations AzureDevOpsProjects { get; private set; }
+        /// <summary>
+        /// Gets the IAzureDevOpsReposOperations
+        /// </summary>
+        public virtual IAzureDevOpsReposOperations AzureDevOpsRepos { get; private set; }
+        /// <summary>
+        /// Gets the IDevOpsConfigurationsOperations
+        /// </summary>
+        public virtual IDevOpsConfigurationsOperations DevOpsConfigurations { get; private set; }
+        /// <summary>
+        /// Gets the IGitHubOwnersOperations
+        /// </summary>
+        public virtual IGitHubOwnersOperations GitHubOwners { get; private set; }
+        /// <summary>
+        /// Gets the IGitHubReposOperations
+        /// </summary>
+        public virtual IGitHubReposOperations GitHubRepos { get; private set; }
+        /// <summary>
+        /// Gets the IGitLabGroupsOperations
+        /// </summary>
+        public virtual IGitLabGroupsOperations GitLabGroups { get; private set; }
+        /// <summary>
+        /// Gets the IGitLabSubgroupsOperations
+        /// </summary>
+        public virtual IGitLabSubgroupsOperations GitLabSubgroups { get; private set; }
+        /// <summary>
+        /// Gets the IGitLabProjectsOperations
+        /// </summary>
+        public virtual IGitLabProjectsOperations GitLabProjects { get; private set; }
+        /// <summary>
+        /// Gets the IDevOpsOperationResultsOperations
+        /// </summary>
+        public virtual IDevOpsOperationResultsOperations DevOpsOperationResults { get; private set; }
+        /// <summary>
+        /// Gets the ISecurityConnectorsOperations
+        /// </summary>
+        public virtual ISecurityConnectorsOperations SecurityConnectors { get; private set; }
+        /// <summary>
+        /// Gets the IComplianceResultsOperations
+        /// </summary>
+        public virtual IComplianceResultsOperations ComplianceResults { get; private set; }
+        /// <summary>
+        /// Gets the IAdvancedThreatProtectionOperations
+        /// </summary>
+        public virtual IAdvancedThreatProtectionOperations AdvancedThreatProtection { get; private set; }
+        /// <summary>
+        /// Gets the IDeviceSecurityGroupsOperations
+        /// </summary>
+        public virtual IDeviceSecurityGroupsOperations DeviceSecurityGroups { get; private set; }
+        /// <summary>
+        /// Gets the IIotSecuritySolutionAnalyticsOperations
+        /// </summary>
+        public virtual IIotSecuritySolutionAnalyticsOperations IotSecuritySolutionAnalytics { get; private set; }
+        /// <summary>
+        /// Gets the IIotSecuritySolutionsAnalyticsAggregatedAlertOperations
+        /// </summary>
+        public virtual IIotSecuritySolutionsAnalyticsAggregatedAlertOperations IotSecuritySolutionsAnalyticsAggregatedAlert { get; private set; }
+        /// <summary>
+        /// Gets the IIotSecuritySolutionsAnalyticsRecommendationOperations
+        /// </summary>
+        public virtual IIotSecuritySolutionsAnalyticsRecommendationOperations IotSecuritySolutionsAnalyticsRecommendation { get; private set; }
+        /// <summary>
+        /// Gets the IIotSecuritySolutionOperations
+        /// </summary>
+        public virtual IIotSecuritySolutionOperations IotSecuritySolution { get; private set; }
         /// <summary>
         /// Gets the IAdaptiveNetworkHardeningsOperations
         /// </summary>
@@ -185,25 +266,21 @@ namespace Microsoft.Azure.Management.Security
         /// </summary>
         public virtual IAllowedConnectionsOperations AllowedConnections { get; private set; }
         /// <summary>
-        /// Gets the ITopologyOperations
+        /// Gets the IAdaptiveApplicationControlsOperations
         /// </summary>
-        public virtual ITopologyOperations Topology { get; private set; }
-        /// <summary>
-        /// Gets the IJitNetworkAccessPoliciesOperations
-        /// </summary>
-        public virtual IJitNetworkAccessPoliciesOperations JitNetworkAccessPolicies { get; private set; }
+        public virtual IAdaptiveApplicationControlsOperations AdaptiveApplicationControls { get; private set; }
         /// <summary>
         /// Gets the IDiscoveredSecuritySolutionsOperations
         /// </summary>
         public virtual IDiscoveredSecuritySolutionsOperations DiscoveredSecuritySolutions { get; private set; }
         /// <summary>
-        /// Gets the ISecuritySolutionsReferenceDataOperations
-        /// </summary>
-        public virtual ISecuritySolutionsReferenceDataOperations SecuritySolutionsReferenceData { get; private set; }
-        /// <summary>
         /// Gets the IExternalSecuritySolutionsOperations
         /// </summary>
         public virtual IExternalSecuritySolutionsOperations ExternalSecuritySolutions { get; private set; }
+        /// <summary>
+        /// Gets the IJitNetworkAccessPoliciesOperations
+        /// </summary>
+        public virtual IJitNetworkAccessPoliciesOperations JitNetworkAccessPolicies { get; private set; }
         /// <summary>
         /// Gets the ISecureScoresOperations
         /// </summary>
@@ -221,21 +298,25 @@ namespace Microsoft.Azure.Management.Security
         /// </summary>
         public virtual ISecuritySolutionsOperations SecuritySolutions { get; private set; }
         /// <summary>
-        /// Gets the IConnectorsOperations
+        /// Gets the ISecuritySolutionsReferenceDataOperations
         /// </summary>
-        public virtual IConnectorsOperations Connectors { get; private set; }
+        public virtual ISecuritySolutionsReferenceDataOperations SecuritySolutionsReferenceData { get; private set; }
         /// <summary>
-        /// Gets the ISqlVulnerabilityAssessmentScansOperations
+        /// Gets the IServerVulnerabilityAssessmentOperations
         /// </summary>
-        public virtual ISqlVulnerabilityAssessmentScansOperations SqlVulnerabilityAssessmentScans { get; private set; }
+        public virtual IServerVulnerabilityAssessmentOperations ServerVulnerabilityAssessment { get; private set; }
         /// <summary>
-        /// Gets the ISqlVulnerabilityAssessmentScanResultsOperations
+        /// Gets the ITopologyOperations
         /// </summary>
-        public virtual ISqlVulnerabilityAssessmentScanResultsOperations SqlVulnerabilityAssessmentScanResults { get; private set; }
+        public virtual ITopologyOperations Topology { get; private set; }
         /// <summary>
-        /// Gets the ISqlVulnerabilityAssessmentBaselineRulesOperations
+        /// Gets the IAssessmentsMetadataOperations
         /// </summary>
-        public virtual ISqlVulnerabilityAssessmentBaselineRulesOperations SqlVulnerabilityAssessmentBaselineRules { get; private set; }
+        public virtual IAssessmentsMetadataOperations AssessmentsMetadata { get; private set; }
+        /// <summary>
+        /// Gets the IAssessmentsOperations
+        /// </summary>
+        public virtual IAssessmentsOperations Assessments { get; private set; }
         /// <summary>
         /// Gets the IAlertsOperations
         /// </summary>
@@ -245,41 +326,17 @@ namespace Microsoft.Azure.Management.Security
         /// </summary>
         public virtual ISettingsOperations Settings { get; private set; }
         /// <summary>
-        /// Gets the IIngestionSettingsOperations
+        /// Gets the IPricingsOperations
         /// </summary>
-        public virtual IIngestionSettingsOperations IngestionSettings { get; private set; }
+        public virtual IPricingsOperations Pricings { get; private set; }
         /// <summary>
-        /// Gets the ISoftwareInventoriesOperations
+        /// Gets the IServerVulnerabilityAssessmentsSettingsOperations
         /// </summary>
-        public virtual ISoftwareInventoriesOperations SoftwareInventories { get; private set; }
+        public virtual IServerVulnerabilityAssessmentsSettingsOperations ServerVulnerabilityAssessmentsSettings { get; private set; }
         /// <summary>
-        /// Gets the ISecurityConnectorsOperations
+        /// Gets the IApiCollectionsOperations
         /// </summary>
-        public virtual ISecurityConnectorsOperations SecurityConnectors { get; private set; }
-        /// <summary>
-        /// Gets the IGovernanceRulesOperations
-        /// </summary>
-        public virtual IGovernanceRulesOperations GovernanceRules { get; private set; }
-        /// <summary>
-        /// Gets the IGovernanceAssignmentsOperations
-        /// </summary>
-        public virtual IGovernanceAssignmentsOperations GovernanceAssignments { get; private set; }
-        /// <summary>
-        /// Gets the IApplicationsOperations
-        /// </summary>
-        public virtual IApplicationsOperations Applications { get; private set; }
-        /// <summary>
-        /// Gets the IApplicationOperations
-        /// </summary>
-        public virtual IApplicationOperations Application { get; private set; }
-        /// <summary>
-        /// Gets the ISecurityConnectorApplicationsOperations
-        /// </summary>
-        public virtual ISecurityConnectorApplicationsOperations SecurityConnectorApplications { get; private set; }
-        /// <summary>
-        /// Gets the ISecurityConnectorApplicationOperations
-        /// </summary>
-        public virtual ISecurityConnectorApplicationOperations SecurityConnectorApplication { get; private set; }
+        public virtual IApiCollectionsOperations ApiCollections { get; private set; }
         /// <summary>
         /// Initializes a new instance of the SecurityCenterClient class.
         /// </summary>
@@ -515,61 +572,75 @@ namespace Microsoft.Azure.Management.Security
         /// </summary>
         private void Initialize()
         {
-            this.MdeOnboardings = new MdeOnboardingsOperations(this);
-            this.CustomAssessmentAutomations = new CustomAssessmentAutomationsOperations(this);
-            this.CustomEntityStoreAssignments = new CustomEntityStoreAssignmentsOperations(this);
-            this.ComplianceResults = new ComplianceResultsOperations(this);
-            this.Pricings = new PricingsOperations(this);
-            this.AdvancedThreatProtection = new AdvancedThreatProtectionOperations(this);
-            this.DeviceSecurityGroups = new DeviceSecurityGroupsOperations(this);
-            this.IotSecuritySolution = new IotSecuritySolutionOperations(this);
-            this.IotSecuritySolutionAnalytics = new IotSecuritySolutionAnalyticsOperations(this);
-            this.IotSecuritySolutionsAnalyticsAggregatedAlert = new IotSecuritySolutionsAnalyticsAggregatedAlertOperations(this);
-            this.IotSecuritySolutionsAnalyticsRecommendation = new IotSecuritySolutionsAnalyticsRecommendationOperations(this);
             this.Locations = new LocationsOperations(this);
             this.Operations = new Operations(this);
             this.Tasks = new TasksOperations(this);
             this.AutoProvisioningSettings = new AutoProvisioningSettingsOperations(this);
             this.Compliances = new CompliancesOperations(this);
             this.InformationProtectionPolicies = new InformationProtectionPoliciesOperations(this);
-            this.SecurityContacts = new SecurityContactsOperations(this);
             this.WorkspaceSettings = new WorkspaceSettingsOperations(this);
+            this.AlertsSuppressionRules = new AlertsSuppressionRulesOperations(this);
+            this.Automations = new AutomationsOperations(this);
             this.RegulatoryComplianceStandards = new RegulatoryComplianceStandardsOperations(this);
             this.RegulatoryComplianceControls = new RegulatoryComplianceControlsOperations(this);
             this.RegulatoryComplianceAssessments = new RegulatoryComplianceAssessmentsOperations(this);
             this.SubAssessments = new SubAssessmentsOperations(this);
-            this.Automations = new AutomationsOperations(this);
-            this.AlertsSuppressionRules = new AlertsSuppressionRulesOperations(this);
-            this.ServerVulnerabilityAssessment = new ServerVulnerabilityAssessmentOperations(this);
-            this.AssessmentsMetadata = new AssessmentsMetadataOperations(this);
-            this.Assessments = new AssessmentsOperations(this);
-            this.AdaptiveApplicationControls = new AdaptiveApplicationControlsOperations(this);
+            this.Connectors = new ConnectorsOperations(this);
+            this.SecurityContacts = new SecurityContactsOperations(this);
+            this.SoftwareInventories = new SoftwareInventoriesOperations(this);
+            this.CustomAssessmentAutomations = new CustomAssessmentAutomationsOperations(this);
+            this.CustomEntityStoreAssignments = new CustomEntityStoreAssignmentsOperations(this);
+            this.MdeOnboardings = new MdeOnboardingsOperations(this);
+            this.GovernanceAssignments = new GovernanceAssignmentsOperations(this);
+            this.GovernanceRules = new GovernanceRulesOperations(this);
+            this.Applications = new ApplicationsOperations(this);
+            this.Application = new ApplicationOperations(this);
+            this.SecurityConnectorApplications = new SecurityConnectorApplicationsOperations(this);
+            this.DefenderForStorage = new DefenderForStorageOperations(this);
+            this.SecurityOperators = new SecurityOperatorsOperations(this);
+            this.SqlVulnerabilityAssessmentBaselineRules = new SqlVulnerabilityAssessmentBaselineRulesOperations(this);
+            this.SqlVulnerabilityAssessmentScans = new SqlVulnerabilityAssessmentScansOperations(this);
+            this.SqlVulnerabilityAssessmentScanResults = new SqlVulnerabilityAssessmentScanResultsOperations(this);
+            this.SensitivitySettings = new SensitivitySettingsOperations(this);
+            this.HealthReports = new HealthReportsOperations(this);
+            this.AzureDevOpsOrgs = new AzureDevOpsOrgsOperations(this);
+            this.AzureDevOpsProjects = new AzureDevOpsProjectsOperations(this);
+            this.AzureDevOpsRepos = new AzureDevOpsReposOperations(this);
+            this.DevOpsConfigurations = new DevOpsConfigurationsOperations(this);
+            this.GitHubOwners = new GitHubOwnersOperations(this);
+            this.GitHubRepos = new GitHubReposOperations(this);
+            this.GitLabGroups = new GitLabGroupsOperations(this);
+            this.GitLabSubgroups = new GitLabSubgroupsOperations(this);
+            this.GitLabProjects = new GitLabProjectsOperations(this);
+            this.DevOpsOperationResults = new DevOpsOperationResultsOperations(this);
+            this.SecurityConnectors = new SecurityConnectorsOperations(this);
+            this.ComplianceResults = new ComplianceResultsOperations(this);
+            this.AdvancedThreatProtection = new AdvancedThreatProtectionOperations(this);
+            this.DeviceSecurityGroups = new DeviceSecurityGroupsOperations(this);
+            this.IotSecuritySolutionAnalytics = new IotSecuritySolutionAnalyticsOperations(this);
+            this.IotSecuritySolutionsAnalyticsAggregatedAlert = new IotSecuritySolutionsAnalyticsAggregatedAlertOperations(this);
+            this.IotSecuritySolutionsAnalyticsRecommendation = new IotSecuritySolutionsAnalyticsRecommendationOperations(this);
+            this.IotSecuritySolution = new IotSecuritySolutionOperations(this);
             this.AdaptiveNetworkHardenings = new AdaptiveNetworkHardeningsOperations(this);
             this.AllowedConnections = new AllowedConnectionsOperations(this);
-            this.Topology = new TopologyOperations(this);
-            this.JitNetworkAccessPolicies = new JitNetworkAccessPoliciesOperations(this);
+            this.AdaptiveApplicationControls = new AdaptiveApplicationControlsOperations(this);
             this.DiscoveredSecuritySolutions = new DiscoveredSecuritySolutionsOperations(this);
-            this.SecuritySolutionsReferenceData = new SecuritySolutionsReferenceDataOperations(this);
             this.ExternalSecuritySolutions = new ExternalSecuritySolutionsOperations(this);
+            this.JitNetworkAccessPolicies = new JitNetworkAccessPoliciesOperations(this);
             this.SecureScores = new SecureScoresOperations(this);
             this.SecureScoreControls = new SecureScoreControlsOperations(this);
             this.SecureScoreControlDefinitions = new SecureScoreControlDefinitionsOperations(this);
             this.SecuritySolutions = new SecuritySolutionsOperations(this);
-            this.Connectors = new ConnectorsOperations(this);
-            this.SqlVulnerabilityAssessmentScans = new SqlVulnerabilityAssessmentScansOperations(this);
-            this.SqlVulnerabilityAssessmentScanResults = new SqlVulnerabilityAssessmentScanResultsOperations(this);
-            this.SqlVulnerabilityAssessmentBaselineRules = new SqlVulnerabilityAssessmentBaselineRulesOperations(this);
+            this.SecuritySolutionsReferenceData = new SecuritySolutionsReferenceDataOperations(this);
+            this.ServerVulnerabilityAssessment = new ServerVulnerabilityAssessmentOperations(this);
+            this.Topology = new TopologyOperations(this);
+            this.AssessmentsMetadata = new AssessmentsMetadataOperations(this);
+            this.Assessments = new AssessmentsOperations(this);
             this.Alerts = new AlertsOperations(this);
             this.Settings = new SettingsOperations(this);
-            this.IngestionSettings = new IngestionSettingsOperations(this);
-            this.SoftwareInventories = new SoftwareInventoriesOperations(this);
-            this.SecurityConnectors = new SecurityConnectorsOperations(this);
-            this.GovernanceRules = new GovernanceRulesOperations(this);
-            this.GovernanceAssignments = new GovernanceAssignmentsOperations(this);
-            this.Applications = new ApplicationsOperations(this);
-            this.Application = new ApplicationOperations(this);
-            this.SecurityConnectorApplications = new SecurityConnectorApplicationsOperations(this);
-            this.SecurityConnectorApplication = new SecurityConnectorApplicationOperations(this);
+            this.Pricings = new PricingsOperations(this);
+            this.ServerVulnerabilityAssessmentsSettings = new ServerVulnerabilityAssessmentsSettingsOperations(this);
+            this.ApiCollections = new ApiCollectionsOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
@@ -600,6 +671,18 @@ namespace Microsoft.Azure.Management.Security
                         new Microsoft.Rest.Serialization.Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<AutomationAction>("actionType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<AutomationAction>("actionType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ResourceDetails>("source"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ResourceDetails>("source"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<AdditionalData>("assessedResourceType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<AdditionalData>("assessedResourceType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<AuthenticationDetailsProperties>("authenticationType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<AuthenticationDetailsProperties>("authenticationType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<CloudOffering>("offeringType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<CloudOffering>("offeringType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<EnvironmentData>("environmentType"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<EnvironmentData>("environmentType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ThresholdCustomAlertRule>("ruleType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ThresholdCustomAlertRule>("ruleType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<CustomAlertRule>("ruleType"));
@@ -610,24 +693,16 @@ namespace Microsoft.Azure.Management.Security
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<AllowlistCustomAlertRule>("ruleType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ListCustomAlertRule>("ruleType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ListCustomAlertRule>("ruleType"));
-            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ResourceDetails>("source"));
-            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ResourceDetails>("source"));
-            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<AdditionalData>("assessedResourceType"));
-            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<AdditionalData>("assessedResourceType"));
-            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<AutomationAction>("actionType"));
-            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<AutomationAction>("actionType"));
-            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<AuthenticationDetailsProperties>("authenticationType"));
-            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<AuthenticationDetailsProperties>("authenticationType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ExternalSecuritySolution>("kind"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ExternalSecuritySolution>("kind"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ResourceIdentifier>("type"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ResourceIdentifier>("type"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<AlertSimulatorRequestProperties>("kind"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<AlertSimulatorRequestProperties>("kind"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<Setting>("kind"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<Setting>("kind"));
-            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<CloudOffering>("offeringType"));
-            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<CloudOffering>("offeringType"));
-            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<EnvironmentData>("environmentType"));
-            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<EnvironmentData>("environmentType"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<ServerVulnerabilityAssessmentsSetting>("kind"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<ServerVulnerabilityAssessmentsSetting>("kind"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<AwsOrganizationalData>("organizationMembershipType"));
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<AwsOrganizationalData>("organizationMembershipType"));
             SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<GcpOrganizationalData>("organizationMembershipType"));
@@ -637,6 +712,392 @@ namespace Microsoft.Azure.Management.Security
             CustomInitialize();
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Azure.CloudErrorJsonConverter());
+        }
+        /// <summary>
+        /// Updates data sensitivity settings for sensitive data discovery
+        /// </summary>
+        /// <param name='sensitivitySettings'>
+        /// The data sensitivity settings to update
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GetSensitivitySettingsResponse>> UpdateSensitivitySettingsWithHttpMessagesAsync(UpdateSensitivitySettingsRequest sensitivitySettings, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+ 
+            if (sensitivitySettings == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "sensitivitySettings");
+            }
+            if (sensitivitySettings != null)
+            {
+                sensitivitySettings.Validate();
+            }
+            string apiVersion = "2023-02-15-preview";
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
+
+                tracingParameters.Add("sensitivitySettings", sensitivitySettings);
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "UpdateSensitivitySettings", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Security/sensitivitySettings/current").ToString();
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("PUT");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.GenerateClientRequestId != null && this.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            if(sensitivitySettings != null)
+            {
+                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(sensitivitySettings, this.SerializationSettings);
+                _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            }
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200)
+            {
+                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<GetSensitivitySettingsResponse>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<GetSensitivitySettingsResponse>(_responseContent, this.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
+        }
+        /// <summary>
+        /// Gets data sensitivity settings for sensitive data discovery
+        /// </summary>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <return>
+        /// A response object containing the response body and response headers.
+        /// </return>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<GetSensitivitySettingsResponse>> GetSensitivitySettingsWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+
+
+ 
+            string apiVersion = "2023-02-15-preview";
+            // Tracing
+            bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
+            string _invocationId = null;
+            if (_shouldTrace)
+            {
+                _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
+                System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
+
+
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "GetSensitivitySettings", tracingParameters);
+            }
+            // Construct URL
+
+            var _baseUrl = this.BaseUri.AbsoluteUri;
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "providers/Microsoft.Security/sensitivitySettings/current").ToString();
+
+            System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
+            if (apiVersion != null)
+            {
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
+            }
+            if (_queryParameters.Count > 0)
+            {
+                _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
+            }
+            // Create HTTP transport objects
+            var _httpRequest = new System.Net.Http.HttpRequestMessage();
+            System.Net.Http.HttpResponseMessage _httpResponse = null;
+            _httpRequest.Method = new System.Net.Http.HttpMethod("GET");
+            _httpRequest.RequestUri = new System.Uri(_url);
+            // Set Headers
+            if (this.GenerateClientRequestId != null && this.GenerateClientRequestId.Value)
+            {
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", System.Guid.NewGuid().ToString());
+            }
+            if (this.AcceptLanguage != null)
+            {
+                if (_httpRequest.Headers.Contains("accept-language"))
+                {
+                    _httpRequest.Headers.Remove("accept-language");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.AcceptLanguage);
+            }
+
+            if (customHeaders != null)
+            {
+                foreach(var _header in customHeaders)
+                {
+                    if (_httpRequest.Headers.Contains(_header.Key))
+                    {
+                        _httpRequest.Headers.Remove(_header.Key);
+                    }
+                    _httpRequest.Headers.TryAddWithoutValidation(_header.Key, _header.Value);
+                }
+            }
+            // Serialize Request
+            string _requestContent = null;
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            _httpResponse = await this.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
+            }
+
+            System.Net.HttpStatusCode _statusCode = _httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            string _responseContent = null;
+
+            if ((int)_statusCode != 200)
+            {
+                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                try
+                {
+                    _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.DeserializationSettings);
+                    if (_errorBody != null)
+                    {
+                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
+                        ex.Body = _errorBody;
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException)
+                {
+                    // Ignore the exception
+                }
+                ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
+                ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
+                if (_httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                if (_shouldTrace)
+                {
+                    Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
+                }
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw ex;
+            }
+            // Create Result
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<GetSensitivitySettingsResponse>();
+            _result.Request = _httpRequest;
+            _result.Response = _httpResponse;
+            
+            if (_httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<GetSensitivitySettingsResponse>(_responseContent, this.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            if (_shouldTrace)
+            {
+                Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
+            }
+            return _result;
+
+
+
+
+
         }
     }
 }

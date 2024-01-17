@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
 
         /// <param name="issue">An alert that machines within a group can have
-        /// Possible values include: 'ViolationsAudited', 'ViolationsBlocked',
-        /// 'MsiAndScriptViolationsAudited', 'MsiAndScriptViolationsBlocked',
-        /// 'ExecutableViolationsAudited', 'RulesViolatedManually'</param>
+        /// Possible values include: &#39;ViolationsAudited&#39;, &#39;ViolationsBlocked&#39;,
+        /// &#39;MsiAndScriptViolationsAudited&#39;, &#39;MsiAndScriptViolationsBlocked&#39;,
+        /// &#39;ExecutableViolationsAudited&#39;, &#39;RulesViolatedManually&#39;</param>
 
         /// <param name="numberOfVms">The number of machines in the group that have this alert
         /// </param>

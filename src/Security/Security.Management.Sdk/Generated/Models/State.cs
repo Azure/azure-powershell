@@ -14,15 +14,18 @@ namespace Microsoft.Azure.Management.Security.Models
     public static class State
     {
         /// <summary>
-        /// All supported regulatory compliance controls in the given standard have a passed state
+        /// All supported regulatory compliance controls in the given standard have a
+        /// passed state
         /// </summary>
         public const string Passed = "Passed";
         /// <summary>
-        /// At least one supported regulatory compliance control in the given standard has a state of failed
+        /// At least one supported regulatory compliance control in the given standard
+        /// has a state of failed
         /// </summary>
         public const string Failed = "Failed";
         /// <summary>
-        /// All supported regulatory compliance controls in the given standard have a state of skipped
+        /// All supported regulatory compliance controls in the given standard have a
+        /// state of skipped
         /// </summary>
         public const string Skipped = "Skipped";
         /// <summary>

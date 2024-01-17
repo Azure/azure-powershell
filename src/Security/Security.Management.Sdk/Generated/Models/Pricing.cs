@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <param name="pricingTier">The pricing tier value. Microsoft Defender for Cloud is provided in two
         /// pricing tiers: free and standard. The standard tier offers advanced
         /// security capabilities, while the free tier offers basic security features.
-        /// Possible values include: 'Free', 'Standard'</param>
+        /// Possible values include: &#39;Free&#39;, &#39;Standard&#39;</param>
 
         /// <param name="subPlan">The sub-plan selected for a Standard pricing configuration, when more than
         /// one sub-plan is available. Each sub-plan enables a set of security

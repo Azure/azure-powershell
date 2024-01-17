@@ -31,14 +31,14 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="expirationDateUtc">Expiration date of the rule, if value is not provided or provided as null
-        /// this field will default to the maximum allowed expiration date.
+        /// there will no expiration at all
         /// </param>
 
         /// <param name="reason">The reason for dismissing the alert
         /// </param>
 
         /// <param name="state">Possible states of the rule
-        /// Possible values include: 'Enabled', 'Disabled', 'Expired'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;Expired&#39;</param>
 
         /// <param name="comment">Any comment regarding the rule
         /// </param>
@@ -79,8 +79,7 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <summary>
         /// Gets or sets expiration date of the rule, if value is not provided or
-        /// provided as null this field will default to the maximum allowed expiration
-        /// date.
+        /// provided as null there will no expiration at all
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "expirationDateUtc")]
         public System.DateTime? ExpirationDateUtc {get; set; }

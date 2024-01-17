@@ -14,13 +14,17 @@ namespace Microsoft.Azure.Management.Security
     public partial interface ISubAssessmentsOperations
     {
         /// <summary>
-        /// Get security sub-assessments on all your scanned resources inside a subscription scope
+        /// Get security sub-assessments on all your scanned resources inside a
+        /// subscription scope
         /// </summary>
         /// <remarks>
-        /// Get security sub-assessments on all your scanned resources inside a subscription scope
+        /// Get security sub-assessments on all your scanned resources inside a
+        /// subscription scope
         /// </remarks>
         /// <param name='scope'>
-        /// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+        /// (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,7 +47,9 @@ namespace Microsoft.Azure.Management.Security
         /// Get security sub-assessments on all your scanned resources inside a scope
         /// </remarks>
         /// <param name='scope'>
-        /// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+        /// (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - Unique key for the assessment type
@@ -69,7 +75,9 @@ namespace Microsoft.Azure.Management.Security
         /// Get a security sub-assessment on your scanned resource
         /// </remarks>
         /// <param name='scope'>
-        /// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+        /// (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - Unique key for the assessment type
@@ -92,10 +100,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SecuritySubAssessment>> GetWithHttpMessagesAsync(string scope, string assessmentName, string subAssessmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get security sub-assessments on all your scanned resources inside a subscription scope
+        /// Get security sub-assessments on all your scanned resources inside a
+        /// subscription scope
         /// </summary>
         /// <remarks>
-        /// Get security sub-assessments on all your scanned resources inside a subscription scope
+        /// Get security sub-assessments on all your scanned resources inside a
+        /// subscription scope
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

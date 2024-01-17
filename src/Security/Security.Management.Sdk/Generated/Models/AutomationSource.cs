@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
 
         /// <param name="eventSource">A valid event source type.
-        /// Possible values include: 'Assessments', 'AssessmentsSnapshot',
-        /// 'SubAssessments', 'SubAssessmentsSnapshot', 'Alerts', 'SecureScores',
-        /// 'SecureScoresSnapshot', 'SecureScoreControls',
-        /// 'SecureScoreControlsSnapshot', 'RegulatoryComplianceAssessment',
-        /// 'RegulatoryComplianceAssessmentSnapshot'</param>
+        /// Possible values include: &#39;Assessments&#39;, &#39;AssessmentsSnapshot&#39;,
+        /// &#39;SubAssessments&#39;, &#39;SubAssessmentsSnapshot&#39;, &#39;Alerts&#39;, &#39;SecureScores&#39;,
+        /// &#39;SecureScoresSnapshot&#39;, &#39;SecureScoreControls&#39;,
+        /// &#39;SecureScoreControlsSnapshot&#39;, &#39;RegulatoryComplianceAssessment&#39;,
+        /// &#39;RegulatoryComplianceAssessmentSnapshot&#39;</param>
 
         /// <param name="ruleSets">A set of rules which evaluate upon event interception. A logical
         /// disjunction is applied between defined rule sets (logical &#39;or&#39;).

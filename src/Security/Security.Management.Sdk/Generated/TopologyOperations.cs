@@ -235,7 +235,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Gets a list that allows to build a topology view of a subscription and location.
+        /// Gets a list that allows to build a topology view of a subscription and
+        /// location.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -440,7 +441,8 @@ namespace Microsoft.Azure.Management.Security
         /// Gets a specific topology component.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='topologyResourceName'>
         /// Name of a topology resources collection.
@@ -855,7 +857,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Gets a list that allows to build a topology view of a subscription and location.
+        /// Gets a list that allows to build a topology view of a subscription and
+        /// location.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -236,7 +236,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Creates or updates the Advanced Threat Protection settings on a specified resource.
+        /// Creates or updates the Advanced Threat Protection settings on a specified
+        /// resource.
         /// </summary>
         /// <param name='resourceId'>
         /// The identifier of the resource.

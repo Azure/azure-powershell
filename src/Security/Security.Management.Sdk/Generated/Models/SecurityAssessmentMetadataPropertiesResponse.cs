@@ -42,13 +42,13 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="severity">The severity level of the assessment
-        /// Possible values include: 'Low', 'Medium', 'High'</param>
+        /// Possible values include: &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
 
         /// <param name="userImpact">The user impact of the assessment
-        /// Possible values include: 'Low', 'Moderate', 'High'</param>
+        /// Possible values include: &#39;Low&#39;, &#39;Moderate&#39;, &#39;High&#39;</param>
 
         /// <param name="implementationEffort">The implementation effort required to remediate this assessment
-        /// Possible values include: 'Low', 'Moderate', 'High'</param>
+        /// Possible values include: &#39;Low&#39;, &#39;Moderate&#39;, &#39;High&#39;</param>
 
         /// <param name="threats">
         /// </param>
@@ -58,8 +58,8 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="assessmentType">BuiltIn if the assessment based on built-in Azure Policy definition, Custom
         /// if the assessment based on custom Azure Policy definition
-        /// Possible values include: 'BuiltIn', 'CustomPolicy', 'CustomerManaged',
-        /// 'VerifiedPartner'</param>
+        /// Possible values include: &#39;BuiltIn&#39;, &#39;CustomPolicy&#39;, &#39;CustomerManaged&#39;,
+        /// &#39;VerifiedPartner&#39;</param>
 
         /// <param name="partnerData">Describes the partner that created the assessment
         /// </param>

@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="operatorProperty">The application Condition&#39;s Operator, for example Contains for id or In for
         /// list of possible IDs, see examples
-        /// Possible values include: 'Contains', 'Equals', 'In'</param>
+        /// Possible values include: &#39;Contains&#39;, &#39;Equals&#39;, &#39;In&#39;</param>
         public ApplicationCondition(string property = default(string), string value = default(string), string operatorProperty = default(string))
 
         {

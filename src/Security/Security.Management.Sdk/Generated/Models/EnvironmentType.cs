@@ -17,5 +17,6 @@ namespace Microsoft.Azure.Management.Security.Models
         public const string GcpProject = "GcpProject";
         public const string GithubScope = "GithubScope";
         public const string AzureDevOpsScope = "AzureDevOpsScope";
+        public const string GitlabScope = "GitlabScope";
     }
 }

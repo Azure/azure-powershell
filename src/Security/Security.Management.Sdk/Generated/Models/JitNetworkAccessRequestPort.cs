@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="status">The status of the port
-        /// Possible values include: 'Revoked', 'Initiated'</param>
+        /// Possible values include: &#39;Revoked&#39;, &#39;Initiated&#39;</param>
 
         /// <param name="statusReason">A description of why the `status` has its value
-        /// Possible values include: 'Expired', 'UserRequested',
-        /// 'NewerRequestInitiated'</param>
+        /// Possible values include: &#39;Expired&#39;, &#39;UserRequested&#39;,
+        /// &#39;NewerRequestInitiated&#39;</param>
 
         /// <param name="mappedPort">The port which is mapped to this port&#39;s `number` in the Azure Firewall, if
         /// applicable

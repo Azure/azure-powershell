@@ -46,7 +46,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Creates or updates the Advanced Threat Protection settings on a specified resource.
+        /// Creates or updates the Advanced Threat Protection settings on a specified
+        /// resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -60,7 +61,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Creates or updates the Advanced Threat Protection settings on a specified resource.
+        /// Creates or updates the Advanced Threat Protection settings on a specified
+        /// resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

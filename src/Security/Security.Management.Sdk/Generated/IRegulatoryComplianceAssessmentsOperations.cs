@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.Security
     public partial interface IRegulatoryComplianceAssessmentsOperations
     {
         /// <summary>
-        /// Details and state of assessments mapped to selected regulatory compliance control
+        /// Details and state of assessments mapped to selected regulatory compliance
+        /// control
         /// </summary>
         /// <remarks>
-        /// Details and state of assessments mapped to selected regulatory compliance control
+        /// Details and state of assessments mapped to selected regulatory compliance
+        /// control
         /// </remarks>
         /// <param name='regulatoryComplianceStandardName'>
         /// Name of the regulatory compliance standard object
@@ -72,10 +74,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RegulatoryComplianceAssessment>> GetWithHttpMessagesAsync(string regulatoryComplianceStandardName, string regulatoryComplianceControlName, string regulatoryComplianceAssessmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Details and state of assessments mapped to selected regulatory compliance control
+        /// Details and state of assessments mapped to selected regulatory compliance
+        /// control
         /// </summary>
         /// <remarks>
-        /// Details and state of assessments mapped to selected regulatory compliance control
+        /// Details and state of assessments mapped to selected regulatory compliance
+        /// control
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

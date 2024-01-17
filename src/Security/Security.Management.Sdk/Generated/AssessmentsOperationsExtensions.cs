@@ -19,7 +19,9 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+        /// (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
         public static Microsoft.Rest.Azure.IPage<SecurityAssessmentResponse> List(this IAssessmentsOperations operations, string scope)
         {
@@ -33,7 +35,9 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+        /// (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -91,7 +95,9 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Create a security assessment on your resource. An assessment metadata that describes this assessment must be predefined with the same name before inserting the assessment result
+        /// Create a security assessment on your resource. An assessment metadata that
+        /// describes this assessment must be predefined with the same name before
+        /// inserting the assessment result
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -108,7 +114,9 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Create a security assessment on your resource. An assessment metadata that describes this assessment must be predefined with the same name before inserting the assessment result
+        /// Create a security assessment on your resource. An assessment metadata that
+        /// describes this assessment must be predefined with the same name before
+        /// inserting the assessment result
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -130,7 +138,9 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Delete a security assessment on your resource. An assessment metadata that describes this assessment must be predefined with the same name before inserting the assessment result
+        /// Delete a security assessment on your resource. An assessment metadata that
+        /// describes this assessment must be predefined with the same name before
+        /// inserting the assessment result
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -147,7 +157,9 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Delete a security assessment on your resource. An assessment metadata that describes this assessment must be predefined with the same name before inserting the assessment result
+        /// Delete a security assessment on your resource. An assessment metadata that
+        /// describes this assessment must be predefined with the same name before
+        /// inserting the assessment result
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

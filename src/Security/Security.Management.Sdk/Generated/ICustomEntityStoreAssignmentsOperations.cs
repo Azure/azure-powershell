@@ -14,13 +14,16 @@ namespace Microsoft.Azure.Management.Security
     public partial interface ICustomEntityStoreAssignmentsOperations
     {
         /// <summary>
-        /// Gets a single custom entity store assignment by name for the provided subscription and resource group.
+        /// Gets a single custom entity store assignment by name for the provided
+        /// subscription and resource group.
         /// </summary>
         /// <remarks>
-        /// Gets a single custom entity store assignment by name for the provided subscription and resource group.
+        /// Gets a single custom entity store assignment by name for the provided
+        /// subscription and resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customEntityStoreAssignmentName'>
         /// Name of the custom entity store assignment. Generated name is GUID.
@@ -40,19 +43,24 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CustomEntityStoreAssignment>> GetWithHttpMessagesAsync(string resourceGroupName, string customEntityStoreAssignmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates a custom entity store assignment for the provided subscription, if not already exists.
+        /// Creates a custom entity store assignment for the provided subscription, if
+        /// not already exists.
         /// </summary>
         /// <remarks>
-        /// Creates a custom entity store assignment for the provided subscription, if not already exists.
+        /// Creates a custom entity store assignment for the provided subscription, if
+        /// not already exists.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customEntityStoreAssignmentName'>
         /// Name of the custom entity store assignment. Generated name is GUID.
         /// </param>
         /// <param name='principal'>
-        /// The principal assigned with entity store. If not provided, will use caller principal. Format of principal is: [AAD type]=[PrincipalObjectId];[TenantId]
+        /// The principal assigned with entity store. If not provided, will use caller
+        /// principal. Format of principal is: [AAD
+        /// type]=[PrincipalObjectId];[TenantId]
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -75,7 +83,8 @@ namespace Microsoft.Azure.Management.Security
         /// Delete a custom entity store assignment by name for a provided subscription
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customEntityStoreAssignmentName'>
         /// Name of the custom entity store assignment. Generated name is GUID.
@@ -92,13 +101,16 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string customEntityStoreAssignmentName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List custom entity store assignments by a provided subscription and resource group
+        /// List custom entity store assignments by a provided subscription and
+        /// resource group
         /// </summary>
         /// <remarks>
-        /// List custom entity store assignments by a provided subscription and resource group
+        /// List custom entity store assignments by a provided subscription and
+        /// resource group
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -135,10 +147,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CustomEntityStoreAssignment>>> ListBySubscriptionWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List custom entity store assignments by a provided subscription and resource group
+        /// List custom entity store assignments by a provided subscription and
+        /// resource group
         /// </summary>
         /// <remarks>
-        /// List custom entity store assignments by a provided subscription and resource group
+        /// List custom entity store assignments by a provided subscription and
+        /// resource group
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

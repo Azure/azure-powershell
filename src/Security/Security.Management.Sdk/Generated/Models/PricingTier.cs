@@ -14,11 +14,13 @@ namespace Microsoft.Azure.Management.Security.Models
     public static class PricingTier
     {
         /// <summary>
-        /// Get free Microsoft Defender for Cloud experience with basic security features
+        /// Get free Microsoft Defender for Cloud experience with basic security
+        /// features
         /// </summary>
         public const string Free = "Free";
         /// <summary>
-        /// Get the standard Microsoft Defender for Cloud experience with advanced security features
+        /// Get the standard Microsoft Defender for Cloud experience with advanced
+        /// security features
         /// </summary>
         public const string Standard = "Standard";
     }

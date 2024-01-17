@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Security
         /// Get all security controls for a specific initiative within a scope
         /// </summary>
         /// <param name='secureScoreName'>
-        /// The initiative name. For the ASC Default initiative, use &#39;ascScore&#39; as in the sample request below.
+        /// The initiative name. For the ASC Default initiative, use &#39;ascScore&#39; as in
+        /// the sample request below.
         /// </param>
         /// <param name='expand'>
         /// OData expand. Optional.

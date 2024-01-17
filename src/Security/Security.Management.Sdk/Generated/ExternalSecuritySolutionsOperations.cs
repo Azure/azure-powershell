@@ -235,7 +235,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Gets a list of external Security Solutions for the subscription and location.
+        /// Gets a list of external Security Solutions for the subscription and
+        /// location.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -440,7 +441,8 @@ namespace Microsoft.Azure.Management.Security
         /// Gets a specific external Security Solution.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='externalSecuritySolutionsName'>
         /// Name of an external security solution.
@@ -855,7 +857,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Gets a list of external Security Solutions for the subscription and location.
+        /// Gets a list of external Security Solutions for the subscription and
+        /// location.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

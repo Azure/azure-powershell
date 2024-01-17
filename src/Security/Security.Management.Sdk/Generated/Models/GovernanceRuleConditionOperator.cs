@@ -14,11 +14,13 @@ namespace Microsoft.Azure.Management.Security.Models
     public static class GovernanceRuleConditionOperator
     {
         /// <summary>
-        /// Checks that the string value of the data defined in Property equals the given value - exact fit
+        /// Checks that the string value of the data defined in Property equals the
+        /// given value - exact fit
         /// </summary>
         public const string Equals = "Equals";
         /// <summary>
-        /// Checks that the string value of the data defined in Property equals any of the given values (exact fit)
+        /// Checks that the string value of the data defined in Property equals any of
+        /// the given values (exact fit)
         /// </summary>
         public const string In = "In";
     }

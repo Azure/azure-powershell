@@ -14,15 +14,18 @@ namespace Microsoft.Azure.Management.Security.Models
     public static class ApplicationConditionOperator
     {
         /// <summary>
-        /// Checks that the string value of the data defined in Property contains the given value
+        /// Checks that the string value of the data defined in Property contains the
+        /// given value
         /// </summary>
         public const string Contains = "Contains";
         /// <summary>
-        /// Checks that the string value of the data defined in Property equals the given value
+        /// Checks that the string value of the data defined in Property equals the
+        /// given value
         /// </summary>
         public const string Equals = "Equals";
         /// <summary>
-        /// Checks that the string value of the data defined in Property equals any of the given values (exact fit)
+        /// Checks that the string value of the data defined in Property equals any of
+        /// the given values (exact fit)
         /// </summary>
         public const string In = "In";
     }

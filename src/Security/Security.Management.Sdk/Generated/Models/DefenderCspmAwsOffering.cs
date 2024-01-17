@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Linq;
 
     /// <summary>
-    /// The CSPM P1 for Aws offering
+    /// The CSPM P1 for AWS offering
     /// </summary>
     [Newtonsoft.Json.JsonObject("DefenderCspmAws")]
     public partial class DefenderCspmAwsOffering : CloudOffering
@@ -30,11 +30,32 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="vmScanners">The Microsoft Defender for Server VM scanning configuration
         /// </param>
-        public DefenderCspmAwsOffering(string description = default(string), DefenderCspmAwsOfferingVmScanners vmScanners = default(DefenderCspmAwsOfferingVmScanners))
+
+        /// <param name="dataSensitivityDiscovery">The Microsoft Defender Data Sensitivity discovery configuration
+        /// </param>
+
+        /// <param name="databasesDspm">The databases DSPM configuration
+        /// </param>
+
+        /// <param name="ciem">Defenders CSPM Cloud infrastructure entitlement management (CIEM) offering
+        /// configurations
+        /// </param>
+
+        /// <param name="mdcContainersImageAssessment">The Microsoft Defender container image assessment configuration
+        /// </param>
+
+        /// <param name="mdcContainersAgentlessDiscoveryK8S">The Microsoft Defender container agentless discovery K8s configuration
+        /// </param>
+        public DefenderCspmAwsOffering(string description = default(string), DefenderCspmAwsOfferingVmScanners vmScanners = default(DefenderCspmAwsOfferingVmScanners), DefenderCspmAwsOfferingDataSensitivityDiscovery dataSensitivityDiscovery = default(DefenderCspmAwsOfferingDataSensitivityDiscovery), DefenderCspmAwsOfferingDatabasesDspm databasesDspm = default(DefenderCspmAwsOfferingDatabasesDspm), DefenderCspmAwsOfferingCiem ciem = default(DefenderCspmAwsOfferingCiem), DefenderCspmAwsOfferingMdcContainersImageAssessment mdcContainersImageAssessment = default(DefenderCspmAwsOfferingMdcContainersImageAssessment), DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8S mdcContainersAgentlessDiscoveryK8S = default(DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8S))
 
         : base(description)
         {
             this.VMScanners = vmScanners;
+            this.DataSensitivityDiscovery = dataSensitivityDiscovery;
+            this.DatabasesDspm = databasesDspm;
+            this.Ciem = ciem;
+            this.MdcContainersImageAssessment = mdcContainersImageAssessment;
+            this.MdcContainersAgentlessDiscoveryK8S = mdcContainersAgentlessDiscoveryK8S;
             CustomInit();
         }
 
@@ -49,5 +70,39 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmScanners")]
         public DefenderCspmAwsOfferingVmScanners VMScanners {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Microsoft Defender Data Sensitivity discovery
+        /// configuration
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dataSensitivityDiscovery")]
+        public DefenderCspmAwsOfferingDataSensitivityDiscovery DataSensitivityDiscovery {get; set; }
+
+        /// <summary>
+        /// Gets or sets the databases DSPM configuration
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "databasesDspm")]
+        public DefenderCspmAwsOfferingDatabasesDspm DatabasesDspm {get; set; }
+
+        /// <summary>
+        /// Gets or sets defenders CSPM Cloud infrastructure entitlement management
+        /// (CIEM) offering configurations
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ciem")]
+        public DefenderCspmAwsOfferingCiem Ciem {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Microsoft Defender container image assessment
+        /// configuration
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "mdcContainersImageAssessment")]
+        public DefenderCspmAwsOfferingMdcContainersImageAssessment MdcContainersImageAssessment {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Microsoft Defender container agentless discovery K8s
+        /// configuration
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "mdcContainersAgentlessDiscoveryK8s")]
+        public DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8S MdcContainersAgentlessDiscoveryK8S {get; set; }
     }
 }

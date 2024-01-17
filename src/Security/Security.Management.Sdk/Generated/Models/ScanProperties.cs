@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
 
         /// <param name="triggerType">The scan trigger type.
-        /// Possible values include: 'OnDemand', 'Recurring'</param>
+        /// Possible values include: &#39;OnDemand&#39;, &#39;Recurring&#39;</param>
 
         /// <param name="state">The scan status.
-        /// Possible values include: 'Failed', 'FailedToRun', 'InProgress', 'Passed'</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;FailedToRun&#39;, &#39;InProgress&#39;, &#39;Passed&#39;</param>
 
         /// <param name="server">The server name.
         /// </param>
@@ -65,7 +65,10 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="isBaselineApplied">Baseline created for this database, and has one or more rules.
         /// </param>
-        public ScanProperties(string triggerType = default(string), string state = default(string), string server = default(string), string database = default(string), string sqlVersion = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), int? highSeverityFailedRulesCount = default(int?), int? mediumSeverityFailedRulesCount = default(int?), int? lowSeverityFailedRulesCount = default(int?), int? totalPassedRulesCount = default(int?), int? totalFailedRulesCount = default(int?), int? totalRulesCount = default(int?), bool? isBaselineApplied = default(bool?))
+
+        /// <param name="lastScanTime">Last scan time.
+        /// </param>
+        public ScanProperties(string triggerType = default(string), string state = default(string), string server = default(string), string database = default(string), string sqlVersion = default(string), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), int? highSeverityFailedRulesCount = default(int?), int? mediumSeverityFailedRulesCount = default(int?), int? lowSeverityFailedRulesCount = default(int?), int? totalPassedRulesCount = default(int?), int? totalFailedRulesCount = default(int?), int? totalRulesCount = default(int?), bool? isBaselineApplied = default(bool?), System.DateTime? lastScanTime = default(System.DateTime?))
 
         {
             this.TriggerType = triggerType;
@@ -82,6 +85,7 @@ namespace Microsoft.Azure.Management.Security.Models
             this.TotalFailedRulesCount = totalFailedRulesCount;
             this.TotalRulesCount = totalRulesCount;
             this.IsBaselineApplied = isBaselineApplied;
+            this.LastScanTime = lastScanTime;
             CustomInit();
         }
 
@@ -174,5 +178,11 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "isBaselineApplied")]
         public bool? IsBaselineApplied {get; set; }
+
+        /// <summary>
+        /// Gets or sets last scan time.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "lastScanTime")]
+        public System.DateTime? LastScanTime {get; set; }
     }
 }

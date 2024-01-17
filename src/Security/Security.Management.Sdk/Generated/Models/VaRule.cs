@@ -28,15 +28,15 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="severity">The rule severity.
-        /// Possible values include: 'High', 'Medium', 'Low', 'Informational',
-        /// 'Obsolete'</param>
+        /// Possible values include: &#39;High&#39;, &#39;Medium&#39;, &#39;Low&#39;, &#39;Informational&#39;,
+        /// &#39;Obsolete&#39;</param>
 
         /// <param name="category">The rule category.
         /// </param>
 
         /// <param name="ruleType">The rule type.
-        /// Possible values include: 'Binary', 'BaselineExpected', 'PositiveList',
-        /// 'NegativeList'</param>
+        /// Possible values include: &#39;Binary&#39;, &#39;BaselineExpected&#39;, &#39;PositiveList&#39;,
+        /// &#39;NegativeList&#39;</param>
 
         /// <param name="title">The rule title.
         /// </param>

@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.Security
     public static partial class IotSecuritySolutionsAnalyticsAggregatedAlertOperationsExtensions
     {
         /// <summary>
-        /// Use this method to get the aggregated alert list of yours IoT Security solution.
+        /// Use this method to get the aggregated alert list of yours IoT Security
+        /// solution.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -33,13 +35,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Use this method to get the aggregated alert list of yours IoT Security solution.
+        /// Use this method to get the aggregated alert list of yours IoT Security
+        /// solution.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -58,13 +62,15 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Use this method to get a single the aggregated alert of yours IoT Security solution. This aggregation is performed by alert name.
+        /// Use this method to get a single the aggregated alert of yours IoT Security
+        /// solution. This aggregation is performed by alert name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -78,13 +84,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Use this method to get a single the aggregated alert of yours IoT Security solution. This aggregation is performed by alert name.
+        /// Use this method to get a single the aggregated alert of yours IoT Security
+        /// solution. This aggregation is performed by alert name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -109,7 +117,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -129,7 +138,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -145,7 +155,8 @@ namespace Microsoft.Azure.Management.Security
             (await operations.DismissWithHttpMessagesAsync(resourceGroupName, solutionName, aggregatedAlertName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Use this method to get the aggregated alert list of yours IoT Security solution.
+        /// Use this method to get the aggregated alert list of yours IoT Security
+        /// solution.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -159,7 +170,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Use this method to get the aggregated alert list of yours IoT Security solution.
+        /// Use this method to get the aggregated alert list of yours IoT Security
+        /// solution.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="state">Aggregative state based on the control&#39;s supported assessments states
-        /// Possible values include: 'Passed', 'Failed', 'Skipped', 'Unsupported'</param>
+        /// Possible values include: &#39;Passed&#39;, &#39;Failed&#39;, &#39;Skipped&#39;, &#39;Unsupported&#39;</param>
 
         /// <param name="description">The description of the regulatory compliance control
         /// </param>

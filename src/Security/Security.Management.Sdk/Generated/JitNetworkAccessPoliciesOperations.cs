@@ -235,7 +235,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -437,10 +438,12 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -657,10 +660,12 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -883,10 +888,12 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='jitNetworkAccessPolicyName'>
         /// Name of a Just-in-Time access configuration policy.
@@ -1122,7 +1129,8 @@ namespace Microsoft.Azure.Management.Security
         /// Create a policy for protecting resources using Just-in-Time access control
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='jitNetworkAccessPolicyName'>
         /// Name of a Just-in-Time access configuration policy.
@@ -1376,7 +1384,8 @@ namespace Microsoft.Azure.Management.Security
         /// Delete a Just-in-Time access control policy.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='jitNetworkAccessPolicyName'>
         /// Name of a Just-in-Time access configuration policy.
@@ -1591,7 +1600,8 @@ namespace Microsoft.Azure.Management.Security
         /// Initiate a JIT access from a specific Just-in-Time policy configuration.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='jitNetworkAccessPolicyName'>
         /// Name of a Just-in-Time access configuration policy.
@@ -2028,7 +2038,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -2210,7 +2221,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -2392,7 +2404,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

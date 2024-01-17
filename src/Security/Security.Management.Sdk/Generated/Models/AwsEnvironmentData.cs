@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Linq;
 
     /// <summary>
-    /// The aws connector environment data
+    /// The AWS connector environment data
     /// </summary>
     [Newtonsoft.Json.JsonObject("AwsAccount")]
     public partial class AwsEnvironmentData : EnvironmentData
@@ -27,10 +27,22 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="organizationalData">The AWS account&#39;s organizational data
         /// </param>
-        public AwsEnvironmentData(AwsOrganizationalData organizationalData = default(AwsOrganizationalData))
+
+        /// <param name="regions">list of regions to scan
+        /// </param>
+
+        /// <param name="accountName">The AWS account name
+        /// </param>
+
+        /// <param name="scanInterval">Scan interval in hours (value should be between 1-hour to 24-hours)
+        /// </param>
+        public AwsEnvironmentData(AwsOrganizationalData organizationalData = default(AwsOrganizationalData), System.Collections.Generic.IList<string> regions = default(System.Collections.Generic.IList<string>), string accountName = default(string), long? scanInterval = default(long?))
 
         {
             this.OrganizationalData = organizationalData;
+            this.Regions = regions;
+            this.AccountName = accountName;
+            this.ScanInterval = scanInterval;
             CustomInit();
         }
 
@@ -45,5 +57,24 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "organizationalData")]
         public AwsOrganizationalData OrganizationalData {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of regions to scan
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "regions")]
+        public System.Collections.Generic.IList<string> Regions {get; set; }
+
+        /// <summary>
+        /// Gets the AWS account name
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "accountName")]
+        public string AccountName {get; private set; }
+
+        /// <summary>
+        /// Gets or sets scan interval in hours (value should be between 1-hour to
+        /// 24-hours)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "scanInterval")]
+        public long? ScanInterval {get; set; }
     }
 }

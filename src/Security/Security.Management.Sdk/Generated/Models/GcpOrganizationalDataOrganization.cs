@@ -36,12 +36,16 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <param name="workloadIdentityProviderId">The GCP workload identity provider id which represents the permissions
         /// required to auto provision security connectors
         /// </param>
-        public GcpOrganizationalDataOrganization(System.Collections.Generic.IList<string> excludedProjectNumbers = default(System.Collections.Generic.IList<string>), string serviceAccountEmailAddress = default(string), string workloadIdentityProviderId = default(string))
+
+        /// <param name="organizationName">GCP organization name
+        /// </param>
+        public GcpOrganizationalDataOrganization(System.Collections.Generic.IList<string> excludedProjectNumbers = default(System.Collections.Generic.IList<string>), string serviceAccountEmailAddress = default(string), string workloadIdentityProviderId = default(string), string organizationName = default(string))
 
         {
             this.ExcludedProjectNumbers = excludedProjectNumbers;
             this.ServiceAccountEmailAddress = serviceAccountEmailAddress;
             this.WorkloadIdentityProviderId = workloadIdentityProviderId;
+            this.OrganizationName = organizationName;
             CustomInit();
         }
 
@@ -71,5 +75,11 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "workloadIdentityProviderId")]
         public string WorkloadIdentityProviderId {get; set; }
+
+        /// <summary>
+        /// Gets gCP organization name
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "organizationName")]
+        public string OrganizationName {get; private set; }
     }
 }

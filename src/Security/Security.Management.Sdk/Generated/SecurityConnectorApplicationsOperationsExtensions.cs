@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.Security
     public static partial class SecurityConnectorApplicationsOperationsExtensions
     {
         /// <summary>
-        /// Get a list of all relevant applications over a security connector level scope
+        /// Get a list of all relevant applications over a security connector level
+        /// scope
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='securityConnectorName'>
         /// The security connector name.
@@ -30,13 +32,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Get a list of all relevant applications over a security connector level scope
+        /// Get a list of all relevant applications over a security connector level
+        /// scope
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='securityConnectorName'>
         /// The security connector name.
@@ -52,7 +56,146 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Get a list of all relevant applications over a security connector level scope
+        /// Get a specific application for the requested scope by applicationId
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
+        /// </param>
+        /// <param name='securityConnectorName'>
+        /// The security connector name.
+        /// </param>
+        /// <param name='applicationId'>
+        /// The security Application key - unique key for the standard application
+        /// </param>
+        public static Application Get(this ISecurityConnectorApplicationsOperations operations, string resourceGroupName, string securityConnectorName, string applicationId)
+        {
+                return ((ISecurityConnectorApplicationsOperations)operations).GetAsync(resourceGroupName, securityConnectorName, applicationId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get a specific application for the requested scope by applicationId
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
+        /// </param>
+        /// <param name='securityConnectorName'>
+        /// The security connector name.
+        /// </param>
+        /// <param name='applicationId'>
+        /// The security Application key - unique key for the standard application
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Application> GetAsync(this ISecurityConnectorApplicationsOperations operations, string resourceGroupName, string securityConnectorName, string applicationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, securityConnectorName, applicationId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or update a security Application on the given security connector.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
+        /// </param>
+        /// <param name='securityConnectorName'>
+        /// The security connector name.
+        /// </param>
+        /// <param name='applicationId'>
+        /// The security Application key - unique key for the standard application
+        /// </param>
+        public static Application CreateOrUpdate(this ISecurityConnectorApplicationsOperations operations, string resourceGroupName, string securityConnectorName, string applicationId, Application application)
+        {
+                return ((ISecurityConnectorApplicationsOperations)operations).CreateOrUpdateAsync(resourceGroupName, securityConnectorName, applicationId, application).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or update a security Application on the given security connector.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
+        /// </param>
+        /// <param name='securityConnectorName'>
+        /// The security connector name.
+        /// </param>
+        /// <param name='applicationId'>
+        /// The security Application key - unique key for the standard application
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Application> CreateOrUpdateAsync(this ISecurityConnectorApplicationsOperations operations, string resourceGroupName, string securityConnectorName, string applicationId, Application application, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, securityConnectorName, applicationId, application, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Delete an Application over a given scope
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
+        /// </param>
+        /// <param name='securityConnectorName'>
+        /// The security connector name.
+        /// </param>
+        /// <param name='applicationId'>
+        /// The security Application key - unique key for the standard application
+        /// </param>
+        public static void Delete(this ISecurityConnectorApplicationsOperations operations, string resourceGroupName, string securityConnectorName, string applicationId)
+        {
+                ((ISecurityConnectorApplicationsOperations)operations).DeleteAsync(resourceGroupName, securityConnectorName, applicationId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Delete an Application over a given scope
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
+        /// </param>
+        /// <param name='securityConnectorName'>
+        /// The security connector name.
+        /// </param>
+        /// <param name='applicationId'>
+        /// The security Application key - unique key for the standard application
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this ISecurityConnectorApplicationsOperations operations, string resourceGroupName, string securityConnectorName, string applicationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, securityConnectorName, applicationId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Get a list of all relevant applications over a security connector level
+        /// scope
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -66,7 +209,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Get a list of all relevant applications over a security connector level scope
+        /// Get a list of all relevant applications over a security connector level
+        /// scope
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

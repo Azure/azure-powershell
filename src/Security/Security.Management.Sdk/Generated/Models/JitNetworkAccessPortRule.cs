@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="protocol">
-        /// Possible values include: 'TCP', 'UDP', '*'</param>
+        /// Possible values include: &#39;TCP&#39;, &#39;UDP&#39;, &#39;*&#39;</param>
 
         /// <param name="allowedSourceAddressPrefix">Mutually exclusive with the &#34;allowedSourceAddressPrefixes&#34; parameter.
         /// Should be an IP address or CIDR, for example &#34;192.168.0.3&#34; or

@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Security
         public SecurityCenterClient Client { get; private set; }
 
         /// <summary>
-        /// Details and state of assessments mapped to selected regulatory compliance control
+        /// Details and state of assessments mapped to selected regulatory compliance
+        /// control
         /// </summary>
         /// <param name='regulatoryComplianceStandardName'>
         /// Name of the regulatory compliance standard object
@@ -490,7 +491,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Details and state of assessments mapped to selected regulatory compliance control
+        /// Details and state of assessments mapped to selected regulatory compliance
+        /// control
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

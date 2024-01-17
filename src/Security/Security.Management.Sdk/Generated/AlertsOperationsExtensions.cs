@@ -46,7 +46,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<Alert> ListByResourceGroup(this IAlertsOperations operations, string resourceGroupName)
         {
@@ -60,7 +61,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -73,7 +75,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// List all the alerts that are associated with the subscription that are stored in a specific location
+        /// List all the alerts that are associated with the subscription that are
+        /// stored in a specific location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -84,7 +87,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// List all the alerts that are associated with the subscription that are stored in a specific location
+        /// List all the alerts that are associated with the subscription that are
+        /// stored in a specific location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -100,13 +104,15 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// List all the alerts that are associated with the resource group that are stored in a specific location
+        /// List all the alerts that are associated with the resource group that are
+        /// stored in a specific location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<Alert> ListResourceGroupLevelByRegion(this IAlertsOperations operations, string resourceGroupName)
         {
@@ -114,13 +120,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// List all the alerts that are associated with the resource group that are stored in a specific location
+        /// List all the alerts that are associated with the resource group that are
+        /// stored in a specific location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -166,13 +174,15 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Get an alert that is associated a resource group or a resource in a resource group
+        /// Get an alert that is associated a resource group or a resource in a
+        /// resource group
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='alertName'>
         /// Name of the alert object
@@ -183,13 +193,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Get an alert that is associated a resource group or a resource in a resource group
+        /// Get an alert that is associated a resource group or a resource in a
+        /// resource group
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='alertName'>
         /// Name of the alert object
@@ -331,7 +343,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='alertName'>
         /// Name of the alert object
@@ -348,7 +361,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='alertName'>
         /// Name of the alert object
@@ -367,7 +381,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='alertName'>
         /// Name of the alert object
@@ -384,7 +399,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='alertName'>
         /// Name of the alert object
@@ -403,7 +419,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='alertName'>
         /// Name of the alert object
@@ -420,7 +437,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='alertName'>
         /// Name of the alert object
@@ -439,7 +457,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='alertName'>
         /// Name of the alert object
@@ -456,7 +475,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='alertName'>
         /// Name of the alert object
@@ -583,7 +603,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// List all the alerts that are associated with the subscription that are stored in a specific location
+        /// List all the alerts that are associated with the subscription that are
+        /// stored in a specific location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -597,7 +618,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// List all the alerts that are associated with the subscription that are stored in a specific location
+        /// List all the alerts that are associated with the subscription that are
+        /// stored in a specific location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -616,7 +638,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// List all the alerts that are associated with the resource group that are stored in a specific location
+        /// List all the alerts that are associated with the resource group that are
+        /// stored in a specific location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -630,7 +653,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// List all the alerts that are associated with the resource group that are stored in a specific location
+        /// List all the alerts that are associated with the resource group that are
+        /// stored in a specific location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

@@ -100,10 +100,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SecurityAssessmentMetadataResponse>> GetInSubscriptionWithHttpMessagesAsync(string assessmentMetadataName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create metadata information on an assessment type in a specific subscription
+        /// Create metadata information on an assessment type in a specific
+        /// subscription
         /// </summary>
         /// <remarks>
-        /// Create metadata information on an assessment type in a specific subscription
+        /// Create metadata information on an assessment type in a specific
+        /// subscription
         /// </remarks>
         /// <param name='assessmentMetadataName'>
         /// The Assessment Key - Unique key for the assessment type
@@ -126,10 +128,14 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SecurityAssessmentMetadataResponse>> CreateInSubscriptionWithHttpMessagesAsync(string assessmentMetadataName, SecurityAssessmentMetadataResponse assessmentMetadata, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Delete metadata information on an assessment type in a specific subscription, will cause the deletion of all the assessments of that type in that subscription
+        /// Delete metadata information on an assessment type in a specific
+        /// subscription, will cause the deletion of all the assessments of that type
+        /// in that subscription
         /// </summary>
         /// <remarks>
-        /// Delete metadata information on an assessment type in a specific subscription, will cause the deletion of all the assessments of that type in that subscription
+        /// Delete metadata information on an assessment type in a specific
+        /// subscription, will cause the deletion of all the assessments of that type
+        /// in that subscription
         /// </remarks>
         /// <param name='assessmentMetadataName'>
         /// The Assessment Key - Unique key for the assessment type

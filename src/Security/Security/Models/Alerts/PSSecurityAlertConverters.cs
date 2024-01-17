@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Security.Models.Alerts
                 ProductComponentName = value.ProductComponentName,
                 ProductName = value.ProductName,
                 RemediationSteps = value.RemediationSteps?.ToList() ?? new List<string>(),
-                ResourceIdentifiers = value.ResourceIdentifiers?.ToList() ?? new List<ResourceIdentifier>(),
+                ResourceIdentifiers = value.ResourceIdentifiers?.ToList() ?? new List<AlertResourceIdentifier>(),
                 Severity = value.Severity,
                 StartTimeUtc = value.StartTimeUtc,
                 Status = value.Status,

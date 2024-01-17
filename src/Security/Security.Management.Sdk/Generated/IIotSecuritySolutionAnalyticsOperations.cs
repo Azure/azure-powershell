@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Management.Security
         /// Use this method to get IoT security Analytics metrics in an array.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -46,7 +47,8 @@ namespace Microsoft.Azure.Management.Security
         /// Use this method to get IoT Security Analytics metrics.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.

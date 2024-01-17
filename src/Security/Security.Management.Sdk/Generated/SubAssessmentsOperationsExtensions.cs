@@ -13,13 +13,16 @@ namespace Microsoft.Azure.Management.Security
     public static partial class SubAssessmentsOperationsExtensions
     {
         /// <summary>
-        /// Get security sub-assessments on all your scanned resources inside a subscription scope
+        /// Get security sub-assessments on all your scanned resources inside a
+        /// subscription scope
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+        /// (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
         public static Microsoft.Rest.Azure.IPage<SecuritySubAssessment> ListAll(this ISubAssessmentsOperations operations, string scope)
         {
@@ -27,13 +30,16 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Get security sub-assessments on all your scanned resources inside a subscription scope
+        /// Get security sub-assessments on all your scanned resources inside a
+        /// subscription scope
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+        /// (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -52,7 +58,9 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+        /// (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - Unique key for the assessment type
@@ -69,7 +77,9 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+        /// (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - Unique key for the assessment type
@@ -91,7 +101,9 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+        /// (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - Unique key for the assessment type
@@ -111,7 +123,9 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+        /// (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - Unique key for the assessment type
@@ -130,7 +144,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Get security sub-assessments on all your scanned resources inside a subscription scope
+        /// Get security sub-assessments on all your scanned resources inside a
+        /// subscription scope
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -144,7 +159,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Get security sub-assessments on all your scanned resources inside a subscription scope
+        /// Get security sub-assessments on all your scanned resources inside a
+        /// subscription scope
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

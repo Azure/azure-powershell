@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="resourceStatus">The status of the resource regarding a single assessment
-        /// Possible values include: 'Healthy', 'NotApplicable', 'OffByPolicy',
-        /// 'NotHealthy'</param>
+        /// Possible values include: &#39;Healthy&#39;, &#39;NotApplicable&#39;, &#39;OffByPolicy&#39;,
+        /// &#39;NotHealthy&#39;</param>
         public ComplianceResult(string id = default(string), string name = default(string), string type = default(string), string resourceStatus = default(string))
 
         : base(id, name, type)

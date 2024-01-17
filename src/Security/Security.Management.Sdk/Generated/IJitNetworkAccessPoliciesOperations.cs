@@ -34,10 +34,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<JitNetworkAccessPolicy>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <remarks>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -54,13 +56,16 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<JitNetworkAccessPolicy>>> ListByRegionWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <remarks>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -77,13 +82,16 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<JitNetworkAccessPolicy>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <remarks>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -100,13 +108,16 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<JitNetworkAccessPolicy>>> ListByResourceGroupAndRegionWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <remarks>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='jitNetworkAccessPolicyName'>
         /// Name of a Just-in-Time access configuration policy.
@@ -132,7 +143,8 @@ namespace Microsoft.Azure.Management.Security
         /// Create a policy for protecting resources using Just-in-Time access control
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='jitNetworkAccessPolicyName'>
         /// Name of a Just-in-Time access configuration policy.
@@ -161,7 +173,8 @@ namespace Microsoft.Azure.Management.Security
         /// Delete a Just-in-Time access control policy.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='jitNetworkAccessPolicyName'>
         /// Name of a Just-in-Time access configuration policy.
@@ -184,7 +197,8 @@ namespace Microsoft.Azure.Management.Security
         /// Initiate a JIT access from a specific Just-in-Time policy configuration.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='jitNetworkAccessPolicyName'>
         /// Name of a Just-in-Time access configuration policy.
@@ -233,10 +247,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<JitNetworkAccessPolicy>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <remarks>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -256,10 +272,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<JitNetworkAccessPolicy>>> ListByRegionNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <remarks>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -279,10 +297,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<JitNetworkAccessPolicy>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <remarks>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

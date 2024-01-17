@@ -39,10 +39,12 @@ namespace Microsoft.Azure.Management.Security
         public SecurityCenterClient Client { get; private set; }
 
         /// <summary>
-        /// Gets a single custom assessment automation by name for the provided subscription and resource group.
+        /// Gets a single custom assessment automation by name for the provided
+        /// subscription and resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customAssessmentAutomationName'>
         /// Name of the Custom Assessment Automation.
@@ -269,10 +271,13 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Creates or updates a custom assessment automation for the provided subscription. Please note that providing an existing custom assessment automation will replace the existing record.
+        /// Creates or updates a custom assessment automation for the provided
+        /// subscription. Please note that providing an existing custom assessment
+        /// automation will replace the existing record.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customAssessmentAutomationName'>
         /// Name of the Custom Assessment Automation.
@@ -535,7 +540,8 @@ namespace Microsoft.Azure.Management.Security
         /// Deletes a custom assessment automation by name for a provided subscription
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customAssessmentAutomationName'>
         /// Name of the Custom Assessment Automation.
@@ -741,10 +747,12 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// List custom assessment automations by provided subscription and resource group
+        /// List custom assessment automations by provided subscription and resource
+        /// group
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1157,7 +1165,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// List custom assessment automations by provided subscription and resource group
+        /// List custom assessment automations by provided subscription and resource
+        /// group
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

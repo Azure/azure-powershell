@@ -14,13 +14,16 @@ namespace Microsoft.Azure.Management.Security
     public partial interface ISecurityConnectorApplicationsOperations
     {
         /// <summary>
-        /// Get a list of all relevant applications over a security connector level scope
+        /// Get a list of all relevant applications over a security connector level
+        /// scope
         /// </summary>
         /// <remarks>
-        /// Get a list of all relevant applications over a security connector level scope
+        /// Get a list of all relevant applications over a security connector level
+        /// scope
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='securityConnectorName'>
         /// The security connector name.
@@ -40,10 +43,102 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Application>>> ListWithHttpMessagesAsync(string resourceGroupName, string securityConnectorName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get a list of all relevant applications over a security connector level scope
+        /// Get a specific application for the requested scope by applicationId
         /// </summary>
         /// <remarks>
-        /// Get a list of all relevant applications over a security connector level scope
+        /// Get a specific application for the requested scope by applicationId
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
+        /// </param>
+        /// <param name='securityConnectorName'>
+        /// The security connector name.
+        /// </param>
+        /// <param name='applicationId'>
+        /// The security Application key - unique key for the standard application
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Application>> GetWithHttpMessagesAsync(string resourceGroupName, string securityConnectorName, string applicationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates or update a security Application on the given security connector.
+        /// </summary>
+        /// <remarks>
+        /// Creates or update a security Application on the given security connector.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
+        /// </param>
+        /// <param name='securityConnectorName'>
+        /// The security connector name.
+        /// </param>
+        /// <param name='applicationId'>
+        /// The security Application key - unique key for the standard application
+        /// </param>
+        /// <param name='application'>
+        /// Application over a subscription scope
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Application>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string securityConnectorName, string applicationId, Application application, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete an Application over a given scope
+        /// </summary>
+        /// <remarks>
+        /// Delete an Application over a given scope
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
+        /// </param>
+        /// <param name='securityConnectorName'>
+        /// The security connector name.
+        /// </param>
+        /// <param name='applicationId'>
+        /// The security Application key - unique key for the standard application
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string securityConnectorName, string applicationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get a list of all relevant applications over a security connector level
+        /// scope
+        /// </summary>
+        /// <remarks>
+        /// Get a list of all relevant applications over a security connector level
+        /// scope
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

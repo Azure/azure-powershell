@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
 
         /// <param name="authenticationProvisioningState">State of the multi-cloud connector
-        /// Possible values include: 'Valid', 'Invalid', 'Expired', 'IncorrectPolicy'</param>
+        /// Possible values include: &#39;Valid&#39;, &#39;Invalid&#39;, &#39;Expired&#39;, &#39;IncorrectPolicy&#39;</param>
 
         /// <param name="grantedPermissions">The permissions detected in the cloud account.
         /// </param>

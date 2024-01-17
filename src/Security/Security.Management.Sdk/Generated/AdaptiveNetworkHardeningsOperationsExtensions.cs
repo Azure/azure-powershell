@@ -13,13 +13,15 @@ namespace Microsoft.Azure.Management.Security
     public static partial class AdaptiveNetworkHardeningsOperationsExtensions
     {
         /// <summary>
-        /// Gets a list of Adaptive Network Hardenings resources in scope of an extended resource.
+        /// Gets a list of Adaptive Network Hardenings resources in scope of an
+        /// extended resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The Namespace of the resource.
@@ -36,13 +38,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Gets a list of Adaptive Network Hardenings resources in scope of an extended resource.
+        /// Gets a list of Adaptive Network Hardenings resources in scope of an
+        /// extended resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The Namespace of the resource.
@@ -70,7 +74,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The Namespace of the resource.
@@ -96,7 +101,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The Namespace of the resource.
@@ -127,7 +133,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The Namespace of the resource.
@@ -153,7 +160,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The Namespace of the resource.
@@ -181,7 +189,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The Namespace of the resource.
@@ -207,7 +216,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The Namespace of the resource.
@@ -229,7 +239,8 @@ namespace Microsoft.Azure.Management.Security
             (await operations.BeginEnforceWithHttpMessagesAsync(resourceGroupName, resourceNamespace, resourceType, resourceName, adaptiveNetworkHardeningResourceName, rules, networkSecurityGroups, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets a list of Adaptive Network Hardenings resources in scope of an extended resource.
+        /// Gets a list of Adaptive Network Hardenings resources in scope of an
+        /// extended resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -243,7 +254,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Gets a list of Adaptive Network Hardenings resources in scope of an extended resource.
+        /// Gets a list of Adaptive Network Hardenings resources in scope of an
+        /// extended resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

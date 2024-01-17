@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="operatorProperty">The governance rule Condition&#39;s Operator, for example Equals for severity
         /// or In for list of assessments, see examples
-        /// Possible values include: 'Equals', 'In'</param>
+        /// Possible values include: &#39;Equals&#39;, &#39;In&#39;</param>
         public Condition(string property = default(string), string value = default(string), string operatorProperty = default(string))
 
         {

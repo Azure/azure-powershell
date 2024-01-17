@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Security.Models
     public static class AlertStatus
     {
         /// <summary>
-        /// An alert which doesn't specify a value is assigned the status 'Active'
+        /// An alert which doesn&#39;t specify a value is assigned the status &#39;Active&#39;
         /// </summary>
         public const string Active = "Active";
         /// <summary>

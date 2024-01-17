@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Security
         /// Use this method to get the list of IoT Security solutions by subscription.
         /// </summary>
         /// <param name='filter'>
-        /// Filter the IoT Security solution with OData syntax. Supports filtering by iotHubs.
+        /// Filter the IoT Security solution with OData syntax. Supports filtering by
+        /// iotHubs.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -244,13 +245,16 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Use this method to get the list IoT Security solutions organized by resource group.
+        /// Use this method to get the list IoT Security solutions organized by
+        /// resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='filter'>
-        /// Filter the IoT Security solution with OData syntax. Supports filtering by iotHubs.
+        /// Filter the IoT Security solution with OData syntax. Supports filtering by
+        /// iotHubs.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -473,10 +477,12 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// User this method to get details of a specific IoT Security solution based on solution name
+        /// User this method to get details of a specific IoT Security solution based
+        /// on solution name
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -706,7 +712,8 @@ namespace Microsoft.Azure.Management.Security
         /// Use this method to create or update yours IoT Security solution
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -969,10 +976,12 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Use this method to update existing IoT Security solution tags or user defined resources. To update other fields use the CreateOrUpdate method.
+        /// Use this method to update existing IoT Security solution tags or user
+        /// defined resources. To update other fields use the CreateOrUpdate method.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -1216,7 +1225,8 @@ namespace Microsoft.Azure.Management.Security
         /// Use this method to delete yours IoT Security solution
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -1604,7 +1614,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Use this method to get the list IoT Security solutions organized by resource group.
+        /// Use this method to get the list IoT Security solutions organized by
+        /// resource group.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

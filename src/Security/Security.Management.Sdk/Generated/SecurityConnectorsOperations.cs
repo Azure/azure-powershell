@@ -39,7 +39,9 @@ namespace Microsoft.Azure.Management.Security
         public SecurityCenterClient Client { get; private set; }
 
         /// <summary>
-        /// Lists all the security connectors in the specified subscription. Use the &#39;nextLink&#39; property in the response to get the next page of security connectors for the specified subscription.
+        /// Lists all the security connectors in the specified subscription. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// connectors for the specified subscription.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -79,7 +81,7 @@ namespace Microsoft.Azure.Management.Security
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "Client.SubscriptionId", "^[0-9A-Fa-f]{8}-([0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}$");
                 }
             }
-            string apiVersion = "2022-08-01-preview";
+            string apiVersion = "2023-10-01-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -235,10 +237,13 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Lists all the security connectors in the specified resource group. Use the &#39;nextLink&#39; property in the response to get the next page of security connectors for the specified resource group.
+        /// Lists all the security connectors in the specified resource group. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// connectors for the specified resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -297,7 +302,7 @@ namespace Microsoft.Azure.Management.Security
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
-            string apiVersion = "2022-08-01-preview";
+            string apiVersion = "2023-10-01-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -458,7 +463,8 @@ namespace Microsoft.Azure.Management.Security
         /// Retrieves details of a specific security connector
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='securityConnectorName'>
         /// The security connector name.
@@ -525,7 +531,7 @@ namespace Microsoft.Azure.Management.Security
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "securityConnectorName");
             }
 
-            string apiVersion = "2022-08-01-preview";
+            string apiVersion = "2023-10-01-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -685,10 +691,13 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Creates or updates a security connector. If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
+        /// Creates or updates a security connector. If a security connector is already
+        /// created and a subsequent request is issued for the same security connector
+        /// id, then it will be updated.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='securityConnectorName'>
         /// The security connector name.
@@ -763,7 +772,7 @@ namespace Microsoft.Azure.Management.Security
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "securityConnectorName");
             }
 
-            string apiVersion = "2022-08-01-preview";
+            string apiVersion = "2023-10-01-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -951,7 +960,8 @@ namespace Microsoft.Azure.Management.Security
         /// Updates a security connector
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='securityConnectorName'>
         /// The security connector name.
@@ -1025,7 +1035,7 @@ namespace Microsoft.Azure.Management.Security
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "securityConnectorName");
             }
 
-            string apiVersion = "2022-08-01-preview";
+            string apiVersion = "2023-10-01-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1195,7 +1205,8 @@ namespace Microsoft.Azure.Management.Security
         /// Deletes a security connector.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='securityConnectorName'>
         /// The security connector name.
@@ -1259,7 +1270,7 @@ namespace Microsoft.Azure.Management.Security
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "securityConnectorName");
             }
 
-            string apiVersion = "2022-08-01-preview";
+            string apiVersion = "2023-10-01-preview";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1401,7 +1412,9 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Lists all the security connectors in the specified subscription. Use the &#39;nextLink&#39; property in the response to get the next page of security connectors for the specified subscription.
+        /// Lists all the security connectors in the specified subscription. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// connectors for the specified subscription.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1583,7 +1596,9 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Lists all the security connectors in the specified resource group. Use the &#39;nextLink&#39; property in the response to get the next page of security connectors for the specified resource group.
+        /// Lists all the security connectors in the specified resource group. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// connectors for the specified resource group.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

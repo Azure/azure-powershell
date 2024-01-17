@@ -441,7 +441,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// updating settings about different configurations in Microsoft Defender for Cloud
+        /// updating settings about different configurations in Microsoft Defender for
+        /// Cloud
         /// </summary>
         /// <param name='settingName'>
         /// The name of the setting

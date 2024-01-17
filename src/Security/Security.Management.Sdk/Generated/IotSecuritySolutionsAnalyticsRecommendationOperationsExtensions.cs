@@ -13,13 +13,16 @@ namespace Microsoft.Azure.Management.Security
     public static partial class IotSecuritySolutionsAnalyticsRecommendationOperationsExtensions
     {
         /// <summary>
-        /// Use this method to get the aggregated security analytics recommendation of yours IoT Security solution. This aggregation is performed by recommendation name.
+        /// Use this method to get the aggregated security analytics recommendation of
+        /// yours IoT Security solution. This aggregation is performed by
+        /// recommendation name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -33,13 +36,16 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Use this method to get the aggregated security analytics recommendation of yours IoT Security solution. This aggregation is performed by recommendation name.
+        /// Use this method to get the aggregated security analytics recommendation of
+        /// yours IoT Security solution. This aggregation is performed by
+        /// recommendation name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -58,13 +64,15 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Use this method to get the list of aggregated security analytics recommendations of yours IoT Security solution.
+        /// Use this method to get the list of aggregated security analytics
+        /// recommendations of yours IoT Security solution.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -78,13 +86,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Use this method to get the list of aggregated security analytics recommendations of yours IoT Security solution.
+        /// Use this method to get the list of aggregated security analytics
+        /// recommendations of yours IoT Security solution.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -103,7 +113,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Use this method to get the list of aggregated security analytics recommendations of yours IoT Security solution.
+        /// Use this method to get the list of aggregated security analytics
+        /// recommendations of yours IoT Security solution.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -117,7 +128,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Use this method to get the list of aggregated security analytics recommendations of yours IoT Security solution.
+        /// Use this method to get the list of aggregated security analytics
+        /// recommendations of yours IoT Security solution.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

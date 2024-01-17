@@ -20,7 +20,12 @@ namespace Microsoft.Azure.Management.Security
         /// Get a list of all relevant governance rules over a scope
         /// </remarks>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,10 +48,16 @@ namespace Microsoft.Azure.Management.Security
         /// Get a specific governance rule for the requested scope by ruleId
         /// </remarks>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -69,10 +80,16 @@ namespace Microsoft.Azure.Management.Security
         /// Creates or updates a governance rule over a given scope
         /// </remarks>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         /// <param name='governanceRule'>
         /// Governance rule over a given scope
@@ -98,10 +115,16 @@ namespace Microsoft.Azure.Management.Security
         /// Delete a Governance rule over a given scope
         /// </remarks>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -121,10 +144,16 @@ namespace Microsoft.Azure.Management.Security
         /// Execute a governance rule
         /// </remarks>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         /// <param name='overrideParameter'>
         /// Describe if governance rule should be override
@@ -141,16 +170,24 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<GovernanceRulesExecuteHeaders>> ExecuteWithHttpMessagesAsync(string scope, string ruleId, bool? overrideParameter = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get governance rules long run operation result for the requested scope by ruleId and operationId
+        /// Get governance rules long run operation result for the requested scope by
+        /// ruleId and operationId
         /// </summary>
         /// <remarks>
-        /// Get governance rules long run operation result for the requested scope by ruleId and operationId
+        /// Get governance rules long run operation result for the requested scope by
+        /// ruleId and operationId
         /// </remarks>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         /// <param name='operationId'>
         /// The governance rule long running operation unique key
@@ -167,7 +204,7 @@ namespace Microsoft.Azure.Management.Security
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<OperationResultAutoGenerated,GovernanceRulesOperationResultsHeaders>> OperationResultsWithHttpMessagesAsync(string scope, string ruleId, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<OperationResult,GovernanceRulesOperationResultsHeaders>> OperationResultsWithHttpMessagesAsync(string scope, string ruleId, string operationId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete a Governance rule over a given scope
@@ -176,10 +213,16 @@ namespace Microsoft.Azure.Management.Security
         /// Delete a Governance rule over a given scope
         /// </remarks>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -199,10 +242,16 @@ namespace Microsoft.Azure.Management.Security
         /// Execute a governance rule
         /// </remarks>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         /// <param name='overrideParameter'>
         /// Describe if governance rule should be override

@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.Security
     public static partial class SecureScoresOperationsExtensions
     {
         /// <summary>
-        /// List secure scores for all your Microsoft Defender for Cloud initiatives within your current scope.
+        /// List secure scores for all your Microsoft Defender for Cloud initiatives
+        /// within your current scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -24,7 +25,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// List secure scores for all your Microsoft Defender for Cloud initiatives within your current scope.
+        /// List secure scores for all your Microsoft Defender for Cloud initiatives
+        /// within your current scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -40,13 +42,15 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Get secure score for a specific Microsoft Defender for Cloud initiative within your current scope. For the ASC Default initiative, use &#39;ascScore&#39;.
+        /// Get secure score for a specific Microsoft Defender for Cloud initiative
+        /// within your current scope. For the ASC Default initiative, use &#39;ascScore&#39;.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='secureScoreName'>
-        /// The initiative name. For the ASC Default initiative, use &#39;ascScore&#39; as in the sample request below.
+        /// The initiative name. For the ASC Default initiative, use &#39;ascScore&#39; as in
+        /// the sample request below.
         /// </param>
         public static SecureScoreItem Get(this ISecureScoresOperations operations, string secureScoreName)
         {
@@ -54,13 +58,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Get secure score for a specific Microsoft Defender for Cloud initiative within your current scope. For the ASC Default initiative, use &#39;ascScore&#39;.
+        /// Get secure score for a specific Microsoft Defender for Cloud initiative
+        /// within your current scope. For the ASC Default initiative, use &#39;ascScore&#39;.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='secureScoreName'>
-        /// The initiative name. For the ASC Default initiative, use &#39;ascScore&#39; as in the sample request below.
+        /// The initiative name. For the ASC Default initiative, use &#39;ascScore&#39; as in
+        /// the sample request below.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -73,7 +79,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// List secure scores for all your Microsoft Defender for Cloud initiatives within your current scope.
+        /// List secure scores for all your Microsoft Defender for Cloud initiatives
+        /// within your current scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -87,7 +94,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// List secure scores for all your Microsoft Defender for Cloud initiatives within your current scope.
+        /// List secure scores for all your Microsoft Defender for Cloud initiatives
+        /// within your current scope.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

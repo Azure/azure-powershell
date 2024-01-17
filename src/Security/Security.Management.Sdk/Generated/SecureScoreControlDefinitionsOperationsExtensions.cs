@@ -40,7 +40,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// For a specified subscription, list the available security controls, their assessments, and the max score
+        /// For a specified subscription, list the available security controls, their
+        /// assessments, and the max score
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -51,7 +52,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// For a specified subscription, list the available security controls, their assessments, and the max score
+        /// For a specified subscription, list the available security controls, their
+        /// assessments, and the max score
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -100,7 +102,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// For a specified subscription, list the available security controls, their assessments, and the max score
+        /// For a specified subscription, list the available security controls, their
+        /// assessments, and the max score
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -114,7 +117,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// For a specified subscription, list the available security controls, their assessments, and the max score
+        /// For a specified subscription, list the available security controls, their
+        /// assessments, and the max score
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

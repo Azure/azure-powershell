@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         public const string AWSSecurityAudit = "AWS::SecurityAudit";
         /// <summary>
-        /// The permission provides for EC2 Automation service to execute activities defined within Automation documents.
+        /// The permission provides for EC2 Automation service to execute activities
+        /// defined within Automation documents.
         /// </summary>
         public const string AWSAmazonSSMAutomationRole = "AWS::AmazonSSMAutomationRole";
         /// <summary>

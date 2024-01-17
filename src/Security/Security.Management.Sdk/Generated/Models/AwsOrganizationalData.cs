@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Linq;
 
     /// <summary>
-    /// The awsOrganization data
+    /// The AWS organization data
     /// </summary>
     [Newtonsoft.Json.JsonObject("AwsOrganizationalData")]
     public partial class AwsOrganizationalData

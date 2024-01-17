@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="valueType">The value type of the items in the list.
-        /// Possible values include: 'IpCidr', 'String'</param>
+        /// Possible values include: &#39;IpCidr&#39;, &#39;String&#39;</param>
         public ListCustomAlertRule(bool isEnabled, string displayName = default(string), string description = default(string), string valueType = default(string))
 
         : base(isEnabled, displayName, description)
