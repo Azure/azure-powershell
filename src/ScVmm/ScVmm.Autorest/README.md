@@ -378,7 +378,6 @@ directive:
       subject: VirtualMachineInstance
     set:
       subject: VM
-  # New-AzScVmmVM Change logic. Update-AzScVmmVM just save this parameters: MachineId,HardwareProfileCpuCount,HardwareProfileDynamicMemoryEnabled,HardwareProfileDynamicMemoryMaxMb,HardwareProfileDynamicMemoryMinMb,HardwareProfileMemoryMb,DefaultProfile
   - where:
       verb: New|Update
       subject: VM
@@ -421,7 +420,9 @@ directive:
 
   - model-cmdlet:
     - model-name: AvailabilitySetListItem
+    - model-name: NetworkInterfaceUpdate
     - model-name: NetworkInterface
+    - model-name: VirtualDiskUpdate
     - model-name: VirtualDisk
     - model-name: Checkpoint
 

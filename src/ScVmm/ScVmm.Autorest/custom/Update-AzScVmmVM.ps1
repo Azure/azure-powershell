@@ -68,6 +68,14 @@ function Update-AzScVmmVM {
     ${MachineId},
 
     [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IAvailabilitySetListItem[]]
+    # Availability Sets in vm.
+    # To construct, see NOTES section for AVAILABILITYSET properties and create a hash table.
+    ${AvailabilitySet},
+
+    [Parameter(ParameterSetName = 'UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.Int32]
     # Gets or sets the number of vCPUs for the vm.
@@ -93,10 +101,39 @@ function Update-AzScVmmVM {
     ${HardwareProfileDynamicMemoryMinMb},
 
     [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PSArgumentCompleterAttribute("false", "true")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # Gets or sets a value indicating whether to enable processor compatibility mode for live migration of VMs.
+    ${HardwareProfileLimitCpuForMigration},
+
+    [Parameter(ParameterSetName = 'UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
     [System.Int32]
     # MemoryMB is the size of a virtual machine's memory, in MB.
     ${HardwareProfileMemoryMb},
+
+    [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [System.String]
+    # Type of checkpoint supported for the vm.
+    ${InfrastructureProfileCheckpointType},
+
+    [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.INetworkInterfaceUpdate[]]
+    # Gets or sets the list of network interfaces associated with the virtual machine.
+    # To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
+    ${NetworkProfileNetworkInterface},
+
+    [Parameter(ParameterSetName = 'UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IVirtualDiskUpdate[]]
+    # Gets or sets the list of virtual disks associated with the virtual machine.
+    # To construct, see NOTES section for STORAGEPROFILEDISK properties and create a hash table.
+    ${StorageProfileDisk},
 
     [Parameter(ParameterSetName = 'UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Category('Body')]
@@ -172,6 +209,56 @@ function Update-AzScVmmVM {
   )
 
   process {
+    try {
+      $vmObj = Get-AzScVmmVM -MachineId $MachineId
+      if ($NetworkProfileNetworkInterface.Count -ge 1) {
+        $newNICObject = @(0..($NetworkProfileNetworkInterface.Count - 1))
+        [array]::copy($NetworkProfileNetworkInterface, $newNICObject, $NetworkProfileNetworkInterface.Count)
+        if ($vmObj.NetworkProfileNetworkInterface.Count -ge 1) {
+          foreach ($vmNic in $vmObj.NetworkProfileNetworkInterface) {
+            $sameObj = $false
+            foreach ($nic in $NetworkProfileNetworkInterface) {
+              if (($nic.Name -eq $vmNic.Name) -and ($nic.NicId -eq $vmNic.NicId)) {
+                $sameObj = $true
+                break
+              }
+            }
+            if (-not $sameObj) {
+              $nicObj = New-AzScVmmNetworkInterfaceUpdateObject -Ipv4AddressType $vmNic.Ipv4AddressType -Ipv6AddressType $vmNic.Ipv6AddressType -MacAddress $vmNic.MacAddress -MacAddressType $vmNic.MacAddressType -Name $vmNic.Name -NicId $vmNic.NicId -VirtualNetworkId $vmNic.VirtualNetworkId
+              $newNICObject += $nicObj
+            }
+          }
+          $null = $PSBoundParameters.Remove("NetworkProfileNetworkInterface")
+          $null = $PSBoundParameters.Add("NetworkProfileNetworkInterface", $newNICObject)
+        }
+      }
+
+      if ($StorageProfileDisk.Count -ge 1) {
+        $newDiskObject = @(0..($StorageProfileDisk.Count - 1))
+        [array]::copy($StorageProfileDisk, $newDiskObject, $StorageProfileDisk.Count)
+        if ($vmObj.StorageProfileDisk.Count -ge 1) {
+          foreach ($vmDisk in $vmObj.StorageProfileDisk) {
+            $sameObj = $false
+            foreach ($disk in $StorageProfileDisk) {
+              if (($disk.Name -eq $vmDisk.Name) -and ($disk.DiskId -eq $vmDisk.DiskId)) {
+                $sameObj = $true
+                break
+              }
+            }
+            if (-not $sameObj) {
+              $diskObj = New-AzScVmmVirtualDiskUpdateObject -Bus $vmDisk.Bus -BusType $vmDisk.BusType -DiskId $vmDisk.DiskId -DiskSizeGb $vmDisk.DiskSizeGb -Lun $vmDisk.Lun -Name $vmDisk.Name -StorageQoSPolicyId $vmDisk.StorageQoSPolicyId -StorageQoSPolicyName $vmDisk.StorageQoSPolicyName -VhdType $vmDisk.VhdType
+              $newDiskObject += $diskObj
+            }
+          }
+          $null = $PSBoundParameters.Remove("StorageProfileDisk")
+          $null = $PSBoundParameters.Add("StorageProfileDisk", $newDiskObject)
+        }
+      }
+    }
+    catch {
+      throw
+    }
+
     Az.ScVmm.internal\Update-AzScVmmVM @PSBoundParameters
   }
 }
