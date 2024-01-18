@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ConnectedMachine.private.dll'
   FormatsToProcess = './Az.ConnectedMachine.format.ps1xml'
-  FunctionsToExport = 'Connect-AzConnectedMachine', 'Get-AzConnectedMachine', 'Get-AzConnectedMachineExtension', 'Get-AzConnectedPrivateLinkScope', 'New-AzConnectedMachineExtension', 'New-AzConnectedPrivateLinkScope', 'Remove-AzConnectedMachine', 'Remove-AzConnectedMachineExtension', 'Remove-AzConnectedPrivateLinkScope', 'Set-AzConnectedMachineExtension', 'Set-AzConnectedPrivateLinkScope', 'Update-AzConnectedExtension', 'Update-AzConnectedMachine', 'Update-AzConnectedMachineExtension', 'Update-AzConnectedPrivateLinkScopeTag', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Connect-AzConnectedMachine', 'Get-AzConnectedMachine', 'Get-AzConnectedMachineExtension', 'Get-AzConnectedPrivateLinkScope', 'New-AzConnectedMachineExtension', 'New-AzConnectedPrivateLinkScope', 'Remove-AzConnectedMachine', 'Remove-AzConnectedMachineExtension', 'Remove-AzConnectedPrivateLinkScope', 'Set-AzConnectedMachineExtension', 'Set-AzConnectedPrivateLinkScope', 'Update-AzConnectedExtension', 'Update-AzConnectedMachine', 'Update-AzConnectedMachineExtension', 'Update-AzConnectedPrivateLinkScopeTag'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ConnectedMachine'

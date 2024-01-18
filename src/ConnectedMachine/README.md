@@ -259,6 +259,8 @@ directive:
         script: Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName
 
   # These APIs are used by the agent so they do not need to be in the cmdlets.
-  - remove-operation:
-    - Machines_CreateOrUpdate
+  - where:
+      verb: New|Set
+      subject: Machine
+    remove: true
 ```

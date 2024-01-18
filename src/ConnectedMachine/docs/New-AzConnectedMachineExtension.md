@@ -8,18 +8,18 @@ schema: 2.0.0
 # New-AzConnectedMachineExtension
 
 ## SYNOPSIS
-The operation to create or update the extension.
+The operation to Create the extension.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
- -Location <String> [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade]
- [-ExtensionType <String>] [-ForceRerun <String>] [-InstanceViewName <String>] [-InstanceViewType <String>]
- [-InstanceViewTypeHandlerVersion <String>] [-ProtectedSetting <Hashtable>] [-Publisher <String>]
- [-Setting <Hashtable>] [-StatusCode <String>] [-StatusDisplayStatus <String>]
- [-StatusLevel <StatusLevelTypes>] [-StatusMessage <String>] [-StatusTime <DateTime>] [-Tag <Hashtable>]
+ [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade] [-ExtensionType <String>]
+ [-ForceRerun <String>] [-InstanceViewName <String>] [-InstanceViewType <String>]
+ [-InstanceViewTypeHandlerVersion <String>] [-Location <String>] [-ProtectedSetting <Hashtable>]
+ [-Publisher <String>] [-Setting <Hashtable>] [-StatusCode <String>] [-StatusDisplayStatus <String>]
+ [-StatusLevel <String>] [-StatusMessage <String>] [-StatusTime <DateTime>] [-Tag <Hashtable>]
  [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -40,17 +40,49 @@ New-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity>
 
 ### CreateViaIdentityExpanded
 ```
-New-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity> -Location <String>
+New-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity> [-AutoUpgradeMinorVersion]
+ [-EnableAutomaticUpgrade] [-ExtensionType <String>] [-ForceRerun <String>] [-InstanceViewName <String>]
+ [-InstanceViewType <String>] [-InstanceViewTypeHandlerVersion <String>] [-Location <String>]
+ [-ProtectedSetting <Hashtable>] [-Publisher <String>] [-Setting <Hashtable>] [-StatusCode <String>]
+ [-StatusDisplayStatus <String>] [-StatusLevel <String>] [-StatusMessage <String>] [-StatusTime <DateTime>]
+ [-Tag <Hashtable>] [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityMachine
+```
+New-AzConnectedMachineExtension -MachineInputObject <IConnectedMachineIdentity> -Name <String>
+ -ExtensionParameter <IMachineExtension> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityMachineExpanded
+```
+New-AzConnectedMachineExtension -MachineInputObject <IConnectedMachineIdentity> -Name <String>
  [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade] [-ExtensionType <String>] [-ForceRerun <String>]
  [-InstanceViewName <String>] [-InstanceViewType <String>] [-InstanceViewTypeHandlerVersion <String>]
- [-ProtectedSetting <Hashtable>] [-Publisher <String>] [-Setting <Hashtable>] [-StatusCode <String>]
- [-StatusDisplayStatus <String>] [-StatusLevel <StatusLevelTypes>] [-StatusMessage <String>]
+ [-Location <String>] [-ProtectedSetting <Hashtable>] [-Publisher <String>] [-Setting <Hashtable>]
+ [-StatusCode <String>] [-StatusDisplayStatus <String>] [-StatusLevel <String>] [-StatusMessage <String>]
  [-StatusTime <DateTime>] [-Tag <Hashtable>] [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaJsonFilePath
+```
+New-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The operation to create or update the extension.
+The operation to Create the extension.
 
 ## EXAMPLES
 
@@ -133,7 +165,7 @@ Once deployed, however, the extension will not upgrade minor versions unless red
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases:
 
 Required: False
@@ -144,7 +176,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -163,7 +196,7 @@ Indicates whether the extension should be automatically upgraded by the platform
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases:
 
 Required: False
@@ -179,7 +212,7 @@ To construct, see NOTES section for EXTENSIONPARAMETER properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtension
-Parameter Sets: Create, CreateViaIdentity
+Parameter Sets: Create, CreateViaIdentity, CreateViaIdentityMachine
 Aliases:
 
 Required: True
@@ -194,7 +227,7 @@ Specifies the type of the extension; an example is "CustomScriptExtension".
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases:
 
 Required: False
@@ -209,7 +242,7 @@ How the extension handler should be forced to update even if the extension confi
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases:
 
 Required: False
@@ -240,7 +273,7 @@ The machine extension name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases:
 
 Required: False
@@ -255,7 +288,7 @@ Specifies the type of the extension; an example is "CustomScriptExtension".
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases:
 
 Required: False
@@ -270,10 +303,40 @@ Specifies the version of the script handler.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -285,13 +348,29 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MachineInputObject
+Identity Parameter
+To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+Parameter Sets: CreateViaIdentityMachine, CreateViaIdentityMachineExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -300,7 +379,7 @@ The name of the machine where the extension should be created or updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -315,7 +394,7 @@ The name of the machine extension.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Create, CreateExpanded, CreateViaIdentityMachine, CreateViaIdentityMachineExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -345,7 +424,7 @@ The extension can contain either protectedSettings or protectedSettingsFromKeyVa
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases: ProtectedSettings
 
 Required: False
@@ -360,7 +439,7 @@ The name of the extension handler publisher.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases:
 
 Required: False
@@ -376,7 +455,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -391,7 +470,7 @@ Json formatted public settings for the extension.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases: Settings
 
 Required: False
@@ -406,7 +485,7 @@ The status code.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases:
 
 Required: False
@@ -421,7 +500,7 @@ The short localizable label for the status.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases:
 
 Required: False
@@ -435,8 +514,8 @@ Accept wildcard characters: False
 The level code.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.StatusLevelTypes
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases:
 
 Required: False
@@ -451,7 +530,7 @@ The detailed status message, including for alerts and error messages.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases:
 
 Required: False
@@ -466,7 +545,7 @@ The time of the status.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases:
 
 Required: False
@@ -481,7 +560,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -496,7 +575,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases:
 
 Required: False
@@ -511,7 +590,7 @@ Specifies the version of the script handler.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
 Aliases:
 
 Required: False
@@ -557,63 +636,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtension
-
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtension
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtension
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-EXTENSIONPARAMETER <IMachineExtension>: Describes a Machine Extension.
-  - `Location <String>`: The geo-location where the resource lives
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AutoUpgradeMinorVersion <Boolean?>]`: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-  - `[EnableAutomaticUpgrade <Boolean?>]`: Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
-  - `[ForceUpdateTag <String>]`: How the extension handler should be forced to update even if the extension configuration has not changed.
-  - `[InstanceViewName <String>]`: The machine extension name.
-  - `[InstanceViewType <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
-  - `[InstanceViewTypeHandlerVersion <String>]`: Specifies the version of the script handler.
-  - `[MachineExtensionType <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
-  - `[ProtectedSetting <IMachineExtensionPropertiesProtectedSettings>]`: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[Publisher <String>]`: The name of the extension handler publisher.
-  - `[Setting <IMachineExtensionPropertiesSettings>]`: Json formatted public settings for the extension.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[StatusCode <String>]`: The status code.
-  - `[StatusDisplayStatus <String>]`: The short localizable label for the status.
-  - `[StatusLevel <StatusLevelTypes?>]`: The level code.
-  - `[StatusMessage <String>]`: The detailed status message, including for alerts and error messages.
-  - `[StatusTime <DateTime?>]`: The time of the status.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[TypeHandlerVersion <String>]`: Specifies the version of the script handler.
-
-INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
-  - `[ExtensionName <String>]`: The name of the machine extension.
-  - `[GroupName <String>]`: The name of the private link resource.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location of the target resource.
-  - `[MachineName <String>]`: The name of the hybrid machine.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[PrivateLinkScopeId <String>]`: The id (Guid) of the Azure Arc PrivateLinkScope resource.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScopeName <String>]`: The name of the Azure Arc PrivateLinkScope resource.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

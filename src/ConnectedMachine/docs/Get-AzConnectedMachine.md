@@ -20,7 +20,7 @@ Get-AzConnectedMachine [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
 ### Get
 ```
 Get-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Expand <InstanceViewTypes>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
@@ -82,7 +82,8 @@ Get a connected machine in a resource group by name.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -100,7 +101,7 @@ Accept wildcard characters: False
 The expand expression to apply on the operation.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.InstanceViewTypes
+Type: System.String
 Parameter Sets: Get
 Aliases:
 
@@ -167,8 +168,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

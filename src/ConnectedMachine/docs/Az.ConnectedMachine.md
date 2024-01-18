@@ -24,7 +24,7 @@ The operation to get the extension.
 Returns a Azure Arc PrivateLinkScope.
 
 ### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)
-The operation to create or update the extension.
+The operation to Create the extension.
 
 ### [New-AzConnectedPrivateLinkScope](New-AzConnectedPrivateLinkScope.md)
 Creates (or updates) a Azure Arc PrivateLinkScope.
@@ -40,7 +40,7 @@ The operation to delete the extension.
 Deletes a Azure Arc PrivateLinkScope.
 
 ### [Set-AzConnectedMachineExtension](Set-AzConnectedMachineExtension.md)
-The operation to create or update the extension.
+The operation to Create the extension.
 
 ### [Set-AzConnectedPrivateLinkScope](Set-AzConnectedPrivateLinkScope.md)
 Creates (or updates) a Azure Arc PrivateLinkScope.
@@ -53,7 +53,7 @@ The operation to Upgrade Machine Extensions.
 The operation to update a hybrid machine.
 
 ### [Update-AzConnectedMachineExtension](Update-AzConnectedMachineExtension.md)
-The operation to create or update the extension.
+The operation to Update the extension.
 
 ### [Update-AzConnectedPrivateLinkScopeTag](Update-AzConnectedPrivateLinkScopeTag.md)
 Updates an existing PrivateLinkScope's tags.
