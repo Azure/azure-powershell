@@ -18,6 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change notification for cmdlets whose output type is `ASRVaultSettings`.
+* Added warning for Standard to Enhanced policy migration for AzureVMs.
+* Updated Unregister-AzRecoveryServicesBackupContainer cmdlet to ouptput Job object if PassThru not given.
+* Fixed issue with Get-AzRecoveryServicesVaultSettingsFile cmdlet to return private endpoint state for backup.
+
+## Version 6.7.0
+* Added support Edge zone VM restore
+* Added cross zonal restore for snapshot recovery point
+
+## Version 6.6.2
+* Removed outdated upcoming breaking change warning
+
+## Version 6.6.1
+* Fixed minor issues
 
 ## Version 6.6.0
 * Added support for custom RG with suffix while creating or modifying policy for workload type AzureVM.

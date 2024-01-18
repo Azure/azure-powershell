@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.1
+* Updated dataset limit from 5 Tb to 100 Tib.
+  
+## Version 2.1.0
 * Fixed minor issues.
+* Updated supported character sets in `Invoke-AzStorageSyncCompatibilityCheck`.
 
 ## Version 2.0.0
 * Deprecated "RegisteredServer" alias for InputObject parameter for Set-AzStorageSyncServerEndpoint

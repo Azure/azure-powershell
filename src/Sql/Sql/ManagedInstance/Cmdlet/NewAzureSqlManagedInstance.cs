@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets whether or not to assign identity for instance
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Generate and assign an Azure Active Directory Identity for this instance for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Generate and assign a Microsoft Entra identity for this instance for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         /// <summary>
@@ -376,14 +376,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Azure Active Directory display name for a user or group
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Specifies the display name of the user, group or application which is the Azure Active Directory administrator for the server. This display name must exist in the active directory associated with the current subscription.")]
+            HelpMessage = "Specifies the display name of the user, group or application which is the Microsoft Entra administrator for the server. This display name must exist in the active directory associated with the current subscription.")]
         public string ExternalAdminName { get; set; }
 
         /// <summary>
         /// Azure Active Directory object id for a user, group or application
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Specifies the object ID of the user, group or application which is the Azure Active Directory administrator.")]
+            HelpMessage = "Specifies the object ID of the user, group or application which is the Microsoft Entra administrator.")]
         public Guid? ExternalAdminSID { get; set; }
 
         /// <summary>
@@ -400,6 +400,20 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [ValidateSet("None", "SystemAssigned")]
         [PSArgumentCompleter("SystemAssigned", "None")]
         public string ServicePrincipalType { get; set; }
+
+        /// <summary>
+        /// Specifies the internal format of instance databases specific to the SQL engine version
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The instance databases specific to the SQL engine version")]
+        [PSArgumentCompleter("AlwaysUpToDate", "SQLServer2022")]
+        public string DatabaseFormat { get; set; }
+
+        /// <summary>
+        /// Specifies weather or not Managed Instance is freemium
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Weather or not Managed Instance is freemium")]
+        [PSArgumentCompleter("Regular", "Freemium")]
+        public string PricingModel { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -569,8 +583,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                     Sid = this.ExternalAdminSID
                 },
                 ZoneRedundant = this.ZoneRedundant.IsPresent ? this.ZoneRedundant.ToBool() : (bool?)null,
-                ServicePrincipal = ResourceServicePrincipalHelper.GetServicePrincipalObjectFromType(this.ServicePrincipalType ?? null)
-            }); ;
+                ServicePrincipal = ResourceServicePrincipalHelper.GetServicePrincipalObjectFromType(this.ServicePrincipalType ?? null),
+                DatabaseFormat = this.DatabaseFormat,
+                PricingModel = this.PricingModel
+            });
             return newEntity;
         }
 

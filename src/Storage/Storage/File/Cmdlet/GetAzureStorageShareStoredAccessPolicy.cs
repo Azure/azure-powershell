@@ -44,7 +44,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(Position = 1,
             HelpMessage = "Policy Identifier",
             ValueFromPipelineByPropertyName = true)]
-        public string Policy { get; set; }
+        public string Policy { get; set; }        
+        
+        // Overwrite the useless parameter
+        public override SwitchParameter DisAllowTrailingDot { get; set; }
 
         internal async Task GetAzureShareStoredAccessPolicyAsync(long taskId, IStorageFileManagement localChannel, string shareName, string policyName)
         {

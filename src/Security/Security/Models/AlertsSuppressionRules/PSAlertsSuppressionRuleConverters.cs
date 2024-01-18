@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Security.Models.AlertsSuppressionRules
             };
         }
 
-        public static PSRuleState ConvertToPSType(this RuleState value)
+        public static PSRuleState ConvertToPSType(this RuleState? value)
         {
             switch (value)
             {
@@ -87,14 +87,14 @@ namespace Microsoft.Azure.Commands.Security.Models.AlertsSuppressionRules
         public static AlertsSuppressionRule ConvertToNetType(this PSAlertsSuppressionRule value)
         {
             return new AlertsSuppressionRule(
-                value.AlertType, 
-                value.Reason, 
-                value.State.ConvertToNetType(), 
                 value.Id,
-                value.Name, 
-                value.Type, 
+                value.Name,
+                value.Type,
+                value.AlertType,
                 value.LastModifiedUtc,
-                value.ExpirationDateUtc, 
+                value.ExpirationDateUtc,
+                value.Reason,
+                value.State.ConvertToNetType(),
                 value.Comment,
                 value.SuppressionAlertsScope.ConvertToNetType());
         }

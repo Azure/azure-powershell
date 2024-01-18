@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -201,6 +201,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string AzureElasticJobNotExists {
             get {
                 return ResourceManager.GetString("AzureElasticJobNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job Private Endpoint with name &apos;{0}&apos; already exists in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobPrivateEndpointExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobPrivateEndpointExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job Private Endpoint with name &apos;{0}&apos; does not exist in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobPrivateEndpointNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobPrivateEndpointNotExists", resourceCulture);
             }
         }
         
@@ -1283,6 +1301,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveElasticJobAgentWarning {
             get {
                 return ResourceManager.GetString("RemoveElasticJobAgentWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the private endpoint &apos;{0}&apos; from agent &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveElasticJobPrivateEndpointWarning {
+            get {
+                return ResourceManager.GetString("RemoveElasticJobPrivateEndpointWarning", resourceCulture);
             }
         }
         

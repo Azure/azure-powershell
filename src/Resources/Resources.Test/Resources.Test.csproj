@@ -11,7 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.13.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="2.0.0-beta" />
   </ItemGroup>
 
@@ -20,9 +19,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Authorization.Management.Sdk\Authorization.Management.Sdk.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <ProjectReference Include="..\ResourceManager\ResourceManager.csproj" />
     <ProjectReference Include="..\Resources\Resources.csproj" />
-    <ProjectReference Include="..\..\ManagedServiceIdentity\Az.ManagedServiceIdentity.csproj" />
+    <ProjectReference Include="..\..\ManagedServiceIdentity\ManagedServiceIdentity\ManagedServiceIdentity.csproj" />
+    <ProjectReference Include="..\..\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj" />
 	<ProjectReference Include="..\Resources.Sdk\Resources.Sdk.csproj" />
     <ProjectReference Include="..\..\Purview\Purview\Purview.csproj" />
     <ProjectReference Include="..\..\Purview\Purview.Autorest\Az.Purview.csproj" />
@@ -30,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Resources\*.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Resources/**/*.*" CopyToOutputDirectory="PreserveNewest" />
     <None Update="*.json" CopyToOutputDirectory="PreserveNewest" />
     <None Update="*.bicep" CopyToOutputDirectory="PreserveNewest" />
 	<None Update="*.bicepparam" CopyToOutputDirectory="PreserveNewest" />

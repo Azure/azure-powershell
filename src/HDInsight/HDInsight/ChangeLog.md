@@ -17,7 +17,15 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
+
+## Version 6.1.0
+* Added new feature: Enable secure channels while creating a new cluster.
+* Fixed a bug: When creating a cluster without passing the version, the default version cannot be set to 'default'.
+
+## Version 6.0.2
+* Fixed a bug where the get cluster command does not display abfss storage information.
 
 ## Version 6.0.1
 * This change adds some warning messages to the incoming break changes for the next version, with detailed information as follows:

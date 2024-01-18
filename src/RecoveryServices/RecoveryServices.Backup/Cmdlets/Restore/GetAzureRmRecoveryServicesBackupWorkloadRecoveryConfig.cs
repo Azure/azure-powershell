@@ -418,13 +418,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(itemId);
             string containerUri = HelperUtils.GetContainerUri(uriDict, itemId);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, itemId);
-            var queryFilterString = QueryBuilder.Instance.GetQueryString(new BMSRPQueryObject()
+            var queryFilterString = QueryBuilder.Instance.GetQueryString(new BmsrpQueryObject()
             {
                 RestorePointQueryType = RestorePointQueryType.Log,
                 ExtendedInfo = true
             });
 
-            ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
+            ODataQuery<BmsrpQueryObject> queryFilter = new ODataQuery<BmsrpQueryObject>();
             queryFilter.Filter = queryFilterString;
 
             var rpResponse = ServiceClientAdapter.GetRecoveryPoints(
@@ -454,13 +454,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(itemId);
             string containerUri = HelperUtils.GetContainerUri(uriDict, itemId);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, itemId);
-            var queryFilterString = QueryBuilder.Instance.GetQueryString(new BMSRPQueryObject()
+            var queryFilterString = QueryBuilder.Instance.GetQueryString(new BmsrpQueryObject()
             {
                 RestorePointQueryType = RestorePointQueryType.Log,
                 ExtendedInfo = true
             });
 
-            ODataQuery<CrrModel.BMSRPQueryObject> queryFilter = new ODataQuery<CrrModel.BMSRPQueryObject>();
+            ODataQuery<CrrModel.BmsrpQueryObject> queryFilter = new ODataQuery<CrrModel.BmsrpQueryObject>();
             queryFilter.Filter = queryFilterString;
                         
             var rpResponse = ServiceClientAdapter.GetRecoveryPointsFromSecondaryRegion(

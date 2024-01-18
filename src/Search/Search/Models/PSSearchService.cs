@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -71,6 +72,9 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
         [Ps1Xml(Label = "Auth options", Target = ViewControl.List, Position = 15)]
         public PSAuthOptions AuthOptions { get; set; }
 
+        [Ps1Xml(Label = "Semantic search", Target = ViewControl.List, Position = 16)]
+        public PSSemanticSearchMode SemanticSearchMode { get; set; }
+
         public PSSearchService(Azure.Management.Search.Models.SearchService searchService)
         {
             ResourceGroupName = new ResourceIdentifier(searchService.Id).ResourceGroupName;
@@ -123,6 +127,12 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
             if (searchService.AuthOptions != null)
             {
                 AuthOptions = (PSAuthOptions)searchService.AuthOptions;
+            }
+
+            if (searchService.SemanticSearch != null &&
+                Enum.TryParse(searchService.SemanticSearch, ignoreCase: true, out PSSemanticSearchMode semanticSearchMode))
+            {
+                SemanticSearchMode = semanticSearchMode;
             }
         }
 

@@ -35,6 +35,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
     public abstract class AzureStorageFileCmdletBase : StorageCloudCmdletBase<IStorageFileManagement>
     {
+        [Parameter(Mandatory = false, HelpMessage = "Disallow trailing dot (.) to suffix directory and file names.", ParameterSetName = Constants.ShareNameParameterSetName)]
+        public virtual SwitchParameter DisAllowTrailingDot { get; set; }
         protected FileRequestOptions RequestOptions
         {
             get
@@ -176,8 +178,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             {
                 if (clientOptions == null)
                 {
-                    clientOptions = new ShareClientOptions();
-                    clientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
+                    clientOptions = createClientOptions();
                     return clientOptions;
                 }
                 else
@@ -188,6 +189,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         }
         private ShareClientOptions clientOptions = null;
 
+        public ShareClientOptions createClientOptions()
+        {
+            ShareClientOptions clientOptions = new ShareClientOptions();
+            clientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
+            if (this.DisAllowTrailingDot.IsPresent)
+            {
+                clientOptions.AllowTrailingDot = false;
+            }
+            else
+            {
+                clientOptions.AllowTrailingDot = true;
+            }
+            clientOptions.AllowSourceTrailingDot = true;
+            return clientOptions;
+        }
+
         public static AzureStorageContext GetStorageContextFromTrack1FileServiceClient(CloudFileClient fileServiceClient, IAzureContext DefaultContext = null)
         {
             Microsoft.Azure.Storage.CloudStorageAccount account = new Microsoft.Azure.Storage.CloudStorageAccount(
@@ -196,8 +213,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
                 null, //queue Uri
                 null, //talbe Uri
                 fileServiceClient.BaseUri); //file Uri
-            return new AzureStorageContext(account, 
-                fileServiceClient.Credentials.AccountName, 
+            return new AzureStorageContext(account,
+                fileServiceClient.Credentials.AccountName,
                 DefaultContext);
         }
         public static AzureStorageContext GetStorageContextFromTrack1BlobServiceClient(CloudBlobClient blobServiceClient, IAzureContext DefaultContext = null)

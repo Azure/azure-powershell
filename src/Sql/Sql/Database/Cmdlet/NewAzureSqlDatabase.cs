@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Switch parameter to control if database identity is to be assigned.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Generate and assign a Microsoft Entra identity for this database for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         /// <summary>

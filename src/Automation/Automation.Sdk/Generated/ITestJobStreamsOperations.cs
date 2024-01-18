@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.Automation
     public partial interface ITestJobStreamsOperations
     {
         /// <summary>
-        /// Retrieve a test job stream of the test job identified by runbook name and stream id.
+        /// Retrieve a test job stream of the test job identified by runbook name and
+        /// stream id.
         /// </summary>
         /// <remarks>
-        /// Retrieve a test job stream of the test job identified by runbook name and stream id.
+        /// Retrieve a test job stream of the test job identified by runbook name and
+        /// stream id.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// Name of an Azure Resource group.

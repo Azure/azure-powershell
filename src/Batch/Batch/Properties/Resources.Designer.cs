@@ -1249,7 +1249,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Using Azure Active Directory authentication to interact with the Batch service. To use shared key authentication, supply a BatchAccountContext that was returned from the Get-AzBatchAccountKeys cmdlet..
+        ///   Looks up a localized string similar to Using Microsoft Entra authentication to interact with the Batch service. To use shared key authentication, supply a BatchAccountContext that was returned from the Get-AzBatchAccountKeys cmdlet..
         /// </summary>
         internal static string UsingAadAuth {
             get {
@@ -1258,7 +1258,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Using shared key authentication to interact with the Batch service. Current key in use: {0}. To change keys, set the BatchAccountContext.KeyInUse property. To use Azure Active Directory authentication, supply a BatchAccountContext that was returned from the Get-AzBatchAccount cmdlet..
+        ///   Looks up a localized string similar to Using shared key authentication to interact with the Batch service. Current key in use: {0}. To change keys, set the BatchAccountContext.KeyInUse property. To use Microsoft Entra authentication, supply a BatchAccountContext that was returned from the Get-AzBatchAccount cmdlet..
         /// </summary>
         internal static string UsingSharedKeyAuth {
             get {

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
 
         /// <param name="type">The type of the resource.
-        /// Possible values include: 'SystemAssigned', 'None'</param>
+        /// Possible values include: &#39;SystemAssigned&#39;, &#39;None&#39;</param>
         public ManagedCassandraManagedServiceIdentity(string principalId = default(string), string tenantId = default(string), string type = default(string))
 
         {

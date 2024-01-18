@@ -32,6 +32,13 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ClusterRelatedCommands");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestClusterEnableSecureChannelCommands()
+        {
+            TestRunner.RunTestScript("Test-ClusterEnableSecureChannelCommands");
+        }
+
         [Fact(Skip = "Sikp this")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCmkClusterRelatedCommands()
@@ -39,21 +46,21 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CmkClusterRelatedCommands");
         }
 
-        [Fact(Skip = "need to create resource manually")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithEncryptionInTransit()
         {
             TestRunner.RunTestScript("Test-CreateClusterWithEncryptionInTransit");
         }
 
-        [Fact(Skip = "need to create resource manually")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithEncryptionAtHost()
         {
             TestRunner.RunTestScript("Test-CreateClusterWithEncryptionAtHost");
         }
 
-        [Fact(Skip = "need to create resource manually")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithLoadBasedAutoscale()
         {
@@ -67,21 +74,21 @@ namespace Commands.HDInsight.Test.ScenarioTests
             TestRunner.RunTestScript("Test-CreateClusterWithScheduleBasedAutoscale");
         }
 
-        [Fact]
+        [Fact(Skip ="need to create resource manually")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithKafkaRestProxy()
         {
             TestRunner.RunTestScript("Test-CreateClusterWithKafkaRestProxy");
         }
 
-        [Fact(Skip ="need to create resource manually")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithRelayOutoundAndPrivateLink()
         {
             TestRunner.RunTestScript("Test-CreateClusterWithRelayOutoundAndPrivateLink");
         }
 
-        [Fact(Skip = "need to create resource manually")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateClusterWithCustomAmbariDatabase()
         {

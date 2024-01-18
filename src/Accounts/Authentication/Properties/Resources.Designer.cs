@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When enabled, Azure PowerShell will check for updates automatically and display a hint message when an update is available. The default value will be changed from false to true in Az version 11.0.0..
+        ///   Looks up a localized string similar to When enabled, Azure PowerShell will check for updates automatically and display a hint message when an update is available. The default value is true..
         /// </summary>
         public static string HelpMessageOfCheckForUpgrade {
             get {

@@ -48,22 +48,18 @@ Asn                    : 65222
 TunnelIdentifier       : 0
 RoutingConfiguration   : {
                            "AssociatedRouteTable": {
-                             "ResourceUri":"/subscriptions/{subid}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualHubs/{hub-name}//hubRouteTables/defaultRouteTable"
+                             "Id":"/subscriptions/{subid}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualHubs/{hub-name}//hubRouteTables/defaultRouteTable"
                            },
                            "PropagatedRouteTables": {
                              "Labels": [],
                              "Ids": [
                                {
-                                 "ResourceUri": "/subscriptions/{subid}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualHubs/{hub-name}//hubRouteTables/defaultRouteTable"
+                                 "Id": "/subscriptions/{subid}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualHubs/{hub-name}//hubRouteTables/defaultRouteTable"
                                }
                              ]
                            },
-                           "InboundRouteMap": {
-                             "ResourceUri": ""
-                           },
-                           "OutboundRouteMap": {
-                             "ResourceUri": ""
-                           }
+                           "InboundRouteMap": {},
+                           "OutboundRouteMap": {}
                          }
 ```
 
@@ -87,22 +83,18 @@ Asn                    : 65222
 TunnelIdentifier       : 0
 RoutingConfiguration   : {
                            "AssociatedRouteTable": {
-                             "ResourceUri":"/subscriptions/{subid}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualHubs/{hub-name}//hubRouteTables/defaultRouteTable"
+                             "Id":"/subscriptions/{subid}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualHubs/{hub-name}//hubRouteTables/defaultRouteTable"
                            },
                            "PropagatedRouteTables": {
                              "Labels": [],
                              "Ids": [
                                {
-                                 "ResourceUri": "/subscriptions/{subid}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualHubs/{hub-name}//hubRouteTables/defaultRouteTable"
+                                 "Id": "/subscriptions/{subid}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualHubs/{hub-name}//hubRouteTables/defaultRouteTable"
                                }
                              ]
                            },
-                           "InboundRouteMap": {
-                             "ResourceUri": ""
-                           },
-                           "OutboundRouteMap": {
-                             "ResourceUri": ""
-                           }
+                           "InboundRouteMap": {},
+                           "OutboundRouteMap": {}
                          }
 ```
 

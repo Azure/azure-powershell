@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="qosType">The qos type of the pool
-        /// Possible values include: 'Auto', 'Manual'</param>
+        /// Possible values include: &#39;Auto&#39;, &#39;Manual&#39;</param>
 
         /// <param name="size">Provisioned size of the pool (in bytes). Allowed values are in 1TiB chunks
         /// (value must be multiply of 4398046511104).

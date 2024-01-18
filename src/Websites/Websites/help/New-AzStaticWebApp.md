@@ -271,7 +271,7 @@ Accept wildcard characters: False
 ```
 
 ### -GithubActionSecretNameOverride
-Github Action secret name override.
+GitHub Action secret name override.
 
 ```yaml
 Type: System.String
@@ -571,7 +571,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

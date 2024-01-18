@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.Network
                 securityDefaultAdminRule.Flag = this.Flag;
                 var securityDefaultAdminRuleModel = NetworkResourceManagerProfile.Mapper.Map<MNM.DefaultAdminRule>(securityDefaultAdminRule);
                 this.NullifySecurityAdminRuleIfAbsent(securityDefaultAdminRuleModel);
-                this.NetworkManagerSecurityAdminRuleOperationClient.CreateOrUpdate(securityDefaultAdminRuleModel, this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.RuleCollectionName, this.Name);
+                this.NetworkManagerSecurityAdminRuleOperationClient.CreateOrUpdate(this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.RuleCollectionName, this.Name, securityDefaultAdminRuleModel);
                 var psDefaultAdminRule = this.GetNetworkManagerSecurityAdminRule(this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.RuleCollectionName, this.Name);
                 return psDefaultAdminRule;
             }
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 // Map to the sdk object
                 var adminRuleModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AdminRule>(securityAdminRule);
-                var adminRuleResponse = this.NetworkManagerSecurityAdminRuleOperationClient.CreateOrUpdate(adminRuleModel, this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.RuleCollectionName, this.Name);
+                var adminRuleResponse = this.NetworkManagerSecurityAdminRuleOperationClient.CreateOrUpdate(this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.RuleCollectionName, this.Name, adminRuleModel);
                 var psAdminRule = this.ToPSSecurityAdminRule(adminRuleResponse);
                 psAdminRule.ResourceGroupName = this.ResourceGroupName;
                 psAdminRule.NetworkManagerName = this.NetworkManagerName;

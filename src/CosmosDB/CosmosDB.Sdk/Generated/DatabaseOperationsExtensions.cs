@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.CosmosDB
     public static partial class DatabaseOperationsExtensions
     {
         /// <summary>
-        /// Retrieves the metrics determined by the given filter for the given database account and database.
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account and database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -28,7 +29,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database rid.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
+        /// An OData filter expression that describes a subset of metrics to return.
+        /// The parameters that can be filtered are name.value (name of the metric, can
+        /// have an or of multiple names), startTime, endTime, and timeGrain. The
+        /// supported operator is eq.
         /// </param>
         public static System.Collections.Generic.IEnumerable<Metric> ListMetrics(this IDatabaseOperations operations, string resourceGroupName, string accountName, string databaseRid, string filter)
         {
@@ -36,7 +40,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Retrieves the metrics determined by the given filter for the given database account and database.
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account and database.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -51,7 +56,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database rid.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
+        /// An OData filter expression that describes a subset of metrics to return.
+        /// The parameters that can be filtered are name.value (name of the metric, can
+        /// have an or of multiple names), startTime, endTime, and timeGrain. The
+        /// supported operator is eq.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -79,7 +87,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database rid.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
+        /// An OData filter expression that describes a subset of usages to return. The
+        /// supported parameter is name.value (name of the metric, can have an or of
+        /// multiple names).
         /// </param>
         public static System.Collections.Generic.IEnumerable<Usage> ListUsages(this IDatabaseOperations operations, string resourceGroupName, string accountName, string databaseRid, string filter = default(string))
         {
@@ -102,7 +112,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database rid.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
+        /// An OData filter expression that describes a subset of usages to return. The
+        /// supported parameter is name.value (name of the metric, can have an or of
+        /// multiple names).
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

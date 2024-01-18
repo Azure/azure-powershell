@@ -3,7 +3,7 @@ function GetEndpointFromResourceGraph {
     param(
         [Parameter(Mandatory, HelpMessage = 'Name of the dev center')]
         [System.String]
-        ${DevCenter},
+        ${DevCenterName},
 
         [Parameter(HelpMessage = 'Name of the project')]
         [System.String]
@@ -26,7 +26,7 @@ function GetEndpointFromResourceGraph {
         }
         $query += "| extend devCenterArr = split(properties.devCenterId, '/') " `
             + "| extend devCenterName = devCenterArr[array_length(devCenterArr) -1]  "`
-            + "| where devCenterName =~ '$DevCenter' | take 1 "`
+            + "| where devCenterName =~ '$DevCenterName' | take 1 "`
             + "| extend devCenterUri = properties.devCenterUri | project devCenterUri"
         $argResponse = Az.ResourceGraph\Search-AzGraph -Query $query
         $devCenterUri = $argResponse.devCenterUri
@@ -36,11 +36,11 @@ function GetEndpointFromResourceGraph {
             $errorHelp = "under the current tenant '$tenantId'. Please contact your admin to gain access to specific projects or " +
             "use a different tenant where you have access to projects."
             if (!$Project) {
-                $noProjectFound = "No projects were found in the dev center '$DevCenter' " + $errorHelp
+                $noProjectFound = "No projects were found in the dev center '$DevCenterName' " + $errorHelp
                 Write-Error $noProjectFound -ErrorAction Stop
             }
             else {
-                $noProjectFound = "No project '$Project' was found in the dev center '$DevCenter' " + $errorHelp
+                $noProjectFound = "No project '$Project' was found in the dev center '$DevCenterName' " + $errorHelp
                 Write-Error $noProjectFound -ErrorAction Stop
             }
         }
@@ -99,7 +99,7 @@ function GetDelayedActionTimeFromActionName {
     param(
         [Parameter(Mandatory = $true, HelpMessage = 'Name of the action')]
         [System.String]
-        ${ActionName},
+        ${Name},
 
         [Parameter(Mandatory = $true, HelpMessage = 'Endpoint URL')]
         [System.String]
@@ -124,8 +124,47 @@ function GetDelayedActionTimeFromActionName {
     ) 
 
     process {
-        $action = Az.DevCenterdata.internal\Get-AzDevCenterUserDevBoxAction -Endpoint $Endpoint -ActionName $ActionName `
+        $action = Az.DevCenterdata.internal\Get-AzDevCenterUserDevBoxAction -Endpoint $Endpoint -Name $Name `
             -ProjectName $Project -DevBoxName $DevBoxName -UserId $UserId | ConvertTo-Json | ConvertFrom-Json
+        
+        $newScheduledTime = $action.NextScheduledTime + $DelayTime
+
+        return $newScheduledTime
+    }
+}
+
+function GetDelayedEnvironmentActionTimeFromActionName {
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory = $true, HelpMessage = 'Name of the action')]
+        [System.String]
+        ${Name},
+
+        [Parameter(Mandatory = $true, HelpMessage = 'Endpoint URL')]
+        [System.String]
+        ${Endpoint},
+
+        [Parameter(Mandatory = $true, HelpMessage = 'Name of the project')]
+        [System.String]
+        ${Project},
+
+        [Parameter(Mandatory = $true, HelpMessage = 'Name of the environment')]
+        [System.String]
+        ${EnvironmentName},
+
+        [Parameter(Mandatory)]
+        [System.TimeSpan]
+        ${DelayTime},
+
+        [Parameter(HelpMessage = 'User id')]
+        [System.String]
+        ${UserId}
+        
+    ) 
+
+    process {
+        $action = Az.DevCenterdata.internal\Get-AzDevCenterUserEnvironmentAction -Endpoint $Endpoint -Name $Name `
+            -ProjectName $Project -EnvironmentName $EnvironmentName -UserId $UserId | ConvertTo-Json | ConvertFrom-Json
         
         $newScheduledTime = $action.NextScheduledTime + $DelayTime
 

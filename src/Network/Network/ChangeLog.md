@@ -20,15 +20,38 @@
 
 ## Upcoming Release
 
-## Version 6.2.0
-* Added support for new Application Gateway SKU type, Basic SKU
-* Onboarded `Microsoft.EventGrid/partnerNamespaces` to private link cmdlets
-* Onboarded `Microsoft.EventGrid/namespaces` to private link cmdlets
+## Version 7.3.0
+* Fixed a few minor issues
+* Onboarded `Microsoft.DBforPostgreSQL/flexibleServers` to private link cmdlets
+* Fixed missing properties in PSBackendAddressPool
+
+## Version 7.1.0
+* Added DefaultOutboundAccess parameter on subnet creation
+* Updated cmdlet `New-AzPublicIpPrefix` and `New-PublicIpAddress` to require Location parameter
+* Updated cmdlet `New-AzLoadBalancerBackendAddressPool` to support managed IP based backend
+* Added cmdlet `New-AzSaaSNetworkVirtualAppliance` for creating a NetworkVirtualAppliance of SaaS type.
+* Added control knobs to virtual network gateways and ExpressRoute gateways as well to cmdlets operating on those.
+* Updated cmdlets to add Hostnames property for Application gateway Listener Configuration
+	- `Set-AzApplicationGatewayListener`
+	- `Add-AzApplicationGatewayListener`
+	- `New-AzApplicationGatewayListener`
+* Added cmdlet 'Remove-AzApplicationGatewayFirewallCustomRule' to support removing custom rule in Firewall Policy.
+* Added support for new ErGWScale SKU - ErGwScale
+* Added property 'size' to firewallPolicy and firewallPolicyRuleCollectionGroup.
+* Updated cmdlet `New-AzBastion`, `Set-AzBastion` and `Get-AzBastion` to support Bastion features for CRUD operations
+
+## Version 7.0.0
+* [Breaking Change] Removed `Geo` as a valid input for parameter `VariableName` in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable`.
 * Added AllowBranchToBranchTraffic property to New-AzRouteServer
 * Added AllowBranchToBranchTraffic property to Get-AzRouteServer
 * Changed Update-AzRouteServer functionality to fix bugs
     - AllowBranchToBranchTraffic is now a bool
     - Updating HubRoutingPreference property will not effect AllowBranchToBranchTraffic
+
+## Version 6.2.0
+* Added support for new Application Gateway SKU type, Basic SKU
+* Onboarded `Microsoft.EventGrid/partnerNamespaces` to private link cmdlets
+* Onboarded `Microsoft.EventGrid/namespaces` to private link cmdlets
 * Fixed bug in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable` to add "GeoLocation" as a valid input for VariableName
 * Added breaking change message for parameter `VariableName` in `NewAzureApplicationGatewayFirewallCustomRuleGroupByVariable` to remove "Geo" as a valid input.
 

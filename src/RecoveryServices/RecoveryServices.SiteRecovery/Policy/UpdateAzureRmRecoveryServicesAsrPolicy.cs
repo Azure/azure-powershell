@@ -588,7 +588,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.applicationConsistentSnapshotFrequencyInMinutes,
                 RecoveryPointHistory = this.RecoveryPointRetentionInHours * 60, // Convert from hours to minutes.
                 RecoveryPointThresholdInMinutes = this.rpoWarningThresholdInMinutes,
-                MultiVmSyncStatus = this.multiVmSyncStatus,
+                MultiVMSyncStatus = this.multiVmSyncStatus,
                 CrashConsistentFrequencyInMinutes = this.crashConsistentFrequencyInMinutes
             };
 
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.applicationConsistentSnapshotFrequencyInMinutes,
                 RecoveryPointHistory = this.RecoveryPointRetentionInHours * 60, // Convert from hours to minutes.
                 RecoveryPointThresholdInMinutes = this.rpoWarningThresholdInMinutes,
-                MultiVmSyncStatus = this.multiVmSyncStatus
+                MultiVMSyncStatus = this.multiVmSyncStatus
             };
 
             var updatePolicyProperties = new UpdatePolicyInputProperties
@@ -760,7 +760,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 AppConsistentFrequencyInMinutes =
                     this.applicationConsistentSnapshotFrequencyInMinutes,
                 RecoveryPointHistory = this.RecoveryPointRetentionInHours * 60, // Convert from hours to minutes.
-                MultiVmSyncStatus = this.multiVmSyncStatus,
+                MultiVMSyncStatus = this.multiVmSyncStatus,
                 CrashConsistentFrequencyInMinutes = this.crashConsistentFrequencyInMinutes
             };
 
@@ -842,7 +842,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         CrashConsistentFrequencyInMinutes = crashConsistentFrequencyInMinutes,
                         AppConsistentFrequencyInMinutes =
                             this.applicationConsistentSnapshotFrequencyInMinutes,
-                        EnableMultiVmSync = this.multiVmSyncStatus.Equals(Constants.Enable)
+                        EnableMultiVMSync = this.multiVmSyncStatus.Equals(Constants.Enable)
                             ? Constants.True
                             : Constants.False
                     }

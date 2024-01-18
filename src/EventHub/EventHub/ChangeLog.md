@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 4.2.0
+*  Added parameter `PartitionCount` to `Set-AzEventHub`
+
 ## Version 4.1.0
 * Supported EventHub MSI capture feature in cmdlets `New-AzEventHub` and `Set-AzEventHub`
 

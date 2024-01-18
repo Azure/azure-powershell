@@ -22,9 +22,9 @@ New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMa
  [-NodeScaleSetEvictionPolicy <String>] [-AddOnNameToBeEnabled <String[]>] [-WorkspaceResourceId <String>]
  [-SubnetName <String>] [-EnableRbac] [-WindowsProfileAdminUserName <String>] [-NetworkPlugin <String>]
  [-NetworkPolicy <String>] [-PodCidr <String>] [-ServiceCidr <String>] [-DnsServiceIP <String>]
- [-DockerBridgeCidr <String>] [-OutboundType <String>] [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey]
- [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>] [-AvailabilityZone <String[]>]
- [-NodeResourceGroup <String>] [-EnableEncryptionAtHost] [-EnableUltraSSD] [-NodeLinuxOSConfig <LinuxOSConfig>]
+ [-OutboundType <String>] [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey] [-EnableNodePublicIp]
+ [-NodePublicIPPrefixID <String>] [-AvailabilityZone <String[]>] [-NodeResourceGroup <String>]
+ [-EnableEncryptionAtHost] [-EnableUltraSSD] [-NodeLinuxOSConfig <LinuxOSConfig>]
  [-NodeKubeletConfig <KubeletConfig>] [-NodeMaxSurge <String>] [-PPG <String>] [-EnableFIPS]
  [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>] [-GpuInstanceProfile <String>]
  [-EnableUptimeSLA] [-EdgeZone <String>] [-NodeHostGroupID <String>] [-NodePodSubnetID <String>]
@@ -353,21 +353,6 @@ Accept wildcard characters: False
 
 ### -DnsServiceIP
 DNS service IP used for building Kubernetes network.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DockerBridgeCidr
-Docker bridge cidr used for building Kubernetes network.
 
 ```yaml
 Type: System.String

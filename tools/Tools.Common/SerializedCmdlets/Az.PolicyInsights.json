@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.PolicyInsights",
-  "ModuleVersion": "1.6.3",
+  "ModuleVersion": "1.6.4",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Evidence": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
               "SystemData": "Microsoft.Azure.Management.PolicyInsights.Models.SystemData",
@@ -540,7 +540,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
               "IsCompliant": "System.Nullable`1[System.Boolean]",
@@ -2106,7 +2106,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PSPolicyMetadata",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PSPolicyMetadata, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PSPolicyMetadata, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Metadata": "System.Object",
               "MetadataId": "System.String",
@@ -2334,7 +2334,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Deployments": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[]",
               "DeploymentSummary": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary",
@@ -2471,7 +2471,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -2581,7 +2581,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -2888,7 +2888,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3033,7 +3033,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PolicyEvaluationDetails": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvaluationDetails",
               "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
@@ -3115,7 +3115,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -3285,7 +3285,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3451,7 +3451,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3617,7 +3617,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3798,7 +3798,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -3979,7 +3979,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4160,7 +4160,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4341,7 +4341,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4522,7 +4522,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4756,7 +4756,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyStateSummary",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyStateSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyStateSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Results": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults",
               "PolicyAssignments": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary]"
@@ -5909,7 +5909,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Evidence": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
               "SystemData": "Microsoft.Azure.Management.PolicyInsights.Models.SystemData",
@@ -6070,7 +6070,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence"
           },
           "ValidateNotNullOrEmpty": false
@@ -6265,7 +6265,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
                   "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6456,7 +6456,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
                   "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6629,7 +6629,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
                   "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -6768,7 +6768,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Evidence": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
               "SystemData": "Microsoft.Azure.Management.PolicyInsights.Models.SystemData",
@@ -6794,7 +6794,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -6874,7 +6874,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6938,7 +6938,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -6984,7 +6984,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
                   "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Evidence": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
                     "SystemData": "Microsoft.Azure.Management.PolicyInsights.Models.SystemData",
@@ -7016,7 +7016,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7062,7 +7062,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7176,7 +7176,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Deployments": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[]",
               "DeploymentSummary": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary",
@@ -7204,7 +7204,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7213,7 +7213,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7222,7 +7222,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -7317,7 +7317,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7332,7 +7332,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7347,7 +7347,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7411,7 +7411,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7426,7 +7426,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7441,7 +7441,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7487,7 +7487,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
                   "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Deployments": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[]",
                     "DeploymentSummary": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary",
@@ -7521,7 +7521,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7536,7 +7536,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7551,7 +7551,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7597,7 +7597,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7612,7 +7612,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7627,7 +7627,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -7680,7 +7680,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Evidence": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
               "SystemData": "Microsoft.Azure.Management.PolicyInsights.Models.SystemData",
@@ -7784,7 +7784,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Evidence": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
               "SystemData": "Microsoft.Azure.Management.PolicyInsights.Models.SystemData",
@@ -7867,7 +7867,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence"
           },
           "ValidateNotNullOrEmpty": false
@@ -8062,7 +8062,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
                   "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8253,7 +8253,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
                   "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8333,7 +8333,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
                   "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Evidence": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
                     "SystemData": "Microsoft.Azure.Management.PolicyInsights.Models.SystemData",
@@ -8458,7 +8458,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
                   "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8631,7 +8631,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
                   "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -8740,7 +8740,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -8749,7 +8749,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -8799,7 +8799,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8814,7 +8814,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -8867,7 +8867,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Deployments": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[]",
               "DeploymentSummary": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary",
@@ -9069,7 +9069,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -9289,7 +9289,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9478,7 +9478,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9649,7 +9649,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9763,7 +9763,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Deployments": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[]",
               "DeploymentSummary": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary",
@@ -9791,7 +9791,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -9800,7 +9800,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -9895,7 +9895,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9910,7 +9910,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9974,7 +9974,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -9989,7 +9989,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10035,7 +10035,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
                   "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Deployments": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[]",
                     "DeploymentSummary": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary",
@@ -10069,7 +10069,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10084,7 +10084,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10130,7 +10130,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10145,7 +10145,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -10231,13 +10231,13 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence"
     },
     "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Attestations.PSAttestationEvidence, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Description": "System.String",
         "SourceUri": "System.String"
@@ -10588,13 +10588,13 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[]": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "ElementType": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment"
     },
     "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Error": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition",
         "CreatedOn": "System.Nullable`1[System.DateTime]",
@@ -10643,7 +10643,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Details": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition]",
         "AdditionalInfo": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo]",
@@ -10690,7 +10690,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition"
       ]
@@ -10698,7 +10698,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo"
       ]
@@ -10706,7 +10706,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Info": "System.Object",
         "Type": "System.String"
@@ -10750,7 +10750,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "TotalDeployments": "System.Int32",
         "SuccessfulDeployments": "System.Int32",
@@ -10795,7 +10795,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationFilter": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationFilter",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationFilter, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationFilter, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Locations": "System.Collections.Generic.IEnumerable`1[System.String]"
       },
@@ -10862,7 +10862,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvaluationDetails": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvaluationDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvaluationDetails, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvaluationDetails, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IfNotExistsDetails": "Microsoft.Azure.Commands.PolicyInsights.Models.IfNotExistsEvaluationDetails",
         "EvaluatedExpressions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails]"
@@ -10906,7 +10906,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.IfNotExistsEvaluationDetails": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.IfNotExistsEvaluationDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.IfNotExistsEvaluationDetails, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.IfNotExistsEvaluationDetails, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "TotalResources": "System.Nullable`1[System.Int32]",
         "ResourceId": "System.String"
@@ -10950,7 +10950,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails"
       ]
@@ -10958,7 +10958,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Result": "System.String",
         "Expression": "System.String",
@@ -11006,7 +11006,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ResourceDetails": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.ComplianceDetail]",
         "PolicyDetails": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.ComplianceDetail]",
@@ -11053,7 +11053,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.ComplianceDetail]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.ComplianceDetail]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.ComplianceDetail, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.ComplianceDetail, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.PolicyInsights.Models.ComplianceDetail"
       ]
@@ -11061,7 +11061,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.ComplianceDetail": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.ComplianceDetail",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.ComplianceDetail, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.ComplianceDetail, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Count": "System.Nullable`1[System.Int32]",
         "ComplianceState": "System.String"
@@ -11105,7 +11105,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary"
       ]
@@ -11113,7 +11113,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Results": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults",
         "PolicyDefinitions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary]",
@@ -11160,7 +11160,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary"
       ]
@@ -11168,7 +11168,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Results": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults",
         "PolicyDefinitionGroupNames": "System.Collections.Generic.IList`1[System.String]",
@@ -11215,7 +11215,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyGroupSummary]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyGroupSummary]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyGroupSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyGroupSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyGroupSummary"
       ]
@@ -11223,7 +11223,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyGroupSummary": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyGroupSummary",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyGroupSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyGroupSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Results": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults",
         "PolicyGroupName": "System.String"

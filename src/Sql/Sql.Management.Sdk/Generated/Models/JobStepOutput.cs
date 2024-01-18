@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="type">The output destination type.
-        /// Possible values include: 'SqlDatabase'</param>
+        /// Possible values include: &#39;SqlDatabase&#39;</param>
 
         /// <param name="subscriptionId">The output destination subscription id.
         /// </param>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="credential">The resource ID of the credential to use to connect to the output
         /// destination.
         /// </param>
-        public JobStepOutput(string serverName, string databaseName, string tableName, string credential, string type = default(string), System.Guid? subscriptionId = default(System.Guid?), string resourceGroupName = default(string), string schemaName = default(string))
+        public JobStepOutput(string serverName, string databaseName, string tableName, string type = default(string), System.Guid? subscriptionId = default(System.Guid?), string resourceGroupName = default(string), string schemaName = default(string), string credential = default(string))
 
         {
             this.Type = type;
@@ -135,10 +135,6 @@ namespace Microsoft.Azure.Management.Sql.Models
             if (this.TableName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "TableName");
-            }
-            if (this.Credential == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Credential");
             }
 
 

@@ -126,7 +126,7 @@ If you need an Azure Virtual Machine with all the [prerequisites](https://github
     Write-Host "==> All done."
     ```
 
-# Github Settings and Repository Setup
+# GitHub Settings and Repository Setup
 You will need to set up the GitHub configuration so that commits appear with your GitHub name.
 ```
 git config --global user.email "<Your email on GitHub>"

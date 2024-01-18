@@ -31,7 +31,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
 
         protected abstract ConfirmImpact ConfirmImpact { get; }
 
-        protected abstract PSDeploymentCmdletParameters DeploymentParameters { get; }
+        /// <summary>
+        /// It's important not to call this function more than once during an invocation, as it can call the Bicep CLI.
+        /// This is slow, and can also cause diagnostics to be emitted multiple times.
+        /// </summary>
+        protected abstract PSDeploymentCmdletParameters BuildDeploymentParameters();
 
         protected abstract bool ShouldSkipConfirmationIfNoChange();
 
@@ -76,18 +80,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
 
         protected void ExecuteDeployment()
         {
-            if (!string.IsNullOrEmpty(this.DeploymentParameters.DeploymentDebugLogLevel))
+            var parameters = BuildDeploymentParameters();
+
+            if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
             {
                 this.WriteWarning(Resources.WarnOnDeploymentDebugSetting);
             }
 
-            if (this.DeploymentParameters.ScopeType == DeploymentScopeType.ResourceGroup)
+            if (parameters.ScopeType == DeploymentScopeType.ResourceGroup)
             {
-                this.WriteObject(this.NewResourceManagerSdkClient.ExecuteResourceGroupDeployment(this.DeploymentParameters));
+                this.WriteObject(this.NewResourceManagerSdkClient.ExecuteResourceGroupDeployment(parameters));
             }
             else
             {
-                this.WriteObject(this.NewResourceManagerSdkClient.ExecuteDeployment(this.DeploymentParameters));
+                this.WriteObject(this.NewResourceManagerSdkClient.ExecuteDeployment(parameters));
             }
         }
 

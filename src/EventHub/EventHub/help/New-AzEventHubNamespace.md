@@ -550,15 +550,4 @@ ALIASES
 
 New-AzEventHubNamespaceV2
 
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`KEYVAULTPROPERTY <IKeyVaultProperties[]>`: Properties to configure Encryption
-  - `[KeyName <String>]`: Name of the Key from KeyVault
-  - `[KeyVaultUri <String>]`: Uri of KeyVault
-  - `[KeyVersion <String>]`: Key Version
-  - `[UserAssignedIdentity <String>]`: ARM ID of user Identity selected for encryption
-
 ## RELATED LINKS

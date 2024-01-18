@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(
                 ConfigKeys.CheckForUpgrade,
                 Resources.HelpMessageOfCheckForUpgrade,
-                false,
+                true,
                 ConfigKeys.EnvCheckForUpgrade,
                 new[] { AppliesTo.Az }));
 #if DEBUG || TESTCOVERAGE

@@ -618,4 +618,13 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="UpdateKeyVaultSetting" xml:space="preserve">
     <value>Update vault setting</value>
   </data>
+  <data name="SasTokenNotNull" xml:space="preserve">
+    <value>Please provide a valid SasToken or use Managed Identity for authentication.</value>
+  </data>
+  <data name="UseManagedIdentityAndSasTokenBothExist" xml:space="preserve">
+    <value>Parameter SasToken and UseUserManagedIdentity can not exist at the same time. Please choose either one as authentication method.</value>
+  </data>
+  <data name="UseManagedIdentityAndSasTokenNeitherExist" xml:space="preserve">
+    <value>Please choose either SasToken or UseUserManagedIdentity as authentication method.</value>
+  </data>
 </root>

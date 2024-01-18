@@ -20,7 +20,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
 
     public abstract class DeploymentWhatIfCmdlet: DeploymentCmdletBase, IDynamicParameters
     {
-        protected abstract PSDeploymentWhatIfCmdletParameters WhatIfParameters { get; }
+        /// <summary>
+        /// It's important not to call this function more than once during an invocation, as it can call the Bicep CLI.
+        /// This is slow, and can also cause diagnostics to be emitted multiple times.
+        /// </summary>
+        protected abstract PSDeploymentWhatIfCmdletParameters BuildWhatIfParameters();
 
         protected override void OnProcessRecord()
         {
@@ -42,7 +46,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
                 // Write status message.
                 this.WriteInformation(information, tags);
 
-                PSWhatIfOperationResult whatIfResult = NewResourceManagerSdkClient.ExecuteDeploymentWhatIf(this.WhatIfParameters);
+                var parameters = this.BuildWhatIfParameters();
+                var whatIfResult = NewResourceManagerSdkClient.ExecuteDeploymentWhatIf(parameters);
 
                 // Clear status before returning result.
                 this.WriteInformation(clearInformation, tags);

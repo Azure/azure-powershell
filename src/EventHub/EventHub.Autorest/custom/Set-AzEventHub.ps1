@@ -121,6 +121,11 @@ function Set-AzEventHub{
         # Name for capture destination
         ${UserAssignedIdentityId},
 
+        [Parameter(HelpMessage = "Number of partitions created for the Event Hub. allowed values are from 1 to 32 partitions.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.Int64]
+        ${PartitionCount},
+
         [Parameter(HelpMessage = "Resource id of the storage account to be used to create the blobs")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.String]
@@ -215,6 +220,7 @@ function Set-AzEventHub{
             $hasArchiveNameFormat = $PSBoundParameters.Remove('ArchiveNameFormat')
             $hasBlobContainer = $PSBoundParameters.Remove('BlobContainer')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
+            $hasPartitionCount = $PSBoundParameters.Remove('PartitionCount')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
@@ -241,6 +247,11 @@ function Set-AzEventHub{
 
             if ($hasIntervalInSeconds) {
                 $eventHub.IntervalInSeconds = $IntervalInSeconds
+                $hasProperty = $true
+            }
+
+            if($hasPartitionCount) {
+                $eventHub.PartitionCount = $PartitionCount
                 $hasProperty = $true
             }
 

@@ -14,14 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzDevCenterAdminPoolHea
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-#API not available yet
 Describe 'Start-AzDevCenterAdminPoolHealthCheck' {
-    It 'Run' -skip {
-        Start-AzDevCenterAdminPoolHealthCheck -PoolName $env.poolName -ProjectName $env.projectName -ResourceGroupName $env.resourceGroup
+    It 'Run' {
+        Start-AzDevCenterAdminPoolHealthCheck -PoolName $env.poolName -ProjectName $env.projectName -ResourceGroupName $env.resourceGroupName10 -SubscriptionId $env.SubscriptionId2
         }
 
-    It 'RunViaIdentity' -skip {
-        Start-AzDevCenterAdminPoolHealthCheck -InputObject @{"PoolName" = $env.poolName; "ProjectName" = $env.projectName; "ResourceGroupName" = $env.resourceGroup; "SubscriptionId" = $env.SubscriptionId}
-
+    It 'RunViaIdentity' {
+        Start-AzDevCenterAdminPoolHealthCheck -InputObject @{"PoolName" = $env.poolName; "ProjectName" = $env.projectName; "ResourceGroupName" = $env.resourceGroupName10; "SubscriptionId" = $env.SubscriptionId2}
     }
 }

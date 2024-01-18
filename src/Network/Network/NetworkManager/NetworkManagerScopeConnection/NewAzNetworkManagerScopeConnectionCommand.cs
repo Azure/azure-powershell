@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Network
             this.NullifyNetworkManagerScopeConnectionIfAbsent(mnccModel);
 
             // Execute the Create NetworkManagerScopeConnection call
-            this.NetworkManagerScopeConnectionClient.CreateOrUpdate(mnccModel, this.ResourceGroupName, this.NetworkManagerName, this.Name);
+            this.NetworkManagerScopeConnectionClient.CreateOrUpdate(this.ResourceGroupName, this.NetworkManagerName, this.Name, mnccModel);
             var psNetworkManagerScopeConnection = this.GetNetworkManagerScopeConnection(this.ResourceGroupName, this.NetworkManagerName, this.Name);
             return psNetworkManagerScopeConnection;
         }

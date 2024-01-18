@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Key expires time in UTC time
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Specifies the expiration time of the key in UTC. If not specified, key will not expire.")]
+            HelpMessage = "Specifies the expiration time of the key in UTC, as a DateTime object, for the key that this cmdlet adds. If not specified, key will not expire. To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. Please notice that expirys is ignored for Key Exchange Key used in BYOK process.")]
         public DateTime? Expires { get; set; }
 
         /// <summary>

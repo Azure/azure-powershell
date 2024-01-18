@@ -15,22 +15,23 @@ Creates a Storage blob container
 ### AccountName (Default)
 ```
 New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
- [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>] [-EnableImmutableStorageWithVersioning]
- [-RootSquash <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>] [-RootSquash <String>]
+ [-EnableImmutableStorageWithVersioning] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccountNameEncryptionScope
 ```
 New-AzRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
  -DefaultEncryptionScope <String> -PreventEncryptionScopeOverride <Boolean> [-PublicAccess <PSPublicAccess>]
- [-Metadata <Hashtable>] [-EnableImmutableStorageWithVersioning] [-RootSquash <String>]
+ [-Metadata <Hashtable>] [-RootSquash <String>] [-EnableImmutableStorageWithVersioning]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> [-PublicAccess <PSPublicAccess>]
- [-Metadata <Hashtable>] [-EnableImmutableStorageWithVersioning] [-RootSquash <String>]
+ [-Metadata <Hashtable>] [-RootSquash <String>] [-EnableImmutableStorageWithVersioning]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,7 +39,7 @@ New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> [-Pub
 ```
 New-AzRmStorageContainer -StorageAccount <PSStorageAccount> -Name <String> -DefaultEncryptionScope <String>
  -PreventEncryptionScopeOverride <Boolean> [-PublicAccess <PSPublicAccess>] [-Metadata <Hashtable>]
- [-EnableImmutableStorageWithVersioning] [-RootSquash <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-RootSquash <String>] [-EnableImmutableStorageWithVersioning] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -64,10 +65,12 @@ This command creates a Storage blob container with Storage account object and co
 
 ### Example 3: Create a storage container with EncryptionScope setting
 <!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\> $c = New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -Name testcontainer -DefaultEncryptionScope "testscope" -PreventEncryptionScopeOverride $true
 
-PS C:\> $c
+
+```
+$c = New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -Name testcontainer -DefaultEncryptionScope "testscope" -PreventEncryptionScopeOverride $true
+
+$c
 
    ResourceGroupName: myResourceGroup, StorageAccountName: mystorageaccount
 
@@ -75,10 +78,10 @@ Name          PublicAccess LastModified HasLegalHold HasImmutabilityPolicy
 ----          ------------ ------------ ------------ ---------------------
 testcontainer                           False        False                
 
-PS C:\> $c.DefaultEncryptionScope
+$c.DefaultEncryptionScope
 testscope
 
-PS C:\> $c.DenyEncryptionScopeOverride
+$c.DenyEncryptionScopeOverride
 True
 ```
 
@@ -87,13 +90,15 @@ Then show the related container properties.
 
 ### Example 4: Create an Azure storage container with RootSquash
 <!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\> $container = New-AzRmStorageContainer -ResourceGroupName "myersourcegroup" -AccountName "mystorageaccount" -Name "mycontainer" -RootSquash AllSquash
 
-PS C:\> $container.EnableNfsV3AllSquash
+
+```
+$container = New-AzRmStorageContainer -ResourceGroupName "myersourcegroup" -AccountName "mystorageaccount" -Name "mycontainer" -RootSquash AllSquash
+
+$container.EnableNfsV3AllSquash
 True
 
-PS C:\> $container.EnableNfsV3RootSquash
+$container.EnableNfsV3RootSquash
 False
 ```
 
@@ -105,9 +110,9 @@ $c = New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName 
 
 $c
 ```
-```output
 
-   ResourceGroupName: myResourceGroup, StorageAccountName: mystorageaccount
+```output
+ResourceGroupName: myResourceGroup, StorageAccountName: mystorageaccount
 
 Name          PublicAccess LastModified         HasLegalHold HasImmutabilityPolicy Deleted VersionId ImmutableStorageWithVersioning
 ----          ------------ ------------         ------------ --------------------- ------- --------- ------------------------------

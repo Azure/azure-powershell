@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             {
                 try
                 {
-                    WriteObject(Track2DataClient.BackupHsm(HsmName, StorageContainerUri, SasToken.ConvertToString()).AbsoluteUri);
+                    WriteObject(Track2DataClient.BackupHsm(HsmName, StorageContainerUri, SasToken?.ConvertToString()).AbsoluteUri);
                 }
                 catch (Exception ex)
                 {

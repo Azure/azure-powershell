@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Key expires time in UTC time
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The expiration time of a key in UTC time. If not specified, the existing expiration time of the key remains unchanged.")]
+            HelpMessage = "The expiration time of a key in UTC time. If not specified, the existing expiration time of the key remains unchanged. Please notice that expirys is ignored for Key Exchange Key used in BYOK process.")]
         public DateTime? Expires { get; set; }
 
         /// <summary>

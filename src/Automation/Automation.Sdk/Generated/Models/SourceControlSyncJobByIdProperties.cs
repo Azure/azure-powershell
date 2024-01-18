@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the job.
-        /// Possible values include: 'Completed', 'Failed', 'Running'</param>
+        /// Possible values include: &#39;Completed&#39;, &#39;Failed&#39;, &#39;Running&#39;</param>
 
         /// <param name="startTime">The start time of the job.
         /// </param>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </param>
 
         /// <param name="syncType">The sync type.
-        /// Possible values include: 'PartialSync', 'FullSync'</param>
+        /// Possible values include: &#39;PartialSync&#39;, &#39;FullSync&#39;</param>
 
         /// <param name="exception">The exceptions that occurred while running the sync job.
         /// </param>

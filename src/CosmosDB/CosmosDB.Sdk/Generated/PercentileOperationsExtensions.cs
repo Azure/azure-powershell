@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.CosmosDB
     public static partial class PercentileOperationsExtensions
     {
         /// <summary>
-        /// Retrieves the metrics determined by the given filter for the given database account. This url is only for PBS and Replication Latency data
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account. This url is only for PBS and Replication Latency data
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -25,7 +26,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database account name.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
+        /// An OData filter expression that describes a subset of metrics to return.
+        /// The parameters that can be filtered are name.value (name of the metric, can
+        /// have an or of multiple names), startTime, endTime, and timeGrain. The
+        /// supported operator is eq.
         /// </param>
         public static System.Collections.Generic.IEnumerable<PercentileMetric> ListMetrics(this IPercentileOperations operations, string resourceGroupName, string accountName, string filter)
         {
@@ -33,7 +37,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Retrieves the metrics determined by the given filter for the given database account. This url is only for PBS and Replication Latency data
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account. This url is only for PBS and Replication Latency data
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -45,7 +50,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database account name.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
+        /// An OData filter expression that describes a subset of metrics to return.
+        /// The parameters that can be filtered are name.value (name of the metric, can
+        /// have an or of multiple names), startTime, endTime, and timeGrain. The
+        /// supported operator is eq.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

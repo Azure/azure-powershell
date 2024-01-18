@@ -142,7 +142,6 @@ $resourceTestCommands = @(
     @{Name = "Az.OperationalInsights [DataPlane]"; Command = {Get-Command Invoke-AzOperationalInsightsQuery}},
     @{Name = "Az.PolicyInsights";             Command = {Get-AzPolicyEvent -Top 10}}, # without -Top service may return 400: ResponseTooLarge
     @{Name = "Az.PowerBIEmbedded";            Command = {Get-AzPowerBIEmbeddedCapacity}},
-    @{Name = "Az.PowerBIUEmbedded";           Command = {Get-AzPowerBIWorkspaceCollection}},
     @{Name = "Az.PrivateDns";                 Command = {Get-AzPrivateDnsZone}},
     @{Name = "Az.RecoveryServices";           Command = {Get-AzRecoveryServicesVault}},
     @{Name = "Az.RedisCache";                 Command = {Get-AzRedisCache}},

@@ -17,15 +17,11 @@ using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HDInsight.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [CmdletOutputBreakingChangeWithVersion(typeof(AzureHDInsightConfig), Constants.deprecateByAzVersion, Constants.deprecateByVersion, 
-        DeprecatedOutputProperties = new string[] {"Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions"}, 
-        NewOutputProperties = new string[] {"Dictionary<RuntimeScriptActionClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions"})]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightClusterConfig"),OutputType(typeof(AzureHDInsightConfig))]
     public class NewAzureHDInsightClusterConfigCommand : HDInsightCmdletBase
     {
@@ -147,7 +143,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _config.CertificatePassword = value; }
         }
 
-        [Parameter(HelpMessage = "Gets or sets the Service Principal AAD Tenant Id for accessing Azure Data Lake.")]
+        [Parameter(HelpMessage = "Gets or sets the Service Principal Microsoft Entra Tenant Id for accessing Azure Data Lake.")]
         public Guid AadTenantId
         {
             get { return _config.AADTenantId; }
@@ -169,7 +165,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the encryption algorithm.")]
-        [PSArgumentCompleter(JsonWebKeyEncryptionAlgorithm.RSAOAEP, JsonWebKeyEncryptionAlgorithm.RSAOAEP256, JsonWebKeyEncryptionAlgorithm.RSA15)]
+        [PSArgumentCompleter(JsonWebKeyEncryptionAlgorithm.RSAOaep, JsonWebKeyEncryptionAlgorithm.RSAOaep256, JsonWebKeyEncryptionAlgorithm.RSA15)]
         public string EncryptionAlgorithm
         {
             get { return _config.EncryptionAlgorithm; }

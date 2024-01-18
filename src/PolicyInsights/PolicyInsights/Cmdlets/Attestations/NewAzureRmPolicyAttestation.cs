@@ -14,20 +14,17 @@
 
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.PolicyInsights.Common;
-using Microsoft.Azure.Commands.PolicyInsights.Models;
 using Microsoft.Azure.Commands.PolicyInsights.Models.Attestations;
 using Microsoft.Azure.Commands.PolicyInsights.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.PolicyInsights;
 using Microsoft.Azure.Management.PolicyInsights.Models;
-using Newtonsoft.Json.Linq;
+
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets.Attestations
 {

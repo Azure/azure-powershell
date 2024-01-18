@@ -142,7 +142,8 @@ namespace Microsoft.Azure.Management.NetApp
             }
         }
         /// <summary>
-        /// Delete the specified volume group only if there are no volumes under volume group.
+        /// Delete the specified volume group only if there are no volumes under volume
+        /// group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -162,7 +163,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Delete the specified volume group only if there are no volumes under volume group.
+        /// Delete the specified volume group only if there are no volumes under volume
+        /// group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -229,7 +231,8 @@ namespace Microsoft.Azure.Management.NetApp
             }
         }
         /// <summary>
-        /// Delete the specified volume group only if there are no volumes under volume group.
+        /// Delete the specified volume group only if there are no volumes under volume
+        /// group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -249,7 +252,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Delete the specified volume group only if there are no volumes under volume group.
+        /// Delete the specified volume group only if there are no volumes under volume
+        /// group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

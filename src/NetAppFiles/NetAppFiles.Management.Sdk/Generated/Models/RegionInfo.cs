@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
 
         /// <param name="storageToNetworkProximity">Provides storage to network proximity information in the region.
-        /// Possible values include: 'Default', 'T1', 'T2', 'AcrossT2', 'T1AndT2',
-        /// 'T1AndAcrossT2', 'T2AndAcrossT2', 'T1AndT2AndAcrossT2'</param>
+        /// Possible values include: &#39;Default&#39;, &#39;T1&#39;, &#39;T2&#39;, &#39;AcrossT2&#39;, &#39;T1AndT2&#39;,
+        /// &#39;T1AndAcrossT2&#39;, &#39;T2AndAcrossT2&#39;, &#39;T1AndT2AndAcrossT2&#39;</param>
 
         /// <param name="availabilityZoneMappings">Provides logical availability zone mappings for the subscription for a
         /// region.

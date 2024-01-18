@@ -125,6 +125,16 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public string SecondaryComputeGeneration { get; set; }
 
         /// <summary>
+        /// Gets or sets the compute model for Azure Sql database
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false,
+            HelpMessage="The compute model for secondary database. Serverless or Provisioned")]
+        [PSArgumentCompleter(
+            SecondaryDatabaseComputeModel.Provisioned,
+            SecondaryDatabaseComputeModel.Serverless)]
+        public string SecondaryComputeModel { get; set; }
+
+        /// <summary>
         /// Gets or sets the Vcore numbers of the database copy
         /// </summary>
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
@@ -142,6 +152,21 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             "LicenseIncluded",
             "BasePrice")]
         public string LicenseType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Auto Pause delay for Azure Sql Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The auto pause delay in minutes for secondary database(serverless only), -1 to opt out from pausing")]
+        public int AutoPauseDelayInMinutes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Minimal capacity that database will always have allocated, if not paused
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Minimal capacity that the secondary database will always have allocated, if not paused. For serverless database only.")]
+        [Alias("MinVCore", "MinCapacity")]
+        public double MinimumCapacity { get; set; }
 
         /// <summary>
         /// Gets or sets the database backup storage redundancy.
@@ -174,7 +199,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public SwitchParameter ZoneRedundant { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Generate and assign a Microsoft Entra Identity for this database for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
         [Parameter(Mandatory = false,
@@ -278,6 +303,8 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 AllowConnections = this.AllowConnections,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 LicenseType = LicenseType,
+                AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
+                MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
                 RequestedBackupStorageRedundancy = this.BackupStorageRedundancy,
                 SecondaryType = SecondaryType,
                 HighAvailabilityReplicaCount = this.IsParameterBound(p => p.HighAvailabilityReplicaCount) ? HighAvailabilityReplicaCount : (int?)null,
@@ -305,7 +332,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             }
             else
             {
-                linkModel.SkuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(primaryDb.Edition);
+                linkModel.SkuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(primaryDb.Edition, SecondaryComputeModel == SecondaryDatabaseComputeModel.Serverless);
                 linkModel.Edition = primaryDb.Edition;
                 linkModel.Capacity = SecondaryVCore;
                 linkModel.Family = SecondaryComputeGeneration;

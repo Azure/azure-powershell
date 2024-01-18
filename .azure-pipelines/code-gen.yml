@@ -81,12 +81,7 @@ jobs:
       Install-Module -Name platyPS -RequiredVersion 0.14.2 -Force;
       Install-Module -Name Az.Accounts -Force;
       Import-Module .\tools\Gen2Master\MoveFromGeneration2Master.ps1;
-      $subModuleFolders = Get-ChildItem .\artifacts\src\${{ parameters.ServiceName }} -Directory -Filter *.Autorest;
-      if ($subModuleFolders -eq $null) {
-        Move-Generation2Master -SourcePath .\artifacts\src\${{ parameters.ServiceName }} -DestPath .\src\${{ parameters.ServiceName }};
-      } else {
-        Move-Generation2MasterHybrid -SourcePath .\artifacts\src\${{ parameters.ServiceName }} -DestPath .\src\${{ parameters.ServiceName }};
-      }
+      Move-Generation2Master -SourcePath .\artifacts\src\${{ parameters.ServiceName }} -DestPath .\src\${{ parameters.ServiceName }};
       git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
       git config user.name "azure-powershell-bot";
       git add ./src;
@@ -101,6 +96,9 @@ jobs:
       $Title = "Migrate ${{ parameters.ServiceName }} from $SourceBranch to ${{ parameters.TargetBranch }}"
       $HeadBranch = "codegen/${{ parameters.ServiceName }}"
       $BaseBranch = "${{ parameters.TargetBranch }}"
-      $Description = "Migrate ${{ parameters.ServiceName }} from $SourceBranch to ${{ parameters.TargetBranch }}"
+      $Description = "Migrate ${{ parameters.ServiceName }} from $SourceBranch to ${{ parameters.TargetBranch }}
+      The last commit of src/${{ parameters.ServiceName }} in $SourceBranch is:
+      $(git log -1  origin/$SourceBranch -- ./src/${{ parameters.ServiceName }})
+      "
       ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GithubToken) -Description $Description
     displayName: Create PR to main branch

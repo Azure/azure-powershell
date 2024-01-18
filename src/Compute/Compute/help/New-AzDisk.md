@@ -97,6 +97,25 @@ New-AzDisk -ResourceGroupName $rgName -DiskName $myDiskName -Disk $dataDiskConfi
 
 This example exports a disk from the image version. To export a data disk from the image version, include the LUN number of the data disk to export from the image version.
 
+### Example 4: Create a disk with HyperVGeneration V2 and TrustedLaunch enabled by default.
+
+```powershell
+$rgname = <Resource Group Name>;
+$loc = <Azure Region>;
+New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+$diskname = "d" + $rgname;
+        
+$image = Get-AzVMImage -Skus 2022-datacenter-azure-edition -Offer WindowsServer -PublisherName MicrosoftWindowsServer -Location $loc -Version latest;
+$diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
+
+$diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image.Id;
+
+$disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+# Validate $disk.SecurityProfile.securityType is TrustedLaunch.
+# Validate $disk.HyperVGeneration is V2.
+```
+
 ## PARAMETERS
 
 ### -AsJob

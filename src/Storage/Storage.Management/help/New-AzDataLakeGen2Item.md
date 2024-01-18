@@ -66,7 +66,7 @@ dir1/dir2/file1      False        14400000        2020-03-23 09:19:13Z rw-r-----
 
 This command creates(upload) a data lake file from a local source file, and the cmdlet runs in background.
 
-### Example 3: Create(upload) a data lake file from a local source file and set its encryption context 
+### Example 3: Create(upload) a data lake file from a local source file and set its encryption context
 ```powershell
 $file = New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/file1" -Source "c:\sourcefile.txt" -EncryptionContext "encryptioncontext"
 $file.Properties.EncryptionContext

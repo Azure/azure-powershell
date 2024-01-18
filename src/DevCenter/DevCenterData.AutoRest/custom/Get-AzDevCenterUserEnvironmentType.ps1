@@ -25,12 +25,12 @@ Lists all environment types configured for a project.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentType
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentType
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmenttype
 #>
 function Get-AzDevCenterUserEnvironmentType {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentType])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentType])]
     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'List', Mandatory)]
@@ -41,9 +41,10 @@ function Get-AzDevCenterUserEnvironmentType {
     
         [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+        [Alias('DevCenter')]
         [System.String]
         # The DevCenter upon which to execute operations.
-        ${DevCenter},
+        ${DevCenterName},
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
@@ -102,9 +103,9 @@ function Get-AzDevCenterUserEnvironmentType {
 
     process {
         if (-not $PSBoundParameters.ContainsKey('Endpoint')) {
-            $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
+            $Endpoint = GetEndpointFromResourceGraph -DevCenterName $DevCenterName -Project $ProjectName
             $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
-            $null = $PSBoundParameters.Remove("DevCenter")
+            $null = $PSBoundParameters.Remove("DevCenterName")
       
         }
         else {

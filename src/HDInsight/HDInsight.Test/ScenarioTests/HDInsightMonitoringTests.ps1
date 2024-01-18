@@ -22,8 +22,15 @@ function Test-MonitoringRelatedCommands{
 	try
 	{
 		$location = "West US 2"
-		# create cluster that will be used throughout test
-		$cluster = Create-Cluster -Location $location
+		# prepare parameter for creating parameter
+		$params= Prepare-ClusterCreateParameter -location $location
+
+		# test create cluster
+		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
+		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
+		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion
 
 		$workspaceName = Generate-Name("workspace-ps-test")
 		$resourceGroupName = $cluster.ResourceGroup

@@ -118,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Force to remove the Share and all content in it
+Force to remove the Share(snapshot) and all content in it
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

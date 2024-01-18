@@ -855,5 +855,13 @@
   {
     "alias": "HdInsightOnAks",
     "module": "HdInsightOnAks"
+  },
+  {
+    "module": "NetworkAnalytics",
+    "alias": "NetworkAnalytics"
+  },
+  {
+    "module": "Fleet",
+    "alias": "Fleet"
   }
 ]

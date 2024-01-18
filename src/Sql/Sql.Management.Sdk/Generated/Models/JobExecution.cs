@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="provisioningState">The ARM provisioning state of the job execution.
-        /// Possible values include: 'Created', 'InProgress', 'Succeeded', 'Failed',
-        /// 'Canceled'</param>
+        /// Possible values include: &#39;Created&#39;, &#39;InProgress&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;,
+        /// &#39;Canceled&#39;</param>
 
         /// <param name="jobVersion">The job version number.
         /// </param>
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="lifecycle">The detailed state of the job execution.
-        /// Possible values include: 'Created', 'InProgress',
-        /// 'WaitingForChildJobExecutions', 'WaitingForRetry', 'Succeeded',
-        /// 'SucceededWithSkipped', 'Failed', 'TimedOut', 'Canceled', 'Skipped'</param>
+        /// Possible values include: &#39;Created&#39;, &#39;InProgress&#39;,
+        /// &#39;WaitingForChildJobExecutions&#39;, &#39;WaitingForRetry&#39;, &#39;Succeeded&#39;,
+        /// &#39;SucceededWithSkipped&#39;, &#39;Failed&#39;, &#39;TimedOut&#39;, &#39;Canceled&#39;, &#39;Skipped&#39;</param>
 
         /// <param name="createTime">The time that the job execution was created.
         /// </param>

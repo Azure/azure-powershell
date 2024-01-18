@@ -21,8 +21,7 @@ function Test-AzureMonitorRelatedCommands{
 	# Create some resources that will be used throughout test 
 	try
 	{
-		$location = "East US"
-
+		$location = "Japan East"
 		# prepare parameter for creating parameter
 		$params= Prepare-ClusterCreateParameter -location $location
 

@@ -246,7 +246,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? enableAzureActiveDirectoryDomainServicesForFile = null;
 
-        [CmdletParameterBreakingChangeWithVersion("EnableLargeFileShare", "11.0.0", "6.0.0", ChangeDescription = "EnableLargeFileShare parameter will be deprecated in a future release.")]
         [Parameter(Mandatory = false, HelpMessage = "Indicates whether or not the storage account can support large file shares with more than 5 TiB capacity. Once the account is enabled, the feature cannot be disabled. Currently only supported for LRS and ZRS replication types, hence account conversions to geo-redundant accounts would not be possible. Learn more in https://go.microsoft.com/fwlink/?linkid=2086047")]
         public SwitchParameter EnableLargeFileShare { get; set; }
 
@@ -395,7 +394,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Allow or disallow public access to all blobs or containers in the storage account.")]
+            HelpMessage = "Allow or disallow anonymous access to all blobs or containers in the storage account.")]
         [ValidateNotNullOrEmpty]
         public bool AllowBlobPublicAccess
         {
@@ -433,7 +432,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Mandatory = false,
             HelpMessage = "Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. " +
-            "If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). " +
+            "If false, then all requests, including shared access signatures, must be authorized with Microsoft Entra ID. " +
             "The default value is null, which is equivalent to true.")]
         [ValidateNotNullOrEmpty]
         public bool AllowSharedKeyAccess
@@ -479,7 +478,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.")]
+            HelpMessage = "Gets or sets allow or disallow cross Microsoft Entra tenant object replication. The default interpretation is true for this property.")]
         [ValidateNotNullOrEmpty]
         public bool AllowCrossTenantReplication
         {
@@ -570,7 +569,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? enableLocalUser = null;
 
-        [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'")]
+        [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'")]
         [PSArgumentCompleter("PrivateLink", "AAD")]
         [ValidateNotNullOrEmpty]
         public string AllowedCopyScope { get; set; }

@@ -24,13 +24,13 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// Initializes a new instance of the ContentLink class.
         /// </summary>
 
-        /// <param name="uri">Gets or sets the uri of the runbook content.
+        /// <param name="uri">Sets the uri of the content.
         /// </param>
 
-        /// <param name="contentHash">Gets or sets the hash.
+        /// <param name="contentHash">Sets the hash.
         /// </param>
 
-        /// <param name="version">Gets or sets the version of the content.
+        /// <param name="version">Sets the version of the content.
         /// </param>
         public ContentLink(string uri = default(string), ContentHash contentHash = default(ContentHash), string version = default(string))
 
@@ -48,19 +48,19 @@ namespace Microsoft.Azure.Management.Automation.Models
 
 
         /// <summary>
-        /// Gets or sets gets or sets the uri of the runbook content.
+        /// Gets or sets sets the uri of the content.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "uri")]
         public string Uri {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the hash.
+        /// Gets or sets sets the hash.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "contentHash")]
         public ContentHash ContentHash {get; set; }
 
         /// <summary>
-        /// Gets or sets gets or sets the version of the content.
+        /// Gets or sets sets the version of the content.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "version")]
         public string Version {get; set; }

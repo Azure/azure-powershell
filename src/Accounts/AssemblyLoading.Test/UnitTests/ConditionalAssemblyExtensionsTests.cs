@@ -97,5 +97,52 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
             Assert.False(windowsAssembly.ShouldLoad);
             Assert.True(linuxAssembly.ShouldLoad);
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanWorkWithArchitecture()
+        {
+            var x86Context = new MockConditionalAssemblyContext()
+            {
+                OSArchitecture = Architecture.X86
+            };
+            var x86Assembly = new MockConditionalAssembly(x86Context)
+                .WithX86();
+            var x64Assembly = new MockConditionalAssembly(x86Context)
+                .WithX64();
+            var arm64Assembly = new MockConditionalAssembly(x86Context)
+                .WithArm64();
+            Assert.True(x86Assembly.ShouldLoad);
+            Assert.False(x64Assembly.ShouldLoad);
+            Assert.False(arm64Assembly.ShouldLoad);
+
+            var x64Context = new MockConditionalAssemblyContext()
+            {
+                OSArchitecture = Architecture.X64
+            };
+            x86Assembly = new MockConditionalAssembly(x64Context)
+                .WithX86();
+            x64Assembly = new MockConditionalAssembly(x64Context)
+                .WithX64();
+            arm64Assembly = new MockConditionalAssembly(x64Context)
+                .WithArm64();
+            Assert.False(x86Assembly.ShouldLoad);
+            Assert.True(x64Assembly.ShouldLoad);
+            Assert.False(arm64Assembly.ShouldLoad);
+
+            var arm64Context = new MockConditionalAssemblyContext()
+            {
+                OSArchitecture = Architecture.Arm64
+            };
+            x86Assembly = new MockConditionalAssembly(arm64Context)
+                .WithX86();
+            x64Assembly = new MockConditionalAssembly(arm64Context)
+                .WithX64();
+            arm64Assembly = new MockConditionalAssembly(arm64Context)
+                .WithArm64();
+            Assert.False(x86Assembly.ShouldLoad);
+            Assert.False(x64Assembly.ShouldLoad);
+            Assert.True(arm64Assembly.ShouldLoad);
+        }
     }
 }

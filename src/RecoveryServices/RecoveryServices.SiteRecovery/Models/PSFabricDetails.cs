@@ -180,9 +180,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.FriendlyName = processServer.FriendlyName;
             this.Id = processServer.Id;
             this.AgentVersion = processServer.AgentVersion;
-            this.IpAddress = processServer.IpAddress;
+            this.IpAddress = processServer.IPAddress;
             this.LastHeartbeat = processServer.LastHeartbeat;
-            this.OsType = processServer.OsType;
+            this.OsType = processServer.OSType;
             this.VersionStatus = processServer.VersionStatus;
             this.AvailableMemoryInBytes = processServer.AvailableMemoryInBytes;
             this.AvailableSpaceInBytes = processServer.AvailableSpaceInBytes;
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRMobilityServiceUpdate(MobilityServiceUpdate mobilityServiceUpdateDetails)
         {
             this.RebootStatus = mobilityServiceUpdateDetails.RebootStatus;
-            this.OsType = mobilityServiceUpdateDetails.OsType;
+            this.OsType = mobilityServiceUpdateDetails.OSType;
             this.Version = mobilityServiceUpdateDetails.Version;
         }
 
@@ -499,10 +499,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             this.AgentVersion = masterTargetDetails.AgentVersion;
             this.Id = masterTargetDetails.Id;
-            this.IpAddress = masterTargetDetails.IpAddress;
+            this.IpAddress = masterTargetDetails.IPAddress;
             this.LastHeartbeat = masterTargetDetails.LastHeartbeat;
             this.Name = masterTargetDetails.Name;
-            this.OsType = masterTargetDetails.OsType;
+            this.OsType = masterTargetDetails.OSType;
             this.VersionStatus = masterTargetDetails.VersionStatus;
             this.RetentionVolumes =
                 this.TranslateRetentionVolume(masterTargetDetails.RetentionVolumes);
@@ -624,7 +624,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.Health = psDetails.Health;
             this.HistoricHealth = psDetails.HistoricHealth;
             this.HealthErrors = psDetails.HealthErrors;
-            this.IpAddresses = psDetails.IpAddresses;
+            this.IpAddresses = psDetails.IPAddresses;
         }
 
         /// <summary>
@@ -1367,7 +1367,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     {
         public ASRHyperVReplicaDiskDetails(DiskDetails diskDetails)
         {
-            this.MaxSizeMB = diskDetails.MaxSizeMB;
+            this.MaxSizeMB = diskDetails.MaxSizeMb;
             this.VhdId = diskDetails.VhdId;
             this.VhdName = diskDetails.VhdName;
             this.VhdType = diskDetails.VhdType;
@@ -1400,7 +1400,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.VhdType = hyperVReplicaAzureVmDiskDetails.VhdType;
             this.VhdId = hyperVReplicaAzureVmDiskDetails.VhdId;
             this.VhdName = hyperVReplicaAzureVmDiskDetails.VhdName;
-            this.MaxSizeMB = hyperVReplicaAzureVmDiskDetails.MaxSizeMB;
+            this.MaxSizeMB = hyperVReplicaAzureVmDiskDetails.MaxSizeMb;
             this.TargetDiskLocation = hyperVReplicaAzureVmDiskDetails.TargetDiskLocation;
             this.TargetDiskName = hyperVReplicaAzureVmDiskDetails.TargetDiskName;
             this.LunId = hyperVReplicaAzureVmDiskDetails.LunId;
@@ -1464,9 +1464,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     {
         public ASRHyperVReplicaAzureOsDetails(OSDetails hyperVOsSetails)
         {
-            this.OsType = hyperVOsSetails.OsType;
+            this.OsType = hyperVOsSetails.OSType;
             this.ProductType = hyperVOsSetails.ProductType;
-            this.OsEdition = hyperVOsSetails.OsEdition;
+            this.OsEdition = hyperVOsSetails.OSEdition;
             this.OSVersion = hyperVOsSetails.OSVersion;
             this.OSMinorVersion = hyperVOsSetails.OSMinorVersion;
             this.OSMajorVersion = hyperVOsSetails.OSMajorVersion;
@@ -1516,32 +1516,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.RecoveryAvailabilityZone = details.TargetAvailabilityZone;
             this.RecoveryProximityPlacementGroupId = details.TargetProximityPlacementGroupId;
             this.EnableRDPOnTargetOption = details.EnableRdpOnTargetOption;
-            this.SourceVmCPUCount = details.SourceVmCpuCount;
-            this.SourceVmRAMSizeInMB = details.SourceVmRamSizeInMB;
+            this.SourceVmCPUCount = details.SourceVMCpuCount;
+            this.SourceVmRAMSizeInMB = details.SourceVMRamSizeInMb;
             if (details.OSDetails != null)
             {
                 this.OsDetails = new ASRHyperVReplicaAzureOsDetails(details.OSDetails);
             }
             this.Encryption = details.Encryption;
             this.SelectedRecoveryAzureNetworkId = details.SelectedRecoveryAzureNetworkId;
-            this.VmProtectionState = details.VmProtectionState;
-            this.VmProtectionStateDescription = details.VmProtectionStateDescription;
-            this.VmId = details.VmId;
+            this.VmProtectionState = details.VMProtectionState;
+            this.VmProtectionStateDescription = details.VMProtectionStateDescription;
+            this.VmId = details.VMId;
             this.LastReplicatedTime = details.LastReplicatedTime;
             this.RecoveryAzureLogStorageAccountId = details.RecoveryAzureLogStorageAccountId;
             this.RecoveryAzureStorageAccount = details.RecoveryAzureStorageAccount;
             this.RecoveryAzureVMSize = details.RecoveryAzureVMSize;
-            this.RecoveryAzureVMName = details.RecoveryAzureVmName;
+            this.RecoveryAzureVMName = details.RecoveryAzureVMName;
             this.UseManagedDisks = details.UseManagedDisks;
-            if (details.AzureVmDiskDetails != null)
+            if (details.AzureVMDiskDetails != null)
             {
                 this.AzureVMDiskDetails =
-                    details.AzureVmDiskDetails.ToList()
+                    details.AzureVMDiskDetails.ToList()
                     .ConvertAll(disk => new ASRHyperVReplicaAzureVmDiskDetails(disk));
             }
             this.LicenseType = details.LicenseType;
             this.SqlServerLicenseType = details.SqlServerLicenseType;
-            this.RecoveryVmTag = details.TargetVmTags;
+            this.RecoveryVmTag = details.TargetVMTags;
             this.RecoveryNicTag = details.TargetNicTags;
             this.DiskTag = details.TargetManagedDiskTags;
         }
@@ -1682,12 +1682,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.RecoveryAvailabilitySetId = details.RecoveryAvailabilitySetId;
             this.AgentVersion = details.AgentVersion;
             this.DiscoveryType = details.DiscoveryType;
-            this.IpAddress = details.IpAddress;
+            this.IpAddress = details.IPAddress;
             this.MasterTargetId = details.MasterTargetId;
-            this.MultiVmGroupId = details.MultiVmGroupId;
-            this.MultiVmGroupName = details.MultiVmGroupName;
-            this.OSDiskId = details.OsDiskId;
-            this.OSType = details.OsType;
+            this.MultiVmGroupId = details.MultiVMGroupId;
+            this.MultiVmGroupName = details.MultiVMGroupName;
+            this.OSDiskId = details.OSDiskId;
+            this.OSType = details.OSType;
             this.ProcessServerId = details.ProcessServerId;
             this.ProcessServerName = details.ProcessServerName;
             this.ProtectionStage = details.ProtectionStage;
@@ -1695,12 +1695,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.VHDName = details.VhdName;
             this.DiskResized = details.DiskResized;
             this.EnableRdpOnTargetOption = details.EnableRdpOnTargetOption;
-            this.InfrastructureVmId = details.InfrastructureVmId;
+            this.InfrastructureVmId = details.InfrastructureVMId;
             this.IsAgentUpdateRequired = details.IsAgentUpdateRequired;
             this.IsRebootAfterUpdateRequired = details.IsRebootAfterUpdateRequired;
             this.LicenseType = details.LicenseType;
-            this.MultiVmSyncStatus = details.MultiVmSyncStatus;
-            this.OsVersion = details.OsVersion;
+            this.MultiVmSyncStatus = details.MultiVMSyncStatus;
+            this.OsVersion = details.OSVersion;
             this.RecoveryAzureResourceGroupId = details.RecoveryAzureResourceGroupId;
             this.RecoveryAzureStorageAccount = details.RecoveryAzureStorageAccount;
             this.RecoveryAzureVMName = details.RecoveryAzureVMName;
@@ -1710,19 +1710,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.RpoInSeconds = details.RpoInSeconds;
             this.SelectedRecoveryAzureNetworkId = details.SelectedRecoveryAzureNetworkId;
             this.SelectedSourceNicId = details.SelectedSourceNicId;
-            this.SourceVmCpuCount = details.SourceVmCpuCount;
-            this.SourceVmRamSizeInMB = details.SourceVmRamSizeInMB;
-            this.TargetVmId = details.TargetVmId;
-            this.UncompressedDataRateInMB = details.UncompressedDataRateInMB;
+            this.SourceVmCpuCount = details.SourceVMCpuCount;
+            this.SourceVmRamSizeInMB = details.SourceVMRamSizeInMb;
+            this.TargetVmId = details.TargetVMId;
+            this.UncompressedDataRateInMB = details.UncompressedDataRateInMb;
             this.UseManagedDisks = details.UseManagedDisks;
             this.VCenterInfrastructureId = details.VCenterInfrastructureId;
-            this.VmId = details.VmId;
-            this.VmProtectionState = details.VmProtectionState;
-            this.VmProtectionStateDescription = details.VmProtectionStateDescription;
+            this.VmId = details.VMId;
+            this.VmProtectionState = details.VMProtectionState;
+            this.VmProtectionStateDescription = details.VMProtectionStateDescription;
             this.RecoveryAvailabilityZone = details.TargetAvailabilityZone;
             this.RecoveryProximityPlacementGroupId = details.TargetProximityPlacementGroupId;
             this.SqlServerLicenseType = details.SqlServerLicenseType;
-            this.RecoveryVmTag = details.TargetVmTags;
+            this.RecoveryVmTag = details.TargetVMTags;
             this.RecoveryNicTag = details.TargetNicTags;
             this.DiskTag = details.TargetManagedDiskTags;
             if (details.ProtectedDisks != null)
@@ -2098,9 +2098,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRAzureToAzureSpecificRPIDetails(A2AReplicationDetails details)
         {
             this.FabricObjectId = details.FabricObjectId;
-            this.MultiVmGroupId = details.MultiVmGroupId;
-            this.MultiVmGroupName = details.MultiVmGroupName;
-            this.OSType = details.OsType;
+            this.MultiVmGroupId = details.MultiVMGroupId;
+            this.MultiVmGroupName = details.MultiVMGroupName;
+            this.OSType = details.OSType;
             this.PrimaryFabricLocation = details.PrimaryFabricLocation;
             this.RecoveryFabricObjectId = details.RecoveryFabricObjectId;
             this.RecoveryAzureResourceGroupId = details.RecoveryAzureResourceGroupId;
@@ -2117,7 +2117,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.LastRpoCalculatedTime = details.LastRpoCalculatedTime;
             this.RpoInSeconds = details.RpoInSeconds;
             this.IsReplicationAgentUpdateRequired = details.IsReplicationAgentUpdateRequired;
-            this.VmEncryptionType = details.VmEncryptionType;
+            this.VmEncryptionType = details.VMEncryptionType;
             this.InitialPrimaryFabricLocation = details.InitialPrimaryFabricLocation;
             this.InitialRecoveryFabricLocation = details.InitialRecoveryFabricLocation;
             this.InitialPrimaryZone = details.InitialPrimaryZone;
@@ -2164,10 +2164,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
             }
 
-            if (details.VmSyncedConfigDetails != null)
+            if (details.VMSyncedConfigDetails != null)
             {
                 this.VmSyncedConfigDetails =
-                    new ASRAzureToAzureVmSyncedConfigDetails(details.VmSyncedConfigDetails);
+                    new ASRAzureToAzureVmSyncedConfigDetails(details.VMSyncedConfigDetails);
             }
 
         }
@@ -2373,20 +2373,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             this.InternalIdentifier = details.InternalIdentifier;
             this.FabricDiscoveryMachineId = details.FabricDiscoveryMachineId;
-            this.MultiVmGroupName = details.MultiVmGroupName;
+            this.MultiVmGroupName = details.MultiVMGroupName;
             this.DiscoveryType = details.DiscoveryType;
             this.ProcessServerId = details.ProcessServerId;
             this.ProcessServerName = details.ProcessServerName;
             this.ProcessorCoreCount = details.ProcessorCoreCount;
-            this.AllocatedMemoryInMB = details.AllocatedMemoryInMB;
+            this.AllocatedMemoryInMB = details.AllocatedMemoryInMb;
             this.RunAsAccountId = details.RunAsAccountId;
-            this.OsType = details.OsType;
+            this.OsType = details.OSType;
             this.FirmwareType = details.FirmwareType;
-            this.PrimaryNicIpAddress = details.PrimaryNicIpAddress;
+            this.PrimaryNicIpAddress = details.PrimaryNicIPAddress;
             this.TargetGeneration = details.TargetGeneration;
             this.LicenseType = details.LicenseType;
-            this.TargetVmName = details.TargetVmName;
-            this.TargetVmSize = details.TargetVmSize;
+            this.TargetVmName = details.TargetVMName;
+            this.TargetVmSize = details.TargetVMSize;
             this.TargetResourceGroupId = details.TargetResourceGroupId;
             this.TargetLocation = details.TargetLocation;
             this.TargetAvailabilitySetId = details.TargetAvailabilitySetId;
@@ -2420,8 +2420,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     new ASRInMageRcmMobilityAgentDetails(details.MobilityAgentDetails) :
                     null;
             this.DiscoveredVmDetails =
-                details.DiscoveredVmDetails != null ?
-                    new ASRInMageRcmDiscoveredProtectedVmDetails(details.DiscoveredVmDetails) :
+                details.DiscoveredVMDetails != null ?
+                    new ASRInMageRcmDiscoveredProtectedVmDetails(details.DiscoveredVMDetails) :
                     null;
             this.IsAgentRegistrationSuccessfulAfterFailover =
                 details.IsAgentRegistrationSuccessfulAfterFailover;
@@ -2432,9 +2432,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                    .ConvertAll(disk => new ASRInMageRcmProtectedDiskDetails(disk));
             }
 
-            if (details.VmNics != null && details.VmNics.Any())
+            if (details.VMNics != null && details.VMNics.Any())
             {
-                this.VmNics = details.VmNics.ToList()
+                this.VmNics = details.VMNics.ToList()
                     .ConvertAll(nic => new ASRInMageRcmNicDetails(nic));
             }
 
@@ -2724,13 +2724,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             this.InternalIdentifier = details.InternalIdentifier;
             this.AzureVirtualMachineId = details.AzureVirtualMachineId;
-            this.MultiVmGroupName = details.MultiVmGroupName;
+            this.MultiVmGroupName = details.MultiVMGroupName;
             this.ReprotectAgentId = details.ReprotectAgentId;
             this.ReprotectAgentName = details.ReprotectAgentName;
-            this.OsType = details.OsType;
+            this.OsType = details.OSType;
             this.LogStorageAccountId = details.LogStorageAccountId;
             this.TargetvCenterId = details.TargetvCenterId;
-            this.TargetVmName = details.TargetVmName;
+            this.TargetVmName = details.TargetVMName;
             this.TargetDataStoreName = details.TargetDataStoreName;
             this.InitialReplicationProgressPercentage = details.InitialReplicationProgressPercentage;
             this.InitialReplicationProcessedBytes = details.InitialReplicationProcessedBytes;
@@ -2747,8 +2747,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     new ASRInMageRcmFailbackMobilityAgentDetails(details.MobilityAgentDetails) :
                     null;
             this.DiscoveredVmDetails =
-                details.DiscoveredVmDetails != null ?
-                    new ASRInMageRcmFailbackDiscoveredProtectedVmDetails(details.DiscoveredVmDetails) :
+                details.DiscoveredVMDetails != null ?
+                    new ASRInMageRcmFailbackDiscoveredProtectedVmDetails(details.DiscoveredVMDetails) :
                     null;
             this.LastPlannedFailoverStartTime = details.LastPlannedFailoverStartTime;
             this.LastPlannedFailoverStatus = details.LastPlannedFailoverStatus;
@@ -2763,9 +2763,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                    .ConvertAll(disk => new ASRInMageRcmFailbackProtectedDiskDetails(disk));
             }
 
-            if (details.VmNics != null && details.VmNics.Any())
+            if (details.VMNics != null && details.VMNics.Any())
             {
-                this.VmNics = details.VmNics.ToList()
+                this.VmNics = details.VMNics.ToList()
                     .ConvertAll(nic => new ASRInMageRcmFailbackNicDetails(nic));
             }
         }

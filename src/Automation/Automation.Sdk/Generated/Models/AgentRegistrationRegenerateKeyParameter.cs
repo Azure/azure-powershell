@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// </summary>
 
         /// <param name="keyName">Gets or sets the agent registration key name - primary or secondary.
-        /// Possible values include: 'primary', 'secondary'</param>
+        /// Possible values include: &#39;primary&#39;, &#39;secondary&#39;</param>
         public AgentRegistrationRegenerateKeyParameter(string keyName)
 
         {

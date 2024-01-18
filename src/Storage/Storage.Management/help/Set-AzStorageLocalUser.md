@@ -39,13 +39,13 @@ To run this cmdlet, the storage account must has already set EnableLocalUser as 
 
 
 ```
-PS C:\> $sshkey1 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa base64encodedkey=" -Description "sshpublickey name1"
+$sshkey1 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa base64encodedkey=" -Description "sshpublickey name1"
 
-PS C:\> $permissionScope1 = New-AzStorageLocalUserPermissionScope -Permission rw -Service blob -ResourceName container1 
+$permissionScope1 = New-AzStorageLocalUserPermissionScope -Permission rw -Service blob -ResourceName container1 
 
-PS C:\> $localuser = Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -SshAuthorizedKey $sshkey1 -PermissionScope $permissionScope1 -HasSharedKey $true -HasSshKey $true -HasSshPassword $true
+$localuser = Set-AzStorageLocalUser -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1 -HomeDirectory "/" -SshAuthorizedKey $sshkey1 -PermissionScope $permissionScope1 -HasSharedKey $true -HasSshKey $true -HasSshPassword $true
 
-PS C:\> $localuser
+$localuser
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
@@ -53,13 +53,13 @@ Name      Sid                                          HomeDirectory HasSharedKe
 ----      ---                                          ------------- ------------ --------- -------------- ----------------         
 testuser1 S-1-2-0-0000000000-000000000-0000000000-0000 /             True         True      True           [container1]
 
-PS C:\> $localuser.SshAuthorizedKeys 
+$localuser.SshAuthorizedKeys 
 
 Description       Key                     
 -----------       ---                     
 sshpublickey name1 ssh-rsa base64encodedkey=
 
-PS C:\> $localuser.PermissionScopes 
+$localuser.PermissionScopes 
 
 Permissions Service ResourceName
 ----------- ------- ------------

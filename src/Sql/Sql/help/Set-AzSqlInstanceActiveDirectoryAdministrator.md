@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSqlInstanceActiveDirectoryAdministrator
 
 ## SYNOPSIS
-Provisions an Azure AD administrator for SQL Managed Instance.
+Provisions a Microsoft Entra administrator for SQL Managed Instance.
 
 ## SYNTAX
 
@@ -33,16 +33,16 @@ Set-AzSqlInstanceActiveDirectoryAdministrator [-DisplayName] <String> [-ObjectId
 ```
 
 ## DESCRIPTION
-The **Set-AzSqlInstanceActiveDirectoryAdministrator** cmdlet provisions an Azure Active Directory (Azure AD) administrator for AzureSQL Managed Instance in the current subscription.
+The **Set-AzSqlInstanceActiveDirectoryAdministrator** cmdlet provisions a Microsoft Entra administrator for AzureSQL Managed Instance in the current subscription.
 You can provision only one administrator at a time.
-The following members of Azure AD can be provisioned as a SQL Managed Instance administrator:
-- Native members of Azure AD 
-- Federated members of Azure AD 
-- Azure AD groups created as security groups
+The following members of Microsoft Entra ID can be provisioned as a SQL Managed Instance administrator:
+- Native members of Microsoft Entra ID 
+- Federated members of Microsoft Entra ID 
+- Microsoft Entra groups created as security groups
 Imported members from other Azure ADs are not supported as administrators.
 Microsoft accounts, such as those in the Outlook.com, Hotmail.com, or Live.com domains, are not supported as administrators.
 Other guest accounts, such as those in the Gmail.com or Yahoo.com domains, are not supported as administrators.
-We recommend that you provision a dedicated Azure AD group as an administrator.
+We recommend that you provision a dedicated Microsoft Entra group as an administrator.
 
 ## EXAMPLES
 
@@ -57,7 +57,7 @@ ResourceGroupName InstanceName      DisplayName ObjectId
 ResourceGroup01   ManagedInstance01 DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
 ```
 
-This command provisions an Azure AD administrator group named DBAs for the managed instance named ManagedInstance01.
+This command provisions a Microsoft Entra administrator group named DBAs for the managed instance named ManagedInstance01.
 This server is associated with resource group ResourceGroup01.
 
 ### Example 2: Provision an administrator user using managed instance object
@@ -71,7 +71,7 @@ ResourceGroupName InstanceName      DisplayName ObjectId
 Resourcegroup01   ManagedInstance01 David Chew  11E95548-B179-4FE1-9AF4-ACA49D13ABB9
 ```
 
-This command provisions an Azure AD user as an administrator from the managed instance object.
+This command provisions a Microsoft Entra user as an administrator from the managed instance object.
 
 ### Example 3: Provision an administrator using managed instance resource identifier
 ```powershell
@@ -84,7 +84,7 @@ ResourceGroupName InstanceName      DisplayName ObjectId
 Resourcegroup01   ManagedInstance01 David Chew  11E95548-B179-4FE1-9AF4-ACA49D13ABB9
 ```
 
-This command provisions an Azure AD user as an administrator using managed instance resource identifier.
+This command provisions a Microsoft Entra user as an administrator using managed instance resource identifier.
 
 ## PARAMETERS
 
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-Specifies the object ID of the user or group in Azure Active Directory for which to grant permissions.
+Specifies the object ID of the user or group in Microsoft Entra ID for which to grant permissions.
 
 ```yaml
 Type: System.Guid

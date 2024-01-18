@@ -19,7 +19,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -28,16 +29,20 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='createTimeMin'>
-        /// If specified, only job executions created at or after the specified time are included.
+        /// If specified, only job executions created at or after the specified time
+        /// are included.
         /// </param>
         /// <param name='createTimeMax'>
-        /// If specified, only job executions created before the specified time are included.
+        /// If specified, only job executions created before the specified time are
+        /// included.
         /// </param>
         /// <param name='endTimeMin'>
-        /// If specified, only job executions completed at or after the specified time are included.
+        /// If specified, only job executions completed at or after the specified time
+        /// are included.
         /// </param>
         /// <param name='endTimeMax'>
-        /// If specified, only job executions completed before the specified time are included.
+        /// If specified, only job executions completed before the specified time are
+        /// included.
         /// </param>
         /// <param name='isActive'>
         /// If specified, only active or only completed job executions are included.
@@ -48,7 +53,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='top'>
         /// The number of elements to return from the collection.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<JobExecution> ListByAgent(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, System.DateTime? createTimeMin = default(System.DateTime?), System.DateTime? createTimeMax = default(System.DateTime?), System.DateTime? endTimeMin = default(System.DateTime?), System.DateTime? endTimeMax = default(System.DateTime?), bool? isActive = default(bool?), int? skip = default(int?), int? top = default(int?))
+        public static Microsoft.Rest.Azure.IPage<JobExecution> ListByAgent(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, System.DateTime? createTimeMin = default(System.DateTime?), System.DateTime? createTimeMax = default(System.DateTime?), System.DateTime? endTimeMin = default(System.DateTime?), System.DateTime? endTimeMax = default(System.DateTime?), bool? isActive = default(bool?), long? skip = default(long?), long? top = default(long?))
         {
                 return ((IJobExecutionsOperations)operations).ListByAgentAsync(resourceGroupName, serverName, jobAgentName, createTimeMin, createTimeMax, endTimeMin, endTimeMax, isActive, skip, top).GetAwaiter().GetResult();
         }
@@ -60,7 +65,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -69,16 +75,20 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job agent.
         /// </param>
         /// <param name='createTimeMin'>
-        /// If specified, only job executions created at or after the specified time are included.
+        /// If specified, only job executions created at or after the specified time
+        /// are included.
         /// </param>
         /// <param name='createTimeMax'>
-        /// If specified, only job executions created before the specified time are included.
+        /// If specified, only job executions created before the specified time are
+        /// included.
         /// </param>
         /// <param name='endTimeMin'>
-        /// If specified, only job executions completed at or after the specified time are included.
+        /// If specified, only job executions completed at or after the specified time
+        /// are included.
         /// </param>
         /// <param name='endTimeMax'>
-        /// If specified, only job executions completed before the specified time are included.
+        /// If specified, only job executions completed before the specified time are
+        /// included.
         /// </param>
         /// <param name='isActive'>
         /// If specified, only active or only completed job executions are included.
@@ -92,114 +102,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<JobExecution>> ListByAgentAsync(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, System.DateTime? createTimeMin = default(System.DateTime?), System.DateTime? createTimeMax = default(System.DateTime?), System.DateTime? endTimeMin = default(System.DateTime?), System.DateTime? endTimeMax = default(System.DateTime?), bool? isActive = default(bool?), int? skip = default(int?), int? top = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<JobExecution>> ListByAgentAsync(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, System.DateTime? createTimeMin = default(System.DateTime?), System.DateTime? createTimeMax = default(System.DateTime?), System.DateTime? endTimeMin = default(System.DateTime?), System.DateTime? endTimeMax = default(System.DateTime?), bool? isActive = default(bool?), long? skip = default(long?), long? top = default(long?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByAgentWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, createTimeMin, createTimeMax, endTimeMin, endTimeMax, isActive, skip, top, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Requests cancellation of a job execution.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='jobAgentName'>
-        /// The name of the job agent.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job.
-        /// </param>
-        /// <param name='jobExecutionId'>
-        /// The id of the job execution to cancel.
-        /// </param>
-        public static void Cancel(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId)
-        {
-                ((IJobExecutionsOperations)operations).CancelAsync(resourceGroupName, serverName, jobAgentName, jobName, jobExecutionId).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Requests cancellation of a job execution.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='jobAgentName'>
-        /// The name of the job agent.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job.
-        /// </param>
-        /// <param name='jobExecutionId'>
-        /// The id of the job execution to cancel.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task CancelAsync(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.CancelWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, jobName, jobExecutionId, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Starts an elastic job execution.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='jobAgentName'>
-        /// The name of the job agent.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job to get.
-        /// </param>
-        public static JobExecution Create(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName)
-        {
-                return ((IJobExecutionsOperations)operations).CreateAsync(resourceGroupName, serverName, jobAgentName, jobName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Starts an elastic job execution.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-        /// </param>
-        /// <param name='serverName'>
-        /// The name of the server.
-        /// </param>
-        /// <param name='jobAgentName'>
-        /// The name of the job agent.
-        /// </param>
-        /// <param name='jobName'>
-        /// The name of the job to get.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<JobExecution> CreateAsync(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, jobName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -211,7 +116,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -223,16 +129,20 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job to get.
         /// </param>
         /// <param name='createTimeMin'>
-        /// If specified, only job executions created at or after the specified time are included.
+        /// If specified, only job executions created at or after the specified time
+        /// are included.
         /// </param>
         /// <param name='createTimeMax'>
-        /// If specified, only job executions created before the specified time are included.
+        /// If specified, only job executions created before the specified time are
+        /// included.
         /// </param>
         /// <param name='endTimeMin'>
-        /// If specified, only job executions completed at or after the specified time are included.
+        /// If specified, only job executions completed at or after the specified time
+        /// are included.
         /// </param>
         /// <param name='endTimeMax'>
-        /// If specified, only job executions completed before the specified time are included.
+        /// If specified, only job executions completed before the specified time are
+        /// included.
         /// </param>
         /// <param name='isActive'>
         /// If specified, only active or only completed job executions are included.
@@ -243,7 +153,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='top'>
         /// The number of elements to return from the collection.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<JobExecution> ListByJob(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.DateTime? createTimeMin = default(System.DateTime?), System.DateTime? createTimeMax = default(System.DateTime?), System.DateTime? endTimeMin = default(System.DateTime?), System.DateTime? endTimeMax = default(System.DateTime?), bool? isActive = default(bool?), int? skip = default(int?), int? top = default(int?))
+        public static Microsoft.Rest.Azure.IPage<JobExecution> ListByJob(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.DateTime? createTimeMin = default(System.DateTime?), System.DateTime? createTimeMax = default(System.DateTime?), System.DateTime? endTimeMin = default(System.DateTime?), System.DateTime? endTimeMax = default(System.DateTime?), bool? isActive = default(bool?), long? skip = default(long?), long? top = default(long?))
         {
                 return ((IJobExecutionsOperations)operations).ListByJobAsync(resourceGroupName, serverName, jobAgentName, jobName, createTimeMin, createTimeMax, endTimeMin, endTimeMax, isActive, skip, top).GetAwaiter().GetResult();
         }
@@ -255,7 +165,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -267,16 +178,20 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the job to get.
         /// </param>
         /// <param name='createTimeMin'>
-        /// If specified, only job executions created at or after the specified time are included.
+        /// If specified, only job executions created at or after the specified time
+        /// are included.
         /// </param>
         /// <param name='createTimeMax'>
-        /// If specified, only job executions created before the specified time are included.
+        /// If specified, only job executions created before the specified time are
+        /// included.
         /// </param>
         /// <param name='endTimeMin'>
-        /// If specified, only job executions completed at or after the specified time are included.
+        /// If specified, only job executions completed at or after the specified time
+        /// are included.
         /// </param>
         /// <param name='endTimeMax'>
-        /// If specified, only job executions completed before the specified time are included.
+        /// If specified, only job executions completed before the specified time are
+        /// included.
         /// </param>
         /// <param name='isActive'>
         /// If specified, only active or only completed job executions are included.
@@ -290,7 +205,7 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<JobExecution>> ListByJobAsync(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.DateTime? createTimeMin = default(System.DateTime?), System.DateTime? createTimeMax = default(System.DateTime?), System.DateTime? endTimeMin = default(System.DateTime?), System.DateTime? endTimeMax = default(System.DateTime?), bool? isActive = default(bool?), int? skip = default(int?), int? top = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<JobExecution>> ListByJobAsync(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.DateTime? createTimeMin = default(System.DateTime?), System.DateTime? createTimeMax = default(System.DateTime?), System.DateTime? endTimeMin = default(System.DateTime?), System.DateTime? endTimeMax = default(System.DateTime?), bool? isActive = default(bool?), long? skip = default(long?), long? top = default(long?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByJobWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, jobName, createTimeMin, createTimeMax, endTimeMin, endTimeMax, isActive, skip, top, null, cancellationToken).ConfigureAwait(false))
             {
@@ -304,7 +219,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -330,7 +246,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -361,7 +278,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -387,7 +305,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -412,13 +331,70 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
+        /// Requests cancellation of a job execution.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='jobAgentName'>
+        /// The name of the job agent.
+        /// </param>
+        /// <param name='jobName'>
+        /// The name of the job.
+        /// </param>
+        /// <param name='jobExecutionId'>
+        /// The id of the job execution to cancel.
+        /// </param>
+        public static void Cancel(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId)
+        {
+                ((IJobExecutionsOperations)operations).CancelAsync(resourceGroupName, serverName, jobAgentName, jobName, jobExecutionId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Requests cancellation of a job execution.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='jobAgentName'>
+        /// The name of the job agent.
+        /// </param>
+        /// <param name='jobName'>
+        /// The name of the job.
+        /// </param>
+        /// <param name='jobExecutionId'>
+        /// The id of the job execution to cancel.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task CancelAsync(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.CancelWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, jobName, jobExecutionId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
         /// Starts an elastic job execution.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -429,9 +405,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='jobName'>
         /// The name of the job to get.
         /// </param>
-        public static JobExecution BeginCreate(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName)
+        public static JobExecution Create(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName)
         {
-                return ((IJobExecutionsOperations)operations).BeginCreateAsync(resourceGroupName, serverName, jobAgentName, jobName).GetAwaiter().GetResult();
+                return ((IJobExecutionsOperations)operations).CreateAsync(resourceGroupName, serverName, jobAgentName, jobName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -441,7 +417,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -455,9 +432,9 @@ namespace Microsoft.Azure.Management.Sql
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<JobExecution> BeginCreateAsync(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<JobExecution> CreateAsync(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, jobName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, jobName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -469,7 +446,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -495,7 +473,8 @@ namespace Microsoft.Azure.Management.Sql
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -515,6 +494,59 @@ namespace Microsoft.Azure.Management.Sql
         public static async System.Threading.Tasks.Task<JobExecution> BeginCreateOrUpdateAsync(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Guid jobExecutionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, jobName, jobExecutionId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Starts an elastic job execution.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='jobAgentName'>
+        /// The name of the job agent.
+        /// </param>
+        /// <param name='jobName'>
+        /// The name of the job to get.
+        /// </param>
+        public static JobExecution BeginCreate(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName)
+        {
+                return ((IJobExecutionsOperations)operations).BeginCreateAsync(resourceGroupName, serverName, jobAgentName, jobName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Starts an elastic job execution.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='jobAgentName'>
+        /// The name of the job agent.
+        /// </param>
+        /// <param name='jobName'>
+        /// The name of the job to get.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<JobExecution> BeginCreateAsync(this IJobExecutionsOperations operations, string resourceGroupName, string serverName, string jobAgentName, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, serverName, jobAgentName, jobName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

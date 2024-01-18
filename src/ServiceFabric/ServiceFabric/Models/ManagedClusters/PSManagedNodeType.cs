@@ -41,7 +41,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                    vmExtensions: nodeType.VmExtensions,
                    vmManagedIdentity: nodeType.VmManagedIdentity,
                    isStateless: nodeType.IsStateless,
-                   multiplePlacementGroups: nodeType.MultiplePlacementGroups)
+                   multiplePlacementGroups: nodeType.MultiplePlacementGroups,
+                   vmSharedGalleryImageId: nodeType.VMSharedGalleryImageId,
+                   securityType: nodeType.SecurityType,
+                   secureBootEnabled: nodeType.SecureBootEnabled,
+                   enableNodePublicIP: nodeType.EnableNodePublicIP,
+                   natGatewayId: nodeType.NatGatewayId,
+                   vmImagePlan: nodeType.VMImagePlan)
         {
         }
     }
