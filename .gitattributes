@@ -11,3 +11,5 @@
 build.proj text eol=crlf
 
 generated/** linguist-generated
+generated/ linguist-generated
+*.cs linguist-generated
