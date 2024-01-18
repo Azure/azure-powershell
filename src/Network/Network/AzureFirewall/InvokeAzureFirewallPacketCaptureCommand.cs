@@ -28,23 +28,11 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPacketCapture", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPacketCaptureParameters))]
     public class InvokeAzureFirewallPacketCaptureCommand : AzureFirewallBaseCmdlet
     {
-        [Alias("ResourceName")]
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
-        [ResourceNameCompleter("Microsoft.Network/azureFirewalls", "ResourceGroupName")]
-        [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
-        public virtual string Name { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
-        public virtual string ResourceGroupName { get; set; }
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The AzureFirewall")]
+        public PSAzureFirewall AzureFirewall { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -60,28 +48,9 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            PSAzureFirewall azureFirewall;
-
-            if (ShouldGetByName(ResourceGroupName, Name))
+            if (!this.IsAzureFirewallPresent(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name))
             {
-                azureFirewall = this.GetAzureFirewall(this.ResourceGroupName, this.Name);
-
-            }
-            else
-            {
-                IPage<AzureFirewall> azureFirewallPage = ShouldListBySubscription(ResourceGroupName, Name)
-                    ? this.AzureFirewallClient.ListAll()
-                    : this.AzureFirewallClient.List(this.ResourceGroupName);
-
-                // Get all resources by polling on next page link
-                var azureFirewallResponseList = ListNextLink<AzureFirewall>.GetAllResourcesByPollingNextLink(azureFirewallPage, this.AzureFirewallClient.ListNext);
-
-                azureFirewall = azureFirewallResponseList.Select(firewall =>
-                {
-                    var psAzureFirewall = this.ToPsAzureFirewall(firewall);
-                    psAzureFirewall.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(firewall.Id);
-                    return psAzureFirewall;
-                }).ToList();
+                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
             // Map to the sdk object
@@ -89,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
             
 
             // Execute the PUT AzureFirewall call
-            var headers = this.AzureFirewallClient.PacketCaptureMethod(azureFirewall.ResourceGroupName, azureFirewall.Name, secureGwParamsModel);
+            var headers = this.AzureFirewallClient.PacketCaptureMethod(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name, secureGwParamsModel);
 
             WriteObject(headers);
         }
