@@ -645,7 +645,10 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Remove-AzNetworkManagerManagementGroupConnection', 
                'Set-AzNetworkManagerManagementGroupConnection', 
                'Get-AzFirewallLearnedIpPrefix', 'New-AzFirewallPolicySnat', 
-               'New-AzGatewayCustomBgpIpConfigurationObject'
+               'New-AzGatewayCustomBgpIpConfigurationObject',
+               'New-AzFirewallPacketCaptureRule',
+               'New-AzFirewallPacketCaptureParameter',
+               'Invoke-AzFirewallPacketCapture'
 
 # Variables to export from this module
 # VariablesToExport = @()
