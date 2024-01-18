@@ -3,7 +3,7 @@
 
 ---
 ---
-# Add-AzMetricAlertRuleV212
+# Add-AzMetricAlertRuleV2124
 
 ## SYNOPSIS
 Adds or updates a V2 (non-classic) metric-based alert rule.
