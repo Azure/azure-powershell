@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSAzureFirewallPacketCaptureParameters
     {
 
-        public string DurationInSeconds { get; set; }
+        public uint DurationInSeconds { get; set; }
 
-        public string NumberOfPacketsToCapture { get; set; }
+        public uint NumberOfPacketsToCapture { get; set; }
 
         public string SasUrl { get; set; }
 
