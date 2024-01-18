@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network.AzureFirewall.PacketCapture
             MNM.AzureFirewallNetworkRuleProtocol.Any,
             MNM.AzureFirewallNetworkRuleProtocol.TCP,
             MNM.AzureFirewallNetworkRuleProtocol.UDP,
-            MNM.AzureFirewallNetworkRuleProtocol.ICMP,
+            MNM.AzureFirewallNetworkRuleProtocol.Icmp,
             IgnoreCase = false)]
         public string Protocol { get; set; }
 
