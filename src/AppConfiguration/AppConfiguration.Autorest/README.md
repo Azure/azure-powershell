@@ -62,6 +62,7 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+keep-identitytype: true
 
 directive:
   # Remove the unexpanded parameter set
