@@ -18,7 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Network.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
@@ -55,12 +55,12 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                IPage<AzureFirewall> azureFirewallPage = ShouldListBySubscription(ResourceGroupName, Name)
+                IPage<MNM.AzureFirewall> azureFirewallPage = ShouldListBySubscription(ResourceGroupName, Name)
                     ? this.AzureFirewallClient.ListAll()
                     : this.AzureFirewallClient.List(this.ResourceGroupName);
 
                 // Get all resources by polling on next page link
-                var azureFirewallResponseList = ListNextLink<AzureFirewall>.GetAllResourcesByPollingNextLink(azureFirewallPage, this.AzureFirewallClient.ListNext);
+                var azureFirewallResponseList = ListNextLink<MNM.AzureFirewall>.GetAllResourcesByPollingNextLink(azureFirewallPage, this.AzureFirewallClient.ListNext);
 
                 var psAzureFirewalls = azureFirewallResponseList.Select(firewall =>
                 {
