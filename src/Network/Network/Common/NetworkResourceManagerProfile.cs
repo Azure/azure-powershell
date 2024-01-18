@@ -1386,6 +1386,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAzureFirewallRCAction, MNM.AzureFirewallRCAction>();
                 cfg.CreateMap<CNM.PSAzureFirewallApplicationRuleProtocol, MNM.AzureFirewallApplicationRuleProtocol>();
                 cfg.CreateMap<CNM.PSAzureFirewallHubIpAddresses, MNM.HubIPAddresses>();
+                cfg.CreateMap<CNM.PSAzureFirewallPacketCaptureFlags, MNM.AzureFirewallPacketCaptureFlags>();
+                cfg.CreateMap<CNM.PSAzureFirewallPacketCaptureRule, MNM.AzureFirewallPacketCaptureRule>();
+                cfg.CreateMap<CNM.PSAzureFirewallPacketCaptureParameters, MNM.FirewallPacketCaptureParameters>();
+
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewall, CNM.PSAzureFirewall>().AfterMap((src, dest) =>
