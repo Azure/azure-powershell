@@ -10,3 +10,4 @@
 *.ps1xml text eol=crlf
 build.proj text eol=crlf
 generated/* linguist-generated=true
+*.Autorest/* linguist-generated=true
