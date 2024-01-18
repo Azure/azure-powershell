@@ -26,10 +26,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01+2": {
+  "AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -58,10 +58,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01+3": {
+  "AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -93,7 +93,7 @@
   "AzVMwarePrivateCloud+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -125,7 +125,7 @@
   "AzVMwarePrivateCloud+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/l3cm9t?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -157,7 +157,7 @@
   "AzVMwarePrivateCloud+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -213,10 +213,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01+2": {
+  "AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -245,10 +245,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01+3": {
+  "AzVMwarePrivateCloud+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -334,7 +334,7 @@
   "AzVMwarePrivateCloud+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/5krpza?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

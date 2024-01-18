@@ -26,10 +26,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCloudLink+[NoContext]+List+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks/cloudLink1?api-version=2023-03-01+2": {
+  "AzVMwareCloudLink+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks/cloudLink1?api-version=2023-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks/cloudLink1?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks/cloudLink1?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -61,7 +61,7 @@
   "AzVMwareCloudLink+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks?api-version=2023-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -93,7 +93,7 @@
   "AzVMwareCloudLink+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks/cloudLink1?api-version=2023-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks/cloudLink1?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks/cloudLink1?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -149,10 +149,10 @@
       "isContentBase64": false
     }
   },
-  "AzVMwareCloudLink+[NoContext]+CreateExpanded+$GET+https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks/2hlsk5?api-version=2023-03-01+2": {
+  "AzVMwareCloudLink+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks/2hlsk5?api-version=2023-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks/2hlsk5?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks/2hlsk5?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -184,7 +184,7 @@
   "AzVMwareCloudLink+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks/2hlsk5?api-version=2023-03-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://localhost/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks/2hlsk5?api-version=2023-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgroupp9uh7g/providers/Microsoft.AVS/privateClouds/azps_test_cloudb092/cloudLinks/2hlsk5?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
