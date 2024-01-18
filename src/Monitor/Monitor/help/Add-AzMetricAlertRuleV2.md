@@ -1,11 +1,9 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
-Module Name: Az.Monitor
-online version: https://learn.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2
-schema: 2.0.0
----
 
-# Add-AzMetricAlertRuleV2
+
+---
+---
+# Add-AzMetricAlertRuleV2 n
 
 ## SYNOPSIS
 Adds or updates a V2 (non-classic) metric-based alert rule.
