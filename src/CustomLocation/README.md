@@ -39,7 +39,7 @@ input-file:
 module-version: 0.1.0
 title: CustomLocation
 subject-prefix: $(service-name)
-
+keep-identitytype: true
 identity-correction-for-post: true
 
 directive:
