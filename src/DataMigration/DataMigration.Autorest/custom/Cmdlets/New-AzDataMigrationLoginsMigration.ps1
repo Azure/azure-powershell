@@ -91,14 +91,58 @@ function New-AzDataMigrationLoginsMigration
             #Testing Whether Console App is downloaded or not
             $TestExePath =  Test-Path -Path $ExePath;
 
+            #Console app download address
+            $ZipSource = "https://sqlassess.blob.core.windows.net/app/LoginsMigration.zip";
+            $ZipDestination = Join-Path -Path $BaseFolder -ChildPath "LoginsMigration.zip";
+
             #Downloading and extracting LoginsMigration Zip file
             if(-Not $TestExePath)
             {
-                $ZipSource = "https://sqlassess.blob.core.windows.net/app/LoginsMigration.zip";
-                $ZipDestination = Join-Path -Path $BaseFolder -ChildPath "LoginsMigration.zip";
+                #Downloading and extracting LoginMigration Zip file
+                Write-Host "Downloading and extracting latest LoginMigration Zip file..."
                 Invoke-RestMethod -Uri $ZipSource -OutFile $ZipDestination;
-
                 Expand-Archive -Path $ZipDestination -DestinationPath $BaseFolder -Force;
+            }
+            else
+            {
+                # Get local exe version
+                Write-Host "Checking installed Login.Console.exe version...";
+                $installedVersion = (Get-Item $ExePath).VersionInfo.FileVersion;
+                Write-Host "Installed version: $installedVersion";
+
+                # Get latest console app version
+                Write-Host "Checking whether there is newer version...";
+                $VersionFileSource = "https://sqlassess.blob.core.windows.net/app/loginconsoleappversion.json";
+                $VersionFileDestination = Join-Path -Path $BaseFolder -ChildPath "loginconsoleappversion.json";
+                Invoke-RestMethod -Uri $VersionFileSource -OutFile $VersionFileDestination;
+                $jsonObj = Get-Content $VersionFileDestination | Out-String | ConvertFrom-Json;
+                $latestVersion = $jsonObj.version;
+
+                # Compare the latest exe version with the local exe version
+                if([System.Version]$installedVersion -lt [System.Version]$latestVersion)
+                {
+                    Write-Host "Found newer version of Logins.Console.exe '$latestVersion'";
+
+                    Write-Host "Removing old Logins.Console.exe..."
+                    # Remove old zip file
+                    Remove-Item -Path $ZipDestination;
+
+                    # Remove existing folder and contents
+                    $ConsoleAppDestination = Join-Path -Path $BaseFolder -ChildPath "Logins.Console.csproj";
+                    Remove-Item -Path $ConsoleAppDestination -Recurse;
+
+                    # Remove version file
+                    Remove-Item -Path $VersionFileDestination;
+
+                    #Downloading and extracting LoginMigration Zip file
+                    Write-Host "Downloading and extracting latest LoginMigration Zip file..."
+                    Invoke-RestMethod -Uri $ZipSource -OutFile $ZipDestination;
+                    Expand-Archive -Path $ZipDestination -DestinationPath $BaseFolder -Force;
+                }
+                else
+                {
+                    Write-Host "Installed Logins.Console.exe is the latest one...";
+                }
             }
 
             #Collecting data
