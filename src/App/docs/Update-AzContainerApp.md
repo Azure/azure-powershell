@@ -17,12 +17,12 @@ Patches a Container App using JSON Merge Patch
 Update-AzContainerApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ConfigurationActiveRevisionsMode <String>] [-ConfigurationRegistry <IRegistryCredentials[]>]
  [-ConfigurationSecret <ISecret[]>] [-DaprAppId <String>] [-DaprAppPort <Int32>] [-DaprAppProtocol <String>]
- [-DaprEnabled] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-IngressAllowInsecure]
- [-IngressCustomDomain <ICustomDomain[]>] [-IngressExternal] [-IngressTargetPort <Int32>]
- [-IngressTraffic <ITrafficWeight[]>] [-IngressTransport <String>] [-ScaleMaxReplica <Int32>]
- [-ScaleMinReplica <Int32>] [-ScaleRule <IScaleRule[]>] [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>]
- [-TemplateRevisionSuffix <String>] [-TemplateVolume <IVolume[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DaprEnabled] [-IdentityType <String>] [-IngressAllowInsecure] [-IngressCustomDomain <ICustomDomain[]>]
+ [-IngressExternal] [-IngressTargetPort <Int32>] [-IngressTraffic <ITrafficWeight[]>]
+ [-IngressTransport <String>] [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>]
+ [-ScaleRule <IScaleRule[]>] [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>]
+ [-TemplateRevisionSuffix <String>] [-TemplateVolume <IVolume[]>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -30,12 +30,26 @@ Update-AzContainerApp -Name <String> -ResourceGroupName <String> [-SubscriptionI
 Update-AzContainerApp -InputObject <IAppIdentity> [-ConfigurationActiveRevisionsMode <String>]
  [-ConfigurationRegistry <IRegistryCredentials[]>] [-ConfigurationSecret <ISecret[]>] [-DaprAppId <String>]
  [-DaprAppPort <Int32>] [-DaprAppProtocol <String>] [-DaprEnabled] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-IngressAllowInsecure] [-IngressCustomDomain <ICustomDomain[]>]
- [-IngressExternal] [-IngressTargetPort <Int32>] [-IngressTraffic <ITrafficWeight[]>]
- [-IngressTransport <String>] [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>]
- [-ScaleRule <IScaleRule[]>] [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>]
- [-TemplateRevisionSuffix <String>] [-TemplateVolume <IVolume[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IngressAllowInsecure] [-IngressCustomDomain <ICustomDomain[]>] [-IngressExternal]
+ [-IngressTargetPort <Int32>] [-IngressTraffic <ITrafficWeight[]>] [-IngressTransport <String>]
+ [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>] [-ScaleRule <IScaleRule[]>] [-Tag <Hashtable>]
+ [-TemplateContainer <IContainer[]>] [-TemplateRevisionSuffix <String>] [-TemplateVolume <IVolume[]>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzContainerApp -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzContainerApp -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,7 +99,7 @@ If no value if provided, this is the default.\</item\>\</list\>
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -101,7 +115,7 @@ To construct, see NOTES section for CONFIGURATIONREGISTRY properties and create 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRegistryCredentials[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -117,7 +131,7 @@ To construct, see NOTES section for CONFIGURATIONSECRET properties and create a 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecret[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -132,7 +146,7 @@ Dapr application identifier
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -147,7 +161,7 @@ Tells Dapr which port your application is listening on
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -164,7 +178,7 @@ Default is http
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -179,7 +193,7 @@ Boolean indicating if the Dapr side car is enabled
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -190,7 +204,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -209,24 +224,7 @@ Type of managed service identity (where both SystemAssigned and UserAssigned typ
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -242,7 +240,7 @@ If set to false HTTP connections are automatically redirected to HTTPS connectio
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -258,7 +256,7 @@ To construct, see NOTES section for INGRESSCUSTOMDOMAIN properties and create a 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICustomDomain[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -273,7 +271,7 @@ Bool indicating if app exposes an external http endpoint
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -288,7 +286,7 @@ Target Port in containers for traffic from ingress
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -304,7 +302,7 @@ To construct, see NOTES section for INGRESSTRAFFIC properties and create a hash 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITrafficWeight[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -319,7 +317,7 @@ Ingress transport protocol
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -345,12 +343,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the Container App.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: ContainerAppName
 
 Required: True
@@ -381,7 +409,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -398,7 +426,7 @@ Defaults to 10 if not set.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -414,7 +442,7 @@ Minimum number of container replicas.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -430,7 +458,7 @@ To construct, see NOTES section for SCALERULE properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -445,7 +473,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -460,7 +488,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -476,7 +504,7 @@ To construct, see NOTES section for TEMPLATECONTAINER properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -491,7 +519,7 @@ User friendly suffix that is appended to the revision name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -507,7 +535,23 @@ To construct, see NOTES section for TEMPLATEVOLUME properties and create a hash 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -560,100 +604,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-CONFIGURATIONREGISTRY <IRegistryCredentials[]>: Collection of private container registry credentials for containers used by the Container app
-  - `[Identity <String>]`: A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
-  - `[PasswordSecretRef <String>]`: The name of the Secret that contains the registry login password
-  - `[Server <String>]`: Container Registry Server
-  - `[Username <String>]`: Container Registry Username
-
-CONFIGURATIONSECRET <ISecret[]>: Collection of secrets used by a Container app
-  - `[Name <String>]`: Secret Name.
-  - `[Value <String>]`: Secret Value.
-
-INGRESSCUSTOMDOMAIN <ICustomDomain[]>: custom domain bindings for Container Apps' hostnames.
-  - `CertificateId <String>`: Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
-  - `Name <String>`: Hostname.
-  - `[BindingType <String>]`: Custom Domain binding type.
-
-INGRESSTRAFFIC <ITrafficWeight[]>: Traffic weights for app's revisions
-  - `[Label <String>]`: Associates a traffic label with a revision
-  - `[LatestRevision <Boolean?>]`: Indicates that the traffic weight belongs to a latest stable revision
-  - `[RevisionName <String>]`: Name of a revision
-  - `[Weight <Int32?>]`: Traffic weight assigned to a revision
-
-INPUTOBJECT <IAppIdentity>: Identity Parameter
-  - `[AuthConfigName <String>]`: Name of the Container App AuthConfig.
-  - `[CertificateName <String>]`: Name of the Certificate.
-  - `[ComponentName <String>]`: Name of the Dapr Component.
-  - `[ContainerAppName <String>]`: Name of the Container App.
-  - `[EnvironmentName <String>]`: Name of the Managed Environment.
-  - `[Id <String>]`: Resource identity path
-  - `[ReplicaName <String>]`: Name of the Container App Revision Replica.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RevisionName <String>]`: Name of the Container App Revision.
-  - `[SourceControlName <String>]`: Name of the Container App SourceControl.
-  - `[StorageName <String>]`: Name of the storage.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-SCALERULE <IScaleRule[]>: Scaling rules.
-  - `[AzureQueueAuth <List<IScaleRuleAuth>>]`: Authentication secrets for the queue scale rule.
-    - `[SecretRef <String>]`: Name of the Container App secret from which to pull the auth params.
-    - `[TriggerParameter <String>]`: Trigger Parameter that uses the secret
-  - `[AzureQueueLength <Int32?>]`: Queue length.
-  - `[AzureQueueName <String>]`: Queue name.
-  - `[CustomAuth <List<IScaleRuleAuth>>]`: Authentication secrets for the custom scale rule.
-  - `[CustomMetadata <ICustomScaleRuleMetadata>]`: Metadata properties to describe custom scale rule.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[CustomType <String>]`: Type of the custom scale rule         eg: azure-servicebus, redis etc.
-  - `[HttpAuth <List<IScaleRuleAuth>>]`: Authentication secrets for the custom scale rule.
-  - `[HttpMetadata <IHttpScaleRuleMetadata>]`: Metadata properties to describe http scale rule.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Name <String>]`: Scale Rule Name
-
-TEMPLATECONTAINER <IContainer[]>: List of container definitions for the Container App.
-  - `[Arg <List<String>>]`: Container start command arguments.
-  - `[Command <List<String>>]`: Container start command.
-  - `[Env <List<IEnvironmentVar>>]`: Container environment variables.
-    - `[Name <String>]`: Environment variable name.
-    - `[SecretRef <String>]`: Name of the Container App secret from which to pull the environment variable value.
-    - `[Value <String>]`: Non-secret environment variable value.
-  - `[Image <String>]`: Container image tag.
-  - `[Name <String>]`: Custom container name.
-  - `[Probe <List<IContainerAppProbe>>]`: List of probes for the container.
-    - `[FailureThreshold <Int32?>]`: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. Maximum value is 10.
-    - `[HttpGetHost <String>]`: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-    - `[HttpGetHttpHeader <List<IContainerAppProbeHttpGetHttpHeadersItem>>]`: Custom headers to set in the request. HTTP allows repeated headers.
-      - `Name <String>`: The header field name
-      - `Value <String>`: The header field value
-    - `[HttpGetPath <String>]`: Path to access on the HTTP server.
-    - `[HttpGetPort <Int32?>]`: Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-    - `[HttpGetScheme <String>]`: Scheme to use for connecting to the host. Defaults to HTTP.
-    - `[InitialDelaySecond <Int32?>]`: Number of seconds after the container has started before liveness probes are initiated. Minimum value is 1. Maximum value is 60.
-    - `[PeriodSecond <Int32?>]`: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 240.
-    - `[SuccessThreshold <Int32?>]`: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1. Maximum value is 10.
-    - `[TcpSocketHost <String>]`: Optional: Host name to connect to, defaults to the pod IP.
-    - `[TcpSocketPort <Int32?>]`: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-    - `[TerminationGracePeriodSecond <Int64?>]`: Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate. Maximum value is 3600 seconds (1 hour)
-    - `[TimeoutSecond <Int32?>]`: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 240.
-    - `[Type <String>]`: The type of probe.
-  - `[ResourceCpu <Double?>]`: Required CPU in cores, e.g. 0.5
-  - `[ResourceMemory <String>]`: Required memory, e.g. "250Mb"
-  - `[VolumeMount <List<IVolumeMount>>]`: Container volume mounts.
-    - `[MountPath <String>]`: Path within the container at which the volume should be mounted.Must not contain ':'.
-    - `[VolumeName <String>]`: This must match the Name of a Volume.
-
-TEMPLATEVOLUME <IVolume[]>: List of volume definitions for the Container App.
-  - `[Name <String>]`: Volume name.
-  - `[StorageName <String>]`: Name of storage resource. No need to provide for EmptyDir.
-  - `[StorageType <String>]`: Storage type for the volume. If not provided, use EmptyDir.
 
 ## RELATED LINKS
 

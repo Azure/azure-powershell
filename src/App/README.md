@@ -56,6 +56,7 @@ subject-prefix: ''
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+keep-identitytype: true
 
 directive:
   - from: swagger-document 

@@ -1,0 +1,57 @@
+{
+  "resourceType": "containerApps/revisions/replicas",
+  "apiVersion": "2022-03-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.app"
+  },
+  "commands": [
+    {
+      "name": "Get-AzContainerAppsRevisionReplica",
+      "description": "Get a replica for a Container App Revision.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/revisions/{revisionName}/replicas/{replicaName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappsrevisionreplica"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ContainerAppName <String>",
+              "-ReplicaName <String>",
+              "-ResourceGroupName <String>",
+              "-RevisionName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a replica for a Container App Revision.",
+          "parameters": [
+            {
+              "name": "-ContainerAppName",
+              "value": "[Path.containerAppName]"
+            },
+            {
+              "name": "-ReplicaName",
+              "value": "[Path.replicaName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-RevisionName",
+              "value": "[Path.revisionName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

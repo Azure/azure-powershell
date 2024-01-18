@@ -44,11 +44,14 @@ Get a revision of a Container App.
 ### [Get-AzContainerAppSecret](Get-AzContainerAppSecret.md)
 List secrets for a container app
 
+### [Get-AzContainerAppsRevisionReplica](Get-AzContainerAppsRevisionReplica.md)
+Get a replica for a Container App Revision.
+
 ### [New-AzContainerApp](New-AzContainerApp.md)
-Create or update a Container App.
+Create a Container App.
 
 ### [New-AzContainerAppAuthConfig](New-AzContainerAppAuthConfig.md)
-Create or update the AuthConfig for a Container App.
+Create the AuthConfig for a Container App.
 
 ### [New-AzContainerAppCustomDomainObject](New-AzContainerAppCustomDomainObject.md)
 Create an in-memory object for CustomDomain.
@@ -63,16 +66,16 @@ Create an in-memory object for EnvironmentVar.
 Create an in-memory object for IdentityProviders.
 
 ### [New-AzContainerAppManagedEnv](New-AzContainerAppManagedEnv.md)
-Creates or updates a Managed Environment used to host container apps.
+Create a Managed Environment used to host container apps.
 
 ### [New-AzContainerAppManagedEnvCert](New-AzContainerAppManagedEnvCert.md)
-Create or Update a Certificate.
+Create a Certificate.
 
 ### [New-AzContainerAppManagedEnvDapr](New-AzContainerAppManagedEnvDapr.md)
-Creates or updates a Dapr Component in a Managed Environment.
+Create a Dapr Component in a Managed Environment.
 
 ### [New-AzContainerAppManagedEnvStorage](New-AzContainerAppManagedEnvStorage.md)
-Create or update storage for a managedEnvironment.
+Create storage for a managedEnvironment.
 
 ### [New-AzContainerAppProbeHeaderObject](New-AzContainerAppProbeHeaderObject.md)
 Create an in-memory object for ContainerAppProbeHttpGetHttpHeadersItem.
@@ -91,6 +94,9 @@ Create an in-memory object for ScaleRule.
 
 ### [New-AzContainerAppSecretObject](New-AzContainerAppSecretObject.md)
 Create an in-memory object for Secret.
+
+### [New-AzContainerAppsSourceControl](New-AzContainerAppsSourceControl.md)
+Create the SourceControl for a Container App.
 
 ### [New-AzContainerAppTemplateObject](New-AzContainerAppTemplateObject.md)
 Create an in-memory object for Container.
@@ -131,4 +137,16 @@ Patches a Container App using JSON Merge Patch
 ### [Update-AzContainerAppManagedEnvCert](Update-AzContainerAppManagedEnvCert.md)
 Patches a certificate.
 Currently only patching of tags is supported
+
+### [Update-AzContainerAppManagedEnvDapr](Update-AzContainerAppManagedEnvDapr.md)
+Create a Dapr Component in a Managed Environment.
+
+### [Update-AzContainerAppManagedEnvStorage](Update-AzContainerAppManagedEnvStorage.md)
+Create storage for a managedEnvironment.
+
+### [Update-AzContainerAppsAuthConfig](Update-AzContainerAppsAuthConfig.md)
+Create the AuthConfig for a Container App.
+
+### [Update-AzContainerAppsSourceControl](Update-AzContainerAppsSourceControl.md)
+Create the SourceControl for a Container App.
 
