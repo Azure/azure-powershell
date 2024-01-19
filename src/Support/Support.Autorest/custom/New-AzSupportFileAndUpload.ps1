@@ -49,7 +49,6 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Support.Category('Path')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Azure subscription Id.
     ${SubscriptionId},
@@ -198,6 +197,7 @@ process {
     # try{
     if($SubscriptionId)
     {
+        Write-Output "going into subscription id if statement for create"
         New-AzSupportFile -SubscriptionId $SubscriptionId -Name $Name -WorkspaceName $WorkspaceName -FileSize $FileSize -ChunkSize $ChunkSize -NumberOfChunk $NumberOfChunks
     }
     else{
@@ -223,6 +223,7 @@ process {
         $FileContent = [convert]::ToBase64String($FileContentByteArray[$startIndex..$endIndex])
         #Write-Output "contents of file: " $FileContent
         if($SubscriptionId){
+            Write-Output "going into subscription id if statement for upload"
             Invoke-AzSupportUploadFile -SubscriptionId $SubscriptionId -FileName $Name -FileWorkspaceName $WorkspaceName -ChunkIndex $chunkIndex -Content $FileContent
         }
         else{
