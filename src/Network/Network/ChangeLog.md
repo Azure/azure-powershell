@@ -24,6 +24,8 @@
 * Changed the Default Rule Set from CRS3.0 to DRS2.1 in `NewAzureApplicationGatewayFirewallPolicy`
 * Added optional property 'Profile' to `New-AzFirewallPolicyIntrusionDetection` 
 * Added new cmdlet to update Connection child resource of Network Virtual Appliance. - `Update-AzNetworkVirtualApplianceConnection`
+* Added support of `InternetIngressIp` Property in New-AzNetworkVirtualAppliance
+* Added the new cmdlet for supporting `InternetIngressIp` Property with Network Virtual Appliances -`New-AzVirtualApplianceInternetIngressIpsProperty`
 * Added new cmdlets to define parameters for a Azure Firewall Packet Capture. - `New-AzFirewallPacketCaptureRule` and `New-AzFirewallPacketCaptureParameter`
 * Added new cmdlet to invoke a packet capture on a Azure Firewall. - `Invoke-AzFirewallPacketCapture`
 
