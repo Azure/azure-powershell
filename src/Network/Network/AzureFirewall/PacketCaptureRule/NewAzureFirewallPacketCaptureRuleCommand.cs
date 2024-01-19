@@ -29,34 +29,34 @@ namespace Microsoft.Azure.Commands.Network.AzureFirewall.PacketCaptureRule
             Mandatory = true,
             HelpMessage = "The source addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public string[] Sources { get; set; }
+        public string[] Source { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The destination addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public string[] Destinations { get; set; }
+        public string[] Destination { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The destination ports of the rule")]
-        public string[] DestinationPorts { get; set; }
+        public string[] DestinationPort { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
             // Sources and destinations must be specified
-            if ((Sources == null) || (Destinations == null))
+            if ((Source == null) || (Destination == null))
             {
                 throw new ArgumentException("Both Sources and Destinations must be specified.");
             }
 
             var filterRule = new PSAzureFirewallPacketCaptureRule
             {
-                Sources = Sources.ToList(),
-                Destinations = Destinations.ToList(),
-                DestinationPorts = DestinationPorts?.ToList()
+                Sources = Source.ToList(),
+                Destinations = Destination.ToList(),
+                DestinationPorts = DestinationPort?.ToList()
             };
             WriteObject(filterRule);
         }

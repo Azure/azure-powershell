@@ -51,13 +51,13 @@ namespace Microsoft.Azure.Commands.Network.AzureFirewall.PacketCapture
         [Parameter(
             Mandatory = false,
             HelpMessage = "The list of tcp-flags to capture")]
-        public string[] Flags { get; set; }
+        public string[] Flag { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The list of filters to capture")]
         [ValidateNotNullOrEmpty]
-        public PSAzureFirewallPacketCaptureRule[] Filters { get; set; }
+        public PSAzureFirewallPacketCaptureRule[] Filter { get; set; }
 
         public override void Execute()
         {
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Commands.Network.AzureFirewall.PacketCapture
 
             List<PSAzureFirewallPacketCaptureFlags> PSFlags = new List<PSAzureFirewallPacketCaptureFlags>();
             
-            if(Flags != null)
+            if(Flag != null)
             {
-                foreach (var flag in Flags)
+                foreach (var flag in Flag)
                 {
                     PSFlags.Add(PSAzureFirewallPacketCaptureFlags.MapUserInputToPacketCaptureFlag(flag));
                 }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network.AzureFirewall.PacketCapture
                 FileName = this.FileName,
                 Protocol = this.Protocol,
                 Flags = PSFlags,
-                Filters = this.Filters?.ToList(),
+                Filters = this.Filter?.ToList(),
 
             };
 

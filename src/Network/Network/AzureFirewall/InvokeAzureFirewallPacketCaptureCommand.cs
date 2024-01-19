@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The packet capture parameters")]
-        public PSAzureFirewallPacketCaptureParameters Parameters { get; set; }
+        public PSAzureFirewallPacketCaptureParameters Parameter { get; set; }
 
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-            var secureGwParamsModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPacketCaptureParameters>(this.Parameters);
+            var secureGwParamsModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPacketCaptureParameters>(this.Parameter);
             
 
             // Execute the PUT AzureFirewall call
