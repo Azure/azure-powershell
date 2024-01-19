@@ -25,6 +25,20 @@ New-AzMixedRealitySpatialAnchorsAccountKey -InputObject <IMixedRealityIdentity> 
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### RegenerateViaJsonFilePath
+```
+New-AzMixedRealitySpatialAnchorsAccountKey -AccountName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RegenerateViaJsonString
+```
+New-AzMixedRealitySpatialAnchorsAccountKey -AccountName <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Regenerate specified Key of a Spatial Anchors Account
 
@@ -50,7 +64,7 @@ Name of an Mixed Reality Account.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonFilePath, RegenerateViaJsonString
 Aliases:
 
 Required: True
@@ -61,7 +75,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -91,12 +106,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of an Azure resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonFilePath, RegenerateViaJsonString
 Aliases:
 
 Required: True
@@ -111,7 +156,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: RegenerateExpanded, RegenerateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -128,7 +173,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: RegenerateExpanded
+Parameter Sets: RegenerateExpanded, RegenerateViaJsonFilePath, RegenerateViaJsonString
 Aliases:
 
 Required: False
@@ -181,20 +226,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IAccountKeys
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMixedRealityIdentity>`: Identity Parameter
-  - `[AccountName <String>]`: Name of an Mixed Reality Account.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location in which uniqueness will be verified.
-  - `[ResourceGroupName <String>]`: Name of an Azure resource group.
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 
 ## RELATED LINKS
 

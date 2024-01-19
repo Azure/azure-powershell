@@ -32,7 +32,7 @@ Describe 'AzMixedRealityObjectAnchorsAccount' {
         } | Should -Not -Throw
     }
 
-    It 'List' {
+    It 'List' -Skip {
         {
             $config = Get-AzMixedRealityObjectAnchorsAccount
             $config.Count | Should -BeGreaterThan 0

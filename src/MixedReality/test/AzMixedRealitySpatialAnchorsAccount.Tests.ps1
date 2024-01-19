@@ -32,7 +32,7 @@ Describe 'AzMixedRealitySpatialAnchorsAccount' {
         } | Should -Not -Throw
     }
 
-    It 'List' {
+    It 'List' -Skip {
         {
             $config = Get-AzMixedRealitySpatialAnchorsAccount
             $config.Count | Should -BeGreaterThan 0

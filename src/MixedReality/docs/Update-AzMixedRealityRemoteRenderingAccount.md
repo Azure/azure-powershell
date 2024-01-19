@@ -8,32 +8,32 @@ schema: 2.0.0
 # Update-AzMixedRealityRemoteRenderingAccount
 
 ## SYNOPSIS
-Updating a Remote Rendering Account
+Creating or Updating a Remote Rendering Account.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzMixedRealityRemoteRenderingAccount -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-IdentityType <ResourceIdentityType>] [-KindCapacity <Int32>]
- [-KindFamily <String>] [-KindName <String>] [-KindSize <String>] [-KindTier <SkuTier>]
- [-PlanType <ResourceIdentityType>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
- [-SkuSize <String>] [-SkuTier <SkuTier>] [-StorageAccountName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMixedRealityRemoteRenderingAccount -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-KindCapacity <Int32>]
+ [-KindFamily <String>] [-KindName <String>] [-KindSize <String>] [-KindTier <String>] [-Location <String>]
+ [-PlanType <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>]
+ [-SkuTier <String>] [-StorageAccountName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMixedRealityRemoteRenderingAccount -InputObject <IMixedRealityIdentity> -Location <String>
- [-IdentityType <ResourceIdentityType>] [-KindCapacity <Int32>] [-KindFamily <String>] [-KindName <String>]
- [-KindSize <String>] [-KindTier <SkuTier>] [-PlanType <ResourceIdentityType>] [-SkuCapacity <Int32>]
- [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
+Update-AzMixedRealityRemoteRenderingAccount -InputObject <IMixedRealityIdentity>
+ [-EnableSystemAssignedIdentity <Boolean?>] [-KindCapacity <Int32>] [-KindFamily <String>]
+ [-KindName <String>] [-KindSize <String>] [-KindTier <String>] [-Location <String>] [-PlanType <String>]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
  [-StorageAccountName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updating a Remote Rendering Account
+Creating or Updating a Remote Rendering Account.
 
 ## EXAMPLES
 
@@ -53,7 +53,8 @@ Updating a Remote Rendering Account.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -67,11 +68,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The identity type.
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.ResourceIdentityType
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -166,7 +167,7 @@ Accept wildcard characters: False
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.SkuTier
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -185,7 +186,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -211,7 +212,7 @@ Accept wildcard characters: False
 The identity type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.ResourceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -305,7 +306,7 @@ Accept wildcard characters: False
 This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.SkuTier
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -406,20 +407,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IRemoteRenderingAccount
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMixedRealityIdentity>`: Identity Parameter
-  - `[AccountName <String>]`: Name of an Mixed Reality Account.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location in which uniqueness will be verified.
-  - `[ResourceGroupName <String>]`: Name of an Azure resource group.
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 
 ## RELATED LINKS
 
