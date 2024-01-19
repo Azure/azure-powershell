@@ -14,7 +14,7 @@ Gets a list of unresolved dependencies.
 
 ```
 Get-AzResourceMoverUnresolvedDependency -MoveCollectionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DependencyLevel <DependencyLevel>] [-Filter <String>] [-Orderby <String>]
+ [-SubscriptionId <String[]>] [-DependencyLevel <String>] [-Filter <String>] [-Orderby <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -42,7 +42,8 @@ Get a list of unresolved dependent resources for a Move Collection.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -60,7 +61,7 @@ Accept wildcard characters: False
 Defines the dependency level.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -158,8 +159,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IUnresolvedDependency
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

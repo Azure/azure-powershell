@@ -24,6 +24,12 @@ Get-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -Res
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityMoveCollection
+```
+Get-AzResourceMoverMoveResource -MoveCollectionInputObject <IResourceMoverIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the Move Resource.
 
@@ -58,6 +64,12 @@ ProvisioningState                 : Succeeded
 ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM
 SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
+SystemDataCreatedAt               :
+SystemDataCreatedBy               :
+SystemDataCreatedByType           :
+SystemDataLastModifiedAt          :
+SystemDataLastModifiedBy          :
+SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
 
@@ -86,6 +98,12 @@ ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceM
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networkinterfaces/psdemovm
                                     111
 SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.NetworkInterfaceResourceSettings
+SystemDataCreatedAt               :
+SystemDataCreatedBy               :
+SystemDataCreatedByType           :
+SystemDataLastModifiedAt          :
+SystemDataLastModifiedBy          :
+SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
 
@@ -112,6 +130,12 @@ ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceM
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/psdemorm/providers/Microsoft.Network/virtualNetworks/psdemorm-v
                                     net
 SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualNetworkResourceSettings
+SystemDataCreatedAt               :
+SystemDataCreatedBy               :
+SystemDataCreatedByType           :
+SystemDataLastModifiedAt          :
+SystemDataLastModifiedBy          :
+SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
 
@@ -138,6 +162,12 @@ ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceM
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networksecuritygroups/psde
                                     movm-nsg
 SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.NetworkSecurityGroupResourceSettings
+SystemDataCreatedAt               :
+SystemDataCreatedBy               :
+SystemDataCreatedByType           :
+SystemDataLastModifiedAt          :
+SystemDataLastModifiedBy          :
+SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
 
@@ -163,6 +193,12 @@ ProvisioningState                 : Succeeded
 ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.ResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm
 SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.ResourceSettings
+SystemDataCreatedAt               :
+SystemDataCreatedBy               :
+SystemDataCreatedByType           :
+SystemDataLastModifiedAt          :
+SystemDataLastModifiedBy          :
+SystemDataLastModifiedByType      :
 TargetId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PSDemoRM-target
 Type                              :
 
@@ -175,7 +211,7 @@ Get details of all the resources in the move collection.
 Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -ResourceGroupName "RG-MoveCollection-demoRMS" -Name "PSDemoVM"   
 ```
 
-```output                                                     
+```output
 DependsOn                         : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkInterfaces/psdemov
                                     m111, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PSDemoRM}
 DependsOnOverride                 : {}
@@ -199,6 +235,12 @@ ProvisioningState                 : Succeeded
 ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM
 SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
+SystemDataCreatedAt               :
+SystemDataCreatedBy               :
+SystemDataCreatedByType           :
+SystemDataLastModifiedAt          :
+SystemDataLastModifiedBy          :
+SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
 
@@ -237,6 +279,12 @@ ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceM
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networkinterfaces/psdemovm
                                     111
 SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.NetworkInterfaceResourceSettings
+SystemDataCreatedAt               :
+SystemDataCreatedBy               :
+SystemDataCreatedByType           :
+SystemDataLastModifiedAt          :
+SystemDataLastModifiedBy          :
+SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
 
@@ -247,7 +295,8 @@ Get details of a specific resources in a Move collection using filter such as ar
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -277,12 +326,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MoveCollectionInputObject
+Identity Parameter
+To construct, see NOTES section for MOVECOLLECTIONINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentity
+Parameter Sets: GetViaIdentityMoveCollection
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MoveCollectionName
 The Move Collection Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -297,7 +362,7 @@ The Move Resource Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityMoveCollection
 Aliases: MoveResourceName
 
 Required: True
@@ -312,7 +377,7 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -327,7 +392,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -342,13 +407,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IMoveResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

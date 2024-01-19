@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzResourceMoverMoveResource
 
 ## SYNOPSIS
-Creates or updates a Move Resource in the move collection.
+Create a Move Resource in the move collection.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Add-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -Res
 ```
 
 ## DESCRIPTION
-Creates or updates a Move Resource in the move collection.
+Create a Move Resource in the move collection.
 
 ## EXAMPLES
 
@@ -49,6 +49,12 @@ ProvisioningState                 : Succeeded
 ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM
 SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
+SystemDataCreatedAt               :
+SystemDataCreatedBy               :
+SystemDataCreatedByType           :
+SystemDataLastModifiedAt          :
+SystemDataLastModifiedBy          :
+SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
 
@@ -87,6 +93,12 @@ ProvisioningState                 : Succeeded
 ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.ResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm
 SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.ResourceSettings
+SystemDataCreatedAt               :
+SystemDataCreatedBy               :
+SystemDataCreatedByType           :
+SystemDataLastModifiedAt          :
+SystemDataLastModifiedBy          :
+SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
 
@@ -121,6 +133,12 @@ ProvisioningState                 : Succeeded
 ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM
 SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
+SystemDataCreatedAt               :
+SystemDataCreatedBy               :
+SystemDataCreatedByType           :
+SystemDataLastModifiedAt          :
+SystemDataLastModifiedBy          :
+SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
 
@@ -150,7 +168,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -345,20 +364,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
-### Update-AzResourceMoverMoveResource
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-DEPENDSONOVERRIDE <IMoveResourceDependencyOverride[]>: Gets or sets the move resource dependencies overrides.
-  - `[Id <String>]`: Gets or sets the ARM ID of the dependent resource.
-  - `[TargetId <String>]`: Gets or sets the resource ARM id of either the MoveResource or the resource ARM ID of         the dependent resource.
-
-RESOURCESETTING <IResourceSettings>: Gets or sets the resource settings.
-  - `ResourceType <String>`: The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
-  - `TargetResourceName <String>`: Gets or sets the target Resource name.
+Update-AzResourceMoverMoveResource
 
 ## RELATED LINKS
 

@@ -11,8 +11,8 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ResourceMover.private.dll'
   FormatsToProcess = './Az.ResourceMover.format.ps1xml'
-  FunctionsToExport = 'Add-AzResourceMoverMoveResource', 'Get-AzResourceMoverMoveCollection', 'Get-AzResourceMoverMoveResource', 'Get-AzResourceMoverRequiredForResources', 'Get-AzResourceMoverUnresolvedDependency', 'Invoke-AzResourceMoverBulkRemove', 'Invoke-AzResourceMoverCommit', 'Invoke-AzResourceMoverDiscard', 'Invoke-AzResourceMoverInitiateMove', 'Invoke-AzResourceMoverPrepare', 'New-AzResourceMoverMoveCollection', 'Remove-AzResourceMoverMoveCollection', 'Remove-AzResourceMoverMoveResource', 'Resolve-AzResourceMoverMoveCollectionDependency', '*'
-  AliasesToExport = 'Update-AzResourceMoverMoveResource', '*'
+  FunctionsToExport = 'Add-AzResourceMoverMoveResource', 'Get-AzResourceMoverMoveCollection', 'Get-AzResourceMoverMoveResource', 'Get-AzResourceMoverRequiredForResources', 'Get-AzResourceMoverUnresolvedDependency', 'Invoke-AzResourceMoverBulkMoveCollectionRemove', 'Invoke-AzResourceMoverBulkRemove', 'Invoke-AzResourceMoverCommit', 'Invoke-AzResourceMoverCommitMoveCollection', 'Invoke-AzResourceMoverDiscard', 'Invoke-AzResourceMoverInitiateMove', 'Invoke-AzResourceMoverInitiateMoveCollectionMove', 'Invoke-AzResourceMoverPrepare', 'Invoke-AzResourceMoverPrepareMoveCollection', 'New-AzResourceMoverMoveCollection', 'Remove-AzResourceMoverMoveCollection', 'Remove-AzResourceMoverMoveResource', 'Resolve-AzResourceMoverMoveCollectionDependency'
+  AliasesToExport = 'Update-AzResourceMoverMoveResource'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ResourceMover'

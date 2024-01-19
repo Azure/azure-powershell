@@ -12,7 +12,7 @@ Microsoft Azure PowerShell: ResourceMover cmdlets
 
 ## Az.ResourceMover Cmdlets
 ### [Add-AzResourceMoverMoveResource](Add-AzResourceMoverMoveResource.md)
-Creates or updates a Move Resource in the move collection.
+Create a Move Resource in the move collection.
 
 ### [Get-AzResourceMoverMoveCollection](Get-AzResourceMoverMoveCollection.md)
 Gets the move collection.
@@ -26,12 +26,22 @@ List of the move resources for which an arm resource is required for.
 ### [Get-AzResourceMoverUnresolvedDependency](Get-AzResourceMoverUnresolvedDependency.md)
 Gets a list of unresolved dependencies.
 
+### [Invoke-AzResourceMoverBulkMoveCollectionRemove](Invoke-AzResourceMoverBulkMoveCollectionRemove.md)
+Removes the set of move resources included in the request body from move collection.
+The orchestration is done by service.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+
 ### [Invoke-AzResourceMoverBulkRemove](Invoke-AzResourceMoverBulkRemove.md)
 Removes the set of move resources included in the request body from move collection.
 The orchestration is done by service.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
 ### [Invoke-AzResourceMoverCommit](Invoke-AzResourceMoverCommit.md)
+Commits the set of resources included in the request body.
+The commit operation is triggered on the moveResources in the moveState 'CommitPending' or 'CommitFailed', on a successful completion the moveResource moveState do a transition to Committed.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+
+### [Invoke-AzResourceMoverCommitMoveCollection](Invoke-AzResourceMoverCommitMoveCollection.md)
 Commits the set of resources included in the request body.
 The commit operation is triggered on the moveResources in the moveState 'CommitPending' or 'CommitFailed', on a successful completion the moveResource moveState do a transition to Committed.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
@@ -46,13 +56,23 @@ Moves the set of resources included in the request body.
 The move operation is triggered after the moveResources are in the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to CommitPending.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
+### [Invoke-AzResourceMoverInitiateMoveCollectionMove](Invoke-AzResourceMoverInitiateMoveCollectionMove.md)
+Moves the set of resources included in the request body.
+The move operation is triggered after the moveResources are in the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to CommitPending.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+
 ### [Invoke-AzResourceMoverPrepare](Invoke-AzResourceMoverPrepare.md)
 Initiates prepare for the set of resources included in the request body.
 The prepare operation is on the moveResources that are in the moveState 'PreparePending' or 'PrepareFailed', on a successful completion the moveResource moveState do a transition to MovePending.
 To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
 
+### [Invoke-AzResourceMoverPrepareMoveCollection](Invoke-AzResourceMoverPrepareMoveCollection.md)
+Initiates prepare for the set of resources included in the request body.
+The prepare operation is on the moveResources that are in the moveState 'PreparePending' or 'PrepareFailed', on a successful completion the moveResource moveState do a transition to MovePending.
+To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+
 ### [New-AzResourceMoverMoveCollection](New-AzResourceMoverMoveCollection.md)
-Creates or updates a move collection.
+Create a move collection.
 
 ### [Remove-AzResourceMoverMoveCollection](Remove-AzResourceMoverMoveCollection.md)
 Deletes a move collection.

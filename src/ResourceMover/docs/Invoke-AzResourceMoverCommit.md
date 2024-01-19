@@ -15,8 +15,8 @@ To aid the user to prerequisite the operation the client can call operation with
 ## SYNTAX
 
 ```
-Invoke-AzResourceMoverCommit -MoveCollectionName <String> -ResourceGroupName <String> -MoveResource <String[]>
- [-SubscriptionId <String>] [-MoveResourceInputType <MoveResourceInputType>] [-ValidateOnly]
+Invoke-AzResourceMoverCommit -MoveCollectionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-MoveResource <String[]>] [-MoveResourceInputType <String>] [-ValidateOnly]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -113,7 +113,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -150,7 +151,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -161,7 +162,7 @@ Accept wildcard characters: False
 Defines the move resource input type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -273,8 +274,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IOperationStatus
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

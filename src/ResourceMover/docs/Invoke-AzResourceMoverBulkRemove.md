@@ -16,8 +16,8 @@ To aid the user to prerequisite the operation the client can call operation with
 
 ```
 Invoke-AzResourceMoverBulkRemove -MoveCollectionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-MoveResource <String[]>] [-MoveResourceInputType <MoveResourceInputType>]
- [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-MoveResource <String[]>] [-MoveResourceInputType <String>] [-ValidateOnly]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,7 +109,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -157,7 +158,7 @@ Accept wildcard characters: False
 Defines the move resource input type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -269,8 +270,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IOperationStatus
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
