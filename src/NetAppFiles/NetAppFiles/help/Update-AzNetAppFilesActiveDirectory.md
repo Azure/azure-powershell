@@ -55,7 +55,7 @@ The **Update-AzNetAppFilesActiveDirectory** cmdlet modifies an ANF active direct
 
 ### Example 1
 ```powershell
-Update-AzNetAppFilesActiveDirectory  -ResourceGroupName "MyRG" -AccountName "MyAccount" -AdName "MyADName" -Username $adUsername
+Update-AzNetAppFilesActiveDirectory  -ResourceGroupName "MyRG" -AccountName "MyAccount" -AdName "MyADName" -Username "AdUserName"
 ```
 
 This command performs an update on the given active directory configuration modifying the username to that provided.
