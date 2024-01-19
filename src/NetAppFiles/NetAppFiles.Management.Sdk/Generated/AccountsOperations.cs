@@ -936,7 +936,6 @@ namespace Microsoft.Azure.Management.NetApp
                     ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        //ex = new ErrorResponseException(_errorBody.Error.Message);
                         ex.Body = _errorBody;
                     }
                 }
