@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="protectionState">State of the back up item.
-        /// Possible values include: 'Invalid', 'NotProtected', 'Protecting',
-        /// 'Protected', 'ProtectionFailed'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;NotProtected&#39;, &#39;Protecting&#39;,
+        /// &#39;Protected&#39;, &#39;ProtectionFailed&#39;</param>
 
         /// <param name="virtualMachineId">Fully qualified ARM ID of the virtual machine.
         /// </param>

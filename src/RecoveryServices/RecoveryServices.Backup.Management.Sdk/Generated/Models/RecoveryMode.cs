@@ -16,5 +16,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public const string Invalid = "Invalid";
         public const string FileRecovery = "FileRecovery";
         public const string WorkloadRecovery = "WorkloadRecovery";
+        public const string SnapshotAttach = "SnapshotAttach";
+        public const string RecoveryUsingSnapshot = "RecoveryUsingSnapshot";
+        public const string SnapshotAttachAndRecover = "SnapshotAttachAndRecover";
     }
 }

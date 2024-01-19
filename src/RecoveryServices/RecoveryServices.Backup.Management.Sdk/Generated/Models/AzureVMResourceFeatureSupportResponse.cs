@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="supportStatus">Support status of feature
-        /// Possible values include: 'Invalid', 'Supported', 'DefaultOFF', 'DefaultON',
-        /// 'NotSupported'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Supported&#39;, &#39;DefaultOFF&#39;, &#39;DefaultON&#39;,
+        /// &#39;NotSupported&#39;</param>
         public AzureVMResourceFeatureSupportResponse(string supportStatus = default(string))
 
         {

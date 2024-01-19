@@ -25,19 +25,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="status">Status of the job.
-        /// Possible values include: 'Invalid', 'InProgress', 'Completed', 'Failed',
-        /// 'CompletedWithWarnings', 'Cancelled', 'Cancelling'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;InProgress&#39;, &#39;Completed&#39;, &#39;Failed&#39;,
+        /// &#39;CompletedWithWarnings&#39;, &#39;Cancelled&#39;, &#39;Cancelling&#39;</param>
 
         /// <param name="backupManagementType">Type of backup management for the job.
-        /// Possible values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM',
-        /// 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
-        /// 'DefaultBackup'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;AzureIaasVM&#39;, &#39;MAB&#39;, &#39;DPM&#39;,
+        /// &#39;AzureBackupServer&#39;, &#39;AzureSql&#39;, &#39;AzureStorage&#39;, &#39;AzureWorkload&#39;,
+        /// &#39;DefaultBackup&#39;</param>
 
         /// <param name="operation">Type of operation.
-        /// Possible values include: 'Invalid', 'Register', 'UnRegister',
-        /// 'ConfigureBackup', 'Backup', 'Restore', 'DisableBackup',
-        /// 'DeleteBackupData', 'CrossRegionRestore', 'Undelete',
-        /// 'UpdateCustomerManagedKey'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Register&#39;, &#39;UnRegister&#39;,
+        /// &#39;ConfigureBackup&#39;, &#39;Backup&#39;, &#39;Restore&#39;, &#39;DisableBackup&#39;,
+        /// &#39;DeleteBackupData&#39;, &#39;CrossRegionRestore&#39;, &#39;Undelete&#39;,
+        /// &#39;UpdateCustomerManagedKey&#39;</param>
 
         /// <param name="jobId">JobID represents the job uniquely.
         /// </param>

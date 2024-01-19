@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="protectionStatus">Specifies whether the container is registered or not
-        /// Possible values include: 'Invalid', 'NotProtected', 'Protecting',
-        /// 'Protected', 'ProtectionFailed'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;NotProtected&#39;, &#39;Protecting&#39;,
+        /// &#39;Protected&#39;, &#39;ProtectionFailed&#39;</param>
 
         /// <param name="vaultId">Specifies the arm resource id of the vault
         /// </param>
 
         /// <param name="fabricName">Specifies the fabric name - Azure or AD
-        /// Possible values include: 'Invalid', 'Azure'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Azure&#39;</param>
 
         /// <param name="containerName">Specifies the product specific container name. E.g.
         /// iaasvmcontainer;iaasvmcontainer;csname;vmname.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="acquireStorageAccountLock">Specifies whether the storage account lock has been acquired or not
-        /// Possible values include: 'Acquire', 'NotAcquire'</param>
+        /// Possible values include: &#39;Acquire&#39;, &#39;NotAcquire&#39;</param>
         public BackupStatusResponse(string protectionStatus = default(string), string vaultId = default(string), string fabricName = default(string), string containerName = default(string), string protectedItemName = default(string), string errorCode = default(string), string errorMessage = default(string), string policyName = default(string), string registrationStatus = default(string), int? protectedItemsCount = default(int?), string acquireStorageAccountLock = default(string))
 
         {

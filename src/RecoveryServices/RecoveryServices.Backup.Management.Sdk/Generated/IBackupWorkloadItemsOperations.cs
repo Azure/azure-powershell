@@ -14,11 +14,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public partial interface IBackupWorkloadItemsOperations
     {
         /// <summary>
-        /// Provides a pageable list of workload item of a specific container according to the query filter and the pagination
+        /// Provides a pageable list of workload item of a specific container according
+        /// to the query filter and the pagination
         /// parameters.
         /// </summary>
         /// <remarks>
-        /// Provides a pageable list of workload item of a specific container according to the query filter and the pagination
+        /// Provides a pageable list of workload item of a specific container according
+        /// to the query filter and the pagination
         /// parameters.
         /// </remarks>
         /// <param name='odataQuery'>
@@ -28,7 +30,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the container.
@@ -54,11 +57,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<WorkloadItemResource>>> ListWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, Microsoft.Rest.Azure.OData.ODataQuery<BMSWorkloadItemQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSWorkloadItemQueryObject>), string skipToken = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Provides a pageable list of workload item of a specific container according to the query filter and the pagination
+        /// Provides a pageable list of workload item of a specific container according
+        /// to the query filter and the pagination
         /// parameters.
         /// </summary>
         /// <remarks>
-        /// Provides a pageable list of workload item of a specific container according to the query filter and the pagination
+        /// Provides a pageable list of workload item of a specific container according
+        /// to the query filter and the pagination
         /// parameters.
         /// </remarks>
         /// <param name='nextPageLink'>

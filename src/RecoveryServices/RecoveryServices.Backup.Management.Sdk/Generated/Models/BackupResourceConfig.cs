@@ -25,25 +25,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="storageModelType">Storage type
-        /// Possible values include: 'Invalid', 'GeoRedundant', 'LocallyRedundant',
-        /// 'ZoneRedundant', 'ReadAccessGeoZoneRedundant'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;GeoRedundant&#39;, &#39;LocallyRedundant&#39;,
+        /// &#39;ZoneRedundant&#39;, &#39;ReadAccessGeoZoneRedundant&#39;</param>
 
         /// <param name="storageType">Storage type.
-        /// Possible values include: 'Invalid', 'GeoRedundant', 'LocallyRedundant',
-        /// 'ZoneRedundant', 'ReadAccessGeoZoneRedundant'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;GeoRedundant&#39;, &#39;LocallyRedundant&#39;,
+        /// &#39;ZoneRedundant&#39;, &#39;ReadAccessGeoZoneRedundant&#39;</param>
 
         /// <param name="storageTypeState">Locked or Unlocked. Once a machine is registered against a resource, the
         /// storageTypeState is always Locked.
-        /// Possible values include: 'Invalid', 'Locked', 'Unlocked'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Locked&#39;, &#39;Unlocked&#39;</param>
 
         /// <param name="crossRegionRestoreFlag">Opt in details of Cross Region Restore feature.
         /// </param>
 
         /// <param name="dedupState">Vault Dedup state
-        /// Possible values include: 'Invalid', 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="xcoolState">Vault x-cool state
-        /// Possible values include: 'Invalid', 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Enabled&#39;, &#39;Disabled&#39;</param>
         public BackupResourceConfig(string storageModelType = default(string), string storageType = default(string), string storageTypeState = default(string), bool? crossRegionRestoreFlag = default(bool?), string dedupState = default(string), string xcoolState = default(string))
 
         {
