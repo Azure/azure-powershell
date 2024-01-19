@@ -181,6 +181,9 @@ process {
     $FileContentBytes = Get-Content -Path $FilePath -Raw
     $FileContentByteArray = [System.Text.Encoding]::UTF8.GetBytes($FileContentBytes)
     $FileSize = $FileContentByteArray.Length
+    if($FileSize -gt $MaxFileSize){
+        throw "File size is greater than the maximum file size of 5 MB"
+    }
     $ChunkSize = If($FileSize -gt $MaxChunkSize) {$MaxChunkSize} Else {$FileSize}
     Write-Output "Length of byte array: " $FileSize
     Write-Output "Max chunk size: " $MaxChunkSize
@@ -193,7 +196,13 @@ process {
     Write-Output "Number of chunks: " $NumberOfChunks
     
     # try{
+    if($SubscriptionId)
+    {
+        New-AzSupportFile -SubscriptionId $SubscriptionId -Name $Name -WorkspaceName $WorkspaceName -FileSize $FileSize -ChunkSize $ChunkSize -NumberOfChunk $NumberOfChunks
+    }
+    else{
         New-AzSupportFile -Name $Name -WorkspaceName $WorkspaceName -FileSize $FileSize -ChunkSize $ChunkSize -NumberOfChunk $NumberOfChunks
+    }    
     # }
     # catch{
     #     Write-Host $_
@@ -213,7 +222,12 @@ process {
         Write-Output "end index: " + $endIndex
         $FileContent = [convert]::ToBase64String($FileContentByteArray[$startIndex..$endIndex])
         #Write-Output "contents of file: " $FileContent
-        Invoke-AzSupportUploadFile -FileName $Name -FileWorkspaceName $WorkspaceName -ChunkIndex $chunkIndex -Content $FileContent
+        if($SubscriptionId){
+            Invoke-AzSupportUploadFile -SubscriptionId $SubscriptionId -FileName $Name -FileWorkspaceName $WorkspaceName -ChunkIndex $chunkIndex -Content $FileContent
+        }
+        else{
+            Invoke-AzSupportUploadFile -FileName $Name -FileWorkspaceName $WorkspaceName -ChunkIndex $chunkIndex -Content $FileContent
+        }
         $chunkIndex++
         $startIndex = $endIndex + 1
         $endIndex = $FileSize - 1

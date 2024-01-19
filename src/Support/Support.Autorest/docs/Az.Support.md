@@ -74,6 +74,9 @@ Adds a new customer communication to an Azure support ticket.
 ### [New-AzSupportCommunicationsNoSubscription](New-AzSupportCommunicationsNoSubscription.md)
 Adds a new customer communication to an Azure support ticket.
 
+### [New-AzSupportFile](New-AzSupportFile.md)
+Creates a new file under a workspace for the specified subscription.
+
 ### [New-AzSupportFileAndUpload](New-AzSupportFileAndUpload.md)
 Creates and uploads a new file under a workspace for the specified subscription.
 
