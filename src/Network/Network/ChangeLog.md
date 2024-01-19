@@ -26,8 +26,6 @@
 * Added new cmdlet to update Connection child resource of Network Virtual Appliance. - `Update-AzNetworkVirtualApplianceConnection`
 * Added support of `InternetIngressIp` Property in New-AzNetworkVirtualAppliance
 * Added the new cmdlet for supporting `InternetIngressIp` Property with Network Virtual Appliances -`New-AzVirtualApplianceInternetIngressIpsProperty`
-* Added new cmdlets to define parameters for a Azure Firewall Packet Capture. - `New-AzFirewallPacketCaptureRule` and `New-AzFirewallPacketCaptureParameter`
-* Added new cmdlet to invoke a packet capture on a Azure Firewall. - `Invoke-AzFirewallPacketCapture`
 
 ## Version 7.1.0
 * Added DefaultOutboundAccess parameter on subnet creation
