@@ -195,7 +195,7 @@ function Update-AzFunctionApp {
                 }
 
                 $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
-                $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
+                $functionAppDef.UserAssignedIdentity = $identityUserAssignedIdentity
             }
         }
         elseif ($existingFunctionApp.IdentityType)
@@ -207,7 +207,7 @@ function Update-AzFunctionApp {
                 if ($existingFunctionApp.IdentityUserAssignedIdentity -and $existingFunctionApp.IdentityUserAssignedIdentity.Count -gt 0)
                 {
                     $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $existingFunctionApp.IdentityUserAssignedIdentity.Keys
-                    $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
+                    $functionAppDef.UserAssignedIdentity = $identityUserAssignedIdentity
                 }
             }
             elseif ($existingFunctionApp.IdentityType -eq "SystemAssigned")

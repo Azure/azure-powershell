@@ -506,7 +506,7 @@ function New-AzFunctionApp {
                 }
 
                 $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
-                $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
+                $functionAppDef.UserAssignedIdentity = $identityUserAssignedIdentity
             }
         }
 
