@@ -140,9 +140,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RevertVolumeMessage, Name)))
-            {                
-                AzureNetAppFilesManagementClient.Volumes.ResetCifsPassword(ResourceGroupName, AccountName, PoolName, Name);
-                success = true;
+            {
+                try
+                {
+                    AzureNetAppFilesManagementClient.Volumes.ResetCifsPassword(ResourceGroupName, AccountName, PoolName, Name);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
 
             if (PassThru)

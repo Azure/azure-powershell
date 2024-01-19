@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 {
@@ -114,8 +115,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
             {
-                AzureNetAppFilesManagementClient.Pools.Delete(ResourceGroupName, AccountName, Name);
-                success = true;
+                try
+                {
+                    AzureNetAppFilesManagementClient.Pools.Delete(ResourceGroupName, AccountName, Name);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
 
             if (PassThru)

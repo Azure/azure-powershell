@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Replication
 {
@@ -107,9 +108,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
                 PoolName = NameParts[1];
                 Name = NameParts[2];
             }
-
-            var anfReplicationStatus = AzureNetAppFilesManagementClient.Volumes.ReplicationStatus(ResourceGroupName, AccountName, PoolName, Name);
-            WriteObject(anfReplicationStatus.ToPsNetAppFilesReplicationStatus());
+            try
+            {
+                var anfReplicationStatus = AzureNetAppFilesManagementClient.Volumes.ReplicationStatus(ResourceGroupName, AccountName, PoolName, Name);
+                WriteObject(anfReplicationStatus.ToPsNetAppFilesReplicationStatus());
+            }
+            catch (ErrorResponseException ex)
+            {
+                ex = new ErrorResponseException(ex.Body.Error.Message);
+                throw ex;
+            }
         }
     }
 }

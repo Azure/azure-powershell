@@ -147,9 +147,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RevertVolumeMessage, Name)))
             {
-                var volumeRevertBody = new VolumeRevert() { SnapshotId = SnapshotId };
-                AzureNetAppFilesManagementClient.Volumes.Revert(ResourceGroupName, AccountName, PoolName, Name, volumeRevertBody);
-                success = true;
+                try
+                {
+                    var volumeRevertBody = new VolumeRevert() { SnapshotId = SnapshotId };
+                    AzureNetAppFilesManagementClient.Volumes.Revert(ResourceGroupName, AccountName, PoolName, Name, volumeRevertBody);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
 
             if (PassThru)

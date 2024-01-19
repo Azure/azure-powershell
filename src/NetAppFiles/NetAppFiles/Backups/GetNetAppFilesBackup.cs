@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Linq;
@@ -182,18 +183,26 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             }
             else
             {
-                List<PSNetAppFilesBackup> anfBackups = null;
-                if (accountBackup)
+                try
                 {
-                    var backups = AzureNetAppFilesManagementClient.AccountBackups.List(ResourceGroupName, accountName: AccountName).ToList();
-                    anfBackups = backups.ConvertToPS();
+                    List<PSNetAppFilesBackup> anfBackups = null;
+                    if (accountBackup)
+                    {
+                        var backups = AzureNetAppFilesManagementClient.AccountBackups.List(ResourceGroupName, accountName: AccountName).ToList();
+                        anfBackups = backups.ConvertToPS();
+                    }
+                    else
+                    {
+                        var backups = AzureNetAppFilesManagementClient.Backups.List(ResourceGroupName, accountName: AccountName, poolName: PoolName, volumeName: VolumeName).ToList();
+                        anfBackups = backups.ConvertToPS();
+                    }
+                    WriteObject(anfBackups, true);
                 }
-                else
+                catch (ErrorResponseException ex)
                 {
-                    var backups = AzureNetAppFilesManagementClient.Backups.List(ResourceGroupName, accountName: AccountName, poolName: PoolName, volumeName: VolumeName).ToList();
-                    anfBackups = backups.ConvertToPS();
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
                 }
-                WriteObject(anfBackups, true);
             }
         }
     }

@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Linq;
@@ -96,15 +97,23 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                 AccountName = NameParts[0];
             }
 
-            if (Name != null)
+            try
             {
-                var anfBackupPolicy = AzureNetAppFilesManagementClient.BackupPolicies.Get(ResourceGroupName, AccountName, backupPolicyName: Name);
-                WriteObject(anfBackupPolicy.ConvertToPs());
+                if (Name != null)
+                {
+                    var anfBackupPolicy = AzureNetAppFilesManagementClient.BackupPolicies.Get(ResourceGroupName, AccountName, backupPolicyName: Name);
+                    WriteObject(anfBackupPolicy.ConvertToPs());
+                }
+                else
+                {
+                    var anfBackupPolicies = AzureNetAppFilesManagementClient.BackupPolicies.List(ResourceGroupName, AccountName).Select(e => e.ConvertToPs());
+                    WriteObject(anfBackupPolicies, true);
+                }
             }
-            else
+            catch (ErrorResponseException ex)
             {
-                var anfBackupPolicies = AzureNetAppFilesManagementClient.BackupPolicies.List(ResourceGroupName, AccountName).Select(e => e.ConvertToPs());
-                WriteObject(anfBackupPolicies, true);
+                ex = new ErrorResponseException(ex.Body.Error.Message);
+                throw ex;
             }
         }
     }

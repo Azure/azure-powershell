@@ -23,6 +23,7 @@ using System.Linq;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Linq.Expressions;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
 {
@@ -154,8 +155,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
                     DestinationPath = DestinationPath
                 };
 
-                AzureNetAppFilesManagementClient.Snapshots.RestoreFiles(ResourceGroupName, AccountName, PoolName, VolumeName, Name, snapshotRestoreFilesBody);
-                success = true;
+                try
+                {
+                    AzureNetAppFilesManagementClient.Snapshots.RestoreFiles(ResourceGroupName, AccountName, PoolName, VolumeName, Name, snapshotRestoreFilesBody);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
             if (PassThru.IsPresent)
             {

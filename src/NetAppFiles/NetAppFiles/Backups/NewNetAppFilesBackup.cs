@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Backup
@@ -135,8 +136,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var anfBackupPolicy = AzureNetAppFilesManagementClient.Backups.Create(ResourceGroupName, AccountName, poolName: PoolName, volumeName: VolumeName, backupName: Name, body: backupBody);
-                WriteObject(anfBackupPolicy.ConvertToPs());
+                try
+                {
+                    var anfBackupPolicy = AzureNetAppFilesManagementClient.Backups.Create(ResourceGroupName, AccountName, poolName: PoolName, volumeName: VolumeName, backupName: Name, body: backupBody);
+                    WriteObject(anfBackupPolicy.ConvertToPs());
+                }
+                catch (ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
         }
     }

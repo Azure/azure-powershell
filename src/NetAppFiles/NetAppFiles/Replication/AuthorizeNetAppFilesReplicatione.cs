@@ -129,8 +129,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.ApproveVolumeReplicationMessage, Name)))
             {
-                AzureNetAppFilesManagementClient.Volumes.AuthorizeReplication(ResourceGroupName, AccountName, PoolName, Name, authorizeRequest);
-                success = true;
+                try
+                {
+                    AzureNetAppFilesManagementClient.Volumes.AuthorizeReplication(ResourceGroupName, AccountName, PoolName, Name, authorizeRequest);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
 
             if (PassThru)

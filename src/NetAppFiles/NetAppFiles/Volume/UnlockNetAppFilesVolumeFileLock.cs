@@ -147,13 +147,21 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.BreakFileLockOnVolumeMessage, Name)))
             {
-                BreakFileLocksRequest _breakFileLockBody = null;
-                if (string.IsNullOrWhiteSpace(ClientIp))
+                try
                 {
-                    _breakFileLockBody = new BreakFileLocksRequest() { ClientIP = ClientIp, ConfirmRunningDisruptiveOperation = true };
-                }                
-                AzureNetAppFilesManagementClient.Volumes.BreakFileLocks(ResourceGroupName, AccountName, PoolName, Name, body: _breakFileLockBody);
-                success = true;
+                    BreakFileLocksRequest _breakFileLockBody = null;
+                    if (string.IsNullOrWhiteSpace(ClientIp))
+                    {
+                        _breakFileLockBody = new BreakFileLocksRequest() { ClientIP = ClientIp, ConfirmRunningDisruptiveOperation = true };
+                    }
+                    AzureNetAppFilesManagementClient.Volumes.BreakFileLocks(ResourceGroupName, AccountName, PoolName, Name, body: _breakFileLockBody);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
 
             if (PassThru)

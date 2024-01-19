@@ -289,9 +289,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 {
                     ActiveDirectories = anfAccount.ActiveDirectories                    
                 };
-                var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.Update(ResourceGroupName, AccountName, netAppAccountBody);
-                var updatedActiveDirectory = updatedAnfAccount.ActiveDirectories.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.ActiveDirectoryId == ActiveDirectoryId);
-                WriteObject(updatedActiveDirectory.ConvertToPs(ResourceGroupName, AccountName));
+                try
+                { 
+                    var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.Update(ResourceGroupName, AccountName, netAppAccountBody);
+                    var updatedActiveDirectory = updatedAnfAccount.ActiveDirectories.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.ActiveDirectoryId == ActiveDirectoryId);
+                    WriteObject(updatedActiveDirectory.ConvertToPs(ResourceGroupName, AccountName));
+                }
+                catch (ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
         }
     }

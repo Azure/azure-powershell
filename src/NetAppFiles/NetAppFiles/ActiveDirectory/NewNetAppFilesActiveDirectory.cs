@@ -236,9 +236,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                 {                        
                     ActiveDirectories = anfAccount.ActiveDirectories                        
                 };
-                var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.Update(ResourceGroupName, AccountName, netAppAccountBody);
-                var updatedActiveDirectory = updatedAnfAccount.ActiveDirectories.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.SmbServerName == SmbServerName);
-                WriteObject(updatedActiveDirectory.ConvertToPs(ResourceGroupName, AccountName));                
+                try
+                {
+                    var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.Update(ResourceGroupName, AccountName, netAppAccountBody);
+                    var updatedActiveDirectory = updatedAnfAccount.ActiveDirectories.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.SmbServerName == SmbServerName);
+                    WriteObject(updatedActiveDirectory.ConvertToPs(ResourceGroupName, AccountName));                
+                }
+                catch(ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
         }
     }

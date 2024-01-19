@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -107,9 +108,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }
-
-            var volumeReplications = AzureNetAppFilesManagementClient.Volumes.ListReplications(ResourceGroupName, AccountName, PoolName, Name).Select(e => e.ConvertToPs());
-            WriteObject(volumeReplications, true);
+            try
+            {
+                var volumeReplications = AzureNetAppFilesManagementClient.Volumes.ListReplications(ResourceGroupName, AccountName, PoolName, Name).Select(e => e.ConvertToPs());
+                WriteObject(volumeReplications, true);
+            }
+            catch (ErrorResponseException ex)
+            {
+                ex = new ErrorResponseException(ex.Body.Error.Message);
+                throw ex;
+            }
         }
     }
 }

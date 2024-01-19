@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -207,16 +208,24 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             }
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
-            {                
-                if (accountBackup)
+            {
+                try
                 {
-                    AzureNetAppFilesManagementClient.AccountBackups.Delete(ResourceGroupName, AccountName, backupName: Name);
+                    if (accountBackup)
+                    {
+                        AzureNetAppFilesManagementClient.AccountBackups.Delete(ResourceGroupName, AccountName, backupName: Name);
+                    }
+                    else
+                    {
+                        AzureNetAppFilesManagementClient.Backups.Delete(ResourceGroupName, AccountName, poolName: PoolName, volumeName: VolumeName, backupName: Name);
+                    }
+                    success = true;
                 }
-                else
+                catch (ErrorResponseException ex)
                 {
-                    AzureNetAppFilesManagementClient.Backups.Delete(ResourceGroupName, AccountName, poolName: PoolName, volumeName: VolumeName, backupName: Name);
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
                 }
-                success = true;
             }
             if (PassThru)
             {

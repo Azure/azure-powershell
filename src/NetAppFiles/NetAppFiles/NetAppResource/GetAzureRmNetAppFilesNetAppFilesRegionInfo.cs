@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.N
@@ -40,8 +41,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.N
 
         public override void ExecuteCmdlet()
         {
-            var anfRegionInfo = AzureNetAppFilesManagementClient.NetAppResource.QueryRegionInfo(Location);
-            WriteObject(anfRegionInfo.ConvertToPs());
+            try
+            {
+                var anfRegionInfo = AzureNetAppFilesManagementClient.NetAppResource.QueryRegionInfo(Location);
+                WriteObject(anfRegionInfo.ConvertToPs());
+            }
+            catch (ErrorResponseException ex)
+            {
+                ex = new ErrorResponseException(ex.Body.Error.Message);
+                throw ex;
+            }
         }
     }
 }

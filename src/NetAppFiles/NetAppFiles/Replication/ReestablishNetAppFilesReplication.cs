@@ -123,10 +123,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.ReestablishVolumeReplicationMessage, Name)))
             {
-                ReestablishReplicationRequest requestBody = new ReestablishReplicationRequest { SourceVolumeId = SourceVolumeId};
+                try
+                {
+                    ReestablishReplicationRequest requestBody = new ReestablishReplicationRequest { SourceVolumeId = SourceVolumeId };
 
-                AzureNetAppFilesManagementClient.Volumes.ReestablishReplication(ResourceGroupName, AccountName, PoolName, Name, requestBody);
-                success = true;
+                    AzureNetAppFilesManagementClient.Volumes.ReestablishReplication(ResourceGroupName, AccountName, PoolName, Name, requestBody);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
 
             if (PassThru)

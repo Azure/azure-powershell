@@ -94,8 +94,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
-                AzureNetAppFilesManagementClient.Accounts.RenewCredentials(ResourceGroupName, Name);
-                success = true;                
+                try
+                {
+                    AzureNetAppFilesManagementClient.Accounts.RenewCredentials(ResourceGroupName, Name);
+                    success = true;                
+                }
+                catch(ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
 
             if (PassThru.IsPresent)

@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.QuotaItem
@@ -55,8 +56,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.QuotaItem
             }
             else
             {
-                var anfSubscriptionQuotaLimit = AzureNetAppFilesManagementClient.NetAppResourceQuotaLimits.Get(Location, Name);
-                WriteObject(anfSubscriptionQuotaLimit.ConvertToPs());
+                try
+                {
+                    var anfSubscriptionQuotaLimit = AzureNetAppFilesManagementClient.NetAppResourceQuotaLimits.Get(Location, Name);
+                    WriteObject(anfSubscriptionQuotaLimit.ConvertToPs());
+                }
+                catch (ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
         }
     }

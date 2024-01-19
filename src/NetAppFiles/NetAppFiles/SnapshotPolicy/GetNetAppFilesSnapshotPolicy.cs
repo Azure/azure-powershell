@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
-using System.Globalization;
+using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -97,15 +97,23 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
                 AccountName = NameParts[0];
             }
 
-            if (Name != null)
-            {                
-                var anfSnapshotPolicy = AzureNetAppFilesManagementClient.SnapshotPolicies.Get(ResourceGroupName, AccountName, snapshotPolicyName: Name);
-                WriteObject(anfSnapshotPolicy.ConvertToPs());
-            }
-            else
+            try
             {
-                var anfSnapshotPolicies = AzureNetAppFilesManagementClient.SnapshotPolicies.List(ResourceGroupName, AccountName).Select(e => e.ConvertToPs());
-                WriteObject(anfSnapshotPolicies, true);
+                if (Name != null)
+                {
+                    var anfSnapshotPolicy = AzureNetAppFilesManagementClient.SnapshotPolicies.Get(ResourceGroupName, AccountName, snapshotPolicyName: Name);
+                    WriteObject(anfSnapshotPolicy.ConvertToPs());
+                }
+                else
+                {
+                    var anfSnapshotPolicies = AzureNetAppFilesManagementClient.SnapshotPolicies.List(ResourceGroupName, AccountName).Select(e => e.ConvertToPs());
+                    WriteObject(anfSnapshotPolicies, true);
+                }
+            }
+            catch (ErrorResponseException ex)
+            {
+                ex = new ErrorResponseException(ex.Body.Error.Message);
+                throw ex;
             }
         }
     }

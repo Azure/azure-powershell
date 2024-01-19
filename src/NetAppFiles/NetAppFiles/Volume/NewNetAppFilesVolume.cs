@@ -19,10 +19,8 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
-using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using System;
 using Microsoft.Azure.Management.NetApp.Models;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
@@ -508,8 +506,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             if (ShouldProcess(PoolName, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, Name)))
             {
-                var anfVolume = AzureNetAppFilesManagementClient.Volume_2022_11_01.CreateOrUpdate(ResourceGroupName, AccountName, PoolName, Name, volumeBody);
-                WriteObject(anfVolume.ToPsNetAppFilesVolume());
+                try
+                {
+                    var anfVolume = AzureNetAppFilesManagementClient.Volume_2022_11_01.CreateOrUpdate(ResourceGroupName, AccountName, PoolName, Name, volumeBody);
+                    WriteObject(anfVolume.ToPsNetAppFilesVolume());
+                }
+                catch (ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
         }
     }

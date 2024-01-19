@@ -132,8 +132,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
                 {
                     breakBody = new BreakReplicationRequest(ForceBreak.ToBool());
                 }
-                AzureNetAppFilesManagementClient.Volumes.BreakReplication(ResourceGroupName, AccountName, PoolName, Name, body: breakBody);
-                success = true;
+                try
+                {
+                    AzureNetAppFilesManagementClient.Volumes.BreakReplication(ResourceGroupName, AccountName, PoolName, Name, body: breakBody);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
 
             if (PassThru)

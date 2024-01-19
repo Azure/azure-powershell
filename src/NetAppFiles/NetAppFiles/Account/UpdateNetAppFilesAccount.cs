@@ -195,8 +195,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             }
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
-                var anfAccount = AzureNetAppFilesManagementClient.Accounts.Update(ResourceGroupName, Name, netAppAccountBody);
-                WriteObject(anfAccount.ConvertToPs());
+                try 
+                { 
+                    var anfAccount = AzureNetAppFilesManagementClient.Accounts.Update(ResourceGroupName, Name, netAppAccountBody);
+                    WriteObject(anfAccount.ConvertToPs());
+                }
+                catch (ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
         }
     }

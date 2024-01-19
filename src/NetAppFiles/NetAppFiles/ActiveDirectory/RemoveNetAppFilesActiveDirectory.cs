@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Linq;
@@ -108,8 +109,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 var anfAccount = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName);
                 var activeDirectory = anfAccount.ActiveDirectories.FirstOrDefault(a => a.ActiveDirectoryId == ActiveDirectoryId);
                 anfAccount.ActiveDirectories.Remove(activeDirectory);
-                var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.BeginCreateOrUpdate(ResourceGroupName, AccountName, anfAccount);
-                success = true;
+                try
+                {
+                    var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.BeginCreateOrUpdate(ResourceGroupName, AccountName, anfAccount);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
             if (PassThru)
             {

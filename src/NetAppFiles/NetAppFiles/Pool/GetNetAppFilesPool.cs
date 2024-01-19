@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Pool
@@ -94,8 +95,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             }
             else
             {
-                var anfPools = AzureNetAppFilesManagementClient.Pools.List(ResourceGroupName, AccountName).Select(e => e.ToPsNetAppFilesPool());
-                WriteObject(anfPools, true);
+                try
+                {
+                    var anfPools = AzureNetAppFilesManagementClient.Pools.List(ResourceGroupName, AccountName).Select(e => e.ToPsNetAppFilesPool());
+                    WriteObject(anfPools, true);
+                }
+                catch (ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
         }
     }

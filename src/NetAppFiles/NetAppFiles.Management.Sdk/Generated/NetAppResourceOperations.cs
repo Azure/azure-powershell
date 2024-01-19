@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Check if a resource name is available.
         /// </summary>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='name'>
         /// Resource name to verify.
@@ -84,13 +84,7 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
+
             if (location == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
@@ -206,14 +200,13 @@ namespace Microsoft.Azure.Management.NetApp
 
             if ((int)_statusCode != 200)
             {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -223,10 +216,6 @@ namespace Microsoft.Azure.Management.NetApp
                 }
                 ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
@@ -280,7 +269,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Check if a file path is available.
         /// </summary>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='name'>
         /// File path to verify.
@@ -320,13 +309,7 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
+
             if (location == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
@@ -441,14 +424,13 @@ namespace Microsoft.Azure.Management.NetApp
 
             if ((int)_statusCode != 200)
             {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -458,10 +440,6 @@ namespace Microsoft.Azure.Management.NetApp
                 }
                 ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
@@ -515,7 +493,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Check if a quota is available.
         /// </summary>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='name'>
         /// Name of the resource to verify.
@@ -557,13 +535,7 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
+
             if (location == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
@@ -679,14 +651,13 @@ namespace Microsoft.Azure.Management.NetApp
 
             if ((int)_statusCode != 200)
             {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -696,10 +667,6 @@ namespace Microsoft.Azure.Management.NetApp
                 }
                 ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
@@ -753,7 +720,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Provides storage to network proximity and logical zone mapping information.
         /// </summary>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -786,13 +753,7 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
+
             if (location == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
@@ -894,14 +855,13 @@ namespace Microsoft.Azure.Management.NetApp
 
             if ((int)_statusCode != 200)
             {
-                var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -911,10 +871,6 @@ namespace Microsoft.Azure.Management.NetApp
                 }
                 ex.Request = new Microsoft.Rest.HttpRequestMessageWrapper(_httpRequest, _requestContent);
                 ex.Response = new Microsoft.Rest.HttpResponseMessageWrapper(_httpResponse, _responseContent);
-                if (_httpResponse.Headers.Contains("x-ms-request-id"))
-                {
-                    ex.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-                }
                 if (_shouldTrace)
                 {
                     Microsoft.Rest.ServiceClientTracing.Error(_invocationId, ex);
@@ -968,7 +924,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Get details of the specified network sibling set.
         /// </summary>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='networkSiblingSetId'>
         /// Network Sibling Set ID for a group of volumes sharing networking resources
@@ -1010,13 +966,7 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
+
             if (location == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");
@@ -1200,7 +1150,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Update the network features of the specified network sibling set.
         /// </summary>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='networkSiblingSetId'>
         /// Network Sibling Set ID for a group of volumes sharing networking resources
@@ -1235,7 +1185,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Update the network features of the specified network sibling set.
         /// </summary>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='networkSiblingSetId'>
         /// Network Sibling Set ID for a group of volumes sharing networking resources
@@ -1284,13 +1234,7 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (this.Client.SubscriptionId != null)
-            {
-                if (this.Client.SubscriptionId.Length < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
-                }
-            }
+
             if (location == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "location");

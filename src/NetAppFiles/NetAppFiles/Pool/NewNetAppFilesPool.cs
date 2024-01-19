@@ -167,8 +167,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var anfPool = AzureNetAppFilesManagementClient.Pools.CreateOrUpdate(ResourceGroupName, AccountName, Name, capacityPoolBody);
-                WriteObject(anfPool.ToPsNetAppFilesPool());
+                try
+                {
+                    var anfPool = AzureNetAppFilesManagementClient.Pools.CreateOrUpdate(ResourceGroupName, AccountName, Name, capacityPoolBody);
+                    WriteObject(anfPool.ToPsNetAppFilesPool());
+                }
+                catch (ErrorResponseException ex)
+                {
+                    ex = new ErrorResponseException(ex.Body.Error.Message);
+                    throw ex;
+                }
             }
         }
     }

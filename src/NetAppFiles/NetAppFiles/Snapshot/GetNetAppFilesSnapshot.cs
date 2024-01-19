@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
@@ -116,16 +117,23 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
                 PoolName = NameParts[1];
                 VolumeName = NameParts[2];
             }
-
-            if (Name != null)
+            try
             {
-                var anfSnapshot = AzureNetAppFilesManagementClient.Snapshots.Get(ResourceGroupName, AccountName, PoolName, VolumeName, Name);
-                WriteObject(anfSnapshot.ToPsNetAppFilesSnapshot());
+                if (Name != null)
+                {
+                    var anfSnapshot = AzureNetAppFilesManagementClient.Snapshots.Get(ResourceGroupName, AccountName, PoolName, VolumeName, Name);
+                    WriteObject(anfSnapshot.ToPsNetAppFilesSnapshot());
+                }
+                else
+                {
+                    var anfSnapshot = AzureNetAppFilesManagementClient.Snapshots.List(ResourceGroupName, AccountName, PoolName, VolumeName).Select(e => e.ToPsNetAppFilesSnapshot());
+                    WriteObject(anfSnapshot, true);
+                }
             }
-            else
+            catch (ErrorResponseException ex)
             {
-                var anfSnapshot = AzureNetAppFilesManagementClient.Snapshots.List(ResourceGroupName, AccountName, PoolName, VolumeName).Select(e => e.ToPsNetAppFilesSnapshot());
-                WriteObject(anfSnapshot, true);
+                ex = new ErrorResponseException(ex.Body.Error.Message);
+                throw ex;
             }
         }
     }

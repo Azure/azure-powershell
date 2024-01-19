@@ -125,16 +125,24 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 VolumeName = NameParts[2];
             }
 
-            if (Name != null)
+            try
             {
-                var anfVolumeQuotaRule = AzureNetAppFilesManagementClient.VolumeQuotaRules.Get(ResourceGroupName, AccountName, PoolName, VolumeName, Name);
-                WriteObject(anfVolumeQuotaRule.ConvertToPs());
-            }
-            else
-            {                
-                List<VolumeQuotaRule> volumeQuotaRules = AzureNetAppFilesManagementClient.VolumeQuotaRules.ListByVolume(ResourceGroupName, AccountName, PoolName, VolumeName).ToList();
+                if (Name != null)
+                {
+                    var anfVolumeQuotaRule = AzureNetAppFilesManagementClient.VolumeQuotaRules.Get(ResourceGroupName, AccountName, PoolName, VolumeName, Name);
+                    WriteObject(anfVolumeQuotaRule.ConvertToPs());
+                }
+                else
+                {
+                    List<VolumeQuotaRule> volumeQuotaRules = AzureNetAppFilesManagementClient.VolumeQuotaRules.ListByVolume(ResourceGroupName, AccountName, PoolName, VolumeName).ToList();
 
-                WriteObject(volumeQuotaRules.ConvertToPS(), true);
+                    WriteObject(volumeQuotaRules.ConvertToPS(), true);
+                }
+            }
+            catch (ErrorResponseException ex)
+            {
+                ex = new ErrorResponseException(ex.Body.Error.Message);
+                throw ex;
             }
         }
     }
