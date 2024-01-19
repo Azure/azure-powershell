@@ -13,7 +13,7 @@ Get the default account for the scope.
 ## SYNTAX
 
 ```
-Get-AzPurviewDefaultAccount -ScopeTenantId <String> -ScopeType <ScopeType> [-Scope <String>]
+Get-AzPurviewDefaultAccount -ScopeTenantId <String> -ScopeType <String> [-Scope <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -38,7 +38,8 @@ Get the default account for the scope Tenant
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -86,7 +87,7 @@ Accept wildcard characters: False
 The scope for the default account.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -107,8 +108,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IDefaultAccountPayload
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

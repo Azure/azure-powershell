@@ -13,10 +13,10 @@ Creates or updates an account
 ## SYNTAX
 
 ```
-New-AzPurviewAccount -Name <String> -ResourceGroupName <String> -IdentityType <Type> -Location <String>
- -SkuCapacity <Int32> -SkuName <Name> [-SubscriptionId <String>] [-ManagedResourceGroupName <String>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPurviewAccount -Name <String> -ResourceGroupName <String> -EnableSystemAssignedIdentity
+ -Location <String> -SkuCapacity <Int32> -SkuName <String> [-SubscriptionId <String>]
+ [-ManagedResourceGroupName <String>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,11 +69,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Identity Type
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.Type
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 Gets or sets the public network access.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 Gets or sets the sku name.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.Name
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -276,8 +276,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IAccount
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

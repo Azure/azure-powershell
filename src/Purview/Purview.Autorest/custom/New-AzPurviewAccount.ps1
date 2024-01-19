@@ -56,12 +56,11 @@ function New-AzPurviewAccount {
         # The subscription identifier
         ${SubscriptionId},
     
-        [Parameter(Mandatory)]
-        
+        [Parameter(Mandatory)]        
         [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-        [System.String]
-        # Identity Type
-        ${IdentityType},
+        [System.Management.Automation.SwitchParameter]
+        # Decides if enable a system assigned identity for the resource.
+        ${EnableSystemAssignedIdentity},
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]

@@ -14,7 +14,7 @@ Sets the default account for the scope.
 
 ```
 Set-AzPurviewDefaultAccount -AccountName <String> -ResourceGroupName <String> -ScopeTenantId <String>
- [-Scope <String>] [-ScopeType <ScopeType>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-Scope <String>] [-ScopeType <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 The scope where the default account is set.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -185,8 +185,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IDefaultAccountPayload
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

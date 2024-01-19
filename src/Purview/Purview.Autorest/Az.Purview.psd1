@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Purview.private.dll'
   FormatsToProcess = './Az.Purview.format.ps1xml'
-  FunctionsToExport = 'Add-AzPurviewAccountRootCollectionAdmin', 'Get-AzPurviewAccount', 'Get-AzPurviewAccountKey', 'Get-AzPurviewDefaultAccount', 'New-AzPurviewAccount', 'Remove-AzPurviewAccount', 'Remove-AzPurviewDefaultAccount', 'Set-AzPurviewDefaultAccount', 'Test-AzPurviewAccountNameAvailability', 'Update-AzPurviewAccount', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Add-AzPurviewAccountRootCollectionAdmin', 'Get-AzPurviewAccount', 'Get-AzPurviewAccountKey', 'Get-AzPurviewDefaultAccount', 'New-AzPurviewAccount', 'Remove-AzPurviewAccount', 'Remove-AzPurviewDefaultAccount', 'Set-AzPurviewDefaultAccount', 'Test-AzPurviewAccountNameAvailability', 'Update-AzPurviewAccount'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Purview'
