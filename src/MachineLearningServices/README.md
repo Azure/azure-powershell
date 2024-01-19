@@ -44,6 +44,7 @@ inlining-threshold: 200
 resourcegroup-append: true
 nested-object-to-string: true
 identity-correction-for-post: true
+keep-identitytype: true
 
 directive:
   - from: swagger-document
