@@ -29,7 +29,6 @@
 * Added new cmdlets to define parameters for a Azure Firewall Packet Capture. - `New-AzFirewallPacketCaptureRule` and `New-AzFirewallPacketCaptureParameter`
 * Added new cmdlet to invoke a packet capture on a Azure Firewall. - `Invoke-AzFirewallPacketCapture`
 
-
 ## Version 7.1.0
 * Added DefaultOutboundAccess parameter on subnet creation
 * Updated cmdlet `New-AzPublicIpPrefix` and `New-PublicIpAddress` to require Location parameter
