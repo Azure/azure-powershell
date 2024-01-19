@@ -30,8 +30,8 @@ Describe 'New-AzLoad' {
         $res.Tag | Should -Not -BeNullOrEmpty
         $res.Tag['tag1'] | Should -Be 'value1'
         $res.IdentityType | Should -Be $identityType
-        $res.IdentityUserAssignedIdentity | Should -Not -BeNullOrEmpty
-        $res.IdentityUserAssignedIdentity.Keys | Should -HaveCount 2
+        $res.UserAssignedIdentity | Should -Not -BeNullOrEmpty
+        $res.UserAssignedIdentity.Keys | Should -HaveCount 2
         $res.EncryptionIdentityType | Should -BeNullOrEmpty
         $res.EncryptionIdentityResourceId | Should -BeNullOrEmpty
         $res.EncryptionKey | Should -BeNullOrEmpty
@@ -52,8 +52,8 @@ Describe 'New-AzLoad' {
         $res.Tag | Should -Not -BeNullOrEmpty
         $res.Tag.Keys | Should -HaveCount 0
         $res.IdentityType | Should -Be $identityType
-        $res.IdentityUserAssignedIdentity | Should -Not -BeNullOrEmpty
-        $res.IdentityUserAssignedIdentity.Keys | Should -HaveCount 1
+        $res.UserAssignedIdentity | Should -Not -BeNullOrEmpty
+        $res.UserAssignedIdentity.Keys | Should -HaveCount 1
         $res.EncryptionIdentityType | Should -Be $identityType
         $res.EncryptionIdentityResourceId | Should -Be $cmkIdentity
         $res.EncryptionKey | Should -Be $cmkKey
@@ -74,8 +74,8 @@ Describe 'Get-AzLoad' {
         $res.Tag | Should -Not -BeNullOrEmpty
         $res.Tag['tag1'] | Should -Be 'value1'
         $res.IdentityType | Should -Be $identityType
-        $res.IdentityUserAssignedIdentity | Should -Not -BeNullOrEmpty
-        $res.IdentityUserAssignedIdentity.Keys | Should -HaveCount 2
+        $res.UserAssignedIdentity | Should -Not -BeNullOrEmpty
+        $res.UserAssignedIdentity.Keys | Should -HaveCount 2
         $res.EncryptionIdentityType | Should -BeNullOrEmpty
         $res.EncryptionIdentityResourceId | Should -BeNullOrEmpty
         $res.EncryptionKey | Should -BeNullOrEmpty
@@ -96,8 +96,8 @@ Describe 'Get-AzLoad' {
         $res.Tag | Should -Not -BeNullOrEmpty
         $res.Tag.Keys | Should -HaveCount 0
         $res.IdentityType | Should -Be $identityType
-        $res.IdentityUserAssignedIdentity | Should -Not -BeNullOrEmpty
-        $res.IdentityUserAssignedIdentity.Keys | Should -HaveCount 1
+        $res.UserAssignedIdentity | Should -Not -BeNullOrEmpty
+        $res.UserAssignedIdentity.Keys | Should -HaveCount 1
         $res.EncryptionIdentityType | Should -Be $identityType
         $res.EncryptionIdentityResourceId | Should -Be $cmkIdentity
         $res.EncryptionKey | Should -Be $cmkKey
@@ -119,8 +119,8 @@ Describe 'Update-AzLoad (Recorded)' {
         $res.Tag | Should -Not -BeNullOrEmpty
         $res.Tag['tag1'] | Should -Be 'value1'
         $res.IdentityType | Should -Be $identityType
-        $res.IdentityUserAssignedIdentity | Should -Not -BeNullOrEmpty
-        $res.IdentityUserAssignedIdentity.Keys | Should -HaveCount 1
+        $res.UserAssignedIdentity | Should -Not -BeNullOrEmpty
+        $res.UserAssignedIdentity.Keys | Should -HaveCount 1
         $res.EncryptionIdentityType | Should -BeNullOrEmpty
         $res.EncryptionIdentityResourceId | Should -BeNullOrEmpty
         $res.EncryptionKey | Should -BeNullOrEmpty
@@ -142,8 +142,8 @@ Describe 'Update-AzLoad (Recorded)' {
         $res.Tag | Should -Not -BeNullOrEmpty
         $res.Tag.Keys | Should -HaveCount 0
         $res.IdentityType | Should -Be $identityType
-        $res.IdentityUserAssignedIdentity | Should -Not -BeNullOrEmpty
-        $res.IdentityUserAssignedIdentity.Keys | Should -HaveCount 1
+        $res.UserAssignedIdentity | Should -Not -BeNullOrEmpty
+        $res.UserAssignedIdentity.Keys | Should -HaveCount 1
         $res.EncryptionIdentityType | Should -Be $encryptionIdentityType
         $res.EncryptionIdentityResourceId | Should -Be $cmkIdentity
         $res.EncryptionKey | Should -Be $cmkKey

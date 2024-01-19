@@ -78,10 +78,9 @@ directive:
   
   # Renaming user assigned identity parameter
   - where:
-      parameter-name: IdentityUserAssignedIdentity
+      parameter-name: UserAssignedIdentity
     set:
-      parameter-name: IdentityUserAssigned
-
+      alias: IdentityUserAssigned
   # Renaming encryption key parameter
   - where:
       parameter-name: EncryptionKeyUrl
