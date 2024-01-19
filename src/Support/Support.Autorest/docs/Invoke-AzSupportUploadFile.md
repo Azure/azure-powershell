@@ -12,20 +12,38 @@ This API allows you to upload content to a file
 
 ## SYNTAX
 
-### UploadExpanded (Default)
+### UploadExpanded1 (Default)
 ```
-Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceName <String> [-SubscriptionId <String>]
- [-ChunkIndex <Single>] [-Content <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceName <String> [-ChunkIndex <Single>]
+ [-Content <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Upload
 ```
+Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceName <String> -SubscriptionId <String>
+ -UploadFile <IUploadFile> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Upload1
+```
 Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceName <String> -UploadFile <IUploadFile>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UploadExpanded
+```
+Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceName <String> -SubscriptionId <String>
+ [-ChunkIndex <Single>] [-Content <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UploadViaIdentity
+```
+Invoke-AzSupportUploadFile -InputObject <ISupportIdentity> -UploadFile <IUploadFile>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UploadViaIdentity1
 ```
 Invoke-AzSupportUploadFile -InputObject <ISupportIdentity> -UploadFile <IUploadFile>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -37,9 +55,21 @@ Invoke-AzSupportUploadFile -InputObject <ISupportIdentity> [-ChunkIndex <Single>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UploadViaIdentityExpanded1
+```
+Invoke-AzSupportUploadFile -InputObject <ISupportIdentity> [-ChunkIndex <Single>] [-Content <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UploadViaIdentityFileWorkspace
 ```
 Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceInputObject <ISupportIdentity>
+ -UploadFile <IUploadFile> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UploadViaIdentityFileWorkspace1
+```
+Invoke-AzSupportUploadFile -FileName <String> -FileWorkspace1InputObject <ISupportIdentity>
  -UploadFile <IUploadFile> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -50,16 +80,35 @@ Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceInputObject <ISuppor
  [<CommonParameters>]
 ```
 
+### UploadViaIdentityFileWorkspaceExpanded1
+```
+Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceInputObject <ISupportIdentity>
+ [-ChunkIndex <Single>] [-Content <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### UploadViaJsonFilePath
 ```
+Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceName <String> -SubscriptionId <String>
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UploadViaJsonFilePath1
+```
 Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UploadViaJsonString
 ```
+Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceName <String> -SubscriptionId <String>
+ -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UploadViaJsonString1
+```
 Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,7 +145,7 @@ Index of the uploaded chunk (Index starts at 0)
 
 ```yaml
 Type: System.Single
-Parameter Sets: UploadExpanded, UploadViaIdentityExpanded, UploadViaIdentityFileWorkspaceExpanded
+Parameter Sets: UploadExpanded, UploadExpanded1, UploadViaIdentityExpanded, UploadViaIdentityExpanded1, UploadViaIdentityFileWorkspaceExpanded, UploadViaIdentityFileWorkspaceExpanded1
 Aliases:
 
 Required: False
@@ -111,7 +160,7 @@ File Content in base64 encoded format
 
 ```yaml
 Type: System.String
-Parameter Sets: UploadExpanded, UploadViaIdentityExpanded, UploadViaIdentityFileWorkspaceExpanded
+Parameter Sets: UploadExpanded, UploadExpanded1, UploadViaIdentityExpanded, UploadViaIdentityExpanded1, UploadViaIdentityFileWorkspaceExpanded, UploadViaIdentityFileWorkspaceExpanded1
 Aliases:
 
 Required: False
@@ -142,7 +191,7 @@ File Name
 
 ```yaml
 Type: System.String
-Parameter Sets: Upload, UploadExpanded, UploadViaIdentityFileWorkspace, UploadViaIdentityFileWorkspaceExpanded, UploadViaJsonFilePath, UploadViaJsonString
+Parameter Sets: Upload, Upload1, UploadExpanded, UploadExpanded1, UploadViaIdentityFileWorkspace, UploadViaIdentityFileWorkspace1, UploadViaIdentityFileWorkspaceExpanded, UploadViaIdentityFileWorkspaceExpanded1, UploadViaJsonFilePath, UploadViaJsonFilePath1, UploadViaJsonString, UploadViaJsonString1
 Aliases:
 
 Required: True
@@ -152,13 +201,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FileWorkspace1InputObject
+Identity Parameter
+To construct, see NOTES section for FILEWORKSPACE1INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
+Parameter Sets: UploadViaIdentityFileWorkspace1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -FileWorkspaceInputObject
 Identity Parameter
 To construct, see NOTES section for FILEWORKSPACEINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-Parameter Sets: UploadViaIdentityFileWorkspace, UploadViaIdentityFileWorkspaceExpanded
+Parameter Sets: UploadViaIdentityFileWorkspace, UploadViaIdentityFileWorkspaceExpanded, UploadViaIdentityFileWorkspaceExpanded1
 Aliases:
 
 Required: True
@@ -173,7 +238,7 @@ File WorkspaceName
 
 ```yaml
 Type: System.String
-Parameter Sets: Upload, UploadExpanded, UploadViaJsonFilePath, UploadViaJsonString
+Parameter Sets: Upload, Upload1, UploadExpanded, UploadExpanded1, UploadViaJsonFilePath, UploadViaJsonFilePath1, UploadViaJsonString, UploadViaJsonString1
 Aliases:
 
 Required: True
@@ -189,7 +254,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-Parameter Sets: UploadViaIdentity, UploadViaIdentityExpanded
+Parameter Sets: UploadViaIdentity, UploadViaIdentity1, UploadViaIdentityExpanded, UploadViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -204,7 +269,7 @@ Path of Json file supplied to the Upload operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UploadViaJsonFilePath
+Parameter Sets: UploadViaJsonFilePath, UploadViaJsonFilePath1
 Aliases:
 
 Required: True
@@ -219,7 +284,7 @@ Json string supplied to the Upload operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UploadViaJsonString
+Parameter Sets: UploadViaJsonString, UploadViaJsonString1
 Aliases:
 
 Required: True
@@ -252,9 +317,9 @@ Type: System.String
 Parameter Sets: Upload, UploadExpanded, UploadViaJsonFilePath, UploadViaJsonString
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -265,7 +330,7 @@ To construct, see NOTES section for UPLOADFILE properties and create a hash tabl
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IUploadFile
-Parameter Sets: Upload, UploadViaIdentity, UploadViaIdentityFileWorkspace
+Parameter Sets: Upload, Upload1, UploadViaIdentity, UploadViaIdentity1, UploadViaIdentityFileWorkspace, UploadViaIdentityFileWorkspace1
 Aliases:
 
 Required: True

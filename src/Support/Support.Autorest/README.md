@@ -56,78 +56,78 @@ subject-prefix: $(service-name)
 
 directive:
   # Remove the default value of subscriptionId
-  # - from: source-file-csharp
-  #   where: $
-  #   transform: $ = $.replace('        [Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.DefaultInfo(\n        Name = @"",\n        Description =@"",\n        Script = @"(Get-AzContext).Subscription.Id",\n        SetCondition = @"")]\n', '')
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('        [Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.DefaultInfo(\n        Name = @"",\n        Description =@"",\n        Script = @"(Get-AzContext).Subscription.Id",\n        SetCondition = @"")]\n', '')
   # Rename the operation ids of NoSubscription to make them can be combined automatically
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/checkNameAvailability"].post'
-  #   transform: >
-  #     $["operationId"] = "SupportTickets_CheckNameAvailabilityWithNoSubscriptionId";
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/supportTickets"].get'
-  #   transform: >
-  #     $["operationId"] = "SupportTickets_ListWithNoSubscriptionId";
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}"].get'
-  #   transform: >
-  #     $["operationId"] = "SupportTickets_GetWithNoSubscriptionId";
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}"].patch'
-  #   transform: >
-  #     $["operationId"] = "SupportTickets_UpdateWithNoSubscriptionId";
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}"].put'
-  #   transform: >
-  #     $["operationId"] = "SupportTickets_CreateWithNoSubscriptionId";
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/checkNameAvailability"].post'
-  #   transform: >
-  #     $["operationId"] = "Communications_CheckNameAvailabilityWithNoSubscriptionId";
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications"].get'
-  #   transform: >
-  #     $["operationId"] = "SupportTicketCommunications_ListWithNoSubscriptionId";
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}"].get'
-  #   transform: >
-  #     $["operationId"] = "Communications_GetWithNoSubscriptionId";
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}"].put'
-  #   transform: >
-  #     $["operationId"] = "Communications_CreateWithNoSubscriptionId";
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts"].get'
-  #   transform: >
-  #     $["operationId"] = "SupportTicketChatTranscripts_ListWithNoSubscriptionId";
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}"].get'
-  #   transform: >
-  #     $["operationId"] = "ChatTranscripts_GetWithNoSubscriptionId";
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}"].get'
-  #   transform: >
-  #     $["operationId"] = "FileWorkspaces_GetWithNoSubscriptionId";
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}"].put'
-  #   transform: >
-  #     $["operationId"] = "FileWorkspaces_CreateWithNoSubscriptionId";
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files"].get'
-  #   transform: >
-  #     $["operationId"] = "Files_ListWithNoSubscriptionId";
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}"].get'
-  #   transform: >
-  #     $["operationId"] = "Files_GetWithNoSubscriptionId";
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}"].put'
-  #   transform: >
-  #     $["operationId"] = "Files_CreateWithNoSubscriptionId";
-  # - from: swagger-document
-  #   where: '$.paths["/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}/upload"].post'
-  #   transform: >
-  #     $["operationId"] = "Files_UploadWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/checkNameAvailability"].post'
+    transform: >
+      $["operationId"] = "SupportTickets_CheckNameAvailabilityWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/supportTickets"].get'
+    transform: >
+      $["operationId"] = "SupportTickets_ListWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}"].get'
+    transform: >
+      $["operationId"] = "SupportTickets_GetWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}"].patch'
+    transform: >
+      $["operationId"] = "SupportTickets_UpdateWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}"].put'
+    transform: >
+      $["operationId"] = "SupportTickets_CreateWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/checkNameAvailability"].post'
+    transform: >
+      $["operationId"] = "Communications_CheckNameAvailabilityWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications"].get'
+    transform: >
+      $["operationId"] = "SupportTicketCommunications_ListWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}"].get'
+    transform: >
+      $["operationId"] = "Communications_GetWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}"].put'
+    transform: >
+      $["operationId"] = "Communications_CreateWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts"].get'
+    transform: >
+      $["operationId"] = "SupportTicketChatTranscripts_ListWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}"].get'
+    transform: >
+      $["operationId"] = "ChatTranscripts_GetWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}"].get'
+    transform: >
+      $["operationId"] = "FileWorkspaces_GetWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}"].put'
+    transform: >
+      $["operationId"] = "FileWorkspaces_CreateWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files"].get'
+    transform: >
+      $["operationId"] = "Files_ListWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}"].get'
+    transform: >
+      $["operationId"] = "Files_GetWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}"].put'
+    transform: >
+      $["operationId"] = "Files_CreateWithNoSubscriptionId";
+  - from: swagger-document
+    where: '$.paths["/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}/upload"].post'
+    transform: >
+      $["operationId"] = "Files_UploadWithNoSubscriptionId";
   - where:
       model-name: ProblemClassification
     set:

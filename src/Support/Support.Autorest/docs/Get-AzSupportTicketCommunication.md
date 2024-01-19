@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/get-azsupportticketcommunicationsnosubscription
+online version: https://learn.microsoft.com/powershell/module/az.support/get-azsupportticketcommunication
 schema: 2.0.0
 ---
 
-# Get-AzSupportTicketCommunicationsNoSubscription
+# Get-AzSupportTicketCommunication
 
 ## SYNOPSIS
 Lists all communications (attachments not included) for a support ticket.
@@ -18,7 +18,7 @@ If a ticket was created more than 18 months ago, a request for data might cause 
 ## SYNTAX
 
 ```
-Get-AzSupportTicketCommunicationsNoSubscription -SupportTicketName <String> [-Filter <String>] [-Top <Int32>]
+Get-AzSupportTicketCommunication -SupportTicketName <String> [-Filter <String>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 

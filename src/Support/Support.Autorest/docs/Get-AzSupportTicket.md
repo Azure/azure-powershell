@@ -14,21 +14,36 @@ If a ticket was created more than 18 months ago, a request for data might cause 
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
-Get-AzSupportTicket [-SubscriptionId <String[]>] [-Filter <String>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSupportTicket [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzSupportTicket -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzSupportTicket -Name <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzSupportTicket -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzSupportTicket -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity1
+```
+Get-AzSupportTicket -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzSupportTicket -SubscriptionId <String[]> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +103,7 @@ When using both filters, combine them using the logical 'AND'.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -104,7 +119,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True
@@ -119,7 +134,7 @@ Support ticket name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, Get1
 Aliases: SupportTicketName
 
 Required: True
@@ -137,9 +152,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -150,7 +165,7 @@ Default is 25 and max is 100.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List
+Parameter Sets: List, List1
 Aliases:
 
 Required: False

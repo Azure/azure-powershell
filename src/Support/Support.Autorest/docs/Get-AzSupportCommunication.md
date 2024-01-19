@@ -12,15 +12,15 @@ Returns communication details for a support ticket.
 
 ## SYNTAX
 
-### List (Default)
+### Get1 (Default)
 ```
-Get-AzSupportCommunication -SupportTicketName <String> [-SubscriptionId <String[]>] [-Filter <String>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSupportCommunication -Name <String> -SupportTicketName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzSupportCommunication -Name <String> -SupportTicketName <String> [-SubscriptionId <String[]>]
+Get-AzSupportCommunication -Name <String> -SubscriptionId <String[]> -SupportTicketName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -29,10 +29,27 @@ Get-AzSupportCommunication -Name <String> -SupportTicketName <String> [-Subscrip
 Get-AzSupportCommunication -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity1
+```
+Get-AzSupportCommunication -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentitySupportTicket
 ```
 Get-AzSupportCommunication -Name <String> -SupportTicketInputObject <ISupportIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentitySupportTicket1
+```
+Get-AzSupportCommunication -Name <String> -SupportTicket1InputObject <ISupportIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzSupportCommunication -SubscriptionId <String[]> -SupportTicketName <String> [-Filter <String>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,7 +121,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True
@@ -119,7 +136,7 @@ Communication name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentitySupportTicket
+Parameter Sets: Get, Get1, GetViaIdentitySupportTicket, GetViaIdentitySupportTicket1
 Aliases: CommunicationName
 
 Required: True
@@ -137,10 +154,26 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SupportTicket1InputObject
+Identity Parameter
+To construct, see NOTES section for SUPPORTTICKET1INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
+Parameter Sets: GetViaIdentitySupportTicket1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -165,7 +198,7 @@ Support ticket name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, Get1, List
 Aliases:
 
 Required: True

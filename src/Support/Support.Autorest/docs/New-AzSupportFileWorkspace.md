@@ -12,8 +12,15 @@ Creates a new file workspace for the specified subscription.
 
 ## SYNTAX
 
+### Create1 (Default)
 ```
-New-AzSupportFileWorkspace -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+New-AzSupportFileWorkspace -Name <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Create
+```
+New-AzSupportFileWorkspace -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -82,12 +89,12 @@ Azure subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

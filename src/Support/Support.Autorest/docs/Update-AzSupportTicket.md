@@ -13,9 +13,20 @@ In such a case, contact your support engineer to request severity update by addi
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### UpdateExpanded1 (Default)
 ```
-Update-AzSupportTicket -Name <String> [-SubscriptionId <String>] [-AdvancedDiagnosticConsent <String>]
+Update-AzSupportTicket -Name <String> [-AdvancedDiagnosticConsent <String>]
+ [-ContactDetailAdditionalEmailAddress <String[]>] [-ContactDetailCountry <String>]
+ [-ContactDetailFirstName <String>] [-ContactDetailLastName <String>] [-ContactDetailPhoneNumber <String>]
+ [-ContactDetailPreferredContactMethod <String>] [-ContactDetailPreferredSupportLanguage <String>]
+ [-ContactDetailPreferredTimeZone <String>] [-ContactDetailPrimaryEmailAddress <String>]
+ [-SecondaryConsent <ISecondaryConsent[]>] [-Severity <String>] [-Status <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateExpanded
+```
+Update-AzSupportTicket -Name <String> -SubscriptionId <String> [-AdvancedDiagnosticConsent <String>]
  [-ContactDetailAdditionalEmailAddress <String[]>] [-ContactDetailCountry <String>]
  [-ContactDetailFirstName <String>] [-ContactDetailLastName <String>] [-ContactDetailPhoneNumber <String>]
  [-ContactDetailPreferredContactMethod <String>] [-ContactDetailPreferredSupportLanguage <String>]
@@ -25,6 +36,17 @@ Update-AzSupportTicket -Name <String> [-SubscriptionId <String>] [-AdvancedDiagn
 ```
 
 ### UpdateViaIdentityExpanded
+```
+Update-AzSupportTicket -InputObject <ISupportIdentity> [-AdvancedDiagnosticConsent <String>]
+ [-ContactDetailAdditionalEmailAddress <String[]>] [-ContactDetailCountry <String>]
+ [-ContactDetailFirstName <String>] [-ContactDetailLastName <String>] [-ContactDetailPhoneNumber <String>]
+ [-ContactDetailPreferredContactMethod <String>] [-ContactDetailPreferredSupportLanguage <String>]
+ [-ContactDetailPreferredTimeZone <String>] [-ContactDetailPrimaryEmailAddress <String>]
+ [-SecondaryConsent <ISecondaryConsent[]>] [-Severity <String>] [-Status <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded1
 ```
 Update-AzSupportTicket -InputObject <ISupportIdentity> [-AdvancedDiagnosticConsent <String>]
  [-ContactDetailAdditionalEmailAddress <String[]>] [-ContactDetailCountry <String>]
@@ -244,7 +266,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -259,7 +281,7 @@ Support ticket name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases: SupportTicketName
 
 Required: True
@@ -323,9 +345,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

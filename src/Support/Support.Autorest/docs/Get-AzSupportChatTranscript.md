@@ -12,15 +12,15 @@ Returns chatTranscript details for a support ticket under a subscription.
 
 ## SYNTAX
 
-### List (Default)
+### Get1 (Default)
 ```
-Get-AzSupportChatTranscript -SupportTicketName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSupportChatTranscript -Name <String> -SupportTicketName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzSupportChatTranscript -Name <String> -SupportTicketName <String> [-SubscriptionId <String[]>]
+Get-AzSupportChatTranscript -Name <String> -SubscriptionId <String[]> -SupportTicketName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -29,9 +29,26 @@ Get-AzSupportChatTranscript -Name <String> -SupportTicketName <String> [-Subscri
 Get-AzSupportChatTranscript -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity1
+```
+Get-AzSupportChatTranscript -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentitySupportTicket
 ```
 Get-AzSupportChatTranscript -Name <String> -SupportTicketInputObject <ISupportIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentitySupportTicket1
+```
+Get-AzSupportChatTranscript -Name <String> -SupportTicket1InputObject <ISupportIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzSupportChatTranscript -SubscriptionId <String[]> -SupportTicketName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -86,7 +103,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True
@@ -101,7 +118,7 @@ ChatTranscript name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentitySupportTicket
+Parameter Sets: Get, Get1, GetViaIdentitySupportTicket, GetViaIdentitySupportTicket1
 Aliases: ChatTranscriptName
 
 Required: True
@@ -119,10 +136,26 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SupportTicket1InputObject
+Identity Parameter
+To construct, see NOTES section for SUPPORTTICKET1INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
+Parameter Sets: GetViaIdentitySupportTicket1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -147,7 +180,7 @@ Support ticket name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, Get1, List
 Aliases:
 
 Required: True

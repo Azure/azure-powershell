@@ -12,13 +12,23 @@ Gets details for a specific file workspace in an Azure subscription.
 
 ## SYNTAX
 
-### Get (Default)
+### Get1 (Default)
 ```
-Get-AzSupportFileWorkspace -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzSupportFileWorkspace -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzSupportFileWorkspace -Name <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
+```
+Get-AzSupportFileWorkspace -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity1
 ```
 Get-AzSupportFileWorkspace -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -74,7 +84,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True
@@ -89,7 +99,7 @@ File Workspace Name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, Get1
 Aliases: FileWorkspaceName
 
 Required: True
@@ -107,9 +117,9 @@ Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

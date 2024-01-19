@@ -6,39 +6,6 @@
   },
   "commands": [
     {
-      "name": "Get-AzSupportCommunicationsNoSubscription",
-      "description": "Returns communication details for a support ticket.",
-      "path": "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.support/get-azsupportcommunicationsnosubscription"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-CommunicationName <String>",
-              "-SupportTicketName <String>"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Returns communication details for a support ticket.",
-          "parameters": [
-            {
-              "name": "-CommunicationName",
-              "value": "[Path.communicationName]"
-            },
-            {
-              "name": "-SupportTicketName",
-              "value": "[Path.supportTicketName]"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Get-AzSupportCommunication",
       "description": "Returns communication details for a support ticket.",
       "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
@@ -51,6 +18,12 @@
             "parameters": [
               "-Name <String>",
               "[-SubscriptionId <String[]>]",
+              "-SupportTicketName <String>"
+            ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
               "-SupportTicketName <String>"
             ]
           }
@@ -67,6 +40,19 @@
             {
               "name": "-SubscriptionId",
               "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-SupportTicketName",
+              "value": "[Path.supportTicketName]"
+            }
+          ]
+        },
+        {
+          "description": "Returns communication details for a support ticket.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.communicationName]"
             },
             {
               "name": "-SupportTicketName",

@@ -12,8 +12,15 @@ Creates a new file under a workspace for the specified subscription.
 
 ## SYNTAX
 
+### CreateExpanded1 (Default)
 ```
-New-AzSupportFile -Name <String> -WorkspaceName <String> [-SubscriptionId <String>] [-ChunkSize <Single>]
+New-AzSupportFile -Name <String> -WorkspaceName <String> [-ChunkSize <Single>] [-FileSize <Single>]
+ [-NumberOfChunk <Single>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpanded
+```
+New-AzSupportFile -Name <String> -SubscriptionId <String> -WorkspaceName <String> [-ChunkSize <Single>]
  [-FileSize <Single>] [-NumberOfChunk <Single>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -128,12 +135,12 @@ Azure subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

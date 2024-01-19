@@ -12,8 +12,15 @@ Adds a new customer communication to an Azure support ticket.
 
 ## SYNTAX
 
+### CreateExpanded1 (Default)
 ```
-New-AzSupportCommunication -Name <String> -SupportTicketName <String> [-SubscriptionId <String>]
+New-AzSupportCommunication -Name <String> -SupportTicketName <String> [-Body <String>] [-Sender <String>]
+ [-Subject <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpanded
+```
+New-AzSupportCommunication -Name <String> -SubscriptionId <String> -SupportTicketName <String>
  [-Body <String>] [-Sender <String>] [-Subject <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -159,12 +166,12 @@ Azure subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

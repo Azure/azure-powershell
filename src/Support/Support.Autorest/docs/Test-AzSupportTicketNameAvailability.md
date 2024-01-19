@@ -13,28 +13,53 @@ This API should be used to check the uniqueness of the name for support ticket c
 
 ## SYNTAX
 
-### CheckExpanded (Default)
+### CheckExpanded1 (Default)
 ```
-Test-AzSupportTicketNameAvailability -Name <String> -Type <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzSupportTicketNameAvailability -Name <String> -Type <String> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Check
 ```
+Test-AzSupportTicketNameAvailability -SubscriptionId <String>
+ -CheckNameAvailabilityInput <ICheckNameAvailabilityInput> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Check1
+```
 Test-AzSupportTicketNameAvailability -CheckNameAvailabilityInput <ICheckNameAvailabilityInput>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckExpanded
+```
+Test-AzSupportTicketNameAvailability -SubscriptionId <String> -Name <String> -Type <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CheckViaJsonFilePath
 ```
-Test-AzSupportTicketNameAvailability -JsonFilePath <String> [-SubscriptionId <String>]
+Test-AzSupportTicketNameAvailability -SubscriptionId <String> -JsonFilePath <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonFilePath1
+```
+Test-AzSupportTicketNameAvailability -JsonFilePath <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
-Test-AzSupportTicketNameAvailability -JsonString <String> [-SubscriptionId <String>]
+Test-AzSupportTicketNameAvailability -SubscriptionId <String> -JsonString <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonString1
+```
+Test-AzSupportTicketNameAvailability -JsonString <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +98,7 @@ To construct, see NOTES section for CHECKNAMEAVAILABILITYINPUT properties and cr
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICheckNameAvailabilityInput
-Parameter Sets: Check
+Parameter Sets: Check, Check1
 Aliases:
 
 Required: True
@@ -104,7 +129,7 @@ Path of Json file supplied to the Check operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckViaJsonFilePath
+Parameter Sets: CheckViaJsonFilePath, CheckViaJsonFilePath1
 Aliases:
 
 Required: True
@@ -119,7 +144,7 @@ Json string supplied to the Check operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckViaJsonString
+Parameter Sets: CheckViaJsonString, CheckViaJsonString1
 Aliases:
 
 Required: True
@@ -134,7 +159,7 @@ The resource name to validate.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: CheckExpanded, CheckExpanded1
 Aliases:
 
 Required: True
@@ -149,12 +174,12 @@ Azure subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Check, CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -164,7 +189,7 @@ The type of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: CheckExpanded, CheckExpanded1
 Aliases:
 
 Required: True

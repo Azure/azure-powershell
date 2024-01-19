@@ -18,8 +18,25 @@ The auxiliary token will be from the Cloud solution provider (CSP) partner tenan
 
 ## SYNTAX
 
+### CreateExpanded1 (Default)
 ```
-New-AzSupportTicket -Name <String> [-SubscriptionId <String>] [-AdvancedDiagnosticConsent <String>]
+New-AzSupportTicket -Name <String> [-AdvancedDiagnosticConsent <String>]
+ [-ContactDetailAdditionalEmailAddress <String[]>] [-ContactDetailCountry <String>]
+ [-ContactDetailFirstName <String>] [-ContactDetailLastName <String>] [-ContactDetailPhoneNumber <String>]
+ [-ContactDetailPreferredContactMethod <String>] [-ContactDetailPreferredSupportLanguage <String>]
+ [-ContactDetailPreferredTimeZone <String>] [-ContactDetailPrimaryEmailAddress <String>]
+ [-Description <String>] [-FileWorkspaceName <String>] [-ProblemClassificationId <String>]
+ [-ProblemScopingQuestion <String>] [-ProblemStartTime <DateTime>]
+ [-QuotaTicketDetailQuotaChangeRequest <IQuotaChangeRequest[]>]
+ [-QuotaTicketDetailQuotaChangeRequestSubType <String>] [-QuotaTicketDetailQuotaChangeRequestVersion <String>]
+ [-Require24X7Response] [-SecondaryConsent <ISecondaryConsent[]>] [-ServiceId <String>] [-Severity <String>]
+ [-SupportPlanId <String>] [-SupportTicketId <String>] [-TechnicalTicketDetailResourceId <String>]
+ [-Title <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpanded
+```
+New-AzSupportTicket -Name <String> -SubscriptionId <String> [-AdvancedDiagnosticConsent <String>]
  [-ContactDetailAdditionalEmailAddress <String[]>] [-ContactDetailCountry <String>]
  [-ContactDetailFirstName <String>] [-ContactDetailLastName <String>] [-ContactDetailPhoneNumber <String>]
  [-ContactDetailPreferredContactMethod <String>] [-ContactDetailPreferredSupportLanguage <String>]
@@ -475,12 +492,12 @@ Azure subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
