@@ -42,6 +42,7 @@ subject-prefix: $(service-name)
 
 resourcegroup-append: true
 identity-correction-for-post: true
+keep-identitytype: true
 
 metadata: 
   tags: Azure ResourceManager ARM PSModule $(service-name) HealthCare FhirService
