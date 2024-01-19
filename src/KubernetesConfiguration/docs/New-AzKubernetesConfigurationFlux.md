@@ -21,9 +21,8 @@ New-AzKubernetesConfigurationFlux -ClusterName <String> -ClusterType <String> -N
  [-GitRepositorySshKnownHost <String>] [-GitRepositorySyncIntervalInSecond <Int64>]
  [-GitRepositoryTimeoutInSecond <Int64>] [-GitRepositoryUrl <String>] [-Kustomization <Hashtable>]
  [-Namespace <String>] [-RepositoryRefBranch <String>] [-RepositoryRefCommit <String>]
- [-RepositoryRefSemver <String>] [-RepositoryRefTag <String>] [-Scope <ScopeType>]
- [-SourceKind <SourceKindType>] [-Suspend] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-RepositoryRefSemver <String>] [-RepositoryRefTag <String>] [-Scope <String>] [-SourceKind <String>]
+ [-Suspend] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -490,7 +489,7 @@ Accept wildcard characters: False
 Scope at which the operator will be installed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ScopeType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -505,7 +504,7 @@ Accept wildcard characters: False
 Source Kind to pull the configuration data from.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

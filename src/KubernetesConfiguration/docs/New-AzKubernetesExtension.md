@@ -15,9 +15,9 @@ Create a new Kubernetes Cluster Extension.
 ```
 New-AzKubernetesExtension -ClusterName <String> -ClusterType <String> -Name <String>
  -ResourceGroupName <String> -ExtensionType <String> [-SubscriptionId <String>]
- [-AkAssignedIdentityType <AksIdentityType>] [-AutoUpgradeMinorVersion] [-ClusterReleaseNamespace <String>]
+ [-AkAssignedIdentityType <String>] [-AutoUpgradeMinorVersion] [-ClusterReleaseNamespace <String>]
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
- [-IdentityType <ResourceIdentityType>] [-NamespaceTargetNamespace <String>] [-ReleaseTrain <String>]
+ [-EnableSystemAssignedIdentity] [-NamespaceTargetNamespace <String>] [-ReleaseTrain <String>]
  [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ Create a Flux Cluster Extension.
 The identity type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.AksIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -191,6 +191,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExtensionType
 Type of the Extension, of which this resource is an instance of.
 It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
@@ -201,21 +216,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-The identity type.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ResourceIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

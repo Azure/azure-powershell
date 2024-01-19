@@ -112,12 +112,11 @@ function New-AzKubernetesExtension {
         # It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
         ${ExtensionType},
 
-        [Parameter()]
-        
+        [Parameter()]        
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [System.String]
-        # The identity type.
-        ${IdentityType},
+        [System.Management.Automation.SwitchParameter]
+        # Decides if enable a system assigned identity for the resource.
+        ${EnableSystemAssignedIdentity},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
@@ -210,10 +209,6 @@ function New-AzKubernetesExtension {
 
         if ($Name -ieq 'flux') {
             if ($Name -ceq 'flux') {
-                if ($IdentityType -cne 'SystemAssigned') {
-                    Write-Error "The value of the parameter -IdentityType must be 'SystemAssigned'."
-                    return
-                }
             } else {
                 Write-Error "The value of the parameter -Name must be 'flux'."
                 return

@@ -22,7 +22,7 @@ Update-AzKubernetesConfigurationFlux -ClusterName <String> -ClusterType <String>
  [-GitRepositorySshKnownHost <String>] [-GitRepositorySyncIntervalInSecond <Int64>]
  [-GitRepositoryTimeoutInSecond <Int64>] [-GitRepositoryUrl <String>] [-Kustomization <Hashtable>]
  [-RepositoryRefBranch <String>] [-RepositoryRefCommit <String>] [-RepositoryRefSemver <String>]
- [-RepositoryRefTag <String>] [-SourceKind <SourceKindType>] [-Suspend] [-DefaultProfile <PSObject>] [-AsJob]
+ [-RepositoryRefTag <String>] [-SourceKind <String>] [-Suspend] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Update-AzKubernetesConfigurationFlux -InputObject <IKubernetesConfigurationIdent
  [-GitRepositorySshKnownHost <String>] [-GitRepositorySyncIntervalInSecond <Int64>]
  [-GitRepositoryTimeoutInSecond <Int64>] [-GitRepositoryUrl <String>] [-Kustomization <Hashtable>]
  [-RepositoryRefBranch <String>] [-RepositoryRefCommit <String>] [-RepositoryRefSemver <String>]
- [-RepositoryRefTag <String>] [-SourceKind <SourceKindType>] [-Suspend] [-DefaultProfile <PSObject>] [-AsJob]
+ [-RepositoryRefTag <String>] [-SourceKind <String>] [-Suspend] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -504,7 +504,7 @@ Accept wildcard characters: False
 Source Kind to pull the configuration data from.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -592,23 +592,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 Update-AzK8sConfigurationFlux
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
-  - `[ClusterName <String>]`: The name of the kubernetes cluster.
-  - `[ClusterResourceName <String>]`: The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
-  - `[ClusterRp <String>]`: The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
-  - `[ExtensionName <String>]`: Name of the Extension.
-  - `[FluxConfigurationName <String>]`: Name of the Flux Configuration.
-  - `[Id <String>]`: Resource identity path
-  - `[OperationId <String>]`: operation Id
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SourceControlConfigurationName <String>]`: Name of the Source Control Configuration.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 
