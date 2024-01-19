@@ -40,6 +40,8 @@ require:
 input-file:
   - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2022-12-01/dataprotection.json
 title: DataProtection
+keep-identitytype: true
+
 directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}"].delete
