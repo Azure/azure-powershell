@@ -43,6 +43,7 @@ subject-prefix: ""
 resourcegroup-append: true
 nested-object-to-string: true
 inlining-threshold: 200
+keep-identitytype: true
 
 directive:
   # https://stackoverflow.microsoft.com/questions/333196

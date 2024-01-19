@@ -14,7 +14,7 @@ Create a new Azure Load Testing resource.
 
 ```
 New-AzLoad -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-EncryptionIdentity <String>] [-EncryptionKey <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-EncryptionIdentity <String>] [-EncryptionKey <String>] [-IdentityType <String>]
  [-IdentityUserAssigned <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 Type of managed identity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Support.ManagedServiceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -310,8 +310,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ILoadTestResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
