@@ -1,8 +1,8 @@
 {
-  "Test-AzWebPubSubNameAvailability+[NoContext]+CheckExpanded with existing name, returns False+$POST+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/checkNameAvailability?api-version=2022-08-01-preview+1": {
+  "Test-AzWebPubSubNameAvailability+[NoContext]+CheckExpanded with existing name, returns False+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SignalRService/locations/eastus/checkNameAvailability?api-version=2022-08-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/checkNameAvailability?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SignalRService/locations/eastus/checkNameAvailability?api-version=2022-08-01-preview",
       "Content": "{\r\n  \"type\": \"Microsoft.SignalRService/webPubSub\",\r\n  \"name\": \"azwps-1\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -37,10 +37,10 @@
       "isContentBase64": false
     }
   },
-  "Test-AzWebPubSubNameAvailability+[NoContext]+CheckExpanded with non-existing name, returns false+$POST+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/checkNameAvailability?api-version=2022-08-01-preview+1": {
+  "Test-AzWebPubSubNameAvailability+[NoContext]+CheckExpanded with non-existing name, returns false+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SignalRService/locations/eastus/checkNameAvailability?api-version=2022-08-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/checkNameAvailability?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SignalRService/locations/eastus/checkNameAvailability?api-version=2022-08-01-preview",
       "Content": "{\r\n  \"type\": \"Microsoft.SignalRService/webPubSub\",\r\n  \"name\": \"acre\"\r\n}",
       "isContentBase64": false,
       "Headers": {

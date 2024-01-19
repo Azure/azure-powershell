@@ -1,8 +1,8 @@
 {
-  "Get-AzWebPubSubKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/listKeys?api-version=2022-08-01-preview+1": {
+  "Get-AzWebPubSubKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/listKeys?api-version=2022-08-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/listKeys?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/listKeys?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -42,10 +42,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzWebPubSubKey+[NoContext]+ListViaIdentity+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1?api-version=2022-08-01-preview+1": {
+  "Get-AzWebPubSubKey+[NoContext]+ListViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1?api-version=2022-08-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -81,14 +81,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.62.134.168\",\"hostName\":\"azwps-1.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps-1\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T07:44:43.613864Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T07:44:43.613864Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1\",\"name\":\"azwps-1\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
+      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.62.134.168\",\"hostName\":\"azwps-1.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps-1\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T07:44:43.613864Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T07:44:43.613864Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1\",\"name\":\"azwps-1\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
       "isContentBase64": false
     }
   },
-  "Get-AzWebPubSubKey+[NoContext]+ListViaIdentity+$POST+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/listKeys?api-version=2022-08-01-preview+2": {
+  "Get-AzWebPubSubKey+[NoContext]+ListViaIdentity+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/listKeys?api-version=2022-08-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/listKeys?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/listKeys?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

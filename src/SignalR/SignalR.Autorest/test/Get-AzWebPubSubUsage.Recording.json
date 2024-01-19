@@ -1,8 +1,8 @@
 {
-  "Get-AzWebPubSubUsage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/usages?api-version=2022-08-01-preview+1": {
+  "Get-AzWebPubSubUsage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SignalRService/locations/eastus/usages?api-version=2022-08-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/usages?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SignalRService/locations/eastus/usages?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -38,7 +38,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/usages/FreeTierInstances\",\"currentValue\":1,\"limit\":5,\"name\":{\"value\":\"FreeTierInstances\",\"localizedValue\":\"Free Tier SignalR Instances per subscription\"},\"unit\":\"Count\"},{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/usages/SignalRTotalUnits\",\"currentValue\":13,\"limit\":1500,\"name\":{\"value\":\"SignalRTotalUnits\",\"localizedValue\":\"SignalRTotalUnits\"},\"unit\":\"Count\"},{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/usages/WebPubSubFreeTierInstances\",\"currentValue\":2,\"limit\":5,\"name\":{\"value\":\"WebPubSubFreeTierInstances\",\"localizedValue\":\"WebPubSubFreeTierInstances\"},\"unit\":\"Count\"},{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/providers/Microsoft.SignalRService/locations/eastus/usages/WebPubSubTotalUnits\",\"currentValue\":15,\"limit\":2000,\"name\":{\"value\":\"WebPubSubTotalUnits\",\"localizedValue\":\"WebPubSubTotalUnits\"},\"unit\":\"Count\"}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SignalRService/locations/eastus/usages/FreeTierInstances\",\"currentValue\":1,\"limit\":5,\"name\":{\"value\":\"FreeTierInstances\",\"localizedValue\":\"Free Tier SignalR Instances per subscription\"},\"unit\":\"Count\"},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SignalRService/locations/eastus/usages/SignalRTotalUnits\",\"currentValue\":13,\"limit\":1500,\"name\":{\"value\":\"SignalRTotalUnits\",\"localizedValue\":\"SignalRTotalUnits\"},\"unit\":\"Count\"},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SignalRService/locations/eastus/usages/WebPubSubFreeTierInstances\",\"currentValue\":2,\"limit\":5,\"name\":{\"value\":\"WebPubSubFreeTierInstances\",\"localizedValue\":\"WebPubSubFreeTierInstances\"},\"unit\":\"Count\"},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.SignalRService/locations/eastus/usages/WebPubSubTotalUnits\",\"currentValue\":15,\"limit\":2000,\"name\":{\"value\":\"WebPubSubTotalUnits\",\"localizedValue\":\"WebPubSubTotalUnits\"},\"unit\":\"Count\"}]}",
       "isContentBase64": false
     }
   }

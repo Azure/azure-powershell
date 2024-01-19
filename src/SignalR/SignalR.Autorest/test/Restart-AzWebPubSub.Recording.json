@@ -1,8 +1,8 @@
 {
-  "Restart-AzWebPubSub+[NoContext]+Restart+$PUT+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart?api-version=2022-08-01-preview+1": {
+  "Restart-AzWebPubSub+[NoContext]+Restart+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart?api-version=2022-08-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart?api-version=2022-08-01-preview",
       "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_S1\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,12 +17,12 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationResults/24532cf6-1429-45e6-b225-a25102b62db4?api-version=2022-08-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationResults/24532cf6-1429-45e6-b225-a25102b62db4?api-version=2022-08-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-client-request-id": [ "b7ce2414-3fdb-4650-91cb-ee43bc7d3a93" ],
         "x-rp-server-mvid": [ "54bef194-19f7-4c41-9b83-6785272e94c3" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/24532cf6-1429-45e6-b225-a25102b62db4?api-version=2022-08-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/24532cf6-1429-45e6-b225-a25102b62db4?api-version=2022-08-01-preview" ],
         "x-ms-request-id": [ "723d27df-5ef9-42de-ba1d-549a3fb7468f" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
@@ -35,14 +35,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Creating\",\"externalIP\":null,\"hostName\":\"azwps-restart-wps-restart.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0-preview\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps-restart-wps-restart\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T07:57:14.8060655Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T07:57:14.8060655Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart\",\"name\":\"azwps-restart-wps-Restart\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
+      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Creating\",\"externalIP\":null,\"hostName\":\"azwps-restart-wps-restart.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0-preview\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps-restart-wps-restart\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T07:57:14.8060655Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T07:57:14.8060655Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart\",\"name\":\"azwps-restart-wps-Restart\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/24532cf6-1429-45e6-b225-a25102b62db4?api-version=2022-08-01-preview+2": {
+  "Restart-AzWebPubSub+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/24532cf6-1429-45e6-b225-a25102b62db4?api-version=2022-08-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/24532cf6-1429-45e6-b225-a25102b62db4?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/24532cf6-1429-45e6-b225-a25102b62db4?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -78,14 +78,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/24532cf6-1429-45e6-b225-a25102b62db4\",\"name\":\"24532cf6-1429-45e6-b225-a25102b62db4\",\"status\":\"Running\",\"startTime\":\"2022-11-09T07:57:16.4781349Z\"}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/24532cf6-1429-45e6-b225-a25102b62db4\",\"name\":\"24532cf6-1429-45e6-b225-a25102b62db4\",\"status\":\"Running\",\"startTime\":\"2022-11-09T07:57:16.4781349Z\"}",
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/24532cf6-1429-45e6-b225-a25102b62db4?api-version=2022-08-01-preview+3": {
+  "Restart-AzWebPubSub+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/24532cf6-1429-45e6-b225-a25102b62db4?api-version=2022-08-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/24532cf6-1429-45e6-b225-a25102b62db4?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/24532cf6-1429-45e6-b225-a25102b62db4?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -121,14 +121,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/24532cf6-1429-45e6-b225-a25102b62db4\",\"name\":\"24532cf6-1429-45e6-b225-a25102b62db4\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T07:57:16.4781349Z\",\"endTime\":\"2022-11-09T07:58:11.187361Z\"}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/24532cf6-1429-45e6-b225-a25102b62db4\",\"name\":\"24532cf6-1429-45e6-b225-a25102b62db4\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T07:57:16.4781349Z\",\"endTime\":\"2022-11-09T07:58:11.187361Z\"}",
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart?api-version=2022-08-01-preview+4": {
+  "Restart-AzWebPubSub+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart?api-version=2022-08-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -164,14 +164,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.62.134.172\",\"hostName\":\"azwps-restart-wps-restart.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps-restart-wps-restart\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T07:57:14.8060655Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T07:57:14.8060655Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart\",\"name\":\"azwps-restart-wps-Restart\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
+      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.62.134.172\",\"hostName\":\"azwps-restart-wps-restart.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps-restart-wps-restart\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T07:57:14.8060655Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T07:57:14.8060655Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart\",\"name\":\"azwps-restart-wps-Restart\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+Restart+$POST+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/restart?api-version=2022-08-01-preview+5": {
+  "Restart-AzWebPubSub+[NoContext]+Restart+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/restart?api-version=2022-08-01-preview+5": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/restart?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/restart?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -191,12 +191,12 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationResults/dddacb96-1ca5-4fe8-95f7-0706f0e8348c?api-version=2022-08-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationResults/dddacb96-1ca5-4fe8-95f7-0706f0e8348c?api-version=2022-08-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-client-request-id": [ "e634ee23-9b87-461c-b043-7e098c17809e" ],
         "x-rp-server-mvid": [ "54bef194-19f7-4c41-9b83-6785272e94c3" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c?api-version=2022-08-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c?api-version=2022-08-01-preview" ],
         "x-ms-request-id": [ "95336fda-a726-4115-8163-07d7e41ea433" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
@@ -212,10 +212,10 @@
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c?api-version=2022-08-01-preview+6": {
+  "Restart-AzWebPubSub+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c?api-version=2022-08-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -251,14 +251,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c\",\"name\":\"dddacb96-1ca5-4fe8-95f7-0706f0e8348c\",\"status\":\"Running\",\"startTime\":\"2022-11-09T07:58:22.7533511Z\"}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c\",\"name\":\"dddacb96-1ca5-4fe8-95f7-0706f0e8348c\",\"status\":\"Running\",\"startTime\":\"2022-11-09T07:58:22.7533511Z\"}",
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c?api-version=2022-08-01-preview+7": {
+  "Restart-AzWebPubSub+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c?api-version=2022-08-01-preview+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -294,14 +294,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c\",\"name\":\"dddacb96-1ca5-4fe8-95f7-0706f0e8348c\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T07:58:22.7533511Z\",\"endTime\":\"2022-11-09T07:58:53.8555052Z\"}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c\",\"name\":\"dddacb96-1ca5-4fe8-95f7-0706f0e8348c\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T07:58:22.7533511Z\",\"endTime\":\"2022-11-09T07:58:53.8555052Z\"}",
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c?api-version=2022-08-01-preview+8": {
+  "Restart-AzWebPubSub+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c?api-version=2022-08-01-preview+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -337,14 +337,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c\",\"name\":\"dddacb96-1ca5-4fe8-95f7-0706f0e8348c\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T07:58:22.7533511Z\",\"endTime\":\"2022-11-09T07:58:53.8555052Z\"}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart/operationStatuses/dddacb96-1ca5-4fe8-95f7-0706f0e8348c\",\"name\":\"dddacb96-1ca5-4fe8-95f7-0706f0e8348c\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T07:58:22.7533511Z\",\"endTime\":\"2022-11-09T07:58:53.8555052Z\"}",
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart?api-version=2022-08-01-preview+9": {
+  "Restart-AzWebPubSub+[NoContext]+Restart+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart?api-version=2022-08-01-preview+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -380,14 +380,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.62.134.172\",\"hostName\":\"azwps-restart-wps-restart.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps-restart-wps-restart\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T07:57:14.8060655Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T07:57:14.8060655Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart\",\"name\":\"azwps-restart-wps-Restart\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
+      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.62.134.172\",\"hostName\":\"azwps-restart-wps-restart.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps-restart-wps-restart\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T07:57:14.8060655Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T07:57:14.8060655Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-Restart\",\"name\":\"azwps-restart-wps-Restart\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$PUT+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity?api-version=2022-08-01-preview+1": {
+  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity?api-version=2022-08-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity?api-version=2022-08-01-preview",
       "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_S1\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -402,12 +402,12 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationResults/15b34f81-6c9b-4341-8bf1-83505c176079?api-version=2022-08-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationResults/15b34f81-6c9b-4341-8bf1-83505c176079?api-version=2022-08-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-client-request-id": [ "faf9d9c5-ed93-448a-a8d6-17ad84ac0a76" ],
         "x-rp-server-mvid": [ "54bef194-19f7-4c41-9b83-6785272e94c3" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/15b34f81-6c9b-4341-8bf1-83505c176079?api-version=2022-08-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/15b34f81-6c9b-4341-8bf1-83505c176079?api-version=2022-08-01-preview" ],
         "x-ms-request-id": [ "4a9deaa4-1be9-4651-a188-af6eb0d94942" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
@@ -420,14 +420,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Creating\",\"externalIP\":null,\"hostName\":\"azwps-restart-wps-restartviaidentity.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0-preview\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps-restart-wps-restartviaidentity\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T07:59:28.1147129Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T07:59:28.1147129Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity\",\"name\":\"azwps-restart-wps-RestartViaIdentity\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
+      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Creating\",\"externalIP\":null,\"hostName\":\"azwps-restart-wps-restartviaidentity.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0-preview\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps-restart-wps-restartviaidentity\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T07:59:28.1147129Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T07:59:28.1147129Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity\",\"name\":\"azwps-restart-wps-RestartViaIdentity\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/15b34f81-6c9b-4341-8bf1-83505c176079?api-version=2022-08-01-preview+2": {
+  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/15b34f81-6c9b-4341-8bf1-83505c176079?api-version=2022-08-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/15b34f81-6c9b-4341-8bf1-83505c176079?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/15b34f81-6c9b-4341-8bf1-83505c176079?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -463,14 +463,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/15b34f81-6c9b-4341-8bf1-83505c176079\",\"name\":\"15b34f81-6c9b-4341-8bf1-83505c176079\",\"status\":\"Running\",\"startTime\":\"2022-11-09T07:59:29.9365443Z\"}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/15b34f81-6c9b-4341-8bf1-83505c176079\",\"name\":\"15b34f81-6c9b-4341-8bf1-83505c176079\",\"status\":\"Running\",\"startTime\":\"2022-11-09T07:59:29.9365443Z\"}",
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/15b34f81-6c9b-4341-8bf1-83505c176079?api-version=2022-08-01-preview+3": {
+  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/15b34f81-6c9b-4341-8bf1-83505c176079?api-version=2022-08-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/15b34f81-6c9b-4341-8bf1-83505c176079?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/15b34f81-6c9b-4341-8bf1-83505c176079?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -506,14 +506,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/15b34f81-6c9b-4341-8bf1-83505c176079\",\"name\":\"15b34f81-6c9b-4341-8bf1-83505c176079\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T07:59:29.9365443Z\",\"endTime\":\"2022-11-09T08:00:24.8197354Z\"}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/15b34f81-6c9b-4341-8bf1-83505c176079\",\"name\":\"15b34f81-6c9b-4341-8bf1-83505c176079\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T07:59:29.9365443Z\",\"endTime\":\"2022-11-09T08:00:24.8197354Z\"}",
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity?api-version=2022-08-01-preview+4": {
+  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity?api-version=2022-08-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -549,14 +549,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.88.154.139\",\"hostName\":\"azwps-restart-wps-restartviaidentity.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps-restart-wps-restartviaidentity\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T07:59:28.1147129Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T07:59:28.1147129Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity\",\"name\":\"azwps-restart-wps-RestartViaIdentity\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
+      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.88.154.139\",\"hostName\":\"azwps-restart-wps-restartviaidentity.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps-restart-wps-restartviaidentity\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T07:59:28.1147129Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T07:59:28.1147129Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity\",\"name\":\"azwps-restart-wps-RestartViaIdentity\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$POST+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/restart?api-version=2022-08-01-preview+5": {
+  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/restart?api-version=2022-08-01-preview+5": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/restart?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/restart?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -576,12 +576,12 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationResults/8effea1a-1ef4-40c6-92a7-324a5481882f?api-version=2022-08-01-preview" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationResults/8effea1a-1ef4-40c6-92a7-324a5481882f?api-version=2022-08-01-preview" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-client-request-id": [ "1406141c-479f-42fb-806e-0c92c0142511" ],
         "x-rp-server-mvid": [ "54bef194-19f7-4c41-9b83-6785272e94c3" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f?api-version=2022-08-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f?api-version=2022-08-01-preview" ],
         "x-ms-request-id": [ "e3219c00-b5c8-4e3b-bb75-4cc3875e53c6" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
@@ -597,10 +597,10 @@
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f?api-version=2022-08-01-preview+6": {
+  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f?api-version=2022-08-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -636,14 +636,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f\",\"name\":\"8effea1a-1ef4-40c6-92a7-324a5481882f\",\"status\":\"Running\",\"startTime\":\"2022-11-09T08:00:34.2342721Z\"}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f\",\"name\":\"8effea1a-1ef4-40c6-92a7-324a5481882f\",\"status\":\"Running\",\"startTime\":\"2022-11-09T08:00:34.2342721Z\"}",
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f?api-version=2022-08-01-preview+7": {
+  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f?api-version=2022-08-01-preview+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -679,14 +679,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f\",\"name\":\"8effea1a-1ef4-40c6-92a7-324a5481882f\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T08:00:34.2342721Z\",\"endTime\":\"2022-11-09T08:01:05.7677961Z\"}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f\",\"name\":\"8effea1a-1ef4-40c6-92a7-324a5481882f\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T08:00:34.2342721Z\",\"endTime\":\"2022-11-09T08:01:05.7677961Z\"}",
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f?api-version=2022-08-01-preview+8": {
+  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f?api-version=2022-08-01-preview+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -722,14 +722,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f\",\"name\":\"8effea1a-1ef4-40c6-92a7-324a5481882f\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T08:00:34.2342721Z\",\"endTime\":\"2022-11-09T08:01:05.7677961Z\"}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity/operationStatuses/8effea1a-1ef4-40c6-92a7-324a5481882f\",\"name\":\"8effea1a-1ef4-40c6-92a7-324a5481882f\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-09T08:00:34.2342721Z\",\"endTime\":\"2022-11-09T08:01:05.7677961Z\"}",
       "isContentBase64": false
     }
   },
-  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity?api-version=2022-08-01-preview+9": {
+  "Restart-AzWebPubSub+[NoContext]+RestartViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity?api-version=2022-08-01-preview+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -765,7 +765,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.88.154.139\",\"hostName\":\"azwps-restart-wps-restartviaidentity.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps-restart-wps-restartviaidentity\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T07:59:28.1147129Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T07:59:28.1147129Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity\",\"name\":\"azwps-restart-wps-RestartViaIdentity\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
+      "Content": "{\"sku\":{\"name\":\"Standard_S1\",\"tier\":\"Standard\",\"size\":\"S1\",\"capacity\":1},\"properties\":{\"provisioningState\":\"Succeeded\",\"externalIP\":\"20.88.154.139\",\"hostName\":\"azwps-restart-wps-restartviaidentity.webpubsub.azure.com\",\"publicPort\":443,\"serverPort\":443,\"version\":\"1.0\",\"privateEndpointConnections\":[],\"sharedPrivateLinkResources\":[],\"tls\":{\"clientCertEnabled\":false},\"hostNamePrefix\":\"azwps-restart-wps-restartviaidentity\",\"liveTraceConfiguration\":null,\"resourceLogConfiguration\":null,\"networkACLs\":{\"defaultAction\":\"Deny\",\"publicNetwork\":{\"allow\":[\"ServerConnection\",\"ClientConnection\",\"RESTAPI\",\"Trace\"],\"deny\":null},\"privateEndpoints\":[]},\"publicNetworkAccess\":\"Enabled\",\"disableLocalAuth\":false,\"disableAadAuth\":false},\"systemData\":{\"createdBy\":\"zityang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-09T07:59:28.1147129Z\",\"lastModifiedBy\":\"zityang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-09T07:59:28.1147129Z\"},\"location\":\"eastus\",\"tags\":null,\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-restart-wps-RestartViaIdentity\",\"name\":\"azwps-restart-wps-RestartViaIdentity\",\"type\":\"Microsoft.SignalRService/WebPubSub\"}",
       "isContentBase64": false
     }
   }

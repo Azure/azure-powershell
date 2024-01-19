@@ -1,8 +1,8 @@
 {
-  "Get-AzWebPubSubSku+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/skus?api-version=2022-08-01-preview+1": {
+  "Get-AzWebPubSubSku+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/skus?api-version=2022-08-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9caf2a1e-9c49-49b6-89a2-56bdec7e3f97/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/skus?api-version=2022-08-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/azwps-test-rg2/providers/Microsoft.SignalRService/WebPubSub/azwps-1/skus?api-version=2022-08-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
