@@ -23,21 +23,49 @@ function Test-RefreshSqlInstanceExternalGovernanceCmdlet ($location = "eastus2eu
 	#Test scenario
 	try
 	{
+		# ------------------------------ Setup
 		Write-Debug "Creating test MI"
 		$rg = Create-ResourceGroupForTest
-		$managedInstance = Create-ManagedInstanceForTest $rg $null $null $true
+		$rgName = $rg.ResourceGroupName
+		$managedInstance = Create-ManagedInstanceForTest $rg
 		$managedInstanceName = $managedInstance.ManagedInstanceName
 		
-		$job = Invoke-AzSqlInstanceExternalGovernanceStatusRefresh -ResourceGroupName $rg -InstanceName $managedInstanceName
-		
-		$job | Wait-Job
-		
-		$result = $job.Output
-		
+		# ------------------------------ Get the MI
+
+		Write-Debug "Getting the created MI $managedInstanceName"
+		$instance = Get-AzSqlInstance -ResourceGroupName $rgName -Name $managedInstanceName
+		$instanceId = $instance.Id
+		$instanceName = $instance.ManagedInstanceName
+
+		# ------------------------------ Test by passing in the instance object
+
+		Write-Debug "Test by passing in the instance object"
+		$result = Get-AzSqlInstance -ResourceGroupName $rgName -Name $managedInstanceName | Invoke-AzSqlInstanceExternalGovernanceStatusRefresh
+
+		Write-Debug ('$result is ' + (ConvertTo-Json $result))
 		Assert-NotNull $result
-		Assert-AreEqual $result.managedInstanceName $server
-		Assert-AreEqual $result.status "Succeeded"
-		Assert-AreEqual $result.type "Microsoft.Sql/locations/refreshExternalGovernanceStatusOperationResults"
+		
+		Assert-AreEqual $result.Status "Succeeded"
+		Assert-AreEqual $result.InstanceName $instanceName
+
+		# ------------------------------ Test by passing in the resource id
+		Write-Debug "Test by passing in the resource id"
+		$result = Invoke-AzSqlInstanceExternalGovernanceStatusRefresh -ResourceId $instanceId
+		
+		Write-Debug ('$result is ' + (ConvertTo-Json $result))
+		Assert-NotNull $result
+
+		Assert-AreEqual $result.Status "Succeeded"
+		Assert-AreEqual $result.InstanceName $instanceName
+
+		# ------------------------------ Test by passing in the resource group name and instance name
+		Write-Debug "Test by passing in the name and resource group"
+		$result = Invoke-AzSqlInstanceExternalGovernanceStatusRefresh -ResourceGroupName $rgName -InstanceName $instanceName
+		Write-Debug ('$result is ' + (ConvertTo-Json $result))
+		Assert-NotNull $result
+
+		Assert-AreEqual $result.Status "Succeeded"
+		Assert-AreEqual $result.InstanceName $instanceName
 	}
 	finally
 	{
