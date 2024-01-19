@@ -87,10 +87,7 @@ function New-AzWvdApplication_AppAlias {
 
         [Parameter(Mandatory, HelpMessage='Command Line Setting')]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(SerializedName='CommandLineSetting',
-            PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting]),
-            Description='Specifies the Azure subscr')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting]
+        [System.String]
         ${CommandLineSetting},
 
         [Parameter(HelpMessage='Show In Portal')]

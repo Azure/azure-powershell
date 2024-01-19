@@ -25,6 +25,18 @@ Disconnect-AzWvdUserSession -InputObject <IDesktopVirtualizationIdentity> [-Defa
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DisconnectViaIdentityHostPool
+```
+Disconnect-AzWvdUserSession -HostPoolInputObject <IDesktopVirtualizationIdentity> -Id <String>
+ -SessionHostName <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DisconnectViaIdentitySessionHost
+```
+Disconnect-AzWvdUserSession -Id <String> -SessionHostInputObject <IDesktopVirtualizationIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Disconnect a userSession.
 
@@ -55,6 +67,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HostPoolInputObject
+Identity Parameter
+To construct, see NOTES section for HOSTPOOLINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+Parameter Sets: DisconnectViaIdentityHostPool
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -HostPoolName
 The name of the host pool within the specified resource group
 
@@ -75,7 +103,7 @@ The name of the user session within the specified session host
 
 ```yaml
 Type: System.String
-Parameter Sets: Disconnect
+Parameter Sets: Disconnect, DisconnectViaIdentityHostPool, DisconnectViaIdentitySessionHost
 Aliases: UserSessionId
 
 Required: True
@@ -132,12 +160,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SessionHostInputObject
+Identity Parameter
+To construct, see NOTES section for SESSIONHOSTINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+Parameter Sets: DisconnectViaIdentitySessionHost
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SessionHostName
 The name of the session host within the specified host pool
 
 ```yaml
 Type: System.String
-Parameter Sets: Disconnect
+Parameter Sets: Disconnect, DisconnectViaIdentityHostPool
 Aliases:
 
 Required: True

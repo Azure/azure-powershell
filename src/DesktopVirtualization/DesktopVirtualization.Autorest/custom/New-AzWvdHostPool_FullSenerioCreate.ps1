@@ -77,17 +77,17 @@ function New-AzWvdHostPool_FullSenerioCreate {
 
         [Parameter(Mandatory, HelpMessage='HostPool Type')]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType]
+        [System.String]
         ${HostPoolType},
 
         [Parameter(Mandatory, HelpMessage='LoadBalancer Type')]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType]
+        [System.String]
         ${LoadBalancerType},
 
         [Parameter(Mandatory, HelpMessage='Preferred App Group Type')]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType]
+        [System.String]
         ${PreferredAppGroupType},
 
         [Parameter(Mandatory, HelpMessage='Location')]

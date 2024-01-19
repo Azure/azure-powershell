@@ -32,6 +32,12 @@ Get-AzWvdScalingPlanPersonalSchedule -InputObject <IDesktopVirtualizationIdentit
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityScalingPlan
+```
+Get-AzWvdScalingPlanPersonalSchedule -ScalingPlanInputObject <IDesktopVirtualizationIdentity>
+ -ScalingPlanScheduleName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get a ScalingPlanPersonalSchedule.
 
@@ -146,6 +152,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ScalingPlanInputObject
+Identity Parameter
+To construct, see NOTES section for SCALINGPLANINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+Parameter Sets: GetViaIdentityScalingPlan
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ScalingPlanName
 The name of the scaling plan.
 
@@ -166,7 +188,7 @@ The name of the ScalingPlanSchedule
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityScalingPlan
 Aliases:
 
 Required: True
@@ -200,7 +222,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlanPersonalSchedule
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPersonalSchedule
 
 ## NOTES
 

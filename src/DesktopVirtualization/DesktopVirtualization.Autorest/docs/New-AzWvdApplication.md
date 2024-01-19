@@ -8,28 +8,55 @@ schema: 2.0.0
 # New-AzWvdApplication
 
 ## SYNOPSIS
-Create or update an application.
+Create an application.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzWvdApplication -CommandLineSetting <CommandLineSetting> -GroupName <String> -Name <String>
- -ResourceGroupName <String> [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
- [-SubscriptionId <String>] [-ApplicationType <RemoteApplicationType>] [-CommandLineArgument <String>]
- [-FilePath <String>] [-IconIndex <Int32>] [-IconPath <String>] [-MsixPackageApplicationId <String>]
+New-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String>
+ [-CommandLineSetting <String>] [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
+ [-SubscriptionId <String>] [-ApplicationType <String>] [-CommandLineArgument <String>] [-FilePath <String>]
+ [-IconIndex <Int32>] [-IconPath <String>] [-MsixPackageApplicationId <String>]
  [-MsixPackageFamilyName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AppAlias
 ```
-New-AzWvdApplication -AppAlias <String> -CommandLineSetting <CommandLineSetting> -GroupName <String>
- -Name <String> -ResourceGroupName <String> [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
+New-AzWvdApplication -AppAlias <String> -CommandLineSetting <String> -GroupName <String> -Name <String>
+ -ResourceGroupName <String> [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityApplicationGroup
+```
+New-AzWvdApplication -ApplicationGroupInputObject <IDesktopVirtualizationIdentity> -Name <String>
+ -Application <IApplication> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityApplicationGroupExpanded
+```
+New-AzWvdApplication -ApplicationGroupInputObject <IDesktopVirtualizationIdentity> -Name <String>
+ [-CommandLineSetting <String>] [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
+ [-ApplicationType <String>] [-CommandLineArgument <String>] [-FilePath <String>] [-IconIndex <Int32>]
+ [-IconPath <String>] [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update an application.
+Create an application.
 
 ## EXAMPLES
 
@@ -72,12 +99,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Application
+Schema for Application properties.
+To construct, see NOTES section for APPLICATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplication
+Parameter Sets: CreateViaIdentityApplicationGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ApplicationGroupInputObject
+Identity Parameter
+To construct, see NOTES section for APPLICATIONGROUPINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+Parameter Sets: CreateViaIdentityApplicationGroup, CreateViaIdentityApplicationGroupExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ApplicationType
 Resource Type of Application.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RemoteApplicationType
-Parameter Sets: CreateExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationGroupExpanded
 Aliases:
 
 Required: False
@@ -92,7 +151,7 @@ Command Line Arguments for Application.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationGroupExpanded
 Aliases:
 
 Required: False
@@ -106,8 +165,8 @@ Accept wildcard characters: False
 Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: AppAlias, CreateExpanded, CreateViaIdentityApplicationGroupExpanded
 Aliases:
 
 Required: True
@@ -138,7 +197,7 @@ Description of Application.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AppAlias, CreateExpanded, CreateViaIdentityApplicationGroupExpanded
 Aliases:
 
 Required: False
@@ -153,7 +212,7 @@ Specifies a path for the executable file for the application.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationGroupExpanded
 Aliases:
 
 Required: False
@@ -168,7 +227,7 @@ Friendly name of Application.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AppAlias, CreateExpanded, CreateViaIdentityApplicationGroupExpanded
 Aliases:
 
 Required: False
@@ -183,7 +242,7 @@ The name of the application group
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AppAlias, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: ApplicationGroupName
 
 Required: True
@@ -198,7 +257,7 @@ Index of the icon.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationGroupExpanded
 Aliases:
 
 Required: False
@@ -213,10 +272,40 @@ Path to icon.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationGroupExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -228,7 +317,7 @@ Specifies the package application Id for MSIX applications
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationGroupExpanded
 Aliases:
 
 Required: False
@@ -243,7 +332,7 @@ Specifies the package family name for MSIX applications
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityApplicationGroupExpanded
 Aliases:
 
 Required: False
@@ -274,7 +363,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AppAlias, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -289,7 +378,7 @@ Specifies whether to show the RemoteApp program in the RD Web Access server.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: AppAlias, CreateExpanded, CreateViaIdentityApplicationGroupExpanded
 Aliases:
 
 Required: False
@@ -304,7 +393,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AppAlias, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -350,9 +439,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplication
+
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplication
 
 ## NOTES
 

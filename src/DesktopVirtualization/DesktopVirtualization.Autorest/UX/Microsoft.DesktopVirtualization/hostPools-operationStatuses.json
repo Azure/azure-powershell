@@ -1,23 +1,23 @@
 {
-  "resourceType": "hostPools/privateEndpointConnections",
-  "apiVersion": "2023-09-05",
+  "resourceType": "hostPools/operationStatuses",
+  "apiVersion": "2023-11-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
   },
   "commands": [
     {
-      "name": "Get-AzWvdPrivateEndpointConnection",
-      "description": "Get a private endpoint connection.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      "name": "Get-AzWvdSessionHostConfigurationsOperationStatus",
+      "description": "Get Operation status for SessionHostManagement",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostConfigurations/default/operationStatuses/{operationId}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdprivateendpointconnection"
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhostconfigurationsoperationstatus"
         },
         "parameterSets": [
           {
             "parameters": [
               "-HostPoolName <String>",
-              "-Name <String>",
+              "-OperationId <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
@@ -26,15 +26,15 @@
       },
       "examples": [
         {
-          "description": "Get a private endpoint connection.",
+          "description": "Get Operation status for SessionHostManagement",
           "parameters": [
             {
               "name": "-HostPoolName",
               "value": "[Path.hostPoolName]"
             },
             {
-              "name": "-Name",
-              "value": "[Path.privateEndpointConnectionName]"
+              "name": "-OperationId",
+              "value": "[Path.operationId]"
             },
             {
               "name": "-ResourceGroupName",
@@ -49,35 +49,35 @@
       ]
     },
     {
-      "name": "Remove-AzWvdPrivateEndpointConnection",
-      "description": "Remove a connection.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      "name": "Get-AzWvdSessionHostManagementsOperationStatus",
+      "description": "Get Operation status for SessionHostManagement",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/operationStatuses/{operationId}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdprivateendpointconnection"
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhostmanagementsoperationstatus"
         },
         "parameterSets": [
           {
             "parameters": [
               "-HostPoolName <String>",
-              "-Name <String>",
+              "-OperationId <String>",
               "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
+              "[-SubscriptionId <String[]>]"
             ]
           }
         ]
       },
       "examples": [
         {
-          "description": "Remove a connection.",
+          "description": "Get Operation status for SessionHostManagement",
           "parameters": [
             {
               "name": "-HostPoolName",
               "value": "[Path.hostPoolName]"
             },
             {
-              "name": "-Name",
-              "value": "[Path.privateEndpointConnectionName]"
+              "name": "-OperationId",
+              "value": "[Path.operationId]"
             },
             {
               "name": "-ResourceGroupName",

@@ -25,6 +25,13 @@ Remove-AzWvdScalingPlanPooledSchedule -InputObject <IDesktopVirtualizationIdenti
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityScalingPlan
+```
+Remove-AzWvdScalingPlanPooledSchedule -ScalingPlanInputObject <IDesktopVirtualizationIdentity>
+ -ScalingPlanScheduleName <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Remove a ScalingPlanPooledSchedule.
 
@@ -102,6 +109,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ScalingPlanInputObject
+Identity Parameter
+To construct, see NOTES section for SCALINGPLANINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+Parameter Sets: DeleteViaIdentityScalingPlan
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ScalingPlanName
 The name of the scaling plan.
 
@@ -122,7 +145,7 @@ The name of the ScalingPlanSchedule
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityScalingPlan
 Aliases:
 
 Required: True

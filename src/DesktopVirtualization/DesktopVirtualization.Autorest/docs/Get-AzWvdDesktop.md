@@ -30,6 +30,12 @@ Get-AzWvdDesktop -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile 
  [<CommonParameters>]
 ```
 
+### GetViaIdentityApplicationGroup
+```
+Get-AzWvdDesktop -ApplicationGroupInputObject <IDesktopVirtualizationIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get a desktop.
 
@@ -62,6 +68,22 @@ ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgrou
 This command lists Windows Virtual Desktop Desktops in an application Group.
 
 ## PARAMETERS
+
+### -ApplicationGroupInputObject
+Identity Parameter
+To construct, see NOTES section for APPLICATIONGROUPINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+Parameter Sets: GetViaIdentityApplicationGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -ApplicationGroupName
 The name of the application group
@@ -145,7 +167,7 @@ The name of the desktop within the specified desktop group
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityApplicationGroup
 Aliases: DesktopName
 
 Required: True
@@ -210,7 +232,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IDesktop
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktop
 
 ## NOTES
 

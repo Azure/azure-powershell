@@ -47,19 +47,25 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 50175f111e9c899249e79eb082a75fb8a7aba0e2
+commit: 301696d1ba960be2f6e21dc6a73ee2dc1c59027d
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 sanitize-names: true
 subject-prefix: 'Wvd'
 input-file:
-- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2023-09-05/desktopvirtualization.json
+- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/preview/2023-11-01-preview/desktopvirtualization.json
 
 module-version: 2.1.0
 title: DesktopVirtualizationClient
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+
+identity-correction-for-post: false
+resourcegroup-append: false
+nested-object-to-string: false
+auto-switch-view: false
+
+use-extension: 
+  "@autorest/powershell": "4.x"
 
 directive:
   - where:

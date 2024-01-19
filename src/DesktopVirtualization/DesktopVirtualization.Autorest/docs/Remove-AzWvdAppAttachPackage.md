@@ -1,73 +1,55 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdprivateendpointconnection
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdappattachpackage
 schema: 2.0.0
 ---
 
-# Remove-AzWvdPrivateEndpointConnection
+# Remove-AzWvdAppAttachPackage
 
 ## SYNOPSIS
-Remove a connection.
+Remove an App Attach Package.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzWvdPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Delete1
-```
-Remove-AzWvdPrivateEndpointConnection -HostPoolName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity1
-```
-Remove-AzWvdPrivateEndpointConnection -InputObject <IDesktopVirtualizationIdentity>
+Remove-AzWvdAppAttachPackage -InputObject <IDesktopVirtualizationIdentity> [-Force]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove a connection.
+Remove an App Attach Package.
 
 ## EXAMPLES
 
-### Example 1: Remove the Private Endpoint Connection between the Private Endpoint and Windows Virtual Desktop HostPool by WVD Private Endpoint Connection Name and HostPoolName
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -Name WvdPrivateEndpointConnectionName -HostpoolName HostPoolName
+{{ Add code here }}
 ```
 
 ```output
-<none>
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command removes the Private Endpoint Connection to the Windows Virtual Desktop HostPool in a Resource Group.
-It does not delete the Private Endpoint.
-Customers will need to separately delete the Private Endpoint.
+{{ Add description here }}
 
-### Example 2: Remove the Private Endpoint Connection between the Private Endpoint and Windows Virtual Desktop Workspace by WVD Private Endpoint Connection Name and WorkspaceName
+### Example 2: {{ Add title here }}
 ```powershell
-Remove-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -Name WvdPrivateEndpointConnectionName -WorkspaceName WorkspaceName
+{{ Add code here }}
 ```
 
 ```output
-<none>
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command removes the Private Endpoint Connection to the Windows Virtual Desktop Workspace in a Resource Group.
-It does not delete the Private Endpoint.
-Customers will need to separately delete the Private Endpoint.
-
---------
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -87,15 +69,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HostPoolName
-The name of the host pool within the specified resource group
+### -Force
+Force flag to delete App Attach package.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete1
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -108,7 +90,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: DeleteViaIdentity, DeleteViaIdentity1
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -119,12 +101,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the private endpoint connection associated with the Azure resource
+The name of the App Attach package arm object
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Delete1
-Aliases: PrivateEndpointConnectionName
+Parameter Sets: Delete
+Aliases: AppAttachPackageName
 
 Required: True
 Position: Named
@@ -154,7 +136,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Delete1
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -169,27 +151,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Delete1
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkspaceName
-The name of the workspace
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
