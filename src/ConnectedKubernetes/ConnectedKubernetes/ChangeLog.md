@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed custom location enable flag issue.
 
 ## Version 0.10.0
 * Added support for custom locations id and correlation Id.
