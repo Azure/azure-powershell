@@ -44,6 +44,7 @@ resourcegroup-append: true
 nested-object-to-string: true
 inlining-threshold: 200
 keep-identitytype: true
+flatten-userassignedidentity: false
 
 directive:
   # https://stackoverflow.microsoft.com/questions/333196
