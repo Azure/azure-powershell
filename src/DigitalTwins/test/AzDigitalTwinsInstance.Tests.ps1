@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzDigitalTwinsInstance'))
 Describe 'AzDigitalTwinsInstance' {
     It 'CreateExpanded' {
         {
-            $config = New-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName -Location $env.location -IdentityType 'SystemAssigned' -PublicNetworkAccess 'Enabled'
+            $config = New-AzDigitalTwinsInstance -ResourceGroupName $env.resourceGroup -ResourceName $env.dtInstanceName -Location $env.location -EnableSystemAssignedIdentity -PublicNetworkAccess 'Enabled'
             $config.Name | Should -Be $env.dtInstanceName
         } | Should -Not -Throw
     }

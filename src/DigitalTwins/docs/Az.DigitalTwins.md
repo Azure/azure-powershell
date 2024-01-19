@@ -27,10 +27,10 @@ Get the specified private link resource for the given Digital Twin.
 Get the description of an existing time series database connection.
 
 ### [New-AzDigitalTwinsEndpoint](New-AzDigitalTwinsEndpoint.md)
-Create or update DigitalTwinsInstance endpoint.
+Create DigitalTwinsInstance endpoint.
 
 ### [New-AzDigitalTwinsInstance](New-AzDigitalTwinsInstance.md)
-Create or update the metadata of a DigitalTwinsInstance.
+Create the metadata of a DigitalTwinsInstance.
 The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
 
 ### [New-AzDigitalTwinsPrivateEndpointConnection](New-AzDigitalTwinsPrivateEndpointConnection.md)
@@ -54,6 +54,16 @@ Delete a time series database connection.
 ### [Test-AzDigitalTwinsInstanceNameAvailability](Test-AzDigitalTwinsInstanceNameAvailability.md)
 Check if a DigitalTwinsInstance name is available.
 
+### [Update-AzDigitalTwinsEndpoint](Update-AzDigitalTwinsEndpoint.md)
+Create DigitalTwinsInstance endpoint.
+
 ### [Update-AzDigitalTwinsInstance](Update-AzDigitalTwinsInstance.md)
-Update metadata of DigitalTwinsInstance.
+Create the metadata of a DigitalTwinsInstance.
+The usual pattern to modify a property is to retrieve the DigitalTwinsInstance and security metadata, and then combine them with the modified values in a new body to update the DigitalTwinsInstance.
+
+### [Update-AzDigitalTwinsPrivateEndpointConnection](Update-AzDigitalTwinsPrivateEndpointConnection.md)
+Update the status of a private endpoint connection with the given name.
+
+### [Update-AzDigitalTwinsTimeSeriesDatabaseConnection](Update-AzDigitalTwinsTimeSeriesDatabaseConnection.md)
+Create a time series database connection.
 
