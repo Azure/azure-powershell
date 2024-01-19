@@ -49,7 +49,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Support.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    #[Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Azure subscription Id.
     ${SubscriptionId},
