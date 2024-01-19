@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MariaDb-help.xml
 Module Name: Az.MariaDb
 online version: https://learn.microsoft.com/powershell/module/az.mariadb/get-azmariadbfirewallrule
 schema: 2.0.0
@@ -116,7 +116,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -131,7 +131,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -146,7 +146,7 @@ The subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -189,4 +189,3 @@ INPUTOBJECT `<IMariaDbIdentity>`: Identity Parameter
   - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
 
 ## RELATED LINKS
-

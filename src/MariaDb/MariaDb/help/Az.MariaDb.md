@@ -58,7 +58,7 @@ Restore a MariaDB from a existing MariaDB.
 
 ### [Update-AzMariaDbConfiguration](Update-AzMariaDbConfiguration.md)
 Updates a configuration of a server.
-Use Update-AzMariaDberver instead if you want update AdministratorLoginPassword, sku, etc.
+Use Update-AzMariaDbServer instead if you want update AdministratorLoginPassword, sku, etc.
 
 ### [Update-AzMariaDbFirewallRule](Update-AzMariaDbFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed an issue that updating password did not work.
 
 ## Version 0.2.0
 * Removed legacy SkuSize from input and output [#12734]

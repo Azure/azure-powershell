@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             if (IdentityType != null)
             {
                 var userAssingedIdentitiesDict = new Dictionary<string, UserAssignedIdentity>();
-                userAssingedIdentitiesDict.Add(UserAssignedIdentity, null);
+                userAssingedIdentitiesDict.Add(UserAssignedIdentity, new Management.NetApp.Models.UserAssignedIdentity());
                 netAppAccountBody.Identity = new ManagedServiceIdentity()
                 {
                     Type = IdentityType,

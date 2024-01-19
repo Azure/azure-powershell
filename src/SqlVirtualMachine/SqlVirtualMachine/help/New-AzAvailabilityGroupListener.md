@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
 online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azavailabilitygrouplistener
 schema: 2.0.0
@@ -16,10 +16,10 @@ Creates or updates an availability group listener.
 New-AzAvailabilityGroupListener -Name <String> -ResourceGroupName <String> -SqlVMGroupName <String>
  [-SubscriptionId <String>] [-AvailabilityGroupConfigurationReplica <IAgReplica[]>]
  [-AvailabilityGroupName <String>] [-CreateDefaultAvailabilityGroupIfNotExist] [-IpAddress <String>]
- [-LoadBalancerResourceId <String>] [-MultiSubnetIPConfiguration <IMultiSubnetIPConfiguration[]>]
- [-Port <Int32>] [-ProbePort <Int32>] [-PublicIpAddressResourceId <String>] [-SqlVirtualMachineId <String[]>]
- [-SubnetId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-LoadBalancerResourceId <String>] [-ProbePort <Int32>] [-PublicIpAddressResourceId <String>]
+ [-SqlVirtualMachineId <String[]>] [-SubnetId <String>]
+ [-MultiSubnetIPConfiguration <IMultiSubnetIPConfiguration[]>] [-Port <Int32>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -393,4 +393,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[PrivateIPAddressSubnetResourceId <String>]`: Subnet used to include private IP.
 
 ## RELATED LINKS
-

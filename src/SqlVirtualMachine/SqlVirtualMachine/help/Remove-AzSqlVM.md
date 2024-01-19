@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
 online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/remove-azsqlvm
 schema: 2.0.0
@@ -15,13 +15,13 @@ Deletes a SQL virtual machine.
 ### Delete (Default)
 ```
 Remove-AzSqlVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzSqlVM -InputObject <ISqlVirtualMachineIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,15 +34,11 @@ Deletes a SQL virtual machine.
 Remove-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
 ```
 
-
-
 ### Example 2
 ```powershell
 $sqlVM = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
 $sqlVM | Remove-AzSqlVM
 ```
-
-
 
 ## PARAMETERS
 
@@ -229,4 +225,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.
 
 ## RELATED LINKS
-
