@@ -1,16 +1,16 @@
 ---
-Module Name: Datadog
+Module Name: Az.Datadog
 Module Guid: 41d5c7d4-9068-4baf-9995-db228e7600b3
-Download Help Link: https://learn.microsoft.com/powershell/module/datadog
+Download Help Link: https://learn.microsoft.com/powershell/module/az.datadog
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Datadog Module
+# Az.Datadog Module
 ## Description
 Microsoft Azure PowerShell: Datadog cmdlets
 
-## Datadog Cmdlets
+## Az.Datadog Cmdlets
 ### [Get-AzDatadogMarketplaceAgreement](Get-AzDatadogMarketplaceAgreement.md)
 List Datadog marketplace agreements in the subscription.
 
@@ -39,7 +39,7 @@ Gets the datadog single sign-on resource for the given Monitor.
 Get a tag rule set for a given monitor resource.
 
 ### [New-AzDatadogFilteringTagObject](New-AzDatadogFilteringTagObject.md)
-Create a in-memory object for FilteringTag
+Create an in-memory object for FilteringTag.
 
 ### [New-AzDatadogMarketplaceAgreement](New-AzDatadogMarketplaceAgreement.md)
 Create Datadog marketplace agreement in the subscription.
@@ -51,7 +51,7 @@ Create a monitor resource.
 Configures single-sign-on for this resource.
 
 ### [New-AzDatadogTagRule](New-AzDatadogTagRule.md)
-Create or update a tag rule set for a given monitor resource.
+Create a tag rule set for a given monitor resource.
 
 ### [Remove-AzDatadogMonitor](Remove-AzDatadogMonitor.md)
 Delete a monitor resource.
@@ -64,4 +64,10 @@ Update a monitor resource.
 
 ### [Update-AzDatadogMonitorSetPasswordLink](Update-AzDatadogMonitorSetPasswordLink.md)
 Refresh the set password link and return a latest one.
+
+### [Update-AzDatadogSingleSignOnConfiguration](Update-AzDatadogSingleSignOnConfiguration.md)
+Configures single-sign-on for this resource.
+
+### [Update-AzDatadogTagRule](Update-AzDatadogTagRule.md)
+Create a tag rule set for a given monitor resource.
 

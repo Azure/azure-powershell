@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Datadog
-online version: https://learn.microsoft.com/powershell/module/datadog/get-azdatadogmonitordefaultkey
+Module Name: Az.Datadog
+online version: https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitordefaultkey
 schema: 2.0.0
 ---
 
@@ -58,7 +58,8 @@ This command gets the default api key by pipeline.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -177,21 +178,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogApiKey
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IDatadogIdentity>: Identity Parameter
-  - `[ConfigurationName <String>]`: Configuration name
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleSetName <String>]`: Rule set name
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

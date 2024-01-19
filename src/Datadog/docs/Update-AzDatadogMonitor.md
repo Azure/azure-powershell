@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Datadog
-online version: https://learn.microsoft.com/powershell/module/datadog/update-azdatadogmonitor
+Module Name: Az.Datadog
+online version: https://learn.microsoft.com/powershell/module/az.datadog/update-azdatadogmonitor
 schema: 2.0.0
 ---
 
@@ -15,14 +15,27 @@ Update a monitor resource.
 ### UpdateExpanded (Default)
 ```
 Update-AzDatadogMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-MonitoringStatus <MonitoringStatus>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MonitoringStatus <String>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDatadogMonitor -InputObject <IDatadogIdentity> [-MonitoringStatus <MonitoringStatus>]
- [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Update-AzDatadogMonitor -InputObject <IDatadogIdentity> [-MonitoringStatus <String>] [-SkuName <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzDatadogMonitor -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzDatadogMonitor -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -75,7 +88,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -105,12 +119,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MonitoringStatus
 Flag specifying if the resource monitoring is enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Support.MonitoringStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -125,7 +169,7 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: MonitorName
 
 Required: True
@@ -156,7 +200,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -171,7 +215,7 @@ Name of the SKU.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -186,7 +230,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -201,7 +245,7 @@ The new tags of the monitor resource.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -254,21 +298,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IDatadogIdentity>: Identity Parameter
-  - `[ConfigurationName <String>]`: Configuration name
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleSetName <String>]`: Rule set name
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

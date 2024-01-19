@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Datadog
-online version: https://learn.microsoft.com/powershell/module/datadog/get-azdatadogtagrule
+Module Name: Az.Datadog
+online version: https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogtagrule
 schema: 2.0.0
 ---
 
@@ -27,6 +27,12 @@ Get-AzDatadogTagRule -MonitorName <String> -Name <String> -ResourceGroupName <St
 ### GetViaIdentity
 ```
 Get-AzDatadogTagRule -InputObject <IDatadogIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityMonitor
+```
+Get-AzDatadogTagRule -MonitorInputObject <IDatadogIdentity> -Name <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +82,8 @@ This command gets a tag rule set for a given monitor resource by pipeline.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -106,6 +113,22 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -MonitorInputObject
+Identity Parameter
+To construct, see NOTES section for MONITORINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogIdentity
+Parameter Sets: GetViaIdentityMonitor
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MonitorName
 Monitor resource name
 
@@ -126,7 +149,7 @@ Rule set name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityMonitor
 Aliases:
 
 Required: True
@@ -179,21 +202,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IMonitoringTagRules
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IDatadogIdentity>: Identity Parameter
-  - `[ConfigurationName <String>]`: Configuration name
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleSetName <String>]`: Rule set name
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

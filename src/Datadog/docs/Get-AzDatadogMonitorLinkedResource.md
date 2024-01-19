@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Datadog
-online version: https://learn.microsoft.com/powershell/module/datadog/get-azdatadogmonitorlinkedresource
+Module Name: Az.Datadog
+online version: https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogmonitorlinkedresource
 schema: 2.0.0
 ---
 
@@ -46,7 +46,8 @@ This command lists all Azure resources associated to the same Datadog organizati
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -147,8 +148,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILinkedResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

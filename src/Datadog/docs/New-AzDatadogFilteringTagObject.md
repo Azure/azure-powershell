@@ -1,23 +1,23 @@
 ---
 external help file:
-Module Name: Datadog
-online version: https://learn.microsoft.com/powershell/module//az.Datadog/new-AzDatadogFilteringTagObject
+Module Name: Az.Datadog
+online version: https://learn.microsoft.com/powershell/module/Az.Datadog/new-azdatadogfilteringtagobject
 schema: 2.0.0
 ---
 
 # New-AzDatadogFilteringTagObject
 
 ## SYNOPSIS
-Create a in-memory object for FilteringTag
+Create an in-memory object for FilteringTag.
 
 ## SYNTAX
 
 ```
-New-AzDatadogFilteringTagObject [-Action <TagAction>] [-Name <String>] [-Value <String>] [<CommonParameters>]
+New-AzDatadogFilteringTagObject [-Action <String>] [-Name <String>] [-Value <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for FilteringTag
+Create an in-memory object for FilteringTag.
 
 ## EXAMPLES
 
@@ -35,7 +35,7 @@ Valid actions for a filtering tag.
 Exclusion takes priority over inclusion.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Datadog.Support.TagAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -86,8 +86,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.FilteringTag
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
