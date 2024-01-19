@@ -1,8 +1,8 @@
 {
-  "AzDigitalTwinsEndpoint+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints?api-version=2022-05-31+1": {
+  "AzDigitalTwinsEndpoint+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints?api-version=2022-05-31+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints?api-version=2022-05-31",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints?api-version=2022-05-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -37,14 +37,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eh-name\",\"name\":\"test-dt-eh-name\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"authenticationType\":\"KeyBased\",\"endpointType\":\"EventHub\",\"connectionStringPrimaryKey\":\"Endpoint=sb://(PLACEHOLDER)/;SharedAccessKeyName=(PLACEHOLDER);SharedAccessKey=(PLACEHOLDER);EntityPath=(PLACEHOLDER)\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2022-11-29T07:39:31.7282086+00:00\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T07:39:30.7621056Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T07:39:30.7621056Z\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eh\",\"name\":\"test-dt-eh\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"authenticationType\":\"KeyBased\",\"endpointType\":\"EventHub\",\"connectionStringPrimaryKey\":\"Endpoint=sb://(PLACEHOLDER)/;SharedAccessKeyName=(PLACEHOLDER);SharedAccessKey=(PLACEHOLDER);EntityPath=(PLACEHOLDER)\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2022-11-29T08:00:36.6916518+00:00\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T08:00:35.7451411Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T08:28:57.1722772Z\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eg\",\"name\":\"test-dt-eg\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"authenticationType\":\"KeyBased\",\"endpointType\":\"EventGrid\",\"TopicEndpoint\":\"https://test-dt-eg.eastus-1.eventgrid.azure.net/api/events\",\"accessKey1\":\"(PLACEHOLDER)\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2022-11-29T08:01:00.13403+00:00\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T08:00:59.8224368Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T08:29:21.3243703Z\"}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-servicebus\",\"name\":\"test-dt-servicebus\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"authenticationType\":\"KeyBased\",\"endpointType\":\"ServiceBus\",\"primaryConnectionString\":\"Endpoint=sb://(PLACEHOLDER)/;SharedAccessKeyName=(PLACEHOLDER);SharedAccessKey=(PLACEHOLDER);EntityPath=(PLACEHOLDER)\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2022-11-29T08:29:10.0891299+00:00\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T08:29:09.583473Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T08:29:09.583473Z\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eh-name\",\"name\":\"test-dt-eh-name\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"authenticationType\":\"KeyBased\",\"endpointType\":\"EventHub\",\"connectionStringPrimaryKey\":\"Endpoint=sb://(PLACEHOLDER)/;SharedAccessKeyName=(PLACEHOLDER);SharedAccessKey=(PLACEHOLDER);EntityPath=(PLACEHOLDER)\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2022-11-29T07:39:31.7282086+00:00\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T07:39:30.7621056Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T07:39:30.7621056Z\"}},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eh\",\"name\":\"test-dt-eh\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"authenticationType\":\"KeyBased\",\"endpointType\":\"EventHub\",\"connectionStringPrimaryKey\":\"Endpoint=sb://(PLACEHOLDER)/;SharedAccessKeyName=(PLACEHOLDER);SharedAccessKey=(PLACEHOLDER);EntityPath=(PLACEHOLDER)\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2022-11-29T08:00:36.6916518+00:00\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T08:00:35.7451411Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T08:28:57.1722772Z\"}},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eg\",\"name\":\"test-dt-eg\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"authenticationType\":\"KeyBased\",\"endpointType\":\"EventGrid\",\"TopicEndpoint\":\"https://test-dt-eg.eastus-1.eventgrid.azure.net/api/events\",\"accessKey1\":\"(PLACEHOLDER)\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2022-11-29T08:01:00.13403+00:00\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T08:00:59.8224368Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T08:29:21.3243703Z\"}},{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-servicebus\",\"name\":\"test-dt-servicebus\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"authenticationType\":\"KeyBased\",\"endpointType\":\"ServiceBus\",\"primaryConnectionString\":\"Endpoint=sb://(PLACEHOLDER)/;SharedAccessKeyName=(PLACEHOLDER);SharedAccessKey=(PLACEHOLDER);EntityPath=(PLACEHOLDER)\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2022-11-29T08:29:10.0891299+00:00\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T08:29:09.583473Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T08:29:09.583473Z\"}}]}",
       "isContentBase64": false
     }
   },
-  "AzDigitalTwinsEndpoint+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eh?api-version=2022-05-31+1": {
+  "AzDigitalTwinsEndpoint+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eh?api-version=2022-05-31+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eh?api-version=2022-05-31",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eh?api-version=2022-05-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -79,14 +79,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eh\",\"name\":\"test-dt-eh\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"authenticationType\":\"KeyBased\",\"endpointType\":\"EventHub\",\"connectionStringPrimaryKey\":\"Endpoint=sb://(PLACEHOLDER)/;SharedAccessKeyName=(PLACEHOLDER);SharedAccessKey=(PLACEHOLDER);EntityPath=(PLACEHOLDER)\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2022-11-29T08:00:36.6916518+00:00\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T08:00:35.7451411Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T08:28:57.1722772Z\"}}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eh\",\"name\":\"test-dt-eh\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"authenticationType\":\"KeyBased\",\"endpointType\":\"EventHub\",\"connectionStringPrimaryKey\":\"Endpoint=sb://(PLACEHOLDER)/;SharedAccessKeyName=(PLACEHOLDER);SharedAccessKey=(PLACEHOLDER);EntityPath=(PLACEHOLDER)\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2022-11-29T08:00:36.6916518+00:00\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T08:00:35.7451411Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T08:28:57.1722772Z\"}}",
       "isContentBase64": false
     }
   },
-  "AzDigitalTwinsEndpoint+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eg?api-version=2022-05-31+1": {
+  "AzDigitalTwinsEndpoint+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eg?api-version=2022-05-31+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eg?api-version=2022-05-31",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eg?api-version=2022-05-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -106,11 +106,11 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InRlc3Rncm91cC1kaWdpdGFsdHdpbnMiLCJyZXNvdXJjZU5hbWUiOiJ0ZXN0LWRpZ2l0YWx0d2lucy1pbnN0YW5jZSIsIm5lc3RlZFJlc291cmNlTmFtZSI6InRlc3QtZHQtZWcifQ%3d%3d?api-version=2022-05-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InRlc3Rncm91cC1kaWdpdGFsdHdpbnMiLCJyZXNvdXJjZU5hbWUiOiJ0ZXN0LWRpZ2l0YWx0d2lucy1pbnN0YW5jZSIsIm5lc3RlZFJlc291cmNlTmFtZSI6InRlc3QtZHQtZWcifQ%3d%3d?api-version=2022-05-31" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "traceresponse": [ "00-1ab055d8712f641a6ba19b0bf246ecb5-f71bf561b1fc8744-01" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com:443/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/d4bb2951-96a6-477f-9ae9-4abd35d59fa9?api-version=2022-05-31" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com:443/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/d4bb2951-96a6-477f-9ae9-4abd35d59fa9?api-version=2022-05-31" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
         "x-ms-request-id": [ "ba053533-8678-4501-9d14-38d9baa1a090" ],
@@ -124,14 +124,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eg\",\"name\":\"test-dt-eg\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"authenticationType\":\"KeyBased\",\"endpointType\":\"EventGrid\",\"TopicEndpoint\":\"https://test-dt-eg.eastus-1.eventgrid.azure.net/api/events\",\"accessKey1\":\"(PLACEHOLDER)\",\"provisioningState\":\"Deleting\",\"createdTime\":\"2022-11-29T08:01:00.1942945+00:00\"},\"systemData\":null}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-eg\",\"name\":\"test-dt-eg\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"authenticationType\":\"KeyBased\",\"endpointType\":\"EventGrid\",\"TopicEndpoint\":\"https://test-dt-eg.eastus-1.eventgrid.azure.net/api/events\",\"accessKey1\":\"(PLACEHOLDER)\",\"provisioningState\":\"Deleting\",\"createdTime\":\"2022-11-29T08:01:00.1942945+00:00\"},\"systemData\":null}",
       "isContentBase64": false
     }
   },
-  "AzDigitalTwinsEndpoint+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/d4bb2951-96a6-477f-9ae9-4abd35d59fa9?api-version=2022-05-31+2": {
+  "AzDigitalTwinsEndpoint+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/d4bb2951-96a6-477f-9ae9-4abd35d59fa9?api-version=2022-05-31+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/d4bb2951-96a6-477f-9ae9-4abd35d59fa9?api-version=2022-05-31",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/d4bb2951-96a6-477f-9ae9-4abd35d59fa9?api-version=2022-05-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -166,14 +166,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/locations/eastus/operationsStatuses/d4bb2951-96a6-477f-9ae9-4abd35d59fa9\",\"name\":\"d4bb2951-96a6-477f-9ae9-4abd35d59fa9\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-29T08:29:34.4695422Z\",\"endTime\":\"2022-11-29T08:29:38.8794389Z\"}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/eastus/operationsStatuses/d4bb2951-96a6-477f-9ae9-4abd35d59fa9\",\"name\":\"d4bb2951-96a6-477f-9ae9-4abd35d59fa9\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-29T08:29:34.4695422Z\",\"endTime\":\"2022-11-29T08:29:38.8794389Z\"}",
       "isContentBase64": false
     }
   },
-  "AzDigitalTwinsEndpoint+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InRlc3Rncm91cC1kaWdpdGFsdHdpbnMiLCJyZXNvdXJjZU5hbWUiOiJ0ZXN0LWRpZ2l0YWx0d2lucy1pbnN0YW5jZSIsIm5lc3RlZFJlc291cmNlTmFtZSI6InRlc3QtZHQtZWcifQ%3d%3d?api-version=2022-05-31+3": {
+  "AzDigitalTwinsEndpoint+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InRlc3Rncm91cC1kaWdpdGFsdHdpbnMiLCJyZXNvdXJjZU5hbWUiOiJ0ZXN0LWRpZ2l0YWx0d2lucy1pbnN0YW5jZSIsIm5lc3RlZFJlc291cmNlTmFtZSI6InRlc3QtZHQtZWcifQ%3d%3d?api-version=2022-05-31+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InRlc3Rncm91cC1kaWdpdGFsdHdpbnMiLCJyZXNvdXJjZU5hbWUiOiJ0ZXN0LWRpZ2l0YWx0d2lucy1pbnN0YW5jZSIsIm5lc3RlZFJlc291cmNlTmFtZSI6InRlc3QtZHQtZWcifQ%3d%3d?api-version=2022-05-31",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InRlc3Rncm91cC1kaWdpdGFsdHdpbnMiLCJyZXNvdXJjZU5hbWUiOiJ0ZXN0LWRpZ2l0YWx0d2lucy1pbnN0YW5jZSIsIm5lc3RlZFJlc291cmNlTmFtZSI6InRlc3QtZHQtZWcifQ%3d%3d?api-version=2022-05-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -210,10 +210,10 @@
       "isContentBase64": false
     }
   },
-  "AzDigitalTwinsEndpoint+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-servicebus?api-version=2022-05-31+1": {
+  "AzDigitalTwinsEndpoint+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-servicebus?api-version=2022-05-31+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-servicebus?api-version=2022-05-31",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-servicebus?api-version=2022-05-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -248,14 +248,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-servicebus\",\"name\":\"test-dt-servicebus\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"authenticationType\":\"KeyBased\",\"endpointType\":\"ServiceBus\",\"primaryConnectionString\":\"Endpoint=sb://(PLACEHOLDER)/;SharedAccessKeyName=(PLACEHOLDER);SharedAccessKey=(PLACEHOLDER);EntityPath=(PLACEHOLDER)\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2022-11-29T08:29:10.0891299+00:00\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T08:29:09.583473Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T08:29:09.583473Z\"}}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-servicebus\",\"name\":\"test-dt-servicebus\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"authenticationType\":\"KeyBased\",\"endpointType\":\"ServiceBus\",\"primaryConnectionString\":\"Endpoint=sb://(PLACEHOLDER)/;SharedAccessKeyName=(PLACEHOLDER);SharedAccessKey=(PLACEHOLDER);EntityPath=(PLACEHOLDER)\",\"provisioningState\":\"Succeeded\",\"createdTime\":\"2022-11-29T08:29:10.0891299+00:00\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T08:29:09.583473Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T08:29:09.583473Z\"}}",
       "isContentBase64": false
     }
   },
-  "AzDigitalTwinsEndpoint+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-servicebus?api-version=2022-05-31+2": {
+  "AzDigitalTwinsEndpoint+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-servicebus?api-version=2022-05-31+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-servicebus?api-version=2022-05-31",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-servicebus?api-version=2022-05-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -275,11 +275,11 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InRlc3Rncm91cC1kaWdpdGFsdHdpbnMiLCJyZXNvdXJjZU5hbWUiOiJ0ZXN0LWRpZ2l0YWx0d2lucy1pbnN0YW5jZSIsIm5lc3RlZFJlc291cmNlTmFtZSI6InRlc3QtZHQtc2VydmljZWJ1cyJ9?api-version=2022-05-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InRlc3Rncm91cC1kaWdpdGFsdHdpbnMiLCJyZXNvdXJjZU5hbWUiOiJ0ZXN0LWRpZ2l0YWx0d2lucy1pbnN0YW5jZSIsIm5lc3RlZFJlc291cmNlTmFtZSI6InRlc3QtZHQtc2VydmljZWJ1cyJ9?api-version=2022-05-31" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "traceresponse": [ "00-71b4c8417d2b75962ff618dcdd5ce3fa-f0ea62b772d54754-01" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com:443/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/2653b4d0-b8e5-4a12-a13f-8c0f272ef7d6?api-version=2022-05-31" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com:443/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/2653b4d0-b8e5-4a12-a13f-8c0f272ef7d6?api-version=2022-05-31" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
         "x-ms-request-id": [ "9b26957f-59fa-4c35-9d41-f14c17ca40cd" ],
@@ -293,14 +293,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-servicebus\",\"name\":\"test-dt-servicebus\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"authenticationType\":\"KeyBased\",\"endpointType\":\"ServiceBus\",\"primaryConnectionString\":\"(PLACEHOLDER)\",\"provisioningState\":\"Deleting\",\"createdTime\":\"2022-11-29T08:29:10.1695394+00:00\"},\"systemData\":null}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/endpoints/test-dt-servicebus\",\"name\":\"test-dt-servicebus\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/endpoints\",\"properties\":{\"authenticationType\":\"KeyBased\",\"endpointType\":\"ServiceBus\",\"primaryConnectionString\":\"(PLACEHOLDER)\",\"provisioningState\":\"Deleting\",\"createdTime\":\"2022-11-29T08:29:10.1695394+00:00\"},\"systemData\":null}",
       "isContentBase64": false
     }
   },
-  "AzDigitalTwinsEndpoint+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/2653b4d0-b8e5-4a12-a13f-8c0f272ef7d6?api-version=2022-05-31+3": {
+  "AzDigitalTwinsEndpoint+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/2653b4d0-b8e5-4a12-a13f-8c0f272ef7d6?api-version=2022-05-31+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/2653b4d0-b8e5-4a12-a13f-8c0f272ef7d6?api-version=2022-05-31",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/2653b4d0-b8e5-4a12-a13f-8c0f272ef7d6?api-version=2022-05-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -335,14 +335,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/locations/eastus/operationsStatuses/2653b4d0-b8e5-4a12-a13f-8c0f272ef7d6\",\"name\":\"2653b4d0-b8e5-4a12-a13f-8c0f272ef7d6\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-29T08:29:46.4085208Z\",\"endTime\":\"2022-11-29T08:29:50.74314Z\"}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/eastus/operationsStatuses/2653b4d0-b8e5-4a12-a13f-8c0f272ef7d6\",\"name\":\"2653b4d0-b8e5-4a12-a13f-8c0f272ef7d6\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-29T08:29:46.4085208Z\",\"endTime\":\"2022-11-29T08:29:50.74314Z\"}",
       "isContentBase64": false
     }
   },
-  "AzDigitalTwinsEndpoint+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InRlc3Rncm91cC1kaWdpdGFsdHdpbnMiLCJyZXNvdXJjZU5hbWUiOiJ0ZXN0LWRpZ2l0YWx0d2lucy1pbnN0YW5jZSIsIm5lc3RlZFJlc291cmNlTmFtZSI6InRlc3QtZHQtc2VydmljZWJ1cyJ9?api-version=2022-05-31+4": {
+  "AzDigitalTwinsEndpoint+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InRlc3Rncm91cC1kaWdpdGFsdHdpbnMiLCJyZXNvdXJjZU5hbWUiOiJ0ZXN0LWRpZ2l0YWx0d2lucy1pbnN0YW5jZSIsIm5lc3RlZFJlc291cmNlTmFtZSI6InRlc3QtZHQtc2VydmljZWJ1cyJ9?api-version=2022-05-31+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InRlc3Rncm91cC1kaWdpdGFsdHdpbnMiLCJyZXNvdXJjZU5hbWUiOiJ0ZXN0LWRpZ2l0YWx0d2lucy1pbnN0YW5jZSIsIm5lc3RlZFJlc291cmNlTmFtZSI6InRlc3QtZHQtc2VydmljZWJ1cyJ9?api-version=2022-05-31",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiRW5kcG9pbnQiLCJyZXNvdXJjZUdyb3VwTmFtZSI6InRlc3Rncm91cC1kaWdpdGFsdHdpbnMiLCJyZXNvdXJjZU5hbWUiOiJ0ZXN0LWRpZ2l0YWx0d2lucy1pbnN0YW5jZSIsIm5lc3RlZFJlc291cmNlTmFtZSI6InRlc3QtZHQtc2VydmljZWJ1cyJ9?api-version=2022-05-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

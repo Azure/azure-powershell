@@ -1,8 +1,8 @@
 {
-  "AzDigitalTwinsTimeSeriesDatabaseConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections?api-version=2022-05-31+1": {
+  "AzDigitalTwinsTimeSeriesDatabaseConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections?api-version=2022-05-31+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections?api-version=2022-05-31",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections?api-version=2022-05-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -37,14 +37,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections/AdtAdxConnection\",\"name\":\"AdtAdxConnection\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/timeSeriesDatabaseConnections\",\"properties\":{\"connectionType\":\"AzureDataExplorer\",\"adxEndpointUri\":\"https://testdtadec.eastus.kusto.windows.net\",\"adxResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.Kusto/Clusters/testdtadec\",\"adxDatabaseName\":\"testdtadec-db\",\"adxTableName\":\"adt_dh_test_digitaltwins_instance_eastus\",\"eventHubNamespaceResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.EventHub/namespaces/test-dt-eh\",\"eventHubEndpointUri\":\"sb://test-dt-eh.servicebus.windows.net\",\"eventHubEntityPath\":\"test-dt-eh-01\",\"eventHubConsumerGroup\":\"$Default\",\"provisioningState\":\"Failed\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T08:22:26.8668306Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T08:22:26.8668306Z\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections/AdtAdxConnection\",\"name\":\"AdtAdxConnection\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/timeSeriesDatabaseConnections\",\"properties\":{\"connectionType\":\"AzureDataExplorer\",\"adxEndpointUri\":\"https://testdtadec.eastus.kusto.windows.net\",\"adxResourceId\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.Kusto/Clusters/testdtadec\",\"adxDatabaseName\":\"testdtadec-db\",\"adxTableName\":\"adt_dh_test_digitaltwins_instance_eastus\",\"eventHubNamespaceResourceId\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.EventHub/namespaces/test-dt-eh\",\"eventHubEndpointUri\":\"sb://test-dt-eh.servicebus.windows.net\",\"eventHubEntityPath\":\"test-dt-eh-01\",\"eventHubConsumerGroup\":\"$Default\",\"provisioningState\":\"Failed\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T08:22:26.8668306Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T08:22:26.8668306Z\"}}]}",
       "isContentBase64": false
     }
   },
-  "AzDigitalTwinsTimeSeriesDatabaseConnection+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections/AdtAdxConnection?api-version=2022-05-31+1": {
+  "AzDigitalTwinsTimeSeriesDatabaseConnection+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections/AdtAdxConnection?api-version=2022-05-31+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections/AdtAdxConnection?api-version=2022-05-31",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections/AdtAdxConnection?api-version=2022-05-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -79,14 +79,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections/AdtAdxConnection\",\"name\":\"AdtAdxConnection\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/timeSeriesDatabaseConnections\",\"properties\":{\"connectionType\":\"AzureDataExplorer\",\"adxEndpointUri\":\"https://testdtadec.eastus.kusto.windows.net\",\"adxResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.Kusto/Clusters/testdtadec\",\"adxDatabaseName\":\"testdtadec-db\",\"adxTableName\":\"adt_dh_test_digitaltwins_instance_eastus\",\"eventHubNamespaceResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.EventHub/namespaces/test-dt-eh\",\"eventHubEndpointUri\":\"sb://test-dt-eh.servicebus.windows.net\",\"eventHubEntityPath\":\"test-dt-eh-01\",\"eventHubConsumerGroup\":\"$Default\",\"provisioningState\":\"Failed\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T08:22:26.8668306Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T08:22:26.8668306Z\"}}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections/AdtAdxConnection\",\"name\":\"AdtAdxConnection\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/timeSeriesDatabaseConnections\",\"properties\":{\"connectionType\":\"AzureDataExplorer\",\"adxEndpointUri\":\"https://testdtadec.eastus.kusto.windows.net\",\"adxResourceId\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.Kusto/Clusters/testdtadec\",\"adxDatabaseName\":\"testdtadec-db\",\"adxTableName\":\"adt_dh_test_digitaltwins_instance_eastus\",\"eventHubNamespaceResourceId\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.EventHub/namespaces/test-dt-eh\",\"eventHubEndpointUri\":\"sb://test-dt-eh.servicebus.windows.net\",\"eventHubEntityPath\":\"test-dt-eh-01\",\"eventHubConsumerGroup\":\"$Default\",\"provisioningState\":\"Failed\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T08:22:26.8668306Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T08:22:26.8668306Z\"}}",
       "isContentBase64": false
     }
   },
-  "AzDigitalTwinsTimeSeriesDatabaseConnection+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections/AdtAdxConnection?api-version=2022-05-31+1": {
+  "AzDigitalTwinsTimeSeriesDatabaseConnection+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections/AdtAdxConnection?api-version=2022-05-31+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections/AdtAdxConnection?api-version=2022-05-31",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections/AdtAdxConnection?api-version=2022-05-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -106,11 +106,11 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiVGltZVNlcmllc0RhdGFiYXNlQ29ubmVjdGlvbiIsInJlc291cmNlR3JvdXBOYW1lIjoidGVzdGdyb3VwLWRpZ2l0YWx0d2lucyIsInJlc291cmNlTmFtZSI6InRlc3QtZGlnaXRhbHR3aW5zLWluc3RhbmNlIiwibmVzdGVkUmVzb3VyY2VOYW1lIjoiQWR0QWR4Q29ubmVjdGlvbiJ9?api-version=2022-05-31" ],
+        "Location": [ "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiVGltZVNlcmllc0RhdGFiYXNlQ29ubmVjdGlvbiIsInJlc291cmNlR3JvdXBOYW1lIjoidGVzdGdyb3VwLWRpZ2l0YWx0d2lucyIsInJlc291cmNlTmFtZSI6InRlc3QtZGlnaXRhbHR3aW5zLWluc3RhbmNlIiwibmVzdGVkUmVzb3VyY2VOYW1lIjoiQWR0QWR4Q29ubmVjdGlvbiJ9?api-version=2022-05-31" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "traceresponse": [ "00-0fbcc32cf0d3d201a1d2f745a795109a-0910f68133a56a6b-01" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com:443/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/7446d65e-4d03-45d4-9d8e-3db8cde362b9?api-version=2022-05-31" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com:443/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/7446d65e-4d03-45d4-9d8e-3db8cde362b9?api-version=2022-05-31" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
         "x-ms-request-id": [ "29a2a741-f68a-4fe5-b65d-f0f3d2c8548b" ],
@@ -124,14 +124,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections/AdtAdxConnection\",\"name\":\"AdtAdxConnection\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/timeSeriesDatabaseConnections\",\"properties\":{\"connectionType\":\"AzureDataExplorer\",\"adxEndpointUri\":\"https://testdtadec.eastus.kusto.windows.net\",\"adxResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.Kusto/Clusters/testdtadec\",\"adxDatabaseName\":\"testdtadec-db\",\"adxTableName\":\"adt_dh_test_digitaltwins_instance_eastus\",\"eventHubNamespaceResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/testgroup-digitaltwins/providers/Microsoft.EventHub/namespaces/test-dt-eh\",\"eventHubEndpointUri\":\"sb://test-dt-eh.servicebus.windows.net\",\"eventHubEntityPath\":\"test-dt-eh-01\",\"eventHubConsumerGroup\":\"$Default\",\"provisioningState\":\"Deleting\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T08:22:26.8668306Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T08:22:26.8668306Z\"}}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.DigitalTwins/digitalTwinsInstances/test-digitaltwins-instance/timeSeriesDatabaseConnections/AdtAdxConnection\",\"name\":\"AdtAdxConnection\",\"type\":\"Microsoft.DigitalTwins/digitalTwinsInstances/timeSeriesDatabaseConnections\",\"properties\":{\"connectionType\":\"AzureDataExplorer\",\"adxEndpointUri\":\"https://testdtadec.eastus.kusto.windows.net\",\"adxResourceId\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.Kusto/Clusters/testdtadec\",\"adxDatabaseName\":\"testdtadec-db\",\"adxTableName\":\"adt_dh_test_digitaltwins_instance_eastus\",\"eventHubNamespaceResourceId\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/testgroup-digitaltwins/providers/Microsoft.EventHub/namespaces/test-dt-eh\",\"eventHubEndpointUri\":\"sb://test-dt-eh.servicebus.windows.net\",\"eventHubEntityPath\":\"test-dt-eh-01\",\"eventHubConsumerGroup\":\"$Default\",\"provisioningState\":\"Deleting\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-11-29T08:22:26.8668306Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-11-29T08:22:26.8668306Z\"}}",
       "isContentBase64": false
     }
   },
-  "AzDigitalTwinsTimeSeriesDatabaseConnection+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/7446d65e-4d03-45d4-9d8e-3db8cde362b9?api-version=2022-05-31+2": {
+  "AzDigitalTwinsTimeSeriesDatabaseConnection+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/7446d65e-4d03-45d4-9d8e-3db8cde362b9?api-version=2022-05-31+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/7446d65e-4d03-45d4-9d8e-3db8cde362b9?api-version=2022-05-31",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationsStatuses/7446d65e-4d03-45d4-9d8e-3db8cde362b9?api-version=2022-05-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -166,14 +166,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/locations/eastus/operationsStatuses/7446d65e-4d03-45d4-9d8e-3db8cde362b9\",\"name\":\"7446d65e-4d03-45d4-9d8e-3db8cde362b9\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-29T08:33:30.0346434Z\",\"endTime\":\"2022-11-29T08:33:32.23904Z\"}",
+      "Content": "{\"id\":\"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/locations/eastus/operationsStatuses/7446d65e-4d03-45d4-9d8e-3db8cde362b9\",\"name\":\"7446d65e-4d03-45d4-9d8e-3db8cde362b9\",\"status\":\"Succeeded\",\"startTime\":\"2022-11-29T08:33:30.0346434Z\",\"endTime\":\"2022-11-29T08:33:32.23904Z\"}",
       "isContentBase64": false
     }
   },
-  "AzDigitalTwinsTimeSeriesDatabaseConnection+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiVGltZVNlcmllc0RhdGFiYXNlQ29ubmVjdGlvbiIsInJlc291cmNlR3JvdXBOYW1lIjoidGVzdGdyb3VwLWRpZ2l0YWx0d2lucyIsInJlc291cmNlTmFtZSI6InRlc3QtZGlnaXRhbHR3aW5zLWluc3RhbmNlIiwibmVzdGVkUmVzb3VyY2VOYW1lIjoiQWR0QWR4Q29ubmVjdGlvbiJ9?api-version=2022-05-31+3": {
+  "AzDigitalTwinsTimeSeriesDatabaseConnection+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiVGltZVNlcmllc0RhdGFiYXNlQ29ubmVjdGlvbiIsInJlc291cmNlR3JvdXBOYW1lIjoidGVzdGdyb3VwLWRpZ2l0YWx0d2lucyIsInJlc291cmNlTmFtZSI6InRlc3QtZGlnaXRhbHR3aW5zLWluc3RhbmNlIiwibmVzdGVkUmVzb3VyY2VOYW1lIjoiQWR0QWR4Q29ubmVjdGlvbiJ9?api-version=2022-05-31+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiVGltZVNlcmllc0RhdGFiYXNlQ29ubmVjdGlvbiIsInJlc291cmNlR3JvdXBOYW1lIjoidGVzdGdyb3VwLWRpZ2l0YWx0d2lucyIsInJlc291cmNlTmFtZSI6InRlc3QtZGlnaXRhbHR3aW5zLWluc3RhbmNlIiwibmVzdGVkUmVzb3VyY2VOYW1lIjoiQWR0QWR4Q29ubmVjdGlvbiJ9?api-version=2022-05-31",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.DigitalTwins/locations/eastus/operationResults/eyJvcGVyYXRpb25LaW5kIjoiRGVsZXRlIiwicmVzb3VyY2VLaW5kIjoiVGltZVNlcmllc0RhdGFiYXNlQ29ubmVjdGlvbiIsInJlc291cmNlR3JvdXBOYW1lIjoidGVzdGdyb3VwLWRpZ2l0YWx0d2lucyIsInJlc291cmNlTmFtZSI6InRlc3QtZGlnaXRhbHR3aW5zLWluc3RhbmNlIiwibmVzdGVkUmVzb3VyY2VOYW1lIjoiQWR0QWR4Q29ubmVjdGlvbiJ9?api-version=2022-05-31",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
