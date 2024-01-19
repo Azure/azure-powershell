@@ -108,5 +108,11 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember(Order = 14)]
         public string AgentLinks { get; set; }
+
+        /// <summary>
+        /// Gets or sets the PrivateEndpointStateForBackup.
+        /// </summary>
+        [DataMember(Order = 15)]
+        public string PrivateEndpointStateForBackup { get; set; }
     }
 }

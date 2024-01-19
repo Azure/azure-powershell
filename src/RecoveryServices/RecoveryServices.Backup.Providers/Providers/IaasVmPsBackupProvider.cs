@@ -93,27 +93,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ProtectionPolicyResource oldPolicy = null;
             ProtectionPolicyResource newPolicy = null;
             if (parameterSetName.Contains("Modify") && item.PolicyId != null && item.PolicyId != "")
-            {                
+            {
                 Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.PolicyId);
                 string oldPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, item.PolicyId);
 
                 keyValueDict = HelperUtils.ParseUri(policy.Id);
                 string newPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, policy.Id);
-
+                
                 // fetch old and new Policy 
                 oldPolicy = ServiceClientAdapter.GetProtectionPolicy(
                     oldPolicyName,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName);
-
+                
                 newPolicy = ServiceClientAdapter.GetProtectionPolicy(
                     newPolicyName,
                     vaultName: vaultName,
-                    resourceGroupName: resourceGroupName);
+                    resourceGroupName: resourceGroupName);                
             }
 
             bool isDiskExclusionParamPresent = ValidateDiskExclusionParameters(
-                inclusionDisksList, exclusionDisksList, resetDiskExclusionSetting, excludeAllDataDisks);            
+                inclusionDisksList, exclusionDisksList, resetDiskExclusionSetting, excludeAllDataDisks);
 
             // do validations
             string containerUri = "";
@@ -250,6 +250,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (parameterSetName.Contains("Modify") && oldPolicy != null && newPolicy != null)
             {
                 isMUAProtected = AzureWorkloadProviderHelper.checkMUAForModifyPolicy(oldPolicy, newPolicy, isMUAOperation);
+
+                #region validate Std to Enh policy migration
+                string oldPolicyType = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)oldPolicy.Properties).PolicyType;
+
+                PSPolicyType oldPolicySubType = (oldPolicyType != null && oldPolicyType.ToLower().Contains("v2")) ? PSPolicyType.Enhanced : PSPolicyType.Standard;
+
+                string newPolicyType = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)newPolicy.Properties).PolicyType;
+
+                PSPolicyType newPolicySubType = (newPolicyType != null && newPolicyType.ToLower().Contains("v2")) ? PSPolicyType.Enhanced : PSPolicyType.Standard;
+
+                if (oldPolicySubType == PSPolicyType.Standard && newPolicySubType == PSPolicyType.Enhanced)
+                {
+                    // resx Resources.StdToEnhPolicyMigrationWarning
+                    Logger.Instance.WriteWarning(String.Format(Resources.StdToEnhPolicyMigrationWarning));
+                }
+                #endregion
             }
 
             return ServiceClientAdapter.CreateOrUpdateProtectedItem(

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added versioning to login migration console app.
 
 ## Version 0.14.3
 * Supported console app automatically upgrade.

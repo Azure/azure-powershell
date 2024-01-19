@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedKubernetes-help.xml
 Module Name: Az.ConnectedKubernetes
 online version: https://learn.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetesusercredential
 schema: 2.0.0
@@ -15,15 +15,15 @@ Gets cluster user credentials of the connected cluster with a specified resource
 ### ListExpanded (Default)
 ```
 Get-AzConnectedKubernetesUserCredential -ClusterName <String> -ResourceGroupName <String>
- -AuthenticationMethod <AuthenticationMethod> -ClientProxy [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] -AuthenticationMethod <AuthenticationMethod> [-ClientProxy]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzConnectedKubernetesUserCredential -ClusterName <String> -ResourceGroupName <String>
- -Property <IListClusterUserCredentialProperties> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] -Property <IListClusterUserCredentialProperties> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -233,4 +233,3 @@ To create the parameters described below, construct a hash table containing the 
   - `ClientProxy <Boolean>`: Boolean value to indicate whether the request is for client side proxy or not
 
 ## RELATED LINKS
-
