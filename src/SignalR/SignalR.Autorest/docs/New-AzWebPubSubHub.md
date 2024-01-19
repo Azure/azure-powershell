@@ -8,10 +8,11 @@ schema: 2.0.0
 # New-AzWebPubSubHub
 
 ## SYNOPSIS
-Create or update a hub setting.
+Create a hub setting.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzWebPubSubHub -Name <String> -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String>] [-AnonymousConnectPolicy <String>] [-EventHandler <IEventHandler[]>]
@@ -19,8 +20,35 @@ New-AzWebPubSubHub -Name <String> -ResourceGroupName <String> -ResourceName <Str
  [<CommonParameters>]
 ```
 
+### CreateViaIdentityHub
+```
+New-AzWebPubSubHub -HubInputObject <IWebPubSubIdentity> -ResourceName <String> -Parameter <IWebPubSubHub>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityHubExpanded
+```
+New-AzWebPubSubHub -HubInputObject <IWebPubSubIdentity> -ResourceName <String>
+ [-AnonymousConnectPolicy <String>] [-EventHandler <IEventHandler[]>] [-EventListener <IEventListener[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzWebPubSubHub -Name <String> -ResourceGroupName <String> -ResourceName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzWebPubSubHub -Name <String> -ResourceGroupName <String> -ResourceName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create or update a hub setting.
+Create a hub setting.
 
 ## EXAMPLES
 
@@ -73,7 +101,7 @@ Default to "deny".
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityHubExpanded
 Aliases:
 
 Required: False
@@ -99,7 +127,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -119,7 +148,7 @@ To construct, see NOTES section for EVENTHANDLER properties and create a hash ta
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IEventHandler[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityHubExpanded
 Aliases:
 
 Required: False
@@ -136,10 +165,56 @@ To construct, see NOTES section for EVENTLISTENER properties and create a hash t
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IEventListener[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityHubExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HubInputObject
+Identity Parameter
+To construct, see NOTES section for HUBINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
+Parameter Sets: CreateViaIdentityHub, CreateViaIdentityHubExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,7 +226,7 @@ The hub name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: HubName
 
 Required: True
@@ -176,13 +251,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+A hub setting
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubHub
+Parameter Sets: CreateViaIdentityHub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group that contains the resource.
 You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -213,7 +304,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -259,29 +350,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubHub
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubHub
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`EVENTHANDLER <IEventHandler[]>`: Event handler of a hub.
-  - `UrlTemplate <String>`: Gets or sets the EventHandler URL template. You can use a predefined parameter {hub} and {event} inside the template, the value of the EventHandler URL is dynamically calculated when the client request comes in.         For example, UrlTemplate can be `http://example.com/api/{hub}/{event}`. The host part can't contains parameters.
-  - `[AuthType <UpstreamAuthType?>]`: Upstream auth type enum.
-  - `[ManagedIdentityResource <String>]`: The Resource indicating the App ID URI of the target resource.         It also appears in the aud (audience) claim of the issued token.
-  - `[SystemEvent <String[]>]`: Gets ot sets the list of system events. Valid values contain: 'connect', 'connected', 'disconnected'.
-  - `[UserEventPattern <String>]`: Gets or sets the matching pattern for event names.         There are 3 kinds of patterns supported:             1. "*", it matches any event name             2. Combine multiple events with ",", for example "event1,event2", it matches event "event1" and "event2"             3. A single event name, for example, "event1", it matches "event1"
-
-`EVENTLISTENER <IEventListener[]>`: Event listener settings for forwarding your client events to listeners.Event listener is transparent to Web PubSub clients, and it doesn't return any result to clients nor interrupt the lifetime of clients.One event can be sent to multiple listeners, as long as it matches the filters in those listeners. The order of the array elements doesn't matter.Maximum count of event listeners among all hubs is 10.
-  - `Endpoint <IEventListenerEndpoint>`: An endpoint specifying where Web PubSub should send events to.
-  - `Filter <IEventListenerFilter>`: A base class for event filter which determines whether an event should be sent to an event listener.
 
 ## RELATED LINKS
 

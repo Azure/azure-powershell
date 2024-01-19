@@ -14,14 +14,13 @@ Create or update a resource.
 
 ```
 New-AzWebPubSub -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <String>
- [-SubscriptionId <String>] [-DisableAadAuth] [-DisableLocalAuth] [-EnableTlsClientCert]
- [-IdentityType <ManagedIdentityType>] [-LiveTraceCategory <ILiveTraceCategory[]>]
- [-LiveTraceEnabled <String>] [-NetworkAcLDefaultAction <AclAction>]
- [-PrivateEndpointAcl <IPrivateEndpointAcl[]>] [-PublicNetworkAccess <String>]
- [-PublicNetworkAllow <WebPubSubRequestType[]>] [-PublicNetworkDeny <WebPubSubRequestType[]>]
- [-ResourceLogCategory <IResourceLogCategory[]>] [-SkuCapacity <Int32>] [-SkuTier <WebPubSubSkuTier>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DisableAadAuth] [-DisableLocalAuth] [-EnableSystemAssignedIdentity]
+ [-EnableTlsClientCert] [-LiveTraceCategory <ILiveTraceCategory[]>] [-LiveTraceEnabled <String>]
+ [-NetworkAcLDefaultAction <String>] [-PrivateEndpointAcl <IPrivateEndpointAcl[]>]
+ [-PublicNetworkAccess <String>] [-PublicNetworkAllow <String[]>] [-PublicNetworkDeny <String[]>]
+ [-ResourceLogCategory <IResourceLogCategory[]>] [-SkuCapacity <Int32>] [-SkuTier <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -119,8 +118,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableTlsClientCert
-Request client certificate during TLS handshake if enabled
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -134,11 +133,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Represent the identity type: systemAssigned, userAssigned, None
+### -EnableTlsClientCert
+Request client certificate during TLS handshake if enabled
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -216,7 +215,7 @@ Accept wildcard characters: False
 Default action when no other rule matches
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -279,7 +278,7 @@ Allowed request types.
 The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -295,7 +294,7 @@ Denied request types.
 The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -377,7 +376,7 @@ Optional tier of this particular SKU.
 `Basic` is deprecated, use `Standard` instead.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -420,10 +419,11 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-Get or set the user assigned identities
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -475,26 +475,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`LIVETRACECATEGORY <ILiveTraceCategory[]>`: Gets or sets the list of category configurations.
-  - `[Enabled <String>]`: Indicates whether or the live trace category is enabled.         Available values: true, false.         Case insensitive.
-  - `[Name <String>]`: Gets or sets the live trace category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
-
-`PRIVATEENDPOINTACL <IPrivateEndpointAcl[]>`: ACLs for requests from private endpoints
-  - `Name <String>`: Name of the private endpoint connection
-  - `[Allow <WebPubSubRequestType[]>]`: Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  - `[Deny <WebPubSubRequestType[]>]`: Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-
-`RESOURCELOGCATEGORY <IResourceLogCategory[]>`: Gets or sets the list of category configurations.
-  - `[Enabled <String>]`: Indicates whether or the resource log category is enabled.         Available values: true, false.         Case insensitive.
-  - `[Name <String>]`: Gets or sets the resource log category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
 
 ## RELATED LINKS
 

@@ -29,6 +29,12 @@ Get-AzWebPubSubHub -Name <String> -ResourceGroupName <String> -ResourceName <Str
 Get-AzWebPubSubHub -InputObject <IWebPubSubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityHub
+```
+Get-AzWebPubSubHub -HubInputObject <IWebPubSubIdentity> -ResourceName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get a hub setting.
 
@@ -81,7 +87,8 @@ testHub deny
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -92,6 +99,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HubInputObject
+Identity Parameter
+To construct, see NOTES section for HUBINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
+Parameter Sets: GetViaIdentityHub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -147,7 +170,7 @@ The name of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityHub, List
 Aliases:
 
 Required: True
@@ -185,25 +208,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubHub
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IWebPubSubIdentity>`: Identity Parameter
-  - `[CertificateName <String>]`: Custom certificate name
-  - `[HubName <String>]`: The hub name.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: the region
-  - `[Name <String>]`: Custom domain name.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[ResourceName <String>]`: The name of the resource.
-  - `[SharedPrivateLinkResourceName <String>]`: The name of the shared private link resource
-  - `[SubscriptionId <String>]`: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
 

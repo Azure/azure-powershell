@@ -8,37 +8,36 @@ schema: 2.0.0
 # Update-AzWebPubSub
 
 ## SYNOPSIS
-Operation to update an exiting resource.
+Create a resource.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DisableAadAuth]
- [-DisableLocalAuth] [-EnableTlsClientCert] [-IdentityType <ManagedIdentityType>]
- [-LiveTraceCategory <ILiveTraceCategory[]>] [-LiveTraceEnabled <String>]
- [-NetworkAcLDefaultAction <AclAction>] [-PrivateEndpointAcl <IPrivateEndpointAcl[]>]
- [-PublicNetworkAccess <String>] [-PublicNetworkAllow <WebPubSubRequestType[]>]
- [-PublicNetworkDeny <WebPubSubRequestType[]>] [-ResourceLogCategory <IResourceLogCategory[]>]
- [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <WebPubSubSkuTier>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DisableLocalAuth] [-EnableSystemAssignedIdentity <Boolean?>] [-EnableTlsClientCert]
+ [-LiveTraceCategory <ILiveTraceCategory[]>] [-LiveTraceEnabled <String>] [-NetworkAcLDefaultAction <String>]
+ [-PrivateEndpointAcl <IPrivateEndpointAcl[]>] [-PublicNetworkAccess <String>]
+ [-PublicNetworkAllow <String[]>] [-PublicNetworkDeny <String[]>]
+ [-ResourceLogCategory <IResourceLogCategory[]>] [-SkuCapacity <Int32>] [-SkuName <String>]
+ [-SkuTier <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWebPubSub -InputObject <IWebPubSubIdentity> [-DisableAadAuth] [-DisableLocalAuth]
- [-EnableTlsClientCert] [-IdentityType <ManagedIdentityType>] [-LiveTraceCategory <ILiveTraceCategory[]>]
- [-LiveTraceEnabled <String>] [-NetworkAcLDefaultAction <AclAction>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-EnableTlsClientCert] [-LiveTraceCategory <ILiveTraceCategory[]>]
+ [-LiveTraceEnabled <String>] [-NetworkAcLDefaultAction <String>]
  [-PrivateEndpointAcl <IPrivateEndpointAcl[]>] [-PublicNetworkAccess <String>]
- [-PublicNetworkAllow <WebPubSubRequestType[]>] [-PublicNetworkDeny <WebPubSubRequestType[]>]
+ [-PublicNetworkAllow <String[]>] [-PublicNetworkDeny <String[]>]
  [-ResourceLogCategory <IResourceLogCategory[]>] [-SkuCapacity <Int32>] [-SkuName <String>]
- [-SkuTier <WebPubSubSkuTier>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SkuTier <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Operation to update an exiting resource.
+Create a resource.
 
 ## EXAMPLES
 
@@ -98,7 +97,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -142,11 +142,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableTlsClientCert
-Request client certificate during TLS handshake if enabled
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -157,11 +157,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Represents the identity type: systemAssigned, userAssigned, None
+### -EnableTlsClientCert
+Request client certificate during TLS handshake if enabled
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -238,7 +238,7 @@ Accept wildcard characters: False
 Azure Networking ACL Action.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -301,7 +301,7 @@ Allowed request types.
 The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -317,7 +317,7 @@ Denied request types.
 The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -399,7 +399,7 @@ Optional tier of this particular SKU.
 `Basic` is deprecated, use `Standard` instead.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -442,10 +442,11 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-Get or set the user assigned identities
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -499,38 +500,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IWebPubSubIdentity>`: Identity Parameter
-  - `[CertificateName <String>]`: Custom certificate name
-  - `[HubName <String>]`: The hub name.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: the region
-  - `[Name <String>]`: Custom domain name.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[ResourceName <String>]`: The name of the resource.
-  - `[SharedPrivateLinkResourceName <String>]`: The name of the shared private link resource
-  - `[SubscriptionId <String>]`: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-`LIVETRACECATEGORY <ILiveTraceCategory[]>`: Gets or sets the list of category configurations.
-  - `[Enabled <String>]`: Indicates whether or the live trace category is enabled.         Available values: true, false.         Case insensitive.
-  - `[Name <String>]`: Gets or sets the live trace category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
-
-`PRIVATEENDPOINTACL <IPrivateEndpointAcl[]>`: ACLs for requests from private endpoints
-  - `Name <String>`: Name of the private endpoint connection
-  - `[Allow <WebPubSubRequestType[]>]`: Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  - `[Deny <WebPubSubRequestType[]>]`: Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-
-`RESOURCELOGCATEGORY <IResourceLogCategory[]>`: Gets or sets the list of category configurations.
-  - `[Enabled <String>]`: Indicates whether or the resource log category is enabled.         Available values: true, false.         Case insensitive.
-  - `[Name <String>]`: Gets or sets the resource log category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
 
 ## RELATED LINKS
 

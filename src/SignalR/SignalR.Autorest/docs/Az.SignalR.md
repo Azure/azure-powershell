@@ -36,7 +36,7 @@ List resource usage quotas by location.
 Create or update a resource.
 
 ### [New-AzWebPubSubCustomCertificate](New-AzWebPubSubCustomCertificate.md)
-Create or update a custom certificate.
+Create a custom certificate.
 
 ### [New-AzWebPubSubCustomDomain](New-AzWebPubSubCustomDomain.md)
 Create or update a custom domain.
@@ -48,7 +48,7 @@ Create an in-memory object for EventHubEndpoint.
 Create an in-memory object for EventNameFilter.
 
 ### [New-AzWebPubSubHub](New-AzWebPubSubHub.md)
-Create or update a hub setting.
+Create a hub setting.
 
 ### [New-AzWebPubSubKey](New-AzWebPubSubKey.md)
 Regenerate the access key for the resource.
@@ -73,5 +73,14 @@ Operation to restart a resource.
 Checks that the resource name is valid and is not already in use.
 
 ### [Update-AzWebPubSub](Update-AzWebPubSub.md)
-Operation to update an exiting resource.
+Create a resource.
+
+### [Update-AzWebPubSubCustomCertificate](Update-AzWebPubSubCustomCertificate.md)
+Create a custom certificate.
+
+### [Update-AzWebPubSubCustomDomain](Update-AzWebPubSubCustomDomain.md)
+Create a custom domain.
+
+### [Update-AzWebPubSubHub](Update-AzWebPubSubHub.md)
+Create a hub setting.
 

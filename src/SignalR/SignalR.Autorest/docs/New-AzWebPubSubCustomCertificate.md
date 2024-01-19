@@ -8,19 +8,48 @@ schema: 2.0.0
 # New-AzWebPubSubCustomCertificate
 
 ## SYNOPSIS
-Create or update a custom certificate.
+Create a custom certificate.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzWebPubSubCustomCertificate -Name <String> -ResourceGroupName <String> -ResourceName <String>
- -KeyVaultBaseUri <String> -KeyVaultSecretName <String> [-SubscriptionId <String>]
+ [-SubscriptionId <String>] [-KeyVaultBaseUri <String>] [-KeyVaultSecretName <String>]
  [-KeyVaultSecretVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### CreateViaIdentityWebPubSub
+```
+New-AzWebPubSubCustomCertificate -Name <String> -WebPubSubInputObject <IWebPubSubIdentity>
+ -Parameter <ICustomCertificate> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityWebPubSubExpanded
+```
+New-AzWebPubSubCustomCertificate -Name <String> -WebPubSubInputObject <IWebPubSubIdentity>
+ [-KeyVaultBaseUri <String>] [-KeyVaultSecretName <String>] [-KeyVaultSecretVersion <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzWebPubSubCustomCertificate -Name <String> -ResourceGroupName <String> -ResourceName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzWebPubSubCustomCertificate -Name <String> -ResourceGroupName <String> -ResourceName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create or update a custom certificate.
+Create a custom certificate.
 
 ## EXAMPLES
 
@@ -55,7 +84,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -69,15 +99,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyVaultBaseUri
 Base uri of the KeyVault that stores certificate.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWebPubSubExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -89,10 +149,10 @@ Certificate secret name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWebPubSubExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -104,7 +164,7 @@ Certificate secret version.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityWebPubSubExpanded
 Aliases:
 
 Required: False
@@ -144,13 +204,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+A custom certificate.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ICustomCertificate
+Parameter Sets: CreateViaIdentityWebPubSub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group that contains the resource.
 You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -165,7 +241,7 @@ The name of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -181,13 +257,29 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WebPubSubInputObject
+Identity Parameter
+To construct, see NOTES section for WEBPUBSUBINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
+Parameter Sets: CreateViaIdentityWebPubSub, CreateViaIdentityWebPubSubExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -227,13 +319,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ICustomCertificate
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ICustomCertificate
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

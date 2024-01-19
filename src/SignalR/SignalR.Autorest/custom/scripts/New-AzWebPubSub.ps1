@@ -138,9 +138,9 @@ function New-AzWebPubSub
     [Parameter()]
     
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [System.String]
-    # Represent the identity type: systemAssigned, userAssigned, None
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -246,8 +246,9 @@ function New-AzWebPubSub
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IManagedIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # Get or set the user assigned identities
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
     ${UserAssignedIdentity},
 
     [Parameter()]
