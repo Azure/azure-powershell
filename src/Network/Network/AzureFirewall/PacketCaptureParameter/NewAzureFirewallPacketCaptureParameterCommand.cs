@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.Commands.Network.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -9,7 +10,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.AzureFirewall.PacketCapture
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPacketCaptureParameterCommand", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPacketCaptureParameters))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPacketCaptureParameter", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPacketCaptureParameters))]
     public class NewAzureFirewallPacketCaptureParametersCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network.AzureFirewall.PacketCapture
         [Parameter(
             Mandatory = false,
             HelpMessage = "The list of tcp-flags to capture")]
-        public PSAzureFirewallPacketCaptureFlags[] Flags { get; set; }
+        public string[] Flags { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -62,6 +63,16 @@ namespace Microsoft.Azure.Commands.Network.AzureFirewall.PacketCapture
         {
             base.Execute();
 
+            List<PSAzureFirewallPacketCaptureFlags> PSFlags = new List<PSAzureFirewallPacketCaptureFlags>();
+            
+            if(Flags != null)
+            {
+                foreach (var flag in Flags)
+                {
+                    PSFlags.Add(PSAzureFirewallPacketCaptureFlags.MapUserInputToPacketCaptureFlag(flag));
+                }
+            }          
+
             var packetCaptureParameters = new PSAzureFirewallPacketCaptureParameters
             {
                 DurationInSeconds = this.DurationInSeconds,
@@ -69,7 +80,7 @@ namespace Microsoft.Azure.Commands.Network.AzureFirewall.PacketCapture
                 SasUrl = this.SasUrl,
                 FileName = this.FileName,
                 Protocol = this.Protocol,
-                Flags = this.Flags?.ToList(),
+                Flags = PSFlags,
                 Filters = this.Filters?.ToList(),
 
             };

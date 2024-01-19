@@ -2126,7 +2126,7 @@ function Test-GetAzureFirewallLearnedIpPrefixes {
 Tests Invoke-AzureFirewallPacketCapture
 #>
 function Test-InvokeAzureFirewallPacketCapture {
-        $rgname = Get-ResourceGroupName
+    $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
     $location = Get-ProviderLocation $resourceTypeParent "eastus"
@@ -2136,18 +2136,15 @@ function Test-InvokeAzureFirewallPacketCapture {
     $publicIpName = Get-ResourceName
 
     try {
+
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
-
-        # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         # Create public ip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
 
         # Create AzureFirewall
-        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -EnableFatFlowLogging
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location
 
         # Verify
         $azFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
@@ -2160,7 +2157,7 @@ function Test-InvokeAzureFirewallPacketCapture {
         $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 300 -NumberOfPackets 5000 -SASUrl "ValidSasUrl" -Filename "AzFwPacketCapture" -Flags "Syn","Ack" -Protocol "Any" -Filters $Filter1, $Filter2
 
         # Invoke a firewall packet capture
-        Invoke-AzFirewallPacketCapture -AzureFirewall $Azfw -Parameters $Params
+        Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameters $Params
     }
     finally {
         # Cleanup

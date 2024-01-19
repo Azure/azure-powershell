@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.AzureFirewall.PacketCaptureRule
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPacketCaptureRuleCommand", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPacketCaptureRule))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPacketCaptureRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallPacketCaptureRule))]
     public class NewAzureFirewallPacketCaptureRuleCommand : AzureFirewallBaseCmdlet
     {
         [Parameter(
