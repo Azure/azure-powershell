@@ -477,6 +477,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var templateJson = BicepUtility.Create().BuildBicepFile(this.ResolvePath(TemplateFile), this.WriteVerbose, this.WriteWarning);
             TemplateObject = JsonConvert.DeserializeObject<Hashtable>(templateJson);
+            TemplateFile = null;
         }
 
         private IReadOnlyDictionary<string, object> GetDynamicParametersDictionary()
