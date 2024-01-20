@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
         /// <summary>
         /// Builds a .bicepparam file and returns the result.
         /// </summary>
-        public BicepBuildParamsStdout BuildBicepparamFile(string bicepParamFilePath, IReadOnlyDictionary<string, object> overrideParams, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
+        public BicepBuildParamsStdout BuildBicepParamFile(string bicepParamFilePath, IReadOnlyDictionary<string, object> overrideParams, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
         {
             if (!dataStore.FileExists(bicepParamFilePath))
             {

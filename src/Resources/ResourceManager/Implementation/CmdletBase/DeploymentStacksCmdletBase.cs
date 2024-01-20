@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             if (BicepUtility.IsBicepparamFile(TemplateParameterFile))
             {
-                return BicepUtility.Create().BuildBicepparamFile(this.ResolvePath(TemplateParameterFile), new Dictionary<string, object>(), this.WriteVerbose, this.WriteWarning);
+                return BicepUtility.Create().BuildBicepParamFile(this.ResolvePath(TemplateParameterFile), new Dictionary<string, object>(), this.WriteVerbose, this.WriteWarning);
             }
 
             return null;

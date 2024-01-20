@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
             var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object);
 
-            var output = bicepUtility.BuildBicepparamFile("foo.bicepparam", new Dictionary<string, object>());
+            var output = bicepUtility.BuildBicepParamFile("foo.bicepparam", new Dictionary<string, object>());
             var parameters = TemplateUtility.ParseTemplateParameterJson(output.parametersJson);
 
             parameters["tag1"].Value.Should().Be("日本語テスト_param");
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
             var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object);
 
-            FluentActions.Invoking(() => bicepUtility.BuildBicepparamFile("foo.bicepparam", new Dictionary<string, object>()))
+            FluentActions.Invoking(() => bicepUtility.BuildBicepParamFile("foo.bicepparam", new Dictionary<string, object>()))
                 .Should().Throw<AzPSApplicationException>().WithMessage("Oops something went wrong!");
         }
 
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
             var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object);
 
-            FluentActions.Invoking(() => bicepUtility.BuildBicepparamFile("foo.bicepparam", new Dictionary<string, object>()))
+            FluentActions.Invoking(() => bicepUtility.BuildBicepParamFile("foo.bicepparam", new Dictionary<string, object>()))
                 .Should().Throw<AzPSApplicationException>().WithMessage("Please use bicep 0.16.1 or higher.");
         }
 
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
             var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object);
 
-            FluentActions.Invoking(() => bicepUtility.BuildBicepparamFile("foo.bicepparam", new Dictionary<string, object>()))
+            FluentActions.Invoking(() => bicepUtility.BuildBicepParamFile("foo.bicepparam", new Dictionary<string, object>()))
                 .Should().Throw<AzPSApplicationException>().WithMessage("Cannot find Bicep. Please add Bicep to your PATH or visit *");
         }
 
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
             var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object);
 
-            FluentActions.Invoking(() => bicepUtility.BuildBicepparamFile("foo.bicepparam", new Dictionary<string, object>()))
+            FluentActions.Invoking(() => bicepUtility.BuildBicepParamFile("foo.bicepparam", new Dictionary<string, object>()))
                 .Should().Throw<AzPSArgumentException>().WithMessage("Invalid Bicepparam file path.");
         }
 
