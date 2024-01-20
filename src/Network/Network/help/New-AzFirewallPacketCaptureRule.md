@@ -8,6 +8,7 @@ schema: 2.0.0
 # New-AzFirewallPacketCaptureRule
 
 ## SYNOPSIS
+Creates a Packet Capture Rule for Azure Firewall
 
 ## SYNTAX
 
@@ -17,8 +18,13 @@ New-AzFirewallPacketCaptureRule -Source <String[]> -Destination <String[]> [-Des
 ```
 
 ## DESCRIPTION
+Creates a Packet Capture Rule for Azure Firewall
 
 ## EXAMPLES
+```
+ New-AzFirewallPacketCaptureRule -Source "10.0.0.2","192.123.12.1" -Destination "172.32.1.2" -DestinationPort "80","443"
+
+```
 
 ## PARAMETERS
 
