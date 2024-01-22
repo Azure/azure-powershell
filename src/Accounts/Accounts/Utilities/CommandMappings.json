@@ -4670,6 +4670,7 @@
       "New-AzOffice365PolicyProperty": {},
       "Get-AzNetworkVirtualApplianceSku": {},
       "New-AzVirtualApplianceAdditionalNicProperty": {},
+      "New-AzVirtualApplianceInternetIngressIpsProperty": {},
       "New-AzVirtualApplianceSkuProperty": {},
       "New-AzCustomIpPrefix": {},
       "New-AzSaaSNetworkVirtualAppliance": {},
