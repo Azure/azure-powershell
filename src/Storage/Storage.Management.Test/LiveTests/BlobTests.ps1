@@ -13,6 +13,8 @@ Invoke-LiveTestScenario -Name "Blob basics" -Description "Test blob basic operat
     $account = New-AzStorageAccount -ResourceGroupName $rgName -Name $storageAccountName -Location $location -SkuName Standard_GRS -AllowBlobPublicAccess $true
     $ctx = $account.Context 
     $container = New-AzStorageContainer -Name $containerName -Context $ctx 
+    $containerSAS = New-AzStorageContainerSASToken -Name $containerName -Permission radwl -ExpiryTime 5000-01-01 -Context $ctx 
+    $sasCtx = New-AzStorageContext -SasToken $containerSAS -StorageAccountName $storageAccountName 
 
     # container ACL and stored access policy
     $accessPolicyName = "policy1"
@@ -27,6 +29,7 @@ Invoke-LiveTestScenario -Name "Blob basics" -Description "Test blob basic operat
     # upload 
     $blobName = New-LiveTestResourceName 
     $blobName2 = New-LiveTestResourceName
+    $blobName3 = "blob3" + $blobName
     $b = Set-AzStorageBlobContent -File $testfile512path -Container $containerName -Blob $blobName -StandardBlobTier Cool -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $ctx -Force
     Assert-AreEqual $blobName $b.Name 
     Assert-AreEqual 512 $b.Length
@@ -38,6 +41,11 @@ Invoke-LiveTestScenario -Name "Blob basics" -Description "Test blob basic operat
     Assert-AreEqual $ContentType $blobs[0].BlobProperties.ContentType
     Assert-AreEqual "Cool" $blobs[0].BlobProperties.AccessTier
 
+    $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $sasCtx
+    Assert-AreEqual $blobName $blob.Name 
+    Assert-AreEqual 512 $blob.Length 
+    Assert-AreEqual $ContentType $blob.BlobProperties.ContentType
+    
     $b.BlobBaseClient.SetAccessTier("Hot")
     $b.FetchAttributes()
     Assert-AreEqual "Hot" $b.BlobProperties.AccessTier
@@ -45,10 +53,37 @@ Invoke-LiveTestScenario -Name "Blob basics" -Description "Test blob basic operat
     $b2 = Set-AzStorageBlobContent -File $testfile512path -Container $containerName -Blob $blobName2 -Force -Context $ctx
     $blobs = Get-AzStorageBlob -Container $containerName -Context $ctx 
     Assert-AreEqual 2 $blobs.Count
+    $b3 = Set-AzStorageBlobContent -File $testfile512path -Container $containerName -Blob $blobName3 -Force -Context $sasCtx
+    $b2.BlobBaseClient.CreateSnapshot()
+
+    $blobs = Get-AzStorageBlob -Container $containerName -Prefix "blob3" -Context $ctx 
+    Assert-AreEqual 1 $blobs.Count
+    Assert-AreEqual $blobName3 $blobs[0].Name
+
+    $blobs = Get-AzStorageBlob -Container $containerName -Context $ctx
+    $snapshotblob = $blobs | ?{$_.SnapshotTime -ne $null} | Select-Object -First 1
+    $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName2 -SnapshotTime $snapshotblob.SnapshotTime -Context $ctx 
+    Assert-AreEqual $blobName2 $blob.Name 
+    Assert-AreEqual $snapshotblob.SnapshotTime $blob.SnapshotTime
+
+    $blob = Set-AzStorageBlobContent -File $testfile512path -Container $containerName -Blob $blobName3 -Tag @{"Tag1"="Value2";"Tag2"="Value2"} -Context $ctx -Force
+    $blob = Get-AzStorageBlob -Blob $blobName3 -Container $containerName -IncludeTag -Context $ctx 
+    Assert-AreEqual $blobName3 $blob.Name 
+    Assert-AreEqual 2 $blob.TagCount
+    Assert-AreEqual 2 $blob.Tags.Count
+
+    Update-AzStorageBlobServiceProperty -ResourceGroupName $rgName -StorageAccountName $storageAccountName -IsVersioningEnabled $true
+    sleep 30
+    $blob = Set-AzStorageBlobContent -File $testfile512path -Container $containerName -Blob $blobName3 -Context $sasctx -Force
+    $blobs = Get-AzStorageBlob -Container $containerName -Context $ctx -IncludeVersion
+    $versionBlob = $blobs | ?{$_.VersionId -ne $null} | Select-Object -First 1
+    $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName3 -VersionId $versionBlob.VersionId -Context $ctx 
+    Assert-AreEqual $blobName3 $blob.Name
+    Assert-AreEqual $versionBlob.VersionId $blob.VersionId
 
     $b2 | Remove-AzStorageBlob -Force 
     $blobs = Get-AzStorageBlob -Container $containerName -Context $ctx 
-    Assert-AreEqual 1 $blobs.Count
+    Assert-AreEqual 2 $blobs.Count
 
     $container = Get-AzStorageContainer -Name $containerName -Context $ctx
     $containerProperties = $container.BlobContainerClient.GetProperties().Value
