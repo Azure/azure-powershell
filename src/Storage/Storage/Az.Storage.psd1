@@ -80,11 +80,11 @@ RequiredAssemblies = 'Azure.Data.Tables.dll', 'Azure.Storage.Blobs.dll',
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Storage.Autorest/Az.Storage.format.ps1xml', 
-               'Storage.format.ps1xml', 'Storage.generated.format.ps1xml', 
+               'Storage.Data.format.ps1xml', 'Storage.Data.generated.format.ps1xml', 
                'Storage.Management.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Storage.dll', 
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Storage.Data.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll', 
                'Storage.Autorest/Az.Storage.psm1')
 

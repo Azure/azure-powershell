@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Storage\Storage.csproj" />
+    <ProjectReference Include="..\Storage.Data\Storage.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
