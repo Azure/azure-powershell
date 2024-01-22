@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceExternalGovernanceStatusRefresh", SupportsShouldProcess = true), OutputType(typeof(RefreshExternalGovernanceMIModel))]
     public class InvokeAzSqlInstanceExternalGovernanceStatusRefresh : AzureSqlInstanceRefreshExternalGovernanceCmdletBase
     {
-        private const string SetByNameParameterSet = "SetByNameParameterSet";
-        private const string SetByParentObjectParameterSet = "SetByParentObjectParameterSet";
-        private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
+        private const string InvokeByNameParameterSet = "InvokeByNameParameterSet";
+        private const string InvokeByParentObjectParameterSet = "InvokeByParentObjectParameterSet";
+        private const string InvokeByResourceIdParameterSet = "InvokeByResourceIdParameterSet";
         
         /// <summary>
         /// Sets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = SetByNameParameterSet, Position = 0,
+        [Parameter(Mandatory = true, ParameterSetName = InvokeByNameParameterSet, Position = 0,
             HelpMessage = "Name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets the name of the Azure Sql Managed Instance to use
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = SetByNameParameterSet,
+            ParameterSetName = InvokeByNameParameterSet,
             Position = 1,
             HelpMessage = "The Azure Sql managed instance name.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
@@ -51,14 +51,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <summary>
         /// Sets the instance Object
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = SetByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Input object of the managed instance.")]
+        [Parameter(Mandatory = true, ParameterSetName = InvokeByParentObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Input object of the managed instance.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlManagedInstanceModel InstanceObject { get; set; }
         
         /// <summary>
         /// Sets the instance resource id
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = SetByResourceIdParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Resource ID of the managed instance DTC.")]
+        [Parameter(Mandatory = true, ParameterSetName = InvokeByResourceIdParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Resource ID of the managed instance DTC.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
         
@@ -75,11 +75,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         {
             switch (ParameterSetName)
             {
-                case SetByParentObjectParameterSet:
+                case InvokeByParentObjectParameterSet:
                     ResourceGroupName = InstanceObject.ResourceGroupName;
                     InstanceName = InstanceObject.ManagedInstanceName;
                     break;
-                case SetByResourceIdParameterSet:
+                case InvokeByResourceIdParameterSet:
                     var identifier = new ResourceIdentifier(ResourceId);
                     ResourceGroupName = identifier.ResourceGroupName;
                     InstanceName = identifier.ResourceName;

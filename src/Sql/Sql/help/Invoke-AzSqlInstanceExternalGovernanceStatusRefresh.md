@@ -12,21 +12,21 @@ Refreshes the value of external governance on the managed instance.
 
 ## SYNTAX
 
-### SetByNameParameterSet
+### InvokeByNameParameterSet
 ```
 Invoke-AzSqlInstanceExternalGovernanceStatusRefresh [-ResourceGroupName] <String> [-InstanceName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### SetByParentObjectParameterSet
+### InvokeByParentObjectParameterSet
 ```
 Invoke-AzSqlInstanceExternalGovernanceStatusRefresh [-InstanceObject] <AzureSqlManagedInstanceModel>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### SetByResourceIdParameterSet
+### InvokeByResourceIdParameterSet
 ```
 Invoke-AzSqlInstanceExternalGovernanceStatusRefresh [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
@@ -67,7 +67,7 @@ The Azure Sql managed instance name.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet
+Parameter Sets: InvokeByNameParameterSet
 Aliases:
 
 Required: True
@@ -82,7 +82,7 @@ Input object of the managed instance.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-Parameter Sets: SetByParentObjectParameterSet
+Parameter Sets: InvokeByParentObjectParameterSet
 Aliases:
 
 Required: True
@@ -112,7 +112,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet
+Parameter Sets: InvokeByNameParameterSet
 Aliases:
 
 Required: True
@@ -127,7 +127,7 @@ Resource ID of the managed instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceIdParameterSet
+Parameter Sets: InvokeByResourceIdParameterSet
 Aliases:
 
 Required: True
