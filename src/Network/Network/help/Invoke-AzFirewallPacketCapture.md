@@ -34,7 +34,7 @@ $filter1 = New-AzFirewallPacketCaptureRule -Source "10.0.0.2","192.123.12.1" -De
 $filter2 = New-AzFirewallPacketCaptureRule -Source "10.0.0.5" -Destination "172.20.10.2" -DestinationPort "80","443"
 
 # Create the firewall packet capture parameters
-$Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 300 -NumberOfPackets 5000 -SASUrl "ValidSasUrl" -Filename "AzFwPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2
+$Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 300 -NumberOfPacketsToCapture 5000 -SASUrl "ValidSasUrl" -Filename "AzFwPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2
 
 # Invoke a firewall packet capture
 Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
