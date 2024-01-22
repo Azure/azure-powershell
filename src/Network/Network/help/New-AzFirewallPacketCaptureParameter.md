@@ -24,14 +24,13 @@ Create a Packet Capture Parameter for Azure Firewall
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Configuring Azure Firewall Packet Capture with Advanced Rules and Parameters
 ```
 $filter1 = New-AzFirewallPacketCaptureRule -Source "10.0.0.2","192.123.12.1" -Destination "172.32.1.2" -DestinationPort "80","443"
 $filter2 = New-AzFirewallPacketCaptureRule -Source "10.0.0.5" -Destination "172.20.10.2" -DestinationPort "80","443"
 
 # Create the firewall packet capture parameters
 New-AzFirewallPacketCaptureParameter  -DurationInSeconds 300 -NumberOfPackets 5000 -SASUrl "ValidSasUrl" -Filename "AzFwPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2
-
 ```
 
 This creates the parameter for packet capture request with a set of rules.
