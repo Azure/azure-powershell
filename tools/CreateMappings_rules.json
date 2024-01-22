@@ -489,10 +489,6 @@
     "alias": "Blueprint"
   },
   {
-    "regex": "DeploymentManager",
-    "alias": "Deployment Manager"
-  },
-  {
     "regex": "Peering",
     "group": "Peering",
     "alias": "Peering"
