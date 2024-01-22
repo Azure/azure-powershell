@@ -90,7 +90,8 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="privateEndpointNetworkPolicies">Enable or Disable apply network policies on private end point in the
         /// subnet.
-        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;,
+        /// &#39;NetworkSecurityGroupEnabled&#39;, &#39;RouteTableEnabled&#39;</param>
 
         /// <param name="privateLinkServiceNetworkPolicies">Enable or Disable apply network policies on private link service in the
         /// subnet.
@@ -259,7 +260,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets enable or Disable apply network policies on private end point
-        /// in the subnet. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// in the subnet. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;NetworkSecurityGroupEnabled&#39;, &#39;RouteTableEnabled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateEndpointNetworkPolicies")]
         public string PrivateEndpointNetworkPolicies {get; set; }

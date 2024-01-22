@@ -1025,6 +1025,15 @@ Creates a Firewall Network Rule.
 ### [New-AzFirewallNetworkRuleCollection](New-AzFirewallNetworkRuleCollection.md)
 Creates a Azure Firewall Network Collection of Network rules.
 
+### [New-AzFirewallPacketCaptureParameter](New-AzFirewallPacketCaptureParameter.md)
+Creates a Azure Firewall Packet Capture Parameter.
+
+### [New-AzFirewallPacketCaptureRule](New-AzFirewallPacketCaptureRule.md)
+Creates a Azure Firewall Packet Capture Rule.
+
+### [Invoke-AzFirewallPacketCapture](Invoke-AzFirewallPacketCapture.md)
+Invoke a Packet Capture request on Azure Firewall.
+
 ### [New-AzFirewallPolicy](New-AzFirewallPolicy.md)
 Creates a new Azure Firewall Policy
 
