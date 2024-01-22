@@ -23,7 +23,7 @@ Invokes a packet capture request on Azure Firewall
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Invokes a packet capture request on Azure Firewall
 ```
 $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location
 
