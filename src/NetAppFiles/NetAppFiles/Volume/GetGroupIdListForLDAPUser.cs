@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 }
                 catch (ErrorResponseException erx)
                 {                    
-                    throw new PSArgumentException(erx.Message + " : " + erx.Body.Error.Code + " : " + erx.Body.Error.Message);
+                    throw new PSArgumentException(erx.Message + " : " + erx.Body.Error.Code + " : " + erx.Body.Error.Message, erx);
                 }
                 catch (Exception ex)
                 {                 

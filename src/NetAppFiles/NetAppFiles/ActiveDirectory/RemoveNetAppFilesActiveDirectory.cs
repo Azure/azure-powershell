@@ -116,8 +116,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 }
                 catch (ErrorResponseException ex)
                 {
-                    ex = new ErrorResponseException(ex.Body.Error.Message);
-                    throw ex;
+                    throw new ErrorResponseException(ex.Body.Error.Message, ex);                    
                 }
             }
             if (PassThru)
