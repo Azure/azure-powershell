@@ -22,19 +22,27 @@ Creates and uploads a new file under a workspace for the specified subscription.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
 
+{{ Add description here }}
 
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
 
+{{ Add description here }}
 
 ## PARAMETERS
 

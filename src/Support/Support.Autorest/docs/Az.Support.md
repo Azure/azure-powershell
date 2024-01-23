@@ -62,35 +62,17 @@ Gets details for a specific support ticket.
 Support ticket data is available for 18 months after ticket creation.
 If a ticket was created more than 18 months ago, a request for data might cause an error.
 
-### [Invoke-AzSupportUploadFile](Invoke-AzSupportUploadFile.md)
-This API allows you to upload content to a file
-
-### [Invoke-AzSupportUploadFilesNoSubscription](Invoke-AzSupportUploadFilesNoSubscription.md)
-This API allows you to upload content to a file
-
 ### [New-AzSupportCommunication](New-AzSupportCommunication.md)
 Adds a new customer communication to an Azure support ticket.
 
 ### [New-AzSupportCommunicationsNoSubscription](New-AzSupportCommunicationsNoSubscription.md)
 Adds a new customer communication to an Azure support ticket.
 
-### [New-AzSupportFile](New-AzSupportFile.md)
-Creates a new file under a workspace for the specified subscription.
-
 ### [New-AzSupportFileAndUpload](New-AzSupportFileAndUpload.md)
 Creates and uploads a new file under a workspace for the specified subscription.
 
 ### [New-AzSupportFileAndUploadNoSubscription](New-AzSupportFileAndUploadNoSubscription.md)
 Creates and uploads a new file under a workspace for the specified subscription.
-
-### [New-AzSupportFilesNoSubscription](New-AzSupportFilesNoSubscription.md)
-Creates a new file under a workspace.
-
-### [New-AzSupportFileWorkspace](New-AzSupportFileWorkspace.md)
-Creates a new file workspace for the specified subscription.
-
-### [New-AzSupportFileWorkspacesNoSubscription](New-AzSupportFileWorkspacesNoSubscription.md)
-Creates a new file workspace.
 
 ### [New-AzSupportTicket](New-AzSupportTicket.md)
 Creates a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management issues for the specified subscription.

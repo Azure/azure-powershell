@@ -81,10 +81,14 @@ directive:
           - ChunkSize
           - FileSize
           - NumberOfChunks 
-  #- where:
-      #verb: New
-      #subject: File
-    #hide: true
+  - where:
+      verb: New
+      subject: File|FilesNoSubscription
+    hide: true
+  - where:
+      verb: Invoke
+      subject: UploadFile|UploadFilesNoSubscription
+    hide: true
   # Following are common directives which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required
