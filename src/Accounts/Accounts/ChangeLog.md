@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Adjusted output format to be more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`
 * Fixed the multiple `x-ms-unique-id` values issue
 
 ## Version 2.15.0
