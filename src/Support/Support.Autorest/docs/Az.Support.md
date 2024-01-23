@@ -80,6 +80,9 @@ Creates a new file under a workspace for the specified subscription.
 ### [New-AzSupportFileAndUpload](New-AzSupportFileAndUpload.md)
 Creates and uploads a new file under a workspace for the specified subscription.
 
+### [New-AzSupportFileAndUploadNoSubscription](New-AzSupportFileAndUploadNoSubscription.md)
+Creates and uploads a new file under a workspace for the specified subscription.
+
 ### [New-AzSupportFilesNoSubscription](New-AzSupportFilesNoSubscription.md)
 Creates a new file under a workspace.
 
