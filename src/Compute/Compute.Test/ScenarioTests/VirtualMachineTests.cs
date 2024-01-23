@@ -626,5 +626,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VMDefaultsToTrustedLaunchWithNullEncryptionAtHost");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMTLWithGallerySourceImage()
+        {
+            TestRunner.RunTestScript("Test-VMTLWithGallerySourceImage");
+        }
     }
 }
