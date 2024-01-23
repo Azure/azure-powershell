@@ -36,6 +36,8 @@ function Test-RefreshSqlInstanceExternalGovernanceCmdlet ($location = "eastus2eu
 		$instance = Get-AzSqlInstance -ResourceGroupName $rgName -Name $managedInstanceName
 		$instanceId = $instance.Id
 		$instanceName = $instance.ManagedInstanceName
+		
+		Assert-AreEqual $instance.ExternalGovernanceStatus "Disabled"
 
 		# ------------------------------ Test by passing in the instance object
 
