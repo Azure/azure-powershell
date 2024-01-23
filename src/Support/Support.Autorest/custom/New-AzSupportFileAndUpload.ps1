@@ -127,52 +127,6 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-# begin {
-#     try {
-#         $outBuffer = $null
-#         if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-#             $PSBoundParameters['OutBuffer'] = 1
-#         }
-#         $parameterSet = $PSCmdlet.ParameterSetName
-
-#         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-#             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-#         }         
-#         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-#         if ($preTelemetryId -eq '') {
-#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-#             [Microsoft.Azure.PowerShell.Cmdlets.Support.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-#         } else {
-#             $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-#             if ($internalCalledCmdlets -eq '') {
-#                 [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-#             } else {
-#                 [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-#             }
-#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-#         }
-
-#         $mapping = @{
-#             CreateExpanded = 'Az.Support.private\New-AzSupportFile_CreateExpanded';
-#         }
-#         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-#             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-#         }
-#         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-#         [Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-#         if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-#             [Microsoft.Azure.PowerShell.Cmdlets.Support.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-#             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-#         }
-#         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-#         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-#         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-#         $steppablePipeline.Begin($PSCmdlet)
-#     } catch {
-#         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-#         throw
-#     }
-# }
 
 process {
     Write-Output "file path: " $FilePath
@@ -195,20 +149,7 @@ process {
     }
     Write-Output "Number of chunks: " $NumberOfChunks
     
-    # try{
-    if($SubscriptionId)
-    {
-        Write-Output "going into subscription id if statement for create"
-        New-AzSupportFile -SubscriptionId $SubscriptionId -Name $Name -WorkspaceName $WorkspaceName -FileSize $FileSize -ChunkSize $ChunkSize -NumberOfChunk $NumberOfChunks
-    }
-    else{
-        New-AzSupportFile -Name $Name -WorkspaceName $WorkspaceName -FileSize $FileSize -ChunkSize $ChunkSize -NumberOfChunk $NumberOfChunks
-    }    
-    # }
-    # catch{
-    #     Write-Host $_
-    #     throw
-    # }
+    New-AzSupportFile -SubscriptionId $SubscriptionId -Name $Name -WorkspaceName $WorkspaceName -FileSize $FileSize -ChunkSize $ChunkSize -NumberOfChunk $NumberOfChunks
 
     Write-Output "successfully created file"
     $chunkIndex = 0
@@ -222,49 +163,10 @@ process {
         Write-Output "start index: " + $startIndex
         Write-Output "end index: " + $endIndex
         $FileContent = [convert]::ToBase64String($FileContentByteArray[$startIndex..$endIndex])
-        #Write-Output "contents of file: " $FileContent
-        if($SubscriptionId){
-            Write-Output "going into subscription id if statement for upload"
-            Invoke-AzSupportUploadFile -SubscriptionId $SubscriptionId -FileName $Name -FileWorkspaceName $WorkspaceName -ChunkIndex $chunkIndex -Content $FileContent
-        }
-        else{
-            Invoke-AzSupportUploadFile -FileName $Name -FileWorkspaceName $WorkspaceName -ChunkIndex $chunkIndex -Content $FileContent
-        }
+
+        Invoke-AzSupportUploadFile -SubscriptionId $SubscriptionId -FileName $Name -FileWorkspaceName $WorkspaceName -ChunkIndex $chunkIndex -Content $FileContent
         $chunkIndex++
         $startIndex = $endIndex + 1
         $endIndex = $FileSize - 1
     }
-    
-
-    # try {
-    #     $steppablePipeline.Process($_)
-    # } catch {
-    #     [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    #     throw
-    # }
-
-    # finally {
-    #     $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-    #     $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-    #     [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    # }
-
-}
-# end {
-#     try {
-#         $steppablePipeline.End()
-
-#         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-#         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-#         if ($preTelemetryId -eq '') {
-#             [Microsoft.Azure.PowerShell.Cmdlets.Support.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-#         }
-#         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-#     } catch {
-#         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-#         throw
-#     }
-# } 
 }
