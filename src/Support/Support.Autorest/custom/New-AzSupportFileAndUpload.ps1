@@ -170,3 +170,4 @@ process {
         $endIndex = $FileSize - 1
     }
 }
+}
