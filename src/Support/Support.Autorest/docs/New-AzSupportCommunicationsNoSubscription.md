@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportcommunication
+online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportcommunicationsnosubscription
 schema: 2.0.0
 ---
 
-# New-AzSupportCommunication
+# New-AzSupportCommunicationsNoSubscription
 
 ## SYNOPSIS
 Adds a new customer communication to an Azure support ticket.
@@ -13,7 +13,7 @@ Adds a new customer communication to an Azure support ticket.
 ## SYNTAX
 
 ```
-New-AzSupportCommunication -Name <String> -SupportTicketName <String> [-SubscriptionId <String>]
+New-AzSupportCommunicationsNoSubscription -CommunicationName <String> -SupportTicketName <String>
  [-Body <String>] [-Sender <String>] [-Subject <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -77,6 +77,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CommunicationName
+Communication name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -87,21 +102,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Communication name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: CommunicationName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -150,21 +150,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Azure subscription Id.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

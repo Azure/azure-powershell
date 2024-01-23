@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/invoke-azsupportuploadfile
+online version: https://learn.microsoft.com/powershell/module/az.support/invoke-azsupportuploadfilesnosubscription
 schema: 2.0.0
 ---
 
-# Invoke-AzSupportUploadFile
+# Invoke-AzSupportUploadFilesNoSubscription
 
 ## SYNOPSIS
 This API allows you to upload content to a file
@@ -14,52 +14,52 @@ This API allows you to upload content to a file
 
 ### UploadExpanded (Default)
 ```
-Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceName <String> [-SubscriptionId <String>]
+Invoke-AzSupportUploadFilesNoSubscription -FileName <String> -FileWorkspaceName <String>
  [-ChunkIndex <Single>] [-Content <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Upload
 ```
-Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceName <String> -UploadFile <IUploadFile>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzSupportUploadFilesNoSubscription -FileName <String> -FileWorkspaceName <String>
+ -UploadFile <IUploadFile> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UploadViaIdentity
 ```
-Invoke-AzSupportUploadFile -InputObject <ISupportIdentity> -UploadFile <IUploadFile>
+Invoke-AzSupportUploadFilesNoSubscription -InputObject <ISupportIdentity> -UploadFile <IUploadFile>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UploadViaIdentityExpanded
 ```
-Invoke-AzSupportUploadFile -InputObject <ISupportIdentity> [-ChunkIndex <Single>] [-Content <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzSupportUploadFilesNoSubscription -InputObject <ISupportIdentity> [-ChunkIndex <Single>]
+ [-Content <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UploadViaIdentityFileWorkspace
 ```
-Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceInputObject <ISupportIdentity>
+Invoke-AzSupportUploadFilesNoSubscription -FileName <String> -FileWorkspaceInputObject <ISupportIdentity>
  -UploadFile <IUploadFile> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UploadViaIdentityFileWorkspaceExpanded
 ```
-Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceInputObject <ISupportIdentity>
+Invoke-AzSupportUploadFilesNoSubscription -FileName <String> -FileWorkspaceInputObject <ISupportIdentity>
  [-ChunkIndex <Single>] [-Content <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UploadViaJsonFilePath
 ```
-Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzSupportUploadFilesNoSubscription -FileName <String> -FileWorkspaceName <String>
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UploadViaJsonString
 ```
-Invoke-AzSupportUploadFile -FileName <String> -FileWorkspaceName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzSupportUploadFilesNoSubscription -FileName <String> -FileWorkspaceName <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -240,21 +240,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Azure subscription Id.
-
-```yaml
-Type: System.String
-Parameter Sets: Upload, UploadExpanded, UploadViaJsonFilePath, UploadViaJsonString
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -1,39 +1,59 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/update-azsupportcommunication
+online version: https://learn.microsoft.com/powershell/module/az.support/test-azsupportcommunicationsnosubscriptionnameavailability
 schema: 2.0.0
 ---
 
-# Update-AzSupportCommunication
+# Test-AzSupportCommunicationsNoSubscriptionNameAvailability
 
 ## SYNOPSIS
-Adds a new customer communication to an Azure support ticket.
+Check the availability of a resource name.
+This API should be used to check the uniqueness of the name for adding a new communication to the support ticket.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### CheckExpanded (Default)
 ```
-Update-AzSupportCommunication -Name <String> -SupportTicketName <String> [-SubscriptionId <String>]
- [-Body <String>] [-Sender <String>] [-Subject <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzSupportCommunication -InputObject <ISupportIdentity> [-Body <String>] [-Sender <String>]
- [-Subject <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzSupportCommunicationsNoSubscriptionNameAvailability -SupportTicketName <String> -Name <String>
+ -Type <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentitySupportTicketExpanded
+### Check
 ```
-Update-AzSupportCommunication -Name <String> -SupportTicketInputObject <ISupportIdentity> [-Body <String>]
- [-Sender <String>] [-Subject <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Test-AzSupportCommunicationsNoSubscriptionNameAvailability -SupportTicketName <String>
+ -CheckNameAvailabilityInput <ICheckNameAvailabilityInput> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### CheckViaIdentity
+```
+Test-AzSupportCommunicationsNoSubscriptionNameAvailability -InputObject <ISupportIdentity>
+ -CheckNameAvailabilityInput <ICheckNameAvailabilityInput> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CheckViaIdentityExpanded
+```
+Test-AzSupportCommunicationsNoSubscriptionNameAvailability -InputObject <ISupportIdentity> -Name <String>
+ -Type <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonFilePath
+```
+Test-AzSupportCommunicationsNoSubscriptionNameAvailability -SupportTicketName <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonString
+```
+Test-AzSupportCommunicationsNoSubscriptionNameAvailability -SupportTicketName <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Adds a new customer communication to an Azure support ticket.
+Check the availability of a resource name.
+This API should be used to check the uniqueness of the name for adding a new communication to the support ticket.
 
 ## EXAMPLES
 
@@ -61,33 +81,19 @@ Adds a new customer communication to an Azure support ticket.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -CheckNameAvailabilityInput
+Input of CheckNameAvailability API.
+To construct, see NOTES section for CHECKNAMEAVAILABILITYINPUT properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICheckNameAvailabilityInput
+Parameter Sets: Check, CheckViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-Body of the communication.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -113,105 +119,58 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Communication name.
+The resource name to validate.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentitySupportTicketExpanded
-Aliases: CommunicationName
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Sender
-Email address of the sender.
-This property is required if called by a service principal.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Subject
-Subject of the communication.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Azure subscription Id.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SupportTicketInputObject
-Identity Parameter
-To construct, see NOTES section for SUPPORTTICKETINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-Parameter Sets: UpdateViaIdentitySupportTicketExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -220,7 +179,22 @@ Support ticket name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Check, CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+The type of resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -266,11 +240,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICheckNameAvailabilityInput
+
 ### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetails
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICheckNameAvailabilityOutput
 
 ## NOTES
 

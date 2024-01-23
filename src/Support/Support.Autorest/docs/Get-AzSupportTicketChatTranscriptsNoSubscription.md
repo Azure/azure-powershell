@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportfileworkspace
+online version: https://learn.microsoft.com/powershell/module/az.support/get-azsupportticketchattranscriptsnosubscription
 schema: 2.0.0
 ---
 
-# New-AzSupportFileWorkspace
+# Get-AzSupportTicketChatTranscriptsNoSubscription
 
 ## SYNOPSIS
-Creates a new file workspace for the specified subscription.
+Lists all chat transcripts for a support ticket
 
 ## SYNTAX
 
 ```
-New-AzSupportFileWorkspace -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzSupportTicketChatTranscriptsNoSubscription -SupportTicketName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new file workspace for the specified subscription.
+Lists all chat transcripts for a support ticket
 
 ## EXAMPLES
 
@@ -62,61 +62,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-File workspace name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: FileWorkspaceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Azure subscription Id.
+### -SupportTicketName
+Support ticket name
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -130,7 +84,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IFileWorkspaceDetails
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IChatTranscriptDetails
 
 ## NOTES
 

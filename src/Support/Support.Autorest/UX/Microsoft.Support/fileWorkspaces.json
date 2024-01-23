@@ -6,6 +6,34 @@
   },
   "commands": [
     {
+      "name": "Get-AzSupportFileWorkspacesNoSubscription",
+      "description": "Gets details for a specific file workspace.",
+      "path": "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.support/get-azsupportfileworkspacesnosubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FileWorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets details for a specific file workspace.",
+          "parameters": [
+            {
+              "name": "-FileWorkspaceName",
+              "value": "[Path.fileWorkspaceName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Get-AzSupportFileWorkspace",
       "description": "Gets details for a specific file workspace in an Azure subscription.",
       "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
@@ -18,11 +46,6 @@
             "parameters": [
               "-Name <String>",
               "[-SubscriptionId <String[]>]"
-            ]
-          },
-          {
-            "parameters": [
-              "-Name <String>"
             ]
           }
         ]
@@ -38,15 +61,6 @@
             {
               "name": "-SubscriptionId",
               "value": "[Path.subscriptionId]"
-            }
-          ]
-        },
-        {
-          "description": "Gets details for a specific file workspace.",
-          "parameters": [
-            {
-              "name": "-Name",
-              "value": "[Path.fileWorkspaceName]"
             }
           ]
         }

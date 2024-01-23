@@ -8,14 +8,15 @@ schema: 2.0.0
 # Update-AzSupportFile
 
 ## SYNOPSIS
-Creates a new file under a workspace.
+Creates a new file under a workspace for the specified subscription.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzSupportFile -Name <String> -WorkspaceName <String> [-ChunkSize <Single>] [-FileSize <Single>]
- [-NumberOfChunk <Single>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSupportFile -Name <String> -WorkspaceName <String> [-SubscriptionId <String>] [-ChunkSize <Single>]
+ [-FileSize <Single>] [-NumberOfChunk <Single>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -32,7 +33,7 @@ Update-AzSupportFile -FileWorkspaceInputObject <ISupportIdentity> -Name <String>
 ```
 
 ## DESCRIPTION
-Creates a new file under a workspace.
+Creates a new file under a workspace for the specified subscription.
 
 ## EXAMPLES
 
@@ -164,6 +165,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Azure subscription Id.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

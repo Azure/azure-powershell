@@ -1,25 +1,25 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportcommunication
+online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportfilesnosubscription
 schema: 2.0.0
 ---
 
-# New-AzSupportCommunication
+# New-AzSupportFilesNoSubscription
 
 ## SYNOPSIS
-Adds a new customer communication to an Azure support ticket.
+Creates a new file under a workspace.
 
 ## SYNTAX
 
 ```
-New-AzSupportCommunication -Name <String> -SupportTicketName <String> [-SubscriptionId <String>]
- [-Body <String>] [-Sender <String>] [-Subject <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSupportFilesNoSubscription -FileName <String> -FileWorkspaceName <String> [-ChunkSize <Single>]
+ [-FileSize <Single>] [-NumberOfChunk <Single>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Adds a new customer communication to an Azure support ticket.
+Creates a new file under a workspace.
 
 ## EXAMPLES
 
@@ -47,26 +47,11 @@ Adds a new customer communication to an Azure support ticket.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -ChunkSize
+Size of each chunk
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-Body of the communication.
-
-```yaml
-Type: System.String
+Type: System.Single
 Parameter Sets: (All)
 Aliases:
 
@@ -93,13 +78,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Communication name.
+### -FileName
+File name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: CommunicationName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FileSize
+Size of the file to be uploaded
+
+```yaml
+Type: System.Single
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FileWorkspaceName
+File workspace name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: True
 Position: Named
@@ -108,76 +123,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -NumberOfChunk
+Number of chunks to be uploaded
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Single
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Sender
-Email address of the sender.
-This property is required if called by a service principal.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Subject
-Subject of the communication.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Azure subscription Id.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SupportTicketName
-Support ticket name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -222,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetails
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IFileDetails
 
 ## NOTES
 

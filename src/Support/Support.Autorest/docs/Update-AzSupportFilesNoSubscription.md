@@ -1,25 +1,39 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportcommunication
+online version: https://learn.microsoft.com/powershell/module/az.support/update-azsupportfilesnosubscription
 schema: 2.0.0
 ---
 
-# New-AzSupportCommunication
+# Update-AzSupportFilesNoSubscription
 
 ## SYNOPSIS
-Adds a new customer communication to an Azure support ticket.
+Creates a new file under a workspace.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-New-AzSupportCommunication -Name <String> -SupportTicketName <String> [-SubscriptionId <String>]
- [-Body <String>] [-Sender <String>] [-Subject <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSupportFilesNoSubscription -FileName <String> -FileWorkspaceName <String> [-ChunkSize <Single>]
+ [-FileSize <Single>] [-NumberOfChunk <Single>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzSupportFilesNoSubscription -InputObject <ISupportIdentity> [-ChunkSize <Single>] [-FileSize <Single>]
+ [-NumberOfChunk <Single>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityFileWorkspaceExpanded
+```
+Update-AzSupportFilesNoSubscription -FileName <String> -FileWorkspaceInputObject <ISupportIdentity>
+ [-ChunkSize <Single>] [-FileSize <Single>] [-NumberOfChunk <Single>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Adds a new customer communication to an Azure support ticket.
+Creates a new file under a workspace.
 
 ## EXAMPLES
 
@@ -47,26 +61,11 @@ Adds a new customer communication to an Azure support ticket.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -ChunkSize
+Size of each chunk
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-Body of the communication.
-
-```yaml
-Type: System.String
+Type: System.Single
 Parameter Sets: (All)
 Aliases:
 
@@ -93,13 +92,59 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Communication name.
+### -FileName
+File name.
 
 ```yaml
 Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityFileWorkspaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FileSize
+Size of the file to be uploaded
+
+```yaml
+Type: System.Single
 Parameter Sets: (All)
-Aliases: CommunicationName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FileWorkspaceInputObject
+Identity Parameter
+To construct, see NOTES section for FILEWORKSPACEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
+Parameter Sets: UpdateViaIdentityFileWorkspaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -FileWorkspaceName
+File workspace name.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
 
 Required: True
 Position: Named
@@ -108,76 +153,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Sender
-Email address of the sender.
-This property is required if called by a service principal.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Subject
-Subject of the communication.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Azure subscription Id.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SupportTicketName
-Support ticket name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NumberOfChunk
+Number of chunks to be uploaded
+
+```yaml
+Type: System.Single
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -220,9 +220,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetails
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IFileDetails
 
 ## NOTES
 

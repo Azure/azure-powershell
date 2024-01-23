@@ -1,42 +1,41 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/get-azsupportchattranscript
+online version: https://learn.microsoft.com/powershell/module/az.support/get-azsupportticketsnosubscription
 schema: 2.0.0
 ---
 
-# Get-AzSupportChatTranscript
+# Get-AzSupportTicketsNoSubscription
 
 ## SYNOPSIS
-Returns chatTranscript details for a support ticket under a subscription.
+Gets details for a specific support ticket.
+Support ticket data is available for 18 months after ticket creation.
+If a ticket was created more than 18 months ago, a request for data might cause an error.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzSupportChatTranscript -SupportTicketName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSupportTicketsNoSubscription [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzSupportChatTranscript -Name <String> -SupportTicketName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSupportTicketsNoSubscription -SupportTicketName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzSupportChatTranscript -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentitySupportTicket
-```
-Get-AzSupportChatTranscript -Name <String> -SupportTicketInputObject <ISupportIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSupportTicketsNoSubscription -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns chatTranscript details for a support ticket under a subscription.
+Gets details for a specific support ticket.
+Support ticket data is available for 18 months after ticket creation.
+If a ticket was created more than 18 months ago, a request for data might cause an error.
 
 ## EXAMPLES
 
@@ -80,6 +79,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Filter
+The filter to apply on the operation.
+We support 'odata v4.0' filter semantics.
+\<a target='_blank' href='https://docs.microsoft.com/odata/concepts/queryoptions-overview'\>Learn more\</a\> \<br/\>\<i\>Status\</i\> , \<i\>ServiceId\</i\>, and \<i\>ProblemClassificationId\</i\> filters can only be used with 'eq' operator.
+For \<i\>CreatedDate\</i\> filter, the supported operators are 'gt' and 'ge'.
+When using both filters, combine them using the logical 'AND'.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -96,61 +114,31 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-ChatTranscript name.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetViaIdentitySupportTicket
-Aliases: ChatTranscriptName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Azure subscription Id.
-
-```yaml
-Type: System.String[]
-Parameter Sets: Get, List
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SupportTicketInputObject
-Identity Parameter
-To construct, see NOTES section for SUPPORTTICKETINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-Parameter Sets: GetViaIdentitySupportTicket
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SupportTicketName
 Support ticket name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Top
+The number of values to return in the collection.
+Default is 25 and max is 100.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -166,7 +154,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IChatTranscriptDetails
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportTicketDetails
 
 ## NOTES
 

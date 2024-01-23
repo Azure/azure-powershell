@@ -1,21 +1,21 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/update-azsupportticket
+online version: https://learn.microsoft.com/powershell/module/az.support/update-azsupportticketsnosubscription
 schema: 2.0.0
 ---
 
-# Update-AzSupportTicket
+# Update-AzSupportTicketsNoSubscription
 
 ## SYNOPSIS
-This API allows you to update the severity level, ticket status, advanced diagnostic consent and your contact information in the support ticket.\<br/\>\<br/\>Note: The severity levels cannot be changed if a support ticket is actively being worked upon by an Azure support engineer.
+This API allows you to update the severity level, ticket status, and your contact information in the support ticket.\<br/\>\<br/\>Note: The severity levels cannot be changed if a support ticket is actively being worked upon by an Azure support engineer.
 In such a case, contact your support engineer to request severity update by adding a new communication using the Communications API.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzSupportTicket -Name <String> [-SubscriptionId <String>] [-AdvancedDiagnosticConsent <String>]
+Update-AzSupportTicketsNoSubscription -SupportTicketName <String> [-AdvancedDiagnosticConsent <String>]
  [-ContactDetailAdditionalEmailAddress <String[]>] [-ContactDetailCountry <String>]
  [-ContactDetailFirstName <String>] [-ContactDetailLastName <String>] [-ContactDetailPhoneNumber <String>]
  [-ContactDetailPreferredContactMethod <String>] [-ContactDetailPreferredSupportLanguage <String>]
@@ -26,7 +26,7 @@ Update-AzSupportTicket -Name <String> [-SubscriptionId <String>] [-AdvancedDiagn
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSupportTicket -InputObject <ISupportIdentity> [-AdvancedDiagnosticConsent <String>]
+Update-AzSupportTicketsNoSubscription -InputObject <ISupportIdentity> [-AdvancedDiagnosticConsent <String>]
  [-ContactDetailAdditionalEmailAddress <String[]>] [-ContactDetailCountry <String>]
  [-ContactDetailFirstName <String>] [-ContactDetailLastName <String>] [-ContactDetailPhoneNumber <String>]
  [-ContactDetailPreferredContactMethod <String>] [-ContactDetailPreferredSupportLanguage <String>]
@@ -36,7 +36,7 @@ Update-AzSupportTicket -InputObject <ISupportIdentity> [-AdvancedDiagnosticConse
 ```
 
 ## DESCRIPTION
-This API allows you to update the severity level, ticket status, advanced diagnostic consent and your contact information in the support ticket.\<br/\>\<br/\>Note: The severity levels cannot be changed if a support ticket is actively being worked upon by an Azure support engineer.
+This API allows you to update the severity level, ticket status, and your contact information in the support ticket.\<br/\>\<br/\>Note: The severity levels cannot be changed if a support ticket is actively being worked upon by an Azure support engineer.
 In such a case, contact your support engineer to request severity update by adding a new communication using the Communications API.
 
 ## EXAMPLES
@@ -254,21 +254,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Support ticket name.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: SupportTicketName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SecondaryConsent
 This property indicates secondary consents for the support ticket
 To construct, see NOTES section for SECONDARYCONSENT properties and create a hash table.
@@ -315,17 +300,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-Azure subscription Id.
+### -SupportTicketName
+Support ticket name.
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -1,42 +1,37 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/get-azsupportchattranscript
+online version: https://learn.microsoft.com/powershell/module/az.support/get-azsupportcommunicationsnosubscription
 schema: 2.0.0
 ---
 
-# Get-AzSupportChatTranscript
+# Get-AzSupportCommunicationsNoSubscription
 
 ## SYNOPSIS
-Returns chatTranscript details for a support ticket under a subscription.
+Returns communication details for a support ticket.
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
-Get-AzSupportChatTranscript -SupportTicketName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzSupportChatTranscript -Name <String> -SupportTicketName <String> [-SubscriptionId <String[]>]
+Get-AzSupportCommunicationsNoSubscription -CommunicationName <String> -SupportTicketName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzSupportChatTranscript -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSupportCommunicationsNoSubscription -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentitySupportTicket
 ```
-Get-AzSupportChatTranscript -Name <String> -SupportTicketInputObject <ISupportIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSupportCommunicationsNoSubscription -CommunicationName <String>
+ -SupportTicketInputObject <ISupportIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns chatTranscript details for a support ticket under a subscription.
+Returns communication details for a support ticket.
 
 ## EXAMPLES
 
@@ -63,6 +58,21 @@ Returns chatTranscript details for a support ticket under a subscription.
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -CommunicationName
+Communication name.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentitySupportTicket
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -96,36 +106,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-ChatTranscript name.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetViaIdentitySupportTicket
-Aliases: ChatTranscriptName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Azure subscription Id.
-
-```yaml
-Type: System.String[]
-Parameter Sets: Get, List
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SupportTicketInputObject
 Identity Parameter
 To construct, see NOTES section for SUPPORTTICKETINPUTOBJECT properties and create a hash table.
@@ -147,7 +127,7 @@ Support ticket name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -166,7 +146,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IChatTranscriptDetails
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ICommunicationDetails
 
 ## NOTES
 

@@ -6,6 +6,34 @@
   },
   "commands": [
     {
+      "name": "Get-AzSupportTicketsNoSubscription",
+      "description": "Gets details for a specific support ticket.\nSupport ticket data is available for 18 months after ticket creation.\nIf a ticket was created more than 18 months ago, a request for data might cause an error.",
+      "path": "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.support/get-azsupportticketsnosubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-SupportTicketName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets details for a specific support ticket. Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
+          "parameters": [
+            {
+              "name": "-SupportTicketName",
+              "value": "[Path.supportTicketName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Get-AzSupportTicket",
       "description": "Get ticket details for an Azure subscription.\nSupport ticket data is available for 18 months after ticket creation.\nIf a ticket was created more than 18 months ago, a request for data might cause an error.",
       "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
@@ -18,11 +46,6 @@
             "parameters": [
               "-Name <String>",
               "[-SubscriptionId <String[]>]"
-            ]
-          },
-          {
-            "parameters": [
-              "-Name <String>"
             ]
           }
         ]
@@ -38,15 +61,6 @@
             {
               "name": "-SubscriptionId",
               "value": "[Path.subscriptionId]"
-            }
-          ]
-        },
-        {
-          "description": "Gets details for a specific support ticket. Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
-          "parameters": [
-            {
-              "name": "-Name",
-              "value": "[Path.supportTicketName]"
             }
           ]
         }

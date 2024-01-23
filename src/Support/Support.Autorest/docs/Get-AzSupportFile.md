@@ -12,20 +12,16 @@ Returns details of a specific file in a work space.
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
-Get-AzSupportFile -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSupportFile -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzSupportFile -Name <String> -SubscriptionId <String[]> -WorkspaceName <String>
+Get-AzSupportFile -Name <String> -WorkspaceName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get1
-```
-Get-AzSupportFile -Name <String> -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -33,26 +29,9 @@ Get-AzSupportFile -Name <String> -WorkspaceName <String> [-DefaultProfile <PSObj
 Get-AzSupportFile -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity1
-```
-Get-AzSupportFile -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentityFileWorkspace
 ```
 Get-AzSupportFile -FileWorkspaceInputObject <ISupportIdentity> -Name <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentityFileWorkspace1
-```
-Get-AzSupportFile -FileWorkspace1InputObject <ISupportIdentity> -Name <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### List
-```
-Get-AzSupportFile -SubscriptionId <String[]> -WorkspaceName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -101,22 +80,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FileWorkspace1InputObject
-Identity Parameter
-To construct, see NOTES section for FILEWORKSPACE1INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-Parameter Sets: GetViaIdentityFileWorkspace1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -FileWorkspaceInputObject
 Identity Parameter
 To construct, see NOTES section for FILEWORKSPACEINPUTOBJECT properties and create a hash table.
@@ -139,7 +102,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -154,7 +117,7 @@ File Name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, GetViaIdentityFileWorkspace, GetViaIdentityFileWorkspace1
+Parameter Sets: Get, GetViaIdentityFileWorkspace
 Aliases: FileName
 
 Required: True
@@ -172,9 +135,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -184,7 +147,7 @@ File Workspace Name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, List, List1
+Parameter Sets: Get, List
 Aliases: FileWorkspaceName
 
 Required: True

@@ -1,21 +1,36 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportcommunication
+online version: https://learn.microsoft.com/powershell/module/az.support/update-azsupportcommunicationsnosubscription
 schema: 2.0.0
 ---
 
-# New-AzSupportCommunication
+# Update-AzSupportCommunicationsNoSubscription
 
 ## SYNOPSIS
 Adds a new customer communication to an Azure support ticket.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-New-AzSupportCommunication -Name <String> -SupportTicketName <String> [-SubscriptionId <String>]
+Update-AzSupportCommunicationsNoSubscription -CommunicationName <String> -SupportTicketName <String>
  [-Body <String>] [-Sender <String>] [-Subject <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzSupportCommunicationsNoSubscription -InputObject <ISupportIdentity> [-Body <String>]
+ [-Sender <String>] [-Subject <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentitySupportTicketExpanded
+```
+Update-AzSupportCommunicationsNoSubscription -CommunicationName <String>
+ -SupportTicketInputObject <ISupportIdentity> [-Body <String>] [-Sender <String>] [-Subject <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,6 +92,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CommunicationName
+Communication name.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentitySupportTicketExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -93,18 +123,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Communication name.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: CommunicationName
+Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -154,18 +185,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-Azure subscription Id.
+### -SupportTicketInputObject
+Identity Parameter
+To construct, see NOTES section for SUPPORTTICKETINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
+Parameter Sets: UpdateViaIdentitySupportTicketExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -174,7 +206,7 @@ Support ticket name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -219,6 +251,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
 
 ## OUTPUTS
 

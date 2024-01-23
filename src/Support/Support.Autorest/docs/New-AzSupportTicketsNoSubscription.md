@@ -1,25 +1,22 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportticket
+online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportticketsnosubscription
 schema: 2.0.0
 ---
 
-# New-AzSupportTicket
+# New-AzSupportTicketsNoSubscription
 
 ## SYNOPSIS
-Creates a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management issues for the specified subscription.
+Creates a new support ticket for Billing, and Subscription Management issues.
 Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support ticket.\<br/\>\<br/\>Always call the Services and ProblemClassifications API to get the most recent set of services and problem categories required for support ticket creation.\<br/\>\<br/\>Adding attachments is not currently supported via the API.
 To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest) page in the Azure portal, select the support ticket, and use the file upload control to add a new file.\<br/\>\<br/\>Providing consent to share diagnostic information with Azure support is currently not supported via the API.
-The Azure support engineer working on your ticket will reach out to you for consent if your issue requires gathering diagnostic information from your Azure resources.\<br/\>\<br/\>**Creating a support ticket for on-behalf-of**: Include _x-ms-authorization-auxiliary_ header to provide an auxiliary token as per [documentation](https://docs.microsoft.com/azure/azure-resource-manager/management/authenticate-multi-tenant).
-The primary token will be from the tenant for whom a support ticket is being raised against the subscription, i.e.
-Cloud solution provider (CSP) customer tenant.
-The auxiliary token will be from the Cloud solution provider (CSP) partner tenant.
+The Azure support engineer working on your ticket will reach out to you for consent if your issue requires gathering diagnostic information from your Azure resources.\<br/\>\<br/\>
 
 ## SYNTAX
 
 ```
-New-AzSupportTicket -Name <String> [-SubscriptionId <String>] [-AdvancedDiagnosticConsent <String>]
+New-AzSupportTicketsNoSubscription -SupportTicketName <String> [-AdvancedDiagnosticConsent <String>]
  [-ContactDetailAdditionalEmailAddress <String[]>] [-ContactDetailCountry <String>]
  [-ContactDetailFirstName <String>] [-ContactDetailLastName <String>] [-ContactDetailPhoneNumber <String>]
  [-ContactDetailPreferredContactMethod <String>] [-ContactDetailPreferredSupportLanguage <String>]
@@ -34,13 +31,10 @@ New-AzSupportTicket -Name <String> [-SubscriptionId <String>] [-AdvancedDiagnost
 ```
 
 ## DESCRIPTION
-Creates a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management issues for the specified subscription.
+Creates a new support ticket for Billing, and Subscription Management issues.
 Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support ticket.\<br/\>\<br/\>Always call the Services and ProblemClassifications API to get the most recent set of services and problem categories required for support ticket creation.\<br/\>\<br/\>Adding attachments is not currently supported via the API.
 To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest) page in the Azure portal, select the support ticket, and use the file upload control to add a new file.\<br/\>\<br/\>Providing consent to share diagnostic information with Azure support is currently not supported via the API.
-The Azure support engineer working on your ticket will reach out to you for consent if your issue requires gathering diagnostic information from your Azure resources.\<br/\>\<br/\>**Creating a support ticket for on-behalf-of**: Include _x-ms-authorization-auxiliary_ header to provide an auxiliary token as per [documentation](https://docs.microsoft.com/azure/azure-resource-manager/management/authenticate-multi-tenant).
-The primary token will be from the tenant for whom a support ticket is being raised against the subscription, i.e.
-Cloud solution provider (CSP) customer tenant.
-The auxiliary token will be from the Cloud solution provider (CSP) partner tenant.
+The Azure support engineer working on your ticket will reach out to you for consent if your issue requires gathering diagnostic information from your Azure resources.\<br/\>\<br/\>
 
 ## EXAMPLES
 
@@ -286,21 +280,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Support ticket name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: SupportTicketName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -470,21 +449,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-Azure subscription Id.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SupportPlanId
 Support plan id associated with the support ticket.
 
@@ -509,6 +473,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SupportTicketName
+Support ticket name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

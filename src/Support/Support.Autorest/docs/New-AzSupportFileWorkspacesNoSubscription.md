@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportfileworkspace
+online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportfileworkspacesnosubscription
 schema: 2.0.0
 ---
 
-# New-AzSupportFileWorkspace
+# New-AzSupportFileWorkspacesNoSubscription
 
 ## SYNOPSIS
-Creates a new file workspace for the specified subscription.
+Creates a new file workspace.
 
 ## SYNTAX
 
 ```
-New-AzSupportFileWorkspace -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+New-AzSupportFileWorkspacesNoSubscription -FileWorkspaceName <String> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new file workspace for the specified subscription.
+Creates a new file workspace.
 
 ## EXAMPLES
 
@@ -62,32 +62,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -FileWorkspaceName
 File workspace name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: FileWorkspaceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Azure subscription Id.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
