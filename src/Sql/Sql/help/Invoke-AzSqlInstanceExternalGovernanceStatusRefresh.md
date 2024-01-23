@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.sql/invoke-azsqlinstanceexternalgovernancestatusrefresh
 schema: 2.0.0
 ---
 
@@ -40,7 +40,7 @@ Refreshes the value of external governance on the managed instance.
 
 ### Example 1
 ```powershell
-PS C:\>Invoke-AzSqlInstanceExternalGovernanceStatusRefresh -InstanceName MyManagedInstance -ResourceGroupName MyResourceGroup
+Invoke-AzSqlInstanceExternalGovernanceStatusRefresh -InstanceName MyManagedInstance -ResourceGroupName MyResourceGroup
 ```
 
 Successfully refreshed external governance enablement status.

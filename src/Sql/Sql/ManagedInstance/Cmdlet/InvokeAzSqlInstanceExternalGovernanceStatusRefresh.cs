@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceExternalGovernanceStatusRefresh", SupportsShouldProcess = true), OutputType(typeof(RefreshExternalGovernanceMIModel))]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceExternalGovernanceStatusRefresh", SupportsShouldProcess = true, DefaultParameterSetName = InvokeByNameParameterSet), OutputType(typeof(RefreshExternalGovernanceMIModel))]
     public class InvokeAzSqlInstanceExternalGovernanceStatusRefresh : AzureSqlInstanceRefreshExternalGovernanceCmdletBase
     {
         private const string InvokeByNameParameterSet = "InvokeByNameParameterSet";
