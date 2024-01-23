@@ -1,22 +1,11 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue -Password "passwordValue" -Username "usernameValue"
 ```
-
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                      Password      Type       Username
+----                      --------      ----       --------
+azps_test_credentialvalue passwordValue Credential usernameValue
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create a local PS Credential Execution object

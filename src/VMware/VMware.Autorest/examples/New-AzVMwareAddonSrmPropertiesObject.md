@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a local SRM object for the Addon Property parameter
 ```powershell
-{{ Add code here }}
+New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
 ```
-
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AddonType LicenseKey          ProvisioningState
+--------- ----------          -----------------
+SRM       YourLicenseKeyValue
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a local SRM object for the Addon Property parameter
 
