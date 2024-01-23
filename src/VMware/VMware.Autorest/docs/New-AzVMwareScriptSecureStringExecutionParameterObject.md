@@ -22,27 +22,18 @@ Create a in-memory object for ScriptSecureStringExecutionParameter
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a local Script Secure String Execution object
 ```powershell
-{{ Add code here }}
+New-AzVMwareScriptSecureStringExecutionParameterObject -Name azps_test_securevalue -SecureValue "passwordValue"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                  SecureValue   Type
+----                  -----------   ----
+azps_test_securevalue passwordValue SecureValue
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a local Script Secure String Execution object
 
 ## PARAMETERS
 

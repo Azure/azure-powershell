@@ -39,27 +39,18 @@ Create a global reach connection in a private cloud
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a global reach connection in a private cloud
 ```powershell
-{{ Add code here }}
+Update-AzVMwareGlobalReachConnection -Name azps_test_grc -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -AuthorizationKey "df530ffb-5a57-4437-a3eb-08e4c73ce011" -PeerExpressRouteResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/tnt16-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt16-cust-mp01-mock01-er"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name          Type                                               ResourceGroupName
+----          ----                                               -----------------
+azps_test_grc Microsoft.AVS/privateClouds/globalReachConnections azps_test_group
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Update a global reach connection in a private cloud
 
 ## PARAMETERS
 

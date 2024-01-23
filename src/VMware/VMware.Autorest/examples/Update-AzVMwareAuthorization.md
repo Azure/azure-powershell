@@ -1,22 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an ExpressRoute Circuit Authorization in a private cloud
 ```powershell
-{{ Add code here }}
+Update-AzVMwareAuthorization -Name azps_test_authorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 ```
-
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ExpressRouteAuthorizationId : ExpressRouteURI
+ExpressRouteId              : ExpressRouteId
+Id                          : Id
+Key                         : GUID
+Name                        : azps_test_authorization
+ProvisioningState           : Succeeded
+ResourceGroupName           : azps_test_group
+Type                        : Microsoft.AVS/privateClouds/authorizations
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Update an ExpressRoute Circuit Authorization in a private cloud
