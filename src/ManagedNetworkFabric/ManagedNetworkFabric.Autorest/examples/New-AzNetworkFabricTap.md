@@ -15,7 +15,7 @@ New-AzNetworkFabricTap -Name $name -ResourceGroupName $resourceGroupName -Destin
 ```output
 AdministrativeState Annotation ConfigurationState Destination
 ------------------- ---------- ------------------ -----------
-Disabled                       Succeeded          {{…
+Disabled                       Succeeded          
 ```
 
 This command creates the Network Tap resource.

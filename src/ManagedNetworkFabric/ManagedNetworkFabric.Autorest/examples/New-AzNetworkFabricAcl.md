@@ -51,7 +51,7 @@ New-AzNetworkFabricAcl -Name $name -ResourceGroupName $resourceGroupName -Locati
 ```output
 AclsUrl AdministrativeState Annotation ConfigurationState ConfigurationType DefaultAction DynamicMatchConfiguration
 ------- ------------------- ---------- ------------------ ----------------- ------------- -------------------------
-        Disabled                       Succeeded          Inline            Permit        {{…
+        Disabled                       Succeeded          Inline            Permit        
 ```
 
 This command creates the Access Control List resource.

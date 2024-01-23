@@ -14,10 +14,10 @@ Creates a Network Tap.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkFabricTap -Name <String> -ResourceGroupName <String> -Destination <IDestinationProperties[]>
- -Location <String> -NetworkPacketBrokerId <String> [-SubscriptionId <String>] [-Annotation <String>]
- [-PollingType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzNetworkFabricTap -Name <String> -ResourceGroupName <String>
+ -Destination <INetworkTapPropertiesDestinationsItem[]> -Location <String> -NetworkPacketBrokerId <String>
+ [-SubscriptionId <String>] [-Annotation <String>] [-PollingType <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -56,7 +56,7 @@ New-AzNetworkFabricTap -Name $name -ResourceGroupName $resourceGroupName -Destin
 ```output
 AdministrativeState Annotation ConfigurationState Destination
 ------------------- ---------- ------------------ -----------
-Disabled                       Succeeded          {{…
+Disabled                       Succeeded          
 ```
 
 This command creates the Network Tap resource.
@@ -114,7 +114,7 @@ List of destinations to send the filter traffic.
 To construct, see NOTES section for DESTINATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IDestinationProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapPropertiesDestinationsItem[]
 Parameter Sets: CreateExpanded
 Aliases:
 

@@ -15,7 +15,7 @@ New-AzNetworkFabricNeighborGroup -Name $name -ResourceGroupName $resourceGroupNa
 ```output
 Annotation Destination     Id
 ---------- -----------     --
-           {…              /subscriptions/<identity>/resourc…
+                           /subscriptions/<identity>/resourc…
 ```
 
 This command creates the Neighbor Group resource.

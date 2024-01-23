@@ -62,7 +62,7 @@ Update-AzNetworkFabricNeighborGroup -Name $name -ResourceGroupName $resourceGrou
 ```output
 Annotation Destination     Id
 ---------- -----------     --
-           {…              /subscriptions/<identity>/resour…
+                           /subscriptions/<identity>/resour…
 ```
 
 This command updates the properties of the given Neighbor Group.

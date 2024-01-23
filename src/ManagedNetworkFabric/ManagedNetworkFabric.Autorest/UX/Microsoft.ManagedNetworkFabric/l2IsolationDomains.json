@@ -44,68 +44,6 @@
       ]
     },
     {
-      "name": "Invoke-AzNetworkFabricL2DomainUpdateAdminState",
-      "description": "Enables isolation domain across the fabric or on specified racks.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}/updateAdministrativeState",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabricl2domainupdateadminstate"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-L2IsolationDomainName <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          },
-          {
-            "parameters": [
-              "-L2IsolationDomainName <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Enables isolation domain across the fabric or on specified racks.",
-          "parameters": [
-            {
-              "name": "-L2IsolationDomainName",
-              "value": "[Path.l2IsolationDomainName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        },
-        {
-          "description": "Enables isolation domain across the fabric or on specified racks.",
-          "parameters": [
-            {
-              "name": "-L2IsolationDomainName",
-              "value": "[Path.l2IsolationDomainName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Remove-AzNetworkFabricL2Domain",
       "description": "Deletes layer 2 connectivity between compute nodes by managed by named L2 Isolation name.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}",
