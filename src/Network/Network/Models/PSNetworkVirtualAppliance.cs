@@ -48,5 +48,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public IList<PSVirtualApplianceAdditionalNicProperties> AdditionalNics { get; set; }
 
         public PSNetworkVirtualApplianceDelegationProperties Delegation { get; set; }
+
+        public IList<PSVirtualApplianceInternetIngressIpsProperties> InternetIngressPublicIps { get; set; }
     }
 }

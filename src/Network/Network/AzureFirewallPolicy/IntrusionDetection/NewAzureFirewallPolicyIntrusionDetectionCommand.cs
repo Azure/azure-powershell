@@ -44,6 +44,12 @@ namespace Microsoft.Azure.Commands.Network
         public string Mode { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Intrusion Detection signatures profile"
+        )]
+        public string Profile { get; set; }
+
+        [Parameter(
              Mandatory = false,
              HelpMessage = "List of specific signatures states."
          )]
@@ -69,6 +75,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Mode = this.Mode
             };
+
+            if ( this.Profile != null )
+            {
+                intrusionDetection.Profile = this.Profile;
+            }
 
             if (this.SignatureOverride?.Count() > 0 || this.BypassTraffic?.Count() > 0 || this.PrivateRange?.Count() > 0)
             {

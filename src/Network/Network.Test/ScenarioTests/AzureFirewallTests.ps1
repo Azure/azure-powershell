@@ -2120,3 +2120,47 @@ function Test-GetAzureFirewallLearnedIpPrefixes {
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests Invoke-AzureFirewallPacketCapture
+#>
+function Test-InvokeAzureFirewallPacketCapture {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+
+    try {
+
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create public ip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+
+        # Create AzureFirewall
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location
+
+        # Verify
+        $azFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+
+        # Create a filter rules
+        $filter1 = New-AzFirewallPacketCaptureRule -Source "10.0.0.2","192.123.12.1" -Destination "172.32.1.2" -DestinationPort "80","443"
+        $filter2 = New-AzFirewallPacketCaptureRule -Source "10.0.0.5" -Destination "172.20.10.2" -DestinationPort "80","443"
+    
+        # Create the firewall packet capture parameters
+        $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 300 -NumberOfPackets 5000 -SASUrl "ValidSasUrl" -Filename "AzFwPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2
+
+        # Invoke a firewall packet capture
+        Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
