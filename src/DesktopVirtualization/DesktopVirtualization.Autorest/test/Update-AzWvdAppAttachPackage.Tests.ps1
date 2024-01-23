@@ -166,6 +166,10 @@ Describe 'Update-AzWvdAppAttachPackage' {
                 -SubscriptionId $env.SubscriptionId `
                 -Path $env.MSIXImagePath
 
+            if( $image.Count -gt 0)
+            {
+                $image = $image[0]
+            }
             $image.ImagePackageFamilyName | Should -Be  'Mozilla.MozillaFirefox_gmpnhwe7bv608'
             $image.ImagePath | Should -Be 'C:\AppAttach\Firefox20110.0.1.vhdx'
             $image.ImagePackageName | Should -Be 'Mozilla.MozillaFirefox'
@@ -239,6 +243,10 @@ Describe 'Update-AzWvdAppAttachPackage' {
                 -SubscriptionId $env.SubscriptionId `
                 -Path $env.MSIXImagePath
 
+            if( $image.Count -gt 0)
+            {
+                $image = $image[0]
+            }
             $image.ImagePackageFamilyName | Should -Be  'Mozilla.MozillaFirefox_gmpnhwe7bv608'
             $image.ImagePath | Should -Be 'C:\AppAttach\Firefox20110.0.1.vhdx'
             $image.ImagePackageName | Should -Be 'Mozilla.MozillaFirefox'

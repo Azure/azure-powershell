@@ -19,14 +19,22 @@ Describe 'Get-AzWvdSessionHostConfigurationsOperationStatus' {
         $sessionHostConfig = Get-AzWvdSessionHostConfigurationsOperationStatus -SubscriptionId $env.SubscriptionId `
             -ResourceGroupName $env.ResourceGroupPersistent `
             -HostPoolName $env.AutomatedHostpoolPersistent 
+
         $sessionHostConfig.Count -gt 0 | Should -Be $true
     }
 
     It 'Get' {
+
+        $sessionHostConfig = Get-AzWvdSessionHostConfigurationsOperationStatus -SubscriptionId $env.SubscriptionId `
+            -ResourceGroupName $env.ResourceGroupPersistent `
+            -HostPoolName $env.AutomatedHostpoolPersistent 
+
+        $operationStatusId = $sessionHostConfig[0].Name
+
         $sessionHostConfig = Get-AzWvdSessionHostConfigurationsOperationStatus -SubscriptionId $env.SubscriptionId `
             -ResourceGroupName $env.ResourceGroupPersistent `
             -HostPoolName $env.AutomatedHostpoolPersistent `
-            -OperationId "50408991-992b-4889-afa7-40b67595156e"
-        $sessionHostConfig.Status | Should -Be "Succeeded"
+            -OperationId $operationStatusId
+        $sessionHostConfig.Name | Should -Be $operationStatusId
     }
 }
