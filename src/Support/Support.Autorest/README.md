@@ -83,11 +83,19 @@ directive:
           - NumberOfChunks 
   - where:
       verb: New
-      subject: File|FilesNoSubscription
+      subject: File
+    hide: true
+  - where:
+      verb: New
+      subject: FilesNoSubscription
     hide: true
   - where:
       verb: Invoke
-      subject: UploadFile|UploadFilesNoSubscription
+      subject: UploadFile
+    hide: true
+  - where:
+      verb: Invoke
+      subject: UploadFilesNoSubscription
     hide: true
   # Following are common directives which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set

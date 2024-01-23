@@ -74,6 +74,12 @@ Creates and uploads a new file under a workspace for the specified subscription.
 ### [New-AzSupportFileAndUploadNoSubscription](New-AzSupportFileAndUploadNoSubscription.md)
 Creates and uploads a new file under a workspace for the specified subscription.
 
+### [New-AzSupportFileWorkspace](New-AzSupportFileWorkspace.md)
+Creates a new file workspace for the specified subscription.
+
+### [New-AzSupportFileWorkspacesNoSubscription](New-AzSupportFileWorkspacesNoSubscription.md)
+Creates a new file workspace.
+
 ### [New-AzSupportTicket](New-AzSupportTicket.md)
 Creates a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management issues for the specified subscription.
 Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support ticket.\<br/\>\<br/\>Always call the Services and ProblemClassifications API to get the most recent set of services and problem categories required for support ticket creation.\<br/\>\<br/\>Adding attachments is not currently supported via the API.
