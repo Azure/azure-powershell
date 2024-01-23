@@ -156,21 +156,42 @@ function Get-AzMigrateHCIServerReplication {
             $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
             $null = $PSBoundParameters.Add('SiteName', $siteName)
 
-            if ($siteType -eq $SiteTypes.VMwareSites) {
-                $siteObject = Az.Migrate\Get-AzMigrateSite @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
-            }
-            elseif ($siteType -eq $SiteTypes.HyperVSites) {
-                $siteObject = Az.Migrate.Internal\Get-AzMigrateHyperVSite @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
-            } 
-            else {
+            if (($siteType -ne $SiteTypes.HyperVSites) -and ($siteType -ne $SiteTypes.VMwareSites)) {
                 throw "Unknown machine site '$siteName' with Type '$siteType'."
             }
             
-            if ($null -eq $siteObject) {
-                throw "Machine site '$siteName' with Type '$siteType' not found."
-            }
-            else {
-                $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
+            # Occasionally, Get Machine Site will not return machine site even when the site exist,
+            # hence retry get machine site.
+            $attempts = 4
+            for ($i = 1; $i -le $attempts; $i++) {
+                try {
+                    if ($siteType -eq $SiteTypes.VMwareSites) {
+                        $siteObject = Az.Migrate\Get-AzMigrateSite @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                    }
+                    elseif ($siteType -eq $SiteTypes.HyperVSites) {
+                        $siteObject = Az.Migrate.Internal\Get-AzMigrateHyperVSite @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                    } 
+
+                    if ($null -eq $siteObject) {
+                        throw "Machine site not found."
+                    }
+                    else {
+                        $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
+                    }
+
+                    break;
+                }
+                catch {
+                    if ($i -lt $attempts)
+                    {
+                        Write-Host "Machine site not found. Retrying in 30 seconds..."
+                        Start-Sleep -Seconds 30
+                    }
+                    else
+                    {
+                        throw "Machine site '$siteName' with Type '$siteType' not found."
+                    }
+                }
             }
                 
             $null = $PSBoundParameters.Remove('SiteName')
