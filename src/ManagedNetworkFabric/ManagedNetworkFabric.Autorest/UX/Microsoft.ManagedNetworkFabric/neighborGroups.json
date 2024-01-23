@@ -1,0 +1,85 @@
+{
+  "resourceType": "neighborGroups",
+  "apiVersion": "2023-06-15",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkFabricNeighborGroup",
+      "description": "Gets the Neighbor Group.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricneighborgroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the Neighbor Group.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.neighborGroupName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNetworkFabricNeighborGroup",
+      "description": "Implements Neighbor Group DELETE method.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/remove-aznetworkfabricneighborgroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Implements Neighbor Group DELETE method.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.neighborGroupName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
