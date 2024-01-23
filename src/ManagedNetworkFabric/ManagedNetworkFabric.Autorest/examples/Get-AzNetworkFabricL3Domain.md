@@ -24,7 +24,7 @@ Get-AzNetworkFabricL3Domain -ResourceGroupName $resourceGroupName
 ```output
 AdministrativeState AggregateRouteConfiguration   Annotation ConfigurationState ConnectedSubnetRoutePolicy
 ------------------- ---------------------------   ---------- ------------------ --------
-Disabled            {…                                       Succeeded          {…
+Disabled                                                     Succeeded          
 ```
 
 This command lists all the L3 Isolation Domains under the given Resource Group.
@@ -37,7 +37,7 @@ Get-AzNetworkFabricL3Domain -Name $name -ResourceGroupName $resourceGroupName
 ```output
 AdministrativeState AggregateRouteConfiguration   Annotation ConfigurationState ConnectedSubnetRoutePolicy
 ------------------- ---------------------------   ---------- ------------------ --------
-Disabled            {…                                       Succeeded          {…
+Disabled                                                     Succeeded          
 ```
 
 This command gets details of the given L3 Isolation Domain.

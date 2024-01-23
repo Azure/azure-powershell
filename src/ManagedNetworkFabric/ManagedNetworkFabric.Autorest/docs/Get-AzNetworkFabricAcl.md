@@ -65,7 +65,7 @@ Get-AzNetworkFabricAcl -ResourceGroupName $resourceGroupName
 ```output
 AclsUrl AdministrativeState Annotation ConfigurationState ConfigurationType DefaultAction DynamicMatchConfiguration
 ------- ------------------- ---------- ------------------ ----------------- ------------- -------------------------
-        Disabled                       Succeeded          Inline            Permit        {{…
+        Disabled                       Succeeded          Inline            Permit        
 ```
 
 This command lists all the Access Control Lists under the given Resource Group.
@@ -78,7 +78,7 @@ Get-AzNetworkFabricAcl -Name $name -ResourceGroupName $resourceGroupName
 ```output
 AclsUrl AdministrativeState Annotation ConfigurationState ConfigurationType DefaultAction DynamicMatchConfiguration
 ------- ------------------- ---------- ------------------ ----------------- ------------- -------------------------
-        Disabled                       Succeeded          Inline            Permit        {{…
+        Disabled                       Succeeded          Inline            Permit        
 ```
 
 This command gets details of the given Access Control List.

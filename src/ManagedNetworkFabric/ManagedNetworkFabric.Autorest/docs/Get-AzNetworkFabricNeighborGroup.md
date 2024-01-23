@@ -63,7 +63,7 @@ Get-AzNetworkFabricNeighborGroup -ResourceGroupName $resourceGroupName
 ```output
 Annotation Destination       Id
 ---------- -----------       --
-           {…                /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/pr…
+                             /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/pr…
 ```
 
 This command lists all the Neighbor Groups under the given Resource Group.
@@ -76,7 +76,7 @@ Get-AzNetworkFabricNeighborGroup -Name $name -ResourceGroupName $resourceGroupNa
 ```output
 Annotation Destination       Id
 ---------- -----------       --
-           {…                /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/pr…
+                             /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/pr…
 ```
 
 This command gets details of the given Neighbor Groups.

@@ -44,68 +44,6 @@
       ]
     },
     {
-      "name": "Invoke-AzNetworkFabricTapUpdateAdminState",
-      "description": "Implements the operation to the underlying resources.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}/updateAdministrativeState",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabrictapupdateadminstate"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-NetworkTapName <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          },
-          {
-            "parameters": [
-              "-NetworkTapName <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Implements the operation to the underlying resources.",
-          "parameters": [
-            {
-              "name": "-NetworkTapName",
-              "value": "[Path.networkTapName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        },
-        {
-          "description": "Implements the operation to the underlying resources.",
-          "parameters": [
-            {
-              "name": "-NetworkTapName",
-              "value": "[Path.networkTapName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Remove-AzNetworkFabricTap",
       "description": "Deletes Network Tap.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}",

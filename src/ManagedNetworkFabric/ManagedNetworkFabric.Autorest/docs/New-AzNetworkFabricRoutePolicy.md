@@ -57,7 +57,7 @@ New-AzNetworkFabricRoutePolicy -Name $name -ResourceGroupName $resourceGroupName
 ```output
 AddressFamilyType AdministrativeState Annotation ConfigurationState DefaultAction Id
 ----------------- ------------------- ---------- ------------------ ------------- --
-IPv4                                                                Permit        /subscriptions/<identity>/resourceGrou…
+IPv4                                                                Permit        /subscriptions/<identity>/resourceGrou...
 ```
 
 This command creates the Route Policy resource with IPCommunity.
