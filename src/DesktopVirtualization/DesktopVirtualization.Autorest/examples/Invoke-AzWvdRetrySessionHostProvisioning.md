@@ -5,7 +5,4 @@ Invoke-AzWvdRetrySessionHostProvisioning -HostPoolName HostPoolName `
           -SessionHostName "sessionHost1" `
 ```
 
-```output
-```
-
 This command retries the provisioning on the given sessionHost.

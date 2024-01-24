@@ -8,9 +8,6 @@ Invoke-AzWvdInitiateSessionHostUpdate -HostPoolName HostPoolName `
           -logOffMessage "logging off for hostpool update."
 ```
 
-```output
-```
-
 This command starts a sessionHostUpdate operation on the given hostpool.
 
 
