@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         private void WriteInformationSender(object sender, StreamEventArgs args)
         {
-            _tasks.Enqueue(new Task(() => this.WriteHighlightedInformation(args.Message)));
+            _tasks.Enqueue(new Task(() => this.WriteStringInformation(args.Message)));
         }
 
         protected override void StopProcessing()
