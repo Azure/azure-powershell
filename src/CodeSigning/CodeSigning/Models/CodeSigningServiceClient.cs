@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using Azure.CodeSigning;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.IO;
 using Azure.Core;
 using Microsoft.Azure.Commands.CodeSigning.Helpers;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Models
 {
@@ -86,19 +86,18 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
             GetCertificateProfileClient(endpoint);
 
             var eku = CertificateProfileClient.GetSignEku(accountName, profileName);
-            return string.Join(",", ((List<string>)eku).ToArray());
+            return string.Join(",", eku.Value.ToArray());
         }
         public string GetCodeSigningEku(string metadataPath)
         {
             var rawMetadata = File.ReadAllText(metadataPath);
             Metadata = JsonConvert.DeserializeObject<Metadata>(rawMetadata);
 
-            GetCertificateProfileClient(Metadata.Endpoint);
-
             var accountName = Metadata.CodeSigningAccountName;
             var profileName = Metadata.CertificateProfileName;
-            var eku = CertificateProfileClient.GetSignEku(accountName, profileName);
-            return string.Join(",", ((List<string>)eku).ToArray());
+            var endpoint = Metadata.Endpoint;
+
+            return GetCodeSigningEku(accountName, profileName, endpoint);
         }
 
         public Stream GetCodeSigningRootCert(string accountName, string profileName, string endpoint)
@@ -109,25 +108,23 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
             return rootCert;
         }
 
-        public void SubmitCIPolicySigning(string accountName, string profileName, string endpoint,
-            string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl = null)
-        {
-           var cipolicySigner = new CmsSigner();
-           cipolicySigner.SignCIPolicy(user_creds, accountName, profileName, endpoint, unsignedCIFilePath, signedCIFilePath, timeStamperUrl);
-        }
-
         public Stream GetCodeSigningRootCert(string metadataPath)
         {
             var rawMetadata = File.ReadAllText(metadataPath);
             Metadata = JsonConvert.DeserializeObject<Metadata>(rawMetadata);
 
-            GetCertificateProfileClient(Metadata.Endpoint);
-
             var accountName = Metadata.CodeSigningAccountName;
             var profileName = Metadata.CertificateProfileName;
+            var endpoint = Metadata.Endpoint;
 
-            var rootCert = CertificateProfileClient.GetSignCertificateRoot(accountName, profileName);
-            return rootCert;
+            return GetCodeSigningRootCert(accountName, profileName, endpoint);
+        }
+
+        public void SubmitCIPolicySigning(string accountName, string profileName, string endpoint,
+            string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl = null)
+        {
+           var cipolicySigner = new CmsSigner();
+           cipolicySigner.SignCIPolicy(user_creds, accountName, profileName, endpoint, unsignedCIFilePath, signedCIFilePath, timeStamperUrl);
         }
 
         public void SubmitCIPolicySigning(string metadataPath, string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl)
@@ -139,8 +136,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
             var profileName = Metadata.CertificateProfileName;
             var endpoint = Metadata.Endpoint;
 
-            var cipolicySigner = new CmsSigner();
-            cipolicySigner.SignCIPolicy(user_creds, accountName, profileName, endpoint, unsignedCIFilePath, signedCIFilePath, timeStamperUrl);
+            SubmitCIPolicySigning(accountName, profileName, endpoint, unsignedCIFilePath, signedCIFilePath, timeStamperUrl);
         }
     }
 }
