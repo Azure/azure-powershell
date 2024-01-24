@@ -1,22 +1,17 @@
-### Example 1: {{ Add title here }}
+### Example 1: Starts a SessionHostUpdate Operation on a HostPool
 ```powershell
-{{ Add code here }}
+Invoke-AzWvdInitiateSessionHostUpdate -HostPoolName HostPoolName `
+          -ResourceGroupName resourceGroupName `
+          -deleteOriginalVm `
+          -maxVmsRemoved 4`
+          -logOffDelayMinutes 5`
+          -logOffMessage "logging off for hostpool update."
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command starts a sessionHostUpdate operation on the given hostpool.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

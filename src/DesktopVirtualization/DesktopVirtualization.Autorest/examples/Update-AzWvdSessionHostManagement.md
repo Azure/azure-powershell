@@ -1,22 +1,18 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a Windows Virtual Desktop SessionHostManagement by HostPool Name
 ```powershell
-{{ Add code here }}
+Update-AzWvdSessionHostManagement -ResourceGroupName ResourceGroupName `
+                            -HostPoolName HostPoolName `
+                            -ScheduledDateTimeZone "Alaskan Standard Time" `
+                            -deleteOriginalVm `
+                            -maxVmsRemoved 4`
+                            -logOffDelayMinutes 5`
+                            -logOffMessage "logging off for hostpool update."
 ```
 
 ```output
-{{ Add output here }}
+Location   Name                 Type
+--------   ----                 ----
+eastus     default Microsoft.DesktopVirtualization/hostpools/{hostPoolName}/sessionHostManagements
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command Updates a Windows Virtual Desktop SessionHostManagement on a HostPool.

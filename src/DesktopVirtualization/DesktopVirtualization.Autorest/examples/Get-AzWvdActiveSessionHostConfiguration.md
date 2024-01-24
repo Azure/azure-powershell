@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+
+### Example 1: Get a Windows Virtual Desktop ActiveSessionHostConfiguration by HostPoolName
+
 ```powershell
-{{ Add code here }}
+Get-AzWvdActiveSessionHostConfiguration -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 ```
 
 ```output
-{{ Add output here }}
+Location   Name                 Type
+--------   ----                 ----
+eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools/{hostpoolName}/activeSessionHostConfigurations
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command gets a Windows Virtual Desktop ActiveSessionHostConfiguration in a Resource Group.
