@@ -86,7 +86,7 @@ File Name
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetViaIdentityFileWorkspace
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named
@@ -117,7 +117,7 @@ File Workspace Name
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases:
+Aliases: WorkspaceName
 
 Required: True
 Position: Named

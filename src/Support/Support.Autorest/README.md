@@ -88,13 +88,27 @@ directive:
     set:
       alias: Name
   - where:
+      subject: FilesNoSubscription
+      parameter-name: FileName
+    set:
+      alias: Name
+  - where:
+      subject: FilesNoSubscription
+      parameter-name: FileWorkspaceName
+    set:
+      alias: WorkspaceName
+  - where:
       verb: New
       subject: File
     hide: true
   - where:
-      verb: New
+      verb: Update
+      subject: File
+    remove: true
+  - where:
+      verb: Update
       subject: FilesNoSubscription
-    hide: true
+    remove: true
   - where:
       verb: Invoke
       subject: UploadFile

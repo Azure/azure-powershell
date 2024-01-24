@@ -1,39 +1,25 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/update-azsupportfile
+online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportfilesnosubscription
 schema: 2.0.0
 ---
 
-# Update-AzSupportFile
+# New-AzSupportFilesNoSubscription
 
 ## SYNOPSIS
-Creates a new file under a workspace for the specified subscription.
+Creates a new file under a workspace.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
-Update-AzSupportFile -Name <String> -WorkspaceName <String> [-SubscriptionId <String>] [-ChunkSize <Single>]
- [-FileSize <Single>] [-NumberOfChunk <Single>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzSupportFile -InputObject <ISupportIdentity> [-ChunkSize <Single>] [-FileSize <Single>]
- [-NumberOfChunk <Single>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityFileWorkspaceExpanded
-```
-Update-AzSupportFile -FileWorkspaceInputObject <ISupportIdentity> -Name <String> [-ChunkSize <Single>]
+New-AzSupportFilesNoSubscription -FileName <String> -FileWorkspaceName <String> [-ChunkSize <Single>]
  [-FileSize <Single>] [-NumberOfChunk <Single>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new file under a workspace for the specified subscription.
+Creates a new file under a workspace.
 
 ## EXAMPLES
 
@@ -92,6 +78,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FileName
+File name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FileSize
 Size of the file to be uploaded
 
@@ -107,45 +108,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FileWorkspaceInputObject
-Identity Parameter
-To construct, see NOTES section for FILEWORKSPACEINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-Parameter Sets: UpdateViaIdentityFileWorkspaceExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-File name.
+### -FileWorkspaceName
+File workspace name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityFileWorkspaceExpanded
-Aliases: FileName
+Parameter Sets: (All)
+Aliases: WorkspaceName
 
 Required: True
 Position: Named
@@ -163,36 +132,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Azure subscription Id.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkspaceName
-File workspace name.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: FileWorkspaceName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -234,8 +173,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
 
 ## OUTPUTS
 

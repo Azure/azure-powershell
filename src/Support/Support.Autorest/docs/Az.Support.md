@@ -74,6 +74,9 @@ Creates and uploads a new file under a workspace for the specified subscription.
 ### [New-AzSupportFileAndUploadNoSubscription](New-AzSupportFileAndUploadNoSubscription.md)
 Creates and uploads a new file under a workspace for the specified subscription.
 
+### [New-AzSupportFilesNoSubscription](New-AzSupportFilesNoSubscription.md)
+Creates a new file under a workspace.
+
 ### [New-AzSupportFileWorkspace](New-AzSupportFileWorkspace.md)
 Creates a new file workspace for the specified subscription.
 
@@ -116,12 +119,6 @@ Adds a new customer communication to an Azure support ticket.
 
 ### [Update-AzSupportCommunicationsNoSubscription](Update-AzSupportCommunicationsNoSubscription.md)
 Adds a new customer communication to an Azure support ticket.
-
-### [Update-AzSupportFile](Update-AzSupportFile.md)
-Creates a new file under a workspace for the specified subscription.
-
-### [Update-AzSupportFilesNoSubscription](Update-AzSupportFilesNoSubscription.md)
-Creates a new file under a workspace.
 
 ### [Update-AzSupportTicket](Update-AzSupportTicket.md)
 This API allows you to update the severity level, ticket status, advanced diagnostic consent and your contact information in the support ticket.\<br/\>\<br/\>Note: The severity levels cannot be changed if a support ticket is actively being worked upon by an Azure support engineer.

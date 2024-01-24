@@ -160,7 +160,7 @@ process {
         Write-Output "end index: " + $endIndex
         $FileContent = [convert]::ToBase64String($FileContentByteArray[$startIndex..$endIndex])
 
-        Invoke-AzSupportUploadFilesoSubscription -FileName $Name -FileWorkspaceName $WorkspaceName -ChunkIndex $chunkIndex -Content $FileContent
+        Invoke-AzSupportUploadFilesNoSubscription -FileName $Name -FileWorkspaceName $WorkspaceName -ChunkIndex $chunkIndex -Content $FileContent
         $chunkIndex++
         $startIndex = $endIndex + 1
         $endIndex = $FileSize - 1
