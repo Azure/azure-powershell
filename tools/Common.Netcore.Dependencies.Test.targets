@@ -40,6 +40,5 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
-    <PackageReference Include="Microsoft.Identity.Client" Version="4.49.1" />
   </ItemGroup>
 </Project>
