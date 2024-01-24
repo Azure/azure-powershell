@@ -492,8 +492,9 @@ function Get-SasForBlob
 Tests ExportRMAzureRedisCache
 Tests ImportAzureRmRedisCache
 Tests ResetRMAzureRedisCache
+Tests FlushAzureRedisCache
 #>
-function Test-ImportExportReboot
+function Test-ImportExportRebootFlush
 {
     # Setup
     $resourceGroupName = "PowerShellTest-15"
@@ -547,6 +548,10 @@ function Test-ImportExportReboot
     ############################# Tests ResetRMAzureRedisCache #############################
     $rebootType = "PrimaryNode"
     Reset-AzRedisCache -Name $cacheName -RebootType $rebootType -Force
+    Start-TestSleep -Seconds 120
+
+    ############################# Tests FlushAzureRedisCache #############################
+    Flush-AzRedisCache -Name $cacheName -Force
     Start-TestSleep -Seconds 120
 
     ############################# CleanUp #############################
