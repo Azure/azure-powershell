@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
                 }
                 catch (ErrorResponseException ex)
                 {
-                    throw new ErrorResponseException(ex.Body.Error.Message);                    
+                    throw new ErrorResponseException(ex.Body.Error.Message, ex);                    
                 }
             }
             if (PassThru.IsPresent)

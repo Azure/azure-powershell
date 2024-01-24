@@ -64,6 +64,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             ParameterSetName = FieldsParameterSet,
             HelpMessage = "The name of the ANF volume")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ParentObjectParameterSet,
+            HelpMessage = "The name of the ANF pool")]
         [ValidateNotNullOrEmpty]
         [Alias("VolumeName")]
         [ResourceNameCompleter(
