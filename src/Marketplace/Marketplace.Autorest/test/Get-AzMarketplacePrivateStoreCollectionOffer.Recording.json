@@ -6,12 +6,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "950c637e-4eff-4f4d-9a60-4110e8498dbd" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "366a88f8-1203-4f86-b4c4-384b81008fd2" ],
         "CommandName": [ "Get-AzMarketplacePrivateStoreCollectionOffer" ],
         "FullCommandName": [ "Get-AzMarketplacePrivateStoreCollectionOffer_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.10", "Az.Marketplace/1.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.11", "Az.Marketplace/1.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -24,27 +24,27 @@
         "Pragma": [ "no-cache" ],
         "Accept-Ranges": [ "bytes" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11997" ],
         "Set-Cookie": [ "ARRAffinity=f8d7fadf2909ff4e586acf5f4d58abc3ba7f56ba5654aec79a4f0995507cc6b6;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=f8d7fadf2909ff4e586acf5f4d58abc3ba7f56ba5654aec79a4f0995507cc6b6;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
-        "x-ms-version": [ "6.0.02536.29-012fd621" ],
+        "x-ms-version": [ "6.0.02564.62-a77593e1" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-azure-ref": [ "20240103T123400Z-4d0sk33vnd02z99sws4yfum6c40000000cqg000000009ppm" ],
+        "x-azure-ref": [ "20240124T154409Z-s7p7uvnpdt7yd4d1zpaxnfksag000000066g000000001kkr" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "x-ms-request-id": [ "6d86db97-8bfd-401c-bb2a-a08b5f06b192" ],
-        "x-ms-correlation-request-id": [ "6d86db97-8bfd-401c-bb2a-a08b5f06b192" ],
-        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240103T123401Z:6d86db97-8bfd-401c-bb2a-a08b5f06b192" ],
+        "x-ms-request-id": [ "e51f0452-52f3-425b-a954-d4b1011ea271" ],
+        "x-ms-correlation-request-id": [ "e51f0452-52f3-425b-a954-d4b1011ea271" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240124T154410Z:e51f0452-52f3-425b-a954-d4b1011ea271" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 03 Jan 2024 12:34:00 GMT" ]
+        "Date": [ "Wed, 24 Jan 2024 15:44:09 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "5673" ],
+        "Content-Length": [ "617" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/offers/test_test_pmc2pc1.vm_4plans_privatestoretesting\",\"name\":\"test_test_pmc2pc1.vm_4plans_privatestoretesting\",\"type\":\"Microsoft.Marketplace/privateStores/collection/offers\",\"properties\":{\"uniqueOfferId\":\"test_test_pmc2pc1.vm_4plans_privatestoretesting\",\"specificPlanIdsLimitation\":[\"plan3\"],\"eTag\":\"\\\"0000f074-0000-0100-0000-64d229240000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}},{\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/offers/keysight-technologies-ixvm.keysight-ixload-virtual-edition\",\"name\":\"keysight-technologies-ixvm.keysight-ixload-virtual-edition\",\"type\":\"Microsoft.Marketplace/privateStores/collection/offers\",\"properties\":{\"uniqueOfferId\":\"keysight-technologies-ixvm.keysight-ixload-virtual-edition\",\"specificPlanIdsLimitation\":null,\"eTag\":\"\\\"9a004ee7-0000-0100-0000-6523f09a0000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}},{\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/offers/rawworks1593080303138.rawworks_saas_pim\",\"name\":\"rawworks1593080303138.rawworks_saas_pim\",\"type\":\"Microsoft.Marketplace/privateStores/collection/offers\",\"properties\":{\"uniqueOfferId\":\"rawworks1593080303138.rawworks_saas_pim\",\"specificPlanIdsLimitation\":[\"per_year_plan\"],\"eTag\":\"\\\"d905b7ad-0000-0100-0000-6592edf80000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}},{\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/offers/swc.mdr\",\"name\":\"swc.mdr\",\"type\":\"Microsoft.Marketplace/privateStores/collection/offers\",\"properties\":{\"uniqueOfferId\":\"swc.mdr\",\"specificPlanIdsLimitation\":null,\"eTag\":\"\\\"f401b1dd-0000-0100-0000-65523e420000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}},{\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/offers/sendgrid.tsg-saas-offer\",\"name\":\"sendgrid.tsg-saas-offer\",\"type\":\"Microsoft.Marketplace/privateStores/collection/offers\",\"properties\":{\"uniqueOfferId\":\"sendgrid.tsg-saas-offer\",\"specificPlanIdsLimitation\":[\"free-100-2022\",\"essentials-50k\",\"essentials100k\",\"pro-100k\",\"pro-300k\",\"pro-700k\",\"pro-1p5m\",\"pro-2p5m\"],\"eTag\":\"\\\"f2004a54-0000-0100-0000-65376d520000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}},{\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/offers/inetumrealdolmen_apps-infra.selfservicepim\",\"name\":\"inetumrealdolmen_apps-infra.selfservicepim\",\"type\":\"Microsoft.Marketplace/privateStores/collection/offers\",\"properties\":{\"uniqueOfferId\":\"inetumrealdolmen_apps-infra.selfservicepim\",\"specificPlanIdsLimitation\":[\"hybrid\",\"onprem\",\"cloud\"],\"eTag\":\"\\\"d905b6ad-0000-0100-0000-6592edf80000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}},{\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/offers/canonical.0001-com-ubuntu-pro-bionic\",\"name\":\"canonical.0001-com-ubuntu-pro-bionic\",\"type\":\"Microsoft.Marketplace/privateStores/collection/offers\",\"properties\":{\"uniqueOfferId\":\"canonical.0001-com-ubuntu-pro-bionic\",\"specificPlanIdsLimitation\":null,\"eTag\":\"\\\"5c006680-0000-0100-0000-653e6d140000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}},{\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/offers/aumatics.azure_managedservices\",\"name\":\"aumatics.azure_managedservices\",\"type\":\"Microsoft.Marketplace/privateStores/collection/offers\",\"properties\":{\"uniqueOfferId\":\"aumatics.azure_managedservices\",\"specificPlanIdsLimitation\":[\"azure_managedservices_professional\"],\"eTag\":\"\\\"9a04d61e-0000-0100-0000-65780f120000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}},{\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/offers/infrontsystemsptyltd1597145511429.monitoring-as-a-service\",\"name\":\"infrontsystemsptyltd1597145511429.monitoring-as-a-service\",\"type\":\"Microsoft.Marketplace/privateStores/collection/offers\",\"properties\":{\"uniqueOfferId\":\"infrontsystemsptyltd1597145511429.monitoring-as-a-service\",\"specificPlanIdsLimitation\":[\"enterprise-plan\"],\"eTag\":\"\\\"5c007874-0000-0100-0000-653e6c9b0000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}},{\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/offers/invati.invati-adf-excel-writer\",\"name\":\"invati.invati-adf-excel-writer\",\"type\":\"Microsoft.Marketplace/privateStores/collection/offers\",\"properties\":{\"uniqueOfferId\":\"invati.invati-adf-excel-writer\",\"specificPlanIdsLimitation\":[\"free_xlwriter\"],\"eTag\":\"\\\"280154b7-0000-0100-0000-654755b00000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}}]}",
+      "Content": "{\"value\":[{\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/offers/sendgrid.tsg-saas-offer\",\"name\":\"sendgrid.tsg-saas-offer\",\"type\":\"Microsoft.Marketplace/privateStores/collection/offers\",\"properties\":{\"uniqueOfferId\":\"sendgrid.tsg-saas-offer\",\"specificPlanIdsLimitation\":[\"free-100-2022\",\"essentials-50k\",\"essentials100k\",\"pro-100k\",\"pro-300k\",\"pro-700k\",\"pro-1p5m\",\"pro-2p5m\"],\"eTag\":\"\\\"fa05c1fe-0000-0100-0000-659ab1fe0000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}}]}",
       "isContentBase64": false
     }
   }

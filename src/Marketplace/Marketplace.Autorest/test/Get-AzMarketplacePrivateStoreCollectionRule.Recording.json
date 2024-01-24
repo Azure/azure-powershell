@@ -1,0 +1,51 @@
+{
+  "Get-AzMarketplacePrivateStoreCollectionRule+[NoContext]+Query+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/11e8de95-06b7-4039-99ae-950109ac53ee/queryRules?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/11e8de95-06b7-4039-99ae-950109ac53ee/queryRules?api-version=2023-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "d9f8ea31-65ae-4f53-89c4-90f34896998d" ],
+        "CommandName": [ "Get-AzMarketplacePrivateStoreCollectionRule" ],
+        "FullCommandName": [ "Get-AzMarketplacePrivateStoreCollectionRule_Query" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.11", "Az.Marketplace/1.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "Set-Cookie": [ "ARRAffinity=0167904c093642b6eb1372d43ab24808f2271061b5c98f5a81aaceaaff5f0ca1;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=0167904c093642b6eb1372d43ab24808f2271061b5c98f5a81aaceaaff5f0ca1;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.02564.62-a77593e1" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-azure-ref": [ "20240124T160250Z-e6qy7a8a392epfzxt27fyf2vqg00000005vg00000000aamt" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "6224b573-172e-47c0-b23a-bd2cca5cfadf" ],
+        "x-ms-correlation-request-id": [ "6224b573-172e-47c0-b23a-bd2cca5cfadf" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240124T160250Z:6224b573-172e-47c0-b23a-bd2cca5cfadf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 24 Jan 2024 16:02:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "51" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"type\":\"PrivateProducts\",\"value\":null}]}",
+      "isContentBase64": false
+    }
+  }
+}

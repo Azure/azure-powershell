@@ -1,0 +1,44 @@
+{
+  "New-AzMarketplacePrivateStoreCollectionRule+[NoContext]+SetExpanded+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1/setRules?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1/setRules?api-version=2023-01-01",
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"type\": \"PrivateProducts\",\r\n      \"value\": [ \"a\" ]\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "95" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1184" ],
+        "Set-Cookie": [ "ARRAffinity=422ac376cf9a5b730208f246fe2886eb9014a2316736b65af73d6017dda009cc;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=422ac376cf9a5b730208f246fe2886eb9014a2316736b65af73d6017dda009cc;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.02536.29-012fd621" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-azure-ref": [ "20240124T154437Z-s7p7uvnpdt7yd4d1zpaxnfksag000000066g000000001m70" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "56994fb5-73e9-4e4e-963d-72c7300cce2b" ],
+        "x-ms-correlation-request-id": [ "56994fb5-73e9-4e4e-963d-72c7300cce2b" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240124T154438Z:56994fb5-73e9-4e4e-963d-72c7300cce2b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 24 Jan 2024 15:44:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "57" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"Invalid input\"}}",
+      "isContentBase64": false
+    }
+  }
+}

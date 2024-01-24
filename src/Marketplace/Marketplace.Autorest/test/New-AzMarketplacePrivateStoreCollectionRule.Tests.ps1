@@ -14,16 +14,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMarketplacePrivateStore
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+$rule1 = @{
+    Type = "PrivateProducts"
+    Value = "a"
+}
+
 Describe 'New-AzMarketplacePrivateStoreCollectionRule' {
-    It 'SetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'SetViaIdentityPrivateStoreExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'SetViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetExpanded' {
+        $res = New-AzMarketplacePrivateStoreCollectionRule -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -Value $rule1
+        $res | Should -Not -Be $null
     }
 }
