@@ -62,7 +62,7 @@ directive:
         properties:
           - DisplayName
           - Name
-          - SecondaryConsentEnabled # Do we need this? 
+          - SecondaryConsentEnabled
   - where:
       model-name: Service
     set:
@@ -70,7 +70,7 @@ directive:
         properties:
           - DisplayName
           - Name
-          - ResourceType # Do we need this? 
+          - ResourceType
   - where:
       model-name: FileDetails
     set:
@@ -81,6 +81,12 @@ directive:
           - ChunkSize
           - FileSize
           - NumberOfChunks 
+  - where:
+      verb: New
+      subject: FileWorkspacesNoSubscription
+      parameter-name: FileWorkspaceName
+    set:
+      alias: Name
   - where:
       verb: New
       subject: File

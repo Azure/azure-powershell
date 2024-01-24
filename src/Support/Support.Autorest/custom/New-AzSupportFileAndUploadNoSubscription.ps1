@@ -126,6 +126,9 @@ process {
     $MaxChunkSize = 2.5 * 1024 * 1024 #2.5 MB
     $MaxFileSize = 5 * 1024 * 1024 #5 MB
     $FileContentBytes = Get-Content -Path $FilePath -Raw
+    if($FileContentBytes -eq $Null){
+        throw "File cannot be empty"
+    }
     $FileContentByteArray = [System.Text.Encoding]::UTF8.GetBytes($FileContentBytes)
     $FileSize = $FileContentByteArray.Length
     if($FileSize -gt $MaxFileSize){
