@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var clientId = Constants.PowerShellClientId;
             var authority = parameters.Environment.ActiveDirectoryAuthority;
 
-            var requestContext = new TokenRequestContext(scopes);
+            var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
             DeviceCodeCredentialOptions options = new DeviceCodeCredentialOptions()
             {
                 DeviceCodeCallback = DeviceCodeFunc,
