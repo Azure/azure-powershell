@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+using Xunit.Abstractions;
+
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
-    using Xunit.Abstractions;
-
     public class RedisCacheTests : RedisCacheTestRunner
     {
         public RedisCacheTests(ITestOutputHelper output) : base(output)
@@ -99,6 +99,13 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         public void TestManagedIdentity()
         {
             TestRunner.RunTestScript("Test-ManagedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateChannel()
+        {
+            TestRunner.RunTestScript("Test-UpdateChannel");
         }
     }
 }
