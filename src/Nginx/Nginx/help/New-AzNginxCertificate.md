@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Nginx-help.xml
 Module Name: Az.Nginx
 online version: https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxcertificate
 schema: 2.0.0
@@ -14,9 +14,9 @@ Create or update the Nginx certificates for given Nginx deployment
 
 ```
 New-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupName <String>
- -CertificateVirtualPath <String> -KeyVaultSecretId <String> -KeyVirtualPath <String>
- [-SubscriptionId <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -CertificateVirtualPath <String> -KeyVaultSecretId <String>
+ -KeyVirtualPath <String> [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -205,21 +205,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Dictionary of \<string\>
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -265,4 +250,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

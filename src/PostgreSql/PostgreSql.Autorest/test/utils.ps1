@@ -5,6 +5,30 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
 
 $env = @{}
 function setupEnv() {
@@ -13,7 +37,7 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
-    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]  
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
     $serverName = "postgresql-test-100"
     $flexibleServerName = "postgresql-flexible-test-100"
@@ -70,7 +94,7 @@ function setupEnv() {
     $env.Add("SubnetName", $SubnetName)
     $env.Add("resourceGroup", $resourceGroup)
     $env.Add("location", $location)
-    
+
     $env.Add("Sku", $Sku)
     $env.Add("FlexibleSku", $FlexibleSku)
 
@@ -81,7 +105,7 @@ function setupEnv() {
     if ($TestMode -ne 'live') {
         # Create the test Vnet
         write-host "Deploy Vnet template"
-        New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup  
+        New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
 
         write-host (Get-AzContext | Out-String)
 
@@ -92,7 +116,7 @@ function setupEnv() {
     write-host "New-AzPostgreSqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password -Location $location -PublicAccess none"
     New-AzPostgreSqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName adminuser -AdministratorLoginPassword $password -Location $location -PublicAccess none
     New-AzPostgreSqlFlexibleServer -Location $location -ResourceGroupName $resourceGroup -Name $flexibleServerName4 -BackupRetentionDay 11 -StorageInMb 65536
-    
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

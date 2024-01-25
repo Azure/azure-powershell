@@ -492,6 +492,7 @@ function New-AzConnectedKubernetes {
         }
         if (-not ([string]::IsNullOrEmpty($CustomLocationsOid))) {
             $options += " --set systemDefaultValues.customLocations.oid=$CustomLocationsOid"
+            $options += " --set systemDefaultValues.customLocations.enabled=true"
         }
         if (!$NoWait) {
             $options += " --wait --timeout $OnboardingTimeout"

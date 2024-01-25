@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudregistry
 schema: 2.0.0
@@ -20,8 +20,7 @@ Get-AzSpringCloudRegistry -ResourceGroupName <String> -ServiceName <String> [-Su
 
 ### GetViaIdentity
 ```
-Get-AzSpringCloudRegistry -InputObject <ISpringCloudIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzSpringCloudRegistry -InputObject <ISpringCloudIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -180,4 +179,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
-

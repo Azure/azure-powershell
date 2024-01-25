@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedKubernetes-help.xml
 Module Name: Az.ConnectedKubernetes
 online version: https://learn.microsoft.com/powershell/module/az.connectedkubernetes/update-azconnectedkubernetes
 schema: 2.0.0
@@ -15,16 +15,17 @@ API to update certain properties of the connected cluster resource
 ### UpdateExpanded (Default)
 ```
 Update-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>] [-Distribution <String>]
- [-DistributionVersion <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-AzureHybridBenefit <AzureHybridBenefit>] [-AcceptEULA] [-Distribution <String>]
+ [-DistributionVersion <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzConnectedKubernetes -InputObject <IConnectedKubernetesIdentity> [-AcceptEULA]
- [-AzureHybridBenefit <AzureHybridBenefit>] [-Distribution <String>] [-DistributionVersion <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzConnectedKubernetes -InputObject <IConnectedKubernetesIdentity>
+ [-AzureHybridBenefit <AzureHybridBenefit>] [-AcceptEULA] [-Distribution <String>]
+ [-DistributionVersion <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -299,4 +300,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-

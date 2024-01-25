@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
 
         /// <param name="triggerType">Type of the Trigger
-        /// Possible values include: 'Pre', 'Post'</param>
+        /// Possible values include: &#39;Pre&#39;, &#39;Post&#39;</param>
 
         /// <param name="triggerOperation">The operation the trigger is associated with
-        /// Possible values include: 'All', 'Create', 'Update', 'Delete', 'Replace'</param>
+        /// Possible values include: &#39;All&#39;, &#39;Create&#39;, &#39;Update&#39;, &#39;Delete&#39;, &#39;Replace&#39;</param>
 
         /// <param name="rid">A system generated property. A unique identifier.
         /// </param>

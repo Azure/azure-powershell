@@ -25,15 +25,15 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="startDay">Start day.
-        /// Possible values include: 'Sunday', 'Monday', 'Tuesday', 'Wednesday',
-        /// 'Thursday', 'Friday', 'Saturday'</param>
+        /// Possible values include: &#39;Sunday&#39;, &#39;Monday&#39;, &#39;Tuesday&#39;, &#39;Wednesday&#39;,
+        /// &#39;Thursday&#39;, &#39;Friday&#39;, &#39;Saturday&#39;</param>
 
         /// <param name="startTime">Start time.
         /// </param>
 
         /// <param name="stopDay">Stop day.
-        /// Possible values include: 'Sunday', 'Monday', 'Tuesday', 'Wednesday',
-        /// 'Thursday', 'Friday', 'Saturday'</param>
+        /// Possible values include: &#39;Sunday&#39;, &#39;Monday&#39;, &#39;Tuesday&#39;, &#39;Wednesday&#39;,
+        /// &#39;Thursday&#39;, &#39;Friday&#39;, &#39;Saturday&#39;</param>
 
         /// <param name="stopTime">Stop time.
         /// </param>

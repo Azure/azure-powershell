@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MariaDb-help.xml
 Module Name: Az.MariaDb
 online version: https://learn.microsoft.com/powershell/module/az.mariadb/update-azmariadbfirewallrule
 schema: 2.0.0
@@ -15,27 +15,27 @@ Creates a new firewall rule or updates an existing firewall rule.
 ### UpdateExpanded (Default)
 ```
 Update-AzMariaDbFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
- -EndIPAddress <String> -StartIPAddress <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -EndIPAddress <String> -StartIPAddress <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ClientIPAddress
 ```
 Update-AzMariaDbFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
- -ClientIPAddress <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ClientIPAddressViaIdentity
-```
-Update-AzMariaDbFirewallRule -InputObject <IMariaDbIdentity> -ClientIPAddress <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -ClientIPAddress <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzMariaDbFirewallRule -InputObject <IMariaDbIdentity> -EndIPAddress <String> -StartIPAddress <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ClientIPAddressViaIdentity
+```
+Update-AzMariaDbFirewallRule -InputObject <IMariaDbIdentity> -ClientIPAddress <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -154,7 +154,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity
-Parameter Sets: ClientIPAddressViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, ClientIPAddressViaIdentity
 Aliases:
 
 Required: True
@@ -169,7 +169,7 @@ The name of the server firewall rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClientIPAddress, UpdateExpanded
+Parameter Sets: UpdateExpanded, ClientIPAddress
 Aliases: FirewallRuleName
 
 Required: True
@@ -200,7 +200,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClientIPAddress, UpdateExpanded
+Parameter Sets: UpdateExpanded, ClientIPAddress
 Aliases:
 
 Required: True
@@ -215,7 +215,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClientIPAddress, UpdateExpanded
+Parameter Sets: UpdateExpanded, ClientIPAddress
 Aliases:
 
 Required: True
@@ -246,7 +246,7 @@ The subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClientIPAddress, UpdateExpanded
+Parameter Sets: UpdateExpanded, ClientIPAddress
 Aliases:
 
 Required: False
@@ -320,4 +320,3 @@ INPUTOBJECT `<IMariaDbIdentity>`: Identity Parameter
   - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
 
 ## RELATED LINKS
-

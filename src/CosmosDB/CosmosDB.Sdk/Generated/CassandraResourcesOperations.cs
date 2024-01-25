@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         public CosmosDBManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Lists the Cassandra keyspaces under an existing Azure Cosmos DB database account.
+        /// Lists the Cassandra keyspaces under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -282,7 +283,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Gets the Cassandra keyspaces under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the Cassandra keyspaces under an existing Azure Cosmos DB database
+        /// account with the provided name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -588,7 +590,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the RUs per second of the Cassandra Keyspace under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the Cassandra Keyspace under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -853,7 +856,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB keyspace name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The RUs per second of the parameters to provide for the current Cassandra Keyspace.
+        /// The RUs per second of the parameters to provide for the current Cassandra
+        /// Keyspace.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -919,7 +923,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Lists the Cassandra table under an existing Azure Cosmos DB database account.
+        /// Lists the Cassandra table under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1172,7 +1177,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Gets the Cassandra table under an existing Azure Cosmos DB database account.
+        /// Gets the Cassandra table under an existing Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1494,7 +1500,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the RUs per second of the Cassandra table under an existing Azure Cosmos DB database account with the provided name.
+        /// Gets the RUs per second of the Cassandra table under an existing Azure
+        /// Cosmos DB database account with the provided name.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1772,7 +1779,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB table name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The RUs per second of the parameters to provide for the current Cassandra table.
+        /// The RUs per second of the parameters to provide for the current Cassandra
+        /// table.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2385,7 +2393,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB keyspace name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The RUs per second of the parameters to provide for the current Cassandra Keyspace.
+        /// The RUs per second of the parameters to provide for the current Cassandra
+        /// Keyspace.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2657,7 +2666,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2923,7 +2933,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra Keyspace from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -3753,7 +3764,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB table name.
         /// </param>
         /// <param name='updateThroughputParameters'>
-        /// The RUs per second of the parameters to provide for the current Cassandra table.
+        /// The RUs per second of the parameters to provide for the current Cassandra
+        /// table.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -4032,7 +4044,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to autoscale
+        /// Migrate an Azure Cosmos DB Cassandra table from manual throughput to
+        /// autoscale
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -4308,7 +4321,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual throughput
+        /// Migrate an Azure Cosmos DB Cassandra table from autoscale to manual
+        /// throughput
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

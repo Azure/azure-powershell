@@ -161,7 +161,7 @@ SoftDeleteFeatureState of the Recovery Services Vault. Allowed values are Disabl
 Type: System.String
 Parameter Sets: AzureRSVaultSoftDelteParameterSet
 Aliases:
-Accepted values: Enable, Disable
+Accepted values: Enable, Disable, AlwaysON
 
 Required: False
 Position: Named

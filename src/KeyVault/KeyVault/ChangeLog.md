@@ -18,6 +18,19 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported authentication via User Managed Identity by adding parameter `UseUserManagedIdentity` and making `SasToken` optional.
+
+## Version 5.1.0
+* Added parameter `ByteArrayValue` in `Invoke-AzKeyVaultKeyOperation` to support operating byte array without conversion to secure string.
+* Added Property `RawResult` in the output type `PSKeyOperationResult` of `Invoke-AzKeyVaultKeyOperation`. 
+* [Upcoming Breaking Change] Added breaking change warning message for parameter `Value` in `Invoke-AzKeyVaultKeyOperation`. 
+    - Parameter `Value` is expected to be removed in Az.KeyVault 6.0.0
+    - `ByteArrayValue` is the alternative of parameter `Value` in byte array format
+* [Upcoming Breaking Change] Added breaking change warning message for the output type `PSKeyOperationResult` of `Invoke-AzKeyVaultKeyOperation`. 
+    - Property `Result` is expected to be removed in Az.KeyVault 6.0.0
+    - Property `RawResult` is the alternative of parameter `Result` in byte array format
+
+## Version 5.0.1
 * Removed redundant Microsoft Graph API calls for access policy in `Get-AzKeyVault`.
 
 ## Version 5.0.0

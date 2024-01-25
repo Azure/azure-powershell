@@ -788,19 +788,19 @@ Please contact Microsoft for further assistance.</value>
     <value>Monthly or Yearly retention needs to be set as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.</value>
   </data>
   <data name="IncompatibleRetentionPolicyForTierRecommended" xml:space="preserve">
-    <value>At least one of monthly or yearly retention should be >= 9 months for enabling TierRecommended mode for smart tiering</value>
+    <value>At least one of monthly or yearly retention should be &gt;= 9 months for enabling TierRecommended mode for smart tiering</value>
   </data>
   <data name="RetentionShouldBeGreaterThan9MonthsOrDisableSmartTiering" xml:space="preserve">
-    <value>At least one of monthly or yearly retention should be >= 9 months as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.</value>
+    <value>At least one of monthly or yearly retention should be &gt;= 9 months as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.</value>
   </data>
   <data name="InvalidDurationTypeForAzureVM" xml:space="preserve">
     <value>TierAfterDurationType should be in Months for workload type AzureVM</value>
   </data>
   <data name="InvalidDurationForTierAllEligiblePolicy" xml:space="preserve">
-    <value>TierAfterDuration needs to be >= 3 months, at least one of monthly or yearly retention should be >= (TierAfterDuration + 6) months</value>
+    <value>TierAfterDuration needs to be &gt;= 3 months, at least one of monthly or yearly retention should be &gt;= (TierAfterDuration + 6) months</value>
   </data>
   <data name="IncompatibleRetentionDurationWithTierAfterDuration" xml:space="preserve">
-    <value>TierAfterDuration needs to be >= 3 months, at least one of monthly or yearly retention should be >= (TierAfterDuration + 6) months as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.</value>
+    <value>TierAfterDuration needs to be &gt;= 3 months, at least one of monthly or yearly retention should be &gt;= (TierAfterDuration + 6) months as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.</value>
   </data>
   <data name="FullBackupRetentionPolicyCantBeNull" xml:space="preserve">
     <value>FullBackupRetentionPolicy can't be null while enabling Archive smart tiering for BackupManagementType AzureWorkload</value>
@@ -809,10 +809,10 @@ Please contact Microsoft for further assistance.</value>
     <value>TierAfterDurationType should be in Days for workload type AzureWorkload</value>
   </data>
   <data name="IncompatibleRetentionPolicyWithTierAfterDuration" xml:space="preserve">
-    <value>TierAfterDuration needs to be >= 45 Days, at least one retention policy for full backup (daily / weekly / monthly / yearly) should be >= (TierAfter + 180) days</value>
+    <value>TierAfterDuration needs to be &gt;= 45 Days, at least one retention policy for full backup (daily / weekly / monthly / yearly) should be &gt;= (TierAfter + 180) days</value>
   </data>
   <data name="TierAfterDurationCheckFailedWithRetentionDuration" xml:space="preserve">
-    <value>TierAfterDuration needs to be >= 45 Days, at least one retention policy for full backup (daily / weekly / monthly / yearly) should be >= (TierAfter + 180) days as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.</value>
+    <value>TierAfterDuration needs to be &gt;= 45 Days, at least one retention policy for full backup (daily / weekly / monthly / yearly) should be &gt;= (TierAfter + 180) days as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.</value>
   </data>
   <data name="UnsupportedCZRWithNonZonePinnedVMForCRRVault" xml:space="preserve">
     <value>For triggering cross zonal restore for CRR enabled (RA-GRS) vaults, please ensure that the recovery point is zone pinned. Please remove TargetZone parameter or try a valid scenario.</value>
@@ -828,5 +828,23 @@ Please contact Microsoft for further assistance.</value>
   </data>
   <data name="VaultLocationRequiredForCRR" xml:space="preserve">
     <value>VaultLocation can't be empty for cross region restore.</value>
+  </data>
+  <data name="CSRAndCRRNotSupportedWithEdgeZoneRestore" xml:space="preserve">
+    <value>RestoreToEdgeZone parameter can't be used for cross region or cross subscription restore</value>
+  </data>
+  <data name="InvalidEdgeZoneVM" xml:space="preserve">
+    <value>Please make sure that the recovery point belongs to an edge zone VM and contains extended location</value>
+  </data>
+  <data name="RequiredBackupSnapshotResourceGroup" xml:space="preserve">
+    <value>The parameter BackupSnapshotResourceGroupSuffix cannot be used without the BackupSnapshotResourceGroup parameter. Please provide the BackupSnapshotResourceGroup parameter or remove the BackupSnapshotResourceGroupSuffix parameter.</value>
+  </data>
+  <data name="TrustedLaunchDefaultWarning" xml:space="preserve">
+    <value>Ignite (November) 2023 onwards Virtual Machine deployments using PS and CLI will default to Trusted Launch configuration. You need to ensure Policy Name used with this command is of type Enhanced Policy for Trusted Launch VMs. Non-Trusted Launch Virtual Machines will not be impacted by this change. To know more about default change and Trusted Launch, please visit https://aka.ms/TLaD.</value>
+  </data>
+  <data name="UnbakedSnapshotRecoveryPoint" xml:space="preserve">
+    <value>Snapshot recovery point time is less than 4 Hrs ago, please try later or with another recovery point</value>
+  </data>
+  <data name="StdToEnhPolicyMigrationWarning" xml:space="preserve">
+    <value>Upgrading to enhanced policy can incur additional charges. Once upgraded to the enhanced policy, it is not possible to revert back to the standard policy</value>
   </data>
 </root>

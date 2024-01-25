@@ -731,7 +731,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Managed Cassandra cluster name.
         /// </param>
         /// <param name='body'>
-        /// The properties specifying the desired state of the managed Cassandra cluster.
+        /// The properties specifying the desired state of the managed Cassandra
+        /// cluster.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -841,7 +842,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the CPU, memory, and disk usage statistics for each Cassandra node in a cluster.
+        /// Gets the CPU, memory, and disk usage statistics for each Cassandra node in
+        /// a cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1306,7 +1308,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Create or update a managed Cassandra cluster. When updating, you must specify all writable properties. To update only some properties, use PATCH.
+        /// Create or update a managed Cassandra cluster. When updating, you must
+        /// specify all writable properties. To update only some properties, use PATCH.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -1315,7 +1318,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Managed Cassandra cluster name.
         /// </param>
         /// <param name='body'>
-        /// The properties specifying the desired state of the managed Cassandra cluster.
+        /// The properties specifying the desired state of the managed Cassandra
+        /// cluster.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1857,7 +1861,7 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Invoke a command like nodetool for cassandra maintenance 
+        /// Invoke a command like nodetool for cassandra maintenance
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2118,7 +2122,10 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Deallocate the Managed Cassandra Cluster and Associated Data Centers. Deallocation will deallocate the host virtual machine of this cluster, and reserved the data disk. This won&#39;t do anything on an already deallocated cluster. Use Start to restart the cluster.
+        /// Deallocate the Managed Cassandra Cluster and Associated Data Centers.
+        /// Deallocation will deallocate the host virtual machine of this cluster, and
+        /// reserved the data disk. This won&#39;t do anything on an already deallocated
+        /// cluster. Use Start to restart the cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -2340,7 +2347,10 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Start the Managed Cassandra Cluster and Associated Data Centers. Start will start the host virtual machine of this cluster with reserved data disk. This won&#39;t do anything on an already running cluster. Use Deallocate to deallocate the cluster.
+        /// Start the Managed Cassandra Cluster and Associated Data Centers. Start will
+        /// start the host virtual machine of this cluster with reserved data disk.
+        /// This won&#39;t do anything on an already running cluster. Use Deallocate to
+        /// deallocate the cluster.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

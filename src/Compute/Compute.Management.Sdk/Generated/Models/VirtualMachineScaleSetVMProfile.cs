@@ -89,7 +89,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="securityPostureReference">Specifies the security
         /// posture to be used for all virtual machines in the scale set.
         /// Minimum api-version: 2023-03-01</param>
-        public VirtualMachineScaleSetVMProfile(VirtualMachineScaleSetOSProfile osProfile = default(VirtualMachineScaleSetOSProfile), VirtualMachineScaleSetStorageProfile storageProfile = default(VirtualMachineScaleSetStorageProfile), VirtualMachineScaleSetNetworkProfile networkProfile = default(VirtualMachineScaleSetNetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), string priority = default(string), string evictionPolicy = default(string), BillingProfile billingProfile = default(BillingProfile), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), VirtualMachineScaleSetHardwareProfile hardwareProfile = default(VirtualMachineScaleSetHardwareProfile), ServiceArtifactReference serviceArtifactReference = default(ServiceArtifactReference), SecurityPostureReference securityPostureReference = default(SecurityPostureReference))
+        /// <param name="timeCreated">Specifies the time in which this VM
+        /// profile for the Virtual Machine Scale Set was created. Minimum API
+        /// version for this property is 2023-09-01. This value will be added
+        /// to VMSS Flex VM tags when creating/updating the VMSS VM Profile
+        /// with minimum api-version 2023-09-01.</param>
+        public VirtualMachineScaleSetVMProfile(VirtualMachineScaleSetOSProfile osProfile = default(VirtualMachineScaleSetOSProfile), VirtualMachineScaleSetStorageProfile storageProfile = default(VirtualMachineScaleSetStorageProfile), VirtualMachineScaleSetNetworkProfile networkProfile = default(VirtualMachineScaleSetNetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), string priority = default(string), string evictionPolicy = default(string), BillingProfile billingProfile = default(BillingProfile), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), VirtualMachineScaleSetHardwareProfile hardwareProfile = default(VirtualMachineScaleSetHardwareProfile), ServiceArtifactReference serviceArtifactReference = default(ServiceArtifactReference), SecurityPostureReference securityPostureReference = default(SecurityPostureReference), System.DateTime? timeCreated = default(System.DateTime?))
         {
             OsProfile = osProfile;
             StorageProfile = storageProfile;
@@ -108,6 +113,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             HardwareProfile = hardwareProfile;
             ServiceArtifactReference = serviceArtifactReference;
             SecurityPostureReference = securityPostureReference;
+            TimeCreated = timeCreated;
             CustomInit();
         }
 
@@ -255,6 +261,16 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "securityPostureReference")]
         public SecurityPostureReference SecurityPostureReference { get; set; }
+
+        /// <summary>
+        /// Gets specifies the time in which this VM profile for the Virtual
+        /// Machine Scale Set was created. Minimum API version for this
+        /// property is 2023-09-01. This value will be added to VMSS Flex VM
+        /// tags when creating/updating the VMSS VM Profile with minimum
+        /// api-version 2023-09-01.
+        /// </summary>
+        [JsonProperty(PropertyName = "timeCreated")]
+        public System.DateTime? TimeCreated { get; private set; }
 
         /// <summary>
         /// Validate the object.

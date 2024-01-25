@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Commands.Network
             MNM.IpsecEncryption.AES128,
             MNM.IpsecEncryption.AES192,
             MNM.IpsecEncryption.AES256,
-            MNM.IpsecEncryption.GCMAES128,
-            MNM.IpsecEncryption.GCMAES192,
-            MNM.IpsecEncryption.GCMAES256,
+            MNM.IpsecEncryption.Gcmaes128,
+            MNM.IpsecEncryption.Gcmaes192,
+            MNM.IpsecEncryption.Gcmaes256,
             IgnoreCase = false)]
         public string IpsecEncryption { get; set; }
 
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.Network
             MNM.IpsecIntegrity.MD5,
             MNM.IpsecIntegrity.SHA1,
             MNM.IpsecIntegrity.SHA256,
-            MNM.IpsecEncryption.GCMAES128,
-            MNM.IpsecEncryption.GCMAES192,
-            MNM.IpsecEncryption.GCMAES256,
+            MNM.IpsecEncryption.Gcmaes128,
+            MNM.IpsecEncryption.Gcmaes192,
+            MNM.IpsecEncryption.Gcmaes256,
             IgnoreCase = false)]
         public string IpsecIntegrity { get; set; }
 

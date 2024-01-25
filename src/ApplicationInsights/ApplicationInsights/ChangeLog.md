@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.3
+* Enabled common parameter in get-azapplicationinsights 
+
 ## Version 2.2.2
 * Added parameter validation for `Get-AzApplicationInsights` [#20697]
 

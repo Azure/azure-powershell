@@ -42,6 +42,7 @@
 | Connected Kubernetes           | `Az.ConnectedKubernetes`        | [![ConnectedKubernetes]][ConnectedKubernetesGallery]               | [Changelog][ConnectedKubernetesChangeLog]        |
 | Connected Machine              | `Az.ConnectedMachine`           | [![ConnectedMachine]][ConnectedMachineGallery]                     | [Changelog][ConnectedMachineChangeLog]           |
 | ConnectedNetwork               | `Az.ConnectedNetwork`           | [![ConnectedNetwork]][ConnectedNetworkGallery]                     | [Changelog][ConnectedNetworkChangeLog]           |
+| ConnectedVMware                | `Az.ConnectedVMware`            | [![ConnectedVMware]][ConnectedVMwareGallery]                       | [Changelog][ConnectedVMwareChangeLog]            |
 | Container Instance             | `Az.ContainerInstance`          | [![ContainerInstance]][ContainerInstanceGallery]                   | [Changelog][ContainerInstanceChangeLog]          |
 | Container Registry             | `Az.ContainerRegistry`          | [![ContainerRegistry]][ContainerRegistryGallery]                   | [Changelog][ContainerRegistryChangeLog]          |
 | Cosmos DB                      | `Az.CosmosDB`                   | [![CosmosDB]][CosmosDBGallery]                                     | [Changelog][CosmosDBChangeLog]                   |
@@ -60,7 +61,6 @@
 | Data Protection                | `Az.DataProtection`             | [![DataProtection]][DataProtectionGallery]                         | [Changelog][DataProtectionChangeLog]             |
 | Data Share                     | `Az.DataShare`                  | [![DataShare]][DataShareGallery]                                   | [Changelog][DataShareChangeLog]                  |
 | Dedicated HSM                  | `Az.DedicatedHsm`               | [![DedicatedHsm]][DedicatedHsmGallery]                             | [Changelog][DedicatedHsmChangeLog]               |
-| Deployment Manager             | `Az.DeploymentManager`          | [![DeploymentManager]][DeploymentManagerGallery]                   | [Changelog][DeploymentManagerChangeLog]          |
 | Windows Virtual Desktop        | `Az.DesktopVirtualization`      | [![DesktopVirtualization]][DesktopVirtualizationGallery]           | [Changelog][DesktopVirtualizationChangeLog]      |
 | DevCenter                      | `Az.DevCenter`                  | [![DevCenter]][DevCenterGallery]                                   | [Changelog][DevCenterChangeLog]                  |
 | Device Provisioning Services   | `Az.DeviceProvisioningServices` | [![DeviceProvisioningServices]][DeviceProvisioningServicesGallery] | [Changelog][DeviceProvisioningServicesChangeLog] |
@@ -77,6 +77,7 @@
 | ElasticSan on Azure            | `Az.ElasticSan`                 | [![ElasticSan]][ElasticSanGallery]                                 | [Changelog][ElasticSanChangeLog]                 |
 | Event Grid                     | `Az.EventGrid`                  | [![EventGrid]][EventGridGallery]                                   | [Changelog][EventGridChangeLog]                  |
 | Event Hubs                     | `Az.EventHub`                   | [![EventHub]][EventHubGallery]                                     | [Changelog][EventHubChangeLog]                   |
+| Fleet                          | `Az.Fleet`                      | [![Fleet]][FleetGallery]                                           | [Changelog][FleetChangeLog]                   |
 | Fluid Relay                    | `Az.FluidRelay`                 | [![FluidRelay]][FluidRelayGallery]                                 | [Changelog][FluidRelayChangeLog]                 |
 | Front Door                     | `Az.FrontDoor`                  | [![FrontDoor]][FrontDoorGallery]                                   | [Changelog][FrontDoorChangeLog]                  |
 | Functions                      | `Az.Functions`                  | [![Functions]][FunctionsGallery]                                   | [Changelog][FunctionsChangeLog]                  |
@@ -155,6 +156,7 @@
 | SQL Server on Virtual Machines | `Az.SqlVirtualMachine`          | [![SqlVirtualMachine]][SqlVirtualMachineGallery]                   | [Changelog][SqlVirtualMachineChangeLog]          |
 | SSH                            | `Az.Ssh`                        | [![Ssh]][SshGallery]                                               | [Changelog][SshChangeLog]                        |
 | Stack HCI                      | `Az.StackHCI`                   | [![StackHCI]][StackHCIGallery]                                     | [Changelog][StackHCIChangeLog]                   |
+| Stack HCI VM                   | `Az.StackHCIVM`                 | [![StackHCIVM ]][StackHCIVMGallery]                                | [Changelog][StackHCIVMChangeLog]                 |
 | Storage                        | `Az.Storage`                    | [![Storage]][StorageGallery]                                       | [Changelog][Storage.ManagementChangeLog]         |
 | Storage Mover                  | `Az.StorageMover`               | [![StorageMover]][StorageMoverGallery]                             | [Changelog][StorageMoverChangeLog]               |
 | File Sync                      | `Az.StorageSync`                | [![StorageSync]][StorageSyncGallery]                               | [Changelog][StorageSyncChangeLog]                |
@@ -208,6 +210,7 @@
 [ConnectedKubernetes]:        https://img.shields.io/powershellgallery/v/Az.ConnectedKubernetes.svg?style=flat-square&label=Az.ConnectedKubernetes
 [ConnectedMachine]:           https://img.shields.io/powershellgallery/v/Az.ConnectedMachine.svg?style=flat-square&label=Az.ConnectedMachine
 [ConnectedNetwork]:           https://img.shields.io/powershellgallery/v/Az.ConnectedNetwork.svg?style=flat-square&label=Az.ConnectedNetwork
+[ConnectedVMware]:            https://img.shields.io/powershellgallery/v/Az.ConnectedVMware.svg?style=flat-square&label=Az.ConnectedVMware
 [ContainerInstance]:          https://img.shields.io/powershellgallery/v/Az.ContainerInstance.svg?style=flat-square&label=Az.ContainerInstance
 [ContainerRegistry]:          https://img.shields.io/powershellgallery/v/Az.ContainerRegistry.svg?style=flat-square&label=Az.ContainerRegistry
 [CosmosDB]:                   https://img.shields.io/powershellgallery/v/Az.CosmosDB.svg?style=flat-square&label=Az.CosmosDB
@@ -226,7 +229,6 @@
 [DataProtection]:             https://img.shields.io/powershellgallery/v/Az.DataProtection.svg?style=flat-square&label=Az.DataProtection
 [DataShare]:                  https://img.shields.io/powershellgallery/v/Az.DataShare.svg?style=flat-square&label=Az.DataShare
 [DedicatedHsm]:               https://img.shields.io/powershellgallery/v/Az.DedicatedHsm.svg?style=flat-square&label=Az.DedicatedHsm
-[DeploymentManager]:          https://img.shields.io/powershellgallery/v/Az.DeploymentManager.svg?style=flat-square&label=Az.DeploymentManager
 [DigitalTwins]:               https://img.shields.io/powershellgallery/v/Az.DigitalTwins.svg?style=flat-square&label=Az.DigitalTwins
 [DiskPool]:                   https://img.shields.io/powershellgallery/v/Az.DiskPool.svg?style=flat-square&label=Az.DiskPool
 [DesktopVirtualization]:      https://img.shields.io/powershellgallery/v/Az.DesktopVirtualization.svg?style=flat-square&label=Az.DesktopVirtualization
@@ -243,6 +245,7 @@
 [ElasticSan]:                 https://img.shields.io/powershellgallery/v/Az.ElasticSan.svg?style=flat-square&label=Az.ElasticSan
 [EventGrid]:                  https://img.shields.io/powershellgallery/v/Az.EventGrid.svg?style=flat-square&label=Az.EventGrid
 [EventHub]:                   https://img.shields.io/powershellgallery/v/Az.EventHub.svg?style=flat-square&label=Az.EventHub
+[Fleet]:                      https://img.shields.io/powershellgallery/v/Az.Fleet.svg?style=flat-square&label=Az.Fleet
 [FluidRelay]:                 https://img.shields.io/powershellgallery/v/Az.FluidRelay.svg?style=flat-square&label=Az.FluidRelay
 [FrontDoor]:                  https://img.shields.io/powershellgallery/v/Az.FrontDoor.svg?style=flat-square&label=Az.FrontDoor
 [Functions]:                  https://img.shields.io/powershellgallery/v/Az.Functions.svg?style=flat-square&label=Az.Functions
@@ -321,6 +324,7 @@
 [SqlVirtualMachine]:          https://img.shields.io/powershellgallery/v/Az.SqlVirtualMachine.svg?style=flat-square&label=Az.SqlVirtualMachine
 [Ssh]:                        https://img.shields.io/powershellgallery/v/Az.Ssh.svg?style=flat-square&label=Az.Ssh
 [StackHCI]:                   https://img.shields.io/powershellgallery/v/Az.StackHCI.svg?style=flat-square&label=Az.StackHCI
+[StackHCIVM]:                 https://img.shields.io/powershellgallery/v/Az.StackHCIVM.svg?style=flat-square&label=Az.StackHCIVM
 [Storage]:                    https://img.shields.io/powershellgallery/v/Az.Storage.svg?style=flat-square&label=Az.Storage
 [StorageMover]:               https://img.shields.io/powershellgallery/v/Az.StorageMover.svg?style=flat-square&label=Az.StorageMover
 [StorageSync]:                https://img.shields.io/powershellgallery/v/Az.StorageSync.svg?style=flat-square&label=Az.StorageSync
@@ -370,6 +374,7 @@
 [ConnectedKubernetesGallery]:        https://www.powershellgallery.com/packages/Az.ConnectedKubernetes/
 [ConnectedMachineGallery]:           https://www.powershellgallery.com/packages/Az.ConnectedMachine/
 [ConnectedNetworkGallery]:           https://www.powershellgallery.com/packages/Az.ConnectedNetwork/
+[ConnectedVMwareGallery]:            https://www.powershellgallery.com/packages/Az.ConnectedVMware/
 [ContainerInstanceGallery]:          https://www.powershellgallery.com/packages/Az.ContainerInstance/
 [ContainerRegistryGallery]:          https://www.powershellgallery.com/packages/Az.ContainerRegistry/
 [CosmosDBGallery]:                   https://www.powershellgallery.com/packages/Az.CosmosDB/
@@ -388,7 +393,6 @@
 [DataProtectionGallery]:             https://www.powershellgallery.com/packages/Az.DataProtection/
 [DataShareGallery]:                  https://www.powershellgallery.com/packages/Az.DataShare/
 [DedicatedHsmGallery]:               https://www.powershellgallery.com/packages/Az.DedicatedHsm/
-[DeploymentManagerGallery]:          https://www.powershellgallery.com/packages/Az.DeploymentManager/
 [DigitalTwinsGallery]:               https://www.powershellgallery.com/packages/Az.DigitalTwins/
 [DiskPoolGallery]:                   https://www.powershellgallery.com/packages/Az.DiskPool/
 [DesktopVirtualizationGallery]:      https://www.powershellgallery.com/packages/Az.DesktopVirtualization/
@@ -405,6 +409,7 @@
 [ElasticSanGallery]:                 https://www.powershellgallery.com/packages/Az.ElasticSan/
 [EventGridGallery]:                  https://www.powershellgallery.com/packages/Az.EventGrid/
 [EventHubGallery]:                   https://www.powershellgallery.com/packages/Az.EventHub/
+[FleetGallery]:                      https://www.powershellgallery.com/packages/Az.Fleet/
 [FluidRelayGallery]:                 https://www.powershellgallery.com/packages/Az.FluidRelay/
 [FrontDoorGallery]:                  https://www.powershellgallery.com/packages/Az.FrontDoor/
 [FunctionsGallery]:                  https://www.powershellgallery.com/packages/Az.Functions/
@@ -483,6 +488,7 @@
 [SqlVirtualMachineGallery]:          https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/
 [SshGallery]:                        https://www.powershellgallery.com/packages/Az.Ssh/
 [StackHCIGallery]:                   https://www.powershellgallery.com/packages/Az.StackHCI/
+[StackHCIVMGallery]:                   https://www.powershellgallery.com/packages/Az.StackHCIVM/
 [StorageGallery]:                    https://www.powershellgallery.com/packages/Az.Storage/
 [StorageMoverGallery]:               https://www.powershellgallery.com/packages/Az.StorageMover/
 [StorageSyncGallery]:                https://www.powershellgallery.com/packages/Az.StorageSync/
@@ -530,6 +536,7 @@
 [ConnectedKubernetesChangeLog]:        ../src/ConnectedKubernetes/ChangeLog.md
 [ConnectedMachineChangeLog]:           ../src/ConnectedMachine/ChangeLog.md
 [ConnectedNetworkChangeLog]:           ../src/ConnectedNetwork/ChangeLog.md
+[ConnectedVMwareChangeLog]:            ../src/ConnectedVMware/ChangeLog.md
 [ContainerInstanceChangeLog]:          ../src/ContainerInstance/ChangeLog.md
 [ContainerRegistryChangeLog]:          ../src/ContainerRegistry/ContainerRegistry/ChangeLog.md
 [CosmosDBChangeLog]:                   ../src/CosmosDB/CosmosDB/ChangeLog.md
@@ -548,7 +555,6 @@
 [DataProtectionChangeLog]:             ../src/DataProtection/ChangeLog.md
 [DataShareChangeLog]:                  ../src/DataShare/DataShare/ChangeLog.md
 [DedicatedHsmChangeLog]:               ../src/DedicatedHsm/ChangeLog.md
-[DeploymentManagerChangeLog]:          ../src/DeploymentManager/DeploymentManager/ChangeLog.md
 [DesktopVirtualizationChangeLog]:      ../src/DesktopVirtualization/ChangeLog.md
 [DevCenterChangeLog]:                  ../src/DevCenter/DevCenter/ChangeLog.md
 [DeviceProvisioningServicesChangeLog]: ../src/DeviceProvisioningServices/DeviceProvisioningServices/ChangeLog.md
@@ -565,6 +571,7 @@
 [ElasticSanChangeLog]:                 ../src/ElasticSan/ChangeLog.md
 [EventGridChangeLog]:                  ../src/EventGrid/EventGrid/ChangeLog.md
 [EventHubChangeLog]:                   ../src/EventHub/EventHub/ChangeLog.md
+[FleetChangeLog]:                      ../src/Fleet/Fleet/ChangeLog.md
 [FluidRelayChangeLog]:                 ../src/FluidRelay/ChangeLog.md
 [FrontDoorChangeLog]:                  ../src/FrontDoor/FrontDoor/ChangeLog.md
 [FunctionsChangeLog]:                  ../src/Functions/ChangeLog.md
@@ -643,6 +650,7 @@
 [SqlVirtualMachineChangeLog]:          ../src/SqlVirtualMachine/SqlVirtualMachine/ChangeLog.md
 [SshChangeLog]:                        ../src/Ssh/Ssh/ChangeLog.md
 [StackHCIChangeLog]:                   ../src/StackHCI/ChangeLog.md
+[StackHCIVMChangeLog]:                 ../src/StackHCIVM/ChangeLog.md
 [Storage.ManagementChangeLog]:         ../src/Storage/Storage.Management/ChangeLog.md
 [StorageMoverChangeLog]:               ../src/StorageMover/ChangeLog.md
 [StorageSyncChangeLog]:                ../src/StorageSync/StorageSync/ChangeLog.md

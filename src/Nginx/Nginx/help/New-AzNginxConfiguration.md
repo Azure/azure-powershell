@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Nginx-help.xml
 Module Name: Az.Nginx
 online version: https://learn.microsoft.com/powershell/module/az.nginx/new-aznginxconfiguration
 schema: 2.0.0
@@ -15,8 +15,8 @@ Create or update the Nginx configuration for given Nginx deployment
 ```
 New-AzNginxConfiguration -DeploymentName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-File <INginxConfigurationFile[]>] [-Location <String>] [-PackageData <String>]
- [-ProtectedFile <INginxConfigurationFile[]>] [-RootFile <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PackageProtectedFile <String[]>] [-ProtectedFile <INginxConfigurationFile[]>] [-RootFile <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for FILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfigurationFile[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfigurationFile[]
 Parameter Sets: (All)
 Aliases:
 
@@ -160,12 +160,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PackageProtectedFile
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProtectedFile
 .
 To construct, see NOTES section for PROTECTEDFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfigurationFile[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfigurationFile[]
 Parameter Sets: (All)
 Aliases:
 
@@ -218,21 +233,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Dictionary of \<string\>
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -295,4 +295,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[VirtualPath <String>]`: 
 
 ## RELATED LINKS
-

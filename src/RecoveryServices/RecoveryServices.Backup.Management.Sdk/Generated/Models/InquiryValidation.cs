@@ -32,12 +32,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="additionalDetail">Error Additional Detail in case the status is non-success.
         /// </param>
-        public InquiryValidation(string status = default(string), ErrorDetail errorDetail = default(ErrorDetail), string additionalDetail = default(string))
+
+        /// <param name="protectableItemCount">Dictionary to store the count of ProtectableItems with key POType.
+        /// </param>
+        public InquiryValidation(string status = default(string), ErrorDetail errorDetail = default(ErrorDetail), string additionalDetail = default(string), object protectableItemCount = default(object))
 
         {
             this.Status = status;
             this.ErrorDetail = errorDetail;
             this.AdditionalDetail = additionalDetail;
+            this.ProtectableItemCount = protectableItemCount;
             CustomInit();
         }
 
@@ -64,5 +68,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "additionalDetail")]
         public string AdditionalDetail {get; private set; }
+
+        /// <summary>
+        /// Gets dictionary to store the count of ProtectableItems with key POType.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "protectableItemCount")]
+        public object ProtectableItemCount {get; private set; }
     }
 }

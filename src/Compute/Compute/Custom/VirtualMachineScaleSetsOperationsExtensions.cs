@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Compute
                 return operations.CreateOrUpdate(resourceGroupName, vmssName, virtualMachineScaleSet);
             }
             virtualMachineScaleSet.RemoveAuxAuthHeader();
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmssName, virtualMachineScaleSet, auxAuthHeader, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vmssName, virtualMachineScaleSet, null,null,auxAuthHeader, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 
         public IList<LinkedIntegrationRuntime> Links => _status.Links;
 
-        public DateTime? AutoUpdateETA => _status.AutoUpdateETA;
+        public DateTime? AutoUpdateETA => _status.AutoUpdateEta;
 
         public string LatestVersion => _status.LatestVersion;
 

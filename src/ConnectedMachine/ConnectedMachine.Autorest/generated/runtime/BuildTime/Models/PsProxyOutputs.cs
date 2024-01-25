@@ -121,6 +121,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell
             : String.Empty;
     }
 
+    internal class PSArgumentCompleterOutput : ArgumentCompleterOutput
+    {
+        public PSArgumentCompleterInfo PSArgumentCompleterInfo { get; }
+
+        public PSArgumentCompleterOutput(PSArgumentCompleterInfo completerInfo) : base(completerInfo)
+        {
+            PSArgumentCompleterInfo = completerInfo;
+        }
+
+
+        public override string ToString() => PSArgumentCompleterInfo != null
+            ? $"{Indent}[{typeof(PSArgumentCompleterAttribute)}({(PSArgumentCompleterInfo.IsTypeCompleter ? $"[{PSArgumentCompleterInfo.Type.Unwrap().ToPsType()}]" : $"{PSArgumentCompleterInfo.ResourceTypes?.Select(r => $"\"{r}\"")?.JoinIgnoreEmpty(", ")}")})]{Environment.NewLine}"
+            : String.Empty;
+    }
+
     internal class DefaultInfoOutput
     {
         public bool HasDefaultInfo { get; }
@@ -269,7 +284,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell
                 var variantListString = defaultInfo.ParameterGroup.VariantNames.ToPsList();
                 var parameterName = defaultInfo.ParameterGroup.ParameterName;
                 sb.AppendLine();
-                sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}')) {{");
+                var setCondition = " ";
+                if (!String.IsNullOrEmpty(defaultInfo.SetCondition))
+                {
+                    setCondition = $" -and {defaultInfo.SetCondition}";
+                }
+                sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}'){setCondition}) {{");
                 sb.AppendLine($"{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = {defaultInfo.Script}");
                 sb.Append($"{Indent}{Indent}}}");
             }
@@ -364,6 +384,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell
             var notesText = !String.IsNullOrEmpty(notes) ? $"{Environment.NewLine}.Notes{Environment.NewLine}{ComplexParameterHeader}{notes}" : String.Empty;
             var relatedLinks = String.Join(Environment.NewLine, CommentInfo.RelatedLinks.Select(l => $".Link{Environment.NewLine}{l}"));
             var relatedLinksText = !String.IsNullOrEmpty(relatedLinks) ? $"{Environment.NewLine}{relatedLinks}" : String.Empty;
+            var externalUrls = String.Join(Environment.NewLine, CommentInfo.ExternalUrls.Select(l => $".Link{Environment.NewLine}{l}"));
+            var externalUrlsText = !String.IsNullOrEmpty(externalUrls) ? $"{Environment.NewLine}{externalUrls}" : String.Empty;
             var examples = "";
             foreach (var example in VariantGroup.HelpInfo.Examples)
             {
@@ -376,7 +398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell
 {CommentInfo.Description.ToDescriptionFormat(false)}
 {examples}{inputsText}{outputsText}{notesText}
 .Link
-{CommentInfo.OnlineVersion}{relatedLinksText}
+{CommentInfo.OnlineVersion}{relatedLinksText}{externalUrlsText}
 #>
 ";
         }
@@ -570,7 +592,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PowerShell
 
         public static AllowEmptyArrayOutput ToAllowEmptyArray(this bool hasAllowEmptyArray) => new AllowEmptyArrayOutput(hasAllowEmptyArray);
 
-        public static ArgumentCompleterOutput ToArgumentCompleterOutput(this CompleterInfo completerInfo) => new ArgumentCompleterOutput(completerInfo);
+        public static ArgumentCompleterOutput ToArgumentCompleterOutput(this CompleterInfo completerInfo) => (completerInfo is PSArgumentCompleterInfo psArgumentCompleterInfo) ? psArgumentCompleterInfo.ToArgumentCompleterOutput() : new ArgumentCompleterOutput(completerInfo);
+
+        public static PSArgumentCompleterOutput ToArgumentCompleterOutput(this PSArgumentCompleterInfo completerInfo) => new PSArgumentCompleterOutput(completerInfo);
 
         public static DefaultInfoOutput ToDefaultInfoOutput(this ParameterGroup parameterGroup) => new DefaultInfoOutput(parameterGroup);
 

@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="defaultConsistencyLevel">The default consistency level and configuration settings of the Cosmos DB
         /// account.
-        /// Possible values include: 'Eventual', 'Session', 'BoundedStaleness',
-        /// 'Strong', 'ConsistentPrefix'</param>
+        /// Possible values include: &#39;Eventual&#39;, &#39;Session&#39;, &#39;BoundedStaleness&#39;,
+        /// &#39;Strong&#39;, &#39;ConsistentPrefix&#39;</param>
 
         /// <param name="maxStalenessPrefix">When used with the Bounded Staleness consistency level, this value
         /// represents the number of stale requests tolerated. Accepted range for this

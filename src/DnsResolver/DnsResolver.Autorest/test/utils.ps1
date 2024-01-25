@@ -2,12 +2,37 @@
 ."$PSScriptRoot\virtualNetworkClient.ps1"
 ."$PSScriptRoot\stringExtensions.ps1"
 
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     Import-Module -Name Az.Resources
-    
+
     Select-AzSubscription -SubscriptionObject (Get-AzSubscription -SubscriptionId ea40042d-63d8-4d02-9261-fb31450e6c67)
 
     Register-AzResourceProvider -ProviderNamespace Microsoft.Network
@@ -37,7 +62,7 @@ function setupEnv() {
     $null = $env.Add("MalformedVirtualNetworkErrorMessage", "Resource ID is not a valid virtual network resource ID");
     $null = $env.Add("AddressPrefix", "40.121.0.0/16");
     $null = $env.Add("LocationForVirtualNetwork", "westus2");
-    
+
     $nrpSimulatorUri = [System.Environment]::GetEnvironmentVariable('NRP_SIMULATOR_URI')
 
     if($nrpSimulatorUri -ne $null){
@@ -56,7 +81,7 @@ function setupEnv() {
     $dnsResolverNameEnvKeyPrefix = "DnsResolverName"
     $virtualNetworkIdEnvKeyPrefix = "VirtualNetworkId"
     $subnetIdEnvKeyPrefix = "SubnetId"
-    $inboundEndpointNameEnvKeyPrefix = "InboundEnpointName" 
+    $inboundEndpointNameEnvKeyPrefix = "InboundEnpointName"
     For($i=0; $i -le 70; $i++){
         $dnsResolverNameEnvKey = $dnsResolverNameEnvKeyPrefix + $i
         $dnsResolverName = $env.DnsResolverNamePrefix + $i + (RandomString -allChars $false -len 6)
@@ -77,7 +102,7 @@ function setupEnv() {
         $null = $env.Add($subnetIdEnvKey, $subnetId);
     }
 
-    # 
+    #
     $dnsResolverName = $env.DnsResolverName60
     $virtualNetworkId = $env.VirtualNetworkId60
     New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation -SubscriptionId  $env.SubscriptionId
@@ -97,7 +122,7 @@ function setupEnv() {
         write-host "creating test Inbound Endpoint for get ...name = "  + $inboundEndpointName
         # New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName -IPConfiguration $ipConfiguration -SubscriptionId  $env.SubscriptionId
     }
-    
+
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

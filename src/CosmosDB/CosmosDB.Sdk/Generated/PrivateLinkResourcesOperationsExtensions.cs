@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.CosmosDB
     public static partial class PrivateLinkResourcesOperationsExtensions
     {
         /// <summary>
-        /// Gets the private link resources that need to be created for a Cosmos DB account.
+        /// Gets the private link resources that need to be created for a Cosmos DB
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the private link resources that need to be created for a Cosmos DB account.
+        /// Gets the private link resources that need to be created for a Cosmos DB
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -52,7 +54,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Gets the private link resources that need to be created for a Cosmos DB account.
+        /// Gets the private link resources that need to be created for a Cosmos DB
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -72,7 +75,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Gets the private link resources that need to be created for a Cosmos DB account.
+        /// Gets the private link resources that need to be created for a Cosmos DB
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

@@ -91,7 +91,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method is preferred when performing updates on an account.
+        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method
+        /// is preferred when performing updates on an account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -108,7 +109,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method is preferred when performing updates on an account.
+        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method
+        /// is preferred when performing updates on an account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -169,7 +171,11 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Changes the failover priority for the Azure Cosmos DB database account. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+        /// Changes the failover priority for the Azure Cosmos DB database account. A
+        /// failover priority of 0 indicates a write region. The maximum value for a
+        /// failover priority = (total number of regions - 1). Failover priority values
+        /// must be unique for each of the regions in which the database account
+        /// exists.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -186,7 +192,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Changes the failover priority for the Azure Cosmos DB database account. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+        /// Changes the failover priority for the Azure Cosmos DB database account. A
+        /// failover priority of 0 indicates a write region. The maximum value for a
+        /// failover priority = (total number of regions - 1). Failover priority values
+        /// must be unique for each of the regions in which the database account
+        /// exists.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -208,7 +218,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Lists all the Azure Cosmos DB database accounts available under the subscription.
+        /// Lists all the Azure Cosmos DB database accounts available under the
+        /// subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -219,7 +230,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Lists all the Azure Cosmos DB database accounts available under the subscription.
+        /// Lists all the Azure Cosmos DB database accounts available under the
+        /// subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -235,7 +247,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Lists all the Azure Cosmos DB database accounts available under the given resource group.
+        /// Lists all the Azure Cosmos DB database accounts available under the given
+        /// resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -249,7 +262,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Lists all the Azure Cosmos DB database accounts available under the given resource group.
+        /// Lists all the Azure Cosmos DB database accounts available under the given
+        /// resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -307,7 +321,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Lists the connection strings for the specified Azure Cosmos DB database account.
+        /// Lists the connection strings for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -324,7 +339,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Lists the connection strings for the specified Azure Cosmos DB database account.
+        /// Lists the connection strings for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -346,7 +362,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Offline the specified region for the specified Azure Cosmos DB database account.
+        /// Offline the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -363,7 +380,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Offline the specified region for the specified Azure Cosmos DB database account.
+        /// Offline the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -385,7 +403,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Online the specified region for the specified Azure Cosmos DB database account.
+        /// Online the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -402,7 +421,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Online the specified region for the specified Azure Cosmos DB database account.
+        /// Online the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -424,7 +444,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Lists the read-only access keys for the specified Azure Cosmos DB database account.
+        /// Lists the read-only access keys for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -441,7 +462,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Lists the read-only access keys for the specified Azure Cosmos DB database account.
+        /// Lists the read-only access keys for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -463,7 +485,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Lists the read-only access keys for the specified Azure Cosmos DB database account.
+        /// Lists the read-only access keys for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -480,7 +503,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Lists the read-only access keys for the specified Azure Cosmos DB database account.
+        /// Lists the read-only access keys for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -502,7 +526,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Regenerates an access key for the specified Azure Cosmos DB database account.
+        /// Regenerates an access key for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -519,7 +544,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Regenerates an access key for the specified Azure Cosmos DB database account.
+        /// Regenerates an access key for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -541,7 +567,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Checks that the Azure Cosmos DB account name already exists. A valid account name may contain only lowercase letters, numbers, and the &#39;-&#39; character, and must be between 3 and 50 characters.
+        /// Checks that the Azure Cosmos DB account name already exists. A valid
+        /// account name may contain only lowercase letters, numbers, and the &#39;-&#39;
+        /// character, and must be between 3 and 50 characters.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -555,7 +583,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Checks that the Azure Cosmos DB account name already exists. A valid account name may contain only lowercase letters, numbers, and the &#39;-&#39; character, and must be between 3 and 50 characters.
+        /// Checks that the Azure Cosmos DB account name already exists. A valid
+        /// account name may contain only lowercase letters, numbers, and the &#39;-&#39;
+        /// character, and must be between 3 and 50 characters.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -574,7 +604,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Retrieves the metrics determined by the given filter for the given database account.
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -586,7 +617,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database account name.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
+        /// An OData filter expression that describes a subset of metrics to return.
+        /// The parameters that can be filtered are name.value (name of the metric, can
+        /// have an or of multiple names), startTime, endTime, and timeGrain. The
+        /// supported operator is eq.
         /// </param>
         public static System.Collections.Generic.IEnumerable<Metric> ListMetrics(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string filter)
         {
@@ -594,7 +628,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Retrieves the metrics determined by the given filter for the given database account.
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -606,7 +641,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database account name.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
+        /// An OData filter expression that describes a subset of metrics to return.
+        /// The parameters that can be filtered are name.value (name of the metric, can
+        /// have an or of multiple names), startTime, endTime, and timeGrain. The
+        /// supported operator is eq.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -631,7 +669,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database account name.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
+        /// An OData filter expression that describes a subset of usages to return. The
+        /// supported parameter is name.value (name of the metric, can have an or of
+        /// multiple names).
         /// </param>
         public static System.Collections.Generic.IEnumerable<Usage> ListUsages(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string filter = default(string))
         {
@@ -651,7 +691,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB database account name.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names).
+        /// An OData filter expression that describes a subset of usages to return. The
+        /// supported parameter is name.value (name of the metric, can have an or of
+        /// multiple names).
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -742,7 +784,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method is preferred when performing updates on an account.
+        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method
+        /// is preferred when performing updates on an account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -759,7 +802,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method is preferred when performing updates on an account.
+        /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method
+        /// is preferred when performing updates on an account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -820,7 +864,11 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Changes the failover priority for the Azure Cosmos DB database account. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+        /// Changes the failover priority for the Azure Cosmos DB database account. A
+        /// failover priority of 0 indicates a write region. The maximum value for a
+        /// failover priority = (total number of regions - 1). Failover priority values
+        /// must be unique for each of the regions in which the database account
+        /// exists.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -837,7 +885,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Changes the failover priority for the Azure Cosmos DB database account. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
+        /// Changes the failover priority for the Azure Cosmos DB database account. A
+        /// failover priority of 0 indicates a write region. The maximum value for a
+        /// failover priority = (total number of regions - 1). Failover priority values
+        /// must be unique for each of the regions in which the database account
+        /// exists.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -859,7 +911,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Offline the specified region for the specified Azure Cosmos DB database account.
+        /// Offline the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -876,7 +929,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Offline the specified region for the specified Azure Cosmos DB database account.
+        /// Offline the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -898,7 +952,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Online the specified region for the specified Azure Cosmos DB database account.
+        /// Online the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -915,7 +970,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Online the specified region for the specified Azure Cosmos DB database account.
+        /// Online the specified region for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -937,7 +993,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
-        /// Regenerates an access key for the specified Azure Cosmos DB database account.
+        /// Regenerates an access key for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -954,7 +1011,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Regenerates an access key for the specified Azure Cosmos DB database account.
+        /// Regenerates an access key for the specified Azure Cosmos DB database
+        /// account.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

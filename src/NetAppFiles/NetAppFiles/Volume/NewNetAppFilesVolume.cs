@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB, 500 GiB for large volumes. Upper limit is 100TiB. Specified in bytes.")]
+            HelpMessage = "Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. Minimum size is 100 GiB. Upper limit is 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on exceptional basis. Specified in bytes.")]
         [ValidateNotNullOrEmpty]
         public long UsageThreshold { get; set; }
 
@@ -217,6 +217,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,            
             HelpMessage = "Specifies the number of days after which data that is not accessed by clients will be tiered (minimum 7, maximum 63).")]
         public int? CoolnessPeriod { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "CoolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are: \n Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.\n OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.\n Never - No client-driven data is pulled from cool tier to standard storage.")]
+        [PSArgumentCompleter("Default", "OnRead", "Never")]
+        public string CoolAccessRetrievalPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -356,6 +362,86 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 PoolName = NameParts[1];
             }
 
+            if (Backup != null)
+            {
+                ExecuteCmdlet_2022_11_01(tagPairs);
+            }
+            else
+            {
+                PSNetAppFilesVolumeDataProtection dataProtection = null;
+                if (ReplicationObject != null || !string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null)
+                {
+                    dataProtection = new PSNetAppFilesVolumeDataProtection
+                    {
+                        Replication = ReplicationObject,
+                        Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId },
+                        Backup = Backup
+                    };
+                }
+
+                var volumeBody = new Management.NetApp.Models.Volume()
+                {
+                    ServiceLevel = ServiceLevel,
+                    UsageThreshold = UsageThreshold,
+                    CreationToken = CreationToken,
+                    SubnetId = SubnetId,
+                    Location = Location,
+                    ExportPolicy = (ExportPolicy != null) ? ModelExtensions.ConvertExportPolicyFromPs(ExportPolicy) : null,
+                    DataProtection = (dataProtection != null) ? ModelExtensions.ConvertDataProtectionFromPs(dataProtection) : null,
+                    VolumeType = VolumeType,
+                    ProtocolTypes = ProtocolType,
+                    Tags = tagPairs,
+                    SnapshotId = SnapshotId,
+                    SnapshotDirectoryVisible = SnapshotDirectoryVisible,
+                    SecurityStyle = SecurityStyle,
+                    BackupId = BackupId,
+                    ThroughputMibps = ThroughputMibps,
+                    KerberosEnabled = KerberosEnabled.IsPresent,
+                    SmbEncryption = SmbEncryption,
+                    SmbContinuouslyAvailable = SmbContinuouslyAvailable,
+                    LdapEnabled = LdapEnabled,
+                    CoolAccess = CoolAccess,
+                    CoolnessPeriod = CoolnessPeriod,
+                    UnixPermissions = UnixPermission,
+                    AvsDataStore = AvsDataStore,
+                    IsDefaultQuotaEnabled = IsDefaultQuotaEnabled,
+                    DefaultUserQuotaInKiBs = DefaultUserQuotaInKiB,
+                    DefaultGroupQuotaInKiBs = DefaultGroupQuotaInKiB,
+                    NetworkFeatures = NetworkFeature,
+                    CapacityPoolResourceId = CapacityPoolResourceId,
+                    ProximityPlacementGroup = ProximityPlacementGroup,
+                    VolumeSpecName = VolumeSpecName,
+                    PlacementRules = PlacementRule?.ToPlacementKeyValuePairs(),
+                    EnableSubvolumes = EnableSubvolume.IsPresent ? EnableSubvolumes.Enabled : EnableSubvolumes.Disabled,
+                    EncryptionKeySource = EncryptionKeySource,
+                    KeyVaultPrivateEndpointResourceId = KeyVaultPrivateEndpointResourceId,
+                    DeleteBaseSnapshot = DeleteBaseSnapshot,
+                    SmbAccessBasedEnumeration = SmbAccessBasedEnumeration,
+                    SmbNonBrowsable = SmbNonBrowsable,
+                    CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy
+                };
+                if (IsLargeVolume.IsPresent)
+                {
+                    volumeBody.IsLargeVolume = IsLargeVolume;
+                }
+                if (SnapshotDirectoryVisible.IsPresent)
+                {
+                    volumeBody.SnapshotDirectoryVisible = SnapshotDirectoryVisible;
+                }
+                if (this.Zone != null)
+                {
+                    volumeBody.Zones = this.Zone?.ToList();
+                }
+                if (ShouldProcess(PoolName, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, Name)))
+                {
+                    var anfVolume = AzureNetAppFilesManagementClient.Volumes.CreateOrUpdate(ResourceGroupName, AccountName, PoolName, Name, volumeBody);
+                    WriteObject(anfVolume.ToPsNetAppFilesVolume());
+                }
+            }
+        }
+
+        private void ExecuteCmdlet_2022_11_01(IDictionary<string, string> tagPairs)
+        {
             PSNetAppFilesVolumeDataProtection dataProtection = null;
             if (ReplicationObject != null || !string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null)
             {
@@ -367,7 +453,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 };
             }
 
-            var volumeBody = new Management.NetApp.Models.Volume()
+            var volumeBody = new Management.NetApp.Models.Volume_2022_11_01()
             {
                 ServiceLevel = ServiceLevel,
                 UsageThreshold = UsageThreshold,
@@ -375,11 +461,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 SubnetId = SubnetId,
                 Location = Location,
                 ExportPolicy = (ExportPolicy != null) ? ModelExtensions.ConvertExportPolicyFromPs(ExportPolicy) : null,
-                DataProtection = (dataProtection != null) ? ModelExtensions.ConvertDataProtectionFromPs(dataProtection) : null,
+                DataProtection = (dataProtection != null) ? ModelExtensions.ConvertDataProtection_2022_11_01_FromPs(dataProtection) : null,
                 VolumeType = VolumeType,
                 ProtocolTypes = ProtocolType,
                 Tags = tagPairs,
-                SnapshotId = SnapshotId,                
+                SnapshotId = SnapshotId,
                 SnapshotDirectoryVisible = SnapshotDirectoryVisible,
                 SecurityStyle = SecurityStyle,
                 BackupId = BackupId,
@@ -406,15 +492,23 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 DeleteBaseSnapshot = DeleteBaseSnapshot,
                 SmbAccessBasedEnumeration = SmbAccessBasedEnumeration,
                 SmbNonBrowsable = SmbNonBrowsable,
-                IsLargeVolume = IsLargeVolume                
+                CoolAccessRetrievalPolicy = CoolAccessRetrievalPolicy
             };
+            if (IsLargeVolume.IsPresent)
+            {
+                volumeBody.IsLargeVolume = IsLargeVolume;
+            }
+            if (SnapshotDirectoryVisible.IsPresent)
+            {
+                volumeBody.SnapshotDirectoryVisible = SnapshotDirectoryVisible;
+            }
             if (this.Zone != null)
             {
                 volumeBody.Zones = this.Zone?.ToList();
             }
             if (ShouldProcess(PoolName, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, Name)))
             {
-                var anfVolume = AzureNetAppFilesManagementClient.Volumes.CreateOrUpdate(ResourceGroupName, AccountName, PoolName, Name, volumeBody);
+                var anfVolume = AzureNetAppFilesManagementClient.Volume_2022_11_01.CreateOrUpdate(ResourceGroupName, AccountName, PoolName, Name, volumeBody);
                 WriteObject(anfVolume.ToPsNetAppFilesVolume());
             }
         }

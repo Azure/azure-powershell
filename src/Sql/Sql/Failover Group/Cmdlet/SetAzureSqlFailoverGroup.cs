@@ -23,12 +23,14 @@ using System.Linq;
 using System.Management.Automation;
 using System;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database Failover Group
     /// </summary>
+    [GenericBreakingChangeWithVersion("The default value of FailoverPolicy will change from Automatic to Manual", "12.0.0", "5.0.0")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseFailoverGroup",ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class SetAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
@@ -172,7 +174,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         protected override IEnumerable<AzureSqlFailoverGroupModel> PersistChanges(IEnumerable<AzureSqlFailoverGroupModel> entity)
         {
             AzureSqlFailoverGroupModel model = entity.First();
-            bool useV2 = (model.PartnerServers != null && model.PartnerServers.Count > 1);
+            bool useV2 = (model.PartnerServers != null && model.PartnerServers.Count > 1) || (MyInvocation.BoundParameters.ContainsKey("PartnerServerList"));
             return new List<AzureSqlFailoverGroupModel>() {
                 ModelAdapter.PatchUpdateFailoverGroup(entity.First(), useV2)
             };

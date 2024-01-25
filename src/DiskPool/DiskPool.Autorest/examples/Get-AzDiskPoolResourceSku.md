@@ -1,6 +1,6 @@
 ### Example 1: Lists all resources and skus in a location
 ```powershell
-PS C:\> Get-AzDiskPoolResourceSku -Location AustraliaEast
+Get-AzDiskPoolResourceSku -Location AustraliaEast
 
 ApiVersion Name        ResourceType Tier
 ---------- ----        ------------ ----

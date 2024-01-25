@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="type">The identity type. Set this to &#39;SystemAssigned&#39; in order to automatically
         /// create and assign an Azure Active Directory principal for the resource.
-        /// Possible values include: 'None', 'SystemAssigned', 'UserAssigned',
-        /// 'SystemAssigned,UserAssigned'</param>
+        /// Possible values include: &#39;None&#39;, &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;,
+        /// &#39;SystemAssigned,UserAssigned&#39;</param>
 
         /// <param name="tenantId">The Azure Active Directory tenant id.
         /// </param>

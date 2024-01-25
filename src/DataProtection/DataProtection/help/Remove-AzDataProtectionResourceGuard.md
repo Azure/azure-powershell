@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/remove-azdataprotectionresourceguard
 schema: 2.0.0
@@ -15,13 +15,13 @@ Deletes a ResourceGuard resource from the resource group.
 ### Delete (Default)
 ```
 Remove-AzDataProtectionResourceGuard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzDataProtectionResourceGuard -InputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +31,7 @@ Deletes a ResourceGuard resource from the resource group.
 
 ### Example 1: Delete a resource guard
 ```powershell
-Remove-AzDataProtectionResourceGuard -Name "ResourceGuardName" -ResourceGroupName "ResourceGroupName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" 
+Remove-AzDataProtectionResourceGuard -Name "ResourceGuardName" -ResourceGroupName "ResourceGroupName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 This command is used to delete the resource guard under a resource group.
@@ -199,4 +199,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[VaultName <String>]`: The name of the backup vault.
 
 ## RELATED LINKS
-

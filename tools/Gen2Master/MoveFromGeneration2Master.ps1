@@ -41,6 +41,7 @@ Function Move-Generation2Master {
             New-Item -Type Directory -Path $DestPath -Force
             New-Item "$DestPath\$ModuleName\Properties" -ItemType Directory
             New-Item "$DestPath\$ModuleName\help" -ItemType Directory
+            Update-MappingJson $ModuleName
         }
         $Dir2Copy = @{
             'custom' = 'custom'
@@ -103,9 +104,9 @@ Function Move-Generation2Master {
             # Update psd1
             $SubModulePsd1MetaData = Import-LocalizedData -BaseDirectory (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -FileName "Az.$submoduleName.psd1"
             
-            $Psd1Metadata.RequiredAssemblies = @($Psd1Metadata.RequiredAssemblies) + ("{0}\bin\Az.${submoduleName}.private.dll" -f $submoduleDir.Name)
-            $Psd1Metadata.FormatsToProcess = @($Psd1Metadata.FormatsToProcess) + ("{0}\Az.${submoduleName}.format.ps1xml" -f $submoduleDir.Name)
-            $Psd1Metadata.NestedModules = @($Psd1Metadata.NestedModules) + ("{0}\Az.${submoduleName}.psm1" -f $submoduleDir.Name)
+            $Psd1Metadata.RequiredAssemblies = @($Psd1Metadata.RequiredAssemblies) + ("{0}/bin/Az.${submoduleName}.private.dll" -f $submoduleDir.Name)
+            $Psd1Metadata.FormatsToProcess = @($Psd1Metadata.FormatsToProcess) + ("{0}/Az.${submoduleName}.format.ps1xml" -f $submoduleDir.Name)
+            $Psd1Metadata.NestedModules = @($Psd1Metadata.NestedModules) + ("{0}/Az.${submoduleName}.psm1" -f $submoduleDir.Name)
 
             foreach ($func in $SubModulePsd1MetaData.FunctionsToExport) {
                 if (!@($Psd1Metadata.FunctionsToExport).Contains($func) -and ($func -ne '*')) {
@@ -142,9 +143,9 @@ Function Move-Generation2Master {
                     dotnet sln $slnFilePath add $_.FullName --solution-folder Accounts
                 }
             }
-            Get-ChildItem -Filter *.csproj -File -Path $DestPath -Recurse | ForEach-Object {
-                dotnet sln $slnFilePath add $_.FullName
-            }
+        }
+        Get-ChildItem -Filter *.csproj -File -Path $DestPath -Recurse | ForEach-Object {
+            dotnet sln $slnFilePath add $_.FullName
         }
         
         $Psd1Metadata.RequiredAssemblies = Unique-PathList $Psd1Metadata.RequiredAssemblies
@@ -152,18 +153,12 @@ Function Move-Generation2Master {
         $Psd1Metadata.NestedModules = Unique-PathList $Psd1Metadata.NestedModules
         
         New-ModuleManifest -Path $DestPsd1Path @Psd1Metadata
-        
-        if (-not (Test-Path "$DestPath\$ModuleName\Properties")) {
-            New-Item "$DestPath\$ModuleName\Properties" -ItemType Directory
-            # Copy the assemblyinfo file
-            Copy-Template -SourceName AssemblyInfo.cs -DestPath "$DestPath\$ModuleName\Properties" -DestName AssemblyInfo.cs -ModuleName $submoduleName
-            
-        }
         # update module page
         dotnet build $slnFilePath
         # start a job to update markdown help module, since we can not uninstall a module in the same process.
         $job = start-job {
             param(
+                [string] $ScriptRoot,
                 [string] $ModuleName,
                 [string] $DestPath,
                 [string] $Psd1FolderPostfix
@@ -178,15 +173,31 @@ Function Move-Generation2Master {
             Import-Module $psd1Path
             Import-Module platyPS
             $HelpFolder = "$DestPath\$ModuleName$Psd1FolderPostfix\help"
+            
             if ((Get-ChildItem $HelpFolder).Length -ne 0)
             {
+                # Clean up the help folder and remove the help files which are not exported by the module.
+                $ModuleMatadata = Get-Module "Az.$ModuleName"
+                $ExportedCommands = $ModuleMatadata.ExportedCommands.Values | Where-Object {$_.CommandType -ne 'Alias'} | ForEach-Object { $_.Name}
                 Update-MarkdownHelpModule -Path $HelpFolder -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
+                $ExposedHelpFiles = Get-ChildItem $HelpFolder -Recurse -Filter "*-*.md"
+                foreach ($ExposedHelpFile in $ExposedHelpFiles)
+                {
+                    $CmdletName = $ExposedHelpFile.Name.Replace(".md", "")
+                    if ($ExportedCommands -notcontains $CmdletName)
+                    {
+                        Remove-Item $ExposedHelpFile.FullName
+                    }
+                }
+                Write-Host "$ScriptRoot/../ResolveTools/Resolve-Psd1.ps1"
+                & "$ScriptRoot/../ResolveTools/Resolve-Psd1.ps1" -ModuleName $ModuleName -ArtifactFolder "$DestPath\..\..\artifacts" -Psd1Folder "$DestPath/$ModuleName$Psd1FolderPostfix"
             }
             else
             {
+                Copy-Item -Path "$DestPath\$ModuleName.Autorest\help\Az.$ModuleName.md" -Destination $HelpFolder -Recurse
                 New-MarkdownHelp -UseFullTypeName -AlphabeticParamsOrder -Module "Az.$ModuleName" -OutputFolder $HelpFolder
             }
-        } -ArgumentList $ModuleName, $DestPath, $Psd1FolderPostfix
+        } -ArgumentList $PSScriptRoot, $ModuleName, $DestPath, $Psd1FolderPostfix
 
         $job | Wait-Job | Receive-Job
     }

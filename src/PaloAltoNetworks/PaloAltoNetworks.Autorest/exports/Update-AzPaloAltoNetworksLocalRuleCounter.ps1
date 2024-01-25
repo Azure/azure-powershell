@@ -40,6 +40,16 @@ INPUTOBJECT <IPaloAltoNetworksIdentity>: Identity Parameter
   [Priority <String>]: Post Rule priority
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
+
+LOCALRULESTACKINPUTOBJECT <IPaloAltoNetworksIdentity>: Identity Parameter
+  [FirewallName <String>]: Firewall resource name
+  [GlobalRulestackName <String>]: GlobalRulestack resource name
+  [Id <String>]: Resource identity path
+  [LocalRulestackName <String>]: LocalRulestack resource name
+  [Name <String>]: certificate name
+  [Priority <String>]: Post Rule priority
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.paloaltonetworks/update-azpaloaltonetworkslocalrulecounter
 #>
@@ -54,6 +64,7 @@ param(
     ${LocalRulestackName},
 
     [Parameter(ParameterSetName='Refresh', Mandatory)]
+    [Parameter(ParameterSetName='RefreshViaIdentityLocalRulestack', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Path')]
     [System.String]
     # Local Rule priority
@@ -79,6 +90,13 @@ param(
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='RefreshViaIdentityLocalRulestack', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPaloAltoNetworksIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for LOCALRULESTACKINPUTOBJECT properties and create a hash table.
+    ${LocalRulestackInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Category('Query')]
@@ -169,12 +187,17 @@ begin {
         $mapping = @{
             Refresh = 'Az.PaloAltoNetworks.private\Update-AzPaloAltoNetworksLocalRuleCounter_Refresh';
             RefreshViaIdentity = 'Az.PaloAltoNetworks.private\Update-AzPaloAltoNetworksLocalRuleCounter_RefreshViaIdentity';
+            RefreshViaIdentityLocalRulestack = 'Az.PaloAltoNetworks.private\Update-AzPaloAltoNetworksLocalRuleCounter_RefreshViaIdentityLocalRulestack';
         }
-        if (('Refresh') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Refresh') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

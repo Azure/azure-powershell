@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
@@ -46,14 +71,14 @@ function setupEnv() {
     # Write-Host -ForegroundColor Green "Create logz monitor and sub account for use in the test"
     New-AzLogzMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName01 -Location $env.location -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanDetail '100gb14days' -PlanEffectiveDate (Get-Date -AsUTC) -UserInfoEmailAddress $env.userEmail -UserInfoPhoneNumber $env.userPhone -UserInfoFirstName  $env.userLastName -UserInfoLastName $env.userFirstName
     New-AzLogzMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName02 -Location $env.location -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanDetail '100gb14days' -PlanEffectiveDate (Get-Date -AsUTC) -UserInfoEmailAddress $env.userEmail -UserInfoPhoneNumber $env.userPhone -UserInfoFirstName  $env.userLastName -UserInfoLastName $env.userFirstName
-    
+
     New-AzLogzSubAccount -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -Name $env.subAccountName01 -Location $env.location -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanDetail '100gb14days' -PlanEffectiveDate (Get-Date -AsUTC) -UserInfoEmailAddress $env.userEmail -UserInfoPhoneNumber $env.userPhone -UserInfoFirstName  $env.userLastName -UserInfoLastName $env.userFirstName
     New-AzLogzSubAccount -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -Name $env.subAccountName02 -Location $env.location -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanDetail '100gb14days' -PlanEffectiveDate (Get-Date -AsUTC) -UserInfoEmailAddress $env.userEmail -UserInfoPhoneNumber $env.userPhone -UserInfoFirstName  $env.userLastName -UserInfoLastName $env.userFirstName
-    
+
 
     New-AzLogzSubAccount -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName02 -Name $env.subAccountName03 -Location $env.location -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanDetail '100gb14days' -PlanEffectiveDate (Get-Date -AsUTC) -UserInfoEmailAddress $env.userEmail -UserInfoPhoneNumber $env.userPhone -UserInfoFirstName  $env.userLastName -UserInfoLastName $env.userFirstName
-    New-AzLogzSubAccount -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName02 -Name $env.subAccountName04 -Location $env.location -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanDetail '100gb14days' -PlanEffectiveDate (Get-Date -AsUTC) -UserInfoEmailAddress $env.userEmail -UserInfoPhoneNumber $env.userPhone -UserInfoFirstName  $env.userLastName -UserInfoLastName $env.userFirstName                        
-    
+    New-AzLogzSubAccount -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName02 -Name $env.subAccountName04 -Location $env.location -PlanBillingCycle 'Monthly' -PlanUsageType 'PAYG' -PlanDetail '100gb14days' -PlanEffectiveDate (Get-Date -AsUTC) -UserInfoEmailAddress $env.userEmail -UserInfoPhoneNumber $env.userPhone -UserInfoFirstName  $env.userLastName -UserInfoLastName $env.userFirstName
+
     New-AzLogzMonitorTagRule -ResourceGroupName $env.resourceGroup-MonitorName $env.monitorName01
     New-AzLogzMonitorSSOConfiguration -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01
     New-AzLogzSubAccountTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -SubAccountName $env.subAccountName01

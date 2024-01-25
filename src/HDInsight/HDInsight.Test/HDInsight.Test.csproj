@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
-    <PackageReference Include="Microsoft.Azure.Management.HDInsight" Version="8.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.HDInsight.Job" Version="2.0.7" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="4.0.0-preview.1" />
     <PackageReference Include="Microsoft.Azure.Management.ManagedServiceIdentity" Version="0.11.0" />
@@ -22,7 +21,9 @@
   <ItemGroup>
     <ProjectReference Include="..\HDInsight\HDInsight.csproj" />
   </ItemGroup>
-
+  <ItemGroup>
+    <ProjectReference Include="..\HDInsight.Management.Sdk\HDInsight.Management.Sdk.csproj" />
+  </ItemGroup>
   <ItemGroup>
     <Folder Include="SessionRecords\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\" />
   </ItemGroup>

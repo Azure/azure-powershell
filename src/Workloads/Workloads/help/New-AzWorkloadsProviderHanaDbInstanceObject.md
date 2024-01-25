@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Workloads-help.xml
 Module Name: Az.Workloads
 online version: https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderhanadbinstanceobject
 schema: 2.0.0
@@ -13,10 +13,10 @@ Create an in-memory object for HanaDbProviderInstanceProperties.
 ## SYNTAX
 
 ```
-New-AzWorkloadsProviderHanaDbInstanceObject [-Hostname <String>] [-InstanceNumber <String>] [-Name <String>]
- [-Password <String>] [-PasswordUri <String>] [-SapSid <String>] [-SqlPort <String>]
+New-AzWorkloadsProviderHanaDbInstanceObject [-Name <String>] [-Password <String>] [-PasswordUri <String>]
+ [-Username <String>] [-Hostname <String>] [-InstanceNumber <String>] [-SapSid <String>] [-SqlPort <String>]
  [-SslCertificateUri <String>] [-SslHostNameInCertificate <String>] [-SslPreference <SslPreference>]
- [-Username <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Create an in-memory object for HanaDbProviderInstanceProperties.
 
 ## EXAMPLES
 
-### Example 1: Create SAP HANA provider 
+### Example 1: Create SAP HANA provider
 ```powershell
 New-AzWorkloadsProviderHanaDbInstanceObject -Name SYSTEMDB -Password ''  -Username SYSTEM -Hostname 10.0.81.4 -InstanceNumber 00 -SapSid X00 -SqlPort 1433 -SslPreference Disabled
 ```
@@ -219,4 +219,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

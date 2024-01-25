@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Lists the failover groups in a server.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server containing the failover group.
@@ -252,7 +253,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a failover group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server containing the failover group.
@@ -472,7 +474,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a failover group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server containing the failover group.
@@ -500,7 +503,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a failover group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server containing the failover group.
@@ -525,7 +529,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates a failover group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server containing the failover group.
@@ -553,7 +558,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Fails over from the current primary server to this server.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server containing the failover group.
@@ -578,7 +584,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Fails over from the current primary server to this server. This operation might result in data loss.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server containing the failover group.
@@ -603,7 +610,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Fails over from the current primary server to this server. This operation tries planned before forced failover but might still result in data loss.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -628,7 +636,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates a failover group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server containing the failover group.
@@ -884,7 +893,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a failover group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server containing the failover group.
@@ -1083,7 +1093,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates a failover group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server containing the failover group.
@@ -1317,7 +1328,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Fails over from the current primary server to this server.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server containing the failover group.
@@ -1534,10 +1546,12 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Fails over from the current primary server to this server. This operation might result in data loss.
+        /// Fails over from the current primary server to this server. This operation
+        /// might result in data loss.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server containing the failover group.
@@ -1754,10 +1768,12 @@ namespace Microsoft.Azure.Management.Sql
 
         }
         /// <summary>
-        /// Fails over from the current primary server to this server. This operation tries planned before forced failover but might still result in data loss.
+        /// Fails over from the current primary server to this server. This operation
+        /// tries planned before forced failover but might still result in data loss.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.

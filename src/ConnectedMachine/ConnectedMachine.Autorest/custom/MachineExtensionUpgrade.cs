@@ -1,7 +1,7 @@
 using System.Collections;
 using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227
+namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 {
     public partial class MachineExtensionUpgrade : Hashtable
     {

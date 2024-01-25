@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Network
             // Map to the sdk object
             var networkManagerStaticMemberModel = NetworkResourceManagerProfile.Mapper.Map<MNM.StaticMember>(psNetworkStaticMember);
 
-            this.NetworkManagerStaticMemberClient.CreateOrUpdate(networkManagerStaticMemberModel, this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroupName, this.Name);
+            this.NetworkManagerStaticMemberClient.CreateOrUpdate(this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroupName, this.Name, networkManagerStaticMemberModel);
             var networkManagerStaticMember = this.GetNetworkManagerStaticMember(this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroupName, this.Name);
 
             return networkManagerStaticMember;

@@ -88,32 +88,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
             bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
 
-            Logger.Instance.WriteWarning("Ignite (November) 2023 onwards Virtual Machine deployments using PS and CLI will default to Trusted Launch configuration. You need to ensure Policy Name used with this command is of type Enhanced Policy for Trusted Launch VMs. Non-Trusted Launch Virtual Machines will not be impacted by this change. To know more about default change and Trusted Launch, please visit https://aka.ms/TLaD.");
+            Logger.Instance.WriteWarning(String.Format(Resources.TrustedLaunchDefaultWarning));
 
             ProtectionPolicyResource oldPolicy = null;
             ProtectionPolicyResource newPolicy = null;
             if (parameterSetName.Contains("Modify") && item.PolicyId != null && item.PolicyId != "")
-            {                
+            {
                 Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.PolicyId);
                 string oldPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, item.PolicyId);
 
                 keyValueDict = HelperUtils.ParseUri(policy.Id);
                 string newPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, policy.Id);
-
+                
                 // fetch old and new Policy 
                 oldPolicy = ServiceClientAdapter.GetProtectionPolicy(
                     oldPolicyName,
                     vaultName: vaultName,
                     resourceGroupName: resourceGroupName);
-
+                
                 newPolicy = ServiceClientAdapter.GetProtectionPolicy(
                     newPolicyName,
                     vaultName: vaultName,
-                    resourceGroupName: resourceGroupName);
+                    resourceGroupName: resourceGroupName);                
             }
 
             bool isDiskExclusionParamPresent = ValidateDiskExclusionParameters(
-                inclusionDisksList, exclusionDisksList, resetDiskExclusionSetting, excludeAllDataDisks);            
+                inclusionDisksList, exclusionDisksList, resetDiskExclusionSetting, excludeAllDataDisks);
 
             // do validations
             string containerUri = "";
@@ -250,6 +250,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (parameterSetName.Contains("Modify") && oldPolicy != null && newPolicy != null)
             {
                 isMUAProtected = AzureWorkloadProviderHelper.checkMUAForModifyPolicy(oldPolicy, newPolicy, isMUAOperation);
+
+                #region validate Std to Enh policy migration
+                string oldPolicyType = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)oldPolicy.Properties).PolicyType;
+
+                PSPolicyType oldPolicySubType = (oldPolicyType != null && oldPolicyType.ToLower().Contains("v2")) ? PSPolicyType.Enhanced : PSPolicyType.Standard;
+
+                string newPolicyType = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)newPolicy.Properties).PolicyType;
+
+                PSPolicyType newPolicySubType = (newPolicyType != null && newPolicyType.ToLower().Contains("v2")) ? PSPolicyType.Enhanced : PSPolicyType.Standard;
+
+                if (oldPolicySubType == PSPolicyType.Standard && newPolicySubType == PSPolicyType.Enhanced)
+                {
+                    // resx Resources.StdToEnhPolicyMigrationWarning
+                    Logger.Instance.WriteWarning(String.Format(Resources.StdToEnhPolicyMigrationWarning));
+                }
+                #endregion
             }
 
             return ServiceClientAdapter.CreateOrUpdateProtectedItem(
@@ -483,13 +499,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string targetVNetResourceGroup = (string)ProviderData[RestoreVMBackupItemParams.TargetVNetResourceGroup];
             string targetSubnetName = (string)ProviderData[RestoreVMBackupItemParams.TargetSubnetName];
             string targetSubscriptionId = (string)ProviderData[RestoreVMBackupItemParams.TargetSubscriptionId];
-            
+            bool restoreToEdgeZone = (bool)ProviderData[RestoreVMBackupItemParams.RestoreToEdgeZone];
+
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
 
             if (targetSubscriptionId == null || targetSubscriptionId == "") targetSubscriptionId = ServiceClientAdapter.SubscriptionId;
 
             GenericResource storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(storageAccountName, targetSubscriptionId);
+
+            if(storageAccountResource == null)
+            {
+                //resx
+                throw new ArgumentException("Storage Account not found");
+            }
 
             var useOsa = ShouldUseOsa(rp, osaOption);
 
@@ -585,6 +608,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 restoreRequest.Zones = targetZones;
             }
 
+            // edge zones restore
+            if (restoreToEdgeZone)
+            {
+                if (useSecondaryRegion || targetSubscriptionId != ServiceClientAdapter.SubscriptionId) {                    
+                    throw new ArgumentException(String.Format(Resources.CSRAndCRRNotSupportedWithEdgeZoneRestore));
+                }
+                if(rp.ExtendedLocation == null || rp.ExtendedLocation.Name == null || rp.ExtendedLocation.Name == "")
+                {
+                    throw new ArgumentException(String.Format(Resources.InvalidEdgeZoneVM));
+                }
+
+                restoreRequest.ExtendedLocation = rp.ExtendedLocation;
+            }
+
             if (restoreType == "OriginalLocation") // replace existing
             {
                 restoreRequest.RecoveryType = RecoveryType.OriginalLocation;
@@ -592,7 +629,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 if(targetResourceGroupName != null || restoreRequest.TargetResourceGroupId != null)
                 {                    
                     throw new ArgumentException(String.Format(Resources.TargetRGNotRequiredException));
-                }                                
+                }
+
+                if (rp.ExtendedLocation != null && rp.ExtendedLocation.Name != null && rp.ExtendedLocation.Name != "")
+                {
+                    restoreRequest.ExtendedLocation = rp.ExtendedLocation;
+                }
             }
             else if ( targetVMName != null || targetVNetName != null || targetVNetResourceGroup != null || targetSubnetName != null ) // create new VM
             {
@@ -928,9 +970,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 if (snapshotRGNameSuffix != null) instantRPAdditionalDetails.AzureBackupRgNameSuffix = snapshotRGNameSuffix;
             }
             else if(snapshotRGNameSuffix != null)
-            {
-                // resx
-                throw new ArgumentException("The parameter BackupSnapshotResourceGroupSuffix cannot be used without the BackupSnapshotResourceGroup parameter. Please provide the BackupSnapshotResourceGroup parameter or remove the BackupSnapshotResourceGroupSuffix parameter.");
+            {                
+                throw new ArgumentException(String.Format(Resources.RequiredBackupSnapshotResourceGroup));
             }
 
             // construct Service Client policy request            
@@ -1066,8 +1107,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
             else if (snapshotRGNameSuffix != null)
             {
-                // resx
-                throw new ArgumentException("The parameter BackupSnapshotResourceGroupSuffix cannot be used without the BackupSnapshotResourceGroup parameter. Please provide the BackupSnapshotResourceGroup parameter or remove the BackupSnapshotResourceGroupSuffix parameter.");
+                throw new ArgumentException(String.Format(Resources.RequiredBackupSnapshotResourceGroup));
             }
 
             // construct Service Client policy request            

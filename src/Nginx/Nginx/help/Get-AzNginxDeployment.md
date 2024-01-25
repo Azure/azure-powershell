@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Nginx-help.xml
 Module Name: Az.Nginx
 online version: https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxdeployment
 schema: 2.0.0
@@ -23,15 +23,15 @@ Get-AzNginxDeployment -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzNginxDeployment -InputObject <INginxIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzNginxDeployment -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzNginxDeployment -InputObject <INginxIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +63,6 @@ Location      Name
 westcentralus nginx-test
 westcentralus nginx-test1
 eastus2       nginx-test2
-
 ```
 
 This command lists all NGINX deployments in a subscription.
@@ -151,7 +150,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -190,4 +189,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-
