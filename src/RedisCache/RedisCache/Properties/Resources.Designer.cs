@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -120,6 +120,24 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         internal static string FirewallRuleNotFound {
             get {
                 return ResourceManager.GetString("FirewallRuleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to flush all keys present in redis cache &apos;{0}&apos;?.
+        /// </summary>
+        internal static string FlushingRedisCache {
+            get {
+                return ResourceManager.GetString("FlushingRedisCache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flushing redis cache &apos;{0}&apos; ....
+        /// </summary>
+        internal static string FlushRedisCache {
+            get {
+                return ResourceManager.GetString("FlushRedisCache", resourceCulture);
             }
         }
         

@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                 parameters.ShardCount = shardCount.Value;
             }
 
-            if(!string.IsNullOrEmpty(minimumTlsVersion))
+            if (!string.IsNullOrEmpty(minimumTlsVersion))
             {
                 parameters.MinimumTlsVersion = minimumTlsVersion;
             }
@@ -189,10 +189,10 @@ namespace Microsoft.Azure.Commands.RedisCache
                     parameters.TenantSettings.Add(key.ToString(), tenantSettings[key].ToString());
                 }
             }
-            
+
             parameters.ShardCount = shardCount;
 
-            if(!string.IsNullOrEmpty(MinimumTlsVersion))
+            if (!string.IsNullOrEmpty(MinimumTlsVersion))
             {
                 parameters.MinimumTlsVersion = MinimumTlsVersion;
             }
@@ -318,6 +318,11 @@ namespace Microsoft.Azure.Commands.RedisCache
             _client.Redis.ForceReboot(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
         }
 
+        public void FlushCache(string resourceGroupName, string cacheName)
+        {
+            _client.Redis.FlushCache(resourceGroupName: resourceGroupName, cacheName: cacheName);
+        }
+
         public IList<ScheduleEntry> SetPatchSchedules(string resourceGroupName, string cacheName, List<ScheduleEntry> schedules)
         {
             var response = _client.PatchSchedules.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, cacheName, schedules).Result;
@@ -364,7 +369,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             _client.FirewallRules.Delete(resourceGroupName, cacheName, ruleName);
         }
 
-        internal RedisLinkedServerWithProperties SetLinkedServer(string resourceGroupName, string cacheName, 
+        internal RedisLinkedServerWithProperties SetLinkedServer(string resourceGroupName, string cacheName,
             string linkedCacheName, string linkedCacheId, string linkedCacheLocation, ReplicationRole serverRole)
         {
             return _client.LinkedServer.BeginCreate(resourceGroupName, cacheName, linkedCacheName, new RedisLinkedServerCreateParameters

@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestImportExportReboot()
+        public void TestImportExportRebootClear()
         {
-            TestRunner.RunTestScript("Test-ImportExportReboot");
+            TestRunner.RunTestScript("Test-ImportExportRebootClear");
         }
 
         [Fact]

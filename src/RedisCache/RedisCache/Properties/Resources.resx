@@ -216,4 +216,10 @@
   <data name="UpdateRedisCache" xml:space="preserve">
     <value>Updating redis cache '{0}' ...</value>
   </data>
+  <data name="FlushingRedisCache" xml:space="preserve">
+    <value>Are you sure you want to flush all keys present in redis cache '{0}'?</value>
+  </data>
+  <data name="FlushRedisCache" xml:space="preserve">
+    <value>Flushing redis cache '{0}' ...</value>
+  </data>
 </root>
