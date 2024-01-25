@@ -20,6 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Description(@"Gets a list of supported orchestrators in the specified subscription. The operation returns properties of each orchestrator including version, available upgrades and whether that version or upgrades are in preview.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/orchestrators", ApiVersion = "2019-08-01")]
     public partial class GetAzAksContainerServiceOrchestrator_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener
     {

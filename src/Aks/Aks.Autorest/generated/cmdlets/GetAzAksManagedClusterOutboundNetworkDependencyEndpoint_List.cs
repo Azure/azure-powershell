@@ -19,6 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOutboundEnvironmentEndpoint))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Description(@"Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster. The operation returns properties of each egress endpoint.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/outboundNetworkDependenciesEndpoints", ApiVersion = "2023-02-01")]
     public partial class GetAzAksManagedClusterOutboundNetworkDependencyEndpoint_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener
     {
