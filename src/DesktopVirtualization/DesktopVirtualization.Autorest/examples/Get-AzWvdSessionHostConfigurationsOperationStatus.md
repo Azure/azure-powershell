@@ -8,7 +8,7 @@ Get-AzWvdSessionHostConfigurationOperationStatus -ResourceGroupName ResourceGrou
 ```output
 Location   Name                 Type
 --------   ----                 ----
-eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools/{hostpoolName}/sessionHostConfigurations/default/operationStatuses
+eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools/sessionhostconfigurations/operationstatuses
 ```
 
 This command gets a Azure Virtual Desktop SessionHostConfigurationOperationStatus in a Resource Group.
@@ -22,8 +22,8 @@ Get-AzWvdSessionHostConfigurationOperationStatus -ResourceGroupName ResourceGrou
 ```output
 Location   Name          Type
 --------   ----          ----
-eastus     HostPoolName1 Microsoft.DesktopVirtualization/hostpools/{hostpoolName}/sessionHostConfigurations/default/operationStatuses
-eastus     HostPoolName2 Microsoft.DesktopVirtualization/hostpools/{hostpoolName}/sessionHostConfigurations/default/operationStatuses
+eastus     HostPoolName1 Microsoft.DesktopVirtualization/hostpools/sessionhostconfigurations/operationstatuses
+eastus     HostPoolName2 Microsoft.DesktopVirtualization/hostpools/sessionhostconfigurations/operationstatuses
 ```
 
 This command lists a Azure Virtual Desktop SessionHostConfigurationOperationStatuses in a Resource Group.
@@ -38,8 +38,8 @@ Get-AzWvdSessionHostConfigurationOperationStatus -ResourceGroupName ResourceGrou
 ```output
 Location   Name          Type
 --------   ----          ----
-eastus     HostPoolName1 Microsoft.DesktopVirtualization/hostpools/{hostpoolName}/sessionHostConfigurations/default/operationStatuses
-eastus     HostPoolName2 Microsoft.DesktopVirtualization/hostpools/{hostpoolName}/sessionHostConfigurations/default/operationStatuses
+eastus     HostPoolName1 Microsoft.DesktopVirtualization/hostpools/sessionhostconfigurations/operationstatuses
+eastus     HostPoolName2 Microsoft.DesktopVirtualization/hostpools/sessionhostconfigurations/operationstatuses
 ```
 
 This command lists a Azure Virtual Desktop SessionHostConfigurationOperationStatuses in a Resource Group.

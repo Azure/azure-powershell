@@ -8,7 +8,7 @@ Get-AzWvdActiveSessionHostConfiguration -ResourceGroupName ResourceGroupName -Ho
 ```output
 Location   Name                 Type
 --------   ----                 ----
-eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools/{hostpoolName}/activeSessionHostConfigurations
+eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools/activesessionHostconfigurations
 ```
 
 This command gets a Azure Virtual Desktop ActiveSessionHostConfiguration in a Resource Group.

@@ -24,7 +24,7 @@ New-AzWvdSessionHostConfiguration -ResourceGroupName ResourceGroupName `
 ```output
 Location   Name                 Type
 --------   ----                 ----
-eastus     default Microsoft.DesktopVirtualization/hostpools/{hostPoolName}/sessionHostConfigurations
+eastus     default Microsoft.DesktopVirtualization/hostpools/sessionhostconfigurations
 ```
 
 This command creates a Azure Virtual Desktop SessionHostConfiguration on a HostPool.

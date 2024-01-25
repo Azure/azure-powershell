@@ -8,7 +8,7 @@ Get-AzWvdSessionHostManagement -ResourceGroupName ResourceGroupName -HostPoolNam
 ```output
 Location   Name                 Type
 --------   ----                 ----
-eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools/{hostpoolName}/sessionHostManagements
+eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools/sessionhostmanagements
 ```
 
 This command gets a Azure Virtual Desktop SessionHostManagement in a Resource Group.

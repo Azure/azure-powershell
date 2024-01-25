@@ -12,7 +12,7 @@ Update-AzWvdSessionHostManagement -ResourceGroupName ResourceGroupName `
 ```output
 Location   Name                 Type
 --------   ----                 ----
-eastus     default Microsoft.DesktopVirtualization/hostpools/{hostPoolName}/sessionHostManagements
+eastus     default Microsoft.DesktopVirtualization/hostpools/sessionhostmanagements
 ```
 
 This command Updates a Azure Virtual Desktop SessionHostManagement on a HostPool.
