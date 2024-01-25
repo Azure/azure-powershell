@@ -1,6 +1,4 @@
-
 ### Example 1: Get a Azure Virtual Desktop SessionHostConfigurationOperationStatus by HostPoolName and operationId
-
 ```powershell
 Get-AzWvdSessionHostConfigurationOperationStatus -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -OperationId operationId
 ```
@@ -8,7 +6,7 @@ Get-AzWvdSessionHostConfigurationOperationStatus -ResourceGroupName ResourceGrou
 ```output
 Location   Name                 Type
 --------   ----                 ----
-eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools/sessionhostconfigurations/operationstatuses
+eastus     operationId Microsoft.DesktopVirtualization/hostpools/sessionhostconfigurations/operationstatuses
 ```
 
 This command gets a Azure Virtual Desktop SessionHostConfigurationOperationStatus in a Resource Group.
@@ -22,12 +20,11 @@ Get-AzWvdSessionHostConfigurationOperationStatus -ResourceGroupName ResourceGrou
 ```output
 Location   Name          Type
 --------   ----          ----
-eastus     HostPoolName1 Microsoft.DesktopVirtualization/hostpools/sessionhostconfigurations/operationstatuses
-eastus     HostPoolName2 Microsoft.DesktopVirtualization/hostpools/sessionhostconfigurations/operationstatuses
+eastus     operationId1 Microsoft.DesktopVirtualization/hostpools/sessionhostconfigurations/operationstatuses
+eastus     operationId2 Microsoft.DesktopVirtualization/hostpools/sessionhostconfigurations/operationstatuses
 ```
 
 This command lists a Azure Virtual Desktop SessionHostConfigurationOperationStatuses in a Resource Group.
-
 
 ### Example 3: List Azure Virtual Desktop SessionHostConfigurationOperationStatuses with filters
 
@@ -38,8 +35,8 @@ Get-AzWvdSessionHostConfigurationOperationStatus -ResourceGroupName ResourceGrou
 ```output
 Location   Name          Type
 --------   ----          ----
-eastus     HostPoolName1 Microsoft.DesktopVirtualization/hostpools/sessionhostconfigurations/operationstatuses
-eastus     HostPoolName2 Microsoft.DesktopVirtualization/hostpools/sessionhostconfigurations/operationstatuses
+eastus     operationId1 Microsoft.DesktopVirtualization/hostpools/sessionhostconfigurations/operationstatuses
+eastus     operationId2 Microsoft.DesktopVirtualization/hostpools/sessionhostconfigurations/operationstatuses
 ```
 
 This command lists a Azure Virtual Desktop SessionHostConfigurationOperationStatuses in a Resource Group.

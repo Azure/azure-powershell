@@ -31,7 +31,6 @@ eastus     PackageArmObjectName Microsoft.DesktopVirtualization/appattachpackage
 
 This command updates an Azure Virtual Desktop App attach package in a resource group
 
-
 ### Example 2: Create an Azure Virtual Desktop app attach package from an appAttachPackage object
 ```powershell
 Update-AzWvdAppAttachPackage -Name PackageArmObjectName `
@@ -47,7 +46,7 @@ Update-AzWvdAppAttachPackage -Name PackageArmObjectName `
                          -PassThru
 ```
 
-```output                         
+```output
 Location   Name                 Type
 --------   ----                 ----
 eastus     PackageArmObjectName Microsoft.DesktopVirtualization/appattachpackages

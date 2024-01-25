@@ -1,6 +1,4 @@
-
 ### Example 1: Get a Azure Virtual Desktop SessionHostManagementOperationStatus by HostPoolName and operationId
-
 ```powershell
 Get-AzWvdSessionHostManagementOperationStatus -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -OperationId operationId
 ```
@@ -8,7 +6,7 @@ Get-AzWvdSessionHostManagementOperationStatus -ResourceGroupName ResourceGroupNa
 ```output
 Location   Name                 Type
 --------   ----                 ----
-eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools/sessionhostmanagements/operationstatuses
+eastus     operationId Microsoft.DesktopVirtualization/hostpools/sessionhostmanagements/operationstatuses
 ```
 
 This command gets a Azure Virtual Desktop SessionHostManagementOperationStatus in a Resource Group.
@@ -22,8 +20,8 @@ Get-AzWvdSessionHostManagementOperationStatus -ResourceGroupName ResourceGroupNa
 ```output
 Location   Name          Type
 --------   ----          ----
-eastus     HostPoolName1 Microsoft.DesktopVirtualization/hostpools/sessionhostmanagements/operationstatuses
-eastus     HostPoolName2 Microsoft.DesktopVirtualization/hostpools/sessionhostmanagements/operationstatuses
+eastus     operationId1 Microsoft.DesktopVirtualization/hostpools/sessionhostmanagements/operationstatuses
+eastus     operationId2 Microsoft.DesktopVirtualization/hostpools/sessionhostmanagements/operationstatuses
 ```
 
 This command lists a Azure Virtual Desktop SessionHostManagementOperationStatuses in a Resource Group.
@@ -38,8 +36,8 @@ Get-AzWvdSessionHostManagementOperationStatus -ResourceGroupName ResourceGroupNa
 ```output
 Location   Name          Type
 --------   ----          ----
-eastus     HostPoolName1 Microsoft.DesktopVirtualization/hostpools/sessionhostmanagements/operationstatuses
-eastus     HostPoolName2 Microsoft.DesktopVirtualization/hostpools/sessionhostmanagements/operationstatuses
+eastus     operationId1 Microsoft.DesktopVirtualization/hostpools/sessionhostmanagements/operationstatuses
+eastus     operationId2 Microsoft.DesktopVirtualization/hostpools/sessionhostmanagements/operationstatuses
 ```
 
 This command lists a Azure Virtual Desktop SessionHostManagementOperationStatuses in a Resource Group.

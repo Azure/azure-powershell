@@ -9,6 +9,3 @@ Invoke-AzWvdInitiateSessionHostUpdate -HostPoolName HostPoolName `
 ```
 
 This command starts a sessionHostUpdate operation on the given hostpool.
-
-
-
