@@ -35,27 +35,18 @@ Get the ActiveSessionHostConfiguration for the hostPool that is currently being 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a Azure Virtual Desktop ActiveSessionHostConfiguration by HostPoolName
 ```powershell
-{{ Add code here }}
+Get-AzWvdActiveSessionHostConfiguration -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 ```
 
 ```output
-{{ Add output here }}
+Location   Name                 Type
+--------   ----                 ----
+eastus     default Microsoft.DesktopVirtualization/hostpools/activesessionHostconfigurations
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command gets a Azure Virtual Desktop ActiveSessionHostConfiguration in a Resource Group.
 
 ## PARAMETERS
 

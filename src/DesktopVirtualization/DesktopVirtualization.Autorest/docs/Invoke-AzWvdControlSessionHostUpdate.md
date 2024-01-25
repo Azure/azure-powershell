@@ -45,27 +45,15 @@ Control update of a hostpool.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Controls a SessionHostUpdate Operation on a HostPool
 ```powershell
-{{ Add code here }}
+Invoke-AzWvdControlSessionHostUpdate -HostPoolName HostPoolName `
+          -ResourceGroupName resourceGroupName `
+          -Action "Cancel"
+          -cancelMessage "Stopping hostpool update operation."
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command controls and ongoing sessionHostUpdate operation on the given hostpool.
 
 ## PARAMETERS
 

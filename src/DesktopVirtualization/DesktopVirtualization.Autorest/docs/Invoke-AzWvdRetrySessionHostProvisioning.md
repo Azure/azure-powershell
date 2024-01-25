@@ -30,27 +30,14 @@ Retry provisioning on a SessionHost.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Retries sessionHostProvisioning
 ```powershell
-{{ Add code here }}
+Invoke-AzWvdRetrySessionHostProvisioning -HostPoolName HostPoolName `
+          -ResourceGroupName resourceGroupName `
+          -SessionHostName "sessionHost1" `
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command retries the provisioning on the given sessionHost.
 
 ## PARAMETERS
 

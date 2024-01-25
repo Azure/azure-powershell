@@ -35,27 +35,18 @@ Get a SessionHostManagement.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a Azure Virtual Desktop SessionHostManagement by HostPoolName
 ```powershell
-{{ Add code here }}
+Get-AzWvdSessionHostManagement -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 ```
 
 ```output
-{{ Add output here }}
+Location   Name                 Type
+--------   ----                 ----
+eastus     default Microsoft.DesktopVirtualization/hostpools/sessionhostmanagements
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command gets a Azure Virtual Desktop SessionHostManagement in a Resource Group.
 
 ## PARAMETERS
 
