@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Flush-AzRedisCache
+# Clear-AzRedisCache
 
 ## SYNOPSIS
 Flush all data from an Azure Cache for Redis instance.
@@ -13,18 +13,18 @@ Flush all data from an Azure Cache for Redis instance.
 ## SYNTAX
 
 ```
-Flush-AzRedisCache [-ResourceGroupName <String>] -Name <String> [-Force] [-PassThru]
+Clear-AzRedisCache [-ResourceGroupName <String>] -Name <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Flush-AzRedisCache** cmdlet flushes all data of an Azure Redis Cache instance.
+The **Clear-AzRedisCache** cmdlet flushes all data of an Azure Redis Cache instance.
 
 ## EXAMPLES
 
 ### Example: Flush all data from a redis cache
 ```powershell
-Flush-AzRedisCache -ResourceGroupName "ResourceGroup13" -Name "RedisCache06"
+Clear-AzRedisCache -ResourceGroupName "ResourceGroup13" -Name "RedisCache06"
 ```
 
 This command flushes all data from the redis cache named RedisCache06 in the resource group named ResourceGroup13.

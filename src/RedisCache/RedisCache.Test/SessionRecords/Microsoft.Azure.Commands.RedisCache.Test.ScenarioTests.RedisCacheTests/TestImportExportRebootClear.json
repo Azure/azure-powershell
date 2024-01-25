@@ -4910,7 +4910,7 @@
     }
   ],
   "Names": {
-    "Test-ImportExportRebootFlush": [
+    "Test-ImportExportRebootClear": [
       "ps5776"
     ]
   },
