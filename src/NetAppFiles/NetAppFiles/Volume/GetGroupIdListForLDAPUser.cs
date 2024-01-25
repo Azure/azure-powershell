@@ -24,7 +24,7 @@ using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Management.NetApp.Models;
-using System.Security.Cryptography;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 }
                 catch (ErrorResponseException erx)
                 {                    
-                    throw new PSArgumentException(erx.Message + " : " + erx.Body.Error.Code + " : " + erx.Body.Error.Message, erx);
+                    throw new CloudException(erx.Message + " : " + erx.Body.Error.Code + " : " + erx.Body.Error.Message, erx);
                 }
                 catch (Exception ex)
                 {                 

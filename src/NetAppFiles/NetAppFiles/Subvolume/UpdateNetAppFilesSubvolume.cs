@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 {
@@ -168,7 +169,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
                 }
                 catch (ErrorResponseException ex)
                 {
-                    throw new ErrorResponseException(ex.Body.Error.Message, ex);
+                    throw new CloudException(ex.Body.Error.Message, ex);
                 }
             }
         }

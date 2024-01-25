@@ -24,6 +24,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 {
@@ -181,7 +182,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 }
                 catch (ErrorResponseException ex)
                 {
-                    throw new ErrorResponseException(ex.Body.Error.Message, ex);                    
+                    throw new ErrorResponseException(ex.Body.Error.Message, ex);
                 }
             }
         }

@@ -25,6 +25,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 {
@@ -88,6 +89,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
         [Parameter(
             Mandatory = false,
             HelpMessage = "The name of the ANF backup")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The name of the ANF volume",
+            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("BackupName")]
         [ResourceNameCompleter(
@@ -200,7 +205,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
                 }
                 catch (ErrorResponseException ex)
                 {
-                    throw new ErrorResponseException(ex.Body.Error.Message, ex);                    
+                    throw new CloudException(ex.Body.Error.Message, ex);
                 }
             }
         }

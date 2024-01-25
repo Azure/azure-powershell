@@ -25,6 +25,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
 {
@@ -56,6 +57,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         [Parameter(
             Mandatory = false,
             HelpMessage = "The name of the ANF backup policy")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The name of the ANF volume",
+            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("BackupPolicyName")]
         [ResourceNameCompleter(
@@ -112,7 +117,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             }
             catch (ErrorResponseException ex)
             {
-                throw new ErrorResponseException(ex.Body.Error.Message, ex);                
+                throw new CloudException(ex.Body.Error.Message, ex);
             }
         }
     }

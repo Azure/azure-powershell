@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.NetApp.Models;
 using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Linq;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
 {
@@ -116,7 +117,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 }
                 catch (ErrorResponseException ex)
                 {
-                    throw new ErrorResponseException(ex.Body.Error.Message, ex);                    
+                    throw new CloudException(ex.Body.Error.Message, ex);
                 }
             }
             if (PassThru)

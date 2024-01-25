@@ -24,6 +24,7 @@ using System.Collections;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Management.NetApp.Models;
 using System;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
 {   
@@ -360,7 +361,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.VolumeGroup
                 }
                 catch (ErrorResponseException ex)
                 {
-                    throw new ErrorResponseException(ex.Body.Error.Message, ex);
+                    throw new CloudException(ex.Body.Error.Message, ex);
                 }
             }
         }

@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 {
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 }
                 catch (ErrorResponseException ex)
                 {
-                    throw new ErrorResponseException(ex.Body.Error.Message, ex);
+                    throw new CloudException(ex.Body.Error.Message, ex);
                 }
             }
         }

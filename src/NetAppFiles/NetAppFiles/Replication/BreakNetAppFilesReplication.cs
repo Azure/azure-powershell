@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Replication
 {
@@ -139,7 +140,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
                 }
                 catch (ErrorResponseException ex)
                 {
-                    throw new ErrorResponseException(ex.Body.Error.Message, ex);
+                    throw new CloudException(ex.Body.Error.Message, ex);
                 }
             }
 

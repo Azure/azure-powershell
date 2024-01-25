@@ -24,6 +24,7 @@ using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq.Expressions;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
 {
@@ -162,7 +163,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
                 }
                 catch (ErrorResponseException ex)
                 {
-                    throw new ErrorResponseException(ex.Body.Error.Message, ex);                    
+                    throw new CloudException(ex.Body.Error.Message, ex);
                 }
             }
             if (PassThru.IsPresent)

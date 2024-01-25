@@ -26,6 +26,7 @@ using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
 {
@@ -169,7 +170,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                 }
                 catch(ErrorResponseException ex)
                 {
-                    throw new ErrorResponseException(ex.Body.Error.Message, ex);                    
+                    throw new CloudException(ex.Body.Error.Message, ex);
                 }
             }
         }

@@ -24,6 +24,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Account
 {
@@ -202,7 +203,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                 }
                 catch (ErrorResponseException ex)
                 {
-                    throw new ErrorResponseException(ex.Body.Error.Message, ex);
+                    throw new CloudException(ex.Body.Error.Message, ex);
                 }
             }
         }
