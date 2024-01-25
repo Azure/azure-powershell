@@ -8,8 +8,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.NetworkWatcher.ConnectionMonitor
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectionMonitorMigrateToV2", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorResultV1), typeof(PSConnectionMonitorResultV2))]
-    public class NewAzureNetworkWatcherConnectionMonitorMigrateToV2Command : ConnectionMonitorBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherMigrateClassicConnectionMonitor", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorResultV1), typeof(PSConnectionMonitorResultV2))]
+    public class NewNetworkWatcherMigrateClassicConnectionMonitor : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
