@@ -47,27 +47,28 @@ function GetHCIClusterARGQuery {
     )
 
     process {
-        $query = "resources | where type == 'microsoft.extendedlocation/customlocations'"
-        $query += "| mv-expand ClusterId = properties['clusterExtensionIds']"
-        $query += "| extend ClusterId = toupper(tostring(ClusterId))"
-        $query += "| extend CustomLocation = toupper(tostring(id))"
-        $query += "| extend resourceBridgeID = toupper(tostring(properties['hostResourceId']))"
-        $query += "| extend customLocationRegion = location"
-        $query += "| join ("
-        $query += "kubernetesconfigurationresources"
-        $query += "| where type == 'microsoft.kubernetesconfiguration/extensions'"
-        $query += "| where properties['ConfigurationSettings']['HCIClusterID'] =~ '$HCIClusterID'"
-        $query += "| project ClusterId = id"
-        $query += "| extend ClusterId = toupper(tostring(ClusterId))"
-        $query += ") on ClusterId"
-        $query += "| join ("
-        $query += "resources"
-        $query += "| where type == 'microsoft.resourceconnector/appliances'"
-        $query += "| where properties['provisioningState'] == 'Succeeded'"
-        $query += "| extend statusOfTheBridge = properties['status']"
-        $query += "| extend resourceBridgeID = toupper(tostring(id))"
-        $query += ") on resourceBridgeID"
-
+        $query = @"
+resources | where type == 'microsoft.extendedlocation/customlocations'
+| mv-expand ClusterId = properties['clusterExtensionIds']
+| extend ClusterId = toupper(tostring(ClusterId))
+| extend CustomLocation = toupper(tostring(id))
+| extend resourceBridgeID = toupper(tostring(properties['hostResourceId']))
+| extend customLocationRegion = location
+| join (
+    kubernetesconfigurationresources
+    | where type == 'microsoft.kubernetesconfiguration/extensions'
+    | where properties['ConfigurationSettings']['HCIClusterID'] =~ '$HCIClusterID'
+    | project ClusterId = id
+    | extend ClusterId = toupper(tostring(ClusterId))
+) on ClusterId
+| join (
+    resources
+    | where type == 'microsoft.resourceconnector/appliances'
+    | where properties['provisioningState'] == 'Succeeded'
+    | extend statusOfTheBridge = properties['status']
+    | extend resourceBridgeID = toupper(tostring(id))
+) on resourceBridgeID
+"@
         return $query
     }
 }
