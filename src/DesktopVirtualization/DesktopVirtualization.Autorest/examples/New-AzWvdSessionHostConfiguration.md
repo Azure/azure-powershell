@@ -1,4 +1,4 @@
-### Example 1: Create a Windows Virtual Desktop SessionHostConfiguration by HostPool Name
+### Example 1: Create a Azure Virtual Desktop SessionHostConfiguration by HostPool Name
 ```powershell
 New-AzWvdSessionHostConfiguration -ResourceGroupName ResourceGroupName `
                             -HostPoolName HostPoolName `
@@ -27,4 +27,4 @@ Location   Name                 Type
 eastus     default Microsoft.DesktopVirtualization/hostpools/{hostPoolName}/sessionHostConfigurations
 ```
 
-This command creates a Windows Virtual Desktop SessionHostConfiguration on a HostPool.
+This command creates a Azure Virtual Desktop SessionHostConfiguration on a HostPool.

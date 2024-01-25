@@ -45,7 +45,7 @@ Create or update a host pool.
 
 ## EXAMPLES
 
-### Example 1: Create a Windows Virtual Desktop HostPool by name
+### Example 1: Create a Azure Virtual Desktop HostPool by name
 ```powershell
 New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `
@@ -73,9 +73,9 @@ Location   Name                 Type
 eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 ```
 
-This command creates a Windows Virtual Desktop HostPool in a Resource Group.
+This command creates a Azure Virtual Desktop HostPool in a Resource Group.
 
-### Example 2: Create a Windows Virtual Desktop HostPool by name
+### Example 2: Create a Azure Virtual Desktop HostPool by name
 ```powershell
 New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `
@@ -103,7 +103,7 @@ Location   Name                 Type
 eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 ```
 
-This command creates a Windows Virtual Desktop HostPool in a Resource Group.
+This command creates a Azure Virtual Desktop HostPool in a Resource Group.
 
 ## PARAMETERS
 

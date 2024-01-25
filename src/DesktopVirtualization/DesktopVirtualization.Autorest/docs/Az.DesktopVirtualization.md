@@ -48,7 +48,7 @@ Get a private endpoint connection.
 List the private link resources available for this workspace.
 
 ### [Get-AzWvdRegistrationInfo](Get-AzWvdRegistrationInfo.md)
-Get the Windows virtual desktop registration info.
+Get the Azure Virtual Desktop registration info.
 
 ### [Get-AzWvdScalingPlan](Get-AzWvdScalingPlan.md)
 Get a scaling plan.
@@ -111,7 +111,7 @@ Create or update a host pool.
 Create or update a MSIX package.
 
 ### [New-AzWvdRegistrationInfo](New-AzWvdRegistrationInfo.md)
-Create Windows virtual desktop registration info.
+Create Azure Virtual Desktop registration info.
 
 ### [New-AzWvdScalingPlan](New-AzWvdScalingPlan.md)
 Create or update a scaling plan.
@@ -132,7 +132,7 @@ Create or update a SessionHostManagement.
 Create or update a workspace.
 
 ### [Register-AzWvdApplicationGroup](Register-AzWvdApplicationGroup.md)
-Register a Windows virtual desktop application group.
+Register a Azure Virtual Desktop application group.
 
 ### [Remove-AzWvdAppAttachPackage](Remove-AzWvdAppAttachPackage.md)
 Remove an App Attach Package.
@@ -153,7 +153,7 @@ Remove an MSIX Package.
 Remove a connection.
 
 ### [Remove-AzWvdRegistrationInfo](Remove-AzWvdRegistrationInfo.md)
-Remove the Windows virtual desktop registration info.
+Remove the Azure Virtual Desktop registration info.
 
 ### [Remove-AzWvdScalingPlan](Remove-AzWvdScalingPlan.md)
 Remove a scaling plan.
@@ -177,7 +177,7 @@ Remove a workspace.
 Send a message to a user.
 
 ### [Unregister-AzWvdApplicationGroup](Unregister-AzWvdApplicationGroup.md)
-Unregister the Windows virtual desktop application group.
+Unregister the Azure Virtual Desktop application group.
 
 ### [Update-AzWvdAppAttachPackage](Update-AzWvdAppAttachPackage.md)
 Update an App Attach Package

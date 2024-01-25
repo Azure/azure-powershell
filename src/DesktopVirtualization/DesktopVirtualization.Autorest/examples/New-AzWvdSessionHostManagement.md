@@ -1,4 +1,4 @@
-### Example 1: Create a Windows Virtual Desktop SessionHostManagement by HostPool Name
+### Example 1: Create a Azure Virtual Desktop SessionHostManagement by HostPool Name
 ```powershell
 New-AzWvdSessionHostManagement -ResourceGroupName ResourceGroupName `
                             -HostPoolName HostPoolName `
@@ -15,4 +15,4 @@ Location   Name                 Type
 eastus     default Microsoft.DesktopVirtualization/hostpools/{hostPoolName}/sessionHostManagements
 ```
 
-This command creates a Windows Virtual Desktop SessionHostManagement on a HostPool.
+This command creates a Azure Virtual Desktop SessionHostManagement on a HostPool.

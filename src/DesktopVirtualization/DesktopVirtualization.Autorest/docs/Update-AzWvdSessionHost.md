@@ -31,7 +31,7 @@ Update a session host.
 
 ## EXAMPLES
 
-### Example 1: Update a Windows Virtual Desktop SessionHost by name
+### Example 1: Update a Azure Virtual Desktop SessionHost by name
 ```powershell
 Update-AzWvdSessionHost -ResourceGroupName ResourceGroupName `
                             -HostPoolName HostPoolName `
@@ -45,7 +45,7 @@ Name                                               Type
 HostPoolName/SessionHostName Microsoft.DesktopVirtualization/hostpools/sessionhosts
 ```
 
-This command updates a Windows Virtual Desktop SessionHost in a Host Pool.
+This command updates a Azure Virtual Desktop SessionHost in a Host Pool.
 
 ## PARAMETERS
 

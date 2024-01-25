@@ -49,7 +49,7 @@ Update a host pool.
 
 ## EXAMPLES
 
-### Example 1: Update a Windows Virtual Desktop HostPool by name
+### Example 1: Update a Azure Virtual Desktop HostPool by name
 ```powershell
 Update-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `
@@ -68,7 +68,7 @@ Location   Name                 Type
 eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 ```
 
-This command updates a Windows Virtual Desktop HostPool in a Resource Group.
+This command updates a Azure Virtual Desktop HostPool in a Resource Group.
 
 ## PARAMETERS
 

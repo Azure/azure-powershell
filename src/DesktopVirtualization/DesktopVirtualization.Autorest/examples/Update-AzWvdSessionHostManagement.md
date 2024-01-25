@@ -1,4 +1,4 @@
-### Example 1: Update a Windows Virtual Desktop SessionHostManagement by HostPool Name
+### Example 1: Update a Azure Virtual Desktop SessionHostManagement by HostPool Name
 ```powershell
 Update-AzWvdSessionHostManagement -ResourceGroupName ResourceGroupName `
                             -HostPoolName HostPoolName `
@@ -15,4 +15,4 @@ Location   Name                 Type
 eastus     default Microsoft.DesktopVirtualization/hostpools/{hostPoolName}/sessionHostManagements
 ```
 
-This command Updates a Windows Virtual Desktop SessionHostManagement on a HostPool.
+This command Updates a Azure Virtual Desktop SessionHostManagement on a HostPool.

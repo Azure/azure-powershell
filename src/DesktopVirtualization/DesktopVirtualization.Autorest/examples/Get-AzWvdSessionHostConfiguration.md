@@ -1,5 +1,5 @@
 
-### Example 1: Get a Windows Virtual Desktop SessionHostConfiguration by HostPoolName
+### Example 1: Get a Azure Virtual Desktop SessionHostConfiguration by HostPoolName
 
 ```powershell
 Get-AzWvdSessionHostConfiguration -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
@@ -11,4 +11,4 @@ Location   Name                 Type
 eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools/{hostpoolName}/sessionHostConfigurations
 ```
 
-This command gets a Windows Virtual Desktop SessionHostConfiguration in a Resource Group.
+This command gets a Azure Virtual Desktop SessionHostConfiguration in a Resource Group.
