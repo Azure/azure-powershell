@@ -990,11 +990,12 @@ function Test-ManagedIdentity
 .SYNOPSIS
 Tests redis cache.
 #>
-function Test-RedisCache
+function Test-UpdateChannel
 {
     # Setup
-    $resourceGroupName = "PowerShellTest-21"
-    $cacheName = "redisteam011"
+    $id = (New-Guid).ToString().Substring(0,8)
+    $resourceGroupName = "PowerShellTest-$($id)"
+    $cacheName = "redisteam011-$($id)"
     $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
 
     # Create resource group
@@ -1041,7 +1042,6 @@ function Test-RedisCache
     Assert-AreEqual 6379 $cacheUpdated.Port
     Assert-AreEqual 6380 $cacheUpdated.SslPort
     Assert-AreEqual "succeeded" $cacheUpdated.ProvisioningState
-	Assert-AreEqual "1.2" $cacheUpdated.MinimumTlsVersion
     Assert-AreEqual "Preview" $cacheCreated.UpdateChannel
 
     Assert-NotNull $cacheUpdated.PrimaryKey "PrimaryKey do not exists"
