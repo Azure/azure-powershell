@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = FieldsParameterSet,
             HelpMessage = "The name of the ANF QuotaRule")]
         [Parameter(
             Mandatory = false,

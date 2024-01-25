@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = FieldsParameterSet,
             HelpMessage = "The name of the ANF snapshot")]
         [Parameter(
             Mandatory = false,

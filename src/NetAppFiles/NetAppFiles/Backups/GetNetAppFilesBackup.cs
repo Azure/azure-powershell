@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = FieldsParameterSet,
             HelpMessage = "The name of the ANF backup")]
         [Parameter(
             Mandatory = false,
