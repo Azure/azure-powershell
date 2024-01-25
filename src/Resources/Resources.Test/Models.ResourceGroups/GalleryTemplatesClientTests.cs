@@ -282,9 +282,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsDynamicParametersForTemplateFile()
         {
-            RuntimeDefinedParameterDictionary result = TemplateUtility.GetTemplateParametersFromFile(
+            var templateFileContent = TemplateUtility.ExtractTemplateContent(
                 templateFile,
                 null,
+                null,
+                null,
+                null
+            );
+
+            RuntimeDefinedParameterDictionary result = TemplateUtility.GetDynamicParameters(
+                templateFileContent,
                 null,
                 new[] { "TestPS" });
 
@@ -316,9 +323,17 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsDynamicParametersForSymbolicNameTemplateFile()
         {
-            RuntimeDefinedParameterDictionary result = TemplateUtility.GetTemplateParametersFromFile(
+
+            var templateFileContent = TemplateUtility.ExtractTemplateContent(
                 symbolicNameTemplateFile,
                 null,
+                null,
+                null,
+                null
+            );
+
+            RuntimeDefinedParameterDictionary result = TemplateUtility.GetDynamicParameters(
+                templateFileContent,
                 null,
                 new[] { "TestPS" });
 
@@ -363,11 +378,17 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 "A", "D", "F"
             };
 
-
-            RuntimeDefinedParameterDictionary result = TemplateUtility.GetTemplateParametersFromFile(
+            var templateFileContent = TemplateUtility.ExtractTemplateContent(
                 templateFile,
-                templateParameterObject,
                 null,
+                null,
+                null,
+                null
+            );
+
+            RuntimeDefinedParameterDictionary result = TemplateUtility.GetDynamicParameters(
+                templateFileContent,
+                templateParameterObject,
                 new[] { "TestPS" });
 
             Assert.Equal(7, result.Count);
@@ -406,10 +427,23 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Hashtable hashtable = new Hashtable();
             hashtable["Bool"] = true;
             hashtable["Foo"] = "bar";
-            RuntimeDefinedParameterDictionary result = TemplateUtility.GetTemplateParametersFromFile(
+
+            var templateFileContent = TemplateUtility.ExtractTemplateContent(
                 templateFile,
                 null,
+                null,
+                null,
+                null
+            );
+
+            var templateParametersContent = TemplateUtility.ExtractTemplateParameterContent(
                 templateParameterFileSchema1,
+                null
+            );
+
+            RuntimeDefinedParameterDictionary result = TemplateUtility.GetDynamicParameters(
+                templateFileContent,
+                templateParametersContent,
                 new[] { "TestPS" });
 
             Assert.Equal(7, result.Count);
@@ -448,10 +482,23 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Hashtable hashtable = new Hashtable();
             hashtable["Bool"] = true;
             hashtable["Foo"] = "bar";
-            RuntimeDefinedParameterDictionary result = TemplateUtility.GetTemplateParametersFromFile(
+
+            var templateFileContent = TemplateUtility.ExtractTemplateContent(
                 templateFile,
                 null,
+                null,
+                null,
+                null
+            );
+
+            var templateParametersContent = TemplateUtility.ExtractTemplateParameterContent(
                 templateParameterFileSchema2,
+                null
+            );
+
+            RuntimeDefinedParameterDictionary result = TemplateUtility.GetDynamicParameters(
+                templateFileContent,
+                templateParametersContent,
                 new[] { "TestPS" });
 
             Assert.Equal(7, result.Count);
@@ -490,10 +537,23 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Hashtable hashtable = new Hashtable();
             hashtable["Bool"] = true;
             hashtable["Foo"] = "bar";
-            RuntimeDefinedParameterDictionary result = TemplateUtility.GetTemplateParametersFromFile(
+            
+            var templateFileContent = TemplateUtility.ExtractTemplateContent(
                 invalidTemplateFile,
                 null,
+                null,
+                null,
+                null
+            );
+
+            var templateParametersContent = TemplateUtility.ExtractTemplateParameterContent(
                 templateParameterFileSchema1,
+                null
+            );
+
+            RuntimeDefinedParameterDictionary result = TemplateUtility.GetDynamicParameters(
+                templateFileContent,
+                templateParametersContent,
                 new[] { "TestPS" });
 
             Assert.Empty(result);
