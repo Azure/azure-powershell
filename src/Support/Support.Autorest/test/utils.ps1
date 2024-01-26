@@ -43,6 +43,8 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+    $env.BillingServiceId = "517f2da6-78fd-0498-4e22-ad26996b1dfc"
+    $env.BillingProblemClassificationId = "d0f16bf7-e011-3f3b-1c26-3147f84e0896"
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

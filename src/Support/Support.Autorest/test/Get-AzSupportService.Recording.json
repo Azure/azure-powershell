@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "47d76974-ba1c-455a-840d-a0ebba272757" ],
+        "x-ms-client-request-id": [ "b4ce0743-e5fd-4afb-b251-d30aaa38cf0e" ],
         "CommandName": [ "Get-AzSupportService" ],
         "FullCommandName": [ "Get-AzSupportService_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -26,10 +26,10 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
-        "x-ms-request-id": [ "29a30a49-679e-4f91-9d99-edac0b9a925a" ],
-        "x-ms-correlation-request-id": [ "29a30a49-679e-4f91-9d99-edac0b9a925a" ],
-        "x-ms-routing-request-id": [ "EASTUS:20240126T195803Z:29a30a49-679e-4f91-9d99-edac0b9a925a" ],
-        "Date": [ "Fri, 26 Jan 2024 19:58:02 GMT" ]
+        "x-ms-request-id": [ "5d0c55b1-c31d-4ed6-8c5c-bcdca20a2a0b" ],
+        "x-ms-correlation-request-id": [ "5d0c55b1-c31d-4ed6-8c5c-bcdca20a2a0b" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240126T203957Z:5d0c55b1-c31d-4ed6-8c5c-bcdca20a2a0b" ],
+        "Date": [ "Fri, 26 Jan 2024 20:39:57 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "100765" ],
@@ -40,15 +40,15 @@
       "isContentBase64": false
     }
   },
-  "Get-AzSupportService+[NoContext]+Get+$GET+https://management.azure.com/providers/Microsoft.Support/services/cddd3eb5-1830-b494-44fd-782f691479dc?api-version=2022-09-01-preview+1": {
+  "Get-AzSupportService+[NoContext]+Get+$GET+https://management.azure.com/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc?api-version=2022-09-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/services/cddd3eb5-1830-b494-44fd-782f691479dc?api-version=2022-09-01-preview",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc?api-version=2022-09-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "b83a71ce-9890-4baf-844d-7f57f1d16436" ],
+        "x-ms-client-request-id": [ "e55e46b4-a52f-4b6f-a938-3250d17730d1" ],
         "CommandName": [ "Get-AzSupportService" ],
         "FullCommandName": [ "Get-AzSupportService_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -67,17 +67,17 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
-        "x-ms-request-id": [ "8da5f066-ef4d-4c45-85b3-d4f7e3f76c55" ],
-        "x-ms-correlation-request-id": [ "8da5f066-ef4d-4c45-85b3-d4f7e3f76c55" ],
-        "x-ms-routing-request-id": [ "EASTUS:20240126T195803Z:8da5f066-ef4d-4c45-85b3-d4f7e3f76c55" ],
-        "Date": [ "Fri, 26 Jan 2024 19:58:02 GMT" ]
+        "x-ms-request-id": [ "81ed0df1-1114-42c1-86e8-877f8d75e7d6" ],
+        "x-ms-correlation-request-id": [ "81ed0df1-1114-42c1-86e8-877f8d75e7d6" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240126T203957Z:81ed0df1-1114-42c1-86e8-877f8d75e7d6" ],
+        "Date": [ "Fri, 26 Jan 2024 20:39:57 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "323" ],
+        "Content-Length": [ "223" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.Support/services/cddd3eb5-1830-b494-44fd-782f691479dc\",\"name\":\"cddd3eb5-1830-b494-44fd-782f691479dc\",\"type\":\"Microsoft.Support/services\",\"properties\":{\"displayName\":\"Virtual Machine running Linux\",\"resourceTypes\":[\"MICROSOFT.CLASSICCOMPUTE/VIRTUALMACHINES\",\"MICROSOFT.COMPUTE/VIRTUALMACHINES\"]}}",
+      "Content": "{\"id\":\"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc\",\"name\":\"517f2da6-78fd-0498-4e22-ad26996b1dfc\",\"type\":\"Microsoft.Support/services\",\"properties\":{\"displayName\":\"Billing\",\"resourceTypes\":[]}}",
       "isContentBase64": false
     }
   }

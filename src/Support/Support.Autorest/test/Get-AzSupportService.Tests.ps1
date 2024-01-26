@@ -17,11 +17,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportService'))
 Describe 'Get-AzSupportService' {
     It 'List' {
         $services = Get-AzSupportService
-        $services.Count | Should -BeGreaterOrEqual 1
+        $services.Count | Should -BeGreaterThan 1
     }
 
     It 'Get' {
-        $service = Get-AzSupportService -Name "cddd3eb5-1830-b494-44fd-782f691479dc"
+        $service = Get-AzSupportService -Name $env.BillingServiceId
         $service.Count | Should -Be 1
     }
 
