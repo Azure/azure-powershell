@@ -2406,7 +2406,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11988"
         ],
         "x-ms-request-id": [
           "1573cfeb-8d95-45dc-84e4-be8441c653e7"
@@ -2430,7 +2430,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/rgtest9921232873/providers/Microsoft.DocumentDB/databaseAccounts/rbactestps73/sqlRoleAssignments/a2ccaf94-3c39-4728-b892-95edeef0e754\",\r\n  \"name\": \"a2ccaf94-3c39-4728-b892-95edeef0e754\",\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/rgtest9921232873/providers/Microsoft.DocumentDB/databaseAccounts/rbactestps73/sqlRoleDefinitions/cf31c3a1-20f5-4ff1-bdd0-5e0782617e22\",\r\n    \"principalId\": \"ed4c2395-a18c-4018-afb3-6e521e7534d2\",\r\n    \"scope\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/rgtest9921232873/providers/Microsoft.DocumentDB/databaseAccounts/rbactestps73/dbs/dbName\"\r\n  },\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/rgtest9921232873/providers/Microsoft.DocumentDB/databaseAccounts/rbactestps73/sqlRoleAssignments/8f3f78c4-a8df-4088-9cbb-a3947e27076b\",\r\n  \"name\": \"8f3f78c4-a8df-4088-9cbb-a3947e27076b\",\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/rgtest9921232873/providers/Microsoft.DocumentDB/databaseAccounts/rbactestps73/sqlRoleDefinitions/a36e56a5-9afc-4819-aa78-3a8083a3ee74\",\r\n    \"principalId\": \"d60019b0-c5a8-4e38-beb9-fb80daa3ce90\",\r\n    \"scope\": \"/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/rgtest9921232873/providers/Microsoft.DocumentDB/databaseAccounts/rbactestps73/dbs/dbName\"\r\n  },\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -3672,14 +3672,14 @@
           "Sat, 16 Dec 2023 15:05:38 GMT"
         ],
         "Content-Length": [
-          "22"
+          "209"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"Unable to find a SQL Role Assignment with ID [e7a0b8a5-b381-495d-a020-5467c534e619].\\r\\nActivityId: 27a106dc-862c-476e-bf7e-fb7562838392, Microsoft.Azure.Documents.Common/2.14.0\"\r\n}",
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/rgtest9921232873/providers/Microsoft.DocumentDB/databaseAccounts/rbactestps73/sqlRoleAssignments/e7a0b8a5-b381-495d-a020-5467c534e619?api-version=2023-11-15",

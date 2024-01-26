@@ -164,6 +164,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public MaterializedViewDefinition MaterializedViewDefinition { get; set; }
 
         /// <summary>
+        /// Gets or sets the configuration for defining Materialized Views.
+        /// This must be specified only for creating a Materialized View
+        /// container.
+        /// </summary>
+        [JsonProperty(PropertyName = "materializedViewDefinition")]
+        public MaterializedViewDefinition MaterializedViewDefinition { get; set; }
+
+        /// <summary>
         /// Validate the object.
         /// </summary>
         /// <exception cref="Microsoft.Rest.ValidationException">
@@ -188,6 +196,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
                 this.ClientEncryptionPolicy.Validate();
             }
             
+            if (MaterializedViewDefinition != null)
+            {
+                MaterializedViewDefinition.Validate();
+            }
             if (MaterializedViewDefinition != null)
             {
                 MaterializedViewDefinition.Validate();

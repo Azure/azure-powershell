@@ -1116,7 +1116,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
           "5da7dbc1-ccb6-4d76-b229-5b9e01aed707"
@@ -1644,7 +1644,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
           "b8565ea7-4ec5-47e7-950f-a35c4155fa24"
@@ -1764,7 +1764,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11989"
         ],
         "x-ms-request-id": [
           "d859806b-a464-4df3-9623-681a66b50606"
@@ -2022,7 +2022,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
           "4c187de3-fde3-4d0c-9bfb-cc7153a35bae"
@@ -2097,7 +2097,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
           "e6c260b9-0fce-4fcc-976a-13345d5fd822"

@@ -2058,10 +2058,10 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "237"
+          "600"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"storedProcedure\",\r\n      \"body\": \"function () { var context = getContext(); var response = context.getResponse();response.setBody('Hello, World');}\"\r\n    },\r\n    \"options\": {}\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\"\r\n    },\r\n    \"locations\": [\r\n      {\r\n        \"locationName\": \"East Us\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"enableAutomaticFailover\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"databaseAccountOfferType\": \"Standard\"\r\n  },\r\n  \"location\": \"East Us\",\r\n  \"tags\": {}\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-store, no-cache"
@@ -2103,7 +2103,7 @@
           "Sat, 16 Dec 2023 13:06:33 GMT"
         ],
         "Content-Length": [
-          "21"
+          "2475"
         ],
         "Content-Type": [
           "application/json"
@@ -2361,7 +2361,7 @@
           "Sat, 16 Dec 2023 13:07:35 GMT"
         ],
         "Content-Length": [
-          "670"
+          "21"
         ],
         "Content-Type": [
           "application/json"
@@ -2424,7 +2424,7 @@
           "Sat, 16 Dec 2023 13:07:36 GMT"
         ],
         "Content-Length": [
-          "670"
+          "7048"
         ],
         "Content-Type": [
           "application/json"
@@ -2610,7 +2610,7 @@
           "Sat, 16 Dec 2023 13:10:50 GMT"
         ],
         "Content-Length": [
-          "583"
+          "445"
         ],
         "Content-Type": [
           "application/json"
@@ -2670,7 +2670,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
           "ee05e731-7f98-436e-931a-175d38ddf8a1"
@@ -4125,7 +4125,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11996"
         ],
         "x-ms-request-id": [
           "fcb4592b-cfb9-4d7a-9cb2-8fc90184fa51"
@@ -5541,7 +5541,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11995"
         ],
         "x-ms-request-id": [
           "4e6a0021-881e-4ee8-be70-ea55d07c6b5a"
@@ -5601,7 +5601,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11994"
         ],
         "x-ms-request-id": [
           "bd02d748-a401-46dc-bb8d-a7148d51dfb0"

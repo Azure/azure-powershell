@@ -94,5 +94,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         [JsonProperty(PropertyName = "sourceBackupLocation")]
         public string SourceBackupLocation { get; set; }
 
+        /// <summary>
+        /// Gets or sets the source backup location for restore.
+        /// </summary>
+        [JsonProperty(PropertyName = "sourceBackupLocation")]
+        public string SourceBackupLocation { get; set; }
+
     }
 }

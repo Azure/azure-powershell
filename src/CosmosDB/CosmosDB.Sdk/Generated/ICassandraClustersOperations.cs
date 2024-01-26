@@ -583,6 +583,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='clusterName'>
         /// Managed Cassandra cluster name.
         /// </param>
+        /// <param name='xMsForceDeallocate'>
+        /// Force to deallocate a cluster of Cluster Type Production. Force to
+        /// deallocate a cluster of Cluster Type Production might cause data
+        /// loss
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>

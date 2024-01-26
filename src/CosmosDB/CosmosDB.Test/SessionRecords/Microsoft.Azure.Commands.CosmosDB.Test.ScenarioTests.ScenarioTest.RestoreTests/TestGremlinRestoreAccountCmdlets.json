@@ -870,7 +870,7 @@
           "Thu, 14 Dec 2023 13:42:33 GMT"
         ],
         "Content-Length": [
-          "458"
+          "21"
         ],
         "Content-Type": [
           "application/json"
@@ -2177,13 +2177,13 @@
           "Thu, 14 Dec 2023 13:47:28 GMT"
         ],
         "Content-Length": [
-          "21"
+          "391"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/providers/Microsoft.DocumentDB/locations/West%20US/restorableDatabaseAccounts/5c10c4ad-b9ac-4b59-aa54-50420c04f0bc/restorableGremlinResources/TestDB1\",\r\n      \"type\": \"Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableGremlinResources\",\r\n      \"name\": \"TestDB1\",\r\n      \"databaseName\": \"TestDB1\",\r\n      \"graphNames\": [\r\n        \"Graph1\",\r\n        \"Graph2\"\r\n      ]\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {

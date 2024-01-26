@@ -8,22 +8,12 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.StorageSync.Models
+namespace Microsoft.Azure.Management.CosmosDB.Models
 {
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-<<<<<<<< HEAD:src/StorageSync/StorageSync.Sdk/Generated/Models/BackupRequest.cs
-    /// Backup request
-    /// </summary>
-    public partial class BackupRequest
-    {
-        /// <summary>
-        /// Initializes a new instance of the BackupRequest class.
-        /// </summary>
-        public BackupRequest()
-========
     /// A base CosmosDB data source/sink
     /// </summary>
     public partial class BaseCosmosDataTransferDataSourceSink
@@ -33,27 +23,17 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// BaseCosmosDataTransferDataSourceSink class.
         /// </summary>
         public BaseCosmosDataTransferDataSourceSink()
->>>>>>>> b2b18a856b (CosmosDB 2023-09-15-preview Author: Nitesh Vijay, Adrián Sibaja Retana, Achint Agrawal (#22803)):src/CosmosDB/CosmosDB.Sdk/Generated/Models/BaseCosmosDataTransferDataSourceSink.cs
         {
             CustomInit();
         }
 
         /// <summary>
-<<<<<<<< HEAD:src/StorageSync/StorageSync.Sdk/Generated/Models/BackupRequest.cs
-        /// Initializes a new instance of the BackupRequest class.
-        /// </summary>
-        /// <param name="azureFileShare">Azure File Share.</param>
-        public BackupRequest(string azureFileShare = default(string))
-        {
-            AzureFileShare = azureFileShare;
-========
         /// Initializes a new instance of the
         /// BaseCosmosDataTransferDataSourceSink class.
         /// </summary>
         public BaseCosmosDataTransferDataSourceSink(string remoteAccountName = default(string))
         {
             RemoteAccountName = remoteAccountName;
->>>>>>>> b2b18a856b (CosmosDB 2023-09-15-preview Author: Nitesh Vijay, Adrián Sibaja Retana, Achint Agrawal (#22803)):src/CosmosDB/CosmosDB.Sdk/Generated/Models/BaseCosmosDataTransferDataSourceSink.cs
             CustomInit();
         }
 
@@ -63,16 +43,9 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         partial void CustomInit();
 
         /// <summary>
-<<<<<<<< HEAD:src/StorageSync/StorageSync.Sdk/Generated/Models/BackupRequest.cs
-        /// Gets or sets azure File Share.
-        /// </summary>
-        [JsonProperty(PropertyName = "azureFileShare")]
-        public string AzureFileShare { get; set; }
-========
         /// </summary>
         [JsonProperty(PropertyName = "remoteAccountName")]
         public string RemoteAccountName { get; set; }
->>>>>>>> b2b18a856b (CosmosDB 2023-09-15-preview Author: Nitesh Vijay, Adrián Sibaja Retana, Achint Agrawal (#22803)):src/CosmosDB/CosmosDB.Sdk/Generated/Models/BaseCosmosDataTransferDataSourceSink.cs
 
     }
 }

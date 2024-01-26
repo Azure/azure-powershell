@@ -303,5 +303,32 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         [JsonProperty(PropertyName = "backupSchedules")]
         public IList<BackupSchedule> BackupSchedules { get; set; }
 
+        /// <summary>
+        /// Gets or sets type of the cluster. If set to Production, some
+        /// operations might not be permitted on cluster. Possible values
+        /// include: 'Production', 'NonProduction'
+        /// </summary>
+        [JsonProperty(PropertyName = "clusterType")]
+        public string ClusterType { get; set; }
+
+        /// <summary>
+        /// Gets or sets error related to resource provisioning.
+        /// </summary>
+        [JsonProperty(PropertyName = "provisionError")]
+        public CassandraError ProvisionError { get; set; }
+
+        /// <summary>
+        /// Gets or sets extensions to be added or updated on cluster.
+        /// </summary>
+        [JsonProperty(PropertyName = "extensions")]
+        public IList<string> Extensions { get; set; }
+
+        /// <summary>
+        /// Gets or sets list of backup schedules that define when you want to
+        /// back up your data.
+        /// </summary>
+        [JsonProperty(PropertyName = "backupSchedules")]
+        public IList<BackupSchedule> BackupSchedules { get; set; }
+
     }
 }

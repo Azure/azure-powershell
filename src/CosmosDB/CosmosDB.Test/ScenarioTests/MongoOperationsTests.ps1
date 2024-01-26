@@ -969,7 +969,6 @@ Try {
         Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
 	}
 }
-
 <#
 .SYNOPSIS
 Test mongodb collection Throughput redistribution cmdlets

@@ -222,7 +222,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11993"
         ],
         "x-ms-request-id": [
           "9ec6d4f1-7d4f-404b-923f-8a924e0757d5"
@@ -300,7 +300,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
           "d189ec21-5939-4f66-880a-e69cf981b17e"

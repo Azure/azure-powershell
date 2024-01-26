@@ -128,6 +128,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string SoftAllowedMaximumThroughput { get; private set; }
 
         /// <summary>
+        /// Gets the offer throughput value to instantly scale up without
+        /// triggering splits
+        /// </summary>
+        [JsonProperty(PropertyName = "instantMaximumThroughput")]
+        public string InstantMaximumThroughput { get; private set; }
+
+        /// <summary>
+        /// Gets the maximum throughput value or the maximum maxThroughput
+        /// value (for autoscale) that can be specified
+        /// </summary>
+        [JsonProperty(PropertyName = "softAllowedMaximumThroughput")]
+        public string SoftAllowedMaximumThroughput { get; private set; }
+
+        /// <summary>
         /// Gets a system generated property. A unique identifier.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "_rid")]
