@@ -1,47 +1,31 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/import-azwvdappattachpackageinfo
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdappattachpackage
 schema: 2.0.0
 ---
 
-# Import-AzWvdAppAttachPackageInfo
+# Remove-AzWvdAppAttachPackage
 
 ## SYNOPSIS
-Gets information from a package given the path to the package.
+Remove an App Attach Package.
 
 ## SYNTAX
 
-### ImportExpanded (Default)
+### Delete (Default)
 ```
-Import-AzWvdAppAttachPackageInfo -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-PackageArchitecture <AppAttachPackageArchitectures>] [-Path <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Import
-```
-Import-AzWvdAppAttachPackageInfo -HostPoolName <String> -ResourceGroupName <String>
- -ImportPackageInfoRequest <IImportPackageInfoRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzWvdAppAttachPackage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ImportViaIdentity
+### DeleteViaIdentity
 ```
-Import-AzWvdAppAttachPackageInfo -InputObject <IDesktopVirtualizationIdentity>
- -ImportPackageInfoRequest <IImportPackageInfoRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ImportViaIdentityExpanded
-```
-Import-AzWvdAppAttachPackageInfo -InputObject <IDesktopVirtualizationIdentity>
- [-PackageArchitecture <AppAttachPackageArchitectures>] [-Path <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzWvdAppAttachPackage -InputObject <IDesktopVirtualizationIdentity> [-Force]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets information from a package given the path to the package.
+Remove an App Attach Package.
 
 ## EXAMPLES
 
@@ -85,59 +69,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HostPoolName
-The name of the host pool within the specified resource group
+### -Force
+Force flag to delete App Attach package.
 
 ```yaml
-Type: System.String
-Parameter Sets: Import, ImportExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ImportPackageInfoRequest
-Information to import app attach package
-To construct, see NOTES section for IMPORTPACKAGEINFOREQUEST properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IImportPackageInfoRequest
-Parameter Sets: Import, ImportViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: ImportViaIdentity, ImportViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PackageArchitecture
-Possible device architectures that an app attach package can be configured for
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.AppAttachPackageArchitectures
-Parameter Sets: ImportExpanded, ImportViaIdentityExpanded
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -147,12 +84,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Path
-URI to Image
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the App Attach package arm object
 
 ```yaml
 Type: System.String
-Parameter Sets: ImportExpanded, ImportViaIdentityExpanded
+Parameter Sets: Delete
+Aliases: AppAttachPackageName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -168,7 +136,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Import, ImportExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -183,7 +151,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Import, ImportExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -229,13 +197,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IImportPackageInfoRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IAppAttachPackage
+### System.Boolean
 
 ## NOTES
 

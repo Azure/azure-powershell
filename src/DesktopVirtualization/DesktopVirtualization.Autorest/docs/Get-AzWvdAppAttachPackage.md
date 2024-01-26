@@ -41,60 +41,27 @@ Get an app attach package.
 
 ## EXAMPLES
 
-### Example 1: Get an Azure Virtual Desktop App Attach Package by Name
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzWvdAppAttachPackage -SubscriptionId subscriptionId -ResourceGroupName resourceGroupName -Name packageName1
+{{ Add code here }}
 ```
 
 ```output
-Location   Name          Type
---------   ----          ----
-eastus     packageName1  Microsoft.DesktopVirtualization/appattachpackages
+{{ Add output here }}
 ```
 
-This command gets an Azure Virtual Desktop App Attach Packages by name.
+{{ Add description here }}
 
-### Example 2: List all Azure Virtual Desktop App Attach Packages in a resource group
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzWvdAppAttachPackage -SubscriptionId subscriptionId -ResourceGroupName resourceGroupName
+{{ Add code here }}
 ```
 
 ```output
-Location   Name          Type
---------   ----          ----
-eastus     packageName1  Microsoft.DesktopVirtualization/appattachpackages
-eastus     packageName2  Microsoft.DesktopVirtualization/appattachpackages
+{{ Add output here }}
 ```
 
-This command lists Azure Virtual Desktop App Attach Packages in a resource group.
-
-### Example 3: List all Azure Virtual Desktop App Attach Packages in a specified subscription
-```powershell
-Get-AzWvdAppAttachPackage -SubscriptionId subscriptionId
-```
-
-```output
-Location   Name          Type
---------   ----          ----
-eastus     packageName1  Microsoft.DesktopVirtualization/appattachpackages
-eastus     packageName2  Microsoft.DesktopVirtualization/appattachpackages
-```
-
-This command lists Azure Virtual Desktop App Attach Packages in a subscription.
-
-### Example 4: List all Azure Virtual Desktop App Attach Packages in the current subscription
-```powershell
-Get-AzWvdAppAttachPackage
-```
-
-```output
-Location   Name          Type
---------   ----          ----
-eastus     packageName1  Microsoft.DesktopVirtualization/appattachpackages
-eastus     packageName2  Microsoft.DesktopVirtualization/appattachpackages
-```
-
-This command lists Azure Virtual Desktop App Attach Packages in a subscription.
+{{ Add description here }}
 
 ## PARAMETERS
 
