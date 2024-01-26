@@ -311,6 +311,66 @@ $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
 ```
 This example Creates a new VM with the TrustedLaunch Security Type and sets flags EnableSecureBoot and EnableVtpm as True by default. A Trusted Launch VM requires a Gen2 image. Please check [the Trusted Launch feature page](aka.ms/trustedlaunch) for more information.
 
+### Example 9: Create a VM with Trusted Launch turned on by defualt using New-AzVMConfig.
+```powershell
+$rgname = "<Resource Group Name>";
+$loc = "<Azure Region>";
+$vmname = 'vm' + $rgname;
+$domainNameLabel = "d1" + $rgname;
+$vnetname = "vn" + $rgname;
+$vnetAddress = "10.0.0.0/16";
+$subnetname = "slb" + $rgname;
+$subnetAddress = "10.0.2.0/24";
+$OSDiskName = $vmname + "-osdisk";
+$NICName = $vmname+ "-nic";
+$NSGName = $vmname + "-NSG";
+$OSDiskSizeinGB = 128;
+$VMSize = "Standard_DS2_v2";
+$PublisherName = "MicrosoftWindowsServer";
+$Offer = "WindowsServer";
+$SKU = "2022-datacenter-azure-edition";
+$version = "latest";
+$password = "<Password>";
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+$user = <Username>;
+$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+# Network setup
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+$vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+$nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+# VM
+$vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize;
+Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred;
+Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version $version ;
+Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+# Verify $vm.SecurityProfile.SecurityType is TrustedLaunch
+# Verify $vm.SecurityProfile.UefiSettings.SecureBootEnabled is true.
+# Verify $vm.SecurityProfile.UefiSettings.VTpmEnabled is true. 
+```
+This example shows how to create a VM with a valid Gen2 image, allowing the VM to default to TrustedLaunch which requires Gen2 images. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
+
+### Example 10: Creates a VM with TrustedLaunch turned on by default.
+```powershell
+$rgname = "<Resource Group Name>";
+$loc = "<Azure Region>";
+$vmname = 'vm' + $rgname;
+$domainNameLabel = "d1" + $rgname;
+$password = "<Password>";
+$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+$user = <Username>;
+$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+# Create VM
+$vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel; 
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+# Verify $vm.SecurityProfile.SecurityType is TrustedLaunch.
+# Verify the $vm.StorageProfile.ImageReference.Sku has defaulted to "2022-datacenter-azure-edition", a Gen2 image.
+```
+This example shows how the simple cmdlet call with minimal parameters will result in a TrustedLaunch enabled VM with a Gen2 image. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
+
 ## PARAMETERS
 
 ### -AddressPrefix
