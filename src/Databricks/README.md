@@ -62,7 +62,7 @@ subject-prefix: $(service-name)
 inlining-threshold: 100
 resourcegroup-append: true
 nested-object-to-string: true
-keep-identitytype: true
+disable-transform-identity-type: true
 
 directive:
   # Remove cmdlet, Private link related resource should be ignored. 

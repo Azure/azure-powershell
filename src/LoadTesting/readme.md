@@ -43,7 +43,7 @@ subject-prefix: ""
 resourcegroup-append: true
 nested-object-to-string: true
 inlining-threshold: 200
-keep-identitytype: true
+disable-transform-identity-type: true
 flatten-userassignedidentity: false
 
 directive:

@@ -75,7 +75,7 @@ output-folder: .
 ``` yaml
 identity-correction-for-post: true
 keep-pec-and-plr: true
-keep-identitytype: true
+disable-transform-identity-type: true
 
 directive:
   # Fix the error in swagger, RP actually returns 200 when deletion succeeds

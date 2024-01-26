@@ -40,7 +40,7 @@ require:
 input-file:
   - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2022-12-01/dataprotection.json
 title: DataProtection
-keep-identitytype: true
+disable-transform-identity-type: true
 
 directive:
   - from: swagger-document
