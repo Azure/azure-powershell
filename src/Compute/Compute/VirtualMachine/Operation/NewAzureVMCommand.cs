@@ -1001,23 +1001,8 @@ namespace Microsoft.Azure.Commands.Compute
                     // Default Image Id
                     Regex defaultImageRgx = new Regex(defaultExistingImagePattern, RegexOptions.IgnoreCase);
                     Match defaultImageMatch = defaultImageRgx.Match(imageRefString);
-                    if (galleryMatch.Success)
-                    {
-                        // do nothing, send message to use TL.
-                        if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
-                        {
-                            WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
-                        }
-                    }
-                    else if (managedImageMatch.Success)
-                    {
-                        // do nothing, send message to use TL.
-                        if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
-                        {
-                            WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
-                        }
-                    }
-                    else if (defaultImageMatch.Success)
+                    
+                    if (defaultImageMatch.Success)
                     {
                         var parts = imageRefString.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
                         // It's a default existing image  
@@ -1034,6 +1019,15 @@ namespace Microsoft.Azure.Commands.Compute
                                 version: imageVersion).GetAwaiter().GetResult();
 
                         setHyperVGenForImageCheckAndTLDefaulting(imgResponse);
+                    }
+                    // This scenario might have additional logic added later, so making its own if check fo now.
+                    else if (galleryMatch.Success || managedImageMatch.Success)
+                    {
+                        // do nothing, send message to use TL.
+                        if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                        {
+                            WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+                        }
                     }
                     else
                     {
