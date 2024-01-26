@@ -49,14 +49,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set;}
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set;}
 
@@ -68,6 +68,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// Gets the IManagedAzResiliencyStatusOperations
         /// </summary>
         public virtual IManagedAzResiliencyStatusOperations ManagedAzResiliencyStatus { get; private set; }
+        /// <summary>
+        /// Gets the IManagedMaintenanceWindowStatusOperations
+        /// </summary>
+        public virtual IManagedMaintenanceWindowStatusOperations ManagedMaintenanceWindowStatus { get; private set; }
+        /// <summary>
+        /// Gets the IManagedApplyMaintenanceWindowOperations
+        /// </summary>
+        public virtual IManagedApplyMaintenanceWindowOperations ManagedApplyMaintenanceWindow { get; private set; }
         /// <summary>
         /// Gets the IManagedClusterVersionOperations
         /// </summary>
@@ -349,6 +357,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         {
             this.ManagedClusters = new ManagedClustersOperations(this);
             this.ManagedAzResiliencyStatus = new ManagedAzResiliencyStatusOperations(this);
+            this.ManagedMaintenanceWindowStatus = new ManagedMaintenanceWindowStatusOperations(this);
+            this.ManagedApplyMaintenanceWindow = new ManagedApplyMaintenanceWindowOperations(this);
             this.ManagedClusterVersion = new ManagedClusterVersionOperations(this);
             this.ManagedUnsupportedVMSizes = new ManagedUnsupportedVMSizesOperations(this);
             this.OperationStatus = new OperationStatusOperations(this);
@@ -361,7 +371,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             this.Applications = new ApplicationsOperations(this);
             this.Services = new ServicesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-03-01-preview";
+            this.ApiVersion = "2023-12-01-preview";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

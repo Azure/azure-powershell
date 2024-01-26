@@ -14,11 +14,13 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
     public static class ServiceScalingTriggerKind
     {
         /// <summary>
-        /// Represents a scaling trigger related to an average load of a metric/resource of a partition. The value is 0.
+        /// Represents a scaling trigger related to an average load of a
+        /// metric/resource of a partition. The value is 0.
         /// </summary>
         public const string AveragePartitionLoadTrigger = "AveragePartitionLoadTrigger";
         /// <summary>
-        /// Represents a scaling policy related to an average load of a metric/resource of a service. The value is 1.
+        /// Represents a scaling policy related to an average load of a metric/resource
+        /// of a service. The value is 1.
         /// </summary>
         public const string AverageServiceLoadTrigger = "AverageServiceLoadTrigger";
     }

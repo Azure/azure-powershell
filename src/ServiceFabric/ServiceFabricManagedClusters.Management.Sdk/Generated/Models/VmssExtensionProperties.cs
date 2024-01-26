@@ -61,7 +61,10 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// <param name="enableAutomaticUpgrade">Indicates whether the extension should be automatically upgraded by the
         /// platform if there is a newer version of the extension available.
         /// </param>
-        public VmssExtensionProperties(string publisher, string type, string typeHandlerVersion, bool? autoUpgradeMinorVersion = default(bool?), object settings = default(object), object protectedSettings = default(object), string forceUpdateTag = default(string), System.Collections.Generic.IList<string> provisionAfterExtensions = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), bool? enableAutomaticUpgrade = default(bool?))
+
+        /// <param name="setupOrder">Indicates the setup order for the extension.
+        /// </param>
+        public VmssExtensionProperties(string publisher, string type, string typeHandlerVersion, bool? autoUpgradeMinorVersion = default(bool?), object settings = default(object), object protectedSettings = default(object), string forceUpdateTag = default(string), System.Collections.Generic.IList<string> provisionAfterExtensions = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), bool? enableAutomaticUpgrade = default(bool?), System.Collections.Generic.IList<string> setupOrder = default(System.Collections.Generic.IList<string>))
 
         {
             this.Publisher = publisher;
@@ -74,6 +77,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
             this.ProvisionAfterExtensions = provisionAfterExtensions;
             this.ProvisioningState = provisioningState;
             this.EnableAutomaticUpgrade = enableAutomaticUpgrade;
+            this.SetupOrder = setupOrder;
             CustomInit();
         }
 
@@ -152,6 +156,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enableAutomaticUpgrade")]
         public bool? EnableAutomaticUpgrade {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates the setup order for the extension.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "setupOrder")]
+        public System.Collections.Generic.IList<string> SetupOrder {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -172,6 +182,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "TypeHandlerVersion");
             }
+
 
 
 

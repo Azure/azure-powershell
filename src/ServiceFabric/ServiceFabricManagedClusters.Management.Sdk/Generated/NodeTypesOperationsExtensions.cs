@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Restarts one or more nodes on the node type. It will disable the fabric nodes, trigger a restart on the VMs and activate the nodes back again.
+        /// Restarts one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a restart on the VMs and activate the nodes back again.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -66,13 +67,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='nodeTypeName'>
         /// The name of the node type.
         /// </param>
-        public static void Restart(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters)
+        public static NodeTypesRestartHeaders Restart(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters)
         {
-                ((INodeTypesOperations)operations).RestartAsync(resourceGroupName, clusterName, nodeTypeName, parameters).GetAwaiter().GetResult();
+                return ((INodeTypesOperations)operations).RestartAsync(resourceGroupName, clusterName, nodeTypeName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Restarts one or more nodes on the node type. It will disable the fabric nodes, trigger a restart on the VMs and activate the nodes back again.
+        /// Restarts one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a restart on the VMs and activate the nodes back again.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -89,12 +91,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task RestartAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NodeTypesRestartHeaders> RestartAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.RestartWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.RestartWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
-        /// Reimages one or more nodes on the node type. It will disable the fabric nodes, trigger a reimage on the VMs and activate the nodes back again.
+        /// Reimages one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a reimage on the VMs and activate the nodes back again.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -108,13 +114,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='nodeTypeName'>
         /// The name of the node type.
         /// </param>
-        public static void Reimage(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters)
+        public static NodeTypesReimageHeaders Reimage(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters)
         {
-                ((INodeTypesOperations)operations).ReimageAsync(resourceGroupName, clusterName, nodeTypeName, parameters).GetAwaiter().GetResult();
+                return ((INodeTypesOperations)operations).ReimageAsync(resourceGroupName, clusterName, nodeTypeName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Reimages one or more nodes on the node type. It will disable the fabric nodes, trigger a reimage on the VMs and activate the nodes back again.
+        /// Reimages one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a reimage on the VMs and activate the nodes back again.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -131,12 +138,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task ReimageAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NodeTypesReimageHeaders> ReimageAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.ReimageWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ReimageWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
-        /// Deletes one or more nodes on the node type. It will disable the fabric nodes, trigger a delete on the VMs and removes the state from the cluster.
+        /// Deletes one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a delete on the VMs and removes the state from the cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -150,13 +161,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='nodeTypeName'>
         /// The name of the node type.
         /// </param>
-        public static void DeleteNode(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters)
+        public static NodeTypesDeleteNodeHeaders DeleteNode(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters)
         {
-                ((INodeTypesOperations)operations).DeleteNodeAsync(resourceGroupName, clusterName, nodeTypeName, parameters).GetAwaiter().GetResult();
+                return ((INodeTypesOperations)operations).DeleteNodeAsync(resourceGroupName, clusterName, nodeTypeName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes one or more nodes on the node type. It will disable the fabric nodes, trigger a delete on the VMs and removes the state from the cluster.
+        /// Deletes one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a delete on the VMs and removes the state from the cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -173,9 +185,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteNodeAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NodeTypesDeleteNodeHeaders> DeleteNodeAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteNodeWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteNodeWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Get a Service Fabric node type of a given managed cluster.
@@ -268,7 +283,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Update the configuration of a node type of a given managed cluster, only updating tags.
+        /// Update the configuration of a node type of a given managed cluster, only
+        /// updating tags.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -288,7 +304,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Update the configuration of a node type of a given managed cluster, only updating tags.
+        /// Update the configuration of a node type of a given managed cluster, only
+        /// updating tags.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -327,9 +344,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='nodeTypeName'>
         /// The name of the node type.
         /// </param>
-        public static void Delete(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName)
+        public static NodeTypesDeleteHeaders Delete(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName)
         {
-                ((INodeTypesOperations)operations).DeleteAsync(resourceGroupName, clusterName, nodeTypeName).GetAwaiter().GetResult();
+                return ((INodeTypesOperations)operations).DeleteAsync(resourceGroupName, clusterName, nodeTypeName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -350,12 +367,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NodeTypesDeleteHeaders> DeleteAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
-        /// Restarts one or more nodes on the node type. It will disable the fabric nodes, trigger a restart on the VMs and activate the nodes back again.
+        /// Restarts one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a restart on the VMs and activate the nodes back again.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -369,13 +390,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='nodeTypeName'>
         /// The name of the node type.
         /// </param>
-        public static void BeginRestart(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters)
+        public static NodeTypesRestartHeaders BeginRestart(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters)
         {
-                ((INodeTypesOperations)operations).BeginRestartAsync(resourceGroupName, clusterName, nodeTypeName, parameters).GetAwaiter().GetResult();
+                return ((INodeTypesOperations)operations).BeginRestartAsync(resourceGroupName, clusterName, nodeTypeName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Restarts one or more nodes on the node type. It will disable the fabric nodes, trigger a restart on the VMs and activate the nodes back again.
+        /// Restarts one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a restart on the VMs and activate the nodes back again.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -392,12 +414,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginRestartAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NodeTypesRestartHeaders> BeginRestartAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginRestartWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginRestartWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
-        /// Reimages one or more nodes on the node type. It will disable the fabric nodes, trigger a reimage on the VMs and activate the nodes back again.
+        /// Reimages one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a reimage on the VMs and activate the nodes back again.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -411,13 +437,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='nodeTypeName'>
         /// The name of the node type.
         /// </param>
-        public static void BeginReimage(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters)
+        public static NodeTypesReimageHeaders BeginReimage(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters)
         {
-                ((INodeTypesOperations)operations).BeginReimageAsync(resourceGroupName, clusterName, nodeTypeName, parameters).GetAwaiter().GetResult();
+                return ((INodeTypesOperations)operations).BeginReimageAsync(resourceGroupName, clusterName, nodeTypeName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Reimages one or more nodes on the node type. It will disable the fabric nodes, trigger a reimage on the VMs and activate the nodes back again.
+        /// Reimages one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a reimage on the VMs and activate the nodes back again.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -434,12 +461,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginReimageAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NodeTypesReimageHeaders> BeginReimageAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginReimageWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginReimageWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
-        /// Deletes one or more nodes on the node type. It will disable the fabric nodes, trigger a delete on the VMs and removes the state from the cluster.
+        /// Deletes one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a delete on the VMs and removes the state from the cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -453,13 +484,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='nodeTypeName'>
         /// The name of the node type.
         /// </param>
-        public static void BeginDeleteNode(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters)
+        public static NodeTypesDeleteNodeHeaders BeginDeleteNode(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters)
         {
-                ((INodeTypesOperations)operations).BeginDeleteNodeAsync(resourceGroupName, clusterName, nodeTypeName, parameters).GetAwaiter().GetResult();
+                return ((INodeTypesOperations)operations).BeginDeleteNodeAsync(resourceGroupName, clusterName, nodeTypeName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes one or more nodes on the node type. It will disable the fabric nodes, trigger a delete on the VMs and removes the state from the cluster.
+        /// Deletes one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a delete on the VMs and removes the state from the cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -476,9 +508,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteNodeAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NodeTypesDeleteNodeHeaders> BeginDeleteNodeAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeActionParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteNodeWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteNodeWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Create or update a Service Fabric node type of a given managed cluster.
@@ -540,9 +575,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='nodeTypeName'>
         /// The name of the node type.
         /// </param>
-        public static void BeginDelete(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName)
+        public static NodeTypesDeleteHeaders BeginDelete(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName)
         {
-                ((INodeTypesOperations)operations).BeginDeleteAsync(resourceGroupName, clusterName, nodeTypeName).GetAwaiter().GetResult();
+                return ((INodeTypesOperations)operations).BeginDeleteAsync(resourceGroupName, clusterName, nodeTypeName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -563,9 +598,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NodeTypesDeleteHeaders> BeginDeleteAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets all Node types of the specified managed cluster.

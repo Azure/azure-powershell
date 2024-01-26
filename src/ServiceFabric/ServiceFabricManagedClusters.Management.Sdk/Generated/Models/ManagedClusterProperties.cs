@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="clusterState">The current state of the cluster.
-        /// Possible values include: 'WaitingForNodes', 'Deploying', 'BaselineUpgrade',
-        /// 'Upgrading', 'UpgradeFailed', 'Ready'</param>
+        /// Possible values include: &#39;WaitingForNodes&#39;, &#39;Deploying&#39;, &#39;BaselineUpgrade&#39;,
+        /// &#39;Upgrading&#39;, &#39;UpgradeFailed&#39;, &#39;Ready&#39;</param>
 
         /// <param name="clusterCertificateThumbprints">List of thumbprints of the cluster certificates.
         /// </param>
@@ -79,8 +79,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the managed cluster resource.
-        /// Possible values include: 'None', 'Creating', 'Created', 'Updating',
-        /// 'Succeeded', 'Failed', 'Canceled', 'Deleting', 'Deleted', 'Other'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Creating&#39;, &#39;Created&#39;, &#39;Updating&#39;,
+        /// &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Deleting&#39;, &#39;Deleted&#39;, &#39;Other&#39;</param>
 
         /// <param name="clusterCodeVersion">The Service Fabric runtime version of the cluster. This property is
         /// required when **clusterUpgradeMode** is set to &#39;Manual&#39;. To get list of
@@ -91,12 +91,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="clusterUpgradeMode">The upgrade mode of the cluster when new Service Fabric runtime version is
         /// available.
-        /// Possible values include: 'Automatic', 'Manual'</param>
+        /// Possible values include: &#39;Automatic&#39;, &#39;Manual&#39;</param>
 
         /// <param name="clusterUpgradeCadence">Indicates when new cluster runtime version upgrades will be applied after
         /// they are released. By default is Wave0. Only applies when
         /// **clusterUpgradeMode** is set to &#39;Automatic&#39;.
-        /// Possible values include: 'Wave0', 'Wave1', 'Wave2'</param>
+        /// Possible values include: &#39;Wave0&#39;, &#39;Wave1&#39;, &#39;Wave2&#39;</param>
 
         /// <param name="addonFeatures">List of add-on features to enable on the cluster.
         /// </param>
@@ -142,17 +142,40 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="zonalUpdateMode">Indicates the update mode for Cross Az clusters.
-        /// Possible values include: 'Standard', 'Fast'</param>
+        /// Possible values include: &#39;Standard&#39;, &#39;Fast&#39;</param>
 
         /// <param name="useCustomVnet">For new clusters, this parameter indicates that it uses Bring your own
         /// VNet, but the subnet is specified at node type level; and for such
         /// clusters, the subnetId property is required for node types.
         /// </param>
 
-        /// <param name="publicIPPrefixId">Specify the resource id of a public IP prefix that the load balancer will
-        /// allocate a public IP address from. Only supports IPv4.
+        /// <param name="publicIPPrefixId">Specify the resource id of a public IPv4 prefix that the load balancer will
+        /// allocate a public IPv4 address from. This setting cannot be changed once
+        /// the cluster is created.
         /// </param>
-        public ManagedClusterProperties(string dnsName, string adminUserName, string fqdn = default(string), string ipv4Address = default(string), string clusterId = default(string), string clusterState = default(string), System.Collections.Generic.IList<string> clusterCertificateThumbprints = default(System.Collections.Generic.IList<string>), int? clientConnectionPort = default(int?), int? httpGatewayConnectionPort = default(int?), string adminPassword = default(string), System.Collections.Generic.IList<LoadBalancingRule> loadBalancingRules = default(System.Collections.Generic.IList<LoadBalancingRule>), bool? allowRdpAccess = default(bool?), System.Collections.Generic.IList<NetworkSecurityRule> networkSecurityRules = default(System.Collections.Generic.IList<NetworkSecurityRule>), System.Collections.Generic.IList<ClientCertificate> clients = default(System.Collections.Generic.IList<ClientCertificate>), AzureActiveDirectory azureActiveDirectory = default(AzureActiveDirectory), System.Collections.Generic.IList<SettingsSectionDescription> fabricSettings = default(System.Collections.Generic.IList<SettingsSectionDescription>), string provisioningState = default(string), string clusterCodeVersion = default(string), string clusterUpgradeMode = default(string), string clusterUpgradeCadence = default(string), System.Collections.Generic.IList<string> addonFeatures = default(System.Collections.Generic.IList<string>), bool? enableAutoOSUpgrade = default(bool?), bool? zonalResiliency = default(bool?), ApplicationTypeVersionsCleanupPolicy applicationTypeVersionsCleanupPolicy = default(ApplicationTypeVersionsCleanupPolicy), bool? enableIpv6 = default(bool?), string subnetId = default(string), System.Collections.Generic.IList<IPTag> ipTags = default(System.Collections.Generic.IList<IPTag>), string ipv6Address = default(string), bool? enableServicePublicIP = default(bool?), System.Collections.Generic.IList<Subnet> auxiliarySubnets = default(System.Collections.Generic.IList<Subnet>), System.Collections.Generic.IList<ServiceEndpoint> serviceEndpoints = default(System.Collections.Generic.IList<ServiceEndpoint>), string zonalUpdateMode = default(string), bool? useCustomVnet = default(bool?), string publicIPPrefixId = default(string))
+
+        /// <param name="publicIPv6PrefixId">Specify the resource id of a public IPv6 prefix that the load balancer will
+        /// allocate a public IPv6 address from. This setting cannot be changed once
+        /// the cluster is created.
+        /// </param>
+
+        /// <param name="ddosProtectionPlanId">Specify the resource id of a DDoS network protection plan that will be
+        /// associated with the virtual network of the cluster.
+        /// </param>
+
+        /// <param name="upgradeDescription">The policy to use when upgrading the cluster.
+        /// </param>
+
+        /// <param name="httpGatewayTokenAuthConnectionPort">The port used for token-auth based HTTPS connections to the cluster. Cannot
+        /// be set to the same port as HttpGatewayEndpoint.
+        /// </param>
+
+        /// <param name="enableHttpGatewayExclusiveAuthMode">If true, token-based authentication is not allowed on the
+        /// HttpGatewayEndpoint. This is required to support TLS versions 1.3 and
+        /// above. If token-based authentication is used,
+        /// HttpGatewayTokenAuthConnectionPort must be defined.
+        /// </param>
+        public ManagedClusterProperties(string dnsName, string adminUserName, string fqdn = default(string), string ipv4Address = default(string), string clusterId = default(string), string clusterState = default(string), System.Collections.Generic.IList<string> clusterCertificateThumbprints = default(System.Collections.Generic.IList<string>), int? clientConnectionPort = default(int?), int? httpGatewayConnectionPort = default(int?), string adminPassword = default(string), System.Collections.Generic.IList<LoadBalancingRule> loadBalancingRules = default(System.Collections.Generic.IList<LoadBalancingRule>), bool? allowRdpAccess = default(bool?), System.Collections.Generic.IList<NetworkSecurityRule> networkSecurityRules = default(System.Collections.Generic.IList<NetworkSecurityRule>), System.Collections.Generic.IList<ClientCertificate> clients = default(System.Collections.Generic.IList<ClientCertificate>), AzureActiveDirectory azureActiveDirectory = default(AzureActiveDirectory), System.Collections.Generic.IList<SettingsSectionDescription> fabricSettings = default(System.Collections.Generic.IList<SettingsSectionDescription>), string provisioningState = default(string), string clusterCodeVersion = default(string), string clusterUpgradeMode = default(string), string clusterUpgradeCadence = default(string), System.Collections.Generic.IList<string> addonFeatures = default(System.Collections.Generic.IList<string>), bool? enableAutoOSUpgrade = default(bool?), bool? zonalResiliency = default(bool?), ApplicationTypeVersionsCleanupPolicy applicationTypeVersionsCleanupPolicy = default(ApplicationTypeVersionsCleanupPolicy), bool? enableIpv6 = default(bool?), string subnetId = default(string), System.Collections.Generic.IList<IPTag> ipTags = default(System.Collections.Generic.IList<IPTag>), string ipv6Address = default(string), bool? enableServicePublicIP = default(bool?), System.Collections.Generic.IList<Subnet> auxiliarySubnets = default(System.Collections.Generic.IList<Subnet>), System.Collections.Generic.IList<ServiceEndpoint> serviceEndpoints = default(System.Collections.Generic.IList<ServiceEndpoint>), string zonalUpdateMode = default(string), bool? useCustomVnet = default(bool?), string publicIPPrefixId = default(string), string publicIPv6PrefixId = default(string), string ddosProtectionPlanId = default(string), ClusterUpgradePolicy upgradeDescription = default(ClusterUpgradePolicy), int? httpGatewayTokenAuthConnectionPort = default(int?), bool? enableHttpGatewayExclusiveAuthMode = default(bool?))
 
         {
             this.DnsName = dnsName;
@@ -189,6 +212,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
             this.ZonalUpdateMode = zonalUpdateMode;
             this.UseCustomVnet = useCustomVnet;
             this.PublicIPPrefixId = publicIPPrefixId;
+            this.PublicIPv6PrefixId = publicIPv6PrefixId;
+            this.DdosProtectionPlanId = ddosProtectionPlanId;
+            this.UpgradeDescription = upgradeDescription;
+            this.HttpGatewayTokenAuthConnectionPort = httpGatewayTokenAuthConnectionPort;
+            this.EnableHttpGatewayExclusiveAuthMode = enableHttpGatewayExclusiveAuthMode;
             CustomInit();
         }
 
@@ -422,11 +450,49 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         public bool? UseCustomVnet {get; set; }
 
         /// <summary>
-        /// Gets or sets specify the resource id of a public IP prefix that the load
-        /// balancer will allocate a public IP address from. Only supports IPv4.
+        /// Gets or sets specify the resource id of a public IPv4 prefix that the load
+        /// balancer will allocate a public IPv4 address from. This setting cannot be
+        /// changed once the cluster is created.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicIPPrefixId")]
         public string PublicIPPrefixId {get; set; }
+
+        /// <summary>
+        /// Gets or sets specify the resource id of a public IPv6 prefix that the load
+        /// balancer will allocate a public IPv6 address from. This setting cannot be
+        /// changed once the cluster is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "publicIPv6PrefixId")]
+        public string PublicIPv6PrefixId {get; set; }
+
+        /// <summary>
+        /// Gets or sets specify the resource id of a DDoS network protection plan that
+        /// will be associated with the virtual network of the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ddosProtectionPlanId")]
+        public string DdosProtectionPlanId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy to use when upgrading the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "upgradeDescription")]
+        public ClusterUpgradePolicy UpgradeDescription {get; set; }
+
+        /// <summary>
+        /// Gets or sets the port used for token-auth based HTTPS connections to the
+        /// cluster. Cannot be set to the same port as HttpGatewayEndpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "httpGatewayTokenAuthConnectionPort")]
+        public int? HttpGatewayTokenAuthConnectionPort {get; set; }
+
+        /// <summary>
+        /// Gets or sets if true, token-based authentication is not allowed on the
+        /// HttpGatewayEndpoint. This is required to support TLS versions 1.3 and
+        /// above. If token-based authentication is used,
+        /// HttpGatewayTokenAuthConnectionPort must be defined.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableHttpGatewayExclusiveAuthMode")]
+        public bool? EnableHttpGatewayExclusiveAuthMode {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -535,6 +601,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
             }
 
 
+
+
+            if (this.UpgradeDescription != null)
+            {
+                this.UpgradeDescription.Validate();
+            }
         }
     }
 }
