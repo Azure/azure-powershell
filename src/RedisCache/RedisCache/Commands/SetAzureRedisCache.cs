@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RedisCache.Models;
-using Microsoft.Azure.Commands.RedisCache.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.RedisCache.Models;
-using System.Collections;
-using System.Management.Automation;
-using SkuStrings = Microsoft.Azure.Management.RedisCache.Models.SkuName;
-using TlsStrings = Microsoft.Azure.Management.RedisCache.Models.TlsVersion;
-
 namespace Microsoft.Azure.Commands.RedisCache
 {
+    using Microsoft.Azure.Commands.RedisCache.Models;
+    using Microsoft.Azure.Commands.RedisCache.Properties;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.RedisCache.Models;
+    using System.Collections;
+    using System.Management.Automation;
+    using SkuStrings = Microsoft.Azure.Management.RedisCache.Models.SkuName;
+    using TlsStrings = Microsoft.Azure.Management.RedisCache.Models.TlsVersion;
+
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCache", SupportsShouldProcess = true), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class SetAzureRedisCache : RedisCacheCmdletBase
     {

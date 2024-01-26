@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RedisCache.Models;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Reflection;
-
 namespace Microsoft.Azure.Commands.RedisCache.Models
 {
+    using Microsoft.Azure.Management.RedisCache.Models;
+    using Newtonsoft.Json;
+    using System.Collections.Generic;
+    using System.Reflection;
+
     public class RedisCacheAttributes
     {
         public RedisCacheAttributes(RedisResource cache, string resourceGroupName)

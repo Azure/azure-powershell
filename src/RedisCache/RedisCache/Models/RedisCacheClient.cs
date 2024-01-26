@@ -12,22 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.RedisCache.Properties;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.RedisCache;
-using Microsoft.Azure.Management.RedisCache.Models;
-using Microsoft.Rest.Azure;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-
 namespace Microsoft.Azure.Commands.RedisCache
 {
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.RedisCache.Properties;
+    using Microsoft.Azure.Management.Insights;
+    using Microsoft.Azure.Management.Insights.Models;
+    using Microsoft.Azure.Management.Internal.Resources;
+    using Microsoft.Azure.Management.RedisCache;
+    using Microsoft.Azure.Management.RedisCache.Models;
+    using Microsoft.Rest.Azure;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+
     public class RedisCacheClient
     {
         private RedisManagementClient _client;
