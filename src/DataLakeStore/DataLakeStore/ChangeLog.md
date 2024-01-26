@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.1
+* Added code to prevent delete of destination if destination is parent of path to be moved
+
 ## Version 1.3.0
 * Updated ADLS dataplane SDK to 1.2.4-alpha. Changes:https://github.com/Azure/azure-data-lake-store-net/blob/preview-alpha/CHANGELOG.md#version-124-alpha
 

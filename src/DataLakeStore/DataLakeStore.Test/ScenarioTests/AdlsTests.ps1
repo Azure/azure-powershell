@@ -691,6 +691,7 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual "Directory" $result.Type
 		Assert-AreEqual 0 $result.Length
 		Assert-Throws {Get-AzDataLakeStoreItem -Account $accountName -path $folderToCreate}
+		Assert-Throws {Move-AzDataLakeStoreItem -Account $accountName -Path subSubFolderToCreate -Destination $subFolderToCreate -Force}
 
 		# getcontentsummary
 		$result = New-AzDataLakeStoreItem -Account $accountName -path $summaryFolder -Folder
