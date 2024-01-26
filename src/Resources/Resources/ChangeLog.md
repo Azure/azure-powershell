@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Updated Bicep build logic to use --stdout flag instead of creating a temporary file on disk.
+* Fixed exception when `-ApiVersion` is specified for `Get-AzResource`, affected by some resource types.
 
 ## Version 6.14.0
 * Fixed ABAC condition not included in role definition payload. Get-AzRoleDefinition will now contain ABAC Condition and ConditionVersion info when applicable.
