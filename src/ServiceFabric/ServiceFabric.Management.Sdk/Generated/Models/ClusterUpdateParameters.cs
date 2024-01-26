@@ -38,11 +38,11 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// - Silver - Run the System services with a target replica set count of 5.
         /// - Gold - Run the System services with a target replica set count of 7.
         /// - Platinum - Run the System services with a target replica set count of 9.
-        /// Possible values include: 'None', 'Bronze', 'Silver', 'Gold', 'Platinum'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Bronze&#39;, &#39;Silver&#39;, &#39;Gold&#39;, &#39;Platinum&#39;</param>
 
         /// <param name="upgradeMode">The upgrade mode of the cluster when new Service Fabric runtime version is
         /// available.
-        /// Possible values include: 'Automatic', 'Manual'</param>
+        /// Possible values include: &#39;Automatic&#39;, &#39;Manual&#39;</param>
 
         /// <param name="addOnFeatures">The list of add-on features to enable in the cluster.
         /// </param>
@@ -95,11 +95,11 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// <param name="sfZonalUpgradeMode">This property controls the logical grouping of VMs in upgrade domains
         /// (UDs). This property can&#39;t be modified if a node type with multiple
         /// Availability Zones is already present in the cluster.
-        /// Possible values include: 'Parallel', 'Hierarchical'</param>
+        /// Possible values include: &#39;Parallel&#39;, &#39;Hierarchical&#39;</param>
 
         /// <param name="vmssZonalUpgradeMode">This property defines the upgrade mode for the virtual machine scale set,
         /// it is mandatory if a node type with multiple Availability Zones is added.
-        /// Possible values include: 'Parallel', 'Hierarchical'</param>
+        /// Possible values include: &#39;Parallel&#39;, &#39;Hierarchical&#39;</param>
 
         /// <param name="infrastructureServiceManager">Indicates if infrastructure service manager is enabled.
         /// </param>
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// <param name="upgradeWave">Indicates when new cluster runtime version upgrades will be applied after
         /// they are released. By default is Wave0. Only applies when **upgradeMode**
         /// is set to &#39;Automatic&#39;.
-        /// Possible values include: 'Wave0', 'Wave1', 'Wave2'</param>
+        /// Possible values include: &#39;Wave0&#39;, &#39;Wave1&#39;, &#39;Wave2&#39;</param>
 
         /// <param name="upgradePauseStartTimestampUtc">The start timestamp to pause runtime version upgrades on the cluster (UTC).
         /// </param>

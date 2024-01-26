@@ -20,7 +20,7 @@ payload-flattening-threshold: 2
 use-extension:
   "@autorest/powershell": "4.x"
 
-commit: 6963bf056ac44c592c385e84d493053bd2d5a5ee
+commit: 33a08abd715bd9d671ade5aaf4e3810e003792f1
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/cluster.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/application.json
