@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzWvdRegistrationInfo
 
 ## SYNOPSIS
-Get the Windows virtual desktop registration info.
+Get the Azure Virtual Desktop registration info.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Get-AzWvdRegistrationInfo -HostPoolName <String> -ResourceGroupName <String> [-S
 ```
 
 ## DESCRIPTION
-Get the Windows virtual desktop registration info.
+Get the Azure Virtual Desktop registration info.
 
 ## EXAMPLES
 
@@ -118,7 +118,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.RegistrationInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.RegistrationInfo
 
 ## NOTES
 
