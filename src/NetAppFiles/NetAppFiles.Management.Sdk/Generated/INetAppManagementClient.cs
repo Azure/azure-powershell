@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.NetApp
 
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
         string SubscriptionId { get; set;}
 

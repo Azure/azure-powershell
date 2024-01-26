@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using System.Linq;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Account
 {
@@ -145,7 +146,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             }
             if (existingAccount != null)
             {
-                throw new AzPSResourceNotFoundCloudException($"A NetAppAccount with name '{this.Name}' in resource group '{this.ResourceGroupName}' already exists. Only one active directory allowed. Please use Set/Update-AzNetAppFilesAccount to update an existing NetAppAccount.");
+                throw new AzPSResourceNotFoundCloudException($"A NetAppAccount with name '{this.Name}' in resource group '{this.ResourceGroupName}' already exists. Please use Set/Update-AzNetAppFilesAccount to update an existing NetAppAccount.");
             }
             if ((new object[] { EncryptionKeySource, KeyVaultKeyName, KeyVaultResourceId, KeyVaultUri }).Any(v => v != null))
             {
@@ -178,8 +179,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             }
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var anfAccount = AzureNetAppFilesManagementClient.Accounts.CreateOrUpdate(ResourceGroupName, Name, netAppAccountBody);
-                WriteObject(anfAccount.ConvertToPs());
+                try
+                {
+                    var anfAccount = AzureNetAppFilesManagementClient.Accounts.CreateOrUpdate(ResourceGroupName, Name, netAppAccountBody);
+                    WriteObject(anfAccount.ConvertToPs());
+                }
+                catch(ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);                    
+                }
             }
         }
     }

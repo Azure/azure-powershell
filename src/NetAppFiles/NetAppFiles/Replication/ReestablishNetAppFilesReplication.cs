@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Replication
 {
@@ -123,10 +124,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.ReestablishVolumeReplicationMessage, Name)))
             {
-                ReestablishReplicationRequest requestBody = new ReestablishReplicationRequest { SourceVolumeId = SourceVolumeId};
+                try
+                {
+                    ReestablishReplicationRequest requestBody = new ReestablishReplicationRequest { SourceVolumeId = SourceVolumeId };
 
-                AzureNetAppFilesManagementClient.Volumes.ReestablishReplication(ResourceGroupName, AccountName, PoolName, Name, requestBody);
-                success = true;
+                    AzureNetAppFilesManagementClient.Volumes.ReestablishReplication(ResourceGroupName, AccountName, PoolName, Name, requestBody);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
 
             if (PassThru)

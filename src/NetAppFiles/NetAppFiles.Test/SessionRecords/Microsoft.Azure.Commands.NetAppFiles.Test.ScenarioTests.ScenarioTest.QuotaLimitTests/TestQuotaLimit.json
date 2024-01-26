@@ -1,18 +1,18 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits?api-version=2023-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcXVvdGFMaW1pdHM/YXBpLXZlcnNpb249MjAyMy0wNS0wMQ==",
+      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits?api-version=2023-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcXVvdGFMaW1pdHM/YXBpLXZlcnNpb249MjAyMy0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "56e546dd-d9ad-408a-a118-4b3baa19339b"
+          "70b02a0b-be44-4363-9557-23c336a925fe"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2523.51912",
+          "FxVersion/6.0.2623.60508",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.NetApp.NetAppManagementClient/0.0.0.0"
@@ -27,7 +27,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c25bf01a-e246-4bc9-a5bd-b002f80010a4"
+          "e05ec6ec-9b9b-4e0e-81dd-5472829094db"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -42,16 +42,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "2824b215-d4ab-4016-9044-5372ab61cf8f"
+          "199e8326-40f6-4055-9dcf-3f972c6270d8"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20231207T121000Z:2824b215-d4ab-4016-9044-5372ab61cf8f"
+          "WESTEUROPE:20240117T160558Z:199e8326-40f6-4055-9dcf-3f972c6270d8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 07 Dec 2023 12:10:00 GMT"
+          "Wed, 17 Jan 2024 16:05:57 GMT"
         ],
         "Content-Length": [
           "2499"
@@ -67,18 +67,18 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalTiBsPerSubscription?api-version=2023-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcXVvdGFMaW1pdHMvdG90YWxUaUJzUGVyU3Vic2NyaXB0aW9uP2FwaS12ZXJzaW9uPTIwMjMtMDUtMDE=",
+      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalTiBsPerSubscription?api-version=2023-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcXVvdGFMaW1pdHMvdG90YWxUaUJzUGVyU3Vic2NyaXB0aW9uP2FwaS12ZXJzaW9uPTIwMjMtMDctMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "756199f1-802d-4227-ad45-4c7521e0e0b7"
+          "b49cb74d-95f5-4e30-943a-00eb0217df9b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2523.51912",
+          "FxVersion/6.0.2623.60508",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
           "Microsoft.Azure.Management.NetApp.NetAppManagementClient/0.0.0.0"
@@ -93,7 +93,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "12f5cb5d-b2fe-4bfc-b3a4-febe1d09e5ce"
+          "1564da99-537b-4cad-908a-6dfe5cdd13a9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -108,16 +108,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "98d2c1bb-d40f-44d4-a92d-6a64217a1536"
+          "6364d4e5-851f-4513-aab7-625fd62a5be3"
         ],
         "x-ms-routing-request-id": [
-          "WESTEUROPE:20231207T121001Z:98d2c1bb-d40f-44d4-a92d-6a64217a1536"
+          "WESTEUROPE:20240117T160559Z:6364d4e5-851f-4513-aab7-625fd62a5be3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 07 Dec 2023 12:10:01 GMT"
+          "Wed, 17 Jan 2024 16:05:58 GMT"
         ],
         "Content-Length": [
           "273"

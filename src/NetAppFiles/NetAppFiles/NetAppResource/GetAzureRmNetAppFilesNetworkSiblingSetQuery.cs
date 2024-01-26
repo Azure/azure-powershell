@@ -19,7 +19,8 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
-using System.Linq;
+using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.N
 {
@@ -52,8 +53,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.N
 
         public override void ExecuteCmdlet()
         {
-            var anfNetworkSiblingSetQuery = AzureNetAppFilesManagementClient.NetAppResource.QueryNetworkSiblingSet(Location, NetworkSiblingSetId, SubnetId);
-            WriteObject(anfNetworkSiblingSetQuery.ConvertToPs());
+            try
+            {
+                var anfNetworkSiblingSetQuery = AzureNetAppFilesManagementClient.NetAppResource.QueryNetworkSiblingSet(Location, NetworkSiblingSetId, SubnetId);
+                WriteObject(anfNetworkSiblingSetQuery.ConvertToPs());
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw new CloudException(ex.Body.Error.Message, ex);
+            }
         }
     }
 }
