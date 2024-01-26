@@ -993,8 +993,6 @@ namespace Microsoft.Azure.Commands.Compute
                     string defaultExistingImagePattern = @"/Subscriptions/(?<subscriptionId>[^/]+)/Providers/Microsoft.Compute/Locations/(?<location>[^/]+)/Publishers/(?<publisher>[^/]+)/ArtifactTypes/VMImage/Offers/(?<offer>[^/]+)/Skus/(?<sku>[^/]+)/Versions/(?<version>[^/]+)";
 
                     //Gallery Id
-                    //imageRefString: "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsandimg3/providers/Microsoft.Compute/galleries/gladsandimg3/images/defadsandimg3"
-                    // pattern: @"/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroup>[^/]+)/providers/Microsoft.Compute/galleries/(?<gallery>[^/]+)/images/(?<image>[^/]+)/versions/(?<version>[^/]+)";
                     Regex galleryRgx = new Regex(galleryImgIdPattern, RegexOptions.IgnoreCase);
                     Match galleryMatch = galleryRgx.Match(imageRefString);
                     // Managed Image Id
@@ -1005,7 +1003,6 @@ namespace Microsoft.Azure.Commands.Compute
                     Match defaultImageMatch = defaultImageRgx.Match(imageRefString);
                     if (galleryMatch.Success)
                     {
-                        // It's a Gallery Image Id
                         // do nothing, send message to use TL.
                         if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
                         {
@@ -1014,7 +1011,6 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     else if (managedImageMatch.Success)
                     {
-                        // It's a Managed Image Id  
                         // do nothing, send message to use TL.
                         if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
                         {
@@ -1038,6 +1034,14 @@ namespace Microsoft.Azure.Commands.Compute
                                 version: imageVersion).GetAwaiter().GetResult();
 
                         setHyperVGenForImageCheckAndTLDefaulting(imgResponse);
+                    }
+                    else
+                    {
+                        // Default behavior is to remind customer to use TrustedLaunch.
+                        if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                        {
+                            WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+                        }
                     }
                 }
                 else

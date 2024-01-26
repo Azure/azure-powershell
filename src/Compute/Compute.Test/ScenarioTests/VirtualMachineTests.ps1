@@ -7269,441 +7269,20 @@ function Test-VMDefaultsToTrustedLaunchWithNullEncryptionAtHost
 
 <#
 .SYNOPSIS
-Test Virtual Machines default to SecurityType = TrustedLaunch.
-Other necessary defaults also occur for TL support.
-EncryptionAtHost (a feature requiring a feature flag) must be null.
-#>
-function Test-VMTLWithImageSource
-{
-    # Setup
-    $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
-
-    try
-    {
-        $loc = "eastus";
-        $rgname = "adsandgal4";
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        # SimpleParameterSet, no config, scenario.
-        # create credential 
-        $password = "Testing1234567";#Get-PasswordForVM;
-        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
-        $user = "admin01";#Get-ComputeTestResourceName;
-        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-
-        # Add one VM from creation 
-        $vmname = 'vm' + $rgname;
-        $domainNameLabel = "d1" + $rgname;
-        $securityType_TL = "TrustedLaunch";
-        $PublisherName = "MicrosoftWindowsServer";
-        $Offer = "WindowsServer";
-        $SKU = "2022-datacenter-azure-edition";
-        $version = "latest";
-        $disable = $false;
-        $enable = $true;
-        $galleryName = "g" + $rgname;
-        $vnetname = "vn" + $rgname;
-        $vnetAddress = "10.0.0.0/16";
-        $subnetname = "slb" + $rgname;
-        $subnetAddress = "10.0.2.0/24";
-        $OSDiskName = $vmname + "-osdisk";
-        $NICName = $vmname+ "-nic";
-        $NSGName = $vmname + "-NSG";
-        $OSDiskSizeinGB = 128;
-        $VMSize = "Standard_DS2_v2";
-
-        # Gallery
-        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -SecurityType "Standard"; 
-        Stop-AzVM -ResourceGroupName $rgname -Name $vmname -Force  ;
-        Set-AzVM -ResourceGroupName $rgname -Name $vmname -Generalized ; 
-
-        $imageName = "im" + $rgname;  
-        $imageConfig = New-AzImageConfig -Location $loc -SourceVirtualMachineId $vm.Id;  
-        $managedImage = New-AzImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname;  
-
-        # default provided image:
-        # $image = Get-AzVMImage -Skus $SKU -Offer $Offer -PublisherName $PublisherName -Location $loc -Version latest;
-
-        # Gallery
-        $gal = New-AzGallery -GalleryName $galleryName -ResourceGroupName $rgname -Location $loc;
-        $imageDefinitionName = "ig" + $rgname;  
-        $osType = "Windows"; # use "Linux" for Linux  
-        $galImg = New-AzGalleryImageDefinition -GalleryName $galleryName -ResourceGroupName $rgname -Location $loc -Name $imageDefinitionName -OsState generalized -OsType $osType -Publisher $PublisherName -Offer $Offer -Sku $Sku; 
-        $imageVersion = "1.0.0"; 
-        $galImgVer = New-AzGalleryImageVersion -GalleryImageDefinitionName $imageDefinitionName -GalleryImageVersionName $imageVersion -GalleryName $galleryName -ResourceGroupName $rgname -Location $loc -SourceImageId $managedImage.Id;
-
-        # Network
-        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
-
-        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
-         
-        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
-        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
-        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
-
-        # VM
-        $vmname2 = "2" + $vmname;
-        $vmConfig = New-AzVMConfig -VMName $vmname2 -VMSize $VMSize;
-        Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname2 -Credential $cred;
-        Set-AzVMSourceImage -VM $vmConfig -Id $galImgVer.Id ;
-        Set-AzVMOSDisk -VM $vmConfig -Caching 'ReadOnly' -CreateOption FromImage;
-        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
-        
-        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;# -Verbose;# -Debug;
-        
-        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
-        
-        
-        # Validate
-        Assert-AreEqual $vm.SecurityProfile.SecurityType $securityType_TL;
-        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
-        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $enable;
-        Assert-AreEqual $vm.StorageProfile.ImageReference.Sku $SKU;
-        Assert-Null $vm.SecurityProfile.EncryptionAtHost;
-    }
-    finally 
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname;
-    }
-}
-
-<#
-.SYNOPSIS
-Test Virtual Machines default to SecurityType = TrustedLaunch.
-Other necessary defaults also occur for TL support.
-EncryptionAtHost (a feature requiring a feature flag) must be null.
-#>
-function Test-VMTLWithGallerySource
-{
-    # Setup
-    $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
-
-    try
-    {
-        $loc = "eastus";
-        $location = $loc;
-        $rgname = "adsandgdef8";
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        # SimpleParameterSet, no config, scenario.
-        # create credential 
-        $password = "Testing1234567";#Get-PasswordForVM;
-        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
-        $user = "admin01";#Get-ComputeTestResourceName;
-        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-
-        # Add one VM from creation 
-        $vmname = 'vm' + $rgname;
-        $domainNameLabel = "d1" + $rgname;
-        $securityType_TL = "TrustedLaunch";
-        $PublisherName = "MicrosoftWindowsServer";
-        $Offer = "WindowsServer";
-        $SKU = "2022-datacenter-azure-edition";
-        $version = "latest";
-        $disable = $false;
-        $enable = $true;
-        $galleryName = "g" + $rgname;
-        $vnetname = "vn" + $rgname;
-        $vnetAddress = "10.0.0.0/16";
-        $subnetname = "slb" + $rgname;
-        $subnetAddress = "10.0.2.0/24";
-        $pubipname = "p" + $rgname;
-        $OSDiskName = $vmname + "-osdisk";
-        $NICName = $vmname+ "-nic";
-        $NSGName = $vmname + "-NSG";
-        $nsgrulename = "nsr" + $rgname;
-        $OSDiskSizeinGB = 128;
-        $VMSize = "Standard_DS2_v2";
-        $vmname2 = "2" + $vmname;
-
-        # Gallery
-        $vnetname1 = "vn1" + $rgname;
-        $vnetAddress = "10.0.0.0/16";
-        $subnetname1 = "slb1" + $rgname;
-        $subnetAddress = "10.0.2.0/24";
-        $pubipname1 = "p1" + $rgname;
-        $OSDiskName1 = $vmname + "-osdisk1";
-        $NICName1 = $vmname+ "-nic1";
-        $NSGName1 = $vmname + "-NSG1";
-        $nsgrulename = "nsr1" + $rgname;
-        $diskname = "di" + $rgname;
-        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname1 -AddressPrefix $subnetAddress;
-        $vnet = New-AzVirtualNetwork -Name $vnetname1 -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
-        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
-        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName1  -SecurityRules $nsgRuleRDP;
-        $nic = New-AzNetworkInterface -Name $NICName1 -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
-
-        $image = Get-AzVMImage -Skus $SKU -Offer $Offer -PublisherName $PublisherName -Location $loc -Version latest;
-        $diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc -HyperVGeneration "V2";
-        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image.Id;
-        $diskConfig = Set-AzDiskSecurityProfile -SecurityType "Standard" -Disk $diskConfig;
-        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
-
-        $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize -SecurityType "Standard";
-        $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
-        $vmConfig = Set-AzVMOSDisk -Windows -ManagedDiskId $disk.Id -CreateOption Attach -VM $vmConfig;
-        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
-        # $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -SecurityType "Standard"; 
-        Stop-AzVM -ResourceGroupName $rgname -Name $vmname -Force  ;
-        Set-AzVM -ResourceGroupName $rgname -Name $vmname -Generalized ; 
-
-        $imageName = "im" + $rgname;  
-        $imageConfig = New-AzImageConfig -Location $loc -SourceVirtualMachineId $vm.Id -HyperVGeneration "V2";  
-        $managedImage = New-AzImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname;  
-
-        # default provided image:
-        # $image = Get-AzVMImage -Skus $SKU -Offer $Offer -PublisherName $PublisherName -Location $loc -Version latest;
-
-        # Gallery
-        $gal = New-AzGallery -GalleryName $galleryName -ResourceGroupName $rgname -Location $loc;
-        $imageDefinitionName = "ig" + $rgname;  
-        $osType = "Windows"; # use "Linux" for Linux  
-        
-        $SecurityType = @{Name='SecurityType';Value='TrustedLaunchSupported'};
-        $features = @($SecurityType);
-        New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $imageDefinitionName -Location $loc -Publisher $publisherName -Offer $offer -Sku $sku -HyperVGeneration "V2" -OsState "Generalized" -OsType "Windows" -Feature $features;
-        # $galImg = New-AzGalleryImageDefinition -GalleryName $galleryName -ResourceGroupName $rgname -Location $loc -Name $imageDefinitionName -OsState generalized -OsType $osType -Publisher $PublisherName -Offer $Offer -Sku $Sku; 
-        $galleryImageVersionName = "1.0.0"
-        $sourceImageId = $managedImage.Id;#"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/galleries/MyGallery/images/Gen2VMImageDef/versions/0.0.1"
-        $galImgVer = New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $imageDefinitionName -Name $galleryImageVersionName -Location $loc -SourceImageId $sourceImageId;
-        # $galImgVer = New-AzGalleryImageVersion -GalleryImageDefinitionName $imageDefinitionName -GalleryImageVersionName $imageVersion -GalleryName $galleryName -ResourceGroupName $rgname -Location $loc -SourceImageId $managedImage.Id;
-        $vmSize = "Standard_D2s_v5";
-        $imageDefinition = Get-AzGalleryImageDefinition -GalleryName $galleryName -ResourceGroupName $rgName -Name $imageDefinitionName;
-        # Network pieces
-        $subnetConfig = New-AzVirtualNetworkSubnetConfig `
-            -Name $subnetname `
-            -AddressPrefix 192.168.1.0/24
-        $vnet = New-AzVirtualNetwork `
-            -ResourceGroupName $rgName `
-            -Location $location `
-            -Name $vnetAddress `
-            -AddressPrefix 192.168.0.0/16 `
-            -Subnet $subnetConfig
-        $pip = New-AzPublicIpAddress `
-            -ResourceGroupName $rgName `
-            -Location $location `
-            -Name $pubipname `
-            -AllocationMethod Static `
-            -IdleTimeoutInMinutes 4
-        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig `
-            -Name $nsgrulename  `
-            -Protocol Tcp `
-            -Direction Inbound `
-            -Priority 1000 `
-            -SourceAddressPrefix * `
-            -SourcePortRange * `
-            -DestinationAddressPrefix * `
-            -DestinationPortRange 3389 `
-            -Access Deny
-        $nsg = New-AzNetworkSecurityGroup `
-            -ResourceGroupName $rgName `
-            -Location $location `
-            -Name $NSGName `
-            -SecurityRules $nsgRuleRDP
-        $nic = New-AzNetworkInterface `
-            -Name $NICName `
-            -ResourceGroupName $rgName `
-            -Location $location `
-            -SubnetId $vnet.Subnets[0].Id `
-            -PublicIpAddressId $pip.Id `
-            -NetworkSecurityGroupId $nsg.Id
-        $vm = New-AzVMConfig -vmName $vmname2  -vmSize $vmSize | `
-        Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
-        Set-AzVMSourceImage -Id $imageDefinition.Id | `
-        Add-AzVMNetworkInterface -Id $nic.Id
-        #$vm = Set-AzVMSecurityProfile -SecurityType "TrustedLaunch" -VM $vm
-        #$vm = Set-AzVmUefi -VM $vm `
-        #    -EnableVtpm $true `
-        #    -EnableSecureBoot $true 
-        New-AzVM `
-            -ResourceGroupName $rgName `
-            -Location $location `
-            -VM $vm;
-
-
-
-        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
-        
-        
-        # Validate
-        Assert-AreEqual $vm.SecurityProfile.SecurityType $securityType_TL;
-        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
-        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $enable;
-        Assert-AreEqual $vm.StorageProfile.ImageReference.Sku $SKU;
-        Assert-Null $vm.SecurityProfile.EncryptionAtHost;
-    }
-    finally 
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname;
-    }
-}
-
-<#
-.SYNOPSIS
-Test Virtual Machines default to SecurityType = TrustedLaunch.
-Other necessary defaults also occur for TL support.
-EncryptionAtHost (a feature requiring a feature flag) must be null.
-demo script provided from Ajay or demo acg. 
-#>
-function Test-VMTLWithGallerySourceDemo
-{
-    # Setup
-    $rgname = Get-ComputeTestResourceName;
-    $loc = Get-ComputeVMLocation;
-
-    try
-    {
-        # Set-AzContext -Subscription "d978fb46-d408-4e80-b1a1-db3bb535cfba";
-        $loc = "westus3";
-        $location = $loc;
-        $rgname = "adsandimg3";
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        # SimpleParameterSet, no config, scenario.
-        # create credential 
-        $password = "Testing1234567";#Get-PasswordForVM;
-        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
-        $user = "admin01";#Get-ComputeTestResourceName;
-        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-
-        # Add one VM from creation 
-        $vmname = 'vm' + $rgname;
-        $domainNameLabel = "d1" + $rgname;
-        $securityType_TL = "TrustedLaunch";
-        $PublisherName = "MicrosoftWindowsServer";
-        $Offer = "WindowsServer";
-        $SKU = "2022-datacenter-azure-edition";
-        $version = "latest";
-        $disable = $false;
-        $enable = $true;
-        $galleryName = "g" + $rgname;
-        $vnetname = "vn" + $rgname;
-        $vnetAddress = "10.0.0.0/16";
-        $subnetname = "slb" + $rgname;
-        $subnetAddress = "10.0.2.0/24";
-        $pubipname = "p" + $rgname;
-        $OSDiskName = $vmname + "-osdisk";
-        $NICName = $vmname+ "-nic";
-        $NSGName = $vmname + "-NSG";
-        $nsgrulename = "nsr" + $rgname;
-        $OSDiskSizeinGB = 128;
-        $VMSize = "Standard_DS2_v2";
-        $vmname2 = "2" + $vmname;
-
-        # Gallery
-        # $vnetname1 = "vn1" + $rgname;
-        # $vnetAddress = "10.0.0.0/16";
-        # $subnetname1 = "slb1" + $rgname;
-        # $subnetAddress = "10.0.2.0/24";
-        # $pubipname1 = "p1" + $rgname;
-        # $OSDiskName1 = $vmname + "-osdisk1";
-        # $NICName1 = $vmname+ "-nic1";
-        # $NSGName1 = $vmname + "-NSG1";
-        # $nsgrulename = "nsr1" + $rgname;
-        # $diskname = "di" + $rgname;
-        # $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname1 -AddressPrefix $subnetAddress;
-        # $vnet = New-AzVirtualNetwork -Name $vnetname1 -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
-        # $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
-        # $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName1  -SecurityRules $nsgRuleRDP;
-        # $nic = New-AzNetworkInterface -Name $NICName1 -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
-        
-        $vmSize = "Standard_D2s_v5";
-        #$imageDefinition = Get-AzGalleryImageDefinition -GalleryName $galleryName -ResourceGroupName $rgName -Name $imageDefinitionName;
-        $rgNameDef = "demoacgrg";
-        $galName = "demoacg";
-        $galDefName = "demotlsupported";
-        $imageDefinition = Get-AzGalleryImageDefinition -GalleryName $galName -ResourceGroupName $rgNameDef -Name $galDefName;
-        # Network pieces
-        $subnetConfig = New-AzVirtualNetworkSubnetConfig `
-            -Name $subnetname `
-            -AddressPrefix $subnetAddress;#192.168.1.0/24;
-        $vnet = New-AzVirtualNetwork `
-            -ResourceGroupName $rgName -Location $location -Name $vnetAddress -AddressPrefix $vnetAddress `
-            -Subnet $subnetConfig;#192.168.0.0/16 `
-        $pip = New-AzPublicIpAddress `
-            -ResourceGroupName $rgName `
-            -Location $location `
-            -Name $pubipname `
-            -AllocationMethod Static `
-            -IdleTimeoutInMinutes 4;
-        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig `
-            -Name $nsgrulename  `
-            -Protocol Tcp `
-            -Direction Inbound `
-            -Priority 1000 `
-            -SourceAddressPrefix * `
-            -SourcePortRange * `
-            -DestinationAddressPrefix * `
-            -DestinationPortRange 3389 `
-            -Access Deny;
-        $nsg = New-AzNetworkSecurityGroup `
-            -ResourceGroupName $rgName `
-            -Location $location `
-            -Name $NSGName `
-            -SecurityRules $nsgRuleRDP;
-        $nic = New-AzNetworkInterface `
-            -Name $NICName `
-            -ResourceGroupName $rgName `
-            -Location $location `
-            -SubnetId $vnet.Subnets[0].Id `
-            -PublicIpAddressId $pip.Id `
-            -NetworkSecurityGroupId $nsg.Id;
-        $vm = New-AzVMConfig -vmName $vmname2  -vmSize $vmSize | `
-        Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
-        Set-AzVMSourceImage -Id $imageDefinition.Id | `
-        Add-AzVMNetworkInterface -Id $nic.Id;
-        #$vm = Set-AzVMSecurityProfile -SecurityType "TrustedLaunch" -VM $vm
-        #$vm = Set-AzVmUefi -VM $vm `
-        #    -EnableVtpm $true `
-        #    -EnableSecureBoot $true 
-        New-AzVM `
-            -ResourceGroupName $rgName `
-            -Location $location `
-            -VM $vm;
-
-
-
-        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
-        
-        
-        # Validate
-        Assert-AreEqual $vm.SecurityProfile.SecurityType $securityType_TL;
-        Assert-AreEqual $vm.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
-        Assert-AreEqual $vm.SecurityProfile.UefiSettings.VTpmEnabled $enable;
-        Assert-AreEqual $vm.StorageProfile.ImageReference.Sku $SKU;
-        Assert-Null $vm.SecurityProfile.EncryptionAtHost;
-    }
-    finally 
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname;
-    }
-}
-
-
-<#
-.SYNOPSIS
-Test Virtual Machines default to SecurityType = TrustedLaunch.
-Other necessary defaults also occur for TL support.
-EncryptionAtHost (a feature requiring a feature flag) must be null.
-demo script provided from Ajay or demo acg. 
+Tests that a VM that is created from a Gallery Image source
+does not error out due to TL defaulting code that looks for the image  version 
+assuming it has a different format. 
 #>
 function Test-VMTLWithGallerySourceImage
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = "westus3";
+    $loc = Get-ComputeVMLocation;
 
     try
     {
-        # Set-AzContext -Subscription "d978fb46-d408-4e80-b1a1-db3bb535cfba";
-        # Set-AzContext -Subscription  "e37510d7-33b6-4676-886f-ee75bcc01871";
-        # $loc = "eastus";
         $location = $loc;
-        # $rgname = "adsandimg7";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
-        # SimpleParameterSet, no config, scenario.
         # create credential 
         $password = Get-PasswordForVM;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
@@ -7736,10 +7315,6 @@ function Test-VMTLWithGallerySourceImage
 
         # Gallery
         $resourceGroup = $rgname
-        $vmName = 'v' + $resourceGroup
-        $userName = 'usertest'
-        $pass = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force
-        $cred = New-Object System.Management.Automation.PSCredential ($userName, $pass)
         $galleryName = 'gl' + $rgname
         $definitionName = 'def' + $rgname
         $skuDetails = @{
@@ -7783,21 +7358,17 @@ function Test-VMTLWithGallerySourceImage
             HyperVGeneration  = $hyperVGeneration
             ErrorAction       = 'Stop'
         }
-        if ($trustedLaunch -eq $true) {
-            $SecurityType = @{Name='SecurityType';Value='TrustedLaunchSupported'}
-            $features = @($SecurityType)
-            $paramNewAzImageDef.Add('Feature', $features)
-        }
-        $imageDefinition = New-AzGalleryImageDefinition @paramNewAzImageDef 
-
         
-
+        New-AzGalleryImageDefinition @paramNewAzImageDef | Out-Null;
+        $imageDefinition = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $definitionName;
+        
         # Setup Image Version
+        $imageVersionName = "1.0.0";
         $paramNewAzImageVer = @{
             ResourceGroupName   = $resourceGroup
             GalleryName         = $galleryName
             GalleryImageDefinitionName  = $definitionName
-            Name                = "1.0.0"
+            Name                = $imageVersionName
             Location            = $location
             SourceImageId       = $vm.Id
             ErrorAction         = 'Stop'
@@ -7805,24 +7376,22 @@ function Test-VMTLWithGallerySourceImage
             AsJob               = $true
         }
         New-AzGalleryImageVersion @paramNewAzImageVer | Out-Null
-
-        # Add arbitary delay for Image Ver provisioning
-        Start-Sleep -Seconds 1000;
-
+       
+        # Check image version status  
+        # Looping to wait for the provisioningState to go to Succeeded never ends despite 
+        # the status changing in portal. Image Definition is never seen by this PS script 
+        # despite it being there, so making this a manual test. 
+        Start-Sleep -Seconds 120 ; 
+        
         # Vm
         $vmSize = "Standard_D2s_v5";
-        #$imageDefinition = Get-AzGalleryImageDefinition -GalleryName $galleryName -ResourceGroupName $rgName -Name $imageDefinitionName;
-        #$rgNameDef = "demoacgrg";
-        #$galName = "demoacg";
-        #$galDefName = "demotlsupported";
-        # $imageDefinition = Get-AzGalleryImageDefinition -GalleryName $galName -ResourceGroupName $rgNameDef -Name $galDefName;
         # Network pieces
         $subnetConfig = New-AzVirtualNetworkSubnetConfig `
             -Name $subnetname `
-            -AddressPrefix $subnetAddress;#192.168.1.0/24;
+            -AddressPrefix $subnetAddress;
         $vnet = New-AzVirtualNetwork `
             -ResourceGroupName $rgName -Location $location -Name $vnetname -AddressPrefix $vnetAddress `
-            -Subnet $subnetConfig;#192.168.0.0/16 `
+            -Subnet $subnetConfig;
         $pip = New-AzPublicIpAddress `
             -ResourceGroupName $rgName `
             -Location $location `
@@ -7854,19 +7423,13 @@ function Test-VMTLWithGallerySourceImage
         $vm = New-AzVMConfig -vmName $vmname2  -vmSize $vmSize | `
         Set-AzVMSourceImage -Id $imageDefinition.Id | `
         Add-AzVMNetworkInterface -Id $nic.Id;
-        # Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred | `
-
-        #$vm = Set-AzVMSecurityProfile -SecurityType "TrustedLaunch" -VM $vm
-        #$vm = Set-AzVmUefi -VM $vm `
-        #    -EnableVtpm $true `
-        #    -EnableSecureBoot $true 
+        
         New-AzVM `
             -ResourceGroupName $rgName `
             -Location $location `
             -VM $vm;
 
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
-        
         
         # Validate
         Assert-Null $vm.SecurityProfile;
