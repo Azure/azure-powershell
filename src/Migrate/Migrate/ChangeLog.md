@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for `Data.Replication`
 
 ## Version 2.2.0
 * Fixed key vault SPN Id coming as null for some users
