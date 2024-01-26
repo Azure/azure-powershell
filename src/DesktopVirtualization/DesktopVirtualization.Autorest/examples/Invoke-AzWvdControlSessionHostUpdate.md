@@ -2,7 +2,7 @@
 ```powershell
 Invoke-AzWvdControlSessionHostUpdate -HostPoolName HostPoolName `
           -ResourceGroupName resourceGroupName `
-          -Action "Cancel"
+          -Action "Cancel" `
           -CancelMessage "Stopping hostpool update operation."
 ```
 

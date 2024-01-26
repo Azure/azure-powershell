@@ -3,7 +3,7 @@
 Update-AzWvdSessionHostConfiguration -ResourceGroupName ResourceGroupName `
                             -HostPoolName HostPoolName `
                             -DiskInfoType "Standard_LRS" `
-                            -DomainInfoJoinType "AzureActiveDirectory" ` 
+                            -DomainInfoJoinType "AzureActiveDirectory" `
                             -ImageInfoType "Marketplace" `
                             -NetworkInfoSubnetId "/subscriptions/{subscriptionId}/resourceGroups/resourceGrouName/providers/Microsoft.Network/virtualNetworks/{vNetName}/subnets/default" `
                             -VMAdminCredentialsPasswordKeyvaultSecretUri "PasswordSecretUri" `

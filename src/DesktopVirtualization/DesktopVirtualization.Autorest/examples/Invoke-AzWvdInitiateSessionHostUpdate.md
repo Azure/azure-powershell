@@ -3,8 +3,8 @@
 Invoke-AzWvdInitiateSessionHostUpdate -HostPoolName HostPoolName `
           -ResourceGroupName resourceGroupName `
           -UpdateDeleteOriginalVm `
-          -UpdateMaxVmsRemoved 4`
-          -UpdateLogOffDelayMinutes 5`
+          -UpdateMaxVmsRemoved 4 `
+          -UpdateLogOffDelayMinutes 5 `
           -UpdateLogOffMessage "logging off for hostpool update."
 ```
 
