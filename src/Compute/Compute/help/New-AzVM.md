@@ -371,6 +371,8 @@ $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
 ```
 This example shows how the simple cmdlet call with minimal parameters will result in a TrustedLaunch enabled VM with a Gen2 image. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
+=======
+
 ## PARAMETERS
 
 ### -AddressPrefix
