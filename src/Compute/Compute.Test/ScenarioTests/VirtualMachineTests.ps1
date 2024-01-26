@@ -7359,8 +7359,7 @@ function Test-VMTLWithGallerySourceImage
             ErrorAction       = 'Stop'
         }
         
-        New-AzGalleryImageDefinition @paramNewAzImageDef | Out-Null;
-        $imageDefinition = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $definitionName;
+        New-AzGalleryImageDefinition @paramNewAzImageDef;
         
         # Setup Image Version
         $imageVersionName = "1.0.0";
@@ -7375,13 +7374,15 @@ function Test-VMTLWithGallerySourceImage
             StorageAccountType  = $storageAccountSku
             AsJob               = $true
         }
-        New-AzGalleryImageVersion @paramNewAzImageVer | Out-Null
-       
+        New-AzGalleryImageVersion @paramNewAzImageVer | Out-Null;
+        
+        $imageDefinition = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $definitionName;
+        
         # Check image version status  
         # Looping to wait for the provisioningState to go to Succeeded never ends despite 
         # the status changing in portal. Image Definition is never seen by this PS script 
         # despite it being there, so making this a manual test. 
-        Start-Sleep -Seconds 120 ; 
+        Start-Sleep -Seconds 1000 ; 
         
         # Vm
         $vmSize = "Standard_D2s_v5";
