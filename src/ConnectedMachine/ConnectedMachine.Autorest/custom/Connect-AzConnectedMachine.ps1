@@ -67,7 +67,7 @@ function Connect-AzConnectedMachine {
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
-        ${Tag},
+        ${Tags},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
@@ -143,14 +143,14 @@ function Connect-AzConnectedMachine {
         $azcmagentArgs.Add($Name)
     }
 
-    if ($Tag) {
+    if ($Tags) {
         $azcmagentArgs.Add('--tags')
 
         # Build tag string
-        $tagStrings = foreach ($key in $Tag.Keys) {
+        $tagStrings = foreach ($key in $Tags.Keys) {
             $t = $key
-            if ($Tag[$key] -and $Tag[$key].GetType() -eq [string]) {
-                $t += "=$($Tag[$key])"
+            if ($Tags[$key] -and $Tags[$key].GetType() -eq [string]) {
+                $t += "=$($Tags[$key])"
             }
             $t
         }

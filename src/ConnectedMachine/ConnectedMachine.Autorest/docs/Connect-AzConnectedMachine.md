@@ -14,7 +14,7 @@ API to register a new machine and thereby create a tracked resource in ARM
 
 ```
 Connect-AzConnectedMachine [-ResourceGroupName] <String> [-Location] <String> [[-SubscriptionId] <String>]
- [[-Name] <String>] [[-DefaultProfile] <PSObject>] [[-PSSession] <PSSession[]>] [[-Tag] <Hashtable>]
+ [[-Name] <String>] [[-DefaultProfile] <PSObject>] [[-PSSession] <PSSession[]>] [[-Tags] <Hashtable>]
  [[-Proxy] <Uri>] [<CommonParameters>]
 ```
 
@@ -174,7 +174,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
+### -Tags
 Resource tags.
 
 ```yaml
