@@ -89,7 +89,7 @@ input-file:
 module-version: 1.0.1
 title: Functions
 subject-prefix: ''
-keep-identitytype: true
+disable-transform-identity-type: true
 
 metadata:
   authors: Microsoft Corporation

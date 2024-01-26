@@ -41,7 +41,7 @@ title: Nginx
 module-version: 0.1.0
 subject-prefix: Nginx
 nested-object-to-string: true
-keep-identitytype: true
+disable-transform-identity-type: true
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
