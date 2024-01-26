@@ -41,6 +41,7 @@ Function Move-Generation2Master {
             New-Item -Type Directory -Path $DestPath -Force
             New-Item "$DestPath\$ModuleName\Properties" -ItemType Directory
             New-Item "$DestPath\$ModuleName\help" -ItemType Directory
+            Update-MappingJson $ModuleName
         }
         $Dir2Copy = @{
             'custom' = 'custom'
@@ -152,13 +153,6 @@ Function Move-Generation2Master {
         $Psd1Metadata.NestedModules = Unique-PathList $Psd1Metadata.NestedModules
         
         New-ModuleManifest -Path $DestPsd1Path @Psd1Metadata
-        
-        if (-not (Test-Path "$DestPath\$ModuleName\Properties")) {
-            New-Item "$DestPath\$ModuleName\Properties" -ItemType Directory
-            # Copy the assemblyinfo file
-            Copy-Template -SourceName AssemblyInfo.cs -DestPath "$DestPath\$ModuleName\Properties" -DestName AssemblyInfo.cs -ModuleName $submoduleName
-            
-        }
         # update module page
         dotnet build $slnFilePath
         # start a job to update markdown help module, since we can not uninstall a module in the same process.
@@ -196,7 +190,7 @@ Function Move-Generation2Master {
                     }
                 }
                 Write-Host "$ScriptRoot/../ResolveTools/Resolve-Psd1.ps1"
-                & "$ScriptRoot/../ResolveTools/Resolve-Psd1.ps1" -ModuleName $ModuleName -Psd1Folder "$DestPath/$ModuleName$Psd1FolderPostfix"
+                & "$ScriptRoot/../ResolveTools/Resolve-Psd1.ps1" -ModuleName $ModuleName -ArtifactFolder "$DestPath\..\..\artifacts" -Psd1Folder "$DestPath/$ModuleName$Psd1FolderPostfix"
             }
             else
             {
