@@ -2,10 +2,10 @@
 ```powershell
 Invoke-AzWvdInitiateSessionHostUpdate -HostPoolName HostPoolName `
           -ResourceGroupName resourceGroupName `
-          -deleteOriginalVm `
-          -maxVmsRemoved 4`
-          -logOffDelayMinutes 5`
-          -logOffMessage "logging off for hostpool update."
+          -UpdateDeleteOriginalVm `
+          -UpdateMaxVmsRemoved 4`
+          -UpdateLogOffDelayMinutes 5`
+          -UpdateLogOffMessage "logging off for hostpool update."
 ```
 
 This command starts a sessionHostUpdate operation on the given hostpool.

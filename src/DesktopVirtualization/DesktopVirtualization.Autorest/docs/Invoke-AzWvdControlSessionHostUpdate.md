@@ -50,7 +50,7 @@ Control update of a hostpool.
 Invoke-AzWvdControlSessionHostUpdate -HostPoolName HostPoolName `
           -ResourceGroupName resourceGroupName `
           -Action "Cancel"
-          -cancelMessage "Stopping hostpool update operation."
+          -CancelMessage "Stopping hostpool update operation."
 ```
 
 This command controls and ongoing sessionHostUpdate operation on the given hostpool.

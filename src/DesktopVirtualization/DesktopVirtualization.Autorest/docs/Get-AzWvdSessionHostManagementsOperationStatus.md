@@ -38,7 +38,7 @@ Get Operation status for SessionHostManagement
 
 ### Example 1: Get a Azure Virtual Desktop SessionHostManagementOperationStatus by HostPoolName and operationId
 ```powershell
-Get-AzWvdSessionHostManagementOperationStatus -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -OperationId operationId
+Get-AzWvdSessionHostManagementsOperationStatus -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -OperationId operationId
 ```
 
 ```output
@@ -51,7 +51,7 @@ This command gets a Azure Virtual Desktop SessionHostManagementOperationStatus i
 
 ### Example 2: List Azure Virtual Desktop SessionHostManagementOperationStatuses
 ```powershell
-Get-AzWvdSessionHostManagementOperationStatus -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
+Get-AzWvdSessionHostManagementsOperationStatus -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 ```
 
 ```output
@@ -65,7 +65,7 @@ This command lists a Azure Virtual Desktop SessionHostManagementOperationStatuse
 
 ### Example 3: List Azure Virtual Desktop SessionHostManagementOperationStatuses with filters
 ```powershell
-Get-AzWvdSessionHostManagementOperationStatus -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -isLatest:$false -isNonTerminal -type Control -action start -isInitiatingOperation:$false 
+Get-AzWvdSessionHostManagementsOperationStatus -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -isLatest:$false -isNonTerminal -type Control -action start -isInitiatingOperation:$false 
 ```
 
 ```output

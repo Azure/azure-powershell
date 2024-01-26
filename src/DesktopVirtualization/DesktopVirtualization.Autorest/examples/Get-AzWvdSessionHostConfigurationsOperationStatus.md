@@ -1,6 +1,6 @@
 ### Example 1: Get a Azure Virtual Desktop SessionHostConfigurationOperationStatus by HostPoolName and operationId
 ```powershell
-Get-AzWvdSessionHostConfigurationOperationStatus -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -OperationId operationId
+Get-AzWvdSessionHostConfigurationsOperationStatus -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -OperationId operationId
 ```
 
 ```output
@@ -14,7 +14,7 @@ This command gets a Azure Virtual Desktop SessionHostConfigurationOperationStatu
 ### Example 2: List Azure Virtual Desktop SessionHostConfigurationOperationStatuses
 
 ```powershell
-Get-AzWvdSessionHostConfigurationOperationStatus -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
+Get-AzWvdSessionHostConfigurationsOperationStatus -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 ```
 
 ```output
@@ -29,7 +29,7 @@ This command lists a Azure Virtual Desktop SessionHostConfigurationOperationStat
 ### Example 3: List Azure Virtual Desktop SessionHostConfigurationOperationStatuses with filters
 
 ```powershell
-Get-AzWvdSessionHostConfigurationOperationStatus -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -isLatest:$false -isNonTerminal
+Get-AzWvdSessionHostConfigurationsOperationStatus -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -isLatest:$false -isNonTerminal
 ```
 
 ```output

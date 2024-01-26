@@ -38,10 +38,10 @@ Update a SessionHostManagement.
 Update-AzWvdSessionHostManagement -ResourceGroupName ResourceGroupName `
                             -HostPoolName HostPoolName `
                             -ScheduledDateTimeZone "Alaskan Standard Time" `
-                            -deleteOriginalVm `
-                            -maxVmsRemoved 4`
-                            -logOffDelayMinutes 5`
-                            -logOffMessage "logging off for hostpool update."
+                            -UpdateDeleteOriginalVm `
+                            -UpdateMaxVmsRemoved 4`
+                            -UpdateLogOffDelayMinutes 5`
+                            -UpdateLogOffMessage "logging off for hostpool update."
 ```
 
 ```output
