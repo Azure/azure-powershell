@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated api version to `2023-03-01`
 
 ## Version 0.5.0
 * Added cmdlet:

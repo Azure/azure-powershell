@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.VMware-help.xml
 Module Name: Az.VMware
 online version: https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwarecluster
 schema: 2.0.0
@@ -16,13 +16,20 @@ Update a cluster in a private cloud
 ```
 Update-AzVMwareCluster -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ClusterSize <Int32>] [-PropertiesHost <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityPrivateCloudExpanded
+```
+Update-AzVMwareCluster -Name <String> -PrivateCloudInputObject <IVMwareIdentity> [-ClusterSize <Int32>]
+ [-PropertiesHost <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzVMwareCluster -InputObject <IVMwareIdentity> [-ClusterSize <Int32>] [-PropertiesHost <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -124,7 +131,7 @@ Name of the cluster in the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateCloudExpanded
 Aliases: ClusterName
 
 Required: True
@@ -146,6 +153,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateCloudInputObject
+Identity Parameter
+To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Parameter Sets: UpdateViaIdentityPrivateCloudExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -289,4 +312,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[VirtualMachineId <String>]`: Virtual Machine identifier
 
 ## RELATED LINKS
-

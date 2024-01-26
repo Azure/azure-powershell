@@ -1,31 +1,26 @@
 {
-  "AzVMwareLocationTrialAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/eastus2/checkTrialAvailability?api-version=2021-12-01+1": {
+  "AzVMwareLocationTrialAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/eastus2/checkTrialAvailability?api-version=2023-03-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/eastus2/checkTrialAvailability?api-version=2021-12-01",
-      "Content": null,
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/eastus2/checkTrialAvailability?api-version=2023-03-01",
+      "Content": "{\r\n  \"name\": \"av36\"\r\n}",
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "62" ],
-        "x-ms-client-request-id": [ "cea0dcf0-1095-44c2-a326-54e891078ae6" ],
-        "CommandName": [ "Test-AzVMwareLocationTrialAvailability" ],
-        "FullCommandName": [ "Test-AzVMwareLocationTrialAvailability_Check" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ],
-        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "22" ]
       }
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:16:21 GMT" ],
-        "Server": [ "Rocket" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Fri, 12 Jan 2024 19:06:58 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "46" ],
-        "Content-Type": [ "application/json" ]
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "46" ]
       },
       "Content": "{\"status\":\"TrialAvailable\",\"availableHosts\":4}",
       "isContentBase64": false
