@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Description(@"Gets the list of migration items in the vault.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationMigrationItems", ApiVersion = "2023-01-01")]
     public partial class GetAzMigrateReplicationMigrationItem_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener
     {

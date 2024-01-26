@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/edit-azdataprotectionpolicytagclientobject
 schema: 2.0.0
@@ -14,14 +14,14 @@ Adds or removes schedule tag in an existing backup policy.
 
 ### RemoveTag (Default)
 ```
-Edit-AzDataProtectionPolicyTagClientObject -Name <TagName> -Policy <IBackupPolicy> -RemoveRule
+Edit-AzDataProtectionPolicyTagClientObject -Policy <IBackupPolicy> -Name <TagName> [-RemoveRule]
  [<CommonParameters>]
 ```
 
 ### updateTag
 ```
-Edit-AzDataProtectionPolicyTagClientObject -Criteria <IScheduleBasedBackupCriteria[]> -Name <TagName>
- -Policy <IBackupPolicy> [<CommonParameters>]
+Edit-AzDataProtectionPolicyTagClientObject -Policy <IBackupPolicy> -Name <TagName>
+ -Criteria <IScheduleBasedBackupCriteria[]> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +63,7 @@ Criterias to be associated with the schedule tag.
 To construct, see NOTES section for CRITERIA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IScheduleBasedBackupCriteria[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IScheduleBasedBackupCriteria[]
 Parameter Sets: updateTag
 Aliases:
 
@@ -81,6 +81,7 @@ Name of the Schedule tag.
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.TagName
 Parameter Sets: (All)
 Aliases:
+Accepted values: Daily, Weekly, Monthly, Yearly
 
 Required: True
 Position: Named
@@ -94,7 +95,7 @@ Backup Policy Object.
 To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -171,4 +172,3 @@ To create the parameters described below, construct a hash table containing the 
     - `[IsDefault <Boolean?>]`: 
 
 ## RELATED LINKS
-

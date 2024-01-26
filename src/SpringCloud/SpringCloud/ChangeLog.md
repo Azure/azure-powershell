@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added rename notification for Az.SpringCloud module.
 
 ## Version 0.3.0
 * Updated API version to 2022-04-01.

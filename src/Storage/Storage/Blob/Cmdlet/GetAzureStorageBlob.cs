@@ -166,11 +166,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public override string TagCondition { get; set; }
 
-        protected override bool UseTrack2Sdk()
-        {
-            return true;
-        }
-
         /// <summary>
         /// Initializes a new instance of the GetAzureStorageBlobCommand class.
         /// </summary>
@@ -202,7 +197,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             CloudBlobContainer container = null;
             BlobRequestOptions requestOptions = RequestOptions;
-            AccessCondition accessCondition = null;
 
             string prefix = string.Empty;
 
@@ -232,45 +226,30 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
 
                 BlobBaseClient blobClient = null;
-                if (UseTrack2Sdk()) // User Track2 SDK
-                {
-                    blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, false, this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"), ClientOptions, shouldTrimSlash: false);
-                    global::Azure.Storage.Blobs.Models.BlobProperties blobProperties;
-                    try
-                    {
-                        blobProperties = blobClient.GetProperties(BlobRequestConditions, cancellationToken: CmdletCancellationToken);
-                    }
-                    catch (global::Azure.RequestFailedException e) when (e.Status == 404)
-                    {
-                        throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, containerName));
-                    }
-                    blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, blobProperties.IsLatestVersion, this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"), ClientOptions, blobProperties.BlobType, shouldTrimSlash: false);
 
-                    AzureStorageBlob outputBlob = new AzureStorageBlob(blobClient, localChannel.StorageContext, blobProperties, ClientOptions);
-                    if (this.IncludeTag.IsPresent)
-                    {
-                        IDictionary<string, string> tags = (await blobClient.GetTagsAsync(null, this.CmdletCancellationToken).ConfigureAwait(false)).Value.Tags;
-                        if (tags != null)
-                        {
-                            outputBlob.Tags = tags.ToHashtable();
-                            outputBlob.TagCount = tags.Count;
-                        }
-                    }
-                    OutputStream.WriteObject(taskId, outputBlob);
+                blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, false, this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"), ClientOptions, shouldTrimSlash: false);
+                global::Azure.Storage.Blobs.Models.BlobProperties blobProperties;
+                try
+                {
+                    blobProperties = blobClient.GetProperties(BlobRequestConditions, cancellationToken: CmdletCancellationToken);
                 }
-                else // Use Track1 SDK
+                catch (global::Azure.RequestFailedException e) when (e.Status == 404)
                 {
-                    CloudBlob blob = await localChannel.GetBlobReferenceFromServerAsync(container, blobName, this.SnapshotTime, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
+                    throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, containerName));
+                }
+                blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, blobProperties.IsLatestVersion, this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"), ClientOptions, blobProperties.BlobType, shouldTrimSlash: false);
 
-                    if (null == blob)
+                AzureStorageBlob outputBlob = new AzureStorageBlob(blobClient, localChannel.StorageContext, blobProperties, ClientOptions);
+                if (this.IncludeTag.IsPresent)
+                {
+                    IDictionary<string, string> tags = (await blobClient.GetTagsAsync(null, this.CmdletCancellationToken).ConfigureAwait(false)).Value.Tags;
+                    if (tags != null)
                     {
-                        throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, containerName));
-                    }
-                    else
-                    {
-                        OutputStream.WriteObject(taskId, new AzureStorageBlob(blob, localChannel.StorageContext, ClientOptions));
+                        outputBlob.Tags = tags.ToHashtable();
+                        outputBlob.TagCount = tags.Count;
                     }
                 }
+                OutputStream.WriteObject(taskId, outputBlob);
             }
         }
 
@@ -297,93 +276,48 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             BlobContinuationToken continuationToken = ContinuationToken;
             string track2ContinuationToken = this.ContinuationToken is null ? null : this.ContinuationToken.NextMarker;
 
-            if (UseTrack2Sdk()) // For new feature only available on Track2 SDK, need list with Track2 SDK.
+            BlobTraits blobTraits = BlobTraits.Metadata | BlobTraits.CopyStatus; // | BlobTraits.Tags;
+            BlobStates blobStates = BlobStates.Snapshots;
+            if (includeDeleted)
             {
-                BlobTraits blobTraits = BlobTraits.Metadata | BlobTraits.CopyStatus; // | BlobTraits.Tags;
-                BlobStates blobStates = BlobStates.Snapshots;
-                if (includeDeleted)
-                {
-                    blobStates = blobStates | BlobStates.Deleted;
-                }
-                if (includeVersion)
-                {
-                    blobStates = blobStates | BlobStates.Version;
-                }
-                if (IncludeTag.IsPresent)
-                {
-                    blobTraits = blobTraits | BlobTraits.Tags;
-                }
-
-                do
-                {
-                    requestCount = Math.Min(listCount, MaxListCount);
-                    realListCount = 0;
-                    IEnumerator<Page<BlobItem>> enumerator = track2container.GetBlobs(blobTraits, blobStates, prefix, CmdletCancellationToken)
-                        .AsPages(track2ContinuationToken, requestCount)
-                        .GetEnumerator();
-
-                    Page<BlobItem> page;
-                    enumerator.MoveNext();
-                    page = enumerator.Current;
-                    foreach (BlobItem item in page.Values)
-                    {
-                        if (blobFilter == null || blobFilter(item.Name))
-                        {
-                            ClientOptions.TrimBlobNameSlashes = false;
-                            OutputStream.WriteObject(taskId, GetAzureStorageBlob(item, track2container, localChannel.StorageContext, page.ContinuationToken, ClientOptions));
-                        }
-                        realListCount++;
-                    }
-                    track2ContinuationToken = page.ContinuationToken;
-
-                    if (InternalMaxCount != int.MaxValue)
-                    {
-                        listCount -= realListCount;
-                    }
-                } while (listCount > 0 && !string.IsNullOrEmpty(track2ContinuationToken));
+                blobStates = blobStates | BlobStates.Deleted;
             }
-            else
+            if (includeVersion)
             {
-                BlobRequestOptions requestOptions = RequestOptions;
-                bool useFlatBlobListing = true;
-                BlobListingDetails details = BlobListingDetails.Snapshots | BlobListingDetails.Metadata | BlobListingDetails.Copy;
-                if (includeDeleted)
-                {
-                    details = details | BlobListingDetails.Deleted;
-                }
-
-                do
-                {
-                    requestCount = Math.Min(listCount, MaxListCount);
-                    realListCount = 0;
-                    BlobResultSegment blobResult = await localChannel.ListBlobsSegmentedAsync(container, prefix, useFlatBlobListing,
-                        details, requestCount, continuationToken, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
-
-                    foreach (IListBlobItem blobItem in blobResult.Results)
-                    {
-                        CloudBlob blob = blobItem as CloudBlob;
-
-                        if (blob == null)
-                        {
-                            continue;
-                        }
-
-                        if (blobFilter == null || blobFilter(blob.Name))
-                        {
-                            WriteCloudBlobObject(taskId, localChannel, blob, blobResult.ContinuationToken);
-                            realListCount++;
-                        }
-                    }
-
-                    if (InternalMaxCount != int.MaxValue)
-                    {
-                        listCount -= realListCount;
-                    }
-
-                    continuationToken = blobResult.ContinuationToken;
-                }
-                while (listCount > 0 && continuationToken != null);
+                blobStates = blobStates | BlobStates.Version;
             }
+            if (IncludeTag.IsPresent)
+            {
+                blobTraits = blobTraits | BlobTraits.Tags;
+            }
+
+            do
+            {
+                requestCount = Math.Min(listCount, MaxListCount);
+                realListCount = 0;
+                IEnumerator<Page<BlobItem>> enumerator = track2container.GetBlobs(blobTraits, blobStates, prefix, CmdletCancellationToken)
+                    .AsPages(track2ContinuationToken, requestCount)
+                    .GetEnumerator();
+
+                Page<BlobItem> page;
+                enumerator.MoveNext();
+                page = enumerator.Current;
+                foreach (BlobItem item in page.Values)
+                {
+                    if (blobFilter == null || blobFilter(item.Name))
+                    {
+                        ClientOptions.TrimBlobNameSlashes = false;
+                        OutputStream.WriteObject(taskId, GetAzureStorageBlob(item, track2container, localChannel.StorageContext, page.ContinuationToken, ClientOptions));
+                    }
+                    realListCount++;
+                }
+                track2ContinuationToken = page.ContinuationToken;
+
+                if (InternalMaxCount != int.MaxValue)
+                {
+                    listCount -= realListCount;
+                }
+            } while (listCount > 0 && !string.IsNullOrEmpty(track2ContinuationToken)); 
         }
 
         public static AzureStorageBlob GetAzureStorageBlob(BlobItem blobItem, BlobContainerClient track2container, AzureStorageContext context, string continuationToken = null, BlobClientOptions options = null)

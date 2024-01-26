@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionbackupinstance
 schema: 2.0.0
@@ -13,10 +13,10 @@ Initializes Backup instance Request object for configuring backup
 ## SYNTAX
 
 ```
-Initialize-AzDataProtectionBackupInstance -DatasourceLocation <String> -DatasourceType <DatasourceTypes>
- [-BackupConfiguration <IBackupDatasourceParameters>] [-DatasourceId <String>] [-FriendlyName <String>]
- [-PolicyId <String>] [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>]
- [-SnapshotResourceGroupId <String>] [<CommonParameters>]
+Initialize-AzDataProtectionBackupInstance -DatasourceType <DatasourceTypes> -DatasourceLocation <String>
+ [-PolicyId <String>] [-DatasourceId <String>] [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>]
+ [-SnapshotResourceGroupId <String>] [-FriendlyName <String>]
+ [-BackupConfiguration <IBackupDatasourceParameters>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +76,7 @@ Use this parameter to configure protection for AzureKubernetesService.
 To construct, see NOTES section for BACKUPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupDatasourceParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupDatasourceParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -124,6 +124,7 @@ Datasource Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
+Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureKubernetesService
 
 Required: True
 Position: Named
@@ -170,6 +171,7 @@ This parameter is only supported for AzureDatabaseForPostgreSQL currently.
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreTypes
 Parameter Sets: (All)
 Aliases:
+Accepted values: AzureKeyVault
 
 Required: False
 Position: Named
@@ -231,4 +233,3 @@ To create the parameters described below, construct a hash table containing the 
   - `ObjectType <String>`: Type of the specific object - used for deserializing
 
 ## RELATED LINKS
-

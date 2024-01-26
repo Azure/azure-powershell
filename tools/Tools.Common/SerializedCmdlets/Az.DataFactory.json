@@ -42784,7 +42784,7 @@
         "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
         "SentBytes": "System.Nullable`1[System.Double]",
         "ReceivedBytes": "System.Nullable`1[System.Double]",
-        "AvailableMemoryInMB": "System.Nullable`1[System.Int32]",
+        "AvailableMemoryInMb": "System.Nullable`1[System.Int32]",
         "CpuUtilization": "System.Nullable`1[System.Int32]",
         "ConcurrentJobsLimit": "System.Nullable`1[System.Int32]",
         "ConcurrentJobsRunning": "System.Nullable`1[System.Int32]",
@@ -42831,7 +42831,7 @@
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
-              "Name": "availableMemoryInMB",
+              "Name": "availableMemoryInMb",
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {

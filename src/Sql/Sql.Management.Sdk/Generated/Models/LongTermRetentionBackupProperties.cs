@@ -43,10 +43,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="backupStorageRedundancy">The storage redundancy type of the backup
-        /// Possible values include: 'Geo', 'Local', 'Zone', 'GeoZone'</param>
+        /// Possible values include: &#39;Geo&#39;, &#39;Local&#39;, &#39;Zone&#39;, &#39;GeoZone&#39;</param>
 
         /// <param name="requestedBackupStorageRedundancy">The storage redundancy type of the backup
-        /// Possible values include: 'Geo', 'Local', 'Zone', 'GeoZone'</param>
+        /// Possible values include: &#39;Geo&#39;, &#39;Local&#39;, &#39;Zone&#39;, &#39;GeoZone&#39;</param>
         public LongTermRetentionBackupProperties(string serverName = default(string), System.DateTime? serverCreateTime = default(System.DateTime?), string databaseName = default(string), System.DateTime? databaseDeletionTime = default(System.DateTime?), System.DateTime? backupTime = default(System.DateTime?), System.DateTime? backupExpirationTime = default(System.DateTime?), string backupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string))
 
         {

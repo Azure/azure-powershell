@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.springcloud/test-azspringcloudconfigurationservice
 schema: 2.0.0
@@ -16,14 +16,14 @@ Check if the Application Configuration Service settings are valid.
 ```
 Test-AzSpringCloudConfigurationService -ResourceGroupName <String> -ServiceName <String>
  [-SubscriptionId <String>] [-GitRepository <IConfigurationServiceGitRepository[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded
 ```
 Test-AzSpringCloudConfigurationService -InputObject <ISpringCloudIdentity>
  [-GitRepository <IConfigurationServiceGitRepository[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -257,4 +257,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
-

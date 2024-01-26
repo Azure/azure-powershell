@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the stack.")]
+        [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Signal to delete both resources and resource groups after updating stack.")]
@@ -69,16 +71,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Apply to child scopes.")]
         public SwitchParameter DenySettingsApplyToChildScopes { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "The ResourceGroup at which the deployment will be created. If none is specified, it will default to the " +
-            "subscription level scope of the deployment stack.")]
+        [Parameter(Mandatory = false, HelpMessage = "The ResourceGroup at which the deployment will be created. If none is specified, " +
+            "it will default to the subscription level scope of the deployment stack.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
         public string DeploymentResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The tags to put on the deployment.")]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = false,
-        HelpMessage = "Do not ask for confirmation when overwriting an existing stack.")]
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation when overwriting an existing stack.")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background.")]
@@ -93,20 +95,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             try
             {
                 Hashtable parameters = new Hashtable();
-                string filePath = "";
 
                 switch (ParameterSetName)
                 {
                     case ParameterlessTemplateFileParameterSetName:
                     case ParameterUriTemplateFileParameterSetName:
-                        filePath = this.TryResolvePath(TemplateFile);
-                        if (!File.Exists(filePath))
-                        {
-                            throw new PSInvalidOperationException(
-                                string.Format(ProjectResources.InvalidFilePath, TemplateFile));
-                        }
-                        filePath = ResolveBicepFile(filePath);
-                        TemplateUri = filePath;
+                        ResolveTemplate();
                         break;
                     case ParameterFileTemplateSpecParameterSetName:
                     case ParameterFileTemplateUriParameterSetName:
@@ -123,29 +117,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         break;
                     case ParameterFileTemplateFileParameterSetName:
                         parameters = ResolveParameters();
-
-                        filePath = this.TryResolvePath(TemplateFile);
-                        if (!File.Exists(filePath))
-                        {
-                            throw new PSInvalidOperationException(
-                                string.Format(ProjectResources.InvalidFilePath, TemplateFile));
-                        }
-                        filePath = ResolveBicepFile(filePath);
-
-                        TemplateUri = filePath;
+                        ResolveTemplate();
                         break;
                     case ByParameterFileWithNoTemplateParameterSetName:
                         parameters = ResolveParameters();
                         break;
                     case ParameterObjectTemplateFileParameterSetName:                       
-                        filePath = this.TryResolvePath(TemplateFile);
-                        if (!File.Exists(filePath))
-                        {
-                            throw new PSInvalidOperationException(
-                                string.Format(ProjectResources.InvalidFilePath, TemplateFile));
-                        }
-                        filePath = ResolveBicepFile(filePath);
-                        TemplateUri = filePath;
+                        ResolveTemplate();
                         parameters = GetTemplateParameterObject(TemplateParameterObject);
                         break;
                     case ParameterObjectTemplateSpecParameterSetName:

@@ -502,10 +502,7 @@ Accept wildcard characters: False
 ```
 
 ### -Expires
-Specifies the expiration time, as a **DateTime** object, for the key that this cmdlet adds. This
-parameter uses Coordinated Universal Time (UTC). To obtain a **DateTime** object, use the
-**Get-Date** cmdlet. For more information, type `Get-Help Get-Date`. If you do not specify this
-parameter, the key does not expire.
+Specifies the expiration time of the key in UTC, as a **DateTime** object, for the key that this cmdlet adds. If not specified, key will not expire. To obtain a **DateTime** object, use the **Get-Date** cmdlet. For more information, type `Get-Help Get-Date`. Please notice that expirys is ignored for Key Exchange Key used in BYOK process.
 
 ```yaml
 Type: System.Nullable`1[System.DateTime]

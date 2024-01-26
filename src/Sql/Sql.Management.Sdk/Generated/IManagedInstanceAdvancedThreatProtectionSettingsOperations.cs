@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Get the managed instance&#39;s Advanced Threat Protection settings.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -46,7 +47,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Get a managed instance&#39;s Advanced Threat Protection state.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -72,7 +74,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates Advanced Threat Protection settings.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -101,7 +104,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates or updates Advanced Threat Protection settings.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.

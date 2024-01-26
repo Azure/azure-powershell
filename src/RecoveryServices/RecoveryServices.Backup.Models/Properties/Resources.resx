@@ -844,4 +844,7 @@ Please contact Microsoft for further assistance.</value>
   <data name="UnbakedSnapshotRecoveryPoint" xml:space="preserve">
     <value>Snapshot recovery point time is less than 4 Hrs ago, please try later or with another recovery point</value>
   </data>
+  <data name="StdToEnhPolicyMigrationWarning" xml:space="preserve">
+    <value>Upgrading to enhanced policy can incur additional charges. Once upgraded to the enhanced policy, it is not possible to revert back to the standard policy</value>
+  </data>
 </root>

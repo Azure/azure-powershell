@@ -11,7 +11,9 @@ namespace Microsoft.Azure.Management.Sql
     using Models;
 
     /// <summary>
-    /// Provides create, read, update and delete functionality for Azure SQL Database resources including servers, databases, elastic pools, recommendations, operations, and usage metrics.
+    /// Provides create, read, update and delete functionality for Azure SQL
+    /// Database resources including servers, databases, elastic pools,
+    /// recommendations, operations, and usage metrics.
     /// </summary>
     public partial class SqlManagementClient : Microsoft.Rest.ServiceClient<SqlManagementClient>, ISqlManagementClient, IAzureClient
     {
@@ -44,14 +46,14 @@ namespace Microsoft.Azure.Management.Sql
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set;}
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set;}
 

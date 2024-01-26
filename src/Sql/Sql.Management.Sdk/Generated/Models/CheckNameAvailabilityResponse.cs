@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <param name="reason">The reason code explaining why the name is unavailable. Will be undefined
         /// if the name is available.
-        /// Possible values include: 'Invalid', 'AlreadyExists'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;AlreadyExists&#39;</param>
 
         /// <param name="message">A message explaining why the name is unavailable. Will be undefined if the
         /// name is available.

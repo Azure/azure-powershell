@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancerestore
 schema: 2.0.0
@@ -13,9 +13,9 @@ Validates if Restore can be triggered for a DataSource
 ## SYNTAX
 
 ```
-Test-AzDataProtectionBackupInstanceRestore -Name <String> -ResourceGroupName <String>
- -RestoreRequest <IAzureBackupRestoreRequest> -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>]
- [-NoWait] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzDataProtectionBackupInstanceRestore -ResourceGroupName <String> -Name <String> -VaultName <String>
+ -RestoreRequest <IAzureBackupRestoreRequest> [-SubscriptionId <String>] [-RestoreToSecondaryRegion]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +38,6 @@ The command tests the restore request object is valid for restore
 
 ### -AsJob
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -52,7 +51,6 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -82,7 +80,6 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -116,13 +113,28 @@ Restore request object for which to validate
 To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestoreToSecondaryRegion
+Switch parameter to trigger restore to secondary region
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -217,4 +229,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SourceResourceId <String>]`: Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
 
 ## RELATED LINKS
-

@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Description(@"Starts SQL best practices Assessment on SQL virtual machine.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/startAssessment", ApiVersion = "2022-08-01-preview")]
     public partial class StartAzSqlVMAssessment_StartViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.IEventListener
     {

@@ -71,10 +71,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolsAbortLatestOperationAcceptedResponseHeadersInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolsAbortLatestOperationAcceptedResponseHeadersInternal)this).Location, global::System.Convert.ToString);
             }
-            if (content.Contains("AzureAsyncOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolsAbortLatestOperationAcceptedResponseHeadersInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolsAbortLatestOperationAcceptedResponseHeadersInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
-            }
             AfterDeserializeDictionary(content);
         }
 
@@ -95,10 +91,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolsAbortLatestOperationAcceptedResponseHeadersInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolsAbortLatestOperationAcceptedResponseHeadersInternal)this).Location, global::System.Convert.ToString);
-            }
-            if (content.Contains("AzureAsyncOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolsAbortLatestOperationAcceptedResponseHeadersInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolsAbortLatestOperationAcceptedResponseHeadersInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -72,5 +72,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("Test-GetGroupIdListForLDAPUser");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateSnapshotPolicyId()
+        {
+            TestRunner.RunTestScript("TestUpdate-SnapshotPolicyId");
+        }
     }
 }

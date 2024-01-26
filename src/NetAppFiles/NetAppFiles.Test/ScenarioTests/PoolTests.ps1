@@ -151,6 +151,10 @@ function Test-PoolPipelines
         # one using a pipe from account
         Get-AnfAccount -ResourceGroupName $resourceGroup -Name $accName | New-AnfPool -PoolName $poolName2 -PoolSize $poolSize -ServiceLevel $serviceLevel
 
+        #Get using pipe and name
+        $piplinePool = Get-AnfAccount -ResourceGroupName $resourceGroup -Name $accName | Get-AnfPool -Name $poolName1
+        Assert-AreEqual "$accName/$poolName1" $piplinePool.Name
+
         # delete one of the pools by piping from pool get
         Get-AnfPool -ResourceGroupName $resourceGroup -AccountName $accName -Name $poolName1 | Remove-AzNetAppFilesPool
 

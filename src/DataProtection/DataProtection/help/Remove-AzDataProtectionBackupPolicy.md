@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/remove-azdataprotectionbackuppolicy
 schema: 2.0.0
@@ -14,14 +14,14 @@ Deletes a backup policy belonging to a backup vault
 
 ### Delete (Default)
 ```
-Remove-AzDataProtectionBackupPolicy -Name <String> -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDataProtectionBackupPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -VaultName <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzDataProtectionBackupPolicy -InputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -215,4 +215,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[VaultName <String>]`: The name of the backup vault.
 
 ## RELATED LINKS
-

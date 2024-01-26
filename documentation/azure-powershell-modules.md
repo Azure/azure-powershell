@@ -61,7 +61,6 @@
 | Data Protection                | `Az.DataProtection`             | [![DataProtection]][DataProtectionGallery]                         | [Changelog][DataProtectionChangeLog]             |
 | Data Share                     | `Az.DataShare`                  | [![DataShare]][DataShareGallery]                                   | [Changelog][DataShareChangeLog]                  |
 | Dedicated HSM                  | `Az.DedicatedHsm`               | [![DedicatedHsm]][DedicatedHsmGallery]                             | [Changelog][DedicatedHsmChangeLog]               |
-| Deployment Manager             | `Az.DeploymentManager`          | [![DeploymentManager]][DeploymentManagerGallery]                   | [Changelog][DeploymentManagerChangeLog]          |
 | Windows Virtual Desktop        | `Az.DesktopVirtualization`      | [![DesktopVirtualization]][DesktopVirtualizationGallery]           | [Changelog][DesktopVirtualizationChangeLog]      |
 | DevCenter                      | `Az.DevCenter`                  | [![DevCenter]][DevCenterGallery]                                   | [Changelog][DevCenterChangeLog]                  |
 | Device Provisioning Services   | `Az.DeviceProvisioningServices` | [![DeviceProvisioningServices]][DeviceProvisioningServicesGallery] | [Changelog][DeviceProvisioningServicesChangeLog] |
@@ -78,6 +77,7 @@
 | ElasticSan on Azure            | `Az.ElasticSan`                 | [![ElasticSan]][ElasticSanGallery]                                 | [Changelog][ElasticSanChangeLog]                 |
 | Event Grid                     | `Az.EventGrid`                  | [![EventGrid]][EventGridGallery]                                   | [Changelog][EventGridChangeLog]                  |
 | Event Hubs                     | `Az.EventHub`                   | [![EventHub]][EventHubGallery]                                     | [Changelog][EventHubChangeLog]                   |
+| Fleet                          | `Az.Fleet`                      | [![Fleet]][FleetGallery]                                           | [Changelog][FleetChangeLog]                   |
 | Fluid Relay                    | `Az.FluidRelay`                 | [![FluidRelay]][FluidRelayGallery]                                 | [Changelog][FluidRelayChangeLog]                 |
 | Front Door                     | `Az.FrontDoor`                  | [![FrontDoor]][FrontDoorGallery]                                   | [Changelog][FrontDoorChangeLog]                  |
 | Functions                      | `Az.Functions`                  | [![Functions]][FunctionsGallery]                                   | [Changelog][FunctionsChangeLog]                  |
@@ -229,7 +229,6 @@
 [DataProtection]:             https://img.shields.io/powershellgallery/v/Az.DataProtection.svg?style=flat-square&label=Az.DataProtection
 [DataShare]:                  https://img.shields.io/powershellgallery/v/Az.DataShare.svg?style=flat-square&label=Az.DataShare
 [DedicatedHsm]:               https://img.shields.io/powershellgallery/v/Az.DedicatedHsm.svg?style=flat-square&label=Az.DedicatedHsm
-[DeploymentManager]:          https://img.shields.io/powershellgallery/v/Az.DeploymentManager.svg?style=flat-square&label=Az.DeploymentManager
 [DigitalTwins]:               https://img.shields.io/powershellgallery/v/Az.DigitalTwins.svg?style=flat-square&label=Az.DigitalTwins
 [DiskPool]:                   https://img.shields.io/powershellgallery/v/Az.DiskPool.svg?style=flat-square&label=Az.DiskPool
 [DesktopVirtualization]:      https://img.shields.io/powershellgallery/v/Az.DesktopVirtualization.svg?style=flat-square&label=Az.DesktopVirtualization
@@ -246,6 +245,7 @@
 [ElasticSan]:                 https://img.shields.io/powershellgallery/v/Az.ElasticSan.svg?style=flat-square&label=Az.ElasticSan
 [EventGrid]:                  https://img.shields.io/powershellgallery/v/Az.EventGrid.svg?style=flat-square&label=Az.EventGrid
 [EventHub]:                   https://img.shields.io/powershellgallery/v/Az.EventHub.svg?style=flat-square&label=Az.EventHub
+[Fleet]:                      https://img.shields.io/powershellgallery/v/Az.Fleet.svg?style=flat-square&label=Az.Fleet
 [FluidRelay]:                 https://img.shields.io/powershellgallery/v/Az.FluidRelay.svg?style=flat-square&label=Az.FluidRelay
 [FrontDoor]:                  https://img.shields.io/powershellgallery/v/Az.FrontDoor.svg?style=flat-square&label=Az.FrontDoor
 [Functions]:                  https://img.shields.io/powershellgallery/v/Az.Functions.svg?style=flat-square&label=Az.Functions
@@ -393,7 +393,6 @@
 [DataProtectionGallery]:             https://www.powershellgallery.com/packages/Az.DataProtection/
 [DataShareGallery]:                  https://www.powershellgallery.com/packages/Az.DataShare/
 [DedicatedHsmGallery]:               https://www.powershellgallery.com/packages/Az.DedicatedHsm/
-[DeploymentManagerGallery]:          https://www.powershellgallery.com/packages/Az.DeploymentManager/
 [DigitalTwinsGallery]:               https://www.powershellgallery.com/packages/Az.DigitalTwins/
 [DiskPoolGallery]:                   https://www.powershellgallery.com/packages/Az.DiskPool/
 [DesktopVirtualizationGallery]:      https://www.powershellgallery.com/packages/Az.DesktopVirtualization/
@@ -410,6 +409,7 @@
 [ElasticSanGallery]:                 https://www.powershellgallery.com/packages/Az.ElasticSan/
 [EventGridGallery]:                  https://www.powershellgallery.com/packages/Az.EventGrid/
 [EventHubGallery]:                   https://www.powershellgallery.com/packages/Az.EventHub/
+[FleetGallery]:                      https://www.powershellgallery.com/packages/Az.Fleet/
 [FluidRelayGallery]:                 https://www.powershellgallery.com/packages/Az.FluidRelay/
 [FrontDoorGallery]:                  https://www.powershellgallery.com/packages/Az.FrontDoor/
 [FunctionsGallery]:                  https://www.powershellgallery.com/packages/Az.Functions/
@@ -555,7 +555,6 @@
 [DataProtectionChangeLog]:             ../src/DataProtection/ChangeLog.md
 [DataShareChangeLog]:                  ../src/DataShare/DataShare/ChangeLog.md
 [DedicatedHsmChangeLog]:               ../src/DedicatedHsm/ChangeLog.md
-[DeploymentManagerChangeLog]:          ../src/DeploymentManager/DeploymentManager/ChangeLog.md
 [DesktopVirtualizationChangeLog]:      ../src/DesktopVirtualization/ChangeLog.md
 [DevCenterChangeLog]:                  ../src/DevCenter/DevCenter/ChangeLog.md
 [DeviceProvisioningServicesChangeLog]: ../src/DeviceProvisioningServices/DeviceProvisioningServices/ChangeLog.md
@@ -572,6 +571,7 @@
 [ElasticSanChangeLog]:                 ../src/ElasticSan/ChangeLog.md
 [EventGridChangeLog]:                  ../src/EventGrid/EventGrid/ChangeLog.md
 [EventHubChangeLog]:                   ../src/EventHub/EventHub/ChangeLog.md
+[FleetChangeLog]:                      ../src/Fleet/Fleet/ChangeLog.md
 [FluidRelayChangeLog]:                 ../src/FluidRelay/ChangeLog.md
 [FrontDoorChangeLog]:                  ../src/FrontDoor/FrontDoor/ChangeLog.md
 [FunctionsChangeLog]:                  ../src/Functions/ChangeLog.md

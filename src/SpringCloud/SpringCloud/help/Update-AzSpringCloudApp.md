@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloudapp
 schema: 2.0.0
@@ -19,7 +19,7 @@ Update-AzSpringCloudApp -Name <String> -ResourceGroupName <String> -ServiceName 
  [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <ManagedIdentityType>]
  [-LoadedCertificate <ILoadedCertificate[]>] [-Location <String>] [-PersistentDiskMountPath <String>]
  [-PersistentDiskSizeInGb <Int32>] [-Public] [-TemporaryDiskMountPath <String>]
- [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ Update-AzSpringCloudApp -InputObject <ISpringCloudIdentity> [-AddonConfig <Hasht
  [-IdentityType <ManagedIdentityType>] [-LoadedCertificate <ILoadedCertificate[]>] [-Location <String>]
  [-PersistentDiskMountPath <String>] [-PersistentDiskSizeInGb <Int32>] [-Public]
  [-TemporaryDiskMountPath <String>] [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -518,4 +518,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[LoadTrustStore <Boolean?>]`: Indicate whether the certificate will be loaded into default trust store, only work for Java runtime.
 
 ## RELATED LINKS
-

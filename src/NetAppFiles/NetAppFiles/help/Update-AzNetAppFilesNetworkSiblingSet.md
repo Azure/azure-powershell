@@ -15,7 +15,7 @@ Update the network features of a network sibling set
 ```
 Update-AzNetAppFilesNetworkSiblingSet -Location <String> -SubnetId <String> -NetworkSiblingSetId <String>
  -NetworkSiblingSetStateId <String> -NetworkFeature <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ Update the network features of the specified network sibling set, use to update 
 ### Example 1
 ```powershell
 $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -Name "MyAnfVolume"
-Update-AzNetAppFilesNetworkSiblingSet -Location "westus" -NetworkSiblingSetId "$retrievedVolume.NetworkSiblingSetId" -SubnetId $subnetId -NetworkSiblingSetStateId $networkSiblingSet.NetworkSiblingSetStateId -NetworkFeature "Standard"
+Update-AzNetAppFilesNetworkSiblingSet -Location "westus" -NetworkSiblingSetId "$retrievedVolume.NetworkSiblingSetId" -SubnetId "MySubnetId" -NetworkSiblingSetStateId $retrievedVolume.NetworkSiblingSetStateId -NetworkFeature "Standard"
 ```
 
 This example gets a volume then uses that volumes NetworkSiblingSetId property to update the network features to standard.
@@ -37,7 +37,7 @@ This example gets a volume then uses that volumes NetworkSiblingSetId property t
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The location of the resource
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 Network features available to the volume, or current state of update.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 Network Sibling Set ID for a group of volumes sharing networking resources in a subnet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -97,11 +97,26 @@ Accept wildcard characters: False
 Network sibling set state Id identifying the current state of the sibling set.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -114,7 +129,7 @@ Must have the delegation Microsoft.NetApp/volumes.
 Example /subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Network/virtualNetworks/testVnet/subnets/{mySubnet}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -129,7 +144,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -145,7 +160,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

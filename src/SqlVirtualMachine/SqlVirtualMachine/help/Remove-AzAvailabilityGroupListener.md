@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
 online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/remove-azavailabilitygrouplistener
 schema: 2.0.0
@@ -15,14 +15,14 @@ Deletes an availability group listener.
 ### Delete (Default)
 ```
 Remove-AzAvailabilityGroupListener -Name <String> -ResourceGroupName <String> -SqlVMGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzAvailabilityGroupListener -InputObject <ISqlVirtualMachineIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,15 +35,11 @@ Deletes an availability group listener.
 Remove-AzAvailabilityGroupListener -ResourceGroupName 'ResourceGroup01' -SqlVMGroupName 'SqlVmGroup01' -Name 'AgListener01'
 ```
 
-
-
 ### Example 2
 ```powershell
 $msListner = Get-AzAvailabilityGroupListener -ResourceGroupName 'ResourceGroup01' -SqlVMGroupName 'SqlVmGroup01' -Name 'AgListener01'
 $msListner | Remove-AzAvailabilityGroupListener
 ```
-
-
 
 ## PARAMETERS
 
@@ -245,4 +241,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.
 
 ## RELATED LINKS
-

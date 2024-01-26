@@ -37,11 +37,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var authority = spParameters.Environment.ActiveDirectoryAuthority;
 
-            var requestContext = new TokenRequestContext(scopes);
+            var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
             AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
 
             var options = new ClientAssertionCredentialOptions()
             {
+                AuthorityHost = new Uri(authority),
                 TokenCachePersistenceOptions = spParameters.TokenCacheProvider.GetTokenCachePersistenceOptions()
             };
             options.Diagnostics.IsTelemetryEnabled = false; // disable telemetry to avoid error thrown from Azure.Core that AssemblyInformationalVersion is null

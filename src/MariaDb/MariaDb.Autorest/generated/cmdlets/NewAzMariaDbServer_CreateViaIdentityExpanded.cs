@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Extensions;
+    using System;
 
     /// <summary>
     /// Creates a new server or updates an existing server. The update action will overwrite the existing server.
@@ -18,6 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Description(@"Creates a new server or updates an existing server. The update action will overwrite the existing server.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}", ApiVersion = "2018-06-01-preview")]
     public partial class NewAzMariaDbServer_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener
     {
@@ -34,6 +36,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>Represents a server to be created.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerForCreate _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerForCreate();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -58,12 +63,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         SerializedName = @"createMode",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode CreateMode { get => ParametersBody.CreateMode; set => ParametersBody.CreateMode = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode CreateMode { get => _parametersBody.CreateMode; set => _parametersBody.CreateMode = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.ParameterCategory.Azure)]
@@ -101,14 +107,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         Description = @"The location the resource resides in.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => ParametersBody.Location ?? null; set => ParametersBody.Location = value; }
+        public string Location { get => _parametersBody.Location ?? null; set => _parametersBody.Location = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
@@ -118,12 +124,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
-
-        /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerForCreate _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerForCreate();
-
-        /// <summary>Represents a server to be created.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerForCreate ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.HttpPipeline" /> that the remote call will use.
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         Description = @"The scale up/out capacity, representing server's compute units.",
         SerializedName = @"capacity",
         PossibleTypes = new [] { typeof(int) })]
-        public int SkuCapacity { get => ParametersBody.SkuCapacity ?? default(int); set => ParametersBody.SkuCapacity = value; }
+        public int SkuCapacity { get => _parametersBody.SkuCapacity ?? default(int); set => _parametersBody.SkuCapacity = value; }
 
         /// <summary>The family of hardware.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The family of hardware.")]
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         Description = @"The family of hardware.",
         SerializedName = @"family",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuFamily { get => ParametersBody.SkuFamily ?? null; set => ParametersBody.SkuFamily = value; }
+        public string SkuFamily { get => _parametersBody.SkuFamily ?? null; set => _parametersBody.SkuFamily = value; }
 
         /// <summary>
         /// The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         Description = @"The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuName { get => ParametersBody.SkuName ?? null; set => ParametersBody.SkuName = value; }
+        public string SkuName { get => _parametersBody.SkuName ?? null; set => _parametersBody.SkuName = value; }
 
         /// <summary>The size code, to be interpreted by resource as appropriate.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The size code, to be interpreted by resource as appropriate.")]
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         Description = @"The size code, to be interpreted by resource as appropriate.",
         SerializedName = @"size",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuSize { get => ParametersBody.SkuSize ?? null; set => ParametersBody.SkuSize = value; }
+        public string SkuSize { get => _parametersBody.SkuSize ?? null; set => _parametersBody.SkuSize = value; }
 
         /// <summary>The tier of the particular SKU, e.g. Basic.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The tier of the particular SKU, e.g. Basic.")]
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SkuTier) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SkuTier))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SkuTier SkuTier { get => ParametersBody.SkuTier ?? ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SkuTier)""); set => ParametersBody.SkuTier = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SkuTier SkuTier { get => _parametersBody.SkuTier ?? ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SkuTier)""); set => _parametersBody.SkuTier = value; }
 
         /// <summary>Enable ssl enforcement or not when connect to server.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enable ssl enforcement or not when connect to server.")]
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         SerializedName = @"sslEnforcement",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum SslEnforcement { get => ParametersBody.SslEnforcement ?? ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum)""); set => ParametersBody.SslEnforcement = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum SslEnforcement { get => _parametersBody.SslEnforcement ?? ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum)""); set => _parametersBody.SslEnforcement = value; }
 
         /// <summary>Backup retention days for the server. Day count is between 7 and 35.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Backup retention days for the server. Day count is between 7 and 35.")]
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         SerializedName = @"backupRetentionDays",
         PossibleTypes = new [] { typeof(int) })]
         [System.Management.Automation.ValidateRangeAttribute(7,35)]
-        public int StorageProfileBackupRetentionDay { get => ParametersBody.StorageProfileBackupRetentionDay ?? default(int); set => ParametersBody.StorageProfileBackupRetentionDay = value; }
+        public int StorageProfileBackupRetentionDay { get => _parametersBody.StorageProfileBackupRetentionDay ?? default(int); set => _parametersBody.StorageProfileBackupRetentionDay = value; }
 
         /// <summary>Enable Geo-redundant or not for server backup.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enable Geo-redundant or not for server backup.")]
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         SerializedName = @"geoRedundantBackup",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup StorageProfileGeoRedundantBackup { get => ParametersBody.StorageProfileGeoRedundantBackup ?? ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup)""); set => ParametersBody.StorageProfileGeoRedundantBackup = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup StorageProfileGeoRedundantBackup { get => _parametersBody.StorageProfileGeoRedundantBackup ?? ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup)""); set => _parametersBody.StorageProfileGeoRedundantBackup = value; }
 
         /// <summary>Enable Storage Auto Grow.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Enable Storage Auto Grow.")]
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         SerializedName = @"storageAutogrow",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow StorageProfileStorageAutogrow { get => ParametersBody.StorageProfileStorageAutogrow ?? ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow)""); set => ParametersBody.StorageProfileStorageAutogrow = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow StorageProfileStorageAutogrow { get => _parametersBody.StorageProfileStorageAutogrow ?? ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow)""); set => _parametersBody.StorageProfileStorageAutogrow = value; }
 
         /// <summary>Max storage allowed for a server.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Max storage allowed for a server.")]
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         Description = @"Max storage allowed for a server.",
         SerializedName = @"storageMB",
         PossibleTypes = new [] { typeof(int) })]
-        public int StorageProfileStorageMb { get => ParametersBody.StorageProfileStorageMb ?? default(int); set => ParametersBody.StorageProfileStorageMb = value; }
+        public int StorageProfileStorageMb { get => _parametersBody.StorageProfileStorageMb ?? default(int); set => _parametersBody.StorageProfileStorageMb = value; }
 
         /// <summary>Application-specific metadata in the form of key-value pairs.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         Description = @"Application-specific metadata in the form of key-value pairs.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerForCreateTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerForCreateTags Tag { get => ParametersBody.Tag ?? null /* object */; set => ParametersBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerForCreateTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>Server version.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Server version.")]
@@ -285,15 +285,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion))]
-        public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion Version { get => ParametersBody.Version ?? ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion)""); set => ParametersBody.Version = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion Version { get => _parametersBody.Version ?? ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion)""); set => _parametersBody.Version = value; }
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer">Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -304,6 +304,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -329,14 +334,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.ParametersBody = this.ParametersBody;
+            clone._parametersBody = this._parametersBody;
             return clone;
         }
 
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -477,7 +482,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -494,7 +498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.ServersCreateViaIdentity(InputObject.Id, ParametersBody, onOk, this, Pipeline);
+                        await this.Client.ServersCreateViaIdentity(InputObject.Id, _parametersBody, onOk, this, Pipeline);
                     }
                     else
                     {
@@ -511,13 +515,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ServerName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.ServersCreate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ServerName ?? null, ParametersBody, onOk, this, Pipeline);
+                        await this.Client.ServersCreate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ServerName ?? null, _parametersBody, onOk, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=ParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_parametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -538,8 +542,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer">Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
