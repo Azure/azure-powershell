@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-using Xunit.Abstractions;
-
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Xunit;
+    using Xunit.Abstractions;
+
     public class RedisCacheTests : RedisCacheTestRunner
     {
         public RedisCacheTests(ITestOutputHelper output) : base(output)
