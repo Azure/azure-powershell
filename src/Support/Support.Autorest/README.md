@@ -35,13 +35,10 @@ commit: 99b27b136352e2f16c3f868857fa33157ace895f
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
-#   - $(repo)/specification/support/resource-manager/readme.md
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-local-readme.md
 input-file:
   - $(repo)/specification/support/resource-manager/Microsoft.Support/preview/2022-09-01-preview/support.json
-# try-require: 
-#   - $(repo)/specification/support/resource-manager/readme.powershell.md
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
@@ -82,7 +79,16 @@ directive:
           - FileSize
           - NumberOfChunks 
   - where:
-      verb: New
+      subject: UploadFile
+      parameter-name: FileWorkspaceName
+    set:
+      alias: WorkspaceName
+  - where:
+      subject: UploadFilesNoSubscription
+      parameter-name: FileWorkspaceName
+    set:
+      alias: WorkspaceName
+  - where:
       subject: FileWorkspacesNoSubscription
       parameter-name: FileWorkspaceName
     set:
@@ -100,6 +106,10 @@ directive:
   - where:
       verb: New
       subject: File
+    hide: true
+  - where:
+      verb: New
+      subject: FilesNoSubscription
     hide: true
   - where:
       verb: Update

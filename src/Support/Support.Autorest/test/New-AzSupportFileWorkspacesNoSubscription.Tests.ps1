@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSupportFileWorkspacesNo
 }
 
 Describe 'New-AzSupportFileWorkspacesNoSubscription' {
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Create' {
+        $fileWorkspaceName = "test-ps-$(New-Guid)"
+        $fileWorkspace = New-AzSupportFileWorkspacesNoSubscription -Name $fileWorkspaceName
+        $fileWorkspace.Name | Should -Be $fileWorkspaceName
     }
 }

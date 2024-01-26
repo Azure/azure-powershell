@@ -1,0 +1,44 @@
+{
+  "New-AzSupportFileWorkspacesNoSubscription+[NoContext]+Create+$PUT+https://management.azure.com/providers/Microsoft.Support/fileWorkspaces/test-ps-a169629b-d263-4ba1-872a-0d79019ca2d3?api-version=2022-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/fileWorkspaces/test-ps-a169629b-d263-4ba1-872a-0d79019ca2d3?api-version=2022-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "6003c6f3-0370-42db-9fb6-2e20da8b2a7b" ],
+        "CommandName": [ "New-AzSupportFileWorkspacesNoSubscription" ],
+        "FullCommandName": [ "New-AzSupportFileWorkspacesNoSubscription_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.3.11", "Az.Support/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Support/fileWorkspaces/test-ps-a169629b-d263-4ba1-872a-0d79019ca2d3?api-version=2022-09-01-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-request-id": [ "14af729f-4c8b-487d-a086-58b16d9d19f8" ],
+        "x-ms-correlation-request-id": [ "14af729f-4c8b-487d-a086-58b16d9d19f8" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240129T212541Z:14af729f-4c8b-487d-a086-58b16d9d19f8" ],
+        "Date": [ "Mon, 29 Jan 2024 21:25:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "283" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Support/fileWorkspaces/test-ps-a169629b-d263-4ba1-872a-0d79019ca2d3\",\"name\":\"test-ps-a169629b-d263-4ba1-872a-0d79019ca2d3\",\"type\":\"Microsoft.Support/fileWorkspaces\",\"properties\":{\"expirationTime\":\"2024-01-30T21:25:41Z\",\"createdOn\":\"2024-01-29T21:25:41Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

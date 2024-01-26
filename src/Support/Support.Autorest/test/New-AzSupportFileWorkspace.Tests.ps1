@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSupportFileWorkspace'))
 }
 
 Describe 'New-AzSupportFileWorkspace' {
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Create' {
+        $fileWorkspaceName = "test-ps-$(New-Guid)"
+        $fileWorkspace = New-AzSupportFileWorkspace -Name $fileWorkspaceName -SubscriptionId $env.SubscriptionId
+        $fileWorkspace.Name | Should -Be $fileWorkspaceName
     }
 }
