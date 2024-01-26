@@ -938,14 +938,12 @@ namespace Microsoft.Azure.Commands.Compute
              && this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId == null) //had to add this
             {
                 defaultTrustedLaunchAndUefi();
-
                 setTrustedLaunchImage();
             }
-
             // Disk attached scenario for TL defaulting
             // Determines if the disk has SecurityType enabled.
             // If so, turns on TrustedLaunch for this VM.
-            if (this.VM.SecurityProfile?.SecurityType == null
+            else if (this.VM.SecurityProfile?.SecurityType == null
                 && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id != null)
             {
                 var mDiskId = this.VM.StorageProfile?.OsDisk?.ManagedDisk.Id.ToString();
@@ -959,33 +957,14 @@ namespace Microsoft.Azure.Commands.Compute
                     defaultTrustedLaunchAndUefi();
                 }
             }
-
-            // Guest Attestation extension defaulting scenario check.
-            // And SecureBootEnabled and VtpmEnabled defaulting scenario.
-            if (this.VM.SecurityProfile?.SecurityType != null
-                && (this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType 
-                || this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType))
-            {
-                if (this.VM?.SecurityProfile?.UefiSettings != null)
-                {
-                    this.VM.SecurityProfile.UefiSettings.SecureBootEnabled = this.VM.SecurityProfile.UefiSettings.SecureBootEnabled ?? true;
-                    this.VM.SecurityProfile.UefiSettings.VTpmEnabled = this.VM.SecurityProfile.UefiSettings.VTpmEnabled ?? true;
-                }
-                else
-                {
-                    this.VM.SecurityProfile.UefiSettings = new UefiSettings(true, true);
-                }
-            }
-            
-
             // ImageReference provided, TL defaulting occurs if image is Gen2. 
             // This will handle when the Id is provided in a URI format and 
             // when the image segments are provided individually.
-            if (this.VM.SecurityProfile?.SecurityType == null
+            else if (this.VM.SecurityProfile?.SecurityType == null
                 && this.VM.StorageProfile?.ImageReference != null)
             {
                 if (this.VM.StorageProfile?.ImageReference?.Id != null)
-                { 
+                {
                     string imageRefString = this.VM.StorageProfile.ImageReference.Id.ToString();
 
                     string galleryImgIdPattern = @"/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroup>[^/]+)/providers/Microsoft.Compute/galleries/(?<gallery>[^/]+)/images/(?<image>[^/]+)";
@@ -1001,7 +980,7 @@ namespace Microsoft.Azure.Commands.Compute
                     // Default Image Id
                     Regex defaultImageRgx = new Regex(defaultExistingImagePattern, RegexOptions.IgnoreCase);
                     Match defaultImageMatch = defaultImageRgx.Match(imageRefString);
-                    
+
                     if (defaultImageMatch.Success)
                     {
                         var parts = imageRefString.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
@@ -1045,14 +1024,29 @@ namespace Microsoft.Azure.Commands.Compute
                     setHyperVGenForImageCheckAndTLDefaulting(specificImageRespone);
                 }
             }
-
-            if (this.VM.SecurityProfile?.SecurityType == ConstantValues.TrustedLaunchSecurityType
+            else if (this.VM.SecurityProfile?.SecurityType == ConstantValues.TrustedLaunchSecurityType
                 && this.VM.StorageProfile?.ImageReference == null
                 && this.VM.StorageProfile?.OsDisk?.ManagedDisk?.Id == null //had to add this
-                && this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId == null) 
+                && this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId == null)
             {
                 defaultTrustedLaunchAndUefi();
                 setTrustedLaunchImage();
+            }
+
+            // SecureBootEnabled and VtpmEnabled defaulting scenario.
+            if (this.VM.SecurityProfile?.SecurityType != null
+                && (this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType 
+                || this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType))
+            {
+                if (this.VM?.SecurityProfile?.UefiSettings != null)
+                {
+                    this.VM.SecurityProfile.UefiSettings.SecureBootEnabled = this.VM.SecurityProfile.UefiSettings.SecureBootEnabled ?? true;
+                    this.VM.SecurityProfile.UefiSettings.VTpmEnabled = this.VM.SecurityProfile.UefiSettings.VTpmEnabled ?? true;
+                }
+                else
+                {
+                    this.VM.SecurityProfile.UefiSettings = new UefiSettings(true, true);
+                }
             }
 
             // Standard security type removing value since API does not support it yet.
