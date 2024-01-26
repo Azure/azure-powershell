@@ -5,7 +5,7 @@ New-AzWvdSessionHostManagement -ResourceGroupName ResourceGroupName `
                             -ScheduledDateTimeZone "Alaskan Standard Time" `
                             -UpdateDeleteOriginalVm `
                             -UpdateMaxVmsRemoved 4 `
-                            -UpdateLogOffDelayMinutes 5 `
+                            -UpdateLogOffDelayMinute 5 `
                             -UpdateLogOffMessage "logging off for hostpool update."
 ```
 
