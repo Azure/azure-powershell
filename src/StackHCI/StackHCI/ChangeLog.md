@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue for WAC.
+* Restricted registration for 23H2 devices exclusively to cloud deployment.
 
 ## Version 2.2.3
 * Added support for ARC Onboarding using Cluster Managed Identity. 
