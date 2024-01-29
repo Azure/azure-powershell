@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.3.1
 * Added code to prevent delete of destination if destination is parent of path to be moved
 
 ## Version 1.3.0
