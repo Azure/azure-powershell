@@ -21,6 +21,7 @@
 ## Upcoming Release
 * Redirected device code login messages from warning stream to information stream if use device authentication in `Connect-AzAccount`.
 * Fixed the multiple `x-ms-unique-id` values issue
+* Upgraded the reference of Azure PowerShell Common to 1.3.90-preview.
 * Upgraded Azure.Identity to 1.10.3 [#23018].
   - Renamed token cache from `msal.cache` to `msal.cache.cae` or `masl.cache.nocae`.
 * Enabled Continue Access Evaluation (CAE) for all Service Principals login methods.
