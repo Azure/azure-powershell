@@ -25,16 +25,22 @@ description: Microsoft NetApp Files Azure Resource Provider specification
 
 ###
 ``` yaml
-commit: 4fa739f0e25924aef6e3db0f54292181b2a7d0c3
+commit: ee05b0049a20adc0e010bbbf17c50a0fdbf72a47
 input-file:
-   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/netapp/resource-manager/Microsoft.NetApp/stable/2023-05-01/netapp.json
+   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/netapp/resource-manager/Microsoft.NetApp/stable/2023-07-01/netapp.json
 output-folder: Generated
 namespace: Microsoft.Azure.Management.NetApp
 
 list-exception:
   - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}
 
-# directive:
+directive:
   # remove this operation because the Snapshots_Update defines an empty object
   # - remove-operation: Snapshots_Update
+  # CodeGen don't support some definitions in v4 & v5 common types, in v4 and v5 subscriptionId has the format of uuid, but the generator is not correctly handling it right now
+  - from: types.json
+    where: $.parameters.SubscriptionIdParameter
+    transform: >
+      delete $.format;
+
 ```

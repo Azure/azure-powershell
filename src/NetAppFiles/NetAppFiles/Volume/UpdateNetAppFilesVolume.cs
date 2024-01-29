@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -120,7 +121,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [Parameter(
             Mandatory = false,
             HelpMessage = "Snapshot Policy ResourceId used to apply a snapshot policy to the volume")]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public string SnapshotPolicyId { get; set; }
 
         [Parameter(
@@ -252,11 +253,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 ExecuteCmdlet_2022_11_01(tagPairs);
             }
             PSNetAppFilesVolumeDataProtection dataProtection = null;
-            if (!string.IsNullOrWhiteSpace(SnapshotPolicyId))
+            if (SnapshotPolicyId != null)
             {
                 dataProtection = new PSNetAppFilesVolumeDataProtection
                 {
-                    Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId }                    
+                    Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId }
                 };
             }
 
@@ -339,8 +340,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
-                var anfVolume = AzureNetAppFilesManagementClient.Volume_2022_11_01.Update(ResourceGroupName, AccountName, PoolName, Name, volumePatchBody);
-                WriteObject(anfVolume.ToPsNetAppFilesVolume());
+                try
+                {
+                    var anfVolume = AzureNetAppFilesManagementClient.Volume_2022_11_01.Update(ResourceGroupName, AccountName, PoolName, Name, volumePatchBody);
+                    WriteObject(anfVolume.ToPsNetAppFilesVolume());
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         public static CheckAvailabilityResponse CheckNameAvailability(this INetAppResourceOperations operations, string location, string name, string type, string resourceGroup)
         {
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         public static CheckAvailabilityResponse CheckFilePathAvailability(this INetAppResourceOperations operations, string location, string name, string subnetId)
         {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         public static CheckAvailabilityResponse CheckQuotaAvailability(this INetAppResourceOperations operations, string location, string name, string type, string resourceGroup)
         {
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         public static RegionInfo QueryRegionInfo(this INetAppResourceOperations operations, string location)
         {
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         public static NetworkSiblingSet QueryNetworkSiblingSet(this INetAppResourceOperations operations, string location, string networkSiblingSetId, string subnetId)
         {
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         public static NetworkSiblingSet UpdateNetworkSiblingSet(this INetAppResourceOperations operations, string location, string networkSiblingSetId, string subnetId, string networkSiblingSetStateId, string networkFeatures)
         {
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         public static NetworkSiblingSet BeginUpdateNetworkSiblingSet(this INetAppResourceOperations operations, string location, string networkSiblingSetId, string subnetId, string networkSiblingSetStateId, string networkFeatures)
         {
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

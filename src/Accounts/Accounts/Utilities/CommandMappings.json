@@ -4778,6 +4778,8 @@
       "Test-AzNetworkWatcherIPFlow": {},
       "Test-AzPrivateIPAddressAvailability": {},
       "Test-AzPrivateLinkServiceVisibility": {},
+      "New-AzVirtualApplianceInternetIngressIpsProperty": {},
+      "Update-AzNetworkVirtualApplianceConnection": {},
       "Update-AzCustomIpPrefix": {},
       "Update-AzNetworkVirtualAppliance": {},
       "Update-AzP2sVpnGateway": {},

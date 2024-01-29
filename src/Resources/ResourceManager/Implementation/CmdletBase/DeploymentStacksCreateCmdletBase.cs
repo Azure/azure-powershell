@@ -155,6 +155,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
             return (parameters, templateJson, templateSpecId);
         }
 
+        protected void ResolveTemplate()
+        {
+            var filePath = this.TryResolvePath(TemplateFile);
+            if (!File.Exists(filePath))
+            {
+                throw new PSInvalidOperationException(string.Format(ProjectResources.InvalidFilePath, TemplateFile));
+            }
+
+            var templateJson = ResolveBicepFile(filePath);
+            if (!string.IsNullOrEmpty(templateJson))
+            {
+                TemplateJson = templateJson;
+            }
+            else
+            {
+                TemplateUri = filePath;
+            }
+        }
+
         protected Hashtable ResolveParameters()
         {
             var output = GetParametersAndMetadataFromFile();

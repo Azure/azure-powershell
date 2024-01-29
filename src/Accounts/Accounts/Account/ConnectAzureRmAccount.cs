@@ -711,6 +711,7 @@ namespace Microsoft.Azure.Commands.Profile
 #endif
                 AzureSessionInitializer.InitializeAzureSession(WriteInitializationWarnings);
                 AzureSessionInitializer.MigrateAdalCache(AzureSession.Instance, GetAzureContextContainer, WriteInitializationWarnings);
+                AzureSessionInitializer.MigrateMsalCacheWithoutSuffix(AzureSession.Instance, WriteInitializationWarnings);
 #if DEBUG
                 if (!TestMockSupport.RunningMocked)
                 {

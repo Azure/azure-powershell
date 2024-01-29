@@ -1298,6 +1298,7 @@ configuration:
             - toddysm
             - luisdlp
             - northtyphoon
+            - terencet-dev
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2145,6 +2146,23 @@ configuration:
         - mentionUsers:
             mentionees:
             - aashishb
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Machine Learning Services
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Machine Learning Services
+        then:
+        - mentionUsers:
+            mentionees:
+            - paulshealy1
+            - seanyao1
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:

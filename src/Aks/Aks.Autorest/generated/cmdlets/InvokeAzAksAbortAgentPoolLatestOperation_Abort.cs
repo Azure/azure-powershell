@@ -20,6 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Description(@"Aborts the currently running operation on the agent pool. The Agent Pool will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedclusters/{resourceName}/agentPools/{agentPoolName}/abort", ApiVersion = "2023-02-01")]
     public partial class InvokeAzAksAbortAgentPoolLatestOperation_Abort : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener
     {

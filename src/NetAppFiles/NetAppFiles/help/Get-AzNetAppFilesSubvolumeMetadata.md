@@ -15,19 +15,20 @@ Gets metadata details of an Azure NetApp Files (ANF) subvolume.
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzNetAppFilesSubvolumeMetadata -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- [-VolumeName <String>] -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VolumeName <String>] -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzNetAppFilesSubvolumeMetadata -Name <String> -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Get-AzNetAppFilesSubvolumeMetadata -Name <String> -VolumeObject <PSNetAppFilesVolume>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -115,6 +116,21 @@ Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

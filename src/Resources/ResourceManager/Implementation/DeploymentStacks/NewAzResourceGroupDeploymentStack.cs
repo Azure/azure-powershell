@@ -91,20 +91,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             try
             {
                 Hashtable parameters = new Hashtable();
-                string filePath = "";
 
                 switch (ParameterSetName)
                 {
                     case ParameterlessTemplateFileParameterSetName:
                     case ParameterUriTemplateFileParameterSetName:
-                        filePath = this.TryResolvePath(TemplateFile);
-                        if(!File.Exists(filePath))
-                        {
-                            throw new PSInvalidOperationException(
-                                string.Format(ProjectResources.InvalidFilePath, TemplateFile));
-                        }
-                        filePath = ResolveBicepFile(filePath);
-                        TemplateUri = filePath;
+                        ResolveTemplate();
                         break;
                     case ParameterFileTemplateSpecParameterSetName:
                     case ParameterFileTemplateUriParameterSetName:
@@ -121,29 +113,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         break;
                     case ParameterFileTemplateFileParameterSetName:
                         parameters = ResolveParameters();
-
-                        filePath = this.TryResolvePath(TemplateFile);
-                        if (!File.Exists(filePath))
-                        {
-                            throw new PSInvalidOperationException(
-                                string.Format(ProjectResources.InvalidFilePath, TemplateFile));
-                        }
-                        filePath = ResolveBicepFile(filePath);
-
-                        TemplateUri = filePath;
+                        ResolveTemplate();
                         break;
                     case ByParameterFileWithNoTemplateParameterSetName:
                         parameters = ResolveParameters();
                         break;
                     case ParameterObjectTemplateFileParameterSetName:
-                        filePath = this.TryResolvePath(TemplateFile);
-                        if (!File.Exists(filePath))
-                        {
-                            throw new PSInvalidOperationException(
-                                string.Format(ProjectResources.InvalidFilePath, TemplateFile));
-                        }
-                        filePath = ResolveBicepFile(filePath);
-                        TemplateUri = filePath;
+                        ResolveTemplate();
                         parameters = GetTemplateParameterObject(TemplateParameterObject);
                         break;
                     case ParameterObjectTemplateSpecParameterSetName:

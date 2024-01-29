@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/restart-azmigrateserverreplication
 schema: 2.0.0
@@ -20,7 +20,7 @@ Restart-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <St
 
 ### ByInputObjectVMwareCbt
 ```
-Restart-AzMigrateServerReplication -InputObject <IMigrationItem> [-SubscriptionId <String>]
+Restart-AzMigrateServerReplication [-SubscriptionId <String>] -InputObject <IMigrationItem>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -178,4 +178,3 @@ To create the parameters described below, construct a hash table containing the 
     - `InstanceType <String>`: Gets the instance type.
 
 ## RELATED LINKS
-

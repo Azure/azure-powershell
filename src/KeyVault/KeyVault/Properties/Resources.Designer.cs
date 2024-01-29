@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -1342,6 +1342,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide a valid SasToken or use Managed Identity for authentication..
+        /// </summary>
+        internal static string SasTokenNotNull {
+            get {
+                return ResourceManager.GetString("SasTokenNotNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to selective restore key {0} of managed HSM {1}..
         /// </summary>
         internal static string SelectiveRestoreFailed {
@@ -1500,6 +1509,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string UpdateNetworkRuleWarning {
             get {
                 return ResourceManager.GetString("UpdateNetworkRuleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter SasToken and UseUserManagedIdentity can not exist at the same time. Please choose either one as authentication method..
+        /// </summary>
+        internal static string UseManagedIdentityAndSasTokenBothExist {
+            get {
+                return ResourceManager.GetString("UseManagedIdentityAndSasTokenBothExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please choose either SasToken or UseUserManagedIdentity as authentication method..
+        /// </summary>
+        internal static string UseManagedIdentityAndSasTokenNeitherExist {
+            get {
+                return ResourceManager.GetString("UseManagedIdentityAndSasTokenNeitherExist", resourceCulture);
             }
         }
         

@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfile))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Description(@"Gets supported OS options in the specified subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.ContainerService/locations/{location}/osOptions/default", ApiVersion = "2023-02-01")]
     public partial class GetAzAksManagedClusterOSOption_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener
     {

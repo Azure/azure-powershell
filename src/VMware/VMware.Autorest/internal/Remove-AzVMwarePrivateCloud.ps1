@@ -61,6 +61,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareprivatecloud
 #>
@@ -101,7 +102,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -174,7 +176,7 @@ begin {
             Delete = 'Az.VMware.private\Remove-AzVMwarePrivateCloud_Delete';
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwarePrivateCloud_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 

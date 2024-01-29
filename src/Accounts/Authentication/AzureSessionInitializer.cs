@@ -12,30 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-
 using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCache;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Config;
-using Newtonsoft.Json;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
+using Microsoft.Identity.Client.Extensions.Msal;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Utilities;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
+using Newtonsoft.Json;
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading;
 
 using TraceLevel = System.Diagnostics.TraceLevel;
-using System.Collections.Generic;
-using System.Threading;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Utilities;
-using Microsoft.WindowsAzure.Commands.Common.Utilities;
-using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -119,7 +120,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 }
 
                 var adalCachePath = Path.Combine(session.ProfileDirectory, "TokenCache.dat");
-                var msalCachePath = Path.Combine(session.TokenCacheDirectory, "msal.cache");
+                var msalCachePath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
                 var store = session.DataStore;
                 if (!store.FileExists(adalCachePath) || store.FileExists(msalCachePath))
                 {
@@ -142,12 +143,41 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
                 if (adalData != null && adalData.Length > 0)
                 {
-                    new AdalTokenMigrator(adalData, getContextContainer).MigrateFromAdalToMsal();
+                    new AdalTokenMigrator(adalData, getContextContainer).MigrateFromAdalToMsal(session.TokenCacheFile);
                 }
             }
             catch (Exception e)
             {
                 writeWarning(Resources.FailedToMigrateAdal2Msal.FormatInvariant(e.Message));
+            }
+        }
+
+        public static void MigrateMsalCacheWithoutSuffix(IAzureSession session, Action<string> writeWarning)
+        {
+            try
+            {
+                if (session.ARMContextSaveMode == ContextSaveMode.CurrentUser)
+                {
+                    var oldMsalCachePath = Path.Combine(MsalCacheHelperProvider.MsalTokenCachePath, MsalCacheHelperProvider.LegacyTokenCacheName);
+                    var newMsalCachePath = Path.Combine(MsalCacheHelperProvider.MsalTokenCachePath, session.TokenCacheFile);
+                    var store = session.DataStore;
+                    if (store.FileExists(oldMsalCachePath) && !store.FileExists(newMsalCachePath))
+                    {
+                        MsalCacheHelperProvider.Reset();
+                        MsalCacheHelper oldCacheHelper = MsalCacheHelperProvider.GetCacheHelper(MsalCacheHelperProvider.LegacyTokenCacheName);
+                        var data = oldCacheHelper.LoadUnencryptedTokenCache();
+                        if (data != null && data.Length > 0)
+                        {
+                            MsalCacheHelperProvider.Reset();
+                            MsalCacheHelper newCacheHelper = MsalCacheHelperProvider.GetCacheHelper(session.TokenCacheFile);
+                            newCacheHelper.SaveUnencryptedTokenCache(data);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                writeWarning(Resources.FailedToMigrateMsalCacheWithLegayName.FormatInvariant(e.Message));
             }
         }
 
@@ -163,7 +193,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 CacheDirectory = cacheDirectory,
                 ContextDirectory = profileDirectory,
                 Mode = ContextSaveMode.Process,
-                CacheFile = "msal.cache",
+                CacheFile = MsalCacheHelperProvider.LegacyTokenCacheName,
                 ContextFile = "AzureRmContext.json"
             };
 
@@ -181,6 +211,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     result.Mode = settings.Mode;
                     result.ContextFile = settings.ContextFile ?? result.ContextFile;
                     result.Settings = settings.Settings;
+                    result.KeyStoreFile = settings.KeyStoreFile;
                     bool updateSettings = false;
                     if (!settings.Settings.ContainsKey("InstallationId"))
                     {
@@ -271,8 +302,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.ARMProfileDirectory = autoSave.ContextDirectory;
             session.ARMProfileFile = autoSave.ContextFile;
             session.TokenCacheDirectory = autoSave.CacheDirectory;
-            session.TokenCacheFile = autoSave.CacheFile;
-            session.KeyStoreFile = "keystore.cache";
+            session.TokenCacheFile = MsalCacheHelperProvider.GetTokenCacheName(autoSave.CacheFile, true);
+            session.KeyStoreFile = autoSave.KeyStoreFile ?? "keystore.cache";
             autoSave.Settings.TryGetValue("InstallationId", out string installationId);
             session.ExtendedProperties.Add("InstallationId", installationId);
             InitializeConfigs(session, profilePath, writeWarning);

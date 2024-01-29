@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Microsoft.Azure.Management.Resources.Models;
     using Newtonsoft.Json.Linq;
     using System;
@@ -78,11 +79,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="rootTemplateFilePath">
         /// The path to the ARM Template .json file to pack
         /// </param>
-        /// <param name="uiFormDefinitionFilePath">
-        /// The path to the UI Form Definition .json to pack (if any)
-        /// </param>
-        public static PackagedTemplate Pack(string rootTemplateFilePath, 
-            string uiFormDefinitionFilePath)
+        public static PackagedTemplate Pack(string rootTemplateFilePath)
         {
             rootTemplateFilePath = Path.GetFullPath(rootTemplateFilePath);
             PackingContext context = new PackingContext(
@@ -90,22 +87,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             );
             
             PackArtifacts(rootTemplateFilePath, context, out JObject templateObj);
-            var packagedTemplate = new PackagedTemplate
+
+            return new PackagedTemplate
             {
                 RootTemplate = templateObj,
                 Artifacts = context.Artifacts.ToArray()
             };
+        }
 
-            // If a UI Form Definition file path was provided to us, make sure we package the
-            // UI Form Definition as well:
-
-            if (!string.IsNullOrWhiteSpace(uiFormDefinitionFilePath))
+        public static PackagedTemplate PackBicep(string filePath, Action<string> writeVerbose, Action<string> writeWarning)
+        {
+            // Complex packaging is unneccessary for Bicep because it doesn't support usage of 'relativePath'.
+            var templateJson = BicepUtility.Create().BuildBicepFile(filePath, msg => writeVerbose(msg), msg => writeWarning(msg));
+            
+            return new PackagedTemplate
             {
-                string uiFormDefinitionJson = FileUtilities.DataStore.ReadFileAsText(uiFormDefinitionFilePath);
-                packagedTemplate.UIFormDefinition = JObject.Parse(uiFormDefinitionJson);
-            }
-
-            return packagedTemplate;
+                RootTemplate = JObject.Parse(templateJson),
+                Artifacts = Array.Empty<LinkedTemplateArtifact>(),
+            };
         }
 
         /// <summary>

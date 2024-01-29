@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MariaDb-help.xml
 Module Name: Az.MariaDb
 online version: https://learn.microsoft.com/powershell/module/az.mariadb/update-azmariadbconfiguration
 schema: 2.0.0
@@ -17,13 +17,13 @@ Use Update-AzMariaDbServer instead if you want update AdministratorLoginPassword
 ```
 Update-AzMariaDbConfiguration -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] [-Source <String>] [-Value <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzMariaDbConfiguration -InputObject <IMariaDbIdentity> [-Source <String>] [-Value <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +34,7 @@ Use Update-AzMariaDberver instead if you want update AdministratorLoginPassword,
 
 ### Example 1: Update MariaDB configuration
 ```powershell
-Update-AzMariaDbConfiguration -Name delayed_insert_timeout -Value 200 -ServerName mariadb-test-h3pame -ResourceGroupName mariadb-test-qu5ov0 
+Update-AzMariaDbConfiguration -Name delayed_insert_timeout -Value 200 -ServerName mariadb-test-h3pame -ResourceGroupName mariadb-test-qu5ov0
 ```
 
 ```output
@@ -263,4 +263,3 @@ INPUTOBJECT `<IMariaDbIdentity>`: Identity Parameter
   - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
 
 ## RELATED LINKS
-

@@ -16,11 +16,10 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
-using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
-using System.Linq;
-using System.Collections.Generic;
+using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -75,7 +74,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the ANF VolumeGroup")]
+            HelpMessage = "The name of the ANF QuotaRule")]
         [ValidateNotNullOrEmpty]
         [Alias("VolumeGroupName")]
         [ResourceNameCompleter(
@@ -147,8 +146,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
             {
-                AzureNetAppFilesManagementClient.VolumeQuotaRules.Delete(ResourceGroupName, AccountName, poolName: PoolName, volumeName: VolumeName, volumeQuotaRuleName: Name);
-                success = true;
+                try
+                {
+                    AzureNetAppFilesManagementClient.VolumeQuotaRules.Delete(ResourceGroupName, AccountName, poolName: PoolName, volumeName: VolumeName, volumeQuotaRuleName: Name);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
             if (PassThru.IsPresent)
             {

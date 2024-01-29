@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Network;
+    using Microsoft.Azure.Management.Network.Models;
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -66,5 +67,13 @@ namespace Microsoft.Azure.Commands.Network
         {
             return NetworkBaseCmdlet.IsResourcePresent(() => { GetNvaConnection(resourceGroupName, parentNvaGatewayName, name); });
         }
+
+        public PSNetworkVirtualApplianceConnection CreateOrUpdateNetworkVirtualApplianceConnection(string resourceGroupName, string nvaName, string connectionName, NetworkVirtualApplianceConnection nvaConnection)
+        {
+            this.NetworkVirtualApplianceConnectionClient.CreateOrUpdate(resourceGroupName, nvaName, connectionName, nvaConnection);
+            var connectionToReturn = this.GetNvaConnection(resourceGroupName, nvaName, connectionName);
+            return connectionToReturn;
+        }
+
     }
 }

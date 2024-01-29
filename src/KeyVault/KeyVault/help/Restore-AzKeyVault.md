@@ -15,28 +15,28 @@ Fully restores a managed HSM from backup.
 ### InteractiveStorageName (Default)
 ```
 Restore-AzKeyVault -BackupFolder <String> [-KeyName <String>] [-PassThru] [-HsmName] <String>
- -StorageAccountName <String> -StorageContainerName <String> -SasToken <SecureString>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -StorageAccountName <String> -StorageContainerName <String> [-SasToken <SecureString>]
+ [-UseUserManagedIdentity] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InteractiveStorageUri
 ```
 Restore-AzKeyVault -BackupFolder <String> [-KeyName <String>] [-PassThru] [-HsmName] <String>
- -StorageContainerUri <Uri> -SasToken <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -StorageContainerUri <Uri> [-SasToken <SecureString>] [-UseUserManagedIdentity]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectStorageUri
 ```
 Restore-AzKeyVault -BackupFolder <String> [-KeyName <String>] [-PassThru] -StorageContainerUri <Uri>
- -SasToken <SecureString> -HsmObject <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SasToken <SecureString>] [-UseUserManagedIdentity] -HsmObject <PSManagedHsm>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectStorageName
 ```
 Restore-AzKeyVault -BackupFolder <String> [-KeyName <String>] [-PassThru] -StorageAccountName <String>
- -StorageContainerName <String> -SasToken <SecureString> -HsmObject <PSManagedHsm>
+ -StorageContainerName <String> [-SasToken <SecureString>] [-UseUserManagedIdentity] -HsmObject <PSManagedHsm>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -46,13 +46,23 @@ Use `Backup-AzKeyVault` to backup.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 Restore a Key Vault
 ```powershell
 $sasToken = ConvertTo-SecureString -AsPlainText -Force "?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-10-12T14:42:19Z&st=2020-10-12T06:42:19Z&spr=https&sig=******"
 Restore-AzKeyVault -HsmName myHsm -StorageContainerUri "https://{accountName}.blob.core.windows.net/{containerName}" -BackupFolder "mhsm-myHsm-2020101308504935" -SasToken $sasToken
 ```
 
 The example restores a backup stored in a folder named "mhsm-myHsm-2020101308504935" of a storage container "https://{accountName}.blob.core.windows.net/{containerName}".
+
+### Example 2 Restore a Key Vault via User Assigned Managed Identity Authentication
+```powershell
+# Make sure an identity is assigend to the Hsm
+Update-AzKeyVaultManagedHsm -UserAssignedIdentity "/subscriptions/{sub-id}/resourceGroups/{rg-name}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identity-name}"
+Restore-AzKeyVault -HsmName myHsm -StorageContainerUri "https://{accountName}.blob.core.windows.net/{containerName}" -BackupFolder "mhsm-myHsm-2020101308504935" -UseUserManagedIdentity
+```
+
+The example restores an HSM via User Assigned Managed Identity Authentication.
+
 
 ## PARAMETERS
 
@@ -156,7 +166,7 @@ Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -202,6 +212,21 @@ Parameter Sets: InteractiveStorageUri, InputObjectStorageUri
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseUserManagedIdentity
+Specified to use User Managed Identity to authenticate the storage account. Only valid when SasToken is not set.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
