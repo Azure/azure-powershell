@@ -24,7 +24,7 @@ function Test-CodeSigningEku {
 
     try {
         # Test Get CodeSigning Eku
-        $eku = Get-AzCodeSigningEku -AccountNameName $accountName -ProfileName $profileName -EndpointUrl $$endPointUrl
+        $eku = Get-AzCodeSigningCustomerEku -AccountName $accountName -ProfileName $profileName -EndpointUrl $endPointUrl
         Assert-AreEqual $eku
         Assert-AreEqual $rgName $$expectedEku
     }
