@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Upgraded the reference of Azure PowerShell Common to 1.3.90-preview.
 * Upgraded Azure.Identity to 1.10.3 [#23018].
   - Renamed token cache from `msal.cache` to `msal.cache.cae` or `masl.cache.nocae`.
 * Enabled Continue Access Evaluation (CAE) for all Service Principals login methods.
