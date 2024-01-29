@@ -127,8 +127,8 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-
 process {
+    $ErrorActionPreference = 'Stop'
     Write-Output "file path: " $FilePath
     $MaxChunkSize = 2.5 * 1024 * 1024 #2.5 MB
     $MaxFileSize = 5 * 1024 * 1024 #5 MB
