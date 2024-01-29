@@ -1,0 +1,95 @@
+{
+  "resourceType": "hostPools/sessionHosts",
+  "apiVersion": "2023-11-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
+  },
+  "commands": [
+    {
+      "name": "Get-AzWvdSessionHost",
+      "description": "Get a session host.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhost"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HostPoolName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a session host.",
+          "parameters": [
+            {
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.sessionHostName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzWvdRetrySessionHostProvisioning",
+      "description": "Retry provisioning on a SessionHost.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHosts/{sessionHostName}/retryProvisioning",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/invoke-azwvdretrysessionhostprovisioning"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HostPoolName <String>",
+              "-ResourceGroupName <String>",
+              "-SessionHostName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Retry provisioning on a SessionHost.",
+          "parameters": [
+            {
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SessionHostName",
+              "value": "[Path.sessionHostName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

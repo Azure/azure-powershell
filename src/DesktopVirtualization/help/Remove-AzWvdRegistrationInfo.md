@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzWvdRegistrationInfo
 
 ## SYNOPSIS
-Remove the Windows virtual desktop registration info.
+Remove the Azure Virtual Desktop registration info.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Remove-AzWvdRegistrationInfo -HostPoolName <String> -ResourceGroupName <String> 
 ```
 
 ## DESCRIPTION
-Remove the Windows virtual desktop registration info.
+Remove the Azure Virtual Desktop registration info.
 
 ## EXAMPLES
 
@@ -130,8 +130,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

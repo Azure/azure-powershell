@@ -49,7 +49,7 @@ Update a host pool.
 
 ## EXAMPLES
 
-### Example 1: Update a Windows Virtual Desktop HostPool by name
+### Example 1: Update a Azure Virtual Desktop HostPool by name
 ```powershell
 Update-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `
@@ -68,7 +68,7 @@ Location   Name                 Type
 eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 ```
 
-This command updates a Windows Virtual Desktop HostPool in a Resource Group.
+This command updates a Azure Virtual Desktop HostPool in a Resource Group.
 
 ## PARAMETERS
 
@@ -78,7 +78,7 @@ Maintenance windows are 2 hours long.
 To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IMaintenanceWindowPatchProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IMaintenanceWindowPatchProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -538,36 +538,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IHostPool
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IHostPool
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`AGENTUPDATEMAINTENANCEWINDOW <IMaintenanceWindowPatchProperties[]>`: List of maintenance windows. Maintenance windows are 2 hours long.
-  - `[DayOfWeek <DayOfWeek?>]`: Day of the week.
-  - `[Hour <Int32?>]`: The update start hour of the day. (0 - 23)
-
-`INPUTOBJECT <IDesktopVirtualizationIdentity>`: Identity Parameter
-  - `[ApplicationGroupName <String>]`: The name of the application group
-  - `[ApplicationName <String>]`: The name of the application within the specified application group
-  - `[DesktopName <String>]`: The name of the desktop within the specified desktop group
-  - `[HostPoolName <String>]`: The name of the host pool within the specified resource group
-  - `[Id <String>]`: Resource identity path
-  - `[MsixPackageFullName <String>]`: The version specific package full name of the MSIX package within specified hostpool
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScalingPlanName <String>]`: The name of the scaling plan.
-  - `[ScalingPlanScheduleName <String>]`: The name of the ScalingPlanSchedule
-  - `[SessionHostName <String>]`: The name of the session host within the specified host pool
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[UserSessionId <String>]`: The name of the user session within the specified session host
-  - `[WorkspaceName <String>]`: The name of the workspace
 
 ## RELATED LINKS
 

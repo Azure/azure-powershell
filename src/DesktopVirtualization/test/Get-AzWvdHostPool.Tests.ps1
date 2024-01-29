@@ -30,7 +30,8 @@ Describe 'Get-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' ` `
-                                -StartVMOnConnect:$false
+                                -StartVMOnConnect:$false `
+                                -ManagementType 'Standard'
 
             $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
@@ -77,11 +78,12 @@ Describe 'Get-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' `
-                                -StartVMOnConnect:$false
+                                -StartVMOnConnect:$false `
+                                -ManagementType 'Standard'
 
             $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
-                                -Name 'HostPoolPowershellContained2' `
+                                -Name $env.HostPool2 `
                                 -Location $env.Location `
                                 -HostPoolType 'Pooled' `
                                 -LoadBalancerType 'DepthFirst' `
@@ -95,7 +97,8 @@ Describe 'Get-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' `
-                                -StartVMOnConnect:$false
+                                -StartVMOnConnect:$false `
+                                -ManagementType 'Standard'
 
             $hostPools = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
@@ -118,7 +121,7 @@ Describe 'Get-AzWvdHostPool' {
                 $hostPools[0].PreferredAppGroupType | Should -Be 'Desktop'
                 $hostPools[0].StartVMOnConnect | Should -Be $false
 
-                $hostPools[1].Name | Should -Be 'HostPoolPowershellContained2'
+                $hostPools[1].Name | Should -Be $env.HostPool2
                 $hostPools[1].Location | Should -Be $env.Location
                 $hostPools[1].HostPoolType | Should -Be 'Pooled'              
                 $hostPools[1].LoadBalancerType | Should -Be 'DepthFirst'
@@ -142,7 +145,7 @@ Describe 'Get-AzWvdHostPool' {
 
             $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
-                                -Name 'HostPoolPowershellContained2'
+                                -Name $env.HostPool2
         }
     }
 
@@ -164,7 +167,8 @@ Describe 'Get-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' `
-                                -StartVMOnConnect:$false
+                                -StartVMOnConnect:$false `
+                                -ManagementType 'Standard'
 
             $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
@@ -182,7 +186,8 @@ Describe 'Get-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' `
-                                -StartVMOnConnect:$false
+                                -StartVMOnConnect:$false `
+                                -ManagementType 'Standard'
 
             $hostPools = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 | Where-Object -Property Name -Match 'HostPoolPowershellContained*' `

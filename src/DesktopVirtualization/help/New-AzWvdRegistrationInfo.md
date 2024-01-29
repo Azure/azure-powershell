@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdRegistrationInfo
 
 ## SYNOPSIS
-Create Windows virtual desktop registration info.
+Create Azure Virtual Desktop registration info.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzWvdRegistrationInfo -ExpirationTime <String> -HostPoolName <String> -Resou
 ```
 
 ## DESCRIPTION
-Create Windows virtual desktop registration info.
+Create Azure Virtual Desktop registration info.
 
 ## EXAMPLES
 
@@ -150,11 +150,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IRegistrationInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IRegistrationInfo
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

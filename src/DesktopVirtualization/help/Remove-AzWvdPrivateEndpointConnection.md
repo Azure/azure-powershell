@@ -41,7 +41,7 @@ Remove a connection.
 
 ## EXAMPLES
 
-### Example 1: Remove the Private Endpoint Connection between the Private Endpoint and Windows Virtual Desktop HostPool by WVD Private Endpoint Connection Name and HostPoolName
+### Example 1: Remove the Private Endpoint Connection between the Private Endpoint and Azure Virtual Desktop HostPool by WVD Private Endpoint Connection Name and HostPoolName
 ```powershell
 Remove-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -Name WvdPrivateEndpointConnectionName -HostpoolName HostPoolName
 ```
@@ -50,11 +50,11 @@ Remove-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -Name
 <none>
 ```
 
-This command removes the Private Endpoint Connection to the Windows Virtual Desktop HostPool in a Resource Group.
+This command removes the Private Endpoint Connection to the Azure Virtual Desktop HostPool in a Resource Group.
 It does not delete the Private Endpoint.
 Customers will need to separately delete the Private Endpoint.
 
-### Example 2: Remove the Private Endpoint Connection between the Private Endpoint and Windows Virtual Desktop Workspace by WVD Private Endpoint Connection Name and WorkspaceName
+### Example 2: Remove the Private Endpoint Connection between the Private Endpoint and Azure Virtual Desktop Workspace by WVD Private Endpoint Connection Name and WorkspaceName
 ```powershell
 Remove-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -Name WvdPrivateEndpointConnectionName -WorkspaceName WorkspaceName
 ```
@@ -63,7 +63,7 @@ Remove-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -Name
 <none>
 ```
 
-This command removes the Private Endpoint Connection to the Windows Virtual Desktop Workspace in a Resource Group.
+This command removes the Private Endpoint Connection to the Azure Virtual Desktop Workspace in a Resource Group.
 It does not delete the Private Endpoint.
 Customers will need to separately delete the Private Endpoint.
 
@@ -237,29 +237,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDesktopVirtualizationIdentity>`: Identity Parameter
-  - `[ApplicationGroupName <String>]`: The name of the application group
-  - `[ApplicationName <String>]`: The name of the application within the specified application group
-  - `[DesktopName <String>]`: The name of the desktop within the specified desktop group
-  - `[HostPoolName <String>]`: The name of the host pool within the specified resource group
-  - `[Id <String>]`: Resource identity path
-  - `[MsixPackageFullName <String>]`: The version specific package full name of the MSIX package within specified hostpool
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScalingPlanName <String>]`: The name of the scaling plan.
-  - `[ScalingPlanScheduleName <String>]`: The name of the ScalingPlanSchedule
-  - `[SessionHostName <String>]`: The name of the session host within the specified host pool
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[UserSessionId <String>]`: The name of the user session within the specified session host
-  - `[WorkspaceName <String>]`: The name of the workspace
 
 ## RELATED LINKS
 

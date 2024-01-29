@@ -23,43 +23,43 @@ Create or update a ScalingPlanPersonalSchedule.
 New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
                                         -ScalingPlanScheduleName scheduleName `
-                                        -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
-                                        -rampUpStartTimeHour 6 `
-                                        -rampUpStartTimeMinute 30 `
-                                        -RampUpAutoStartHost "All" `
-                                        -rampUpStartVMOnConnect Enable `
-                                        -rampUpActionOnDisconnect None `
-                                        -rampUpMinutesToWaitOnDisconnect 10 `
-                                        -rampUpActionOnLogoff None `
-                                        -rampUpMinutesToWaitOnLogoff 10 `
+                                        -DaysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
+                                        -RampUpStartTimeHour 6 `
+                                        -RampUpStartTimeMinute 30 `
+                                        -RampUpAutoStartHost "None" `
+                                        -RampUpStartVMOnConnect Enable `
+                                        -RampUpActionOnDisconnect None `
+                                        -RampUpMinutesToWaitOnDisconnect 10 `
+                                        -RampUpActionOnLogoff None `
+                                        -RampUpMinutesToWaitOnLogoff 10 `
                                         -peakStartTimeHour 8 `
-                                        -peakStartTimeMinute 30 `
-                                        -peakStartVMOnConnect Enable `
-                                        -peakActionOnDisconnect None `
-                                        -peakMinutesToWaitOnDisconnect 10 `
-                                        -peakMinutesToWaitOnLogoff 10 `
+                                        -PeakStartTimeMinute 30 `
+                                        -PeakStartVMOnConnect Enable `
+                                        -PeakActionOnDisconnect None `
+                                        -PeakMinutesToWaitOnDisconnect 10 `
+                                        -PeakMinutesToWaitOnLogoff 10 `
                                         -RampDownStartTimeHour 16 `
                                         -RampDownStartTimeMinute 0 `
-                                        -rampDownStartVMOnConnect Enable `
-                                        -rampDownActionOnDisconnect None `
-                                        -rampDownMinutesToWaitOnDisconnect 10 `
-                                        -rampDownMinutesToWaitOnLogoff 10 `
-                                        -rampDownActionOnLogoff None `
-                                        -offPeakStartTimeHour 22 `
-                                        -offPeakStartTimeMinute 45 `
-                                        -offPeakStartVMOnConnect Enable `
-                                        -offPeakActionOnDisconnect None `
-                                        -offPeakMinutesToWaitOnDisconnect 10 `
-                                        -offPeakActionOnLogoff Deallocate `
-                                        -offPeakMinutesToWaitOnLogoff 10
+                                        -RampDownStartVMOnConnect Enable `
+                                        -RampDownActionOnDisconnect None `
+                                        -RampDownMinutesToWaitOnDisconnect 10 `
+                                        -RampDownMinutesToWaitOnLogoff 10 `
+                                        -RampDownActionOnLogoff None `
+                                        -OffPeakStartTimeHour 22 `
+                                        -OffPeakStartTimeMinute 45 `
+                                        -OffPeakStartVMOnConnect Enable `
+                                        -OffPeakActionOnDisconnect None `
+                                        -OffPeakMinutesToWaitOnDisconnect 10 `
+                                        -OffPeakActionOnLogoff Deallocate `
+                                        -OffPeakMinutesToWaitOnLogoff 10
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IScalingPlanPersonalSchedule
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IScalingPlanPersonalSchedule
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdscalingplanpersonalschedule
 #>
 function New-AzWvdScalingPlanPersonalSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202307Preview.IScalingPlanPersonalSchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IScalingPlanPersonalSchedule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
