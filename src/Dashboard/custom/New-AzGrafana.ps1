@@ -90,7 +90,7 @@ function New-AzGrafana {
         ${DeterministicOutboundIP},
     
     
-        [Parameter(Mandatory)]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(PossibleTypes=([System.String]))]
         [System.Management.Automation.SwitchParameter]
@@ -102,7 +102,7 @@ function New-AzGrafana {
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IUserAssignedIdentities]))]
         [System.String[]]
         # The array of user assigned identities associated with the resource.
-        # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
         ${UserAssignedIdentity},
     
     

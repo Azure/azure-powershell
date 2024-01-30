@@ -195,7 +195,7 @@ function Update-AzFunctionApp {
                 }
 
                 $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
-                $functionAppDef.UserAssignedIdentity = $identityUserAssignedIdentity
+                $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
             }
         }
         elseif ($existingFunctionApp.IdentityType)
