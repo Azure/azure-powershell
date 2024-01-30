@@ -14,11 +14,50 @@
 
 <#
 .SYNOPSIS
+Get Subscription ID
+#>
+function Get-SubscriptionID
+{
+    $context = Get-AzContext
+    return $context.Subscription.SubscriptionId
+}
+
+<#
+.SYNOPSIS
+Get ResourceGroup name
+#>
+function Get-ResourceGroupName
+{
+    return "RGName-" + (getAssetName)
+}
+
+<#
+.SYNOPSIS
 Gets valid resource group name
 #>
 function Get-ResourceGroupName
 {
     return getAssetName
+}
+
+<#
+.SYNOPSIS
+Create new ResourceGroup
+#>
+function New-ResourceGroup($ResourceGroupName, $Location)
+{
+    Write-Debug "Creating resource group name $ResourceGroupName in location $Location"
+    New-AzResourceGroup -Name $ResourceGroupName -Location $Location -Force
+}
+
+<#
+.SYNOPSIS
+Remove ResourceGroup
+#>
+function Remove-ResourceGroup($ResourceGroupName)
+{
+    Write-Debug "Deleting resource group name $ResourceGroupName"
+    Remove-AzResourceGroup -Name $ResourceGroupName -Force
 }
 
 <#
