@@ -35,3 +35,43 @@
     - The parameter : 'Value' is being replaced by parameter : 'ByteArrayValue'.
     - This change is expected to take effect from Az.KeyVault version: 6.0.0 and Az version: 12.0.0
 
+## Az.RecoveryServices
+
+### `Get-AzRecoveryServicesAsrVaultContext`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVaultSettings' is changing
+  - The following properties in the output type are being deprecated : 'ResouceType'
+  - The following properties are being added to the output type : 'ResourceType'
+  - This change is expected to take effect from Az.RecoveryServices version: 7.0.0 and Az version: 12.0.0
+
+### `Import-AzRecoveryServicesAsrVaultSettingsFile`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVaultSettings' is changing
+  - The following properties in the output type are being deprecated : 'ResouceType'
+  - The following properties are being added to the output type : 'ResourceType'
+  - This change is expected to take effect from Az.RecoveryServices version: 7.0.0 and Az version: 12.0.0
+
+### `Set-AzRecoveryServicesAsrVaultContext`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The output type 'Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVaultSettings' is changing
+  - The following properties in the output type are being deprecated : 'ResouceType'
+  - The following properties are being added to the output type : 'ResourceType'
+  - This change is expected to take effect from Az.RecoveryServices version: 7.0.0 and Az version: 12.0.0
+
+## Az.Sql
+
+### `New-AzSqlDatabaseFailoverGroup`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The default value of FailoverPolicy will change from Automatic to Manual
+  - This change is expected to take effect from Az.Sql version: 5.0.0 and Az version: 12.0.0
+
+### `Set-AzSqlDatabaseFailoverGroup`
+
+- Cmdlet breaking-change will happen to all parameter sets
+  - The default value of FailoverPolicy will change from Automatic to Manual
+  - This change is expected to take effect from Az.Sql version: 5.0.0 and Az version: 12.0.0
+
