@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 5.2.0
+* Upgrade api version to 2023-11-01.
+
 ## Version 5.1.0
 * Added cmdlet:
     - `Get-AzWvdScalingPlanPersonalSchedule`
