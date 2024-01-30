@@ -75,7 +75,7 @@ File Workspace Name
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named

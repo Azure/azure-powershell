@@ -82,7 +82,6 @@ directive:
           - FileSize
           - NumberOfChunks 
   - where:
-      verb: New
       subject: FileWorkspacesNoSubscription
       parameter-name: FileWorkspaceName
     set:

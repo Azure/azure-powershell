@@ -15,8 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportFileWorkspace'))
 }
 
 Describe 'Get-AzSupportFileWorkspace' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $fileWorkspace = Get-AzSupportFileWorkspace -Name $env.FileWorkspaceNameSubscription
+        $fileWorkspace.Name | Should -Be $env.FileWorkspaceNameSubscription
     }
 
     It 'GetViaIdentity' -skip {
