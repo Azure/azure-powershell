@@ -13,7 +13,7 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHu
 ## SYNTAX
 
 ```
-New-AzEventHubIPRuleConfig -IPMask <String> [-Action <NetworkRuleIPAction>] [<CommonParameters>]
+New-AzEventHubIPRuleConfig -IPMask <String> [-Action <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ Please refer examples for Set-AzEventHubNetworkRuleSet to know more.
 The IP Filter Action
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.NetworkRuleIPAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -76,8 +76,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.INwRuleSetIPRules
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

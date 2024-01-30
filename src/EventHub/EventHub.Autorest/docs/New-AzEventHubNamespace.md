@@ -15,9 +15,9 @@ Creates an EventHub Namespace
 ```
 New-AzEventHubNamespace -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AlternateName <String>] [-ClusterArmId <String>] [-DisableLocalAuth]
- [-EnableAutoInflate] [-IdentityType <ManagedServiceIdentityType>] [-KeyVaultProperty <IKeyVaultProperties[]>]
- [-MaximumThroughputUnit <Int64>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-RequireInfrastructureEncryption] [-SkuCapacity <Int64>] [-SkuName <SkuName>] [-Tag <Hashtable>]
+ [-EnableAutoInflate] [-IdentityType <String>] [-KeyVaultProperty <IKeyVaultProperties[]>]
+ [-MaximumThroughputUnit <Int64>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <String>]
+ [-RequireInfrastructureEncryption] [-SkuCapacity <Int64>] [-SkuName <String>] [-Tag <Hashtable>]
  [-UserAssignedIdentityId <String[]>] [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -276,7 +276,7 @@ Accept wildcard characters: False
 Type of managed service identity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -370,7 +370,7 @@ This determines if traffic is allowed over public network.
 By default it is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -433,7 +433,7 @@ The minimum TLS version for the cluster to support, e.g.
 '1.2'
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SkuName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -549,17 +549,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 New-AzEventHubNamespaceV2
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`KEYVAULTPROPERTY <IKeyVaultProperties[]>`: Properties to configure Encryption
-  - `[KeyName <String>]`: Name of the Key from KeyVault
-  - `[KeyVaultUri <String>]`: Uri of KeyVault
-  - `[KeyVersion <String>]`: Key Version
-  - `[UserAssignedIdentity <String>]`: ARM ID of user Identity selected for encryption
 
 ## RELATED LINKS
 

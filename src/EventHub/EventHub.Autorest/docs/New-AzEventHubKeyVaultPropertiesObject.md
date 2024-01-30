@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://learn.microsoft.com/powershell/module/Az.EventHub/new-AzEventHubKeyVaultPropertiesObject
+online version: https://learn.microsoft.com/powershell/module/Az.EventHub/new-azeventhubkeyvaultpropertiesobject
 schema: 2.0.0
 ---
 
@@ -22,14 +22,27 @@ Create an in-memory object for KeyVaultProperties.
 
 ## EXAMPLES
 
-### Example 1: Construct an in-memory KeyVaultProperties object
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzEventHubKeyVaultPropertiesObject -KeyName key1 -KeyVaultUri https://testkeyvault.vault.azure.net
+{{ Add code here }}
 ```
 
-Creates an in-memory object of type `IKeyVaultProperties`.
-An array of `IKeyVaultProperties` can be fed as 
-input to `KeyVaultProperty` parameter of New-AzEventHubNamespaceV2 and Set-AzEventHubNamespaceV2 to enable encryption.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -103,8 +116,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.KeyVaultProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

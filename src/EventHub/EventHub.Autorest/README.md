@@ -62,6 +62,7 @@ subject-prefix: $(service-name)
 # uncomment following line to support viaIdentity for these post APIs
 resourcegroup-append: true
 nested-object-to-string: true
+add-api-version-in-model-namespace: true
 
 directive:
   - where:
@@ -455,5 +456,5 @@ directive:
       suppress-format: true
 
   - model-cmdlet:
-      model-name: KeyVaultProperties
-      cmdlet-name: New-AzEventHubKeyVaultProperties
+    - model-name: KeyVaultProperties
+      cmdlet-name: New-AzEventHubKeyVaultPropertiesObject

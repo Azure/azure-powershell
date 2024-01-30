@@ -82,44 +82,6 @@
       ]
     },
     {
-      "name": "Get-AzEventHubPrivateLink",
-      "description": "Gets lists of resources that supports Privatelinks.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateLinkResources",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubprivatelink"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-NamespaceName <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String[]>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Gets lists of resources that supports Privatelinks.",
-          "parameters": [
-            {
-              "name": "-NamespaceName",
-              "value": "[Path.namespaceName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Remove-AzEventHubNamespace",
       "description": "Deletes an existing namespace.\nThis operation also removes all associated resources under the namespace.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}",
