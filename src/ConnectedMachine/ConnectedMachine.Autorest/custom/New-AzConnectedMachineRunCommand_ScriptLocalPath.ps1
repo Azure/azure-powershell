@@ -174,7 +174,7 @@ function New-AzConnectedMachineRunCommand_ScriptLocalPath {
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
-        ${Tags},
+        ${Tag},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
