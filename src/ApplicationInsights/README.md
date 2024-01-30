@@ -52,7 +52,7 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
-keep-identitytype: true
+disable-transform-identity-type: true
 
 directive:
   - from: swagger-document

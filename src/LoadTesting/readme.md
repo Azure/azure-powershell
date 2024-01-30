@@ -44,7 +44,6 @@ resourcegroup-append: true
 nested-object-to-string: true
 inlining-threshold: 200
 disable-transform-identity-type: true
-flatten-userassignedidentity: false
 
 directive:
   # https://stackoverflow.microsoft.com/questions/333196
@@ -79,7 +78,7 @@ directive:
   
   # Renaming user assigned identity parameter
   - where:
-      parameter-name: UserAssignedIdentity
+      parameter-name: IdentityUserAssignedIdentity
     set:
       alias: IdentityUserAssigned
   # Renaming encryption key parameter
