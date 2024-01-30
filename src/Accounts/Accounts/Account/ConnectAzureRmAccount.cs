@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.Profile
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            Validate();
+            ValidateActionRequiredMessageCanBePresented();
             if (AzureEnvironment.PublicEnvironments.ContainsKey(EnvironmentName.AzureCloud))
             {
                 _environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
@@ -580,10 +580,9 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
-        private void Validate()
+        private void ValidateActionRequiredMessageCanBePresented()
         {
-            if (MyInvocation.BoundParameters.ContainsKey(nameof(UseDeviceAuthentication))
-                && IsWriteInformationIgnored())
+            if (UseDeviceAuthentication.IsPresent && IsWriteInformationIgnored())
             {
                 throw new ActionPreferenceStopException(Resources.DoNotIgnoreInformationIfUserDeviceAuth);
             }

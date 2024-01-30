@@ -12,11 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
 using Azure.Core;
 using Azure.Identity;
 
@@ -24,9 +19,13 @@ using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+
+using System;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -76,11 +75,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             return (parameters as DeviceCodeParameters) != null;
         }
 
-        private static string LoginToAzurePhrase = $"{PSStyle.Bold}{PSStyle.BackgroundColor.Blue}[Login to Azure]{PSStyle.Reset} ";
 
         private void WriteInfomartion(string message, string userCode)
         {
+
             var loginInfo = new StringBuilder();
+            string LoginToAzurePhrase = $"{PSStyle.Bold}{PSStyle.BackgroundColor.Blue}[Login to Azure]{PSStyle.Reset} ";
             loginInfo.Append(LoginToAzurePhrase);
 
             if (!string.IsNullOrEmpty(userCode))
