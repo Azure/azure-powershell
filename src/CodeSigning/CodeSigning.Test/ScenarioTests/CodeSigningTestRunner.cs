@@ -19,13 +19,6 @@ namespace Microsoft.Azure.Commands.CodeSigning.Test.ScenarioTests
 {
     public class CodeSigningTestRunner
     {
-        public string TagName { get; set; } = "testtag";
-        public string TagValue { get; set; } = "testvalue";
-
-        public string ResourceGroupName { get; set; }
-        public string Location { get; set; }
-        public string PreCreatedVault { get; set; }
-
         protected readonly ITestRunner TestRunner;
 
         protected CodeSigningTestRunner(ITestOutputHelper output)
