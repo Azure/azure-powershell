@@ -76,7 +76,7 @@
     - 'Get-AzStorageBlob'
 * Updated the prompt message when deleting a share snapshot and the output format when listing 
     - 'Remove-AzStorageShare'
-    - 'Remove-AzRmStorageSahre'
+    - 'Remove-AzRmStorageShare'
     - 'Get-AzRmStorageShare'
 
 #### Az.Websites 3.2.0
