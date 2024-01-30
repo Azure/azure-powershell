@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Aux tenant ids for cross tenant deployments")]
-        public string[] AuxTenants { get; set; } 
+        public string[] AuxTenant { get; set; } 
 
 
         protected override ConfirmImpact ConfirmImpact => ((CmdletAttribute)Attribute.GetCustomAttribute(
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     DeploymentName = RollbackToLastDeployment ? null : RollBackDeploymentName
                 }
                 : null,
-            AuxTenantHeaders = GetAuxiliaryAuthHeaderFromTenantIds(AuxTenants)
+            AuxTenantHeaders = GetAuxiliaryAuthHeaderFromTenantIds(AuxTenant)
         };
 
         protected override PSDeploymentWhatIfCmdletParameters BuildWhatIfParameters() => new PSDeploymentWhatIfCmdletParameters(

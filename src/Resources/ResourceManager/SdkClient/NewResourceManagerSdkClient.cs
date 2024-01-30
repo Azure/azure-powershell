@@ -511,7 +511,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     return ResourceManagementClient.Deployments.ValidateAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, scopedDeployment);
 
                 case DeploymentScopeType.ResourceGroup:
-                    return ResourceManagementClient.Deployments.Validate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+                    return ResourceManagementClient.Deployments.ValidateWithHttpMessagesAsync(parameters.ResourceGroupName, parameters.DeploymentName, deployment,
+                        customHeaders: ConvertAuxTenantDictionary(parameters.AuxTenantHeaders)).GetAwaiter().GetResult().Body;
 
                 case DeploymentScopeType.Subscription:
                 default:
