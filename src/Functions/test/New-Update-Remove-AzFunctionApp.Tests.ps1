@@ -213,7 +213,7 @@ Describe 'New-AzFunctionApp, Update-AzFunctionApp, and Remove-AzFunctionApp E2E'
             $functionApp.Runtime | Should -Be "PowerShell"
             $functionApp.IdentityType | Should -Be "UserAssigned"
 
-            $userAssignedIdentity = $functionApp.UserAssignedIdentity.AdditionalProperties
+            $userAssignedIdentity = $functionApp.IdentityUserAssignedIdentity.AdditionalProperties
             $userAssignedIdentity.ContainsKey($identityInfo.Id) | Should -Be $true
 
             Write-Verbose "Remove function app" -Verbose

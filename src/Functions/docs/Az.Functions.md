@@ -11,7 +11,6 @@ Locale: en-US
 Microsoft Azure PowerShell - Azure Functions service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor information on Azure Functions, please visit the following: https://docs.microsoft.com/azure/azure-functions/
 
 ## Az.Functions Cmdlets
-
 ### [Get-AzFunctionApp](Get-AzFunctionApp.md)
 Gets function apps in a subscription.
 
@@ -48,6 +47,9 @@ Starts a function app.
 ### [Stop-AzFunctionApp](Stop-AzFunctionApp.md)
 Stops a function app.
 
+### [Update-Az](Update-Az.md)
+Updates source control token
+
 ### [Update-AzFunctionApp](Update-AzFunctionApp.md)
 Updates a function app.
 
@@ -56,3 +58,4 @@ Updates a function app service plan.
 
 ### [Update-AzFunctionAppSetting](Update-AzFunctionAppSetting.md)
 Adds or updates app settings in a function app.
+

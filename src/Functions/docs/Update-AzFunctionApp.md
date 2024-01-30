@@ -15,17 +15,17 @@ Updates a function app.
 ### ByName (Default)
 ```
 Update-AzFunctionApp -Name <String> -ResourceGroupName <String> [-ApplicationInsightsKey <String>]
- [-ApplicationInsightsName <String>] [-Force] [-IdentityID <String[]>]
- [-IdentityType <ManagedServiceIdentityType>] [-PlanName <String>] [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ApplicationInsightsName <String>] [-Force] [-IdentityID <String[]>] [-IdentityType <String>]
+ [-PlanName <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
 Update-AzFunctionApp -InputObject <ISite> [-ApplicationInsightsKey <String>]
- [-ApplicationInsightsName <String>] [-Force] [-IdentityID <String[]>]
- [-IdentityType <ManagedServiceIdentityType>] [-PlanName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ApplicationInsightsName <String>] [-Force] [-IdentityID <String[]>] [-IdentityType <String>]
+ [-PlanName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -164,7 +164,7 @@ The acceptable values for this parameter are:
             - None
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -324,8 +324,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
