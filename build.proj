@@ -256,13 +256,13 @@
 
   <Target Name="Publish" Condition="'$(Configuration)' == 'Release'">
     <Message Importance="high" Text="Publishing Cmdlets using $(Scope) scope" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/NewOutputTypeIndex.ps1 -OutputFile $(RepoArtifacts)/outputtypes.json -BuildConfig $(Configuration)&quot;"/>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/NewHelpIndex.ps1 -OutputFile $(RepoArtifacts)/index.json -BuildConfig $(Configuration)&quot;"/>
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CleanupBuild.ps1 -BuildConfig $(Configuration) -GenerateDocumentationFile $(GenerateDocumentationFile) &quot;" />
 
     <Error Condition="'$(NuGetKey)' == ''" Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/PublishModules.ps1 -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope $(Scope) -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot;&quot; -NugetExe $(NuGetCommand)" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/NewOutputTypeIndex.ps1 -OutputFile $(RepoArtifacts)/outputtypes.json -BuildConfig $(Configuration)&quot;"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/NewHelpIndex.ps1 -OutputFile $(RepoArtifacts)/index.json -BuildConfig $(Configuration)&quot;"/>
   </Target>
 
   <Target Name="BuildInstaller" AfterTargets="Publish" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore')">
