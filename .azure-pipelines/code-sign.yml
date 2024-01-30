@@ -304,6 +304,10 @@ jobs:
       arguments: 'build.proj /t:Publish /p:Configuration=Release;NuGetKey=$(NuGetKey);GenerateDocumentationFile=false'
 
   - pwsh: |
+      ./tools/NewOutputTypeIndex.ps1 -OutputFile ./artifacts/outputtypes.json -BuildConfig Release
+      ./tools/NewHelpIndex.ps1 -OutputFile ./artifacts/index.json -BuildConfig Release
+    displayName: 'For docs'
+  - pwsh: |
       #this task won't be triggered unless $AzureStack was set to true
       #move Az.Accounts.*.nupkg to a temporary folder "non_release_artifacts"
       New-Item -Path "artifacts" -Name "non_release_artifacts" -ItemType "directory"
