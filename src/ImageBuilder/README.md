@@ -79,10 +79,10 @@ directive:
     hide: true
   
   # Rename IdentityUserAssignedIdentity to UserAssignedIdentity
-  - where:
-      parameter-name: IdentityUserAssignedIdentity
-    set:
-      parameter-name: UserAssignedIdentity
+  # - where:
+  #     parameter-name: IdentityUserAssignedIdentity
+  #   set:
+  #     parameter-name: UserAssignedIdentity
 
   # Rename *-AzImageBuildVirtualMachineImage(.*) -> *-AzImageBuild(.*)
   - where:

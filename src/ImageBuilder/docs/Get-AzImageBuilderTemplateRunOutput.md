@@ -30,6 +30,12 @@ Get-AzImageBuilderTemplateRunOutput -InputObject <IImageBuilderIdentity> [-Defau
  [<CommonParameters>]
 ```
 
+### GetViaIdentityImageTemplate
+```
+Get-AzImageBuilderTemplateRunOutput -ImageTemplateInputObject <IImageBuilderIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get the specified run output for the specified image template resource
 
@@ -64,7 +70,8 @@ This command gets a run result under a template.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -75,6 +82,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImageTemplateInputObject
+Identity Parameter
+To construct, see NOTES section for IMAGETEMPLATEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageBuilderIdentity
+Parameter Sets: GetViaIdentityImageTemplate
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -114,7 +137,7 @@ The name of the run output
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityImageTemplate
 Aliases: RunOutputName
 
 Required: True
@@ -167,20 +190,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IRunOutput
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IImageBuilderIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ImageTemplateName <String>]`: The name of the image Template
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[RunOutputName <String>]`: The name of the run output
-  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription Id forms part of the URI for every service call.
 
 ## RELATED LINKS
 

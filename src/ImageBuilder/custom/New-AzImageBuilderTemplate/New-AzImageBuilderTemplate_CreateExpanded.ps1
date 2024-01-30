@@ -197,21 +197,20 @@ param(
 
     # Hide as IdentityType only can be 'UserAssigned'
     # 'None' is not supported as removing identity is not supported when creating or updating an image template."
-    # [Parameter(Mandatory)]
-    # 
+    # [Parameter()]
     # [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    # [System.String]
-    # # The type of identity used for the image template.
-    # # The type 'None' will remove any identities from the image template.
-    # ${IdentityType},
+    # [System.Management.Automation.SwitchParameter]
+    # # Decides if enable a system assigned identity for the resource.
+    # ${EnableSystemAssignedIdentity},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateIdentityUserAssignedIdentities]))]
-    [System.String]
-    # The list of user identities associated with the image template.
-    # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-    ${UserAssignedIdentityId},
+    [Alias('UserAssignedIdentityId')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
@@ -359,14 +358,8 @@ param(
 )
 process {
     try {
-      $IdentityType = [System.String]::UserAssigned
-      $null = $PSBoundParameters.Add("IdentityType", $IdentityType)
-
       # Transfer from string to hashtable
-      $UserAssignedIdentity = @{$UserAssignedIdentityId= @{}}
-      $null = $PSBoundParameters.Add("UserAssignedIdentity", $UserAssignedIdentity)
-      $null = $PSBoundParameters.Remove('UserAssignedIdentityId')
-
+      # $UserAssignedIdentity = @{$UserAssignedIdentity= @{}}
       Az.ImageBuilder.private\New-AzImageBuilderTemplate_CreateExpanded @PSBoundParameters
     } catch {
 

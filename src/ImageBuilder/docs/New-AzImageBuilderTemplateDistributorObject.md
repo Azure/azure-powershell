@@ -28,7 +28,7 @@ New-AzImageBuilderTemplateDistributorObject -ImageId <String> -Location <String>
 ```
 New-AzImageBuilderTemplateDistributorObject -GalleryImageId <String> -ReplicationRegion <String[]>
  -RunOutputName <String> -SharedImageDistributor [-ArtifactTag <IImageTemplateDistributorArtifactTags>]
- [-ExcludeFromLatest <Boolean>] [-StorageAccountType <SharedImageStorageAccountType>] [<CommonParameters>]
+ [-ExcludeFromLatest <Boolean>] [-StorageAccountType <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -219,7 +219,7 @@ Storage account type to be used to store the shared image.
 Omit to use the default (Standard_LRS).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType
+Type: System.String
 Parameter Sets: SharedImageDistributor
 Aliases:
 
@@ -259,16 +259,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateVhdDistributor
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ARTIFACTTAG <IImageTemplateDistributorArtifactTags>`: Tags that will be applied to the artifact once it has been created/updated by the distributor.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 
