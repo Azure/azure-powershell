@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public bool MigrateTo1PGallery { get; set; }
+        public bool? MigrateTo1PGallery { get; set; }
 
         [Parameter(
             Mandatory = false,
