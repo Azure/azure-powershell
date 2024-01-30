@@ -18,7 +18,7 @@ Get information about a virtual machine image template
 Get the specified run output for the specified image template resource
 
 ### [New-AzImageBuilderTemplate](New-AzImageBuilderTemplate.md)
-Create or update a virtual machine image template
+Create a virtual machine image template
 
 ### [New-AzImageBuilderTemplateCustomizerObject](New-AzImageBuilderTemplateCustomizerObject.md)
 Create an in-memory object for ImageTemplateCustomizer.

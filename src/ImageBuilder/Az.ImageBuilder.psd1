@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.ImageBuilder.private.dll'
   FormatsToProcess = './Az.ImageBuilder.format.ps1xml'
-  FunctionsToExport = 'Get-AzImageBuilderTemplate', 'Get-AzImageBuilderTemplateRunOutput', 'New-AzImageBuilderTemplate', 'New-AzImageBuilderTemplateCustomizerObject', 'New-AzImageBuilderTemplateDistributorObject', 'New-AzImageBuilderTemplateSourceObject', 'New-AzImageBuilderTemplateValidatorObject', 'Remove-AzImageBuilderTemplate', 'Start-AzImageBuilderTemplate', 'Stop-AzImageBuilderTemplate', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzImageBuilderTemplate', 'Get-AzImageBuilderTemplateRunOutput', 'New-AzImageBuilderTemplate', 'New-AzImageBuilderTemplateCustomizerObject', 'New-AzImageBuilderTemplateDistributorObject', 'New-AzImageBuilderTemplateSourceObject', 'New-AzImageBuilderTemplateValidatorObject', 'Remove-AzImageBuilderTemplate', 'Start-AzImageBuilderTemplate', 'Stop-AzImageBuilderTemplate'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'ImageBuilder'

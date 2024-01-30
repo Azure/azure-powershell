@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzImageBuilderTemplate
 
 ## SYNOPSIS
-Create or update a virtual machine image template
+Create a virtual machine image template
 
 ## SYNTAX
 
@@ -16,11 +16,18 @@ Create or update a virtual machine image template
 ```
 New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -Customize <IImageTemplateCustomizer[]>
  -Distribute <IImageTemplateDistributor[]> -Location <String> -Source <IImageTemplateSource>
- -UserAssignedIdentityId <String> [-SubscriptionId <String>] [-BuildTimeoutInMinute <Int32>]
+ -UserAssignedIdentity <String[]> [-SubscriptionId <String>] [-BuildTimeoutInMinute <Int32>]
  [-StagingResourceGroup <String>] [-Tag <Hashtable>] [-ValidateContinueDistributeOnFailure]
  [-ValidateSourceValidationOnly] [-Validator <IImageTemplateInVMValidator[]>] [-VMProfileOsdiskSizeGb <Int32>]
  [-VMProfileUserAssignedIdentity <String[]>] [-VMProfileVmsize <String>] [-VnetConfigProxyVMSize <String>]
  [-VnetConfigSubnetId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -31,15 +38,8 @@ New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -JsonStrin
  [<CommonParameters>]
 ```
 
-### JsonTemplatePath
-```
-New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -JsonTemplatePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Create or update a virtual machine image template
+Create a virtual machine image template
 
 ## EXAMPLES
 
@@ -219,7 +219,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -248,12 +249,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonString
-Json string.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -263,12 +264,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonTemplatePath
-
+### -JsonString
+Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: JsonTemplatePath
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -399,13 +400,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UserAssignedIdentityId
+### -UserAssignedIdentity
 
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: CreateExpanded
-Aliases:
+Aliases: UserAssignedIdentityId
 
 Required: True
 Position: Named
@@ -575,30 +576,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplate
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CUSTOMIZE <IImageTemplateCustomizer[]>`: 
-  - `Type <String>`: The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
-  - `[Name <String>]`: Friendly Name to provide context on what this customization step does
-
-`DISTRIBUTE <IImageTemplateDistributor[]>`: 
-  - `RunOutputName <String>`: The name to be used for the associated RunOutput.
-  - `Type <String>`: Type of distribution.
-  - `[ArtifactTag <IImageTemplateDistributorArtifactTags>]`: Tags that will be applied to the artifact once it has been created/updated by the distributor.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`SOURCE <IImageTemplateSource>`: 
-  - `Type <String>`: Specifies the type of source image you want to start with.
-
-`VALIDATOR <IImageTemplateInVMValidator[]>`: 
-  - `Type <String>`: The type of validation you want to use on the Image. For example, "Shell" can be shell validation
-  - `[Name <String>]`: Friendly Name to provide context on what this validation step does
 
 ## RELATED LINKS
 
