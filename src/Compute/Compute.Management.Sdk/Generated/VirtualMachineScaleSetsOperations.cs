@@ -306,10 +306,10 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<VirtualMachineScaleSet>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<VirtualMachineScaleSet>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string), bool? migrateTo1PGallery = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<VirtualMachineScaleSet> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, parameters, ifMatch, ifNoneMatch, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<VirtualMachineScaleSet> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, parameters, ifMatch, ifNoneMatch, migrateTo1PGallery, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -2565,7 +2565,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<VirtualMachineScaleSet>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<VirtualMachineScaleSet>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string), bool? migrateTo1PGallery = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -2593,6 +2593,7 @@ namespace Microsoft.Azure.Management.Compute
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("vmScaleSetName", vmScaleSetName);
+                tracingParameters.Add("migrateTo1PGallery", migrateTo1PGallery);
                 tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("ifMatch", ifMatch);
@@ -2607,6 +2608,10 @@ namespace Microsoft.Azure.Management.Compute
             _url = _url.Replace("{vmScaleSetName}", System.Uri.EscapeDataString(vmScaleSetName));
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             List<string> _queryParameters = new List<string>();
+            if (migrateTo1PGallery != null)
+            {
+                _queryParameters.Add(string.Format("migrateTo1PGallery={0}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(migrateTo1PGallery, Client.SerializationSettings).Trim('"'))));
+            }
             if (apiVersion != null)
             {
                 _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));

@@ -150,9 +150,9 @@ namespace Microsoft.Azure.Management.Compute
             /// an existing record set. Other values will result in error from server as
             /// they are not supported.
             /// </param>
-            public static VirtualMachineScaleSet Update(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string))
+            public static VirtualMachineScaleSet Update(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string), bool? migrateTo1PGallery = default(bool?))
             {
-                return operations.UpdateAsync(resourceGroupName, vmScaleSetName, parameters, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
+                return operations.UpdateAsync(resourceGroupName, vmScaleSetName, parameters, ifMatch, ifNoneMatch, migrateTo1PGallery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -183,9 +183,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualMachineScaleSet> UpdateAsync(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSet> UpdateAsync(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string), bool? migrateTo1PGallery = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, parameters, ifMatch, ifNoneMatch, migrateTo1PGallery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1325,9 +1325,9 @@ namespace Microsoft.Azure.Management.Compute
             /// an existing record set. Other values will result in error from server as
             /// they are not supported.
             /// </param>
-            public static VirtualMachineScaleSet BeginUpdate(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string))
+            public static VirtualMachineScaleSet BeginUpdate(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string), bool? migrateTo1PGallery = default(bool?))
             {
-                return operations.BeginUpdateAsync(resourceGroupName, vmScaleSetName, parameters, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
+                return operations.BeginUpdateAsync(resourceGroupName, vmScaleSetName, parameters, ifMatch, ifNoneMatch, migrateTo1PGallery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1358,9 +1358,9 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualMachineScaleSet> BeginUpdateAsync(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualMachineScaleSet> BeginUpdateAsync(this IVirtualMachineScaleSetsOperations operations, string resourceGroupName, string vmScaleSetName, VirtualMachineScaleSetUpdate parameters, string ifMatch = default(string), string ifNoneMatch = default(string), bool? migrateTo1PGallery = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, parameters, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, parameters, ifMatch, ifNoneMatch, migrateTo1PGallery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

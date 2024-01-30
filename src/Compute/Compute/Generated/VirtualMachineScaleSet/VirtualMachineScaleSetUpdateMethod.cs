@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     var result = (this.VirtualMachineScaleSetUpdate == null)
                                  ? VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters)
-                                 : VirtualMachineScaleSetsClient.Update(resourceGroupName, vmScaleSetName, parametersupdate);
+                                 : VirtualMachineScaleSetsClient.Update(resourceGroupName, vmScaleSetName, parametersupdate, null, null, this.MigrateTo1PGallery);//Nulls for ifMatch and ifNonMatch.
                     var psObject = new PSVirtualMachineScaleSet();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
                     WriteObject(psObject);
@@ -312,6 +312,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public bool MigrateTo1PGallery { get; set; }
 
         [Parameter(
             Mandatory = false,
