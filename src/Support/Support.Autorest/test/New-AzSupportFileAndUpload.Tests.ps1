@@ -15,7 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSupportFileAndUpload'))
 }
 
 Describe 'New-AzSupportFileAndUpload' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        Write-Host "current path: " + $currentPath
+        Write-Host "ps script root: " + $PSScriptRoot
+        $testFilePath = Join-Path $PSScriptRoot files test.txt
+        Write-Host "test file path: " + $testFilePath
+        $file = New-AzSupportFileAndUpload -Name "test.txt" -WorkspaceName $env.FileWorkspaceNameSubscription -FilePath $testFilePath
+        $file.Name | Should -Be "test.txt"
     }
 }

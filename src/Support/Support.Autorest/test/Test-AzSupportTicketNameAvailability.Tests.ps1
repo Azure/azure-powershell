@@ -15,8 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzSupportTicketNameAvail
 }
 
 Describe 'Test-AzSupportTicketNameAvailability' {
-    It 'CheckExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckExpanded' {
+        $result = Test-AzSupportTicketNameAvailability -Name "test-ps-$(New-Guid)" -Type "Microsoft.Support/supportTickets"-SubscriptionId $env.SubscriptionId
+        $result.NameAvailable | Should -Be $true
     }
 
     It 'Check' -skip {

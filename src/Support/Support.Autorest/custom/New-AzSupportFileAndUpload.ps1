@@ -129,7 +129,7 @@ param(
 
 process {
     $ErrorActionPreference = 'Stop'
-    Write-Output "file path: " $FilePath
+    #Write-Output "file path: " + $FilePath
     $MaxChunkSize = 2.5 * 1024 * 1024 #2.5 MB
     $MaxFileSize = 5 * 1024 * 1024 #5 MB
     $FileContentBytes = Get-Content -Path $FilePath -Raw
@@ -142,15 +142,15 @@ process {
         throw "File size is greater than the maximum file size of 5 MB"
     }
     $ChunkSize = If($FileSize -gt $MaxChunkSize) {$MaxChunkSize} Else {$FileSize}
-    Write-Output "Length of byte array: " $FileSize
-    Write-Output "Max chunk size: " $MaxChunkSize
-    Write-Output "Chunk Size: " $ChunkSize
+    # Write-Output "Length of byte array: " $FileSize
+    # Write-Output "Max chunk size: " $MaxChunkSize
+    # Write-Output "Chunk Size: " $ChunkSize
     $NumberOfChunks = [int][Math]::Floor($FileSize / $ChunkSize);
     If($FileSize % $ChunkSize -gt 0) 
     {
         $NumberOfChunks++
     }
-    Write-Output "Number of chunks: " $NumberOfChunks
+    # Write-Output "Number of chunks: " $NumberOfChunks
     
     New-AzSupportFile -SubscriptionId $SubscriptionId -Name $Name -WorkspaceName $WorkspaceName -FileSize $FileSize -ChunkSize $ChunkSize -NumberOfChunk $NumberOfChunks
 
@@ -162,9 +162,9 @@ process {
     # $FileContent = [convert]::ToBase64String((Get-Content -path $FilePath -Encoding byte))
     
     while($chunkIndex -lt $NumberOfChunks){
-        Write-Output "chunk index: " + $chunkIndex
-        Write-Output "start index: " + $startIndex
-        Write-Output "end index: " + $endIndex
+        # Write-Output "chunk index: " + $chunkIndex
+        # Write-Output "start index: " + $startIndex
+        # Write-Output "end index: " + $endIndex
         $FileContent = [convert]::ToBase64String($FileContentByteArray[$startIndex..$endIndex])
 
         Invoke-AzSupportUploadFile -SubscriptionId $SubscriptionId -FileName $Name -FileWorkspaceName $WorkspaceName -ChunkIndex $chunkIndex -Content $FileContent
