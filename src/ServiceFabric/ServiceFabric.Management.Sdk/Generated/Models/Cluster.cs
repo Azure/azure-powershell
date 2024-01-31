@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
             this.ReverseProxyCertificateCommonNames = reverseProxyCertificateCommonNames;
             this.UpgradeDescription = upgradeDescription;
             this.ApplicationTypeVersionsCleanupPolicy = applicationTypeVersionsCleanupPolicy;
-            this.VMImage = vmImage;
+            this.VmImage = vmImage;
             this.SfZonalUpgradeMode = sfZonalUpgradeMode;
             this.VmssZonalUpgradeMode = vmssZonalUpgradeMode;
             this.InfrastructureServiceManager = infrastructureServiceManager;
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// as Windows or Linux can be used.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.vmImage")]
-        public string VMImage {get; set; }
+        public string VmImage {get; set; }
 
         /// <summary>
         /// Gets or sets this property controls the logical grouping of VMs in upgrade
