@@ -21,8 +21,8 @@ foreach ($item in $jsonData) {
     $outputTypes.Add($item) | Out-Null
 }
 
-$ReleaseRepository = "Release"
-Register-PSRepository -Name $ReleaseRepository -SourceLocation [System.IO.Path]::Combine($PSScriptRoot, "..", "artifacts") -PackageManagementProvider Nuget -InstallationPolicy Trusted
+$ReleaseRepository = "ReleaseRP"
+Register-PSRepository -Name $ReleaseRepository -SourceLocation "$PSScriptRoot/../artifacts" -PackageManagementProvider Nuget -InstallationPolicy Trusted
 Install-Module -Scope CurrentUser -Name Az -Repository $ReleaseRepository -Force
 
 $ModuleMetadata.RequiredModules | ForEach-Object {
