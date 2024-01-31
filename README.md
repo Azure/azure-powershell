@@ -1,13 +1,13 @@
 <meta name="google-site-verification" content="tZgbB2s-hTI0IePQQRCjHqL_Vf0j_XJmehXAHJerrn4" />
 
-# ![AzureIcon] ![PowershellIcon] Microsoft Azure PowerShell
+![AzureIcon] ![PowershellIcon] Microsoft Azure PowerShell
 
 This repository contains PowerShell cmdlets for developers and administrators to develop, deploy,
 administer, and manage Microsoft Azure resources.
 
 The Az PowerShell module is preinstalled in [Azure Cloud Shell][AzureCloudShell].
 
-## Modules
+Modules
 
 The following table contains a list of the Azure PowerShell rollup modules.
 
@@ -19,9 +19,9 @@ Azure PowerShell with preview modules | `AzPreview`                             
 For a complete list of the modules found in this repository, see
 [Azure PowerShell Modules][AzurePowerShellModules].
 
-## Installation
+Installation
 
-### PowerShell Gallery
+PowerShell Gallery
 
 Run the following command in a PowerShell session to install the Az PowerShell module:
 
@@ -48,9 +48,9 @@ the previous versions.
 For more information on installing Azure PowerShell, see the
 [installation guide][InstallationGuide].
 
-## Usage
+Usage
 
-### Log into Azure
+Log into Azure
 
 To connect to Azure, use the [`Connect-AzAccount`][ConnectAzAccount] cmdlet:
 
@@ -58,7 +58,7 @@ To connect to Azure, use the [`Connect-AzAccount`][ConnectAzAccount] cmdlet:
 # Opens a new browser window to log into your Azure account.
 Connect-AzAccount
 
-# Log in with a previously created service principal. Use the application ID as the username, and the secret as password.
+Log in with a previously created service principal. Use the application ID as the username, and the secret as password.
 $Credential = Get-Credential
 Connect-AzAccount -ServicePrincipal -Credential $Credential -TenantId $TenantId
 ```
@@ -67,18 +67,18 @@ To log into a specific cloud (_AzureChinaCloud_, _AzureCloud_, _AzureUSGovernmen
 `Environment` parameter:
 
 ```powershell
-# Log into a specific cloud, for example the Azure China cloud.
+Log into a specific cloud, for example the Azure China cloud.
 Connect-AzAccount -Environment AzureChinaCloud
 ```
 
-### Session context
+Session context
 
 A session context persists login information across Azure PowerShell modules and PowerShell
 instances. Use the [`Get-AzContext`][GetAzContext] cmdlet to view the context you are using in the
 current session. The results contain the Azure tenant and subscription.
 
 ```powershell
-# Get the Azure PowerShell context for the current PowerShell session
+Get the Azure PowerShell context for the current PowerShell session
 Get-AzContext
 
 # Lists all available Azure PowerShell contexts in the current PowerShell session
