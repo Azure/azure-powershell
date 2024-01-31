@@ -302,11 +302,6 @@ jobs:
       command: custom
       custom: msbuild
       arguments: 'build.proj /t:Publish /p:Configuration=Release;NuGetKey=$(NuGetKey);GenerateDocumentationFile=false'
-
-  - pwsh: |
-      ./tools/NewOutputTypeIndex.ps1 -OutputFile ./artifacts/outputtypes.json -BuildConfig Release
-      ./tools/NewHelpIndex.ps1 -OutputFile ./artifacts/index.json -BuildConfig Release
-    displayName: 'For docs'
   - pwsh: |
       #this task won't be triggered unless $AzureStack was set to true
       #move Az.Accounts.*.nupkg to a temporary folder "non_release_artifacts"
@@ -366,6 +361,11 @@ jobs:
   - pwsh: './tools/PackModules.ps1 -Artifacts artifacts -NugetExe tools\NuGet.exe'
     displayName: 'Repackage modules'
     condition: and(succeeded(), ne(variables['SignPsd1'], 'false'))
+
+  - pwsh: |
+      ./tools/NewOutputTypeIndex.ps1 -OutputFile ./artifacts/outputtypes.json -BuildConfig Release
+      ./tools/NewHelpIndex.ps1 -OutputFile ./artifacts/index.json -BuildConfig Release
+    displayName: 'For docs'
 
   - task: PublishBuildArtifacts@1
     displayName: 'Save artifacts'
