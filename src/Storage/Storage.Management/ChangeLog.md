@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.1.1
 * Removed some code branches referencing Microsoft.Azure.Storage.Blob
     - `Get-AzStorageBlob`
 * Updated the prompt message when deleting a share snapshot and the output format when listing 
