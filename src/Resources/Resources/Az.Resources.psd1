@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.14.0'
+ModuleVersion = '6.14.99'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -253,7 +253,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed ABAC condition not included in role definition payload. Get-AzRoleDefinition will now contain ABAC Condition and ConditionVersion info when applicable.'
+        ReleaseNotes = '* Added `AuxTenant` parameter in `New-AzResourceGroupDeployment`to support cross-tenant deployment.'
 
         # Prerelease string of this module
         # Prerelease = ''
