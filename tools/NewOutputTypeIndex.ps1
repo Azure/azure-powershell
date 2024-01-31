@@ -10,22 +10,33 @@ $ModulePath = ($env:PSModulePath -split ';')[0]
 $outputTypes = New-Object System.Collections.Generic.HashSet[string]
 $jsonData = @()
 $ProjectPaths = @( "$PSScriptRoot\..\src" )
-$ModuleManifestFile = $ProjectPaths | % { Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | where {$_.FullName -notlike "*autorest*"}}
+
+$ModuleManifestFile = $ProjectPaths | ForEach-Object {
+    Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | Where-Object {
+        $_.FullName -notlike "*autorest*"
+    }
+}
+
 foreach ($item in $jsonData) {
     $outputTypes.Add($item) | Out-Null
 }
-$ModuleMetadata.RequiredModules | ForEach {
+
+$ReleaseRepository = "Release"
+Register-PSRepository -Name $ReleaseRepository -SourceLocation [System.IO.Path]::Combine($PSScriptRoot, "..", "artifacts") -PackageManagementProvider Nuget -InstallationPolicy Trusted
+Install-Module -Scope CurrentUser -Name Az -Repository $ReleaseRepository -Force
+
+$ModuleMetadata.RequiredModules | ForEach-Object {
         $ModuleName = $_.ModuleName
         $RequiredVersion = $_.RequiredVersion
         $srcFile = $ModuleManifestFile | Where-Object {$_.Name -eq "$ModuleName.psd1"}
         Import-LocalizedData -BindingVariable srcMetadata -BaseDirectory $srcFile.DirectoryName -FileName $srcFile.Name
-        $DestinationModulePath = [System.IO.Path]::Combine($PSScriptRoot, "..", "artifacts", $BuildConfig, $ModuleName)
-        $Psd1Path = Join-Path -Path $DestinationModulePath -ChildPath "$ModuleName.psd1"
-        if (-not (Test-Path $psd1Path)) {
-            $DestinationModulePath = [System.IO.Path]::Combine($ModulePath, $ModuleName, $RequiredVersion)
-            $psd1Path = Join-Path -Path $DestinationModulePath -ChildPath "$ModuleName.psd1"
-        }
+        $DestinationModulePath = [System.IO.Path]::Combine($ModulePath, $ModuleName, $RequiredVersion)
+        $psd1Path = Join-Path -Path $DestinationModulePath -ChildPath "$ModuleName.psd1"
         Write-Host $Psd1Path
+        if (-not (Test-Path $Psd1Path))
+        {
+            Write-Warning "Module $ModuleName not found in $DestinationModulePath"
+        }
         Import-Module $Psd1Path -Force
         $Module = Get-Module $ModuleName
         foreach ($Cmdlet in $Module.ExportedCmdlets.Values) {
