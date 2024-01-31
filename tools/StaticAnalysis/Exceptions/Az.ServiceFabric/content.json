@@ -1,0 +1,9 @@
+{
+    "$id": "1",
+    "innerException": null,
+    "message": "The requested build 109570 could not be found.",
+    "typeName": "System.ArgumentException, mscorlib",
+    "typeKey": "ArgumentException",
+    "errorCode": 0,
+    "eventId": 0
+}
