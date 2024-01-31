@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     this.Name,
                     serviceParams).GetAwaiter().GetResult();
 
-            return this.PollLongRunningOperation(beginRequestResponse);
+            return this.PollLongRunningOperation(beginRequestResponse) as ServiceResource;
         }
 
         #region Helper methods

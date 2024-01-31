@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         var beginRequestResponse = this.SfrpMcClient.ManagedClusters.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, newClusterParams)
                             .GetAwaiter().GetResult();
 
-                        cluster = this.PollLongRunningOperation(beginRequestResponse);
+                        cluster = this.PollLongRunningOperation(beginRequestResponse) as ManagedCluster;
 
                         WriteObject(new PSManagedCluster(cluster), false);
                     }

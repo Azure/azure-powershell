@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
+using Microsoft.PowerShell.Commands;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json.Linq;
 using System;
@@ -59,7 +60,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region Helper
 
-        protected void PollLongRunningOperation(Rest.Azure.AzureOperationResponse beginRequestResponse)
+
+        protected void PollLongRunningOperation<T>(Rest.Azure.AzureOperationHeaderResponse<T> beginRequestResponse)
         {
             AzureOperationResponse<object> response2 = new Rest.Azure.AzureOperationResponse<object>
             {
@@ -68,11 +70,24 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 RequestId = beginRequestResponse.RequestId
             };
 
-            this.PollLongRunningOperation(response2);
+            this.PollLongRunningOperationPriv(response2);
         }
 
-        protected T PollLongRunningOperation<T>(AzureOperationResponse<T> beginRequestResponse) where T : class
+        protected object PollLongRunningOperation<TOne, TTwo>(Rest.Azure.AzureOperationResponse<TOne, TTwo> beginRequestResponse)
         {
+            AzureOperationResponse<object> response2 = new Rest.Azure.AzureOperationResponse<object>
+            {
+                Request = beginRequestResponse.Request,
+                Response = beginRequestResponse.Response,
+                RequestId = beginRequestResponse.RequestId
+            };
+
+            return this.PollLongRunningOperationPriv(response2);
+        }
+
+        private T PollLongRunningOperationPriv<T>(AzureOperationResponse<T> beginRequestResponse) where T : class
+        {
+          
             var progress = new ProgressRecord(0, "Request in progress", "Getting Status...");
             WriteProgress(progress);
             WriteVerboseWithTimestamp(string.Format("Begin request ARM correlationId: '{0}' response: '{1}'",

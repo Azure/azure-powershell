@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.Name, newNodeTypeParams)
                             .GetAwaiter().GetResult();
 
-                        nodeType = this.PollLongRunningOperation(beginRequestResponse);
+                        nodeType = this.PollLongRunningOperation(beginRequestResponse) as NodeType;
 
                         WriteObject(new PSManagedNodeType(nodeType), false);
                     }
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var newNodeType = new NodeType(
                 isPrimary: this.Primary.IsPresent,
                 vmInstanceCount: this.InstanceCount,
-                dataDiskSizeGB: this.DiskSize,
+                dataDiskSizeGb: this.DiskSize,
                 dataDiskType: this.DiskType.ToString(),
                 name: this.Name,
                 vmSize: this.VmSize,
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (this.VmUserAssignedIdentity != null && this.VmUserAssignedIdentity.Length > 0)
             {
-                newNodeType.VmManagedIdentity = new VmManagedIdentity(userAssignedIdentities: this.VmUserAssignedIdentity);
+                newNodeType.VMManagedIdentity = new VmManagedIdentity(userAssignedIdentities: this.VmUserAssignedIdentity);
             }
 
             if (this.MultiplePlacementGroup.IsPresent)

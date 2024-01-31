@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     var beginRequestResponse = this.SfrpMcClient.Applications.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.Name, updatedAppParams)
                         .GetAwaiter().GetResult();
 
-                    var managedApp = this.PollLongRunningOperation(beginRequestResponse);
+                    var managedApp = this.PollLongRunningOperation(beginRequestResponse) as ApplicationResource;
 
                     WriteObject(new PSManagedApplication(managedApp), false);
                 }

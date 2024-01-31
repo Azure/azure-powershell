@@ -67,23 +67,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             else
             {
                 WriteVerbose($"Creating managed app type '{applicationTypeName}'.");
-                ApplicationTypeResource newAppTypeParams = this.GetNewAppTypeParameters(location, tags:tags);
                 return this.SfrpMcClient.ApplicationTypes.CreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName, 
-                    this.ClusterName, 
-                    applicationTypeName,
-                    newAppTypeParams)
+                    resourceGroupName: this.ResourceGroupName, 
+                    clusterName: this.ClusterName, 
+                    applicationTypeName: applicationTypeName,
+                    location: location,
+                    tags: tags?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string))
                     .GetAwaiter().GetResult().Body;
-
-
             }
-        }
-
-        private ApplicationTypeResource GetNewAppTypeParameters(string location, Hashtable tags = null)
-        {
-            return new ApplicationTypeResource(
-                location: location,
-                tags: tags?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string));
         }
 
         protected ApplicationTypeVersionResource CreateManagedApplicationTypeVersion(string applicationTypeName, string typeVersion, string location, string packageUrl, bool force, Hashtable tags = null)
@@ -152,7 +143,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     typeVersion,
                     managedAppTypeVersionParams).GetAwaiter().GetResult();
 
-            return this.PollLongRunningOperation(beginRequestResponse);
+            return this.PollLongRunningOperation(beginRequestResponse) as ApplicationTypeVersionResource;
         }
 
         private ApplicationTypeVersionResource GetNewAppTypeVersionParameters(string applicationTypeName, string location, string packageUrl, Hashtable tags)
