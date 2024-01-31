@@ -41,7 +41,6 @@ $ModuleMetadata.RequiredModules | ForEach-Object {
     {
         Write-Warning "Module $ModuleName not found in $DestinationModulePath"
     }
-    # Import-Module $Psd1Path -Force
     Import-Module $ModuleName
     $Module = Get-Module $ModuleName
     foreach ($Cmdlet in $Module.ExportedCmdlets.Values) {
@@ -67,6 +66,5 @@ $ModuleMetadata.RequiredModules | ForEach-Object {
         }
     }
 }
-gmo -l
 $json = ConvertTo-Json $outputTypes
 $json | Out-File "$OutputFile"
