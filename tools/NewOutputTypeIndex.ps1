@@ -23,7 +23,7 @@ foreach ($item in $jsonData) {
 
 $ReleaseRepository = "ReleaseRP"
 Register-PSRepository -Name $ReleaseRepository -SourceLocation "$PSScriptRoot/../artifacts" -PackageManagementProvider Nuget -InstallationPolicy Trusted
-Install-Module -Scope CurrentUser -Name Az -Repository $ReleaseRepository -Force
+Install-Module -Scope CurrentUser -Name Az -Repository $ReleaseRepository -Force -AllowClobber
 
 $ModuleMetadata.RequiredModules | ForEach-Object {
         $ModuleName = $_.ModuleName
