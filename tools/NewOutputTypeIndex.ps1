@@ -27,10 +27,14 @@ Install-Module -Scope CurrentUser -Name AzPreview -Repository $ReleaseRepository
 
 $ModuleMetadata.RequiredModules | ForEach-Object {
     $ModuleName = $_.ModuleName
-    $RequiredVersion = $_.RequiredVersion
+    $Version = $_.RequiredVersion
+    if ($Version -eq $null)
+    {
+        $Version = $_.ModuleVersion
+    }
     $srcFile = $ModuleManifestFile | Where-Object {$_.Name -eq "$ModuleName.psd1"}
     Import-LocalizedData -BindingVariable srcMetadata -BaseDirectory $srcFile.DirectoryName -FileName $srcFile.Name
-    $DestinationModulePath = [System.IO.Path]::Combine($ModulePath, $ModuleName, $RequiredVersion)
+    $DestinationModulePath = [System.IO.Path]::Combine($ModulePath, $ModuleName, $Version)
     $psd1Path = Join-Path -Path $DestinationModulePath -ChildPath "$ModuleName.psd1"
     Write-Host $Psd1Path
     if (-not (Test-Path $Psd1Path))
