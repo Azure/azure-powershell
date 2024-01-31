@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 },
                 HttpGatewayEndpointPort = Constants.DefaultHttpGatewayEndpoint,
                 IsPrimary = this.IsPrimaryNodeType ?? false,
-                VMInstanceCount = this.Capacity
+                VmInstanceCount = this.Capacity
             });
 
             return SendPatchRequest(new Management.ServiceFabric.Models.ClusterUpdateParameters()
