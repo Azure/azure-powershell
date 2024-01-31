@@ -52,7 +52,11 @@ function setupEnv() {
 
     New-AzSupportFileWorkspace -Name $env.FileWorkspaceNameSubscription
     New-AzSupportFileWorkspacesNoSubscription -Name $env.FileWorkspaceNameNoSubscription
-    
+
+    $testFilePath = Join-Path $PSScriptRoot files test2.txt
+    New-AzSupportFileAndUpload -WorkspaceName $env.FileWorkspaceNameSubscription -FilePath $testFilePath
+    New-AzSupportFileAndUploadNoSubscription -WorkspaceName $env.FileWorkspaceNameNoSubscription -FilePath $testFilePath
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

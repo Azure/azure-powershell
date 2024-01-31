@@ -15,16 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportFilesNoSubscript
 }
 
 Describe 'Get-AzSupportFilesNoSubscription' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $files = Get-AzSupportFilesNoSubscription -WorkspaceName $env.FileWorkspaceNameNoSubscription
+        $files | Should -Not -BeNullOrEmpty
+        $files.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'GetViaIdentityFileWorkspace' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $file = Get-AzSupportFile -Name "test2.txt" -WorkspaceName $env.FileWorkspaceNameSubscription
+        $file | Should -Not -BeNullOrEmpty
+        $file.Name | Should -Be "test2.txt"
     }
 
     It 'GetViaIdentity' -skip {

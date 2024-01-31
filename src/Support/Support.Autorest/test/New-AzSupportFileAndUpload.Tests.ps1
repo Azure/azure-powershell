@@ -16,10 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSupportFileAndUpload'))
 
 Describe 'New-AzSupportFileAndUpload' {
     It 'CreateExpanded' {
-        Write-Host "current path: " + $currentPath
-        Write-Host "ps script root: " + $PSScriptRoot
         $testFilePath = Join-Path $PSScriptRoot files test.txt
-        Write-Host "test file path: " + $testFilePath
         $file = New-AzSupportFileAndUpload -WorkspaceName $env.FileWorkspaceNameSubscription -FilePath $testFilePath
         $file.Name | Should -Be "test.txt"
     }
