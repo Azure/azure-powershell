@@ -683,7 +683,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             var headers = new Dictionary<string, List<string>> ();
             foreach (KeyValuePair<string, IList<string>> entry in auxTenants)
             {
-                headers[entry.Key] = entry.Value.ToList();
+                // TODO: Correct header value in method that gets tokens.
+                //headers[entry.Key] = entry.Value.ToList();
+                headers["Authorization"] = entry.Value.ToList();
             }
 
             return headers;

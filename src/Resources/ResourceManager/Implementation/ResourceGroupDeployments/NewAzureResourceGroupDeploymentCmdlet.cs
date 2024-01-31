@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
 
             // TODO: Think about parameter sets and allowing sub parameter without aux tenant.
-            if ((this.SubscriptionId != null && this.AuxTenant != null) || (this.SubscriptionId == null && this.AuxTenant != null))
+            if ((this.SubscriptionId != null && this.AuxTenant == null) || (this.SubscriptionId == null && this.AuxTenant != null))
             {
                 // TODO: Add a better error.
                 this.WriteExceptionError(new ArgumentException("Must have both AuxTenant and Subscription defined, or neither"));
