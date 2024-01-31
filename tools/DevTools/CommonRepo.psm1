@@ -57,7 +57,7 @@ function Connect-CommonRepo {
       throw "Failed to add Common.csproj to AssemblyLoading.csproj"
     }
 
-    # TODO: add common project references for csproj which does not reference Authentication.csproj below
+    # add common project references below for csproj which does not reference Authentication.csproj
   }
   finally {
     Pop-Location
