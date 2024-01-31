@@ -20,7 +20,7 @@ Describe 'New-AzSupportFileAndUpload' {
         Write-Host "ps script root: " + $PSScriptRoot
         $testFilePath = Join-Path $PSScriptRoot files test.txt
         Write-Host "test file path: " + $testFilePath
-        $file = New-AzSupportFileAndUpload -Name "test.txt" -WorkspaceName $env.FileWorkspaceNameSubscription -FilePath $testFilePath
+        $file = New-AzSupportFileAndUpload -WorkspaceName $env.FileWorkspaceNameSubscription -FilePath $testFilePath
         $file.Name | Should -Be "test.txt"
     }
 }

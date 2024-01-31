@@ -34,13 +34,6 @@ function New-AzSupportFileAndUpload {
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
-    [Alias('FileName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Support.Category('Path')]
-    [System.String]
-    # File name.
-    ${Name},
-
-    [Parameter(Mandatory)]
     [Alias('FileWorkspaceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Support.Category('Path')]
     [System.String]
@@ -130,14 +123,19 @@ param(
 process {
     $ErrorActionPreference = 'Stop'
     #Write-Output "file path: " + $FilePath
+    $FileName = Split-Path $FilePath -Leaf
+    Write-Output "file name: " $FileName
     $MaxChunkSize = 2.5 * 1024 * 1024 #2.5 MB
     $MaxFileSize = 5 * 1024 * 1024 #5 MB
+    Write-Output "about to get file content"
     $FileContentBytes = Get-Content -Path $FilePath -Raw
+    Write-Output "got file content"
     if($FileContentBytes -eq $Null){
         throw "File cannot be empty"
     }
     $FileContentByteArray = [System.Text.Encoding]::UTF8.GetBytes($FileContentBytes)
     $FileSize = $FileContentByteArray.Length
+    Write-Output "file size: " $FileSize
     if($FileSize -gt $MaxFileSize){
         throw "File size is greater than the maximum file size of 5 MB"
     }
@@ -151,8 +149,8 @@ process {
         $NumberOfChunks++
     }
     # Write-Output "Number of chunks: " $NumberOfChunks
-    
-    New-AzSupportFile -SubscriptionId $SubscriptionId -Name $Name -WorkspaceName $WorkspaceName -FileSize $FileSize -ChunkSize $ChunkSize -NumberOfChunk $NumberOfChunks
+    $PSBoundParameters.Remove('FilePath') | Out-Null
+    New-AzSupportFile -SubscriptionId $SubscriptionId -Name $FileName -WorkspaceName $WorkspaceName -FileSize $FileSize -ChunkSize $ChunkSize -NumberOfChunk $NumberOfChunks @PSBoundParameters
 
     Write-Output "successfully created file"
     $chunkIndex = 0
@@ -167,7 +165,7 @@ process {
         # Write-Output "end index: " + $endIndex
         $FileContent = [convert]::ToBase64String($FileContentByteArray[$startIndex..$endIndex])
 
-        Invoke-AzSupportUploadFile -SubscriptionId $SubscriptionId -FileName $Name -FileWorkspaceName $WorkspaceName -ChunkIndex $chunkIndex -Content $FileContent
+        Invoke-AzSupportUploadFile -SubscriptionId $SubscriptionId -FileName $FileName -FileWorkspaceName $WorkspaceName -ChunkIndex $chunkIndex -Content $FileContent @PSBoundParameters
         $chunkIndex++
         $startIndex = $endIndex + 1
         $endIndex = $FileSize - 1

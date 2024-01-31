@@ -13,8 +13,8 @@ Creates and uploads a new file under a workspace for the specified subscription.
 ## SYNTAX
 
 ```
-New-AzSupportFileAndUpload -Name <String> -WorkspaceName <String> -FilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSupportFileAndUpload -WorkspaceName <String> -FilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,21 +74,6 @@ Path of the file to be uploaded
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-File name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: FileName
 
 Required: True
 Position: Named

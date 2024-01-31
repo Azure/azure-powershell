@@ -82,6 +82,16 @@ directive:
           - FileSize
           - NumberOfChunks 
   - where:
+      subject: UploadFile
+      parameter-name: FileWorkspaceName
+    set:
+      alias: WorkspaceName
+  - where:
+      subject: UploadFilesNoSubscription
+      parameter-name: FileWorkspaceName
+    set:
+      alias: WorkspaceName
+  - where:
       subject: FileWorkspacesNoSubscription
       parameter-name: FileWorkspaceName
     set:
