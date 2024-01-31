@@ -74,9 +74,6 @@ Creates and uploads a new file under a workspace for the specified subscription.
 ### [New-AzSupportFileAndUploadNoSubscription](New-AzSupportFileAndUploadNoSubscription.md)
 Creates and uploads a new file under a workspace for the specified subscription.
 
-### [New-AzSupportFilesNoSubscription](New-AzSupportFilesNoSubscription.md)
-Creates a new file under a workspace.
-
 ### [New-AzSupportFileWorkspace](New-AzSupportFileWorkspace.md)
 Creates a new file workspace for the specified subscription.
 

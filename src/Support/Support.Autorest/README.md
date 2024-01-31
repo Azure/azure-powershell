@@ -111,6 +111,10 @@ directive:
       subject: File
     hide: true
   - where:
+      verb: New
+      subject: FilesNoSubscription
+    hide: true
+  - where:
       verb: Update
       subject: File
     remove: true

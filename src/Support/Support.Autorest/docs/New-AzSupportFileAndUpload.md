@@ -63,11 +63,6 @@ Accept wildcard characters: False
 ```
 
 ### -FilePath
-[Parameter(Mandatory)]
-[Microsoft.Azure.PowerShell.Cmdlets.Support.Category('Body')]
-[System.Single]
-# Number of chunks to be uploaded
-${NumberOfChunk},
 Path of the file to be uploaded
 
 ```yaml

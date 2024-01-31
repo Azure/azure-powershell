@@ -47,24 +47,6 @@ param(
     # Azure subscription Id.
     ${SubscriptionId},
 
-    # [Parameter(Mandatory)]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Support.Category('Body')]
-    # [System.Single]
-    # # Size of each chunk
-    # ${ChunkSize},
-
-    # [Parameter(Mandatory)]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Support.Category('Body')]
-    # [System.Single]
-    # # Size of the file to be uploaded
-    # ${FileSize},
-
-    # [Parameter(Mandatory)]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Support.Category('Body')]
-    # [System.Single]
-    # # Number of chunks to be uploaded
-    # ${NumberOfChunk},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Support.Category('Body')]
     [System.String]
