@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+## Version 6.14.99
+* Supported `AuxTenant` for `New-AzResourceGroupDeployment`.
 * Supported `-SkipClientSideScopeValidation` in RoleAssignment and RoleDefinition related commands. [#22473]
 * Updated Bicep build logic to use --stdout flag instead of creating a temporary file on disk.
 * Fixed exception when `-ApiVersion` is specified for `Get-AzResource`, affected by some resource types.
