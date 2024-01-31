@@ -511,8 +511,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     return ResourceManagementClient.Deployments.ValidateAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, scopedDeployment);
 
                 case DeploymentScopeType.ResourceGroup:
-                    return ResourceManagementClient.Deployments.ValidateWithHttpMessagesAsync(parameters.ResourceGroupName, parameters.DeploymentName, deployment,
-                        customHeaders: ConvertAuxTenantDictionary(parameters.AuxTenantHeaders)).GetAwaiter().GetResult().Body;
+                    if(parameters.SubscriptionId != null && parameters.AuxTenantHeaders != null)
+                    {
+                        var scope = "/subscriptions/" + parameters.SubscriptionId + "/resourcegroups/" + parameters.ResourceGroupName;
+                        return ResourceManagementClient.Deployments.ValidateAtScopeWithHttpMessagesAsync(scope, parameters.DeploymentName, deployment,
+                            customHeaders: ConvertAuxTenantDictionary(parameters.AuxTenantHeaders)).GetAwaiter().GetResult().Body;
+                    }
+                    else
+                    {
+                        return ResourceManagementClient.Deployments.BeginValidate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+                    }
 
                 case DeploymentScopeType.Subscription:
                 default:
@@ -648,8 +656,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     break;
 
                 case DeploymentScopeType.ResourceGroup:
-                    ResourceManagementClient.Deployments.BeginCreateOrUpdateWithHttpMessagesAsync(parameters.ResourceGroupName, parameters.DeploymentName, deployment, 
-                        customHeaders: ConvertAuxTenantDictionary(parameters.AuxTenantHeaders)).GetAwaiter().GetResult();
+                    if (parameters.SubscriptionId != null && parameters.AuxTenantHeaders != null)
+                    {
+                        var scope = "/subscriptions/" + parameters.SubscriptionId + "/resourcegroups/" + parameters.ResourceGroupName;
+                        ResourceManagementClient.Deployments.BeginCreateOrUpdateAtScopeWithHttpMessagesAsync(scope, parameters.DeploymentName, deployment,
+                            customHeaders: ConvertAuxTenantDictionary(parameters.AuxTenantHeaders)).GetAwaiter().GetResult();
+                    }
+                    else
+                    {
+                        ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+                    }
                     break;
 
                 case DeploymentScopeType.Subscription:

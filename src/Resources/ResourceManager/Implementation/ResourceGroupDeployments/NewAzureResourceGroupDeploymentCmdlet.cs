@@ -79,8 +79,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Aux tenant ids for cross tenant deployments")]
-        public string[] AuxTenant { get; set; } 
+        public string[] AuxTenant { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Subscription id for sub scope in another tenant (can only be used with AuxTenant property)")]
+        public string SubscriptionId { get; set; }
 
         protected override ConfirmImpact ConfirmImpact => ((CmdletAttribute)Attribute.GetCustomAttribute(
             typeof(NewAzureResourceGroupDeploymentCmdlet),
@@ -107,7 +109,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     DeploymentName = RollbackToLastDeployment ? null : RollBackDeploymentName
                 }
                 : null,
-            AuxTenantHeaders = GetAuxiliaryAuthHeaderFromTenantIds(AuxTenant)
+            AuxTenantHeaders = GetAuxiliaryAuthHeaderFromTenantIds(AuxTenant),
+            SubscriptionId = SubscriptionId
         };
 
         protected override PSDeploymentWhatIfCmdletParameters BuildWhatIfParameters() => new PSDeploymentWhatIfCmdletParameters(
@@ -129,6 +132,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             if (this.RollbackToLastDeployment && !string.IsNullOrEmpty(this.RollBackDeploymentName))
             {
                 this.WriteExceptionError(new ArgumentException(Properties.Resources.InvalidRollbackParameters));
+            }
+
+            // TODO: Think about parameter sets and allowing sub parameter without aux tenant.
+            if ((this.SubscriptionId != null && this.AuxTenant != null) || (this.SubscriptionId == null && this.AuxTenant != null))
+            {
+                // TODO: Add a better error.
+                this.WriteExceptionError(new ArgumentException("Must have both AuxTenant and Subscription defined, or neither"));
             }
 
             if (!this.Force && this.ShouldExecuteWhatIf())
