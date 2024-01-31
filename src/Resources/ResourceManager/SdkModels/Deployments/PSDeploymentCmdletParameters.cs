@@ -41,5 +41,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public string DeploymentDebugLogLevel { get; set; }
 
         public OnErrorDeployment OnErrorDeployment { get; set; }
+
+        public IDictionary<string, IList<string>> AuxTenantHeaders { get; set; }
+
+        public string SubscriptionId { get; set; }
     }
 }
