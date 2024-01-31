@@ -29,5 +29,12 @@ namespace Microsoft.Azure.Commands.CodeSigning.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CodeSigningEku");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetSigningRootCertificate()
+        {
+            TestRunner.RunTestScript("Test-GetCodeSigningRootCert");
+        }
     }
 }

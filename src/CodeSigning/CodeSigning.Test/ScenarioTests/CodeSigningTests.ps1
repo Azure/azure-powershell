@@ -14,13 +14,14 @@
 
 <#
 .SYNOPSIS
-Tests CodeSigning commands
+Test codesigning command to get extended key usage from the certificate profile
 #>
 function Test-CodeSigningEku {
-    $accountName = "dawangarmeus110"
-    $profileName = "dawangarmeus110Cert02"
-    $endPointUrl = "https://localhost:5001/"
-    $expectedEku = "1.3.6.1.4.1.311.97.1.3.1.29433.35007.34545.16815.37291.11644.53265.56135"
+
+    $accountName = "acs-test-account"
+    $profileName = "acs-test-account-ci"
+    $endPointUrl = "https://scus.codesigning.azure.net/"
+    $expectedEku = "1.3.6.1.4.1.311.97.1.3.1.29433.35007.34545.16815.37291.11644.53265.56135,1.3.6.1.4.1.311.97.1.4.1.29433.35007.34545.16815.37291.11644.53265.56135"
 
     try {
         # Test Get CodeSigning Eku
@@ -33,4 +34,25 @@ function Test-CodeSigningEku {
 
     }
 
+}
+
+<#
+.SYNOPSIS
+Test codesigning command to get the root certificate from the certificate profile
+#>
+function Test-GetCodeSigningRootCert {
+    $accountName = "acs-test-account"
+    $profileName = "acs-test-account-ci"
+    $endPointUrl = "https://scus.codesigning.azure.net/"
+    $destination = "C:\temp"
+
+    try {
+        # Test Get CodeSigning Root Cert
+        $cert = Get-AzCodeSigningRootCert -AccountName $accountName -ProfileName $profileName -EndpointUrl $endPointUrl -Destination $destination
+        Assert-NotNullOrEmpty $cert
+    }
+
+    finally {
+
+    }
 }
