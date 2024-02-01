@@ -103,49 +103,39 @@ param(
 )
 
 process {
-    #Write-Output "file path: " + $FilePath
     $FileName = Split-Path $FilePath -Leaf
-    Write-Output "file name: " $FileName
     $MaxChunkSize = 2.5 * 1024 * 1024 #2.5 MB
     $MaxFileSize = 5 * 1024 * 1024 #5 MB
-    Write-Output "about to get file content"
     $FileContentBytes = Get-Content -Path $FilePath -Raw
-    Write-Output "got file content"
+
     if($FileContentBytes -eq $Null){
         throw "File cannot be empty"
     }
+
     $FileContentByteArray = [System.Text.Encoding]::UTF8.GetBytes($FileContentBytes)
     $FileSize = $FileContentByteArray.Length
-    Write-Output "file size: " $FileSize
+
     if($FileSize -gt $MaxFileSize){
         throw "File size is greater than the maximum file size of 5 MB"
     }
+
     $ChunkSize = If($FileSize -gt $MaxChunkSize) {$MaxChunkSize} Else {$FileSize}
-    # Write-Output "Length of byte array: " $FileSize
-    # Write-Output "Max chunk size: " $MaxChunkSize
-    # Write-Output "Chunk Size: " $ChunkSize
     $NumberOfChunks = [int][Math]::Floor($FileSize / $ChunkSize);
+
     If($FileSize % $ChunkSize -gt 0) 
     {
         $NumberOfChunks++
     }
-    # Write-Output "Number of chunks: " $NumberOfChunks
+
     $PSBoundParameters.Remove('FilePath') | Out-Null
     New-AzSupportFile -ErrorAction Stop -Name $FileName -FileSize $FileSize -ChunkSize $ChunkSize -NumberOfChunk $NumberOfChunks @PSBoundParameters
 
-    Write-Output "successfully created file"
     $chunkIndex = 0
     $startIndex = 0
     $endIndex = $ChunkSize - 1
     
-    # $FileContent = [convert]::ToBase64String((Get-Content -path $FilePath -Encoding byte))
-    
     while($chunkIndex -lt $NumberOfChunks){
-        # Write-Output "chunk index: " + $chunkIndex
-        # Write-Output "start index: " + $startIndex
-        # Write-Output "end index: " + $endIndex
         $FileContent = [convert]::ToBase64String($FileContentByteArray[$startIndex..$endIndex])
-
         Invoke-AzSupportUploadFile -ErrorAction Stop -FileName $FileName -ChunkIndex $chunkIndex -Content $FileContent @PSBoundParameters
         $chunkIndex++
         $startIndex = $endIndex + 1
