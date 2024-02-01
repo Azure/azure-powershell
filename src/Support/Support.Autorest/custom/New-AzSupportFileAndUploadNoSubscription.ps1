@@ -123,7 +123,7 @@ process {
     Write-Output "Number of chunks: " $NumberOfChunks
 
     $PSBoundParameters.Remove('FilePath') | Out-Null
-    New-AzSupportFilesNoSubscription -Name $FileName -WorkspaceName $WorkspaceName -FileSize $FileSize -ChunkSize $ChunkSize -NumberOfChunk $NumberOfChunks @PSBoundParameters
+    New-AzSupportFilesNoSubscription -ErrorAction Stop -Name $FileName -FileSize $FileSize -ChunkSize $ChunkSize -NumberOfChunk $NumberOfChunks @PSBoundParameters
 
     Write-Output "successfully created file"
     $chunkIndex = 0
@@ -138,7 +138,7 @@ process {
         Write-Output "end index: " + $endIndex
         $FileContent = [convert]::ToBase64String($FileContentByteArray[$startIndex..$endIndex])
 
-        Invoke-AzSupportUploadFilesNoSubscription -FileName $FileName -FileWorkspaceName $WorkspaceName -ChunkIndex $chunkIndex -Content $FileContent @PSBoundParameters
+        Invoke-AzSupportUploadFilesNoSubscription -ErrorAction Stop -FileName $FileName -ChunkIndex $chunkIndex -Content $FileContent @PSBoundParameters
         $chunkIndex++
         $startIndex = $endIndex + 1
         $endIndex = $FileSize - 1
