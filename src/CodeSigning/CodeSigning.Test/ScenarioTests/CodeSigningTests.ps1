@@ -32,7 +32,6 @@ function Test-CodeSigningEku {
     finally {
 
     }
-
 }
 
 <#

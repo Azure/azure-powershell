@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Commands.CodeSigning.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestCodeSigningEku()
         {
             TestRunner.RunTestScript("Test-CodeSigningEku");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestGetSigningRootCertificate()
         {
             TestRunner.RunTestScript("Test-GetCodeSigningRootCert");
