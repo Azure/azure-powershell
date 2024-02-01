@@ -29,7 +29,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Management", "Stora
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Test", "Storage.Test\Storage.Test.csproj", "{81B2C882-F205-411B-9EEC-A387E1D7B23C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage", "Storage\Storage.csproj", "{498E0062-283F-41AD-B0E0-1ED055974217}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.Data", "Storage.Data\Storage.Data.csproj", "{498E0062-283F-41AD-B0E0-1ED055974217}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage", "Storage\Storage.csproj", "{498E0062-283F-41AD-B0E0-1ED055974218}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{DDCE5245-E4F2-4F1B-B669-D81A920AAD21}"
 EndProject
@@ -90,6 +92,10 @@ Global
 		{498E0062-283F-41AD-B0E0-1ED055974217}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{498E0062-283F-41AD-B0E0-1ED055974217}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{498E0062-283F-41AD-B0E0-1ED055974217}.Release|Any CPU.Build.0 = Release|Any CPU
+		{498E0062-283F-41AD-B0E0-1ED055974218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{498E0062-283F-41AD-B0E0-1ED055974218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{498E0062-283F-41AD-B0E0-1ED055974218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{498E0062-283F-41AD-B0E0-1ED055974218}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DDCE5245-E4F2-4F1B-B669-D81A920AAD21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DDCE5245-E4F2-4F1B-B669-D81A920AAD21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDCE5245-E4F2-4F1B-B669-D81A920AAD21}.Release|Any CPU.ActiveCfg = Release|Any CPU
