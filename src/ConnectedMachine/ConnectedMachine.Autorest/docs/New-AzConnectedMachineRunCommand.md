@@ -98,7 +98,7 @@ New-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <Strin
  [-ProtectedParameter <IRunCommandInputParameter[]>] [-RunAsPassword <String>] [-RunAsUser <String>]
  [-ScriptLocalPath <String>] [-ScriptUriManagedIdentityClientId <String>]
  [-ScriptUriManagedIdentityObjectId <String>] [-SourceCommandId <String>] [-SourceScript <String>]
- [-SourceScriptUri <String>] [-Tags <Hashtable>] [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>]
+ [-SourceScriptUri <String>] [-Tag <Hashtable>] [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -633,22 +633,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tags
-
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: ScriptLocalPath
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityMachineExpanded, ScriptLocalPath
 Aliases:
 
 Required: False
