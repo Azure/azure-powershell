@@ -62,7 +62,7 @@ $output.Add("version", "$Version")
 $outputModules = @{}
 
 #Create mappings file
-& "ToolsRootPath/CreateMappings.ps1" -OutputFile $OutputFile/../groupMapping.json -WarningFile $OutputFile/../groupMappingWarnings.json
+& "$ToolsRootPath/CreateMappings.ps1" -OutputFile $OutputFile/../groupMapping.json -WarningFile $OutputFile/../groupMappingWarnings.json
 $labelMapping = Get-Content -Raw $OutputFile/../groupMapping.json | ConvertFrom-Json
 
 $HelpFolders = @()
