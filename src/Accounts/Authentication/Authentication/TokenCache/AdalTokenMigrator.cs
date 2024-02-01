@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
             ContextContainerInitializer = new Lazy<IAzureContextContainer>(getContextContainer);
         }
 
-        public void MigrateFromAdalToMsal()
+        public void MigrateFromAdalToMsal(string tokenCacheFile)
         {
             MsalCacheHelper cacheHelper = null;
             var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCac
                         if (!HasRegistered)
                         {
                             HasRegistered = true;
-                            cacheHelper = MsalCacheHelperProvider.GetCacheHelper();
+                            cacheHelper = MsalCacheHelperProvider.GetCacheHelper(tokenCacheFile);
                             cacheHelper.RegisterCache(clientApplication.UserTokenCache);
                         }
                     }

@@ -36,19 +36,15 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="globalPlacementRules">Application specific placement rules for the volume group
         /// </param>
 
-        /// <param name="deploymentSpecId">Application specific identifier of deployment rules for the volume group
-        /// </param>
-
         /// <param name="volumesCount">Number of volumes in volume group
         /// </param>
-        public VolumeGroupMetaData(string groupDescription = default(string), string applicationType = default(string), string applicationIdentifier = default(string), System.Collections.Generic.IList<PlacementKeyValuePairs> globalPlacementRules = default(System.Collections.Generic.IList<PlacementKeyValuePairs>), string deploymentSpecId = default(string), long? volumesCount = default(long?))
+        public VolumeGroupMetaData(string groupDescription = default(string), string applicationType = default(string), string applicationIdentifier = default(string), System.Collections.Generic.IList<PlacementKeyValuePairs> globalPlacementRules = default(System.Collections.Generic.IList<PlacementKeyValuePairs>), long? volumesCount = default(long?))
 
         {
             this.GroupDescription = groupDescription;
             this.ApplicationType = applicationType;
             this.ApplicationIdentifier = applicationIdentifier;
             this.GlobalPlacementRules = globalPlacementRules;
-            this.DeploymentSpecId = deploymentSpecId;
             this.VolumesCount = volumesCount;
             CustomInit();
         }
@@ -82,13 +78,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "globalPlacementRules")]
         public System.Collections.Generic.IList<PlacementKeyValuePairs> GlobalPlacementRules {get; set; }
-
-        /// <summary>
-        /// Gets or sets application specific identifier of deployment rules for the
-        /// volume group
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "deploymentSpecId")]
-        public string DeploymentSpecId {get; set; }
 
         /// <summary>
         /// Gets number of volumes in volume group

@@ -19,9 +19,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Linq;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
 {
@@ -78,16 +80,22 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 var NameParts = AccountObject.Name.Split('/');
                 AccountName = NameParts[0];
             }
-
-            if (ActiveDirectoryId != null)
+            try
             {
-                var anfActiveDirectory = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName).ActiveDirectories?.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.ActiveDirectoryId == ActiveDirectoryId);
-                WriteObject(anfActiveDirectory?.ConvertToPs(ResourceGroupName, AccountName));
+                if (ActiveDirectoryId != null)
+                {
+                    var anfActiveDirectory = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName).ActiveDirectories?.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.ActiveDirectoryId == ActiveDirectoryId);
+                    WriteObject(anfActiveDirectory?.ConvertToPs(ResourceGroupName, AccountName));
+                }
+                else
+                {
+                    var anfActiveDirectories = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName).ActiveDirectories?.ConvertToPs(ResourceGroupName, AccountName);
+                    WriteObject(anfActiveDirectories, true);
+                }            
             }
-            else
+            catch(ErrorResponseException ex)
             {
-                var anfActiveDirectories = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName).ActiveDirectories?.ConvertToPs(ResourceGroupName, AccountName);
-                WriteObject(anfActiveDirectories, true);
+                throw new CloudException(ex.Body.Error.Message, ex);
             }
         }
     }

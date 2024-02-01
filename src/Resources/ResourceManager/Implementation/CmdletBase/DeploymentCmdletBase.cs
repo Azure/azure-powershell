@@ -475,7 +475,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         protected void BuildAndUseBicepTemplate()
         {
-            TemplateFile = BicepUtility.Create().BuildFile(this.ResolvePath(TemplateFile), this.WriteVerbose, this.WriteWarning);
+            var templateJson = BicepUtility.Create().BuildBicepFile(this.ResolvePath(TemplateFile), this.WriteVerbose, this.WriteWarning);
+            TemplateObject = JsonConvert.DeserializeObject<Hashtable>(templateJson);
+            TemplateFile = null;
         }
 
         private IReadOnlyDictionary<string, object> GetDynamicParametersDictionary()
@@ -490,7 +492,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected void BuildAndUseBicepParameters(bool emitWarnings)
         {
             BicepUtility.OutputCallback nullCallback = null;
-            var output = BicepUtility.Create().BuildParams(this.ResolvePath(TemplateParameterFile), GetDynamicParametersDictionary(), this.WriteVerbose, emitWarnings ? this.WriteWarning : nullCallback);
+            var output = BicepUtility.Create().BuildBicepParamFile(this.ResolvePath(TemplateParameterFile), GetDynamicParametersDictionary(), this.WriteVerbose, emitWarnings ? this.WriteWarning : nullCallback);
             bicepparamFileParameters = TemplateUtility.ParseTemplateParameterJson(output.parametersJson);
 
             if (TemplateObject == null && 

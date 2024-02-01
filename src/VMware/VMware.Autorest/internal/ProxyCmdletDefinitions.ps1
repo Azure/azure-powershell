@@ -27,7 +27,7 @@ Get-AzVMwareAddon -AddonType vr -PrivateCloudName azps_test_cloud -ResourceGroup
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -59,14 +59,44 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareaddon
 #>
 function Get-AzVMwareAddon {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
     [Alias('AddonName')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
@@ -103,12 +133,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -162,9 +200,10 @@ begin {
         $mapping = @{
             Get = 'Az.VMware.private\Get-AzVMwareAddon_Get';
             GetViaIdentity = 'Az.VMware.private\Get-AzVMwareAddon_GetViaIdentity';
+            GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwareAddon_GetViaIdentityPrivateCloud';
             List = 'Az.VMware.private\Get-AzVMwareAddon_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -209,12 +248,12 @@ Lists all of the available operations
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareoperation
 #>
 function Get-AzVMwareOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -222,7 +261,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -320,7 +360,7 @@ Return information about a script cmdlet resource in a specific package on a pri
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptCmdlet
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdlet
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -352,14 +392,73 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+SCRIPTPACKAGEINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarescriptcmdlet
 #>
 function Get-AzVMwareScriptCmdlet {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptCmdlet])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdlet])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityScriptPackage', Mandatory)]
     [Alias('ScriptCmdletName')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
@@ -382,6 +481,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
@@ -403,12 +503,27 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityScriptPackage', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for SCRIPTPACKAGEINPUTOBJECT properties and create a hash table.
+    ${ScriptPackageInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -462,9 +577,11 @@ begin {
         $mapping = @{
             Get = 'Az.VMware.private\Get-AzVMwareScriptCmdlet_Get';
             GetViaIdentity = 'Az.VMware.private\Get-AzVMwareScriptCmdlet_GetViaIdentity';
+            GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwareScriptCmdlet_GetViaIdentityPrivateCloud';
+            GetViaIdentityScriptPackage = 'Az.VMware.private\Get-AzVMwareScriptCmdlet_GetViaIdentityScriptPackage';
             List = 'Az.VMware.private\Get-AzVMwareScriptCmdlet_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -511,9 +628,9 @@ Return the logs for a script execution resource
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ScriptOutputStreamType[]
+System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -545,12 +662,41 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarescriptexecutionlog
 #>
 function Get-AzVMwareScriptExecutionLog {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution])]
+[CmdletBinding(DefaultParameterSetName='GetViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
@@ -566,6 +712,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the user-invoked script execution resource
@@ -585,11 +732,18 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter(Mandatory, ValueFromPipeline)]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ScriptOutputStreamType])]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ScriptOutputStreamType[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(Required, PossibleTypes=([System.String]))]
+    [System.Collections.Generic.List[System.String]]
     # Array of ScriptOutputStreamType
     ${ScriptOutputStreamType},
 
@@ -598,7 +752,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -652,8 +807,9 @@ begin {
         $mapping = @{
             Get = 'Az.VMware.private\Get-AzVMwareScriptExecutionLog_Get';
             GetViaIdentity = 'Az.VMware.private\Get-AzVMwareScriptExecutionLog_GetViaIdentity';
+            GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwareScriptExecutionLog_GetViaIdentityPrivateCloud';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -700,7 +856,7 @@ Get an script execution by name in a private cloud
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -732,14 +888,44 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarescriptexecution
 #>
 function Get-AzVMwareScriptExecution {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
     [Alias('ScriptExecutionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
@@ -776,12 +962,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -835,9 +1029,10 @@ begin {
         $mapping = @{
             Get = 'Az.VMware.private\Get-AzVMwareScriptExecution_Get';
             GetViaIdentity = 'Az.VMware.private\Get-AzVMwareScriptExecution_GetViaIdentity';
+            GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwareScriptExecution_GetViaIdentityPrivateCloud';
             List = 'Az.VMware.private\Get-AzVMwareScriptExecution_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -884,7 +1079,7 @@ Get a script package available to run on a private cloud
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptPackage
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -916,14 +1111,44 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarescriptpackage
 #>
 function Get-AzVMwareScriptPackage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptPackage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptPackage])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
     [Alias('ScriptPackageName')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
@@ -960,12 +1185,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1019,9 +1252,10 @@ begin {
         $mapping = @{
             Get = 'Az.VMware.private\Get-AzVMwareScriptPackage_Get';
             GetViaIdentity = 'Az.VMware.private\Get-AzVMwareScriptPackage_GetViaIdentity';
+            GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwareScriptPackage_GetViaIdentityPrivateCloud';
             List = 'Az.VMware.private\Get-AzVMwareScriptPackage_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -1068,11 +1302,39 @@ Get dhcp by id in a private cloud workload network.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDhcp
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+DHCPCONFIGURATIONINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 
 INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [AddonName <String>]: Name of the addon for the private cloud
@@ -1100,11 +1362,12 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkdhcp
 #>
 function Get-AzVMwareWorkloadNetworkDhcp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDhcp])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1115,6 +1378,7 @@ param(
     ${DhcpName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityDhcpConfiguration', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
@@ -1144,12 +1408,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='GetViaIdentityDhcpConfiguration', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for DHCPCONFIGURATIONINPUTOBJECT properties and create a hash table.
+    ${DhcpConfigurationInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1203,9 +1475,10 @@ begin {
         $mapping = @{
             Get = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkDhcp_Get';
             GetViaIdentity = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkDhcp_GetViaIdentity';
+            GetViaIdentityDhcpConfiguration = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkDhcp_GetViaIdentityDhcpConfiguration';
             List = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkDhcp_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -1252,7 +1525,7 @@ Get a DNS service by id in a private cloud workload network.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsService
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1284,14 +1557,44 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkdnsservice
 #>
 function Get-AzVMwareWorkloadNetworkDnsService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX DNS Service identifier.
@@ -1328,12 +1631,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1387,9 +1698,10 @@ begin {
         $mapping = @{
             Get = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkDnsService_Get';
             GetViaIdentity = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkDnsService_GetViaIdentity';
+            GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkDnsService_GetViaIdentityPrivateCloud';
             List = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkDnsService_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -1436,7 +1748,7 @@ Get a DNS zone by id in a private cloud workload network.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsZone
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1468,14 +1780,44 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkdnszone
 #>
 function Get-AzVMwareWorkloadNetworkDnsZone {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsZone])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX DNS Zone identifier.
@@ -1512,12 +1854,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1571,9 +1921,10 @@ begin {
         $mapping = @{
             Get = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkDnsZone_Get';
             GetViaIdentity = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkDnsZone_GetViaIdentity';
+            GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkDnsZone_GetViaIdentityPrivateCloud';
             List = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkDnsZone_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -1620,7 +1971,7 @@ Get a gateway by id in a private cloud workload network.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkGateway
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkGateway
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1652,14 +2003,44 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkgateway
 #>
 function Get-AzVMwareWorkloadNetworkGateway {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkGateway])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkGateway])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX Gateway identifier.
@@ -1696,12 +2077,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1755,9 +2144,10 @@ begin {
         $mapping = @{
             Get = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkGateway_Get';
             GetViaIdentity = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkGateway_GetViaIdentity';
+            GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkGateway_GetViaIdentityPrivateCloud';
             List = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkGateway_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -1804,7 +2194,7 @@ Get a port mirroring profile by id in a private cloud workload network.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPortMirroring
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1836,14 +2226,44 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkportmirroring
 #>
 function Get-AzVMwareWorkloadNetworkPortMirroring {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPortMirroring])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX Port Mirroring identifier.
@@ -1880,12 +2300,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1939,9 +2367,10 @@ begin {
         $mapping = @{
             Get = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkPortMirroring_Get';
             GetViaIdentity = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkPortMirroring_GetViaIdentity';
+            GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkPortMirroring_GetViaIdentityPrivateCloud';
             List = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkPortMirroring_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -1988,7 +2417,7 @@ Get a Public IP Block by id in a private cloud workload network.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPublicIP
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2020,11 +2449,40 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkpublicip
 #>
 function Get-AzVMwareWorkloadNetworkPublicIP {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPublicIP])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2035,6 +2493,7 @@ param(
     ${PrivateCloudName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX Public IP Block identifier.
@@ -2064,12 +2523,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -2123,9 +2590,10 @@ begin {
         $mapping = @{
             Get = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkPublicIP_Get';
             GetViaIdentity = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkPublicIP_GetViaIdentity';
+            GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkPublicIP_GetViaIdentityPrivateCloud';
             List = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkPublicIP_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -2172,7 +2640,7 @@ Get a segment by id in a private cloud workload network.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkSegment
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2204,11 +2672,40 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworksegment
 #>
 function Get-AzVMwareWorkloadNetworkSegment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkSegment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2227,6 +2724,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX Segment identifier.
@@ -2248,12 +2746,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -2307,9 +2813,10 @@ begin {
         $mapping = @{
             Get = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkSegment_Get';
             GetViaIdentity = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkSegment_GetViaIdentity';
+            GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkSegment_GetViaIdentityPrivateCloud';
             List = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkSegment_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -2356,7 +2863,7 @@ Get a vm group by id in a private cloud workload network.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVMGroup
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2388,11 +2895,40 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkvmgroup
 #>
 function Get-AzVMwareWorkloadNetworkVMGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVMGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2419,6 +2955,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX VM Group identifier.
@@ -2432,12 +2969,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -2491,9 +3036,10 @@ begin {
         $mapping = @{
             Get = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkVMGroup_Get';
             GetViaIdentity = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkVMGroup_GetViaIdentity';
+            GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkVMGroup_GetViaIdentityPrivateCloud';
             List = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkVMGroup_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -2540,7 +3086,7 @@ Get a virtual machine by id in a private cloud workload network.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVirtualMachine
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2572,11 +3118,40 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetworkvm
 #>
 function Get-AzVMwareWorkloadNetworkVM {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVirtualMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVirtualMachine])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -2603,6 +3178,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Virtual Machine identifier
@@ -2615,12 +3191,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -2674,9 +3258,189 @@ begin {
         $mapping = @{
             Get = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkVM_Get';
             GetViaIdentity = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkVM_GetViaIdentity';
+            GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkVM_GetViaIdentityPrivateCloud';
             List = 'Az.VMware.private\Get-AzVMwareWorkloadNetworkVM_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Get a private cloud workload network.
+.Description
+Get a private cloud workload network.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetwork
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+.Link
+https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareworkloadnetwork
+#>
+function Get-AzVMwareWorkloadNetwork {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetwork])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # Name of the private cloud
+    ${PrivateCloudName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        $mapping = @{
+            Get = 'Az.VMware.private\Get-AzVMwareWorkloadNetwork_Get';
+            GetViaIdentity = 'Az.VMware.private\Get-AzVMwareWorkloadNetwork_GetViaIdentity';
+            List = 'Az.VMware.private\Get-AzVMwareWorkloadNetwork_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -2729,6 +3493,34 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+CLUSTERINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
 INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [AddonName <String>]: Name of the addon for the private cloud
   [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
@@ -2755,6 +3547,35 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/lock-azvmwarevirtualmachinemovement
 #>
@@ -2763,6 +3584,7 @@ function Lock-AzVMwareVirtualMachineMovement {
 [CmdletBinding(DefaultParameterSetName='RestrictExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='RestrictExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestrictViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the cluster in the private cloud
@@ -2789,10 +3611,19 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='RestrictExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestrictViaIdentityClusterExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RestrictViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Virtual Machine identifier
     ${VirtualMachineId},
+
+    [Parameter(ParameterSetName='RestrictViaIdentityClusterExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for CLUSTERINPUTOBJECT properties and create a hash table.
+    ${ClusterInputObject},
 
     [Parameter(ParameterSetName='RestrictViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
@@ -2801,10 +3632,17 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='RestrictViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.VirtualMachineRestrictMovementState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.VirtualMachineRestrictMovementState]
+    [System.String]
     # Whether VM DRS-driven movement is restricted (enabled) or not (disabled)
     ${RestrictMovement},
 
@@ -2813,7 +3651,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2878,9 +3717,11 @@ begin {
 
         $mapping = @{
             RestrictExpanded = 'Az.VMware.private\Lock-AzVMwareVirtualMachineMovement_RestrictExpanded';
+            RestrictViaIdentityClusterExpanded = 'Az.VMware.private\Lock-AzVMwareVirtualMachineMovement_RestrictViaIdentityClusterExpanded';
             RestrictViaIdentityExpanded = 'Az.VMware.private\Lock-AzVMwareVirtualMachineMovement_RestrictViaIdentityExpanded';
+            RestrictViaIdentityPrivateCloudExpanded = 'Az.VMware.private\Lock-AzVMwareVirtualMachineMovement_RestrictViaIdentityPrivateCloudExpanded';
         }
-        if (('RestrictExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('RestrictExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -2916,59 +3757,132 @@ end {
 
 <#
 .Synopsis
-Create or update a addon in a private cloud
+Create a addon in a private cloud
 .Description
-Create or update a addon in a private cloud
+Create a addon in a private cloud
 .Example
 $data = New-AzVMwareAddonVrPropertiesObject -VrsCount 2
 New-AzVMwareAddon -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Property $data
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
 PROPERTY <IAddonProperties>: The properties of an addon resource
-  AddonType <AddonType>: The type of private cloud addon
+  AddonType <String>: The type of private cloud addon
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareaddon
 #>
 function New-AzVMwareAddon {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Alias('AddonName')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the addon for the private cloud
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # The name of the private cloud.
     ${PrivateCloudName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonProperties]
     # The properties of an addon resource
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
@@ -2978,7 +3892,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -3043,8 +3958,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.VMware.private\New-AzVMwareAddon_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.VMware.private\New-AzVMwareAddon_CreateViaIdentityExpanded';
+            CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwareAddon_CreateViaIdentityPrivateCloudExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -3080,14 +3997,14 @@ end {
 
 <#
 .Synopsis
-Create or update a private cloud
+Create a private cloud
 .Description
-Create or update a private cloud
+Create a private cloud
 .Example
 New-AzVMwarePrivateCloud -Name azps_test_cloud -ResourceGroupName azps_test_group -NetworkBlock 192.168.48.0/22 -Sku av36 -ManagementClusterSize 3 -Location australiaeast
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3102,13 +4019,13 @@ IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources
   [Password <String>]: The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
   [PrimaryServer <String>]: Primary server URL
   [SecondaryServer <String>]: Secondary server URL
-  [Ssl <SslEnum?>]: Protect LDAP communication using SSL certificate (LDAPS)
+  [Ssl <String>]: Protect LDAP communication using SSL certificate (LDAPS)
   [Username <String>]: The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloud
 #>
 function New-AzVMwarePrivateCloud {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3145,9 +4062,9 @@ param(
     ${AvailabilitySecondaryZone},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AvailabilityStrategy])]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("SingleZone", "DualZone")]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AvailabilityStrategy]
+    [System.String]
     # The availability strategy for the private cloud
     ${AvailabilityStrategy},
 
@@ -3158,33 +4075,42 @@ param(
     ${AvailabilityZone},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.EncryptionState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.EncryptionState]
+    [System.String]
     # Status of customer managed encryption key
     ${EncryptionStatus},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[]]
+    [System.String[]]
+    # Array of additional networks noncontiguous with networkBlock.
+    # Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute.
+    # Make sure the CIDR format conforms to (A.B.C.D/X).
+    ${ExtendedNetworkBlock},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource[]]
     # vCenter Single Sign On Identity Sources
     # To construct, see NOTES section for IDENTITYSOURCE properties and create a hash table.
     ${IdentitySource},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ResourceIdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("SystemAssigned", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ResourceIdentityType]
+    [System.String]
     # The type of identity used for the private cloud.
     # The type 'SystemAssigned' refers to an implicitly created identity.
     # The type 'None' will remove any identities from the Private Cloud.
     ${IdentityType},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum]
+    [System.String]
     # Connectivity to internet is enabled or disabled
     ${Internet},
 
@@ -3240,7 +4166,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
@@ -3256,7 +4182,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -3322,7 +4249,7 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.VMware.private\New-AzVMwarePrivateCloud_CreateExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -3358,16 +4285,18 @@ end {
 
 <#
 .Synopsis
-Create or update a script execution in a private cloud
+Create a script execution in a private cloud
 .Description
-Create or update a script execution in a private cloud
+Create a script execution in a private cloud
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3375,44 +4304,115 @@ To create the parameters described below, construct a hash table containing the 
 
 HIDDENPARAMETER <IScriptExecutionParameter[]>: Parameters that will be hidden/not visible to ARM, such as passwords and credentials
   Name <String>: The parameter name
-  Type <ScriptExecutionParameterType>: The type of execution parameter
+  Type <String>: The type of execution parameter
+
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 
 PARAMETER <IScriptExecutionParameter[]>: Parameters the script will accept
   Name <String>: The parameter name
-  Type <ScriptExecutionParameterType>: The type of execution parameter
+  Type <String>: The type of execution parameter
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwarescriptexecution
 #>
 function New-AzVMwareScriptExecution {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Alias('ScriptExecutionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the user-invoked script execution resource
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # The name of the private cloud.
     ${PrivateCloudName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
@@ -3423,14 +4423,14 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecutionParameter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameter[]]
     # Parameters that will be hidden/not visible to ARM, such as passwords and credentials
     # To construct, see NOTES section for HIDDENPARAMETER properties and create a hash table.
     ${HiddenParameter},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecutionPropertiesNamedOutputs]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionPropertiesNamedOutputs]))]
     [System.Collections.Hashtable]
     # User-defined dictionary.
     ${NamedOutput},
@@ -3445,7 +4445,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecutionParameter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameter[]]
     # Parameters the script will accept
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -3474,7 +4474,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -3539,8 +4540,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.VMware.private\New-AzVMwareScriptExecution_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.VMware.private\New-AzVMwareScriptExecution_CreateViaIdentityExpanded';
+            CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwareScriptExecution_CreateViaIdentityPrivateCloudExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -3584,46 +4587,123 @@ Create dhcp by id in a private cloud workload network.
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDhcp
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkdhcp
 #>
 function New-AzVMwareWorkloadNetworkDhcp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDhcp])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX DHCP identifier.
     # Generally the same as the DHCP display name
     ${DhcpName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the private cloud
     ${PrivateCloudName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.DhcpTypeEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("SERVER", "RELAY")]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.DhcpTypeEnum]
+    [System.String]
     # Type of DHCP: SERVER or RELAY.
     ${DhcpType},
 
@@ -3644,7 +4724,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -3709,8 +4790,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkDhcp_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkDhcp_CreateViaIdentityExpanded';
+            CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkDhcp_CreateViaIdentityPrivateCloudExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -3754,41 +4837,118 @@ Create a DNS service by id in a private cloud workload network.
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsService
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkdnsservice
 #>
 function New-AzVMwareWorkloadNetworkDnsService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX DNS Service identifier.
     # Generally the same as the DNS Service's display name
     ${DnsServiceName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the private cloud
     ${PrivateCloudName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
@@ -3816,9 +4976,9 @@ param(
     ${FqdnZone},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.DnsServiceLogLevelEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("DEBUG", "INFO", "WARNING", "ERROR", "FATAL")]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.DnsServiceLogLevelEnum]
+    [System.String]
     # DNS Service log level.
     ${LogLevel},
 
@@ -3833,7 +4993,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -3898,8 +5059,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkDnsService_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkDnsService_CreateViaIdentityExpanded';
+            CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkDnsService_CreateViaIdentityPrivateCloudExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -3943,41 +5106,118 @@ Create a DNS zone by id in a private cloud workload network.
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsZone
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkdnszone
 #>
 function New-AzVMwareWorkloadNetworkDnsZone {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsZone])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX DNS Zone identifier.
     # Generally the same as the DNS Zone's display name
     ${DnsZoneName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the private cloud
     ${PrivateCloudName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
@@ -4022,7 +5262,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -4087,8 +5328,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkDnsZone_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkDnsZone_CreateViaIdentityExpanded';
+            CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkDnsZone_CreateViaIdentityPrivateCloudExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -4132,41 +5375,118 @@ Create a port mirroring profile by id in a private cloud workload network.
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPortMirroring
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkportmirroring
 #>
 function New-AzVMwareWorkloadNetworkPortMirroring {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPortMirroring])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX Port Mirroring identifier.
     # Generally the same as the Port Mirroring display name
     ${PortMirroringName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the private cloud
     ${PrivateCloudName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
@@ -4175,9 +5495,9 @@ param(
     ${Destination},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PortMirroringDirectionEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("INGRESS", "EGRESS", "BIDIRECTIONAL")]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PortMirroringDirectionEnum]
+    [System.String]
     # Direction of port mirroring profile.
     ${Direction},
 
@@ -4204,7 +5524,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -4269,8 +5590,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkPortMirroring_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkPortMirroring_CreateViaIdentityExpanded';
+            CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkPortMirroring_CreateViaIdentityPrivateCloudExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -4314,41 +5637,118 @@ Create a Public IP Block by id in a private cloud workload network.
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPublicIP
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkpublicip
 #>
 function New-AzVMwareWorkloadNetworkPublicIP {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPublicIP])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPublicIP])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the private cloud
     ${PrivateCloudName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX Public IP Block identifier.
     # Generally the same as the Public IP Block's display name
     ${PublicIPName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
@@ -4367,7 +5767,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -4432,8 +5833,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkPublicIP_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkPublicIP_CreateViaIdentityExpanded';
+            CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkPublicIP_CreateViaIdentityPrivateCloudExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -4477,41 +5880,118 @@ Create a segment by id in a private cloud workload network.
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkSegment
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworksegment
 #>
 function New-AzVMwareWorkloadNetworkSegment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkSegment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the private cloud
     ${PrivateCloudName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX Segment identifier.
     # Generally the same as the Segment's display name
     ${SegmentName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
@@ -4549,7 +6029,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -4614,8 +6095,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkSegment_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkSegment_CreateViaIdentityExpanded';
+            CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkSegment_CreateViaIdentityPrivateCloudExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -4659,41 +6142,118 @@ Create a vm group by id in a private cloud workload network.
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVMGroup
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareworkloadnetworkvmgroup
 #>
 function New-AzVMwareWorkloadNetworkVMGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVMGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the private cloud
     ${PrivateCloudName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX VM Group identifier.
     # Generally the same as the VM Group's display name
     ${VMGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
@@ -4719,7 +6279,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -4784,8 +6345,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkVMGroup_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkVMGroup_CreateViaIdentityExpanded';
+            CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwareWorkloadNetworkVMGroup_CreateViaIdentityPrivateCloudExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -4866,6 +6429,35 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareaddon
 #>
@@ -4874,6 +6466,7 @@ function Remove-AzVMwareAddon {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityPrivateCloud', Mandatory)]
     [Alias('AddonName')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
@@ -4907,12 +6500,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='DeleteViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -4984,8 +6585,9 @@ begin {
         $mapping = @{
             Delete = 'Az.VMware.private\Remove-AzVMwareAddon_Delete';
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwareAddon_DeleteViaIdentity';
+            DeleteViaIdentityPrivateCloud = 'Az.VMware.private\Remove-AzVMwareAddon_DeleteViaIdentityPrivateCloud';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -5066,6 +6668,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareprivatecloud
 #>
@@ -5106,7 +6709,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -5179,7 +6783,7 @@ begin {
             Delete = 'Az.VMware.private\Remove-AzVMwarePrivateCloud_Delete';
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwarePrivateCloud_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -5258,6 +6862,35 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwarescriptexecution
 #>
@@ -5266,6 +6899,7 @@ function Remove-AzVMwareScriptExecution {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityPrivateCloud', Mandatory)]
     [Alias('ScriptExecutionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
@@ -5299,12 +6933,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='DeleteViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -5376,8 +7018,9 @@ begin {
         $mapping = @{
             Delete = 'Az.VMware.private\Remove-AzVMwareScriptExecution_Delete';
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwareScriptExecution_DeleteViaIdentity';
+            DeleteViaIdentityPrivateCloud = 'Az.VMware.private\Remove-AzVMwareScriptExecution_DeleteViaIdentityPrivateCloud';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -5456,6 +7099,35 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkdhcp
 #>
@@ -5464,6 +7136,7 @@ function Remove-AzVMwareWorkloadNetworkDhcp {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityPrivateCloud', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX DHCP identifier.
@@ -5497,12 +7170,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='DeleteViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -5574,8 +7255,9 @@ begin {
         $mapping = @{
             Delete = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkDhcp_Delete';
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkDhcp_DeleteViaIdentity';
+            DeleteViaIdentityPrivateCloud = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkDhcp_DeleteViaIdentityPrivateCloud';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -5628,6 +7310,34 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+DNSSERVICEINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
 INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [AddonName <String>]: Name of the addon for the private cloud
   [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
@@ -5654,6 +7364,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkdnsservice
 #>
@@ -5669,6 +7380,7 @@ param(
     ${DnsServiceName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityDnsService', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the private cloud
@@ -5695,12 +7407,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='DeleteViaIdentityDnsService', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for DNSSERVICEINPUTOBJECT properties and create a hash table.
+    ${DnsServiceInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -5772,8 +7492,9 @@ begin {
         $mapping = @{
             Delete = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkDnsService_Delete';
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkDnsService_DeleteViaIdentity';
+            DeleteViaIdentityDnsService = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkDnsService_DeleteViaIdentityDnsService';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -5826,6 +7547,34 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+DNSZONEINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
 INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [AddonName <String>]: Name of the addon for the private cloud
   [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
@@ -5852,6 +7601,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkdnszone
 #>
@@ -5867,6 +7617,7 @@ param(
     ${DnsZoneName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityDnsZone', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the private cloud
@@ -5893,12 +7644,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='DeleteViaIdentityDnsZone', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for DNSZONEINPUTOBJECT properties and create a hash table.
+    ${DnsZoneInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -5970,8 +7729,9 @@ begin {
         $mapping = @{
             Delete = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkDnsZone_Delete';
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkDnsZone_DeleteViaIdentity';
+            DeleteViaIdentityDnsZone = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkDnsZone_DeleteViaIdentityDnsZone';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -6050,6 +7810,35 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PORTMIRRORINGPROFILEINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkportmirroring
 #>
@@ -6065,6 +7854,7 @@ param(
     ${PortMirroringName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityPortMirroringProfile', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the private cloud
@@ -6091,12 +7881,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='DeleteViaIdentityPortMirroringProfile', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PORTMIRRORINGPROFILEINPUTOBJECT properties and create a hash table.
+    ${PortMirroringProfileInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -6168,8 +7966,9 @@ begin {
         $mapping = @{
             Delete = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkPortMirroring_Delete';
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkPortMirroring_DeleteViaIdentity';
+            DeleteViaIdentityPortMirroringProfile = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkPortMirroring_DeleteViaIdentityPortMirroringProfile';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -6248,6 +8047,35 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PUBLICIPINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkpublicip
 #>
@@ -6256,6 +8084,7 @@ function Remove-AzVMwareWorkloadNetworkPublicIP {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityPublicIP', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the private cloud
@@ -6289,12 +8118,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='DeleteViaIdentityPublicIP', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PUBLICIPINPUTOBJECT properties and create a hash table.
+    ${PublicIPInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -6366,8 +8203,9 @@ begin {
         $mapping = @{
             Delete = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkPublicIP_Delete';
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkPublicIP_DeleteViaIdentity';
+            DeleteViaIdentityPublicIP = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkPublicIP_DeleteViaIdentityPublicIP';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -6446,6 +8284,35 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworksegment
 #>
@@ -6467,6 +8334,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityPrivateCloud', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX Segment identifier.
@@ -6487,12 +8355,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='DeleteViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -6564,8 +8440,9 @@ begin {
         $mapping = @{
             Delete = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkSegment_Delete';
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkSegment_DeleteViaIdentity';
+            DeleteViaIdentityPrivateCloud = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkSegment_DeleteViaIdentityPrivateCloud';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -6644,6 +8521,35 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+VMGROUPINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareworkloadnetworkvmgroup
 #>
@@ -6652,6 +8558,7 @@ function Remove-AzVMwareWorkloadNetworkVMGroup {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityVMGroup', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the private cloud
@@ -6685,12 +8592,20 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='DeleteViaIdentityVMGroup', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for VMGROUPINPUTOBJECT properties and create a hash table.
+    ${VMGroupInputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -6762,8 +8677,9 @@ begin {
         $mapping = @{
             Delete = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkVMGroup_Delete';
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkVMGroup_DeleteViaIdentity';
+            DeleteViaIdentityVMGroup = 'Az.VMware.private\Remove-AzVMwareWorkloadNetworkVMGroup_DeleteViaIdentityVMGroup';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -6799,9 +8715,9 @@ end {
 
 <#
 .Synopsis
-Create or update dhcp by id in a private cloud workload network.
+Update dhcp by id in a private cloud workload network.
 .Description
-Create or update dhcp by id in a private cloud workload network.
+Update dhcp by id in a private cloud workload network.
 .Example
 {{ Add code here }}
 .Example
@@ -6810,7 +8726,7 @@ Create or update dhcp by id in a private cloud workload network.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDhcp
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -6842,14 +8758,44 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkdhcp
 #>
 function Update-AzVMwareWorkloadNetworkDhcp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDhcp])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDhcp])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX DHCP identifier.
@@ -6883,10 +8829,17 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.DhcpTypeEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("SERVER", "RELAY")]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.DhcpTypeEnum]
+    [System.String]
     # Type of DHCP: SERVER or RELAY.
     ${DhcpType},
 
@@ -6907,7 +8860,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -6973,8 +8927,9 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkDhcp_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkDhcp_UpdateViaIdentityExpanded';
+            UpdateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkDhcp_UpdateViaIdentityPrivateCloudExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -7010,9 +8965,9 @@ end {
 
 <#
 .Synopsis
-Create or update a DNS service by id in a private cloud workload network.
+Update a DNS service by id in a private cloud workload network.
 .Description
-Create or update a DNS service by id in a private cloud workload network.
+Update a DNS service by id in a private cloud workload network.
 .Example
 {{ Add code here }}
 .Example
@@ -7021,7 +8976,7 @@ Create or update a DNS service by id in a private cloud workload network.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsService
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -7053,14 +9008,44 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkdnsservice
 #>
 function Update-AzVMwareWorkloadNetworkDnsService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX DNS Service identifier.
@@ -7094,6 +9079,13 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
     [System.String]
@@ -7120,9 +9112,9 @@ param(
     ${FqdnZone},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.DnsServiceLogLevelEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("DEBUG", "INFO", "WARNING", "ERROR", "FATAL")]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.DnsServiceLogLevelEnum]
+    [System.String]
     # DNS Service log level.
     ${LogLevel},
 
@@ -7137,7 +9129,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -7203,8 +9196,9 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkDnsService_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkDnsService_UpdateViaIdentityExpanded';
+            UpdateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkDnsService_UpdateViaIdentityPrivateCloudExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -7240,9 +9234,9 @@ end {
 
 <#
 .Synopsis
-Create or update a DNS zone by id in a private cloud workload network.
+Update a DNS zone by id in a private cloud workload network.
 .Description
-Create or update a DNS zone by id in a private cloud workload network.
+Update a DNS zone by id in a private cloud workload network.
 .Example
 {{ Add code here }}
 .Example
@@ -7251,7 +9245,7 @@ Create or update a DNS zone by id in a private cloud workload network.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsZone
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -7283,14 +9277,44 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkdnszone
 #>
 function Update-AzVMwareWorkloadNetworkDnsZone {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsZone])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZone])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX DNS Zone identifier.
@@ -7323,6 +9347,13 @@ param(
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
@@ -7367,7 +9398,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -7433,8 +9465,9 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkDnsZone_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkDnsZone_UpdateViaIdentityExpanded';
+            UpdateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkDnsZone_UpdateViaIdentityPrivateCloudExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -7470,9 +9503,9 @@ end {
 
 <#
 .Synopsis
-Create or update a port mirroring profile by id in a private cloud workload network.
+Update a port mirroring profile by id in a private cloud workload network.
 .Description
-Create or update a port mirroring profile by id in a private cloud workload network.
+Update a port mirroring profile by id in a private cloud workload network.
 .Example
 {{ Add code here }}
 .Example
@@ -7481,7 +9514,7 @@ Create or update a port mirroring profile by id in a private cloud workload netw
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPortMirroring
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -7513,14 +9546,44 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkportmirroring
 #>
 function Update-AzVMwareWorkloadNetworkPortMirroring {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkPortMirroring])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkPortMirroring])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX Port Mirroring identifier.
@@ -7554,6 +9617,13 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
     [System.String]
@@ -7561,9 +9631,9 @@ param(
     ${Destination},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PortMirroringDirectionEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("INGRESS", "EGRESS", "BIDIRECTIONAL")]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PortMirroringDirectionEnum]
+    [System.String]
     # Direction of port mirroring profile.
     ${Direction},
 
@@ -7590,7 +9660,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -7656,8 +9727,9 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkPortMirroring_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkPortMirroring_UpdateViaIdentityExpanded';
+            UpdateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkPortMirroring_UpdateViaIdentityPrivateCloudExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -7693,9 +9765,9 @@ end {
 
 <#
 .Synopsis
-Create or update a segment by id in a private cloud workload network.
+Update a segment by id in a private cloud workload network.
 .Description
-Create or update a segment by id in a private cloud workload network.
+Update a segment by id in a private cloud workload network.
 .Example
 {{ Add code here }}
 .Example
@@ -7704,7 +9776,7 @@ Create or update a segment by id in a private cloud workload network.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkSegment
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -7736,11 +9808,40 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworksegment
 #>
 function Update-AzVMwareWorkloadNetworkSegment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkSegment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkSegment])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -7757,6 +9858,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX Segment identifier.
@@ -7776,6 +9878,13 @@ param(
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
@@ -7813,7 +9922,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -7879,8 +9989,9 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkSegment_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkSegment_UpdateViaIdentityExpanded';
+            UpdateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkSegment_UpdateViaIdentityPrivateCloudExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
@@ -7916,9 +10027,9 @@ end {
 
 <#
 .Synopsis
-Create or update a vm group by id in a private cloud workload network.
+Update a vm group by id in a private cloud workload network.
 .Description
-Create or update a vm group by id in a private cloud workload network.
+Update a vm group by id in a private cloud workload network.
 .Example
 {{ Add code here }}
 .Example
@@ -7927,7 +10038,7 @@ Create or update a vm group by id in a private cloud workload network.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVMGroup
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -7959,11 +10070,40 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkvmgroup
 #>
 function Update-AzVMwareWorkloadNetworkVMGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVMGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkVMGroup])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -7987,6 +10127,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX VM Group identifier.
@@ -7999,6 +10140,13 @@ param(
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+    ${PrivateCloudInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
@@ -8024,7 +10172,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -8090,8 +10239,9 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkVMGroup_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkVMGroup_UpdateViaIdentityExpanded';
+            UpdateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkVMGroup_UpdateViaIdentityPrivateCloudExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 
