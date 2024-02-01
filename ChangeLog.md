@@ -45,7 +45,7 @@
 * Added CRR support for taiwannorth, taiwannorthwest region.
 * Added breaking change notification for cmdlets whose output type is 'ASRVaultSettings'.
 * Added warning for Standard to Enhanced policy migration for AzureVMs.
-* Updated Unregister-AzRecoveryServicesBackupContainer cmdlet to ouptput Job object if PassThru not given.
+* Updated Unregister-AzRecoveryServicesBackupContainer cmdlet to output Job object if PassThru not given.
 * Fixed issue with Get-AzRecoveryServicesVaultSettingsFile cmdlet to return private endpoint state for backup.
 
 #### Az.Resources 6.15.0
