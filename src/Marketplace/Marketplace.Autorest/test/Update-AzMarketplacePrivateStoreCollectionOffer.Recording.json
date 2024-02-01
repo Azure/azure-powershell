@@ -1,0 +1,95 @@
+{
+  "Update-AzMarketplacePrivateStoreCollectionOffer+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/8c7a91db-cd41-43b6-af47-2e869654126d/offers/sendgrid.tsg-saas-offer?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/8c7a91db-cd41-43b6-af47-2e869654126d/offers/sendgrid.tsg-saas-offer?api-version=2023-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "dcd8f061-e15e-4fad-9875-11aa37836dee" ],
+        "CommandName": [ "Update-AzMarketplacePrivateStoreCollectionOffer" ],
+        "FullCommandName": [ "Update-AzMarketplacePrivateStoreCollectionOffer_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.11", "Az.Marketplace/1.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11978" ],
+        "Set-Cookie": [ "ARRAffinity=71c5ecfca949e38fa6d8b6899df69a8bc1065f71ea6211c776e43d3b7b216b7d;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=71c5ecfca949e38fa6d8b6899df69a8bc1065f71ea6211c776e43d3b7b216b7d;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.02564.62-a77593e1" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-azure-ref": [ "20240131T142518Z-dcz5v76pvx6at2tgbfm6pded6s00000000k00000000047dd" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "f437b8ee-3958-4320-9957-35736df02c8c" ],
+        "x-ms-correlation-request-id": [ "f437b8ee-3958-4320-9957-35736df02c8c" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240131T142519Z:f437b8ee-3958-4320-9957-35736df02c8c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 31 Jan 2024 14:25:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "533" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/8c7a91db-cd41-43b6-af47-2e869654126d/offers/sendgrid.tsg-saas-offer\",\"name\":\"sendgrid.tsg-saas-offer\",\"type\":\"Microsoft.Marketplace/privateStores/collection/offers\",\"properties\":{\"uniqueOfferId\":\"sendgrid.tsg-saas-offer\",\"specificPlanIdsLimitation\":[\"free-100-2022\",\"essentials-50k\"],\"eTag\":\"\\\"3b03162e-0000-0100-0000-65ba57f90000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzMarketplacePrivateStoreCollectionOffer+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/8c7a91db-cd41-43b6-af47-2e869654126d/offers/sendgrid.tsg-saas-offer?api-version=2023-01-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/8c7a91db-cd41-43b6-af47-2e869654126d/offers/sendgrid.tsg-saas-offer?api-version=2023-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"eTag\": \"\\\"3b03162e-0000-0100-0000-65ba57f90000\\\"\",\r\n    \"updateSuppressedDueIdempotence\": false\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "130" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1197" ],
+        "Set-Cookie": [ "ARRAffinity=27bfabf7de883483c1a2f9363be3f689cd539cd04573322892fd02f2f6d37918;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=27bfabf7de883483c1a2f9363be3f689cd539cd04573322892fd02f2f6d37918;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.02536.29-012fd621" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-azure-ref": [ "20240131T142519Z-dcz5v76pvx6at2tgbfm6pded6s00000000k00000000047dt" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "5fa2ca61-c746-4553-a695-72bd380683c9" ],
+        "x-ms-correlation-request-id": [ "5fa2ca61-c746-4553-a695-72bd380683c9" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240131T142520Z:5fa2ca61-c746-4553-a695-72bd380683c9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 31 Jan 2024 14:25:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "503" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/8c7a91db-cd41-43b6-af47-2e869654126d/offers/sendgrid.tsg-saas-offer\",\"name\":\"sendgrid.tsg-saas-offer\",\"type\":\"Microsoft.Marketplace/privateStores/collection/offers\",\"properties\":{\"uniqueOfferId\":\"sendgrid.tsg-saas-offer\",\"specificPlanIdsLimitation\":null,\"eTag\":\"\\\"3b03e346-0000-0100-0000-65ba584f0000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}}",
+      "isContentBase64": false
+    }
+  }
+}
