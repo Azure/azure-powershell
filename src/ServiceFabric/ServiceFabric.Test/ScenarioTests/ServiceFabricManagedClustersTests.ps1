@@ -157,7 +157,7 @@ function Test-AddNetworkSecurityRule
 	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
-	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
+	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "ResourceGroupNotFound"
 
 	$tags = @{"test"="tag"}
 
