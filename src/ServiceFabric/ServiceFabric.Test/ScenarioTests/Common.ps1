@@ -57,7 +57,7 @@ function Get-NodeTypeName
 
 function Get-KeyVaultName
 {
-    return "pstestkv2";
+    return "pstestkv3";
 }
 
 function Get-NewCertName
@@ -68,7 +68,7 @@ function Get-NewCertName
 function Get-SecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprint
-    return "https://gumakv1.vault.azure.net/secrets/gumacert/bc05af76fa894a38a0f9f47804bacc42"
+    return "https://pstestkv4.vault.azure.net/secrets/AzureRMSFTestCert3/87cebe74dab14fcaa341a7636abf2ca6"
 }
 
 function Get-InitialThumbprint
