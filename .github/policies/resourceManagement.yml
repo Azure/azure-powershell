@@ -1722,6 +1722,22 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: DesktopVirtualization
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: DesktopVirtualization
+        then:
+        - mentionUsers:
+            mentionees:
+            - alec-baird，costinhagiu
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: Dev Center
         - hasLabel:
             label: Service Attention
