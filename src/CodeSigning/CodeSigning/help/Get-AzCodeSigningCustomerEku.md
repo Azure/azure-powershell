@@ -86,7 +86,12 @@ Accept wildcard characters: False
 ```
 
 ### -MetadataFilePath
-Specifies Azure CodeSigning Metadata file path used to sign CI policy. It's a file path, and the metadata content is below.
+Specifies Azure CodeSigning Metadata file path used to sign CI policy. It's a file path, and the metadata content is below. File content example:
+{
+  "Endpoint": "https://xxx.codesigning.azure.net/",
+  "CodeSigningAccountName": "acstest",
+  "CertificateProfileName": "acstestCert1"
+}
 
 ```yaml
 Type: System.String
@@ -97,13 +102,6 @@ Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-File Content: Json
-{
-  "Endpoint": "https://xxx.codesigning.azure.net/",
-  "CodeSigningAccountName": "acstest",
-  "CertificateProfileName": "acstestCert1"
-}
-```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
