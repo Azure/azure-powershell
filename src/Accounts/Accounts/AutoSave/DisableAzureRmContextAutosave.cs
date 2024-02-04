@@ -65,10 +65,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
         void DisableAutosave(IAzureSession session, bool writeAutoSaveFile, out ContextAutosaveSettings result)
         {
-            result = new ContextAutosaveSettings
-            {
-                Mode = ContextSaveMode.Process
-            };
+            result = ContextAutosaveSettings.FromAzureSession(session, ContextSaveMode.Process);
 
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.Process;
