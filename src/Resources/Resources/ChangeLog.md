@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added `AuxTenant` parameter in `New-AzResourceGroupDeployment`to support cross-tenant deployment.
 
 ## Version 6.15.0
 * Supported `-SkipClientSideScopeValidation` in RoleAssignment and RoleDefinition related commands. [#22473]
