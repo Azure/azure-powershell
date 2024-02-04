@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "366a88f8-1203-4f86-b4c4-384b81008fd2" ],
+        "x-ms-client-request-id": [ "8083483a-8d5c-4dd0-830b-e3c16edca377" ],
         "CommandName": [ "Get-AzMarketplacePrivateStoreCollectionOffer" ],
         "FullCommandName": [ "Get-AzMarketplacePrivateStoreCollectionOffer_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -25,26 +25,26 @@
         "Accept-Ranges": [ "bytes" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "11997" ],
-        "Set-Cookie": [ "ARRAffinity=f8d7fadf2909ff4e586acf5f4d58abc3ba7f56ba5654aec79a4f0995507cc6b6;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=f8d7fadf2909ff4e586acf5f4d58abc3ba7f56ba5654aec79a4f0995507cc6b6;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "Set-Cookie": [ "ARRAffinity=a3053b2a1619a6aa4b0e7e497e4fa01864cd730cd9c257837f8a0036d6c79b63;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=a3053b2a1619a6aa4b0e7e497e4fa01864cd730cd9c257837f8a0036d6c79b63;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
-        "x-ms-version": [ "6.0.02564.62-a77593e1" ],
+        "x-ms-version": [ "6.0.02536.29-012fd621" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-azure-ref": [ "20240124T154409Z-s7p7uvnpdt7yd4d1zpaxnfksag000000066g000000001kkr" ],
+        "x-azure-ref": [ "20240201T105552Z-tvc1v351w17uz2qe3dvk8ckav400000001sg0000000038mz" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "x-ms-request-id": [ "e51f0452-52f3-425b-a954-d4b1011ea271" ],
-        "x-ms-correlation-request-id": [ "e51f0452-52f3-425b-a954-d4b1011ea271" ],
-        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240124T154410Z:e51f0452-52f3-425b-a954-d4b1011ea271" ],
+        "x-ms-request-id": [ "d3f33d3e-d919-422f-90b0-385e7c0e290c" ],
+        "x-ms-correlation-request-id": [ "d3f33d3e-d919-422f-90b0-385e7c0e290c" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240201T105553Z:d3f33d3e-d919-422f-90b0-385e7c0e290c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 24 Jan 2024 15:44:09 GMT" ]
+        "Date": [ "Thu, 01 Feb 2024 10:55:52 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "617" ],
+        "Content-Length": [ "1210" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/offers/sendgrid.tsg-saas-offer\",\"name\":\"sendgrid.tsg-saas-offer\",\"type\":\"Microsoft.Marketplace/privateStores/collection/offers\",\"properties\":{\"uniqueOfferId\":\"sendgrid.tsg-saas-offer\",\"specificPlanIdsLimitation\":[\"free-100-2022\",\"essentials-50k\",\"essentials100k\",\"pro-100k\",\"pro-300k\",\"pro-700k\",\"pro-1p5m\",\"pro-2p5m\"],\"eTag\":\"\\\"fa05c1fe-0000-0100-0000-659ab1fe0000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}}]}",
+      "Content": "{\"value\":[{\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/offers/hitachi-solutions-america.empower_genai\",\"name\":\"hitachi-solutions-america.empower_genai\",\"type\":\"Microsoft.Marketplace/privateStores/collection/offers\",\"properties\":{\"uniqueOfferId\":\"hitachi-solutions-america.empower_genai\",\"specificPlanIdsLimitation\":[\"empower_enterprise_chat_r1\"],\"eTag\":\"\\\"0403a3e6-0000-0100-0000-65b8e2ac0000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}},{\"id\":\"/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/offers/infrontsystemsptyltd1597145511429.monitoring-as-a-service\",\"name\":\"infrontsystemsptyltd1597145511429.monitoring-as-a-service\",\"type\":\"Microsoft.Marketplace/privateStores/collection/offers\",\"properties\":{\"uniqueOfferId\":\"infrontsystemsptyltd1597145511429.monitoring-as-a-service\",\"specificPlanIdsLimitation\":[\"enterprise-plan\"],\"eTag\":\"\\\"3d03ee21-0000-0100-0000-65ba5ec20000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}}]}",
       "isContentBase64": false
     }
   }

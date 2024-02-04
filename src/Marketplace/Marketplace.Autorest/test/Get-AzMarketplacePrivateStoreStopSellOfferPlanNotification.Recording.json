@@ -17,20 +17,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1191" ],
-        "Set-Cookie": [ "ARRAffinity=0167904c093642b6eb1372d43ab24808f2271061b5c98f5a81aaceaaff5f0ca1;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=0167904c093642b6eb1372d43ab24808f2271061b5c98f5a81aaceaaff5f0ca1;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1190" ],
+        "Set-Cookie": [ "ARRAffinity=71c5ecfca949e38fa6d8b6899df69a8bc1065f71ea6211c776e43d3b7b216b7d;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=71c5ecfca949e38fa6d8b6899df69a8bc1065f71ea6211c776e43d3b7b216b7d;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
-        "x-ms-version": [ "6.0.02564.62-a77593e1" ],
+        "x-ms-version": [ "6.0.02586.90-5c77bed2" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-azure-ref": [ "20240124T154426Z-s7p7uvnpdt7yd4d1zpaxnfksag000000066g000000001kym" ],
+        "x-azure-ref": [ "20240201T105610Z-tvc1v351w17uz2qe3dvk8ckav400000001sg0000000038ws" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "x-ms-request-id": [ "701dcc1a-71ba-4c3a-8cb8-891b4b352f54" ],
-        "x-ms-correlation-request-id": [ "701dcc1a-71ba-4c3a-8cb8-891b4b352f54" ],
-        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240124T154426Z:701dcc1a-71ba-4c3a-8cb8-891b4b352f54" ],
+        "x-ms-request-id": [ "7d931394-53fe-4798-80b5-daf418f94929" ],
+        "x-ms-correlation-request-id": [ "7d931394-53fe-4798-80b5-daf418f94929" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240201T105610Z:7d931394-53fe-4798-80b5-daf418f94929" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 24 Jan 2024 15:44:26 GMT" ]
+        "Date": [ "Thu, 01 Feb 2024 10:56:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "57" ],

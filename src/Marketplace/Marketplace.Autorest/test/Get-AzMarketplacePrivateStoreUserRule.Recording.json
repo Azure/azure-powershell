@@ -19,27 +19,27 @@
         "Pragma": [ "no-cache" ],
         "Accept-Ranges": [ "bytes" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1188" ],
-        "Set-Cookie": [ "ARRAffinity=422ac376cf9a5b730208f246fe2886eb9014a2316736b65af73d6017dda009cc;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=422ac376cf9a5b730208f246fe2886eb9014a2316736b65af73d6017dda009cc;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1187" ],
+        "Set-Cookie": [ "ARRAffinity=27bfabf7de883483c1a2f9363be3f689cd539cd04573322892fd02f2f6d37918;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=27bfabf7de883483c1a2f9363be3f689cd539cd04573322892fd02f2f6d37918;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
         "x-ms-version": [ "6.0.02536.29-012fd621" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-azure-ref": [ "20240124T154429Z-s7p7uvnpdt7yd4d1zpaxnfksag000000066g000000001kzs" ],
+        "x-azure-ref": [ "20240201T105612Z-tvc1v351w17uz2qe3dvk8ckav400000001sg0000000038ym" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "x-ms-request-id": [ "0761d0b2-0047-436b-8dda-ec2d12289e35" ],
-        "x-ms-correlation-request-id": [ "0761d0b2-0047-436b-8dda-ec2d12289e35" ],
-        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240124T154429Z:0761d0b2-0047-436b-8dda-ec2d12289e35" ],
+        "x-ms-request-id": [ "346f7502-b7ff-4bce-a26b-c5712a754d45" ],
+        "x-ms-correlation-request-id": [ "346f7502-b7ff-4bce-a26b-c5712a754d45" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240201T105612Z:346f7502-b7ff-4bce-a26b-c5712a754d45" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 24 Jan 2024 15:44:29 GMT" ]
+        "Date": [ "Thu, 01 Feb 2024 10:56:11 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "51" ],
+        "Content-Length": [ "12" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"type\":\"PrivateProducts\",\"value\":null}]}",
+      "Content": "{\"value\":[]}",
       "isContentBase64": false
     }
   }

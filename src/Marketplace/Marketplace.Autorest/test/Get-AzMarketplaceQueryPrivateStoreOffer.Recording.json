@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "19" ],
-        "x-ms-client-request-id": [ "1c6e44e3-4eea-4c42-a4e5-f814c971ffa6" ],
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "da134403-4566-48e9-9fb0-00cd9e50a642" ],
         "CommandName": [ "Get-AzMarketplaceQueryPrivateStoreOffer" ],
         "FullCommandName": [ "Get-AzMarketplaceQueryPrivateStoreOffer_Query" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -18,33 +18,28 @@
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 504,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Accept-Ranges": [ "bytes" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1187" ],
-        "Set-Cookie": [ "ARRAffinity=6baab673920cdd72d5292ed70f53157373a58e78fa4d23722efa3ae6748c9e7b;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=6baab673920cdd72d5292ed70f53157373a58e78fa4d23722efa3ae6748c9e7b;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-XSS-Protection": [ "1; mode=block" ],
-        "x-ms-version": [ "6.0.02536.29-012fd621" ],
-        "X-AspNet-Version": [ "4.0.30319" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-azure-ref": [ "20240124T154430Z-s7p7uvnpdt7yd4d1zpaxnfksag000000066g000000001m0m" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-azure-ref": [ "20240201T105714Z-un93fkbvw50w5bbm67x1677wk800000001xg000000003cad" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "x-ms-request-id": [ "e2104d0a-8778-4404-9c86-e466dc4898be" ],
-        "x-ms-correlation-request-id": [ "e2104d0a-8778-4404-9c86-e466dc4898be" ],
-        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240124T154431Z:e2104d0a-8778-4404-9c86-e466dc4898be" ],
+        "x-ms-failure-cause": [ "service" ],
+        "x-ms-request-id": [ "9340a1ed-94b1-4a00-aa58-b16f072f0e81" ],
+        "x-ms-correlation-request-id": [ "9340a1ed-94b1-4a00-aa58-b16f072f0e81" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240201T105734Z:9340a1ed-94b1-4a00-aa58-b16f072f0e81" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Wed, 24 Jan 2024 15:44:30 GMT" ]
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 01 Feb 2024 10:57:34 GMT" ],
+        "Connection": [ "close" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1523" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Content-Length": [ "193" ],
+        "Content-Type": [ "text/html" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"uniqueOfferId\":\"test_test_pmc2pc1.vm_4plans_privatestoretesting\",\"specificPlanIdsLimitation\":[\"plan3\"],\"eTag\":\"\\\"6600e368-0000-0100-0000-65a8f2820000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false},{\"uniqueOfferId\":\"kali-linux.kali\",\"specificPlanIdsLimitation\":[\"kali-2023-2\",\"kali-2023-3\",\"kali-2023-4\"],\"eTag\":\"\\\"6600c668-0000-0100-0000-65a8f2810000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false},{\"uniqueOfferId\":\"rawworks1593080303138.rawworks_saas_pim\",\"specificPlanIdsLimitation\":[\"per_year_plan\"],\"eTag\":\"\\\"6600c168-0000-0100-0000-65a8f2810000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false},{\"uniqueOfferId\":\"sendgrid.tsg-saas-offer\",\"specificPlanIdsLimitation\":null,\"eTag\":\"\\\"6700ccaf-0000-0100-0000-65a8fa8a0000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false},{\"uniqueOfferId\":\"inetumrealdolmen_apps-infra.selfservicepim\",\"specificPlanIdsLimitation\":[\"hybrid\",\"onprem\",\"cloud\"],\"eTag\":\"\\\"6600cb68-0000-0100-0000-65a8f2810000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false},{\"uniqueOfferId\":\"infrontsystemsptyltd1597145511429.monitoring-as-a-service\",\"specificPlanIdsLimitation\":[\"enterprise-plan\"],\"eTag\":\"\\\"6600cd68-0000-0100-0000-65a8f2810000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}]}",
+      "Content": "PGh0bWw+DQo8aGVhZD48dGl0bGU+NTA0IEdhdGV3YXkgVGltZS1vdXQ8L3RpdGxlPjwvaGVhZD4NCjxib2R5Pg0KPGNlbnRlcj48aDE+NTA0IEdhdGV3YXkgVGltZS1vdXQ8L2gxPjwvY2VudGVyPg0KPGhyPjxjZW50ZXI+TWljcm9zb2Z0LUF6dXJlLUFwcGxpY2F0aW9uLUdhdGV3YXkvdjI8L2NlbnRlcj4NCjwvYm9keT4NCjwvaHRtbD4NCg==",
       "isContentBase64": false
     }
   }
