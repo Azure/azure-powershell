@@ -198,7 +198,6 @@ function setupEnv() {
     $env.Add("functionAppName13", $functionAppName13)
 
 
-
     New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envName -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
     New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envName2 -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $functionApp -EnvironmentType $environmentTypeName -Parameter $functionAppParameters
     New-AzDevCenterUserEnvironment -Endpoint $endpoint -Name $envNameToDelete -ProjectName $projectName -CatalogName $catalogName -EnvironmentDefinitionName $sandbox -EnvironmentType $environmentTypeName
@@ -226,7 +225,6 @@ function setupEnv() {
     New-AzDevCenterUserDevBox -Endpoint $endpoint -Name $skipDevBox4 -ProjectName $projectName -PoolName $poolName
 
 
-
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -235,5 +233,5 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.resourceGroup
+     Remove-AzResourceGroup -Name $env.resourceGroup
 }

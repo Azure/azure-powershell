@@ -17,13 +17,17 @@ Open-AzPredictorSurvey [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet opens a survey link in the default browser and writes the link to the output stream. All data from this survey will be anonymized. See the Microsoft Privacy Policy (https://privacy.microsoft.com/) for more information
+
+This cmdlet opens a survey link in the default browser and writes the link to the output stream. All
+data from this survey will be anonymized. See the
+[Microsoft Privacy Policy](https://privacy.microsoft.com/) for more information
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> Open-AzPredictorSurvey
+Open-AzPredictorSurvey
 ```
 
 Open a survey link in the default browser.
@@ -31,6 +35,7 @@ Open a survey link in the default browser.
 ## PARAMETERS
 
 ### -PassThru
+
 Indicates whether the user would like to receive output.
 
 ```yaml
@@ -46,7 +51,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
+-WarningAction, and -WarningVariable. For more information, see
+[about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

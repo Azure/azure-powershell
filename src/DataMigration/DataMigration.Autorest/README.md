@@ -30,7 +30,7 @@ For information on how to develop for `Az.DataMigration`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: e8c359d8821038f133695c9b1f4cf40d330cbc80
+commit: e8c359d8821038f133695c9b1f4cf40d330cbc80
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file: 
@@ -38,6 +38,10 @@ input-file:
 
 title: DataMigration
 module-version: 0.1.0
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
 

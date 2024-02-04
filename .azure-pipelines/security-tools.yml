@@ -1,6 +1,5 @@
 # Variable 'IsGenerateBased' was defined in the Variables tab
 # Variable 'NugetSecurityAnalysisWarningLevel' was defined in the Variables tab
-# Variable 'OCTOKITPAT' was defined in the Variables tab
 # Cron Schedules have been converted using UTC Time Zone and may need to be updated for your location
 schedules:
 - cron: 0 4 * * 1,2,3,4,5
@@ -20,6 +19,7 @@ jobs:
   steps:
   - checkout: self
     fetchTags: false
+  - template: util/get-github-pat-steps.yml
   - task: PowerShell@2
     displayName: Install platyPS
     inputs:
@@ -44,7 +44,7 @@ jobs:
       targetType: inline
       script: dotnet msbuild build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
     env:
-      OCTOKITPAT: $(OCTOKITPAT)
+      OCTOKITPAT: $(GithubToken)
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
     displayName: Run CredScan
     condition: in(variables['system.pullRequest.targetBranch'], 'generation', 'main')

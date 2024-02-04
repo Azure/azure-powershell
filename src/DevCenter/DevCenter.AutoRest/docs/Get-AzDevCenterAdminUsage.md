@@ -84,11 +84,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IUsage
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IUsage
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

@@ -20,8 +20,6 @@ trigger:
       - src/Az.props
       - src/Az.Shared.props
       - src/Az.Test.props
-      - src/Az.autorest.hybrid.props
-      - src/Az.autorest.hybrid.v2.props
       - src/Az.autorest.props
       - src/Az.Post.props
       - src/psm1.props
@@ -29,7 +27,6 @@ trigger:
       
 variables:
   GenerationBranchName: generation
-  GithubToken: $(GITHUB_TOKEN)
 
 jobs:
 - job: Sync
@@ -41,6 +38,7 @@ jobs:
         BranchName: ${{ variables.GenerationBranchName }}
 
   steps:
+  - template: util/get-github-pat-steps.yml
   - task: PowerShell@2
     displayName: Sync branch
     inputs:

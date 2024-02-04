@@ -7,8 +7,8 @@ powershell: true
 help-link-prefix: https://learn.microsoft.com/powershell/module/
 license-header: MICROSOFT_MIT_NO_VERSION
 pwsh-license-header: MICROSOFT_APACHE_NO_VERSION
-branch: main
-repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)
+# commit must be specified in the module's README.md file to pin the swagger.
+repo: https://github.com/Azure/azure-rest-api-specs/blob/$(commit)
 metadata:
   authors: Microsoft Corporation
   owners: Microsoft Corporation
@@ -44,6 +44,12 @@ default-exclude-tableview-properties: true
 exclude-tableview-properties:
   - Id
   - Type
+```
+
+> Default autorest.powershell version
+``` yaml
+use-extension:
+  "@autorest/powershell": "4.x"
 ```
 
 > Directives
