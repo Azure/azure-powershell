@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.15.1
 * Upgraded the reference of Azure PowerShell Common to 1.3.90-preview.
 * Upgraded Azure.Identity to 1.10.3 [#23018].
   - Renamed token cache from `msal.cache` to `msal.cache.cae` or `masl.cache.nocae`.
