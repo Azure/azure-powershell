@@ -20,9 +20,6 @@
 
 ## Upcoming Release
 * Redirected device code login messages from warning stream to information stream if use device authentication in `Connect-AzAccount`.
-* Adjusted output format to be more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`, including 
-    - ordering and grouping output items to make items easy to find.
-    - re-prioritizing positions for output properties to highlight valuable properties.
 
 ## Version 2.15.1
 * Upgraded the reference of Azure PowerShell Common to 1.3.90-preview.
@@ -30,6 +27,9 @@
   - Renamed token cache from `msal.cache` to `msal.cache.cae` or `masl.cache.nocae`.
 * Enabled Continue Access Evaluation (CAE) for all Service Principals login methods.
 * Supported signing in with Microsoft Account (MSA) via Web Account Manager (WAM). Enable it by `Set-AzConfig -EnableLoginByWam $true`.
+* Adjusted output format to be more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`, including 
+    - ordering and grouping output items to make items easy to find.
+    - re-prioritizing positions for output properties to highlight valuable properties.
 * Fixed the multiple `x-ms-unique-id` values issue.
 
 ## Version 2.15.0
