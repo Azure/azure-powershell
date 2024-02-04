@@ -3,41 +3,43 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1?api-version=2023-01-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"collectionName\": \"pwshNewCollTest\",\r\n    \"allSubscriptions\": true,\r\n    \"subscriptionsList\": [ \"1052ff5a-aa43-4ca1-bd18-010399494ce5\" ],\r\n    \"enabled\": true\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"collectionName\": \"pwshNewCollTest\",\r\n    \"subscriptionsList\": [ \"1052ff5a-aa43-4ca1-bd18-010399494ce5\" ],\r\n    \"enabled\": true\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "192" ]
+        "Content-Length": [ "161" ]
       }
     },
     "Response": {
-      "StatusCode": 400,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
-        "Set-Cookie": [ "ARRAffinity=71c5ecfca949e38fa6d8b6899df69a8bc1065f71ea6211c776e43d3b7b216b7d;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=71c5ecfca949e38fa6d8b6899df69a8bc1065f71ea6211c776e43d3b7b216b7d;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1197" ],
+        "Set-Cookie": [ "ARRAffinity=bfe2117850ddf2eb1a1bdbff379f22be7abd277495b3d0ff28b1c1254c65d847;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=bfe2117850ddf2eb1a1bdbff379f22be7abd277495b3d0ff28b1c1254c65d847;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
         "x-ms-version": [ "6.0.02586.90-5c77bed2" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-azure-ref": [ "20240201T105735Z-xffwzfcctx2h1cbgx10qz7t9kw0000000300000000000yf6" ],
+        "x-azure-ref": [ "20240204T104916Z-xe34f107p101f9n705hyghu2pc00000006n0000000004vwq" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "x-ms-request-id": [ "1d207106-fa0b-41fe-98d5-d94a786c457a" ],
-        "x-ms-correlation-request-id": [ "1d207106-fa0b-41fe-98d5-d94a786c457a" ],
-        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240201T105735Z:1d207106-fa0b-41fe-98d5-d94a786c457a" ],
+        "x-ms-request-id": [ "310f5451-7692-4d4f-bcb1-bd2a4f4d8a66" ],
+        "x-ms-correlation-request-id": [ "310f5451-7692-4d4f-bcb1-bd2a4f4d8a66" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240204T104916Z:310f5451-7692-4d4f-bcb1-bd2a4f4d8a66" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Thu, 01 Feb 2024 10:57:35 GMT" ]
+        "Date": [ "Sun, 04 Feb 2024 10:49:16 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "106" ],
+        "Content-Length": [ "672" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"Incorrect value: subscriptions list must be non-null and empty\"}}",
+      "Content": "{\"systemData\":{\"createdBy\":\"\",\"createdByType\":\"User\",\"createdAt\":\"2024-02-04T10:49:16.4388782Z\",\"lastModifiedBy\":\"\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-04T10:49:16.4544955Z\"},\"id\":\"providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1\",\"name\":\"fdb889a1-cf3e-49f0-95b8-2bb012fa01f1\",\"type\":\"Microsoft.Marketplace/privateStores/collections\",\"properties\":{\"collectionId\":\"fdb889a1-cf3e-49f0-95b8-2bb012fa01f1\",\"collectionName\":\"pwshNewCollTest\",\"claim\":null,\"allSubscriptions\":false,\"subscriptionsList\":[\"1052ff5a-aa43-4ca1-bd18-010399494ce5\"],\"enabled\":true,\"numberOfOffers\":0}}",
       "isContentBase64": false
     }
   }

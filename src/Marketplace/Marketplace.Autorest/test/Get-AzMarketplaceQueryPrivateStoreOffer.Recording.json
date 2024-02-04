@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "da134403-4566-48e9-9fb0-00cd9e50a642" ],
+        "x-ms-client-request-id": [ "626391a9-ac93-46e5-8911-b4f4040d519e" ],
         "CommandName": [ "Get-AzMarketplaceQueryPrivateStoreOffer" ],
         "FullCommandName": [ "Get-AzMarketplaceQueryPrivateStoreOffer_Query" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -18,28 +18,33 @@
       }
     },
     "Response": {
-      "StatusCode": 504,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
-        "x-azure-ref": [ "20240201T105714Z-un93fkbvw50w5bbm67x1677wk800000001xg000000003cad" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "x-ms-failure-cause": [ "service" ],
-        "x-ms-request-id": [ "9340a1ed-94b1-4a00-aa58-b16f072f0e81" ],
-        "x-ms-correlation-request-id": [ "9340a1ed-94b1-4a00-aa58-b16f072f0e81" ],
-        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240201T105734Z:9340a1ed-94b1-4a00-aa58-b16f072f0e81" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1186" ],
+        "Set-Cookie": [ "ARRAffinity=27bfabf7de883483c1a2f9363be3f689cd539cd04573322892fd02f2f6d37918;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=27bfabf7de883483c1a2f9363be3f689cd539cd04573322892fd02f2f6d37918;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 01 Feb 2024 10:57:34 GMT" ],
-        "Connection": [ "close" ]
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.02536.29-012fd621" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-azure-ref": [ "20240204T104915Z-xe34f107p101f9n705hyghu2pc00000006n0000000004vuq" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "6982674a-a01f-4c1b-8e1e-4619ea0fac18" ],
+        "x-ms-correlation-request-id": [ "6982674a-a01f-4c1b-8e1e-4619ea0fac18" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240204T104915Z:6982674a-a01f-4c1b-8e1e-4619ea0fac18" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Sun, 04 Feb 2024 10:49:15 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "193" ],
-        "Content-Type": [ "text/html" ],
+        "Content-Length": [ "546" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "PGh0bWw+DQo8aGVhZD48dGl0bGU+NTA0IEdhdGV3YXkgVGltZS1vdXQ8L3RpdGxlPjwvaGVhZD4NCjxib2R5Pg0KPGNlbnRlcj48aDE+NTA0IEdhdGV3YXkgVGltZS1vdXQ8L2gxPjwvY2VudGVyPg0KPGhyPjxjZW50ZXI+TWljcm9zb2Z0LUF6dXJlLUFwcGxpY2F0aW9uLUdhdGV3YXkvdjI8L2NlbnRlcj4NCjwvYm9keT4NCjwvaHRtbD4NCg==",
+      "Content": "{\"value\":[{\"uniqueOfferId\":\"hitachi-solutions-america.empower_genai\",\"specificPlanIdsLimitation\":[\"empower_enterprise_chat_r1\"],\"eTag\":\"\\\"0403a3e6-0000-0100-0000-65b8e2ac0000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false},{\"uniqueOfferId\":\"infrontsystemsptyltd1597145511429.monitoring-as-a-service\",\"specificPlanIdsLimitation\":[\"enterprise-plan\"],\"eTag\":\"\\\"3d03ee21-0000-0100-0000-65ba5ec20000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"updateSuppressedDueIdempotence\":false}]}",
       "isContentBase64": false
     }
   }
