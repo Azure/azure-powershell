@@ -55,7 +55,7 @@
 | Data Box Edge (Stack Edge)     | `Az.DataBoxEdge`                | [![DataBoxEdge]][DataBoxEdgeGallery]                               | [Changelog][DataBoxEdgeChangeLog]                |
 | Databricks                     | `Az.Databricks`                 | [![Databricks]][DatabricksGallery]                                 | [Changelog][DatabricksChangeLog]                 |
 | Datadog                        | `Az.Datadog`                    | [![Datadog]][DatadogGallery]                                       | [Changelog][DatadogChangeLog]                    |
-| Data Factory                   | `Az.DataFactory`                | [![DataFactory]][DataFactoryGallery]                               | [Changelog][DataFactoriesChangeLog]              |
+| Data Factory                   | `Az.DataFactory`                | [![DataFactory]][DataFactoryGallery]                               | [Changelog][DataFactoryChangeLog]                |
 | Data Lake Analytics            | `Az.DataLakeAnalytics`          | [![DataLakeAnalytics]][DataLakeAnalyticsGallery]                   | [Changelog][DataLakeAnalyticsChangeLog]          |
 | Data Lake Store                | `Az.DataLakeStore`              | [![DataLakeStore]][DataLakeStoreGallery]                           | [Changelog][DataLakeStoreChangeLog]              |
 | Data Migration                 | `Az.DataMigration`              | [![DataMigration]][DataMigrationGallery]                           | [Changelog][DataMigrationChangeLog]              |
