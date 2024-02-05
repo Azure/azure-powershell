@@ -5,7 +5,7 @@
 | Description                           | Module Name | PowerShell Gallery Link          |
 | ------------------------------------- | ----------- | -------------------------------- |
 | Azure PowerShell                      | `Az`        | [![Az]][AzGallery]               |
-| Azure PowerShell with preview Modules | `AzPreview` | [![AzPreview]][AzPreviewGallery] |
+| Azure PowerShell with preview modules | `AzPreview` | [![AzPreview]][AzPreviewGallery] |
 
 ## Service Modules
 
