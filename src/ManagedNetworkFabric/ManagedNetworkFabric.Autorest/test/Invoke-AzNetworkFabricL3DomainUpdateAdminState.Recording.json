@@ -1,0 +1,330 @@
+{
+  "Invoke-AzNetworkFabricL3DomainUpdateAdminState+[NoContext]+Enable+$POST+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName/updateAdministrativeState?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName/updateAdministrativeState?api-version=2023-06-15",
+      "Content": "{\n  \"state\": \"Enable\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "23" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/faa50503-11e5-4895-ae9c-2513c930e6d2*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "f81996b1-efaf-4c02-9c27-8170c72f1bc1" ],
+        "x-ms-request-id": [ "257c47de-4473-4be4-b015-de89fb00d21d" ],
+        "x-ms-correlation-request-id": [ "d07c176a-ad0c-4d04-9810-75e897f0bc5e" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/faa50503-11e5-4895-ae9c-2513c930e6d2*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T045654Z:d07c176a-ad0c-4d04-9810-75e897f0bc5e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 04:56:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzNetworkFabricL3DomainUpdateAdminState+[NoContext]+Enable+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/faa50503-11e5-4895-ae9c-2513c930e6d2*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/faa50503-11e5-4895-ae9c-2513c930e6d2*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "63e98ac9-0127-4aef-b873-47fefc02cc5c" ],
+        "CommandName": [ "Invoke-AzNetworkFabricL3DomainUpdateAdminState" ],
+        "FullCommandName": [ "Invoke-AzNetworkFabricL3DomainUpdateAdminState_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0c02f3e9-0000-0100-0000-651113160000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/faa50503-11e5-4895-ae9c-2513c930e6d2*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/faa50503-11e5-4895-ae9c-2513c930e6d2*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15" ],
+        "x-ms-request-id": [ "4551966c-d426-4649-910d-c43196484fbe" ],
+        "x-ms-correlation-request-id": [ "d742ace8-96e4-462c-aeaa-7a8846b19de6" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T045725Z:d742ace8-96e4-462c-aeaa-7a8846b19de6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 04:57:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "599" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/faa50503-11e5-4895-ae9c-2513c930e6d2*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E\",\"name\":\"faa50503-11e5-4895-ae9c-2513c930e6d2*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E\",\"resourceId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName\",\"status\":\"Updating\",\"startTime\":\"2023-09-25T04:56:54.1982948Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzNetworkFabricL3DomainUpdateAdminState+[NoContext]+Enable+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/faa50503-11e5-4895-ae9c-2513c930e6d2*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/faa50503-11e5-4895-ae9c-2513c930e6d2*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "63e98ac9-0127-4aef-b873-47fefc02cc5c" ],
+        "CommandName": [ "Invoke-AzNetworkFabricL3DomainUpdateAdminState" ],
+        "FullCommandName": [ "Invoke-AzNetworkFabricL3DomainUpdateAdminState_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0c02b7ed-0000-0100-0000-651113460000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "ba454494-3c20-439a-9137-cdc015532b5f" ],
+        "x-ms-correlation-request-id": [ "52010dc8-57b0-4e23-ae1a-eb08a680ca32" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T045756Z:52010dc8-57b0-4e23-ae1a-eb08a680ca32" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 04:57:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "659" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/faa50503-11e5-4895-ae9c-2513c930e6d2*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E\",\"name\":\"faa50503-11e5-4895-ae9c-2513c930e6d2*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E\",\"resourceId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-25T04:56:54.1982948Z\",\"endTime\":\"2023-09-25T04:57:42.4974613Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzNetworkFabricL3DomainUpdateAdminState+[NoContext]+Enable+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/faa50503-11e5-4895-ae9c-2513c930e6d2*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/faa50503-11e5-4895-ae9c-2513c930e6d2*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "63e98ac9-0127-4aef-b873-47fefc02cc5c" ],
+        "CommandName": [ "Invoke-AzNetworkFabricL3DomainUpdateAdminState" ],
+        "FullCommandName": [ "Invoke-AzNetworkFabricL3DomainUpdateAdminState_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0c02b7ed-0000-0100-0000-651113460000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "4384764f-70bb-4c54-acb7-f182182005bb" ],
+        "x-ms-correlation-request-id": [ "9afbd2f9-a18e-4dca-9d8c-b0629995154a" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T045757Z:9afbd2f9-a18e-4dca-9d8c-b0629995154a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 04:57:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "659" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/faa50503-11e5-4895-ae9c-2513c930e6d2*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E\",\"name\":\"faa50503-11e5-4895-ae9c-2513c930e6d2*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E\",\"resourceId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-25T04:56:54.1982948Z\",\"endTime\":\"2023-09-25T04:57:42.4974613Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzNetworkFabricL3DomainUpdateAdminState+[NoContext]+Disable+$POST+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName/updateAdministrativeState?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName/updateAdministrativeState?api-version=2023-06-15",
+      "Content": "{\n  \"state\": \"Disable\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "24" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/0959030b-9a1b-4cdd-ab63-c74c1fae833b*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "cb6a97e1-3082-4f1c-baf9-73ea17d98170" ],
+        "x-ms-request-id": [ "72333595-a912-4305-a557-4e39b1e77251" ],
+        "x-ms-correlation-request-id": [ "7fd9d983-da7e-4867-8058-70aabef6d8d3" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/0959030b-9a1b-4cdd-ab63-c74c1fae833b*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T045758Z:7fd9d983-da7e-4867-8058-70aabef6d8d3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 04:57:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzNetworkFabricL3DomainUpdateAdminState+[NoContext]+Disable+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/0959030b-9a1b-4cdd-ab63-c74c1fae833b*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/0959030b-9a1b-4cdd-ab63-c74c1fae833b*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "fcbbe647-359d-4103-8919-eb8949e7436d" ],
+        "CommandName": [ "Invoke-AzNetworkFabricL3DomainUpdateAdminState" ],
+        "FullCommandName": [ "Invoke-AzNetworkFabricL3DomainUpdateAdminState_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0c02e2ee-0000-0100-0000-651113560000\"" ],
+        "Location": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/0959030b-9a1b-4cdd-ab63-c74c1fae833b*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/0959030b-9a1b-4cdd-ab63-c74c1fae833b*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15" ],
+        "x-ms-request-id": [ "f0409856-db66-464e-a361-df8001114d57" ],
+        "x-ms-correlation-request-id": [ "6770deb8-0474-455b-a8fc-a601419c2c0c" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T045829Z:6770deb8-0474-455b-a8fc-a601419c2c0c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 04:58:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "599" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/0959030b-9a1b-4cdd-ab63-c74c1fae833b*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E\",\"name\":\"0959030b-9a1b-4cdd-ab63-c74c1fae833b*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E\",\"resourceId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName\",\"status\":\"Updating\",\"startTime\":\"2023-09-25T04:57:58.5250737Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzNetworkFabricL3DomainUpdateAdminState+[NoContext]+Disable+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/0959030b-9a1b-4cdd-ab63-c74c1fae833b*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/0959030b-9a1b-4cdd-ab63-c74c1fae833b*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "fcbbe647-359d-4103-8919-eb8949e7436d" ],
+        "CommandName": [ "Invoke-AzNetworkFabricL3DomainUpdateAdminState" ],
+        "FullCommandName": [ "Invoke-AzNetworkFabricL3DomainUpdateAdminState_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0c02a5f3-0000-0100-0000-6511138d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-request-id": [ "ab4b111e-1ece-43f7-897f-4862eb7d0b3a" ],
+        "x-ms-correlation-request-id": [ "d8486d9b-12a9-4b3a-b0d1-829d0d16cf1d" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T045859Z:d8486d9b-12a9-4b3a-b0d1-829d0d16cf1d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 04:58:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "659" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/eastus/operationStatuses/0959030b-9a1b-4cdd-ab63-c74c1fae833b*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E\",\"name\":\"0959030b-9a1b-4cdd-ab63-c74c1fae833b*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E\",\"resourceId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-25T04:57:58.5250737Z\",\"endTime\":\"2023-09-25T04:58:53.7826289Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzNetworkFabricL3DomainUpdateAdminState+[NoContext]+Disable+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/0959030b-9a1b-4cdd-ab63-c74c1fae833b*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/0959030b-9a1b-4cdd-ab63-c74c1fae833b*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "fcbbe647-359d-4103-8919-eb8949e7436d" ],
+        "CommandName": [ "Invoke-AzNetworkFabricL3DomainUpdateAdminState" ],
+        "FullCommandName": [ "Invoke-AzNetworkFabricL3DomainUpdateAdminState_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0c02a5f3-0000-0100-0000-6511138d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-request-id": [ "116c1ba9-1402-4600-a1b6-239be2e9e71c" ],
+        "x-ms-correlation-request-id": [ "b0dae8fb-5500-499e-9b0c-61563dc769c7" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230925T045859Z:b0dae8fb-5500-499e-9b0c-61563dc769c7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 25 Sep 2023 04:58:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "659" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/0959030b-9a1b-4cdd-ab63-c74c1fae833b*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E\",\"name\":\"0959030b-9a1b-4cdd-ab63-c74c1fae833b*6261945C6B71478DB7346E5BACE8B7AE837D67839DECAE1CFE94A04B9B9F535E\",\"resourceId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-25T04:57:58.5250737Z\",\"endTime\":\"2023-09-25T04:58:53.7826289Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  }
+}
