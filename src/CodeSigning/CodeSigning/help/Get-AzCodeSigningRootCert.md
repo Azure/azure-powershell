@@ -30,9 +30,7 @@ Destination is the downloaded root cert file path, which incldues the file name 
 
 ### Example: Sign a CI Policy .bin file
 ```powershell
-Get-AzCodeSigningRootCert -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' 
--Destination 'c:\acs\rootcert.cer'
--MetadataFilePath <String> 
+Get-AzCodeSigningRootCert -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Destination 'c:\acs\rootcert.cer' -MetadataFilePath $MetadataFilePath
 ```
 
 ```output
