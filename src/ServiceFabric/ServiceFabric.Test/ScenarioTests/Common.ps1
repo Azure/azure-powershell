@@ -47,7 +47,7 @@ function Get-ResourceGroupName
 
 function Get-ClusterName
 {
-    return "azurermsfclustertest";
+    return "azurermsfclustertest4";
 }
 
 function Get-NodeTypeName
@@ -62,7 +62,7 @@ function Get-KeyVaultName
 
 function Get-NewCertName
 {
-    return "AzureRMSFTestCert2"
+    return "AzureRMSFTestCert3"
 }
 
 function Get-SecretUrl

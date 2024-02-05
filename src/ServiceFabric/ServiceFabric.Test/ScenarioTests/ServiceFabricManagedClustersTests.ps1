@@ -17,7 +17,7 @@ function Test-CreateBasicCluster
 	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
 	$clusterName = "sfmcps-" + (getAssetname)
 	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
-	$location = "southcentralus"
+	$location = "westus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
