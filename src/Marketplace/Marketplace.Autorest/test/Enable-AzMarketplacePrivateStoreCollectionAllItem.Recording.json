@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "6bb1ae34-e1b2-467c-8e96-5bbf7718d958" ],
+        "x-ms-client-request-id": [ "fbb98120-d062-4df4-8859-c064ab21f38e" ],
         "CommandName": [ "Enable-AzMarketplacePrivateStoreCollectionAllItem" ],
         "FullCommandName": [ "Enable-AzMarketplacePrivateStoreCollectionAllItem_Approve" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,27 +24,27 @@
         "Pragma": [ "no-cache" ],
         "Accept-Ranges": [ "bytes" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1191" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1177" ],
         "Set-Cookie": [ "ARRAffinity=746395eda4fd29d3430e9fd6fec3edbcc24e5a86800aed7e2fa5c31c73ea24bd;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=746395eda4fd29d3430e9fd6fec3edbcc24e5a86800aed7e2fa5c31c73ea24bd;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
         "x-ms-version": [ "6.0.02586.90-5c77bed2" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-azure-ref": [ "20240205T100249Z-p4qrcvy1bt1fzaf9y6gvrq4w4g00000009hg000000006ybe" ],
+        "x-azure-ref": [ "20240205T195945Z-frf5np9p0t7nm3e4m2uf05tq8400000008wg000000007d0a" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "x-ms-request-id": [ "a4592f0c-e659-4749-b395-3755a8c1f14b" ],
-        "x-ms-correlation-request-id": [ "a4592f0c-e659-4749-b395-3755a8c1f14b" ],
-        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240205T100250Z:a4592f0c-e659-4749-b395-3755a8c1f14b" ],
+        "x-ms-request-id": [ "7ac075fd-a75a-4ff3-86b1-ef405e14cc3d" ],
+        "x-ms-correlation-request-id": [ "7ac075fd-a75a-4ff3-86b1-ef405e14cc3d" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240205T195945Z:7ac075fd-a75a-4ff3-86b1-ef405e14cc3d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Mon, 05 Feb 2024 10:02:49 GMT" ]
+        "Date": [ "Mon, 05 Feb 2024 19:59:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "777" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"systemData\":{\"createdBy\":\"\",\"createdByType\":\"User\",\"createdAt\":\"2024-02-05T10:02:45.3088497Z\",\"lastModifiedBy\":\"\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-05T10:02:49.1277474Z\"},\"id\":\"providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa0188\",\"name\":\"fdb889a1-cf3e-49f0-95b8-2bb012fa0188\",\"type\":\"Microsoft.Marketplace/privateStores/collections\",\"properties\":{\"appliedRules\":null,\"approveAllItems\":true,\"approveAllItemsModifiedAt\":\"2024-02-05T10:02:50.0090000Z\",\"collectionId\":\"fdb889a1-cf3e-49f0-95b8-2bb012fa0188\",\"collectionName\":\"AllItemsPWRTest1\",\"claim\":null,\"allSubscriptions\":false,\"subscriptionsList\":[\"1052ff5a-aa43-4ca1-bd18-010399494ce5\"],\"enabled\":false,\"numberOfOffers\":-1}}",
+      "Content": "{\"systemData\":{\"createdBy\":\"\",\"createdByType\":\"User\",\"createdAt\":\"2024-02-05T19:59:41.6990544Z\",\"lastModifiedBy\":\"\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-05T19:59:44.8552988Z\"},\"id\":\"providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa0188\",\"name\":\"fdb889a1-cf3e-49f0-95b8-2bb012fa0188\",\"type\":\"Microsoft.Marketplace/privateStores/collections\",\"properties\":{\"appliedRules\":null,\"approveAllItems\":true,\"approveAllItemsModifiedAt\":\"2024-02-05T19:59:45.5670000Z\",\"collectionId\":\"fdb889a1-cf3e-49f0-95b8-2bb012fa0188\",\"collectionName\":\"AllItemsPWRTest1\",\"claim\":null,\"allSubscriptions\":false,\"subscriptionsList\":[\"1052ff5a-aa43-4ca1-bd18-010399494ce5\"],\"enabled\":false,\"numberOfOffers\":-1}}",
       "isContentBase64": false
     }
   }
