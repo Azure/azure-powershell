@@ -81,14 +81,14 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
              options);
         }
 
-        public string GetCodeSigningEku(string accountName, string profileName, string endpoint)
+        public string[] GetCodeSigningEku(string accountName, string profileName, string endpoint)
         {
             GetCertificateProfileClient(endpoint);
 
             var eku = CertificateProfileClient.GetSignEku(accountName, profileName);
-            return string.Join(",", eku.Value.ToArray());
+            return eku.Value?.ToArray();
         }
-        public string GetCodeSigningEku(string metadataPath)
+        public string[] GetCodeSigningEku(string metadataPath)
         {
             var rawMetadata = File.ReadAllText(metadataPath);
             Metadata = JsonConvert.DeserializeObject<Metadata>(rawMetadata);

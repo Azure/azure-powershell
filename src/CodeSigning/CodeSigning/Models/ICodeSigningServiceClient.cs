@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
 {
     public interface ICodeSigningServiceClient
     {
-        string GetCodeSigningEku(string accountName, string profileName, string endpoint);
+        string[] GetCodeSigningEku(string accountName, string profileName, string endpoint);
 
-        string GetCodeSigningEku(string metadataPath);
+        string[] GetCodeSigningEku(string metadataPath);
 
         Stream GetCodeSigningRootCert(string accountName, string profileName, string endpoint);
 

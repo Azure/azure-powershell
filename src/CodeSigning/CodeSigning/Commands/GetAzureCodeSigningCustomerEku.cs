@@ -13,12 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.CodeSigning.Models;
+using System;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.CodeSigning
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningCustomerEku", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
-    [OutputType(typeof(string))]
+    [OutputType(typeof(string[]))]
     public class GetAzureCodeSigningCustomerEku : CodeSigningCmdletBase
     {
         #region Parameter Set Names
@@ -71,23 +73,18 @@ namespace Microsoft.Azure.Commands.CodeSigning
 
         public override void ExecuteCmdlet()
         {
-            string eku;
+            string[] eku = Array.Empty<string>();
 
             if (!string.IsNullOrEmpty(AccountName))
             {
                 eku = CodeSigningServiceClient.GetCodeSigningEku(AccountName, ProfileName, EndpointUrl);
-                WriteEku(eku);
             }
             else if (!string.IsNullOrEmpty(MetadataFilePath))
             {
                 eku = CodeSigningServiceClient.GetCodeSigningEku(MetadataFilePath);
-                WriteEku(eku);
             }
-        }
 
-        private void WriteEku(string eku)
-        {
-            WriteObject(eku.Split(','));
+            WriteObject(eku);
         }
     }
 }
