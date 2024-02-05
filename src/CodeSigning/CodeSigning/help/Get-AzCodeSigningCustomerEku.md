@@ -30,9 +30,7 @@ Another set uses MetadataFilePath.
 
 ### Example: Retrieve customer Eku
 ```powershell
-Get-AzCodeSigningEku -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' 
--Path 'c:\cisigning\contosocipolicy.bin'-Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com'
--MetadataFilePath <String> 
+Get-AzCodeSigningEku -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Path 'c:\cisigning\contosocipolicy.bin'-Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com' -MetadataFilePath $MetadataFilePath 
 ```
 
 ```output
