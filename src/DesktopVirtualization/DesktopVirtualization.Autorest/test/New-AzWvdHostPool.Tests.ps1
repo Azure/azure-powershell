@@ -23,11 +23,7 @@ Describe 'New-AzWvdHostPool' {
                                 -PreferredAppGroupType 'Desktop' `
                                 -DesktopAppGroupName 'FullSenerioCreateAG' `
                                 -WorkspaceName 'FullSenerioCreateWS' `
-                                -ManagementType 'Standard' `
-                                -ManagedPrivateUDP: 'Enabled' `
-                                -DirectUDP: 'Enabled' `
-                                -PublicUDP: 'Enabled' `
-                                -RelayUDP: 'Enabled'
+                                -ManagementType 'Standard' 
         }
         finally{
             $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `

@@ -17,10 +17,10 @@ New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -SsoadfsAuthority $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
-                            -ValidationEnvironment:$false
-                            -ManagedPrivateUDP: 'Enabled'
-                            -DirectUDP: 'Enabled'
-                            -PublicUDP: 'Enabled'
+                            -ValidationEnvironment:$false `
+                            -ManagedPrivateUDP: 'Enabled' `
+                            -DirectUDP: 'Enabled' `
+                            -PublicUDP: 'Enabled' `
                             -RelayUDP: 'Enabled'
 ```
 
@@ -51,10 +51,10 @@ New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -SsoadfsAuthority $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
-                            -ValidationEnvironment:$false
-                            -ManagedPrivateUDP: 'Enabled'
-                            -DirectUDP: 'Enabled'
-                            -PublicUDP: 'Enabled'
+                            -ValidationEnvironment:$false `
+                            -ManagedPrivateUDP: 'Enabled' `
+                            -DirectUDP: 'Enabled' `
+                            -PublicUDP: 'Enabled' `
                             -RelayUDP: 'Enabled'
 ```
 
