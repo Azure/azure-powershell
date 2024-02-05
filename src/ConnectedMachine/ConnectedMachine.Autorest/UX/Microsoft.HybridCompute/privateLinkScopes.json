@@ -6,12 +6,12 @@
   },
   "commands": [
     {
-      "name": "Get-AzConnectedPrivateLinkScope",
+      "name": "Get-AzConnectedMachinePrivateLinkScope",
       "description": "Returns a Azure Arc PrivateLinkScope.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedprivatelinkscope"
+          "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachineprivatelinkscope"
         },
         "parameterSets": [
           {

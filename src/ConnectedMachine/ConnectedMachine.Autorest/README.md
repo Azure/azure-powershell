@@ -299,6 +299,13 @@ directive:
           - Location
           - PublicNetworkAccess
           - ProvisioningState
+  - where:
+      verb: Get
+      subject: PrivateLinkScope
+    set:
+      verb: Get
+      subject-prefix: ConnectedMachine
+      subject: PrivateLinkScope
  
   # Removing cmlets
   - where:

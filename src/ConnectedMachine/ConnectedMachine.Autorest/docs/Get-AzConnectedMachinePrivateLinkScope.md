@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedprivatelinkscope
+online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachineprivatelinkscope
 schema: 2.0.0
 ---
 
-# Get-AzConnectedPrivateLinkScope
+# Get-AzConnectedMachinePrivateLinkScope
 
 ## SYNOPSIS
 Returns a Azure Arc PrivateLinkScope.
@@ -14,18 +14,18 @@ Returns a Azure Arc PrivateLinkScope.
 
 ### List (Default)
 ```
-Get-AzConnectedPrivateLinkScope [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedMachinePrivateLinkScope [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzConnectedPrivateLinkScope -ResourceGroupName <String> -ScopeName <String> [-SubscriptionId <String[]>]
+Get-AzConnectedMachinePrivateLinkScope -ResourceGroupName <String> -ScopeName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzConnectedPrivateLinkScope -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzConnectedMachinePrivateLinkScope -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Returns a Azure Arc PrivateLinkScope.
 
 ### Example 1: List all private link scopes in a resource group
 ```powershell
-Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName
+Get-AzConnectedMachinePrivateLinkScope -ResourceGroupName $resourceGroupName
 ```
 
 ```output

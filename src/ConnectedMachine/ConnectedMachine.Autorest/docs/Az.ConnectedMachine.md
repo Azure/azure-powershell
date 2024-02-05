@@ -23,11 +23,11 @@ Retrieves information about the model view or the instance view of a hybrid mach
 ### [Get-AzConnectedMachineExtension](Get-AzConnectedMachineExtension.md)
 The operation to get the extension.
 
+### [Get-AzConnectedMachinePrivateLinkScope](Get-AzConnectedMachinePrivateLinkScope.md)
+Returns a Azure Arc PrivateLinkScope.
+
 ### [Get-AzConnectedMachineRunCommand](Get-AzConnectedMachineRunCommand.md)
 The operation to get a run command.
-
-### [Get-AzConnectedPrivateLinkScope](Get-AzConnectedPrivateLinkScope.md)
-Returns a Azure Arc PrivateLinkScope.
 
 ### [Install-AzConnectedMachinePatch](Install-AzConnectedMachinePatch.md)
 The operation to install patches on a hybrid machine identity in Azure.
