@@ -1,8 +1,8 @@
 {
-  "Update-AzWvdSessionHostManagement+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default?api-version=2023-11-01-preview+1": {
+  "Update-AzWvdSessionHostManagement+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default?api-version=2024-01-16-preview+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default?api-version=2023-11-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/hostPools/alecbhpuHP/sessionHostManagements/default?api-version=2024-01-16-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"update\": {\r\n      \"logOffMessage\": \"Updating HostpoolUpdate is great!\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -19,22 +19,22 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "Set-Cookie": [ "ARRAffinity=a31eb62e8fa5fccc488f1b764e015b7c6918a5a68c6d31b38f885e3c06338b76;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com", "ARRAffinitySameSite=a31eb62e8fa5fccc488f1b764e015b7c6918a5a68c6d31b38f885e3c06338b76;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvdselfhost.microsoft.com" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
         "X-Rate-Limit-Limit": [ "0" ],
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JocHVIUC9zZXNzaW9uSG9zdE1hbmFnZW1lbnRzL2RlZmF1bHQ=" ],
-        "x-ms-lamport-ts": [ "142927130" ],
-        "x-ms-correlation-id": [ "09cc0ae4-0276-44f1-a6e3-8b4471aac46c" ],
-        "x-ms-request-id": [ "4c24e360-ccd0-4183-a275-bb3cb4e62dfc" ],
+        "x-ms-lamport-ts": [ "144203555" ],
+        "x-ms-correlation-id": [ "a9c2df1b-4085-457a-a369-9849d9b4399b" ],
+        "x-ms-request-id": [ "0b8818a8-9c9f-4fce-b523-114a1ce96e4a" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-correlation-request-id": [ "7ade13ed-8c52-4789-a6df-c3399a8d1ef7" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240126T060508Z:7ade13ed-8c52-4789-a6df-c3399a8d1ef7" ],
+        "x-ms-correlation-request-id": [ "8e95d40c-52fa-4cca-a031-c933ccbfcdef" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20240205T212205Z:8e95d40c-52fa-4cca-a031-c933ccbfcdef" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FFA913DC57804EFEB10EEA8436EF1C72 Ref B: CO6AA3150218037 Ref C: 2024-01-26T06:05:07Z" ],
-        "Date": [ "Fri, 26 Jan 2024 06:05:07 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3E3F7F544AB34946A1E8D2566570C1F4 Ref B: CYS013050703053 Ref C: 2024-02-05T21:22:05Z" ],
+        "Date": [ "Mon, 05 Feb 2024 21:22:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "456" ],
