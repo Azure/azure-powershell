@@ -19,27 +19,27 @@
         "Pragma": [ "no-cache" ],
         "Accept-Ranges": [ "bytes" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1193" ],
-        "Set-Cookie": [ "ARRAffinity=bfe2117850ddf2eb1a1bdbff379f22be7abd277495b3d0ff28b1c1254c65d847;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=bfe2117850ddf2eb1a1bdbff379f22be7abd277495b3d0ff28b1c1254c65d847;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1187" ],
+        "Set-Cookie": [ "ARRAffinity=a3053b2a1619a6aa4b0e7e497e4fa01864cd730cd9c257837f8a0036d6c79b63;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=a3053b2a1619a6aa4b0e7e497e4fa01864cd730cd9c257837f8a0036d6c79b63;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
         "x-ms-version": [ "6.0.02586.90-5c77bed2" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-azure-ref": [ "20240204T104850Z-xe34f107p101f9n705hyghu2pc00000006n0000000004v5t" ],
+        "x-azure-ref": [ "20240205T100253Z-p4qrcvy1bt1fzaf9y6gvrq4w4g00000009hg000000006yez" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "x-ms-request-id": [ "54c82acd-e42d-400f-9983-a90f01469abf" ],
-        "x-ms-correlation-request-id": [ "54c82acd-e42d-400f-9983-a90f01469abf" ],
-        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240204T104852Z:54c82acd-e42d-400f-9983-a90f01469abf" ],
+        "x-ms-request-id": [ "14c90092-c310-451a-9ed8-487f415be9bc" ],
+        "x-ms-correlation-request-id": [ "14c90092-c310-451a-9ed8-487f415be9bc" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240205T100255Z:14c90092-c310-451a-9ed8-487f415be9bc" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Sun, 04 Feb 2024 10:48:51 GMT" ]
+        "Date": [ "Mon, 05 Feb 2024 10:02:54 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2441" ],
+        "Content-Length": [ "1227" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"context\":\"00000000-0000-0000-0000-000000000000\",\"offers\":{\"value\":[{\"uniqueOfferId\":\"hitachi-solutions-america.empower_genai\",\"offerDisplayName\":\"Enterprise Chat — powered by GPT-4 and OpenAI\",\"publisherDisplayName\":\"Hitachi Solutions\",\"specificPlanIdsLimitation\":[\"empower_enterprise_chat_r1\"],\"eTag\":\"\\\"0403a3e6-0000-0100-0000-65b8e2ac0000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"createdAt\":\"2024-01-30T11:51:08.9239339Z\",\"modifiedAt\":\"2024-01-30T11:51:08.9239339Z\",\"plans\":[{\"planId\":\"empower_enterprise_chat_r1\",\"skuId\":\"0002\",\"planDisplayName\":\"Empower Enterprise Chat (with GPT4)\",\"accessibility\":\"Public\",\"altStackReference\":null,\"stackType\":null}],\"iconFileUris\":{\"medium\":\"https://store-images.s-microsoft.com/image/apps.16643.f4861c03-92b8-452a-a0dd-b97aa47dbccc.ef6ad218-506e-49f7-863e-2c339b09587a.f3b6162f-e98e-44a2-9be5-6037e9aca854\",\"small\":\"https://store-images.s-microsoft.com/image/apps.18532.f4861c03-92b8-452a-a0dd-b97aa47dbccc.ef6ad218-506e-49f7-863e-2c339b09587a.df574fae-32dd-48c9-847e-098a44309ec8\",\"large\":\"https://store-images.s-microsoft.com/image/apps.54980.f4861c03-92b8-452a-a0dd-b97aa47dbccc.ef6ad218-506e-49f7-863e-2c339b09587a.3819b232-cc24-454e-af38-6ae9fb316c93\"},\"updateSuppressedDueIdempotence\":false},{\"uniqueOfferId\":\"infrontsystemsptyltd1597145511429.monitoring-as-a-service\",\"offerDisplayName\":\"Azure Monitoring\",\"publisherDisplayName\":\"INFRONT SYSTEMS PTY LTD\",\"specificPlanIdsLimitation\":[\"enterprise-plan\"],\"eTag\":\"\\\"3d03ee21-0000-0100-0000-65ba5ec20000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"createdAt\":\"2024-01-31T14:52:50.4356803Z\",\"modifiedAt\":\"2024-01-31T14:52:50.4356803Z\",\"plans\":[{\"planId\":\"enterprise-plan\",\"skuId\":\"0001\",\"planDisplayName\":\"CloudOps - Monitoring-as-a-Service\",\"accessibility\":\"Public\",\"altStackReference\":null,\"stackType\":null}],\"iconFileUris\":{\"small\":\"https://store-images.s-microsoft.com/image/apps.31003.9b4bf70d-dfe9-4174-8de0-326284b826e2.2d71e4a9-ddfd-4b04-8006-9402d694daa0.0ac306b5-2799-4e1c-80f8-eabd7b1148bd\",\"medium\":\"https://store-images.s-microsoft.com/image/apps.21136.9b4bf70d-dfe9-4174-8de0-326284b826e2.2d71e4a9-ddfd-4b04-8006-9402d694daa0.5cc799bf-7c56-4eda-a1c4-9c8f0aa17b5d\",\"large\":\"https://store-images.s-microsoft.com/image/apps.45630.9b4bf70d-dfe9-4174-8de0-326284b826e2.2d71e4a9-ddfd-4b04-8006-9402d694daa0.5b49a2b0-13f1-4caf-aed1-8ebc2e446942\"},\"updateSuppressedDueIdempotence\":false}]}}]}",
+      "Content": "{\"value\":[{\"context\":\"00000000-0000-0000-0000-000000000000\",\"offers\":{\"value\":[{\"uniqueOfferId\":\"aumatics.azure_managedservices\",\"offerDisplayName\":\"Aumatics Azure Managed Services\",\"publisherDisplayName\":\"Aumatics\",\"specificPlanIdsLimitation\":null,\"eTag\":\"\\\"c303ee7f-0000-0100-0000-65c0b1020000\\\"\",\"privateStoreId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\",\"createdAt\":\"2024-02-05T09:57:22.5643444Z\",\"modifiedAt\":\"2024-02-05T09:57:22.5643444Z\",\"plans\":[{\"planId\":\"azure_managedservices_professional\",\"skuId\":\"0001\",\"planDisplayName\":\"Azure Managed Services - Professional\",\"accessibility\":\"Public\",\"altStackReference\":null,\"stackType\":null}],\"iconFileUris\":{\"small\":\"https://store-images.s-microsoft.com/image/apps.28502.8bd414a4-a646-44ba-b745-faf1acee99a2.5610b36b-a1d5-4ed6-a2ec-675fd8b46e6e.6ed46d56-5177-4b3b-b792-d171f21ac71e\",\"medium\":\"https://store-images.s-microsoft.com/image/apps.47342.8bd414a4-a646-44ba-b745-faf1acee99a2.5610b36b-a1d5-4ed6-a2ec-675fd8b46e6e.c4c26433-ca62-4cf7-ba7c-a756fdd8ee51\",\"large\":\"https://store-images.s-microsoft.com/image/apps.63869.8bd414a4-a646-44ba-b745-faf1acee99a2.5610b36b-a1d5-4ed6-a2ec-675fd8b46e6e.acbf0bd7-1405-41ef-8bbb-bf62c04c60e0\"},\"updateSuppressedDueIdempotence\":false}]}}]}",
       "isContentBase64": false
     }
   }
