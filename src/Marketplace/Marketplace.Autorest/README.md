@@ -38,7 +38,7 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
-branch: a54263176acce91199a19333d6c4717367a3317e
+commit: a54263176acce91199a19333d6c4717367a3317e
 input-file:
   - $(repo)/specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2023-01-01/Marketplace.json
 
