@@ -31,10 +31,10 @@ Describe 'Update-AzWvdHostPool' {
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'RailApplications' `
                                 -StartVMOnConnect:$false `
-                                -ManagementType 'Standard'
-                                -ManagedPrivateUDP: 'Enabled'
-                                -DirectUDP: 'Enabled'
-                                -PublicUDP: 'Enabled'
+                                -ManagementType 'Standard' `
+                                -ManagedPrivateUDP: 'Enabled' `
+                                -DirectUDP: 'Enabled' `
+                                -PublicUDP: 'Enabled' `
                                 -RelayUDP: 'Enabled'
                 $hostPool.Name | Should -Be $env.HostPool
                 $hostPool.Location | Should -Be $env.Location
@@ -69,10 +69,10 @@ Describe 'Update-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' `
-                                -StartVMOnConnect:$false
-                                -ManagedPrivateUDP: 'Disabled'
-                                -DirectUDP: 'Disabled'
-                                -PublicUDP: 'Disabled'
+                                -StartVMOnConnect:$false `
+                                -ManagedPrivateUDP: 'Disabled' `
+                                -DirectUDP: 'Disabled' `
+                                -PublicUDP: 'Disabled' `
                                 -RelayUDP: 'Disabled'
                 $hostPool.Name | Should -Be $env.HostPool
                 $hostPool.Location | Should -Be $env.Location
