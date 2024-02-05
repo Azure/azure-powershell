@@ -34,9 +34,7 @@ TimeStamperUrl is optional, but it's strongly recommended to do TimeStamping alo
 
 ### Example: Sign a CI Policy .bin file
 ```powershell
-Invoke-AzCodeSigningCIPolicySigning -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' 
--Path 'c:\cisigning\contosocipolicy.bin'-Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com'
--MetadataFilePath <String> 
+Invoke-AzCodeSigningCIPolicySigning -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Path 'c:\cisigning\contosocipolicy.bin' -Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com' -MetadataFilePath $MetadataFilePath
 ```
 
 ```output
