@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccountKey", DefaultParameterSetName = NameParameterSet), OutputType(typeof(Hashtable))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccountKey", DefaultParameterSetName = NameParameterSet), OutputType(typeof(Hashtable), typeof(IList<DatabaseAccountConnectionString>))]
     public class GetAzCosmosDBAccountKey : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (Type.Equals("ConnectionStrings", StringComparison.OrdinalIgnoreCase))
             {
                 DatabaseAccountListConnectionStringsResult response = CosmosDBManagementClient.DatabaseAccounts.ListConnectionStringsWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
-                WriteObject(new PSDatabaseAccountListKeys(response).Keys);
+                WriteObject(new PSDatabaseAccountListKeys(response).ConnectionStrings);
             }
             else if (Type.Equals("ReadOnlyKeys", StringComparison.OrdinalIgnoreCase))
             {
