@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 * Redirected device code login messages from warning stream to information stream if use device authentication in `Connect-AzAccount`.
+
+## Version 2.15.1
 * Adjusted output format to be more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`, including 
     - ordering and grouping output items to make items easy to find.
     - re-prioritizing positions for output properties to highlight valuable properties.
