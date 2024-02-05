@@ -1,22 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Set rules on a collection
 ```powershell
-{{ Add code here }}
+$rule1 = @{
+    Type = "PrivateProducts"
+    Value = ""
+}
+$rule2 = @{
+    Type = "TermsAndCondition"
+    Value = ""
+}
+$rules = @($rule1, $rule2)
+
+New-AzMarketplacePrivateStoreCollectionRule -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -Value $rules
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Set rules for specific private store and collection.
