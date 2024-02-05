@@ -24,6 +24,10 @@ Describe 'New-AzWvdHostPool' {
                                 -DesktopAppGroupName 'FullSenerioCreateAG' `
                                 -WorkspaceName 'FullSenerioCreateWS' `
                                 -ManagementType 'Standard'
+                                -ManagedPrivateUDP: 'Enabled'
+                                -DirectUDP: 'Enabled'
+                                -PublicUDP: 'Enabled'
+                                -RelayUDP: 'Enabled'
         }
         finally{
             $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
@@ -60,6 +64,10 @@ Describe 'New-AzWvdHostPool' {
                                 -PreferredAppGroupType 'Desktop' `
                                 -StartVMOnConnect:$false `
                                 -ManagementType 'Standard'
+                                -ManagedPrivateUDP: 'Enabled'
+                                -DirectUDP: 'Enabled'
+                                -PublicUDP: 'Enabled'
+                                -RelayUDP: 'Enabled'
 
                 $hostPool.Name | Should -Be $env.HostPool
                 $hostPool.Location | Should -Be $env.Location
@@ -97,6 +105,10 @@ Describe 'New-AzWvdHostPool' {
                 # $hostPool.ValidationEnvironment | Should -Be $false
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
                 $hostPool.StartVMOnConnect | Should -Be $false
+                $hostPool.ManagedPrivateUDP | Should -Be 'Enabled'
+                $hostPool.DirectUDP | Should -Be 'Enabled'
+                $hostPool.PublicUDP | Should -Be 'Enabled'
+                $hostPool.RelayUDP | Should -Be 'Enabled'
         }
         finally{
                 $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
