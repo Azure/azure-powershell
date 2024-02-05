@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* [Breaking Change] Output type for -Type ConnectionStrings is changed to List<DatabaseAccountConnectionString> to expose keyKind and type fields
 
 ## Version 1.14.0
 * Introduced Restore-AzCosmosDBSqlDatabase, Restore-AzCosmosDBSqlContainer to restore deleted database and containers in the same account for SQL.
