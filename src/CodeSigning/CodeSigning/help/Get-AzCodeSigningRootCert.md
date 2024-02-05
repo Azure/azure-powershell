@@ -30,15 +30,22 @@ Destination is the downloaded root cert file path, which incldues the file name 
 
 ### Example: Sign a CI Policy .bin file
 ```powershell
-Get-AzCodeSigningRootCert -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Destination 'c:\acs\rootcert.cer' -MetadataFilePath $MetadataFilePath
+Get-AzCodeSigningRootCert -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Destination 'c:\acs\rootcert.cer'
+```
+
+Alternatively, a metadata file path could be used
+
+```powershell
+Get-AzCodeSigningRootCert -MetadataFilePath 'c:\cisigning\metadata_input.json' -Destination 'c:\acs\rootcert.cer'
 ```
 
 ```output
-c:\acs\rootcert.cer
-
+Thumbprint                               Subject
+----------                               -------
+3A7B1F8C2E9D5A0B4F6E2C1D9F4B8A3E         CN=Microsoft Identity Verification Root Certificate Authority 2020, O=Microsoft
 ```
 
-This command creates a software-protected key named ITSoftware in the key vault named Contoso.
+This command retrieves a root certificate that is currently in use for signing.
 
 ## PARAMETERS
 
@@ -144,4 +151,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzCodeSigningCustomerEku](./Get-AzCodeSigningCustomerEku.md)
 
-[Get-AzCodeSigningRootCert](./Get-AzCodeSigningRootCert.md)
+[Invoke-AzCodeSigningCIPolicySigning](./Invoke-AzCodeSigningCIPolicySigning.md)

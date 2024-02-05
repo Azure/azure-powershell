@@ -15,8 +15,7 @@ Retrieve Azure.CodeSigning customer Eku
 
 ### InteractiveSubmit (Default)
 ```
-Get-AzCodeSigningCustomerEku [-AccountName] <String> [-ProfileName] <String> -EndpointUrl <String> 
--MetadataFilePath <String> 
+Get-AzCodeSigningCustomerEku [-AccountName] <String> [-ProfileName] <String> -EndpointUrl <String> -MetadataFilePath <String>
 ```
 
 
@@ -30,14 +29,20 @@ Another set uses MetadataFilePath.
 
 ### Example: Retrieve customer Eku
 ```powershell
-Get-AzCodeSigningCustomerEku -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Path 'c:\cisigning\contosocipolicy.bin'-Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com' -MetadataFilePath $MetadataFilePath 
+Get-AzCodeSigningCustomerEku -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Path 'c:\cisigning\contosocipolicy.bin'-Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com'
+```
+
+Alternatively, use the metadata file path to retrieve the data
+
+```powershell
+Get-AzCodeSigningCustomerEku -MetadataFilePath 'c:\cisigning\metadata_input.json' -Path 'c:\cisigning\contosocipolicy.bin'-Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com'
 ```
 
 ```output
-Eku string or list
+1.3.6.1.5.5.7.3.0
 ```
 
-This command creates a software-protected key named ITSoftware in the key vault named Contoso.
+This command retrieves a customer eku.
 
 ## PARAMETERS
 
@@ -100,6 +105,7 @@ Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
@@ -128,4 +134,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Get-AzCodeSigningCustomerEku](./Get-AzCodeSigningCustomerEku.md)
 
-[Get-AzCodeSigningRootCert](./Get-AzCodeSigningRootCert.md)
+[Invoke-AzCodeSigningCIPolicySigning](./Invoke-AzCodeSigningCIPolicySigning.md)
