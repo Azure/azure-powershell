@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMarketplacePrivateStore
 }
 
 Describe 'Get-AzMarketplacePrivateStoreCollectionRule' {
-    It 'Query' -Skip {
+    It 'Query' {
         $response = Get-AzMarketplacePrivateStoreCollectionRule -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId a260d38c-96cf-492d-a340-404d0c4b3ad6
         $response | Should -Not -Be $null
 	    $response.Count | Should -BeGreaterOrEqual 0
