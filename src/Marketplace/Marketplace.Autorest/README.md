@@ -229,16 +229,21 @@ directive:
     remove: true
 
   # /providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/setRules
+  # swagger does not match request
+  # - where:
+  #     verb: Set
+  #     subject: CollectionRule
+  #   set:
+  #     verb: New
+  #     subject: PrivateStoreCollectionRule
+  # - where:
+  #     verb: New
+  #     subject: PrivateStoreCollectionRule
+  #     variant: Set(?!.*?Expanded)
+  #   remove: true
   - where:
       verb: Set
       subject: CollectionRule
-    set:
-      verb: New
-      subject: PrivateStoreCollectionRule
-  - where:
-      verb: New
-      subject: PrivateStoreCollectionRule
-      variant: Set(?!.*?Expanded)
     remove: true
 
   # /providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/queryRules
@@ -271,10 +276,14 @@ directive:
       subject: PrivateStoreAllSubscriptionInTenant
 
   # /providers/Microsoft.Marketplace/privateStores/{privateStoreId}/listStopSellOffersPlansNotifications
+  # - where:
+  #     verb: Get
+  #     subject: PrivateStoreStopSellOfferPlanNotification
+  #     variant: List(?!.*?Expanded)
+  #   remove: true
   - where:
       verb: Get
       subject: PrivateStoreStopSellOfferPlanNotification
-      variant: List(?!.*?Expanded)
     remove: true
 
   # /providers/Microsoft.Marketplace/privateStores/{privateStoreId}/listSubscriptionsContext
