@@ -15,16 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportProblemClassific
 }
 
 Describe 'Get-AzSupportProblemClassification' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $problemClassifications = Get-AzSupportProblemClassification -ServiceName $env.BillingServiceId
+        $problemClassifications.Count | Should -BeGreaterThan 1
     }
 
     It 'GetViaIdentityService' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $problemClassification = Get-AzSupportProblemClassification -ServiceName $env.BillingServiceId -Name $env.BillingProblemClassificationId
+        $problemClassification.Count | Should -Be 1
     }
 
     It 'GetViaIdentity' -skip {

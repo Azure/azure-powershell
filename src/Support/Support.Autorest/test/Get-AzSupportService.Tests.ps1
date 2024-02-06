@@ -15,12 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportService'))
 }
 
 Describe 'Get-AzSupportService' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $services = Get-AzSupportService
+        $services.Count | Should -BeGreaterThan 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $service = Get-AzSupportService -Name $env.BillingServiceId
+        $service.Count | Should -Be 1
     }
 
     It 'GetViaIdentity' -skip {

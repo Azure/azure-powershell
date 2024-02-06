@@ -1,25 +1,24 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportfile
+online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportfileworkspace
 schema: 2.0.0
 ---
 
-# New-AzSupportFile
+# New-AzSupportFileWorkspace
 
 ## SYNOPSIS
-Creates a new file under a workspace for the specified subscription.
+Creates a new file workspace for the specified subscription.
 
 ## SYNTAX
 
 ```
-New-AzSupportFile -Name <String> -WorkspaceName <String> [-SubscriptionId <String>] [-ChunkSize <Single>]
- [-FileSize <Single>] [-NumberOfChunk <Single>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzSupportFileWorkspace -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new file under a workspace for the specified subscription.
+Creates a new file workspace for the specified subscription.
 
 ## EXAMPLES
 
@@ -47,21 +46,6 @@ Creates a new file under a workspace for the specified subscription.
 
 ## PARAMETERS
 
-### -ChunkSize
-Size of each chunk
-
-```yaml
-Type: System.Single
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -78,45 +62,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FileSize
-Size of the file to be uploaded
-
-```yaml
-Type: System.Single
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-File name.
+File workspace name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: FileName
+Aliases: FileWorkspaceName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NumberOfChunk
-Number of chunks to be uploaded
-
-```yaml
-Type: System.Single
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -134,21 +88,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkspaceName
-File workspace name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: FileWorkspaceName
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -191,7 +130,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IFileDetails
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IFileWorkspaceDetails
 
 ## NOTES
 

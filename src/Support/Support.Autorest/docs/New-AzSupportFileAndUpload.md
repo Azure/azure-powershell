@@ -1,31 +1,24 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/get-azsupportfileworkspacesnosubscription
+online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportfile
 schema: 2.0.0
 ---
 
-# Get-AzSupportFileWorkspacesNoSubscription
+# New-AzSupportFileAndUpload
 
 ## SYNOPSIS
-Gets details for a specific file workspace.
+Creates and uploads a new file under a workspace for the specified subscription.
 
 ## SYNTAX
 
-### Get (Default)
 ```
-Get-AzSupportFileWorkspacesNoSubscription -FileWorkspaceName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzSupportFileWorkspacesNoSubscription -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+New-AzSupportFileAndUpload -WorkspaceName <String> -FilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets details for a specific file workspace.
+Creates and uploads a new file under a workspace for the specified subscription.
 
 ## EXAMPLES
 
@@ -69,13 +62,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FileWorkspaceName
-File Workspace Name
+### -FilePath
+Path of the file to be uploaded
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: Name
+Parameter Sets: (All)
+Aliases:
 
 Required: True
 Position: Named
@@ -84,19 +77,64 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -SubscriptionId
+Azure subscription Id.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-Parameter Sets: GetViaIdentity
+Type: System.String
+Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceName
+File workspace name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: FileWorkspaceName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -105,11 +143,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IFileWorkspaceDetails
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IFileDetails
 
 ## NOTES
 

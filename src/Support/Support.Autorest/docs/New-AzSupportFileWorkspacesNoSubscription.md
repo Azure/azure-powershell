@@ -1,31 +1,24 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/get-azsupportfileworkspacesnosubscription
+online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportfileworkspacesnosubscription
 schema: 2.0.0
 ---
 
-# Get-AzSupportFileWorkspacesNoSubscription
+# New-AzSupportFileWorkspacesNoSubscription
 
 ## SYNOPSIS
-Gets details for a specific file workspace.
+Creates a new file workspace.
 
 ## SYNTAX
 
-### Get (Default)
 ```
-Get-AzSupportFileWorkspacesNoSubscription -FileWorkspaceName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzSupportFileWorkspacesNoSubscription -InputObject <ISupportIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+New-AzSupportFileWorkspacesNoSubscription -FileWorkspaceName <String> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets details for a specific file workspace.
+Creates a new file workspace.
 
 ## EXAMPLES
 
@@ -70,11 +63,11 @@ Accept wildcard characters: False
 ```
 
 ### -FileWorkspaceName
-File Workspace Name
+File workspace name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases: Name
 
 Required: True
@@ -84,19 +77,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -104,8 +112,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ISupportIdentity
 
 ## OUTPUTS
 
