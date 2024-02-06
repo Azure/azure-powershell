@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixeed parser logic when downloading blob from managed disk account with Sas Uri and bearer token
+    - `Get-AzStorageBlobContent`
 
 ## Version 6.1.1
 * Removed some code branches referencing Microsoft.Azure.Storage.Blob
