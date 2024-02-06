@@ -27,22 +27,28 @@ Another set uses MetadataFilePath.
 
 ## EXAMPLES
 
-### Example: Retrieve customer Eku
+### Example 1: Retrieve customer Eku by account and profile name
 ```powershell
-Get-AzCodeSigningCustomerEku -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Path 'c:\cisigning\contosocipolicy.bin'-Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com'
-```
-
-Alternatively, use the metadata file path to retrieve the data
-
-```powershell
-Get-AzCodeSigningCustomerEku -MetadataFilePath 'c:\cisigning\metadata_input.json' -Path 'c:\cisigning\contosocipolicy.bin'-Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com'
+Get-AzCodeSigningCustomerEku -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' 
 ```
 
 ```output
 1.3.6.1.5.5.7.3.0
 ```
 
-This command retrieves a customer eku.
+This command retrieves the customer eku by account and profile name.
+
+### Example 2: Retrieve customer Eku by metadata file path
+
+```powershell
+Get-AzCodeSigningCustomerEku -MetadataFilePath 'c:\cisigning\metadata_input.json'
+```
+
+```output
+1.3.6.1.5.5.7.3.0
+```
+
+This command retrieves the customer eku by the metadata file configuration.
 
 ## PARAMETERS
 

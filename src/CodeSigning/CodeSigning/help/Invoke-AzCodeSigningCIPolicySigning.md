@@ -32,12 +32,19 @@ TimeStamperUrl is optional, but it's strongly recommended to do TimeStamping alo
 
 ## EXAMPLES
 
-### Example: Sign a CI Policy .bin file
+### Example 1: Sign a CI Policy .bin file by account and profile name
+
 ```powershell
 Invoke-AzCodeSigningCIPolicySigning -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Path 'c:\cisigning\contosocipolicy.bin' -Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com'
 ```
 
-Alternatively, a metadata file path could be used
+```output
+CI Policy is successfully signed. c:\cisigning\signed_contosocipolicy.bin
+```
+
+This command signs a CI policy by account and profile, it also timestamps the signature using the timestamp url provided.
+
+### Example 2: Sign a CI Policy .bin file by metadata file configuration
 
 ```powershell
 Invoke-AzCodeSigningCIPolicySigning  -MetadataFilePath 'c:\cisigning\metadata_input.json' -Path 'c:\cisigning\contosocipolicy.bin' -Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com'
@@ -47,7 +54,7 @@ Invoke-AzCodeSigningCIPolicySigning  -MetadataFilePath 'c:\cisigning\metadata_in
 CI Policy is successfully signed. c:\cisigning\signed_contosocipolicy.bin
 ```
 
-This command signs a CI policy provided.
+This command signs a CI policy by the metadata configuration, it also timestamps the signature using the timestamp url provided.
 
 ## PARAMETERS
 
