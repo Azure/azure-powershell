@@ -723,7 +723,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
 
-
         public static ShareServiceClient GetTrack2FileServiceClient(AzureStorageContext context, ShareClientOptions options = null)
         {
             if (context == null || string.IsNullOrEmpty(context.ConnectionString))
