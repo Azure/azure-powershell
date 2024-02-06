@@ -153,6 +153,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 currentCluster.PublicIPPrefixId = null;
             }
 
+            if (string.IsNullOrEmpty(currentCluster.PublicIPv6PrefixId))
+            {
+                currentCluster.PublicIPv6PrefixId = null;
+            }
+
             return currentCluster;
         }
 
