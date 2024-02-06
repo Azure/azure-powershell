@@ -1,21 +1,21 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest/applicationTypes?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdC9hcHBsaWNhdGlvblR5cGVzP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest4/applicationTypes?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdDQvYXBwbGljYXRpb25UeXBlcz9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9e4e0770-9506-4720-9902-49076ee6a2b2"
+          "25a00ba0-0842-414a-9083-f29390fbf381"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2323.48002",
+          "FxVersion/6.0.2623.60508",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/3.2.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/3.3.2"
         ]
       },
       "RequestBody": "",
@@ -32,23 +32,26 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11990"
         ],
         "x-ms-request-id": [
-          "2b7f60b9-783f-43e6-86b6-2b5446f83d1c"
+          "7880e946-69f8-4f59-9458-48eedbc1f95e"
         ],
         "x-ms-correlation-request-id": [
-          "2b7f60b9-783f-43e6-86b6-2b5446f83d1c"
+          "7880e946-69f8-4f59-9458-48eedbc1f95e"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20231024T044352Z:2b7f60b9-783f-43e6-86b6-2b5446f83d1c"
+          "EASTUS:20240206T182637Z:7880e946-69f8-4f59-9458-48eedbc1f95e"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 344F49CA638F43229E24BE3E2C918990 Ref B: BL2AA2010203017 Ref C: 2024-02-06T18:26:36Z"
         ],
         "Date": [
-          "Tue, 24 Oct 2023 04:43:52 GMT"
+          "Tue, 06 Feb 2024 18:26:36 GMT"
         ],
         "Content-Length": [
           "19"
@@ -64,21 +67,21 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest/applicationTypes?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdC9hcHBsaWNhdGlvblR5cGVzP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest4/applicationTypes?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdDQvYXBwbGljYXRpb25UeXBlcz9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "70c7cc57-f7b4-4a7f-8f7b-ab10db7b4f16"
+          "7fe2a54d-6b55-4a85-89bc-ab53347cc895"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2323.48002",
+          "FxVersion/6.0.2623.60508",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/3.2.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/3.3.2"
         ]
       },
       "RequestBody": "",
@@ -95,23 +98,26 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11993"
         ],
         "x-ms-request-id": [
-          "d2d8c73c-d03b-401b-8727-5286d8a9f26c"
+          "b693490d-c141-4f5f-a804-77a1928b0faf"
         ],
         "x-ms-correlation-request-id": [
-          "d2d8c73c-d03b-401b-8727-5286d8a9f26c"
+          "b693490d-c141-4f5f-a804-77a1928b0faf"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20231024T044353Z:d2d8c73c-d03b-401b-8727-5286d8a9f26c"
+          "EASTUS2:20240206T182637Z:b693490d-c141-4f5f-a804-77a1928b0faf"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 9E480572C393426B99A61C787F34307A Ref B: BL2AA2030101003 Ref C: 2024-02-06T18:26:37Z"
         ],
         "Date": [
-          "Tue, 24 Oct 2023 04:43:53 GMT"
+          "Tue, 06 Feb 2024 18:26:37 GMT"
         ],
         "Content-Length": [
           "19"
@@ -127,21 +133,21 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest/applicationTypes/VotingType?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdC9hcHBsaWNhdGlvblR5cGVzL1ZvdGluZ1R5cGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest4/applicationTypes/VotingType?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdDQvYXBwbGljYXRpb25UeXBlcy9Wb3RpbmdUeXBlP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "70c7cc57-f7b4-4a7f-8f7b-ab10db7b4f16"
+          "7fe2a54d-6b55-4a85-89bc-ab53347cc895"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2323.48002",
+          "FxVersion/6.0.2623.60508",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/3.2.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/3.3.2"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -164,26 +170,29 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
-        ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-request-id": [
-          "611e47fa-f5fd-4840-994f-718fd047cc59"
+          "d7a98961-4359-4368-ac48-ccfa25deb3d1"
         ],
         "x-ms-correlation-request-id": [
-          "611e47fa-f5fd-4840-994f-718fd047cc59"
+          "d7a98961-4359-4368-ac48-ccfa25deb3d1"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20231024T044353Z:611e47fa-f5fd-4840-994f-718fd047cc59"
+          "EASTUS2:20240206T182638Z:d7a98961-4359-4368-ac48-ccfa25deb3d1"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 9B0ED33E9C4340CD9712A67AD0D30D65 Ref B: BL2AA2030101003 Ref C: 2024-02-06T18:26:37Z"
         ],
         "Date": [
-          "Tue, 24 Oct 2023 04:43:53 GMT"
+          "Tue, 06 Feb 2024 18:26:38 GMT"
         ],
         "Content-Length": [
-          "749"
+          "743"
         ],
         "Content-Type": [
           "application/json"
@@ -192,25 +201,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters/applicationTypes\",\r\n  \"location\": \"southcentralus\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest/applicationTypes/VotingType\",\r\n  \"name\": \"VotingType\",\r\n  \"etag\": \"W/\\\"638337194336040165\\\"\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"b4f91a72-fd09-4e86-9280-7e0eae864947\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-10-24T00:43:53.5311632-04:00\",\r\n    \"lastModifiedBy\": \"b4f91a72-fd09-4e86-9280-7e0eae864947\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-10-24T00:43:53.5311632-04:00\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters/applicationTypes\",\r\n  \"location\": \"westus2\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest4/applicationTypes/VotingType\",\r\n  \"name\": \"VotingType\",\r\n  \"etag\": \"W/\\\"638428407982213062\\\"\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"b4f91a72-fd09-4e86-9280-7e0eae864947\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2024-02-06T13:26:37.9672757-05:00\",\r\n    \"lastModifiedBy\": \"b4f91a72-fd09-4e86-9280-7e0eae864947\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2024-02-06T13:26:37.9672757-05:00\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest/applicationTypes/VotingType?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdC9hcHBsaWNhdGlvblR5cGVzL1ZvdGluZ1R5cGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest4/applicationTypes/VotingType?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdDQvYXBwbGljYXRpb25UeXBlcy9Wb3RpbmdUeXBlP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "65c75b3e-bbfe-431a-be7e-d71baeb3ed8d"
+          "fcb7657a-93d5-4557-b811-8d7912e03324"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2323.48002",
+          "FxVersion/6.0.2623.60508",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/3.2.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/3.3.2"
         ]
       },
       "RequestBody": "",
@@ -227,26 +236,29 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11992"
         ],
         "x-ms-request-id": [
-          "e041bb93-7023-435c-b3f6-8d7c9ef927f6"
+          "e6e43232-0e40-4d8f-8d05-10d6b6116ef9"
         ],
         "x-ms-correlation-request-id": [
-          "e041bb93-7023-435c-b3f6-8d7c9ef927f6"
+          "e6e43232-0e40-4d8f-8d05-10d6b6116ef9"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20231024T044354Z:e041bb93-7023-435c-b3f6-8d7c9ef927f6"
+          "EASTUS:20240206T182638Z:e6e43232-0e40-4d8f-8d05-10d6b6116ef9"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: EB61D713376449D98685117BF6D8E968 Ref B: BL2AA2030103003 Ref C: 2024-02-06T18:26:38Z"
         ],
         "Date": [
-          "Tue, 24 Oct 2023 04:43:53 GMT"
+          "Tue, 06 Feb 2024 18:26:38 GMT"
         ],
         "Content-Length": [
-          "749"
+          "743"
         ],
         "Content-Type": [
           "application/json"
@@ -255,25 +267,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters/applicationTypes\",\r\n  \"location\": \"southcentralus\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest/applicationTypes/VotingType\",\r\n  \"name\": \"VotingType\",\r\n  \"etag\": \"W/\\\"638337194336040165\\\"\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"b4f91a72-fd09-4e86-9280-7e0eae864947\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2023-10-24T00:43:53.5311632-04:00\",\r\n    \"lastModifiedBy\": \"b4f91a72-fd09-4e86-9280-7e0eae864947\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2023-10-24T00:43:53.5311632-04:00\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters/applicationTypes\",\r\n  \"location\": \"westus2\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest4/applicationTypes/VotingType\",\r\n  \"name\": \"VotingType\",\r\n  \"etag\": \"W/\\\"638428407982213062\\\"\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"b4f91a72-fd09-4e86-9280-7e0eae864947\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2024-02-06T13:26:37.9672757-05:00\",\r\n    \"lastModifiedBy\": \"b4f91a72-fd09-4e86-9280-7e0eae864947\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2024-02-06T13:26:37.9672757-05:00\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest/applicationTypes/VotingType?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdC9hcHBsaWNhdGlvblR5cGVzL1ZvdGluZ1R5cGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest4/applicationTypes/VotingType?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdDQvYXBwbGljYXRpb25UeXBlcy9Wb3RpbmdUeXBlP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "730a5847-5618-4dcf-8cba-9a50bf717f89"
+          "a50b9d87-9d64-499c-afda-71cc62146cdd"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2323.48002",
+          "FxVersion/6.0.2623.60508",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/3.2.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/3.3.2"
         ]
       },
       "RequestBody": "",
@@ -285,7 +297,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "59c9ac1a-1e70-4899-853b-757cc5921e00"
+          "81cde0f0-b9ec-4b97-b88c-486eb79c3afb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -293,23 +305,26 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "eab57d98-9a24-4b55-8e6b-c6b6c0277b75"
+          "d21074b9-8ad9-4512-95e5-8613983032d9"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20231024T044355Z:eab57d98-9a24-4b55-8e6b-c6b6c0277b75"
+          "EASTUS2:20240206T182640Z:d21074b9-8ad9-4512-95e5-8613983032d9"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 4F0B2DF435E542ACB82668FD7D527F88 Ref B: BL2AA2010204007 Ref C: 2024-02-06T18:26:39Z"
         ],
         "Date": [
-          "Tue, 24 Oct 2023 04:43:54 GMT"
+          "Tue, 06 Feb 2024 18:26:39 GMT"
         ],
         "Content-Length": [
-          "277"
+          "278"
         ],
         "Content-Type": [
           "application/json"
@@ -318,25 +333,25 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Resource /subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/AZURERMSFRG/providers/Microsoft.ServiceFabric/clusters/AZURERMSFCLUSTERTEST/applicationTypes/VOTINGTYPE not found.\",\r\n    \"details\": []\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Resource /subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/AZURERMSFRG/providers/Microsoft.ServiceFabric/clusters/AZURERMSFCLUSTERTEST4/applicationTypes/VOTINGTYPE not found.\",\r\n    \"details\": []\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest/applicationTypes/VotingType?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdC9hcHBsaWNhdGlvblR5cGVzL1ZvdGluZ1R5cGU/YXBpLXZlcnNpb249MjAyMS0wNi0wMQ==",
+      "RequestUri": "/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/azurermsfrg/providers/Microsoft.ServiceFabric/clusters/azurermsfclustertest4/applicationTypes/VotingType?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM2Y2RmNDYtYjc1ZC00ZGMyLTlmZTEtMTI5NmVlOGM2MjNkL3Jlc291cmNlR3JvdXBzL2F6dXJlcm1zZnJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUZhYnJpYy9jbHVzdGVycy9henVyZXJtc2ZjbHVzdGVydGVzdDQvYXBwbGljYXRpb25UeXBlcy9Wb3RpbmdUeXBlP2FwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a2676541-eb45-49f3-9c3f-66e68167b57b"
+          "9080fa8f-13dc-495b-8774-12f696fc08ec"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2323.48002",
+          "FxVersion/6.0.2623.60508",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/3.2.0"
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/3.3.2"
         ]
       },
       "RequestBody": "",
@@ -352,24 +367,27 @@
         ],
         "X-Content-Type-Options": [
           "nosniff"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14999"
         ],
         "x-ms-request-id": [
-          "69e09bbe-fdf7-4f77-bdad-ed060a76095c"
+          "3f5a103b-73f1-40af-a93a-e491ae8b2035"
         ],
         "x-ms-correlation-request-id": [
-          "69e09bbe-fdf7-4f77-bdad-ed060a76095c"
+          "3f5a103b-73f1-40af-a93a-e491ae8b2035"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20231024T044354Z:69e09bbe-fdf7-4f77-bdad-ed060a76095c"
+          "EASTUS2:20240206T182639Z:3f5a103b-73f1-40af-a93a-e491ae8b2035"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 515A506F914443749BF9FAA02DE6401D Ref B: BL2AA2030104037 Ref C: 2024-02-06T18:26:38Z"
         ],
         "Date": [
-          "Tue, 24 Oct 2023 04:43:54 GMT"
+          "Tue, 06 Feb 2024 18:26:38 GMT"
         ],
         "Expires": [
           "-1"
