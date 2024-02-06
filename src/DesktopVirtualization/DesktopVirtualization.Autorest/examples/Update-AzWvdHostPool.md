@@ -9,10 +9,10 @@ Update-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
-                            -ManagedPrivateUDP: 'Disabled' `
-                            -DirectUDP: 'Disabled' `
-                            -PublicUDP: 'Disabled' `
-                            -RelayUDP: 'Disabled'
+                            -ManagedPrivateUDP 'Disabled' `
+                            -DirectUDP 'Disabled' `
+                            -PublicUDP 'Disabled' `
+                            -RelayUDP 'Disabled'
 ```
 
 ```output

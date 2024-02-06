@@ -67,10 +67,10 @@ New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
-                            -ManagedPrivateUDP: 'Enabled' `
-                            -DirectUDP: 'Enabled' `
-                            -PublicUDP: 'Enabled' `
-                            -RelayUDP: 'Enabled'
+                            -ManagedPrivateUDP 'Enabled' `
+                            -DirectUDP 'Enabled' `
+                            -PublicUDP 'Enabled' `
+                            -RelayUDP 'Enabled'
 ```
 
 ```output
@@ -101,10 +101,10 @@ New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
-                            -ManagedPrivateUDP: 'Enabled' `
-                            -DirectUDP: 'Enabled' `
-                            -PublicUDP: 'Enabled' `
-                            -RelayUDP: 'Enabled'
+                            -ManagedPrivateUDP 'Enabled' `
+                            -DirectUDP 'Enabled' `
+                            -PublicUDP 'Enabled' `
+                            -RelayUDP 'Enabled'
 ```
 
 ```output
