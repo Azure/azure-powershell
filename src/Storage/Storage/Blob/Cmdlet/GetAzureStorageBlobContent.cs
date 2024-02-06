@@ -448,11 +448,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if (headerName.StartsWith(authenticateHeaderName))
                 {
                     string headerValue = header.Value;
-                    WriteDebugLog(string.Format("Found header: {0}", headerValue));
+                    WriteDebugLog(string.Format("Found header name: {0}, value: {1}", headerName, headerValue));
                     string audienceName = "resource_id=";
                     try
                     {
-                        audience = headerValue.Split(new string[] { audienceName }, StringSplitOptions.None)[1];
+                        string authText = headerValue.Split(new string[] { audienceName }, StringSplitOptions.None)[1];
+                        audience = authText.Split(new string[] { " " }, StringSplitOptions.None)[0];
                         WriteDebugLog(string.Format("Found audience: {0}", audience));
                         return audience;
                     }
