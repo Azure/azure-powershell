@@ -48,35 +48,26 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.ConnectionMonitor
             if (ShouldGetByName(resourceGroupName, connectionMonitorName))
             {
                 var connectionMonitorResult = this.ConnectionMonitors.Get(resourceGroupName, networkWatcherName, connectionMonitorName);
-
-                if (connectionMonitorResult != null)
+                
+                if (connectionMonitorResult.ConnectionMonitorType.Equals(ConnectionMonitorTypeV2, StringComparison.OrdinalIgnoreCase))
                 {
-                    if (connectionMonitorResult.ConnectionMonitorType.Equals(ConnectionMonitorTypeV2, StringComparison.OrdinalIgnoreCase))
-                    {
-                        WriteInformation($"This Connection Monitor is already V2.\n", new string[] { "PSHOST" });
-                    }
-                    else
-                    {
-                        PSConnectionMonitorResultV2 PSConnectionMonitorResultV2 = MapConnectionMonitorResultToPSConnectionMonitorResultV2(connectionMonitorResult);
-                        MNM.ConnectionMonitor connectionMonitor = this.PopulateConnectionMonitorParametersFromV2Request
-                            (PSConnectionMonitorResultV2.TestGroups.ToArray(), PSConnectionMonitorResultV2.Outputs.ToArray(),
-                            PSConnectionMonitorResultV2.Notes);
-                        if (connectionMonitor != null)
-                        {
-                            connectionMonitor.Location = PSConnectionMonitorResultV2.Location;
-                            connectionMonitor.Tags = PSConnectionMonitorResultV2.Tags;
-                            this.ConnectionMonitors.CreateOrUpdate(resourceGroupName, networkWatcherName, connectionMonitorName, connectionMonitor, "true");
-                        }
+                    WriteInformation($"This Connection Monitor is already V2.\n", new string[] { "PSHOST" });
+                    return;
+                }
 
-                        PSConnectionMonitorResult psConnectionMonitorResult = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, this.Name, true);
-                        WriteInformation($"Migration is successfully.\n", new string[] { "PSHOST" });
-                        WriteObject(psConnectionMonitorResult);
-                    }
-                }
-                else
-                {
-                    WriteInformation($"No Connection Monitor found.", new string[] { "PSHOST" });
-                }
+                PSConnectionMonitorResultV2 PSConnectionMonitorResultV2 = MapConnectionMonitorResultToPSConnectionMonitorResultV2(connectionMonitorResult);
+                MNM.ConnectionMonitor connectionMonitor = this.PopulateConnectionMonitorParametersFromV2Request
+                    (PSConnectionMonitorResultV2?.TestGroups?.ToArray(), PSConnectionMonitorResultV2?.Outputs?.ToArray(),
+                    PSConnectionMonitorResultV2?.Notes);
+
+                //Updating the location and tags
+                connectionMonitor.Location = PSConnectionMonitorResultV2.Location;
+                connectionMonitor.Tags = PSConnectionMonitorResultV2.Tags;
+                this.ConnectionMonitors.CreateOrUpdate(resourceGroupName, networkWatcherName, connectionMonitorName, connectionMonitor, "true");
+
+                PSConnectionMonitorResult psConnectionMonitorResult = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, this.Name, true);
+                WriteInformation($"Migration is successfully.\n", new string[] { "PSHOST" });
+                WriteObject(psConnectionMonitorResult);
             }
         }
 
