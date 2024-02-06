@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
@@ -23,7 +24,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccountKey", DefaultParameterSetName = NameParameterSet), OutputType(typeof(Hashtable), typeof(IList<DatabaseAccountConnectionString>))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccountKey", DefaultParameterSetName = NameParameterSet), OutputType(typeof(Hashtable), typeof(List<DatabaseAccountConnectionString>))]
     public class GetAzCosmosDBAccountKey : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -53,11 +54,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 ResourceIdentifier resourceIdentifier = null;
                 if (ParameterSetName.Equals(ResourceIdParameterSet))
                 {
-                   resourceIdentifier = new ResourceIdentifier(ResourceId);
+                    resourceIdentifier = new ResourceIdentifier(ResourceId);
                 }
                 else if (ParameterSetName.Equals(ObjectParameterSet))
                 {
-                   resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                    resourceIdentifier = new ResourceIdentifier(InputObject.Id);
                 }
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 Name = resourceIdentifier.ResourceName;
