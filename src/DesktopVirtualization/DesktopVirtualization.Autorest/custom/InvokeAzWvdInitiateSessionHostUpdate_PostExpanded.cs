@@ -3,7 +3,7 @@
 
 using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview;
+using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
 {

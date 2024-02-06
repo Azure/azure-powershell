@@ -31,11 +31,7 @@ Describe 'Update-AzWvdHostPool' {
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'RailApplications' `
                                 -StartVMOnConnect:$false `
-                                -ManagementType 'Standard' `
-                                -ManagedPrivateUDP: 'Enabled' `
-                                -DirectUDP: 'Enabled' `
-                                -PublicUDP: 'Enabled' `
-                                -RelayUDP: 'Enabled'
+                                -ManagementType 'Standard'
                 $hostPool.Name | Should -Be $env.HostPool
                 $hostPool.Location | Should -Be $env.Location
                 $hostPool.HostPoolType | Should -Be 'Pooled'              
@@ -52,10 +48,6 @@ Describe 'Update-AzWvdHostPool' {
                 # $hostPool.ValidationEnvironment | Should -Be $false
                 $hostPool.PreferredAppGroupType | Should -Be 'RailApplications'
                 $hostPool.StartVMOnConnect | Should -Be $false
-                $hostPool.ManagedPrivateUDP | Should -Be 'Enabled'
-                $hostPool.DirectUDP | Should -Be 'Enabled'
-                $hostPool.PublicUDP | Should -Be 'Enabled'
-                $hostPool.RelayUDP | Should -Be 'Enabled'
 
             $hostPool = Update-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
@@ -69,11 +61,7 @@ Describe 'Update-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' `
-                                -StartVMOnConnect:$false `
-                                -ManagedPrivateUDP: 'Disabled' `
-                                -DirectUDP: 'Disabled' `
-                                -PublicUDP: 'Disabled' `
-                                -RelayUDP: 'Disabled'
+                                -StartVMOnConnect:$false
                 $hostPool.Name | Should -Be $env.HostPool
                 $hostPool.Location | Should -Be $env.Location
                 $hostPool.HostPoolType | Should -Be 'Pooled'              
@@ -89,10 +77,7 @@ Describe 'Update-AzWvdHostPool' {
                 # $hostPool.ValidationEnvironment | Should -Be $false3
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
                 $hostPool.StartVMOnConnect | Should -Be $false
-                $hostPool.ManagedPrivateUDP | Should -Be 'Disabled'
-                $hostPool.DirectUDP | Should -Be 'Disabled'
-                $hostPool.PublicUDP | Should -Be 'Disabled'
-                $hostPool.RelayUDP | Should -Be 'Disabled'
+
             $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
                                 -Name $env.HostPool
@@ -111,10 +96,6 @@ Describe 'Update-AzWvdHostPool' {
                 # $hostPool.ValidationEnvironment | Should -Be $false
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
                 $hostPool.StartVMOnConnect | Should -Be $false
-                $hostPool.ManagedPrivateUDP | Should -Be 'Disabled'
-                $hostPool.DirectUDP | Should -Be 'Disabled'
-                $hostPool.PublicUDP | Should -Be 'Disabled'
-                $hostPool.RelayUDP | Should -Be 'Disabled'
         }
         finally{
             $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `

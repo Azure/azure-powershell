@@ -18,13 +18,12 @@ Update-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowPatchProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <SessionHostComponentUpdateType>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
- [-DirectUdp <DirectUdp>] [-FriendlyName <String>] [-LoadBalancerType <LoadBalancerType>]
- [-ManagedPrivateUdp <ManagedPrivateUdp>] [-MaxSessionLimit <Int32>]
+ [-FriendlyName <String>] [-LoadBalancerType <LoadBalancerType>] [-MaxSessionLimit <Int32>]
  [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>]
  [-PreferredAppGroupType <PreferredAppGroupType>] [-PublicNetworkAccess <HostpoolPublicNetworkAccess>]
- [-PublicUdp <PublicUdp>] [-RegistrationInfoExpirationTime <DateTime>]
- [-RegistrationInfoRegistrationTokenOperation <RegistrationTokenOperation>] [-RelayUdp <RelayUdp>]
- [-Ring <Int32>] [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
+ [-RegistrationInfoExpirationTime <DateTime>]
+ [-RegistrationInfoRegistrationTokenOperation <RegistrationTokenOperation>] [-Ring <Int32>]
+ [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
  [-SsoSecretType <SsoSecretType>] [-StartVMOnConnect] [-Tag <Hashtable>] [-ValidationEnvironment]
  [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -35,13 +34,12 @@ Update-AzWvdHostPool -InputObject <IDesktopVirtualizationIdentity>
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowPatchProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <SessionHostComponentUpdateType>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
- [-DirectUdp <DirectUdp>] [-FriendlyName <String>] [-LoadBalancerType <LoadBalancerType>]
- [-ManagedPrivateUdp <ManagedPrivateUdp>] [-MaxSessionLimit <Int32>]
+ [-FriendlyName <String>] [-LoadBalancerType <LoadBalancerType>] [-MaxSessionLimit <Int32>]
  [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>]
  [-PreferredAppGroupType <PreferredAppGroupType>] [-PublicNetworkAccess <HostpoolPublicNetworkAccess>]
- [-PublicUdp <PublicUdp>] [-RegistrationInfoExpirationTime <DateTime>]
- [-RegistrationInfoRegistrationTokenOperation <RegistrationTokenOperation>] [-RelayUdp <RelayUdp>]
- [-Ring <Int32>] [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
+ [-RegistrationInfoExpirationTime <DateTime>]
+ [-RegistrationInfoRegistrationTokenOperation <RegistrationTokenOperation>] [-Ring <Int32>]
+ [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
  [-SsoSecretType <SsoSecretType>] [-StartVMOnConnect] [-Tag <Hashtable>] [-ValidationEnvironment]
  [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -61,11 +59,7 @@ Update-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -MaxSessionLimit 6 `
                             -CustomRdpProperty $null `
                             -Ring $null `
-                            -ValidationEnvironment:$false `
-                            -ManagedPrivateUDP 'Disabled' `
-                            -DirectUDP 'Disabled' `
-                            -PublicUDP 'Disabled' `
-                            -RelayUDP 'Disabled'
+                            -ValidationEnvironment:$false
 ```
 
 ```output
@@ -84,7 +78,7 @@ Maintenance windows are 2 hours long.
 To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IMaintenanceWindowPatchProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IMaintenanceWindowPatchProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -187,22 +181,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DirectUdp
-Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections.
-This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.DirectUdp
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -FriendlyName
 Friendly name of HostPool.
 
@@ -239,22 +217,6 @@ The type of the load balancer.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedPrivateUdp
-Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections.
-This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ManagedPrivateUdp
 Parameter Sets: (All)
 Aliases:
 
@@ -340,22 +302,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicUdp
-Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections.
-This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PublicUdp
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RegistrationInfoExpirationTime
 Expiration time of registration token.
 
@@ -376,22 +322,6 @@ The type of resetting the token.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RegistrationTokenOperation
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RelayUdp
-Default: AVD-wide settings are used to determine connection availability, Enabled: UDP will attempt this connection type when making connections.
-This means that this connection is possible, but is not guaranteed, as there are other factors that may prevent this connection type, Disabled: UDP will not attempt this connection type when making connections
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.RelayUdp
 Parameter Sets: (All)
 Aliases:
 
@@ -608,7 +538,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240116Preview.IHostPool
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IHostPool
 
 ## NOTES
 
