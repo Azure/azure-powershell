@@ -50,6 +50,12 @@ Gets the description of the specified namespace.
 ### [Get-AzEventHubNetworkRuleSet](Get-AzEventHubNetworkRuleSet.md)
 Gets NetworkRuleSet for a Namespace.
 
+### [Get-AzEventHubPrivateEndpointConnection](Get-AzEventHubPrivateEndpointConnection.md)
+Gets a description for the specified Private Endpoint Connection name.
+
+### [Get-AzEventHubPrivateLink](Get-AzEventHubPrivateLink.md)
+Gets lists of resources that supports Privatelinks.
+
 ### [Get-AzEventHubSchemaGroup](Get-AzEventHubSchemaGroup.md)
 Gets the details of an EventHub schema group.
 
@@ -112,6 +118,10 @@ Deletes a consumer group from the specified Event Hub and resource group.
 Deletes an Alias(Disaster Recovery configuration)
 
 ### [Remove-AzEventHubNamespace](Remove-AzEventHubNamespace.md)
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
+
+### [Remove-AzEventHubPrivateEndpointConnection](Remove-AzEventHubPrivateEndpointConnection.md)
 Deletes an existing namespace.
 This operation also removes all associated resources under the namespace.
 

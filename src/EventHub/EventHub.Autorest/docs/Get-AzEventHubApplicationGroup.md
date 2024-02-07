@@ -196,7 +196,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IApplicationGroup
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroup
 
 ## NOTES
 

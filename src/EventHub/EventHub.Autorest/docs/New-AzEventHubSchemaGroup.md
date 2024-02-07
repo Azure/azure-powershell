@@ -185,7 +185,7 @@ Single item in List or Get Schema Group operation
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ISchemaGroup
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISchemaGroup
 Parameter Sets: CreateViaIdentityNamespace
 Aliases:
 
@@ -293,13 +293,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ISchemaGroup
-
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISchemaGroup
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.ISchemaGroup
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.ISchemaGroup
 
 ## NOTES
 

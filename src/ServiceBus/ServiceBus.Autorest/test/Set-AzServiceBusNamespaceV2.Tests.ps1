@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzServiceBusNamespaceV2')
 }
 
 function assertNamespaceUpdates{
-    param([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace]$expectedNamespace,[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace]$namespace)
+    param([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace]$expectedNamespace,[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespace]$namespace)
 
     $expectedNamespace.SkuName | Should -Be $namespace.SkuName
     $expectedNamespace.SkuCapacity | Should -Be $namespace.SkuCapacity

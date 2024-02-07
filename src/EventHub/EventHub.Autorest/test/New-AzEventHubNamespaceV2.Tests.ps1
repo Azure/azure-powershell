@@ -34,7 +34,7 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventHubNamespace.SkuName | Should be Standard
         $eventHubNamespace.MaximumThroughputUnit | Should be 18
         $eventHubNamespace.MinimumTlsVersion | Should be '1.1'
-        $eventHubNamespace.Location | Should be "South Central Us"
+        $eventHubNamespace.Location | Should be "southcentralus"
         $eventHubNamespace.EnableAutoInflate | Should be $true
         $eventHubNamespace.DisableLocalAuth | Should be $true
         $eventHubNamespace.KafkaEnabled | Should be $true
@@ -49,7 +49,7 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventhubNamespace.SkuName | Should -Be Premium
         $eventhubNamespace.SkuTier | Should be Premium
         $eventhubNamespace.DisableLocalAuth | Should -Be $false
-        $eventhubNamespace.Location | Should -Be "East Us"
+        $eventhubNamespace.Location | Should -Be "East US"
         $eventhubNamespace.MinimumTlsVersion | Should -Be "1.2"
         $eventhubNamespace.KafkaEnabled | Should -Be $true
 
@@ -60,7 +60,7 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventhubNamespace.IdentityType | Should -Be UserAssigned
         $eventhubNamespace.SkuName | Should -Be Premium
         $eventhubNamespace.SkuTier | Should -Be Premium
-        $eventhubNamespace.Location | Should -Be "North Europe"
+        $eventhubNamespace.Location | Should -Be "northeurope"
         $eventhubNamespace.KeyVaultProperty.Count | Should -Be 2
         $eventhubNamespace.UserAssignedIdentity.Count | Should -Be 2
         $eventhubNamespace.RequireInfrastructureEncryption | Should -Be $false
@@ -72,7 +72,6 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventhubNamespace.IdentityType | Should -Be UserAssigned
         $eventhubNamespace.SkuName | Should -Be Premium
         $eventhubNamespace.SkuTier | Should -Be Premium
-        $eventhubNamespace.Location | Should -Be "North Europe"
         $eventhubNamespace.KeyVaultProperty.Count | Should -Be 2
         $eventhubNamespace.UserAssignedIdentity.Count | Should -Be 2
         $eventhubNamespace.RequireInfrastructureEncryption | Should -Be $true

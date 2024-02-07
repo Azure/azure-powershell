@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzServiceBusName'))
 
 Describe 'Test-AzServiceBusName' {
     It 'NamespaceAvailability' {
-        $checkName = Test-AzServiceBusName -NamespaceName $env.namespace
+        $checkName = Test-AzServiceBusName -NamespaceName $env.namespaceV2
         $checkName.NameAvailable | Should -Be $false
     }
 

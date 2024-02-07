@@ -393,7 +393,7 @@ Single item in List or Get Event Hub operation
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEventhub
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub
 Parameter Sets: CreateViaIdentityNamespace
 Aliases:
 
@@ -597,13 +597,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEventhub
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEventhub
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub
 
 ## NOTES
 

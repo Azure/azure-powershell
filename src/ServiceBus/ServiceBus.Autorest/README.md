@@ -62,10 +62,7 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+keep-pec-and-plr: true
 
 directive:
   - where:
@@ -527,4 +524,5 @@ directive:
     clear-alias: true
 
   - model-cmdlet:
-    - KeyVaultProperties
+    - model-name: KeyVaultProperties
+      cmdlet-name: New-AzServiceBusKeyVaultPropertiesObject

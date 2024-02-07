@@ -211,7 +211,7 @@ The Application Group object
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IApplicationGroup
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroup
 Parameter Sets: CreateViaIdentityNamespace
 Aliases:
 
@@ -228,7 +228,7 @@ The policies can support resource governance scenarios such as limiting ingress 
 To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IApplicationGroupPolicy[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroupPolicy[]
 Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
@@ -306,13 +306,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IApplicationGroup
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroup
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IApplicationGroup
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroup
 
 ## NOTES
 

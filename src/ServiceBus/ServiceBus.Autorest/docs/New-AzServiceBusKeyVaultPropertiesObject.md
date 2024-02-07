@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ServiceBus
-online version: https://learn.microsoft.com/powershell/module/Az.ServiceBus/new-AzServiceBusKeyVaultPropertiesObject
+online version: https://learn.microsoft.com/powershell/module/Az.ServiceBus/new-azservicebuskeyvaultpropertiesobject
 schema: 2.0.0
 ---
 
@@ -22,34 +22,27 @@ Create an in-memory object for KeyVaultProperties.
 
 ## EXAMPLES
 
-### Example 1: Construct an in-memory KeyVaultProperties object
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzServiceBusKeyVaultPropertiesObject -KeyName key1 -KeyVaultUri https://testkeyvault.vault.azure.net/
+{{ Add code here }}
 ```
 
-```Output
-KeyName KeyVaultUri                            KeyVersion UserAssignedIdentity
-------- -----------                            ---------- --------------------
-key4    https://testkeyvault.vault.azure.net/
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
-Creates an in-memory object of type `IKeyVaultProperties`.
-An array of `IKeyVaultProperties` can be fed as 
-input to `KeyVaultProperty` parameter of New-AzServiceBusNamespaceV2 and Set-AzServiceBusNamespaceV2 to enable encryption.
 
-### Example 2: Construct an in-memory KeyVaultProperties object having UserassignedIdentity
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
 ```powershell
-$ec1 = "/subscriptions/0000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
-New-AzServiceBusKeyVaultPropertiesObject -KeyName key4 -KeyVaultUri https://testkeyvault.vault.azure.net/ -UserAssignedIdentity $ec1
+{{ Add code here }}
 ```
 
-```Output
-KeyName KeyVaultUri                            KeyVersion UserAssignedIdentity
-------- -----------                            ---------- --------------------
-key4    https://testkeyvault.vault.azure.net/           /subscriptions/0000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
-Creates an in-memory object of type `IKeyVaultProperties`.
-An array of `IKeyVaultProperties` can be fed as 
-input to `KeyVaultProperty` parameter of New-AzServiceBusNamespaceV2 and Set-AzServiceBusNamespaceV2 to enable encryption.
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -120,11 +113,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.KeyVaultProperties
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.KeyVaultProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

@@ -185,7 +185,7 @@ Single item in List or Get Alias(Disaster Recovery configuration) operation
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IArmDisasterRecovery
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IArmDisasterRecovery
 Parameter Sets: CreateViaIdentityNamespace
 Aliases:
 
@@ -278,13 +278,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IArmDisasterRecovery
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IArmDisasterRecovery
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IArmDisasterRecovery
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IArmDisasterRecovery
 
 ## NOTES
 

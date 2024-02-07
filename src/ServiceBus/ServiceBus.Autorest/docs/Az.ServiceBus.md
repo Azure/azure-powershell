@@ -61,7 +61,7 @@ Returns a description for the specified topic.
 Creates a ServiceBus Namespace, Queue, Topic Authorization Rule
 
 ### [New-AzServiceBusGeoDRConfiguration](New-AzServiceBusGeoDRConfiguration.md)
-Creates or updates a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 
 ### [New-AzServiceBusIPRuleConfig](New-AzServiceBusIPRuleConfig.md)
 Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzServiceBusNetworkRuleSet
@@ -76,7 +76,7 @@ Create an in-memory object for KeyVaultProperties.
 Creates a new ServiceBus namespace.
 
 ### [New-AzServiceBusQueue](New-AzServiceBusQueue.md)
-Creates or updates a Service Bus queue.
+Create a Service Bus queue.
 This operation is idempotent.
 
 ### [New-AzServiceBusRule](New-AzServiceBusRule.md)

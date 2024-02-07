@@ -210,7 +210,7 @@ Single item in List or Get Consumer group operation
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IConsumerGroup
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup
 Parameter Sets: CreateViaIdentityEventhub, CreateViaIdentityNamespace
 Aliases:
 
@@ -305,13 +305,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IConsumerGroup
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IConsumerGroup
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup
 
 ## NOTES
 

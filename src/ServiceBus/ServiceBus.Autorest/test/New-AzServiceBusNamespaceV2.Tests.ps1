@@ -26,7 +26,7 @@ Describe 'New-AzServiceBusNamespaceV2' {
         $serviceBusNamespace.SkuName | Should -Be Standard
         $serviceBusNamespace.SkuTier | Should -Be Standard
         $serviceBusNamespace.MinimumTlsVersion | Should -Be '1.1'
-        $serviceBusNamespace.Location | Should -Be "South Central Us"
+        $serviceBusNamespace.Location | Should -Be "southcentralus"
         $serviceBusNamespace.DisableLocalAuth | Should -Be $true
         $serviceBusNamespace.Tag.Count | should -Be 2
 
@@ -47,7 +47,7 @@ Describe 'New-AzServiceBusNamespaceV2' {
         $serviceBusNamespace.IdentityType | Should -Be UserAssigned
         $serviceBusNamespace.SkuName | Should -Be Premium
         $serviceBusNamespace.SkuTier | Should -Be Premium
-        $serviceBusNamespace.Location | Should -Be "North Europe"
+        $serviceBusNamespace.Location | Should -Be "northeurope"
         $serviceBusNamespace.KeyVaultProperty.Count | Should -Be 2
         $serviceBusNamespace.UserAssignedIdentity.Count | Should -Be 2
         $serviceBusNamespace.RequireInfrastructureEncryption | Should -Be $false
@@ -60,7 +60,7 @@ Describe 'New-AzServiceBusNamespaceV2' {
         $serviceBusNamespace.IdentityType | Should -Be UserAssigned
         $serviceBusNamespace.SkuName | Should -Be Premium
         $serviceBusNamespace.SkuTier | Should -Be Premium
-        $serviceBusNamespace.Location | Should -Be "North Europe"
+        $serviceBusNamespace.Location | Should -Be "northeurope"
         $serviceBusNamespace.KeyVaultProperty.Count | Should -Be 2
         $serviceBusNamespace.UserAssignedIdentity.Count | Should -Be 2
         $serviceBusNamespace.RequireInfrastructureEncryption | Should -Be $true

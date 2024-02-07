@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzServiceBusSubscription'
 }
 
 function AssertSubscriptionUpdates{
-    param([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription]$expectedSub,[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription]$actualSub)
+    param([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription]$expectedSub,[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription]$actualSub)
     $expectedSub.Name | Should -Be $actualSub.Name
     $expectedSub.ResourceGroupName | Should -Be $actualSub.ResourceGroupName
     $expectedSub.DeadLetteringOnMessageExpiration | Should -Be $actualSub.DeadLetteringOnMessageExpiration

@@ -1,8 +1,8 @@
 {
-  "New-AzServiceBusSubscription+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestxe2h9c/providers/Microsoft.ServiceBus/namespaces/namespaceNamehjil09/topics/topic1/subscriptions/subscription2?api-version=2022-10-01-preview+1": {
+  "New-AzServiceBusSubscription+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions/subscription2?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestxe2h9c/providers/Microsoft.ServiceBus/namespaces/namespaceNamehjil09/topics/topic1/subscriptions/subscription2?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions/subscription2?api-version=2022-10-01-preview",
       "Content": "{\n  \"properties\": {\n    \"lockDuration\": \"PT3M\",\n    \"defaultMessageTimeToLive\": \"P428DT3H11M10S\",\n    \"deadLetteringOnMessageExpiration\": true,\n    \"maxDeliveryCount\": 12,\n    \"status\": \"Active\",\n    \"enableBatchedOperations\": true,\n    \"forwardTo\": \"queue1\",\n    \"forwardDeadLetteredMessagesTo\": \"queue1\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,28 +17,32 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1180" ],
-        "x-ms-request-id": [ "b783467e-7e92-41f0-9d79-459b853fa39b" ],
-        "x-ms-correlation-request-id": [ "b783467e-7e92-41f0-9d79-459b853fa39b" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20230219T134742Z:b783467e-7e92-41f0-9d79-459b853fa39b" ],
+        "x-ms-correlation-request-id": [ "a303429a-3a83-432f-a1d0-4c649369a154" ],
+        "x-ms-client-request-id": [ "a9b441f7-dbb7-4440-a8ab-1d074edfe643_RP" ],
+        "x-ms-messaging-activity-id": [ "62a5f933-b989-46ba-b391-b7a511bc1f9a" ],
+        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G4|2024-02-07T15:21:16" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "a303429a-3a83-432f-a1d0-4c649369a154" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T152116Z:a303429a-3a83-432f-a1d0-4c649369a154" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 19 Feb 2023 13:47:42 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4B2AC49739134FBE8D6BE31656BB9921 Ref B: SEL221051503025 Ref C: 2024-02-07T15:21:14Z" ],
+        "Date": [ "Wed, 07 Feb 2024 15:21:16 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1001" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestxe2h9c/providers/Microsoft.ServiceBus/namespaces/namespaceNamehjil09/topics/topic1/subscriptions/subscription2\",\"name\":\"subscription2\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions\",\"location\":\"eastus\",\"properties\":{\"isClientAffine\":false,\"lockDuration\":\"PT3M\",\"requiresSession\":false,\"defaultMessageTimeToLive\":\"P428DT3H11M10S\",\"deadLetteringOnMessageExpiration\":true,\"deadLetteringOnFilterEvaluationExceptions\":true,\"messageCount\":0,\"maxDeliveryCount\":12,\"status\":\"Active\",\"enableBatchedOperations\":true,\"createdAt\":\"2023-02-19T13:47:42.6331877Z\",\"updatedAt\":\"2023-02-19T13:47:42.6331877Z\",\"accessedAt\":\"0001-01-01T00:00:00\",\"countDetails\":{\"activeMessageCount\":0,\"deadLetterMessageCount\":0,\"scheduledMessageCount\":0,\"transferMessageCount\":0,\"transferDeadLetterMessageCount\":0},\"autoDeleteOnIdle\":\"P10675199DT2H48M5.4775807S\",\"forwardTo\":\"queue1\",\"forwardDeadLetteredMessagesTo\":\"queue1\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions/subscription2\",\"name\":\"subscription2\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions\",\"location\":\"eastus\",\"properties\":{\"isClientAffine\":false,\"lockDuration\":\"PT3M\",\"requiresSession\":false,\"defaultMessageTimeToLive\":\"P428DT3H11M10S\",\"deadLetteringOnMessageExpiration\":true,\"deadLetteringOnFilterEvaluationExceptions\":true,\"messageCount\":0,\"maxDeliveryCount\":12,\"status\":\"Active\",\"enableBatchedOperations\":true,\"createdAt\":\"2024-02-07T15:21:16.8345353Z\",\"updatedAt\":\"2024-02-07T15:21:16.8345353Z\",\"accessedAt\":\"0001-01-01T00:00:00\",\"countDetails\":{\"activeMessageCount\":0,\"deadLetterMessageCount\":0,\"scheduledMessageCount\":0,\"transferMessageCount\":0,\"transferDeadLetterMessageCount\":0},\"autoDeleteOnIdle\":\"P10675199DT2H48M5.4775807S\",\"forwardTo\":\"queue1\",\"forwardDeadLetteredMessagesTo\":\"queue1\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzServiceBusSubscription+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestxe2h9c/providers/Microsoft.ServiceBus/namespaces/namespaceNamehjil09/topics/topic1/subscriptions/subscription3%24%24D?api-version=2022-10-01-preview+2": {
+  "New-AzServiceBusSubscription+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions/subscription3%24%24D?api-version=2022-10-01-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestxe2h9c/providers/Microsoft.ServiceBus/namespaces/namespaceNamehjil09/topics/topic1/subscriptions/subscription3%24%24D?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions/subscription3%24%24D?api-version=2022-10-01-preview",
       "Content": "{\n  \"properties\": {\n    \"clientAffineProperties\": {\n      \"clientId\": \"clientid\",\n      \"isDurable\": true,\n      \"isShared\": true\n    },\n    \"requiresSession\": true,\n    \"deadLetteringOnFilterEvaluationExceptions\": true,\n    \"autoDeleteOnIdle\": \"P7D\",\n    \"isClientAffine\": true\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -53,37 +57,41 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1179" ],
-        "x-ms-request-id": [ "23a99802-f762-42b2-b3e3-36441963ceb5" ],
-        "x-ms-correlation-request-id": [ "23a99802-f762-42b2-b3e3-36441963ceb5" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20230219T134744Z:23a99802-f762-42b2-b3e3-36441963ceb5" ],
+        "x-ms-correlation-request-id": [ "4c553b58-45e9-47ea-a3b7-907a535a61be" ],
+        "x-ms-client-request-id": [ "b0ebc47d-987d-4ac7-8853-cf2f84652303_RP" ],
+        "x-ms-messaging-activity-id": [ "4d6325a7-96bd-42f7-bebc-cccdda88302f" ],
+        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G3|2024-02-07T15:21:19" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "4c553b58-45e9-47ea-a3b7-907a535a61be" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T152119Z:4c553b58-45e9-47ea-a3b7-907a535a61be" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 19 Feb 2023 13:47:43 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9F183F24B2DB4383BC408B44192801BC Ref B: SEL221051503025 Ref C: 2024-02-07T15:21:17Z" ],
+        "Date": [ "Wed, 07 Feb 2024 15:21:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1015" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestxe2h9c/providers/Microsoft.ServiceBus/namespaces/namespaceNamehjil09/topics/topic1/subscriptions/subscription3$$D\",\"name\":\"subscription3$$D\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions\",\"location\":\"eastus\",\"properties\":{\"isClientAffine\":true,\"clientAffineProperties\":{\"clientId\":\"clientid\",\"isDurable\":true,\"isShared\":true},\"lockDuration\":\"PT1M\",\"requiresSession\":true,\"defaultMessageTimeToLive\":\"P10675199DT2H48M5.4775807S\",\"deadLetteringOnMessageExpiration\":false,\"deadLetteringOnFilterEvaluationExceptions\":true,\"messageCount\":0,\"maxDeliveryCount\":10,\"status\":\"Active\",\"enableBatchedOperations\":true,\"createdAt\":\"2023-02-19T13:47:44.3365374Z\",\"updatedAt\":\"2023-02-19T13:47:44.3365374Z\",\"accessedAt\":\"0001-01-01T00:00:00\",\"countDetails\":{\"activeMessageCount\":0,\"deadLetterMessageCount\":0,\"scheduledMessageCount\":0,\"transferMessageCount\":0,\"transferDeadLetterMessageCount\":0},\"autoDeleteOnIdle\":\"P7D\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions/subscription3$$D\",\"name\":\"subscription3$$D\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions\",\"location\":\"eastus\",\"properties\":{\"isClientAffine\":true,\"clientAffineProperties\":{\"clientId\":\"clientid\",\"isDurable\":true,\"isShared\":true},\"lockDuration\":\"PT1M\",\"requiresSession\":true,\"defaultMessageTimeToLive\":\"P10675199DT2H48M5.4775807S\",\"deadLetteringOnMessageExpiration\":false,\"deadLetteringOnFilterEvaluationExceptions\":true,\"messageCount\":0,\"maxDeliveryCount\":10,\"status\":\"Active\",\"enableBatchedOperations\":true,\"createdAt\":\"2024-02-07T15:21:19.4558572Z\",\"updatedAt\":\"2024-02-07T15:21:19.4558572Z\",\"accessedAt\":\"0001-01-01T00:00:00\",\"countDetails\":{\"activeMessageCount\":0,\"deadLetterMessageCount\":0,\"scheduledMessageCount\":0,\"transferMessageCount\":0,\"transferDeadLetterMessageCount\":0},\"autoDeleteOnIdle\":\"P7D\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzServiceBusSubscription+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestxe2h9c/providers/Microsoft.ServiceBus/namespaces/namespaceNamehjil09/topics/topic1/subscriptions?api-version=2022-10-01-preview+3": {
+  "New-AzServiceBusSubscription+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions?api-version=2022-10-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestxe2h9c/providers/Microsoft.ServiceBus/namespaces/namespaceNamehjil09/topics/topic1/subscriptions?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "165" ],
-        "x-ms-client-request-id": [ "df21ce9e-03a7-4022-b5b4-c9d2a8e2e4cd" ],
+        "x-ms-unique-id": [ "135" ],
+        "x-ms-client-request-id": [ "6770d4c6-0bff-4a0a-bd5e-90b53279b1e5" ],
         "CommandName": [ "Get-AzServiceBusSubscription" ],
         "FullCommandName": [ "Get-AzServiceBusSubscription_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ServiceBus/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -95,21 +103,25 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-inline-count": [ "" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11844" ],
-        "x-ms-request-id": [ "2b730026-e0bb-4451-b439-5fcf85105fc2" ],
-        "x-ms-correlation-request-id": [ "2b730026-e0bb-4451-b439-5fcf85105fc2" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20230219T134745Z:2b730026-e0bb-4451-b439-5fcf85105fc2" ],
+        "x-ms-correlation-request-id": [ "5d23f5bc-fd61-49c5-967f-d647a9192f30" ],
+        "x-ms-client-request-id": [ "6770d4c6-0bff-4a0a-bd5e-90b53279b1e5_RP" ],
+        "x-ms-messaging-activity-id": [ "53c90f69-c9bc-45d0-8ed9-f22416fbb69a" ],
+        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G3|2024-02-07T15:21:20" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "5d23f5bc-fd61-49c5-967f-d647a9192f30" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T152120Z:5d23f5bc-fd61-49c5-967f-d647a9192f30" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 19 Feb 2023 13:47:44 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0E3B4CD1071D41DAACCAEBC861AD7BA4 Ref B: SEL221051503025 Ref C: 2024-02-07T15:21:19Z" ],
+        "Date": [ "Wed, 07 Feb 2024 15:21:20 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "3005" ],
+        "Content-Length": [ "3004" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestxe2h9c/providers/Microsoft.ServiceBus/namespaces/namespaceNamehjil09/topics/topic1/subscriptions/subscription1\",\"name\":\"subscription1\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions\",\"location\":\"eastus\",\"properties\":{\"isClientAffine\":false,\"lockDuration\":\"PT1M\",\"requiresSession\":false,\"defaultMessageTimeToLive\":\"P10675199DT2H48M5.4775807S\",\"deadLetteringOnMessageExpiration\":false,\"deadLetteringOnFilterEvaluationExceptions\":true,\"messageCount\":0,\"maxDeliveryCount\":10,\"status\":\"Active\",\"enableBatchedOperations\":true,\"createdAt\":\"2023-02-19T13:02:44.2354247Z\",\"updatedAt\":\"2023-02-19T13:02:44.2354247Z\",\"accessedAt\":\"2023-02-19T13:02:44.235Z\",\"countDetails\":{\"activeMessageCount\":0,\"deadLetterMessageCount\":0,\"scheduledMessageCount\":0,\"transferMessageCount\":0,\"transferDeadLetterMessageCount\":0},\"autoDeleteOnIdle\":\"P10675199DT2H48M5.4775807S\"}},{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestxe2h9c/providers/Microsoft.ServiceBus/namespaces/namespaceNamehjil09/topics/topic1/subscriptions/subscription2\",\"name\":\"subscription2\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions\",\"location\":\"eastus\",\"properties\":{\"isClientAffine\":false,\"lockDuration\":\"PT3M\",\"requiresSession\":false,\"defaultMessageTimeToLive\":\"P428DT3H11M10S\",\"deadLetteringOnMessageExpiration\":true,\"deadLetteringOnFilterEvaluationExceptions\":true,\"messageCount\":0,\"maxDeliveryCount\":12,\"status\":\"Active\",\"enableBatchedOperations\":true,\"createdAt\":\"2023-02-19T13:47:42.6427506Z\",\"updatedAt\":\"2023-02-19T13:47:42.6427506Z\",\"accessedAt\":\"2023-02-19T13:47:42.6427506Z\",\"countDetails\":{\"activeMessageCount\":0,\"deadLetterMessageCount\":0,\"scheduledMessageCount\":0,\"transferMessageCount\":0,\"transferDeadLetterMessageCount\":0},\"autoDeleteOnIdle\":\"P10675199DT2H48M5.4775807S\",\"forwardTo\":\"queue1\",\"forwardDeadLetteredMessagesTo\":\"queue1\"}},{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestxe2h9c/providers/Microsoft.ServiceBus/namespaces/namespaceNamehjil09/topics/topic1/subscriptions/subscription3$$D\",\"name\":\"subscription3$$D\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions\",\"location\":\"eastus\",\"properties\":{\"isClientAffine\":true,\"clientAffineProperties\":{\"clientId\":\"clientid\",\"isDurable\":true,\"isShared\":true},\"lockDuration\":\"PT1M\",\"requiresSession\":true,\"defaultMessageTimeToLive\":\"P10675199DT2H48M5.4775807S\",\"deadLetteringOnMessageExpiration\":false,\"deadLetteringOnFilterEvaluationExceptions\":true,\"messageCount\":0,\"maxDeliveryCount\":10,\"status\":\"Active\",\"enableBatchedOperations\":true,\"createdAt\":\"2023-02-19T13:47:44.3459436Z\",\"updatedAt\":\"2023-02-19T13:47:44.3459436Z\",\"accessedAt\":\"2023-02-19T13:47:44.3459436Z\",\"countDetails\":{\"activeMessageCount\":0,\"deadLetterMessageCount\":0,\"scheduledMessageCount\":0,\"transferMessageCount\":0,\"transferDeadLetterMessageCount\":0},\"autoDeleteOnIdle\":\"P7D\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions/subscription1\",\"name\":\"subscription1\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions\",\"location\":\"eastus\",\"properties\":{\"isClientAffine\":false,\"lockDuration\":\"PT1M\",\"requiresSession\":false,\"defaultMessageTimeToLive\":\"P10675199DT2H48M5.4775807S\",\"deadLetteringOnMessageExpiration\":false,\"deadLetteringOnFilterEvaluationExceptions\":true,\"messageCount\":0,\"maxDeliveryCount\":10,\"status\":\"Active\",\"enableBatchedOperations\":true,\"createdAt\":\"2024-02-07T14:52:57.7307213Z\",\"updatedAt\":\"2024-02-07T14:52:57.7307213Z\",\"accessedAt\":\"2024-02-07T14:52:57.73Z\",\"countDetails\":{\"activeMessageCount\":0,\"deadLetterMessageCount\":0,\"scheduledMessageCount\":0,\"transferMessageCount\":0,\"transferDeadLetterMessageCount\":0},\"autoDeleteOnIdle\":\"P10675199DT2H48M5.4775807S\"}},{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions/subscription2\",\"name\":\"subscription2\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions\",\"location\":\"eastus\",\"properties\":{\"isClientAffine\":false,\"lockDuration\":\"PT3M\",\"requiresSession\":false,\"defaultMessageTimeToLive\":\"P428DT3H11M10S\",\"deadLetteringOnMessageExpiration\":true,\"deadLetteringOnFilterEvaluationExceptions\":true,\"messageCount\":0,\"maxDeliveryCount\":12,\"status\":\"Active\",\"enableBatchedOperations\":true,\"createdAt\":\"2024-02-07T15:21:16.8363161Z\",\"updatedAt\":\"2024-02-07T15:21:16.8363161Z\",\"accessedAt\":\"2024-02-07T15:21:16.8363161Z\",\"countDetails\":{\"activeMessageCount\":0,\"deadLetterMessageCount\":0,\"scheduledMessageCount\":0,\"transferMessageCount\":0,\"transferDeadLetterMessageCount\":0},\"autoDeleteOnIdle\":\"P10675199DT2H48M5.4775807S\",\"forwardTo\":\"queue1\",\"forwardDeadLetteredMessagesTo\":\"queue1\"}},{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions/subscription3$$D\",\"name\":\"subscription3$$D\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions\",\"location\":\"eastus\",\"properties\":{\"isClientAffine\":true,\"clientAffineProperties\":{\"clientId\":\"clientid\",\"isDurable\":true,\"isShared\":true},\"lockDuration\":\"PT1M\",\"requiresSession\":true,\"defaultMessageTimeToLive\":\"P10675199DT2H48M5.4775807S\",\"deadLetteringOnMessageExpiration\":false,\"deadLetteringOnFilterEvaluationExceptions\":true,\"messageCount\":0,\"maxDeliveryCount\":10,\"status\":\"Active\",\"enableBatchedOperations\":true,\"createdAt\":\"2024-02-07T15:21:19.4613424Z\",\"updatedAt\":\"2024-02-07T15:21:19.4613424Z\",\"accessedAt\":\"2024-02-07T15:21:19.4613424Z\",\"countDetails\":{\"activeMessageCount\":0,\"deadLetterMessageCount\":0,\"scheduledMessageCount\":0,\"transferMessageCount\":0,\"transferDeadLetterMessageCount\":0},\"autoDeleteOnIdle\":\"P7D\"}}]}",
       "isContentBase64": false
     }
   }

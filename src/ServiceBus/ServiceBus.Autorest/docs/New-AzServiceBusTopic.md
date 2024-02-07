@@ -12,13 +12,43 @@ Creates a topic in the specified namespace.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AutoDeleteOnIdle <TimeSpan>] [-DefaultMessageTimeToLive <TimeSpan>]
  [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations] [-EnableExpress]
  [-EnablePartitioning] [-MaxMessageSizeInKilobytes <Int64>] [-MaxSizeInMegabytes <Int32>]
- [-RequiresDuplicateDetection] [-Status <EntityStatus>] [-SupportOrdering] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-RequiresDuplicateDetection] [-Status <String>] [-SupportOrdering] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityNamespace
+```
+New-AzServiceBusTopic -Name <String> -NamespaceInputObject <IServiceBusIdentity> -Parameter <ISbTopic>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityNamespaceExpanded
+```
+New-AzServiceBusTopic -Name <String> -NamespaceInputObject <IServiceBusIdentity>
+ [-AutoDeleteOnIdle <TimeSpan>] [-DefaultMessageTimeToLive <TimeSpan>]
+ [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations] [-EnableExpress]
+ [-EnablePartitioning] [-MaxMessageSizeInKilobytes <Int64>] [-MaxSizeInMegabytes <Int32>]
+ [-RequiresDuplicateDetection] [-Status <String>] [-SupportOrdering] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +98,7 @@ The minimum duration is 5 minutes.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: False
@@ -84,7 +114,7 @@ This is the default value used when TimeToLive is not set on a message itself.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: False
@@ -116,7 +146,7 @@ The default value is 10 minutes.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: False
@@ -131,7 +161,7 @@ Value that indicates whether server-side batched operations are enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: False
@@ -147,7 +177,7 @@ An express topic holds a message in memory temporarily before writing it to pers
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: False
@@ -162,10 +192,40 @@ Value that indicates whether the topic to be partitioned across multiple message
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -178,7 +238,7 @@ This property is only used in Premium today and default is 1024.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: False
@@ -194,7 +254,7 @@ Default is 1024.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: False
@@ -219,12 +279,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NamespaceInputObject
+Identity Parameter
+To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: CreateViaIdentityNamespace, CreateViaIdentityNamespaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NamespaceName
 The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -234,12 +310,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+Description of topic resource.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic
+Parameter Sets: CreateViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -RequiresDuplicateDetection
 Value indicating if this topic requires duplicate detection.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: False
@@ -254,7 +346,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -268,8 +360,8 @@ Accept wildcard characters: False
 Enumerates the possible values for the status of a messaging entity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: False
@@ -285,7 +377,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -300,7 +392,7 @@ Value that indicates whether the topic supports ordering.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: False
@@ -346,13 +438,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic
+
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbTopic
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
+
+https://msdn.microsoft.com/en-us/library/azure/mt639409.aspx
 

@@ -12,13 +12,79 @@ Creates a new rule and updates an existing rule
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionName <String> -TopicName <String> [-SubscriptionId <String>] [-ActionRequiresPreprocessing]
  [-ActionSqlExpression <String>] [-ContentType <String>] [-CorrelationFilterProperty <Hashtable>]
- [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>] [-FilterType <FilterType>]
- [-Label <String>] [-MessageId <String>] [-ReplyTo <String>] [-ReplyToSessionId <String>]
- [-SessionId <String>] [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To <String>]
+ [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>] [-FilterType <String>] [-Label <String>]
+ [-MessageId <String>] [-ReplyTo <String>] [-ReplyToSessionId <String>] [-SessionId <String>]
+ [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityNamespace
+```
+New-AzServiceBusRule -Name <String> -NamespaceInputObject <IServiceBusIdentity> -SubscriptionName <String>
+ -TopicName <String> -Parameter <IRule> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityNamespaceExpanded
+```
+New-AzServiceBusRule -Name <String> -NamespaceInputObject <IServiceBusIdentity> -SubscriptionName <String>
+ -TopicName <String> [-ActionRequiresPreprocessing] [-ActionSqlExpression <String>] [-ContentType <String>]
+ [-CorrelationFilterProperty <Hashtable>] [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>]
+ [-FilterType <String>] [-Label <String>] [-MessageId <String>] [-ReplyTo <String>]
+ [-ReplyToSessionId <String>] [-SessionId <String>] [-SqlExpression <String>]
+ [-SqlFilterRequiresPreprocessing] [-To <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentitySubscription
+```
+New-AzServiceBusRule -Name <String> -SubscriptionInputObject <IServiceBusIdentity> -Parameter <IRule>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentitySubscriptionExpanded
+```
+New-AzServiceBusRule -Name <String> -SubscriptionInputObject <IServiceBusIdentity>
+ [-ActionRequiresPreprocessing] [-ActionSqlExpression <String>] [-ContentType <String>]
+ [-CorrelationFilterProperty <Hashtable>] [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>]
+ [-FilterType <String>] [-Label <String>] [-MessageId <String>] [-ReplyTo <String>]
+ [-ReplyToSessionId <String>] [-SessionId <String>] [-SqlExpression <String>]
+ [-SqlFilterRequiresPreprocessing] [-To <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityTopic
+```
+New-AzServiceBusRule -Name <String> -SubscriptionName <String> -TopicInputObject <IServiceBusIdentity>
+ -Parameter <IRule> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityTopicExpanded
+```
+New-AzServiceBusRule -Name <String> -SubscriptionName <String> -TopicInputObject <IServiceBusIdentity>
+ [-ActionRequiresPreprocessing] [-ActionSqlExpression <String>] [-ContentType <String>]
+ [-CorrelationFilterProperty <Hashtable>] [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>]
+ [-FilterType <String>] [-Label <String>] [-MessageId <String>] [-ReplyTo <String>]
+ [-ReplyToSessionId <String>] [-SessionId <String>] [-SqlExpression <String>]
+ [-SqlFilterRequiresPreprocessing] [-To <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ -SubscriptionName <String> -TopicName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ -SubscriptionName <String> -TopicName <String> -JsonString <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -97,7 +163,7 @@ Value that indicates whether the rule action requires preprocessing.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentitySubscriptionExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
@@ -114,7 +180,7 @@ MyProperty='ABC'
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentitySubscriptionExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
@@ -129,7 +195,7 @@ Content type of the message.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentitySubscriptionExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
@@ -144,7 +210,7 @@ dictionary object for custom filters
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentitySubscriptionExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
@@ -159,7 +225,7 @@ Value that indicates whether the rule action requires preprocessing.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentitySubscriptionExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
@@ -174,7 +240,7 @@ Identifier of the correlation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentitySubscriptionExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
@@ -204,11 +270,41 @@ Accept wildcard characters: False
 Filter type that is evaluated against a BrokeredMessage.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.FilterType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentitySubscriptionExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -220,7 +316,7 @@ Application specific label.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentitySubscriptionExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
@@ -235,7 +331,7 @@ Identifier of the message.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentitySubscriptionExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
@@ -260,12 +356,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NamespaceInputObject
+Identity Parameter
+To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: CreateViaIdentityNamespace, CreateViaIdentityNamespaceExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NamespaceName
 The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -275,12 +387,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+Description of Rule Resource.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule
+Parameter Sets: CreateViaIdentityNamespace, CreateViaIdentitySubscription, CreateViaIdentityTopic
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ReplyTo
 Address of the queue to reply to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentitySubscriptionExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
@@ -295,7 +423,7 @@ Session identifier to reply to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentitySubscriptionExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
@@ -310,7 +438,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -325,7 +453,7 @@ Session identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentitySubscriptionExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
@@ -342,7 +470,7 @@ MyProperty='ABC'
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentitySubscriptionExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
@@ -357,7 +485,7 @@ Value that indicates whether the rule action requires preprocessing.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentitySubscriptionExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
@@ -373,7 +501,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -383,12 +511,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SubscriptionInputObject
+Identity Parameter
+To construct, see NOTES section for SUBSCRIPTIONINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: CreateViaIdentitySubscription, CreateViaIdentitySubscriptionExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SubscriptionName
 The subscription name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespace, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopic, CreateViaIdentityTopicExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -403,7 +547,7 @@ Address to send to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentitySubscriptionExpanded, CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: False
@@ -413,12 +557,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TopicInputObject
+Identity Parameter
+To construct, see NOTES section for TOPICINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: CreateViaIdentityTopic, CreateViaIdentityTopicExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -TopicName
 The topic name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespace, CreateViaIdentityNamespaceExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -464,13 +624,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule
+
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRule
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

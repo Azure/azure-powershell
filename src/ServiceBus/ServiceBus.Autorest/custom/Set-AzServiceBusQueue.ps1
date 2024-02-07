@@ -20,7 +20,7 @@ Updates a ServiceBus Queue
 #>
 
 function Set-AzServiceBusQueue{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbQueue])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the Queue.")]
@@ -129,10 +129,9 @@ function Set-AzServiceBusQueue{
         # Maximum size (in KB) of the message payload that can be accepted by the queue. This property is only used in Premium today and default is 1024.
         ${MaxMessageSizeInKilobytes},
 
-        [Parameter(HelpMessage = "Maximum size (in KB) of the message payload that can be accepted by the queue. This property is only used in Premium today and default is 1024.")]
+        [Parameter(HelpMessage = "Enumerates the possible values for the status of a messaging entity.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus]
-        # Maximum size (in KB) of the message payload that can be accepted by the queue. This property is only used in Premium today and default is 1024.
+        [System.String]
         ${Status},
 
         

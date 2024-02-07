@@ -12,10 +12,25 @@ Creates Migration configuration and starts migration of entities from Standard t
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 Start-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-PostMigrationName <String>] [-TargetNamespace <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+Start-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+Start-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,6 +98,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NamespaceName
 The namespace name
 
@@ -118,7 +163,7 @@ Name to access Standard Namespace after migration
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -164,7 +209,7 @@ Existing premium Namespace ARM Id name which has no entities, will be used for m
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -212,11 +257,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IMigrationConfigProperties
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IMigrationConfigProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
