@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Marketplace-help.xml
 Module Name: Az.Marketplace
 online version: https://learn.microsoft.com/powershell/module/az.marketplace/remove-azmarketplaceprivatestorecollectionoffer
 schema: 2.0.0
@@ -15,13 +15,29 @@ Deletes an offer from the given collection of private store.
 ### Delete (Default)
 ```
 Remove-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String>
- -PrivateStoreId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -PrivateStoreId <String> [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentityPrivateStore
+```
+Remove-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String>
+ -PrivateStoreInputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentityCollection
+```
+Remove-AzMarketplacePrivateStoreCollectionOffer -OfferId <String> -CollectionInputObject <IMarketplaceIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzMarketplacePrivateStoreCollectionOffer -InputObject <IMarketplaceIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,13 +59,29 @@ The collection ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityPrivateStore
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CollectionInputObject
+Identity Parameter
+To construct, see NOTES section for COLLECTIONINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+Parameter Sets: DeleteViaIdentityCollection
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -89,7 +121,7 @@ The offer ID to update or delete
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityPrivateStore, DeleteViaIdentityCollection
 Aliases:
 
 Required: True
@@ -123,6 +155,37 @@ Parameter Sets: Delete
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateStoreInputObject
+Identity Parameter
+To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+Parameter Sets: DeleteViaIdentityPrivateStore
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -189,4 +252,3 @@ INPUTOBJECT `<IMarketplaceIdentity>`: Identity Parameter
   - `[RequestApprovalId <String>]`: The request approval ID to get create or update
 
 ## RELATED LINKS
-

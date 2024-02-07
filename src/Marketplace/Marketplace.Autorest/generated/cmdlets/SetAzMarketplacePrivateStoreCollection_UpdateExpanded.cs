@@ -6,18 +6,22 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create or update private store collection</summary>
+    /// <summary>Create private store collection</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzMarketplacePrivateStoreCollection_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Description(@"Create or update private store collection")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Description(@"Create private store collection")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.HttpPath(Path = "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}", ApiVersion = "2023-01-01")]
     public partial class SetAzMarketplacePrivateStoreCollection_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -33,6 +37,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
+        /// <summary>The Collection data structure.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection _payloadBody = new Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Collection();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
+
         /// <summary>Indicating whether all subscriptions are selected (=true) or not (=false).</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicating whether all subscriptions are selected (=true) or not (=false).")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.ParameterCategory.Body)]
@@ -42,12 +61,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
         Description = @"Indicating whether all subscriptions are selected (=true) or not (=false).",
         SerializedName = @"allSubscriptions",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter AllSubscription { get => PayloadBody.AllSubscription ?? default(global::System.Management.Automation.SwitchParameter); set => PayloadBody.AllSubscription = value; }
+        public global::System.Management.Automation.SwitchParameter AllSubscription { get => _payloadBody.AllSubscription ?? default(global::System.Management.Automation.SwitchParameter); set => _payloadBody.AllSubscription = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>Gets or sets the association with Commercial's Billing Account.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets the association with Commercial's Billing Account.")]
@@ -58,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
         Description = @"Gets or sets the association with Commercial's Billing Account.",
         SerializedName = @"claim",
         PossibleTypes = new [] { typeof(string) })]
-        public string Claim { get => PayloadBody.Claim ?? null; set => PayloadBody.Claim = value; }
+        public string Claim { get => _payloadBody.Claim ?? null; set => _payloadBody.Claim = value; }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Marketplace Client => Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module.Instance.ClientAPI;
@@ -86,12 +108,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
         Description = @"Gets or sets collection name.",
         SerializedName = @"collectionName",
         PossibleTypes = new [] { typeof(string) })]
-        public string CollectionName { get => PayloadBody.CollectionName ?? null; set => PayloadBody.CollectionName = value; }
+        public string CollectionName { get => _payloadBody.CollectionName ?? null; set => _payloadBody.CollectionName = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.ParameterCategory.Azure)]
@@ -106,7 +129,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
         Description = @"Indicating whether the collection is enabled or disabled.",
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter Enabled { get => PayloadBody.Enabled ?? default(global::System.Management.Automation.SwitchParameter); set => PayloadBody.Enabled = value; }
+        public global::System.Management.Automation.SwitchParameter Enabled { get => _payloadBody.Enabled ?? default(global::System.Management.Automation.SwitchParameter); set => _payloadBody.Enabled = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -124,23 +150,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
-
-        /// <summary>Backing field for <see cref="PayloadBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection _payloadBody= new Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.Collection();
-
-        /// <summary>The Collection data structure.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection PayloadBody { get => this._payloadBody; set => this._payloadBody = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>Backing field for <see cref="PrivateStoreId" /> property.</summary>
         private string _privateStoreId;
@@ -185,37 +205,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
         Description = @"Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request",
         SerializedName = @"subscriptionsList",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] SubscriptionsList { get => PayloadBody.SubscriptionsList ?? null /* arrayOf */; set => PayloadBody.SubscriptionsList = value; }
+        public string[] SubscriptionsList { get => _payloadBody.SubscriptionsList?.ToArray() ?? null /* fixedArrayOf */; set => _payloadBody.SubscriptionsList = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection">Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -227,7 +252,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -274,8 +303,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -330,9 +384,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -345,12 +398,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.PrivateStoreCollectionCreateOrUpdate(PrivateStoreId, CollectionId, PayloadBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.PrivateStoreCollectionCreateOrUpdate(PrivateStoreId, CollectionId, _payloadBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  PrivateStoreId=PrivateStoreId,CollectionId=CollectionId,body=PayloadBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { PrivateStoreId=PrivateStoreId,CollectionId=CollectionId})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -363,7 +416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="SetAzMarketplacePrivateStoreCollection_UpdateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="SetAzMarketplacePrivateStoreCollection_UpdateExpanded" /> cmdlet class.
         /// </summary>
         public SetAzMarketplacePrivateStoreCollection_UpdateExpanded()
         {
@@ -381,12 +434,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -403,15 +456,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { PrivateStoreId=PrivateStoreId, CollectionId=CollectionId, body=PayloadBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { PrivateStoreId=PrivateStoreId, CollectionId=CollectionId, body=PayloadBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -421,12 +474,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection">Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection> response)
         {
             using( NoSynchronizationContext )
             {
@@ -438,8 +491,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }
