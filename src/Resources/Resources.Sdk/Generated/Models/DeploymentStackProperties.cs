@@ -274,6 +274,10 @@ namespace Microsoft.Azure.Management.Resources.Models
                     throw new ValidationException(ValidationRules.MaxLength, "Description", 4096);
                 }
             }
+            if (DenySettings != null)
+            {
+                DenySettings.Validate();
+            }
         }
     }
 }

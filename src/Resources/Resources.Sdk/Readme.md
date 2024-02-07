@@ -5,47 +5,138 @@ This directory contains management plane service clients of Az.Resources module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@microsoft.azure/autorest.csharp@2.3.90
-autorest.cmd README.md --version=v2
+autorest.cmd README.md --tag=package-privatelinks-2020-05 --version=v2 --debug
+autorest.cmd README.md --tag=package-subscriptions-2021-01 --version=v2 --debug
+autorest.cmd README.md --tag=package-features-2021-07 --version=v2 --debug
+autorest.cmd README.md --tag=package-deploymentscripts-2020-10 --version=v2 --debug
+autorest.cmd README.md --tag=package-resources-2021-04 --version=v2 --debug
+autorest.cmd README.md --tag=package-deploymentstacks-2022-08-preview --version=v2 --debug
+autorest.cmd README.md --tag=package-templatespecs-2021-05 --version=v2 --debug
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-title: ResourceManagementClient
-csharp: true
-clear-output-folder: true
-reflect-api-versions: true
-openapi-type: arm
-azure-arm: true
-license-header: MICROSOFT_MIT_NO_VERSION
+output-folder: Generated
+namespace: Microsoft.Azure.Management.Resources
+csharp:
+  clear-output-folder: false
+  reflect-api-versions: true
+  azure-arm: true
+  license-header: MICROSOFT_MIT_NO_VERSION
 ```
 
 
+## Configuration
 
-###
-``` yaml
-commit: 49401294370eed6ed25de57fce89ac901c671cf4
+### Basic Information
+
+These are the global settings for the Resource API.
+
+``` yaml $(package-privatelinks)
+tag: package-privatelinks-2020-05
+```
+
+``` yaml $(package-features)
+tag: package-features-2021-07
+```
+
+``` yaml $(package-locks)
+tag: package-locks-2020-05
+```
+
+``` yaml $(package-resources)
+tag: package-resources-2021-04
+```
+
+``` yaml $(package-subscriptions)
+tag: package-subscriptions-2022-12
+```
+
+``` yaml $(package-managedapplications)
+tag: package-managedapplications-2018-06
+```
+
+``` yaml $(package-deploymentscripts)
+tag: package-deploymentscripts-2020-10
+```
+
+``` yaml $(package-templatespecs)
+tag: package-templatespecs-2021-05
+```
+
+``` yaml $(package-deploymentstacks)
+tag: package-deploymentstacks-2022-08-preview
+```
+
+### Tag: package-deploymentscripts-2023-08
+
+These settings apply only when `--tag=package-deploymentscripts-2020-10` is specified on the command line.
+
+```yaml $(tag) == 'package-deploymentscripts-2020-10'
 input-file:
-- https://github.com/Azure/azure-rest-api-specs/tree/b204f956fd42ef64380f2ef3f2999dcd5bb4bbe4/specification/resources/resource-manager/Microsoft.Resources/preview/2022-08-01-preview/deploymentStacks.json
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/resources.json
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2021-01-01/subscriptions.json
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2020-10-01/deploymentScripts.json
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2021-05-01/templateSpecs.json
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2016-09-01/links.json
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Authorization/stable/2020-09-01/dataPolicyManifests.json
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Authorization/stable/2020-09-01/policyAssignments.json
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Authorization/stable/2020-09-01/policyDefinitions.json
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Authorization/stable/2020-09-01/policySetDefinitions.json
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Authorization/preview/2020-07-01-preview/policyExemptions.json
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Authorization/stable/2020-05-01/locks.json
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Authorization/stable/2020-05-01/privateLinks.json
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Features/stable/2021-07-01/features.json
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Features/stable/2021-07-01/SubscriptionFeatureRegistration.json
+- https://github.com/Azure/azure-rest-api-specs/blob/main/specification/resources/resource-manager/Microsoft.Resources/stable/2020-10-01/deploymentScripts.json
 
+suppressions:
+  - code: OperationsAPIImplementation
+    reason: OperationsAPI will come from Resources
+```
 
+### Tag: package-resources-2021-04
 
-output-folder: Generated
+These settings apply only when `--tag=package-resources-2021-04` is specified on the command line.
 
-namespace: Microsoft.Azure.Management.Resources
+``` yaml $(tag) == 'package-resources-2021-04'
+input-file:
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json
+```
+
+### Tag: package-privatelinks-2020-05
+
+These settings apply only when `--tag=package-privatelinks-2020-05` is specified on the command line.
+
+``` yaml $(tag) == 'package-privatelinks-2020-05'
+input-file:
+- https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Authorization/stable/2020-05-01/privateLinks.json
+```
+
+### Tag: package-subscriptions-2021-01
+
+These settings apply only when `--tag=package-subscriptions-2021-01` is specified on the command line.
+
+``` yaml $(tag) == 'package-subscriptions-2021-01'
+input-file:
+- https://github.com/Azure/azure-rest-api-specs/blob/main/specification/resources/resource-manager/Microsoft.Resources/stable/2021-01-01/subscriptions.json
+```
+
+### Tag: package-features-2021-07
+
+These settings apply only when `--tag=package-features-2021-07` is specified on the command line.
+
+``` yaml $(tag) == 'package-features-2021-07'
+input-file:
+- https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Features/stable/2021-07-01/features.json
+- https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Features/stable/2021-07-01/SubscriptionFeatureRegistration.json
+
+# Needed when there is more than one input file
+override-info:
+  title: FeatureClient
+```
+
+### Tag: package-templatespecs-2021-05
+
+These settings apply only when `--tag=package-templatespecs-2021-05` is specified on the command line.
+
+``` yaml $(tag) == 'package-templatespecs-2021-05'
+input-file:
+- https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Resources/stable/2021-05-01/templateSpecs.json
+```
+
+### Tag: package-deploymentstacks-2022-08-preview
+
+These settings apply only when `--tag=package-deploymentstacks-2022-08-preview` is specified on the command line.
+
+``` yaml $(tag) == 'package-deploymentstacks-2022-08-preview'
+input-file:
+- https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Resources/preview/2022-08-01-preview/deploymentStacks.json
 ```

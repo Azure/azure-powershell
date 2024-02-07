@@ -16,27 +16,27 @@ namespace Microsoft.Azure.Management.Resources.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource type aliases definition.
+    /// List of availability zones shared by the subscriptions.
     /// </summary>
-    public partial class ResourceTypeAliases
+    public partial class AvailabilityZonePeers
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceTypeAliases class.
+        /// Initializes a new instance of the AvailabilityZonePeers class.
         /// </summary>
-        public ResourceTypeAliases()
+        public AvailabilityZonePeers()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceTypeAliases class.
+        /// Initializes a new instance of the AvailabilityZonePeers class.
         /// </summary>
-        /// <param name="resourceType">The resource type name.</param>
-        /// <param name="aliases">The aliases for property names.</param>
-        public ResourceTypeAliases(string resourceType = default(string), IList<Alias> aliases = default(IList<Alias>))
+        /// <param name="availabilityZone">The availabilityZone.</param>
+        /// <param name="peers">Details of shared availability zone.</param>
+        public AvailabilityZonePeers(string availabilityZone = default(string), IList<Peers> peers = default(IList<Peers>))
         {
-            ResourceType = resourceType;
-            Aliases = aliases;
+            AvailabilityZone = availabilityZone;
+            Peers = peers;
             CustomInit();
         }
 
@@ -46,16 +46,16 @@ namespace Microsoft.Azure.Management.Resources.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the resource type name.
+        /// Gets the availabilityZone.
         /// </summary>
-        [JsonProperty(PropertyName = "resourceType")]
-        public string ResourceType { get; set; }
+        [JsonProperty(PropertyName = "availabilityZone")]
+        public string AvailabilityZone { get; private set; }
 
         /// <summary>
-        /// Gets or sets the aliases for property names.
+        /// Gets or sets details of shared availability zone.
         /// </summary>
-        [JsonProperty(PropertyName = "aliases")]
-        public IList<Alias> Aliases { get; set; }
+        [JsonProperty(PropertyName = "peers")]
+        public IList<Peers> Peers { get; set; }
 
     }
 }

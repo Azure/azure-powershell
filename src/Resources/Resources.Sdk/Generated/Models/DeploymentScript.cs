@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Management.Resources.Models
     /// <summary>
     /// Deployment script object.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("DeploymentScript")]
     public partial class DeploymentScript : AzureResourceBase
     {
         /// <summary>
