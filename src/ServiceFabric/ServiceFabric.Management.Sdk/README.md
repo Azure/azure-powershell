@@ -1,15 +1,16 @@
-In this directory, run AutoRest:
+### In this directory, run AutoRest:
 
   ``` powershell 
     autorest --reset
     autorest --use:@autorest/powershell@4.x
   ```
+### Autorest Configuration
+> See https://github.com/Azure/autorest
 
-
+###
 ``` yaml
 isSdkGenerator: true
 powershell: true
-#csharp: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
@@ -26,7 +27,6 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/application.json
 
 output-folder: Generated
-
 namespace: Microsoft.Azure.Management.ServiceFabric
 ```
 
