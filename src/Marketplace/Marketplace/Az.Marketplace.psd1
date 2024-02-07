@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.3.0'
+ModuleVersion = '0.4.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -60,10 +60,10 @@ RequiredAssemblies = 'Marketplace.Autorest/bin/Az.Marketplace.private.dll',
                'Microsoft.Azure.Management.Marketplace.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'Marketplace.Autorest/Az.Marketplace.format.ps1xml'
@@ -130,7 +130,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'Marketplace'
+        Tags = 'Azure','ResourceManager','ARM','Marketplace'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -142,7 +142,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* the first preview release'
+        ReleaseNotes = '* Added new features and capabilities to user and marketplace-admins:
+    - Approve offer and plans with subscription granularity.
+    - Enable\Disable Approve-All-Products on a collection.
+    - Fetch all subscriptions in a tenant.
+    - Get new plans notifications for the offers in the privatestore.
+    - Get all approved offers and plans for a user.'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -155,7 +160,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
