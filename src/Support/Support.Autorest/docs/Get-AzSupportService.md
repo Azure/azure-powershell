@@ -32,7 +32,7 @@ Gets a specific Azure service for support ticket creation.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List Azure Support Services
 ```powershell
 Get-AzSupportService
 ```
@@ -50,7 +50,7 @@ For **Technical** issues, select the Service Id that maps to the Azure service/p
 Always use the service and its corresponding problem classification(s) obtained programmatically for support ticket creation.
 This practice ensures that you always have the most recent set of service and problem classification Ids.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get Azure Support Service
 ```powershell
 Get-AzSupportService -Name "484e2236-bc6d-b1bb-76d2-7d09278cf9ea"
 ```

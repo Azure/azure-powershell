@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: List Azure Support Problem Classifications
 ```powershell
 Get-AzSupportProblemClassification -ServiceName "6f16735c-b0ae-b275-ad3a-03479cfa1396"
 ```
@@ -13,7 +13,7 @@ Windows Update, Guest Patching and OS Upgrades / Issue with Azure Update Managem
 
 Lists all the problem classifications (categories) available for a specific Azure service. Always use the service and problem classifications obtained programmatically. This practice ensures that you always have the most recent set of service and problem classification Ids.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get Azure Support Problem Classification
 ```powershell
 Get-AzSupportProblemClassification -ServiceName "6f16735c-b0ae-b275-ad3a-03479cfa1396" -Name "e565bd13-86f0-ecb3-d2b7-0a7501ae8839"
 ```
