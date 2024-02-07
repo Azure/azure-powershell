@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.CodeSigning.Models;
 using System;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.CodeSigning
@@ -50,6 +49,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
             HelpMessage = "The certificate profile name of Azure CodeSigning account.")]
         [ValidateNotNullOrEmpty()]
         public string ProfileName { get; set; }
+
         [Parameter(Mandatory = true,
             Position = 2,
             ParameterSetName = ByAccountProfileNameParameterSet,
