@@ -8,11 +8,7 @@ Update-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -MaxSessionLimit 6 `
                             -CustomRdpProperty $null `
                             -Ring $null `
-                            -ValidationEnvironment:$false `
-                            -ManagedPrivateUDP 'Disabled' `
-                            -DirectUDP 'Disabled' `
-                            -PublicUDP 'Disabled' `
-                            -RelayUDP 'Disabled'
+                            -ValidationEnvironment:$false
 ```
 
 ```output
@@ -22,3 +18,4 @@ eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 ```
 
 This command updates a Azure Virtual Desktop HostPool in a Resource Group.
+
