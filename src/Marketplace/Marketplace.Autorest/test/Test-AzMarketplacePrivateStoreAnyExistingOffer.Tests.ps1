@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMarketplacePrivateStore'))
+if(($null -eq $TestName) -or ($TestName -contains 'Test-AzMarketplacePrivateStoreAnyExistingOffer'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzMarketplacePrivateStore.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Test-AzMarketplacePrivateStoreAnyExistingOffer.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMarketplacePrivateSt
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzMarketplacePrivateStore' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'Test-AzMarketplacePrivateStoreAnyExistingOffer' {
+    It 'Any' {
+        $res = Test-AzMarketplacePrivateStoreAnyExistingOffer -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6
+	    $res | Should -Not -Be $null
     }
 }
