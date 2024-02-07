@@ -112,9 +112,11 @@ namespace Microsoft.Azure.Commands.CodeSigning
 
             WriteObject(downloadPath.Replace("\\", @"\"));
 
-            PSSigningCertificate pscert = new PSSigningCertificate();
-            pscert.Subject = x509.Subject;
-            pscert.Thumbprint = x509.Thumbprint;
+            PSSigningCertificate pscert = new PSSigningCertificate
+            {
+                Subject = x509.Subject,
+                Thumbprint = x509.Thumbprint
+            };
 
             WriteObject(pscert, false);
         }
