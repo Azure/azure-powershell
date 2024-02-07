@@ -56,6 +56,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
             HelpMessage = "The certificate profile name of Azure CodeSigning account.")]
         [ValidateNotNullOrEmpty()]
         public string ProfileName { get; set; }
+
         [Parameter(Mandatory = true,
             Position = 2,
             ParameterSetName = ByAccountProfileNameParameterSet,
@@ -88,8 +89,8 @@ namespace Microsoft.Azure.Commands.CodeSigning
            HelpMessage = "Original unsigned CI policy file path.")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
+
         [Parameter(Mandatory = true,
-           Position = 4,
            ParameterSetName = ByAccountProfileNameParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Signed CI policy file path")]
@@ -100,8 +101,8 @@ namespace Microsoft.Azure.Commands.CodeSigning
            HelpMessage = "Signed CI policy file path")]
         [ValidateNotNullOrEmpty]
         public string Destination { get; set; }
+
         [Parameter(Mandatory = false,
-                   Position = 5,
                    ParameterSetName = ByAccountProfileNameParameterSet,
                     ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Time Stamper Url.")]
