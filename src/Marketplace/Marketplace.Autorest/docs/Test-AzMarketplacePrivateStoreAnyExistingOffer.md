@@ -29,27 +29,12 @@ Query whether exists any offer in the collections.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check if exists any offer in the collections.
 ```powershell
-{{ Add code here }}
+Test-AzMarketplacePrivateStoreAnyExistingOffer -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Query whether exists any offer in the collections.
 
 ## PARAMETERS
 

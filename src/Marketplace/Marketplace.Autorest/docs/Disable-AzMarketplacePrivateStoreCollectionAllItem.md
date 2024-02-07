@@ -36,27 +36,12 @@ Disable approve all items for the collection.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Disable approve-all-items for a collection
 ```powershell
-{{ Add code here }}
+Disable-AzMarketplacePrivateStoreCollectionAllItem -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa0188
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Disable approve all items for a collection.
 
 ## PARAMETERS
 

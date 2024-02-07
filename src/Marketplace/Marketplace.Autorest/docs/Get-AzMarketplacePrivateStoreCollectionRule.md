@@ -36,27 +36,12 @@ Get a list of all private store rules in the given private store and collection
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get applied rules on a collection
 ```powershell
-{{ Add code here }}
+Get-AzMarketplacePrivateStoreCollectionRule -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6 -CollectionId a260d38c-96cf-492d-a340-404d0c4b3ad6
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Get a list of all private store rules in the given private store and collection.
 
 ## PARAMETERS
 
