@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Marketplace-help.xml
 Module Name: Az.Marketplace
 online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplacecollectiontosubscriptionmapping
 schema: 2.0.0
@@ -15,27 +15,40 @@ For a given subscriptions list, the API will return a map of collections and the
 ### CollectionsExpanded (Default)
 ```
 Get-AzMarketplaceCollectionToSubscriptionMapping -PrivateStoreId <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CollectionsViaJsonString
+```
+Get-AzMarketplaceCollectionToSubscriptionMapping -PrivateStoreId <String> -JsonString <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CollectionsViaJsonFilePath
+```
+Get-AzMarketplaceCollectionToSubscriptionMapping -PrivateStoreId <String> -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Collections
 ```
 Get-AzMarketplaceCollectionToSubscriptionMapping -PrivateStoreId <String>
- -Payload <ICollectionsToSubscriptionsMappingPayload> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CollectionsViaIdentity
-```
-Get-AzMarketplaceCollectionToSubscriptionMapping -InputObject <IMarketplaceIdentity>
- -Payload <ICollectionsToSubscriptionsMappingPayload> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -Payload <ICollectionsToSubscriptionsMappingPayload> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CollectionsViaIdentityExpanded
 ```
 Get-AzMarketplaceCollectionToSubscriptionMapping -InputObject <IMarketplaceIdentity>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### CollectionsViaIdentity
+```
+Get-AzMarketplaceCollectionToSubscriptionMapping -InputObject <IMarketplaceIdentity>
+ -Payload <ICollectionsToSubscriptionsMappingPayload> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +92,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: CollectionsViaIdentity, CollectionsViaIdentityExpanded
+Parameter Sets: CollectionsViaIdentityExpanded, CollectionsViaIdentity
 Aliases:
 
 Required: True
@@ -89,12 +102,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Collections operation
+
+```yaml
+Type: System.String
+Parameter Sets: CollectionsViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Collections operation
+
+```yaml
+Type: System.String
+Parameter Sets: CollectionsViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Payload
 The subscriptions list to get the related collections
 To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsToSubscriptionsMappingPayload
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollectionsToSubscriptionsMappingPayload
 Parameter Sets: Collections, CollectionsViaIdentity
 Aliases:
 
@@ -110,10 +153,25 @@ The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Collections, CollectionsExpanded
+Parameter Sets: CollectionsExpanded, CollectionsViaJsonString, CollectionsViaJsonFilePath, Collections
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -200,4 +258,3 @@ PAYLOAD `<ICollectionsToSubscriptionsMappingPayload>`: The subscriptions list to
   - `[SubscriptionId <String[]>]`: Subscriptions ids list
 
 ## RELATED LINKS
-
