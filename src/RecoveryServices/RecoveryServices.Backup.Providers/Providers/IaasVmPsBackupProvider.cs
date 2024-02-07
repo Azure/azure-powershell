@@ -262,7 +262,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                 if (oldPolicySubType == PSPolicyType.Standard && newPolicySubType == PSPolicyType.Enhanced)
                 {
-                    // resx Resources.StdToEnhPolicyMigrationWarning
                     Logger.Instance.WriteWarning(String.Format(Resources.StdToEnhPolicyMigrationWarning));
                 }
                 #endregion
@@ -510,8 +509,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             if(storageAccountResource == null)
             {
-                //resx
-                throw new ArgumentException("Storage Account not found");
+                throw new ArgumentException(String.Format(Resources.RestoreAzureStorageNotFound));
             }
 
             var useOsa = ShouldUseOsa(rp, osaOption);
@@ -980,8 +978,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 if (!((schedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2))))
                 {
-                    // resx
-                    throw new ArgumentException(string.Format("SnapshotConsistencyType parameter can only be used for enhanced AzureVM policy"));
+                    throw new ArgumentException(string.Format(Resources.SnapshotConsistencyTypeCantBeSetForStandardPolicy));
                 }
 
                 if (snapshotConsistencyType == SnapshotConsistencyType.OnlyCrashConsistent)
@@ -1132,9 +1129,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if(snapshotConsistencyType != 0)
             {
                 if(!(((AzureVmPolicy)policy).SchedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2)))
-                {
-                    // resx
-                    throw new ArgumentException(string.Format("SnapshotConsistencyType parameter can only be used for enhanced AzureVM policy"));
+                {                    
+                    throw new ArgumentException(string.Format(Resources.SnapshotConsistencyTypeCantBeSetForStandardPolicy));
                 }
 
                 if (snapshotConsistencyType == SnapshotConsistencyType.Default){

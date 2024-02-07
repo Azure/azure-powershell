@@ -2709,5 +2709,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("StdToEnhPolicyMigrationWarning", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to SnapshotConsistencyType parameter can only be used for enhanced AzureVM policy.
+        /// </summary>
+        public static string SnapshotConsistencyTypeCantBeSetForStandardPolicy
+        {
+            get
+            {
+                return ResourceManager.GetString("SnapshotConsistencyTypeCantBeSetForStandardPolicy", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to SnapshotConsistencyType parameter can only be used for WorkloadType AzureVM.
+        /// </summary>
+        public static string InvalidParameterSnapshotConsistencyType
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidParameterSnapshotConsistencyType", resourceCulture);
+            }
+        }
     }
 }

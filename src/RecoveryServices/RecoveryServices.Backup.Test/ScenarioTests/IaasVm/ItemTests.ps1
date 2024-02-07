@@ -12,6 +12,48 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AzureVaultSoftDelete
+{	
+	$resourceGroupName = "hiagarg"
+	$vaultName = "hiagaSecurityVault"
+	$location = "eastus2euap"
+	$tag= @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="01-2099"}
+	
+	try
+	{			
+		# new vault
+		$vault = New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $location -Tag $tag
+		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
+		Assert-True {  $vault -ne $null }
+		
+		# Disable soft delete 
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState Disable
+		$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+		Assert-True { $vaultProperty.SoftDeleteFeatureState -eq "Disabled" }
+
+		# Enable soft delete 
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState Enable
+		$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+		Assert-True { $vaultProperty.SoftDeleteFeatureState -eq "Enabled" }
+
+		# Enable disable hybrid security setting 
+		Set-AzRecoveryServicesVaultProperty   -VaultId  $vault.ID -DisableHybridBackupSecurityFeature $false
+		$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+		Assert-True { $vaultProperty.EnhancedSecurityState -eq "Enabled" }
+
+		# Disable hybrid security setting
+		Set-AzRecoveryServicesVaultProperty   -VaultId  $vault.ID -DisableHybridBackupSecurityFeature $true
+		$vaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+		Assert-True { $vaultProperty.EnhancedSecurityState -eq "Disabled" }		
+	}
+	finally
+	{
+		# remove vault
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName		
+		Remove-AzRecoveryServicesVault -Vault $vault
+	}
+}
+
 function Test-AzureVaultPublicNetworkAccess
 {	
 	$resourceGroupName = "hiagaCZR-rg"

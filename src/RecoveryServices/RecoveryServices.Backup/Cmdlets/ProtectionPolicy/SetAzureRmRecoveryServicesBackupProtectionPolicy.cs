@@ -154,8 +154,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 if (SnapshotConsistencyType != 0 &&  Policy.BackupManagementType != BackupManagementType.AzureVM)
                 {
-                    // resx
-                    throw new ArgumentException(string.Format("SnapshotConsistencyType parameter can only be used for WorkloadType AzureVM"));
+                    throw new ArgumentException(string.Format(Resources.InvalidParameterSnapshotConsistencyType));
                 }
 
                 // check if smart tiering feature is enabled on this subscription                
