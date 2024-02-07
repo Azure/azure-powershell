@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationfabric
 schema: 2.0.0
@@ -20,7 +20,7 @@ Get-AzMigrateReplicationFabric -ResourceGroupName <String> -ResourceName <String
 
 ### Get
 ```
-Get-AzMigrateReplicationFabric -FabricName <String> -ResourceGroupName <String> -ResourceName <String>
+Get-AzMigrateReplicationFabric -ResourceGroupName <String> -ResourceName <String> -FabricName <String>
  [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -192,4 +192,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

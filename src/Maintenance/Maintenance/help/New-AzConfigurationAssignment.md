@@ -43,6 +43,26 @@ Type                       : Microsoft.Maintenance/configurationAssignments
 
 Register maintenance configuration for dedicated host.
 
+### Example 2
+```powershell
+New-AzConfigurationAssignment -ConfigurationAssignmentName configAssignmentName -MaintenanceConfigurationId /subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourceGroups/AUMDemov01/providers/Microsoft.Maintenance/maintenanceConfigurations/kachavan-prepost01  -FilterLocation eastus2euap,centraluseuap  -FilterOsType Windows,Linux -FilterTag '{"tagKey1" : ["tagKey1Value1", "tagKey1Value2"], "tagKey2" : ["tagKey2Value1", "tagKey2Value2", "tagKey2Value3"] }' -FilterOperator "Any" -Location global
+```
+
+```output
+Location                   : global
+MaintenanceConfigurationId : /subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourceGroups/AUMDemov01/providers/Microsoft.Maintenance/maintenanceConfigurations/kachavan-prepost01
+ResourceId                 : /subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8
+Id                         : /subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/providers/microsoft.maintenance/configurationassignments/configassignmentname
+Name                       : configassignmentname
+Type                       : microsoft.maintenance/configurationassignments
+FilterTag                  : {"tagKey1":["tagKey1Value1","tagKey1Value2"],"tagKey2":["tagKey2Value1","tagKey2Value2","tagKey2Value3"]}
+FilterOperator             : Any
+FilterLocation[0]          : eastus2euap
+FilterLocation[1]          : centraluseuap
+FilterOsType[0]            : Windows
+FilterOsType[1]            : Linux
+```
+
 ## PARAMETERS
 
 ### -AsJob

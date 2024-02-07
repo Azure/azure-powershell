@@ -93,16 +93,6 @@ namespace Microsoft.Azure.Commands.Insights
             string exName = null;
             try
             {
-                this.WriteIdentifiedWarning(
-                    cmdletName: "",
-                    topic: "",
-                    message: "*** The namespace for all the model classes will change from Microsoft.Azure.Management.Monitor.Management.Models to Microsoft.Azure.Management.Monitor.Models in future releases.",
-                    withTimeStamp: true);
-                this.WriteIdentifiedWarning(
-                    cmdletName: "",
-                    topic: "",
-                    message: "*** The namespace for output classes will be uniform for all classes in future releases to make it independent of modifications in the model classes.",
-                    withTimeStamp: true);
                 this.ProcessRecordInternal();
             }
             catch (AggregateException ex)

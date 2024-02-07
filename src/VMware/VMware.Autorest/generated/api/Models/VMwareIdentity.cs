@@ -195,6 +195,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string VirtualMachineId { get => this._virtualMachineId; set => this._virtualMachineId = value; }
 
+        /// <summary>Backing field for <see cref="WorkloadNetworkName" /> property.</summary>
+        private string _workloadNetworkName;
+
+        /// <summary>Name for the workload network in the private cloud</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        public string WorkloadNetworkName { get => this._workloadNetworkName; set => this._workloadNetworkName = value; }
+
         /// <summary>Creates an new <see cref="VMwareIdentity" /> instance.</summary>
         public VMwareIdentity()
         {
@@ -208,6 +215,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the addon for the private cloud",
         SerializedName = @"addonName",
         PossibleTypes = new [] { typeof(string) })]
@@ -216,6 +226,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the ExpressRoute Circuit Authorization in the private cloud",
         SerializedName = @"authorizationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -224,6 +237,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the cloud link resource",
         SerializedName = @"cloudLinkName",
         PossibleTypes = new [] { typeof(string) })]
@@ -232,6 +248,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the cluster in the private cloud",
         SerializedName = @"clusterName",
         PossibleTypes = new [] { typeof(string) })]
@@ -240,6 +259,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the datastore in the private cloud cluster",
         SerializedName = @"datastoreName",
         PossibleTypes = new [] { typeof(string) })]
@@ -248,6 +270,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"NSX DHCP identifier. Generally the same as the DHCP display name",
         SerializedName = @"dhcpId",
         PossibleTypes = new [] { typeof(string) })]
@@ -258,6 +283,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"NSX DNS Service identifier. Generally the same as the DNS Service's display name",
         SerializedName = @"dnsServiceId",
         PossibleTypes = new [] { typeof(string) })]
@@ -266,6 +294,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"NSX DNS Zone identifier. Generally the same as the DNS Zone's display name",
         SerializedName = @"dnsZoneId",
         PossibleTypes = new [] { typeof(string) })]
@@ -274,6 +305,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"NSX Gateway identifier. Generally the same as the Gateway's display name",
         SerializedName = @"gatewayId",
         PossibleTypes = new [] { typeof(string) })]
@@ -282,6 +316,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the global reach connection in the private cloud",
         SerializedName = @"globalReachConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -290,6 +327,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the HCX Enterprise Site in the private cloud",
         SerializedName = @"hcxEnterpriseSiteName",
         PossibleTypes = new [] { typeof(string) })]
@@ -298,6 +338,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -306,6 +349,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Azure region",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -316,6 +362,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy",
         SerializedName = @"placementPolicyName",
         PossibleTypes = new [] { typeof(string) })]
@@ -326,6 +375,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name",
         SerializedName = @"portMirroringId",
         PossibleTypes = new [] { typeof(string) })]
@@ -334,6 +386,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the private cloud",
         SerializedName = @"privateCloudName",
         PossibleTypes = new [] { typeof(string) })]
@@ -344,6 +399,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"NSX Public IP Block identifier. Generally the same as the Public IP Block's display name",
         SerializedName = @"publicIPId",
         PossibleTypes = new [] { typeof(string) })]
@@ -352,6 +410,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -360,6 +421,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the script cmdlet resource in the script package in the private cloud",
         SerializedName = @"scriptCmdletName",
         PossibleTypes = new [] { typeof(string) })]
@@ -368,6 +432,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the user-invoked script execution resource",
         SerializedName = @"scriptExecutionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -376,6 +443,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of the script package in the private cloud",
         SerializedName = @"scriptPackageName",
         PossibleTypes = new [] { typeof(string) })]
@@ -384,6 +454,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"NSX Segment identifier. Generally the same as the Segment's display name",
         SerializedName = @"segmentId",
         PossibleTypes = new [] { typeof(string) })]
@@ -392,6 +465,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -400,6 +476,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"NSX VM Group identifier. Generally the same as the VM Group's display name",
         SerializedName = @"vmGroupId",
         PossibleTypes = new [] { typeof(string) })]
@@ -408,10 +487,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Virtual Machine identifier",
         SerializedName = @"virtualMachineId",
         PossibleTypes = new [] { typeof(string) })]
         string VirtualMachineId { get; set; }
+        /// <summary>Name for the workload network in the private cloud</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name for the workload network in the private cloud",
+        SerializedName = @"workloadNetworkName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("default")]
+        string WorkloadNetworkName { get; set; }
 
     }
     internal partial interface IVMwareIdentityInternal
@@ -475,6 +569,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         string VMGroupId { get; set; }
         /// <summary>Virtual Machine identifier</summary>
         string VirtualMachineId { get; set; }
+        /// <summary>Name for the workload network in the private cloud</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("default")]
+        string WorkloadNetworkName { get; set; }
 
     }
 }

@@ -49,6 +49,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
             var options = new InteractiveBrowserCredentialBrokerOptions(WindowHandleUtilities.GetConsoleOrTerminalWindow())
             {
+                IsLegacyMsaPassthroughEnabled = true, // to support MSA account
                 ClientId = clientId,
                 TenantId = tenantId,
                 TokenCachePersistenceOptions = tokenCacheProvider.GetTokenCachePersistenceOptions(),
