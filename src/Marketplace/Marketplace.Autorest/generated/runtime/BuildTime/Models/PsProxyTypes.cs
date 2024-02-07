@@ -30,6 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
     internal class VariantGroup
     {
         public string ModuleName { get; }
+
+        public string RootModuleName {get => @"";}
         public string CmdletName { get; }
         public string CmdletVerb { get; }
         public string CmdletNoun { get; }
@@ -99,12 +101,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
             if (String.IsNullOrEmpty(defaultParameterSet))
             {
                 var variantParamCountGroups = Variants
+                    .Where(v => !v.IsNotSuggestDefaultParameterSet)
                     .Select(v => (
                         variant: v.VariantName,
                         paramCount: v.CmdletOnlyParameters.Count(p => p.IsMandatory),
                         isSimple: v.CmdletOnlyParameters.Where(p => p.IsMandatory).All(p => p.ParameterType.IsPsSimple())))
                     .GroupBy(vpc => vpc.isSimple)
                     .ToArray();
+                if (variantParamCountGroups.Length == 0)
+                {
+                    variantParamCountGroups = Variants
+                        .Select(v => (
+                            variant: v.VariantName,
+                            paramCount: v.CmdletOnlyParameters.Count(p => p.IsMandatory),
+                            isSimple: v.CmdletOnlyParameters.Where(p => p.IsMandatory).All(p => p.ParameterType.IsPsSimple())))
+                        .GroupBy(vpc => vpc.isSimple)
+                        .ToArray();
+                }
                 var variantParameterCounts = (variantParamCountGroups.Any(g => g.Key) ? variantParamCountGroups.Where(g => g.Key) : variantParamCountGroups).SelectMany(g => g).ToArray();
                 var smallestParameterCount = variantParameterCounts.Min(vpc => vpc.paramCount);
                 defaultParameterSet = variantParameterCounts.First(vpc => vpc.paramCount == smallestParameterCount).variant;
@@ -133,6 +146,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
         public Parameter[] CmdletOnlyParameters { get; }
         public bool IsInternal { get; }
         public bool IsDoNotExport { get; }
+        public bool IsNotSuggestDefaultParameterSet { get; }
         public string[] Profiles { get; }
 
         public Variant(string cmdletName, string variantName, CommandInfo info, CommandMetadata metadata, bool hasParameterSets = false, PsHelpInfo helpInfo = null)
@@ -153,6 +167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
             Parameters = this.ToParameters().OrderBy(p => p.OrderCategory).ThenByDescending(p => p.IsMandatory).ToArray();
             IsInternal = Attributes.OfType<InternalExportAttribute>().Any();
             IsDoNotExport = Attributes.OfType<DoNotExportAttribute>().Any();
+            IsNotSuggestDefaultParameterSet = Attributes.OfType<NotSuggestDefaultParameterSetAttribute>().Any();
             CmdletOnlyParameters = Parameters.Where(p => !p.Categories.Any(c => c == ParameterCategory.Azure || c == ParameterCategory.Runtime)).ToArray();
             Profiles = Attributes.OfType<ProfileAttribute>().SelectMany(pa => pa.Profiles).ToArray();
         }
@@ -208,6 +223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
             HasValidateNotNull = Parameters.SelectMany(p => p.Attributes.OfType<ValidateNotNullAttribute>()).Any();
             HasAllowEmptyArray = Parameters.SelectMany(p => p.Attributes.OfType<AllowEmptyCollectionAttribute>()).Any();
             CompleterInfo = Parameters.Select(p => p.CompleterInfoAttribute).FirstOrDefault()?.ToCompleterInfo()
+                            ?? Parameters.Select(p => p.PSArgumentCompleterAttribute).FirstOrDefault()?.ToPSArgumentCompleterInfo()
                             ?? Parameters.Select(p => p.ArgumentCompleterAttribute).FirstOrDefault()?.ToCompleterInfo();
             DefaultInfo = Parameters.Select(p => p.DefaultInfoAttribute).FirstOrDefault()?.ToDefaultInfo(this)
                             ?? Parameters.Select(p => p.DefaultValueAttribute).FirstOrDefault(dv => dv != null)?.ToDefaultInfo(this);
@@ -252,6 +268,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
         public bool SupportsWildcards { get; }
         public CompleterInfoAttribute CompleterInfoAttribute { get; }
         public ArgumentCompleterAttribute ArgumentCompleterAttribute { get; }
+        public PSArgumentCompleterAttribute PSArgumentCompleterAttribute { get; }
 
         public bool ValueFromPipeline { get; }
         public bool ValueFromPipelineByPropertyName { get; }
@@ -284,7 +301,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
             }
             SupportsWildcards = Attributes.OfType<SupportsWildcardsAttribute>().Any();
             CompleterInfoAttribute = Attributes.OfType<CompleterInfoAttribute>().FirstOrDefault();
-            ArgumentCompleterAttribute = Attributes.OfType<ArgumentCompleterAttribute>().FirstOrDefault();
+            PSArgumentCompleterAttribute = Attributes.OfType<PSArgumentCompleterAttribute>().FirstOrDefault();
+            ArgumentCompleterAttribute = Attributes.OfType<ArgumentCompleterAttribute>().FirstOrDefault(attr => !attr.GetType().Equals(typeof(PSArgumentCompleterAttribute)));
 
             ValueFromPipeline = ParameterAttribute.ValueFromPipeline;
             ValueFromPipelineByPropertyName = ParameterAttribute.ValueFromPipelineByPropertyName;
@@ -364,6 +382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
 
         public string OnlineVersion { get; }
         public string[] RelatedLinks { get; }
+        public string[] ExternalUrls { get; }
 
         private const string HelpLinkPrefix = @"https://learn.microsoft.com/powershell/module/";
 
@@ -385,8 +404,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
                        helpInfo.OutputTypes.Where(it => it.Name.NullIfWhiteSpace() != null).Select(ot => ot.Name).ToArray())
                 .Where(o => o != "None").Distinct().OrderBy(o => o).ToArray();
 
-            OnlineVersion = helpInfo.OnlineVersion?.Uri.NullIfEmpty() ?? $@"{HelpLinkPrefix}{variantGroup.ModuleName.ToLowerInvariant()}/{variantGroup.CmdletName.ToLowerInvariant()}";
+            // Use root module name in the help link
+            var moduleName = variantGroup.RootModuleName == "" ? variantGroup.ModuleName.ToLowerInvariant() : variantGroup.RootModuleName.ToLowerInvariant();
+            OnlineVersion = helpInfo.OnlineVersion?.Uri.NullIfEmpty() ?? $@"{HelpLinkPrefix}{moduleName}/{variantGroup.CmdletName.ToLowerInvariant()}";
             RelatedLinks = helpInfo.RelatedLinks.Select(rl => rl.Text).ToArray();
+
+            // Get external urls from attribute
+            ExternalUrls = variantGroup.Variants.SelectMany(v => v.Attributes).OfType<ExternalDocsAttribute>()?.Select(e => e.Url)?.Distinct()?.ToArray();
         }
     }
 
@@ -416,11 +440,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
         }
     }
 
+    internal class PSArgumentCompleterInfo: CompleterInfo
+    {
+        public string[] ResourceTypes { get; }
+
+        public PSArgumentCompleterInfo(PSArgumentCompleterAttribute completerAttribute) : base(completerAttribute)
+        {
+            ResourceTypes = completerAttribute.ResourceTypes;
+        }
+    }
+
     internal class DefaultInfo
     {
         public string Name { get; }
         public string Description { get; }
         public string Script { get; }
+        public string SetCondition { get; }
         public ParameterGroup ParameterGroup { get; }
 
         public DefaultInfo(DefaultInfoAttribute infoAttribute, ParameterGroup parameterGroup)
@@ -428,6 +463,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
             Name = infoAttribute.Name;
             Description = infoAttribute.Description;
             Script = infoAttribute.Script;
+            SetCondition = infoAttribute.SetCondition;
             ParameterGroup = parameterGroup;
         }
 
@@ -503,7 +539,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
 
         public static CompleterInfo ToCompleterInfo(this CompleterInfoAttribute infoAttribute) => new CompleterInfo(infoAttribute);
         public static CompleterInfo ToCompleterInfo(this ArgumentCompleterAttribute completerAttribute) => new CompleterInfo(completerAttribute);
-
+        public static PSArgumentCompleterInfo ToPSArgumentCompleterInfo(this PSArgumentCompleterAttribute completerAttribute) => new PSArgumentCompleterInfo(completerAttribute);
         public static DefaultInfo ToDefaultInfo(this DefaultInfoAttribute infoAttribute, ParameterGroup parameterGroup) => new DefaultInfo(infoAttribute, parameterGroup);
         public static DefaultInfo ToDefaultInfo(this PSDefaultValueAttribute defaultValueAttribute, ParameterGroup parameterGroup) => new DefaultInfo(defaultValueAttribute, parameterGroup);
     }

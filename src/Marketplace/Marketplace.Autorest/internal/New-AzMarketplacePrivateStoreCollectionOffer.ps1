@@ -20,19 +20,15 @@ Update or add an offer to a specific collection of the private store.
 .Description
 Update or add an offer to a specific collection of the private store.
 .Example
-PS C:\>$acc = @{Accessibility = "azure_managedservices_professional"}
-PS C:\> New-AzMarketplacePrivateStoreCollectionOffer -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 -PrivateStoreId 7f5402e4-e8f4-46bd-9bd1-8d27866a606b  -OfferId aumatics.azure_managedservices -Plan $acc
+$acc = @{Accessibility = "azure_managedservices_professional"}
+New-AzMarketplacePrivateStoreCollectionOffer -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 -PrivateStoreId 7f5402e4-e8f4-46bd-9bd1-8d27866a606b  -OfferId aumatics.azure_managedservices -Plan $acc
 
-Name                           SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
-----                           ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
-aumatics.azure_managedservices
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer
+Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,24 +43,18 @@ INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
   [RequestApprovalId <String>]: The request approval ID to get create or update
 
 PAYLOAD <IOffer>: The privateStore offer data structure.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC)
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <IdentityType?>]: The type of identity that created the resource
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <IdentityType?>]: The type of identity that last modified the resource
   [ETag <String>]: Identifier for purposes of race condition
   [IconFileUri <IOfferPropertiesIconFileUris>]: Icon File Uris
     [(Any) <String>]: This indicates any property can be added to this object.
-  [Plan <IPlan[]>]: Offer plans
-    [Accessibility <Accessibility?>]: Plan accessibility
-  [SpecificPlanIdsLimitation <String[]>]: Plan ids limitation for this offer
+  [Plan <List<IPlan>>]: Offer plans
+    [Accessibility <String>]: Plan accessibility
+  [SpecificPlanIdsLimitation <List<String>>]: Plan ids limitation for this offer
   [UpdateSuppressedDueIdempotence <Boolean?>]: Indicating whether the offer was not updated to db (true = not updated). If the allow list is identical to the existed one in db, the offer would not be updated.
 .Link
 https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollectionoffer
 #>
 function New-AzMarketplacePrivateStoreCollectionOffer {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer])]
 [CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
@@ -76,7 +66,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer]
     # The privateStore offer data structure.
     # To construct, see NOTES section for PAYLOAD properties and create a hash table.
     ${Payload},
@@ -86,7 +76,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -136,6 +127,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             CreateViaIdentity = 'Az.Marketplace.private\New-AzMarketplacePrivateStoreCollectionOffer_CreateViaIdentity';
         }
@@ -145,6 +137,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -153,15 +146,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

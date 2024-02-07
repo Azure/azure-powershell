@@ -20,88 +20,166 @@ Update or add an offer to a specific collection of the private store.
 .Description
 Update or add an offer to a specific collection of the private store.
 .Example
-PS C:\>$acc = @{Accessibility = "azure_managedservices_professional"}
-PS C:\> New-AzMarketplacePrivateStoreCollectionOffer -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 -PrivateStoreId 7f5402e4-e8f4-46bd-9bd1-8d27866a606b  -OfferId aumatics.azure_managedservices -Plan $acc
+$acc = @{Accessibility = "azure_managedservices_professional"}
+New-AzMarketplacePrivateStoreCollectionOffer -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 -PrivateStoreId 7f5402e4-e8f4-46bd-9bd1-8d27866a606b  -OfferId aumatics.azure_managedservices -Plan $acc
 
-Name                           SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
-----                           ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
-aumatics.azure_managedservices
-
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer
+Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+COLLECTIONINPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
+  [AdminRequestApprovalId <String>]: The admin request approval ID to get create or update
+  [CollectionId <String>]: The collection ID
+  [Id <String>]: Resource identity path
+  [OfferId <String>]: The offer ID to update or delete
+  [PrivateStoreId <String>]: The store ID - must use the tenant ID
+  [RequestApprovalId <String>]: The request approval ID to get create or update
+
+PAYLOAD <IOffer>: The privateStore offer data structure.
+  [ETag <String>]: Identifier for purposes of race condition
+  [IconFileUri <IOfferPropertiesIconFileUris>]: Icon File Uris
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [Plan <List<IPlan>>]: Offer plans
+    [Accessibility <String>]: Plan accessibility
+  [SpecificPlanIdsLimitation <List<String>>]: Plan ids limitation for this offer
+  [UpdateSuppressedDueIdempotence <Boolean?>]: Indicating whether the offer was not updated to db (true = not updated). If the allow list is identical to the existed one in db, the offer would not be updated.
+
 PLAN <IPlan[]>: Offer plans
-  [Accessibility <Accessibility?>]: Plan accessibility
+  [Accessibility <String>]: Plan accessibility
+
+PRIVATESTOREINPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
+  [AdminRequestApprovalId <String>]: The admin request approval ID to get create or update
+  [CollectionId <String>]: The collection ID
+  [Id <String>]: Resource identity path
+  [OfferId <String>]: The offer ID to update or delete
+  [PrivateStoreId <String>]: The store ID - must use the tenant ID
+  [RequestApprovalId <String>]: The request approval ID to get create or update
 .Link
 https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestorecollectionoffer
 #>
 function New-AzMarketplacePrivateStoreCollectionOffer {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
-    [System.String]
-    # The collection ID
-    ${CollectionId},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
     [System.String]
     # The offer ID to update or delete
     ${OfferId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateStore', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateStoreExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
+    [System.String]
+    # The collection ID
+    ${CollectionId},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
     [System.String]
     # The store ID - must use the tenant ID
     ${PrivateStoreId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityCollection', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityCollectionExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for COLLECTIONINPUTOBJECT properties and create a hash table.
+    ${CollectionInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateStore', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateStoreExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
+    ${PrivateStoreInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityCollectionExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateStoreExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
     [System.String]
     # Identifier for purposes of race condition
     ${ETag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityCollectionExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateStoreExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOfferPropertiesIconFileUris]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOfferPropertiesIconFileUris]))]
     [System.Collections.Hashtable]
     # Icon File Uris
     ${IconFileUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityCollectionExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateStoreExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IPlan[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IPlan[]]
     # Offer plans
     # To construct, see NOTES section for PLAN properties and create a hash table.
     ${Plan},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityCollectionExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateStoreExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
     [System.String[]]
     # Plan ids limitation for this offer
     ${SpecificPlanIdLimitation},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityCollectionExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateStoreExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Indicating whether the offer was not updated to db (true = not updated).
     # If the allow list is identical to the existed one in db, the offer would not be updated.
     ${UpdateSuppressedDueIdempotence},
 
+    [Parameter(ParameterSetName='CreateViaIdentityCollection', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateStore', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer]
+    # The privateStore offer data structure.
+    # To construct, see NOTES section for PAYLOAD properties and create a hash table.
+    ${Payload},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -151,16 +229,45 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             CreateExpanded = 'Az.Marketplace.private\New-AzMarketplacePrivateStoreCollectionOffer_CreateExpanded';
+            CreateViaIdentityCollection = 'Az.Marketplace.private\New-AzMarketplacePrivateStoreCollectionOffer_CreateViaIdentityCollection';
+            CreateViaIdentityCollectionExpanded = 'Az.Marketplace.private\New-AzMarketplacePrivateStoreCollectionOffer_CreateViaIdentityCollectionExpanded';
+            CreateViaIdentityPrivateStore = 'Az.Marketplace.private\New-AzMarketplacePrivateStoreCollectionOffer_CreateViaIdentityPrivateStore';
+            CreateViaIdentityPrivateStoreExpanded = 'Az.Marketplace.private\New-AzMarketplacePrivateStoreCollectionOffer_CreateViaIdentityPrivateStoreExpanded';
+            CreateViaJsonFilePath = 'Az.Marketplace.private\New-AzMarketplacePrivateStoreCollectionOffer_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Marketplace.private\New-AzMarketplacePrivateStoreCollectionOffer_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -169,15 +276,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }
