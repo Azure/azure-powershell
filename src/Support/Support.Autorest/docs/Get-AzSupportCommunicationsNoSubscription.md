@@ -12,7 +12,13 @@ Returns communication details for a support ticket.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
+```
+Get-AzSupportCommunicationsNoSubscription -SupportTicketName <String> [-Filter <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
 ```
 Get-AzSupportCommunicationsNoSubscription -CommunicationName <String> -SupportTicketName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -90,6 +96,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Filter
+The filter to apply on the operation.
+You can filter by communicationType and createdDate properties.
+CommunicationType supports Equals ('eq') operator and createdDate supports Greater Than ('gt') and Greater Than or Equals ('ge') operators.
+You may combine the CommunicationType and CreatedDate filters by Logical And ('and') operator.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -127,10 +151,26 @@ Support ticket name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Top
+The number of values to return in the collection.
+Default is 10 and max is 10.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

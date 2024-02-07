@@ -49,17 +49,6 @@ Get ticket details for an Azure subscription.
 Support ticket data is available for 18 months after ticket creation.
 If a ticket was created more than 18 months ago, a request for data might cause an error.
 
-### [Get-AzSupportTicketChatTranscriptsNoSubscription](Get-AzSupportTicketChatTranscriptsNoSubscription.md)
-Lists all chat transcripts for a support ticket
-
-### [Get-AzSupportTicketCommunicationsNoSubscription](Get-AzSupportTicketCommunicationsNoSubscription.md)
-Lists all communications (attachments not included) for a support ticket.
-\<br/\>\</br\> You can also filter support ticket communications by _CreatedDate_ or _CommunicationType_ using the $filter parameter.
-The only type of communication supported today is _Web_.
-Output will be a paged result with _nextLink_, using which you can retrieve the next set of Communication results.
-\<br/\>\<br/\>Support ticket data is available for 18 months after ticket creation.
-If a ticket was created more than 18 months ago, a request for data might cause an error.
-
 ### [Get-AzSupportTicketsNoSubscription](Get-AzSupportTicketsNoSubscription.md)
 Gets details for a specific support ticket.
 Support ticket data is available for 18 months after ticket creation.
@@ -113,12 +102,6 @@ This API should be used to check the uniqueness of the name for support ticket c
 ### [Test-AzSupportTicketsNoSubscriptionNameAvailability](Test-AzSupportTicketsNoSubscriptionNameAvailability.md)
 Check the availability of a resource name.
 This API should be used to check the uniqueness of the name for support ticket creation for the selected subscription.
-
-### [Update-AzSupportCommunication](Update-AzSupportCommunication.md)
-Adds a new customer communication to an Azure support ticket.
-
-### [Update-AzSupportCommunicationsNoSubscription](Update-AzSupportCommunicationsNoSubscription.md)
-Adds a new customer communication to an Azure support ticket.
 
 ### [Update-AzSupportTicket](Update-AzSupportTicket.md)
 This API allows you to update the severity level, ticket status, advanced diagnostic consent and your contact information in the support ticket.\<br/\>\<br/\>Note: The severity levels cannot be changed if a support ticket is actively being worked upon by an Azure support engineer.
