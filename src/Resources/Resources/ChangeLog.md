@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.15.1
 * Fixed deadlock in Bicep CLI execution. [#24133]
 
 ## Version 6.15.0
