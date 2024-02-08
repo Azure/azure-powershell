@@ -72,6 +72,9 @@ directive:
       variant: ^CreateViaIdentity$
     remove: true
   - where:
+      variant: ^GetViaIdentity$
+    remove: true
+  - where:
       verb: Set
     remove: true
   - where:

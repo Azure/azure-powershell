@@ -24,11 +24,6 @@ Get-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName 
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzServiceBusQueue -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentityNamespace
 ```
 Get-AzServiceBusQueue -Name <String> -NamespaceInputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>]
@@ -101,22 +96,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

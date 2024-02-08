@@ -72,6 +72,9 @@ directive:
       variant: ^CreateViaIdentity$
     remove: true
   - where:
+      variant: ^GetViaIdentity$
+    remove: true
+  - where:
       variant: ^RegenerateExpanded$|^RegenerateViaIdentityExpanded$|^RegenerateViaIdentity$
     remove: true
   - where:
