@@ -8,13 +8,24 @@ schema: 2.0.0
 # Get-AzEventHubNamespace
 
 ## SYNOPSIS
-Lists all the available Namespaces within a subscription, irrespective of the resource groups.
+Gets the description of the specified namespace.
 
 ## SYNTAX
 
 ### List (Default)
 ```
 Get-AzEventHubNamespace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzEventHubNamespace -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
@@ -24,7 +35,7 @@ Get-AzEventHubNamespace -ResourceGroupName <String> [-SubscriptionId <String[]>]
 ```
 
 ## DESCRIPTION
-Lists all the available Namespaces within a subscription, irrespective of the resource groups.
+Gets the description of the specified namespace.
 
 ## EXAMPLES
 
@@ -104,12 +115,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The Namespace name
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: NamespaceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -125,7 +167,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -139,6 +181,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
 ## OUTPUTS
 

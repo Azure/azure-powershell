@@ -8,17 +8,35 @@ schema: 2.0.0
 # Get-AzEventHub
 
 ## SYNOPSIS
-Gets all the Event Hubs in a Namespace.
+Gets an Event Hubs description for the specified Event Hub.
 
 ## SYNTAX
 
+### List (Default)
 ```
 Get-AzEventHub -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### Get
+```
+Get-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzEventHub -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityNamespace
+```
+Get-AzEventHub -Name <String> -NamespaceInputObject <IEventHubIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Gets all the Event Hubs in a Namespace.
+Gets an Event Hubs description for the specified Event Hub.
 
 ## EXAMPLES
 
@@ -89,12 +107,59 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The Event Hub name
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentityNamespace
+Aliases: EventHubName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceInputObject
+Identity Parameter
+To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: GetViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NamespaceName
 The Namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -109,7 +174,7 @@ Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -125,7 +190,7 @@ If a previous response contains a nextLink element, the value of the nextLink el
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -141,7 +206,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -156,7 +221,7 @@ May be used to limit the number of results to the most recent N usageDetails.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -170,6 +235,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
 ## OUTPUTS
 

@@ -8,17 +8,35 @@ schema: 2.0.0
 # Get-AzServiceBusQueue
 
 ## SYNOPSIS
-Gets the queues within a namespace.
+Returns a description for the specified queue.
 
 ## SYNTAX
 
+### List (Default)
 ```
 Get-AzServiceBusQueue -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### Get
+```
+Get-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzServiceBusQueue -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityNamespace
+```
+Get-AzServiceBusQueue -Name <String> -NamespaceInputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Gets the queues within a namespace.
+Returns a description for the specified queue.
 
 ## EXAMPLES
 
@@ -86,12 +104,59 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The queue name.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentityNamespace
+Aliases: QueueName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceInputObject
+Identity Parameter
+To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: GetViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NamespaceName
 The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -106,7 +171,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -122,7 +187,7 @@ If a previous response contains a nextLink element, the value of the nextLink el
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -138,7 +203,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -153,7 +218,7 @@ May be used to limit the number of results to the most recent N usageDetails.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -168,6 +233,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue
@@ -175,6 +242,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+https://msdn.microsoft.com/en-us/library/azure/mt639380.aspx
 
 https://msdn.microsoft.com/en-us/library/azure/mt639415.aspx
 

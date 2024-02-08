@@ -18,16 +18,16 @@ Approves an EventHub PrivateEndpointConnection
 Denies an EventHub PrivateEndpointConnection
 
 ### [Get-AzEventHub](Get-AzEventHub.md)
-Gets all the Event Hubs in a Namespace.
+Gets an Event Hubs description for the specified Event Hub.
 
 ### [Get-AzEventHubApplicationGroup](Get-AzEventHubApplicationGroup.md)
-Gets a list of application groups for a Namespace.
+Gets an ApplicationGroup for a Namespace.
 
 ### [Get-AzEventHubAuthorizationRule](Get-AzEventHubAuthorizationRule.md)
 Gets an EventHub Authorization Rule
 
 ### [Get-AzEventHubCluster](Get-AzEventHubCluster.md)
-Lists the available Event Hubs Clusters within an ARM resource group
+Gets the resource description of the specified Event Hubs Cluster.
 
 ### [Get-AzEventHubClusterNamespace](Get-AzEventHubClusterNamespace.md)
 List all Event Hubs Namespace IDs in an Event Hubs Dedicated Cluster.
@@ -36,26 +36,28 @@ List all Event Hubs Namespace IDs in an Event Hubs Dedicated Cluster.
 List the quantity of available pre-provisioned Event Hubs Clusters, indexed by Azure region.
 
 ### [Get-AzEventHubConsumerGroup](Get-AzEventHubConsumerGroup.md)
-Gets all the consumer groups in a Namespace.
-An empty feed is returned if no consumer group exists in the Namespace.
+Gets a description for the specified consumer group.
 
 ### [Get-AzEventHubGeoDRConfiguration](Get-AzEventHubGeoDRConfiguration.md)
-Gets all Alias(Disaster Recovery configurations)
+Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 
 ### [Get-AzEventHubKey](Get-AzEventHubKey.md)
 Gets an EventHub SAS key
 
 ### [Get-AzEventHubNamespace](Get-AzEventHubNamespace.md)
-Lists all the available Namespaces within a subscription, irrespective of the resource groups.
+Gets the description of the specified namespace.
 
 ### [Get-AzEventHubNetworkRuleSet](Get-AzEventHubNetworkRuleSet.md)
 Gets NetworkRuleSet for a Namespace.
 
 ### [Get-AzEventHubPrivateEndpointConnection](Get-AzEventHubPrivateEndpointConnection.md)
-Gets the available PrivateEndpointConnections within a namespace.
+Gets a description for the specified Private Endpoint Connection name.
+
+### [Get-AzEventHubPrivateLink](Get-AzEventHubPrivateLink.md)
+Gets lists of resources that supports Privatelinks.
 
 ### [Get-AzEventHubSchemaGroup](Get-AzEventHubSchemaGroup.md)
-Gets all the Schema Groups in a Namespace.
+Gets the details of an EventHub schema group.
 
 ### [New-AzEventHub](New-AzEventHub.md)
 Create a new Event Hub as a nested resource within a Namespace.

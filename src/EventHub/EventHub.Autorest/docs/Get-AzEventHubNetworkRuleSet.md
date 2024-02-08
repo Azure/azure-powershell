@@ -12,6 +12,19 @@ Gets NetworkRuleSet for a Namespace.
 
 ## SYNTAX
 
+### Get (Default)
+```
+Get-AzEventHubNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzEventHubNetworkRuleSet -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List
 ```
 Get-AzEventHubNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -58,12 +71,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NamespaceName
 The Namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -78,7 +107,7 @@ Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -94,7 +123,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -109,7 +138,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+
 ## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkRuleSet
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkRuleSetListResult
 

@@ -25,34 +25,37 @@ Denies a ServiceBus PrivateEndpointConnection
 Gets the Authorization Rule of a ServiceBus namespace, queue or topic.
 
 ### [Get-AzServiceBusGeoDRConfiguration](Get-AzServiceBusGeoDRConfiguration.md)
-Gets all Alias(Disaster Recovery configurations)
+Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 
 ### [Get-AzServiceBusKey](Get-AzServiceBusKey.md)
 Gets the SASKey of a ServiceBus namespace, queue or topic.
 
 ### [Get-AzServiceBusMigration](Get-AzServiceBusMigration.md)
-Gets all migrationConfigurations
+Retrieves Migration Config
 
 ### [Get-AzServiceBusNamespace](Get-AzServiceBusNamespace.md)
-Gets all the available namespaces within the subscription, irrespective of the resource groups.
+Gets a description for the specified namespace.
 
 ### [Get-AzServiceBusNetworkRuleSet](Get-AzServiceBusNetworkRuleSet.md)
-Gets list of NetworkRuleSet for a Namespace.
+Gets NetworkRuleSet for a Namespace.
 
 ### [Get-AzServiceBusPrivateEndpointConnection](Get-AzServiceBusPrivateEndpointConnection.md)
-Gets the available PrivateEndpointConnections within a namespace.
+Gets a description for the specified Private Endpoint Connection.
+
+### [Get-AzServiceBusPrivateLink](Get-AzServiceBusPrivateLink.md)
+Gets lists of resources that supports Privatelinks.
 
 ### [Get-AzServiceBusQueue](Get-AzServiceBusQueue.md)
-Gets the queues within a namespace.
+Returns a description for the specified queue.
 
 ### [Get-AzServiceBusRule](Get-AzServiceBusRule.md)
-List all the rules within given topic-subscription
+Retrieves the description for the specified rule.
 
 ### [Get-AzServiceBusSubscription](Get-AzServiceBusSubscription.md)
-List all the subscriptions under a specified topic.
+Returns a subscription description for the specified topic.
 
 ### [Get-AzServiceBusTopic](Get-AzServiceBusTopic.md)
-Gets all the topics in a namespace.
+Returns a description for the specified topic.
 
 ### [New-AzServiceBusAuthorizationRule](New-AzServiceBusAuthorizationRule.md)
 Creates a ServiceBus Namespace, Queue, Topic Authorization Rule

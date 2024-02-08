@@ -44,6 +44,44 @@
       ]
     },
     {
+      "name": "Get-AzServiceBusMigration",
+      "description": "Retrieves Migration Config",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusmigration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-NamespaceName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Retrieves Migration Config",
+          "parameters": [
+            {
+              "name": "-NamespaceName",
+              "value": "[Path.namespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Remove-AzServiceBusMigration",
       "description": "Deletes a MigrationConfiguration",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}",
