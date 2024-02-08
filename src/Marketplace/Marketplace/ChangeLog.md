@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
 * Added new features and capabilities to user and marketplace-admins:
     - Approve offer and plans with subscription granularity.
     - Enable\Disable Approve-All-Products on a collection.
