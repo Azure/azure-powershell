@@ -66,7 +66,7 @@ keep-pec-and-plr: true
 
 directive:
   - where:
-      variant: ^(Create|Update|Get)(?!.*?Expanded)
+      variant: ^(Create|Update)(?!.*?Expanded)
     remove: true
   - where:
       variant: ^CreateViaIdentity$
