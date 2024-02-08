@@ -19,10 +19,10 @@ New-AzServiceBusGeoDRConfiguration -Name <String> -NamespaceName <String> -Resou
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityNamespace
+### CreateViaIdentityExpanded
 ```
-New-AzServiceBusGeoDRConfiguration -Name <String> -NamespaceInputObject <IServiceBusIdentity>
- -Parameter <IArmDisasterRecovery> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+New-AzServiceBusGeoDRConfiguration -InputObject <IServiceBusIdentity> [-AlternateName <String>]
+ [-PartnerNamespace <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -31,20 +31,6 @@ New-AzServiceBusGeoDRConfiguration -Name <String> -NamespaceInputObject <IServic
 New-AzServiceBusGeoDRConfiguration -Name <String> -NamespaceInputObject <IServiceBusIdentity>
  [-AlternateName <String>] [-PartnerNamespace <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzServiceBusGeoDRConfiguration -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzServiceBusGeoDRConfiguration -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +65,7 @@ Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -105,33 +91,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -140,7 +112,7 @@ The Disaster Recovery configuration name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: True
@@ -156,7 +128,7 @@ To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: CreateViaIdentityNamespace, CreateViaIdentityNamespaceExpanded
+Parameter Sets: CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: True
@@ -171,7 +143,7 @@ The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -181,28 +153,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Single item in List or Get Alias(Disaster Recovery configuration) operation
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery
-Parameter Sets: CreateViaIdentityNamespace
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PartnerNamespace
 ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -232,7 +188,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -248,7 +204,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -293,8 +249,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 

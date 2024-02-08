@@ -22,10 +22,14 @@ New-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String
  [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityNamespace
+### CreateViaIdentityExpanded
 ```
-New-AzEventHub -Name <String> -NamespaceInputObject <IEventHubIdentity> -Parameter <IEventhub>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzEventHub -InputObject <IEventHubIdentity> [-ArchiveNameFormat <String>] [-BlobContainer <String>]
+ [-CaptureEnabled] [-CleanupPolicy <String>] [-DestinationName <String>] [-Encoding <String>]
+ [-IdentityType <String>] [-IntervalInSeconds <Int32>] [-PartitionCount <Int64>]
+ [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <String>]
+ [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
+ [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespaceExpanded
@@ -36,18 +40,6 @@ New-AzEventHub -Name <String> -NamespaceInputObject <IEventHubIdentity> [-Archiv
  [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <String>]
  [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
  [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -180,7 +172,7 @@ etc) are mandatory irrespective of order
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -195,7 +187,7 @@ Blob container Name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -210,7 +202,7 @@ A value that indicates whether capture description is enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -225,7 +217,7 @@ Enumerates the possible values for cleanup policy
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -256,7 +248,7 @@ Name for capture destination
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -272,7 +264,7 @@ Note: 'AvroDeflate' will be deprecated in New API Version
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -287,13 +279,29 @@ Type of Azure Active Directory Managed Identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -302,40 +310,10 @@ The time window allows you to set the frequency with which the capture to Azure 
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -347,7 +325,7 @@ The Event Hub name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases: EventHubName
 
 Required: True
@@ -363,7 +341,7 @@ To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
-Parameter Sets: CreateViaIdentityNamespace, CreateViaIdentityNamespaceExpanded
+Parameter Sets: CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: True
@@ -378,7 +356,7 @@ The Namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -388,28 +366,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Single item in List or Get Event Hub operation
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub
-Parameter Sets: CreateViaIdentityNamespace
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PartitionCount
 Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -424,7 +386,7 @@ Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -441,7 +403,7 @@ If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
 
 ```yaml
 Type: System.Int64
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -456,7 +418,7 @@ The size window defines the amount of data built up in your Event Hub before an 
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -471,7 +433,7 @@ A value that indicates whether to Skip Empty Archives
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -486,7 +448,7 @@ Enumerates the possible values for the status of the Event Hub.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -501,7 +463,7 @@ Resource id of the storage account to be used to create the blobs
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -517,7 +479,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -534,7 +496,7 @@ Consumer must complete reading the tombstone marker within this specified amount
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -551,7 +513,7 @@ If type is SystemAssigned, then the System Assigned Identity Associated with the
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -596,8 +558,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 

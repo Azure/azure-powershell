@@ -23,10 +23,14 @@ New-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGro
  [-Status <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityNamespace
+### CreateViaIdentityExpanded
 ```
-New-AzServiceBusSubscription -Name <String> -NamespaceInputObject <IServiceBusIdentity> -TopicName <String>
- -Parameter <ISbSubscription> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzServiceBusSubscription -InputObject <IServiceBusIdentity> [-AutoDeleteOnIdle <TimeSpan>]
+ [-ClientId <String>] [-DeadLetteringOnFilterEvaluationException] [-DeadLetteringOnMessageExpiration]
+ [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
+ [-EnableBatchedOperations] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine]
+ [-IsDurable] [-IsShared] [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession]
+ [-Status <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespaceExpanded
@@ -40,12 +44,6 @@ New-AzServiceBusSubscription -Name <String> -NamespaceInputObject <IServiceBusId
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityTopic
-```
-New-AzServiceBusSubscription -Name <String> -TopicInputObject <IServiceBusIdentity>
- -Parameter <ISbSubscription> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaIdentityTopicExpanded
 ```
 New-AzServiceBusSubscription -Name <String> -TopicInputObject <IServiceBusIdentity>
@@ -55,20 +53,6 @@ New-AzServiceBusSubscription -Name <String> -TopicInputObject <IServiceBusIdenti
  [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine] [-IsDurable] [-IsShared]
  [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession] [-Status <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,7 +107,7 @@ The minimum duration is 5 minutes.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -138,7 +122,7 @@ Indicates the Client ID of the application that created the client-affine subscr
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -153,7 +137,7 @@ Value that indicates whether a subscription has dead letter support on filter ev
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -168,7 +152,7 @@ Value that indicates whether a subscription has dead letter support when a messa
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -184,7 +168,7 @@ This is the default value used when TimeToLive is not set on a message itself.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -216,7 +200,7 @@ The default value is 10 minutes.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -231,7 +215,7 @@ Value that indicates whether server-side batched operations are enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -246,7 +230,7 @@ Queue/Topic name to forward the Dead Letter message
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -261,7 +245,7 @@ Queue/Topic name to forward the messages
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -271,12 +255,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -IsClientAffine
 Value that indicates whether the subscription has an affinity to the client id.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -291,7 +291,7 @@ For client-affine subscriptions, this value indicates whether the subscription i
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -306,40 +306,10 @@ For client-affine subscriptions, this value indicates whether the subscription i
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -352,7 +322,7 @@ The maximum value for LockDuration is 5 minutes; the default value is 1 minute.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -367,7 +337,7 @@ Number of maximum deliveries.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -382,7 +352,7 @@ The subscription name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
 Aliases: SubscriptionName
 
 Required: True
@@ -398,7 +368,7 @@ To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: CreateViaIdentityNamespace, CreateViaIdentityNamespaceExpanded
+Parameter Sets: CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: True
@@ -413,7 +383,7 @@ The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -423,28 +393,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Description of subscription resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription
-Parameter Sets: CreateViaIdentityNamespace, CreateViaIdentityTopic
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -RequiresSession
 Value indicating if a subscription supports the concept of sessions.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -459,7 +413,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -474,7 +428,7 @@ Enumerates the possible values for the status of a messaging entity.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -490,7 +444,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -506,7 +460,7 @@ To construct, see NOTES section for TOPICINPUTOBJECT properties and create a has
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: CreateViaIdentityTopic, CreateViaIdentityTopicExpanded
+Parameter Sets: CreateViaIdentityTopicExpanded
 Aliases:
 
 Required: True
@@ -521,7 +475,7 @@ The topic name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespace, CreateViaIdentityNamespaceExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: True
@@ -566,8 +520,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 

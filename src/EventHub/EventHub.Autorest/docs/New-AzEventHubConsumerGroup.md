@@ -19,42 +19,22 @@ New-AzEventHubConsumerGroup -EventHubName <String> -Name <String> -NamespaceName
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityEventhub
-```
-New-AzEventHubConsumerGroup -EventhubInputObject <IEventHubIdentity> -Name <String>
- -Parameter <IConsumerGroup> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaIdentityEventhubExpanded
 ```
 New-AzEventHubConsumerGroup -EventhubInputObject <IEventHubIdentity> -Name <String> [-UserMetadata <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityNamespace
+### CreateViaIdentityExpanded
 ```
-New-AzEventHubConsumerGroup -EventHubName <String> -Name <String> -NamespaceInputObject <IEventHubIdentity>
- -Parameter <IConsumerGroup> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzEventHubConsumerGroup -InputObject <IEventHubIdentity> [-UserMetadata <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespaceExpanded
 ```
 New-AzEventHubConsumerGroup -EventHubName <String> -Name <String> -NamespaceInputObject <IEventHubIdentity>
  [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzEventHubConsumerGroup -EventHubName <String> -Name <String> -NamespaceName <String>
- -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzEventHubConsumerGroup -EventHubName <String> -Name <String> -NamespaceName <String>
- -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,7 +84,7 @@ To construct, see NOTES section for EVENTHUBINPUTOBJECT properties and create a 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
-Parameter Sets: CreateViaIdentityEventhub, CreateViaIdentityEventhubExpanded
+Parameter Sets: CreateViaIdentityEventhubExpanded
 Aliases:
 
 Required: True
@@ -119,7 +99,7 @@ The Event Hub name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespace, CreateViaIdentityNamespaceExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: True
@@ -129,33 +109,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -164,7 +130,7 @@ The consumer group name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityEventhubExpanded, CreateViaIdentityNamespaceExpanded
 Aliases: ConsumerGroupName
 
 Required: True
@@ -180,7 +146,7 @@ To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
-Parameter Sets: CreateViaIdentityNamespace, CreateViaIdentityNamespaceExpanded
+Parameter Sets: CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: True
@@ -195,7 +161,7 @@ The Namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -205,28 +171,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Single item in List or Get Consumer group operation
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup
-Parameter Sets: CreateViaIdentityEventhub, CreateViaIdentityNamespace
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -242,7 +192,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -259,7 +209,7 @@ it can be used to store descriptive data, such as list of teams and their contac
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityEventhubExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -304,8 +254,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
