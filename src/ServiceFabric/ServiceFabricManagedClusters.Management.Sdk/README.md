@@ -10,7 +10,8 @@ In this directory, run AutoRest:
 ``` yaml
 
 isSdkGenerator: true
-powershell: true
+#powershell: true
+csharp : true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
@@ -18,16 +19,31 @@ azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
 payload-flattening-threshold: 2
 
-use-extension:
-  "@autorest/powershell": "4.x"
+#use-extension:
+#  "@autorest/powershell": "4.x"
 
-commit: c74e0b0b6aa869fdd6f6d76984fc2b2610bc64a8
+commit: 2ce7ebed8b2fbcce991d2839ba0ba712f9a0d12b
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/servicefabricmanagedclusters/resource-manager/Microsoft.ServiceFabric/preview/2023-12-01-preview/managedcluster.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/servicefabricmanagedclusters/resource-manager/Microsoft.ServiceFabric/preview/2023-12-01-preview/nodetype.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/servicefabricmanagedclusters/resource-manager/Microsoft.ServiceFabric/preview/2023-12-01-preview/managedapplication.json
 
-output-folder: Generated
+directive:
+  - from: managedapplication.json
+    where: $.definitions
+    transform: >
+      $.HealthCheckWaitDuration['x-ms-format'] = 'duration-constant';
+      $.HealthCheckStableDuration['x-ms-format'] = 'duration-constant';
+      $.HealthCheckRetryTimeout['x-ms-format'] = 'duration-constant';
+      $.UpgradeDomainTimeout['x-ms-format'] = 'duration-constant';
+      $.UpgradeTimeout['x-ms-format'] = 'duration-constant';
+      $.StatefulServiceProperties.properties.replicaRestartWaitDuration['x-ms-format'] = 'duration-constant';
+      $.StatefulServiceProperties.properties.quorumLossWaitDuration['x-ms-format'] = 'duration-constant';
+      $.StatefulServiceProperties.properties.standByReplicaKeepDuration['x-ms-format'] = 'duration-constant';
+      $.StatefulServiceProperties.properties.servicePlacementTimeLimit['x-ms-format'] = 'duration-constant';
+
+#output-folder: Generated
+output-folder: Generated.Csharp
 
 namespace: Microsoft.Azure.Management.ServiceFabricManagedClusters
 
