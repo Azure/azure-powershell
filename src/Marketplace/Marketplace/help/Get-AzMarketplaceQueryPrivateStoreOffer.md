@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Marketplace-help.xml
 Module Name: Az.Marketplace
 online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplacequeryprivatestoreoffer
 schema: 2.0.0
@@ -14,14 +14,14 @@ List of offers, regardless the collections
 
 ### Query (Default)
 ```
-Get-AzMarketplaceQueryPrivateStoreOffer -PrivateStoreId <String> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzMarketplaceQueryPrivateStoreOffer -PrivateStoreId <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### QueryViaIdentity
 ```
 Get-AzMarketplaceQueryPrivateStoreOffer -InputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,6 @@ CreatedAt ETag                                   ModifiedAt OfferDisplayName Pri
           "ef00ab05-0000-0100-0000-61a5f12f0000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {RedHatEnterpriseLinux72-ARM}                                                 RedHat.RHEL_7
           "f300276b-0000-0100-0000-61a7e1af0000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {128technology_conductor_hourly_427, 128technology_conductor_hourly_452}      128technolog…
           "f300296b-0000-0100-0000-61a7e1af0000"                             3ac32d8c-e888-4dc6-b4ff-be4d755af13a                      {128technology_router_100_hourly_427, 128technology_router_100_hourly_452}    128technolog…
-
 ```
 
 This command returns private store offer regardless of collections
@@ -89,6 +88,21 @@ Parameter Sets: Query
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -155,4 +169,3 @@ INPUTOBJECT `<IMarketplaceIdentity>`: Identity Parameter
   - `[RequestApprovalId <String>]`: The request approval ID to get create or update
 
 ## RELATED LINKS
-

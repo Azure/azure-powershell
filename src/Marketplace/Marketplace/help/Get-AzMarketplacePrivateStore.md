@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.dll-Help.xml
 Module Name: Az.Marketplace
-online version:https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestore
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestore
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Get private store list
 ## SYNTAX
 
 ```
-Get-AzMarketplacePrivateStore [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzMarketplacePrivateStore [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +47,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

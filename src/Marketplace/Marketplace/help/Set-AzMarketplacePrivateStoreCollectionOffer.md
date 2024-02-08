@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Marketplace-help.xml
 Module Name: Az.Marketplace
 online version: https://learn.microsoft.com/powershell/module/az.marketplace/set-azmarketplaceprivatestorecollectionoffer
 schema: 2.0.0
@@ -12,10 +12,26 @@ Update or add an offer to a specific collection of the private store.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
 Set-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String> -PrivateStoreId <String>
  [-ETag <String>] [-IconFileUri <Hashtable>] [-Plan <IPlan[]>] [-SpecificPlanIdLimitation <String[]>]
- [-UpdateSuppressedDueIdempotence] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UpdateSuppressedDueIdempotence] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Set-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String> -PrivateStoreId <String>
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Set-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String> -PrivateStoreId <String>
+ -JsonString <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +39,7 @@ Update or add an offer to a specific collection of the private store.
 
 ## EXAMPLES
 
-### Example 1: Creates or updates offer to private store collection 
+### Example 1: Creates or updates offer to private store collection
 ```powershell
 $acc = @{Accessibility = "azure_managedservices_professional"}
 New-AzMarketplacePrivateStoreCollectionOffer -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 -PrivateStoreId 7f5402e4-e8f4-46bd-9bd1-8d27866a606b  -OfferId aumatics.azure_managedservices -Plan $acc
@@ -74,7 +90,7 @@ Identifier for purposes of race condition
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -89,10 +105,40 @@ Icon File Uris
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -119,8 +165,8 @@ Offer plans
 To construct, see NOTES section for PLAN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IPlan[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IPlan[]
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -145,12 +191,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SpecificPlanIdLimitation
 Plan ids limitation for this offer
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -166,7 +227,7 @@ If the allow list is identical to the existed one in db, the offer would not be 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -229,4 +290,3 @@ PLAN <IPlan[]>: Offer plans
   - `[Accessibility <Accessibility?>]`: Plan accessibility
 
 ## RELATED LINKS
-

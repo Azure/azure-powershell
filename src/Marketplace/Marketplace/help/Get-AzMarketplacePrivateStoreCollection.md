@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Marketplace-help.xml
 Module Name: Az.Marketplace
 online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorecollection
 schema: 2.0.0
@@ -15,19 +15,25 @@ Gets private store collection
 ### List (Default)
 ```
 Get-AzMarketplacePrivateStoreCollection -PrivateStoreId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentityPrivateStore
+```
+Get-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreInputObject <IMarketplaceIdentity>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzMarketplacePrivateStoreCollection -InputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +51,6 @@ Name                                 SystemDataCreatedAt  SystemDataCreatedBy Sy
 ----                                 -------------------  ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
 53425a7b-4ac1-4729-8340-e1da5046212c                                          User                    8/23/2021 6:06:52 AM                              User
 23455a7b-4ac1-4729-8340-e1da5046212c 12/1/2021 9:01:33 PM                     User                    12/1/2021 9:01:33 PM                              User
-
 ```
 
 This command gets list of private store collections
@@ -57,7 +62,7 @@ The collection ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityPrivateStore, Get
 Aliases:
 
 Required: True
@@ -103,10 +108,41 @@ The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateStoreInputObject
+Identity Parameter
+To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+Parameter Sets: GetViaIdentityPrivateStore
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -144,4 +180,3 @@ INPUTOBJECT `<IMarketplaceIdentity>`: Identity Parameter
   - `[RequestApprovalId <String>]`: The request approval ID to get create or update
 
 ## RELATED LINKS
-

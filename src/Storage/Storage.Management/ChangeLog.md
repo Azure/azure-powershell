@@ -18,11 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed parser logic when downloading blob from managed disk account with Sas Uri and bearer token on Linux and MacOS
+    - `Get-AzStorageBlobContent`
+
+## Version 6.1.1
 * Removed some code branches referencing Microsoft.Azure.Storage.Blob
     - `Get-AzStorageBlob`
 * Updated the prompt message when deleting a share snapshot and the output format when listing 
     - `Remove-AzStorageShare`
-    - `Remove-AzRmStorageSahre`
+    - `Remove-AzRmStorageShare`
     - `Get-AzRmStorageShare`
 
 ## Version 6.1.0
