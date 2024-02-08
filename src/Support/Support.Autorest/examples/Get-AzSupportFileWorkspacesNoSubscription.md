@@ -1,22 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a file workspace
 ```powershell
-{{ Add code here }}
+Get-AzSupportFileWorkspacesNoSubscription -Name "testworkspace"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+CreatedOn                    : 2/8/2024 4:25:38 PM
+ExpirationTime               : 2/9/2024 4:25:38 PM
+Id                           : /providers/Microsoft.Support/fileWorkspaces/testworkspace
+Name                         : testworkspace
+ResourceGroupName            :
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Support/fileWorkspaces
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Gets details for a specific file workspace.
