@@ -8,19 +8,13 @@ schema: 2.0.0
 # Get-AzEventHubCluster
 
 ## SYNOPSIS
-Gets the resource description of the specified Event Hubs Cluster.
+Lists the available Event Hubs Clusters within an ARM resource group
 
 ## SYNTAX
 
 ### List (Default)
 ```
 Get-AzEventHubCluster [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzEventHubCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
@@ -30,7 +24,7 @@ Get-AzEventHubCluster -ResourceGroupName <String> [-SubscriptionId <String[]>] [
 ```
 
 ## DESCRIPTION
-Gets the resource description of the specified Event Hubs Cluster.
+Lists the available Event Hubs Clusters within an ARM resource group
 
 ## EXAMPLES
 
@@ -73,27 +67,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the Event Hubs Cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: ClusterName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: List1
 Aliases:
 
 Required: True

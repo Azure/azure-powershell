@@ -8,19 +8,13 @@ schema: 2.0.0
 # Get-AzServiceBusNamespace
 
 ## SYNOPSIS
-Gets a description for the specified namespace.
+Gets all the available namespaces within the subscription, irrespective of the resource groups.
 
 ## SYNTAX
 
 ### List (Default)
 ```
 Get-AzServiceBusNamespace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
@@ -30,7 +24,7 @@ Get-AzServiceBusNamespace -ResourceGroupName <String> [-SubscriptionId <String[]
 ```
 
 ## DESCRIPTION
-Gets a description for the specified namespace.
+Gets all the available namespaces within the subscription, irrespective of the resource groups.
 
 ## EXAMPLES
 
@@ -129,27 +123,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The namespace name
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: NamespaceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: List1
 Aliases:
 
 Required: True
@@ -191,8 +170,6 @@ ALIASES
 Get-AzServiceBusNamespaceV2
 
 ## RELATED LINKS
-
-https://msdn.microsoft.com/en-us/library/azure/mt639379.aspx
 
 https://msdn.microsoft.com/en-us/library/azure/mt639412.aspx
 

@@ -12,13 +12,6 @@ Gets NetworkRuleSet for a Namespace.
 
 ## SYNTAX
 
-### Get (Default)
-```
-Get-AzEventHubNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
 ```
 Get-AzEventHubNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -117,8 +110,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkRuleSet
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkRuleSetListResult
 

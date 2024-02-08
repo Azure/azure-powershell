@@ -8,24 +8,17 @@ schema: 2.0.0
 # Get-AzServiceBusMigration
 
 ## SYNOPSIS
-Retrieves Migration Config
+Gets all migrationConfigurations
 
 ## SYNTAX
 
-### Get (Default)
-```
-Get-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
 ```
 Get-AzServiceBusMigration -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Retrieves Migration Config
+Gets all migrationConfigurations
 
 ## EXAMPLES
 

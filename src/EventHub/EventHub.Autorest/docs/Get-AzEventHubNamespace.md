@@ -8,19 +8,13 @@ schema: 2.0.0
 # Get-AzEventHubNamespace
 
 ## SYNOPSIS
-Gets the description of the specified namespace.
+Lists all the available Namespaces within a subscription, irrespective of the resource groups.
 
 ## SYNTAX
 
 ### List (Default)
 ```
 Get-AzEventHubNamespace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
@@ -30,7 +24,7 @@ Get-AzEventHubNamespace -ResourceGroupName <String> [-SubscriptionId <String[]>]
 ```
 
 ## DESCRIPTION
-Gets the description of the specified namespace.
+Lists all the available Namespaces within a subscription, irrespective of the resource groups.
 
 ## EXAMPLES
 
@@ -110,27 +104,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The Namespace name
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: NamespaceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: List1
 Aliases:
 
 Required: True

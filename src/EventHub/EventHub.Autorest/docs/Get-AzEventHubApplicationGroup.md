@@ -8,30 +8,17 @@ schema: 2.0.0
 # Get-AzEventHubApplicationGroup
 
 ## SYNOPSIS
-Gets an ApplicationGroup for a Namespace.
+Gets a list of application groups for a Namespace.
 
 ## SYNTAX
 
-### List (Default)
 ```
 Get-AzEventHubApplicationGroup -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get
-```
-Get-AzEventHubApplicationGroup -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityNamespace
-```
-Get-AzEventHubApplicationGroup -Name <String> -NamespaceInputObject <IEventHubIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Gets an ApplicationGroup for a Namespace.
+Gets a list of application groups for a Namespace.
 
 ## EXAMPLES
 
@@ -88,43 +75,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The Application Group name
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetViaIdentityNamespace
-Aliases: ApplicationGroupName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NamespaceInputObject
-Identity Parameter
-To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
-Parameter Sets: GetViaIdentityNamespace
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -NamespaceName
 The Namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -139,7 +95,7 @@ Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -155,7 +111,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -169,8 +125,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
 ## OUTPUTS
 

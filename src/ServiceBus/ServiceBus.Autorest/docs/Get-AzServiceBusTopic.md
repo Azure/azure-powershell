@@ -8,30 +8,17 @@ schema: 2.0.0
 # Get-AzServiceBusTopic
 
 ## SYNOPSIS
-Returns a description for the specified topic.
+Gets all the topics in a namespace.
 
 ## SYNTAX
 
-### List (Default)
 ```
 Get-AzServiceBusTopic -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get
-```
-Get-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityNamespace
-```
-Get-AzServiceBusTopic -Name <String> -NamespaceInputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Returns a description for the specified topic.
+Gets all the topics in a namespace.
 
 ## EXAMPLES
 
@@ -89,43 +76,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The topic name.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetViaIdentityNamespace
-Aliases: TopicName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NamespaceInputObject
-Identity Parameter
-To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: GetViaIdentityNamespace
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -NamespaceName
 The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -140,7 +96,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -156,7 +112,7 @@ If a previous response contains a nextLink element, the value of the nextLink el
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -172,7 +128,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -187,7 +143,7 @@ May be used to limit the number of results to the most recent N usageDetails.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -202,8 +158,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic
@@ -211,8 +165,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-https://msdn.microsoft.com/en-us/library/azure/mt639399.aspx
 
 https://msdn.microsoft.com/en-us/library/azure/mt639388.aspx
 

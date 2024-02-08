@@ -8,24 +8,17 @@ schema: 2.0.0
 # Get-AzServiceBusNetworkRuleSet
 
 ## SYNOPSIS
-Gets NetworkRuleSet for a Namespace.
+Gets list of NetworkRuleSet for a Namespace.
 
 ## SYNTAX
 
-### Get (Default)
-```
-Get-AzServiceBusNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
 ```
 Get-AzServiceBusNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets NetworkRuleSet for a Namespace.
+Gets list of NetworkRuleSet for a Namespace.
 
 ## EXAMPLES
 

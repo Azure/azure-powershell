@@ -8,36 +8,19 @@ schema: 2.0.0
 # Get-AzEventHubConsumerGroup
 
 ## SYNOPSIS
-Gets a description for the specified consumer group.
+Gets all the consumer groups in a Namespace.
+An empty feed is returned if no consumer group exists in the Namespace.
 
 ## SYNTAX
 
-### List (Default)
 ```
 Get-AzEventHubConsumerGroup -EventHubName <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get
-```
-Get-AzEventHubConsumerGroup -EventHubName <String> -Name <String> -NamespaceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityEventhub
-```
-Get-AzEventHubConsumerGroup -EventhubInputObject <IEventHubIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityNamespace
-```
-Get-AzEventHubConsumerGroup -EventHubName <String> -Name <String> -NamespaceInputObject <IEventHubIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Gets a description for the specified consumer group.
+Gets all the consumer groups in a Namespace.
+An empty feed is returned if no consumer group exists in the Namespace.
 
 ## EXAMPLES
 
@@ -84,65 +67,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EventhubInputObject
-Identity Parameter
-To construct, see NOTES section for EVENTHUBINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
-Parameter Sets: GetViaIdentityEventhub
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -EventHubName
 The Event Hub name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityNamespace, List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The consumer group name
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetViaIdentityEventhub, GetViaIdentityNamespace
-Aliases: ConsumerGroupName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NamespaceInputObject
-Identity Parameter
-To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
-Parameter Sets: GetViaIdentityNamespace
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -151,7 +87,7 @@ The Namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -166,7 +102,7 @@ Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -182,7 +118,7 @@ If a previous response contains a nextLink element, the value of the nextLink el
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -198,7 +134,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -213,7 +149,7 @@ May be used to limit the number of results to the most recent N usageDetails.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -227,8 +163,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
 ## OUTPUTS
 
