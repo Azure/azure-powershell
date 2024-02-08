@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed deadlock in Bicep CLI execution. [#24133]
 
 ## Version 6.15.0
 * Supported `-SkipClientSideScopeValidation` in RoleAssignment and RoleDefinition related commands. [#22473]
