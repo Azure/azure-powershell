@@ -97,7 +97,7 @@ pac95,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac96,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ManagementPartner.0.7.3.nupkg;sourceType=sa]Az.ManagementPartner,0.7.3
 pac97,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Maps.0.8.0.nupkg;sourceType=sa]Az.Maps,0.8.0
 pac98,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MariaDb.0.2.1.nupkg;sourceType=sa]Az.MariaDb,0.2.1
-pac99,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Marketplace.0.3.0.nupkg;sourceType=sa]Az.Marketplace,0.3.0
+pac99,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Marketplace.0.4.0.nupkg;sourceType=sa]Az.Marketplace,0.4.0
 pac100,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MarketplaceOrdering.2.0.0.nupkg;sourceType=sa]Az.MarketplaceOrdering,2.0.0
 pac101,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Media.1.1.2.nupkg;sourceType=sa]Az.Media,1.1.2
 pac102,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Migrate.2.3.0.nupkg;sourceType=sa]Az.Migrate,2.3.0
