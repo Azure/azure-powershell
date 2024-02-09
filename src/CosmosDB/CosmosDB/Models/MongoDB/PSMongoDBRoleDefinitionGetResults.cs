@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.MongoDB
 
             RoleName = mongoRoleDefinitionGetResults.RoleName;
             Id = mongoRoleDefinitionGetResults.Id;
-            Type = mongoRoleDefinitionGetResults.PropertiesType.ToString();
+            Type = mongoRoleDefinitionGetResults.MongoRoleDefinitionGetResultsType.ToString();
             DatabaseName = mongoRoleDefinitionGetResults.DatabaseName;
             Privileges = new List<Privilege>(mongoRoleDefinitionGetResults.Privileges);
             Roles = new List<Role>(mongoRoleDefinitionGetResults.Roles);

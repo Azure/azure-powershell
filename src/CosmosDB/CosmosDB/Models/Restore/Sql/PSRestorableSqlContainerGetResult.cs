@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             Id = restorableSqlContainerGetResult.Id;
             Name = restorableSqlContainerGetResult.Name;
             Type = restorableSqlContainerGetResult.Type;
-            _rid = restorableSqlContainerGetResult.Resource.Rid;
+            _rid = restorableSqlContainerGetResult.Resource._rid;
             OperationType = restorableSqlContainerGetResult.Resource.OperationType;
             EventTimestamp = restorableSqlContainerGetResult.Resource.EventTimestamp;
             OwnerId = restorableSqlContainerGetResult.Resource.OwnerId;

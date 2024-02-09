@@ -98,22 +98,26 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
             }
-            if (EnablePartitionMerge != null)
-            {
-                databaseAccountUpdateParameters.EnablePartitionMerge = EnablePartitionMerge;
-            }
             if (EnableBurstCapacity != null)
             {
                 databaseAccountUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
+            }
+            if(EnableMaterializedViews != null)
+            {
+                databaseAccountUpdateParameters.EnableMaterializedViews = EnableMaterializedViews;
             }
             if (NetworkAclBypass != null)
             {
                 databaseAccountUpdateParameters.NetworkAclBypass =
                     NetworkAclBypass == "AzureServices" ? SDKModel.NetworkAclBypass.AzureServices : SDKModel.NetworkAclBypass.None;
             }
-            if(MinimalTlsVersion != null)
+            if (EnablePriorityBasedExecution != null)
             {
-                databaseAccountUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
+                databaseAccountUpdateParameters.EnablePriorityBasedExecution = EnablePriorityBasedExecution;
+            }
+            if (DefaultPriorityLevel != null)
+            {
+                databaseAccountUpdateParameters.DefaultPriorityLevel = DefaultPriorityLevel;
             }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
@@ -149,7 +153,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (IpRule != null)
             {
                 // not checking IpRules.Length > 0, to handle the removal of IpRules case
-                databaseAccountUpdateParameters.IPRules = base.PopulateIpRules(IpRule);
+                databaseAccountUpdateParameters.IpRules = base.PopulateIpRules(IpRule);
             }
 
             if (ServerVersion != null)
@@ -196,7 +200,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            // Update backup policy to ContinuousModeBackupPolicy
             if (!string.IsNullOrEmpty(ContinuousTier))
             {
                 if (!(!string.IsNullOrEmpty(BackupPolicyType) &&

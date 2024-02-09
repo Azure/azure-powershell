@@ -46,13 +46,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSqlInAccountRestoreOperationsNoTimestampCmdlets()
-        {
-            TestRunner.RunTestScript("Test-SqlInAccountRestoreOperationsNoTimestampCmdlets");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlInAccountRestoreOperationsSharedResourcesCmdlets()
         {
             TestRunner.RunTestScript("Test-SqlInAccountRestoreOperationsSharedResourcesCmdlets");
@@ -74,6 +67,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlMaterializedViewCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlMaterializedViewCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlRoleCmdlets()
         {
             TestRunner.RunTestScript("Test-SqlRoleCmdlets");
@@ -91,6 +91,34 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         public void TestClientEncryptionKeyCmdletsUsingInputObject()
         {
             TestRunner.RunTestScript("Test-ClientEncryptionKeyCmdletsUsingInputObject");
+        }
+
+        [Fact(Skip = "Cannot acquire token credential for a specific audience. No support from test framework. I have verified the tests manually.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlContainerMergeCmdlet()
+        {
+            TestRunner.RunTestScript("Test-SqlContainerMergeCmdlet");
+        }
+
+        [Fact(Skip = "Cannot acquire token credential for a specific audience. No support from test framework. I have verified the tests manually.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlDatabaseMergeCmdlet()
+        {
+            TestRunner.RunTestScript("Test-SqlDatabaseMergeCmdlet");
+        }
+
+        [Fact(Skip = "Cannot acquire token credential for a specific audience. No support from test framework. I have verified the tests manually.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlContainerAdaptiveRUCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlContainerAdaptiveRUCmdlets");
+        }
+
+        [Fact(Skip = "Cannot acquire token credential for a specific audience. No support from test framework. I have verified the tests manually.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSqlDatabaseAdaptiveRUCmdlets()
+        {
+            TestRunner.RunTestScript("Test-SqlDatabaseAdaptiveRUCmdlets");
         }
     }
 }

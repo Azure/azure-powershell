@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             ConsistencyPolicy = databaseAccountGetResults.ConsistencyPolicy;
             EnableAutomaticFailover = databaseAccountGetResults.EnableAutomaticFailover;
             IsVirtualNetworkFilterEnabled = databaseAccountGetResults.IsVirtualNetworkFilterEnabled;
-            IpRules = databaseAccountGetResults.IPRules;
+            IpRules = databaseAccountGetResults.IpRules;
             DatabaseAccountOfferType = databaseAccountGetResults.DatabaseAccountOfferType;
             DocumentEndpoint = databaseAccountGetResults.DocumentEndpoint;
             ProvisioningState = databaseAccountGetResults.ProvisioningState;
@@ -67,8 +67,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             RestoreParameters = new PSRestoreParameters(databaseAccountGetResults.RestoreParameters);
             CreateMode = databaseAccountGetResults.CreateMode;
             AnalyticalStorageConfiguration = new PSAnalyticalStorageConfiguration(databaseAccountGetResults.AnalyticalStorageConfiguration);
-            EnablePartitionMerge = databaseAccountGetResults.EnablePartitionMerge;
-            MinimalTlsVersion = databaseAccountGetResults.MinimalTlsVersion;
+            EnableMaterializedViews = databaseAccountGetResults.EnableMaterializedViews;
+            EnablePriorityBasedExecution = databaseAccountGetResults.EnablePriorityBasedExecution;
+            DefaultPriorityLevel = databaseAccountGetResults.DefaultPriorityLevel;
         }
 
         //
@@ -177,6 +178,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets the URI of the key vault
         public string KeyVaultKeyUri { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the URI of the key vault
+        public string CustomerManagedKeyStatus { get; set; }
+        //
+        // Summary:
         //     Gets or sets list of Private Endpoint Connections configured for the Cosmos DB account.
         public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; set; }
         //
@@ -195,15 +202,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets flag to indicate whether burst capacity is enabled.
         public bool? EnableBurstCapacity { get; set; }
-        //
-        // Summary:
-        //     Indicates the status of the Customer Managed Key feature on the account. In
-        /// case there are errors, the property provides troubleshooting guidance.
-        public string CustomerManagedKeyStatus { get; set; }
-        //
-        // Summary:
-        //     Gets or sets flag to indicate whether Partition Merge is enabled.
-        public bool? EnablePartitionMerge { get; set; }
         //
         // Summary:
         //     Gets or sets flag to indicate to allow Network Acl Bypass.
@@ -236,9 +234,16 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //     Gets or sets the AnalyticalStorageConfiguration of the CosmosDB Account
         public PSAnalyticalStorageConfiguration AnalyticalStorageConfiguration { get; set; }
         //
+        // Summary:
+        //     Gets or sets flag to indicate whether materialized views is enabled.
+        public bool? EnableMaterializedViews { get; set; }
         //
         // Summary:
-        //     Gets or sets the MinimalTlsVersion of the CosmosDB Account
-        public string MinimalTlsVersion { get; set; }
+        //     Gets or sets flag to indicate whether Priority Based Execution is enabled.
+        public bool? EnablePriorityBasedExecution { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the DefaultPriorityLevel of the CosmosDB Account.
+        public string DefaultPriorityLevel { get; set; }
     }
 }

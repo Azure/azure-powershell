@@ -25,8 +25,6 @@ using Microsoft.Rest.Azure;
 using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 using Microsoft.Azure.Management.CosmosDB;
 using System.Linq;
-using System.Text.RegularExpressions;
-using System.Collections;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -46,107 +44,51 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.ResourceRestoreTimestampHelpMessage)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.RestoreTimestampHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public DateTime RestoreTimestampInUtc { get; set; }
 
         public override void ExecuteCmdlet()
         {
             DateTime utcRestoreDateTime;
-            RestorableDatabaseAccountGetResult databaseAccount = null;
-            List<RestorableDatabaseAccountGetResult> restorableDatabaseAccounts = this.CosmosDBManagementClient.RestorableDatabaseAccounts.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body.ToList();
-            List<RestorableDatabaseAccountGetResult> accountsWithMatchingName = restorableDatabaseAccounts.Where(account => account.AccountName.Equals(this.AccountName, StringComparison.OrdinalIgnoreCase)).ToList();
-
-            if (this.RestoreTimestampInUtc != null && this.RestoreTimestampInUtc != default(DateTime))
+            if (this.RestoreTimestampInUtc.Kind == DateTimeKind.Unspecified)
             {
-                if (this.RestoreTimestampInUtc.Kind == DateTimeKind.Unspecified)
-                {
-                    utcRestoreDateTime = this.RestoreTimestampInUtc;
-                }
-                else
-                {
-                    utcRestoreDateTime = this.RestoreTimestampInUtc.ToUniversalTime();
-                }
-                // Fail if provided restoretimesamp is greater than current timestamp	
-                if (utcRestoreDateTime > DateTime.UtcNow)
-                {
-                    this.WriteWarning($"Restore timestamp {utcRestoreDateTime} should be less than current timestamp {DateTime.UtcNow}");
-                    return;
-                }
-
-                if (accountsWithMatchingName.Count > 0)
-                {
-                    foreach (RestorableDatabaseAccountGetResult restorableAccount in accountsWithMatchingName)
-                    {
-                        if (restorableAccount.CreationTime.HasValue &&
-                            restorableAccount.CreationTime < utcRestoreDateTime)
-                        {
-                            if (!restorableAccount.DeletionTime.HasValue)
-                            {
-                                databaseAccount = restorableAccount;
-                                break;
-                            }
-                        }
-                    }
-                }
-                if (databaseAccount == null)
-                {
-                    this.WriteWarning($"No database accounts found with matching account name {this.AccountName} that was alive at given utc-timestamp {utcRestoreDateTime}");
-                    return;
-                }
+                utcRestoreDateTime = this.RestoreTimestampInUtc;
             }
             else
             {
-                if (accountsWithMatchingName.Count > 0)
-                {
-                    RestorableDatabaseAccountGetResult lastestAccountToRestore = null;
-                    foreach (RestorableDatabaseAccountGetResult restorableAccount in accountsWithMatchingName)
-                    {
-                        if (lastestAccountToRestore == null)
-                        {
-                            lastestAccountToRestore = restorableAccount;
-                        }
-
-                        if (restorableAccount.CreationTime.HasValue &&
-                            restorableAccount.CreationTime > lastestAccountToRestore.CreationTime)
-                        {
-                            if (!restorableAccount.DeletionTime.HasValue)
-                            {
-                                lastestAccountToRestore = restorableAccount;
-                            }
-                        }
-                    }
-
-                    databaseAccount = lastestAccountToRestore;
-                }
-                else
-                {
-                    this.WriteWarning($"No database accounts found with matching account name {this.AccountName} that was alive");
-                    return;
-                }
-
-                Regex regex = new Regex(@"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}");
-                var matches = regex.Matches(databaseAccount.Id);
-
-                string accountInstanceId = string.Empty;
-                if (matches.Count > 1)
-                {
-                    accountInstanceId = matches[1].Value;
-                }
-
-                DateTime latestDeleteTime = DateTime.MinValue;
-                IEnumerable restorableTables = CosmosDBManagementClient.RestorableTables.ListWithHttpMessagesAsync(databaseAccount.Location, accountInstanceId, databaseAccount.CreationTime.ToString(), DateTime.MaxValue.ToString()).GetAwaiter().GetResult().Body;
-                foreach (RestorableTableGetResult restorableTable in restorableTables)
-                {
-                    DateTime eventDateTime = DateTime.Parse(restorableTable.Resource.EventTimestamp);
-                    if (restorableTable.Resource.OperationType.Equals(OperationType.Delete) && latestDeleteTime < eventDateTime)
-                    {
-                        latestDeleteTime = eventDateTime;
-                    }
-                }
-
-                utcRestoreDateTime = latestDeleteTime.AddSeconds(-2);
+                utcRestoreDateTime = this.RestoreTimestampInUtc.ToUniversalTime();
             }
-            
+            // Fail if provided restoretimesamp is greater than current timestamp	
+            if (utcRestoreDateTime > DateTime.UtcNow)
+            {
+                this.WriteWarning($"Restore timestamp {utcRestoreDateTime} should be less than current timestamp {DateTime.UtcNow}");
+                return;
+            }
+
+            RestorableDatabaseAccountGetResult databaseAccount = null;
+            List<RestorableDatabaseAccountGetResult> restorableDatabaseAccounts = this.CosmosDBManagementClient.RestorableDatabaseAccounts.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body.ToList();
+            List<RestorableDatabaseAccountGetResult> accountsWithMatchingName = restorableDatabaseAccounts.Where(account => account.AccountName.Equals(this.AccountName, StringComparison.OrdinalIgnoreCase)).ToList();
+            if (accountsWithMatchingName.Count > 0)
+            {
+                foreach (RestorableDatabaseAccountGetResult restorableAccount in accountsWithMatchingName)
+                {
+                    if (restorableAccount.CreationTime.HasValue &&
+                        restorableAccount.CreationTime < utcRestoreDateTime)
+                    {
+                        if (!restorableAccount.DeletionTime.HasValue)
+                        {
+                            databaseAccount = restorableAccount;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (databaseAccount == null)
+            {
+                this.WriteWarning($"No database accounts found with matching account name {this.AccountName} that was alive at given utc-timestamp {utcRestoreDateTime}");
+                return;
+            }
 
             TableGetResults readTableGetResults = null;
             try

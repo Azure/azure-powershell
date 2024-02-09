@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
 online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/restore-azcosmosdbmongodbdatabase
@@ -25,7 +25,7 @@ Restores the deleted mongodb database in the same account with the given name an
 
 ### Example 1
 ```powershell
-Restore-AzCosmosDBMongoDBDatabase  -AccountName “my-pitr-mongodb-account” -ResourceGroupName “my-rg” -Name “my-database” -RestoreTimestampInUtc “2022-08-25T07:16:20Z” 
+Restore-AzCosmosDBMongoDBDatabase  -AccountName "my-pitr-mongodb-account" -ResourceGroupName "my-rg" -Name "my-database" -RestoreTimestampInUtc "2022-08-25T07:16:20Z"
 ```
 
 ```output
@@ -47,21 +47,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -122,6 +107,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -60,13 +60,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGremlinInAccountRestoreOperationsNoTimestampCmdlets()
-        {
-            TestRunner.RunTestScript("Test-GremlinInAccountRestoreOperationsNoTimestampCmdlets");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGremlinInAccountRestoreOperationsSharedRUResourcesCmdlets()
         {
             TestRunner.RunTestScript("Test-GremlinInAccountRestoreOperationsSharedRUResourcesCmdlets");

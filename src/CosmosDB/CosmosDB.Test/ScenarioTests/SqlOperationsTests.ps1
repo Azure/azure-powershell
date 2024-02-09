@@ -289,7 +289,7 @@ function Test-SqlInAccountRestoreOperationsCmdlets
 
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
-  $locations += New-AzCosmosDBLocationObject -LocationName "Central US" -FailoverPriority 1 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 1 -IsZoneRedundant 0
 
   Try{
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
@@ -391,12 +391,12 @@ function Test-SqlInAccountRestoreOperationsCmdlets
       $ListDatabases = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName
       Assert-NotNull($ListDatabases)
 
-      Start-TestSleep -s 50
+      Start-Sleep -s 50
 
       # remove container
       Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
 
-      Start-TestSleep -s 50
+      Start-Sleep -s 50
 
       # restore deleted container
       Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -RestoreTimestampInUtc $restoreTimestampInUtc
@@ -409,7 +409,7 @@ function Test-SqlInAccountRestoreOperationsCmdlets
       # remove database
       Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
 
-      Start-TestSleep -s 100
+      Start-Sleep -s 100
 
       #Restore collection when database is deleted
       Try {
@@ -431,13 +431,13 @@ function Test-SqlInAccountRestoreOperationsCmdlets
       #add region
       $locationObject3 = @()
       $locationObject3 += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
-      $locationObject3 += New-AzCosmosDBLocationObject -LocationName "Central US" -FailoverPriority 1 -IsZoneRedundant 0
+      $locationObject3 += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 1 -IsZoneRedundant 0
       Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $AccountName -LocationObject $locationObject3
 
       # restore deleted database
       Restore-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -RestoreTimestampInUtc $restoreTimestampInUtc
 
-      Start-TestSleep -s 50
+      Start-Sleep -s 50
 
       # restore deleted container
       Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -RestoreTimestampInUtc $restoreTimestampInUtc
@@ -456,168 +456,10 @@ function Test-SqlInAccountRestoreOperationsCmdlets
   }
 }
 
-function Test-SqlInAccountRestoreOperationsNoTimestampCmdlets
-{
-  $AccountName = "dbaccount60-14"
-  $rgName = "CosmosDBResourceGroup63"
-  $DatabaseName = "sqldbName6"
-  $ContainerName = "container1"
-  $location = "West US"
-  $DatabaseName2 = "dbName2"
-  $ContainerName2 = "container2"
-  $apiKind = "Sql"
-  $PartitionKeyPathValue = "/foo/bar"
-  $PartitionKeyKindValue = "Hash"
-
-  $locations = @()
-  $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
-  $locations += New-AzCosmosDBLocationObject -LocationName "Central US" -FailoverPriority 1 -IsZoneRedundant 0
-
-  Try{
-      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -BackupPolicyType Continuous
-
-      # create a new database
-      $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-      Assert-AreEqual $NewDatabase.Name $DatabaseName
-
-      # create an existing keyspace
-      Try {
-          $NewDuplicateDatabase = New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-      }
-      Catch {
-          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $DatabaseName + " already exists.")
-      }
-
-      # Indexing Policy Creation
-      $ipath1 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
-      $ipath2 = New-AzCosmosDBSqlIncludedPathIndex -DataType String -Precision -1 -Kind Hash
-      $IncludedPath = New-AzCosmosDBSqlIncludedPath -Path "/*" -Index $ipath1, $ipath2
-      $SpatialSpec = New-AzCosmosDBSqlSpatialSpec -Path  "/mySpatialPath/*" -Type  "Point", "LineString", "Polygon", "MultiPolygon"
-      $cp1 = New-AzCosmosDBSqlCompositePath -Path "/abc" -Order Ascending
-      $cp2 = New-AzCosmosDBSqlCompositePath -Path "/aberc" -Order Descending
-      $CompositePaths = (($cp1, $cp2), ($cp2, $cp1))
-
-      $IndexingPolicy = New-AzCosmosDBSqlIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $CompositePaths -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
-
-      # UniqueKey Creation
-      $p1 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey3"
-      $p2 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey4"
-      $p3 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey2"
-      $p4 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey1"
-
-      $uk1 = New-AzCosmosDBSqlUniqueKeyPolicy -UniqueKey $p1,$p2,$p3,$p4
-      # create a new container
-      $NewContainer = New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600 -IndexingPolicy $IndexingPolicy -UniqueKeyPolicy $uk1
-      Assert-AreEqual $NewContainer.Name $ContainerName
-      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.Automatic $IndexingPolicy.Automatic
-      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.IndexingMode $IndexingPolicy.IndexingMode
-      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.IncludedPath.Path $IndexingPolicy.IncludedPath.Path
-      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.CompositeIndexes.Count 2
-      Assert-AreEqual $NewContainer.Resource.IndexingPolicy.SpatialIndexes.Path $SpatialSpec.Path
-      Assert-AreEqual $NewContainer.Resource.UniqueKeyPolicy.UniqueKeys.Count 4
-
-      # create an existing container
-      Try {
-            $NewDuplicateContainer = New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600 -IndexingPolicy $IndexingPolicy
-      }
-      Catch {
-          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $ContainerName + " already exists.")
-      }
-
-      # update non existing database, container, UDF, stored procedure, trigger
-      Try {
-          $UpdatedDatabse = Update-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName2
-      }
-      Catch {
-          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $DatabaseName2 + " does not exist.")
-      }
-
-      Try {
-          $UpdatedContainer = Update-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName2
-      }
-      Catch {
-          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $ContainerName2 + " does not exist.")
-      }
-
-      # get a database
-      $Database = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-      Assert-AreEqual $NewDatabase.Id $Database.Id
-      Assert-AreEqual $NewDatabase.Name $Database.Name
-
-      # get a container
-      $Container = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
-      Assert-AreEqual $NewContainer.Id $Container.Id
-      Assert-AreEqual $NewContainer.Name $Container.Name
-
-      # updating database, container, udf, trigger
-      $UpdatedDatabase =  Update-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-      Assert-AreEqual $UpdatedDatabase.Name $DatabaseName
-
-      # update container
-      $UpdatedContainer = Update-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
-      Assert-AreEqual $UpdatedContainer.Name $ContainerName
-      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.Automatic $IndexingPolicy.Automatic
-      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.IndexingMode $IndexingPolicy.IndexingMode
-      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.IncludedPath.Path $IndexingPolicy.IncludedPath.Path
-      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.CompositeIndexes.Count 2
-      Assert-AreEqual $UpdatedContainer.Resource.IndexingPolicy.SpatialIndexes.Path $SpatialSpec.Path
-      Assert-AreEqual $UpdatedContainer.Resource.UniqueKeyPolicy.UniqueKeys.Count 4
-
-      $restoreTimestampInUtc = [DateTime]::UtcNow.ToString('u')
-      # list containers
-      $ListContainers = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
-      Assert-NotNull($ListContainers)
-
-      # list databases
-      $ListDatabases = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName
-      Assert-NotNull($ListDatabases)
-
-      Start-TestSleep -s 50
-
-      # remove container
-      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
-
-      Start-TestSleep -s 50
-
-      # restore deleted container
-      Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
-
-      Start-TestSleep -s 100
-
-      # remove database
-      Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-
-      Start-TestSleep -s 100
-
-      
-      # restore deleted database
-      Restore-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-
-      Start-TestSleep -s 50
-
-      #Restore collection with no timestamp after database restore
-      Try {
-          $RestoredCollection = Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
-      }
-      Catch {
-          Assert-AreEqual $_.Exception.Message.Contains("No container with name") true
-      }
-
-      # list databases
-      $ListDatabases = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName
-      Assert-NotNull($ListDatabases)
-  }
-  Finally {
-    Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
-    Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-  }
-}
-
 function Test-SqlInAccountRestoreOperationsSharedResourcesCmdlets
 {
   $AccountName = "dbaccount60-4"
-  $rgName = "CosmosDBResourceGroup62"
+  $rgName = "CosmosDBResourceGroup63"
   $DatabaseName = "sqldbName"
   $ContainerName = "container1"
   $location = "West US"
@@ -684,24 +526,24 @@ function Test-SqlInAccountRestoreOperationsSharedResourcesCmdlets
       $ListDatabases = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName
       Assert-NotNull($ListDatabases)
 
-      Start-TestSleep -s 50
+      Start-Sleep -s 50
 
       # remove container
       Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
 
-      Start-TestSleep -s 50
+      Start-Sleep -s 50
 
       # restore deleted container
       Try {
       Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -RestoreTimestampInUtc $restoreTimestampInUtc
       }
       Catch {
-          Assert-AreEqual $_.Exception.Message.Contains("InAccount restore of individual shared database collections is not supported. Please restore shared database to restore its collections that shared the throughput.") true
+          Assert-AreEqual $_.Exception.Message.Contains("InAccount restore of individual shared database collections is not supported. Please restore shared database to restore its collections that shared the throughput") true
       }
       # remove database
       Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
 
-      Start-TestSleep -s 100
+      Start-Sleep -s 100
 
       $invalidRestoreTimestampInUtc = [DateTime]::UtcNow.ToString('u')
       #Restore database with invalid timestamp
@@ -715,7 +557,7 @@ function Test-SqlInAccountRestoreOperationsSharedResourcesCmdlets
       # restore deleted database
       Restore-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -RestoreTimestampInUtc $restoreTimestampInUtc
 
-      Start-TestSleep -s 50
+      Start-Sleep -s 50
 
       # list containers
       $ListContainers = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
@@ -1052,12 +894,76 @@ function Test-SqlThroughputCmdlets
 
 <#
 .SYNOPSIS
+Test SQL materializedview cmdlets using all parameter sets
+#>
+function Test-SqlMaterializedViewCmdlets
+{
+  $AccountName = "dbaccount-mv"
+  $rgName = "CosmosDBResourceGroup-mv"
+  $DatabaseName = "dbName1"
+  $ContainerName = "srcContainerName"
+  $MVContainerName = "mvContainerName"
+  $capabilities = @("enableMaterializedViews")
+
+  $PartitionKeyPathValue = "/foo/bar"
+  $PartitionKeyKindValue = "Hash"
+
+  $ThroughputValue = 1200
+  $UpdatedThroughputValue = 1100
+
+  $ContainerThroughputValue = 800
+  $UpdatedContainerThroughputValue = 700
+
+  $location = "East US"
+  $apiKind = "Sql"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
+
+  Try{
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableMaterializedViews 1
+
+      $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
+      $Throughput = Get-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $Throughput.Throughput $ThroughputValue
+
+  #    $CosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName      
+      $NewContainer =  New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+      
+      $newMaterializedViewDefinition = New-Object Microsoft.Azure.Management.CosmosDB.Models.MaterializedViewDefinition
+      $newMaterializedViewDefinition.SourceCollectionId = $ContainerName
+      $newMaterializedViewDefinition.Definition = "select * from Root"
+      $newPSMaterializedViewDefinition = [Microsoft.Azure.Commands.CosmosDB.Models.PSMaterializedViewDefinition]::new($newMaterializedViewDefinition)
+
+      $NewMVContainer = New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $MVContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -MaterializedViewDefinition $newPSMaterializedViewDefinition
+      $mvContainerWithGet = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $MVContainerName
+	  Assert-AreEqual $mvContainerWithGet.Resource.MaterializedViewDefinition.SourceCollectionId $ContainerName
+
+	  $UpdatedContainerThroughput = Update-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $MVContainerName -Throughput $UpdatedContainerThroughputValue
+      Assert-AreEqual $UpdatedContainerThroughput.Throughput $UpdatedContainerThroughputValue
+	  
+	  $mvContainerWithGet = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $MVContainerName
+	  Assert-AreEqual $mvContainerWithGet.Resource.MaterializedViewDefinition.SourceCollectionId $ContainerName
+
+      Remove-AzCosmosDBSqlContainer -InputObject $NewMVContainer
+      Remove-AzCosmosDBSqlContainer -InputObject $NewContainer
+      Remove-AzCosmosDBSqlDatabase -InputObject $NewDatabase
+  }
+  Finally{
+      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $MVContainerName
+      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $ContainerName
+      Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
 Test SQL migrate throughput cmdlets
 #>
 function Test-SqlMigrateThroughputCmdlets
 {
-  $AccountName = "dbaccount62-1"
-  $rgName = "CosmosDBResourceGroup62"
+  $AccountName = "dbaccount62-2"
+  $rgName = "CosmosDBResourceGroup66"
   $DatabaseName = "dbName4"
   $ContainerName = "containerName"
   $location = "East US"
@@ -1603,5 +1509,222 @@ function Test-ClientEncryptionKeyCmdletsUsingInputObject
     Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
     Remove-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location -Force
     Remove-AzKeyVault -VaultName $vaultName -InRemovedState -Force -Location $location
+  }
+}
+
+
+<#
+.SYNOPSIS
+Test SQL Throughput redistribution cmdlets
+#>
+function Test-SqlContainerAdaptiveRUCmdlets
+{
+  $AccountName = "mergetest"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "adaptiverudatabase"
+  $ContainerName = "adaptiveruContainer"
+
+  $PartitionKeyPathValue = "/foo/bar"
+  $PartitionKeyKindValue = "Hash"
+
+  $ContainerThroughputValue = 24000
+  $UpdatedContainerThroughputValue = 2000
+
+  Try{
+
+      New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+      Update-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $UpdatedContainerThroughputValue
+      $partitions = Get-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -AllPartitions
+      Assert-AreEqual $partitions.Count 4
+      $sources = @()
+      $targets = @()
+      Foreach($partition in $partitions)
+      {
+          Assert-AreEqual $partition.Throughput 500
+          if($partition.Id -lt 2)
+          {
+            $throughput = $partition.Throughput - 100
+            $sources += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partition.Id -Throughput $throughput
+          }
+          else
+          {
+              $throughput = $partition.Throughput + 100
+              $targets += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partition.Id -Throughput $throughput
+          }
+      }
+      
+      $newPartitions = Update-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -SourcePhysicalPartitionThroughputObject $sources -TargetPhysicalPartitionThroughputObject $targets
+      Assert-AreEqual $newPartitions.Count 4
+      Foreach($partition in $newPartitions)
+      {
+          if($partition.Id -lt 2)
+          {
+            Assert-AreEqual $partition.Throughput 400
+          }
+          else
+          {
+              Assert-AreEqual $partition.Throughput 600              
+          }
+      }      
+
+      $resetPartitions = Update-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -EqualDistributionPolicy
+      
+      Assert-AreEqual $resetPartitions.Count 4
+
+      Foreach($partition in $resetPartitions)
+      {
+          Assert-AreEqual $partition.Throughput 500          
+      }
+
+      $somePartitions = Get-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -PhysicalPartitionIds ('0', '1')
+      Assert-AreEqual $somePartitions.Count 2
+  }
+  Finally{
+      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $ContainerName
+      Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
+Test SQL Database Throughput redistribution cmdlets
+#>
+function Test-SqlDatabaseAdaptiveRUCmdlets
+{
+  $AccountName = "sqlsharedadrutest"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "adaptiverudatabase"
+
+  $PartitionKeyPathValue = "/foo/bar"
+  $PartitionKeyKindValue = "Hash"
+
+  $DatabaseThroughputValue = 34000
+  $UpdatedDatabaseThroughputValue = 2000
+
+  Try{
+      New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $DatabaseThroughputValue
+      Update-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $UpdatedDatabaseThroughputValue
+      $partitions = Get-AzCosmosDBSqlDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -AllPartitions
+      Assert-AreEqual $partitions.Count 4
+      $sources = @()
+      $targets = @()
+      $oldPartitions = @()
+      for($i = 0; $i -lt $partitions.Count; $i++)
+      {
+          Assert-AreEqual $partitions[$i].Throughput 500
+          if($i -lt 2)
+          {
+            $throughput = $partitions[$i].Throughput - 100
+            $sources += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partitions[$i].Id -Throughput $throughput
+          }
+          else
+          {
+              $throughput = $partitions[$i].Throughput + 100
+              $targets += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partitions[$i].Id -Throughput $throughput
+          }
+          $oldPartitions += $partitions[$i]
+      }
+      
+      $newPartitions = Update-AzCosmosDBSqlDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -SourcePhysicalPartitionThroughputObject $sources -TargetPhysicalPartitionThroughputObject $targets
+      Assert-AreEqual $newPartitions.Count 4
+      for($i = 0; $i -lt $newPartitions.Count; $i++)
+      {
+          if($newPartitions[$i].Id -eq $oldPartitions[0].Id -or $newPartitions[$i].Id -eq $oldPartitions[1].Id)
+          {
+              Assert-AreEqual $newPartitions[$i].Throughput 400
+          }
+          else
+          {
+              Assert-AreEqual $newPartitions[$i].Throughput 600              
+          }
+      }   
+
+      $resetPartitions = Update-AzCosmosDBSqlDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -EqualDistributionPolicy
+      
+      Assert-AreEqual $resetPartitions.Count 4
+
+      Foreach($partition in $resetPartitions)
+      {
+          Assert-AreEqual $partition.Throughput 500          
+      }
+
+      $somePartitions = Get-AzCosmosDBSqlDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -PhysicalPartitionIds ($oldPartitions[0].Id, $oldPartitions[1].Id)
+      Assert-AreEqual $somePartitions.Count 2
+  }
+  Finally{
+      Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
+Test sql merge cmdlet
+#>
+function Test-SqlContainerMergeCmdlet
+{
+  $AccountName = "mergetest"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "mergedatabase"
+  $ContainerName = "mergecontainer"
+
+  $PartitionKeyPathValue = "/foo/bar"
+  $PartitionKeyKindValue = "Hash"
+
+  $ContainerThroughputValue = 24000
+  $UpdatedContainerThroughputValue = 2000
+
+  Try{
+
+      New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+      Update-AzCosmosDBSqlContainerThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $UpdatedContainerThroughputValue
+      $physicalPartitionStorageInfos = Invoke-AzCosmosDBSqlContainerMerge -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -Force
+      Assert-AreEqual $physicalPartitionStorageInfos.Count 1
+      if($physicalPartitionStorageInfos[0].Id.contains("mergeTarget"))
+      {
+          throw "Name of partition: " + $physicalPartitionStorageInfos[0].Id + " Unexpected Id: mergeTarget"
+      }
+
+  }
+  Finally{
+      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $ContainerName
+      Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
+Test sql database merge cmdlet
+#>
+function Test-SqlDatabaseMergeCmdlet
+{
+  $AccountName = "mergetest"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "mergedatabase"
+  $ContainerName = "mergecontainer"
+
+  $PartitionKeyPathValue = "/foo/bar"
+  $PartitionKeyKindValue = "Hash"
+
+  $ContainerThroughputValue = 24000
+  $UpdatedContainerThroughputValue = 2000
+
+  Try{
+
+      New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $ContainerThroughputValue
+      New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue
+      Update-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $UpdatedContainerThroughputValue
+      $physicalPartitionStorageInfos = Invoke-AzCosmosDBSqlDatabaseMerge -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -Force
+      Assert-AreEqual $physicalPartitionStorageInfos.Count 1
+      if($physicalPartitionStorageInfos[0].Id.contains("mergeTarget"))
+      {
+          throw "Name of partition: " + $physicalPartitionStorageInfos[0].Id + " Unexpected Id: mergeTarget"
+      }
+
+  }
+  Finally{
+      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $ContainerName
+      Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
   }
 }

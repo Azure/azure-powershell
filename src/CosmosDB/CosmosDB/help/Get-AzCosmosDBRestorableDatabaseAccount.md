@@ -73,7 +73,6 @@ Location                  : West US
 DatabaseAccountName       : deleted-account-1
 CreationTime              : 8/2/2020 10:23:00 PM
 DeletionTime              : 8/2/2020 10:26:13 PM
-OldestRestorableTime      : 8/2/2020 10:23:00 PM
 ApiType                   : Sql
 RestorableLocations       : {West US, East US}
 ```

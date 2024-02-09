@@ -70,9 +70,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableAnalyticalStorageHelpMessage)]
         public bool? EnableAnalyticalStorage { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.EnablePartitionMergeHelpMessage)]
-        public bool? EnablePartitionMerge { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableBurstCapacityHelpMessage)]
         public bool? EnableBurstCapacity { get; set; }
 
@@ -88,7 +85,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string[] NetworkAclBypassResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ServerVersionHelpMessage)]
-        [PSArgumentCompleter(SDKModel.ServerVersion.Three2, SDKModel.ServerVersion.Three6, SDKModel.ServerVersion.Four0)]
+        [PSArgumentCompleter(SDKModel.ServerVersion.ThreeFullStopTwo, SDKModel.ServerVersion.ThreeFullStopSix, SDKModel.ServerVersion.FourFullStopZero)]
         public string ServerVersion { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.BackupIntervalInMinHelpMessage)]
@@ -108,14 +105,20 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.ContinuousTierHelpMessage)]
         [PSArgumentCompleter("Continuous7Days", "Continuous30Days")]
         public string ContinuousTier { get; set; }
-        
+
         [Parameter(Mandatory = false, HelpMessage = Constants.AnalyticalStorageSchemaTypeHelpMessage)]
         [PSArgumentCompleter(SDKModel.AnalyticalStorageSchemaType.WellDefined, SDKModel.AnalyticalStorageSchemaType.FullFidelity)]
         public string AnalyticalStorageSchemaType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.MinimalTlsVersionHelpMessage)]
-        [PSArgumentCompleter(SDKModel.MinimalTlsVersion.Tls, SDKModel.MinimalTlsVersion.Tls11, SDKModel.MinimalTlsVersion.Tls12)]
-        public string MinimalTlsVersion { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnableMaterializedViewsHelpMessage)]
+        public bool? EnableMaterializedViews { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnablePriorityBasedExecutionHelpMessage)]
+        public bool? EnablePriorityBasedExecution { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.DefaultPriorityLevelHelpMessage)]
+        [PSArgumentCompleter("High", "Low")]
+        public string DefaultPriorityLevel { get; set; }
 
         public ConsistencyPolicy PopoulateConsistencyPolicy(string DefaultConsistencyLevel, int? MaxStalenessIntervalInSeconds, int? MaxStalenessPrefix)
         {

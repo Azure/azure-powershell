@@ -4,16 +4,14 @@ This directory contains the service clients of Az.CosmosDB module.
 ## Run Generation
 In this directory, run AutoRest:
 ```
-autorest --reset
-autorest --use:@autorest/powershell@4.x
+autorest.cmd README.md --version=v2
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
 ``` yaml
-isSdkGenerator: true
-powershell: true
+csharp: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
@@ -26,18 +24,15 @@ title: CosmosDBManagementClient
 
 ### 
 ``` yaml 
-commit: 99139d0fae73a2a4a884c0ef307dc6eb8d290457
-apiversion: "2023-11-15"
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/cosmos-db.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/managedCassandra.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/mongorbac.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/notebook.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/privateEndpointConnection.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/privateLinkResources.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/rbac.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/restorable.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/$(apiversion)/services.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-09-15-preview/cosmos-db.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-09-15-preview/dataTransferService.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-09-15-preview/managedCassandra.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-09-15-preview/mongorbac.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-09-15-preview/notebook.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-09-15-preview/rbac.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-09-15-preview/restorable.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-09-15-preview/services.json
 
 output-folder: Generated
 
