@@ -70,7 +70,7 @@ Update-AzSynapseSparkPool -ResourceId <String> [-Tag <Hashtable>] [-EnableAutoSc
 The **Update-AzSynapseSparkPool** cmdlet updates an Apache Spark pool in Azure Synapse Analytics.
 
 > [!NOTE]
-> If the `-SparkVersion` parameter is used to upgrade the Synapse Spark runtime version, ensure that the Spark pool doesn't have any attached custom libraries or packages. Refer to [Migration between Apache Spark versions](/azure/synapse-analytics/spark/apache-spark-version-support.md#migration-between-apache-spark-versions---support) for more details.
+> If the `-SparkVersion` parameter is used to upgrade the Synapse Spark runtime version, ensure that the Spark pool doesn't have any attached custom libraries or packages. Refer to [Migration between Apache Spark versions](https://learn.microsoft.com/azure/synapse-analytics/spark/apache-spark-version-support#migration-between-apache-spark-versions---support) for more details.
 
 ## EXAMPLES
 
