@@ -149,9 +149,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
                 this.PartitionKey.Validate();
             }
 
-
-
-
         }
     }
 }

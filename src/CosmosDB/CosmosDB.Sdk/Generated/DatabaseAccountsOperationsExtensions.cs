@@ -246,6 +246,24 @@ namespace Microsoft.Azure.Management.CosmosDB
                 return _result.Body;
             }
         }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        public static DatabaseAccountsDeleteHeaders Delete(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName)
+        {
+            return operations.DeleteAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+        }
+
         /// <summary>
         /// Lists all the Azure Cosmos DB database accounts available under the given
         /// resource group.
@@ -281,6 +299,30 @@ namespace Microsoft.Azure.Management.CosmosDB
                 return _result.Body;
             }
         }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<DatabaseAccountsDeleteHeaders> DeleteAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        
         /// <summary>
         /// Lists the access keys for the specified Azure Cosmos DB database account.
         /// </summary>
@@ -320,6 +362,31 @@ namespace Microsoft.Azure.Management.CosmosDB
                 return _result.Body;
             }
         }
+        
+        /// <summary>
+        /// Changes the failover priority for the Azure Cosmos DB database account. A
+        /// failover priority of 0 indicates a write region. The maximum value for a
+        /// failover priority = (total number of regions - 1). Failover priority values
+        /// must be unique for each of the regions in which the database account
+        /// exists.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='failoverParameters'>
+        /// The new failover policies for the database account.
+        /// </param>
+        public static DatabaseAccountsFailoverPriorityChangeHeaders FailoverPriorityChange(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, FailoverPolicies failoverParameters)
+        {
+            return operations.FailoverPriorityChangeAsync(resourceGroupName, accountName, failoverParameters).GetAwaiter().GetResult();
+        }
+
         /// <summary>
         /// Lists the connection strings for the specified Azure Cosmos DB database
         /// account.
@@ -361,6 +428,37 @@ namespace Microsoft.Azure.Management.CosmosDB
                 return _result.Body;
             }
         }
+
+        /// <summary>
+        /// Changes the failover priority for the Azure Cosmos DB database account. A
+        /// failover priority of 0 indicates a write region. The maximum value for a
+        /// failover priority = (total number of regions - 1). Failover priority values
+        /// must be unique for each of the regions in which the database account
+        /// exists.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='failoverParameters'>
+        /// The new failover policies for the database account.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<DatabaseAccountsFailoverPriorityChangeHeaders> FailoverPriorityChangeAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, FailoverPolicies failoverParameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.FailoverPriorityChangeWithHttpMessagesAsync(resourceGroupName, accountName, failoverParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+
         /// <summary>
         /// Offline the specified region for the specified Azure Cosmos DB database
         /// account.
@@ -376,7 +474,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         public static DatabaseAccountsOfflineRegionHeaders OfflineRegion(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, RegionForOnlineOffline regionParameterForOffline)
         {
-                return ((IDatabaseAccountsOperations)operations).OfflineRegionAsync(resourceGroupName, accountName, regionParameterForOffline).GetAwaiter().GetResult();
+            return ((IDatabaseAccountsOperations)operations).OfflineRegionAsync(resourceGroupName, accountName, regionParameterForOffline).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -402,6 +500,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 return _result.Headers;
             }
         }
+        
         /// <summary>
         /// Online the specified region for the specified Azure Cosmos DB database
         /// account.
@@ -458,7 +557,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         public static DatabaseAccountListReadOnlyKeysResult GetReadOnlyKeys(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName)
         {
-                return ((IDatabaseAccountsOperations)operations).GetReadOnlyKeysAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+            return ((IDatabaseAccountsOperations)operations).GetReadOnlyKeysAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -484,6 +583,7 @@ namespace Microsoft.Azure.Management.CosmosDB
                 return _result.Body;
             }
         }
+
         /// <summary>
         /// Lists the read-only access keys for the specified Azure Cosmos DB database
         /// account.
@@ -744,6 +844,28 @@ namespace Microsoft.Azure.Management.CosmosDB
                 return _result.Body;
             }
         }
+
+        /// <summary>
+        /// Offline the specified region for the specified Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='regionParameterForOffline'>
+        /// Cosmos DB region to offline for the database account.
+        /// </param>
+        public static DatabaseAccountsOfflineRegionHeaders OfflineRegion(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, RegionForOnlineOffline regionParameterForOffline)
+        {
+            return operations.OfflineRegionAsync(resourceGroupName, accountName, regionParameterForOffline).GetAwaiter().GetResult();
+        }
+        
         /// <summary>
         /// Updates the properties of an existing Azure Cosmos DB database account.
         /// </summary>
@@ -783,6 +905,34 @@ namespace Microsoft.Azure.Management.CosmosDB
                 return _result.Body;
             }
         }
+        
+        /// <summary>
+        /// Offline the specified region for the specified Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='regionParameterForOffline'>
+        /// Cosmos DB region to offline for the database account.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<DatabaseAccountsOfflineRegionHeaders> OfflineRegionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, RegionForOnlineOffline regionParameterForOffline, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.OfflineRegionWithHttpMessagesAsync(resourceGroupName, accountName, regionParameterForOffline, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+
         /// <summary>
         /// Creates or updates an Azure Cosmos DB database account. The &#34;Update&#34; method
         /// is preferred when performing updates on an account.
@@ -824,6 +974,28 @@ namespace Microsoft.Azure.Management.CosmosDB
                 return _result.Body;
             }
         }
+
+        /// <summary>
+        /// Online the specified region for the specified Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='regionParameterForOnline'>
+        /// Cosmos DB region to online for the database account.
+        /// </param>
+        public static DatabaseAccountsOnlineRegionHeaders OnlineRegion(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, RegionForOnlineOffline regionParameterForOnline)
+        {
+            return operations.OnlineRegionAsync(resourceGroupName, accountName, regionParameterForOnline).GetAwaiter().GetResult();
+        }
+        
         /// <summary>
         /// Deletes an existing Azure Cosmos DB database account.
         /// </summary>
@@ -863,6 +1035,34 @@ namespace Microsoft.Azure.Management.CosmosDB
                 return _result.Headers;
             }
         }
+        
+        /// <summary>
+        /// Online the specified region for the specified Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='regionParameterForOnline'>
+        /// Cosmos DB region to online for the database account.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<DatabaseAccountsOnlineRegionHeaders> OnlineRegionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, RegionForOnlineOffline regionParameterForOnline, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.OnlineRegionWithHttpMessagesAsync(resourceGroupName, accountName, regionParameterForOnline, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+
         /// <summary>
         /// Changes the failover priority for the Azure Cosmos DB database account. A
         /// failover priority of 0 indicates a write region. The maximum value for a
@@ -1033,5 +1233,568 @@ namespace Microsoft.Azure.Management.CosmosDB
                 return _result.Headers;
             }
         }
+
+        /// <summary>
+        /// Regenerates an access key for the specified Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyToRegenerate'>
+        /// The name of the key to regenerate.
+        /// </param>
+        public static DatabaseAccountsRegenerateKeyHeaders RegenerateKey(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountRegenerateKeyParameters keyToRegenerate)
+        {
+            return operations.RegenerateKeyAsync(resourceGroupName, accountName, keyToRegenerate).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Regenerates an access key for the specified Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyToRegenerate'>
+        /// The name of the key to regenerate.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<DatabaseAccountsRegenerateKeyHeaders> RegenerateKeyAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountRegenerateKeyParameters keyToRegenerate, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.RegenerateKeyWithHttpMessagesAsync(resourceGroupName, accountName, keyToRegenerate, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+
+        /// <summary>
+        /// Checks that the Azure Cosmos DB account name already exists. A valid
+        /// account name may contain only lowercase letters, numbers, and the '-'
+        /// character, and must be between 3 and 50 characters.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        public static bool CheckNameExists(this IDatabaseAccountsOperations operations, string accountName)
+        {
+            return operations.CheckNameExistsAsync(accountName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Checks that the Azure Cosmos DB account name already exists. A valid
+        /// account name may contain only lowercase letters, numbers, and the '-'
+        /// character, and must be between 3 and 50 characters.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<bool> CheckNameExistsAsync(this IDatabaseAccountsOperations operations, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.CheckNameExistsWithHttpMessagesAsync(accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+        /// <summary>
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that describes a subset of metrics to return.
+        /// The parameters that can be filtered are name.value (name of the metric, can
+        /// have an or of multiple names), startTime, endTime, and timeGrain. The
+        /// supported operator is eq.
+        /// </param>
+        public static IEnumerable<Metric> ListMetrics(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string filter)
+        {
+            return operations.ListMetricsAsync(resourceGroupName, accountName, filter).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the metrics determined by the given filter for the given database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that describes a subset of metrics to return.
+        /// The parameters that can be filtered are name.value (name of the metric, can
+        /// have an or of multiple names), startTime, endTime, and timeGrain. The
+        /// supported operator is eq.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IEnumerable<Metric>> ListMetricsAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string filter, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListMetricsWithHttpMessagesAsync(resourceGroupName, accountName, filter, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+        /// <summary>
+        /// Retrieves the usages (most recent data) for the given database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that describes a subset of usages to return. The
+        /// supported parameter is name.value (name of the metric, can have an or of
+        /// multiple names).
+        /// </param>
+        public static IEnumerable<Usage> ListUsages(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string filter = default(string))
+        {
+            return operations.ListUsagesAsync(resourceGroupName, accountName, filter).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the usages (most recent data) for the given database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='filter'>
+        /// An OData filter expression that describes a subset of usages to return. The
+        /// supported parameter is name.value (name of the metric, can have an or of
+        /// multiple names).
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IEnumerable<Usage>> ListUsagesAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, string filter = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListUsagesWithHttpMessagesAsync(resourceGroupName, accountName, filter, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+        /// <summary>
+        /// Retrieves metric definitions for the given database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        public static IEnumerable<MetricDefinition> ListMetricDefinitions(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName)
+        {
+            return operations.ListMetricDefinitionsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves metric definitions for the given database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<IEnumerable<MetricDefinition>> ListMetricDefinitionsAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.ListMetricDefinitionsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+        /// <summary>
+        /// Updates the properties of an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='updateParameters'>
+        /// The parameters to provide for the current database account.
+        /// </param>
+        public static DatabaseAccountGetResults BeginUpdate(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountUpdateParameters updateParameters)
+        {
+            return operations.BeginUpdateAsync(resourceGroupName, accountName, updateParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates the properties of an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='updateParameters'>
+        /// The parameters to provide for the current database account.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<DatabaseAccountGetResults> BeginUpdateAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountUpdateParameters updateParameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, accountName, updateParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB database account. The "Update" method
+        /// is preferred when performing updates on an account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='createUpdateParameters'>
+        /// The parameters to provide for the current database account.
+        /// </param>
+        public static DatabaseAccountGetResults BeginCreateOrUpdate(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountCreateUpdateParameters createUpdateParameters)
+        {
+            return operations.BeginCreateOrUpdateAsync(resourceGroupName, accountName, createUpdateParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates an Azure Cosmos DB database account. The "Update" method
+        /// is preferred when performing updates on an account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='createUpdateParameters'>
+        /// The parameters to provide for the current database account.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<DatabaseAccountGetResults> BeginCreateOrUpdateAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountCreateUpdateParameters createUpdateParameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, accountName, createUpdateParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        public static DatabaseAccountsDeleteHeaders BeginDelete(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName)
+        {
+            return operations.BeginDeleteAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<DatabaseAccountsDeleteHeaders> BeginDeleteAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+
+        /// <summary>
+        /// Changes the failover priority for the Azure Cosmos DB database account. A
+        /// failover priority of 0 indicates a write region. The maximum value for a
+        /// failover priority = (total number of regions - 1). Failover priority values
+        /// must be unique for each of the regions in which the database account
+        /// exists.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='failoverParameters'>
+        /// The new failover policies for the database account.
+        /// </param>
+        public static DatabaseAccountsFailoverPriorityChangeHeaders BeginFailoverPriorityChange(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, FailoverPolicies failoverParameters)
+        {
+            return operations.BeginFailoverPriorityChangeAsync(resourceGroupName, accountName, failoverParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Changes the failover priority for the Azure Cosmos DB database account. A
+        /// failover priority of 0 indicates a write region. The maximum value for a
+        /// failover priority = (total number of regions - 1). Failover priority values
+        /// must be unique for each of the regions in which the database account
+        /// exists.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='failoverParameters'>
+        /// The new failover policies for the database account.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<DatabaseAccountsFailoverPriorityChangeHeaders> BeginFailoverPriorityChangeAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, FailoverPolicies failoverParameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginFailoverPriorityChangeWithHttpMessagesAsync(resourceGroupName, accountName, failoverParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+
+        /// <summary>
+        /// Offline the specified region for the specified Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='regionParameterForOffline'>
+        /// Cosmos DB region to offline for the database account.
+        /// </param>
+        public static DatabaseAccountsOfflineRegionHeaders BeginOfflineRegion(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, RegionForOnlineOffline regionParameterForOffline)
+        {
+            return operations.BeginOfflineRegionAsync(resourceGroupName, accountName, regionParameterForOffline).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Offline the specified region for the specified Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='regionParameterForOffline'>
+        /// Cosmos DB region to offline for the database account.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<DatabaseAccountsOfflineRegionHeaders> BeginOfflineRegionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, RegionForOnlineOffline regionParameterForOffline, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginOfflineRegionWithHttpMessagesAsync(resourceGroupName, accountName, regionParameterForOffline, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+
+        /// <summary>
+        /// Online the specified region for the specified Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='regionParameterForOnline'>
+        /// Cosmos DB region to online for the database account.
+        /// </param>
+        public static DatabaseAccountsOnlineRegionHeaders BeginOnlineRegion(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, RegionForOnlineOffline regionParameterForOnline)
+        {
+            return operations.BeginOnlineRegionAsync(resourceGroupName, accountName, regionParameterForOnline).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Online the specified region for the specified Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='regionParameterForOnline'>
+        /// Cosmos DB region to online for the database account.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<DatabaseAccountsOnlineRegionHeaders> BeginOnlineRegionAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, RegionForOnlineOffline regionParameterForOnline, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginOnlineRegionWithHttpMessagesAsync(resourceGroupName, accountName, regionParameterForOnline, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+
+        /// <summary>
+        /// Regenerates an access key for the specified Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyToRegenerate'>
+        /// The name of the key to regenerate.
+        /// </param>
+        public static DatabaseAccountsRegenerateKeyHeaders BeginRegenerateKey(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountRegenerateKeyParameters keyToRegenerate)
+        {
+            return operations.BeginRegenerateKeyAsync(resourceGroupName, accountName, keyToRegenerate).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Regenerates an access key for the specified Azure Cosmos DB database
+        /// account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='keyToRegenerate'>
+        /// The name of the key to regenerate.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<DatabaseAccountsRegenerateKeyHeaders> BeginRegenerateKeyAsync(this IDatabaseAccountsOperations operations, string resourceGroupName, string accountName, DatabaseAccountRegenerateKeyParameters keyToRegenerate, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginRegenerateKeyWithHttpMessagesAsync(resourceGroupName, accountName, keyToRegenerate, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+
     }
 }

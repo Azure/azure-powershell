@@ -106,6 +106,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
             }
+            if(EnableMaterializedViews != null)
+            {
+                databaseAccountUpdateParameters.EnableMaterializedViews = EnableMaterializedViews;
+            }
             if (NetworkAclBypass != null)
             {
                 databaseAccountUpdateParameters.NetworkAclBypass =
@@ -114,6 +118,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if(MinimalTlsVersion != null)
             {
                 databaseAccountUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
+            }
+            if (EnablePriorityBasedExecution != null)
+            {
+                databaseAccountUpdateParameters.EnablePriorityBasedExecution = EnablePriorityBasedExecution;
+            }
+            if (DefaultPriorityLevel != null)
+            {
+                databaseAccountUpdateParameters.DefaultPriorityLevel = DefaultPriorityLevel;
             }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))

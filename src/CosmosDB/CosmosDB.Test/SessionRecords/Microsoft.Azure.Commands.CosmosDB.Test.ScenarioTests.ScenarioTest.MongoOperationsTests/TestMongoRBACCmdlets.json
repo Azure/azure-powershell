@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourcegroups/mongorbactest-4414?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlZ3JvdXBzL21vbmdvcmJhY3Rlc3QtNDQxND9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourcegroups/mongorbactest-4414?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Jlc291cmNlZ3JvdXBzL21vbmdvcmJhY3Rlc3QtNDQxND9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/mongorbactest-4414\",\r\n  \"name\": \"mongorbactest-4414\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/mongorbactest-4414\",\r\n  \"name\": \"mongorbactest-4414\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -159,7 +159,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "11994"
         ],
         "x-ms-request-id": [
           "5c986244-7470-492a-9655-0e93143213d2"
@@ -312,13 +312,13 @@
           "Fri, 15 Dec 2023 10:29:15 GMT"
         ],
         "Content-Length": [
-          "21"
+          "22"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -597,7 +597,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11998"
         ],
         "x-ms-request-id": [
           "1695cbe1-f106-49a3-9029-437b17bdd780"
@@ -621,7 +621,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414/mongodbDatabases/dbName\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases\",\r\n  \"name\": \"dbName\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"dbName\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414/mongodbDatabases/dbName\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases\",\r\n  \"name\": \"dbName\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"dbName\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -675,7 +675,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
           "c8646c84-846e-40a9-907f-a526bb4c761b"
@@ -690,14 +690,14 @@
           "Fri, 15 Dec 2023 10:30:48 GMT"
         ],
         "Content-Length": [
-          "21"
+          "2525"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Enqueued\"\r\n}",
-      "StatusCode": 202
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/12053b8f-cab5-4f5c-9c1a-870580142abd/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414\",\r\n  \"name\": \"mongo-db0004414\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"MongoDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-07-20T14:59:31.1668607Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"MongoDB\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"FullFidelity\"\r\n    },\r\n    \"instanceId\": \"64260733-3753-47fc-a97f-d6394af685dd\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableCassandraConnector\": false,\r\n    \"connectorOffer\": \"\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"enableBurstCapacity\": false,\r\n    \"minimalTlsVersion\": \"Tls12\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.6\"\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"mongo-db0004414-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"mongo-db0004414-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"mongo-db0004414-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"mongo-db0004414-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"EnableMongo\"\r\n      },\r\n      {\r\n        \"name\": \"EnableMongoRoleBasedAccessControl\"\r\n      }\r\n    ],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Invalid\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T14:59:31.1668607Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T14:59:31.1668607Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T14:59:31.1668607Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-07-20T14:59:31.1668607Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/32efa980-33d0-42a8-96f8-b42ccf9c51d2?api-version=2023-11-15&t=638382330487934538&c=MIIHADCCBeigAwIBAgITHgOPMCVriuS4-lWO9AAAA48wJTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjMxMTAxMTk0NDE0WhcNMjQxMDI2MTk0NDE0WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOVYjGR__tDbQAkWmgTzkuhLkeLHMZF4BUrWy0rFsX2EQ-jKcnRoDb5IHA8d5kzQwRSfOsVkMYLJuxNfSVVkrT-2bRtOmLA39FjlxIxE-eeCClqoDypQUkMQFt03BhhgviChly_GAB1VdMVAtOkAqyDD7YkPdR2axUfPszW3havSW-NiPjXkJezv1WPkDjGs7VhIBdJ276lVsVC2AXVfTa_AH34QbGAVCgFq8f8RTHFAF3kuyznwrhR89pSFJZDGMu3zaigorG-qTVP15VUl0SThQRKENFzEVVIr40ndWscX0MCYmJQFpzB426gRb4aM5DABy8TfY3hU0Ma6Pqs5vu0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBQ2lSwc1_ggaso1He0vGUt5JD_O-zAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAIw8F0494wN-l6CjjUdzUshsBr2wClEmC0dDhWd1f3feZIai44cKuTS3gtIM6iwdptdi2IL_bKhFk-6Fn-JXtbxsNzIJ8XXeKHhpzJVCU9MsZAFp3UQVp3udzC1s2K_AXSg-OCDXxNEARdl-WK7qOyoEscw8w8gjgQG2Ci1QnqpZZj3XNFuKivIpxFcC8b0hYbFHXp6mX3gSSX-JIvFbcilXTjD7Akh4wCqJ0qr_UVakf6f0hcmwRwI6pxk0EVSIZDDpivRgNJousujO4E5jLDLfevJch5BD-VERxY6bIKFRBYRq5WNGU96UKZ842RWmWmjml7ckpZd5e1UD5ErqHLA&s=kr6KjpPie6LFlk8F245aiiD8hTSKMj3dSOv7msnPa5GUhX8uJyCm0fIMkBuGfrK_a0dv1PaxZrdS6Z2zIeeCfd52xqKxOhbQHt8k73KC7nvSfQh6YTpCArTgHOpgTm8lEjyiSm4MSZ7sEF9lP1gNmffMJnZcfkZy-jJOYpHVTan6oG3yhiPWci2l0RhJpU_tUxvSwbPEVdRkkPmPYfZ5Tx9w74oxeamUJjaGDJO-ntraLhBT7IdS8-EqBDmcuIjp6pwhaEpLkANwNt9DRYZdzAI-EsPLPLPeWirHflzbQzsDWv7hr40iclfuZtqfOuwow_qQsy2deHHs4zxTYv6yFA&h=wSjkx9ZY2oIW7ItFCTca0QTeTIaFTGcxZJQmAcq0EjA",
@@ -732,7 +732,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11996"
         ],
         "x-ms-request-id": [
           "09a5c7e0-63de-422d-af9f-4815bf04ef8c"
@@ -795,7 +795,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11997"
         ],
         "x-ms-request-id": [
           "5cf763b4-08f8-4e3a-bae7-ce250bb1e2ae"
@@ -855,7 +855,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11982"
         ],
         "x-ms-request-id": [
           "183db146-c9d8-4907-8e34-f51fac9097d3"
@@ -879,7 +879,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414/mongodbDatabases/dbName/collections/collection1\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections\",\r\n  \"name\": \"collection1\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"collection1\",\r\n      \"indexes\": [\r\n        {\r\n          \"key\": {\r\n            \"keys\": [\r\n              \"_id\"\r\n            ]\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414/mongodbDatabases/dbName/collections/collection1\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections\",\r\n  \"name\": \"collection1\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"collection1\",\r\n      \"indexes\": [\r\n        {\r\n          \"key\": {\r\n            \"keys\": [\r\n              \"_id\"\r\n            ]\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -990,7 +990,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11977"
         ],
         "x-ms-request-id": [
           "5b7edd4f-02b4-4e0d-a8f1-a4154e84fc7e"
@@ -1143,7 +1143,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1194"
         ],
         "x-ms-correlation-request-id": [
           "0f39bfe2-976b-40af-bf77-d2f5ef6ba9df"
@@ -1284,7 +1284,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414/mongodbRoleDefinitions/dbName.mongoPSRole1\",\r\n  \"name\": \"mongoPSRole1\",\r\n  \"properties\": {\r\n    \"roleName\": \"mongoPSRole1\",\r\n    \"type\": 1,\r\n    \"databaseName\": \"dbName\",\r\n    \"privileges\": [\r\n      {\r\n        \"resource\": {\r\n          \"db\": \"dbName\",\r\n          \"collection\": \"collection1\"\r\n        },\r\n        \"actions\": [\r\n          \"insert\",\r\n          \"find\"\r\n        ]\r\n      }\r\n    ],\r\n    \"roles\": []\r\n  },\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414/mongodbRoleDefinitions/dbName.mongoPSRole1\",\r\n  \"name\": \"mongoPSRole1\",\r\n  \"properties\": {\r\n    \"roleName\": \"mongoPSRole1\",\r\n    \"type\": 1,\r\n    \"databaseName\": \"dbName\",\r\n    \"privileges\": [\r\n      {\r\n        \"resource\": {\r\n          \"db\": \"dbName\",\r\n          \"collection\": \"collection1\"\r\n        },\r\n        \"actions\": [\r\n          \"insert\",\r\n          \"find\"\r\n        ]\r\n      }\r\n    ],\r\n    \"roles\": []\r\n  },\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -1323,7 +1323,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11979"
         ],
         "x-ms-request-id": [
           "6257967c-eced-4aa2-9dfc-7ddcb3b83d1e"
@@ -1347,7 +1347,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414/mongodbRoleDefinitions/dbName.mongoPSRole1\",\r\n  \"name\": \"mongoPSRole1\",\r\n  \"properties\": {\r\n    \"roleName\": \"mongoPSRole1\",\r\n    \"type\": 1,\r\n    \"databaseName\": \"dbName\",\r\n    \"privileges\": [\r\n      {\r\n        \"resource\": {\r\n          \"db\": \"dbName\",\r\n          \"collection\": \"collection1\"\r\n        },\r\n        \"actions\": [\r\n          \"insert\",\r\n          \"find\"\r\n        ]\r\n      }\r\n    ],\r\n    \"roles\": []\r\n  },\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414/mongodbRoleDefinitions/dbName.mongoPSRole1\",\r\n  \"name\": \"mongoPSRole1\",\r\n  \"properties\": {\r\n    \"roleName\": \"mongoPSRole1\",\r\n    \"type\": 1,\r\n    \"databaseName\": \"dbName\",\r\n    \"privileges\": [\r\n      {\r\n        \"resource\": {\r\n          \"db\": \"dbName\",\r\n          \"collection\": \"collection1\"\r\n        },\r\n        \"actions\": [\r\n          \"insert\",\r\n          \"find\"\r\n        ]\r\n      }\r\n    ],\r\n    \"roles\": []\r\n  },\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -1386,7 +1386,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11978"
         ],
         "x-ms-request-id": [
           "2fce7423-ed91-4729-ade9-631d6c3dea4f"
@@ -1410,7 +1410,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414/mongodbRoleDefinitions/dbName.mongoPSRole1\",\r\n  \"name\": \"mongoPSRole1\",\r\n  \"properties\": {\r\n    \"roleName\": \"mongoPSRole1\",\r\n    \"type\": 1,\r\n    \"databaseName\": \"dbName\",\r\n    \"privileges\": [\r\n      {\r\n        \"resource\": {\r\n          \"db\": \"dbName\",\r\n          \"collection\": \"collection1\"\r\n        },\r\n        \"actions\": [\r\n          \"insert\",\r\n          \"find\"\r\n        ]\r\n      }\r\n    ],\r\n    \"roles\": []\r\n  },\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414/mongodbRoleDefinitions/dbName.mongoPSRole1\",\r\n  \"name\": \"mongoPSRole1\",\r\n  \"properties\": {\r\n    \"roleName\": \"mongoPSRole1\",\r\n    \"type\": 1,\r\n    \"databaseName\": \"dbName\",\r\n    \"privileges\": [\r\n      {\r\n        \"resource\": {\r\n          \"db\": \"dbName\",\r\n          \"collection\": \"collection1\"\r\n        },\r\n        \"actions\": [\r\n          \"insert\",\r\n          \"find\"\r\n        ]\r\n      }\r\n    ],\r\n    \"roles\": []\r\n  },\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -1446,7 +1446,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11976"
         ],
         "x-ms-request-id": [
           "6b4f3640-5c05-4de9-a2a4-7823d4977fba"
@@ -1470,7 +1470,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414/mongodbRoleDefinitions/dbName.mongoPSRole1\",\r\n  \"name\": \"mongoPSRole1\",\r\n  \"properties\": {\r\n    \"roleName\": \"mongoPSRole1\",\r\n    \"type\": 1,\r\n    \"databaseName\": \"dbName\",\r\n    \"privileges\": [\r\n      {\r\n        \"resource\": {\r\n          \"db\": \"dbName\",\r\n          \"collection\": \"collection1\"\r\n        },\r\n        \"actions\": [\r\n          \"find\"\r\n        ]\r\n      }\r\n    ],\r\n    \"roles\": []\r\n  },\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414/mongodbRoleDefinitions/dbName.mongoPSRole1\",\r\n  \"name\": \"mongoPSRole1\",\r\n  \"properties\": {\r\n    \"roleName\": \"mongoPSRole1\",\r\n    \"type\": 1,\r\n    \"databaseName\": \"dbName\",\r\n    \"privileges\": [\r\n      {\r\n        \"resource\": {\r\n          \"db\": \"dbName\",\r\n          \"collection\": \"collection1\"\r\n        },\r\n        \"actions\": [\r\n          \"find\"\r\n        ]\r\n      }\r\n    ],\r\n    \"roles\": []\r\n  },\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -1506,7 +1506,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11977"
         ],
         "x-ms-request-id": [
           "42b2fa7b-70b9-41bb-8260-61ef6f2ddf37"
@@ -1584,7 +1584,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
           "57698691-1ac8-45ba-90d0-3e4c1aa7e7ab"
@@ -1641,7 +1641,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11980"
         ],
         "x-ms-request-id": [
           "819607cb-4eaa-417a-98e9-4b6e928d9a9c"
@@ -1701,7 +1701,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11979"
         ],
         "x-ms-request-id": [
           "6887108a-3aaa-44a5-8ffb-734c5e38d8e9"
@@ -1725,7 +1725,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414/mongodbRoleDefinitions/dbName.mongoPSInheritedRole1\",\r\n  \"name\": \"mongoPSInheritedRole1\",\r\n  \"properties\": {\r\n    \"roleName\": \"mongoPSInheritedRole1\",\r\n    \"type\": 1,\r\n    \"databaseName\": \"dbName\",\r\n    \"privileges\": [\r\n      {\r\n        \"resource\": {\r\n          \"db\": \"dbName\",\r\n          \"collection\": \"collection1\"\r\n        },\r\n        \"actions\": [\r\n          \"insert\"\r\n        ]\r\n      }\r\n    ],\r\n    \"roles\": [\r\n      {\r\n        \"db\": \"dbName\",\r\n        \"role\": \"mongoPSRole1\"\r\n      }\r\n    ]\r\n  },\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414/mongodbRoleDefinitions/dbName.mongoPSInheritedRole1\",\r\n  \"name\": \"mongoPSInheritedRole1\",\r\n  \"properties\": {\r\n    \"roleName\": \"mongoPSInheritedRole1\",\r\n    \"type\": 1,\r\n    \"databaseName\": \"dbName\",\r\n    \"privileges\": [\r\n      {\r\n        \"resource\": {\r\n          \"db\": \"dbName\",\r\n          \"collection\": \"collection1\"\r\n        },\r\n        \"actions\": [\r\n          \"insert\"\r\n        ]\r\n      }\r\n    ],\r\n    \"roles\": [\r\n      {\r\n        \"db\": \"dbName\",\r\n        \"role\": \"mongoPSRole1\"\r\n      }\r\n    ]\r\n  },\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -1764,7 +1764,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11964"
         ],
         "x-ms-request-id": [
           "f429ea13-ff57-45d4-9d34-b1534a8bf844"
@@ -2244,7 +2244,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414/mongodbUserDefinitions/dbName.testuser1\",\r\n  \"name\": \"testuser1\",\r\n  \"properties\": {\r\n    \"userName\": \"testuser1\",\r\n    \"password\": \"\",\r\n    \"databaseName\": \"dbName\",\r\n    \"customData\": \"\",\r\n    \"mechanisms\": \"SCRAM-SHA-256\",\r\n    \"roles\": [\r\n      {\r\n        \"db\": \"dbName\",\r\n        \"role\": \"mongoPSInheritedRole1\"\r\n      }\r\n    ]\r\n  },\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbUserDefinitions\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/mongorbactest-4414/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0004414/mongodbUserDefinitions/dbName.testuser1\",\r\n  \"name\": \"testuser1\",\r\n  \"properties\": {\r\n    \"userName\": \"testuser1\",\r\n    \"password\": \"\",\r\n    \"databaseName\": \"dbName\",\r\n    \"customData\": \"\",\r\n    \"mechanisms\": \"SCRAM-SHA-256\",\r\n    \"roles\": [\r\n      {\r\n        \"db\": \"dbName\",\r\n        \"role\": \"mongoPSInheritedRole1\"\r\n      }\r\n    ]\r\n  },\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbUserDefinitions\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -2280,7 +2280,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11965"
         ],
         "x-ms-request-id": [
           "c9333695-f1e5-4108-9cc9-0f3d4198fc4f"
@@ -2598,7 +2598,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11974"
         ],
         "x-ms-request-id": [
           "de9c27a0-5052-4bad-8c91-57c1cb98e9ed"
@@ -3144,7 +3144,7 @@
           "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.14.0"
         ]
       },
-      "RequestBody": "",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"roleName\": \"mongoPSRole1\",\r\n    \"type\": \"CustomRole\",\r\n    \"databaseName\": \"dbName\",\r\n    \"privileges\": [\r\n      {\r\n        \"resource\": {\r\n          \"db\": \"dbName\",\r\n          \"collection\": \"collection1\"\r\n        },\r\n        \"actions\": [\r\n          \"insert\",\r\n          \"find\"\r\n        ]\r\n      }\r\n    ],\r\n    \"roles\": []\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-store, no-cache"
@@ -3290,14 +3290,14 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-gatewayversion": [
-          "version=2.14.0"
+        "x-ms-activity-id": [
+          "f86577b3-2713-4475-9ba5-ff18e14ba376"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11992"
         ],
         "x-ms-request-id": [
           "1ee3cc82-5e3a-4f78-8432-532b74f4736e"
@@ -3357,7 +3357,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11991"
         ],
         "x-ms-request-id": [
           "6c6c6cb8-946d-4c08-9682-4b1a26b87e5f"
@@ -3411,7 +3411,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11971"
         ],
         "x-ms-request-id": [
           "f414209b-97ec-46a4-bdf6-93c2d2fcc8e9"
@@ -3471,7 +3471,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11970"
         ],
         "x-ms-request-id": [
           "eabdc00b-0a06-4b1d-b470-dc2ec507c09c"
@@ -3525,7 +3525,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11996"
         ],
         "x-ms-request-id": [
           "dd9c1986-b953-4a15-8ea5-f0e4a87fb85d"
@@ -3585,7 +3585,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11995"
         ],
         "x-ms-request-id": [
           "7faf6ca7-7383-411b-8d6b-31b409b09aa7"
@@ -3609,6 +3609,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "259fbb24-9bcd-4cfc-865c-fc33b22fe38a"
+    "SubscriptionId": "2c1d0b69-225a-43b5-8220-6a139ef92e23"
   }
 }

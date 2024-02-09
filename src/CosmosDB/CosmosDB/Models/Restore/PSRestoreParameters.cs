@@ -62,6 +62,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                     TablesToRestore.TableNames[i] = restoreParameters.TablesToRestore[i];
                 }
             }
+
+            if (!string.IsNullOrEmpty(restoreParameters.SourceBackupLocation))
+            {
+                SourceBackupLocation = restoreParameters.SourceBackupLocation;
+            }
         }
 
         /// <summary>
@@ -90,6 +95,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// Gets or sets array of specific tables to restore.
         /// </summary>
         public PSTablesToRestore TablesToRestore { get; set; }
+
+        /// <summary>
+        /// Gets or sets CosmosDB location of source backup for cross region restore.
+        /// </summary>
+        public string SourceBackupLocation { get; set; }
 
         public RestoreParameters ToSDKModel()
         {
@@ -125,6 +135,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             if (TablesToRestore != null && TablesToRestore.TableNames != null && TablesToRestore.TableNames.Count() != 0)
             {
                 restoreParameters.TablesToRestore = TablesToRestore.TableNames;
+            }
+
+            if (!string.IsNullOrEmpty(SourceBackupLocation))
+            {
+                restoreParameters.SourceBackupLocation = SourceBackupLocation;
             }
 
             return restoreParameters;

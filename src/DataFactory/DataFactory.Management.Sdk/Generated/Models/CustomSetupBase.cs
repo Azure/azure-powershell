@@ -5,6 +5,7 @@
 
 namespace Microsoft.Azure.Management.DataFactory.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>

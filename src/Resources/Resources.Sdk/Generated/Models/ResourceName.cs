@@ -18,6 +18,11 @@ namespace Microsoft.Azure.Management.Resources.Models
     /// Name and Type of the Resource
     /// </summary>
     public partial class ResourceName
+    
+    /// <summary>
+    /// A CosmosDB No Sql API data source/sink
+    /// </summary>
+    public partial class CosmosSqlDataTransferDataSourceSink
     {
         /// <summary>
         /// Initializes a new instance of the ResourceName class.

@@ -14,6 +14,7 @@ namespace Microsoft.Azure.Management.StorageSync.Models
     using System.Linq;
 
     /// <summary>
+<<<<<<<< HEAD:src/StorageSync/StorageSync.Sdk/Generated/Models/PrivateEndpoint.cs
     /// The Private Endpoint resource.
     /// </summary>
     public partial class PrivateEndpoint
@@ -22,17 +23,37 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// Initializes a new instance of the PrivateEndpoint class.
         /// </summary>
         public PrivateEndpoint()
+========
+    /// A base CosmosDB data source/sink
+    /// </summary>
+    public partial class BaseCosmosDataTransferDataSourceSink
+    {
+        /// <summary>
+        /// Initializes a new instance of the
+        /// BaseCosmosDataTransferDataSourceSink class.
+        /// </summary>
+        public BaseCosmosDataTransferDataSourceSink()
+>>>>>>>> b2b18a856b8700f4a4e54987cccf23156eccdb7e:src/CosmosDB/CosmosDB.Sdk/Generated/Models/BaseCosmosDataTransferDataSourceSink.cs
         {
             CustomInit();
         }
 
         /// <summary>
+<<<<<<<< HEAD:src/StorageSync/StorageSync.Sdk/Generated/Models/PrivateEndpoint.cs
         /// Initializes a new instance of the PrivateEndpoint class.
         /// </summary>
         /// <param name="id">The ARM identifier for Private Endpoint</param>
         public PrivateEndpoint(string id = default(string))
         {
             Id = id;
+========
+        /// Initializes a new instance of the
+        /// BaseCosmosDataTransferDataSourceSink class.
+        /// </summary>
+        public BaseCosmosDataTransferDataSourceSink(string remoteAccountName = default(string))
+        {
+            RemoteAccountName = remoteAccountName;
+>>>>>>>> b2b18a856b8700f4a4e54987cccf23156eccdb7e:src/CosmosDB/CosmosDB.Sdk/Generated/Models/BaseCosmosDataTransferDataSourceSink.cs
             CustomInit();
         }
 
@@ -42,10 +63,16 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         partial void CustomInit();
 
         /// <summary>
+<<<<<<<< HEAD:src/StorageSync/StorageSync.Sdk/Generated/Models/PrivateEndpoint.cs
         /// Gets the ARM identifier for Private Endpoint
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; private set; }
+========
+        /// </summary>
+        [JsonProperty(PropertyName = "remoteAccountName")]
+        public string RemoteAccountName { get; set; }
+>>>>>>>> b2b18a856b8700f4a4e54987cccf23156eccdb7e:src/CosmosDB/CosmosDB.Sdk/Generated/Models/BaseCosmosDataTransferDataSourceSink.cs
 
     }
 }

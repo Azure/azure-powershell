@@ -276,5 +276,150 @@ namespace Microsoft.Azure.Management.CosmosDB
                 return _result.Headers;
             }
         }
+        
+        /// <summary>
+        /// Deletes service with the given serviceName.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='serviceName'>
+        /// Cosmos DB service name.
+        /// </param>
+        public static ServiceDeleteHeaders Delete(this IServiceOperations operations, string resourceGroupName, string accountName, string serviceName)
+        {
+            return operations.DeleteAsync(resourceGroupName, accountName, serviceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes service with the given serviceName.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='serviceName'>
+        /// Cosmos DB service name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<ServiceDeleteHeaders> DeleteAsync(this IServiceOperations operations, string resourceGroupName, string accountName, string serviceName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, serviceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+
+        /// <summary>
+        /// Creates a service.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='serviceName'>
+        /// Cosmos DB service name.
+        /// </param>
+        /// <param name='createUpdateParameters'>
+        /// The Service resource parameters.
+        /// </param>
+        public static ServiceResource BeginCreate(this IServiceOperations operations, string resourceGroupName, string accountName, string serviceName, ServiceResourceCreateUpdateParameters createUpdateParameters)
+        {
+            return operations.BeginCreateAsync(resourceGroupName, accountName, serviceName, createUpdateParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates a service.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='serviceName'>
+        /// Cosmos DB service name.
+        /// </param>
+        /// <param name='createUpdateParameters'>
+        /// The Service resource parameters.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<ServiceResource> BeginCreateAsync(this IServiceOperations operations, string resourceGroupName, string accountName, string serviceName, ServiceResourceCreateUpdateParameters createUpdateParameters, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, accountName, serviceName, createUpdateParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+
+        /// <summary>
+        /// Deletes service with the given serviceName.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='serviceName'>
+        /// Cosmos DB service name.
+        /// </param>
+        public static ServiceDeleteHeaders BeginDelete(this IServiceOperations operations, string resourceGroupName, string accountName, string serviceName)
+        {
+            return operations.BeginDeleteAsync(resourceGroupName, accountName, serviceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes service with the given serviceName.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='serviceName'>
+        /// Cosmos DB service name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async Task<ServiceDeleteHeaders> BeginDeleteAsync(this IServiceOperations operations, string resourceGroupName, string accountName, string serviceName, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, serviceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+
     }
 }

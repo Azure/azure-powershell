@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourcegroups/CosmosDBResourceGroup60?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlZ3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDYwP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourcegroups/CosmosDBResourceGroup60?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmMxZDBiNjktMjI1YS00M2I1LTgyMjAtNmExMzllZjkyZTIzL3Jlc291cmNlZ3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDYwP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -33,7 +33,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-request-id": [
           "ef97ff16-cb6b-4449-a006-a8182f0e0774"
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup60\",\r\n  \"name\": \"CosmosDBResourceGroup60\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2c1d0b69-225a-43b5-8220-6a139ef92e23/resourceGroups/CosmosDBResourceGroup60\",\r\n  \"name\": \"CosmosDBResourceGroup60\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -294,7 +294,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11992"
         ],
         "x-ms-request-id": [
           "3417d4e5-00c5-404b-98b4-c3069090b6dc"
@@ -354,7 +354,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11991"
         ],
         "x-ms-request-id": [
           "0bb302b1-790b-4ee6-b0ae-40028a481e97"
@@ -414,7 +414,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11990"
         ],
         "x-ms-request-id": [
           "b8bbe84d-0e8e-40d9-9bc0-0988c7184abc"
@@ -474,7 +474,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "11989"
         ],
         "x-ms-request-id": [
           "a84d7c51-3873-4f92-ab58-c58858d329f4"
@@ -537,7 +537,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11983"
         ],
         "x-ms-request-id": [
           "8e1bd104-5f19-48f5-8fe7-ac26951e2f0c"
@@ -597,7 +597,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11981"
         ],
         "x-ms-request-id": [
           "35cb773e-977c-4d74-99b9-05fa0f6f5b63"
@@ -660,7 +660,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11965"
         ],
         "x-ms-request-id": [
           "0235dc6e-d391-4ba1-b51b-dfca63463a2d"
@@ -846,7 +846,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11980"
         ],
         "x-ms-request-id": [
           "896df840-b235-4c59-8092-93622b44b5eb"
@@ -924,7 +924,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
           "e487e221-4a5f-46fe-8382-018e6e49e9b6"
@@ -1056,7 +1056,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11982"
         ],
         "x-ms-request-id": [
           "4cb33075-be2a-4b3d-aa1c-806c5792f61a"
@@ -1119,7 +1119,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11964"
         ],
         "x-ms-request-id": [
           "48d6faec-13ba-496a-92bd-51197a1b4d71"
@@ -1179,7 +1179,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11981"
         ],
         "x-ms-request-id": [
           "7b6645fc-77bb-43b8-9ea3-2c681e259063"
@@ -1242,7 +1242,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11998"
         ],
         "x-ms-request-id": [
           "2e4f64f7-6bc6-4b6e-9dd0-17e13b793e3d"
@@ -1476,10 +1476,10 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "2078"
+          "96"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"container1\",\r\n      \"indexingPolicy\": {\r\n        \"automatic\": true,\r\n        \"indexingMode\": \"Consistent\",\r\n        \"includedPaths\": [\r\n          {\r\n            \"path\": \"/*\",\r\n            \"indexes\": [\r\n              {\r\n                \"dataType\": \"String\",\r\n                \"precision\": -1,\r\n                \"kind\": \"Hash\"\r\n              },\r\n              {\r\n                \"dataType\": \"String\",\r\n                \"precision\": -1,\r\n                \"kind\": \"Hash\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"excludedPaths\": [\r\n          {\r\n            \"path\": \"/myPathToNotIndex/*\"\r\n          }\r\n        ],\r\n        \"compositeIndexes\": [\r\n          [\r\n            {\r\n              \"path\": \"/abc\",\r\n              \"order\": \"Ascending\"\r\n            },\r\n            {\r\n              \"path\": \"/aberc\",\r\n              \"order\": \"Descending\"\r\n            }\r\n          ],\r\n          [\r\n            {\r\n              \"path\": \"/aberc\",\r\n              \"order\": \"Descending\"\r\n            },\r\n            {\r\n              \"path\": \"/abc\",\r\n              \"order\": \"Ascending\"\r\n            }\r\n          ]\r\n        ],\r\n        \"spatialIndexes\": [\r\n          {\r\n            \"path\": \"/mySpatialPath/*\",\r\n            \"types\": [\r\n              \"Point\",\r\n              \"LineString\",\r\n              \"Polygon\",\r\n              \"MultiPolygon\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"partitionKey\": {\r\n        \"paths\": [\r\n          \"/foo/bar\"\r\n        ],\r\n        \"kind\": \"Hash\"\r\n      },\r\n      \"uniqueKeyPolicy\": {\r\n        \"uniqueKeys\": [\r\n          {\r\n            \"paths\": [\r\n              \"/myUniqueKey3\"\r\n            ]\r\n          },\r\n          {\r\n            \"paths\": [\r\n              \"/myUniqueKey4\"\r\n            ]\r\n          },\r\n          {\r\n            \"paths\": [\r\n              \"/myUniqueKey2\"\r\n            ]\r\n          },\r\n          {\r\n            \"paths\": [\r\n              \"/myUniqueKey1\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"options\": {\r\n      \"throughput\": 600\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"dbName\"\r\n    },\r\n    \"options\": {}\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-store, no-cache"
@@ -1551,10 +1551,10 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "1957"
+          "96"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"container1\",\r\n      \"indexingPolicy\": {\r\n        \"automatic\": true,\r\n        \"indexingMode\": \"consistent\",\r\n        \"includedPaths\": [\r\n          {\r\n            \"path\": \"/*\"\r\n          }\r\n        ],\r\n        \"excludedPaths\": [\r\n          {\r\n            \"path\": \"/myPathToNotIndex/*\"\r\n          },\r\n          {\r\n            \"path\": \"/\\\"_etag\\\"/?\"\r\n          }\r\n        ],\r\n        \"compositeIndexes\": [\r\n          [\r\n            {\r\n              \"path\": \"/abc\",\r\n              \"order\": \"ascending\"\r\n            },\r\n            {\r\n              \"path\": \"/aberc\",\r\n              \"order\": \"descending\"\r\n            }\r\n          ],\r\n          [\r\n            {\r\n              \"path\": \"/aberc\",\r\n              \"order\": \"descending\"\r\n            },\r\n            {\r\n              \"path\": \"/abc\",\r\n              \"order\": \"ascending\"\r\n            }\r\n          ]\r\n        ],\r\n        \"spatialIndexes\": [\r\n          {\r\n            \"path\": \"/mySpatialPath/*\",\r\n            \"types\": [\r\n              \"Point\",\r\n              \"LineString\",\r\n              \"Polygon\",\r\n              \"MultiPolygon\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"partitionKey\": {\r\n        \"paths\": [\r\n          \"/foo/bar\"\r\n        ],\r\n        \"kind\": \"Hash\"\r\n      },\r\n      \"uniqueKeyPolicy\": {\r\n        \"uniqueKeys\": [\r\n          {\r\n            \"paths\": [\r\n              \"/myUniqueKey3\"\r\n            ]\r\n          },\r\n          {\r\n            \"paths\": [\r\n              \"/myUniqueKey4\"\r\n            ]\r\n          },\r\n          {\r\n            \"paths\": [\r\n              \"/myUniqueKey2\"\r\n            ]\r\n          },\r\n          {\r\n            \"paths\": [\r\n              \"/myUniqueKey1\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"conflictResolutionPolicy\": {\r\n        \"mode\": \"LastWriterWins\",\r\n        \"conflictResolutionPath\": \"/_ts\",\r\n        \"conflictResolutionProcedure\": \"\"\r\n      }\r\n    },\r\n    \"options\": {}\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"dbName\"\r\n    },\r\n    \"options\": {}\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-store, no-cache"
@@ -1656,14 +1656,14 @@
           "Sat, 16 Dec 2023 13:06:30 GMT"
         ],
         "Content-Length": [
-          "22"
+          "21"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"status\": \"Enqueued\"\r\n}",
+      "StatusCode": 202
     },
     {
       "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup60/providers/Microsoft.DocumentDB/databaseAccounts/dbaccount60-1/sqlDatabases/dbName/containers/container1/storedProcedures/storedProcedure?api-version=2023-11-15",
@@ -1701,7 +1701,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11993"
         ],
         "x-ms-request-id": [
           "a4686b9b-7540-4859-8b02-608eb4fa16bf"
@@ -2028,7 +2028,7 @@
           "Sat, 16 Dec 2023 13:09:46 GMT"
         ],
         "Content-Length": [
-          "613"
+          "700"
         ],
         "Content-Type": [
           "application/json"
@@ -2058,10 +2058,10 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "237"
+          "600"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"storedProcedure\",\r\n      \"body\": \"function () { var context = getContext(); var response = context.getResponse();response.setBody('Hello, World');}\"\r\n    },\r\n    \"options\": {}\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\"\r\n    },\r\n    \"locations\": [\r\n      {\r\n        \"locationName\": \"East Us\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"enableAutomaticFailover\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"databaseAccountOfferType\": \"Standard\"\r\n  },\r\n  \"location\": \"East Us\",\r\n  \"tags\": {}\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-store, no-cache"
@@ -2103,7 +2103,7 @@
           "Sat, 16 Dec 2023 13:06:33 GMT"
         ],
         "Content-Length": [
-          "21"
+          "2475"
         ],
         "Content-Type": [
           "application/json"
@@ -2163,7 +2163,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
           "d85ffda5-3083-4f36-8c69-9e6173ae6b22"
@@ -2283,7 +2283,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11960"
         ],
         "x-ms-request-id": [
           "a2ebfa60-88be-4a69-9516-95af30de3ea8"
@@ -2343,7 +2343,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11958"
         ],
         "x-ms-request-id": [
           "22380640-8ee8-4e92-922f-eba5c981d3e7"
@@ -2361,7 +2361,7 @@
           "Sat, 16 Dec 2023 13:07:35 GMT"
         ],
         "Content-Length": [
-          "670"
+          "21"
         ],
         "Content-Type": [
           "application/json"
@@ -2424,7 +2424,7 @@
           "Sat, 16 Dec 2023 13:07:36 GMT"
         ],
         "Content-Length": [
-          "670"
+          "7048"
         ],
         "Content-Type": [
           "application/json"
@@ -2610,7 +2610,7 @@
           "Sat, 16 Dec 2023 13:10:50 GMT"
         ],
         "Content-Length": [
-          "583"
+          "445"
         ],
         "Content-Type": [
           "application/json"
@@ -2670,7 +2670,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
           "ee05e731-7f98-436e-931a-175d38ddf8a1"
@@ -2745,7 +2745,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
           "24a053f4-c7fe-4848-a7d4-7124232c5ccc"
@@ -2988,7 +2988,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11996"
         ],
         "x-ms-request-id": [
           "6bbb5d5e-0453-444e-b8a3-386aba9e5e53"
@@ -3327,7 +3327,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
           "fc968074-921e-425d-a66c-1c8a524e0695"
@@ -3447,7 +3447,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11993"
         ],
         "x-ms-request-id": [
           "0e09149a-019e-45c8-999d-a186123df84e"
@@ -3636,7 +3636,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11996"
         ],
         "x-ms-request-id": [
           "3ccda943-1c28-47de-9c2a-c370d88049ad"
@@ -3699,7 +3699,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11989"
         ],
         "x-ms-request-id": [
           "4bcdb0c9-611a-45c4-8572-6712f6d9ac13"
@@ -4125,7 +4125,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11996"
         ],
         "x-ms-request-id": [
           "fcb4592b-cfb9-4d7a-9cb2-8fc90184fa51"
@@ -4188,7 +4188,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11992"
         ],
         "x-ms-request-id": [
           "db863722-9379-4e91-9996-92bdb5d4e656"
@@ -4251,7 +4251,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11993"
         ],
         "x-ms-request-id": [
           "2c3eb061-04a3-44a7-bc8b-f5c1b2b64150"
@@ -4443,7 +4443,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11991"
         ],
         "x-ms-request-id": [
           "89b5dada-75f6-4aae-8ba5-34a91f5b51c8"
@@ -4503,7 +4503,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11990"
         ],
         "x-ms-request-id": [
           "af44aff2-90d4-4d74-90a3-9ad0760ade83"
@@ -4569,7 +4569,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+          "14998"
         ],
         "x-ms-correlation-request-id": [
           "2057bc7f-6fdf-42dd-8f6a-edd7f15f07a2"
@@ -4626,7 +4626,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11987"
         ],
         "x-ms-request-id": [
           "d272bb10-f5eb-449d-a034-3aa901bdabdd"
@@ -4644,13 +4644,13 @@
           "Sat, 16 Dec 2023 13:11:54 GMT"
         ],
         "Content-Length": [
-          "22"
+          "670"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup60/providers/Microsoft.DocumentDB/databaseAccounts/dbaccount60-1/sqlDatabases/dbName/containers/container1/userDefinedFunctions/udf\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/userDefinedFunctions\",\r\n  \"name\": \"udf\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"udf\",\r\n      \"body\": \"function () { var context = getContext(); var response = context.getResponse();response.setBody('Hello, World');}\",\r\n      \"_rid\": \"c882ALpn7IEBAAAAAAAAYA==\",\r\n      \"_self\": \"dbs/c882AA==/colls/c882ALpn7IE=/udfs/c882ALpn7IEBAAAAAAAAYA==/\",\r\n      \"_etag\": \"\\\"3600b1fe-0000-0100-0000-643547f90000\\\"\",\r\n      \"_ts\": 1681213433\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -4686,7 +4686,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11986"
         ],
         "x-ms-request-id": [
           "dbcd4ef2-589e-402a-bfdd-5f63e2d3cc53"
@@ -4704,8 +4704,8 @@
           "Sat, 16 Dec 2023 13:11:54 GMT"
         ]
       },
-      "ResponseBody": "",
-      "StatusCode": 204
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"Message: {\\\"code\\\":\\\"NotFound\\\",\\\"message\\\":\\\"Message: {\\\\\\\"Errors\\\\\\\":[\\\\\\\"Resource Not Found. Learn more: https:\\\\\\\\/\\\\\\\\/aka.ms\\\\\\\\/cosmosdb-tsg-not-found\\\\\\\"]}\\\\r\\\\nActivityId: 724f43e0-af71-4016-8475-8c45707b9eaa, Request URI: /apps/f20166e1-7e93-471d-b0ea-5b3634774aa4/services/9a59789f-ca18-46e5-9cda-d44421215bfe/partitions/67ccfd17-b7c2-464f-ab39-2a56367dbf16/replicas/133256868132496380s/, RequestStats: \\\\r\\\\nRequestStartTime: 2023-04-11T11:44:20.8483463Z, RequestEndTime: 2023-04-11T11:44:20.8483463Z,  Number of regions attempted:1\\\\r\\\\n{\\\\\\\"systemHistory\\\\\\\":[{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-04-11T11:43:17.8880285Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.627,\\\\\\\"memory\\\\\\\":662073376.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0168,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":548},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-04-11T11:43:27.8980604Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.680,\\\\\\\"memory\\\\\\\":662062712.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.023,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":548},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-04-11T11:43:37.9081125Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.548,\\\\\\\"memory\\\\\\\":662057840.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0278,\\\\\\\"availableThreads\\\\\\\":32762,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":551},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-04-11T11:43:57.9182352Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.941,\\\\\\\"memory\\\\\\\":662053088.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.047,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":555},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-04-11T11:44:07.9282649Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.671,\\\\\\\"memory\\\\\\\":662044160.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.029,\\\\\\\"availableThreads\\\\\\\":32762,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":557},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-04-11T11:44:17.9383266Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.693,\\\\\\\"memory\\\\\\\":662031664.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0334,\\\\\\\"availableThreads\\\\\\\":32763,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":551}]}\\\\r\\\\nRequestStart: 2023-04-11T11:44:20.8483463Z; ResponseTime: 2023-04-11T11:44:20.8483463Z; StoreResult: StorePhysicalAddress: rntbd://cdb-ms-prod-eastus1-fd115.documents.azure.com:14007/apps/f20166e1-7e93-471d-b0ea-5b3634774aa4/services/9a59789f-ca18-46e5-9cda-d44421215bfe/partitions/67ccfd17-b7c2-464f-ab39-2a56367dbf16/replicas/133256868132496380s/, LSN: 3, GlobalCommittedLsn: 3, PartitionKeyRangeId: 0, IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#3, UsingLocalLSN: True, TransportException: null, BELatencyMs: 0.803, ActivityId: 724f43e0-af71-4016-8475-8c45707b9eaa, RetryAfterInMs: , TransportRequestTimeline: {\\\\\\\"requestTimeline\\\\\\\":[{\\\\\\\"event\\\\\\\": \\\\\\\"Created\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-04-11T11:44:20.8483463Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0112},{\\\\\\\"event\\\\\\\": \\\\\\\"ChannelAcquisitionStarted\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-04-11T11:44:20.8483575Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0125},{\\\\\\\"event\\\\\\\": \\\\\\\"Pipelined\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-04-11T11:44:20.8483700Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.1477},{\\\\\\\"event\\\\\\\": \\\\\\\"Transit Time\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-04-11T11:44:20.8485177Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 1.8648},{\\\\\\\"event\\\\\\\": \\\\\\\"Received\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-04-11T11:44:20.8503825Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.082},{\\\\\\\"event\\\\\\\": \\\\\\\"Completed\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-04-11T11:44:20.8504645Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0}],\\\\\\\"serviceEndpointStats\\\\\\\":{\\\\\\\"inflightRequests\\\\\\\":1,\\\\\\\"openConnections\\\\\\\":1},\\\\\\\"connectionStats\\\\\\\":{\\\\\\\"waitforConnectionInit\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"callsPendingReceive\\\\\\\":0,\\\\\\\"lastSendAttempt\\\\\\\":\\\\\\\"2023-04-11T11:28:18.7534228Z\\\\\\\",\\\\\\\"lastSend\\\\\\\":\\\\\\\"2023-04-11T11:28:18.7534228Z\\\\\\\",\\\\\\\"lastReceive\\\\\\\":\\\\\\\"2023-04-11T11:28:18.7534228Z\\\\\\\"},\\\\\\\"requestSizeInBytes\\\\\\\":543,\\\\\\\"responseMetadataSizeInBytes\\\\\\\":140,\\\\\\\"responseBodySizeInBytes\\\\\\\":87};\\\\r\\\\n ResourceType: Trigger, OperationType: Read\\\\r\\\\nRequestStart: 2023-04-11T11:44:20.8483463Z; ResponseTime: 2023-04-11T11:44:20.8483463Z; StoreResult: StorePhysicalAddress: rntbd://cdb-ms-prod-eastus1-fd115.documents.azure.com:14334/apps/f20166e1-7e93-471d-b0ea-5b3634774aa4/services/9a59789f-ca18-46e5-9cda-d44421215bfe/partitions/67ccfd17-b7c2-464f-ab39-2a56367dbf16/replicas/133256868132496378s/, LSN: 3, GlobalCommittedLsn: 3, PartitionKeyRangeId: 0, IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#3, UsingLocalLSN: True, TransportException: null, BELatencyMs: 0.818, ActivityId: 724f43e0-af71-4016-8475-8c45707b9eaa, RetryAfterInMs: , TransportRequestTimeline: {\\\\\\\"requestTimeline\\\\\\\":[{\\\\\\\"event\\\\\\\": \\\\\\\"Created\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-04-11T11:44:20.8483463Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0048},{\\\\\\\"event\\\\\\\": \\\\\\\"ChannelAcquisitionStarted\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-04-11T11:44:20.8483511Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0018},{\\\\\\\"event\\\\\\\": \\\\\\\"Pipelined\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-04-11T11:44:20.8483529Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0961},{\\\\\\\"event\\\\\\\": \\\\\\\"Transit Time\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-04-11T11:44:20.8484490Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 1.9263},{\\\\\\\"event\\\\\\\": \\\\\\\"Received\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-04-11T11:44:20.8503753Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0508},{\\\\\\\"event\\\\\\\": \\\\\\\"Completed\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-04-11T11:44:20.8504261Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0}],\\\\\\\"serviceEndpointStats\\\\\\\":{\\\\\\\"inflightRequests\\\\\\\":1,\\\\\\\"openConnections\\\\\\\":1},\\\\\\\"connectionStats\\\\\\\":{\\\\\\\"waitforConnectionInit\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"callsPendingReceive\\\\\\\":0,\\\\\\\"lastSendAttempt\\\\\\\":\\\\\\\"2023-04-11T11:44:20.4383445Z\\\\\\\",\\\\\\\"lastSend\\\\\\\":\\\\\\\"2023-04-11T11:44:20.4383445Z\\\\\\\",\\\\\\\"lastReceive\\\\\\\":\\\\\\\"2023-04-11T11:44:20.4383445Z\\\\\\\"},\\\\\\\"requestSizeInBytes\\\\\\\":543,\\\\\\\"responseMetadataSizeInBytes\\\\\\\":140,\\\\\\\"responseBodySizeInBytes\\\\\\\":87};\\\\r\\\\n ResourceType: Trigger, OperationType: Read\\\\r\\\\n, SDK: Microsoft.Azure.Documents.Common/2.14.0\\\"}, Request URI: /dbs/dbName/colls/container1/triggers/trigger, RequestStats: , SDK: Microsoft.Azure.Documents.Common/2.14.0\"\r\n}",
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup60/providers/Microsoft.DocumentDB/databaseAccounts/dbaccount60-1/sqlDatabases/dbName/containers/container1/userDefinedFunctions/udf?api-version=2023-11-15",
@@ -4809,7 +4809,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11984"
         ],
         "x-ms-request-id": [
           "c12f7cb0-05d9-460c-a7b8-d3dcb8766d66"
@@ -4827,13 +4827,13 @@
           "Sat, 16 Dec 2023 13:12:25 GMT"
         ],
         "Content-Length": [
-          "22"
+          "707"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup60/providers/Microsoft.DocumentDB/databaseAccounts/dbaccount60-1/sqlDatabases/dbName/containers/container1/triggers/trigger\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/triggers\",\r\n  \"name\": \"trigger\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"trigger\",\r\n      \"body\": \"function () { var context = getContext(); var response = context.getResponse();response.setBody('Hello, World');}\",\r\n      \"triggerType\": \"Pre\",\r\n      \"triggerOperation\": \"All\",\r\n      \"_rid\": \"c882ALpn7IEBAAAAAAAAcA==\",\r\n      \"_self\": \"dbs/c882AA==/colls/c882ALpn7IE=/triggers/c882ALpn7IEBAAAAAAAAcA==/\",\r\n      \"_etag\": \"\\\"3600d2ff-0000-0100-0000-643548190000\\\"\",\r\n      \"_ts\": 1681213465\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -4869,7 +4869,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11994"
         ],
         "x-ms-request-id": [
           "bd93a092-eb53-4cd4-9f74-4150ae443266"
@@ -5427,7 +5427,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11983"
         ],
         "x-ms-request-id": [
           "84526c8f-ac5b-4095-a49f-d9a18da0375d"
@@ -5487,7 +5487,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11978"
         ],
         "x-ms-request-id": [
           "7e654b6a-7ac2-4dd3-939a-8eec2504123e"
@@ -5541,7 +5541,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11995"
         ],
         "x-ms-request-id": [
           "4e6a0021-881e-4ee8-be70-ea55d07c6b5a"
@@ -5601,7 +5601,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11994"
         ],
         "x-ms-request-id": [
           "bd02d748-a401-46dc-bb8d-a7148d51dfb0"
@@ -5625,6 +5625,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "259fbb24-9bcd-4cfc-865c-fc33b22fe38a"
+    "SubscriptionId": "2c1d0b69-225a-43b5-8220-6a139ef92e23"
   }
 }
