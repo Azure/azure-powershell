@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Policy Name", Target = ViewControl.Table, ScriptBlock = "$_.SslPolicy.PolicyName")]
         public PSApplicationGatewaySslPolicy SslPolicy { get; set; }
 
+        public PSApplicationGatewayGlobalConfiguration GlobalConfiguration { get; set; }
+
         public List<PSApplicationGatewayIPConfiguration> GatewayIPConfigurations { get; set; }
 
         public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }
@@ -82,6 +84,46 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableFips { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableRequestBuffering
+        {
+            get
+            {
+                if (this.GlobalConfiguration == null)
+                {
+                    this.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
+                    this.GlobalConfiguration.EnableRequestBuffering = true;
+                }
+                return this.GlobalConfiguration.EnableRequestBuffering;
+            }
+
+            set
+            {
+                this.GlobalConfiguration.EnableRequestBuffering = value;
+            }
+
+        }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableResponseBuffering 
+        {
+            get
+            {
+                if (this.GlobalConfiguration == null)
+                {
+                    this.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
+                    this.GlobalConfiguration.EnableResponseBuffering = true;
+                }
+                return this.GlobalConfiguration.EnableResponseBuffering;
+            }
+                
+            set
+            {
+                this.GlobalConfiguration.EnableResponseBuffering = value;
+            }
+        
+        }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? ForceFirewallPolicyAssociation { get; set; }

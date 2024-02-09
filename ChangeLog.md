@@ -1,3 +1,87 @@
+## 11.3.0 - February 2024
+#### Az.Accounts 2.15.1
+* Upgraded the reference of Azure PowerShell Common to 1.3.90-preview.
+* Upgraded Azure.Identity to 1.10.3 [#23018].
+  - Renamed token cache from 'msal.cache' to 'msal.cache.cae' or 'masl.cache.nocae'.
+* Enabled Continue Access Evaluation (CAE) for all Service Principals login methods.
+* Supported signing in with Microsoft Account (MSA) via Web Account Manager (WAM). Enable it by 'Set-AzConfig -EnableLoginByWam True'.
+* Adjusted output format to be more user-friendly for 'Get-AzContext/Tenant/Subscription' and 'Invoke-AzRestMethod'.
+* Fixed the multiple 'x-ms-unique-id' values issue.
+
+#### Az.Aks 6.0.1
+* Fixed the resolve path issue in 'Install-AzAksCliTool'.
+
+#### Az.DataFactory 1.18.1
+* Added metadata Into StoreWriteSettings For Bug Fix
+* Supported ADF Warehouse, Mysql V2 and Salesforce V2 in ADF
+
+#### Az.ElasticSan 1.0.0
+* General availability for module Az.ElasticSan
+
+#### Az.KeyVault 5.2.0
+* Supported authentication via User Managed Identity by adding parameter 'UseUserManagedIdentity' and making 'SasToken' optional.
+
+#### Az.Migrate 2.3.0
+* Added support for 'Data.Replication'
+
+#### Az.Monitor 5.0.1
+* Remove outdated breaking change warning [#24033]
+
+#### Az.Network 7.4.0
+* Fixed a few minor issues
+* Updated 'New-AzApplicationGateway' to include 'EnableRequestBuffering' and 'EnableResponseBuffering' parameters
+* Changed the Default Rule Set from CRS3.0 to DRS2.1 in 'NewAzureApplicationGatewayFirewallPolicy'
+* Added optional property 'Profile' to 'New-AzFirewallPolicyIntrusionDetection' 
+* Added new cmdlet to update Connection child resource of Network Virtual Appliance. - 'Update-AzNetworkVirtualApplianceConnection'
+* Added support of 'InternetIngressIp' Property in New-AzNetworkVirtualAppliance
+* Added the new cmdlet for supporting 'InternetIngressIp' Property with Network Virtual Appliances -'New-AzVirtualApplianceInternetIngressIpsProperty'
+* Added a new AuxiliaryMode value 'AuxiliaryMode.Floating'
+* Added support for AzureFirewallPacketCapture
+
+#### Az.Nginx 1.0.0
+* General availability of 'Az.Nginx' module
+
+#### Az.RecoveryServices 6.7.1
+* Added CRR support for taiwannorth, taiwannorthwest region.
+* Added breaking change notification for cmdlets whose output type is 'ASRVaultSettings'.
+* Added warning for Standard to Enhanced policy migration for AzureVMs.
+* Updated Unregister-AzRecoveryServicesBackupContainer cmdlet to output Job object if PassThru not given.
+* Fixed issue with Get-AzRecoveryServicesVaultSettingsFile cmdlet to return private endpoint state for backup.
+
+#### Az.Resources 6.15.0
+* Supported '-SkipClientSideScopeValidation' in RoleAssignment and RoleDefinition related commands. [#22473]
+* Updated Bicep build logic to use --stdout flag instead of creating a temporary file on disk.
+* Fixed exception when '-ApiVersion' is specified for 'Get-AzResource', affected by some resource types.
+
+#### Az.Sql 4.14.0
+* Added 'DatabaseFormat' and 'PricingModel' parameters to 'New-AzSqlInstance', 'Set-AzSqlInstance'
+* Added breaking change message for 'New-AzSqlDatabaseFailoverGroup' and 'Set-AzSqlDatabaseFailoverGroup'
+    - The default value of 'FailoverPolicy' parameter will be changed from 'Automatic' to 'Manual'
+* Added a new cmdlet for Azure SQL Managed Instance refresh external governance status
+  - 'Invoke-AzSqlInstanceExternalGovernanceStatusRefresh'
+* Updated 'Get-AzSqlInstance' to support returning the 'ExternalGovernanceStatus' property
+
+#### Az.SqlVirtualMachine 2.2.0
+* Fixed a bug of parameter 'VirtualMachineResourceId' of cmdlet 'New-AzSqlVM'.
+
+#### Az.StackHCI 2.3.0
+* Fixed issue for WAC.
+* Restricted registration for 23H2 devices exclusively to cloud deployment.
+
+#### Az.StackHCIVM 1.0.0
+* General availability for module Az.StackHCIVM
+
+#### Az.Storage 6.1.1
+* Removed some code branches referencing Microsoft.Azure.Storage.Blob
+    - 'Get-AzStorageBlob'
+* Updated the prompt message when deleting a share snapshot and the output format when listing 
+    - 'Remove-AzStorageShare'
+    - 'Remove-AzRmStorageShare'
+    - 'Get-AzRmStorageShare'
+
+#### Az.Websites 3.2.0
+* Fixed Ambiguous Positional Argument for 'New-AzWebAppSlot'
+
 ## 11.2.0 - January 2024
 #### Az.Accounts 2.15.0
 * Fixed the authentication issue when using 'FederatedToken' in Sovereign Clouds. [#23742]

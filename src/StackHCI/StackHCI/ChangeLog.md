@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.0
+* Fixed issue for WAC.
+* Restricted registration for 23H2 devices exclusively to cloud deployment.
+
 ## Version 2.2.3
 * Added support for ARC Onboarding using Cluster Managed Identity. 
 * Removed previous IMDS Reg Key during Registration/Repair-Registration. 

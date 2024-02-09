@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Marketplace-help.xml
 Module Name: Az.Marketplace
 online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorecollectionoffer
 schema: 2.0.0
@@ -15,19 +15,32 @@ Gets information about a specific offer.
 ### List (Default)
 ```
 Get-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateStoreId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentityPrivateStore
+```
+Get-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String>
+ -PrivateStoreInputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String> -PrivateStoreId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentityCollection
+```
+Get-AzMarketplacePrivateStoreCollectionOffer -OfferId <String> -CollectionInputObject <IMarketplaceIdentity>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzMarketplacePrivateStoreCollectionOffer -InputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,13 +70,29 @@ The collection ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, GetViaIdentityPrivateStore, Get
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CollectionInputObject
+Identity Parameter
+To construct, see NOTES section for COLLECTIONINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+Parameter Sets: GetViaIdentityCollection
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -103,7 +132,7 @@ The offer ID to update or delete
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityPrivateStore, Get, GetViaIdentityCollection
 Aliases:
 
 Required: True
@@ -118,10 +147,41 @@ The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateStoreInputObject
+Identity Parameter
+To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+Parameter Sets: GetViaIdentityPrivateStore
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -157,4 +217,3 @@ INPUTOBJECT `<IMarketplaceIdentity>`: Identity Parameter
   - `[RequestApprovalId <String>]`: The request approval ID to get create or update
 
 ## RELATED LINKS
-

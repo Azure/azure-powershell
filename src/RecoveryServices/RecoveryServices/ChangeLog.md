@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.7.1
+* Added CRR support for taiwannorth, taiwannorthwest region.
 * Added breaking change notification for cmdlets whose output type is `ASRVaultSettings`.
 * Added warning for Standard to Enhanced policy migration for AzureVMs.
 * Updated Unregister-AzRecoveryServicesBackupContainer cmdlet to ouptput Job object if PassThru not given.

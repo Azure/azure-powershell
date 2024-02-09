@@ -15,26 +15,29 @@ Reset the Cifs password for the volume
 ### ByFieldsParameterSet (Default)
 ```
 Reset-AzNetAppFilesVolumeCifsPassword -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Reset-AzNetAppFilesVolumeCifsPassword -Name <String> -PoolObject <PSNetAppFilesPool> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Reset-AzNetAppFilesVolumeCifsPassword -ResourceId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Reset-AzNetAppFilesVolumeCifsPassword -InputObject <PSNetAppFilesVolume> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,6 +156,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

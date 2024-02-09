@@ -19,8 +19,10 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -53,6 +55,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [Parameter(
             Mandatory = false,
             HelpMessage = "The name of the ANF VolumeGroup")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The name of the ANF volume",
+            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("VolumeGroupName")]
         [ResourceNameCompleter(
@@ -100,9 +106,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 WriteObject(anfVolumeGroups.ConvertToPs());
             }
             else
-            {                
-                var volumeGroups = AzureNetAppFilesManagementClient.VolumeGroups.ListByNetAppAccount(ResourceGroupName, AccountName).Select(e => e.GroupMetaData.ConvertToPs());
-                WriteObject(volumeGroups, true);
+            {
+                try
+                {
+                    var volumeGroups = AzureNetAppFilesManagementClient.VolumeGroups.ListByNetAppAccount(ResourceGroupName, AccountName).Select(e => e.GroupMetaData.ConvertToPs());
+                    WriteObject(volumeGroups, true);
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }   

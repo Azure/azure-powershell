@@ -12,10 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-
 using Azure.Core;
 using Azure.Identity;
 
@@ -24,6 +20,12 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
+
+using System;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -42,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var clientId = Constants.PowerShellClientId;
             var authority = parameters.Environment.ActiveDirectoryAuthority;
 
-            var requestContext = new TokenRequestContext(scopes);
+            var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
             DeviceCodeCredentialOptions options = new DeviceCodeCredentialOptions()
             {
                 DeviceCodeCallback = DeviceCodeFunc,
@@ -64,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
         private Task DeviceCodeFunc(DeviceCodeInfo info, CancellationToken cancellation)
         {
-            WriteWarning(info.Message);
+            WriteInfomartion(info.Message, info.UserCode);
             return Task.CompletedTask;
         }
 
@@ -73,12 +75,29 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             return (parameters as DeviceCodeParameters) != null;
         }
 
-        private void WriteWarning(string message)
+
+        private void WriteInfomartion(string message, string userCode)
         {
-            EventHandler<StreamEventArgs> writeWarningEvent;
-            if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteWarningKey, out writeWarningEvent))
+
+            var loginInfo = new StringBuilder();
+            string LoginToAzurePhrase = $"{PSStyle.Bold}{PSStyle.BackgroundColor.Blue}[Login to Azure]{PSStyle.Reset} ";
+            loginInfo.Append(LoginToAzurePhrase);
+
+            if (!string.IsNullOrEmpty(userCode))
             {
-                writeWarningEvent(this, new StreamEventArgs() { Message = message });
+                var formattedUserCode = $"{PSStyle.Underline}{userCode}{PSStyle.Reset}";
+                var formattedMessage = message.Replace(userCode, formattedUserCode);
+                loginInfo.Append(formattedMessage);
+            }
+            else
+            {
+                loginInfo.Append(message);
+            }
+
+            EventHandler<StreamEventArgs> writeInforamtionEvent;
+            if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteInformationKey, out writeInforamtionEvent))
+            {
+                writeInforamtionEvent(this, new StreamEventArgs() { Message = loginInfo.ToString() });
             }
         }
     }

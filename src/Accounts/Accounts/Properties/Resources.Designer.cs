@@ -538,6 +538,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please do not set InformationAction or $InformationPreference to Ignore if you want to use device code authentication..
+        /// </summary>
+        internal static string DoNotIgnoreInformationIfUserDeviceAuth {
+            get {
+                return ResourceManager.GetString("DoNotIgnoreInformationIfUserDeviceAuth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Allow Azure PowerShell cmdlets to send data to Microsoft to improve the customer experience.
         /// </summary>
         internal static string EnableDataCollection {

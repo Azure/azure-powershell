@@ -97,8 +97,8 @@
         </TableRowEntries>
       </TableControl>
       <GroupBy>
-        <ScriptBlock>$_.Tenant.Id</ScriptBlock>
-        <Label>TenantId</Label>
+        <ScriptBlock>if([System.String]::IsNullOrEmpty($_.Tenant.Name)){$_.Tenant.Id}else{"$($_.Tenant.Name) ($($_.Tenant.Id))"}</ScriptBlock>
+        <Label>Tenant</Label>
       </GroupBy>
     </View>
     <View>

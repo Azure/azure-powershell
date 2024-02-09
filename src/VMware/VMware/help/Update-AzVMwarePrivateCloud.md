@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.VMware-help.xml
 Module Name: Az.VMware
 online version: https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareprivatecloud
 schema: 2.0.0
@@ -15,23 +15,20 @@ Update a private cloud
 ### UpdateExpanded (Default)
 ```
 Update-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AvailabilitySecondaryZone <Int32>] [-AvailabilityStrategy <AvailabilityStrategy>]
- [-AvailabilityZone <Int32>] [-EncryptionStatus <EncryptionState>] [-IdentitySource <IIdentitySource[]>]
- [-IdentityType <ResourceIdentityType>] [-Internet <InternetEnum>] [-KeyVaultPropertyKeyName <String>]
+ [-EncryptionStatus <String>] [-ExtendedNetworkBlock <String[]>] [-IdentitySource <IIdentitySource[]>]
+ [-IdentityType <String>] [-Internet <String>] [-KeyVaultPropertyKeyName <String>]
  [-KeyVaultPropertyKeyVaultUrl <String>] [-KeyVaultPropertyKeyVersion <String>]
  [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-AvailabilitySecondaryZone <Int32>]
- [-AvailabilityStrategy <AvailabilityStrategy>] [-AvailabilityZone <Int32>]
- [-EncryptionStatus <EncryptionState>] [-IdentitySource <IIdentitySource[]>]
- [-IdentityType <ResourceIdentityType>] [-Internet <InternetEnum>] [-KeyVaultPropertyKeyName <String>]
- [-KeyVaultPropertyKeyVaultUrl <String>] [-KeyVaultPropertyKeyVersion <String>]
- [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-EncryptionStatus <String>]
+ [-ExtendedNetworkBlock <String[]>] [-IdentitySource <IIdentitySource[]>] [-IdentityType <String>]
+ [-Internet <String>] [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUrl <String>]
+ [-KeyVaultPropertyKeyVersion <String>] [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,51 +79,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AvailabilitySecondaryZone
-The secondary availability zone for the private cloud
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AvailabilityStrategy
-The availability strategy for the private cloud
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AvailabilityStrategy
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AvailabilityZone
-The primary availability zone for the private cloud
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -146,7 +98,24 @@ Accept wildcard characters: False
 Status of customer managed encryption key
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.EncryptionState
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedNetworkBlock
+Array of additional networks noncontiguous with networkBlock.
+Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute.
+Make sure the CIDR format conforms to (A.B.C.D/X).
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +131,7 @@ vCenter Single Sign On Identity Sources
 To construct, see NOTES section for IDENTITYSOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -179,7 +148,7 @@ The type 'SystemAssigned' refers to an implicitly created identity.
 The type 'None' will remove any identities from the Private Cloud.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ResourceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -210,7 +179,7 @@ Accept wildcard characters: False
 Connectivity to internet is enabled or disabled
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -463,4 +432,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[VirtualMachineId <String>]`: Virtual Machine identifier
 
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.VMware-help.xml
 Module Name: Az.VMware
 online version: https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareauthorization
 schema: 2.0.0
@@ -15,14 +15,20 @@ Delete an ExpressRoute Circuit Authorization in a private cloud
 ### Delete (Default)
 ```
 Remove-AzVMwareAuthorization -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### DeleteViaIdentityPrivateCloud
+```
+Remove-AzVMwareAuthorization -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzVMwareAuthorization -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +39,6 @@ Delete an ExpressRoute Circuit Authorization in a private cloud
 ### Example 1: Delete authorization in private cloud
 ```powershell
 Remove-AzVMwareAuthorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Name azps_test_authorization
-
 ```
 
 Delete authorization in private cloud
@@ -41,7 +46,6 @@ Delete authorization in private cloud
 ### Example 2: Delete authorization in private cloud
 ```powershell
 Get-AzVMwareAuthorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Name azps_test_authorization | Remove-AzVMwareAuthorization
-
 ```
 
 Delete authorization in private cloud
@@ -99,7 +103,7 @@ Name of the ExpressRoute Circuit Authorization in the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityPrivateCloud
 Aliases: AuthorizationName
 
 Required: True
@@ -136,6 +140,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateCloudInputObject
+Identity Parameter
+To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Parameter Sets: DeleteViaIdentityPrivateCloud
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -264,4 +284,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[VirtualMachineId <String>]`: Virtual Machine identifier
 
 ## RELATED LINKS
-

@@ -19,13 +19,14 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
-using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
 {
@@ -162,8 +163,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var anfBackupPolicy = AzureNetAppFilesManagementClient.BackupPolicies.Create(ResourceGroupName, AccountName, backupPolicyName: Name, body: backupPolicyBody);
-                WriteObject(anfBackupPolicy.ConvertToPs());
+                try
+                {
+                    var anfBackupPolicy = AzureNetAppFilesManagementClient.BackupPolicies.Create(ResourceGroupName, AccountName, backupPolicyName: Name, body: backupPolicyBody);
+                    WriteObject(anfBackupPolicy.ConvertToPs());                
+                }
+                catch(ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

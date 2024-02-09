@@ -20,8 +20,8 @@ Update-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <St
  [-BackupOperator <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
  [-SecurityOperator <String[]>] [-AesEncryption] [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap]
  [-Administrator <String[]>] [-EncryptDCConnection] [-LdapSearchScope <PSNetAppFilesLdapSearchScopeOpt>]
- [-PreferredServersForLdapClient <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PreferredServersForLdapClient <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -32,8 +32,8 @@ Update-AzNetAppFilesActiveDirectory -ActiveDirectoryId <String> [-Dns <String[]>
  [-ServerRootCACertificate <String>] [-AdName <String>] [-SecurityOperator <String[]>] [-AesEncryption]
  [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap] [-Administrator <String[]>] [-EncryptDCConnection]
  [-LdapSearchScope <PSNetAppFilesLdapSearchScopeOpt>] [-PreferredServersForLdapClient <String[]>]
- -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
@@ -44,7 +44,8 @@ Update-AzNetAppFilesActiveDirectory [-Dns <String[]>] [-Domain <String>] [-Site 
  [-SecurityOperator <String[]>] [-AesEncryption] [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap]
  [-Administrator <String[]>] [-EncryptDCConnection] [-LdapSearchScope <PSNetAppFilesLdapSearchScopeOpt>]
  [-PreferredServersForLdapClient <String[]>] -InputObject <PSNetAppFilesActiveDirectory>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,7 +55,7 @@ The **Update-AzNetAppFilesActiveDirectory** cmdlet modifies an ANF active direct
 
 ### Example 1
 ```powershell
-Update-AzNetAppFilesActiveDirectory  -ResourceGroupName "MyRG" -AccountName "MyAccount" -AdName "MyADName" -Username $adUsername
+Update-AzNetAppFilesActiveDirectory  -ResourceGroupName "MyRG" -AccountName "MyAccount" -AdName "MyADName" -Username "AdUserName"
 ```
 
 This command performs an update on the given active directory configuration modifying the username to that provided.
@@ -356,6 +357,21 @@ Comma separated list of IPv4 addresses of preferred servers for LDAP client. At 
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

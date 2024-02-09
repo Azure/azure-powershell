@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Marketplace-help.xml
 Module Name: Az.Marketplace
 online version: https://learn.microsoft.com/powershell/module/az.marketplace/copy-azmarketplaceprivatestorecollectionoffer
 schema: 2.0.0
@@ -16,26 +16,57 @@ transferring offers (copy or move) from source collection to target collection(s
 ```
 Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateStoreId <String>
  [-OfferIdList <String[]>] [-Operation <String>] [-TargetCollection <String[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TransferViaJsonString
+```
+Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateStoreId <String>
+ -JsonString <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### TransferViaJsonFilePath
+```
+Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateStoreId <String>
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### TransferViaIdentityPrivateStoreExpanded
+```
+Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String>
+ -PrivateStoreInputObject <IMarketplaceIdentity> [-OfferIdList <String[]>] [-Operation <String>]
+ [-TargetCollection <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### TransferViaIdentityPrivateStore
+```
+Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String>
+ -PrivateStoreInputObject <IMarketplaceIdentity> -Payload <ITransferOffersProperties>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Transfer
 ```
 Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateStoreId <String>
- -Payload <ITransferOffersProperties> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### TransferViaIdentity
-```
-Copy-AzMarketplacePrivateStoreCollectionOffer -InputObject <IMarketplaceIdentity>
- -Payload <ITransferOffersProperties> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Payload <ITransferOffersProperties> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TransferViaIdentityExpanded
 ```
 Copy-AzMarketplacePrivateStoreCollectionOffer -InputObject <IMarketplaceIdentity> [-OfferIdList <String[]>]
- [-Operation <String>] [-TargetCollection <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Operation <String>] [-TargetCollection <String[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TransferViaIdentity
+```
+Copy-AzMarketplacePrivateStoreCollectionOffer -InputObject <IMarketplaceIdentity>
+ -Payload <ITransferOffersProperties> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +95,7 @@ The collection ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Transfer, TransferExpanded
+Parameter Sets: TransferExpanded, TransferViaJsonString, TransferViaJsonFilePath, TransferViaIdentityPrivateStoreExpanded, TransferViaIdentityPrivateStore, Transfer
 Aliases:
 
 Required: True
@@ -95,7 +126,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: TransferViaIdentity, TransferViaIdentityExpanded
+Parameter Sets: TransferViaIdentityExpanded, TransferViaIdentity
 Aliases:
 
 Required: True
@@ -105,12 +136,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Transfer operation
+
+```yaml
+Type: System.String
+Parameter Sets: TransferViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Transfer operation
+
+```yaml
+Type: System.String
+Parameter Sets: TransferViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OfferIdList
 Offers ids list to transfer from source collection to target collection(s)
 
 ```yaml
 Type: System.String[]
-Parameter Sets: TransferExpanded, TransferViaIdentityExpanded
+Parameter Sets: TransferExpanded, TransferViaIdentityPrivateStoreExpanded, TransferViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -125,7 +186,7 @@ Operation to perform (For example: Copy or Move)
 
 ```yaml
 Type: System.String
-Parameter Sets: TransferExpanded, TransferViaIdentityExpanded
+Parameter Sets: TransferExpanded, TransferViaIdentityPrivateStoreExpanded, TransferViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -140,8 +201,8 @@ Transfer offers properties
 To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersProperties
-Parameter Sets: Transfer, TransferViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ITransferOffersProperties
+Parameter Sets: TransferViaIdentityPrivateStore, Transfer, TransferViaIdentity
 Aliases:
 
 Required: True
@@ -156,10 +217,41 @@ The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Transfer, TransferExpanded
+Parameter Sets: TransferExpanded, TransferViaJsonString, TransferViaJsonFilePath, Transfer
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateStoreInputObject
+Identity Parameter
+To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+Parameter Sets: TransferViaIdentityPrivateStoreExpanded, TransferViaIdentityPrivateStore
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -171,7 +263,7 @@ Target collections ids
 
 ```yaml
 Type: System.String[]
-Parameter Sets: TransferExpanded, TransferViaIdentityExpanded
+Parameter Sets: TransferExpanded, TransferViaIdentityPrivateStoreExpanded, TransferViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -248,4 +340,3 @@ PAYLOAD `<ITransferOffersProperties>`: Transfer offers properties
   - `[TargetCollection <String[]>]`: Target collections ids
 
 ## RELATED LINKS
-

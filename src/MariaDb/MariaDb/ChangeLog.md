@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.1
 * Fixed an issue that updating password did not work.
 
 ## Version 0.2.0

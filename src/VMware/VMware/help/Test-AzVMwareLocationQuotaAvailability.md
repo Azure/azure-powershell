@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.VMware-help.xml
 Module Name: Az.VMware
 online version: https://learn.microsoft.com/powershell/module/az.vmware/test-azvmwarelocationquotaavailability
 schema: 2.0.0
@@ -14,7 +14,7 @@ Return quota for subscription by region
 
 ```
 Test-AzVMwareLocationQuotaAvailability -Location <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,4 +127,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-
