@@ -44,6 +44,10 @@
     <!-- Flags -->
     <CodeSign Condition ="'$(CodeSign)' == ''">false</CodeSign>
     <SkipHelp Condition ="'$(SkipHelp)' != 'true'">false</SkipHelp>
+    <TargetBuild Condition="Exists($(TargetModule))">true</TargetBuild>
+    <TargetBuild Condition="!Exists($(TargetModule))">false</TargetBuild>
+
+
     <!-- Set this true only if you want to test the CodeSign workflow locally -->
     <DelaySign Condition ="'$(DelaySign)' == ''">false</DelaySign>
     <NetCore Condition="'$(NetCore)' != 'false'">true</NetCore>
@@ -262,7 +266,7 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CleanupBuild.ps1 -BuildConfig $(Configuration) -GenerateDocumentationFile $(GenerateDocumentationFile) &quot;" />
 
     <Error Condition="'$(NuGetKey)' == ''" Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/PublishModules.ps1 -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope $(Scope) -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot;&quot; -NugetExe $(NuGetCommand)" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/PublishModules.ps1 -TargetBuild $(TargetBuild) -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope $(Scope) -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot;&quot; -NugetExe $(NuGetCommand)" />
   </Target>
 
   <Target Name="BuildInstaller" AfterTargets="Publish" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore')">
