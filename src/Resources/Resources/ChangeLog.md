@@ -22,6 +22,9 @@
 * Added `AuxTenant` parameter in `New-AzResourceGroupDeployment`to support cross-tenant deployment.
 * Fixed deadlock in Bicep CLI execution. [#24133]
 
+## Version 6.15.1
+* Fixed deadlock in Bicep CLI execution. [#24133]
+
 ## Version 6.15.0
 * Supported `-SkipClientSideScopeValidation` in RoleAssignment and RoleDefinition related commands. [#22473]
 * Updated Bicep build logic to use --stdout flag instead of creating a temporary file on disk.

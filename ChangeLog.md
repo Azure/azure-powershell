@@ -1,3 +1,7 @@
+## 11.3.1 - February 2024
+#### Az.Resources 6.15.1
+* Fixed deadlock in Bicep CLI execution. [#24133]
+
 ## 11.3.0 - February 2024
 #### Az.Accounts 2.15.1
 * Upgraded the reference of Azure PowerShell Common to 1.3.90-preview.

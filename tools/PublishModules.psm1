@@ -267,6 +267,8 @@ function Get-AllModules {
         [ValidateNotNullOrEmpty()]
         [String]$Scope,
 
+        [String]$TargetBuild,
+
         [switch]$PublishLocal,
 
         [switch]$IsNetCore
@@ -275,7 +277,7 @@ function Get-AllModules {
     $clientModules = Get-ClientModules -BuildConfig $BuildConfig -Scope $Scope -PublishLocal:$PublishLocal -IsNetCore:$isNetCore
     Write-Host " "
     
-    if($clientModules.Length -le 2) {
+    if($clientModules.Length -le 2 -and  $TargetBuild -eq "true") {
         return @{
             ClientModules = $clientModules
         }
