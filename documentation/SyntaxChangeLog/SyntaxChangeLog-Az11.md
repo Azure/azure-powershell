@@ -1,3 +1,5 @@
+## 11.3.1 - February 2024
+
 ## 11.3.0 - February 2024
 #### Az.KeyVault 5.2.0 
 * Modified cmdlet `Backup-AzKeyVault`
@@ -45,5 +47,6 @@
 #### Az.StackHCI 2.3.0 
 * Modified cmdlet `Unregister-AzStackHCI`
    - Added parameter `-IsWAC`
+
 
 
