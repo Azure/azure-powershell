@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.dll-Help.xml
 Module Name: Az.Marketplace
-online version:https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestoreoffer
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestoreoffer
 schema: 2.0.0
 ---
 
@@ -13,13 +13,14 @@ Get one or more private store's offer.
 ## SYNTAX
 
 ```
-Get-AzMarketplacePrivateStoreOffer -PrivateStoreId <String> [-OfferId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzMarketplacePrivateStoreOffer -PrivateStoreId <String> [-OfferId <String>] [-SubscriptionId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Get one or more private store's offer with public + private plans  that were added under tenant scope. If subscription id is presents, 
 get one or more private store's offer with private plans only under subscription scope
+
 ## EXAMPLES
 
 ### Example 1
@@ -136,7 +137,6 @@ Type                      : Microsoft.Marketplace/privateStores/offers
 
 Get private store's offer with private plans only that was been added under tenant scope.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -178,6 +178,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
