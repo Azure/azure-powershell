@@ -40,38 +40,34 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.ConnectionMonitor
         public override void Execute()
         {
             base.Execute();
-
-            string connectionMonitorName = this.Name;
-            string resourceGroupName = this.ResourceGroupName;
-            string networkWatcherName = this.NetworkWatcherName;
-
-            if (ShouldGetByName(resourceGroupName, connectionMonitorName))
+            
+            ConnectionMonitorResult connectionMonitorResult = this.ConnectionMonitors.Get(this.ResourceGroupName, this.NetworkWatcherName, this.Name);
+            if (connectionMonitorResult.ConnectionMonitorType.Equals(ConnectionMonitorTypeV2, StringComparison.OrdinalIgnoreCase))
             {
-                var connectionMonitorResult = this.ConnectionMonitors.Get(resourceGroupName, networkWatcherName, connectionMonitorName);
-                
-                if (connectionMonitorResult.ConnectionMonitorType.Equals(ConnectionMonitorTypeV2, StringComparison.OrdinalIgnoreCase))
-                {
-                    WriteInformation($"This Connection Monitor is already V2.\n", new string[] { "PSHOST" });
-                    return;
-                }
-
-                PSConnectionMonitorResultV2 PSConnectionMonitorResultV2 = MapConnectionMonitorResultToPSConnectionMonitorResultV2(connectionMonitorResult);
-                MNM.ConnectionMonitor connectionMonitor = this.PopulateConnectionMonitorParametersFromV2Request
-                    (PSConnectionMonitorResultV2?.TestGroups?.ToArray(), PSConnectionMonitorResultV2?.Outputs?.ToArray(),
-                    PSConnectionMonitorResultV2?.Notes);
-
-                //Updating the location and tags
-                connectionMonitor.Location = PSConnectionMonitorResultV2.Location;
-                connectionMonitor.Tags = PSConnectionMonitorResultV2.Tags;
-                this.ConnectionMonitors.CreateOrUpdate(resourceGroupName, networkWatcherName, connectionMonitorName, connectionMonitor, "true");
-
-                PSConnectionMonitorResult psConnectionMonitorResult = this.GetConnectionMonitor(resourceGroupName, networkWatcherName, this.Name, true);
-                WriteInformation($"Migration is successfully.\n", new string[] { "PSHOST" });
-                WriteObject(psConnectionMonitorResult);
+                WriteInformation($"This Connection Monitor is already V2.\n", new string[] { "PSHOST" });
+                return;
             }
+
+            PSConnectionMonitorResultV2 PSConnectionMonitorResultV2 = MapConnectionMonitorResultToPSConnectionMonitorResultV2(connectionMonitorResult);
+            if (PSConnectionMonitorResultV2 == null)
+            {
+                WriteExceptionError(new NullReferenceException());
+            }
+
+            MNM.ConnectionMonitor connectionMonitor = this.PopulateConnectionMonitorParametersFromV2Request
+                (PSConnectionMonitorResultV2?.TestGroups?.ToArray(), PSConnectionMonitorResultV2?.Outputs?.ToArray(),
+                PSConnectionMonitorResultV2?.Notes);
+
+            //Updating the location and tags
+            connectionMonitor.Location = PSConnectionMonitorResultV2?.Location;
+            connectionMonitor.Tags = PSConnectionMonitorResultV2?.Tags;
+            this.ConnectionMonitors.CreateOrUpdate(this.ResourceGroupName, this.NetworkWatcherName, this.Name, connectionMonitor, "true");
+
+            PSConnectionMonitorResult psConnectionMonitorResult = this.GetConnectionMonitor(this.ResourceGroupName, this.NetworkWatcherName, this.Name, true);
+            WriteInformation($"Migration is successful.\n", new string[] { "PSHOST" });
+            WriteObject(psConnectionMonitorResult);
         }
 
-        private const string ConnectionMonitorTypeV1 = "SingleSourceDestination";
         private const string ConnectionMonitorTypeV2 = "MultiEndpoint";
     }
 }
