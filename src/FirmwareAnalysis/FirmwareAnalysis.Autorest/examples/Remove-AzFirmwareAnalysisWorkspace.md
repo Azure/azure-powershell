@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: {{ Delete a firmware analysis workspace. }}
 ```powershell
-{{ Add code here }}
+{{ Remove-AzFirmwareAnalysisWorkspace -ResourceGroupName resourceGroupName -Name workspaceName }}
 ```
 
 ```output
 {{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+{{ Delete a firmware analysis workspace. }}

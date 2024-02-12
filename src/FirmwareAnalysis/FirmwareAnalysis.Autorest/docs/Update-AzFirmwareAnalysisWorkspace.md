@@ -29,27 +29,17 @@ The operation to update a firmware analysis workspaces.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: {{ Update a firmware analysis workspace. }}
 ```powershell
-{{ Add code here }}
+{{ Update-AzFirmwareAnalysisWorkspace -ResourceGroupName resourceGroupName -Name workspaceName  }}
 ```
 
 ```output
 {{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+{{ Update a firmware analysis workspace.
+}}
 
 ## PARAMETERS
 

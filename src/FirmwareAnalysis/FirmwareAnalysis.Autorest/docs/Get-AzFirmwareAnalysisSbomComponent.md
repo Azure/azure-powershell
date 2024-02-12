@@ -22,27 +22,17 @@ Lists SBOM analysis results of a firmware.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: {{ List all the sbom component analysis results for a firmware. }}
 ```powershell
-{{ Add code here }}
+{{ Get-AzFirmwareAnalysisSbomComponent -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName }}
 ```
 
 ```output
 {{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+{{ List all the sbom component analysis results for a firmware.
+}}
 
 ## PARAMETERS
 

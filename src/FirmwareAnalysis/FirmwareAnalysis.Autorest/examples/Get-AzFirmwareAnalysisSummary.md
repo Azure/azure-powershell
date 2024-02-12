@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: {{ List all the analysis results summary for a firmware by analysis type name. }}
 ```powershell
-{{ Add code here }}
+{{ Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -n Type }}
 ```
 
 ```output
 {{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+{{ List all the analysis results summary for a firmware by analysis type name. }}
 
