@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System.Management.Automation;
     using Properties;
     using Models;
-    using Microsoft.Azure.Management.RedisCache.Models;
 
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCacheAccessPolicy", DefaultParameterSetName = NormalParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRedisCacheAccessPolicy : RedisCacheCmdletBase

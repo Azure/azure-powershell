@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
                 if (redisAccessPolicy == null)
                 {
-                    throw new CloudException(string.Format(Resources.AccessPolicyNotFound, AccessPolicyName));
+                    throw new CloudException(string.Format(Resources.AccessPolicyNotFound, Name, AccessPolicyName));
                 }
                 WriteObject(new PSRedisAccessPolicy(ResourceGroupName, Name, redisAccessPolicy));
             }

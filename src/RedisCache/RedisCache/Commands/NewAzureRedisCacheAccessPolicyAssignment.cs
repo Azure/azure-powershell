@@ -48,13 +48,13 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(Mandatory = true, HelpMessage = "Name of Access Policy Assignment being added to the cache.")]
         public string AccessPolicyAssignmentName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Name of Access Policy.")]
+        [Parameter(Mandatory = true, HelpMessage = "Name of the Access Policy that is being assigned")]
         public string AccessPolicyName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Name of Object Id.")]
+        [Parameter(Mandatory = true, HelpMessage = "Name of Object Id to assign Access Policy to")]
         public string ObjectId { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Name of Object Id Alias.")]
+        [Parameter(Mandatory = true, HelpMessage = "User friendly name for Object Id. Also represents username for token based authentication")]
         public string ObjectIdAlias { get; set; }
 
         public override void ExecuteCmdlet()
