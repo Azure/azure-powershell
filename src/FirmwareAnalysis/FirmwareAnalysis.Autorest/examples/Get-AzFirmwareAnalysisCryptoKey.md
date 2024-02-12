@@ -4,7 +4,32 @@
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{ 
+[
+  {
+    "CryptoKeyId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "FilePath": [""],
+    "Id": "",
+    "IsShortKeySize": ,
+    "KeyAlgorithm": "",
+    "KeySize": ,
+    "KeyType": "",
+    "Name": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "PairedKeyId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "PairedKeyType": "",
+    "SystemDataCreatedAt": ,
+    "SystemDataCreatedBy": ,
+    "SystemDataCreatedByType": ,
+    "SystemDataLastModifiedAt": ,
+    "SystemDataLastModifiedBy": ,
+    "SystemDataLastModifiedByType": ,
+    "Type": "Microsoft.IoTFirmwareDefense/workspaces/firmwares/cryptoKeys",
+    "Usage": [
+      ""
+    ]
+  }
+]
+ }}
 ```
 
 {{ List all the crypto key analysis results for a firmware.  }}

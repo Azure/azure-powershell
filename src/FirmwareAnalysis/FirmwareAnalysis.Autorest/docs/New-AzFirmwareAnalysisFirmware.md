@@ -30,7 +30,27 @@ The operation to create a firmware.
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{ 
+Description                  : description
+FileName                     : FileName
+FileSize                     : 1
+Id                           : 
+Model                        : model
+Name                         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ProvisioningState            : 
+ResourceGroupName            : 
+Status                       :
+StatusMessage                :
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : microsoft.iotfirmwaredefense/workspaces/firmwares
+Vendor                       : vendor
+Version                      : version
+ }}
 ```
 
 {{ Create a new firmware using new guid.
@@ -43,7 +63,27 @@ The operation to create a firmware.
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{ 
+Description                  : description
+FileName                     : FileName
+FileSize                     : 1
+Id                           : 
+Model                        : model
+Name                         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ProvisioningState            : 
+ResourceGroupName            : 
+Status                       :
+StatusMessage                :
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : microsoft.iotfirmwaredefense/workspaces/firmwares
+Vendor                       : vendor
+Version                      : version
+ }}
 ```
 
 {{ Create a new firmware using a user specified firmwareId.

@@ -4,7 +4,11 @@
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{ 
+Url
+---
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ }}
 ```
 
 {{ Create a url for file upload. }}

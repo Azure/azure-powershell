@@ -4,7 +4,27 @@
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{ 
+Description                  : 
+FileName                     : 
+FileSize                     :
+Id                           : 
+Model                        : 
+Name                         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ProvisioningState            : 
+ResourceGroupName            : 
+Status                       : 
+StatusMessage                :
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SystemDataLastModifiedByType : 
+Type                         : microsoft.iotfirmwaredefense/workspaces/firmwares
+Vendor                       : 
+Version                      : 
+ }}
 ```
 
 {{ List all the firmwares inside a workspace. }}
@@ -15,7 +35,27 @@
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{ 
+Description                  : 
+FileName                     : 
+FileSize                     :
+Id                           : 
+Model                        : 
+Name                         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ProvisioningState            : 
+ResourceGroupName            : 
+Status                       : 
+StatusMessage                :
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SystemDataLastModifiedByType : 
+Type                         : microsoft.iotfirmwaredefense/workspaces/firmwares
+Vendor                       : 
+Version                      : 
+ }}
 ```
 
 {{ Get a firmware inside a workspace.  }}

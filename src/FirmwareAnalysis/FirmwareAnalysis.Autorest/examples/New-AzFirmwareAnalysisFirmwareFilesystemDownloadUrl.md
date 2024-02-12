@@ -3,8 +3,4 @@
 {{ ANew-AzFirmwareAnalysisFirmwareDownloadUrl -FirmwareId firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName }}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
 {{ Get a url for tar file download. }}

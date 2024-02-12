@@ -28,7 +28,50 @@ Lists cryptographic certificate analysis results found in a firmware.
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{ 
+[
+ {
+    "CryptoCertId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "Encoding": "",
+    "ExpirationDate": "",
+    "FilePath": [""],
+    "Fingerprint": "",
+    "Id": "",
+    "IsExpired": boolean,
+    "IsSelfSigned": boolean,
+    "IsShortKeySize": boolean,
+    "IsWeakSignature": "",
+    "IssuedDate": "",
+    "IssuerCommonName": "",
+    "IssuerCountry": "",
+    "IssuerOrganization": "",
+    "IssuerOrganizationalUnit": "",
+    "IssuerState": "",
+    "KeyAlgorithm": "",
+    "KeySize": ,
+    "Name": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "PairedKeyId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "PairedKeyType": "",
+    "PropertiesName": "",
+    "Role": "",
+    "SerialNumber": "",
+    "SignatureAlgorithm": "",
+    "SubjectCommonName": "",
+    "SubjectCountry": "",
+    "SubjectOrganization": "",
+    "SubjectOrganizationalUnit": "",
+    "SubjectState": "",
+    "SystemDataCreatedAt": ,
+    "SystemDataCreatedBy": ,
+    "SystemDataCreatedByType": ,
+    "SystemDataLastModifiedAt": ,
+    "SystemDataLastModifiedBy": ,
+    "SystemDataLastModifiedByType": ,
+    "Type": "Microsoft.IoTFirmwareDefense/workspaces/firmwares/cryptoCertificates",
+    "Usage": []
+  }
+]
+ }}
 ```
 
 {{ List all the crypto certificate analysis results for a firmware.

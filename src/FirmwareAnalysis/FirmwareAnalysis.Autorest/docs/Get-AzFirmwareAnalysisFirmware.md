@@ -24,18 +24,6 @@ Get-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -Workspa
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentityWorkspace
-```
-Get-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get firmware.
 
@@ -47,7 +35,27 @@ Get firmware.
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{ 
+Description                  : 
+FileName                     : 
+FileSize                     :
+Id                           : 
+Model                        : 
+Name                         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ProvisioningState            : 
+ResourceGroupName            : 
+Status                       : 
+StatusMessage                :
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SystemDataLastModifiedByType : 
+Type                         : microsoft.iotfirmwaredefense/workspaces/firmwares
+Vendor                       : 
+Version                      : 
+ }}
 ```
 
 {{ List all the firmwares inside a workspace.
@@ -59,7 +67,27 @@ Get firmware.
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{ 
+Description                  : 
+FileName                     : 
+FileSize                     :
+Id                           : 
+Model                        : 
+Name                         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ProvisioningState            : 
+ResourceGroupName            : 
+Status                       : 
+StatusMessage                :
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SystemDataLastModifiedByType : 
+Type                         : microsoft.iotfirmwaredefense/workspaces/firmwares
+Vendor                       : 
+Version                      : 
+ }}
 ```
 
 {{ Get a firmware inside a workspace.

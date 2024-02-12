@@ -28,7 +28,28 @@ Lists password hash analysis results of a firmware.
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{ 
+[
+  {
+    "Algorithm": "",
+    "Context": "",
+    "FilePath": "/path/to/file",
+    "Hash": "",
+    "Id": "",
+    "Name": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "PasswordHashId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "Salt": "",
+    "SystemDataCreatedAt": ,
+    "SystemDataCreatedBy": ,
+    "SystemDataCreatedByType": ,
+    "SystemDataLastModifiedAt": ,
+    "SystemDataLastModifiedBy": ,
+    "SystemDataLastModifiedByType": ,
+    "Type": "Microsoft.IoTFirmwareDefense/workspaces/firmwares/passwordHashes",
+    "Username": ""
+  }
+]
+ }}
 ```
 
 {{ List all the password hash analysis results for a firmware.

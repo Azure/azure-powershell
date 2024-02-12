@@ -29,7 +29,21 @@ The operation to Create a firmware analysis workspace.
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{ 
+Id                           : 
+Location                     : 
+Name                         : 
+ProvisioningState            : 
+ResourceGroupName            : 
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Tag                          : {}
+Type                         : microsoft.iotfirmwaredefense/workspaces
+}}
 ```
 
 {{ Create a new firmware analysis workspace.

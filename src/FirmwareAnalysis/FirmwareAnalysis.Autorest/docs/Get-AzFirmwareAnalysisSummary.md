@@ -12,34 +12,10 @@ Get an analysis result summary of a firmware by name.
 
 ## SYNTAX
 
-### List (Default)
-```
-Get-AzFirmwareAnalysisSummary -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### Get
 ```
 Get-AzFirmwareAnalysisSummary -FirmwareId <String> -Name <String> -ResourceGroupName <String>
  -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzFirmwareAnalysisSummary -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentityFirmware
-```
-Get-AzFirmwareAnalysisSummary -FirmwareInputObject <IFirmwareAnalysisIdentity> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityWorkspace
-```
-Get-AzFirmwareAnalysisSummary -FirmwareId <String> -Name <String>
- -WorkspaceInputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,16 +23,54 @@ Get an analysis result summary of a firmware by name.
 
 ## EXAMPLES
 
-### Example 1: {{ List all the analysis results summary for a firmware by analysis type name. }}
+### Example 1: {{ List all the analysis results summary for a firmware by analysis type CVE. }}
 ```powershell
 {{ Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -n Type }}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{
+Id                           : 
+Name                         : 
+Property                     : 
+ResourceGroupName            : 
+SummaryType                  :
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.IoTFirmwareDefense/workspaces/firmwares/summaries
+ }}
 ```
 
-{{ List all the analysis results summary for a firmware by analysis type name.
+{{ List all the analysis results summary for a firmware by analysis type CVE.
+}}
+
+### Example 2: {{ List all the analysis results summary for a firmware by analysis type Firmware. }}
+```powershell
+{{ Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -n Type }}
+```
+
+```output
+{{
+Id                           : 
+Name                         : 
+Property                     :
+ResourceGroupName            : 
+SummaryType                  :
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.IoTFirmwareDefense/workspaces/firmwares/summaries
+}}
+```
+
+{{ List all the analysis results summary for a firmware by analysis type Firmware.
 }}
 
 ## PARAMETERS

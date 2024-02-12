@@ -28,7 +28,26 @@ Lists SBOM analysis results of a firmware.
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{ 
+[
+  {
+    "ComponentId": "",
+    "ComponentName": "",
+    "FilePath": [""],
+    "Id": "",
+    "License": "",
+    "Name": "",
+    "SystemDataCreatedAt": ,
+    "SystemDataCreatedBy": ,
+    "SystemDataCreatedByType": ,
+    "SystemDataLastModifiedAt": ,
+    "SystemDataLastModifiedBy": ,
+    "SystemDataLastModifiedByType": ,
+    "Type": "Microsoft.IoTFirmwareDefense/workspaces/firmwares/sbomComponents",
+    "Version": ""
+  }
+]
+}}
 ```
 
 {{ List all the sbom component analysis results for a firmware.

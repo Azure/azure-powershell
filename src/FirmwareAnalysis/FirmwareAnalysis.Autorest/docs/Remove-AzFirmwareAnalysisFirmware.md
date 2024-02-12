@@ -18,18 +18,6 @@ Remove-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -Work
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
-```
-Remove-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentityWorkspace
-```
-Remove-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The operation to delete a firmware.
 
@@ -38,10 +26,6 @@ The operation to delete a firmware.
 ### Example 1: {{ Delete a firmware analysis workspace. }}
 ```powershell
 {{ Remove-AzFirmwareAnalysisFirmware -Id firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Delete a firmware analysis workspace.

@@ -20,22 +20,6 @@ Update-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -Work
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
-```
-Update-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-Description <String>]
- [-FileName <String>] [-FileSize <Int64>] [-Model <String>] [-Status <String>]
- [-StatusMessage <IStatusMessage[]>] [-Vendor <String>] [-Version <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityWorkspaceExpanded
-```
-Update-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
- [-Description <String>] [-FileName <String>] [-FileSize <Int64>] [-Model <String>] [-Status <String>]
- [-StatusMessage <IStatusMessage[]>] [-Vendor <String>] [-Version <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The operation to update firmware.
 
@@ -48,7 +32,27 @@ The operation to update firmware.
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{
+Description                  : description
+FileName                     : FileName
+FileSize                     : 1
+Id                           : 
+Model                        : model
+Name                         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ProvisioningState            : 
+ResourceGroupName            : 
+Status                       :
+StatusMessage                :
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : microsoft.iotfirmwaredefense/workspaces/firmwares
+Vendor                       : vendor
+Version                      : version
+ }}
 ```
 
 {{ Update a firmware.

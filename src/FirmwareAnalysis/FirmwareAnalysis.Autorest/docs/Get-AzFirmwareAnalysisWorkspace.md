@@ -23,18 +23,6 @@ Get-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> [-Sub
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzFirmwareAnalysisWorkspace -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzFirmwareAnalysisWorkspace -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get firmware analysis workspace.
 
@@ -46,7 +34,21 @@ Get firmware analysis workspace.
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{ 
+Id                           : 
+Location                     : 
+Name                         : 
+ProvisioningState            : 
+ResourceGroupName            : 
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Tag                          : {}
+Type                         : microsoft.iotfirmwaredefense/workspaces
+ }}
 ```
 
 {{ List all firmware analysis workspaces in the specified subscription.
@@ -58,7 +60,21 @@ Get firmware analysis workspace.
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{ 
+Id                           : 
+Location                     : 
+Name                         : 
+ProvisioningState            : 
+ResourceGroupName            : 
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Tag                          : {}
+Type                         : microsoft.iotfirmwaredefense/workspaces
+}}
 ```
 
 {{ Get firmware analysis workspace from the specified subscription.

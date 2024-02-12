@@ -19,19 +19,6 @@ New-AzFirmwareAnalysisFirmwareDownloadUrl -FirmwareId <String> -ResourceGroupNam
  [<CommonParameters>]
 ```
 
-### GenerateViaIdentity
-```
-New-AzFirmwareAnalysisFirmwareDownloadUrl -InputObject <IFirmwareAnalysisIdentity>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GenerateViaIdentityWorkspace
-```
-New-AzFirmwareAnalysisFirmwareDownloadUrl -FirmwareId <String>
- -WorkspaceInputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The operation to a url for file download.
 
@@ -40,10 +27,6 @@ The operation to a url for file download.
 ### Example 1: {{ Get a url for file download. }}
 ```powershell
 {{ New-AzFirmwareAnalysisFirmwareDownloadUrl -FirmwareId firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Get a url for file download.
