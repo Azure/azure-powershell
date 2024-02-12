@@ -14,7 +14,7 @@ The operation to update firmware.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzFirmwareAnalysisFirmware -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
+Update-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-Description <String>] [-FileName <String>] [-FileSize <Int64>] [-Model <String>]
  [-Status <String>] [-StatusMessage <IStatusMessage[]>] [-Vendor <String>] [-Version <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -30,7 +30,7 @@ Update-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-Des
 
 ### UpdateViaIdentityWorkspaceExpanded
 ```
-Update-AzFirmwareAnalysisFirmware -WorkspaceInputObject <IFirmwareAnalysisIdentity> [-Id <String>]
+Update-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
  [-Description <String>] [-FileName <String>] [-FileSize <Int64>] [-Model <String>] [-Status <String>]
  [-StatusMessage <IStatusMessage[]>] [-Vendor <String>] [-Version <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -134,9 +134,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityWorkspaceExpanded
 Aliases: FirmwareId
 
-Required: False
+Required: True
 Position: Named
-Default value: str(uuid.uuid4())
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

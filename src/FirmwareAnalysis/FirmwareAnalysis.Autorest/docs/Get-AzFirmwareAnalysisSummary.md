@@ -1,43 +1,49 @@
 ---
 external help file:
 Module Name: Az.FirmwareAnalysis
-online version: https://learn.microsoft.com/powershell/module/az.firmwareanalysis/get-azfirmwareanalysisfirmware
+online version: https://learn.microsoft.com/powershell/module/az.firmwareanalysis/get-azfirmwareanalysissummary
 schema: 2.0.0
 ---
 
-# Get-AzFirmwareAnalysisFirmware
+# Get-AzFirmwareAnalysisSummary
 
 ## SYNOPSIS
-Get firmware.
+Get an analysis result summary of a firmware by name.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzFirmwareAnalysisFirmware -ResourceGroupName <String> -WorkspaceName <String>
+Get-AzFirmwareAnalysisSummary -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFirmwareAnalysisSummary -FirmwareId <String> -Name <String> -ResourceGroupName <String>
+ -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
+Get-AzFirmwareAnalysisSummary -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentityFirmware
+```
+Get-AzFirmwareAnalysisSummary -FirmwareInputObject <IFirmwareAnalysisIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityWorkspace
 ```
-Get-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFirmwareAnalysisSummary -FirmwareId <String> -Name <String>
+ -WorkspaceInputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get firmware.
+Get an analysis result summary of a firmware by name.
 
 ## EXAMPLES
 
@@ -81,18 +87,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
+### -FirmwareId
 The id of the firmware.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityWorkspace
-Aliases: FirmwareId
+Parameter Sets: Get, GetViaIdentityWorkspace, List
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FirmwareInputObject
+Identity Parameter
+To construct, see NOTES section for FIRMWAREINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
+Parameter Sets: GetViaIdentityFirmware
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -109,6 +131,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The Firmware analysis summary name describing the type of summary.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentityFirmware, GetViaIdentityWorkspace
+Aliases: SummaryName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -184,7 +221,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware
+### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResource
 
 ## NOTES
 

@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFirmwareAnalysisWorkspa
 }
 
 Describe 'New-AzFirmwareAnalysisWorkspace' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { 
+            $config = New-AzFirmwareAnalysisWorkspace -ResourceGroupName 'FirmwareAnalysisRG' -Name 'testworkspace' -Location 'East US'
+            $config.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 }

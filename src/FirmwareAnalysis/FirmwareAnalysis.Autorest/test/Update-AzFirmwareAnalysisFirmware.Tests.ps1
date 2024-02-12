@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzFirmwareAnalysisFirmwareDownloadUrl'))
+if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFirmwareAnalysisFirmware'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzFirmwareAnalysisFirmwareDownloadUrl.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzFirmwareAnalysisFirmware.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,10 +14,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFirmwareAnalysisFirmwar
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFirmwareAnalysisFirmwareDownloadUrl' {
-    It 'Generate' -skip {
+Describe 'Update-AzFirmwareAnalysisFirmware' {
+    It 'UpdateExpanded' {
         { 
-            $config = Get-AzFirmwareAnalysisFirmwareDownloadUrl -FirmwareId '7795b9a8-97bb-ba4b-b21a-8dc6ae2dabb9' -ResourceGroupName 'FirmwareAnalysisRG' -WorkspaceName 'default'
+            $config = Update-AzFirmwareAnalysisFirmware -FirmwareId 'e0a16256-d186-4d4f-87fc-24bd0dab91cf' -ResourceGroupName 'FirmwareAnalysisRG' -WorkspaceName 'default' -FileName 'newFile' -Vendor 'newVendor'
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

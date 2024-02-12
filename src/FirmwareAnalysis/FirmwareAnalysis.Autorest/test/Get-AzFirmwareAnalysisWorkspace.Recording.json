@@ -1,0 +1,89 @@
+{
+  "Get-AzFirmwareAnalysisWorkspace+[NoContext]+List+$GET+https://management.azure.com/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces?api-version=2024-01-10+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces?api-version=2024-01-10",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "f26f2186-8600-4311-a8d7-dc9a240b6fa9" ],
+        "CommandName": [ "Get-AzFirmwareAnalysisWorkspace" ],
+        "FullCommandName": [ "Get-AzFirmwareAnalysisWorkspace_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.FirmwareAnalysis/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "dc1ae809-57b4-4784-9e06-837c1b4dd0cd", "8843e98a-b495-43a0-b705-540deb429d59" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "496" ],
+        "x-ms-request-id": [ "63a3aa82-751a-43a5-948a-01fc0736edea" ],
+        "x-ms-correlation-request-id": [ "63a3aa82-751a-43a5-948a-01fc0736edea" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20240212T210641Z:63a3aa82-751a-43a5-948a-01fc0736edea" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9BF013B8012E41A0AC7BAE39BA2A90A8 Ref B: CO6AA3150217017 Ref C: 2024-02-12T21:06:41Z" ],
+        "Date": [ "Mon, 12 Feb 2024 21:06:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1612" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/default\",\"name\":\"default\",\"type\":\"microsoft.iotfirmwaredefense/workspaces\",\"location\":\"East US\",\"systemData\":{\"createdBy\":\"jpenfield@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-10T14:19:57.0253834Z\",\"lastModifiedBy\":\"jpenfield@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-10T14:19:57.0253834Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/testworkspace\",\"name\":\"testworkspace\",\"type\":\"microsoft.iotfirmwaredefense/workspaces\",\"location\":\"East US\",\"systemData\":{\"createdBy\":\"kalbhatia@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-02-12T20:35:15.6659299Z\",\"lastModifiedBy\":\"kalbhatia@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-12T20:59:31.7325754Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/testworkspace1\",\"name\":\"testworkspace1\",\"type\":\"microsoft.iotfirmwaredefense/workspaces\",\"location\":\"East US\",\"systemData\":{\"createdBy\":\"kalbhatia@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-02-12T21:02:53.5742055Z\",\"lastModifiedBy\":\"kalbhatia@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-12T21:03:46.6094782Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzFirmwareAnalysisWorkspace+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/default?api-version=2024-01-10+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/default?api-version=2024-01-10",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "e07e0721-fda8-4842-ac9e-8c571b109e0a" ],
+        "CommandName": [ "Get-AzFirmwareAnalysisWorkspace" ],
+        "FullCommandName": [ "Get-AzFirmwareAnalysisWorkspace_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.FirmwareAnalysis/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"7002d122-0000-0700-0000-64ac138d0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "495" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "9f0c042f-9369-4d86-8985-6005e9b1dc1c" ],
+        "x-ms-correlation-request-id": [ "d82cdea7-8742-4d7f-b7bc-997137ec1a45" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20240212T210641Z:d82cdea7-8742-4d7f-b7bc-997137ec1a45" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9273F2F77BCA4D3FA829B79C186A98B0 Ref B: CO6AA3150217017 Ref C: 2024-02-12T21:06:41Z" ],
+        "Date": [ "Mon, 12 Feb 2024 21:06:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "524" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/default\",\"name\":\"default\",\"type\":\"microsoft.iotfirmwaredefense/workspaces\",\"location\":\"East US\",\"systemData\":{\"createdBy\":\"jpenfield@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-07-10T14:19:57.0253834Z\",\"lastModifiedBy\":\"jpenfield@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-07-10T14:19:57.0253834Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

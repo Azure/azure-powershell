@@ -1,0 +1,42 @@
+{
+  "Update-AzFirmwareAnalysisFirmware+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/default/firmwares/e0a16256-d186-4d4f-87fc-24bd0dab91cf?api-version=2024-01-10+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/default/firmwares/e0a16256-d186-4d4f-87fc-24bd0dab91cf?api-version=2024-01-10",
+      "Content": "{\n  \"properties\": {\n    \"fileName\": \"newFile\",\n    \"vendor\": \"newVendor\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "78" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a50123dd-0000-0700-0000-65ca88f20000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=ff3a6090-3ef9-4621-b02c-e0abfd9da371,objectId=32d56fca-9a4a-417e-8daf-c99d3d86423a/centralus/8e04b3f4-d38a-4e2d-8444-3add58bc29ea" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "895edc3f-344e-4a70-ad6b-e07b67a9bf7c" ],
+        "x-ms-correlation-request-id": [ "104439c2-e8c1-4740-91f3-b17a2802dbee" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "299" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20240212T210907Z:104439c2-e8c1-4740-91f3-b17a2802dbee" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3B957EAD683D43D49D8AA5EB769970DB Ref B: CO6AA3150217017 Ref C: 2024-02-12T21:09:06Z" ],
+        "Date": [ "Mon, 12 Feb 2024 21:09:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "705" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/default/firmwares/e0a16256-d186-4d4f-87fc-24bd0dab91cf\",\"name\":\"e0a16256-d186-4d4f-87fc-24bd0dab91cf\",\"type\":\"microsoft.iotfirmwaredefense/workspaces/firmwares\",\"systemData\":{\"createdBy\":\"kalbhatia@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-02-12T21:06:57.2599982Z\",\"lastModifiedBy\":\"kalbhatia@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-12T21:09:06.8485Z\"},\"properties\":{\"fileName\":\"newFile\",\"vendor\":\"newVendor\",\"model\":\"model\",\"version\":\"version\",\"description\":\"description\",\"fileSize\":1,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

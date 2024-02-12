@@ -14,7 +14,7 @@ The operation to delete a firmware.
 
 ### Delete (Default)
 ```
-Remove-AzFirmwareAnalysisFirmware -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
+Remove-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Remove-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-Def
 
 ### DeleteViaIdentityWorkspace
 ```
-Remove-AzFirmwareAnalysisFirmware -WorkspaceInputObject <IFirmwareAnalysisIdentity> [-Id <String>]
+Remove-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -83,9 +83,9 @@ Type: System.String
 Parameter Sets: Delete, DeleteViaIdentityWorkspace
 Aliases: FirmwareId
 
-Required: False
+Required: True
 Position: Named
-Default value: str(uuid.uuid4())
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

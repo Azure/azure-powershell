@@ -11,8 +11,29 @@ Locale: en-US
 Microsoft Azure PowerShell: FirmwareAnalysis cmdlets
 
 ## Az.FirmwareAnalysis Cmdlets
+### [Get-AzFirmwareAnalysisBinaryHardening](Get-AzFirmwareAnalysisBinaryHardening.md)
+Lists binary hardening analysis results of a firmware.
+
+### [Get-AzFirmwareAnalysisCryptoCertificate](Get-AzFirmwareAnalysisCryptoCertificate.md)
+Lists cryptographic certificate analysis results found in a firmware.
+
+### [Get-AzFirmwareAnalysisCryptoKey](Get-AzFirmwareAnalysisCryptoKey.md)
+Lists cryptographic key analysis results found in a firmware.
+
+### [Get-AzFirmwareAnalysisCve](Get-AzFirmwareAnalysisCve.md)
+Lists CVE analysis results of a firmware.
+
 ### [Get-AzFirmwareAnalysisFirmware](Get-AzFirmwareAnalysisFirmware.md)
 Get firmware.
+
+### [Get-AzFirmwareAnalysisPasswordHash](Get-AzFirmwareAnalysisPasswordHash.md)
+Lists password hash analysis results of a firmware.
+
+### [Get-AzFirmwareAnalysisSbomComponent](Get-AzFirmwareAnalysisSbomComponent.md)
+Lists SBOM analysis results of a firmware.
+
+### [Get-AzFirmwareAnalysisSummary](Get-AzFirmwareAnalysisSummary.md)
+Get an analysis result summary of a firmware by name.
 
 ### [Get-AzFirmwareAnalysisWorkspace](Get-AzFirmwareAnalysisWorkspace.md)
 Get firmware analysis workspace.

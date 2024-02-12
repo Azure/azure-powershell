@@ -15,11 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFirmwareAnalysisWork
 }
 
 Describe 'Update-AzFirmwareAnalysisWorkspace' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { 
+            $config = Update-AzFirmwareAnalysisWorkspace -ResourceGroupName 'FirmwareAnalysisRG' -Name 'testworkspace'
+            $config.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 }

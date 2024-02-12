@@ -35,13 +35,24 @@ commit: ef348fed285ae01b78cf6afd394ad2c4c8b6da7e
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
+  #- $(repo)/specification/fist/resource-manager/readme.md
+
 # - /swagger/fist/resource-manager/readme.md
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-local-readme.md
 
 input-file:
   - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/firmwares.json
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/workspaces.json  
+  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/workspaces.json
+  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/binaryHardeningResults.json
+  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/sbomComponents.json
+  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/cves.json
+  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/cryptoCertificates.json  
+  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/cryptoKeys.json
+  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/passwordHashes.json
+  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/summaries.json  
+  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/common.json  
+  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/operations.json 
 
 try-require: 
   - /swagger/fist/resource-manager/readme.powershell.md
@@ -80,9 +91,10 @@ directive:
 
   - where:
       parameter-name: Id
+      verb: New-AzFirmwareAnalysisFirmware
     set:
       default:
         name: Id
         description: Gets the Id from the current context.
-        script: 'str(uuid.uuid4())'
+        script: 'New-Guid'
 ```

@@ -15,27 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFirmwareAnalysisWorkspa
 }
 
 Describe 'New-AzFirmwareAnalysisWorkspaceUploadUrl' {
-    It 'GenerateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GenerateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GenerateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Generate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GenerateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GenerateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Generate' {
+        { 
+            $config = New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName 'FirmwareAnalysisRG' -WorkspaceName 'default' -FirmwareId 'e0a16256-d186-4d4f-87fc-24bd0dab91cf'
+            $config.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 }

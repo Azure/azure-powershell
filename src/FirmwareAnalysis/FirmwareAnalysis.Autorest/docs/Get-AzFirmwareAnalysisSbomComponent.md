@@ -1,43 +1,24 @@
 ---
 external help file:
 Module Name: Az.FirmwareAnalysis
-online version: https://learn.microsoft.com/powershell/module/az.firmwareanalysis/get-azfirmwareanalysisfirmware
+online version: https://learn.microsoft.com/powershell/module/az.firmwareanalysis/get-azfirmwareanalysissbomcomponent
 schema: 2.0.0
 ---
 
-# Get-AzFirmwareAnalysisFirmware
+# Get-AzFirmwareAnalysisSbomComponent
 
 ## SYNOPSIS
-Get firmware.
+Lists SBOM analysis results of a firmware.
 
 ## SYNTAX
 
-### List (Default)
 ```
-Get-AzFirmwareAnalysisFirmware -ResourceGroupName <String> -WorkspaceName <String>
+Get-AzFirmwareAnalysisSbomComponent -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentityWorkspace
-```
-Get-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get firmware.
+Lists SBOM analysis results of a firmware.
 
 ## EXAMPLES
 
@@ -81,34 +62,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
+### -FirmwareId
 The id of the firmware.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityWorkspace
-Aliases: FirmwareId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -118,7 +83,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -134,7 +99,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -144,28 +109,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WorkspaceInputObject
-Identity Parameter
-To construct, see NOTES section for WORKSPACEINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
-Parameter Sets: GetViaIdentityWorkspace
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -WorkspaceName
 The name of the firmware analysis workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -180,11 +129,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmware
+### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISbomComponentResource
 
 ## NOTES
 

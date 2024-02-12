@@ -15,11 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFirmwareAnalysisWork
 }
 
 Describe 'Remove-AzFirmwareAnalysisWorkspace' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { 
+            $config = Remove-AzFirmwareAnalysisWorkspace -ResourceGroupName 'FirmwareAnalysisRG' -Name 'testworkspace1'
+            $config.Count | Should -eq 0
+        } | Should -Not -Throw
     }
 }
