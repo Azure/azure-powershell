@@ -990,3 +990,71 @@ function Test-ManagedIdentity
     # Delete resource group
     Remove-AzResourceGroup -Name $resourceGroupName -Force
 }
+
+<#
+.SYNOPSIS
+Tests redis cache.
+#>
+function Test-UpdateChannel
+{
+    # Setup
+    $id = (New-Guid).ToString().Substring(0,8)
+    $resourceGroupName = "PowerShellTest-$($id)"
+    $cacheName = "redisteam011-$($id)"
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
+
+    # Create resource group
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Creating Cache
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium -RedisVersion latest -UpdateChannel Preview
+
+    Assert-AreEqual $cacheName $cacheCreated.Name
+    Assert-AreEqual $location $cacheCreated.Location
+    Assert-AreEqual "Microsoft.Cache/Redis" $cacheCreated.Type
+    Assert-AreEqual $resourceGroupName $cacheCreated.ResourceGroupName
+
+    Assert-AreEqual 6379 $cacheCreated.Port
+    Assert-AreEqual 6380 $cacheCreated.SslPort
+    Assert-AreEqual "creating" $cacheCreated.ProvisioningState
+    Assert-AreEqual "6GB" $cacheCreated.Size
+    Assert-AreEqual "Premium" $cacheCreated.Sku
+    Assert-AreEqual "6" $cacheCreated.RedisVersion.split(".")[0] # May need to update if 'latest' is > 6
+    Assert-AreEqual "Preview" $cacheCreated.UpdateChannel
+
+    Assert-NotNull $cacheCreated.PrimaryKey "PrimaryKey do not exists"
+    Assert-NotNull $cacheCreated.SecondaryKey "SecondaryKey do not exists"
+
+    # In loop to check if cache exists
+    for ($i = 0; $i -le 60; $i++)
+    {
+        Start-TestSleep -Seconds 30
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
+        {
+            Assert-AreEqual $cacheName $cacheGet[0].Name
+            Assert-AreEqual "succeeded" $cacheGet[0].ProvisioningState
+            break
+        }
+        Assert-False {$i -eq 60} "Cache is not in succeeded state even after 30 min."
+    }
+
+    # Updating Cache
+    $cacheUpdated = Set-AzRedisCache -Name $cacheName -UpdateChannel Stable
+    $cache = Get-AzRedisCache -Name $cacheName
+
+    Assert-AreEqual $cacheName $cacheUpdated.Name
+    Assert-AreEqual 6379 $cacheUpdated.Port
+    Assert-AreEqual 6380 $cacheUpdated.SslPort
+    Assert-AreEqual "succeeded" $cacheUpdated.ProvisioningState
+    Assert-AreEqual "Preview" $cacheCreated.UpdateChannel
+
+    Assert-NotNull $cacheUpdated.PrimaryKey "PrimaryKey do not exists"
+    Assert-NotNull $cacheUpdated.SecondaryKey "SecondaryKey do not exists"
+
+    # Delete cache
+    Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+
+    # Delete resource group
+    Remove-AzResourceGroup -Name $resourceGroupName -Force
+}

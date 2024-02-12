@@ -12,24 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-
 namespace Microsoft.Azure.Commands.RedisCache
 {
-    using Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.RedisCache.Properties;
     using Microsoft.Azure.Management.Insights;
     using Microsoft.Azure.Management.Insights.Models;
     using Microsoft.Azure.Management.Internal.Resources;
+    using Microsoft.Azure.Management.RedisCache;
+    using Microsoft.Azure.Management.RedisCache.Models;
     using Microsoft.Rest.Azure;
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using Models;
-    using System;
-    using Properties;
-    using Microsoft.Azure.Management.RedisCache;
-    using Microsoft.Azure.Management.RedisCache.Models;
 
     public class RedisCacheClient
     {
@@ -47,7 +44,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public RedisResource CreateCache(string resourceGroupName, string cacheName, string location, string skuFamily, int skuCapacity, string skuName,
                 Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string minimumTlsVersion, string subnetId,
-                string staticIP, Hashtable tags, IList<string> zones, string redisVersion, string identityType, string[] userAssignedIdentities)
+                string staticIP, Hashtable tags, IList<string> zones, string redisVersion, string identityType, string[] userAssignedIdentities, string updateChannel)
         {
             try
             {
@@ -65,7 +62,8 @@ namespace Microsoft.Azure.Commands.RedisCache
                     Family = skuFamily,
                     Capacity = skuCapacity
                 },
-                RedisVersion = redisVersion
+                RedisVersion = redisVersion,
+                UpdateChannel = updateChannel
             };
 
             parameters.Identity = Utility.BuildManagedServiceIdentity(identityType, userAssignedIdentities);
@@ -133,7 +131,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public RedisResource UpdateCache(string resourceGroupName, string cacheName, string skuFamily, int skuCapacity, string skuName,
                 Hashtable redisConfiguration, bool? enableNonSslPort, Hashtable tenantSettings, int? shardCount, string MinimumTlsVersion,
-                string redisVersion, Hashtable tags, string identityType, string[] userAssignedIdentities)
+                string redisVersion, Hashtable tags, string identityType, string[] userAssignedIdentities, string updateChannel)
         {
             try
             {
@@ -173,7 +171,17 @@ namespace Microsoft.Azure.Commands.RedisCache
             parameters.Identity = Utility.BuildManagedServiceIdentity(identityType, userAssignedIdentities);
 
             parameters.EnableNonSslPort = enableNonSslPort;
-            parameters.RedisVersion = redisVersion;
+
+            if (!string.IsNullOrEmpty(updateChannel))
+            {
+                parameters.UpdateChannel = updateChannel;
+                parameters.RedisVersion = "latest";
+            }
+
+            if (!string.IsNullOrEmpty(redisVersion))
+            {
+                parameters.RedisVersion = redisVersion;
+            }
 
             if (tenantSettings != null)
             {

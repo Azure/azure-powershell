@@ -100,5 +100,12 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ManagedIdentity");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateChannel()
+        {
+            TestRunner.RunTestScript("Test-UpdateChannel");
+        }
     }
 }
