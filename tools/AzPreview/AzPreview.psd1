@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '11.3.0'
+ModuleVersion = '11.3.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -151,7 +151,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.15.1'; },
             @{ModuleName = 'Az.ManagementPartner'; RequiredVersion = '0.7.3'; }, 
             @{ModuleName = 'Az.Maps'; RequiredVersion = '0.8.0'; }, 
             @{ModuleName = 'Az.MariaDb'; RequiredVersion = '0.2.1'; }, 
-            @{ModuleName = 'Az.Marketplace'; RequiredVersion = '0.3.0'; }, 
+            @{ModuleName = 'Az.Marketplace'; RequiredVersion = '0.4.0'; }, 
             @{ModuleName = 'Az.MarketplaceOrdering'; RequiredVersion = '2.0.0'; }, 
             @{ModuleName = 'Az.Media'; RequiredVersion = '1.1.2'; }, 
             @{ModuleName = 'Az.Migrate'; RequiredVersion = '2.3.0'; }, 
@@ -189,7 +189,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.15.1'; },
             @{ModuleName = 'Az.Reservations'; RequiredVersion = '0.12.0'; }, 
             @{ModuleName = 'Az.ResourceGraph'; RequiredVersion = '0.13.0'; }, 
             @{ModuleName = 'Az.ResourceMover'; RequiredVersion = '1.2.0'; }, 
-            @{ModuleName = 'Az.Resources'; RequiredVersion = '6.15.0'; }, 
+            @{ModuleName = 'Az.Resources'; RequiredVersion = '6.15.1'; }, 
             @{ModuleName = 'Az.Search'; RequiredVersion = '0.10.0'; }, 
             @{ModuleName = 'Az.Security'; RequiredVersion = '1.5.1'; }, 
             @{ModuleName = 'Az.SecurityInsights'; RequiredVersion = '3.1.1'; }, 
