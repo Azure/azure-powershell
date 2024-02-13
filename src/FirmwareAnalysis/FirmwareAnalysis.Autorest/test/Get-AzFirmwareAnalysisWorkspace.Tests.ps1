@@ -29,4 +29,3 @@ Describe 'Get-AzFirmwareAnalysisWorkspace' {
         } | Should -Not -Throw
     }
 }
-c
