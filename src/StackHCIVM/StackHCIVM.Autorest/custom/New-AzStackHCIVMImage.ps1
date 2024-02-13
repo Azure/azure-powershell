@@ -303,7 +303,35 @@ function New-AzStackHCIVMImage{
 
         if ($PSCmdlet.ParameterSetName -eq "Marketplace")
         {
-            return Az.StackHCIVM.internal\New-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+            $PSBoundParameters['NoWait'] = $true
+            try {
+                Az.StackHCIVM.internal\New-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+                Start-Sleep -Seconds 120
+                $PercentCompleted = 0 
+                Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted% Complete:" -PercentComplete $PercentCompleted
+                while ($PercentCompleted -ne 100 ) {
+                   
+                    $image = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName
+                    $PercentCompleted = $image.StatusProgressPercentage
+                    if ($PercentCompleted -eq $null){
+                        $PercentCompleted = 0
+                    } 
+                    Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted% Complete" -PercentComplete $PercentCompleted
+                    Start-Sleep -Seconds 5    
+                    if ( $image.ProvisioningStatus -eq "Failed") {
+                        Break
+                    }           
+                }
+                if ($image.ProvisioningStatus -eq "Failed"){
+                    Write-Error $image.StatusErrorMessage -ErrorAction Stop
+                }
+               
+            } catch {
+                Write-Error $_.Exception.Message -ErrorAction Stop
+            }
+
+           
+           
 
         } elseif ($PSCmdlet.ParameterSetName -eq "MarketplaceURN") {
             if ($URN -match $urnRegex){
@@ -320,15 +348,26 @@ function New-AzStackHCIVMImage{
             } else {
                 Write-Error "Invalid URN provided: $URN. Valid URN format is Publisher:Offer:Sku:Version ." -ErrorAction Stop
             }
-
-            return Az.StackHCIVM.internal\New-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+            Write-Host "Before function call"
+            Az.StackHCIVM.internal\New-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+            $PercentCompleted = (Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName).StatusProgressPercentage 
+            while ($PercentCompleted -ne 100){
+                Write-Host "In Loop"
+                Write-Progress -PercentComplete $PercentCompleted
+                $image = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName 
+                $PercentCompleted = $image.StatusProgressPercentag
+                if ($PercentCompleted -eq $null){
+                    $PercentCompleted = 0
+                }
+                Start-Sleep -Seconds 5
+            }
 
         }
 
         if ($PSCmdlet.ParameterSetName -eq "GalleryImage")
         {
            
-            return Az.StackHCIVM.internal\New-AzStackHCIVMGalleryImage @PSBoundParameters
+            Az.StackHCIVM.internal\New-AzStackHCIVMGalleryImage @PSBoundParameters
         }
 
        
