@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
 
         /// <param name="status">Describes the status of a service.
-        /// Possible values include: 'Creating', 'Running', 'Updating', 'Deleting',
-        /// 'Error', 'Stopped'</param>
+        /// Possible values include: &#39;Creating&#39;, &#39;Running&#39;, &#39;Updating&#39;, &#39;Deleting&#39;,
+        /// &#39;Error&#39;, &#39;Stopped&#39;</param>
 
         /// <param name="graphApiComputeEndpoint">The regional endpoint for GraphAPICompute.
         /// </param>
