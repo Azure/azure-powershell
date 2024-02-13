@@ -19,6 +19,13 @@ New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceN
  [<CommonParameters>]
 ```
 
+### Generate
+```
+New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
+ -GenerateUploadUrl <IGenerateUploadUrlRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The operation to get a url for file upload.
 
