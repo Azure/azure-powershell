@@ -15,19 +15,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSecurityConnector'))
 }
 
 Describe 'Get-AzSecurityConnector' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $connectors = Get-AzSecurityConnector -ResourceGroupName $rg
+        $connectors.Count | Should -BeGreaterThan 0
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ListBySubscription' {
+        $connectors = Get-AzSecurityConnector
+        $connectors.Count | Should -BeGreaterThan 0
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $connector = Get-AzSecurityConnector -SubscriptionId $sid -ResourceGroupName $rg -Name "dfdsdktests-azdo-01"
+        $connector | Should -Not -Be $null
+        $connector.Name.Contains('dfdsdktests-azdo-01') | Should -Be $true
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $InputObject = @{Id = "/subscriptions/$sid/resourcegroups/$rg/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01" }
+        $connector = Get-AzSecurityConnector -InputObject $InputObject
+        $connector.Count | Should -Be 1
+        $connector.Name.Contains('dfdsdktests-azdo-01') | Should -Be $true
     }
 }

@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityCspmMonitorGcpO
 }
 
 Describe 'New-AzSecurityCspmMonitorGcpOfferingObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $offering = New-AzSecurityCspmMonitorGcpOfferingObject -NativeCloudConnectionServiceAccountEmailAddress "microsoft-defender-cspm@asc-sdk-samples.iam.gserviceaccount.com" -NativeCloudConnectionWorkloadIdentityProviderId "cspm"
+        $offering.OfferingType | Should -Be "CspmMonitorGcp"
     }
 }

@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityAzureDevOpsScop
 }
 
 Describe 'New-AzSecurityAzureDevOpsScopeEnvironmentObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $scope = New-AzSecurityAzureDevOpsScopeEnvironmentObject
+        $scope.EnvironmentType | Should -Be "AzureDevOpsScope"
     }
 }

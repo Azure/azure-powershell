@@ -15,23 +15,36 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSecurityApiCollection')
 }
 
 Describe 'Get-AzSecurityApiCollection' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $rg = $env.ApiCollectionsResourceGroupName
+        $collections = Get-AzSecurityApiCollection -ResourceGroupName $rg
+        $collections.Count | Should -BeGreaterThan 0
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $rg = $env.ApiCollectionsResourceGroupName
+        $collection = Get-AzSecurityApiCollection -ResourceGroup $rg -ServiceName "demoapimservice2" -ApiId "echo-api"
+        $collection | Should -Not -Be $null
+        $collection.Name.Contains('echo-api') | Should -Be $true
     }
 
-    It 'List2' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ListBySubscription' {
+        $collections = Get-AzSecurityApiCollection
+        $collections.Count | Should -BeGreaterThan 0
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ListByService' {
+        $rg = $env.ApiCollectionsResourceGroupName
+        $collections = Get-AzSecurityApiCollection -ResourceGroup $rg -ServiceName "demoapimservice2"
+        $collections.Count | Should -BeGreaterThan 0
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $rg = $env.ApiCollectionsResourceGroupName
+        $sid = $env.SubscriptionId
+        $InputObject = @{Id = "/subscriptions/$sid/resourceGroups/$rg/providers/Microsoft.ApiManagement/service/demoapimservice2/providers/Microsoft.Security/apiCollections/echo-api" }
+        $collection = Get-AzSecurityApiCollection -InputObject $InputObject
+        $collection.Count | Should -Be 1
+        $collection.Name.Contains('echo-api') | Should -Be $true
     }
 }

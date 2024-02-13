@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityInformationProt
 }
 
 Describe 'New-AzSecurityInformationProtectionAwsOfferingObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $offering = New-AzSecurityInformationProtectionAwsOfferingObject -InformationProtectionCloudRoleArn "arn:aws:iam::123456789012:role/myRole"
+        $offering.OfferingType | Should -Be "InformationProtectionAws"
     }
 }

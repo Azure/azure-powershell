@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityAwsOrganization
 }
 
 Describe 'New-AzSecurityAwsOrganizationalDataMasterObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $organization = New-AzSecurityAwsOrganizationalDataMasterObject -StacksetName "myAwsStackSet" -ExcludedAccountId "123456789012"
+        $organization.OrganizationMembershipType | Should -Be "Organization"
     }
 }

@@ -126,6 +126,12 @@ directive:
     hide: true
 
   - where:
+      verb: Update
+      subject: ^(AzureDevOps)(.*)
+      parameter-name: OnboardingState
+    hide: true
+
+  - where:
       model-name: SecurityConnector
     set:
       format-table:
@@ -140,6 +146,7 @@ directive:
     - SecurityConnectorEnvironment
     - AwsOrganizationalData
     - GcpOrganizationalData
+    - ActionableRemediation
   
   - model-cmdlet:
     - model-name: AwsEnvironment
@@ -155,7 +162,7 @@ directive:
     - model-name: CspmMonitorGcpOffering
     - model-name: CspmMonitorGithubOffering
     - model-name: CspmMonitorAzureDevOpsOffering
-    - model-name: CspmMonitorGitLab
+    - model-name: CspmMonitorGitLabOffering
     - model-name: DefenderCspmAwsOffering
     - model-name: DefenderCspmGcpOffering
     - model-name: DefenderForContainersAwsOffering
@@ -165,4 +172,6 @@ directive:
     - model-name: DefenderForServersAwsOffering
     - model-name: DefenderForServersGcpOffering
     - model-name: InformationProtectionAwsOffering
+    - model-name: ActionableRemediation
+      cmdlet-name: New-AzSecurityConnectorActionableRemediationObject
 ```

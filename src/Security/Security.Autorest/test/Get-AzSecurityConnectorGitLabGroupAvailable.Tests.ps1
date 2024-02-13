@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSecurityConnectorGitLab
 }
 
 Describe 'Get-AzSecurityConnectorGitLabGroupAvailable' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $groups = Get-AzSecurityConnectorGitLabGroupAvailable -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-gl-01"
+        $groups.Count | Should -BeGreaterThan 0
     }
 }

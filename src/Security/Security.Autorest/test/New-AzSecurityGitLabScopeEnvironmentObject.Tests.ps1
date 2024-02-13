@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityGitLabScopeEnvi
 }
 
 Describe 'New-AzSecurityGitLabScopeEnvironmentObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $scope = New-AzSecurityGitLabScopeEnvironmentObject
+        $scope.EnvironmentType | Should -Be "GitlabScope"
     }
 }

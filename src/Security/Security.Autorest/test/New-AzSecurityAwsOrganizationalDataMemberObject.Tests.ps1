@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityAwsOrganization
 }
 
 Describe 'New-AzSecurityAwsOrganizationalDataMemberObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $member = New-AzSecurityAwsOrganizationalDataMemberObject -ParentHierarchyId "123"
+        $member.OrganizationMembershipType | Should -Be "Member"
     }
 }

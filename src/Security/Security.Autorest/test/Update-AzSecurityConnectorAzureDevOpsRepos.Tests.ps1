@@ -15,11 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSecurityConnectorAzu
 }
 
 Describe 'Update-AzSecurityConnectorAzureDevOpsRepos' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $config = New-AzSecurityConnectorActionableRemediationObject -State Enabled -InheritFromParentState Enabled -CategoryConfiguration @( @{category="IaC"; minimumSeverityLevel="High"})
+        Update-AzSecurityConnectorAzureDevOpsRepos -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-azdo-01" -OrgName "dfdsdktests" -ProjectName "ContosoSDKDfd" -RepoName "TestApp2" -ActionableRemediation $config
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        
+        $config = New-AzSecurityConnectorActionableRemediationObject -State Enabled -InheritFromParentState Enabled -CategoryConfiguration @( @{category="IaC"; minimumSeverityLevel="High"})
+        $repo = Get-AzSecurityConnectorAzureDevOpsRepos -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-azdo-01" -OrgName "dfdsdktests" -ProjectName "ContosoSDKDfd" -RepoName "TestApp2"
+        Update-AzSecurityConnectorAzureDevOpsRepos -InputObject $repo -ActionableRemediation $config
     }
 }

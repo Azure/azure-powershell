@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityCspmMonitorAzur
 }
 
 Describe 'New-AzSecurityCspmMonitorAzureDevOpsOfferingObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $offering = New-AzSecurityCspmMonitorAzureDevOpsOfferingObject
+        $offering.OfferingType | Should -Be "CspmMonitorAzureDevOps"
     }
 }

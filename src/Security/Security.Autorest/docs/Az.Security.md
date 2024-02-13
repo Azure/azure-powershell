@@ -78,6 +78,9 @@ Create an in-memory object for AzureDevOpsScopeEnvironment.
 Create a security connector.
 If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
 
+### [New-AzSecurityConnectorActionableRemediationObject](New-AzSecurityConnectorActionableRemediationObject.md)
+Create an in-memory object for ActionableRemediation.
+
 ### [New-AzSecurityConnectorDevOpsConfiguration](New-AzSecurityConnectorDevOpsConfiguration.md)
 Create a DevOps Configuration.
 
@@ -92,6 +95,9 @@ Create an in-memory object for CspmMonitorGcpOffering.
 
 ### [New-AzSecurityCspmMonitorGithubOfferingObject](New-AzSecurityCspmMonitorGithubOfferingObject.md)
 Create an in-memory object for CspmMonitorGithubOffering.
+
+### [New-AzSecurityCspmMonitorGitLabOfferingObject](New-AzSecurityCspmMonitorGitLabOfferingObject.md)
+Create an in-memory object for CspmMonitorGitLabOffering.
 
 ### [New-AzSecurityDefenderCspmAwsOfferingObject](New-AzSecurityDefenderCspmAwsOfferingObject.md)
 Create an in-memory object for DefenderCspmAwsOffering.

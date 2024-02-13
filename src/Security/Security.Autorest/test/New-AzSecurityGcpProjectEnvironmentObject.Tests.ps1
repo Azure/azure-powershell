@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityGcpProjectEnvir
 }
 
 Describe 'New-AzSecurityGcpProjectEnvironmentObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $orgData = New-AzSecurityGcpOrganizationalDataOrganizationObject -WorkloadIdentityProviderId "provider" -ServiceAccountEmailAddress "my@email.com" -ExcludedProjectNumber @(1,2)
+        $environment = New-AzSecurityGcpProjectEnvironmentObject -ProjectDetailProjectId "asc-sdk-samples" -ScanInterval 24 -OrganizationalData $orgData -ProjectDetailProjectNumber "1234"
+        $environment.EnvironmentType | Should -Be "GcpProject"
     }
 }

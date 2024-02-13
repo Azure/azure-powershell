@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityDefenderForData
 }
 
 Describe 'New-AzSecurityDefenderForDatabasesGcpOfferingObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $emailSuffix = "myproject.iam.gserviceaccount.com"
+        $offering = New-AzSecurityDefenderForDatabasesGcpOfferingObject `
+            -ArcAutoProvisioningEnabled $true `
+            -DefenderForDatabaseArcAutoProvisioningServiceAccountEmailAddress "microsoft-databases-arc-ap@" -DefenderForDatabaseArcAutoProvisioningWorkloadIdentityProviderId "defender-for-databases-arc-ap"
+        $offering.OfferingType | Should -Be "DefenderForDatabasesGcp"
     }
 }

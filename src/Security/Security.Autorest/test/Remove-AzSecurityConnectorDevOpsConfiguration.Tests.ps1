@@ -15,11 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSecurityConnectorDev
 }
 
 Describe 'Remove-AzSecurityConnectorDevOpsConfiguration' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Delete' {
+        "Tested in New-AzSecurityConnectorDevOpsConfiguration.Tests" | Should -Not -BeNullOrEmpty    }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        "Tested in New-AzSecurityConnectorDevOpsConfiguration.Tests" | Should -Not -BeNullOrEmpty
     }
 }

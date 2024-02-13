@@ -15,11 +15,28 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSecurityApiCollectio
 }
 
 Describe 'Invoke-AzSecurityApiCollectionApimOnboard' {
-    It 'Azure' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Azure' {
+        $rg = $env.ApiCollectionsResourceGroupName
+        try {
+            $collection = Invoke-AzSecurityApiCollectionApimOnboard -ResourceGroupName $rg -ServiceName "demoapimservice2" -ApiId "echo-api-2"
+            $collection.Name | Should -Be "echo-api-2"
+            $collection.ProvisioningState | Should -Be "Succeeded"
+        } finally {
+            Invoke-AzSecurityApiCollectionApimOffboard -ResourceGroupName $rg -ServiceName "demoapimservice2" -ApiId "echo-api-2"
+        }
     }
 
-    It 'AzureViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'AzureViaIdentity' {
+        $rg = $env.ApiCollectionsResourceGroupName
+        $sid = $env.SubscriptionId
+        $InputObject = @{Id = "/subscriptions/$sid/resourceGroups/$rg/providers/Microsoft.ApiManagement/service/demoapimservice2/providers/Microsoft.Security/apiCollections/echo-api-2" }
+
+        try {
+            $collection = Invoke-AzSecurityApiCollectionApimOnboard -InputObject $InputObject
+            $collection.Name | Should -Be "echo-api-2"
+            $collection.ProvisioningState | Should -Be "Succeeded"
+        } finally {
+            Invoke-AzSecurityApiCollectionApimOffboard -InputObject $InputObject
+        }
     }
 }

@@ -15,15 +15,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSecurityConnectorGitHub
 }
 
 Describe 'Get-AzSecurityConnectorGitHubRepos' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $repos = Get-AzSecurityConnectorGitHubRepos -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-gh-01" -OwnerName "dfdsdktests"
+        $repos.Count | Should -BeGreaterThan 0
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $repo = Get-AzSecurityConnectorGitHubRepos -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-gh-01" -OwnerName "dfdsdktests" -RepoName "TestApp0"
+        $repo | Should -Not -Be $null
+        $repo.Name.Contains('TestApp0') | Should -Be $true
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $InputObject = @{Id = "/subscriptions/$sid/resourcegroups/$rg/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/githubOwners/dfdsdktests/repos/TestApp0" }
+        $repo = Get-AzSecurityConnectorGitHubRepos -InputObject $InputObject
+        $repo.Count | Should -Be 1
+        $repo.Name.Contains('TestApp0') | Should -Be $true
     }
 }

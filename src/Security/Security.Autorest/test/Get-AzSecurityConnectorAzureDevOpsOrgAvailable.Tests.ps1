@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSecurityConnectorAzureD
 }
 
 Describe 'Get-AzSecurityConnectorAzureDevOpsOrgAvailable' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $orgs = Get-AzSecurityConnectorAzureDevOpsOrgAvailable -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-azdo-01"
+        $orgs.Count | Should -BeGreaterThan 0
     }
 }

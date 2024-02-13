@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityCspmMonitorAwsO
 }
 
 Describe 'New-AzSecurityCspmMonitorAwsOfferingObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $offering = New-AzSecurityCspmMonitorAwsOfferingObject -NativeCloudConnectionCloudRoleArn "arn:aws:iam::123456789012:role/CspmMonitorAws"
+        $offering.OfferingType | Should -Be "CspmMonitorAws"
     }
 }

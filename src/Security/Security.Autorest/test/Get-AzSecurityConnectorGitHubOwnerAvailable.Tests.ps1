@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSecurityConnectorGitHub
 }
 
 Describe 'Get-AzSecurityConnectorGitHubOwnerAvailable' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $owners = Get-AzSecurityConnectorGitHubOwnerAvailable -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-gh-01"
+        $owners.Count | Should -BeGreaterThan 0
     }
 }

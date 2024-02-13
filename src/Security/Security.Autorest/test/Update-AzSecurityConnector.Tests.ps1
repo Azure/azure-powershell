@@ -15,11 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSecurityConnector'))
 }
 
 Describe 'Update-AzSecurityConnector' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        Update-AzSecurityConnector -SubscriptionId $sid -ResourceGroupName $rg -Name "dfdsdktests-azdo-01" -Tag @{ pwshsdktest="true"}
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $connector = Get-AzSecurityConnector -SubscriptionId $sid -ResourceGroupName $rg -Name "dfdsdktests-azdo-01"
+        Update-AzSecurityConnector -InputObject $connector -Tag @{ pwshsdktest2="true"}
     }
 }

@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityCspmMonitorGith
 }
 
 Describe 'New-AzSecurityCspmMonitorGithubOfferingObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $offering = New-AzSecurityCspmMonitorGithubOfferingObject
+        $offering.OfferingType | Should -Be "CspmMonitorGitHub"
     }
 }

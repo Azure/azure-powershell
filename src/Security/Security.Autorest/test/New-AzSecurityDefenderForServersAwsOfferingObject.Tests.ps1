@@ -15,7 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityDefenderForServ
 }
 
 Describe 'New-AzSecurityDefenderForServersAwsOfferingObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $arnPrefix = "arn:aws:iam::123456789012:role"
+        $offering = New-AzSecurityDefenderForServersAwsOfferingObject `
+            -DefenderForServerCloudRoleArn "$arnPrefix/DefenderForCloud-DefenderForServers" `
+            -ArcAutoProvisioningEnabled $true -ArcAutoProvisioningCloudRoleArn "$arnPrefix/DefenderForCloud-ArcAutoProvisioning" `
+            -MdeAutoProvisioningEnabled $true `
+            -VaAutoProvisioningEnabled $true -ConfigurationType TVM `
+            -VMScannerEnabled $true -ConfigurationCloudRoleArn "$arnPrefix/DefenderForCloud-AgentlessScanner" -ConfigurationScanningMode Default `
+            -SubPlanType P2
+        
+        $offering.OfferingType | Should -Be "DefenderForServersAws"
     }
 }

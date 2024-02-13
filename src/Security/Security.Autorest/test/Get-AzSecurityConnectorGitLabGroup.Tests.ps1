@@ -15,15 +15,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSecurityConnectorGitLab
 }
 
 Describe 'Get-AzSecurityConnectorGitLabGroup' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $groups = Get-AzSecurityConnectorGitLabGroup -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-gl-01"
+        $groups.Count | Should -BeGreaterThan 0
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $group = Get-AzSecurityConnectorGitLabGroup -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-gl-01" -GroupFqName "dfdsdktests"
+        $group | Should -Not -Be $null
+        $group.Name.Contains('dfdsdktests') | Should -Be $true
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $InputObject = @{Id = "/subscriptions/$sid/resourcegroups/$rg/providers/Microsoft.Security/securityConnectors/dfdsdktests-gl-01/devops/default/gitlabgroups/dfdsdktests" }
+        $group = Get-AzSecurityConnectorGitLabGroup -InputObject $InputObject
+        $group.Count | Should -Be 1
+        $group.Name.Contains('dfdsdktests') | Should -Be $true
     }
 }

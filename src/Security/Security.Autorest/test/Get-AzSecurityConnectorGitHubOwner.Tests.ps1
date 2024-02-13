@@ -15,15 +15,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSecurityConnectorGitHub
 }
 
 Describe 'Get-AzSecurityConnectorGitHubOwner' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $owners = Get-AzSecurityConnectorGitHubOwner -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-gh-01"
+        $owners.Count | Should -BeGreaterThan 0
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $owner = Get-AzSecurityConnectorGitHubOwner -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-gh-01" -OwnerName "dfdsdktests"
+        $owner | Should -Not -Be $null
+        $owner.Name.Contains('dfdsdktests') | Should -Be $true
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $InputObject = @{Id = "/subscriptions/$sid/resourcegroups/$rg/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/githubOwners/dfdsdktests" }
+        $owner = Get-AzSecurityConnectorGitHubOwner -InputObject $InputObject
+        $owner.Count | Should -Be 1
+        $owner.Name.Contains('dfdsdktests') | Should -Be $true
     }
 }

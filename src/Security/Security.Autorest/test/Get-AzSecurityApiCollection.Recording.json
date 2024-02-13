@@ -1,0 +1,222 @@
+{
+  "Get-AzSecurityApiCollection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.Security/apiCollections?api-version=2023-11-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.Security/apiCollections?api-version=2023-11-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "3bf325e8-0b06-4c95-a44e-54dad863ba39" ],
+        "CommandName": [ "Get-AzSecurityApiCollection" ],
+        "FullCommandName": [ "Get-AzSecurityApiCollection_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ed313b82-db2d-490e-adac-cb541c1b4f8d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "mise-correlation-id": [ "9740d213-a1df-450f-bf1a-225943518bc2" ],
+        "traceparent": [ "00-178da4f219e6138f496973df515d514d-92c095709565f9bb-00" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "ed313b82-db2d-490e-adac-cb541c1b4f8d" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240213T195405Z:ed313b82-db2d-490e-adac-cb541c1b4f8d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 45B50A559AD64807B1DCB4DE1A9D4F42 Ref B: CO6AA3150219023 Ref C: 2024-02-13T19:54:04Z" ],
+        "Date": [ "Tue, 13 Feb 2024 19:54:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "752" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapimservice2/providers/Microsoft.Security/apiCollections/echo-api\",\"name\":\"echo-api\",\"type\":\"microsoft.security/apicollections\",\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Echo API\",\"discoveredVia\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapimservice2\",\"baseUrl\":\"https://demoapimservice2.azure-api.net/echo\",\"numberOfApiEndpoints\":6,\"numberOfInactiveApiEndpoints\":6,\"numberOfUnauthenticatedApiEndpoints\":0,\"numberOfExternalApiEndpoints\":0,\"numberOfApiEndpointsWithSensitiveDataExposed\":0}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSecurityApiCollection+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapimservice2/providers/Microsoft.Security/apiCollections/echo-api?api-version=2023-11-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapimservice2/providers/Microsoft.Security/apiCollections/echo-api?api-version=2023-11-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "7b9e1efa-ecb2-4da2-826d-475dafb82e37" ],
+        "CommandName": [ "Get-AzSecurityApiCollection" ],
+        "FullCommandName": [ "Get-AzSecurityApiCollection_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "2813e023-19f4-441b-9d49-bbb973dba731" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "mise-correlation-id": [ "13e2c083-113f-48ee-a7de-cd769c74354e" ],
+        "traceparent": [ "00-8ac9023ca6707676e5fcac54b86d3b7a-38676a6604bf78e6-00" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "2813e023-19f4-441b-9d49-bbb973dba731" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240213T195406Z:2813e023-19f4-441b-9d49-bbb973dba731" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C3A684373F5041C59EAF729ADA4AA499 Ref B: CO6AA3150219023 Ref C: 2024-02-13T19:54:05Z" ],
+        "Date": [ "Tue, 13 Feb 2024 19:54:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "740" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapimservice2/providers/Microsoft.Security/apiCollections/echo-api\",\"name\":\"echo-api\",\"type\":\"microsoft.security/apicollections\",\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Echo API\",\"discoveredVia\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapimservice2\",\"baseUrl\":\"https://demoapimservice2.azure-api.net/echo\",\"numberOfApiEndpoints\":6,\"numberOfInactiveApiEndpoints\":6,\"numberOfUnauthenticatedApiEndpoints\":0,\"numberOfExternalApiEndpoints\":0,\"numberOfApiEndpointsWithSensitiveDataExposed\":0}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSecurityApiCollection+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/apiCollections?api-version=2023-11-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/apiCollections?api-version=2023-11-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "7b96aa87-79d3-4b21-845c-fa3d5e5ba061" ],
+        "CommandName": [ "Get-AzSecurityApiCollection" ],
+        "FullCommandName": [ "Get-AzSecurityApiCollection_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "a32063aa-c2c3-44b7-b50d-2678e5369d5b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "mise-correlation-id": [ "7464c694-fa7b-4e77-aef0-f0862cadc80e" ],
+        "traceparent": [ "00-9391ecfc2d57b6ce1acd6cbc32319171-328009bb94ac6575-00" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "a32063aa-c2c3-44b7-b50d-2678e5369d5b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240213T195408Z:a32063aa-c2c3-44b7-b50d-2678e5369d5b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 708AAD0DA05A4893939FD50DBEA0B897 Ref B: CO6AA3150219023 Ref C: 2024-02-13T19:54:07Z" ],
+        "Date": [ "Tue, 13 Feb 2024 19:54:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "752" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapimservice2/providers/Microsoft.Security/apiCollections/echo-api\",\"name\":\"echo-api\",\"type\":\"microsoft.security/apicollections\",\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Echo API\",\"discoveredVia\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapimservice2\",\"baseUrl\":\"https://demoapimservice2.azure-api.net/echo\",\"numberOfApiEndpoints\":6,\"numberOfInactiveApiEndpoints\":6,\"numberOfUnauthenticatedApiEndpoints\":0,\"numberOfExternalApiEndpoints\":0,\"numberOfApiEndpointsWithSensitiveDataExposed\":0}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSecurityApiCollection+[NoContext]+ListByService+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapimservice2/providers/Microsoft.Security/apiCollections?api-version=2023-11-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapimservice2/providers/Microsoft.Security/apiCollections?api-version=2023-11-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "a5191db0-1b91-4169-91e5-49822fc50bf4" ],
+        "CommandName": [ "Get-AzSecurityApiCollection" ],
+        "FullCommandName": [ "Get-AzSecurityApiCollection_List2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "4ef796ec-cc4e-4054-87cd-e8d3bb892e8b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "mise-correlation-id": [ "4dd2c61d-3c8b-4bd5-addb-370151986ec6" ],
+        "traceparent": [ "00-f783f65884ecb198156c164b7f56272d-5bc0300c0ccfae65-00" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "4ef796ec-cc4e-4054-87cd-e8d3bb892e8b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240213T195409Z:4ef796ec-cc4e-4054-87cd-e8d3bb892e8b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 81CA6DEC7D044F8FA30F9C0154AA5B48 Ref B: CO6AA3150219023 Ref C: 2024-02-13T19:54:08Z" ],
+        "Date": [ "Tue, 13 Feb 2024 19:54:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "752" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapimservice2/providers/Microsoft.Security/apiCollections/echo-api\",\"name\":\"echo-api\",\"type\":\"microsoft.security/apicollections\",\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Echo API\",\"discoveredVia\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapimservice2\",\"baseUrl\":\"https://demoapimservice2.azure-api.net/echo\",\"numberOfApiEndpoints\":6,\"numberOfInactiveApiEndpoints\":6,\"numberOfUnauthenticatedApiEndpoints\":0,\"numberOfExternalApiEndpoints\":0,\"numberOfApiEndpointsWithSensitiveDataExposed\":0}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSecurityApiCollection+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapimservice2/providers/Microsoft.Security/apiCollections/echo-api?api-version=2023-11-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapimservice2/providers/Microsoft.Security/apiCollections/echo-api?api-version=2023-11-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "efaa07b2-7795-4fa9-8898-6d81a19ca668" ],
+        "CommandName": [ "Get-AzSecurityApiCollection" ],
+        "FullCommandName": [ "Get-AzSecurityApiCollection_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "62805126-98e5-4a95-8e76-6e530ae84309" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "mise-correlation-id": [ "4ddb5b8e-82ef-4c0c-8595-e5da4c187c1a" ],
+        "traceparent": [ "00-b58298911a35c3be16d399641ac90ca1-0409e0a56290d217-00" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "62805126-98e5-4a95-8e76-6e530ae84309" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240213T195410Z:62805126-98e5-4a95-8e76-6e530ae84309" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 053485633D744853945A8E9BF04A7B6E Ref B: CO6AA3150219023 Ref C: 2024-02-13T19:54:09Z" ],
+        "Date": [ "Tue, 13 Feb 2024 19:54:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "740" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapimservice2/providers/Microsoft.Security/apiCollections/echo-api\",\"name\":\"echo-api\",\"type\":\"microsoft.security/apicollections\",\"properties\":{\"provisioningState\":\"Succeeded\",\"displayName\":\"Echo API\",\"discoveredVia\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapimservice2\",\"baseUrl\":\"https://demoapimservice2.azure-api.net/echo\",\"numberOfApiEndpoints\":6,\"numberOfInactiveApiEndpoints\":6,\"numberOfUnauthenticatedApiEndpoints\":0,\"numberOfExternalApiEndpoints\":0,\"numberOfApiEndpointsWithSensitiveDataExposed\":0}}",
+      "isContentBase64": false
+    }
+  }
+}

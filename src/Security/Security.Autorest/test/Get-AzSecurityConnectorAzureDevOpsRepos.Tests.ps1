@@ -15,15 +15,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSecurityConnectorAzureD
 }
 
 Describe 'Get-AzSecurityConnectorAzureDevOpsRepos' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $repos = Get-AzSecurityConnectorAzureDevOpsRepos -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-azdo-01" -OrgName "dfdsdktests" -ProjectName "ContosoSDKDfd"
+        $repos.Count | Should -BeGreaterThan 0
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $repo = Get-AzSecurityConnectorAzureDevOpsRepos -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-azdo-01" -OrgName "dfdsdktests" -ProjectName "ContosoSDKDfd" -RepoName "TestApp0"
+        $repo | Should -Not -Be $null
+        $repo.Name.Contains('TestApp0') | Should -Be $true
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $InputObject = @{Id = "/subscriptions/$sid/resourcegroups/$rg/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp0" }
+        $project = Get-AzSecurityConnectorAzureDevOpsRepos -InputObject $InputObject
+        $project.Count | Should -Be 1
+        $project.Name.Contains('TestApp0') | Should -Be $true
     }
 }

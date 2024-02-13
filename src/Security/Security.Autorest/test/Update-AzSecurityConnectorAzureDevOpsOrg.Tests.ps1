@@ -15,11 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSecurityConnectorAzu
 }
 
 Describe 'Update-AzSecurityConnectorAzureDevOpsOrg' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $config = New-AzSecurityConnectorActionableRemediationObject -State Enabled -InheritFromParentState Disabled -CategoryConfiguration @( @{category="IaC"; minimumSeverityLevel="High"})
+        Update-AzSecurityConnectorAzureDevOpsOrg -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-azdo-01" -OrgName "dfdsdktests" -ActionableRemediation $config
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        
+        $config = New-AzSecurityConnectorActionableRemediationObject -State Enabled -InheritFromParentState Disabled -CategoryConfiguration @( @{category="IaC"; minimumSeverityLevel="High"})
+        $org = Get-AzSecurityConnectorAzureDevOpsOrg -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-azdo-01" -OrgName "dfdsdktests"
+        Update-AzSecurityConnectorAzureDevOpsOrg -InputObject $org -ActionableRemediation $config
     }
 }

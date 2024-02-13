@@ -15,11 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSecurityConnectorDev
 }
 
 Describe 'Update-AzSecurityConnectorDevOpsConfiguration' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+
+        $devops = Update-AzSecurityConnectorDevOpsConfiguration -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-azdo-01" -AutoDiscovery Disabled -TopLevelInventoryList @("dfdsdktests")
+        $devops.AutoDiscovery | Should -Be "Disabled"
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+
+        $devops = Get-AzSecurityConnectorDevOpsConfiguration -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-azdo-01"
+        Update-AzSecurityConnectorDevOpsConfiguration -InputObject $devops -AutoDiscovery Disabled -TopLevelInventoryList @("dfdsdktests")
     }
 }

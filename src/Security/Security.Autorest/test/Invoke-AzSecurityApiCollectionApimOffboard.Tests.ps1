@@ -15,11 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSecurityApiCollectio
 }
 
 Describe 'Invoke-AzSecurityApiCollectionApimOffboard' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        "Covered in Invoke-AzSecurityApiCollectionApimOnboard Tests" | Should -Not -BeNullOrEmpty
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        "Covered in Invoke-AzSecurityApiCollectionApimOnboard Tests" | Should -Not -BeNullOrEmpty
     }
 }

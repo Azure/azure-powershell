@@ -15,15 +15,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSecurityConnectorDevOps
 }
 
 Describe 'Get-AzSecurityConnectorDevOpsConfiguration' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $config = Get-AzSecurityConnectorDevOpsConfiguration -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-azdo-01"
+        $config.Count | Should -Be 1
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $configs = Get-AzSecurityConnectorDevOpsConfiguration -SubscriptionId $sid -ResourceGroupName $rg -SecurityConnectorName "dfdsdktests-azdo-01"
+        $configs.Count | Should -Be 1
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $rg = $env.SecurityConnectorsResourceGroupName
+        $sid = $env.SubscriptionId
+        $InputObject = @{Id = "/subscriptions/$sid/resourcegroups/$rg/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default" }
+        $config = Get-AzSecurityConnectorDevOpsConfiguration -InputObject $InputObject
+        $config.Count | Should -Be 1
+        $config.Name.Contains('default') | Should -Be $true
     }
 }

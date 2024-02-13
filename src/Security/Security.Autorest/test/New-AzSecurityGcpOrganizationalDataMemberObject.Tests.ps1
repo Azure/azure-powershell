@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityGcpOrganization
 }
 
 Describe 'New-AzSecurityGcpOrganizationalDataMemberObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $env = New-AzSecurityGcpOrganizationalDataMemberObject -ManagementProjectNumber "12345" -ParentHierarchyId "00000"
+        $env.OrganizationMembershipType | Should -Be "Member"
     }
 }

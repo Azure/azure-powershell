@@ -1,0 +1,49 @@
+{
+  "Get-AzSecurityConnectorGitLabGroupAvailable+[NoContext]+List+$POST+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gl-01/devops/default/listAvailableGitLabGroups?api-version=2023-09-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gl-01/devops/default/listAvailableGitLabGroups?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "18e59237-4a1e-48c9-b178-1a5698a9142a" ],
+        "CommandName": [ "Get-AzSecurityConnectorGitLabGroupAvailable" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorGitLabGroupAvailable_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=b0d653e3d2c4fba6e75578139341b84b35dee63a8a317f007b2447d8196b79e5;Path=/;HttpOnly;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com", "ARRAffinitySameSite=b0d653e3d2c4fba6e75578139341b84b35dee63a8a317f007b2447d8196b79e5;Path=/;HttpOnly;SameSite=None;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "Request-Context": [ "appId=cid-v1:b8e19897-bfe4-49ad-ad76-b9526fa18eea" ],
+        "mise-correlation-id": [ "0fd19085-e1ce-4cdd-8419-171b8a2edcd7" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "76303c99-d236-4c6d-af3c-3bca9aa65b8a" ],
+        "x-ms-correlation-request-id": [ "76303c99-d236-4c6d-af3c-3bca9aa65b8a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240213T195439Z:76303c99-d236-4c6d-af3c-3bca9aa65b8a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 97679EBD4F6F46A68F07D6770F1DA5D1 Ref B: CO6AA3150219023 Ref C: 2024-02-13T19:54:37Z" ],
+        "Date": [ "Tue, 13 Feb 2024 19:54:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "633" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"fullyQualifiedName\":\"dfdsdktests\",\"fullyQualifiedFriendlyName\":\"Defender for DevOps SDK Tests\",\"url\":\"https://gitlab.com/groups/dfdsdktests\",\"onboardingState\":\"Onboarded\",\"provisioningStatusMessage\":\"Resource modification successful.\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-13T18:42:15Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gl-01/devops/default/gitLabGroups/dfdsdktests\",\"name\":\"dfdsdktests\",\"type\":\"Microsoft.Security/securityConnectors/devops/gitLabGroups\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

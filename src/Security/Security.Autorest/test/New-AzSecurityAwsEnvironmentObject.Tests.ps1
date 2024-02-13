@@ -15,7 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityAwsEnvironmentO
 }
 
 Describe 'New-AzSecurityAwsEnvironmentObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $organization = New-AzSecurityAwsOrganizationalDataMasterObject -StacksetName "myAwsStackSet" -ExcludedAccountId "123456789012"
+        $environment = New-AzSecurityAwsEnvironmentObject -Region "Central US" -ScanInterval 24 -OrganizationalData $organization
+        $environment.EnvironmentType | Should -Be "AwsAccount"
+        $environment.OrganizationalData.OrganizationMembershipType | Should -Be "Organization"
+
+        $member = New-AzSecurityAwsOrganizationalDataMemberObject -ParentHierarchyId "123"
+        $environment = New-AzSecurityAwsEnvironmentObject -Region "Central US" -ScanInterval 24 -OrganizationalData $member
+        
+        $environment.EnvironmentType | Should -Be "AwsAccount"
+        $environment.OrganizationalData.OrganizationMembershipType | Should -Be "Member"
     }
 }

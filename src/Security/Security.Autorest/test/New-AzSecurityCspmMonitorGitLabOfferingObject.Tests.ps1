@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityConnectorAwsEnvironmentObject'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityCspmMonitorGitLabOfferingObject'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzSecurityConnectorAwsEnvironmentObject.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzSecurityCspmMonitorGitLabOfferingObject.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,8 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityConnectorAwsEnv
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzSecurityConnectorAwsEnvironmentObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'New-AzSecurityCspmMonitorGitLabOfferingObject' {
+    It '__AllParameterSets' {
+        $offering = New-AzSecurityCspmMonitorGitLabOfferingObject
+        $offering.OfferingType | Should -Be "CspmMonitorGitLab"
     }
 }

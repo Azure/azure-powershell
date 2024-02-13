@@ -16,20 +16,14 @@ Updates a monitored Azure DevOps repository resource.
 ```
 Update-AzSecurityConnectorAzureDevOpsRepos -OrgName <String> -ProjectName <String> -RepoName <String>
  -ResourceGroupName <String> -SecurityConnectorName <String> [-SubscriptionId <String>]
- [-ActionableRemediationCategoryConfiguration <ICategoryConfiguration[]>]
- [-ActionableRemediationInheritFromParentState <String>] [-ActionableRemediationState <String>]
- [-BranchConfigurationAnnotateDefaultBranch <String>] [-BranchConfigurationBranchName <String[]>]
- [-OnboardingState <String>] [-ParentOrgName <String>] [-ParentProjectName <String>]
+ [-ActionableRemediation <IActionableRemediation>] [-ParentOrgName <String>] [-ParentProjectName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzSecurityConnectorAzureDevOpsRepos -InputObject <ISecurityIdentity>
- [-ActionableRemediationCategoryConfiguration <ICategoryConfiguration[]>]
- [-ActionableRemediationInheritFromParentState <String>] [-ActionableRemediationState <String>]
- [-BranchConfigurationAnnotateDefaultBranch <String>] [-BranchConfigurationBranchName <String[]>]
- [-OnboardingState <String>] [-ParentOrgName <String>] [-ParentProjectName <String>]
+ [-ActionableRemediation <IActionableRemediation>] [-ParentOrgName <String>] [-ParentProjectName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -62,42 +56,12 @@ Updates a monitored Azure DevOps repository resource.
 
 ## PARAMETERS
 
-### -ActionableRemediationCategoryConfiguration
-Gets or sets list of categories and severity levels.
-To construct, see NOTES section for ACTIONABLEREMEDIATIONCATEGORYCONFIGURATION properties and create a hash table.
+### -ActionableRemediation
+Configuration payload for PR Annotations.
+To construct, see NOTES section for ACTIONABLEREMEDIATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICategoryConfiguration[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ActionableRemediationInheritFromParentState
-Update Settings.Enabled - Resource should inherit configurations from parent.Disabled - Resource should not inherit configurations from parent.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ActionableRemediationState
-ActionableRemediation Setting.None - the setting was never set.Enabled - ActionableRemediation is enabled.Disabled - ActionableRemediation is disabled.
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IActionableRemediation
 Parameter Sets: (All)
 Aliases:
 
@@ -113,36 +77,6 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BranchConfigurationAnnotateDefaultBranch
-Configuration of PR Annotations on default branch.Enabled - PR Annotations are enabled on the resource's default branch.Disabled - PR Annotations are disabled on the resource's default branch.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BranchConfigurationBranchName
-Gets or sets branches that should have annotations.
-
-```yaml
-Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -190,22 +124,6 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OnboardingState
-Details about resource onboarding status across all connectors.OnboardedByOtherConnector - this resource has already been onboarded to another connector.
-This is only applicable to top-level resources.Onboarded - this resource has already been onboarded by the specified connector.NotOnboarded - this resource has not been onboarded to any connector.NotApplicable - the onboarding state is not applicable to the current endpoint.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
