@@ -1,6 +1,6 @@
 ### Example 1: {{ List all the binary hardening analysis results for a firmware.}}
 ```powershell
-{{ Get-AzFirmwareAnalysisBinaryHardening -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName }}
+{{ Get-AzFirmwareAnalysisBinaryHardening -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json }}
 ```
 
 ```output

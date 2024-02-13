@@ -1,6 +1,6 @@
 ### Example 1: {{ List all the cve analysis results for a firmware. }}
 ```powershell
-{{ Get-AzFirmwareAnalysisCve -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName }}
+{{ Get-AzFirmwareAnalysisCve -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json }}
 ```
 
 ```output

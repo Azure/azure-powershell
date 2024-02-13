@@ -24,7 +24,7 @@ Lists password hash analysis results of a firmware.
 
 ### Example 1: {{ List all the password hash analysis results for a firmware. }}
 ```powershell
-{{ Get-AzFirmwareAnalysisPasswordHash -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName }}
+{{ Get-AzFirmwareAnalysisPasswordHash -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json }}
 ```
 
 ```output

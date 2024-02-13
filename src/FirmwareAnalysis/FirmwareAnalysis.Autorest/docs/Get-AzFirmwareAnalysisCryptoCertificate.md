@@ -24,7 +24,7 @@ Lists cryptographic certificate analysis results found in a firmware.
 
 ### Example 1: {{ List all the crypto certificate analysis results for a firmware. }}
 ```powershell
-{{ Get-AzFirmwareAnalysisCryptoCertificate -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName }}
+{{ Get-AzFirmwareAnalysisCryptoCertificate -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json }}
 ```
 
 ```output

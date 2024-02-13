@@ -24,7 +24,7 @@ Lists cryptographic key analysis results found in a firmware.
 
 ### Example 1: {{ List all the crypto key analysis results for a firmware. }}
 ```powershell
-{{ Get-AzFirmwareAnalysisCryptoKey -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName }}
+{{ Get-AzFirmwareAnalysisCryptoKey -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json}}
 ```
 
 ```output
