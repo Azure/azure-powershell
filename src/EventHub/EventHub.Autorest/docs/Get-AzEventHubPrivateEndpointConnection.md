@@ -41,31 +41,27 @@ Gets a description for the specified Private Endpoint Connection name.
 
 ## EXAMPLES
 
-### Example 1: Get an Event Hub Namespace Private Endpoint Connection
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name 00000000000
+{{ Add code here }}
 ```
 
 ```output
-ConnectionState              : Approved
-Description                  :
-Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/privateEndpointC
-                               onnections/00000000000
-Location                     : Australia East
-Name                         : 00000000000
-PrivateEndpointId            : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Network/privateEndpoints/privateEndpointName
-ProvisioningState            : Succeeded
-ResourceGroupName            : myResourceGroup
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Gets details of private endpoint connection `00000000000` created under EventHub namespace `myNamespace`.
+{{ Add description here }}
 
-### Example 2: List all private endpoint connections on an EventHub namespace
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+{{ Add code here }}
 ```
 
-Lists all private endpoint connections of EventHub namespace `myNamespace`.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
