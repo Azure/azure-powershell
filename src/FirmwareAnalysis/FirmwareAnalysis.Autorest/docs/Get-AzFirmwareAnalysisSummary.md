@@ -12,6 +12,12 @@ Get an analysis result summary of a firmware by name.
 
 ## SYNTAX
 
+### List (Default)
+```
+Get-AzFirmwareAnalysisSummary -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzFirmwareAnalysisSummary -FirmwareId <String> -Name <String> -ResourceGroupName <String>
