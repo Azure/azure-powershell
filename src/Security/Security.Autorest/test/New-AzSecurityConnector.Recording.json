@@ -1,5 +1,5 @@
 {
-  "New-AzSecurityConnector+[NoContext]+AWS+$PUT+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-tests/providers/Microsoft.Security/securityConnectors/aws-sdktest01?api-version=2023-10-01-preview+1": {
+  "New-AzSecurityConnector+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-tests/providers/Microsoft.Security/securityConnectors/aws-sdktest01?api-version=2023-10-01-preview+1": {
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-tests/providers/Microsoft.Security/securityConnectors/aws-sdktest01?api-version=2023-10-01-preview",
@@ -18,21 +18,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
-        "x-ms-request-id": [ "0d5c356e-731b-4ba9-aa2d-a9da6f87f55c" ],
-        "x-ms-correlation-request-id": [ "0d5c356e-731b-4ba9-aa2d-a9da6f87f55c" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240214T000820Z:0d5c356e-731b-4ba9-aa2d-a9da6f87f55c" ],
+        "x-ms-request-id": [ "c008130c-14ff-4ce9-9b44-55c21d7c4309" ],
+        "x-ms-correlation-request-id": [ "c008130c-14ff-4ce9-9b44-55c21d7c4309" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T023654Z:c008130c-14ff-4ce9-9b44-55c21d7c4309" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 13717BFA52B8452FB2E05F7CF5E7A0EA Ref B: CO6AA3150218009 Ref C: 2024-02-14T00:07:45Z" ],
-        "Date": [ "Wed, 14 Feb 2024 00:08:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 936563AD1C4241FBB137D02BFEB3DD58 Ref B: CO6AA3150218037 Ref C: 2024-02-14T02:36:19Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:36:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "288" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"statusCode\":400,\"errorMessage\":\"error occured for security connector: Identity provider is missing from AWS account/s. Defender for Cloud cannot authenticate without it. Create the identity provider to complete the onboarding.\",\"errorCorrelation\":\"ad42a9ff-b5ef-4479-9890-64cbcdaa1541\"}",
+      "Content": "{\"statusCode\":400,\"errorMessage\":\"error occured for security connector: Identity provider is missing from AWS account/s. Defender for Cloud cannot authenticate without it. Create the identity provider to complete the onboarding.\",\"errorCorrelation\":\"30fb370a-cd29-4275-894e-6336726bd38e\"}",
       "isContentBase64": false
     }
   },
@@ -55,21 +55,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
-        "x-ms-request-id": [ "ddd3a868-d33e-490b-8bce-b809a1e8fe82" ],
-        "x-ms-correlation-request-id": [ "ddd3a868-d33e-490b-8bce-b809a1e8fe82" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240214T000822Z:ddd3a868-d33e-490b-8bce-b809a1e8fe82" ],
+        "x-ms-request-id": [ "e2ca6d46-6fa3-4289-980c-d67533cbfef3" ],
+        "x-ms-correlation-request-id": [ "e2ca6d46-6fa3-4289-980c-d67533cbfef3" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T023656Z:e2ca6d46-6fa3-4289-980c-d67533cbfef3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9AD15637908C4B99A29F5AFB4FF70504 Ref B: CO6AA3150218009 Ref C: 2024-02-14T00:08:21Z" ],
-        "Date": [ "Wed, 14 Feb 2024 00:08:21 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6163C9E4157E42B0BC5A1CE226DF723A Ref B: CO6AA3150218037 Ref C: 2024-02-14T02:36:55Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:36:55 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "278" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"statusCode\":400,\"errorMessage\":\"error occured for security connector: There is a problem with authenticating to your GCP project. Please contact the support with given tracing ID 2727080e-c517-41c4-be47-71421e55ec4b.\",\"errorCorrelation\":\"33cfc2ee-cda1-4876-8f8f-40c797e44e32\"}",
+      "Content": "{\"statusCode\":400,\"errorMessage\":\"error occured for security connector: There is a problem with authenticating to your GCP project. Please contact the support with given tracing ID c03b073f-7df8-48a2-8945-fd40ca5b3076.\",\"errorCorrelation\":\"d708e7c4-8856-4e8a-859b-0fd4a03b09f9\"}",
       "isContentBase64": false
     }
   },
@@ -92,21 +92,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
-        "x-ms-request-id": [ "6f1b8ef2-d727-4a79-b3ee-e17a13bb74d2" ],
-        "x-ms-correlation-request-id": [ "6f1b8ef2-d727-4a79-b3ee-e17a13bb74d2" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240214T000823Z:6f1b8ef2-d727-4a79-b3ee-e17a13bb74d2" ],
+        "x-ms-request-id": [ "18b5ff97-9d9e-4f5a-8ab7-8e72621672f4" ],
+        "x-ms-correlation-request-id": [ "18b5ff97-9d9e-4f5a-8ab7-8e72621672f4" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T023658Z:18b5ff97-9d9e-4f5a-8ab7-8e72621672f4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: BD2F0C4C8A934D2186E501A541615C07 Ref B: CO6AA3150218009 Ref C: 2024-02-14T00:08:22Z" ],
-        "Date": [ "Wed, 14 Feb 2024 00:08:22 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 55307052E2444078A7C9B0F4936C9FF6 Ref B: CO6AA3150218037 Ref C: 2024-02-14T02:36:56Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:36:57 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "771" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorAzureDevOps\"}],\"environmentName\":\"AzureDevOps\",\"hierarchyIdentifier\":\"de659ead-f948-45b3-9a2c-b75e8914c958\",\"environmentData\":{\"environmentType\":\"AzureDevOpsScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/securityconnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/ado-pwsh-test01\",\"name\":\"ado-pwsh-test01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"CentralUS\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2024-02-14T00:08:23.1567064Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-02-14T00:08:23.1567064Z\"}}",
+      "Content": "{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorAzureDevOps\"}],\"environmentName\":\"AzureDevOps\",\"hierarchyIdentifier\":\"de659ead-f948-45b3-9a2c-b75e8914c958\",\"environmentData\":{\"environmentType\":\"AzureDevOpsScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/securityconnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/ado-pwsh-test01\",\"name\":\"ado-pwsh-test01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"CentralUS\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2024-02-14T02:36:57.1659085Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-02-14T02:36:57.1659085Z\"}}",
       "isContentBase64": false
     }
   },
@@ -118,7 +118,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "4c3d592a-752f-4146-9eac-bcb34282ee36" ],
+        "x-ms-client-request-id": [ "576baa68-c3b0-443b-bca0-1fbbea10b8c4" ],
         "CommandName": [ "Remove-AzSecurityConnector" ],
         "FullCommandName": [ "Remove-AzSecurityConnector_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -134,14 +134,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
-        "x-ms-request-id": [ "17c52209-bbde-4885-9eae-9b3c92379688" ],
-        "x-ms-correlation-request-id": [ "17c52209-bbde-4885-9eae-9b3c92379688" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240214T000827Z:17c52209-bbde-4885-9eae-9b3c92379688" ],
+        "x-ms-request-id": [ "ef2c1540-6e02-4cfd-97a4-3e762c130390" ],
+        "x-ms-correlation-request-id": [ "ef2c1540-6e02-4cfd-97a4-3e762c130390" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T023702Z:ef2c1540-6e02-4cfd-97a4-3e762c130390" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 53067E86B49F40EEB10CF486C1C2B699 Ref B: CO6AA3150218009 Ref C: 2024-02-14T00:08:23Z" ],
-        "Date": [ "Wed, 14 Feb 2024 00:08:26 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 54B2705FC9FD4D34B98A997B3F5EF366 Ref B: CO6AA3150218037 Ref C: 2024-02-14T02:36:58Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:37:01 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
@@ -169,21 +169,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
-        "x-ms-request-id": [ "bae58432-f32e-4e5c-b3be-e60a5c160246" ],
-        "x-ms-correlation-request-id": [ "bae58432-f32e-4e5c-b3be-e60a5c160246" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240214T000828Z:bae58432-f32e-4e5c-b3be-e60a5c160246" ],
+        "x-ms-request-id": [ "5b2b9182-fc9c-42b1-880f-6bd135b46153" ],
+        "x-ms-correlation-request-id": [ "5b2b9182-fc9c-42b1-880f-6bd135b46153" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T023704Z:5b2b9182-fc9c-42b1-880f-6bd135b46153" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E64E42E8C3194E34A9AEA9E28B321314 Ref B: CO6AA3150218009 Ref C: 2024-02-14T00:08:27Z" ],
-        "Date": [ "Wed, 14 Feb 2024 00:08:27 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 462582CCA1BF47AEA8005D25D8C5F0E2 Ref B: CO6AA3150218037 Ref C: 2024-02-14T02:37:02Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:37:03 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "754" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorGithub\"}],\"environmentName\":\"Github\",\"hierarchyIdentifier\":\"2ba1410d-87af-4481-8d45-e9bc26880cec\",\"environmentData\":{\"environmentType\":\"GithubScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/securityconnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/gh-pwsh-test01\",\"name\":\"gh-pwsh-test01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"CentralUS\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2024-02-14T00:08:27.7805339Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-02-14T00:08:27.7805339Z\"}}",
+      "Content": "{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorGithub\"}],\"environmentName\":\"Github\",\"hierarchyIdentifier\":\"2ba1410d-87af-4481-8d45-e9bc26880cec\",\"environmentData\":{\"environmentType\":\"GithubScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/securityconnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/gh-pwsh-test01\",\"name\":\"gh-pwsh-test01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"CentralUS\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2024-02-14T02:37:03.3126891Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-02-14T02:37:03.3126891Z\"}}",
       "isContentBase64": false
     }
   },
@@ -195,7 +195,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "4bd87d99-ab37-4216-890b-ac2d8502f11d" ],
+        "x-ms-client-request-id": [ "584b8cbe-cc2a-425c-aefe-7ccf64d0ebd0" ],
         "CommandName": [ "Remove-AzSecurityConnector" ],
         "FullCommandName": [ "Remove-AzSecurityConnector_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -211,14 +211,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
-        "x-ms-request-id": [ "13bdc68a-6e15-4cd7-a140-e3280103044d" ],
-        "x-ms-correlation-request-id": [ "13bdc68a-6e15-4cd7-a140-e3280103044d" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240214T000831Z:13bdc68a-6e15-4cd7-a140-e3280103044d" ],
+        "x-ms-request-id": [ "570c6d35-7d1b-4de8-b93b-201eecfefda1" ],
+        "x-ms-correlation-request-id": [ "570c6d35-7d1b-4de8-b93b-201eecfefda1" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T023707Z:570c6d35-7d1b-4de8-b93b-201eecfefda1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C26E50CFE22147EE9D8B4E35611069C0 Ref B: CO6AA3150218009 Ref C: 2024-02-14T00:08:28Z" ],
-        "Date": [ "Wed, 14 Feb 2024 00:08:30 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AFFB00BC0FF645D18186DBC01A3FA34B Ref B: CO6AA3150218037 Ref C: 2024-02-14T02:37:04Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:37:06 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
@@ -246,21 +246,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
-        "x-ms-request-id": [ "27667eb7-6098-4ac7-bd66-f9ac210ffd46" ],
-        "x-ms-correlation-request-id": [ "27667eb7-6098-4ac7-bd66-f9ac210ffd46" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240214T000832Z:27667eb7-6098-4ac7-bd66-f9ac210ffd46" ],
+        "x-ms-request-id": [ "85f3d0fb-a4d0-4238-858b-34b83152be89" ],
+        "x-ms-correlation-request-id": [ "85f3d0fb-a4d0-4238-858b-34b83152be89" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T023709Z:85f3d0fb-a4d0-4238-858b-34b83152be89" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8CFDB4569CFA4716B7993483F28540C0 Ref B: CO6AA3150218009 Ref C: 2024-02-14T00:08:31Z" ],
-        "Date": [ "Wed, 14 Feb 2024 00:08:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 087746C22C2C431D9997F8F7686EDC4D Ref B: CO6AA3150218037 Ref C: 2024-02-14T02:37:07Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:37:08 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "754" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorGitLab\"}],\"environmentName\":\"GitLab\",\"hierarchyIdentifier\":\"15397162-d8b4-44d1-a5c4-024ca4aabd44\",\"environmentData\":{\"environmentType\":\"GitlabScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/securityconnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/gl-pwsh-test01\",\"name\":\"gl-pwsh-test01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"CentralUS\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2024-02-14T00:08:31.7567565Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-02-14T00:08:31.7567565Z\"}}",
+      "Content": "{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorGitLab\"}],\"environmentName\":\"GitLab\",\"hierarchyIdentifier\":\"15397162-d8b4-44d1-a5c4-024ca4aabd44\",\"environmentData\":{\"environmentType\":\"GitlabScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/securityconnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/gl-pwsh-test01\",\"name\":\"gl-pwsh-test01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"CentralUS\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2024-02-14T02:37:08.1489183Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-02-14T02:37:08.1489183Z\"}}",
       "isContentBase64": false
     }
   },
@@ -272,7 +272,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "a8a3c4c0-222c-4555-9d4b-eeaf653ade1e" ],
+        "x-ms-client-request-id": [ "f76c6a23-8d96-4eaf-a936-a9f414450181" ],
         "CommandName": [ "Remove-AzSecurityConnector" ],
         "FullCommandName": [ "Remove-AzSecurityConnector_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -287,15 +287,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
-        "x-ms-request-id": [ "cb3072cd-341a-4cbc-ba7d-6ff26393ac2b" ],
-        "x-ms-correlation-request-id": [ "cb3072cd-341a-4cbc-ba7d-6ff26393ac2b" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240214T000836Z:cb3072cd-341a-4cbc-ba7d-6ff26393ac2b" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "248" ],
+        "x-ms-request-id": [ "0549f91e-3ad1-43f7-9499-218e1b2c07e6" ],
+        "x-ms-correlation-request-id": [ "0549f91e-3ad1-43f7-9499-218e1b2c07e6" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T023711Z:0549f91e-3ad1-43f7-9499-218e1b2c07e6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2ED1B2A8172648DA821DD381BB0A1829 Ref B: CO6AA3150218009 Ref C: 2024-02-14T00:08:32Z" ],
-        "Date": [ "Wed, 14 Feb 2024 00:08:35 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D0593C4AAE944026AEC523A89A91FACB Ref B: CO6AA3150218037 Ref C: 2024-02-14T02:37:09Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:37:10 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]

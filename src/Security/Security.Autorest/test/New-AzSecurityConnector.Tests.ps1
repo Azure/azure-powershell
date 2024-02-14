@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityConnector'))
 }
 
 Describe 'New-AzSecurityConnector' {
-    It 'AWS' {
+    It 'CreateExpanded' {
         $account = "891376984375"
         $arnPrefix = "arn:aws:iam::$($account):role"
         $cspmMonitorOffering = New-AzSecurityCspmMonitorAwsOfferingObject -NativeCloudConnectionCloudRoleArn "$arnPrefix/CspmMonitorAws"
@@ -99,7 +99,7 @@ Describe 'New-AzSecurityConnector' {
             $Error[0].Exception.ResponseBody | Should -Match "There is a problem with authenticating to your GCP project"
         }
     }
-
+    
     It 'AzureDevOps' {
         $rg = "securityConnectors-pwsh-tmp"
         $sid = $env.SubscriptionId

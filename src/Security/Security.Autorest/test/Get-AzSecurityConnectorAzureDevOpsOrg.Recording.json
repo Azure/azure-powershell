@@ -7,56 +7,9 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "51a34c02-5521-42b2-8b07-1c1f593b66b2" ],
+        "x-ms-client-request-id": [ "776a0918-bf64-4796-8062-1eee4275ad8f" ],
         "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsOrg" ],
         "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsOrg_List" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "Set-Cookie": [ "ARRAffinity=b0d653e3d2c4fba6e75578139341b84b35dee63a8a317f007b2447d8196b79e5;Path=/;HttpOnly;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com", "ARRAffinitySameSite=b0d653e3d2c4fba6e75578139341b84b35dee63a8a317f007b2447d8196b79e5;Path=/;HttpOnly;SameSite=None;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "Request-Context": [ "appId=cid-v1:b8e19897-bfe4-49ad-ad76-b9526fa18eea" ],
-        "mise-correlation-id": [ "5bef8b81-894d-4df2-9181-fd6f8844cfa5" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "a90685b4-af97-446b-b4a3-9f4948d5a613" ],
-        "x-ms-correlation-request-id": [ "a90685b4-af97-446b-b4a3-9f4948d5a613" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240213T195417Z:a90685b4-af97-446b-b4a3-9f4948d5a613" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4442EC07D70D418E94C002538A469EF9 Ref B: CO6AA3150219023 Ref C: 2024-02-13T19:54:14Z" ],
-        "Date": [ "Tue, 13 Feb 2024 19:54:16 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "699" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"value\":[{\"properties\":{\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Disabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-13T18:51:56Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests\",\"name\":\"dfdsdktests\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs\"}]}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzSecurityConnectorAzureDevOpsOrg+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests?api-version=2023-09-01-preview+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests?api-version=2023-09-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "d9dcc490-1475-4084-b2cc-0de8c3294c3c" ],
-        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsOrg" ],
-        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsOrg_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
         "Authorization": [ "[Filtered]" ]
@@ -73,23 +26,70 @@
         "Set-Cookie": [ "ARRAffinity=14a5c7981ca45a6803ac375748e68dc9b495d4e56b3202b86256249c9784b400;Path=/;HttpOnly;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com", "ARRAffinitySameSite=14a5c7981ca45a6803ac375748e68dc9b495d4e56b3202b86256249c9784b400;Path=/;HttpOnly;SameSite=None;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
         "Request-Context": [ "appId=cid-v1:b8e19897-bfe4-49ad-ad76-b9526fa18eea" ],
-        "mise-correlation-id": [ "7695cb3e-fa26-4cc9-8752-755143e94720" ],
+        "mise-correlation-id": [ "20cc6c93-cbe4-4b7b-bb42-61f1e9d55a7b" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "c575a46d-3529-400e-9098-131f090df3a3" ],
-        "x-ms-correlation-request-id": [ "c575a46d-3529-400e-9098-131f090df3a3" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240213T195417Z:c575a46d-3529-400e-9098-131f090df3a3" ],
+        "x-ms-request-id": [ "1064b628-fba5-4a18-a8ea-1f78b468f00a" ],
+        "x-ms-correlation-request-id": [ "1064b628-fba5-4a18-a8ea-1f78b468f00a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020829Z:1064b628-fba5-4a18-a8ea-1f78b468f00a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4B9C7D939A384476875D7A27B5E50FFD Ref B: CO6AA3150219023 Ref C: 2024-02-13T19:54:17Z" ],
-        "Date": [ "Tue, 13 Feb 2024 19:54:16 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DED889D13B854F35835FB3E5FB284245 Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:28Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "699" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Disabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:31:18Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests\",\"name\":\"dfdsdktests\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSecurityConnectorAzureDevOpsOrg+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests?api-version=2023-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "763f5309-a5a6-44e2-ad3b-12be8f6f35ab" ],
+        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsOrg" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsOrg_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=1c6c7a0a18efcd0c1f62ff61ff05f8a61bfe22533cfce5122cfd179979045df0;Path=/;HttpOnly;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com", "ARRAffinitySameSite=1c6c7a0a18efcd0c1f62ff61ff05f8a61bfe22533cfce5122cfd179979045df0;Path=/;HttpOnly;SameSite=None;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Request-Context": [ "appId=cid-v1:b8e19897-bfe4-49ad-ad76-b9526fa18eea" ],
+        "mise-correlation-id": [ "142d1c61-12e8-46aa-a425-072e85d8f7f4" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "f67d706c-4d18-47e0-8ae8-9b9ca7b40a27" ],
+        "x-ms-correlation-request-id": [ "f67d706c-4d18-47e0-8ae8-9b9ca7b40a27" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020829Z:f67d706c-4d18-47e0-8ae8-9b9ca7b40a27" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 31E4C8D153B04809BA5F2F24051ECD22 Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:29Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:29 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "687" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Disabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-13T18:51:56Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests\",\"name\":\"dfdsdktests\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs\"}",
+      "Content": "{\"properties\":{\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Disabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:31:18Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests\",\"name\":\"dfdsdktests\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs\"}",
       "isContentBase64": false
     }
   },
@@ -101,7 +101,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "0424ec22-8bb9-42a1-9091-a94fd498a2ce" ],
+        "x-ms-client-request-id": [ "0e35f39f-3533-4076-aae4-fed262201caa" ],
         "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsOrg" ],
         "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsOrg_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -117,26 +117,26 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "Set-Cookie": [ "ARRAffinity=ca594a79766484e25889904bf326227201e6905138dd325ca221b8b7af91ccae;Path=/;HttpOnly;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com", "ARRAffinitySameSite=ca594a79766484e25889904bf326227201e6905138dd325ca221b8b7af91ccae;Path=/;HttpOnly;SameSite=None;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com" ],
+        "Set-Cookie": [ "ARRAffinity=14a5c7981ca45a6803ac375748e68dc9b495d4e56b3202b86256249c9784b400;Path=/;HttpOnly;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com", "ARRAffinitySameSite=14a5c7981ca45a6803ac375748e68dc9b495d4e56b3202b86256249c9784b400;Path=/;HttpOnly;SameSite=None;Secure;Domain=dfduserrp-centralus.dfd.security.azure.com" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
         "Request-Context": [ "appId=cid-v1:b8e19897-bfe4-49ad-ad76-b9526fa18eea" ],
-        "mise-correlation-id": [ "a4bed2f6-1aeb-45e7-8b2b-4722a60e639a" ],
+        "mise-correlation-id": [ "8d2beff5-6809-44b0-9d0a-88fe5ef949d9" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-request-id": [ "939fe96e-9c44-4563-829c-ab8cfcb1ca84" ],
-        "x-ms-correlation-request-id": [ "939fe96e-9c44-4563-829c-ab8cfcb1ca84" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240213T195418Z:939fe96e-9c44-4563-829c-ab8cfcb1ca84" ],
+        "x-ms-request-id": [ "9413f92c-7a08-4d0e-a2a7-afb1d3a8915b" ],
+        "x-ms-correlation-request-id": [ "9413f92c-7a08-4d0e-a2a7-afb1d3a8915b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020830Z:9413f92c-7a08-4d0e-a2a7-afb1d3a8915b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 957478BDC8FD4252A15CFACACCFE1260 Ref B: CO6AA3150219023 Ref C: 2024-02-13T19:54:17Z" ],
-        "Date": [ "Tue, 13 Feb 2024 19:54:17 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D55FF7CA6A304457B6C28720DE3E554E Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:30Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:29 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "687" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Disabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-13T18:51:56Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests\",\"name\":\"dfdsdktests\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs\"}",
+      "Content": "{\"properties\":{\"onboardingState\":\"Onboarded\",\"actionableRemediation\":{\"state\":\"Enabled\",\"categoryConfigurations\":[{\"minimumSeverityLevel\":\"High\",\"category\":\"IaC\"}],\"branchConfiguration\":{\"branchNames\":[],\"annotateDefaultBranch\":\"Enabled\"},\"inheritFromParentState\":\"Disabled\"},\"provisioningStatusMessage\":\"OK\",\"provisioningStatusUpdateTimeUtc\":\"2024-02-14T00:31:18Z\",\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests\",\"name\":\"dfdsdktests\",\"type\":\"Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs\"}",
       "isContentBase64": false
     }
   }

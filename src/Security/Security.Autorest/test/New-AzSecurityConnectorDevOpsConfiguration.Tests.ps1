@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSecurityConnectorDevOps
 }
 
 Describe 'New-AzSecurityConnectorDevOpsConfiguration' {
-    It 'create' {
+    It 'CreateExpanded' {
         $rg = "securityConnectors-pwsh-tmp"
         $sid = $env.SubscriptionId
         $connectorName = "ado-sdk-pwsh-test02"

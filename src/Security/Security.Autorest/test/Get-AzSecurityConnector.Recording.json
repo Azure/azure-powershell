@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "fe04ba3c-2023-4cf2-8ecf-e951eea19ad0" ],
+        "x-ms-client-request-id": [ "f43a131c-9b98-462d-b4e4-089bd01a6169" ],
         "CommandName": [ "Get-AzSecurityConnector" ],
         "FullCommandName": [ "Get-AzSecurityConnector_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,21 +24,21 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
-        "x-ms-request-id": [ "4863dac1-4c2c-4a8a-be00-2f26a0ac54fb" ],
-        "x-ms-correlation-request-id": [ "4863dac1-4c2c-4a8a-be00-2f26a0ac54fb" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240213T195411Z:4863dac1-4c2c-4a8a-be00-2f26a0ac54fb" ],
+        "x-ms-request-id": [ "76073450-227e-4632-be4d-8c59c2c9a5f8" ],
+        "x-ms-correlation-request-id": [ "76073450-227e-4632-be4d-8c59c2c9a5f8" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020825Z:76073450-227e-4632-be4d-8c59c2c9a5f8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9A045940817946898CACD927220D5975 Ref B: CO6AA3150219023 Ref C: 2024-02-13T19:54:11Z" ],
-        "Date": [ "Tue, 13 Feb 2024 19:54:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AB597D11544E4C7D80A8E89DDA20D79A Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:24Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:24 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "2399" ],
+        "Content-Length": [ "2420" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorAzureDevOps\"},{\"offeringType\":\"DefenderForDevOpsAzureDevOps\"}],\"environmentName\":\"AzureDevOps\",\"hierarchyIdentifier\":\"4a8eb7f1-f533-48c5-b102-9b09e90906b7\",\"environmentData\":{\"environmentType\":\"AzureDevOpsScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01\",\"name\":\"dfdsdktests-azdo-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-07T06:38:36.3536844Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-12-07T06:38:36.3536844Z\"}},{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorGitLab\"},{\"offeringType\":\"DefenderForDevOpsGitLab\"}],\"environmentName\":\"GitLab\",\"hierarchyIdentifier\":\"7a1f4efe-f8c6-48e7-b7ef-1b45994ed602\",\"environmentData\":{\"environmentType\":\"GitlabScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gl-01\",\"name\":\"dfdsdktests-gl-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-11T18:52:24.9825323Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-12-11T19:22:09.7886218Z\"}},{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorGithub\"},{\"offeringType\":\"DefenderForDevOpsGithub\"}],\"environmentName\":\"Github\",\"hierarchyIdentifier\":\"bc12ba4d-b89c-486e-85e1-d803e7d80525\",\"environmentData\":{\"environmentType\":\"GithubScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01\",\"name\":\"dfdsdktests-gh-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-11T19:31:38.6578077Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-12-11T19:31:38.6578077Z\"}}]}",
+      "Content": "{\"value\":[{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorAzureDevOps\"},{\"offeringType\":\"DefenderForDevOpsAzureDevOps\"}],\"environmentName\":\"AzureDevOps\",\"hierarchyIdentifier\":\"4a8eb7f1-f533-48c5-b102-9b09e90906b7\",\"environmentData\":{\"environmentType\":\"AzureDevOpsScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01\",\"name\":\"dfdsdktests-azdo-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{\"pwshsdktest2\":\"true\"},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-07T06:38:36.3536844Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-02-13T23:45:37.7516486Z\"}},{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorGitLab\"},{\"offeringType\":\"DefenderForDevOpsGitLab\"}],\"environmentName\":\"GitLab\",\"hierarchyIdentifier\":\"7a1f4efe-f8c6-48e7-b7ef-1b45994ed602\",\"environmentData\":{\"environmentType\":\"GitlabScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gl-01\",\"name\":\"dfdsdktests-gl-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-11T18:52:24.9825323Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-12-11T19:22:09.7886218Z\"}},{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorGithub\"},{\"offeringType\":\"DefenderForDevOpsGithub\"}],\"environmentName\":\"Github\",\"hierarchyIdentifier\":\"bc12ba4d-b89c-486e-85e1-d803e7d80525\",\"environmentData\":{\"environmentType\":\"GithubScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01\",\"name\":\"dfdsdktests-gh-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-11T19:31:38.6578077Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-12-11T19:31:38.6578077Z\"}}]}",
       "isContentBase64": false
     }
   },
@@ -50,7 +50,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "f29c3ec6-1f11-4e00-bbf9-67607930de1d" ],
+        "x-ms-client-request-id": [ "7e512064-64c9-4e6a-8a48-08a571dc88ae" ],
         "CommandName": [ "Get-AzSecurityConnector" ],
         "FullCommandName": [ "Get-AzSecurityConnector_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -67,21 +67,21 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
-        "x-ms-request-id": [ "fe006e38-25f9-4dc5-b98b-9635d7b8c691" ],
-        "x-ms-correlation-request-id": [ "fe006e38-25f9-4dc5-b98b-9635d7b8c691" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240213T195412Z:fe006e38-25f9-4dc5-b98b-9635d7b8c691" ],
+        "x-ms-request-id": [ "1d6f817b-29bc-46fd-b964-b063f14bead0" ],
+        "x-ms-correlation-request-id": [ "1d6f817b-29bc-46fd-b964-b063f14bead0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020825Z:1d6f817b-29bc-46fd-b964-b063f14bead0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8BF3E7FCE820469FA803F64E6E3E1ADA Ref B: CO6AA3150219023 Ref C: 2024-02-13T19:54:11Z" ],
-        "Date": [ "Tue, 13 Feb 2024 19:54:11 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2E6106F412584E14BD91FBD9110D8B55 Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:25Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:25 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "4803" ],
+        "Content-Length": [ "3363" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorAzureDevOps\"},{\"offeringType\":\"DefenderForDevOpsAzureDevOps\"}],\"environmentName\":\"AzureDevOps\",\"hierarchyIdentifier\":\"4a8eb7f1-f533-48c5-b102-9b09e90906b7\",\"environmentData\":{\"environmentType\":\"AzureDevOpsScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01\",\"name\":\"dfdsdktests-azdo-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-07T06:38:36.3536844Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-12-07T06:38:36.3536844Z\"}},{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorGitLab\"},{\"offeringType\":\"DefenderForDevOpsGitLab\"}],\"environmentName\":\"GitLab\",\"hierarchyIdentifier\":\"7a1f4efe-f8c6-48e7-b7ef-1b45994ed602\",\"environmentData\":{\"environmentType\":\"GitlabScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gl-01\",\"name\":\"dfdsdktests-gl-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-11T18:52:24.9825323Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-12-11T19:22:09.7886218Z\"}},{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorGithub\"},{\"offeringType\":\"DefenderForDevOpsGithub\"}],\"environmentName\":\"Github\",\"hierarchyIdentifier\":\"bc12ba4d-b89c-486e-85e1-d803e7d80525\",\"environmentData\":{\"environmentType\":\"GithubScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01\",\"name\":\"dfdsdktests-gh-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-11T19:31:38.6578077Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-12-11T19:31:38.6578077Z\"}},{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorAzureDevOps\"}],\"environmentName\":\"AzureDevOps\",\"hierarchyIdentifier\":\"8b090c71-cfba-494d-87a6-e10b321a0d98\",\"environmentData\":{\"environmentType\":\"AzureDevOpsScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/securityconnectors-tests/providers/Microsoft.Security/securityConnectors/adoConnector\",\"name\":\"adoConnector\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"CentralUS\",\"tags\":{},\"systemData\":{\"createdBy\":\"dmivanov@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-01-29T21:00:10.1016002Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-01-31T23:10:04.0324096Z\"}},{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorAzureDevOps\"}],\"environmentName\":\"AzureDevOps\",\"hierarchyIdentifier\":\"e15e6221-9084-4a1b-8a52-cc4b10665008\",\"environmentData\":{\"environmentType\":\"AzureDevOpsScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/securityconnectors-tests/providers/Microsoft.Security/securityConnectors/test-ado\",\"name\":\"test-ado\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{\"ab\":\"c\"},\"systemData\":{\"createdBy\":\"dmivanov@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-02-08T02:58:20.97632Z\",\"lastModifiedBy\":\"dmivanov@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-08T22:40:44.5672618Z\"}},{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorGithub\"},{\"offeringType\":\"DefenderForDevOpsGithub\"}],\"environmentName\":\"Github\",\"hierarchyIdentifier\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-tests/providers/Microsoft.SecurityDevOps/gitHubConnectors/sdk_gh_test\",\"environmentData\":{\"environmentType\":\"GithubScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/securityconnectors-tests/providers/Microsoft.Security/securityConnectors/sdk_gh_test\",\"name\":\"sdk_gh_test\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{\"tagUpdateFromSdk\":\"ff962732-cf68-4379-87a8-53dc08c06071\"},\"systemData\":{\"createdBy\":\"elgrady@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-08-27T14:55:53.3654737Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-08-27T15:25:33.5982713Z\"}}]}",
+      "Content": "{\"value\":[{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorAzureDevOps\"},{\"offeringType\":\"DefenderForDevOpsAzureDevOps\"}],\"environmentName\":\"AzureDevOps\",\"hierarchyIdentifier\":\"4a8eb7f1-f533-48c5-b102-9b09e90906b7\",\"environmentData\":{\"environmentType\":\"AzureDevOpsScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01\",\"name\":\"dfdsdktests-azdo-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{\"pwshsdktest2\":\"true\"},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-07T06:38:36.3536844Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-02-13T23:45:37.7516486Z\"}},{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorGitLab\"},{\"offeringType\":\"DefenderForDevOpsGitLab\"}],\"environmentName\":\"GitLab\",\"hierarchyIdentifier\":\"7a1f4efe-f8c6-48e7-b7ef-1b45994ed602\",\"environmentData\":{\"environmentType\":\"GitlabScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gl-01\",\"name\":\"dfdsdktests-gl-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-11T18:52:24.9825323Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-12-11T19:22:09.7886218Z\"}},{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorGithub\"},{\"offeringType\":\"DefenderForDevOpsGithub\"}],\"environmentName\":\"Github\",\"hierarchyIdentifier\":\"bc12ba4d-b89c-486e-85e1-d803e7d80525\",\"environmentData\":{\"environmentType\":\"GithubScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01\",\"name\":\"dfdsdktests-gh-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-11T19:31:38.6578077Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-12-11T19:31:38.6578077Z\"}},{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorGithub\"},{\"offeringType\":\"DefenderForDevOpsGithub\"}],\"environmentName\":\"Github\",\"hierarchyIdentifier\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-tests/providers/Microsoft.SecurityDevOps/gitHubConnectors/sdk_gh_test\",\"environmentData\":{\"environmentType\":\"GithubScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/securityconnectors-tests/providers/Microsoft.Security/securityConnectors/sdk_gh_test\",\"name\":\"sdk_gh_test\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{\"tagUpdateFromSdk\":\"ff962732-cf68-4379-87a8-53dc08c06071\"},\"systemData\":{\"createdBy\":\"elgrady@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-08-27T14:55:53.3654737Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-08-27T15:25:33.5982713Z\"}}]}",
       "isContentBase64": false
     }
   },
@@ -93,7 +93,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "cc5c23db-9af1-48ee-9530-005f21ed83ca" ],
+        "x-ms-client-request-id": [ "1db5a8d4-df1f-4f2b-9605-36d63e88cc98" ],
         "CommandName": [ "Get-AzSecurityConnector" ],
         "FullCommandName": [ "Get-AzSecurityConnector_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -110,21 +110,21 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
-        "x-ms-request-id": [ "7b94cecd-503a-4fbd-9b04-f34776e4dd64" ],
-        "x-ms-correlation-request-id": [ "7b94cecd-503a-4fbd-9b04-f34776e4dd64" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240213T195413Z:7b94cecd-503a-4fbd-9b04-f34776e4dd64" ],
+        "x-ms-request-id": [ "bc81c1c2-bf07-49ec-9610-4eac3773bf33" ],
+        "x-ms-correlation-request-id": [ "bc81c1c2-bf07-49ec-9610-4eac3773bf33" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020826Z:bc81c1c2-bf07-49ec-9610-4eac3773bf33" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3B5DB969658E4B8C95759B9174FA1128 Ref B: CO6AA3150219023 Ref C: 2024-02-13T19:54:12Z" ],
-        "Date": [ "Tue, 13 Feb 2024 19:54:12 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C0F90B78D6144B52A06CBE0AAF0F4F2A Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:26Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:26 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "811" ],
+        "Content-Length": [ "832" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorAzureDevOps\"},{\"offeringType\":\"DefenderForDevOpsAzureDevOps\"}],\"environmentName\":\"AzureDevOps\",\"hierarchyIdentifier\":\"4a8eb7f1-f533-48c5-b102-9b09e90906b7\",\"environmentData\":{\"environmentType\":\"AzureDevOpsScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01\",\"name\":\"dfdsdktests-azdo-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-07T06:38:36.3536844Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-12-07T06:38:36.3536844Z\"}}",
+      "Content": "{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorAzureDevOps\"},{\"offeringType\":\"DefenderForDevOpsAzureDevOps\"}],\"environmentName\":\"AzureDevOps\",\"hierarchyIdentifier\":\"4a8eb7f1-f533-48c5-b102-9b09e90906b7\",\"environmentData\":{\"environmentType\":\"AzureDevOpsScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01\",\"name\":\"dfdsdktests-azdo-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{\"pwshsdktest2\":\"true\"},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-07T06:38:36.3536844Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-02-13T23:45:37.7516486Z\"}}",
       "isContentBase64": false
     }
   },
@@ -136,7 +136,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "d33fa2c5-d142-4e44-a173-b745b2e9911a" ],
+        "x-ms-client-request-id": [ "e6290598-2301-4b47-8c7a-38ba9ecbb179" ],
         "CommandName": [ "Get-AzSecurityConnector" ],
         "FullCommandName": [ "Get-AzSecurityConnector_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -153,21 +153,21 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
-        "x-ms-request-id": [ "b7d00a11-c809-43fe-a672-7480f0b490d0" ],
-        "x-ms-correlation-request-id": [ "b7d00a11-c809-43fe-a672-7480f0b490d0" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240213T195413Z:b7d00a11-c809-43fe-a672-7480f0b490d0" ],
+        "x-ms-request-id": [ "5941b780-3816-4a3e-8828-60ac970c6665" ],
+        "x-ms-correlation-request-id": [ "5941b780-3816-4a3e-8828-60ac970c6665" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T020827Z:5941b780-3816-4a3e-8828-60ac970c6665" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7B7169C652DF44E58DDF273A7E807ACD Ref B: CO6AA3150219023 Ref C: 2024-02-13T19:54:13Z" ],
-        "Date": [ "Tue, 13 Feb 2024 19:54:12 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CC09CFD4D12F4B53B20A8A9295BF101A Ref B: CO6AA3150220037 Ref C: 2024-02-14T02:08:27Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:08:27 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "811" ],
+        "Content-Length": [ "832" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorAzureDevOps\"},{\"offeringType\":\"DefenderForDevOpsAzureDevOps\"}],\"environmentName\":\"AzureDevOps\",\"hierarchyIdentifier\":\"4a8eb7f1-f533-48c5-b102-9b09e90906b7\",\"environmentData\":{\"environmentType\":\"AzureDevOpsScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01\",\"name\":\"dfdsdktests-azdo-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-07T06:38:36.3536844Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-12-07T06:38:36.3536844Z\"}}",
+      "Content": "{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorAzureDevOps\"},{\"offeringType\":\"DefenderForDevOpsAzureDevOps\"}],\"environmentName\":\"AzureDevOps\",\"hierarchyIdentifier\":\"4a8eb7f1-f533-48c5-b102-9b09e90906b7\",\"environmentData\":{\"environmentType\":\"AzureDevOpsScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01\",\"name\":\"dfdsdktests-azdo-01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"centralus\",\"tags\":{\"pwshsdktest2\":\"true\"},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2023-12-07T06:38:36.3536844Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-02-13T23:45:37.7516486Z\"}}",
       "isContentBase64": false
     }
   }
