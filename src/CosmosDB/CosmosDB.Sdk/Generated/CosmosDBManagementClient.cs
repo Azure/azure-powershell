@@ -157,6 +157,14 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </summary>
         public virtual INotebookWorkspacesOperations NotebookWorkspaces { get; private set; }
         /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations
+        /// </summary>
+        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations
+        /// </summary>
+        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
+        /// <summary>
         /// Gets the IRestorableDatabaseAccountsOperations
         /// </summary>
         public virtual IRestorableDatabaseAccountsOperations RestorableDatabaseAccounts { get; private set; }
@@ -467,6 +475,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             this.CassandraClusters = new CassandraClustersOperations(this);
             this.CassandraDataCenters = new CassandraDataCentersOperations(this);
             this.NotebookWorkspaces = new NotebookWorkspacesOperations(this);
+            this.PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
+            this.PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             this.RestorableDatabaseAccounts = new RestorableDatabaseAccountsOperations(this);
             this.RestorableSqlDatabases = new RestorableSqlDatabasesOperations(this);
             this.RestorableSqlContainers = new RestorableSqlContainersOperations(this);

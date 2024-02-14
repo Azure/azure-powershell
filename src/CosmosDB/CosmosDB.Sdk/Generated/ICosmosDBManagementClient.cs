@@ -189,6 +189,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         INotebookWorkspacesOperations NotebookWorkspaces { get; }
 
         /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations
+        /// </summary>
+        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations
+        /// </summary>
+        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
+
+        /// <summary>
         /// Gets the IRestorableDatabaseAccountsOperations
         /// </summary>
         IRestorableDatabaseAccountsOperations RestorableDatabaseAccounts { get; }

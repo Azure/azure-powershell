@@ -26,15 +26,19 @@ title: CosmosDBManagementClient
 
 ### 
 ``` yaml 
+commit: main
+apiversion: "2023-09-15-preview"
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-09-15-preview/cosmos-db.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-09-15-preview/dataTransferService.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-09-15-preview/managedCassandra.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-09-15-preview/mongorbac.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-09-15-preview/notebook.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-09-15-preview/rbac.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-09-15-preview/restorable.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-09-15-preview/services.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/cosmos-db.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/dataTransferService.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/managedCassandra.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/mongorbac.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/notebook.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/privateEndpointConnection.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/privateLinkResources.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/rbac.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/restorable.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/$(apiversion)/services.json
 
 output-folder: Generated
 
@@ -45,4 +49,5 @@ directive:
     where: $.parameters.forceDeallocate
     transform: >
         $['type'] = 'string';
+    reason: Temporarily needed for autorest gen to work in 2023-09-15-preview api version. Swagger changes to fix type introduced in 2024-02-15-preview api version.
 ```
