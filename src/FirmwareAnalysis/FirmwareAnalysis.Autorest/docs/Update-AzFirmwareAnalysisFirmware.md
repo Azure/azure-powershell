@@ -20,6 +20,22 @@ Update-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -Work
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityExpanded
+```
+Update-AzFirmwareAnalysisFirmware -InputObject <IFirmwareAnalysisIdentity> [-Description <String>]
+ [-FileName <String>] [-FileSize <Int64>] [-Model <String>] [-Status <String>]
+ [-StatusMessage <IStatusMessage[]>] [-Vendor <String>] [-Version <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityWorkspaceExpanded
+```
+Update-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareAnalysisIdentity>
+ [-Description <String>] [-FileName <String>] [-FileSize <Int64>] [-Model <String>] [-Status <String>]
+ [-StatusMessage <IStatusMessage[]>] [-Vendor <String>] [-Version <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The operation to update firmware.
 

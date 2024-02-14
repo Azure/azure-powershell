@@ -18,6 +18,12 @@ Update-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> [-
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityExpanded
+```
+Update-AzFirmwareAnalysisWorkspace -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The operation to update a firmware analysis workspaces.
 

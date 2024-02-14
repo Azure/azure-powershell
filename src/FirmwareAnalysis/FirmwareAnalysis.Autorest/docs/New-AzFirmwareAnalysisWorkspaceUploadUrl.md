@@ -26,6 +26,33 @@ New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceN
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### GenerateViaIdentity
+```
+New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity>
+ -GenerateUploadUrl <IGenerateUploadUrlRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### GenerateViaIdentityExpanded
+```
+New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity> [-FirmwareId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GenerateViaJsonFilePath
+```
+New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### GenerateViaJsonString
+```
+New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> -WorkspaceName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The operation to get a url for file upload.
 

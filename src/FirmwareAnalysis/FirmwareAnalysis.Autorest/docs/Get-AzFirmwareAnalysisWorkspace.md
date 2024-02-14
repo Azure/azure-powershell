@@ -23,6 +23,18 @@ Get-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> [-Sub
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzFirmwareAnalysisWorkspace -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzFirmwareAnalysisWorkspace -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get firmware analysis workspace.
 

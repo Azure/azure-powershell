@@ -19,6 +19,19 @@ New-AzFirmwareAnalysisFirmwareDownloadUrl -FirmwareId <String> -ResourceGroupNam
  [<CommonParameters>]
 ```
 
+### GenerateViaIdentity
+```
+New-AzFirmwareAnalysisFirmwareDownloadUrl -InputObject <IFirmwareAnalysisIdentity>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GenerateViaIdentityWorkspace
+```
+New-AzFirmwareAnalysisFirmwareDownloadUrl -FirmwareId <String>
+ -WorkspaceInputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The operation to a url for file download.
 

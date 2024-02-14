@@ -24,6 +24,24 @@ Get-AzFirmwareAnalysisSummary -FirmwareId <String> -Name <String> -ResourceGroup
  -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzFirmwareAnalysisSummary -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityFirmware
+```
+Get-AzFirmwareAnalysisSummary -FirmwareInputObject <IFirmwareAnalysisIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityWorkspace
+```
+Get-AzFirmwareAnalysisSummary -FirmwareId <String> -Name <String>
+ -WorkspaceInputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get an analysis result summary of a firmware by name.
 
@@ -31,7 +49,7 @@ Get an analysis result summary of a firmware by name.
 
 ### Example 1: {{ List all the analysis results summary for a firmware by analysis type CVE. }}
 ```powershell
-{{ Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -n Type }}
+{{ Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Name Type }}
 ```
 
 ```output
@@ -56,7 +74,7 @@ Type                         : Microsoft.IoTFirmwareDefense/workspaces/firmwares
 
 ### Example 2: {{ List all the analysis results summary for a firmware by analysis type Firmware. }}
 ```powershell
-{{ Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -n Type }}
+{{ Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Name Type }}
 ```
 
 ```output
