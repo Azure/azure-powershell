@@ -1,24 +1,22 @@
-### Example 1: Construct an in-memory KeyVaultProperties object
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzServiceBusKeyVaultPropertiesObject -KeyName key1 -KeyVaultUri https://testkeyvault.vault.azure.net/
+{{ Add code here }}
 ```
-```Output
-KeyName KeyVaultUri                            KeyVersion UserAssignedIdentity
-------- -----------                            ---------- --------------------
-key4    https://testkeyvault.vault.azure.net/
-```
-Creates an in-memory object of type `IKeyVaultProperties`. An array of `IKeyVaultProperties` can be fed as 
-input to `KeyVaultProperty` parameter of New-AzServiceBusNamespaceV2 and Set-AzServiceBusNamespaceV2 to enable encryption.
 
-### Example 2: Construct an in-memory KeyVaultProperties object having UserassignedIdentity
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
 ```powershell
-$ec1 = "/subscriptions/0000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
-New-AzServiceBusKeyVaultPropertiesObject -KeyName key4 -KeyVaultUri https://testkeyvault.vault.azure.net/ -UserAssignedIdentity $ec1
+{{ Add code here }}
 ```
-```Output
-KeyName KeyVaultUri                            KeyVersion UserAssignedIdentity
-------- -----------                            ---------- --------------------
-key4    https://testkeyvault.vault.azure.net/           /subscriptions/0000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
-Creates an in-memory object of type `IKeyVaultProperties`. An array of `IKeyVaultProperties` can be fed as 
-input to `KeyVaultProperty` parameter of New-AzServiceBusNamespaceV2 and Set-AzServiceBusNamespaceV2 to enable encryption.
+
+{{ Add description here }}
+
