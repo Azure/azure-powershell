@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "15" ],
-        "x-ms-client-request-id": [ "50424650-65cf-4720-8bff-b90b2b787ef6" ],
+        "x-ms-client-request-id": [ "dd5e4326-2314-4099-a439-ea74ea21c7c7" ],
         "CommandName": [ "Remove-AzFirmwareAnalysisFirmware" ],
         "FullCommandName": [ "Remove-AzFirmwareAnalysisFirmware_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -18,26 +18,24 @@
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 204,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-envoy-upstream-service-time": [ "2" ],
         "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
-        "x-ms-correlation-request-id": [ "948ae494-1b75-4676-b62e-86ffc5fceb68" ],
-        "x-ms-operation-identifier": [ "tenantId=ff3a6090-3ef9-4621-b02c-e0abfd9da371,objectId=32d56fca-9a4a-417e-8daf-c99d3d86423a/centralus/6317a3d8-faba-451f-b5d1-6073b1e7c952" ],
+        "x-ms-correlation-request-id": [ "5add4d7d-addd-477c-8d3b-c590c4c2279b" ],
+        "x-ms-operation-identifier": [ "tenantId=ff3a6090-3ef9-4621-b02c-e0abfd9da371,objectId=32d56fca-9a4a-417e-8daf-c99d3d86423a/centralus/a2fa40e8-98ef-436d-9f06-250466ba378b" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "499" ],
-        "x-ms-routing-request-id": [ "CENTRALUS:20240212T210823Z:948ae494-1b75-4676-b62e-86ffc5fceb68" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20240214T193250Z:5add4d7d-addd-477c-8d3b-c590c4c2279b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9B5B726B033840728415AB2AA99329AC Ref B: CO6AA3150217017 Ref C: 2024-02-12T21:08:22Z" ],
-        "Date": [ "Mon, 12 Feb 2024 21:08:23 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4C5A20E6C51F44AEA2AF511478C4FFBD Ref B: CO6AA3150219037 Ref C: 2024-02-14T19:32:49Z" ],
+        "Date": [ "Wed, 14 Feb 2024 19:32:50 GMT" ]
       },
       "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
+        "Expires": [ "-1" ]
       },
       "Content": null,
       "isContentBase64": false
