@@ -1327,7 +1327,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeallocateWithHttpMessagesAsync(string resourceGroupName, string clusterName, bool? xMsForceDeallocate = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeallocateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string xMsForceDeallocate = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
                 Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginDeallocateWithHttpMessagesAsync(resourceGroupName, clusterName, xMsForceDeallocate, customHeaders, cancellationToken).ConfigureAwait(false);
@@ -2670,7 +2670,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeallocateWithHttpMessagesAsync(string resourceGroupName, string clusterName, bool? xMsForceDeallocate = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeallocateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string xMsForceDeallocate = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 

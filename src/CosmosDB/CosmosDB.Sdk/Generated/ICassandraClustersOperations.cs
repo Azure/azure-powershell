@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeallocateWithHttpMessagesAsync(string resourceGroupName, string clusterName, bool? xMsForceDeallocate = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeallocateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string xMsForceDeallocate = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Start the Managed Cassandra Cluster and Associated Data Centers. Start will
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeallocateWithHttpMessagesAsync(string resourceGroupName, string clusterName, bool? xMsForceDeallocate = default(bool?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeallocateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string xMsForceDeallocate = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Start the Managed Cassandra Cluster and Associated Data Centers. Start will

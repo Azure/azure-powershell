@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Force to deallocate a cluster of Cluster Type Production. Force to
         /// deallocate a cluster of Cluster Type Production might cause data loss
         /// </param>
-        public static void Deallocate(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, bool? xMsForceDeallocate = default(bool?))
+        public static void Deallocate(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string xMsForceDeallocate = default(string))
         {
                 ((ICassandraClustersOperations)operations).DeallocateAsync(resourceGroupName, clusterName, xMsForceDeallocate).GetAwaiter().GetResult();
         }
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeallocateAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, bool? xMsForceDeallocate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task DeallocateAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string xMsForceDeallocate = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.DeallocateWithHttpMessagesAsync(resourceGroupName, clusterName, xMsForceDeallocate, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
@@ -659,7 +659,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Force to deallocate a cluster of Cluster Type Production. Force to
         /// deallocate a cluster of Cluster Type Production might cause data loss
         /// </param>
-        public static void BeginDeallocate(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, bool? xMsForceDeallocate = default(bool?))
+        public static void BeginDeallocate(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string xMsForceDeallocate = default(string))
         {
                 ((ICassandraClustersOperations)operations).BeginDeallocateAsync(resourceGroupName, clusterName, xMsForceDeallocate).GetAwaiter().GetResult();
         }
@@ -686,7 +686,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeallocateAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, bool? xMsForceDeallocate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginDeallocateAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string xMsForceDeallocate = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginDeallocateWithHttpMessagesAsync(resourceGroupName, clusterName, xMsForceDeallocate, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
