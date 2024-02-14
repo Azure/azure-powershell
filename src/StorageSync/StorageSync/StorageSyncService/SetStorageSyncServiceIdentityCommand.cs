@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     foreach (var registeredServer in registeredServers)
                     {
                         // Scenario : Server is running in certificate mode
-                        if((registeredServer.ActiveAuthType == StorageSyncModels.ServerAuthType.Certificate && !string.IsNullOrEmpty(registeredServer.ApplicationId))
+                        if((registeredServer.ActiveAuthType == StorageSyncModels.ServerAuthType.Certificate && !string.IsNullOrEmpty(registeredServer.ApplicationId) && registeredServer.ApplicationId != Guid.Empty.ToString())
                             || (Guid.TryParse(registeredServer.LatestApplicationId, out Guid latestApplicationId)))
                         {
                             candidateServersLookup.Add(registeredServer.Id, registeredServer);
