@@ -66,11 +66,11 @@ keep-pec-and-plr: true
 
 directive:
   - where:
-      variant: ^(Create|Update)(?!.*?Expanded)
+      variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^CreateViaJsonFilePath$|^CreateViaJsonString$
     remove: true
   - where:
       variant: ^CreateViaIdentity$
-    remove: true
+    hide: true
   - where:
       verb: Set
     remove: true

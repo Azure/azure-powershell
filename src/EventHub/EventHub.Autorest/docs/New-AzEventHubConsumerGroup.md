@@ -19,16 +19,22 @@ New-AzEventHubConsumerGroup -EventHubName <String> -Name <String> -NamespaceName
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityEventhub
+```
+New-AzEventHubConsumerGroup -EventhubInputObject <IEventHubIdentity> -Name <String>
+ -Parameter <IConsumerGroup> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaIdentityEventhubExpanded
 ```
 New-AzEventHubConsumerGroup -EventhubInputObject <IEventHubIdentity> -Name <String> [-UserMetadata <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### CreateViaIdentityNamespace
 ```
-New-AzEventHubConsumerGroup -InputObject <IEventHubIdentity> [-UserMetadata <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzEventHubConsumerGroup -EventHubName <String> -Name <String> -NamespaceInputObject <IEventHubIdentity>
+ -Parameter <IConsumerGroup> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespaceExpanded
@@ -84,7 +90,7 @@ To construct, see NOTES section for EVENTHUBINPUTOBJECT properties and create a 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
-Parameter Sets: CreateViaIdentityEventhubExpanded
+Parameter Sets: CreateViaIdentityEventhub, CreateViaIdentityEventhubExpanded
 Aliases:
 
 Required: True
@@ -99,7 +105,7 @@ The Event Hub name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityNamespace, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: True
@@ -109,28 +115,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
-Parameter Sets: CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The consumer group name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityEventhubExpanded, CreateViaIdentityNamespaceExpanded
+Parameter Sets: (All)
 Aliases: ConsumerGroupName
 
 Required: True
@@ -146,7 +136,7 @@ To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
-Parameter Sets: CreateViaIdentityNamespaceExpanded
+Parameter Sets: CreateViaIdentityNamespace, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: True
@@ -168,6 +158,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Parameter
+Single item in List or Get Consumer group operation
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup
+Parameter Sets: CreateViaIdentityEventhub, CreateViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -209,7 +215,7 @@ it can be used to store descriptive data, such as list of teams and their contac
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityEventhubExpanded, CreateViaIdentityNamespaceExpanded
 Aliases:
 
 Required: False
@@ -254,6 +260,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IConsumerGroup
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
