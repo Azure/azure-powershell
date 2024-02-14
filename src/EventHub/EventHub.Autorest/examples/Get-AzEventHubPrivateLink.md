@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get private links associated with an EventHub namespace
 ```powershell
-{{ Add code here }}
+Get-AzEventHubPrivateLink -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+GroupId          : namespace
+Id               : subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/privateLinkResources/namespace
+Name             : namespace
+RequiredMember   : {namespace}
+RequiredZoneName : {privatelink.servicebus.windows.net}
+Type             : Microsoft.EventHub/namespaces/privateLinkResources
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Gets private link resources available on EventHubs namespace `myNamespace`.
