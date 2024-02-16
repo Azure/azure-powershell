@@ -28,27 +28,49 @@ Gets details for a specific file workspace in an Azure subscription.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get information about a file workspace
 ```powershell
-{{ Add code here }}
+Get-AzSupportFileWorkspace -Name "testworkspace"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+CreatedOn                    : 2/8/2024 3:51:36 PM
+ExpirationTime               : 2/9/2024 3:51:36 PM
+Id                           : /subscriptions/3bb7379e-e102-4603-a59c-60f5ca39ec55/providers/Microsoft.Support/fileWorkspaces/testworkspace
+Name                         : testworkspace
+ResourceGroupName            :
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Support/fileWorkspaces
 ```
 
-{{ Add description here }}
+Gets details for a specific file workspace in an Azure subscription.
 
-### Example 2: {{ Add title here }}
+### Example 1: Get information about a file workspace for a support ticket
 ```powershell
-{{ Add code here }}
+Get-AzSupportFileWorkspace -Name "2402084010005835"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+CreatedOn                    : 2/8/2024 3:51:36 PM
+ExpirationTime               : 8/9/2024 3:51:36 PM
+Id                           : /subscriptions/3bb7379e-e102-4603-a59c-60f5ca39ec55/providers/Microsoft.Support/fileWorkspaces/2402084010005835
+Name                         : 2402084010005835
+ResourceGroupName            :
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Support/fileWorkspaces
 ```
 
-{{ Add description here }}
+Gets details for a specific file workspace under a support ticket in an Azure subscription.
 
 ## PARAMETERS
 
