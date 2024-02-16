@@ -13,7 +13,7 @@ The operation to create a firmware.
 ## SYNTAX
 
 ```
-New-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
+New-AzFirmwareAnalysisFirmware -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
  [-SubscriptionId <String>] [-Description <String>] [-FileName <String>] [-FileSize <Int64>] [-Model <String>]
  [-Status <String>] [-StatusMessage <IStatusMessage[]>] [-Vendor <String>] [-Version <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -160,9 +160,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: FirmwareId
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: New-Guid
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
