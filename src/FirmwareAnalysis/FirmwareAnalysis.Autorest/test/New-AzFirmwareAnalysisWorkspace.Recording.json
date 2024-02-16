@@ -17,25 +17,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"5b05320f-0000-0700-0000-65cd154f0000\"" ],
-        "x-ms-operation-identifier": [ "tenantId=ff3a6090-3ef9-4621-b02c-e0abfd9da371,objectId=32d56fca-9a4a-417e-8daf-c99d3d86423a/centralus/362852dc-3fbe-4b97-b34f-d8c5da4d0e5f" ],
+        "ETag": [ "\"7705abb2-0000-0700-0000-65cfb7b10000\"" ],
+        "x-ms-operation-identifier": [ "tenantId=ff3a6090-3ef9-4621-b02c-e0abfd9da371,objectId=32d56fca-9a4a-417e-8daf-c99d3d86423a/centralus/360c5089-a844-4495-b430-056ec23d3585" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "b7e5ee9c-31a4-4aa1-b77b-b0d61104425f" ],
-        "x-ms-correlation-request-id": [ "c17bef2b-058d-4c5e-a60d-77fdd8ab9fa1" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "298" ],
-        "x-ms-routing-request-id": [ "CENTRALUS:20240214T193231Z:c17bef2b-058d-4c5e-a60d-77fdd8ab9fa1" ],
+        "x-ms-request-id": [ "52d668da-905d-4c5f-a483-4e48a96251a8" ],
+        "x-ms-correlation-request-id": [ "7f5d7bb5-437f-40e8-942e-8b42d8c93653" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20240216T192953Z:7f5d7bb5-437f-40e8-942e-8b42d8c93653" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 29E71C00B1DE4136A57FDF00BA3F9B1E Ref B: CO6AA3150219037 Ref C: 2024-02-14T19:32:31Z" ],
-        "Date": [ "Wed, 14 Feb 2024 19:32:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3CFF0BA4795E420F98F4A51A7C3A4938 Ref B: CO6AA3150217023 Ref C: 2024-02-16T19:29:52Z" ],
+        "Date": [ "Fri, 16 Feb 2024 19:29:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "536" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/testworkspace\",\"name\":\"testworkspace\",\"type\":\"microsoft.iotfirmwaredefense/workspaces\",\"location\":\"East US\",\"systemData\":{\"createdBy\":\"kalbhatia@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-02-12T20:35:15.6659299Z\",\"lastModifiedBy\":\"kalbhatia@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-14T19:32:31.2773193Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/testworkspace\",\"name\":\"testworkspace\",\"type\":\"microsoft.iotfirmwaredefense/workspaces\",\"location\":\"East US\",\"systemData\":{\"createdBy\":\"kalbhatia@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-02-12T20:35:15.6659299Z\",\"lastModifiedBy\":\"kalbhatia@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-16T19:29:53.2064692Z\"},\"properties\":{\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }
