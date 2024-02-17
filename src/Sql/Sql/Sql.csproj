@@ -14,6 +14,14 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningsNotAsErrors>NU1605;</WarningsNotAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningsNotAsErrors>NU1605;</WarningsNotAsErrors>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="AdvancedDataSecurity\Templates\DeployInstanceVaTemplate.json" />
     <None Remove="AdvancedDataSecurity\Templates\DeployServerVaTemplate.json" />
@@ -26,6 +34,9 @@
 
   <ItemGroup>
     <PackageReference Include="System.Security.Permissions" Version="4.7.0" />
+	<PackageReference Include="Azure.ResourceManager.Sql" Version="1.3.0-beta.5"> 
+		<NoWarn>NU1605</NoWarn>
+	</PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sql.LegacySdk\Sql.LegacySdk.csproj" />
@@ -45,10 +56,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Azure.ResourceManager.Sql" Version="1.3.0-beta.5" />   
   </ItemGroup>
     
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
