@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Upgraded Azure.Core to 1.37.0.
 
 ## Version 2.16.0
 * Added a preview feature to detect secrets and sensitive information from the output of Azure PowerShell cmdlets to prevent leakage. Enable it by `Set-AzConfig -DisplaySecretsWarning $true`. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844
