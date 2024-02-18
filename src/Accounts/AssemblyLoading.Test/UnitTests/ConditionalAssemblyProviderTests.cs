@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
             var assemblies = ConditionalAssemblyProvider.GetAssemblies();
 
             Assert.True(assemblies.TryGetValue("Azure.Core", out var azureCore));
-            Assert.Equal(GetExpectedAssemblyPath(NetCoreApp21, "Azure.Core"), azureCore.Path);
+            Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "Azure.Core"), azureCore.Path);
 
             Assert.False(assemblies.TryGetValue("Newtonsoft.Json", out _));
 
