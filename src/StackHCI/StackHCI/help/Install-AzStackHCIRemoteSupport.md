@@ -50,7 +50,6 @@ Installs Remort Support
 ## PARAMETERS
 
 ### -ProgressAction
-{{ Fill ProgressAction Description }}
 
 ```yaml
 Type: System.Management.Automation.ActionPreference
