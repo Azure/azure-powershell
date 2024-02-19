@@ -266,12 +266,12 @@ function Test-AzureVMEnhancedPolicy
 function Test-AzureVMPolicy
 {
 	$location = "centraluseuap" # "eastasia"
-	$resourceGroupName = Create-ResourceGroup $location
+	$resourceGroupName = Create-ResourceGroup $location 26
 
 	try
 	{
 		# Setup
-		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location 27
 		
 		# Get default policy objects
 		$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM

@@ -2731,5 +2731,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("InvalidParameterSnapshotConsistencyType", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while fetching AAD properties, this property is needed to get CRR access token.
+        /// </summary>
+        public static string AADPropertiesCouldNotBeFetchedException
+        {
+            get
+            {
+                return ResourceManager.GetString("AADPropertiesCouldNotBeFetchedException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to fetch CRR access token. Please retry the operation or contact Microsoft support if issue persists.
+        /// </summary>
+        public static string CRRAccessTokenCouldNotBeFetchedException
+        {
+            get
+            {
+                return ResourceManager.GetString("CRRAccessTokenCouldNotBeFetchedException", resourceCulture);
+            }
+        }
     }
 }

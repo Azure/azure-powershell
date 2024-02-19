@@ -180,8 +180,8 @@ function Test-AzureCrossZonalRestore
 	$targetVNetName = "hiagaNZPVNet"
 	$targetVNetRG = "hiagarg"
 	$targetSubnetName = "custom"
-	$recoveryPointId = "172325782667650" # latest vaultStandard recovery point
-	$snapshotRecoveryPointId = "169019845618646" # latest Snapshot (older than 4 hrs) recovery point
+	$recoveryPointId = "169203830578626" # latest vaultStandard recovery point
+	$snapshotRecoveryPointId = "168730494400823" # latest Snapshot (older than 4 hrs) recovery point
 	try
 	{	
 		# Setup
@@ -411,7 +411,7 @@ function Test-AzureVMRestoreWithMSI
 	$location = "centraluseuap"
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiagaVault"
-	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiagavm"
+	$vmName = "VM;iaasvmcontainerv2;hiagarg;hiaganewvm2"
 	$saName = "hiagasa"
 
 	try
