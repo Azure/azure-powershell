@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (this.VmUserAssignedIdentity != null && this.VmUserAssignedIdentity.Length > 0)
             {
-                newNodeType.VMManagedIdentity = new VmManagedIdentity(userAssignedIdentities: this.VmUserAssignedIdentity);
+                newNodeType.VmManagedIdentity = new VmManagedIdentity(userAssignedIdentities: this.VmUserAssignedIdentity);
             }
 
             if (this.MultiplePlacementGroup.IsPresent)
