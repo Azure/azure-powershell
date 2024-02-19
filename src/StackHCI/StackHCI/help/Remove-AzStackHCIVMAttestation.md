@@ -14,17 +14,20 @@ Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestati
 
 ### VMName (Default)
 ```
-Remove-AzStackHCIVMAttestation [-VMName] <String[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMAttestation [-VMName] <String[]> [-Force] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### VMObject
 ```
-Remove-AzStackHCIVMAttestation [-Force] [-VM] <Object[]> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMAttestation [-Force] [-VM] <Object[]> [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveAll
 ```
-Remove-AzStackHCIVMAttestation [-Force] [-RemoveAll] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMAttestation [-Force] [-RemoveAll] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +63,21 @@ No confirmations.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
