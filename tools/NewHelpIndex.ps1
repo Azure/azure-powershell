@@ -63,15 +63,15 @@ $outputModules = @{}
 & "$PSScriptRoot/CreateMappings.ps1" -OutputFile $OutputFile/../groupMapping.json -WarningFile $OutputFile/../groupMappingWarnings.json
 $labelMapping = Get-Content -Raw $OutputFile/../groupMapping.json | ConvertFrom-Json
 
-$RMpsd1s = @()
 $HelpFolders = @()
-
-$resourceManagerPath = "$PSScriptRoot/../artifacts/$BuildConfig/"
-
-$RMpsd1s += Get-ChildItem -Path $resourceManagerPath -Depth 1 | Where-Object { 
-    $_.Name -like "*.psd1" -and $_.FullName -notlike "*dll-Help*"
-}
-
+$ProjectPaths = @( "$PSScriptRoot/../src")
+$RMpsd1s = $ProjectPaths | % { Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | where { 
+                                                                                        $_.FullName -inotlike "*autorest*" -and `
+                                                                                        $_.FullName -inotlike "*extension*" -and `
+                                                                                        $_.FullName -notlike "*Debug*" -and `
+                                                                                        $_.FullName -notlike "*Netcore*" -and `
+                                                                                        $_.FullName -notlike "*dll-Help.psd1*" -and `
+                                                                                        (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) } }
 .($PSScriptRoot + "\PreloadToolDll.ps1")
 $HelpFolders += Get-ChildItem -Path "$PSScriptRoot/../src" -Recurse -Directory | where { $_.Name -eq "help" -and (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) -and $_.FullName -notlike "*\bin\*" -and (-not $_.Parent.BaseName.EndsWith(".Autorest", "CurrentCultureIgnoreCase"))}
 
