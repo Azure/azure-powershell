@@ -18,7 +18,8 @@ Register-AzStackHCI [-SubscriptionId] <String> [-Region] <String> [[-ResourceNam
  [[-AccountId] <String>] [[-EnvironmentName] <String>] [[-ComputerName] <String>]
  [[-CertificateThumbprint] <String>] [-RepairRegistration] [-UseDeviceAuthentication]
  [[-Credential] <PSCredential>] [-IsWAC] [[-ArcServerResourceGroupName] <String>]
- [[-ArcSpnCredential] <PSCredential>] [[-LogsDirectory] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-ArcSpnCredential] <PSCredential>] [[-LogsDirectory] <String>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -239,6 +240,21 @@ Aliases:
 
 Required: False
 Position: 15
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
