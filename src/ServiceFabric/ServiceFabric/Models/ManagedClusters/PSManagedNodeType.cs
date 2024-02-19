@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                    type: nodeType.Type,
                    tags: nodeType.Tags,
                    isPrimary: nodeType.IsPrimary,
-                   vmInstanceCount: nodeType.VMInstanceCount,
+                   vmInstanceCount: nodeType.VmInstanceCount,
                    dataDiskSizeGb: nodeType.DataDiskSizeGB,
                    dataDiskType: nodeType.DataDiskType,
                    provisioningState: nodeType.ProvisioningState,

@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
             this.Sku = sku;
             this.SecurityType = securityType;
             this.IsPrimary = isPrimary;
-            this.VMInstanceCount = vmInstanceCount;
+            this.VmInstanceCount = vmInstanceCount;
             this.DataDiskSizeGB = dataDiskSizeGb;
             this.DataDiskType = dataDiskType;
             this.DataDiskLetter = dataDiskLetter;
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// defined &lt;br /&gt; 0 - Not supported &lt;br /&gt; &gt;0 - Use for manual scale.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.vmInstanceCount")]
-        public int? VMInstanceCount {get; set; }
+        public int? VmInstanceCount {get; set; }
 
         /// <summary>
         /// Gets or sets disk size for the managed disk attached to the vms on the node
@@ -674,13 +674,13 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
                 this.Sku.Validate();
             }
 
-            if (this.VMInstanceCount != null)
+            if (this.VmInstanceCount != null)
             {
-                if (this.VMInstanceCount > 2147483647)
+                if (this.VmInstanceCount > 2147483647)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "VMInstanceCount", 2147483647);
                 }
-                if (this.VMInstanceCount < -1)
+                if (this.VmInstanceCount < -1)
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "VMInstanceCount", -1);
                 }
