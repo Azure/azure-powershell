@@ -7,13 +7,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 {
 
     /// <summary>
-    /// Defines values for SalesforceV2SourceReadBehavior.
+    /// Defines values for SnowflakeAuthenticationType.
     /// </summary>
 
 
-    public static class SalesforceV2SourceReadBehavior
+    public static class SnowflakeAuthenticationType
     {
-        public const string Query = "query";
-        public const string QueryAll = "queryAll";
+        public const string Basic = "Basic";
+        public const string KeyPair = "KeyPair";
+        public const string AADServicePrincipal = "AADServicePrincipal";
     }
 }
