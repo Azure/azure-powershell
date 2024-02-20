@@ -77,9 +77,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     return;
                 }
 
-            RestorableDatabaseAccountGetResult databaseAccount = null;
-            List<RestorableDatabaseAccountGetResult> restorableDatabaseAccounts = this.CosmosDBManagementClient.RestorableDatabaseAccounts.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body.ToList();
-            List<RestorableDatabaseAccountGetResult> accountsWithMatchingName = restorableDatabaseAccounts.Where(account => account.AccountName.Equals(this.AccountName, StringComparison.OrdinalIgnoreCase)).ToList();
                 if (accountsWithMatchingName.Count > 0)
                 {
                     foreach (RestorableDatabaseAccountGetResult restorableAccount in accountsWithMatchingName)
