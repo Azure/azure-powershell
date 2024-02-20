@@ -304,21 +304,21 @@ function New-AzStackHCIVMImage{
         if ($PSCmdlet.ParameterSetName -eq "Marketplace")
         {
             $PSBoundParameters['NoWait'] = $true
+            $PSBoundParameters['ErrorAction'] = 'Stop'
             try {
                 Az.StackHCIVM.internal\New-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
-                Start-Sleep -Seconds 120
+                Start-Sleep -Seconds 60
                 $PercentCompleted = 0 
-                Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted% Complete:" -PercentComplete $PercentCompleted
-                while ($PercentCompleted -ne 100 ) {
-                   
+                Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted % Complete:" -PercentComplete $PercentCompleted
+                while ($PercentCompleted -ne 100 ) {                  
                     $image = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName
                     $PercentCompleted = $image.StatusProgressPercentage
                     if ($PercentCompleted -eq $null){
                         $PercentCompleted = 0
                     } 
-                    Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted% Complete" -PercentComplete $PercentCompleted
+                    Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted % Complete" -PercentComplete $PercentCompleted
                     Start-Sleep -Seconds 5    
-                    if ( $image.ProvisioningStatus -eq "Failed") {
+                    if ($image.ProvisioningStatus -eq "Failed") {
                         Break
                     }           
                 }
@@ -330,9 +330,7 @@ function New-AzStackHCIVMImage{
                 Write-Error $_.Exception.Message -ErrorAction Stop
             }
 
-           
-           
-
+        
         } elseif ($PSCmdlet.ParameterSetName -eq "MarketplaceURN") {
             if ($URN -match $urnRegex){
                 $publisher = $Matches.publisher.ToLower()
@@ -348,19 +346,34 @@ function New-AzStackHCIVMImage{
             } else {
                 Write-Error "Invalid URN provided: $URN. Valid URN format is Publisher:Offer:Sku:Version ." -ErrorAction Stop
             }
-            Write-Host "Before function call"
-            Az.StackHCIVM.internal\New-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
-            $PercentCompleted = (Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName).StatusProgressPercentage 
-            while ($PercentCompleted -ne 100){
-                Write-Host "In Loop"
-                Write-Progress -PercentComplete $PercentCompleted
-                $image = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName 
-                $PercentCompleted = $image.StatusProgressPercentag
-                if ($PercentCompleted -eq $null){
-                    $PercentCompleted = 0
+            
+            $PSBoundParameters['NoWait'] = $true
+            $PSBoundParameters['ErrorAction'] = 'Stop'
+            try {
+                Az.StackHCIVM.internal\New-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+                Start-Sleep -Seconds 60
+                $PercentCompleted = 0 
+                Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted % Complete:" -PercentComplete $PercentCompleted
+                while ($PercentCompleted -ne 100 ) {                  
+                    $image = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName
+                    $PercentCompleted = $image.StatusProgressPercentage
+                    if ($PercentCompleted -eq $null){
+                        $PercentCompleted = 0
+                    } 
+                    Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted % Complete" -PercentComplete $PercentCompleted
+                    Start-Sleep -Seconds 5    
+                    if ($image.ProvisioningStatus -eq "Failed") {
+                        Break
+                    }           
                 }
-                Start-Sleep -Seconds 5
+                if ($image.ProvisioningStatus -eq "Failed"){
+                    Write-Error $image.StatusErrorMessage -ErrorAction Stop
+                }
+               
+            } catch {
+                Write-Error $_.Exception.Message -ErrorAction Stop
             }
+
 
         }
 
