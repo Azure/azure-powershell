@@ -210,11 +210,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='nodeTypeName'>
         /// The name of the node type.
         /// </param>
-        /// <param name='tags'>
-        /// Node type update parameters
-        /// </param>
-        /// <param name='sku'>
-        /// The node type sku.
+        /// <param name='parameters'>
+        /// The parameters to update the node type configuration.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -228,7 +225,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NodeType>> UpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string nodeTypeName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), NodeTypeSku sku = default(NodeTypeSku), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NodeType>> UpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeUpdateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete a Service Fabric node type of a given managed cluster.

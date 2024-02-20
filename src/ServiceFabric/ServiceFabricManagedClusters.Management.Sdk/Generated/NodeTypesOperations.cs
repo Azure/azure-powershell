@@ -589,11 +589,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='nodeTypeName'>
         /// The name of the node type.
         /// </param>
-        /// <param name='tags'>
-        /// Node type update parameters
-        /// </param>
-        /// <param name='sku'>
-        /// The node type sku.
+        /// <param name='parameters'>
+        /// The parameters to update the node type configuration.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -616,12 +613,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NodeType>> UpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string nodeTypeName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), NodeTypeSku sku = default(NodeTypeSku), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<NodeType>> UpdateWithHttpMessagesAsync(string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeUpdateParameters parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (parameters == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
+            }
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -647,12 +648,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            NodeTypeUpdateParameters parameters = new NodeTypeUpdateParameters();
-            if(tags != null||sku != null)
-            {
-                parameters.Tags = tags;
-                parameters.Sku = sku;
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

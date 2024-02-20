@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='applicationTypeName'>
         /// The name of the application type name resource.
         /// </param>
-        public static ApplicationTypeResource CreateOrUpdate(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+        public static ApplicationTypeResource CreateOrUpdate(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, ApplicationTypeResource parameters)
         {
-                return ((IApplicationTypesOperations)operations).CreateOrUpdateAsync(resourceGroupName, clusterName, applicationTypeName, location, tags).GetAwaiter().GetResult();
+                return ((IApplicationTypesOperations)operations).CreateOrUpdateAsync(resourceGroupName, clusterName, applicationTypeName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -99,9 +99,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ApplicationTypeResource> CreateOrUpdateAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ApplicationTypeResource> CreateOrUpdateAsync(this IApplicationTypesOperations operations, string resourceGroupName, string clusterName, string applicationTypeName, ApplicationTypeResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, location, tags, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
