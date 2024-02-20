@@ -6,13 +6,13 @@ In this directory, run AutoRest:
 ```
 rm -r Generated/*
 autorest --reset
-autorest.cmd README.md --tag=package-privatelinks-2020-05 --version=v2 --debug
-autorest.cmd README.md --tag=package-subscriptions-2021-01 --version=v2 --debug
-autorest.cmd README.md --tag=package-features-2021-07 --version=v2 --debug
-autorest.cmd README.md --tag=package-deploymentscripts-2020-10 --version=v2 --debug
-autorest.cmd README.md --tag=package-resources-2021-04 --version=v2 --debug
-autorest.cmd README.md --tag=package-deploymentstacks-2022-08-preview --version=v2 --debug
-autorest.cmd README.md --tag=package-templatespecs-2021-05 --version=v2 --debug
+autorest.cmd README.md --tag=package-privatelinks-2020-05 --version=v2
+autorest.cmd README.md --tag=package-subscriptions-2021-01 --version=v2
+autorest.cmd README.md --tag=package-features-2021-07 --version=v2
+autorest.cmd README.md --tag=package-deploymentscripts-2020-10 --version=v2
+autorest.cmd README.md --tag=package-resources-2021-04 --version=v2
+autorest.cmd README.md --tag=package-deploymentstacks-2022-08-preview --version=v2
+autorest.cmd README.md --tag=package-templatespecs-2021-05 --version=v2
 ```
 
 ### AutoRest Configuration
@@ -36,7 +36,7 @@ These settings apply only when `--tag=package-deploymentscripts-2020-10` is spec
 
 ```yaml $(tag) == 'package-deploymentscripts-2020-10'
 input-file:
-- https://github.com/Azure/azure-rest-api-specs/blob/main/specification/resources/resource-manager/Microsoft.Resources/stable/2020-10-01/deploymentScripts.json
+- https://github.com/Azure/azure-rest-api-specs/blob/20a98a8408336d47697562f4cdad451f1d0216bf/specification/resources/resource-manager/Microsoft.Resources/stable/2020-10-01/deploymentScripts.json
 
 suppressions:
   - code: OperationsAPIImplementation
@@ -49,7 +49,7 @@ These settings apply only when `--tag=package-resources-2021-04` is specified on
 
 ``` yaml $(tag) == 'package-resources-2021-04'
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/81cd88a080c4bf4bb251afbe62892a6e220cb2b4/specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/resources.json
 ```
 
 ### Tag: package-privatelinks-2020-05
@@ -58,7 +58,7 @@ These settings apply only when `--tag=package-privatelinks-2020-05` is specified
 
 ``` yaml $(tag) == 'package-privatelinks-2020-05'
 input-file:
-- https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Authorization/stable/2020-05-01/privateLinks.json
+- https://github.com/Azure/azure-rest-api-specs/tree/2c68b6f0c9566d97d9d590a31b0d46997622eef7/specification/resources/resource-manager/Microsoft.Authorization/stable/2020-05-01/privateLinks.json
 ```
 
 ### Tag: package-subscriptions-2021-01
@@ -67,7 +67,7 @@ These settings apply only when `--tag=package-subscriptions-2021-01` is specifie
 
 ``` yaml $(tag) == 'package-subscriptions-2021-01'
 input-file:
-- https://github.com/Azure/azure-rest-api-specs/blob/main/specification/resources/resource-manager/Microsoft.Resources/stable/2021-01-01/subscriptions.json
+- https://github.com/Azure/azure-rest-api-specs/blob/6a57e9cedc87cafd2dc9e4f3e8af62b5725e3d22/specification/resources/resource-manager/Microsoft.Resources/stable/2021-01-01/subscriptions.json
 ```
 
 ### Tag: package-features-2021-07
@@ -76,8 +76,8 @@ These settings apply only when `--tag=package-features-2021-07` is specified on 
 
 ``` yaml $(tag) == 'package-features-2021-07'
 input-file:
-- https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Features/stable/2021-07-01/features.json
-- https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Features/stable/2021-07-01/SubscriptionFeatureRegistration.json
+- https://github.com/Azure/azure-rest-api-specs/tree/6a57e9cedc87cafd2dc9e4f3e8af62b5725e3d22/specification/resources/resource-manager/Microsoft.Features/stable/2021-07-01/features.json
+- https://github.com/Azure/azure-rest-api-specs/tree/6a57e9cedc87cafd2dc9e4f3e8af62b5725e3d22/specification/resources/resource-manager/Microsoft.Features/stable/2021-07-01/SubscriptionFeatureRegistration.json
 
 # Needed when there is more than one input file
 override-info:
@@ -90,7 +90,7 @@ These settings apply only when `--tag=package-templatespecs-2021-05` is specifie
 
 ``` yaml $(tag) == 'package-templatespecs-2021-05'
 input-file:
-- https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Resources/stable/2021-05-01/templateSpecs.json
+- https://github.com/Azure/azure-rest-api-specs/tree/6a57e9cedc87cafd2dc9e4f3e8af62b5725e3d22/specification/resources/resource-manager/Microsoft.Resources/stable/2021-05-01/templateSpecs.json
 ```
 
 ### Tag: package-deploymentstacks-2022-08-preview
@@ -99,5 +99,5 @@ These settings apply only when `--tag=package-deploymentstacks-2022-08-preview` 
 
 ``` yaml $(tag) == 'package-deploymentstacks-2022-08-preview'
 input-file:
-- https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Resources/preview/2022-08-01-preview/deploymentStacks.json
+- https://github.com/Azure/azure-rest-api-specs/tree/13bf172f804ad5546ad3ccdf0c785777d4f15825/specification/resources/resource-manager/Microsoft.Resources/preview/2022-08-01-preview/deploymentStacks.json
 ```
