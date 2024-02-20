@@ -67,14 +67,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             else
             {
                 WriteVerbose($"Creating managed app type '{applicationTypeName}'.");
+                ApplicationTypeResource newAppTypeParams = this.GetNewAppTypeParameters(location, tags: tags);
                 return this.SfrpMcClient.ApplicationTypes.CreateOrUpdateWithHttpMessagesAsync(
-                    resourceGroupName: this.ResourceGroupName, 
-                    clusterName: this.ClusterName, 
-                    applicationTypeName: applicationTypeName,
-                    location: location,
-                    tags: tags?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string))
+                    this.ResourceGroupName,
+                    this.ClusterName,
+                    applicationTypeName,
+                    newAppTypeParams)
                     .GetAwaiter().GetResult().Body;
             }
+        }
+
+        private ApplicationTypeResource GetNewAppTypeParameters(string location, Hashtable tags = null)
+        {
+            return new ApplicationTypeResource(
+                location: location,
+                tags: tags?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string));
         }
 
         protected ApplicationTypeVersionResource CreateManagedApplicationTypeVersion(string applicationTypeName, string typeVersion, string location, string packageUrl, bool force, Hashtable tags = null)
