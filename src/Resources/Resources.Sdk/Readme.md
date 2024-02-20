@@ -4,6 +4,7 @@ This directory contains management plane service clients of Az.Resources module.
 ## Run Generation
 In this directory, run AutoRest:
 ```
+rm -r Generated/*
 autorest --reset
 autorest.cmd README.md --tag=package-privatelinks-2020-05 --version=v2 --debug
 autorest.cmd README.md --tag=package-subscriptions-2021-01 --version=v2 --debug
@@ -19,55 +20,15 @@ autorest.cmd README.md --tag=package-templatespecs-2021-05 --version=v2 --debug
 ``` yaml
 output-folder: Generated
 namespace: Microsoft.Azure.Management.Resources
-csharp:
-  clear-output-folder: false
-  reflect-api-versions: true
-  azure-arm: true
-  license-header: MICROSOFT_MIT_NO_VERSION
+csharp: true
+clear-output-folder: false
+reflect-api-versions: true
+azure-arm: true
+license-header: MICROSOFT_MIT_NO_VERSION
 ```
 
 
 ## Configuration
-
-### Basic Information
-
-These are the global settings for the Resource API.
-
-``` yaml $(package-privatelinks)
-tag: package-privatelinks-2020-05
-```
-
-``` yaml $(package-features)
-tag: package-features-2021-07
-```
-
-``` yaml $(package-locks)
-tag: package-locks-2020-05
-```
-
-``` yaml $(package-resources)
-tag: package-resources-2021-04
-```
-
-``` yaml $(package-subscriptions)
-tag: package-subscriptions-2022-12
-```
-
-``` yaml $(package-managedapplications)
-tag: package-managedapplications-2018-06
-```
-
-``` yaml $(package-deploymentscripts)
-tag: package-deploymentscripts-2020-10
-```
-
-``` yaml $(package-templatespecs)
-tag: package-templatespecs-2021-05
-```
-
-``` yaml $(package-deploymentstacks)
-tag: package-deploymentstacks-2022-08-preview
-```
 
 ### Tag: package-deploymentscripts-2023-08
 
