@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     = new RedistributeThroughputPropertiesResource(throughputPolicy, targetPartitionInfos, sourcePartitionInfos);
 
                 PhysicalPartitionThroughputInfoResult physicalPartitionThroughputInfoResult =
-                    CosmosDBManagementClient.MongoDBResources.MongoDBDatabaseRedistributeThroughput(this.ResourceGroupName, this.AccountName, this.DatabaseName,
+                    CosmosDBManagementClient.MongoDbResources.MongoDBDatabaseRedistributeThroughput(this.ResourceGroupName, this.AccountName, this.DatabaseName,
                     redistributeThroughputParameters);
                 
                 List<PSPhysicalPartitionThroughputInfo> resultantPartitionInfos = new List<PSPhysicalPartitionThroughputInfo>();

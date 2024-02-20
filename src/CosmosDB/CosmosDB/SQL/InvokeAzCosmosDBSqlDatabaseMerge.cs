@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
                 foreach (PhysicalPartitionStorageInfo item in physicalPartitionStorageInfoCollection.PhysicalPartitionStorageInfoCollectionProperty)
                 {
-                    physicalPartitionStorageInfos.Add(new PSPhysicalPartitionStorageInfo(item.Id, item.StorageInKB));
+                    physicalPartitionStorageInfos.Add(new PSPhysicalPartitionStorageInfo(item.Id, item.StorageInKb));
                 }
 
                 WriteObject(physicalPartitionStorageInfos);

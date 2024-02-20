@@ -84,13 +84,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 if (this.Force.IsPresent || ShouldContinue($"This command will merge the partitions of collection {Name} , do you want to continue?", String.Empty))
                 {
                     physicalPartitionStorageInfoCollection =
-                    CosmosDBManagementClient.MongoDBResources.MongoDBDatabasePartitionMerge(ResourceGroupName, AccountName, Name, new MergeParameters(isDryRun: false));
+                    CosmosDBManagementClient.MongoDbResources.MongoDBDatabasePartitionMerge(ResourceGroupName, AccountName, Name, new MergeParameters(isDryRun: false));
                 }
             }
             else if (shouldProcessReason == ShouldProcessReason.WhatIf)
             {
                 physicalPartitionStorageInfoCollection =
-                    CosmosDBManagementClient.MongoDBResources.MongoDBDatabasePartitionMerge(ResourceGroupName, AccountName, Name, new MergeParameters(isDryRun: true));
+                    CosmosDBManagementClient.MongoDbResources.MongoDBDatabasePartitionMerge(ResourceGroupName, AccountName, Name, new MergeParameters(isDryRun: true));
             }
 
             if (physicalPartitionStorageInfoCollection != null)
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
                 foreach (PhysicalPartitionStorageInfo item in physicalPartitionStorageInfoCollection.PhysicalPartitionStorageInfoCollectionProperty)
                 {
-                    physicalPartitionStorageInfos.Add(new PSPhysicalPartitionStorageInfo(item.Id, item.StorageInKB));
+                    physicalPartitionStorageInfos.Add(new PSPhysicalPartitionStorageInfo(item.Id, item.StorageInKb));
                 }
 
                 WriteObject(physicalPartitionStorageInfos);

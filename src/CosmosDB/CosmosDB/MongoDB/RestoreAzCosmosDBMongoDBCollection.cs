@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Name, "Restoring the deleted CosmosDB MongoDB Collection"))
             {
-                MongoDBCollectionGetResults mongoDBCollectionGetResults = CosmosDBManagementClient.MongoDBResources.CreateUpdateMongoDBCollectionWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name, mongoDBCollectionCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                MongoDBCollectionGetResults mongoDBCollectionGetResults = CosmosDBManagementClient.MongoDbResources.CreateUpdateMongoDBCollectionWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name, mongoDBCollectionCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSMongoDBCollectionGetResults(mongoDBCollectionGetResults));
             }
 

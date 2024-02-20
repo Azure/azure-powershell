@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 retrieveThroughputParameters.Resource = new RetrieveThroughputPropertiesResource(physicalPartitionIds);
 
                 PhysicalPartitionThroughputInfoResult physicalPartitionThroughputInfoResult = 
-                    CosmosDBManagementClient.MongoDBResources.MongoDBDatabaseRetrieveThroughputDistribution(
+                    CosmosDBManagementClient.MongoDbResources.MongoDBDatabaseRetrieveThroughputDistribution(
                         this.ResourceGroupName, 
                         this.AccountName, 
                         this.DatabaseName, 

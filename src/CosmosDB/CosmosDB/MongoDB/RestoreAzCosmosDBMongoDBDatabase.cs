@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (this.ShouldProcess(this.Name, "Restoring CosmosDB MongoDB Database"))
             {
-                MongoDBDatabaseGetResults mongoDBDatabaseGetResults = this.CosmosDBManagementClient.MongoDBResources.CreateUpdateMongoDBDatabaseWithHttpMessagesAsync(this.ResourceGroupName, this.AccountName, this.Name, mongoDBDatabaseCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                MongoDBDatabaseGetResults mongoDBDatabaseGetResults = this.CosmosDBManagementClient.MongoDbResources.CreateUpdateMongoDBDatabaseWithHttpMessagesAsync(this.ResourceGroupName, this.AccountName, this.Name, mongoDBDatabaseCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 this.WriteObject(new PSMongoDBDatabaseGetResults(mongoDBDatabaseGetResults));
             }
 
