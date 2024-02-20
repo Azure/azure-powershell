@@ -56,7 +56,10 @@ param(
     [string]$RepositoryLocation,
 
     [Parameter(Mandatory = $false, Position = 5)]
-    [string]$NugetExe
+    [string]$NugetExe, 
+
+    [Parameter(Mandatory = $false, Position = 6)]
+    [string]$TargetBuild
 )
 
 Import-Module "$PSScriptRoot\PublishModules.psm1"
@@ -117,7 +120,7 @@ $env:PSModulePath = "$env:PSModulePath;$tempRepoPath"
 $Errors = $null
 
 try {
-    $modules = Get-AllModules -BuildConfig $BuildConfig -Scope $Scope -PublishLocal:$PublishLocal -IsNetCore:$IsNetCore
+    $modules = Get-AllModules -BuildConfig $BuildConfig -Scope $Scope -TargetBuild $TargetBuild -PublishLocal:$PublishLocal -IsNetCore:$IsNetCore
     Add-AllModules -ModulePaths $modules -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -NugetExe $NugetExe
     Publish-AllModules -ModulePaths $modules -ApiKey $apiKey -TempRepoPath $tempRepoPath -RepoLocation $repositoryLocation -NugetExe $NugetExe -PublishLocal:$PublishLocal
 } catch {

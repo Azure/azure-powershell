@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.VMware-help.xml
 Module Name: Az.VMware
 online version: https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareVmHostPlacementPolicyPropertiesObject
 schema: 2.0.0
@@ -13,9 +13,8 @@ Create an in-memory object for VmHostPlacementPolicyProperties.
 ## SYNTAX
 
 ```
-New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType <AffinityType> -HostMember <String[]>
- -Type <PlacementPolicyType> -VMMember <String[]> [-DisplayName <String>] [-State <PlacementPolicyState>]
- [<CommonParameters>]
+New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType <String> -HostMember <String[]>
+ -VMMember <String[]> -Type <String> [-DisplayName <String>] [-State <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +41,7 @@ Create an in-memory object for VmHostPlacementPolicyProperties.
 placement policy affinity type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AffinityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +86,7 @@ Accept wildcard characters: False
 Whether the placement policy is enabled or disabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +101,7 @@ Accept wildcard characters: False
 placement policy type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,4 +141,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

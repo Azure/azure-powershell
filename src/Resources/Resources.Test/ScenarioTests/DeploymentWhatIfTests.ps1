@@ -274,6 +274,39 @@ function Test-WhatIfExcludeChangeTypesAtResourceGroupScope
 	}
 }
 
+
+
+<#
+.SYNOPSIS
+Tests what-if with user-defined types (https://github.com/Azure/bicep/issues/13245).
+#>
+function Test-WhatIfWithUserDefinedTypes
+{
+	try
+	{
+		# Arrange.
+		$deploymentName = Get-ResourceName
+		$location = "westus"
+		$resourceGroupName = Get-ResourceGroupName
+
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+		# Act.
+		$result = Get-AzResourceGroupDeploymentWhatIfResult `
+			-ResourceGroupName $resourceGroupName `
+			-Name $deploymentName `
+			-TemplateFile "Resources/DeploymentWhatIfTests/WhatIfWithUserDefinedTypes/main.bicep"
+
+		# Assert.
+		Assert-AreEqual "Succeeded" $result.Status
+	}
+	finally
+	{
+		# Cleanup.
+		Clean-ResourceGroup $resourceGroupName
+	}
+}
+
 <#
 .SYNOPSIS
 Tests subscription level deployment what-if with empty template.

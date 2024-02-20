@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported Snowflake V2 in ADF
+
+## Version 1.18.1
 * Added metadata Into StoreWriteSettings For Bug Fix
 * Supported ADF Warehouse, Mysql V2 and Salesforce V2 in ADF
 

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.0
+* Added support for `Data.Replication`
+
 ## Version 2.2.0
 * Fixed key vault SPN Id coming as null for some users
 * Added support for Windows Server OS upgrade while migrating the server to Azure using Azure Migrate

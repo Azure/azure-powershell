@@ -121,6 +121,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
             : String.Empty;
     }
 
+    internal class PSArgumentCompleterOutput : ArgumentCompleterOutput
+    {
+        public PSArgumentCompleterInfo PSArgumentCompleterInfo { get; }
+
+        public PSArgumentCompleterOutput(PSArgumentCompleterInfo completerInfo) : base(completerInfo)
+        {
+            PSArgumentCompleterInfo = completerInfo;
+        }
+
+
+        public override string ToString() => PSArgumentCompleterInfo != null
+            ? $"{Indent}[{typeof(PSArgumentCompleterAttribute)}({(PSArgumentCompleterInfo.IsTypeCompleter ? $"[{PSArgumentCompleterInfo.Type.Unwrap().ToPsType()}]" : $"{PSArgumentCompleterInfo.ResourceTypes?.Select(r => $"\"{r}\"")?.JoinIgnoreEmpty(", ")}")})]{Environment.NewLine}"
+            : String.Empty;
+    }
+
     internal class DefaultInfoOutput
     {
         public bool HasDefaultInfo { get; }
@@ -168,18 +183,62 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
         public override string ToString() => $"{Indent}${{{ParameterName}}}{(IsLast ? String.Empty : $",{Environment.NewLine}")}{Environment.NewLine}";
     }
 
-    internal class BeginOutput
+    internal class BaseOutput
     {
         public VariantGroup VariantGroup { get; }
 
-        public BeginOutput(VariantGroup variantGroup)
+        protected static readonly bool IsAzure = Convert.ToBoolean(@"true");
+        public BaseOutput(VariantGroup variantGroup)
         {
             VariantGroup = variantGroup;
+        }
+        public string ClearTelemetryContext()
+        {
+            return (!VariantGroup.IsInternal && IsAzure) ? $@"{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()" : "";
+        }
+    }
+
+    internal class BeginOutput : BaseOutput
+    {
+        public BeginOutput(VariantGroup variantGroup) : base(variantGroup)
+        {
         }
 
         public string GetProcessCustomAttributesAtRuntime()
         {
-            return VariantGroup.IsInternal ? "" : $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]{Environment.NewLine}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)";
+            return VariantGroup.IsInternal ? "" : IsAzure ? $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]
+{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){{
+{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+{Indent}{Indent}}}" : $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]{Environment.NewLine}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)";
+        }
+
+        private string GetTelemetry()
+        {
+            if (!VariantGroup.IsInternal && IsAzure)
+            {
+                return $@"
+{Indent}{Indent}if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {{
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+{Indent}{Indent}}}         
+{Indent}{Indent}$preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+{Indent}{Indent}if ($preTelemetryId -eq '') {{
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Marketplace.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}}} else {{
+{Indent}{Indent}{Indent}$internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+{Indent}{Indent}{Indent}if ($internalCalledCmdlets -eq '') {{
+{Indent}{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+{Indent}{Indent}{Indent}}} else {{
+{Indent}{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+{Indent}{Indent}{Indent}}}
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+{Indent}{Indent}}}
+";
+            }
+            return "";
         }
         public override string ToString() => $@"begin {{
 {Indent}try {{
@@ -188,6 +247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
 {Indent}{Indent}{Indent}$PSBoundParameters['OutBuffer'] = 1
 {Indent}{Indent}}}
 {Indent}{Indent}$parameterSet = $PSCmdlet.ParameterSetName
+{GetTelemetry()}
 {GetParameterSetToCmdletMapping()}{GetDefaultValuesStatements()}
 {GetProcessCustomAttributesAtRuntime()}
 {Indent}{Indent}$wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -195,6 +255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
 {Indent}{Indent}$steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
 {Indent}{Indent}$steppablePipeline.Begin($PSCmdlet)
 {Indent}}} catch {{
+{ClearTelemetryContext()}
 {Indent}{Indent}throw
 {Indent}}}
 }}
@@ -223,7 +284,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
                 var variantListString = defaultInfo.ParameterGroup.VariantNames.ToPsList();
                 var parameterName = defaultInfo.ParameterGroup.ParameterName;
                 sb.AppendLine();
-                sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}')) {{");
+                var setCondition = " ";
+                if (!String.IsNullOrEmpty(defaultInfo.SetCondition))
+                {
+                    setCondition = $" -and {defaultInfo.SetCondition}";
+                }
+                sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}'){setCondition}) {{");
                 sb.AppendLine($"{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = {defaultInfo.Script}");
                 sb.Append($"{Indent}{Indent}}}");
             }
@@ -231,28 +297,69 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
         }
     }
 
-    internal class ProcessOutput
+    internal class ProcessOutput : BaseOutput
     {
+        public ProcessOutput(VariantGroup variantGroup) : base(variantGroup)
+        {
+        }
+
+        private string GetFinally()
+        {
+            if (IsAzure && !VariantGroup.IsInternal)
+            {
+                return $@"
+{Indent}finally {{
+{Indent}{Indent}$backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+{Indent}{Indent}$backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+{Indent}}}
+";
+            }
+            return "";
+        }
         public override string ToString() => $@"process {{
 {Indent}try {{
 {Indent}{Indent}$steppablePipeline.Process($_)
 {Indent}}} catch {{
+{ClearTelemetryContext()}
 {Indent}{Indent}throw
 {Indent}}}
+{GetFinally()}
 }}
-
 ";
     }
 
-    internal class EndOutput
+    internal class EndOutput : BaseOutput
     {
+        public EndOutput(VariantGroup variantGroup) : base(variantGroup)
+        {
+        }
+
+        private string GetTelemetry()
+        {
+            if (!VariantGroup.IsInternal && IsAzure)
+            {
+                return $@"
+{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+{Indent}{Indent}if ($preTelemetryId -eq '') {{
+{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Marketplace.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+{Indent}{Indent}}}
+{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+";
+            }
+            return "";
+        }
         public override string ToString() => $@"end {{
 {Indent}try {{
 {Indent}{Indent}$steppablePipeline.End()
+{GetTelemetry()}
 {Indent}}} catch {{
+{ClearTelemetryContext()}
 {Indent}{Indent}throw
 {Indent}}}
-}}
+}} 
 ";
     }
 
@@ -277,6 +384,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
             var notesText = !String.IsNullOrEmpty(notes) ? $"{Environment.NewLine}.Notes{Environment.NewLine}{ComplexParameterHeader}{notes}" : String.Empty;
             var relatedLinks = String.Join(Environment.NewLine, CommentInfo.RelatedLinks.Select(l => $".Link{Environment.NewLine}{l}"));
             var relatedLinksText = !String.IsNullOrEmpty(relatedLinks) ? $"{Environment.NewLine}{relatedLinks}" : String.Empty;
+            var externalUrls = String.Join(Environment.NewLine, CommentInfo.ExternalUrls.Select(l => $".Link{Environment.NewLine}{l}"));
+            var externalUrlsText = !String.IsNullOrEmpty(externalUrls) ? $"{Environment.NewLine}{externalUrls}" : String.Empty;
             var examples = "";
             foreach (var example in VariantGroup.HelpInfo.Examples)
             {
@@ -289,7 +398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
 {CommentInfo.Description.ToDescriptionFormat(false)}
 {examples}{inputsText}{outputsText}{notesText}
 .Link
-{CommentInfo.OnlineVersion}{relatedLinksText}
+{CommentInfo.OnlineVersion}{relatedLinksText}{externalUrlsText}
 #>
 ";
         }
@@ -483,7 +592,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
 
         public static AllowEmptyArrayOutput ToAllowEmptyArray(this bool hasAllowEmptyArray) => new AllowEmptyArrayOutput(hasAllowEmptyArray);
 
-        public static ArgumentCompleterOutput ToArgumentCompleterOutput(this CompleterInfo completerInfo) => new ArgumentCompleterOutput(completerInfo);
+        public static ArgumentCompleterOutput ToArgumentCompleterOutput(this CompleterInfo completerInfo) => (completerInfo is PSArgumentCompleterInfo psArgumentCompleterInfo) ? psArgumentCompleterInfo.ToArgumentCompleterOutput() : new ArgumentCompleterOutput(completerInfo);
+
+        public static PSArgumentCompleterOutput ToArgumentCompleterOutput(this PSArgumentCompleterInfo completerInfo) => new PSArgumentCompleterOutput(completerInfo);
 
         public static DefaultInfoOutput ToDefaultInfoOutput(this ParameterGroup parameterGroup) => new DefaultInfoOutput(parameterGroup);
 
@@ -493,9 +604,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
 
         public static BeginOutput ToBeginOutput(this VariantGroup variantGroup) => new BeginOutput(variantGroup);
 
-        public static ProcessOutput ToProcessOutput(this VariantGroup variantGroup) => new ProcessOutput();
+        public static ProcessOutput ToProcessOutput(this VariantGroup variantGroup) => new ProcessOutput(variantGroup);
 
-        public static EndOutput ToEndOutput(this VariantGroup variantGroup) => new EndOutput();
+        public static EndOutput ToEndOutput(this VariantGroup variantGroup) => new EndOutput(variantGroup);
 
         public static HelpCommentOutput ToHelpCommentOutput(this VariantGroup variantGroup) => new HelpCommentOutput(variantGroup);
 
@@ -524,7 +635,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PowerShell
                 return ni.IsComplexInterface
                     ? ni.ToNoteOutput(nestedIndent, includeDashes, includeBackticks, false)
                     : RenderProperty(ni, nestedIndent, includeDashes, includeBackticks);
-            }).Prepend(RenderProperty(complexInterfaceInfo, currentIndent, !isFirst && includeDashes, !isFirst && includeBackticks));
+            }).Prepend(RenderProperty(complexInterfaceInfo, currentIndent, !isFirst && includeDashes, includeBackticks));
             return String.Join(Environment.NewLine, nested);
         }
     }

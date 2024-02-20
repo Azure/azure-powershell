@@ -20,14 +20,12 @@ Changes private store properties
 .Description
 Changes private store properties
 .Example
-PS C:\> New-AzMarketplacePrivateStore -Id 0000000-0000-00000-0000-000000000000 -Availability 'disabled' -ETag '0000000-0000-00000-0000-000000000000'
+New-AzMarketplacePrivateStore -Id 0000000-0000-00000-0000-000000000000 -Availability 'disabled' -ETag '0000000-0000-00000-0000-000000000000'
 
-
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IPrivateStore
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IPrivateStore
 .Outputs
 System.Boolean
 .Notes
@@ -44,18 +42,12 @@ INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
   [RequestApprovalId <String>]: The request approval ID to get create or update
 
 PAYLOAD <IPrivateStore>: The PrivateStore data structure.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC)
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <IdentityType?>]: The type of identity that created the resource
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <IdentityType?>]: The type of identity that last modified the resource
-  [Availability <Availability?>]: Indicates private store availability
+  [Availability <String>]: Indicates private store availability
   [Branding <IPrivateStorePropertiesBranding>]: Gets or sets list of branding characteristics
     [(Any) <String>]: This indicates any property can be added to this object.
   [ETag <String>]: Identifier for purposes of race condition
   [IsGov <Boolean?>]: Is government
-  [NotificationSettingRecipient <IRecipient[]>]: Gets or sets list of notified recipients for new requests
+  [NotificationSettingRecipient <List<IRecipient>>]: Gets or sets list of notified recipients for new requests
     [PrincipalId <String>]: Principal ID
   [NotificationSettingSendToAllMarketplaceAdmin <Boolean?>]: Gets or sets whether to send email to all marketplace admins for new requests
   [PrivateStoreName <String>]: Private Store Name
@@ -76,7 +68,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IPrivateStore]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IPrivateStore]
     # The PrivateStore data structure.
     # To construct, see NOTES section for PAYLOAD properties and create a hash table.
     ${Payload},
@@ -86,7 +78,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -142,6 +135,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             CreateViaIdentity = 'Az.Marketplace.private\New-AzMarketplacePrivateStore_CreateViaIdentity';
         }
@@ -151,6 +145,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -159,15 +154,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

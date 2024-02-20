@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.10.1
 * Fixed custom location enable flag issue.
 
 ## Version 0.10.0
