@@ -42,8 +42,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 // todo: add a tool to update assembly versions after replacing the assemblies. (Can it support newly introduced assemblies?)
                 // todo: consider moving the list to a standalone config file
                 #region AssemblyList
-                CreateAssembly("netstandard2.0", "Azure.Core", "1.37.0.0").WithPowerShellCore(),
-
+                CreateAssembly("netstandard2.0", "Azure.Core", "1.37.0.0"),
                 CreateAssembly("netstandard2.0", "Azure.Identity", "1.10.3.0"),
                 CreateAssembly("netstandard2.0", "Azure.Identity.Broker", "1.0.0.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.Bcl.AsyncInterfaces", "1.0.0.0"),
@@ -64,7 +63,6 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netstandard2.0", "System.ServiceModel.Primitives", "4.7.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Threading.Tasks.Extensions", "4.2.0.1").WithWindowsPowerShell(),
 
-                CreateAssembly("netfx", "Azure.Core", "1.37.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "Newtonsoft.Json", "13.0.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Diagnostics.DiagnosticSource", "6.0.0.1").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Numerics.Vectors", "4.1.4.0").WithWindowsPowerShell(),
