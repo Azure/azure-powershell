@@ -76,6 +76,4 @@ Describe 'Update-AzConnectedMachine' {
     
         $updatedMachine.PrivateLinkScopeResourceId | Should -Be ""
     }
-
-
 }
