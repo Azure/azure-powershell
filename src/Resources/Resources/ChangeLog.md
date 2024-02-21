@@ -21,6 +21,7 @@
 ## Upcoming Release
 * Added `AuxTenant` parameter in `New-AzResourceGroupDeployment`to support cross-tenant deployment.
 * Fixed bug with custom types and deployments whatif. [#13245]
+* Fixed bug with nullable array parameters & outputs.
 
 ## Version 6.15.1
 * Fixed deadlock in Bicep CLI execution. [#24133]

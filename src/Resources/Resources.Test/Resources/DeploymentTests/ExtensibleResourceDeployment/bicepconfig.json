@@ -1,5 +1,5 @@
 {
     "experimentalFeaturesEnabled": {
-        "paramsFiles": true
+        "extensibility": true
     }
 }
