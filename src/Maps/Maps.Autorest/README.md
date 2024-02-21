@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Maps service.
 
 ---
-## Status
-[![Az.Maps](https://img.shields.io/powershellgallery/v/Az.Maps.svg?style=flat-square&label=Az.Maps "Az.Maps")](https://www.powershellgallery.com/packages/Az.Maps/)
 
 ## Info
 - Modifiable: yes

@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the LabServices service.
 
 ---
-## Status
-[![Az.LabServices](https://img.shields.io/powershellgallery/v/Az.LabServices.svg?style=flat-square&label=Az.LabServices "Az.LabServices")](https://www.powershellgallery.com/packages/Az.LabServices/)
 
 ## Info
 - Modifiable: yes

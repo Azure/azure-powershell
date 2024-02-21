@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the MixedReality service.
 
 ---
-## Status
-[![Az.MixedReality](https://img.shields.io/powershellgallery/v/Az.MixedReality.svg?style=flat-square&label=Az.MixedReality "Az.MixedReality")](https://www.powershellgallery.com/packages/Az.MixedReality/)
 
 ## Info
 - Modifiable: yes

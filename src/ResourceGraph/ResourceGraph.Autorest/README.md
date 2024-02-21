@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the ResourceGraph service.
 
 ---
-## Status
-[![Az.ResourceGraph](https://img.shields.io/powershellgallery/v/Az.ResourceGraph.svg?style=flat-square&label=Az.ResourceGraph "Az.ResourceGraph")](https://www.powershellgallery.com/packages/Az.ResourceGraph/)
 
 ## Info
 - Modifiable: yes

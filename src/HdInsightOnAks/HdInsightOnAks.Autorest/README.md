@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the HdInsightOnAks service.
 
 ---
-## Status
-[![Az.HdInsightOnAks](https://img.shields.io/powershellgallery/v/Az.HdInsightOnAks.svg?style=flat-square&label=Az.HdInsightOnAks "Az.HdInsightOnAks")](https://www.powershellgallery.com/packages/Az.HdInsightOnAks/)
 
 ## Info
 - Modifiable: yes

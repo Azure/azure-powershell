@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             // Continue deserialize if the type of Value in DeploymentVariable is array.
             mappedDeploymentVariables?.Values.ForEach(dv =>
             { 
-                if ("Array".Equals(dv?.Type))
+                if ("Array".Equals(dv?.Type) && dv?.Value != null)
                 {
                     dv.Value = JsonConvert.DeserializeObject<object[]>(dv.Value.ToString());
                 }
