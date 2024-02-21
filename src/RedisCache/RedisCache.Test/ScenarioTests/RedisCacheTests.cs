@@ -107,5 +107,12 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-UpdateChannel");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMicrosoftEntraAuthCache()
+        {
+            TestRunner.RunTestScript("Test-MicrosoftEntraAuthCache");
+        }
     }
 }

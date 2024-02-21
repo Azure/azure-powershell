@@ -993,6 +993,134 @@ function Test-ManagedIdentity
 
 <#
 .SYNOPSIS
+Tests Microsoft Entra Authentication with New-AzRedisCache, Set-AzRedisCache and Get-AzRedisCache
+Tests GetAzureRedisCacheAccessPolicy, NewAzureRedisCacheAccessPolicy and RemoveAzureRedisCacheAccessPolicy
+Tests GetAzureRedisCacheAccessPolicyAssignment, NewAzureRedisCacheAccessPolicyAssignment and RemoveAzureRedisCacheAccessPolicyAssignment
+#>
+function Test-MicrosoftEntraAuthCache
+{
+    # Setup
+    $resourceGroupName = "PowerShellTest-21"
+    # Generate random cache name
+    $cacheName = "redisteam" + (Get-Random -Minimum 100 -Maximum 1000).ToString("D3")
+    $location = Get-Location -providerNamespace "Microsoft.Cache" -resourceType "redis" -preferredLocation "West US"
+    $accessPolicyName = "testAccessPolicy"
+    $accessPolicyAssignmentName = "testAccessPolicyAssignment"
+
+    # Create resource group
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Creating Cache
+    $cacheCreated = New-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size P1 -Sku Premium -RedisVersion latest -RedisConfiguration @{"aad-enabled" = "true"}
+
+    Assert-AreEqual $cacheName $cacheCreated.Name
+    Assert-AreEqual $location $cacheCreated.Location
+    Assert-AreEqual "Microsoft.Cache/Redis" $cacheCreated.Type
+    Assert-AreEqual $resourceGroupName $cacheCreated.ResourceGroupName
+    Assert-AreEqual "creating" $cacheCreated.ProvisioningState
+    Assert-AreEqual "6GB" $cacheCreated.Size
+    Assert-AreEqual "Premium" $cacheCreated.Sku
+    Assert-AreEqual "6" $cacheCreated.RedisVersion.split(".")[0] # May need to update if 'latest' is > 6
+
+    # In loop to check if cache provisioning succeeded
+    for ($i = 0; $i -le 60; $i++)
+    {
+        Start-TestSleep -Seconds 30
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
+        {
+            Assert-AreEqual $cacheName $cacheGet[0].Name
+            Assert-AreEqual "succeeded" $cacheGet[0].ProvisioningState
+            break
+        }
+        Assert-False {$i -eq 60} "Cache is not in succeeded state even after 30 min."
+    }
+    $cacheCreated = Get-AzRedisCache -Name $cacheName
+    Assert-AreEqual "true" $cacheCreated.RedisConfiguration.Item("aad-enabled")
+
+    # List access polices
+    $accessPolicies = Get-AzRedisCacheAccessPolicy -Name $cacheName
+    Assert-AreEqual 3 $accessPolicies.Count
+
+    # Create a new access policy
+    $accessPolicy = New-AzRedisCacheAccessPolicy -Name $cacheName -AccessPolicyName $accessPolicyName -Permissions "+get +hget"
+    Assert-AreEqual $accessPolicyName $accessPolicy.AccessPolicyName
+    Assert-AreEqual "+get +hget allkeys" $accessPolicy.Permissions
+
+    # List access polices
+    $accessPolicies = Get-AzRedisCacheAccessPolicy -Name $cacheName
+    Assert-AreEqual 4 $accessPolicies.Count
+
+    # Update access policy
+    $accessPolicy = New-AzRedisCacheAccessPolicy -Name $cacheName -AccessPolicyName $accessPolicyName -Permissions "+get"
+    Assert-AreEqual $accessPolicyName $accessPolicy.AccessPolicyName
+    Assert-AreEqual "+get allkeys" $accessPolicy.Permissions
+
+    # Get an access policy
+    $accessPolicies = Get-AzRedisCacheAccessPolicy -Name $cacheName -AccessPolicyName $accessPolicyName
+    Assert-AreEqual $accessPolicyName $accessPolicy.AccessPolicyName
+    Assert-AreEqual "+get allkeys" $accessPolicy.Permissions
+
+    # Create an access policy assigment
+    $accessPolicyAssignment = New-AzRedisCacheAccessPolicyAssignment -Name $cacheName -AccessPolicyAssignmentName $accessPolicyAssignmentName -AccessPolicyName $accessPolicyName -ObjectId "69d700c5-ca77-4335-947e-4f823dd00e1a" -ObjectIdAlias "kj-aad-testing"
+    Assert-AreEqual $accessPolicyAssignmentName $accessPolicyAssignment.AccessPolicyAssignmentName
+    Assert-AreEqual $accessPolicyName $accessPolicyAssignment.AccessPolicyName
+    Assert-AreEqual "69d700c5-ca77-4335-947e-4f823dd00e1a" $accessPolicyAssignment.ObjectId
+    Assert-AreEqual "kj-aad-testing" $accessPolicyAssignment.ObjectIdAlias
+
+    # List access policy assignments
+    $accessPolicyAssignments = Get-AzRedisCacheAccessPolicyAssignment -Name $cacheName
+    Assert-AreEqual 1 $accessPolicyAssignments.Count
+
+    # Update access policy assignment
+    $accessPolicyAssignment = New-AzRedisCacheAccessPolicyAssignment -Name $cacheName -AccessPolicyAssignmentName $accessPolicyAssignmentName -AccessPolicyName $accessPolicyName -ObjectId "69d700c5-ca77-4335-947e-4f823dd00e1a" -ObjectIdAlias "aad testing app"
+    Assert-AreEqual "aad testing app" $accessPolicyAssignment.ObjectIdAlias
+
+    # Get an access policy assigment
+    $accessPolicies = Get-AzRedisCacheAccessPolicyAssignment -Name $cacheName -AccessPolicyAssignmentName $accessPolicyAssignmentName
+    Assert-AreEqual $accessPolicyAssignmentName $accessPolicyAssignment.AccessPolicyAssignmentName
+    Assert-AreEqual $accessPolicyName $accessPolicyAssignment.AccessPolicyName
+    Assert-AreEqual "69d700c5-ca77-4335-947e-4f823dd00e1a" $accessPolicyAssignment.ObjectId
+    Assert-AreEqual "aad testing app" $accessPolicyAssignment.ObjectIdAlias
+
+    # Delete access policy assignment
+    Assert-True {Remove-AzRedisCacheAccessPolicyAssignment -Name $cacheName -AccessPolicyAssignmentName $accessPolicyAssignmentName -PassThru} "Removing access policy assignment failed."
+
+    # List access policy assignments
+    $accessPolicyAssignments = Get-AzRedisCacheAccessPolicyAssignment -Name $cacheName
+    Assert-AreEqual 0 $accessPolicyAssignments.Count
+
+    # Delete access policy
+    Assert-True {Remove-AzRedisCacheAccessPolicy -Name $cacheName -AccessPolicyName $accessPolicyName -PassThru} "Removing access policy failed."
+
+    # Disabling microsoft entra authentication on cache
+    $cacheUpdated = Set-AzRedisCache -Name $cacheName -RedisConfiguration @{"aad-enabled" = "false"}
+
+    # In loop to check if microsoft entra auth disablement succeeded
+    for ($i = 0; $i -le 60; $i++)
+    {
+        Start-TestSleep -Seconds 30
+        $cacheGet = Get-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
+        {
+            Assert-AreEqual $cacheName $cacheGet[0].Name
+            Assert-AreEqual "succeeded" $cacheGet[0].ProvisioningState
+            break
+        }
+        Assert-False {$i -eq 60} "Cache is not in succeeded state even after 30 min."
+    }
+    $cacheUpdated = Get-AzRedisCache -Name $cacheName
+    Assert-AreEqual "false" $cacheUpdated.RedisConfiguration.Item("aad-enabled")
+
+    # Delete cache
+    Assert-True {Remove-AzRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+
+    # Delete resource group
+    Remove-AzResourceGroup -Name $resourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
 Tests redis cache.
 #>
 function Test-UpdateChannel

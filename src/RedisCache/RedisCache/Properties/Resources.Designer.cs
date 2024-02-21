@@ -61,11 +61,65 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Operation to create Access Policy Assignment failed..
+        /// </summary>
+        internal static string AccessPolicyAssignmentCreationFailed {
+            get {
+                return ResourceManager.GetString("AccessPolicyAssignmentCreationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cache &apos;{0}&apos; does not have Access Policy Assignment with name &apos;{1}&apos;..
+        /// </summary>
+        internal static string AccessPolicyAssignmentNotFound {
+            get {
+                return ResourceManager.GetString("AccessPolicyAssignmentNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operation to create Access Policy failed..
+        /// </summary>
+        internal static string AccessPolicyCreationFailed {
+            get {
+                return ResourceManager.GetString("AccessPolicyCreationFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cache &apos;{0}&apos; does not have Access Policy with name &apos;{1}&apos;..
+        /// </summary>
+        internal static string AccessPolicyNotFound {
+            get {
+                return ResourceManager.GetString("AccessPolicyNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Redis Cache with name &apos;{0}&apos; does not exists..
         /// </summary>
         internal static string CacheNotFound {
             get {
                 return ResourceManager.GetString("CacheNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating Access Policy &apos;{0}&apos; with specified name and permissions for cache &apos;{1}&apos;.
+        /// </summary>
+        internal static string CreateAccessPolicy {
+            get {
+                return ResourceManager.GetString("CreateAccessPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating access policy assignment &apos;{0}&apos; for Redis Cache &apos;{1}&apos;....
+        /// </summary>
+        internal static string CreateAccessPolicyAssignment {
+            get {
+                return ResourceManager.GetString("CreateAccessPolicyAssignment", resourceCulture);
             }
         }
         
@@ -282,6 +336,24 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         internal static string RegeneratingRedisCacheKey {
             get {
                 return ResourceManager.GetString("RegeneratingRedisCacheKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Access Policy &apos;{0}&apos; from Redis Cache &apos;{1}&apos;....
+        /// </summary>
+        internal static string RemoveAccessPolicy {
+            get {
+                return ResourceManager.GetString("RemoveAccessPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Access Policy Assignment &apos;{0}&apos; from Redis Cache &apos;{1}&apos;....
+        /// </summary>
+        internal static string RemoveAccessPolicyAssignment {
+            get {
+                return ResourceManager.GetString("RemoveAccessPolicyAssignment", resourceCulture);
             }
         }
         

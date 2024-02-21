@@ -85,7 +85,10 @@ CmdletsToExport = 'Export-AzRedisCache', 'Get-AzRedisCache',
                'Remove-AzRedisCacheDiagnostic', 'Remove-AzRedisCacheFirewallRule', 
                'Remove-AzRedisCacheLink', 'Remove-AzRedisCachePatchSchedule', 
                'Reset-AzRedisCache', 'Set-AzRedisCache', 
-               'Set-AzRedisCacheDiagnostic', 'Clear-AzRedisCache'
+               'Set-AzRedisCacheDiagnostic', 'Get-AzRedisCacheAccessPolicy', 
+               'New-AzRedisCacheAccessPolicy', 'Remove-AzRedisCacheAccessPolicy',
+               'Get-AzRedisCacheAccessPolicyAssignment', 'New-AzRedisCacheAccessPolicyAssignment',
+               'Remove-AzRedisCacheAccessPolicyAssignment', 'Clear-AzRedisCache'
 
 # Variables to export from this module
 # VariablesToExport = @()
