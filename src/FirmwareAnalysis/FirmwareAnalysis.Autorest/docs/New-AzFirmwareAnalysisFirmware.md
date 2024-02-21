@@ -208,7 +208,7 @@ Accept wildcard characters: False
 
 ### -StatusMessage
 A list of errors or other messages generated during firmware analysis
-.
+To construct, see NOTES section for STATUSMESSAGE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IStatusMessage[]
