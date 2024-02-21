@@ -74,3 +74,5 @@ Modifies an Azure Cache for Redis.
 ### [Set-AzRedisCacheDiagnostic](Set-AzRedisCacheDiagnostic.md)
 Enables diagnostics on an Azure Redis Cache.
 
+### [Clear-AzRedisCache](Clear-AzRedisCache.md)
+Flush all data from an Azure Redis Cache.

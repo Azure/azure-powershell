@@ -178,6 +178,24 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to flush all keys present in redis cache &apos;{0}&apos;?.
+        /// </summary>
+        internal static string FlushingRedisCache {
+            get {
+                return ResourceManager.GetString("FlushingRedisCache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flushing redis cache &apos;{0}&apos; ....
+        /// </summary>
+        internal static string FlushRedisCache {
+            get {
+                return ResourceManager.GetString("FlushRedisCache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to import data into redis cache &apos;{0}&apos;?.
         /// </summary>
         internal static string ImportingRedisCache {
