@@ -129,7 +129,7 @@ Updates `RetentionTimeInHour` in EventHub entity `myEventHub` to 72 hours.
 ### -ArchiveNameFormat
 Blob naming convention for archive, e.g.
 {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}.
-Here all the parameters (Namespace,EventHub ..
+Here all the parameters (Namespace,EventHub.
 etc) are mandatory irrespective of order
 
 ```yaml
@@ -253,6 +253,7 @@ Accept wildcard characters: False
 ### -InputObject
 Identity parameter.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity

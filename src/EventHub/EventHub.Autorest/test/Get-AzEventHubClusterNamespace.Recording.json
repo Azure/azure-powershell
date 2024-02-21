@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "44" ],
-        "x-ms-client-request-id": [ "892f4ad6-e0f4-4594-8e1d-bd506306f6c8" ],
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "24dfbfc6-b9db-4503-8da3-6ec60d28b9b2" ],
         "CommandName": [ "Get-AzEventHubClusterNamespace" ],
         "FullCommandName": [ "Get-AzEventHubClusterNamespace_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,18 +22,18 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-correlation-request-id": [ "65645205-c41f-42bb-abbe-80601a327e2b" ],
-        "x-ms-client-request-id": [ "892f4ad6-e0f4-4594-8e1d-bd506306f6c8_RP" ],
-        "x-ms-messaging-activity-id": [ "a538002e-4009-4dcd-a95e-ea21f0dfffe4" ],
-        "x-ms-messaging-routing-id": [ "AUSTRALIAEAST|AUSTRALIAEAST|G4|2024-02-01T16:40:29" ],
+        "x-ms-correlation-request-id": [ "70b257e7-37f9-4c3f-bb65-656749d293e5" ],
+        "x-ms-client-request-id": [ "24dfbfc6-b9db-4503-8da3-6ec60d28b9b2_RP" ],
+        "x-ms-messaging-activity-id": [ "7cf541e9-de0d-4a6f-80b3-4fc0832a0f5e" ],
+        "x-ms-messaging-routing-id": [ "AUSTRALIAEAST|AUSTRALIAEAST|G6|2024-02-21T12:34:06" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-request-id": [ "65645205-c41f-42bb-abbe-80601a327e2b" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T164029Z:65645205-c41f-42bb-abbe-80601a327e2b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "70b257e7-37f9-4c3f-bb65-656749d293e5" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T123406Z:70b257e7-37f9-4c3f-bb65-656749d293e5" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 722F1058A67744449CBF289011246760 Ref B: SEL221051504053 Ref C: 2024-02-01T16:40:28Z" ],
-        "Date": [ "Thu, 01 Feb 2024 16:40:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2D099EA555BF4502A83CD4987CABFEC8 Ref B: SEL221051503027 Ref C: 2024-02-21T12:34:05Z" ],
+        "Date": [ "Wed, 21 Feb 2024 12:34:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "332" ],

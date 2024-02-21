@@ -163,7 +163,7 @@ Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with Cleau
 ### -ArchiveNameFormat
 Blob naming convention for archive, e.g.
 {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}.
-Here all the parameters (Namespace,EventHub ..
+Here all the parameters (Namespace,EventHub.
 etc) are mandatory irrespective of order
 
 ```yaml
@@ -317,7 +317,7 @@ Accept wildcard characters: False
 
 ### -NamespaceInputObject
 Identity Parameter
-To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
@@ -348,7 +348,7 @@ Accept wildcard characters: False
 
 ### -Parameter
 Single item in List or Get Event Hub operation
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventhub

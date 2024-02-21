@@ -115,5 +115,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-https://msdn.microsoft.com/en-us/library/azure/mt639379.aspx
-

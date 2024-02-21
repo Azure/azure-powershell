@@ -289,7 +289,7 @@ Accept wildcard characters: False
 
 ### -KeyVaultProperty
 Properties to configure Encryption
-To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IKeyVaultProperties[]

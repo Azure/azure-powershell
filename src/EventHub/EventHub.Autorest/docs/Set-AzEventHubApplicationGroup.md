@@ -154,6 +154,7 @@ Accept wildcard characters: False
 ### -InputObject
 Identity parameter.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
@@ -231,7 +232,7 @@ Accept wildcard characters: False
 ### -Policy
 List of group policies that define the behavior of application group.
 The policies can support resource governance scenarios such as limiting ingress or egress traffic.
-To construct, see NOTES section for POLICY properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroupPolicy[]

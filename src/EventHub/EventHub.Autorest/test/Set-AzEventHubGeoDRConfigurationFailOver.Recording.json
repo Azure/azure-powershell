@@ -1,13 +1,13 @@
 {
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+1": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "310" ],
-        "x-ms-client-request-id": [ "7d06a05f-19b4-4755-9405-ddcfed749290" ],
+        "x-ms-unique-id": [ "287" ],
+        "x-ms-client-request-id": [ "20982dee-044b-4fd9-9941-9e8cbcf10c3e" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,35 +22,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "80a90e53-7d96-443e-9382-c1e13ec44660_M8SN1_M8SN1" ],
+        "x-ms-request-id": [ "87d9e835-0356-414a-8b20-52dc914ec0da_M9SN1_M9SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
-        "x-ms-correlation-request-id": [ "2f397cc1-ba31-4f20-afc4-6cc644725a8f" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172109Z:2f397cc1-ba31-4f20-afc4-6cc644725a8f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "31f83717-d878-4f8a-9d29-3cbf072c1d76" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131258Z:31f83717-d878-4f8a-9d29-3cbf072c1d76" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2B936280406140C49C7DD5ADF68BDE7A Ref B: SEL221051504053 Ref C: 2024-02-01T17:21:07Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:21:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4082441C2E764172A7D0DCCDBE0E3AF2 Ref B: SEL221051503027 Ref C: 2024-02-21T13:12:57Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:12:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "554" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Succeeded\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Succeeded\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg/failover?api-version=2023-01-01-preview+2": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas/failover?api-version=2023-01-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg/failover?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas/failover?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "311" ],
-        "x-ms-client-request-id": [ "428de024-c10d-4d0e-94ea-e7397e984d21" ],
+        "x-ms-unique-id": [ "288" ],
+        "x-ms-client-request-id": [ "59c1bb7f-903d-4a31-8356-38232196eeec" ],
         "CommandName": [ "Az.EventHub.private\\Invoke-AzEventHubFailDisasterRecoveryConfigOver_Fail" ],
         "FullCommandName": [ "Invoke-AzEventHubFailDisasterRecoveryConfigOver_Fail" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -65,16 +65,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "606e992e-f171-44db-a896-7c8139e99832_M10SN1_M10SN1" ],
+        "x-ms-request-id": [ "64e53488-be34-4bc3-8dac-50b9fe99832f_M5SN1_M5SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "0173a9fd-9dc3-4fa1-a127-d5d458fc7b77" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172112Z:0173a9fd-9dc3-4fa1-a127-d5d458fc7b77" ],
+        "x-ms-correlation-request-id": [ "739f8e32-9c58-4416-bbe0-c93e4ffa01f2" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131301Z:739f8e32-9c58-4416-bbe0-c93e4ffa01f2" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C5CEEC2BD42149B789D12858148DA693 Ref B: SEL221051504053 Ref C: 2024-02-01T17:21:09Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:21:12 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AF1C7D25321240918F3EF4D74460C3E0 Ref B: SEL221051503027 Ref C: 2024-02-21T13:12:58Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:13:01 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -84,15 +84,15 @@
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+3": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "312" ],
-        "x-ms-client-request-id": [ "a36076ce-e360-4cb5-8713-a92dd2e261c8" ],
+        "x-ms-unique-id": [ "289" ],
+        "x-ms-client-request-id": [ "6d5e2d3d-a881-4e1e-ac37-2d22c60844de" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -107,35 +107,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "635687c4-415f-4467-aef6-133e143cac7c_M8SN1_M8SN1" ],
+        "x-ms-request-id": [ "cf098d72-e5b1-4d00-a59b-e8314b57ddd2_M9SN1_M9SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
-        "x-ms-correlation-request-id": [ "d7e3a7c9-d924-486d-90f4-a25dc724335f" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172114Z:d7e3a7c9-d924-486d-90f4-a25dc724335f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "47704ce9-5ece-4f16-a916-b51ce23df799" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131302Z:47704ce9-5ece-4f16-a916-b51ce23df799" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 33CE12127ECB41D3B6BA650A5A3734E3 Ref B: SEL221051504053 Ref C: 2024-02-01T17:21:12Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:21:14 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A9DAD6D2D5F1491AAFB2CEF619E9203F Ref B: SEL221051503027 Ref C: 2024-02-21T13:13:02Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:13:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "553" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+4": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "313" ],
-        "x-ms-client-request-id": [ "b9289208-0597-4916-bbca-785fe254286f" ],
+        "x-ms-unique-id": [ "290" ],
+        "x-ms-client-request-id": [ "9be7a0bd-7bbf-4585-ada5-687c6d9c0aa4" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -150,207 +150,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "1e60bf3e-df52-4305-b34a-ab173b3c9e8e_M8CH3_M8CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-correlation-request-id": [ "f88fcb27-031f-4c03-94e2-8239dd9a91b1" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172125Z:f88fcb27-031f-4c03-94e2-8239dd9a91b1" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3793A86116D74A6EA437ABDA4FE4C45B Ref B: SEL221051504053 Ref C: 2024-02-01T17:21:24Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:21:25 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "553" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+5": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "314" ],
-        "x-ms-client-request-id": [ "e3a5ca47-269b-4736-ae03-ef045d97b127" ],
-        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
-        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "4d9414de-2cc3-4b15-835a-67baf7a0b35e_M8SN1_M8SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
-        "x-ms-correlation-request-id": [ "d97cc5dd-eae6-42c3-b0da-13c1b5ac990b" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172136Z:d97cc5dd-eae6-42c3-b0da-13c1b5ac990b" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3661B68275474AE1845E38D521655FBB Ref B: SEL221051504053 Ref C: 2024-02-01T17:21:35Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:21:36 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "553" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+6": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "315" ],
-        "x-ms-client-request-id": [ "90bf68c9-04e9-4889-ae49-f1e4ca266739" ],
-        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
-        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "d5fe04ea-6aa8-4289-96c4-2d7ff5b25e97_M0CH3_M0CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-correlation-request-id": [ "e1fe2693-59d0-46d8-88f6-c08ee5fd2276" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172148Z:e1fe2693-59d0-46d8-88f6-c08ee5fd2276" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7997C486BE424245908E81ABE7C400AF Ref B: SEL221051504053 Ref C: 2024-02-01T17:21:46Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:21:48 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "553" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+7": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "316" ],
-        "x-ms-client-request-id": [ "a3cd8c75-85a0-419b-a12a-6cce13131741" ],
-        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
-        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "7f47ad1c-6f2a-4d1c-8193-fc7041f95217_M6SN1_M6SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
-        "x-ms-correlation-request-id": [ "33136aa3-bba5-42ba-aef5-13694d9ae69c" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172159Z:33136aa3-bba5-42ba-aef5-13694d9ae69c" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 71A532904C8D45D2B02EC3972A35ED8F Ref B: SEL221051504053 Ref C: 2024-02-01T17:21:58Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:21:59 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "553" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+8": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "317" ],
-        "x-ms-client-request-id": [ "8ef50c60-4070-4a92-9c03-6ea31fd6ad69" ],
-        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
-        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a4259942-42fd-46ae-85cb-ae1bef0733b8_M11CH3_M11CH3" ],
+        "x-ms-request-id": [ "c3d53367-70fb-4082-8171-b0c2dda58822_M6CH3_M6CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-correlation-request-id": [ "f5ae3b9b-5ef6-4aa4-93ea-8de23c72017d" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172211Z:f5ae3b9b-5ef6-4aa4-93ea-8de23c72017d" ],
+        "x-ms-correlation-request-id": [ "a218a976-ed6e-446f-9147-c0a511ba25d0" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131315Z:a218a976-ed6e-446f-9147-c0a511ba25d0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 81859A3C6A4E4E74829F15CD8D00D542 Ref B: SEL221051504053 Ref C: 2024-02-01T17:22:09Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:22:11 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C3F761C84C084343805C89507B175BCD Ref B: SEL221051503027 Ref C: 2024-02-21T13:13:12Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:13:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "553" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+9": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "318" ],
-        "x-ms-client-request-id": [ "34292a2e-4574-47ab-91c9-1ac359e37c4c" ],
+        "x-ms-unique-id": [ "291" ],
+        "x-ms-client-request-id": [ "ad21c129-6c7d-48d4-8ba2-16369a64ebc8" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -365,35 +193,121 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "3cad7501-57ab-41f5-b26d-4ee083a0bfe2_M11CH3_M11CH3" ],
+        "x-ms-request-id": [ "b4e3c0db-cf93-4582-acd9-7e454d8c6c3f_M5SN1_M5SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "21c98de3-1d49-4072-9f41-8e307586e897" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131327Z:21c98de3-1d49-4072-9f41-8e307586e897" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9AAC5AA448F44977A6E82D05D91C16E5 Ref B: SEL221051503027 Ref C: 2024-02-21T13:13:25Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:13:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "553" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "292" ],
+        "x-ms-client-request-id": [ "255745c8-9e47-4e94-b625-37017ec2a15a" ],
+        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
+        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "6dca8dd7-3e87-40bf-b646-1e05db2dd892_M7CH3_M7CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "9ba4557a-e5b3-4997-8770-a81adca9db04" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131338Z:9ba4557a-e5b3-4997-8770-a81adca9db04" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D89F7148AB4642BDB65F015721319DDA Ref B: SEL221051503027 Ref C: 2024-02-21T13:13:37Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:13:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "553" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "293" ],
+        "x-ms-client-request-id": [ "51089a57-b2c8-411b-b10d-508c0670ab19" ],
+        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
+        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "25b6e1f4-a9ea-4cef-9b45-304e73fdf3a0_M1SN1_M1SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "x-ms-correlation-request-id": [ "f4684a66-a3d9-4559-b344-c133a71d3c9e" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172221Z:f4684a66-a3d9-4559-b344-c133a71d3c9e" ],
+        "x-ms-correlation-request-id": [ "6ae0badd-9bc4-41ff-9623-fb0268634e90" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131349Z:6ae0badd-9bc4-41ff-9623-fb0268634e90" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: ECF4CB8D0C9743EBA8C00EA146585D83 Ref B: SEL221051504053 Ref C: 2024-02-01T17:22:21Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:22:21 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F74D6578E73E4F7BB6D8987528541B66 Ref B: SEL221051503027 Ref C: 2024-02-21T13:13:48Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:13:49 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "553" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+10": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "319" ],
-        "x-ms-client-request-id": [ "eb21f8a3-e62f-4466-a08a-c35a7df30ac7" ],
+        "x-ms-unique-id": [ "294" ],
+        "x-ms-client-request-id": [ "ddea070e-de57-467d-96d9-627531112627" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -408,35 +322,121 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "7cd07b2e-cab6-452d-9dcf-d6beda1a5d79_M1CH3_M1CH3" ],
+        "x-ms-request-id": [ "9d5632af-f839-4202-ac8f-9e5acfffd53c_M9CH3_M9CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-correlation-request-id": [ "8bcaac81-005f-4129-8ba8-e461993d427a" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172233Z:8bcaac81-005f-4129-8ba8-e461993d427a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "510e3d71-ffdb-4efa-a2ed-8aba580591a4" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131401Z:510e3d71-ffdb-4efa-a2ed-8aba580591a4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C1380CE7BB274BB0B8E705F5B892ACF3 Ref B: SEL221051504053 Ref C: 2024-02-01T17:22:32Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:22:33 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DB9067A7C1AD408EB9017B84F8388EDB Ref B: SEL221051503027 Ref C: 2024-02-21T13:13:59Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:14:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "553" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "295" ],
+        "x-ms-client-request-id": [ "fa2951f6-e705-4723-8d6b-1b7777203c40" ],
+        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
+        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "6475a750-770e-4566-be85-7a2c54060f4b_M5SN1_M5SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "a6b3ca8c-6629-49ef-9440-5621cffeaea8" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131414Z:a6b3ca8c-6629-49ef-9440-5621cffeaea8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F4D768F699B54706A90462ACF6DBEB6C Ref B: SEL221051503027 Ref C: 2024-02-21T13:14:11Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:14:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "553" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "296" ],
+        "x-ms-client-request-id": [ "5c0322db-1f6f-4a79-9ae9-647fd9b0ee42" ],
+        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
+        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "9cf96508-6e27-49c0-9c31-49cfbded0319_M1SN1_M1SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-correlation-request-id": [ "16b48bd1-37ce-47d7-a87e-0eef1c486640" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131424Z:16b48bd1-37ce-47d7-a87e-0eef1c486640" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 43C1806671F74407B6962A85FD120FF5 Ref B: SEL221051503027 Ref C: 2024-02-21T13:14:24Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:14:24 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "411" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"\",\"role\":\"PrimaryNotReplicating\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"\",\"role\":\"PrimaryNotReplicating\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+11": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "320" ],
-        "x-ms-client-request-id": [ "ed2ebe3f-2d15-4417-811d-781b2096435a" ],
+        "x-ms-unique-id": [ "297" ],
+        "x-ms-client-request-id": [ "9bf8d14b-569e-407d-bf63-1f910056794d" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -451,35 +451,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a9d413f6-24f2-4a64-8177-91fa36d0409c_M4SN1_M4SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-correlation-request-id": [ "f5e1205f-89de-44dd-a64e-72cc652cd670" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172245Z:f5e1205f-89de-44dd-a64e-72cc652cd670" ],
+        "x-ms-request-id": [ "dc37dc06-a12b-4722-91bc-0c2799609d4e_M9CH3_M9CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "cc364044-23a3-48a6-ba64-6230005510f3" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131435Z:cc364044-23a3-48a6-ba64-6230005510f3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5DB382E088824A24BDD1FAC38BC152F2 Ref B: SEL221051504053 Ref C: 2024-02-01T17:22:43Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:22:44 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 78A0C41D14C5465192D4695575FCE25C Ref B: SEL221051503027 Ref C: 2024-02-21T13:14:34Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:14:34 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "412" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Succeeded\",\"partnerNamespace\":\"\",\"role\":\"PrimaryNotReplicating\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Succeeded\",\"partnerNamespace\":\"\",\"role\":\"PrimaryNotReplicating\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+12": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+12": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "321" ],
-        "x-ms-client-request-id": [ "15d087d6-45a1-42db-9f12-aba37b41ccef" ],
+        "x-ms-unique-id": [ "298" ],
+        "x-ms-client-request-id": [ "879601be-79b8-442d-ab56-3ac24306a8f5" ],
         "CommandName": [ "Remove-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Remove-AzEventHubGeoDRConfiguration_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -494,16 +494,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "f1b85161-c99a-4759-ba82-5d1db4dd9123_M0CH3_M0CH3" ],
+        "x-ms-request-id": [ "6913cd50-89f8-42f9-b15a-eb399f4be665_M9CH3_M9CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "b97a2742-e808-453d-9edb-c07419629479" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172301Z:b97a2742-e808-453d-9edb-c07419629479" ],
+        "x-ms-correlation-request-id": [ "fc2bb3fc-025d-48b0-a287-878bc57047e8" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131447Z:fc2bb3fc-025d-48b0-a287-878bc57047e8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4B42265AAEDC402694917B1B7F1D1D97 Ref B: SEL221051504053 Ref C: 2024-02-01T17:22:55Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:23:00 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 0F717D993C6D4334A306AB603F9B2B54 Ref B: SEL221051503027 Ref C: 2024-02-21T13:14:45Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:14:47 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -513,11 +513,11 @@
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+13": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+13": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
-      "Content": "{\n  \"properties\": {\n    \"partnerNamespace\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"partnerNamespace\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -531,78 +531,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "8ec6f68f-4e33-4265-874d-048f1bdbe2fe_M10CH3_M10CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "ca1de5f0-5f2c-475e-977f-1e807c6e20a1" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172613Z:ca1de5f0-5f2c-475e-977f-1e807c6e20a1" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B812A328A64445719E1B15DABE39AFD4 Ref B: SEL221051504039 Ref C: 2024-02-01T17:26:01Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:26:13 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "551" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+14": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "323" ],
-        "x-ms-client-request-id": [ "a80f4912-e32b-47d3-ba18-20586fe0abb3" ],
-        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
-        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "04302ee7-a0e7-4a3b-bdf2-5858cc23bc07_M10SN1_M10SN1" ],
+        "x-ms-request-id": [ "3d296e10-02ee-413b-af7c-0a1675e8c182_M0SN1_M0SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-correlation-request-id": [ "7ee2d8d5-af06-4451-a880-64e068c5cda6" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172615Z:7ee2d8d5-af06-4451-a880-64e068c5cda6" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "a8fc7621-cb5e-4c9f-8225-fad21231188c" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131800Z:a8fc7621-cb5e-4c9f-8225-fad21231188c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 583B234F75AB4581829468D86E4F408B Ref B: SEL221051504039 Ref C: 2024-02-01T17:26:13Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:26:15 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2C107FD02AAC4B6197009B6F53486660 Ref B: SEL221051503017 Ref C: 2024-02-21T13:17:47Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:18:00 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "551" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+15": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "324" ],
-        "x-ms-client-request-id": [ "798d9161-1f64-4468-8ba1-fe28a0259bd8" ],
+        "x-ms-unique-id": [ "300" ],
+        "x-ms-client-request-id": [ "22763bfc-aaf4-41cd-8014-7032e853e91a" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -617,35 +574,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "e3f765d7-7c84-4ba9-b2e4-7668aefd7a78_M1CH3_M1CH3" ],
+        "x-ms-request-id": [ "efb3f96c-91ca-4891-b6b9-e8eb57dafd0a_M3CH3_M3CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-correlation-request-id": [ "e42e8309-c20e-49fa-abcc-c100d94e810a" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172627Z:e42e8309-c20e-49fa-abcc-c100d94e810a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "c0b30a9d-1042-4c95-9915-4307e9900227" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131803Z:c0b30a9d-1042-4c95-9915-4307e9900227" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 37DE5EA17B1941B68F1999F1B25433FA Ref B: SEL221051504039 Ref C: 2024-02-01T17:26:25Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:26:27 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: FAEF0C405C0E4BB8B4B4A4533E6EBF0A Ref B: SEL221051503017 Ref C: 2024-02-21T13:18:01Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:18:03 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "551" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+16": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "325" ],
-        "x-ms-client-request-id": [ "d6d13519-9c61-4215-8920-edc4867ed963" ],
+        "x-ms-unique-id": [ "301" ],
+        "x-ms-client-request-id": [ "e6ddb97b-c4d4-4cc2-83aa-81a095de04fa" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -660,35 +617,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "4021d195-1196-4145-a880-72ef03999fda_M2CH3_M2CH3" ],
+        "x-ms-request-id": [ "a8881d16-568d-4351-821f-dd6ec2cc7663_M11CH3_M11CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-correlation-request-id": [ "4f2e0235-9ac0-4154-856b-d137add72fd6" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172639Z:4f2e0235-9ac0-4154-856b-d137add72fd6" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "0f865fe0-94db-4430-ad96-b4c9690d41ea" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131815Z:0f865fe0-94db-4430-ad96-b4c9690d41ea" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A08CFE5453CC4A8385F95F5924AA81F4 Ref B: SEL221051504039 Ref C: 2024-02-01T17:26:37Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:26:38 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 991733F9F73849A3B4ACB060753C9966 Ref B: SEL221051503017 Ref C: 2024-02-21T13:18:13Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:18:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "551" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+17": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+16": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "326" ],
-        "x-ms-client-request-id": [ "2d362fe6-ccaf-44e2-b329-563d0a10f6f6" ],
+        "x-ms-unique-id": [ "302" ],
+        "x-ms-client-request-id": [ "d8e1bb29-f8c4-497a-ad64-1a38b3d5fbbd" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -703,164 +660,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "13fc08c0-390d-4ba7-97a6-d9fb7eb571a4_M5CH3_M5CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "x-ms-correlation-request-id": [ "b0566c6c-a62f-411a-9eec-c5c1120c435a" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172651Z:b0566c6c-a62f-411a-9eec-c5c1120c435a" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1F0EAF0712E2435B88E7DFD255AF1EF3 Ref B: SEL221051504039 Ref C: 2024-02-01T17:26:49Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:26:51 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "551" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+18": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "327" ],
-        "x-ms-client-request-id": [ "d0b81f0c-c0bf-4a55-8687-5edc8a979246" ],
-        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
-        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "fc0ca450-6804-48c6-82fb-5860dfb9118c_M4SN1_M4SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-correlation-request-id": [ "e27eb6b4-2b95-4b24-ac9a-63c80169ba45" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172703Z:e27eb6b4-2b95-4b24-ac9a-63c80169ba45" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1C2E11C851424A59BF2AE9AF061AF956 Ref B: SEL221051504039 Ref C: 2024-02-01T17:27:01Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:27:02 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "551" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+19": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "328" ],
-        "x-ms-client-request-id": [ "aa8e6d6f-430b-4a95-9ea3-4cb1fcbb1bdf" ],
-        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
-        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "f94094d1-9e22-4328-803a-783ee2f124fa_M9CH3_M9CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-correlation-request-id": [ "8028570e-ddc0-4031-8f04-f304b983d1f0" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172714Z:8028570e-ddc0-4031-8f04-f304b983d1f0" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 55D1590B60014318BA1716C4B9F2DDBA Ref B: SEL221051504039 Ref C: 2024-02-01T17:27:13Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:27:14 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "551" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+20": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "329" ],
-        "x-ms-client-request-id": [ "9f3f1d73-820f-43aa-ba84-93c0e707dfaa" ],
-        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
-        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a53a89fd-61fa-452e-91b9-76712cf700ca_M5CH3_M5CH3" ],
+        "x-ms-request-id": [ "6df519fe-6528-475b-a20e-6ff13a8ca6eb_M3CH3_M3CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "2a90ace3-8b10-4b7f-b9d4-31d0c23265ac" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172725Z:2a90ace3-8b10-4b7f-b9d4-31d0c23265ac" ],
+        "x-ms-correlation-request-id": [ "cfc4f131-e634-4920-8654-1e02b2448498" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131826Z:cfc4f131-e634-4920-8654-1e02b2448498" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 836BAB15B144457F8F0DD435EC54FED9 Ref B: SEL221051504039 Ref C: 2024-02-01T17:27:24Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:27:25 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F3BFC48B138E4AD8B7135FBF26CD25B7 Ref B: SEL221051503017 Ref C: 2024-02-21T13:18:25Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:18:26 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "551" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+21": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+17": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "330" ],
-        "x-ms-client-request-id": [ "1f1ec313-edc2-4e92-996e-fdc750ec5e20" ],
+        "x-ms-unique-id": [ "303" ],
+        "x-ms-client-request-id": [ "df565c6e-28d4-4b50-968c-a9d7b6221924" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -875,78 +703,250 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "9d289319-1963-4f27-aaaa-bb0dc2227d93_M11SN1_M11SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "x-ms-correlation-request-id": [ "e22b8161-abc2-4359-84d6-02309c2f3985" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172737Z:e22b8161-abc2-4359-84d6-02309c2f3985" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E73E6B24B58448B5B921C4147CBDFBD8 Ref B: SEL221051504039 Ref C: 2024-02-01T17:27:35Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:27:37 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "551" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+22": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "331" ],
-        "x-ms-client-request-id": [ "d18d9854-44d9-46cb-9c1d-2582e6da1cb7" ],
-        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
-        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "8d857e65-6964-43f2-b4eb-30f23ad1ce84_M6CH3_M6CH3" ],
+        "x-ms-request-id": [ "0fdc7814-b9b6-4e84-b231-913ac800c03f_M1CH3_M1CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "x-ms-correlation-request-id": [ "61c4c2e8-6ca4-468a-98d5-c0a90369251f" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172752Z:61c4c2e8-6ca4-468a-98d5-c0a90369251f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "b02f49c7-1733-4bf1-925d-4d4bede343c3" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131837Z:b02f49c7-1733-4bf1-925d-4d4bede343c3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: ABBF4232F6B14B2A808ADFEC51A82821 Ref B: SEL221051504039 Ref C: 2024-02-01T17:27:47Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:27:51 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 56FF2E2AFC124B8E91B0B7A8F36B4586 Ref B: SEL221051503017 Ref C: 2024-02-21T13:18:36Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:18:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "551" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+18": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "304" ],
+        "x-ms-client-request-id": [ "67050d73-57b3-455a-9f1c-aefbf8947745" ],
+        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
+        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "b85f9137-cc2e-42d2-904c-25005b225109_M0SN1_M0SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "949e194a-436d-4918-bfee-66efd85444a8" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131853Z:949e194a-436d-4918-bfee-66efd85444a8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EDE9CB312C704FE7940FA9E0E139DE6F Ref B: SEL221051503017 Ref C: 2024-02-21T13:18:48Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:18:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "551" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+19": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "305" ],
+        "x-ms-client-request-id": [ "08adb499-6992-48e8-994d-0c64f4b90da2" ],
+        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
+        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "cd86cba2-e9b1-42cf-9188-6e4eff567159_M11CH3_M11CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "679c62da-2d70-48b4-b29d-19a5dd876397" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131905Z:679c62da-2d70-48b4-b29d-19a5dd876397" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 242AA5BCC67D48CDBD49C26EC1B35F27 Ref B: SEL221051503017 Ref C: 2024-02-21T13:19:03Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:19:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "551" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+20": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "306" ],
+        "x-ms-client-request-id": [ "62d70244-947c-43e1-9baf-6aabce8c9020" ],
+        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
+        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "db750688-ba9e-40db-ad79-c110b7ae58c5_M7CH3_M7CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "01b52b12-aefe-4ea7-96bb-30ee25ad02a3" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131916Z:01b52b12-aefe-4ea7-96bb-30ee25ad02a3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E793E87E90C1458BBABE6AD4F4B45E88 Ref B: SEL221051503017 Ref C: 2024-02-21T13:19:15Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:19:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "551" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+21": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "307" ],
+        "x-ms-client-request-id": [ "c6dbef8d-8439-44e4-8f35-c41f6922b2cb" ],
+        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
+        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "920d1e3d-4629-4792-91f5-a4a89293d2f6_M0SN1_M0SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "df087c60-15bc-4620-beec-674a4155f9da" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131926Z:df087c60-15bc-4620-beec-674a4155f9da" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 11094FCC156B4E72BF66531B5588DD30 Ref B: SEL221051503017 Ref C: 2024-02-21T13:19:26Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:19:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "551" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9\",\"role\":\"Primary\",\"type\":\"MetadataReplication\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+22": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "308" ],
+        "x-ms-client-request-id": [ "7e732e80-160f-4e82-a69e-d2dfb9cd59e6" ],
+        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
+        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "43c5453e-d2fa-4573-b2d7-4b6399d9cd7c_M3CH3_M3CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "dce66713-70a9-4dcf-8c47-3fbc571441a7" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131938Z:dce66713-70a9-4dcf-8c47-3fbc571441a7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AFE199770E7E42789CBF203CBD8A161D Ref B: SEL221051503017 Ref C: 2024-02-21T13:19:36Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:19:38 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "590" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Succeeded\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf\",\"role\":\"Primary\",\"type\":\"MetadataReplication\",\"pendingReplicationOperationsCount\":0}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Succeeded\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9\",\"role\":\"Primary\",\"type\":\"MetadataReplication\",\"pendingReplicationOperationsCount\":0}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+1": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "332" ],
-        "x-ms-client-request-id": [ "7c382713-cece-41c6-b46a-98de2f288f0e" ],
+        "x-ms-unique-id": [ "309" ],
+        "x-ms-client-request-id": [ "c5407b53-634d-495f-aadd-320bf256842e" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -961,35 +961,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "5734d711-526a-452d-8bbd-5063a5c85656_M3SN1_M3SN1" ],
+        "x-ms-request-id": [ "e9d8c180-6647-4235-8e52-b5b399aa9486_M11SN1_M11SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "x-ms-correlation-request-id": [ "d45384bb-9a4a-422f-8895-b150c9fc52de" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172803Z:d45384bb-9a4a-422f-8895-b150c9fc52de" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "9aaed92e-405e-40a7-b375-38e35915cd60" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131950Z:9aaed92e-405e-40a7-b375-38e35915cd60" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C7F12CC32C09466DB805054D08B37504 Ref B: SEL221051504039 Ref C: 2024-02-01T17:28:02Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:28:03 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8C7F88B29BB14EB2BF27811E39AD80D6 Ref B: SEL221051503017 Ref C: 2024-02-21T13:19:48Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:19:49 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "554" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Succeeded\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Succeeded\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+2": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "333" ],
-        "x-ms-client-request-id": [ "a986b6d5-4382-46c7-ad1e-0132c174c282" ],
+        "x-ms-unique-id": [ "310" ],
+        "x-ms-client-request-id": [ "88b6ed1a-1411-4ffd-8381-624a68547f09" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1004,35 +1004,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "042f9073-5968-47cb-b6a4-af3e505ad917_M1CH3_M1CH3" ],
+        "x-ms-request-id": [ "fa8e99c2-70ff-4cb6-8a01-f6c4ee88bfd6_M9CH3_M9CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "x-ms-correlation-request-id": [ "efa99867-0e36-40fb-842a-f4fab7ff66f8" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172805Z:efa99867-0e36-40fb-842a-f4fab7ff66f8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "45e42093-64d8-4a1a-bfc4-1c15ed7a2ec5" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131952Z:45e42093-64d8-4a1a-bfc4-1c15ed7a2ec5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9FF59CBF2B714E85B0DEC8D1BF5229AA Ref B: SEL221051504039 Ref C: 2024-02-01T17:28:03Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:28:04 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4CE3BAA9A1334180A4108B0AB79A0417 Ref B: SEL221051503017 Ref C: 2024-02-21T13:19:50Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:19:52 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "554" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Succeeded\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Succeeded\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourcegroupautorestjnm84f/providers/Microsoft.EventHub/namespaces/namespacenameh9c8wf/disasterRecoveryConfigs/aliassn3erg/failover?api-version=2023-01-01-preview+3": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourcegroupautorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespacenamep1szd9/disasterRecoveryConfigs/aliasq8jfas/failover?api-version=2023-01-01-preview+3": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourcegroupautorestjnm84f/providers/Microsoft.EventHub/namespaces/namespacenameh9c8wf/disasterRecoveryConfigs/aliassn3erg/failover?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourcegroupautorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespacenamep1szd9/disasterRecoveryConfigs/aliasq8jfas/failover?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "334" ],
-        "x-ms-client-request-id": [ "d351d355-96d0-4ec1-8d39-484bc9049440" ],
+        "x-ms-unique-id": [ "311" ],
+        "x-ms-client-request-id": [ "a3fce774-8760-4798-b788-69131b178e5d" ],
         "CommandName": [ "Az.EventHub.private\\Invoke-AzEventHubFailDisasterRecoveryConfigOver_Fail" ],
         "FullCommandName": [ "Invoke-AzEventHubFailDisasterRecoveryConfigOver_Fail" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1047,16 +1047,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "e6a70e72-8cf1-4b48-be47-dc1343ce6e50_M2SN1_M2SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-request-id": [ "7528c6a6-202c-4046-a069-1481609676fa_M9CH3_M9CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "6cbb05bf-62d4-4b2c-bf72-5d61b69559f9" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172808Z:6cbb05bf-62d4-4b2c-bf72-5d61b69559f9" ],
+        "x-ms-correlation-request-id": [ "109fffb2-fc1a-4f4b-8f1c-ed08884c2a92" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T131959Z:109fffb2-fc1a-4f4b-8f1c-ed08884c2a92" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5BE1BA9C24B54E6D876274F14549C642 Ref B: SEL221051504039 Ref C: 2024-02-01T17:28:05Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:28:07 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D4E66460F26D4F4BBD143D83CCA4B025 Ref B: SEL221051503017 Ref C: 2024-02-21T13:19:52Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:19:59 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -1066,15 +1066,15 @@
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+4": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "335" ],
-        "x-ms-client-request-id": [ "354e2e54-2915-44bf-a26e-3332fd734ab7" ],
+        "x-ms-unique-id": [ "312" ],
+        "x-ms-client-request-id": [ "8a340034-97eb-4246-8712-9ab3695ae36e" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1089,35 +1089,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "66459d1b-4f9a-427d-805b-91193d24789a_M4CH3_M4CH3" ],
+        "x-ms-request-id": [ "ec639aa9-2aa8-4592-a6e3-21be5e20d0c0_M10CH3_M10CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "x-ms-correlation-request-id": [ "06c097a7-9b1b-4e13-b0f9-0c9b4c789cb2" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172809Z:06c097a7-9b1b-4e13-b0f9-0c9b4c789cb2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "1f4cc25f-b796-4e93-b697-f7513af658c5" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T132000Z:1f4cc25f-b796-4e93-b697-f7513af658c5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0B0D70B0835248BFAECC73EC581EBAEB Ref B: SEL221051504039 Ref C: 2024-02-01T17:28:08Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:28:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 37A3870E01874698BABE92FE3EC1B8B2 Ref B: SEL221051503017 Ref C: 2024-02-21T13:19:59Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:20:00 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "553" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+5": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "336" ],
-        "x-ms-client-request-id": [ "2db0cda9-352d-4df6-ad9a-8e4470595018" ],
+        "x-ms-unique-id": [ "313" ],
+        "x-ms-client-request-id": [ "1a94b27b-3e75-40fd-9839-562e2f60db77" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1132,35 +1132,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "b80c3406-fd8f-4d73-9479-5f042c4292f7_M9SN1_M9SN1" ],
+        "x-ms-request-id": [ "79c5cbbb-e448-41c0-b09c-b415ab214a3a_M8SN1_M8SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
-        "x-ms-correlation-request-id": [ "1cc8471a-a545-431b-8b6c-6a2b5b500649" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172821Z:1cc8471a-a545-431b-8b6c-6a2b5b500649" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "ad09a0db-6bff-44d7-8a41-262ee5e1ef82" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T132012Z:ad09a0db-6bff-44d7-8a41-262ee5e1ef82" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C34CFC8A47B84F63A631B80F9182656B Ref B: SEL221051504039 Ref C: 2024-02-01T17:28:19Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:28:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A0D8027BED1F43DF8B1AE0E13F549F93 Ref B: SEL221051503017 Ref C: 2024-02-21T13:20:10Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:20:11 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "553" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+6": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "337" ],
-        "x-ms-client-request-id": [ "b4b0260d-b266-4622-bff5-7f7ace0b82d6" ],
+        "x-ms-unique-id": [ "314" ],
+        "x-ms-client-request-id": [ "3e1d0768-8182-46de-9612-5acbb2194aea" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1175,250 +1175,250 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "9ba7fe4c-bf22-4d5e-9715-523b9d943949_M1SN1_M1SN1" ],
+        "x-ms-request-id": [ "f3291648-6367-4613-a210-b635846c8db4_M10CH3_M10CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "f3d134fb-9ec0-4dfa-bded-46f8a78913f4" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T132022Z:f3d134fb-9ec0-4dfa-bded-46f8a78913f4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D560A073FBA3402F9A635856F395693D Ref B: SEL221051503017 Ref C: 2024-02-21T13:20:22Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:20:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "553" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "315" ],
+        "x-ms-client-request-id": [ "472ac742-4cdf-44c0-b8f5-9d435d3e0d53" ],
+        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
+        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "7642bcf0-3270-419f-9ba6-a53bf2e1375d_M11SN1_M11SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "d9516b87-f51f-4262-be8e-cc3719bc9cb7" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T132034Z:d9516b87-f51f-4262-be8e-cc3719bc9cb7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 501D4335D009415D861611E698F46D65 Ref B: SEL221051503017 Ref C: 2024-02-21T13:20:32Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:20:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "553" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "316" ],
+        "x-ms-client-request-id": [ "8ea1e7d2-70af-4ba9-a12d-ae99107144c4" ],
+        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
+        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "a8702df7-e062-4efe-8965-1d20a4f8b7a5_M1DM2_M1DM2" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/DM2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "a9207f9d-4c71-4ba0-b3cb-bff21f1a1583" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T132045Z:a9207f9d-4c71-4ba0-b3cb-bff21f1a1583" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 184DE8DCD8E34131860D80DE493E2DF2 Ref B: SEL221051503017 Ref C: 2024-02-21T13:20:44Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:20:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "553" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "317" ],
+        "x-ms-client-request-id": [ "d890d380-66c4-4870-ae88-41628dcf4d0e" ],
+        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
+        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "8ba07fe2-93e3-4d7b-87f9-844f0423b1d2_M11SN1_M11SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "7e3997f3-95c2-4b73-a7ed-3acdf9edb29e" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T132056Z:7e3997f3-95c2-4b73-a7ed-3acdf9edb29e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8C653E9C8D324B16940A4BD05421BB3C Ref B: SEL221051503017 Ref C: 2024-02-21T13:20:55Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:20:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "553" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "318" ],
+        "x-ms-client-request-id": [ "e6de6704-3309-41db-9364-b2db70c78de7" ],
+        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
+        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "adf1afc0-c3a7-4fff-8d4f-25529f631f71_M6SN1_M6SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "415c5741-5e17-4845-aa5d-c95167c5f27b" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T132108Z:415c5741-5e17-4845-aa5d-c95167c5f27b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9EE91BA976DF4800875AEA62ACC8ACDA Ref B: SEL221051503017 Ref C: 2024-02-21T13:21:06Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:21:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "553" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "319" ],
+        "x-ms-client-request-id": [ "cb811f96-baab-4def-b955-f1d84d739f91" ],
+        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
+        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "5acd6939-7500-4961-8ba9-54186fb5e18a_M0SN1_M0SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-correlation-request-id": [ "4a693815-7d07-48b6-990b-7981090c1b73" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172833Z:4a693815-7d07-48b6-990b-7981090c1b73" ],
+        "x-ms-correlation-request-id": [ "6e75495d-001e-479d-a71a-03e849845120" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T132119Z:6e75495d-001e-479d-a71a-03e849845120" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FDDAB8062ACE420C9EC150F1473C0CBD Ref B: SEL221051504039 Ref C: 2024-02-01T17:28:31Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:28:32 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "553" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+7": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "338" ],
-        "x-ms-client-request-id": [ "b1785c0d-1f1c-456e-9351-fbd95c91fd23" ],
-        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
-        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "f4c4c7f4-3930-4b37-81b7-3d60cf52ebc3_M8SN1_M8SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-correlation-request-id": [ "8eeb12ad-9f4e-4a64-8723-842f9b1532c6" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172845Z:8eeb12ad-9f4e-4a64-8723-842f9b1532c6" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E11B62A6AF934F4F9D516F6966203FE7 Ref B: SEL221051504039 Ref C: 2024-02-01T17:28:43Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:28:44 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "553" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+8": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "339" ],
-        "x-ms-client-request-id": [ "ad7674ca-d87c-4a6e-94df-72f69aa838bd" ],
-        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
-        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "8320f9e5-365c-42d4-b520-9a666d45a4aa_M6CH3_M6CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-correlation-request-id": [ "bebdc195-a25e-4d9f-9323-89e35ac03fd4" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172856Z:bebdc195-a25e-4d9f-9323-89e35ac03fd4" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1A3D48CB20AD44A2B5378B6318E5AD39 Ref B: SEL221051504039 Ref C: 2024-02-01T17:28:55Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:28:56 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "553" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+9": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "340" ],
-        "x-ms-client-request-id": [ "172ca951-baa0-4869-8b2f-acbd13c7faa8" ],
-        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
-        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "d42f1dea-bcb0-4ede-ae92-12d37c0e16d7_M0CH3_M0CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-correlation-request-id": [ "354cf1b4-b20c-41e2-af61-8631ca02049f" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172910Z:354cf1b4-b20c-41e2-af61-8631ca02049f" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E59B398DFF7C4FB985A8E5BB9E367CDC Ref B: SEL221051504039 Ref C: 2024-02-01T17:29:06Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:29:09 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "553" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+10": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "341" ],
-        "x-ms-client-request-id": [ "3a3a1345-5580-45bf-919c-321e26a5eb72" ],
-        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
-        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "e210ed04-300a-4b95-9184-db36fdd0e7bb_M5CH3_M5CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-correlation-request-id": [ "37b06a84-c088-46ce-a8a1-da91abcb2866" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172921Z:37b06a84-c088-46ce-a8a1-da91abcb2866" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: ADD50B6C63EF4B82950370972DD0FB5B Ref B: SEL221051504039 Ref C: 2024-02-01T17:29:20Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:29:21 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "553" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl\",\"role\":\"Secondary\",\"type\":\"MetadataReplication\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+11": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "342" ],
-        "x-ms-client-request-id": [ "57741aa7-7236-45eb-b094-d84ed1b13037" ],
-        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
-        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "c4a3947f-2e34-4880-b61c-bba1bebd0ef7_M11CH3_M11CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "x-ms-correlation-request-id": [ "83e2444d-bbfa-44d9-b9ef-138bccefc56d" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172933Z:83e2444d-bbfa-44d9-b9ef-138bccefc56d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 33C87F72FBA14DFE930D107FBF8FC9E7 Ref B: SEL221051504039 Ref C: 2024-02-01T17:29:31Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:29:32 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E50CB30248264DB79E4097E6585C791D Ref B: SEL221051503017 Ref C: 2024-02-21T13:21:18Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:21:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "411" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"\",\"role\":\"PrimaryNotReplicating\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Accepted\",\"partnerNamespace\":\"\",\"role\":\"PrimaryNotReplicating\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+12": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "343" ],
-        "x-ms-client-request-id": [ "cba88301-d727-4697-9250-c27437e1e0e0" ],
+        "x-ms-unique-id": [ "320" ],
+        "x-ms-client-request-id": [ "c94e44cf-3774-4b10-b2e6-b8c4deb2b416" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1433,35 +1433,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "6f84d5ec-d814-4cc3-87b1-3f15df23e778_M5CH3_M5CH3" ],
+        "x-ms-request-id": [ "bf34bf0e-f8cc-4192-8e9c-2e6d195c3ed3_M2CH3_M2CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "564b3770-7c71-4c49-a051-6de66f0e0481" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T172945Z:564b3770-7c71-4c49-a051-6de66f0e0481" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "88724684-e4df-462e-ad5e-f6d9b23236a4" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T132131Z:88724684-e4df-462e-ad5e-f6d9b23236a4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: BB2F00EC5AA6410CBA0F441E4DD7319C Ref B: SEL221051504039 Ref C: 2024-02-01T17:29:43Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:29:44 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 379361E7E25647D487210F8BDF85FA70 Ref B: SEL221051503017 Ref C: 2024-02-21T13:21:30Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:21:30 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "412" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg\",\"name\":\"aliassn3erg\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Succeeded\",\"partnerNamespace\":\"\",\"role\":\"PrimaryNotReplicating\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas\",\"name\":\"aliasq8jfas\",\"type\":\"Microsoft.EventHub/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Succeeded\",\"partnerNamespace\":\"\",\"role\":\"PrimaryNotReplicating\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+13": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+13": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNameh9c8wf/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNamep1szd9/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "344" ],
-        "x-ms-client-request-id": [ "c41cfca1-663c-4cbb-b48a-59a36294c7d8" ],
+        "x-ms-unique-id": [ "321" ],
+        "x-ms-client-request-id": [ "75bb82b3-0123-41fb-be0e-6b20210f2afc" ],
         "CommandName": [ "Remove-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Remove-AzEventHubGeoDRConfiguration_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1476,16 +1476,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "348af502-67a9-4513-a471-c4dbc6644a36_M2SN1_M2SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
-        "x-ms-correlation-request-id": [ "fb15b11c-1a0e-4b60-8ec5-70b1c694fe30" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T173000Z:fb15b11c-1a0e-4b60-8ec5-70b1c694fe30" ],
+        "x-ms-request-id": [ "9bddabe7-19ed-457a-b60d-fc78dd471f8f_M3CH3_M3CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "1c5f790a-b834-44b2-bf30-1c5a7c236012" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T132143Z:1c5f790a-b834-44b2-bf30-1c5a7c236012" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AECD9F462EA04E18909A5D5DBBA7CB02 Ref B: SEL221051504039 Ref C: 2024-02-01T17:29:55Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:29:59 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4D3BB657F47D4D22AA2E510BB5AB275D Ref B: SEL221051503017 Ref C: 2024-02-21T13:21:41Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:21:43 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -1495,15 +1495,15 @@
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview+14": {
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+FailViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestjnm84f/providers/Microsoft.EventHub/namespaces/namespaceNamedfgepl/disasterRecoveryConfigs/aliassn3erg?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceNames4yx87/disasterRecoveryConfigs/aliasq8jfas?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "345" ],
-        "x-ms-client-request-id": [ "0c546af8-c686-41a1-9eb1-f798e5de7cf4" ],
+        "x-ms-unique-id": [ "322" ],
+        "x-ms-client-request-id": [ "a17e4450-e7ce-4dc3-86b0-ef5cdffbbfd2" ],
         "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -1518,23 +1518,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "584884d5-e3de-45fe-8a49-4b36579c0ed6_M2SN1_M2SN1" ],
+        "x-ms-request-id": [ "2975d2d0-02ce-4617-8ef9-ee1b0141ef68_M3SN1_M3SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-correlation-request-id": [ "1a489868-c365-451b-a480-65bf188ac295" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240201T173301Z:1a489868-c365-451b-a480-65bf188ac295" ],
+        "x-ms-correlation-request-id": [ "8e85ceea-6a8d-4f6d-8496-00ef001702ee" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240221T132445Z:8e85ceea-6a8d-4f6d-8496-00ef001702ee" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5AB29EDE0E4D4F82B513704B7C88FE6B Ref B: SEL221051504009 Ref C: 2024-02-01T17:33:00Z" ],
-        "Date": [ "Thu, 01 Feb 2024 17:33:01 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4BDEE3740440427FA277C984EE549AE2 Ref B: SEL221051504017 Ref C: 2024-02-21T13:24:44Z" ],
+        "Date": [ "Wed, 21 Feb 2024 13:24:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "187" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"message\":\"Alias \u0027aliassn3erg\u0027 does not exist or is not associated with namespace \u0027namespaceNamedfgepl\u0027. CorrelationId: 1a489868-c365-451b-a480-65bf188ac295\",\"code\":\"NotFound\"}}",
+      "Content": "{\"error\":{\"message\":\"Alias \u0027aliasq8jfas\u0027 does not exist or is not associated with namespace \u0027namespaceNames4yx87\u0027. CorrelationId: 8e85ceea-6a8d-4f6d-8496-00ef001702ee\",\"code\":\"NotFound\"}}",
       "isContentBase64": false
     }
   }

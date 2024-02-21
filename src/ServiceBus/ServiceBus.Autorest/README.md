@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ServiceBus service.
 
 ---
-## Status
-[![Az.ServiceBus](https://img.shields.io/powershellgallery/v/Az.ServiceBus.svg?style=flat-square&label=Az.ServiceBus "Az.ServiceBus")](https://www.powershellgallery.com/packages/Az.ServiceBus/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -63,6 +60,8 @@ identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
 keep-pec-and-plr: true
+disable-transform-identity-type: true
+flatten-userassignedidentity : false
 
 directive:
   - where:

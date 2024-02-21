@@ -62,7 +62,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 
 ### -NamespaceInputObject
 Identity Parameter
-To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -214,5 +214,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-https://msdn.microsoft.com/en-us/library/azure/mt639404.aspx
+[https://msdn.microsoft.com/en-us/library/azure/mt639404.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639404.aspx)
 

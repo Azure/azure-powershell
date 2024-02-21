@@ -108,7 +108,7 @@ Accept wildcard characters: False
 
 ### -NamespaceInputObject
 Identity Parameter
-To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 
 ### -Parameter
 Single item in List or Get Alias(Disaster Recovery configuration) operation
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IArmDisasterRecovery

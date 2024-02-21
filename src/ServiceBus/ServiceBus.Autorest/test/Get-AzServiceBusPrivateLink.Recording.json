@@ -1,13 +1,13 @@
 {
-  "Get-AzServiceBusPrivateLink+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/privateLinkResources?api-version=2022-10-01-preview+1": {
+  "Get-AzServiceBusPrivateLink+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/namespaceName1exh3q/privateLinkResources?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/privateLinkResources?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/namespaceName1exh3q/privateLinkResources?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "45" ],
-        "x-ms-client-request-id": [ "a5548fdf-bbe6-4e3a-9088-a84f63917f50" ],
+        "x-ms-client-request-id": [ "49bdebe5-2b0a-4918-85f5-ef5922249336" ],
         "CommandName": [ "Get-AzServiceBusPrivateLink" ],
         "FullCommandName": [ "Get-AzServiceBusPrivateLink_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,23 +22,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "732c223f-72b6-48e0-b56d-15af6d3b3a27_M4CH3_M4CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "351d9f17-be36-4665-ae69-2d427cd46723" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T150432Z:351d9f17-be36-4665-ae69-2d427cd46723" ],
+        "x-ms-correlation-request-id": [ "292d5b13-8367-495b-91d4-fcf50db6fb5f" ],
+        "x-ms-client-request-id": [ "49bdebe5-2b0a-4918-85f5-ef5922249336_RP" ],
+        "x-ms-messaging-activity-id": [ "901d988f-e5f6-46bc-809a-611c6c64821a" ],
+        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G11|2024-02-21T17:29:34" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-request-id": [ "292d5b13-8367-495b-91d4-fcf50db6fb5f" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T172934Z:292d5b13-8367-495b-91d4-fcf50db6fb5f" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D41E57535FCB40F39907B3B3793948C3 Ref B: SEL221051503025 Ref C: 2024-02-07T15:04:30Z" ],
-        "Date": [ "Wed, 07 Feb 2024 15:04:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: BBC6D8030289477F907A68129D3A3464 Ref B: SEL221051504051 Ref C: 2024-02-21T17:29:32Z" ],
+        "Date": [ "Wed, 21 Feb 2024 17:29:33 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "416" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/privateLinkResources/namespace\",\"name\":\"namespace\",\"type\":\"Microsoft.ServiceBus/namespaces/privateLinkResources\",\"properties\":{\"groupId\":\"namespace\",\"requiredMembers\":[\"namespace\"],\"requiredZoneNames\":[\"privatelink.servicebus.windows.net\"]}}]}",
+      "Content": "{\"value\":[{\"id\":\"subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/namespaceName1exh3q/privateLinkResources/namespace\",\"name\":\"namespace\",\"type\":\"Microsoft.ServiceBus/namespaces/privateLinkResources\",\"properties\":{\"groupId\":\"namespace\",\"requiredMembers\":[\"namespace\"],\"requiredZoneNames\":[\"privatelink.servicebus.windows.net\"]}}]}",
       "isContentBase64": false
     }
   }

@@ -350,7 +350,7 @@ Accept wildcard characters: False
 
 ### -NamespaceInputObject
 Identity Parameter
-To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -381,7 +381,7 @@ Accept wildcard characters: False
 
 ### -Parameter
 Description of subscription resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription
@@ -458,7 +458,7 @@ Accept wildcard characters: False
 
 ### -TopicInputObject
 Identity Parameter
-To construct, see NOTES section for TOPICINPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -535,5 +535,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-https://msdn.microsoft.com/en-us/library/azure/mt639385.aspx
+[https://msdn.microsoft.com/en-us/library/azure/mt639385.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639385.aspx)
 

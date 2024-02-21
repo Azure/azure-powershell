@@ -1,8 +1,8 @@
 {
-  "New-AzServiceBusRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions/subscription1/rules/sqlRule2?api-version=2022-10-01-preview+1": {
+  "New-AzServiceBusRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/namespaceName1exh3q/topics/topic1/subscriptions/subscription1/rules/sqlRule2?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions/subscription1/rules/sqlRule2?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/namespaceName1exh3q/topics/topic1/subscriptions/subscription1/rules/sqlRule2?api-version=2022-10-01-preview",
       "Content": "{\n  \"properties\": {\n    \"action\": {\n      \"sqlExpression\": \"SET a=b\"\n    },\n    \"sqlFilter\": {\n      \"sqlExpression\": \"1=2\"\n    },\n    \"filterType\": \"SqlFilter\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,32 +17,32 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-correlation-request-id": [ "3ff9b711-5205-43fa-b652-547d1d4814ce" ],
-        "x-ms-client-request-id": [ "9921158d-dfad-4f5b-94d0-39b6163b7558_RP" ],
-        "x-ms-messaging-activity-id": [ "64405cea-0c25-48c6-966e-0f386a05d743" ],
-        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G6|2024-02-07T15:21:10" ],
+        "x-ms-correlation-request-id": [ "001b7bf4-6d3c-48ec-ae67-57a074adca76" ],
+        "x-ms-client-request-id": [ "112c51f2-8a02-4c34-ba0f-a7a450d9274f_RP" ],
+        "x-ms-messaging-activity-id": [ "13709918-e994-41ff-8a8a-2b3fd8d1d845" ],
+        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G2|2024-02-21T17:42:05" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "3ff9b711-5205-43fa-b652-547d1d4814ce" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T152110Z:3ff9b711-5205-43fa-b652-547d1d4814ce" ],
+        "x-ms-request-id": [ "001b7bf4-6d3c-48ec-ae67-57a074adca76" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T174205Z:001b7bf4-6d3c-48ec-ae67-57a074adca76" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 001A0614FC5B4D49AEF9B964B1A5C377 Ref B: SEL221051503025 Ref C: 2024-02-07T15:21:06Z" ],
-        "Date": [ "Wed, 07 Feb 2024 15:21:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 104AAE6DC8E04301A429ABB319EDB14A Ref B: SEL221051504051 Ref C: 2024-02-21T17:42:01Z" ],
+        "Date": [ "Wed, 21 Feb 2024 17:42:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "489" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions/subscription1/rules/sqlRule2\",\"name\":\"sqlRule2\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions/rules\",\"location\":\"eastus\",\"properties\":{\"action\":{\"sqlExpression\":\"SET a=b\",\"compatibilityLevel\":20},\"filterType\":\"SqlFilter\",\"sqlFilter\":{\"sqlExpression\":\"1=2\",\"compatibilityLevel\":20}}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/namespaceName1exh3q/topics/topic1/subscriptions/subscription1/rules/sqlRule2\",\"name\":\"sqlRule2\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions/rules\",\"location\":\"eastus\",\"properties\":{\"action\":{\"sqlExpression\":\"SET a=b\",\"compatibilityLevel\":20},\"filterType\":\"SqlFilter\",\"sqlFilter\":{\"sqlExpression\":\"1=2\",\"compatibilityLevel\":20}}}",
       "isContentBase64": false
     }
   },
-  "New-AzServiceBusRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2022-10-01-preview+2": {
+  "New-AzServiceBusRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/namespaceName1exh3q/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2022-10-01-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/namespaceName1exh3q/topics/topic1/subscriptions/subscription1/rules/correlationRule1?api-version=2022-10-01-preview",
       "Content": "{\n  \"properties\": {\n    \"correlationFilter\": {\n      \"properties\": {\n        \"c\": \"d\",\n        \"a\": \"b\"\n      },\n      \"correlationId\": \"correlationid\",\n      \"messageId\": \"messageid\",\n      \"replyTo\": \"replyto\",\n      \"label\": \"label\",\n      \"sessionId\": \"sessionid\",\n      \"replyToSessionId\": \"replytosessionid\",\n      \"contentType\": \"contenttype\"\n    },\n    \"filterType\": \"CorrelationFilter\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -57,25 +57,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-correlation-request-id": [ "6e4aed6d-9584-470e-9a8a-b94ebca1ae63" ],
-        "x-ms-client-request-id": [ "e5c9cd38-1705-4343-baa0-4f44db3b8420_RP" ],
-        "x-ms-messaging-activity-id": [ "cc4a1f5f-9b49-4239-88fc-9fa63872d94e" ],
-        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G2|2024-02-07T15:21:13" ],
+        "x-ms-correlation-request-id": [ "b05ab992-5034-4073-b3e3-f75daf1177f2" ],
+        "x-ms-client-request-id": [ "666d988f-d894-457c-a98b-924bbd06214f_RP" ],
+        "x-ms-messaging-activity-id": [ "92d0342f-ec12-44ff-9f4a-55a305ae27da" ],
+        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G2|2024-02-21T17:42:08" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "6e4aed6d-9584-470e-9a8a-b94ebca1ae63" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T152113Z:6e4aed6d-9584-470e-9a8a-b94ebca1ae63" ],
+        "x-ms-request-id": [ "b05ab992-5034-4073-b3e3-f75daf1177f2" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T174208Z:b05ab992-5034-4073-b3e3-f75daf1177f2" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9597760AE25B455BADDDE07554840642 Ref B: SEL221051503025 Ref C: 2024-02-07T15:21:10Z" ],
-        "Date": [ "Wed, 07 Feb 2024 15:21:13 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 56AACBDE87D24B2EB734FB873D02D486 Ref B: SEL221051504051 Ref C: 2024-02-21T17:42:05Z" ],
+        "Date": [ "Wed, 21 Feb 2024 17:42:08 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "639" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/topics/topic1/subscriptions/subscription1/rules/correlationRule1\",\"name\":\"correlationRule1\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions/rules\",\"location\":\"eastus\",\"properties\":{\"action\":{},\"filterType\":\"CorrelationFilter\",\"correlationFilter\":{\"correlationId\":\"correlationid\",\"messageId\":\"messageid\",\"replyTo\":\"replyto\",\"label\":\"label\",\"sessionId\":\"sessionid\",\"replyToSessionId\":\"replytosessionid\",\"contentType\":\"contenttype\",\"properties\":{\"c\":\"d\",\"a\":\"b\"}}}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/namespaceName1exh3q/topics/topic1/subscriptions/subscription1/rules/correlationRule1\",\"name\":\"correlationRule1\",\"type\":\"Microsoft.ServiceBus/namespaces/topics/subscriptions/rules\",\"location\":\"eastus\",\"properties\":{\"action\":{},\"filterType\":\"CorrelationFilter\",\"correlationFilter\":{\"correlationId\":\"correlationid\",\"messageId\":\"messageid\",\"replyTo\":\"replyto\",\"label\":\"label\",\"sessionId\":\"sessionid\",\"replyToSessionId\":\"replytosessionid\",\"contentType\":\"contenttype\",\"properties\":{\"c\":\"d\",\"a\":\"b\"}}}}",
       "isContentBase64": false
     }
   }

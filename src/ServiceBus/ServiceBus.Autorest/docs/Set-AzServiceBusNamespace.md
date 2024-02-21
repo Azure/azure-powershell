@@ -364,6 +364,7 @@ Accept wildcard characters: False
 ### -InputObject
 Identity parameter.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -379,7 +380,7 @@ Accept wildcard characters: False
 
 ### -KeyVaultProperty
 Properties of KeyVault
-To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IKeyVaultProperties[]

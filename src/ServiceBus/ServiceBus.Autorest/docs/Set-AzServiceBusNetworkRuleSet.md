@@ -170,6 +170,7 @@ Accept wildcard characters: False
 ### -InputObject
 Identity parameter.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -185,7 +186,7 @@ Accept wildcard characters: False
 
 ### -IPRule
 List of IpRules
-To construct, see NOTES section for IPRULE properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INwRuleSetIPRules[]
@@ -294,7 +295,7 @@ Accept wildcard characters: False
 
 ### -VirtualNetworkRule
 List of VirtualNetwork Rules
-To construct, see NOTES section for VIRTUALNETWORKRULE properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INwRuleSetVirtualNetworkRules[]

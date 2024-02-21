@@ -49,7 +49,7 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventhubNamespace.SkuName | Should -Be Premium
         $eventhubNamespace.SkuTier | Should be Premium
         $eventhubNamespace.DisableLocalAuth | Should -Be $false
-        $eventhubNamespace.Location | Should -Be "East US"
+        $eventhubNamespace.Location | Should -Be "eastus"
         $eventhubNamespace.MinimumTlsVersion | Should -Be "1.2"
         $eventhubNamespace.KafkaEnabled | Should -Be $true
 
@@ -74,6 +74,7 @@ Describe 'New-AzEventHubNamespaceV2' {
         $eventhubNamespace.SkuTier | Should -Be Premium
         $eventhubNamespace.KeyVaultProperty.Count | Should -Be 2
         $eventhubNamespace.UserAssignedIdentity.Count | Should -Be 2
+        $eventhubNamespace.Location | Should -Be "northeurope"
         $eventhubNamespace.RequireInfrastructureEncryption | Should -Be $true
 
         # Create an EventHub namespace within a dedicated cluster

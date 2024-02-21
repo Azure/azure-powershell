@@ -1,9 +1,9 @@
 {
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+1": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
-      "Content": "{\n  \"properties\": {\n    \"targetNamespace\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\n    \"postMigrationName\": \"postMigrationxtz4ki\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"targetNamespace\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\n    \"postMigrationName\": \"postMigrationy4r1on\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,36 +17,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "598b96ea-6111-4f42-917e-cb1a2df91f9e_M2SN1_M2SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-correlation-request-id": [ "394316b3-345a-4736-99d6-73984888ea16" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160446Z:394316b3-345a-4736-99d6-73984888ea16" ],
+        "x-ms-request-id": [ "1ff174e7-a903-475d-b721-fb21b6be7d4f_M6CH3_M6CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "28f41a51-9333-45e2-a65c-1b6f30d7b046" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T182715Z:28f41a51-9333-45e2-a65c-1b6f30d7b046" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 26000C501C8643DE8B834C0060539115 Ref B: SEL221051503047 Ref C: 2024-02-07T16:04:36Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:04:45 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A7CBF01D713F4CD6B39A9BFC41359CAC Ref B: SEL221051504025 Ref C: 2024-02-21T18:27:05Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:27:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "577" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"migrationState\":\"Initiating\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Initiating\"}}",
       "isContentBase64": false
     }
   },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+2": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "494" ],
-        "x-ms-client-request-id": [ "f7774f21-9591-4149-aa55-0a14aa722660" ],
+        "x-ms-unique-id": [ "480" ],
+        "x-ms-client-request-id": [ "6befde40-3d5a-44cb-b708-e42796c0ac67" ],
         "CommandName": [ "Start-AzServiceBusMigration" ],
         "FullCommandName": [ "Start-AzServiceBusMigration_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -60,79 +60,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a2cab54f-e4ad-48d9-b520-42e91f82fd45_M11SN1_M11SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-correlation-request-id": [ "1b242fda-1acd-4254-9077-e87d73420f6b" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160518Z:1b242fda-1acd-4254-9077-e87d73420f6b" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9FA1844AB7CC4C6FB06AA785DFA21028 Ref B: SEL221051503047 Ref C: 2024-02-07T16:05:16Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:05:17 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "577" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"migrationState\":\"Initiating\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "495" ],
-        "x-ms-client-request-id": [ "f7774f21-9591-4149-aa55-0a14aa722660" ],
-        "CommandName": [ "Start-AzServiceBusMigration" ],
-        "FullCommandName": [ "Start-AzServiceBusMigration_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "76d85b86-c387-436f-8ecf-29c3cc36bf68_M6CH3_M6CH3" ],
+        "x-ms-request-id": [ "7c91dd52-5ccd-4372-be16-8ad45d9825b4_M7CH3_M7CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "x-ms-correlation-request-id": [ "3c0620f7-48fc-4eb8-afa4-ef9701bf858a" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160549Z:3c0620f7-48fc-4eb8-afa4-ef9701bf858a" ],
+        "x-ms-correlation-request-id": [ "71bbdd70-7139-422e-b12e-93e87b819449" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T182746Z:71bbdd70-7139-422e-b12e-93e87b819449" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 64D1225C08C342D59977DE157A5F32EA Ref B: SEL221051503047 Ref C: 2024-02-07T16:05:48Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:05:48 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 514D7F5E6F364436B1FCA916A64AF46A Ref B: SEL221051504025 Ref C: 2024-02-21T18:27:45Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:27:45 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "577" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"migrationState\":\"Initiating\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Initiating\"}}",
       "isContentBase64": false
     }
   },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+4": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "496" ],
-        "x-ms-client-request-id": [ "f7774f21-9591-4149-aa55-0a14aa722660" ],
+        "x-ms-unique-id": [ "481" ],
+        "x-ms-client-request-id": [ "6befde40-3d5a-44cb-b708-e42796c0ac67" ],
         "CommandName": [ "Start-AzServiceBusMigration" ],
         "FullCommandName": [ "Start-AzServiceBusMigration_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -146,78 +103,164 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "40cc5197-a67c-4b8b-b46d-18bdd6fa296b_M3SN1_M3SN1" ],
+        "x-ms-request-id": [ "2c0e9005-ca7b-4efe-87ba-e73ac30c4bb9_M3SN1_M3SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-correlation-request-id": [ "9bf2cf70-80c7-4673-a399-e3f4cf2ebe35" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T182817Z:9bf2cf70-80c7-4673-a399-e3f4cf2ebe35" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6014E77B50B5417CB3647C559185C13F Ref B: SEL221051504025 Ref C: 2024-02-21T18:28:16Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:28:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "577" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Initiating\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "482" ],
+        "x-ms-client-request-id": [ "6befde40-3d5a-44cb-b708-e42796c0ac67" ],
+        "CommandName": [ "Start-AzServiceBusMigration" ],
+        "FullCommandName": [ "Start-AzServiceBusMigration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "516d621a-1b1b-45f9-908c-d56110905e68_M4SN1_M4SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-correlation-request-id": [ "09f918d5-9f0e-4f78-84c9-f57d341787dc" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T182848Z:09f918d5-9f0e-4f78-84c9-f57d341787dc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E505D0ACD83E4A1F83CBEF9931B50DC8 Ref B: SEL221051504025 Ref C: 2024-02-21T18:28:47Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:28:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "573" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Active\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "483" ],
+        "x-ms-client-request-id": [ "6befde40-3d5a-44cb-b708-e42796c0ac67" ],
+        "CommandName": [ "Start-AzServiceBusMigration" ],
+        "FullCommandName": [ "Start-AzServiceBusMigration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "15eab79c-0b23-41c1-83b5-d52f68ba08f6_M0SN1_M0SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-correlation-request-id": [ "d3b75744-43a4-4fcf-9e80-5ce8f2bb7423" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T182920Z:d3b75744-43a4-4fcf-9e80-5ce8f2bb7423" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 21D8637FCEAD4EDB85B2CD0CFA1C6362 Ref B: SEL221051504025 Ref C: 2024-02-21T18:29:18Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:29:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "612" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"pendingReplicationOperationsCount\":0,\"migrationState\":\"Active\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "484" ],
+        "x-ms-client-request-id": [ "6befde40-3d5a-44cb-b708-e42796c0ac67" ],
+        "CommandName": [ "Start-AzServiceBusMigration" ],
+        "FullCommandName": [ "Start-AzServiceBusMigration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "8cb8b42b-7b38-45e1-ba10-ed6e64a5b54b_M0SN1_M0SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-correlation-request-id": [ "f22f0d1a-5232-405e-a0f2-b242ed130a10" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160621Z:f22f0d1a-5232-405e-a0f2-b242ed130a10" ],
+        "x-ms-correlation-request-id": [ "06c9de80-be64-4d50-b826-f22a96f9b3cf" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T182921Z:06c9de80-be64-4d50-b826-f22a96f9b3cf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FD50C0C83506492188767C4680B5656F Ref B: SEL221051503047 Ref C: 2024-02-07T16:06:19Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:06:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4C158B16D0854A0BAA30601229AFDD38 Ref B: SEL221051504025 Ref C: 2024-02-21T18:29:20Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:29:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "612" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"pendingReplicationOperationsCount\":0,\"migrationState\":\"Active\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"pendingReplicationOperationsCount\":0,\"migrationState\":\"Active\"}}",
       "isContentBase64": false
     }
   },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+5": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "497" ],
-        "x-ms-client-request-id": [ "f7774f21-9591-4149-aa55-0a14aa722660" ],
-        "CommandName": [ "Start-AzServiceBusMigration" ],
-        "FullCommandName": [ "Start-AzServiceBusMigration_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "437028a2-9e1f-49fc-8180-7742a505f858_M0SN1_M0SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-correlation-request-id": [ "2d6d1f27-ec94-4031-a772-77f69cdd0691" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160624Z:2d6d1f27-ec94-4031-a772-77f69cdd0691" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B7470C739B9B4BA1AB1583F79DA65028 Ref B: SEL221051503047 Ref C: 2024-02-07T16:06:21Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:06:23 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "612" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"pendingReplicationOperationsCount\":0,\"migrationState\":\"Active\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+6": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "498" ],
-        "x-ms-client-request-id": [ "a63d559c-4823-4760-8a2d-58abb9f0405f" ],
+        "x-ms-unique-id": [ "485" ],
+        "x-ms-client-request-id": [ "b1f49804-f1e3-478e-bf53-c19350ccaf21" ],
         "CommandName": [ "Get-AzServiceBusMigration" ],
         "FullCommandName": [ "Get-AzServiceBusMigration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -232,35 +275,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "31831edc-07f9-44fb-afd7-b0d871235231_M6CH3_M6CH3" ],
+        "x-ms-request-id": [ "86f40efd-1faa-4981-b046-3215c6ddb19a_M5CH3_M5CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "x-ms-correlation-request-id": [ "df15f047-d8c3-4618-a1ff-ccee6333fa31" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160630Z:df15f047-d8c3-4618-a1ff-ccee6333fa31" ],
+        "x-ms-correlation-request-id": [ "34ab5643-3be3-4f6d-84cc-a77b77ccab1e" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T182923Z:34ab5643-3be3-4f6d-84cc-a77b77ccab1e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B7FAEDA8DB92472C982FD824037A623C Ref B: SEL221051503047 Ref C: 2024-02-07T16:06:25Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:06:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AD26317D184E44499C5A18C3B16BA697 Ref B: SEL221051504025 Ref C: 2024-02-21T18:29:21Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:29:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "612" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"pendingReplicationOperationsCount\":0,\"migrationState\":\"Active\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"pendingReplicationOperationsCount\":0,\"migrationState\":\"Active\"}}",
       "isContentBase64": false
     }
   },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default/revert?api-version=2022-10-01-preview+7": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default/revert?api-version=2022-10-01-preview+8": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default/revert?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default/revert?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "499" ],
-        "x-ms-client-request-id": [ "f584580a-b157-4724-9269-404d449b3728" ],
+        "x-ms-unique-id": [ "486" ],
+        "x-ms-client-request-id": [ "242fcc7d-26a8-44e5-80b9-1055a1f51eaa" ],
         "CommandName": [ "Stop-AzServiceBusMigration" ],
         "FullCommandName": [ "Stop-AzServiceBusMigration_Revert" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -275,16 +318,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "cfa636e2-bbfd-48df-b509-1db8fd65723b_M9CH3_M9CH3" ],
+        "x-ms-request-id": [ "d543f709-8ca9-4951-8d06-dcb2d2447774_M11CH3_M11CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "c08f857a-bfbc-4bf6-90d8-a91eb2f556a3" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160644Z:c08f857a-bfbc-4bf6-90d8-a91eb2f556a3" ],
+        "x-ms-correlation-request-id": [ "dcf7cf27-2405-417b-ac4b-e3f7d8c7ea9b" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T182935Z:dcf7cf27-2405-417b-ac4b-e3f7d8c7ea9b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: B628B1155F2A4A398924F613506791F2 Ref B: SEL221051503047 Ref C: 2024-02-07T16:06:40Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:06:43 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: AF255C70E21F4C19B6EE4AB9B43B50DF Ref B: SEL221051504025 Ref C: 2024-02-21T18:29:33Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:29:34 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -294,15 +337,15 @@
       "isContentBase64": false
     }
   },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+8": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "500" ],
-        "x-ms-client-request-id": [ "33f281b2-b61c-42db-b337-0f8e7dd5e029" ],
+        "x-ms-unique-id": [ "487" ],
+        "x-ms-client-request-id": [ "63dd95a6-cf3c-40da-a99d-23c324bee038" ],
         "CommandName": [ "Get-AzServiceBusMigration" ],
         "FullCommandName": [ "Get-AzServiceBusMigration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -317,35 +360,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "91918c79-b2db-42b8-a7dc-1c259667ac52_M10CH3_M10CH3" ],
+        "x-ms-request-id": [ "9c3c2dfb-9afc-469f-9043-ed314460bc21_M11CH3_M11CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-correlation-request-id": [ "0311f34d-3060-4e2d-a09b-9b8e42c9cc74" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160651Z:0311f34d-3060-4e2d-a09b-9b8e42c9cc74" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-correlation-request-id": [ "609ab36e-4c03-463a-87b3-cfb858abfee4" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T182935Z:609ab36e-4c03-463a-87b3-cfb858abfee4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 070B4CA2E95542FB9F7FF72783DC44FC Ref B: SEL221051503047 Ref C: 2024-02-07T16:06:44Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:06:50 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: BB5077B722EB4A419C2B35EE3F522D92 Ref B: SEL221051504025 Ref C: 2024-02-21T18:29:35Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:29:34 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "576" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"migrationState\":\"Reverting\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Reverting\"}}",
       "isContentBase64": false
     }
   },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+9": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "501" ],
-        "x-ms-client-request-id": [ "de4ab8c6-d353-462d-a69c-96d9abea0732" ],
+        "x-ms-unique-id": [ "488" ],
+        "x-ms-client-request-id": [ "34af1f1a-74b3-484d-9d78-9b5594e43eca" ],
         "CommandName": [ "Get-AzServiceBusMigration" ],
         "FullCommandName": [ "Get-AzServiceBusMigration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -360,35 +403,293 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "e85b0c95-e61d-4583-8cae-eae48626c465_M9CH3_M9CH3" ],
+        "x-ms-request-id": [ "260d7bbf-7ed6-4d65-9449-8a49d2be476b_M10CH3_M10CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-correlation-request-id": [ "d2cd4f5e-8401-4c52-953a-50152950b971" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T182947Z:d2cd4f5e-8401-4c52-953a-50152950b971" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3CE28F6C5B344D3EA3AF300CE226DD0E Ref B: SEL221051504025 Ref C: 2024-02-21T18:29:45Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:29:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "576" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Reverting\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "489" ],
+        "x-ms-client-request-id": [ "a8df7f7d-27a3-400c-914c-33461b8203d5" ],
+        "CommandName": [ "Get-AzServiceBusMigration" ],
+        "FullCommandName": [ "Get-AzServiceBusMigration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "b98c79f6-7f93-4f00-b626-f718bd2069b6_M11CH3_M11CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-correlation-request-id": [ "b879e3bd-8c37-44b8-9035-d6a7143491ab" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T182957Z:b879e3bd-8c37-44b8-9035-d6a7143491ab" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C00E868688E84368A0E8D58946ADD68F Ref B: SEL221051504025 Ref C: 2024-02-21T18:29:57Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:29:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "576" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Reverting\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "490" ],
+        "x-ms-client-request-id": [ "6bb6c6fc-4a78-4f2f-accb-dbcffdca7276" ],
+        "CommandName": [ "Get-AzServiceBusMigration" ],
+        "FullCommandName": [ "Get-AzServiceBusMigration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "d098fa47-384d-414d-b864-456071e7f407_M6SN1_M6SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-correlation-request-id": [ "774684f5-a364-45fa-bf42-0636ed72dbfb" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183009Z:774684f5-a364-45fa-bf42-0636ed72dbfb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8C450B62F8AF4852ABFB7F43FA572958 Ref B: SEL221051504025 Ref C: 2024-02-21T18:30:07Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:30:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "576" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Reverting\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "491" ],
+        "x-ms-client-request-id": [ "9014cd7c-3f28-44e7-8ce5-7d9cef2b0fdd" ],
+        "CommandName": [ "Get-AzServiceBusMigration" ],
+        "FullCommandName": [ "Get-AzServiceBusMigration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "56f03127-6843-49c5-9342-e0b7a0c437e0_M11SN1_M11SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-correlation-request-id": [ "088397ef-9e67-473f-a1dd-63b2e7b196f0" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183020Z:088397ef-9e67-473f-a1dd-63b2e7b196f0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4854849388C54088BA1C5C892AD70EC2 Ref B: SEL221051504025 Ref C: 2024-02-21T18:30:19Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:30:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "576" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Reverting\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+14": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "492" ],
+        "x-ms-client-request-id": [ "9d4f14e5-35ce-48ea-b2a7-430de7d36ed5" ],
+        "CommandName": [ "Get-AzServiceBusMigration" ],
+        "FullCommandName": [ "Get-AzServiceBusMigration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "1b1ff848-65d9-4e3e-8be2-380c22b0d8a5_M6CH3_M6CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-correlation-request-id": [ "5c82442b-b708-4e2b-85fe-cfe2243cd22d" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183031Z:5c82442b-b708-4e2b-85fe-cfe2243cd22d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9B8C7C15384040B4A3C13A43EF016443 Ref B: SEL221051504025 Ref C: 2024-02-21T18:30:30Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:30:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "576" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Reverting\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+15": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "493" ],
+        "x-ms-client-request-id": [ "caaa92f1-5b44-4fd8-a599-6dd30de233bb" ],
+        "CommandName": [ "Get-AzServiceBusMigration" ],
+        "FullCommandName": [ "Get-AzServiceBusMigration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "477f64ed-8cd5-4979-8df5-9a2ccac7c81a_M11SN1_M11SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-correlation-request-id": [ "f49ee406-4baa-4ec9-ab93-469433728402" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183042Z:f49ee406-4baa-4ec9-ab93-469433728402" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D8F845DCF34D4CCCA9E8FC4FF9E1EF6F Ref B: SEL221051504025 Ref C: 2024-02-21T18:30:41Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:30:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "576" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Reverting\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+16": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "494" ],
+        "x-ms-client-request-id": [ "ba0d34c0-dec6-4249-8c58-d6fb76957aba" ],
+        "CommandName": [ "Get-AzServiceBusMigration" ],
+        "FullCommandName": [ "Get-AzServiceBusMigration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "8617c66c-e9d3-4f79-9004-ef21a7cd5581_M3CH3_M3CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
-        "x-ms-correlation-request-id": [ "a00571af-1466-46a5-8656-6dadfca9ed12" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160705Z:a00571af-1466-46a5-8656-6dadfca9ed12" ],
+        "x-ms-correlation-request-id": [ "d838c90c-84ef-4cc7-a143-783872aea6a5" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183053Z:d838c90c-84ef-4cc7-a143-783872aea6a5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E25AD3224D814DCAAD2C61DF2A8AD42B Ref B: SEL221051503047 Ref C: 2024-02-07T16:07:01Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:07:04 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4ABED1059FAA49C5A09AC31E44BFEE74 Ref B: SEL221051504025 Ref C: 2024-02-21T18:30:52Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:30:52 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "576" ],
+        "Content-Length": [ "419" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"migrationState\":\"Reverting\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Active\"}}",
       "isContentBase64": false
     }
   },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+10": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+17": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "502" ],
-        "x-ms-client-request-id": [ "7f617dcc-9790-4256-b2a2-77163cb29a7f" ],
+        "x-ms-unique-id": [ "495" ],
+        "x-ms-client-request-id": [ "fdbccb90-62d8-45e7-949e-58278afc3c68" ],
         "CommandName": [ "Get-AzServiceBusMigration" ],
         "FullCommandName": [ "Get-AzServiceBusMigration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -403,78 +704,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "9575fd24-4335-47f6-bad4-a6075316820c_M9CH3_M9CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-correlation-request-id": [ "22740c75-936c-43cd-99f5-4455a73a5a5a" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160717Z:22740c75-936c-43cd-99f5-4455a73a5a5a" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C9D956D0E26343DDB28E96977A0083BC Ref B: SEL221051503047 Ref C: 2024-02-07T16:07:15Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:07:17 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "576" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"migrationState\":\"Reverting\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+11": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "503" ],
-        "x-ms-client-request-id": [ "9820fc89-c244-464d-b379-ecec013d4453" ],
-        "CommandName": [ "Get-AzServiceBusMigration" ],
-        "FullCommandName": [ "Get-AzServiceBusMigration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "5e5120ae-7349-4d9d-8e01-5d8c6fc881f4_M10CH3_M10CH3" ],
+        "x-ms-request-id": [ "3e7072c5-1f5f-4e42-aa48-91972094ef56_M5CH3_M5CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "x-ms-correlation-request-id": [ "e44e4e1e-c19d-4787-b4fa-5ba25cbc231a" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160738Z:e44e4e1e-c19d-4787-b4fa-5ba25cbc231a" ],
+        "x-ms-correlation-request-id": [ "d9472218-2e6e-4794-905c-42fba3d6b6af" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183104Z:d9472218-2e6e-4794-905c-42fba3d6b6af" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 89B150D5845E4092B354C3C16BA0224E Ref B: SEL221051503047 Ref C: 2024-02-07T16:07:27Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:07:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: EC4543004BF440688A2E54BC54103A8B Ref B: SEL221051504025 Ref C: 2024-02-21T18:31:03Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:31:03 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "576" ],
+        "Content-Length": [ "419" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"migrationState\":\"Reverting\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Active\"}}",
       "isContentBase64": false
     }
   },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+12": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+18": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "504" ],
-        "x-ms-client-request-id": [ "1159f930-025f-4fde-9472-1a69b50cf722" ],
+        "x-ms-unique-id": [ "496" ],
+        "x-ms-client-request-id": [ "96516e4f-f4dd-463e-a88c-53dff0cde934" ],
         "CommandName": [ "Get-AzServiceBusMigration" ],
         "FullCommandName": [ "Get-AzServiceBusMigration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -489,121 +747,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "031f0a74-2288-4afd-a76f-66b699f53f6e_M11CH3_M11CH3" ],
+        "x-ms-request-id": [ "a567c711-dd30-44b7-871f-b2e3d0297c48_M9CH3_M9CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "x-ms-correlation-request-id": [ "fe33a324-92b5-4059-ab2e-af4bf9c38d93" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160749Z:fe33a324-92b5-4059-ab2e-af4bf9c38d93" ],
+        "x-ms-correlation-request-id": [ "3410a7d3-3eb8-430a-8be6-0a4b87ff1e26" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183115Z:3410a7d3-3eb8-430a-8be6-0a4b87ff1e26" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 360134798F8543C28954945FEDC5809A Ref B: SEL221051503047 Ref C: 2024-02-07T16:07:48Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:07:49 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "576" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"migrationState\":\"Reverting\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+13": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "505" ],
-        "x-ms-client-request-id": [ "894e84c0-3316-4efd-a4ee-58381cb7f28e" ],
-        "CommandName": [ "Get-AzServiceBusMigration" ],
-        "FullCommandName": [ "Get-AzServiceBusMigration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "03199d56-3f50-4ac9-999d-3c0d6b0c8313_M5SN1_M5SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
-        "x-ms-correlation-request-id": [ "c91f3c19-8f6c-4347-95b3-515da33ab3c2" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160801Z:c91f3c19-8f6c-4347-95b3-515da33ab3c2" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1F88679A8EF24BEDAEDD1739B90BC6AB Ref B: SEL221051503047 Ref C: 2024-02-07T16:07:59Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:08:00 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "576" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"migrationState\":\"Reverting\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+14": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "506" ],
-        "x-ms-client-request-id": [ "24f21e17-c675-4365-8787-3d939d2e8430" ],
-        "CommandName": [ "Get-AzServiceBusMigration" ],
-        "FullCommandName": [ "Get-AzServiceBusMigration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "4ed41805-bb75-4ca8-9360-0d5174fd8043_M4CH3_M4CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
-        "x-ms-correlation-request-id": [ "f124620d-c826-467a-a313-65e1d8a39574" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160812Z:f124620d-c826-467a-a313-65e1d8a39574" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A313418C0ABD4FF38D9326645382257C Ref B: SEL221051503047 Ref C: 2024-02-07T16:08:11Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:08:12 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3B7F6576A87F4CFCB7C1800328B8CE81 Ref B: SEL221051504025 Ref C: 2024-02-21T18:31:14Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:31:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "420" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetNamespace\":\"\",\"postMigrationName\":\"postMigrationxtz4ki\",\"migrationState\":\"Active\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetNamespace\":\"\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Active\"}}",
       "isContentBase64": false
     }
   },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+15": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+19": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "507" ],
-        "x-ms-client-request-id": [ "afd211a5-22d9-4cec-b9cd-c173d256f950" ],
+        "x-ms-unique-id": [ "497" ],
+        "x-ms-client-request-id": [ "5866abf4-de4c-4342-b4b9-5efeff760d1a" ],
         "CommandName": [ "Remove-AzServiceBusMigration" ],
         "FullCommandName": [ "Remove-AzServiceBusMigration_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -618,31 +790,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "2c639190-39b5-4b9f-9270-5af6a5993d48_M10CH3_M10CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "523500ee-f1af-4967-9b45-a3bac00feaf4" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160823Z:523500ee-f1af-4967-9b45-a3bac00feaf4" ],
+        "x-ms-request-id": [ "3a37f2f0-446a-4007-aa32-f521e4141ace_M6SN1_M6SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-correlation-request-id": [ "9efa65b6-1b42-41aa-ba56-ad025fbc6a4a" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183126Z:9efa65b6-1b42-41aa-ba56-ad025fbc6a4a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E1F86D5C88F84760B0290DD2CC716A4C Ref B: SEL221051503047 Ref C: 2024-02-07T16:08:22Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:08:23 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 5D809EE5807649E49109995C112C65E7 Ref B: SEL221051504025 Ref C: 2024-02-21T18:31:25Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:31:26 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "150" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"message\":\"Cannot delete as Alias and Primary Namespace are same. CorrelationId: 523500ee-f1af-4967-9b45-a3bac00feaf4\",\"code\":\"BadRequest\"}}",
+      "Content": "{\"error\":{\"message\":\"Cannot delete as Alias and Primary Namespace are same. CorrelationId: 9efa65b6-1b42-41aa-ba56-ad025fbc6a4a\",\"code\":\"BadRequest\"}}",
       "isContentBase64": false
     }
   },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+16": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+20": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
-      "Content": "{\n  \"properties\": {\n    \"targetNamespace\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\n    \"postMigrationName\": \"postMigrationxtz4ki\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"targetNamespace\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\n    \"postMigrationName\": \"postMigrationy4r1on\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -656,36 +828,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "1936588f-039c-406c-9e47-75b3fe8999e8_M10SN1_M10SN1" ],
+        "x-ms-request-id": [ "686d3013-59f5-4994-a565-fa870bad1c96_M6SN1_M6SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "b68c6bdb-06ec-48f2-85a2-ccca67b933a7" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160831Z:b68c6bdb-06ec-48f2-85a2-ccca67b933a7" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-correlation-request-id": [ "dcbeec2d-f8ad-4524-97d6-0eec90cbba47" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183135Z:dcbeec2d-f8ad-4524-97d6-0eec90cbba47" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4F913CDA4A6247138E717A141BB2CEEC Ref B: SEL221051503047 Ref C: 2024-02-07T16:08:23Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:08:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 66255E1ACF874A2F9F7A3C081DD89835 Ref B: SEL221051504025 Ref C: 2024-02-21T18:31:27Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:31:35 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "577" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"migrationState\":\"Initiating\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Initiating\"}}",
       "isContentBase64": false
     }
   },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+17": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+21": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "509" ],
-        "x-ms-client-request-id": [ "8d741697-35db-48eb-95b1-41afee29e3c7" ],
+        "x-ms-unique-id": [ "499" ],
+        "x-ms-client-request-id": [ "bee30b24-0cfa-402a-88db-e76108e6112b" ],
         "CommandName": [ "Start-AzServiceBusMigration" ],
         "FullCommandName": [ "Start-AzServiceBusMigration_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -699,36 +871,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "006899b4-f373-491d-b07f-32607a2a4d52_M11SN1_M11SN1" ],
+        "x-ms-request-id": [ "48e490eb-d3ca-43cc-993f-02e62bac0d72_M10SN1_M10SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-correlation-request-id": [ "828c5d4a-2a6b-43d9-b091-af64093637fa" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160903Z:828c5d4a-2a6b-43d9-b091-af64093637fa" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-correlation-request-id": [ "0c54fa23-3e6a-4af1-aca4-b50897ee1267" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183206Z:0c54fa23-3e6a-4af1-aca4-b50897ee1267" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D1C4545D6F68454FAFEA52B46AD098BB Ref B: SEL221051503047 Ref C: 2024-02-07T16:09:02Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:09:03 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1F5D756AD05B44C5958D51ECFD506035 Ref B: SEL221051504025 Ref C: 2024-02-21T18:32:05Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:32:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "577" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"migrationState\":\"Initiating\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Initiating\"}}",
       "isContentBase64": false
     }
   },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+18": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+22": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "510" ],
-        "x-ms-client-request-id": [ "8d741697-35db-48eb-95b1-41afee29e3c7" ],
+        "x-ms-unique-id": [ "500" ],
+        "x-ms-client-request-id": [ "bee30b24-0cfa-402a-88db-e76108e6112b" ],
         "CommandName": [ "Start-AzServiceBusMigration" ],
         "FullCommandName": [ "Start-AzServiceBusMigration_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -742,36 +914,36 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "4d493d80-1ea1-460d-94a3-a44753b42ad4_M8CH3_M8CH3" ],
+        "x-ms-request-id": [ "cfc5088c-ca76-4cf1-9d34-f97d04125219_M3CH3_M3CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "x-ms-correlation-request-id": [ "67756881-6322-4d07-af0e-1ef632691b09" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T160937Z:67756881-6322-4d07-af0e-1ef632691b09" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-correlation-request-id": [ "d2eff673-67ab-4e8e-8151-b27b1923187c" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183237Z:d2eff673-67ab-4e8e-8151-b27b1923187c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2D3FCF9B27284B8796D10A1CDA03D058 Ref B: SEL221051503047 Ref C: 2024-02-07T16:09:33Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:09:37 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D5EB84F9D5B7470080D8FB77F9BF730E Ref B: SEL221051504025 Ref C: 2024-02-21T18:32:36Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:32:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "577" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"migrationState\":\"Initiating\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Initiating\"}}",
       "isContentBase64": false
     }
   },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+19": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+23": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "511" ],
-        "x-ms-client-request-id": [ "8d741697-35db-48eb-95b1-41afee29e3c7" ],
+        "x-ms-unique-id": [ "501" ],
+        "x-ms-client-request-id": [ "bee30b24-0cfa-402a-88db-e76108e6112b" ],
         "CommandName": [ "Start-AzServiceBusMigration" ],
         "FullCommandName": [ "Start-AzServiceBusMigration_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -785,78 +957,121 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "73d7907d-5526-41b2-8a6f-db4c81820b8b_M9CH3_M9CH3" ],
+        "x-ms-request-id": [ "a46a7356-2075-4202-8f12-a03f4b53c6f3_M1CH3_M1CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-correlation-request-id": [ "cbb7a94e-4784-4084-a561-5538f72e17dd" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183308Z:cbb7a94e-4784-4084-a561-5538f72e17dd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 52AC59C69F4C4D34B811F2D363DC7903 Ref B: SEL221051504025 Ref C: 2024-02-21T18:33:07Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:33:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "573" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Accepted\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"migrationState\":\"Active\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+24": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "502" ],
+        "x-ms-client-request-id": [ "bee30b24-0cfa-402a-88db-e76108e6112b" ],
+        "CommandName": [ "Start-AzServiceBusMigration" ],
+        "FullCommandName": [ "Start-AzServiceBusMigration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "886db361-ccfd-42e8-bdbb-1bcb5d5ea83f_M10CH3_M10CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-correlation-request-id": [ "f98ff6d2-32ff-491a-b30a-5c0b781c7a91" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183340Z:f98ff6d2-32ff-491a-b30a-5c0b781c7a91" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F48E059BF4274BAF98EB70FF3A239BF9 Ref B: SEL221051504025 Ref C: 2024-02-21T18:33:38Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:33:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "612" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"pendingReplicationOperationsCount\":0,\"migrationState\":\"Active\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+25": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "503" ],
+        "x-ms-client-request-id": [ "bee30b24-0cfa-402a-88db-e76108e6112b" ],
+        "CommandName": [ "Start-AzServiceBusMigration" ],
+        "FullCommandName": [ "Start-AzServiceBusMigration_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "01c3e3f5-6f4b-437f-bcf8-77860f1f943d_M4CH3_M4CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
-        "x-ms-correlation-request-id": [ "f6172b76-16c4-4cc7-be1f-988ce36fdb17" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T161010Z:f6172b76-16c4-4cc7-be1f-988ce36fdb17" ],
+        "x-ms-correlation-request-id": [ "5737e41e-cc9f-4ba0-8d8f-d889a90cb898" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183342Z:5737e41e-cc9f-4ba0-8d8f-d889a90cb898" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 93424A02CEEB4691AAED262DE2C6E7B1 Ref B: SEL221051503047 Ref C: 2024-02-07T16:10:07Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:10:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 27425326B5994527B41DAB36EAE4A69D Ref B: SEL221051504025 Ref C: 2024-02-21T18:33:40Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:33:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "612" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"pendingReplicationOperationsCount\":0,\"migrationState\":\"Active\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"pendingReplicationOperationsCount\":0,\"migrationState\":\"Active\"}}",
       "isContentBase64": false
     }
   },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+20": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview+26": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "512" ],
-        "x-ms-client-request-id": [ "8d741697-35db-48eb-95b1-41afee29e3c7" ],
-        "CommandName": [ "Start-AzServiceBusMigration" ],
-        "FullCommandName": [ "Start-AzServiceBusMigration_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.ServiceBus/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "211a552e-a548-44d2-baae-7e59f220115f_M5SN1_M5SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
-        "x-ms-correlation-request-id": [ "3d1bd647-e49f-4b0a-b628-86e2ea4ed36a" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T161012Z:3d1bd647-e49f-4b0a-b628-86e2ea4ed36a" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4026802DD6914E1985358B1EB185E1B8 Ref B: SEL221051503047 Ref C: 2024-02-07T16:10:10Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:10:11 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "612" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"pendingReplicationOperationsCount\":0,\"migrationState\":\"Active\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview+21": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default?api-version=2022-10-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "513" ],
-        "x-ms-client-request-id": [ "072ff117-6212-40a9-bf39-0d952e055ae8" ],
+        "x-ms-unique-id": [ "504" ],
+        "x-ms-client-request-id": [ "ee3948fe-2ea6-4d49-b520-52e6cceb58dd" ],
         "CommandName": [ "Get-AzServiceBusMigration" ],
         "FullCommandName": [ "Get-AzServiceBusMigration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -871,35 +1086,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "9be5a84b-6eba-4641-b57c-da1cd4925bf8_M4CH3_M4CH3" ],
+        "x-ms-request-id": [ "24445308-6aa6-4276-bee1-47a0aa73543e_M2CH3_M2CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
-        "x-ms-correlation-request-id": [ "8f10e8cd-26d0-449b-842c-10a7ee9a4ea7" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T161014Z:8f10e8cd-26d0-449b-842c-10a7ee9a4ea7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-correlation-request-id": [ "a16817ab-9c87-4ee5-aa69-41921931849b" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183344Z:a16817ab-9c87-4ee5-aa69-41921931849b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: EAD90E38B28C46E79A8D8CB5C87E48D1 Ref B: SEL221051503047 Ref C: 2024-02-07T16:10:12Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:10:13 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6193803F909E40869AAD9D7BFD981735 Ref B: SEL221051504025 Ref C: 2024-02-21T18:33:42Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:33:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "612" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/$default\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv\",\"postMigrationName\":\"postMigrationxtz4ki\",\"pendingReplicationOperationsCount\":0,\"migrationState\":\"Active\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/$default\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/migrationconfigurations\",\"properties\":{\"provisioningState\":\"Succeeded\",\"targetNamespace\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5\",\"postMigrationName\":\"postMigrationy4r1on\",\"pendingReplicationOperationsCount\":0,\"migrationState\":\"Active\"}}",
       "isContentBase64": false
     }
   },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default/upgrade?api-version=2022-10-01-preview+22": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default/upgrade?api-version=2022-10-01-preview+27": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/primaryNSf16n5l/migrationConfigurations/%24default/upgrade?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/primaryNS4g8c9q/migrationConfigurations/%24default/upgrade?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "514" ],
-        "x-ms-client-request-id": [ "f99e577e-893d-4a8d-9d2b-ab693f26ffdf" ],
+        "x-ms-unique-id": [ "505" ],
+        "x-ms-client-request-id": [ "3f289c49-6cf9-47e0-8f98-d642c5473a10" ],
         "CommandName": [ "Complete-AzServiceBusMigration" ],
         "FullCommandName": [ "Complete-AzServiceBusMigration_Complete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -914,16 +1129,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "484a87e0-05b5-4c25-8911-44dfabb47f0e_M7SN1_M7SN1" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-request-id": [ "34479d1a-1546-477f-97f5-6b9ca3c77f1d_M0CH3_M0CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "31c9d12d-76ae-47a4-9604-3fa7e8d2e5f5" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T161027Z:31c9d12d-76ae-47a4-9604-3fa7e8d2e5f5" ],
+        "x-ms-correlation-request-id": [ "9d62e099-dd09-41e7-a1e8-7196b136d84f" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183356Z:9d62e099-dd09-41e7-a1e8-7196b136d84f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 278CD2D577D741E9BFF0FDB4B1333B2A Ref B: SEL221051503047 Ref C: 2024-02-07T16:10:24Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:10:27 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 682C05FDE91C4F85BB0A9BEDFEFC0800 Ref B: SEL221051504025 Ref C: 2024-02-21T18:33:54Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:33:56 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -933,15 +1148,15 @@
       "isContentBase64": false
     }
   },
-  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv/disasterRecoveryConfigs/primaryNSf16n5l?api-version=2022-10-01-preview+23": {
+  "Start-AzServiceBusMigration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5/disasterRecoveryConfigs/primaryNS4g8c9q?api-version=2022-10-01-preview+28": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv/disasterRecoveryConfigs/primaryNSf16n5l?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5/disasterRecoveryConfigs/primaryNS4g8c9q?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "515" ],
-        "x-ms-client-request-id": [ "e00caf77-617d-4301-add9-bac58198d72c" ],
+        "x-ms-unique-id": [ "506" ],
+        "x-ms-client-request-id": [ "a6538d1d-9a7d-4ab8-aabb-d3147d4402bb" ],
         "CommandName": [ "Get-AzServiceBusGeoDRConfiguration" ],
         "FullCommandName": [ "Get-AzServiceBusGeoDRConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -956,23 +1171,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "e6597eb1-43ce-4f16-9b17-c583fa461057_M7CH3_M7CH3" ],
+        "x-ms-request-id": [ "1c9eec9e-82d6-42a1-8bd3-b9ea708fbd78_M3CH3_M3CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "ace6da97-5ee1-40e3-a76b-0cd5c2af8167" ],
-        "x-ms-routing-request-id": [ "KOREASOUTH:20240207T161430Z:ace6da97-5ee1-40e3-a76b-0cd5c2af8167" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-correlation-request-id": [ "23180dfb-1433-4e73-8e67-99c1a4628ccf" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T183758Z:23180dfb-1433-4e73-8e67-99c1a4628ccf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 22570CC9476043F7B37F4ED2F578FA97 Ref B: SEL221051504049 Ref C: 2024-02-07T16:14:28Z" ],
-        "Date": [ "Wed, 07 Feb 2024 16:14:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 486A2EFD65164EDDAB3083BC1787AD06 Ref B: SEL221051504045 Ref C: 2024-02-21T18:37:57Z" ],
+        "Date": [ "Wed, 21 Feb 2024 18:37:57 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "422" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/secondaryNS59saxv/disasterRecoveryConfigs/primaryNSf16n5l\",\"name\":\"primaryNSf16n5l\",\"type\":\"Microsoft.ServiceBus/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Succeeded\",\"partnerNamespace\":\"\",\"role\":\"PrimaryNotReplicating\",\"type\":\"MetadataReplication\"}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/secondaryNS29pcj5/disasterRecoveryConfigs/primaryNS4g8c9q\",\"name\":\"primaryNS4g8c9q\",\"type\":\"Microsoft.ServiceBus/Namespaces/disasterrecoveryconfigs\",\"properties\":{\"provisioningState\":\"Succeeded\",\"partnerNamespace\":\"\",\"role\":\"PrimaryNotReplicating\",\"type\":\"MetadataReplication\"}}",
       "isContentBase64": false
     }
   }

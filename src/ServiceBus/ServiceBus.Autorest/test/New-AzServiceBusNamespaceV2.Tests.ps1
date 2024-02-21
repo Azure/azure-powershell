@@ -19,7 +19,7 @@ Describe 'New-AzServiceBusNamespaceV2' {
         $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV2 -SkuName Standard -Location eastus
         $serviceBusNamespace.Name | Should -Be $env.namespaceV2
         $serviceBusNamespace.SkuName | Should -Be Standard
-        $serviceBusNamespace.Location | should -Be "East Us"
+        $serviceBusNamespace.Location | should -Be "eastus"
 
         $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -DisableLocalAuth -MinimumTlsVersion 1.1 
         $serviceBusNamespace.Name | Should -Be $env.namespaceV3
@@ -37,7 +37,7 @@ Describe 'New-AzServiceBusNamespaceV2' {
         $serviceBusNamespace.SkuTier | Should -Be Premium
         $serviceBusNamespace.SkuCapacity | Should -Be 2
         $serviceBusNamespace.PremiumMessagingPartition | Should -Be 2
-        $serviceBusNamespace.Location | Should -Be "East Us"
+        $serviceBusNamespace.Location | Should -Be "eastus"
         $serviceBusNamespace.ZoneRedundant | Should be $true
 
         # Create namespace with UserAssigned Encryption Enabled

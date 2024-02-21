@@ -1,13 +1,13 @@
 {
-  "Get-AzServiceBusNetworkRuleSet+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/networkRuleSets/default?api-version=2022-10-01-preview+1": {
+  "Get-AzServiceBusNetworkRuleSet+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/namespaceName1exh3q/networkRuleSets/default?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/networkRuleSets/default?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/namespaceName1exh3q/networkRuleSets/default?api-version=2022-10-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "40" ],
-        "x-ms-client-request-id": [ "cff5b86f-48ea-465f-9a8f-7c1a6689dedc" ],
+        "x-ms-client-request-id": [ "c618b5dd-7c7e-4652-a398-e7328b7abc74" ],
         "CommandName": [ "Get-AzServiceBusNetworkRuleSet" ],
         "FullCommandName": [ "Get-AzServiceBusNetworkRuleSet_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,25 +22,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-correlation-request-id": [ "78b4ed06-4027-4741-abf1-18f997707cdc" ],
-        "x-ms-client-request-id": [ "cff5b86f-48ea-465f-9a8f-7c1a6689dedc_RP" ],
-        "x-ms-messaging-activity-id": [ "90e7fa31-2309-4e7a-b08d-dd8a5e327c51" ],
-        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G5|2024-02-07T15:04:20" ],
+        "x-ms-correlation-request-id": [ "4630b8e7-85a5-4331-9eb0-0bd639d38cd6" ],
+        "x-ms-client-request-id": [ "c618b5dd-7c7e-4652-a398-e7328b7abc74_RP" ],
+        "x-ms-messaging-activity-id": [ "5a417321-cfbb-4388-9836-f4616b0dd956" ],
+        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G1|2024-02-21T17:29:01" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-request-id": [ "78b4ed06-4027-4741-abf1-18f997707cdc" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20240207T150420Z:78b4ed06-4027-4741-abf1-18f997707cdc" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-request-id": [ "4630b8e7-85a5-4331-9eb0-0bd639d38cd6" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240221T172901Z:4630b8e7-85a5-4331-9eb0-0bd639d38cd6" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 75C9DE96DEC7428DBD2319E2174AD74A Ref B: SEL221051503025 Ref C: 2024-02-07T15:04:18Z" ],
-        "Date": [ "Wed, 07 Feb 2024 15:04:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 409A0BC23F0C4A79A4F3489D2328A91A Ref B: SEL221051504051 Ref C: 2024-02-21T17:28:59Z" ],
+        "Date": [ "Wed, 21 Feb 2024 17:29:01 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "428" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/resourceGroupAutorestuov8z6/providers/Microsoft.ServiceBus/namespaces/namespaceNamec3s5rg/networkrulesets/default\",\"name\":\"default\",\"type\":\"Microsoft.ServiceBus/Namespaces/NetworkRuleSets\",\"location\":\"eastus\",\"properties\":{\"publicNetworkAccess\":\"Enabled\",\"defaultAction\":\"Allow\",\"virtualNetworkRules\":[],\"ipRules\":[],\"trustedServiceAccessEnabled\":false}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/namespaceName1exh3q/networkrulesets/default\",\"name\":\"default\",\"type\":\"Microsoft.ServiceBus/Namespaces/NetworkRuleSets\",\"location\":\"eastus\",\"properties\":{\"publicNetworkAccess\":\"Enabled\",\"defaultAction\":\"Allow\",\"virtualNetworkRules\":[],\"ipRules\":[],\"trustedServiceAccessEnabled\":false}}",
       "isContentBase64": false
     }
   }
