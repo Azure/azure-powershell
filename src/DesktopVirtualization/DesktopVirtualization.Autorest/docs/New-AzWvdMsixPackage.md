@@ -78,8 +78,7 @@ This command adds MSIX Package in the specified HostPool
 ## PARAMETERS
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -380,6 +379,27 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IMsixPackage
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`PACKAGEAPPLICATION <IMsixPackageApplications[]>`: List of package applications. 
+  - `[AppId <String>]`: Package Application Id, found in appxmanifest.xml.
+  - `[AppUserModelId <String>]`: Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+  - `[Description <String>]`: Description of Package Application.
+  - `[FriendlyName <String>]`: User friendly name.
+  - `[IconImageName <String>]`: User friendly name.
+  - `[RawIcon <Byte[]>]`: the icon a 64 bit string as a byte array.
+  - `[RawPng <Byte[]>]`: the icon a 64 bit string as a byte array.
+
+`PACKAGEDEPENDENCY <IMsixPackageDependencies[]>`: List of package dependencies. 
+  - `[DependencyName <String>]`: Name of package dependency.
+  - `[MinVersion <String>]`: Dependency version required.
+  - `[Publisher <String>]`: Name of dependency publisher.
 
 ## RELATED LINKS
 

@@ -116,8 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -556,6 +555,67 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IAppAttachPackage
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`APPATTACHPACKAGE <AppAttachPackage>`: 
+  - `Location <String>`: The geo-location where the resource lives
+  - `[FailHealthCheckOnStagingFailure <FailHealthCheckOnStagingFailure?>]`: Parameter indicating how the health check should behave if this package fails staging
+  - `[HostPoolReference <String[]>]`: List of Hostpool resource Ids.
+  - `[ImageCertificateExpiry <DateTime?>]`: Date certificate expires, found in the appxmanifest.xml. 
+  - `[ImageCertificateName <String>]`: Certificate name found in the appxmanifest.xml. 
+  - `[ImageDisplayName <String>]`: User friendly Name to be displayed in the portal. 
+  - `[ImageIsActive <Boolean?>]`: Make this version of the package the active one across the hostpool. 
+  - `[ImageIsPackageTimestamped <PackageTimestamped?>]`: Is package timestamped so it can ignore the certificate expiry date
+  - `[ImageIsRegularRegistration <Boolean?>]`: Specifies how to register Package in feed.
+  - `[ImageLastUpdated <DateTime?>]`: Date Package was last updated, found in the appxmanifest.xml. 
+  - `[ImagePackageAlias <String>]`: Alias of App Attach Package. Assigned at import time
+  - `[ImagePackageApplication <IMsixPackageApplications[]>]`: List of package applications. 
+    - `[AppId <String>]`: Package Application Id, found in appxmanifest.xml.
+    - `[AppUserModelId <String>]`: Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+    - `[Description <String>]`: Description of Package Application.
+    - `[FriendlyName <String>]`: User friendly name.
+    - `[IconImageName <String>]`: User friendly name.
+    - `[RawIcon <Byte[]>]`: the icon a 64 bit string as a byte array.
+    - `[RawPng <Byte[]>]`: the icon a 64 bit string as a byte array.
+  - `[ImagePackageDependency <IMsixPackageDependencies[]>]`: List of package dependencies. 
+    - `[DependencyName <String>]`: Name of package dependency.
+    - `[MinVersion <String>]`: Dependency version required.
+    - `[Publisher <String>]`: Name of dependency publisher.
+  - `[ImagePackageFamilyName <String>]`: Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. 
+  - `[ImagePackageFullName <String>]`: Package Full Name from appxmanifest.xml. 
+  - `[ImagePackageName <String>]`: Package Name from appxmanifest.xml. 
+  - `[ImagePackageRelativePath <String>]`: Relative Path to the package inside the image. 
+  - `[ImagePath <String>]`: VHD/CIM image path on Network Share.
+  - `[ImageVersion <String>]`: Package Version found in the appxmanifest.xml. 
+  - `[KeyVaultUrl <String>]`: URL of keyvault location to store certificate
+  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
+  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
+  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
+  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
+  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
+  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+  - `[Tag <ITrackedResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+
+`IMAGEPACKAGEAPPLICATION <IMsixPackageApplications[]>`: List of package applications. 
+  - `[AppId <String>]`: Package Application Id, found in appxmanifest.xml.
+  - `[AppUserModelId <String>]`: Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
+  - `[Description <String>]`: Description of Package Application.
+  - `[FriendlyName <String>]`: User friendly name.
+  - `[IconImageName <String>]`: User friendly name.
+  - `[RawIcon <Byte[]>]`: the icon a 64 bit string as a byte array.
+  - `[RawPng <Byte[]>]`: the icon a 64 bit string as a byte array.
+
+`IMAGEPACKAGEDEPENDENCY <IMsixPackageDependencies[]>`: List of package dependencies. 
+  - `[DependencyName <String>]`: Name of package dependency.
+  - `[MinVersion <String>]`: Dependency version required.
+  - `[Publisher <String>]`: Name of dependency publisher.
 
 ## RELATED LINKS
 

@@ -123,8 +123,7 @@ Please create a scaling plan, and then use New-AzWvdScalingPersonalSchedule or N
 ## PARAMETERS
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -570,6 +569,41 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IScalingPlan
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`HOSTPOOLREFERENCE <IScalingHostPoolReference[]>`: List of ScalingHostPoolReference definitions.
+  - `[HostPoolArmPath <String>]`: Arm path of referenced hostpool.
+  - `[ScalingPlanEnabled <Boolean?>]`: Is the scaling plan enabled for this hostpool.
+
+`SCHEDULE <IScalingSchedule[]>`: List of ScalingPlanPooledSchedule definitions.
+  - `[DaysOfWeek <String[]>]`: Set of days of the week on which this schedule is active.
+  - `[Name <String>]`: Name of the ScalingPlanPooledSchedule.
+  - `[OffPeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for off-peak period.
+  - `[OffPeakStartTimeHour <Int32?>]`: The hour.
+  - `[OffPeakStartTimeMinute <Int32?>]`: The minute.
+  - `[PeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for peak period.
+  - `[PeakStartTimeHour <Int32?>]`: The hour.
+  - `[PeakStartTimeMinute <Int32?>]`: The minute.
+  - `[RampDownCapacityThresholdPct <Int32?>]`: Capacity threshold for ramp down period.
+  - `[RampDownForceLogoffUser <Boolean?>]`: Should users be logged off forcefully from hosts.
+  - `[RampDownLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for ramp down period.
+  - `[RampDownMinimumHostsPct <Int32?>]`: Minimum host percentage for ramp down period.
+  - `[RampDownNotificationMessage <String>]`: Notification message for users during ramp down period.
+  - `[RampDownStartTimeHour <Int32?>]`: The hour.
+  - `[RampDownStartTimeMinute <Int32?>]`: The minute.
+  - `[RampDownStopHostsWhen <StopHostsWhen?>]`: Specifies when to stop hosts during ramp down period.
+  - `[RampDownWaitTimeMinute <Int32?>]`: Number of minutes to wait to stop hosts during ramp down period.
+  - `[RampUpCapacityThresholdPct <Int32?>]`: Capacity threshold for ramp up period.
+  - `[RampUpLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for ramp up period.
+  - `[RampUpMinimumHostsPct <Int32?>]`: Minimum host percentage for ramp up period.
+  - `[RampUpStartTimeHour <Int32?>]`: The hour.
+  - `[RampUpStartTimeMinute <Int32?>]`: The minute.
 
 ## RELATED LINKS
 
