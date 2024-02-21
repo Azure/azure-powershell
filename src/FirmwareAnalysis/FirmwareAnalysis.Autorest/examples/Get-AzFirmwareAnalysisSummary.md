@@ -18,7 +18,7 @@ SystemDataLastModifiedByType :
 Type                         : Microsoft.IoTFirmwareDefense/workspaces/firmwares/summaries
 ```
 
-{{ List all the analysis results summary for a firmware by analysis type CVE. }}
+List all the analysis results summary for a firmware by analysis type CVE.
 
 ### Example 2: List all the analysis results summary for a firmware by analysis type Firmware.
 ```powershell

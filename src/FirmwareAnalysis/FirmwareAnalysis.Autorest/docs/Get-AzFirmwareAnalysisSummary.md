@@ -61,8 +61,7 @@ SystemDataLastModifiedByType :
 Type                         : Microsoft.IoTFirmwareDefense/workspaces/firmwares/summaries
 ```
 
-{{ List all the analysis results summary for a firmware by analysis type CVE.
-}}
+List all the analysis results summary for a firmware by analysis type CVE.
 
 ### Example 2: List all the analysis results summary for a firmware by analysis type Firmware.
 ```powershell
@@ -121,7 +120,7 @@ Accept wildcard characters: False
 
 ### -FirmwareInputObject
 Identity Parameter
-To construct, see NOTES section for FIRMWAREINPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
@@ -137,7 +136,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
@@ -200,7 +199,7 @@ Accept wildcard characters: False
 
 ### -WorkspaceInputObject
 Identity Parameter
-To construct, see NOTES section for WORKSPACEINPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
