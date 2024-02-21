@@ -41,14 +41,12 @@ The operation to update firmware.
 
 ## EXAMPLES
 
-### Example 1: {{ Update a firmware. }}
+### Example 1: Update a firmware.
 ```powershell
-{{ Update-AzFirmwareAnalysisFirmware -FirmwareId firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -Description description -FileSize 1  -FileName fileName -Vendor vendor -Model model -Version version
-}}
+Update-AzFirmwareAnalysisFirmware -FirmwareId firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -Description description -FileSize 1  -FileName fileName -Vendor vendor -Model model -Version version
 ```
 
 ```output
-{{
 Description                  : description
 FileName                     : FileName
 FileSize                     : 1
@@ -68,11 +66,9 @@ SystemDataLastModifiedByType :
 Type                         : microsoft.iotfirmwaredefense/workspaces/firmwares
 Vendor                       : vendor
 Version                      : version
- }}
 ```
 
-{{ Update a firmware.
-}}
+Update a firmware.
 
 ## PARAMETERS
 
@@ -154,7 +150,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
@@ -216,7 +212,7 @@ Accept wildcard characters: False
 
 ### -StatusMessage
 A list of errors or other messages generated during firmware analysis
-To construct, see NOTES section for STATUSMESSAGE properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IStatusMessage[]
@@ -278,7 +274,7 @@ Accept wildcard characters: False
 
 ### -WorkspaceInputObject
 Identity Parameter
-To construct, see NOTES section for WORKSPACEINPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity

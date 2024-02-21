@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.FirmwareAnalysis.private.dll'
   FormatsToProcess = './Az.FirmwareAnalysis.format.ps1xml'
-  FunctionsToExport = 'Get-AzFirmwareAnalysisBinaryHardening', 'Get-AzFirmwareAnalysisCryptoCertificate', 'Get-AzFirmwareAnalysisCryptoKey', 'Get-AzFirmwareAnalysisCve', 'Get-AzFirmwareAnalysisFirmware', 'Get-AzFirmwareAnalysisPasswordHash', 'Get-AzFirmwareAnalysisSbomComponent', 'Get-AzFirmwareAnalysisSummary', 'Get-AzFirmwareAnalysisWorkspace', 'New-AzFirmwareAnalysisFirmware', 'New-AzFirmwareAnalysisFirmwareFilesystemDownloadUrl', 'New-AzFirmwareAnalysisWorkspace', 'New-AzFirmwareAnalysisWorkspaceUploadUrl', 'Remove-AzFirmwareAnalysisFirmware', 'Remove-AzFirmwareAnalysisWorkspace', 'Update-AzFirmwareAnalysisFirmware', 'Update-AzFirmwareAnalysisWorkspace'
+  FunctionsToExport = 'Get-AzFirmwareAnalysisBinaryHardening', 'Get-AzFirmwareAnalysisCryptoCertificate', 'Get-AzFirmwareAnalysisCryptoKey', 'Get-AzFirmwareAnalysisCve', 'Get-AzFirmwareAnalysisFirmware', 'Get-AzFirmwareAnalysisPasswordHash', 'Get-AzFirmwareAnalysisSbomComponent', 'Get-AzFirmwareAnalysisSummary', 'Get-AzFirmwareAnalysisWorkspace', 'New-AzFirmwareAnalysisFirmware', 'New-AzFirmwareAnalysisFirmwareDownloadUrl', 'New-AzFirmwareAnalysisFirmwareFilesystemDownloadUrl', 'New-AzFirmwareAnalysisWorkspace', 'New-AzFirmwareAnalysisWorkspaceUploadUrl', 'Remove-AzFirmwareAnalysisFirmware', 'Remove-AzFirmwareAnalysisWorkspace', 'Update-AzFirmwareAnalysisFirmware', 'Update-AzFirmwareAnalysisWorkspace'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'FirmwareAnalysis'

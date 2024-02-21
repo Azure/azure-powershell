@@ -22,13 +22,12 @@ Lists CVE analysis results of a firmware.
 
 ## EXAMPLES
 
-### Example 1: {{ List all the cve analysis results for a firmware. }}
+### Example 1:  List all the cve analysis results for a firmware. 
 ```powershell
-{{ Get-AzFirmwareAnalysisCve -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json }}
+Get-AzFirmwareAnalysisCve -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json
 ```
 
 ```output
-{{ 
 [
   {
     "ComponentId": ,
@@ -57,11 +56,9 @@ Lists CVE analysis results of a firmware.
     "Type": "Microsoft.IoTFirmwareDefense/workspaces/firmwares/cves"
   }
 ]
-}}
 ```
 
-{{ List all the cve analysis results for a firmware.
-}}
+List all the cve analysis results for a firmware.
 
 ## PARAMETERS
 

@@ -1,56 +1,63 @@
 ---
 external help file:
 Module Name: Az.FirmwareAnalysis
-online version: https://learn.microsoft.com/powershell/module/az.firmwareanalysis/update-azfirmwareanalysisworkspace
+online version: https://learn.microsoft.com/powershell/module/az.firmwareanalysis/new-azfirmwareanalysisfirmwaredownloadurl
 schema: 2.0.0
 ---
 
-# Update-AzFirmwareAnalysisWorkspace
+# New-AzFirmwareAnalysisFirmwareDownloadUrl
 
 ## SYNOPSIS
-The operation to update a firmware analysis workspaces.
+The operation to a url for file download.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Generate (Default)
 ```
-Update-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+New-AzFirmwareAnalysisFirmwareDownloadUrl -FirmwareId <String> -ResourceGroupName <String>
+ -WorkspaceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### GenerateViaIdentity
+```
+New-AzFirmwareAnalysisFirmwareDownloadUrl -InputObject <IFirmwareAnalysisIdentity>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### GenerateViaIdentityWorkspace
 ```
-Update-AzFirmwareAnalysisWorkspace -InputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFirmwareAnalysisFirmwareDownloadUrl -FirmwareId <String>
+ -WorkspaceInputObject <IFirmwareAnalysisIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to update a firmware analysis workspaces.
+The operation to a url for file download.
 
 ## EXAMPLES
 
-### Example 1: Update a firmware analysis workspace.
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzFirmwareAnalysisWorkspace -ResourceGroupName resourceGroupName -Name workspaceName
+{{ Add code here }}
 ```
 
 ```output
-Id                           : 
-Location                     : 
-Name                         : 
-ProvisioningState            : 
-ResourceGroupName            : 
-SystemDataCreatedAt          : 
-SystemDataCreatedBy          : 
-SystemDataCreatedByType      : 
-SystemDataLastModifiedAt     : 
-SystemDataLastModifiedBy     : 
-SystemDataLastModifiedByType : 
-Tag                          : {}
-Type                         : microsoft.iotfirmwaredefense/workspaces
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update a firmware analysis workspace.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -70,13 +77,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FirmwareId
+The id of the firmware.
+
+```yaml
+Type: System.String
+Parameter Sets: Generate, GenerateViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 .
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: GenerateViaIdentity
 Aliases:
 
 Required: True
@@ -86,28 +108,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the firmware analysis workspace.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: WorkspaceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Generate
 Aliases:
 
 Required: True
@@ -123,12 +130,43 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Generate
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceInputObject
+Identity Parameter
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
+Parameter Sets: GenerateViaIdentityWorkspace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -WorkspaceName
+The name of the firmware analysis workspace.
+
+```yaml
+Type: System.String
+Parameter Sets: Generate
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -173,7 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IUrlToken
 
 ## NOTES
 

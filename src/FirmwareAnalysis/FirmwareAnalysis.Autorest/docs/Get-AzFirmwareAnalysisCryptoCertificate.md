@@ -22,13 +22,12 @@ Lists cryptographic certificate analysis results found in a firmware.
 
 ## EXAMPLES
 
-### Example 1: {{ List all the crypto certificate analysis results for a firmware. }}
+### Example 1:  List all the crypto certificate analysis results for a firmware. 
 ```powershell
-{{ Get-AzFirmwareAnalysisCryptoCertificate -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json }}
+Get-AzFirmwareAnalysisCryptoCertificate -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json
 ```
 
 ```output
-{{ 
 [
  {
     "CryptoCertId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -71,11 +70,9 @@ Lists cryptographic certificate analysis results found in a firmware.
     "Usage": []
   }
 ]
- }}
 ```
 
-{{ List all the crypto certificate analysis results for a firmware.
-}}
+List all the crypto certificate analysis results for a firmware.
 
 ## PARAMETERS
 

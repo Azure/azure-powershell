@@ -13,7 +13,7 @@ The operation to create a firmware.
 ## SYNTAX
 
 ```
-New-AzFirmwareAnalysisFirmware -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
+New-AzFirmwareAnalysisFirmware -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-Description <String>] [-FileName <String>] [-FileSize <Int64>] [-Model <String>]
  [-Status <String>] [-StatusMessage <IStatusMessage[]>] [-Vendor <String>] [-Version <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -24,13 +24,12 @@ The operation to create a firmware.
 
 ## EXAMPLES
 
-### Example 1: {{ Create a new firmware using new guid. }}
+### Example 1: Create a new firmware using new guid.
 ```powershell
-{{ New-AzFirmwareAnalysisFirmware -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -Description description -FileSize 1  -FileName fileName -Vendor vendor -Model model -Version version }}
+New-AzFirmwareAnalysisFirmware -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -Description description -FileSize 1  -FileName fileName -Vendor vendor -Model model -Version version
 ```
 
 ```output
-{{ 
 Description                  : description
 FileName                     : FileName
 FileSize                     : 1
@@ -50,20 +49,16 @@ SystemDataLastModifiedByType :
 Type                         : microsoft.iotfirmwaredefense/workspaces/firmwares
 Vendor                       : vendor
 Version                      : version
- }}
 ```
 
-{{ Create a new firmware using new guid.
-}}
+Create a new firmware using new guid.
 
-### Example 2: {{ Create a new firmware using a user specified firmwareId. }}
+### Example 2: Create a new firmware using a user specified firmwareId.
 ```powershell
-{{ New-AzFirmwareAnalysisFirmware -Id firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -Description description -FileSize 1  -FileName fileName -Vendor vendor -Model model -Version version
-}}
+New-AzFirmwareAnalysisFirmware -Id firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -Description description -FileSize 1  -FileName fileName -Vendor vendor -Model model -Version version
 ```
 
 ```output
-{{ 
 Description                  : description
 FileName                     : FileName
 FileSize                     : 1
@@ -83,11 +78,9 @@ SystemDataLastModifiedByType :
 Type                         : microsoft.iotfirmwaredefense/workspaces/firmwares
 Vendor                       : vendor
 Version                      : version
- }}
 ```
 
-{{ Create a new firmware using a user specified firmwareId.
-}}
+Create a new firmware using a user specified firmwareId.
 
 ## PARAMETERS
 
@@ -160,9 +153,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: FirmwareId
 
-Required: False
+Required: True
 Position: Named
-Default value: New-Guid
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -215,7 +208,7 @@ Accept wildcard characters: False
 
 ### -StatusMessage
 A list of errors or other messages generated during firmware analysis
-To construct, see NOTES section for STATUSMESSAGE properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IStatusMessage[]

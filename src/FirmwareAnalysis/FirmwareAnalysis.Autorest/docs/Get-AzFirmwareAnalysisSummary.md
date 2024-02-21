@@ -47,13 +47,12 @@ Get an analysis result summary of a firmware by name.
 
 ## EXAMPLES
 
-### Example 1: {{ List all the analysis results summary for a firmware by analysis type CVE. }}
+### Example 1: List all the analysis results summary for a firmware by analysis type CVE.
 ```powershell
-{{ Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Name Type }}
+Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Name Type
 ```
 
 ```output
-{{
 Id                           : 
 Name                         : 
 Property                     : 
@@ -66,19 +65,17 @@ SystemDataLastModifiedAt     :
 SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 Type                         : Microsoft.IoTFirmwareDefense/workspaces/firmwares/summaries
- }}
 ```
 
 {{ List all the analysis results summary for a firmware by analysis type CVE.
 }}
 
-### Example 2: {{ List all the analysis results summary for a firmware by analysis type Firmware. }}
+### Example 2: List all the analysis results summary for a firmware by analysis type Firmware.
 ```powershell
-{{ Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Name Type }}
+Get-AzFirmwareAnalysisSummary -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName -Name Type
 ```
 
 ```output
-{{
 Id                           : 
 Name                         : 
 Property                     :
@@ -91,11 +88,9 @@ SystemDataLastModifiedAt     :
 SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 Type                         : Microsoft.IoTFirmwareDefense/workspaces/firmwares/summaries
-}}
 ```
 
-{{ List all the analysis results summary for a firmware by analysis type Firmware.
-}}
+List all the analysis results summary for a firmware by analysis type Firmware.
 
 ## PARAMETERS
 
@@ -132,7 +127,7 @@ Accept wildcard characters: False
 
 ### -FirmwareInputObject
 Identity Parameter
-To construct, see NOTES section for FIRMWAREINPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
@@ -148,7 +143,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
@@ -211,7 +206,7 @@ Accept wildcard characters: False
 
 ### -WorkspaceInputObject
 Identity Parameter
-To construct, see NOTES section for WORKSPACEINPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity

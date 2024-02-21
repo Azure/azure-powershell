@@ -35,13 +35,12 @@ The operation to delete a firmware.
 
 ## EXAMPLES
 
-### Example 1: {{ Delete a firmware analysis workspace. }}
+### Example 1: Delete a firmware analysis workspace.
 ```powershell
-{{ Remove-AzFirmwareAnalysisFirmware -Id firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName }}
+Remove-AzFirmwareAnalysisFirmware -Id firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName
 ```
 
-{{ Delete a firmware analysis workspace.
-}}
+Delete a firmware analysis workspace.
 
 ## PARAMETERS
 
@@ -78,7 +77,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
@@ -141,7 +140,7 @@ Accept wildcard characters: False
 
 ### -WorkspaceInputObject
 Identity Parameter
-To construct, see NOTES section for WORKSPACEINPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity

@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the FirmwareAnalysis service.
 
 ---
-## Status
-[![Az.FirmwareAnalysis](https://img.shields.io/powershellgallery/v/Az.FirmwareAnalysis.svg?style=flat-square&label=Az.FirmwareAnalysis "Az.FirmwareAnalysis")](https://www.powershellgallery.com/packages/Az.FirmwareAnalysis/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -87,6 +84,17 @@ directive:
   # Remove the set-* cmdlet
   - where:
       verb: Set
+    remove: true
+
+  - where:
+      verb: New
+      subject: FirmwareDownloadUrl
+    remove: true
+
+  - where:
+      verb: Get
+      subject: Summary
+      variant: List
     remove: true
 
   - where:

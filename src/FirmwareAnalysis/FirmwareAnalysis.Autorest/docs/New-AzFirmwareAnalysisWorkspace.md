@@ -23,13 +23,12 @@ The operation to Create a firmware analysis workspace.
 
 ## EXAMPLES
 
-### Example 1: {{ Create a new firmware analysis workspace. }}
+### Example 1: Create a new firmware analysis workspace.
 ```powershell
-{{ New-AzFirmwareAnalysisWorkspace -ResourceGroupName resourceGroupName -Name name -Location location }}
+New-AzFirmwareAnalysisWorkspace -ResourceGroupName resourceGroupName -Name name -Location location
 ```
 
 ```output
-{{ 
 Id                           : 
 Location                     : 
 Name                         : 
@@ -43,11 +42,9 @@ SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType : 
 Tag                          : {}
 Type                         : microsoft.iotfirmwaredefense/workspaces
-}}
 ```
 
-{{ Create a new firmware analysis workspace.
-}}
+Create a new firmware analysis workspace.
 
 ## PARAMETERS
 
