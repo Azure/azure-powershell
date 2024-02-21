@@ -2001,7 +2001,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"H/bGAptisQp0kHvlujk1RKt3hFX/Lxv2qXPmqT5vVMRr5qBGZbXEq4vVUJX0+YPhKS85XtDmKuna+AStrH3iaw==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"LP9XAYhqz9zo7TVJBD+NupLauAAEEHdXUW+yL9X77giF/jAf1HZCkpZbgocpznI+XRN9t0ShJfWc+AStGWD46Q==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"Sanitized\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"Sanitized\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -2067,7 +2067,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"H/bGAptisQp0kHvlujk1RKt3hFX/Lxv2qXPmqT5vVMRr5qBGZbXEq4vVUJX0+YPhKS85XtDmKuna+AStrH3iaw==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"LP9XAYhqz9zo7TVJBD+NupLauAAEEHdXUW+yL9X77giF/jAf1HZCkpZbgocpznI+XRN9t0ShJfWc+AStGWD46Q==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"Sanitized\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"Sanitized\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
