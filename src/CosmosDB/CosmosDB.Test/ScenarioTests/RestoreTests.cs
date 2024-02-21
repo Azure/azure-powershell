@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateCosmosDBAccountBackupPolicyCmdLet()
         {
-            TestRunner.RunTestScript( "Test-UpdateCosmosDBAccountBackupPolicyToContinuous30DaysCmdLets");
+            TestRunner.RunTestScript("Test-UpdateCosmosDBAccountBackupPolicyToContinuous30DaysCmdLets");
         }
 
         [Fact]

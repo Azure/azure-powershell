@@ -888,7 +888,6 @@ function Test-CrossRegionRestoreSingleRegionAccountCmdlets {
   Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.SourceBackupLocation $sourceBackupLocation
   Assert-AreEqual $restoredCosmosDBAccount.WriteLocations[0].LocationName $targetLocation
 }
-}
 
 function Test-SqlRestoreAccountPublicNetworkAccessCmdlets {
   #use an existing account with the following information
