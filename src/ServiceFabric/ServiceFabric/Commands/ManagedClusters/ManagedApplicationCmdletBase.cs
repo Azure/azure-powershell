@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     typeVersion,
                     managedAppTypeVersionParams).GetAwaiter().GetResult();
 
-            return this.PollLongRunningOperation(beginRequestResponse) as ApplicationTypeVersionResource;
+            return this.PollLongRunningOperation(beginRequestResponse);
         }
 
         private ApplicationTypeVersionResource GetNewAppTypeVersionParameters(string applicationTypeName, string location, string packageUrl, Hashtable tags)
