@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the DigitalTwins service.
 
 ---
-## Status
-[![Az.DigitalTwins](https://img.shields.io/powershellgallery/v/Az.DigitalTwins.svg?style=flat-square&label=Az.DigitalTwins "Az.DigitalTwins")](https://www.powershellgallery.com/packages/Az.DigitalTwins/)
 
 ## Info
 - Modifiable: yes

@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Elastic service.
 
 ---
-## Status
-[![Az.Elastic](https://img.shields.io/powershellgallery/v/Az.Elastic.svg?style=flat-square&label=Az.Elastic "Az.Elastic")](https://www.powershellgallery.com/packages/Az.Elastic/)
 
 ## Info
 - Modifiable: yes

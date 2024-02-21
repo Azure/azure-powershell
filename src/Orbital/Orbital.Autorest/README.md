@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Orbital service.
 
 ---
-## Status
-[![Az.Orbital](https://img.shields.io/powershellgallery/v/Az.Orbital.svg?style=flat-square&label=Az.Orbital "Az.Orbital")](https://www.powershellgallery.com/packages/Az.Orbital/)
 
 ## Info
 - Modifiable: yes

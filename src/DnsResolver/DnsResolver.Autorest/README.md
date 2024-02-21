@@ -5,8 +5,6 @@ v
 This directory contains the PowerShell module for the DnsResolver service.
 
 ---
-## Status
-[![Az.DnsResolver](https://img.shields.io/powershellgallery/v/Az.DnsResolver.svg?style=flat-square&label=Az.DnsResolver "Az.DnsResolver")](https://www.powershellgallery.com/packages/Az.DnsResolver/)
 
 ## Info
 - Modifiable: yes
@@ -33,8 +31,6 @@ For information on how to develop for `Az.DnsResolver`, see [how-to.md](how-to.m
 This directory contains the PowerShell module for the DnsResolver service.
 
 ---
-## Status
-[![DnsResolver](https://img.shields.io/powershellgallery/v/DnsResolver.svg?style=flat-square&label=DnsResolver "DnsResolver")](https://www.powershellgallery.com/packages/DnsResolver/)
 
 ## Info
 - Modifiable: yes

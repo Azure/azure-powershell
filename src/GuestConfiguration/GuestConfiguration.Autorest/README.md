@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the GuestConfiguration service.
 
 ---
-## Status
-[![Az.GuestConfiguration](https://img.shields.io/powershellgallery/v/Az.GuestConfiguration.svg?style=flat-square&label=Az.GuestConfiguration "Az.GuestConfiguration")](https://www.powershellgallery.com/packages/Az.GuestConfiguration/)
 
 ## Info
 - Modifiable: yes

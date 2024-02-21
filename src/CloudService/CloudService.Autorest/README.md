@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the CloudService service.
 
 ---
-## Status
-[![Az.CloudService](https://img.shields.io/powershellgallery/v/Az.CloudService.svg?style=flat-square&label=Az.CloudService "Az.CloudService")](https://www.powershellgallery.com/packages/Az.CloudService/)
 
 ## Info
 - Modifiable: yes

@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the PrometheusRuleGroups service.
 
 ---
-## Status
-[![Az.PrometheusRuleGroups](https://img.shields.io/powershellgallery/v/Az.PrometheusRuleGroups.svg?style=flat-square&label=Az.PrometheusRuleGroups "Az.PrometheusRuleGroups")](https://www.powershellgallery.com/packages/Az.PrometheusRuleGroups/)
 
 ## Info
 - Modifiable: yes
