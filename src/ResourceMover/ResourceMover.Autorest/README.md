@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the ResourceMover service.
 
 ---
-## Status
-[![Az.ResourceMover](https://img.shields.io/powershellgallery/v/Az.ResourceMover.svg?style=flat-square&label=Az.ResourceMover "Az.ResourceMover")](https://www.powershellgallery.com/packages/Az.ResourceMover/)
 
 ## Info
 - Modifiable: yes

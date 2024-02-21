@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Synapse service.
 
 ---
-## Status
-[![Az.Synapse](https://img.shields.io/powershellgallery/v/Az.Synapse.svg?style=flat-square&label=Az.Synapse "Az.Synapse")](https://www.powershellgallery.com/packages/Az.Synapse/)
 
 ## Info
 - Modifiable: yes

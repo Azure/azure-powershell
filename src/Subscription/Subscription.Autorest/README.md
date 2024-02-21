@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Subscription service.
 
 ---
-## Status
-[![Az.Subscription](https://img.shields.io/powershellgallery/v/Az.Subscription.svg?style=flat-square&label=Az.Subscription "Az.Subscription")](https://www.powershellgallery.com/packages/Az.Subscription/)
 
 ## Info
 - Modifiable: yes

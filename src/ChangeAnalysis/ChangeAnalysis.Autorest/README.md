@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the ChangeAnalysis service.
 
 ---
-## Status
-[![Az.ChangeAnalysis](https://img.shields.io/powershellgallery/v/Az.ChangeAnalysis.svg?style=flat-square&label=Az.ChangeAnalysis "Az.ChangeAnalysis")](https://www.powershellgallery.com/packages/Az.ChangeAnalysis/)
 
 ## Info
 - Modifiable: yes

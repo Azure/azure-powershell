@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the TimeSeriesInsights service.
 
 ---
-## Status
-[![Az.TimeSeriesInsights](https://img.shields.io/powershellgallery/v/Az.TimeSeriesInsights.svg?style=flat-square&label=Az.TimeSeriesInsights "Az.TimeSeriesInsights")](https://www.powershellgallery.com/packages/Az.TimeSeriesInsights/)
 
 ## Info
 - Modifiable: yes

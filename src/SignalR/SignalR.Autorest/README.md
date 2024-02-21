@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the WebPubSub service.
 
 ---
-## Status
-[![Az.SignalR](https://img.shields.io/powershellgallery/v/Az.SignalR.svg?style=flat-square&label=Az.SignalR "Az.SignalR")](https://www.powershellgallery.com/packages/Az.SignalR/)
 
 ## Info
 - Modifiable: yes

@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the GraphServices service.
 
 ---
-## Status
-[![Az.GraphServices](https://img.shields.io/powershellgallery/v/Az.GraphServices.svg?style=flat-square&label=Az.GraphServices "Az.GraphServices")](https://www.powershellgallery.com/packages/Az.GraphServices/)
 
 ## Info
 - Modifiable: yes
