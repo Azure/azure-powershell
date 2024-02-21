@@ -272,7 +272,7 @@ public static int hashForArtifact(String artifact)
                     $peContainer = $peContainers[0]
                     $existingMapping = Get-AzMigrateReplicationProtectionContainerMapping -ResourceGroupName $ResourceGroupName -ResourceName $VaultName -FabricName $fabric.Name -ProtectionContainerName $peContainer.Name -MappingName $mappingName -ErrorVariable notPresent -ErrorAction SilentlyContinue
                     if (($existingMapping) -and ($existingMapping.ProviderSpecificDetail.TargetLocation -ne $TargetRegion)) {
-                        $targetRegionMismatchExceptionMsg = $ProjectName + " is already configured for migrating servers to " + $TargetRegion + ". Region in containermapping: " + $existingMapping.ProviderSpecificDetail.TargetLocation + ". Target Region cannot be modified once configured."
+                        $targetRegionMismatchExceptionMsg = $ProjectName + " is already configured for migrating servers to " + $TargetRegion + ". Target Region cannot be modified once configured."
                         throw $targetRegionMismatchExceptionMsg
                     }
 
