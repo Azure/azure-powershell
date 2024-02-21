@@ -100,7 +100,7 @@ directive:
   - where:
       parameter-name: Id
       verb: New
-      subject: AzFirmwareAnalysisFirmware
+      subject: Firmware
     set:
       default:
         name: Id

@@ -12,13 +12,7 @@ Get an analysis result summary of a firmware by name.
 
 ## SYNTAX
 
-### List (Default)
-```
-Get-AzFirmwareAnalysisSummary -FirmwareId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
+### Get (Default)
 ```
 Get-AzFirmwareAnalysisSummary -FirmwareId <String> -Name <String> -ResourceGroupName <String>
  -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -115,7 +109,7 @@ The id of the firmware.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityWorkspace, List
+Parameter Sets: Get, GetViaIdentityWorkspace
 Aliases:
 
 Required: True
@@ -178,7 +172,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -194,7 +188,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False
@@ -225,7 +219,7 @@ The name of the firmware analysis workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
