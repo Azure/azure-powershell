@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     var beginRequestResponse = this.SfrpMcClient.ApplicationTypeVersions.BeginCreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName, this.ClusterName, this.Name, this.Version, updatedAppTypeVersionParams).GetAwaiter().GetResult();
 
-                    var managedAppTypeVersion = this.PollLongRunningOperation(beginRequestResponse) as ApplicationTypeVersionResource;
+                    var managedAppTypeVersion = this.PollLongRunningOperation(beginRequestResponse);
 
                     WriteObject(new PSManagedApplicationTypeVersion(managedAppTypeVersion), false);
                 }

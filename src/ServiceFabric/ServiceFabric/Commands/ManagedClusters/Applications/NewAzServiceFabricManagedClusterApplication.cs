@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     this.Name,
                     appParams).GetAwaiter().GetResult();
 
-            return this.PollLongRunningOperation(beginRequestResponse) as ApplicationResource;
+            return this.PollLongRunningOperation(beginRequestResponse);
         }
 
         private ApplicationResource GetNewAppParameters(string location)

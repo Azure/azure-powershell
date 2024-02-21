@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.Name, updatedNodeTypeParams)
                         .GetAwaiter().GetResult();
 
-                    var nodeType = this.PollLongRunningOperation(beginRequestResponse) as NodeType;
+                    var nodeType = this.PollLongRunningOperation(beginRequestResponse);
 
                     WriteObject(new PSManagedNodeType(nodeType), false);
                 }

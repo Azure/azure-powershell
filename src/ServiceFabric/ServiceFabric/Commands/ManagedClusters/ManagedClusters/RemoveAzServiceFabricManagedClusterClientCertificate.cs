@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     var beginRequestResponse = this.SfrpMcClient.ManagedClusters.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, updatedCluster)
                         .GetAwaiter().GetResult();
 
-                    var cluster = this.PollLongRunningOperation(beginRequestResponse) as ManagedCluster;
+                    var cluster = this.PollLongRunningOperation(beginRequestResponse);
 
                     if (this.PassThru)
                     {
