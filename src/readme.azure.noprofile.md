@@ -49,7 +49,7 @@ exclude-tableview-properties:
 > Default autorest.powershell version
 ``` yaml
 use-extension:
-  "@autorest/powershell": "4.x"
+  "@autorest/powershell": "4.0.674"
 ```
 
 > Directives
