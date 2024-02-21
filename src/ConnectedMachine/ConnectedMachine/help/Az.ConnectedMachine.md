@@ -23,6 +23,9 @@ Retrieves information about the model view or the instance view of a hybrid mach
 ### [Get-AzConnectedMachineExtension](Get-AzConnectedMachineExtension.md)
 The operation to get the extension.
 
+### [Get-AzConnectedMachineRunCommand](Get-AzConnectedMachineRunCommand.md)
+The operation to get a run command.
+
 ### [Get-AzConnectedPrivateLinkScope](Get-AzConnectedPrivateLinkScope.md)
 Returns a Azure Arc PrivateLinkScope.
 
@@ -35,6 +38,9 @@ The operation to assess patches on a hybrid machine identity in Azure.
 ### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)
 The operation to create or update the extension.
 
+### [New-AzConnectedMachineRunCommand](New-AzConnectedMachineRunCommand.md)
+The operation to Create a run command.
+
 ### [New-AzConnectedPrivateLinkScope](New-AzConnectedPrivateLinkScope.md)
 Creates (or updates) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
@@ -44,6 +50,9 @@ The operation to delete a hybrid machine.
 
 ### [Remove-AzConnectedMachineExtension](Remove-AzConnectedMachineExtension.md)
 The operation to delete the extension.
+
+### [Remove-AzConnectedMachineRunCommand](Remove-AzConnectedMachineRunCommand.md)
+The operation to delete a run command.
 
 ### [Remove-AzConnectedPrivateLinkScope](Remove-AzConnectedPrivateLinkScope.md)
 Deletes a Azure Arc PrivateLinkScope.
@@ -58,11 +67,11 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 ### [Update-AzConnectedExtension](Update-AzConnectedExtension.md)
 The operation to Upgrade Machine Extensions.
 
-### [Update-AzConnectedMachine](Update-AzConnectedMachine.md)
-The operation to update a hybrid machine.
-
 ### [Update-AzConnectedMachineExtension](Update-AzConnectedMachineExtension.md)
 The operation to create or update the extension.
+
+### [Update-AzConnectedMachineRunCommand](Update-AzConnectedMachineRunCommand.md)
+The operation to Create a run command.
 
 ### [Update-AzConnectedPrivateLinkScopeTag](Update-AzConnectedPrivateLinkScopeTag.md)
 Updates an existing PrivateLinkScope's tags.
