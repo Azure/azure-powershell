@@ -111,7 +111,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Initial release for public preview.'
+        ReleaseNotes = '* First preview release for module Az.CodeSigning.'
 
         # Prerelease string of this module
         # Prerelease = ''

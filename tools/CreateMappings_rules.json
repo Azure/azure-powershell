@@ -863,5 +863,9 @@
   {
     "module": "ManagedNetworkFabric",
     "alias": "Managed Network Fabric"
+  },
+  {
+    "module": "CodeSigning",
+    "alias": "Code Signing"
   }
 ]
