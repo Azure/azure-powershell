@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the FirmwareAnalysis service.
 
 ---
-## Status
-[![Az.FirmwareAnalysis](https://img.shields.io/powershellgallery/v/Az.FirmwareAnalysis.svg?style=flat-square&label=Az.FirmwareAnalysis "Az.FirmwareAnalysis")](https://www.powershellgallery.com/packages/Az.FirmwareAnalysis/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -98,6 +95,11 @@ directive:
       verb: Get
       subject: Summary
       variant: List
+    remove: true
+
+  - where:
+      verb: New
+      subject: FirmwareFilesystemDownloadUrl
     remove: true
 
   - where:

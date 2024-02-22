@@ -41,9 +41,6 @@ Get firmware analysis workspace.
 ### [New-AzFirmwareAnalysisFirmware](New-AzFirmwareAnalysisFirmware.md)
 The operation to create a firmware.
 
-### [New-AzFirmwareAnalysisFirmwareFilesystemDownloadUrl](New-AzFirmwareAnalysisFirmwareFilesystemDownloadUrl.md)
-The operation to a url for tar file download.
-
 ### [New-AzFirmwareAnalysisWorkspace](New-AzFirmwareAnalysisWorkspace.md)
 The operation to Create a firmware analysis workspace.
 
