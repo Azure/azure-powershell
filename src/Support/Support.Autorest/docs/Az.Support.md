@@ -35,6 +35,9 @@ Gets details for a specific file workspace in an Azure subscription.
 ### [Get-AzSupportFileWorkspacesNoSubscription](Get-AzSupportFileWorkspacesNoSubscription.md)
 Gets details for a specific file workspace.
 
+### [Get-AzSupportOperation](Get-AzSupportOperation.md)
+Lists all the available Microsoft Support REST API operations.
+
 ### [Get-AzSupportProblemClassification](Get-AzSupportProblemClassification.md)
 Get problem classification details for a specific Azure service.
 

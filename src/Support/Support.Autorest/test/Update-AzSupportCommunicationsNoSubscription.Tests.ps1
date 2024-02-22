@@ -15,8 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSupportCommunication
 }
 
 Describe 'Update-AzSupportCommunicationsNoSubscription' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    
+    It 'UpdateExpanded' {
+        Mock Update-AzSupportCommunicationsNoSubscription{ New-MockObject -Type "Microsoft.Azure.PowerShell.Cmdlets.Support.Models.CommunicationDetails"}
+            
+        Update-AzSupportCommunicationsNoSubscription -CommunicationName $env.CommunicationName -SupportTicketName $env.Name -Body "Body changed" 
+
+        Assert-MockCalled Update-AzSupportCommunicationsNoSubscription -Exactly 1        
     }
 
     It 'UpdateViaIdentitySupportTicketExpanded' -skip {

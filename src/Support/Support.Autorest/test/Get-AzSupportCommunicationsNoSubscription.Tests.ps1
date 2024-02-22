@@ -15,8 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportCommunicationsNo
 }
 
 Describe 'Get-AzSupportCommunicationsNoSubscription' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+
+    It 'Get' {
+        if($env.SupportPlanTenant -eq "Basic support" || $env.SupportPlanTenant -eq "Free"){
+            write-host "cannot get communication operations for tickets with free support plan"
+            
+            Mock Get-AzSupportCommunicationsNoSubscription{ New-MockObject -Type "Microsoft.Azure.PowerShell.Cmdlets.Support.Models.CommunicationDetails"}
+            
+            Get-AzSupportCommunicationsNoSubscription -SupportTicketName $env.Name -CommunicationName $env.CommunicationName
+            
+            Assert-MockCalled Get-AzSupportCommunicationsNoSubscription -Exactly 1
+        }
+        else{
+            $supportMessage = Get-AzSupportCommunicationsNoSubscription -CommunicationName $env.CommunicationName -SupportTicketName $env.Name
+        
+            $supportMessage.Body.ToString() |  Should -Match $env.Body
+        }
     }
 
     It 'GetViaIdentitySupportTicket' -skip {

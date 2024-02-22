@@ -14,9 +14,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSupportCommunication
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzSupportCommunication' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'Update-AzSupportCommunication' {   
+    
+    It 'UpdateExpanded' {
+        Mock Update-AzSupportCommunication{ New-MockObject -Type "Microsoft.Azure.PowerShell.Cmdlets.Support.Models.CommunicationDetails"}
+            
+        Update-AzSupportCommunication -Name $env.CommunicationName -SupportTicketName $env.Name -Body "Body changed" 
+
+        Assert-MockCalled Update-AzSupportCommunication -Exactly 1
     }
 
     It 'UpdateViaIdentitySupportTicketExpanded' -skip {
