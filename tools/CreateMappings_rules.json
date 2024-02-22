@@ -867,5 +867,9 @@
   {
     "module": "CodeSigning",
     "alias": "Code Signing"
+  },
+  {
+    "alias": "FirmwareAnalysis",
+    "module": "FirmwareAnalysis"
   }
 ]
