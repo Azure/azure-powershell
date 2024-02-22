@@ -43,7 +43,7 @@ PS C:\> {{ Add example code here }}
 The name of the Access Policy Assignment that is being deleted from the Redis cache.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NormalParameterSet
 Aliases:
 
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 Object of type RedisCacheAccessPolicyAssignment
 
 ```yaml
-Type: PSRedisAccessPolicyAssignment
+Type: Microsoft.Azure.Commands.RedisCache.Models.PSRedisAccessPolicyAssignment
 Parameter Sets: RedisCacheAccessPolicyAssignmentObject
 Aliases:
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Name of Redis Cache.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NormalParameterSet
 Aliases:
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 {{ Fill PassThru Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 Name of resource group in which cache exists.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NormalParameterSet
 Aliases:
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -149,7 +149,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
