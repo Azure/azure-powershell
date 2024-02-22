@@ -42,7 +42,7 @@ Create or update an App Attach package.
 
 ### EXAMPLE 1
 ```
-"
+$apps = "<PackagedApplication>"
 $deps = "<PackageDependencies>"
 New-AzWvdAppAttachPackage -Name PackageArmObjectName `
                          -ResourceGroupName ResourceGroupName `

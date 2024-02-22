@@ -56,7 +56,7 @@ Update an App Attach Package
 
 ### EXAMPLE 1
 ```
-"
+$apps = "<PackagedApplication>"
 $deps = "<PackageDependencies>"
 Update-AzWvdAppAttachPackage -Name PackageArmObjectName `
                          -ResourceGroupName ResourceGroupName `
