@@ -1,10 +1,9 @@
-### Example 1: {{ List all the sbom component analysis results for a firmware. }}
+### Example 1: List all the sbom component analysis results for a firmware.
 ```powershell
-{{ Get-AzFirmwareAnalysisSbomComponent -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json}}
+Get-AzFirmwareAnalysisSbomComponent -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json
 ```
 
 ```output
-{{ 
 [
   {
     "ComponentId": "",
@@ -23,8 +22,7 @@
     "Version": ""
   }
 ]
-}}
 ```
 
-{{ List all the sbom component analysis results for a firmware. }}
+List all the sbom component analysis results for a firmware.
 

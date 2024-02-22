@@ -58,21 +58,18 @@ The operation to get a url for file upload.
 
 ## EXAMPLES
 
-### Example 1: {{ Create a url for file upload. }}
+### Example 1: Create a url for file upload.
 ```powershell
-{{ New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -FirmwareId firmwareId }}
+New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -FirmwareId firmwareId
 ```
 
 ```output
-{{ 
 Url
 ---
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
- }}
 ```
 
-{{ Create a url for file upload.
-}}
+Create a url for file upload.
 
 ## PARAMETERS
 
@@ -109,7 +106,7 @@ Accept wildcard characters: False
 
 ### -GenerateUploadUrl
 Properties for generating an upload URL
-To construct, see NOTES section for GENERATEUPLOADURL properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest
@@ -125,7 +122,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity

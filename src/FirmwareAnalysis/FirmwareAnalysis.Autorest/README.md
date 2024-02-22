@@ -90,9 +90,20 @@ directive:
     remove: true
 
   - where:
+      verb: New
+      subject: FirmwareDownloadUrl
+    remove: true
+
+  - where:
+      verb: Get
+      subject: Summary
+      variant: List
+    remove: true
+
+  - where:
       parameter-name: Id
       verb: New
-      subject: AzFirmwareAnalysisFirmware
+      subject: Firmware
     set:
       default:
         name: Id

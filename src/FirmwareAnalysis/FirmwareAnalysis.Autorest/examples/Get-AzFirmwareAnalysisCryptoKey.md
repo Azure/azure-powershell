@@ -1,10 +1,9 @@
-### Example 1: {{ List all the crypto key analysis results for a firmware. }}
+### Example 1:  List all the crypto key analysis results for a firmware. 
 ```powershell
-{{ Get-AzFirmwareAnalysisCryptoKey -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json}}
+Get-AzFirmwareAnalysisCryptoKey -FirmwareId FirmwareId -ResourceGroupName ResourceGroupName -WorkspaceName WorkspaceName | ConvertTo-Json
 ```
 
 ```output
-{{ 
 [
   {
     "CryptoKeyId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -29,8 +28,7 @@
     ]
   }
 ]
- }}
 ```
 
-{{ List all the crypto key analysis results for a firmware.  }}
+List all the crypto key analysis results for a firmware.
 
