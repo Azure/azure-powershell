@@ -132,9 +132,7 @@ function Initialize-AzMigrateReplicationInfrastructure {
 
     process {
         Import-Module Az.Resources
-        Import-Module Az.KeyVault
         Import-Module Az.Storage
-        Import-Module Az.ServiceBus
         Import-Module Az.RecoveryServices
         
         # Validate user specified target region
@@ -260,7 +258,6 @@ public static int hashForArtifact(String artifact)
         foreach ($eachApp in $appMap.GetEnumerator()) {
             $SiteName = $eachApp.Value.Split("/")[8]
             $applianceName = $eachApp.Key
-            $HashCodeInput = $SiteName + $TargetRegion
 
             # User cannot change location if it's already set in mapping.
             $mappingName = "containermapping"
@@ -268,6 +265,7 @@ public static int hashForArtifact(String artifact)
 
             foreach ($fabric in $allFabrics) {
                 if (($fabric.Property.CustomDetail.InstanceType -ceq "VMwareV2") -and ($fabric.Property.CustomDetail.VmwareSiteId.Split("/")[8] -ceq $SiteName)) {
+                    $HashCodeInput = $fabric.Id
                     $peContainers = Get-AzMigrateReplicationProtectionContainer -FabricName $fabric.Name -ResourceGroupName $ResourceGroupName -ResourceName $VaultName
                     $peContainer = $peContainers[0]
                     $existingMapping = Get-AzMigrateReplicationProtectionContainerMapping -ResourceGroupName $ResourceGroupName -ResourceName $VaultName -FabricName $fabric.Name -ProtectionContainerName $peContainer.Name -MappingName $mappingName -ErrorVariable notPresent -ErrorAction SilentlyContinue
@@ -298,44 +296,49 @@ public static int hashForArtifact(String artifact)
                 # Phase 1
                 # Storage account
                 if ([string]::IsNullOrEmpty($CacheStorageAccountId)) {
-                    $ReplicationStorageAcName = $MigratePrefix + "rsa" + $hash
-                    $StorageType = "Microsoft.Storage/storageAccounts"
-                    $StorageApiVersion = "2017-10-01" 
-                    $ReplicationStorageProperties = @{
-                        encryption               = @{
-                            services  = @{
-                                blob  = @{enabled = $true };
-                                file  = @{enabled = $true };
-                                table = @{enabled = $true };
-                                queue = @{enabled = $true }
+                    if (!$existingMapping) {
+                        $ReplicationStorageAcName = $MigratePrefix + "rsa" + $hash
+                        $StorageType = "Microsoft.Storage/storageAccounts"
+                        $StorageApiVersion = "2017-10-01" 
+                        $ReplicationStorageProperties = @{
+                            encryption               = @{
+                                services  = @{
+                                    blob  = @{enabled = $true };
+                                    file  = @{enabled = $true };
+                                    table = @{enabled = $true };
+                                    queue = @{enabled = $true }
+                                };
+                                keySource = "Microsoft.Storage"
                             };
-                            keySource = "Microsoft.Storage"
-                        };
-                        supportsHttpsTrafficOnly = $true
-                    }
-                    $ResourceTag = @{"Migrate Project" = $ProjectName }
-                    $StorageSku = @{name = "Standard_LRS" }
-                    $ResourceKind = "Storage"
+                            supportsHttpsTrafficOnly = $true
+                        }
+                        $ResourceTag = @{"Migrate Project" = $ProjectName }
+                        $StorageSku = @{name = "Standard_LRS" }
+                        $ResourceKind = "Storage"
 
-                    $replicationStorageAccount = Get-AzResource -ResourceGroupName $ResourceGroupName -Name $ReplicationStorageAcName -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                    if (!$replicationStorageAccount) {
-                        $output = New-AzResource -ResourceGroupName $ResourceGroupName -Location $TargetRegion -Properties  $ReplicationStorageProperties -ResourceName $ReplicationStorageAcName -ResourceType  $StorageType -ApiVersion $StorageApiVersion -Kind  $ResourceKind -Sku  $StorageSku -Tag $ResourceTag -Force
-                        Write-Host $LogStringCreated, $ReplicationStorageAcName
-                    }
-                    else {
-                         Write-Host $ReplicationStorageAcName, $LogStringSkipping
-                    }
+                        $replicationStorageAccount = Get-AzResource -ResourceGroupName $ResourceGroupName -Name $ReplicationStorageAcName -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                        if (!$replicationStorageAccount) {
+                            $output = New-AzResource -ResourceGroupName $ResourceGroupName -Location $TargetRegion -Properties  $ReplicationStorageProperties -ResourceName $ReplicationStorageAcName -ResourceType  $StorageType -ApiVersion $StorageApiVersion -Kind  $ResourceKind -Sku  $StorageSku -Tag $ResourceTag -Force
+                            Write-Host $LogStringCreated, $ReplicationStorageAcName
+                        }
+                        elseif ($replicationStorageAccount.Location -ne $TargetRegion){
+                            throw "Storage account '$($ReplicationStorageAcName)' already exists in '$($replicationStorageAccount.Location)', which does not match with the target region. Please delete the storage account to proceed."
+                        }
+                        else {
+                             Write-Host $ReplicationStorageAcName, $LogStringSkipping
+                        }
 
-                    # Locks
-                    $CommonLockName = $ProjectName + "lock"
-                    $lockNotes = "This is in use by Azure Migrate project"
-                    $rsaLock = Get-AzResourceLock -LockName $CommonLockName -ResourceName $ReplicationStorageAcName -ResourceType $StorageType -ResourceGroupName $ResourceGroupName -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                    if (!$rsaLock) {
-                        $output = New-AzResourceLock -LockLevel CanNotDelete -LockName $CommonLockName -ResourceName $ReplicationStorageAcName -ResourceType $StorageType -ResourceGroupName $ResourceGroupName -LockNotes $lockNotes -Force
-                        Write-Host $LogStringCreated, $CommonLockName, " for ", $ReplicationStorageAcName
-                    }
-                    else {
-                        Write-Host $CommonLockName, " for ", $ReplicationStorageAcName, $LogStringSkipping
+                        # Locks
+                        $CommonLockName = $ProjectName + "lock"
+                        $lockNotes = "This is in use by Azure Migrate project"
+                        $rsaLock = Get-AzResourceLock -LockName $CommonLockName -ResourceName $ReplicationStorageAcName -ResourceType $StorageType -ResourceGroupName $ResourceGroupName -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                        if (!$rsaLock) {
+                            $output = New-AzResourceLock -LockLevel CanNotDelete -LockName $CommonLockName -ResourceName $ReplicationStorageAcName -ResourceType $StorageType -ResourceGroupName $ResourceGroupName -LockNotes $lockNotes -Force
+                            Write-Host $LogStringCreated, $CommonLockName, " for ", $ReplicationStorageAcName
+                        }
+                        else {
+                            Write-Host $CommonLockName, " for ", $ReplicationStorageAcName, $LogStringSkipping
+                        }
                     }
                 }
                 else {
