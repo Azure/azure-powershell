@@ -16,21 +16,21 @@
 
 <#
 .Synopsis
-Register a Windows virtual desktop application group.
+Register a Azure Virtual Desktop application group.
 .Description
-Register a Windows virtual desktop application group.
+Register a Azure Virtual Desktop application group.
 .Example
 Register-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                                     -WorkspaceName WorkspaceName `
                                     -ApplicationGroupPath '/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupName'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IWorkspace
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/register-azwvdapplicationgroup
 #>
 function Register-AzWvdApplicationGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101preview.IWorkspace])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

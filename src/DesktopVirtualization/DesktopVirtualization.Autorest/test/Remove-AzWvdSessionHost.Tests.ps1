@@ -21,7 +21,8 @@ Describe 'Remove-AzWvdSessionHost' {
         Remove-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroupPersistent `
                             -HostPoolName $env.HostPoolPersistent `
-                            -Name $env.SessionHostNameRemove
+                            -Name $env.SessionHostNameRemove `
+                            -Force
 
         try {
             Get-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `

@@ -12,6 +12,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="AppAttachPackageName" /> property.</summary>
+        private string _appAttachPackageName;
+
+        /// <summary>The name of the App Attach package arm object</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public string AppAttachPackageName { get => this._appAttachPackageName; set => this._appAttachPackageName = value; }
+
         /// <summary>Backing field for <see cref="ApplicationGroupName" /> property.</summary>
         private string _applicationGroupName;
 
@@ -55,6 +62,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string MsixPackageFullName { get => this._msixPackageFullName; set => this._msixPackageFullName = value; }
+
+        /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
+        private string _operationId;
+
+        /// <summary>The Guid of the operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public string OperationId { get => this._operationId; set => this._operationId = value; }
 
         /// <summary>Backing field for <see cref="PrivateEndpointConnectionName" /> property.</summary>
         private string _privateEndpointConnectionName;
@@ -121,6 +135,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     public partial interface IDesktopVirtualizationIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
+        /// <summary>The name of the App Attach package arm object</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the App Attach package arm object",
+        SerializedName = @"appAttachPackageName",
+        PossibleTypes = new [] { typeof(string) })]
+        string AppAttachPackageName { get; set; }
         /// <summary>The name of the application group</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -171,6 +193,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"msixPackageFullName",
         PossibleTypes = new [] { typeof(string) })]
         string MsixPackageFullName { get; set; }
+        /// <summary>The Guid of the operation.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The Guid of the operation.",
+        SerializedName = @"operationId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OperationId { get; set; }
         /// <summary>The name of the private endpoint connection associated with the Azure resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -240,6 +270,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     internal partial interface IDesktopVirtualizationIdentityInternal
 
     {
+        /// <summary>The name of the App Attach package arm object</summary>
+        string AppAttachPackageName { get; set; }
         /// <summary>The name of the application group</summary>
         string ApplicationGroupName { get; set; }
         /// <summary>The name of the application within the specified application group</summary>
@@ -254,6 +286,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// The version specific package full name of the MSIX package within specified hostpool
         /// </summary>
         string MsixPackageFullName { get; set; }
+        /// <summary>The Guid of the operation.</summary>
+        string OperationId { get; set; }
         /// <summary>The name of the private endpoint connection associated with the Azure resource</summary>
         string PrivateEndpointConnectionName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
