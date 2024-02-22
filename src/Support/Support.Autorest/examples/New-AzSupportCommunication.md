@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Adds communication to a support ticket at subscription level
 ```powershell
-{{ Add code here }}
+ New-AzSupportCommunication -Name "test123" -SupportTicketName "test12345678" -Body "this is a test message from PS" -Subject "test subject" -Sender "test@test.com"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Body                   : <pre>this is a test message from PS</pre>
+CommunicationDirection : Inbound
+CommunicationType      : Web
+CreatedDate            : 2/22/2024 6:54:29 AM
+Id                     : /subscriptions/76cb77fa-8b17-4eab-9493-b65dace99813/providers/Microsoft.Support/supportTickets
+                         45678/communications/test123
+Name                   : test123
+ResourceGroupName      :
+Sender                 : test@test.com
+Subject                : test subject - TrackingID#2402220010002574
+Type                   : Microsoft.Support/communications
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Adds a new customer communication to an Azure support ticket

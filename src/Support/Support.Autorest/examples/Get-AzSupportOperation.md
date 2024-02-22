@@ -1,22 +1,21 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Get-AzSupportOperation
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name
+----
+Microsoft.Support/register/action
+Microsoft.Support/lookUpResourceId/action
+Microsoft.Support/checkNameAvailability/action
+Microsoft.Support/services/read
+Microsoft.Support/services/problemClassifications/read
+Microsoft.Support/supportTickets/read
+Microsoft.Support/supportTickets/write
+Microsoft.Support/operationresults/read
+Microsoft.Support/operationsstatus/read
+Microsoft.Support/operations/read
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Lists all the available Microsoft Support REST API operations.
