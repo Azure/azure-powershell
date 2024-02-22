@@ -17,14 +17,14 @@ Create a new Backup Restore Files request
 Restore-AzNetAppFilesBackupFile -ResourceGroupName <String> -AccountName <String> -Name <String>
  -PoolName <String> -VolumeName <String> -FileList <String[]> [-RestoreFilePath <String>]
  -DestinationVolumeId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Restore-AzNetAppFilesBackupFile -Name <String> -FileList <String[]> [-RestoreFilePath <String>]
  -DestinationVolumeId <String> -VolumeObject <PSNetAppFilesVolume> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,14 +32,14 @@ Restore-AzNetAppFilesBackupFile -Name <String> -FileList <String[]> [-RestoreFil
 ```
 Restore-AzNetAppFilesBackupFile -FileList <String[]> [-RestoreFilePath <String>] -DestinationVolumeId <String>
  -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Restore-AzNetAppFilesBackupFile -FileList <String[]> [-RestoreFilePath <String>] -DestinationVolumeId <String>
  -InputObject <PSNetAppFilesBackup> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,21 +172,6 @@ Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
