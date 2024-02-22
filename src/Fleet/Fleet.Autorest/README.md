@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Fleet service.
 
 ---
-## Status
-[![Az.Fleet](https://img.shields.io/powershellgallery/v/Az.Fleet.svg?style=flat-square&label=Az.Fleet "Az.Fleet")](https://www.powershellgallery.com/packages/Az.Fleet/)
 
 ## Info
 - Modifiable: yes

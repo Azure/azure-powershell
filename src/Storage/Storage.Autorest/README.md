@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Storage service.
 
 ---
-## Status
-[![Az.Storage](https://img.shields.io/powershellgallery/v/Az.Storage.svg?style=flat-square&label=Az.Storage "Az.Storage")](https://www.powershellgallery.com/packages/Az.Storage/)
 
 ## Info
 - Modifiable: yes

@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Portal service.
 
 ---
-## Status
-[![Az.Portal](https://img.shields.io/powershellgallery/v/Az.Portal.svg?style=flat-square&label=Az.Portal "Az.Portal")](https://www.powershellgallery.com/packages/Az.Portal/)
 
 ## Info
 - Modifiable: yes

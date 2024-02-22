@@ -29,6 +29,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// resultType string).
         /// </param>
 
+        /// <param name="authenticationType">The authentication type to be used to connect to the Salesforce. Currently,
+        /// we only support OAuth2ClientCredentials, it is also the default value
+        /// </param>
+
         /// <param name="clientId">The client Id for OAuth 2.0 Client Credentials Flow authentication of the
         /// Salesforce instance. Type: string (or Expression with resultType string).
         /// </param>
@@ -45,10 +49,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public SalesforceServiceCloudV2LinkedServiceTypeProperties(object environmentUrl = default(object), object clientId = default(object), SecretBase clientSecret = default(SecretBase), object apiVersion = default(object), string encryptedCredential = default(string))
+        public SalesforceServiceCloudV2LinkedServiceTypeProperties(object environmentUrl = default(object), object authenticationType = default(object), object clientId = default(object), SecretBase clientSecret = default(SecretBase), object apiVersion = default(object), string encryptedCredential = default(string))
 
         {
             this.EnvironmentUrl = environmentUrl;
+            this.AuthenticationType = authenticationType;
             this.ClientId = clientId;
             this.ClientSecret = clientSecret;
             this.ApiVersion = apiVersion;
@@ -69,6 +74,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "environmentUrl")]
         public object EnvironmentUrl {get; set; }
+
+        /// <summary>
+        /// Gets or sets the authentication type to be used to connect to the
+        /// Salesforce. Currently, we only support OAuth2ClientCredentials, it is also
+        /// the default value
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "authenticationType")]
+        public object AuthenticationType {get; set; }
 
         /// <summary>
         /// Gets or sets the client Id for OAuth 2.0 Client Credentials Flow

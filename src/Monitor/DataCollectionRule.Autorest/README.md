@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the DataCollectionRule service.
 
 ---
-## Status
-[![Az.DataCollectionRule](https://img.shields.io/powershellgallery/v/Az.DataCollectionRule.svg?style=flat-square&label=Az.DataCollectionRule "Az.DataCollectionRule")](https://www.powershellgallery.com/packages/Az.DataCollectionRule/)
 
 ## Info
 - Modifiable: yes

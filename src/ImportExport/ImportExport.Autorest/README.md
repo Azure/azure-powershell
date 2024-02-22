@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the ImportExport service.
 
 ---
-## Status
-[![Az.ImportExport](https://img.shields.io/powershellgallery/v/Az.ImportExport.svg?style=flat-square&label=Az.ImportExport "Az.ImportExport")](https://www.powershellgallery.com/packages/Az.ImportExport/)
 
 ## Info
 - Modifiable: yes

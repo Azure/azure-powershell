@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the DedicatedHsm service.
 
 ---
-## Status
-[![Az.DedicatedHsm](https://img.shields.io/powershellgallery/v/Az.DedicatedHsm.svg?style=flat-square&label=Az.DedicatedHsm "Az.DedicatedHsm")](https://www.powershellgallery.com/packages/Az.DedicatedHsm/)
 
 ## Info
 - Modifiable: yes
