@@ -8,7 +8,7 @@ schema: 2.0.0
 # Unregister-AzWvdApplicationGroup
 
 ## SYNOPSIS
-Unregister the Windows virtual desktop application group.
+Unregister the Azure Virtual Desktop application group.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Unregister-AzWvdApplicationGroup -ApplicationGroupPath <String> -ResourceGroupNa
 ```
 
 ## DESCRIPTION
-Unregister the Windows virtual desktop application group.
+Unregister the Azure Virtual Desktop application group.
 
 ## EXAMPLES
 
@@ -147,7 +147,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IWorkspace
 
 ## NOTES
 
