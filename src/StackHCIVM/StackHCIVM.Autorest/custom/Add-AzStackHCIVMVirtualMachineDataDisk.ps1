@@ -181,7 +181,7 @@ function Add-AzStackHCIVMVirtualMachineDataDisk {
             $DataDisk = @{Id = $disk.Id}
             [void]$StorageProfileDataDisk.Add($DataDisk)
         }
-    
         $PSBoundParameters.Add('StorageProfileDataDisk',  $StorageProfileDataDisk)
+    
         return Az.StackHCIVM.internal\Update-AzStackHCIVMVirtualMachine @PSBoundParameters
     }
