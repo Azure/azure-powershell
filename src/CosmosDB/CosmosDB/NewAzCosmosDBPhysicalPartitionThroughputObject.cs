@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.CosmosDB.Helpers;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBPhysicalPartitionThroughputObject")]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBPhysicalPartitionThroughputObject"), OutputType(typeof(PSPhysicalPartitionThroughputInfo))]
     public class NewAzCosmosDBPhysicalPartitionThroughputObject : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.PhysicalPartitionIdHelpMessage)]
