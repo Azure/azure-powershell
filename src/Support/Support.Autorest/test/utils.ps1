@@ -44,6 +44,18 @@ function setupEnv() {
     $env.SubscriptionId = $sub = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     $testGuid = [guid]::NewGuid().ToString()
+    $env.BillingServiceId = "517f2da6-78fd-0498-4e22-ad26996b1dfc"
+    $env.BillingProblemClassificationId = "d0f16bf7-e011-3f3b-1c26-3147f84e0896"
+    $env.FileWorkspaceNameSubscription = "test-ps-$(New-Guid)"
+    $env.FileWorkspaceNameNoSubscription = "test-ps-$(New-Guid)"
+
+    New-AzSupportFileWorkspace -Name $env.FileWorkspaceNameSubscription
+    New-AzSupportFileWorkspacesNoSubscription -Name $env.FileWorkspaceNameNoSubscription
+
+    $testFilePath = Join-Path $PSScriptRoot files test2.txt
+    New-AzSupportFileAndUpload -WorkspaceName $env.FileWorkspaceNameSubscription -FilePath $testFilePath
+    New-AzSupportFileAndUploadNoSubscription -WorkspaceName $env.FileWorkspaceNameNoSubscription -FilePath $testFilePath
+
     $testTicketName = "test-$testGuid"
     $advancedDiagnosticConsent = "no"
     $contactDetailPrimaryEmailAddress = "test@test.com" 
