@@ -19,6 +19,13 @@ Describe 'AzStackHCIVMImageNew' {
         New-AzStackHCIVMImage -Name  $env.imageName -ImagePath  $env.imagePath  -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -OSType $env.osTypeLinux | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
 
+    It 'Create MarketplaceImage  '  {
+        New-AzStackHCIVMImage -Name  $env.mkpImageName -Offer $env.offer -Publisher $env.publisher -Sku $env.sku -Version $env.version  -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -OSType $env.osTypeWindows
+        Start-Sleep -Seconds 300 
+        $image = Get-AzStackHCIVMImage -Name  $env.mkpImageName -ResourceGroupName $env.resourceGroupName
+        $image.ProvisioningState |  Should -BeExactly "Succeeded"
+    }
+
 
     It 'List'  {
         {
@@ -39,6 +46,10 @@ Describe 'AzStackHCIVMImageNew' {
         {
             Remove-AzStackHCIVMImage -Name  $env.imageName -ResourceGroupName $env.resourceGroupName -Force
             $config =  Get-AzStackHCIVMImage -Name  $env.imageName -ResourceGroupName $env.resourceGroupName 
+            $config | Should -Be $null
+
+            Remove-AzStackHCIVMImage -Name  $env.mkpImageName -ResourceGroupName $env.resourceGroupName -Force
+            $config =  Get-AzStackHCIVMImage -Name  $env.mkpImageName -ResourceGroupName $env.resourceGroupName 
             $config | Should -Be $null
 
         } | Should -Throw
