@@ -44,8 +44,8 @@
     <!-- Flags -->
     <CodeSign Condition ="'$(CodeSign)' == ''">false</CodeSign>
     <SkipHelp Condition ="'$(SkipHelp)' != 'true'">false</SkipHelp>
-    <TargetBuild Condition="Exists($(TargetModule))">true</TargetBuild>
-    <TargetBuild Condition="!Exists($(TargetModule))">false</TargetBuild>
+    <TargetBuild Condition="'$(TargetModule)' != ''">true</TargetBuild>
+    <TargetBuild Condition="'$(TargetModule)' == ''">false</TargetBuild>
 
 
     <!-- Set this true only if you want to test the CodeSign workflow locally -->
