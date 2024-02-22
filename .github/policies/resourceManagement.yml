@@ -2031,7 +2031,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - Elsie4ever
+            - Elsie4ever，MohinderAtwal
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
