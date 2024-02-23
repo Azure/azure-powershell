@@ -19,6 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
     using global::Azure.Storage.Queues;
     using global::Azure.Storage.Queues.Models;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using System;
     using System.Globalization;
@@ -28,6 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
     /// <summary>
     /// list azure queues
     /// </summary>
+    [GenericBreakingChangeWithVersion("CloudQueue property will be removed from the cmdlet output object", "11.0.0", "6.0.0")]
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageQueue", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageQueue))]
     public class GetAzureStorageQueueCommand : StorageQueueBaseCmdlet
     {

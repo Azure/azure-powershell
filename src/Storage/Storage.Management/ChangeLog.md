@@ -20,6 +20,12 @@
 ## Upcoming Release
 * Fixed parser logic when downloading blob from managed disk account with Sas Uri and bearer token on Linux and MacOS
     - `Get-AzStorageBlobContent`
+* Added warning messages for upcoming breaking changes in Queue cmdlets for removing references to "Microsoft.Azure.Storage.Queue"
+    - `New-AzStorageQueue`
+    - `Get-AzStorageQueue`
+    - `New-AzStorageQueueSASToken`
+* Added warning messages for an upcoming breaking change when uploading a file without read permission 
+    - `Set-AzStorageFileContent`
 
 ## Version 6.1.1
 * Removed some code branches referencing Microsoft.Azure.Storage.Blob
