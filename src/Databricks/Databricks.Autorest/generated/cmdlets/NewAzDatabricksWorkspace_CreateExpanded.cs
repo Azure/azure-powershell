@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Creates a new workspace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}", ApiVersion = "2023-02-01")]
     public partial class NewAzDatabricksWorkspace_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener
     {

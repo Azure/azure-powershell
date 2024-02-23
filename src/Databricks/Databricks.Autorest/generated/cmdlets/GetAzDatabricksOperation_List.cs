@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Description(@"Lists all of the available RP operations.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Databricks.HttpPath(Path = "/providers/Microsoft.Databricks/operations", ApiVersion = "2023-02-01")]
     public partial class GetAzDatabricksOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.IEventListener
     {
