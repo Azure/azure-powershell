@@ -141,8 +141,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
                 csvData.AppendLine();
                 var totalDuration = qos.Duration.TotalMilliseconds;
-                var sanitizerDuration = qos.SanitizerInfo?.SanitizeDuration.TotalMilliseconds ?? 0;
+                var sanitizerDuration = qos.SanitizerInfo?.SanitizeDuration.TotalMilliseconds ?? default;
                 var sanitizerPercentage = (sanitizerDuration / totalDuration).ToString("P2");
+                Console.WriteLine($"##[section] Command Name: {commandName}");
+                Console.WriteLine($"##[section] SanitizerInfo is not null: {qos.SanitizerInfo != null}");
+                if (qos.SanitizerInfo != null)
+                {
+                    Console.WriteLine($"##[section] Show Secrets Warning: {qos.SanitizerInfo.ShowSecretsWarning}");
+                }
+                Console.WriteLine($"##[section] Total Duration: {totalDuration}");
+                Console.WriteLine($"##[section] Sanitizer Duration: {sanitizerDuration}");
+                Console.WriteLine($"##[section] Sanitizer Percentage: {sanitizerPercentage}");
                 var csvItem = GenerateCsvItem(
                     commandName, qos.ParameterSetName, qos.Parameters,
                     sourceScriptName, qos.ScriptLineNumber,
