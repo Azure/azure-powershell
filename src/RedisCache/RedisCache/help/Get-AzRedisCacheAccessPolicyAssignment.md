@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRedisCacheAccessPolicyAssignment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get the detailed information about Access Policy Assignment(s) (Redis User(s)) of the Redis Cache
 
 ## SYNTAX
 
@@ -18,16 +18,23 @@ Get-AzRedisCacheAccessPolicyAssignment [-ResourceGroupName <String>] -Name <Stri
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+If **AccessPolicyAssignmentName** parameter provided, **Get-AzRedisCacheAccessPolicyAssignment** cmdlet gets details about the specified access policy. If only **Name** is specified this operation gets all access policies assignments (Redis Users) of the Redis Cache.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get information of an access policy assignment (redis user)
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzRedisCacheAccessPolicyAssignment -Name "testCache" -AccessPolicyAssignmentName "testAccessPolicyAssignment"
 ```
 
-{{ Add example description here }}
+This command gets information on access policy assignment (redis user) named testAccessPolicyAssignment from Redis Cache named testCache
+
+### Example 2: Get information of all access policy assignments (redis users)
+```powershell
+Get-AzRedisCacheAccessPolicyAssignment -Name "testCache"
+```
+
+This command gets information on all access policy assignments from Redis Cache named testCache.
 
 ## PARAMETERS
 

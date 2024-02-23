@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzRedisCacheAccessPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Add an Access Policy to the Redis Cache
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ New-AzRedisCacheAccessPolicy -ResourceId <String> -AccessPolicyName <String> -Pe
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Create an access policy for a Redis Cache.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create an access policy
 ```powershell
-PS C:\> {{ Add example code here }}
+New-AzRedisCacheAccessPolicy -Name "testCache" -AccessPolicyName "testAccessPolicy" -Permissions "+get +hget"
 ```
 
-{{ Add example description here }}
+This command creates access policy named testAccessPolicy on Redis Cache named testCache.
 
 ## PARAMETERS
 

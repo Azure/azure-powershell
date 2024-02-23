@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzRedisCacheAccessPolicyAssignment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Delete the Access Policy Assignment (Redis User)
 
 ## SYNTAX
 
@@ -26,16 +26,16 @@ Remove-AzRedisCacheAccessPolicyAssignment -InputObject <PSRedisAccessPolicyAssig
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Remove an Access Policy Assignment (Redis User) from a Redis Cache.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzRedisCacheAccessPolicyAssignment -Name "testCacheName" -AccessPolicyAssignmentName "testAccessPolicyAssignmentName"
 ```
 
-{{ Add example description here }}
+This command removes an Access Policy Assignment (Redis User) named testAccessPolicyAssignmentName from Redis Cache named testCacheName. 
 
 ## PARAMETERS
 

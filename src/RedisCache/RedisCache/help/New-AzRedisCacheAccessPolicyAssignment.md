@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzRedisCacheAccessPolicyAssignment
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Add an Access Policy Assignment (Redis User) to the Redis Cache
 
 ## SYNTAX
 
@@ -34,16 +34,16 @@ New-AzRedisCacheAccessPolicyAssignment -ResourceId <String> -AccessPolicyAssignm
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Create an access policy assignment (redis user) for a Redis Cache.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+New-AzRedisCacheAccessPolicyAssignment -Name "testCache" -AccessPolicyAssignmentName "testAccessPolicyAssignmentName" -AccessPolicyName "testAccessPolicyName" -ObjectId "69d700c5-ca77-4335-947e-xxxxxxxxxxxx" -ObjectIdAlias "testAlias"
 ```
 
-{{ Add example description here }}
+This command creates access policy assignment (redis user) named testAccessPolicyAssignmentName on Redis Cache named testCache.
 
 ## PARAMETERS
 

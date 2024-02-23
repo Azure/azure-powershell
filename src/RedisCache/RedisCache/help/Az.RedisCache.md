@@ -21,10 +21,10 @@ Exports data from Azure Redis Cache to a container.
 Gets a Redis Cache.
 
 ### [Get-AzRedisCacheAccessPolicy](Get-AzRedisCacheAccessPolicy.md)
-Gets the detailed information about access policy/policies of the Redis Cache
+Get the detailed information about Access Policy(s) of the Redis Cache
 
 ### [Get-AzRedisCacheAccessPolicyAssignment](Get-AzRedisCacheAccessPolicyAssignment.md)
-{{ Fill in the Synopsis }}
+Get the detailed information about Access Policy Assignment(s) (Redis User(s)) of the Redis Cache
 
 ### [Get-AzRedisCacheFirewallRule](Get-AzRedisCacheFirewallRule.md)
 Get firewall rules set on Redis Cache.
@@ -45,10 +45,10 @@ Imports data from blobs to Azure Redis Cache.
 Creates a Redis Cache.
 
 ### [New-AzRedisCacheAccessPolicy](New-AzRedisCacheAccessPolicy.md)
-{{ Fill in the Synopsis }}
+Add an Access Policy to the Redis Cache
 
 ### [New-AzRedisCacheAccessPolicyAssignment](New-AzRedisCacheAccessPolicyAssignment.md)
-{{ Fill in the Synopsis }}
+Add an Access Policy Assignment (Redis User) to the Redis Cache
 
 ### [New-AzRedisCacheFirewallRule](New-AzRedisCacheFirewallRule.md)
 Create a firewall rule on a Redis Cache.
@@ -69,10 +69,10 @@ Creates a schedule entry.
 Removes a Redis Cache.
 
 ### [Remove-AzRedisCacheAccessPolicy](Remove-AzRedisCacheAccessPolicy.md)
-{{ Fill in the Synopsis }}
+Delete the Access Policy
 
 ### [Remove-AzRedisCacheAccessPolicyAssignment](Remove-AzRedisCacheAccessPolicyAssignment.md)
-{{ Fill in the Synopsis }}
+Delete the Access Policy Assignment (Redis User)
 
 ### [Remove-AzRedisCacheDiagnostic](Remove-AzRedisCacheDiagnostic.md)
 Disables diagnostics on an Azure Redis Cache.

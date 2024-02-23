@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzRedisCacheAccessPolicy
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Delete the Access Policy
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Remove-AzRedisCacheAccessPolicy -InputObject <PSRedisAccessPolicy> [-PassThru]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Remove an access policy from a Redis Cache.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzRedisCacheAccessPolicy -Name "testCacheName" -AccessPolicyName "testAccessPolicyName"
 ```
 
-{{ Add example description here }}
+This command removes access policy named testAccessPolicyName from Redis Cache named testCacheName. 
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzRedisCacheAccessPolicy
 
 ## SYNOPSIS
-Gets the detailed information about access policy/policies of the Redis Cache
+Get the detailed information about Access Policy(s) of the Redis Cache
 
 ## SYNTAX
 
@@ -18,16 +18,23 @@ Get-AzRedisCacheAccessPolicy [-ResourceGroupName <String>] -Name <String> [-Acce
 ```
 
 ## DESCRIPTION
-If **AccessPolicyName** parameter provided, **Get-AzRedisCacheFirewallRule** cmdlet gets details about the specified access policy. If only **Name** is specified this operation gets all access policies of the Redis Cache.
+If **AccessPolicyName** parameter provided, **Get-AzRedisCacheAccessPolicy** cmdlet gets details about the specified access policy. If only **Name** is specified this operation gets all access policies of the Redis Cache.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get information of an access policy
 ```powershell
 Get-AzRedisCacheAccessPolicy -Name "testCache" -AccessPolicyName "testAccessPolicy"
 ```
 
-{{ Add example description here }}
+This command gets information on access policy named testAccessPolicy from Redis Cache named testCache
+
+### Example 2: Get information of all access policies
+```powershell
+Get-AzRedisCacheAccessPolicy -Name "testCache"
+```
+
+This command gets information on all access policies from Redis Cache named testCache.
 
 ## PARAMETERS
 
