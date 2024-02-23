@@ -127,6 +127,14 @@ directive:
       verb: Invoke
       subject: UploadFilesNoSubscription
     hide: true
+  - where:
+      verb: Update
+      subject: Communication
+    remove: true
+  - where:
+      verb: Update
+      subject: CommunicationsNoSubscription
+    remove: true
   # Following are common directives which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required
