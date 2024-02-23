@@ -16,7 +16,7 @@ The operation to Create a run command.
 ```
 Update-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <String> -RunCommandName <String>
  [-SubscriptionId <String>] [-AsyncExecution] [-ErrorBlobManagedIdentityClientId <String>]
- [-ErrorBlobManagedIdentityObjectId <String>] [-ErrorBlobUri <String>] [-Location <String>]
+ [-ErrorBlobManagedIdentityObjectId <String>] [-ErrorBlobUri <String>]
  [-OutputBlobManagedIdentityClientId <String>] [-OutputBlobManagedIdentityObjectId <String>]
  [-OutputBlobUri <String>] [-Parameter <IRunCommandInputParameter[]>]
  [-ProtectedParameter <IRunCommandInputParameter[]>] [-RunAsPassword <String>] [-RunAsUser <String>]
@@ -44,7 +44,7 @@ Update-AzConnectedMachineRunCommand -InputObject <IConnectedMachineIdentity>
 ```
 Update-AzConnectedMachineRunCommand -InputObject <IConnectedMachineIdentity> [-AsyncExecution]
  [-ErrorBlobManagedIdentityClientId <String>] [-ErrorBlobManagedIdentityObjectId <String>]
- [-ErrorBlobUri <String>] [-Location <String>] [-OutputBlobManagedIdentityClientId <String>]
+ [-ErrorBlobUri <String>] [-OutputBlobManagedIdentityClientId <String>]
  [-OutputBlobManagedIdentityObjectId <String>] [-OutputBlobUri <String>]
  [-Parameter <IRunCommandInputParameter[]>] [-ProtectedParameter <IRunCommandInputParameter[]>]
  [-RunAsPassword <String>] [-RunAsUser <String>] [-ScriptUriManagedIdentityClientId <String>]
@@ -64,7 +64,7 @@ Update-AzConnectedMachineRunCommand -MachineInputObject <IConnectedMachineIdenti
 ```
 Update-AzConnectedMachineRunCommand -MachineInputObject <IConnectedMachineIdentity> -RunCommandName <String>
  [-AsyncExecution] [-ErrorBlobManagedIdentityClientId <String>] [-ErrorBlobManagedIdentityObjectId <String>]
- [-ErrorBlobUri <String>] [-Location <String>] [-OutputBlobManagedIdentityClientId <String>]
+ [-ErrorBlobUri <String>] [-OutputBlobManagedIdentityClientId <String>]
  [-OutputBlobManagedIdentityObjectId <String>] [-OutputBlobUri <String>]
  [-Parameter <IRunCommandInputParameter[]>] [-ProtectedParameter <IRunCommandInputParameter[]>]
  [-RunAsPassword <String>] [-RunAsUser <String>] [-ScriptUriManagedIdentityClientId <String>]
@@ -231,7 +231,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -245,24 +245,9 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-The geo-location where the resource lives
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityMachineExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MachineInputObject
 Identity Parameter
-To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -357,7 +342,7 @@ Accept wildcard characters: False
 
 ### -Parameter
 The parameters used by the script.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandInputParameter[]
@@ -373,7 +358,7 @@ Accept wildcard characters: False
 
 ### -ProtectedParameter
 The parameters used by the script.
-To construct, see NOTES section for PROTECTEDPARAMETER properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandInputParameter[]
@@ -450,7 +435,7 @@ Accept wildcard characters: False
 
 ### -RunCommandProperty
 Describes a Run Command
-To construct, see NOTES section for RUNCOMMANDPROPERTY properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommand

@@ -359,7 +359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         Description = @"Resource tags.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags Tag { get => _extensionParametersBody.Tag ?? null /* object */; set => _extensionParametersBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags Tag { get => _extensionParametersBody.Tags ?? null /* object */; set => _extensionParametersBody.Tags = value; }
 
         /// <summary>Specifies the version of the script handler.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the version of the script handler.")]
