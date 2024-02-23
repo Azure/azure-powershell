@@ -46,6 +46,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.PowerShell.Common.Share.Survey;
 using Microsoft.Azure.Commands.Profile.Utilities;
 using System.Management.Automation.Runspaces;
+using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
+using Microsoft.Azure.Commands.Common.Authentication.Sanitizer;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -787,6 +789,8 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => new AzureCredentialFactory());
                 AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => new MsalAccessTokenAcquirerFactory());
                 AzureSession.Instance.RegisterComponent<ISshCredentialFactory>(nameof(ISshCredentialFactory), () => new SshCredentialFactory());
+                AzureSession.Instance.RegisterComponent<ISanitizerService>(nameof(ISanitizerService), () => new DefaultSanitizerService());
+                AzureSession.Instance.RegisterComponent<IAzurePSSanitizer>(nameof(IAzurePSSanitizer), () => new AzurePSSanitizer());
 #if DEBUG || TESTCOVERAGE
                 AzureSession.Instance.RegisterComponent<ITestCoverage>(nameof(ITestCoverage), () => new TestCoverage());
 #endif

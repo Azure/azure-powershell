@@ -367,6 +367,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Controls if a cmdlets output containing secrets will be displayed in plain text..
+        /// </summary>
+        public static string HelpMessageOfShowSecrets {
+            get {
+                return ResourceManager.GetString("HelpMessageOfShowSecrets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When enabled, a warning message for secrets redaction will be displayed if the cmdlet output contains secrets..
+        /// </summary>
+        public static string HelpMessageOfShowSecretsWarning {
+            get {
+                return ResourceManager.GetString("HelpMessageOfShowSecretsWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [HttpClientOperations]: Adding Header &apos;{0}&apos;.
         /// </summary>
         public static string HttpClientAddingHeader {
