@@ -72,10 +72,7 @@ Function Move-Generation2Master {
         else {
             $Psd1Metadata = Import-LocalizedData -BaseDirectory "$PSScriptRoot/Templates" -FileName "Module.psd1"
         }
-        Write-Host "================================"
-        Write-Host $PWD
         foreach ($submoduleDir in $submoduleDirs) {
-            Write-Host $submoduleDir
             $psd1File = Get-ChildItem -Filter *.psd1 -File -Path $submoduleDir.FullName
             write-host ("psd1 file name {0}" -f $psd1File.Name)
             $submoduleName = $psd1File.Name.Split('.')[-2]
