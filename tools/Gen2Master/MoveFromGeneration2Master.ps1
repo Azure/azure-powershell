@@ -24,7 +24,12 @@ Function Move-Generation2Master {
 
     process {
         #Region Handle the module whoes folder is a subfolder of the module folder.
-        $ModuleName = $SourcePath.Replace('/', '\').Split('\src\')[1].Split('\')[0]
+        if (-not (Test-Path -Path $SourcePath)) {
+            Write-Error "The source path $SourcePath does not exist." -ForegroundColor Red
+            return
+        }
+        $SourceFolder = Get-Item -Path $SourcePath
+        $ModuleName = $SourceFolder.Name
 
         $DestParentPath = $DestPath
         While ("" -ne $DestParentPath) {
