@@ -301,7 +301,7 @@ jobs:
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:Publish /p:Configuration=Release;NuGetKey=$(NuGetKey);GenerateDocumentationFile=false'
+      arguments: 'build.proj /t:Publish /p:Configuration=Release;NuGetKey=$(NuGetKey);GenerateDocumentationFile=false;TargetModule=${{ parameters.TargetModule }}'
 
   - pwsh: |
       #this task won't be triggered unless $AzureStack was set to true
