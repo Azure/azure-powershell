@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.DesktopVirtualization",
-  "ModuleVersion": "4.3.0",
+  "ModuleVersion": "5.2.0",
   "Cmdlets": [
     {
       "VerbName": "Disconnect",
