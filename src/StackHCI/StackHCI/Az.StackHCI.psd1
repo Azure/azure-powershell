@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.3.1'
+ModuleVersion = '2.3.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -121,7 +121,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated Set-AzStackHCI to use HTTP PATCH for updating cluster resource instead of HTTP PUT and to only send updated properties.'
+        ReleaseNotes = '* Fixed issue for WAC.
+* Restricted registration for 23H2 devices exclusively to cloud deployment.'
 
         # Prerelease string of this module
         # Prerelease = ''
