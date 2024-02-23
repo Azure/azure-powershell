@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.rediscache/get-azrediscacheaccesspolicyassignment
 schema: 2.0.0
 ---
 
@@ -18,7 +18,7 @@ Get-AzRedisCacheAccessPolicyAssignment [-ResourceGroupName <String>] -Name <Stri
 ```
 
 ## DESCRIPTION
-If **AccessPolicyAssignmentName** parameter provided, **Get-AzRedisCacheAccessPolicyAssignment** cmdlet gets details about the specified access policy. If only **Name** is specified this operation gets all access policies assignments (Redis Users) of the Redis Cache.
+If **AccessPolicyAssignmentName** parameter provided, **Get-AzRedisCacheAccessPolicyAssignment** cmdlet gets details about the specified access policy assignment (redis user). If only **Name** is specified this operation gets all access policy assignments (Redis Users) of the Redis Cache.
 
 ## EXAMPLES
 
