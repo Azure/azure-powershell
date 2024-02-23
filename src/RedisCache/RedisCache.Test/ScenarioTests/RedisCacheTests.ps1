@@ -1046,23 +1046,23 @@ function Test-MicrosoftEntraAuthCache
     Assert-AreEqual 3 $accessPolicies.Count
 
     # Create a new access policy
-    $accessPolicy = New-AzRedisCacheAccessPolicy -Name $cacheName -AccessPolicyName $accessPolicyName -Permissions "+get +hget"
+    $accessPolicy = New-AzRedisCacheAccessPolicy -Name $cacheName -AccessPolicyName $accessPolicyName -Permission "+get +hget"
     Assert-AreEqual $accessPolicyName $accessPolicy.AccessPolicyName
-    Assert-AreEqual "+get +hget allkeys" $accessPolicy.Permissions
+    Assert-AreEqual "+get +hget allkeys" $accessPolicy.Permission
 
     # List access polices
     $accessPolicies = Get-AzRedisCacheAccessPolicy -Name $cacheName
     Assert-AreEqual 4 $accessPolicies.Count
 
     # Update access policy
-    $accessPolicy = New-AzRedisCacheAccessPolicy -Name $cacheName -AccessPolicyName $accessPolicyName -Permissions "+get"
+    $accessPolicy = New-AzRedisCacheAccessPolicy -Name $cacheName -AccessPolicyName $accessPolicyName -Permission "+get"
     Assert-AreEqual $accessPolicyName $accessPolicy.AccessPolicyName
-    Assert-AreEqual "+get allkeys" $accessPolicy.Permissions
+    Assert-AreEqual "+get allkeys" $accessPolicy.Permission
 
     # Get an access policy
     $accessPolicies = Get-AzRedisCacheAccessPolicy -Name $cacheName -AccessPolicyName $accessPolicyName
     Assert-AreEqual $accessPolicyName $accessPolicy.AccessPolicyName
-    Assert-AreEqual "+get allkeys" $accessPolicy.Permissions
+    Assert-AreEqual "+get allkeys" $accessPolicy.Permission
 
     # Create an access policy assigment
     $accessPolicyAssignment = New-AzRedisCacheAccessPolicyAssignment -Name $cacheName -AccessPolicyAssignmentName $accessPolicyAssignmentName -AccessPolicyName $accessPolicyName -ObjectId "69d700c5-ca77-4335-947e-4f823dd00e1a" -ObjectIdAlias "kj-aad-testing"

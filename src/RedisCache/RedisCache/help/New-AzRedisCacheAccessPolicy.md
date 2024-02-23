@@ -15,18 +15,18 @@ Add an Access Policy to the Redis Cache
 ### NormalParameterSet (Default)
 ```
 New-AzRedisCacheAccessPolicy [-ResourceGroupName <String>] -Name <String> -AccessPolicyName <String>
- -Permissions <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Permission <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RedisCacheAttributesObject
 ```
 New-AzRedisCacheAccessPolicy -InputObject <RedisCacheAttributes> -AccessPolicyName <String>
- -Permissions <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Permission <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-New-AzRedisCacheAccessPolicy -ResourceId <String> -AccessPolicyName <String> -Permissions <String>
+New-AzRedisCacheAccessPolicy -ResourceId <String> -AccessPolicyName <String> -Permission <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Create an access policy for a Redis Cache.
 
 ### Example 1: Create an access policy
 ```powershell
-New-AzRedisCacheAccessPolicy -Name "testCache" -AccessPolicyName "testAccessPolicy" -Permissions "+get +hget"
+New-AzRedisCacheAccessPolicy -Name "testCache" -AccessPolicyName "testAccessPolicy" -Permission "+get +hget"
 ```
 
 This command creates access policy named testAccessPolicy on Redis Cache named testCache.
@@ -104,7 +104,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Permissions
+### -Permission
 Permissions for the access policy.
 Learn how to configure permissions at https://aka.ms/redis/AADPreRequisites
 

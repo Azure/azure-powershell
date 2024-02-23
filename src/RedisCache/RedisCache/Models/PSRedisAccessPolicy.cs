@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public string AccessPolicyName { get; set; }
         public string AccessPolicyType { get; set; }
         public string ProvisioningState { get; set; }
-        public string Permissions { get; set; }
+        public string Permission { get; set; }
 
         public PSRedisAccessPolicy() { }
 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             AccessPolicyName = NormalizeAccessPolicyName(redisAccessPolicy.Name);
             AccessPolicyType = redisAccessPolicy.PropertiesType;
             ProvisioningState = redisAccessPolicy.ProvisioningState;
-            Permissions = redisAccessPolicy.Permissions;
+            Permission = redisAccessPolicy.Permissions;
         }
 
         internal string NormalizeAccessPolicyName(string ruleName)

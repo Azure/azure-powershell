@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         [Parameter(Mandatory = true, HelpMessage = "Permissions for the access policy. Learn how to configure permissions at https://aka.ms/redis/AADPreRequisites")]
         [ValidateNotNullOrEmpty]
-        public string Permissions { get; set; }
+        public string Permission { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                 Name,
                 () =>
                 {
-                    RedisCacheAccessPolicy redisAccessPolicy = CacheClient.SetAccessPolicy(ResourceGroupName, Name, AccessPolicyName, Permissions);
+                    RedisCacheAccessPolicy redisAccessPolicy = CacheClient.SetAccessPolicy(ResourceGroupName, Name, AccessPolicyName, Permission);
                     if (redisAccessPolicy == null)
                     {
                         throw new CloudException(string.Format(Resources.AccessPolicyCreationFailed));

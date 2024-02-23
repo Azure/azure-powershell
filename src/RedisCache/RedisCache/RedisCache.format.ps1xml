@@ -361,8 +361,8 @@
                                 <PropertyName>AccessPolicyType</PropertyName>
                             </ListItem>
                             <ListItem>
-                                <Label>Permissions</Label>
-                                <PropertyName>Permissions</PropertyName>
+                                <Label>Permission</Label>
+                                <PropertyName>Permission</PropertyName>
                             </ListItem>
                             <ListItem>
                                 <Label>ProvisioningState</Label>
