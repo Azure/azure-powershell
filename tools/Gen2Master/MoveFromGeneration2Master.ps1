@@ -48,6 +48,7 @@ Function Move-Generation2Master {
             New-Item "$DestPath\$ModuleName\help" -ItemType Directory
             Update-MappingJson $ModuleName
         }
+        $DestPath = (Get-Item -Path $DestPath).FullName
         $Dir2Copy = @{
             'custom' = 'custom'
             'examples' = 'examples'
