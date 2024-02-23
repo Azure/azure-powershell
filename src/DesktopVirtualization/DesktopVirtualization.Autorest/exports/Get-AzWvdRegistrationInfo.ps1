@@ -16,21 +16,21 @@
 
 <#
 .Synopsis
-Get the Windows virtual desktop registration info.
+Get the Azure Virtual Desktop registration info.
 .Description
-Get the Windows virtual desktop registration info.
+Get the Azure Virtual Desktop registration info.
 .Example
 Get-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolName hpName
 .Example
 Get-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolname hpName
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.RegistrationInfo
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.RegistrationInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdregistrationinfo
 #>
 function Get-AzWvdRegistrationInfo {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.RegistrationInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101preview.RegistrationInfo])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

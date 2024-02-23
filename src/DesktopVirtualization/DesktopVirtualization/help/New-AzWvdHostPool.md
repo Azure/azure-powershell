@@ -16,7 +16,8 @@ Create or update a host pool.
 ```
 New-AzWvdHostPool -Name <String> -ResourceGroupName <String> -HostPoolType <HostPoolType>
  -LoadBalancerType <LoadBalancerType> -PreferredAppGroupType <PreferredAppGroupType> [-Location <String>]
- [-SubscriptionId <String>] [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
+ [-SubscriptionId <String>] [-ManagementType <ManagementType>]
+ [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <SessionHostComponentUpdateType>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
  [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-IdentityType <ResourceIdentityType>] [-Kind <String>]
@@ -28,15 +29,16 @@ New-AzWvdHostPool -Name <String> -ResourceGroupName <String> -HostPoolType <Host
  [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-SsoClientId <String>]
  [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <SsoSecretType>] [-SsoadfsAuthority <String>]
  [-StartVMOnConnect] [-Tag <Hashtable>] [-VMTemplate <String>] [-ValidationEnvironment]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FullSenerioCreate
 ```
 New-AzWvdHostPool -Name <String> -ResourceGroupName <String> -HostPoolType <HostPoolType>
  -LoadBalancerType <LoadBalancerType> -PreferredAppGroupType <PreferredAppGroupType> [-Location <String>]
- [-SubscriptionId <String>] [-DesktopAppGroupName <String>] [-WorkspaceName <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-ManagementType <ManagementType>] [-DesktopAppGroupName <String>]
+ [-WorkspaceName <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,7 +114,7 @@ Maintenance windows are 2 hours long.
 To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IMaintenanceWindowProperties[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -354,6 +356,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagementType
+The type of management for this hostpool, Automated or Standard.
+The default value is Automated.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ManagementType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MaxSessionLimit
 The max session limit of HostPool.
 
@@ -488,6 +506,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

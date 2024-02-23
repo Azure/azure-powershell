@@ -29,7 +29,8 @@ Describe 'Update-AzWvdScalingPlan' {
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
-                            -PreferredAppGroupType 'Desktop'
+                            -PreferredAppGroupType 'Desktop' `
+                            -ManagementType 'Standard'
 <# 
             $Role = New-AzRoleAssignment -ResourceGroupName $env.ResourceGroup `
                                  -ResourceType 'Microsoft.DesktopVirtualization/HostPools' `
@@ -52,7 +53,8 @@ Describe 'Update-AzWvdScalingPlan' {
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
-                            -PreferredAppGroupType 'Desktop'
+                            -PreferredAppGroupType 'Desktop' `
+                            -ManagementType 'Standard'
 
             <# $Role = New-AzRoleAssignment -ResourceGroupName $env.ResourceGroup `
                                  -ResourceType 'Microsoft.DesktopVirtualization/HostPools' `

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Register-AzWvdApplicationGroup
 
 ## SYNOPSIS
-Register a Windows virtual desktop application group.
+Register a Azure Virtual Desktop application group.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Register-AzWvdApplicationGroup -ApplicationGroupPath <String> -ResourceGroupName
 ```
 
 ## DESCRIPTION
-Register a Windows virtual desktop application group.
+Register a Azure Virtual Desktop application group.
 
 ## EXAMPLES
 
@@ -153,7 +153,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IWorkspace
 
 ## NOTES
 

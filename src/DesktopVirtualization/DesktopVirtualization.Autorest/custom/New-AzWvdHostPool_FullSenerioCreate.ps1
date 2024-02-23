@@ -1,5 +1,5 @@
 function New-AzWvdHostPool_FullSenerioCreate {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101preview.IHostPool')]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter()]
@@ -93,7 +93,12 @@ function New-AzWvdHostPool_FullSenerioCreate {
         [Parameter(Mandatory, HelpMessage='Location')]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
         [System.String]
-        ${Location}
+        ${Location},
+
+        [Parameter(HelpMessage='ManagementType')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ManagementType]
+        ${ManagementType}
     )
 
     process {
@@ -107,6 +112,7 @@ function New-AzWvdHostPool_FullSenerioCreate {
         }
         $null = $PSBoundParameters.Remove("DesktopAppGroupName")
         $null = $PSBoundParameters.Remove("WorkspaceName")
+        $null = $PSBoundParameters.Remove("ManagementType")
         
         $hostpool = Az.DesktopVirtualization\New-AzWvdHostPool @PSBoundParameters
 

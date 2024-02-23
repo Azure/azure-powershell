@@ -35,7 +35,7 @@ Get an application.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop Application by name
+### Example 1: Get a Azure Virtual Desktop Application by name
 ```powershell
 Get-AzWvdApplication -ResourceGroupName ResourceGroupName -ApplicationGroupName ApplicationGroupName -Name ApplicationName
 ```
@@ -46,9 +46,9 @@ Name                                 Type
 ApplicationGroupName/ApplicationName Microsoft.DesktopVirtualization/applicationgroups/applications
 ```
 
-This command gets a Windows Virtual Desktop Application in an applicaton Group.
+This command gets a Azure Virtual Desktop Application in an applicaton Group.
 
-### Example 2: List Windows Virtual Desktop Applications
+### Example 2: List Azure Virtual Desktop Applications
 ```powershell
 Get-AzWvdApplication -ResourceGroupName ResourceGroupName -ApplicationGroupName ApplicationGroupName
 ```
@@ -60,7 +60,7 @@ ApplicationGroupName/ApplicationName1 Microsoft.DesktopVirtualization/applicatio
 ApplicationGroupName/ApplicationName2 Microsoft.DesktopVirtualization/applicationgroups/applications
 ```
 
-This command Lists Windows Virtual Desktop Applications in an applicaton Group.
+This command Lists Azure Virtual Desktop Applications in an applicaton Group.
 
 ## PARAMETERS
 
@@ -211,7 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IApplication
 
 ## NOTES
 

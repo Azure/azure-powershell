@@ -16,7 +16,8 @@ Create or update a host pool.
 ```
 New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerType> -Name <String>
  -PreferredAppGroupType <PreferredAppGroupType> -ResourceGroupName <String> [-Location <String>]
- [-SubscriptionId <String>] [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
+ [-ManagementType <ManagementType>] [-SubscriptionId <String>]
+ [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <SessionHostComponentUpdateType>]
  [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
  [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-IdentityType <ResourceIdentityType>] [-Kind <String>]
@@ -35,8 +36,8 @@ New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerTy
 ```
 New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerType> -Location <String>
  -Name <String> -PreferredAppGroupType <PreferredAppGroupType> -ResourceGroupName <String>
- [-DesktopAppGroupName <String>] [-SubscriptionId <String>] [-WorkspaceName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DesktopAppGroupName <String>] [-ManagementType <ManagementType>] [-SubscriptionId <String>]
+ [-WorkspaceName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +45,7 @@ Create or update a host pool.
 
 ## EXAMPLES
 
-### Example 1: Create a Windows Virtual Desktop HostPool by name
+### Example 1: Create a Azure Virtual Desktop HostPool by name
 ```powershell
 New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `
@@ -72,9 +73,9 @@ Location   Name                 Type
 eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 ```
 
-This command creates a Windows Virtual Desktop HostPool in a Resource Group.
+This command creates a Azure Virtual Desktop HostPool in a Resource Group.
 
-### Example 2: Create a Windows Virtual Desktop HostPool by name
+### Example 2: Create a Azure Virtual Desktop HostPool by name
 ```powershell
 New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Name HostPoolName `
@@ -102,7 +103,7 @@ Location   Name                 Type
 eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 ```
 
-This command creates a Windows Virtual Desktop HostPool in a Resource Group.
+This command creates a Azure Virtual Desktop HostPool in a Resource Group.
 
 ## PARAMETERS
 
@@ -112,7 +113,7 @@ Maintenance windows are 2 hours long.
 To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMaintenanceWindowProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IMaintenanceWindowProperties[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -345,6 +346,22 @@ If this is present, complete mode deployment will not delete the resource if it 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagementType
+The type of management for this hostpool, Automated or Standard.
+The default value is Automated.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ManagementType
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -837,7 +854,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.IHostPool
 
 ## NOTES
 

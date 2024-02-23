@@ -30,7 +30,8 @@ Describe 'Update-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'RailApplications' `
-                                -StartVMOnConnect:$false
+                                -StartVMOnConnect:$false `
+                                -ManagementType 'Standard'
                 $hostPool.Name | Should -Be $env.HostPool
                 $hostPool.Location | Should -Be $env.Location
                 $hostPool.HostPoolType | Should -Be 'Pooled'              

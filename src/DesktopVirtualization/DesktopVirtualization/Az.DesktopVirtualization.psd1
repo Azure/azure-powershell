@@ -58,10 +58,10 @@ RequiredAssemblies =
                'DesktopVirtualization.Autorest/bin/Az.DesktopVirtualization.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 
@@ -72,33 +72,47 @@ NestedModules = @('DesktopVirtualization.Autorest/Az.DesktopVirtualization.psm1'
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Disconnect-AzWvdUserSession', 'Expand-AzWvdMsixImage', 
-               'Get-AzWvdApplication', 'Get-AzWvdApplicationGroup', 
-               'Get-AzWvdDesktop', 'Get-AzWvdHostPool', 
+               'Get-AzWvdActiveSessionHostConfiguration', 
+               'Get-AzWvdAppAttachPackage', 'Get-AzWvdApplication', 
+               'Get-AzWvdApplicationGroup', 'Get-AzWvdDesktop', 'Get-AzWvdHostPool', 
                'Get-AzWvdHostPoolRegistrationToken', 'Get-AzWvdMsixPackage', 
                'Get-AzWvdPrivateEndpointConnection', 
                'Get-AzWvdPrivateLinkResource', 'Get-AzWvdRegistrationInfo', 
                'Get-AzWvdScalingPlan', 'Get-AzWvdScalingPlanPersonalSchedule', 
                'Get-AzWvdScalingPlanPooledSchedule', 'Get-AzWvdSessionHost', 
+               'Get-AzWvdSessionHostConfiguration', 
+               'Get-AzWvdSessionHostConfigurationsOperationStatus', 
+               'Get-AzWvdSessionHostManagement', 
+               'Get-AzWvdSessionHostManagementsOperationStatus', 
                'Get-AzWvdStartMenuItem', 'Get-AzWvdUserSession', 
-               'Get-AzWvdWorkspace', 'New-AzWvdApplication', 
+               'Get-AzWvdWorkspace', 'Import-AzWvdAppAttachPackageInfo', 
+               'Invoke-AzWvdControlSessionHostUpdate', 
+               'Invoke-AzWvdInitiateSessionHostUpdate', 
+               'Invoke-AzWvdRetrySessionHostProvisioning', 
+               'New-AzWvdAppAttachPackage', 'New-AzWvdApplication', 
                'New-AzWvdApplicationGroup', 'New-AzWvdHostPool', 
                'New-AzWvdMsixPackage', 'New-AzWvdRegistrationInfo', 
                'New-AzWvdScalingPlan', 'New-AzWvdScalingPlanPersonalSchedule', 
-               'New-AzWvdScalingPlanPooledSchedule', 'New-AzWvdWorkspace', 
-               'Register-AzWvdApplicationGroup', 'Remove-AzWvdApplication', 
-               'Remove-AzWvdApplicationGroup', 'Remove-AzWvdHostPool', 
-               'Remove-AzWvdMsixPackage', 'Remove-AzWvdPrivateEndpointConnection', 
+               'New-AzWvdScalingPlanPooledSchedule', 
+               'New-AzWvdSessionHostConfiguration', 
+               'New-AzWvdSessionHostManagement', 'New-AzWvdWorkspace', 
+               'Register-AzWvdApplicationGroup', 'Remove-AzWvdAppAttachPackage', 
+               'Remove-AzWvdApplication', 'Remove-AzWvdApplicationGroup', 
+               'Remove-AzWvdHostPool', 'Remove-AzWvdMsixPackage', 
+               'Remove-AzWvdPrivateEndpointConnection', 
                'Remove-AzWvdRegistrationInfo', 'Remove-AzWvdScalingPlan', 
                'Remove-AzWvdScalingPlanPersonalSchedule', 
                'Remove-AzWvdScalingPlanPooledSchedule', 'Remove-AzWvdSessionHost', 
                'Remove-AzWvdUserSession', 'Remove-AzWvdWorkspace', 
                'Send-AzWvdUserSessionMessage', 'Unregister-AzWvdApplicationGroup', 
-               'Update-AzWvdApplication', 'Update-AzWvdApplicationGroup', 
-               'Update-AzWvdDesktop', 'Update-AzWvdHostPool', 
-               'Update-AzWvdMsixPackage', 'Update-AzWvdScalingPlan', 
+               'Update-AzWvdAppAttachPackage', 'Update-AzWvdApplication', 
+               'Update-AzWvdApplicationGroup', 'Update-AzWvdDesktop', 
+               'Update-AzWvdHostPool', 'Update-AzWvdMsixPackage', 
+               'Update-AzWvdScalingPlan', 
                'Update-AzWvdScalingPlanPersonalSchedule', 
                'Update-AzWvdScalingPlanPooledSchedule', 'Update-AzWvdSessionHost', 
-               'Update-AzWvdWorkspace'
+               'Update-AzWvdSessionHostConfiguration', 
+               'Update-AzWvdSessionHostManagement', 'Update-AzWvdWorkspace'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -124,7 +138,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','PSModule','DesktopVirtualization'
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'DesktopVirtualization'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -160,7 +174,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
- } # End of PrivateData hashtable
+} # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''

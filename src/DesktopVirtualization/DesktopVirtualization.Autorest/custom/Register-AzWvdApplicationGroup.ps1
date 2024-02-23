@@ -15,12 +15,12 @@
 
 <#
 .Synopsis
-Register a Windows virtual desktop application group.
+Register a Azure Virtual Desktop application group.
 .Description
-Register a Windows virtual desktop application group.
+Register a Azure Virtual Desktop application group.
 #>
 function Register-AzWvdApplicationGroup {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101preview.IWorkspace')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter()]

@@ -35,7 +35,7 @@ Get a session host.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop SessionHost by name
+### Example 1: Get a Azure Virtual Desktop SessionHost by name
 ```powershell
 Get-AzWvdSessionHost -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -Name SessionHostName
 ```
@@ -46,9 +46,9 @@ Name                                               Type
 HostPoolName/SessionHostName Microsoft.DesktopVirtualization/hostpools/sessionhosts
 ```
 
-This command gets a Windows Virtual Desktop SessionHost in a Host Pool.
+This command gets a Azure Virtual Desktop SessionHost in a Host Pool.
 
-### Example 2: List Windows Virtual Desktop SessionHosts
+### Example 2: List Azure Virtual Desktop SessionHosts
 ```powershell
 Get-AzWvdSessionHost -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 ```
@@ -60,7 +60,7 @@ HostPoolName/SessionHostName1 Microsoft.DesktopVirtualization/hostpools/sessionh
 HostPoolName/SessionHostName2 Microsoft.DesktopVirtualization/hostpools/sessionhosts
 ```
 
-This command lists a Windows Virtual Desktop SessionHosts in a Host Pool.
+This command lists a Azure Virtual Desktop SessionHosts in a Host Pool.
 
 ## PARAMETERS
 
@@ -211,7 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHost
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231101Preview.ISessionHost
 
 ## NOTES
 
