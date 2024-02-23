@@ -1,0 +1,44 @@
+{
+  "New-AzSupportFileWorkspace+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/4df09db9-7a7e-450b-8f88-00fb97c277bd/providers/Microsoft.Support/fileWorkspaces/test-ps-788d2c69-ffb3-4b2e-96a0-769089ff7a7a?api-version=2022-09-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/4df09db9-7a7e-450b-8f88-00fb97c277bd/providers/Microsoft.Support/fileWorkspaces/test-ps-788d2c69-ffb3-4b2e-96a0-769089ff7a7a?api-version=2022-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "404e71fa-2256-4f86-975a-efddc3ddead2" ],
+        "CommandName": [ "New-AzSupportFileWorkspace" ],
+        "FullCommandName": [ "New-AzSupportFileWorkspace_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.3.11", "Az.Support/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/4df09db9-7a7e-450b-8f88-00fb97c277bd/providers/Microsoft.Support/fileWorkspaces/test-ps-788d2c69-ffb3-4b2e-96a0-769089ff7a7a?api-version=2022-09-01-preview" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "acf571a2-cd60-48a9-969c-fa62dcb4ef9e" ],
+        "x-ms-correlation-request-id": [ "acf571a2-cd60-48a9-969c-fa62dcb4ef9e" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240129T212426Z:acf571a2-cd60-48a9-969c-fa62dcb4ef9e" ],
+        "Date": [ "Mon, 29 Jan 2024 21:24:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "334" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/4df09db9-7a7e-450b-8f88-00fb97c277bd/providers/Microsoft.Support/fileWorkspaces/test-ps-788d2c69-ffb3-4b2e-96a0-769089ff7a7a\",\"name\":\"test-ps-788d2c69-ffb3-4b2e-96a0-769089ff7a7a\",\"type\":\"Microsoft.Support/fileWorkspaces\",\"properties\":{\"expirationTime\":\"2024-01-30T21:24:25Z\",\"createdOn\":\"2024-01-29T21:24:25Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

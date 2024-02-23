@@ -15,8 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzSupportTicketsNoSubscr
 }
 
 Describe 'Test-AzSupportTicketsNoSubscriptionNameAvailability' {
-    It 'CheckExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckExpandedSupportTicket' {
+        $supportTicketResult = Test-AzSupportTicketsNoSubscriptionNameAvailability -Name "test-ps-$(New-Guid)" -Type "Microsoft.Support/supportTickets"
+        $supportTicketResult.NameAvailable | Should -Be $true
+    }
+
+    It 'CheckExpandedFileWorkspace' {
+        $fileWorkspaceResult = Test-AzSupportTicketsNoSubscriptionNameAvailability -Name "test-ps-$(New-Guid)" -Type "Microsoft.Support/fileWorkspaces"
+        $fileWorkspaceResult.NameAvailable | Should -Be $true
     }
 
     It 'Check' -skip {

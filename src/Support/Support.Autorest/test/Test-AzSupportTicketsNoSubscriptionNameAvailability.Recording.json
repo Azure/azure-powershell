@@ -1,0 +1,38 @@
+{
+  "Test-AzSupportTicketsNoSubscriptionNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/providers/Microsoft.Support/checkNameAvailability?api-version=2022-09-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/checkNameAvailability?api-version=2022-09-01-preview",
+      "Content": "{\r\n  \"name\": \"test-ps-f0f0df36-66f3-4f4e-9686-80a68bb9d53d\",\r\n  \"type\": \"Microsoft.Support/supportTickets\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "109" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-request-id": [ "746f8be3-9ba4-4323-93fa-3567dff84f3f" ],
+        "x-ms-correlation-request-id": [ "746f8be3-9ba4-4323-93fa-3567dff84f3f" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240130T172214Z:746f8be3-9ba4-4323-93fa-3567dff84f3f" ],
+        "Date": [ "Tue, 30 Jan 2024 17:22:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,66 +1,50 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportfilesnosubscription
+online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportfileworkspace
 schema: 2.0.0
 ---
 
-# New-AzSupportFilesNoSubscription
+# New-AzSupportFileWorkspace
 
 ## SYNOPSIS
-Creates a new file under a workspace.
+Creates a new file workspace for the specified subscription.
 
 ## SYNTAX
 
 ```
-New-AzSupportFilesNoSubscription -FileName <String> -FileWorkspaceName <String> [-ChunkSize <Single>]
- [-FileSize <Single>] [-NumberOfChunk <Single>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzSupportFileWorkspace -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new file under a workspace.
+Creates a new file workspace for the specified subscription.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new file workspace
 ```powershell
-{{ Add code here }}
+New-AzSupportFileWorkspace -Name "testworkspace"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+CreatedOn                    : 2/8/2024 3:51:36 PM
+ExpirationTime               : 2/9/2024 3:51:36 PM
+Id                           : /subscriptions/3bb7379e-e102-4603-a59c-60f5ca39ec55/providers/Microsoft.Support/fileWorkspaces/testworkspace
+Name                         : testworkspace
+ResourceGroupName            :
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Support/fileWorkspaces
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates a new file workspace for the specified subscription.
 
 ## PARAMETERS
-
-### -ChunkSize
-Size of each chunk
-
-```yaml
-Type: System.Single
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -78,43 +62,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FileName
-File name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FileSize
-Size of the file to be uploaded
-
-```yaml
-Type: System.Single
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FileWorkspaceName
+### -Name
 File workspace name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: FileWorkspaceName
 
 Required: True
 Position: Named
@@ -123,17 +77,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NumberOfChunk
-Number of chunks to be uploaded
+### -SubscriptionId
+Azure subscription Id.
 
 ```yaml
-Type: System.Single
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -176,7 +130,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IFileDetails
+### Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IFileWorkspaceDetails
 
 ## NOTES
 

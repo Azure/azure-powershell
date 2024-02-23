@@ -40,27 +40,81 @@ Returns details of a specific file in a work space.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all files from a file workspace
 ```powershell
-{{ Add code here }}
+Get-AzSupportFilesNoSubscription -WorkspaceName "testworkspace"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name      CreatedOn           ChunkSize FileSize
+----      ---------           --------- --------
+test.txt  2/9/2024 3:53:15 PM 4         4
+test2.txt 2/9/2024 3:53:29 PM 4         4
 ```
 
-{{ Add description here }}
+Lists all the Files information under a workspace
 
-### Example 2: {{ Add title here }}
+### Example 2: Get details of a file in a file workspace
 ```powershell
-{{ Add code here }}
+Get-AzSupportFilesNoSubscription -Name "test.txt" -WorkspaceName "testworkspace"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ChunkSize                    : 4
+CreatedOn                    : 2/9/2024 3:53:15 PM
+FileSize                     : 4
+Id                           : /providers/Microsoft.Support/fileWorkspaces/testworkspace/files/test.txt
+Name                         : test.txt
+NumberOfChunk                : 1
+ResourceGroupName            :
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Support/files
 ```
 
-{{ Add description here }}
+Returns details of a specific file in a workspace.
+
+### Example 3: List all files from a support ticket
+```powershell
+Get-AzSupportFilesNoSubscription -WorkspaceName "2402084010005835"
+```
+
+```output
+Name      CreatedOn           ChunkSize FileSize
+----      ---------           --------- --------
+test.txt  2/9/2024 3:53:15 PM 4         4
+test2.txt 2/9/2024 3:53:29 PM 4         4
+```
+
+Lists all the Files information under a support ticket.
+
+### Example 2: Get details of a file under a support ticket
+```powershell
+Get-AzSupportFilesNoSubscription -Name "test.txt" -WorkspaceName "2402084010005835"
+```
+
+```output
+ChunkSize                    : 4
+CreatedOn                    : 2/9/2024 3:53:15 PM
+FileSize                     : 4
+Id                           : /providers/Microsoft.Support/fileWorkspaces/2402084010005835/files/test.txt
+Name                         : test.txt
+NumberOfChunk                : 1
+ResourceGroupName            :
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : Microsoft.Support/files
+```
+
+Returns details of a specific file under a support ticket.
 
 ## PARAMETERS
 
@@ -86,7 +140,7 @@ File Name
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetViaIdentityFileWorkspace
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named
@@ -117,7 +171,7 @@ File Workspace Name
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases:
+Aliases: WorkspaceName
 
 Required: True
 Position: Named

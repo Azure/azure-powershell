@@ -1,22 +1,27 @@
-### Example 1: {{ Add title here }}
+### Example 1: Check support ticket friendly name availability
 ```powershell
-{{ Add code here }}
+Test-AzSupportTicketsNoSubscriptionNameAvailability -Name "testSupportTicketName" -Type "Microsoft.Support/supportTickets"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Message NameAvailable Reason
+------- ------------- ------
+                 True
 ```
 
-{{ Add description here }}
+Check the availability of a resource name. This API should be used to check the uniqueness of the name for support ticket creation for the selected subscription.
+If the provided type is neither Microsoft.Support/supportTickets nor Microsoft.Support/fileWorkspaces, then it will default to Microsoft.Support/supportTickets.
 
-### Example 2: {{ Add title here }}
+### Example 2: Check file workspace friendly name availability
 ```powershell
-{{ Add code here }}
+Test-AzSupportTicketsNoSubscriptionNameAvailability -Name "testFileWorkspaceName" -Type "Microsoft.Support/fileWorkspaces"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Message NameAvailable Reason
+------- ------------- ------
+                 True
 ```
 
-{{ Add description here }}
-
+Check the availability of a resource name. This API should be used to check the uniqueness of the name for file workspace creation for the selected subscription.
+If the provided type is neither Microsoft.Support/supportTickets nor Microsoft.Support/fileWorkspaces, then it will default to Microsoft.Support/supportTickets.

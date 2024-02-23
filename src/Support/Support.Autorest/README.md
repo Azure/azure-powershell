@@ -35,13 +35,10 @@ commit: 99b27b136352e2f16c3f868857fa33157ace895f
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
-#   - $(repo)/specification/support/resource-manager/readme.md
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-local-readme.md
 input-file:
   - $(repo)/specification/support/resource-manager/Microsoft.Support/preview/2022-09-01-preview/support.json
-# try-require: 
-#   - $(repo)/specification/support/resource-manager/readme.powershell.md
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
@@ -60,39 +57,83 @@ directive:
     set:
       format-table:
         properties:
-          # - Id
           - DisplayName
           - Name
-          - SecondaryConsentEnabled # Do we need this? 
-          # - Type
+          - SecondaryConsentEnabled
   - where:
       model-name: Service
     set:
       format-table:
         properties:
-          # - Id
           - DisplayName
           - Name
-          - ResourceType # Do we need this? 
-          # - Type
+          - ResourceType
   - where:
       model-name: FileDetails
     set:
       format-table:
         properties:
-          # - Id
           - Name
           - CreatedOn
           - ChunkSize
           - FileSize
           - NumberOfChunks 
-          # - Type
+  - where:
+      subject: UploadFile
+      parameter-name: FileWorkspaceName
+    set:
+      alias: WorkspaceName
+  - where:
+      subject: UploadFilesNoSubscription
+      parameter-name: FileWorkspaceName
+    set:
+      alias: WorkspaceName
+  - where:
+      subject: FileWorkspacesNoSubscription
+      parameter-name: FileWorkspaceName
+    set:
+      alias: Name
+  - where:
+      subject: FilesNoSubscription
+      parameter-name: FileName
+    set:
+      alias: Name
+  - where:
+      subject: FilesNoSubscription
+      parameter-name: FileWorkspaceName
+    set:
+      alias: WorkspaceName
+  - where:
+      verb: New
+      subject: File
+    hide: true
+  - where:
+      verb: New
+      subject: FilesNoSubscription
+    hide: true
+  - where:
+      verb: Update
+      subject: File
+    remove: true
+  - where:
+      verb: Update
+      subject: FilesNoSubscription
+    remove: true
+  - where:
+      verb: Invoke
+      subject: UploadFile
+    hide: true
+  - where:
+      verb: Invoke
+      subject: UploadFilesNoSubscription
+    hide: true
   # Following are common directives which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required
   # Following two directives are v4 specific
   - where:
-      variant: ^(Create|Update)(?!.*?Expanded)
+      variant: ^(Create|Update)(?!.*?Expanded|JsonFilePath|JsonString)
+      subject: ^(?!FileWorkspace|FileWorkspacesNoSubscription$).*
     remove: true
   - where:
       variant: ^CreateViaIdentity.*$
