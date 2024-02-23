@@ -15,9 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEmailService'))
 }
 
 Describe 'Remove-AzEmailService' {
-    It 'Delete' -skip {
+    It 'Delete' {
         $name = "emailService-test" + $env.rstr1
-        $res = New-AzEmailService -ResourceGroupName $env.resourceGroup -Name $name -DataLocation $env.dataLocation -Location $env.location
+        $res = New-AzEmailService -ResourceGroupName $env.resourceGroup -Name $name -DataLocation $env.dataLocation
 
         Remove-AzEmailService -Name $name -ResourceGroupName $env.resourceGroup
 
@@ -25,9 +25,9 @@ Describe 'Remove-AzEmailService' {
         $serviceList.Name | Should -Not -Contain $name
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         $name = "emailService-test" + $env.rstr2
-        $res = New-AzEmailService -ResourceGroupName $env.resourceGroup -Name $name -DataLocation $env.dataLocation -Location $env.location
+        $res = New-AzEmailService -ResourceGroupName $env.resourceGroup -Name $name -DataLocation $env.dataLocation
 
         Remove-AzEmailService -InputObject $res.Id
 

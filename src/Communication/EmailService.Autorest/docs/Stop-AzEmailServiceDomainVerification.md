@@ -71,27 +71,12 @@ Cancel verification of DNS record.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Stop domain verification for domain resource.
 ```powershell
-{{ Add code here }}
+Stop-AzEmailServiceDomainVerification  -DomainName testcustomdomain1.net  -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -VerificationType Domain
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Stop domain verification for domain resource.
 
 ## PARAMETERS
 

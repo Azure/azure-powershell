@@ -1,0 +1,124 @@
+{
+  "Update-AzEmailService+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupfku8c4/providers/Microsoft.Communication/emailServices/persistentResourceNamefku8c4?api-version=2023-06-01-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupfku8c4/providers/Microsoft.Communication/emailServices/persistentResourceNamefku8c4?api-version=2023-06-01-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"ExampleKey2\": \"ExampleValue2\",\r\n    \"ExampleKey1\": \"ExampleValue1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "95" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"22009a0b-0000-2000-0000-65d857b90000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "0bbe6298-2a28-407f-99cf-b4527605381a" ],
+        "x-ms-correlation-request-id": [ "53944541-7869-4d06-808e-3eed9074b5a9" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20240223T083051Z:53944541-7869-4d06-808e-3eed9074b5a9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0A883E4CDDDA439388184E90FD6DE3A9 Ref B: MAA201060513037 Ref C: 2024-02-23T08:30:49Z" ],
+        "Date": [ "Fri, 23 Feb 2024 08:30:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "663" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupfku8c4/providers/Microsoft.Communication/emailServices/persistentResourceNamefku8c4\",\"name\":\"persistentResourceNamefku8c4\",\"type\":\"microsoft.communication/emailservices\",\"location\":\"Global\",\"tags\":{\"ExampleKey2\":\"ExampleValue2\",\"ExampleKey1\":\"ExampleValue1\"},\"systemData\":{\"createdBy\":\"v-vprasannak@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-02-23T07:27:19.1866338Z\",\"lastModifiedBy\":\"v-vprasannak@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-23T08:30:49.5813986Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"dataLocation\":\"UnitedStates\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzEmailService+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupfku8c4/providers/Microsoft.Communication/emailServices/persistentResourceNamefku8c4?api-version=2023-06-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupfku8c4/providers/Microsoft.Communication/emailServices/persistentResourceNamefku8c4?api-version=2023-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "272" ],
+        "x-ms-client-request-id": [ "792ae1e2-9277-4b15-8adf-28cb5a452407" ],
+        "CommandName": [ "Get-AzEmailService" ],
+        "FullCommandName": [ "Get-AzEmailService_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.1", "Az.EmailService/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"22009a0b-0000-2000-0000-65d857b90000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "0766f0a5-1029-496e-be34-1aa0a2aa5557" ],
+        "x-ms-correlation-request-id": [ "bfa17b90-49cd-4d1c-b565-d2118535cb56" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20240223T083052Z:bfa17b90-49cd-4d1c-b565-d2118535cb56" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: EE799CBDB5DC47F08301271A8061425E Ref B: MAA201060513037 Ref C: 2024-02-23T08:30:52Z" ],
+        "Date": [ "Fri, 23 Feb 2024 08:30:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "663" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupfku8c4/providers/Microsoft.Communication/emailServices/persistentResourceNamefku8c4\",\"name\":\"persistentResourceNamefku8c4\",\"type\":\"microsoft.communication/emailservices\",\"location\":\"Global\",\"tags\":{\"ExampleKey2\":\"ExampleValue2\",\"ExampleKey1\":\"ExampleValue1\"},\"systemData\":{\"createdBy\":\"v-vprasannak@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-02-23T07:27:19.1866338Z\",\"lastModifiedBy\":\"v-vprasannak@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-23T08:30:49.5813986Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"dataLocation\":\"UnitedStates\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzEmailService+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupfku8c4/providers/Microsoft.Communication/emailServices/persistentResourceNamefku8c4?api-version=2023-06-01-preview+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupfku8c4/providers/Microsoft.Communication/emailServices/persistentResourceNamefku8c4?api-version=2023-06-01-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"ExampleKey2\": \"ExampleValue2\",\r\n    \"ExampleKey1\": \"ExampleValue1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "95" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2200a50b-0000-2000-0000-65d857bc0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "272e0861-45a4-4371-bbc7-1a038a06da3d" ],
+        "x-ms-correlation-request-id": [ "7efad58d-038d-4fc5-8588-840c830a29aa" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20240223T083054Z:7efad58d-038d-4fc5-8588-840c830a29aa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8D72588DD08C493D812352C8BAEDC718 Ref B: MAA201060513037 Ref C: 2024-02-23T08:30:52Z" ],
+        "Date": [ "Fri, 23 Feb 2024 08:30:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "663" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/testgroupfku8c4/providers/Microsoft.Communication/emailServices/persistentResourceNamefku8c4\",\"name\":\"persistentResourceNamefku8c4\",\"type\":\"microsoft.communication/emailservices\",\"location\":\"Global\",\"tags\":{\"ExampleKey2\":\"ExampleValue2\",\"ExampleKey1\":\"ExampleValue1\"},\"systemData\":{\"createdBy\":\"v-vprasannak@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-02-23T07:27:19.1866338Z\",\"lastModifiedBy\":\"v-vprasannak@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-02-23T08:30:52.7215311Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"dataLocation\":\"UnitedStates\"}}",
+      "isContentBase64": false
+    }
+  }
+}

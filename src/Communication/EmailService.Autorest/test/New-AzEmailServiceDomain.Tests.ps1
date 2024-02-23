@@ -15,26 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEmailServiceDomain'))
 }
 
 Describe 'New-AzEmailServiceDomain' {
-    It 'CreateExpanded' -skip {
-       $NewAzEmailServiceDomain = New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $env.domainResourceName -Location $env.location -DomainManagement $env.domainManagement
+    It 'CreateExpanded' {
+       $NewAzEmailServiceDomain = New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $env.domainResourceName -DomainManagement $env.domainManagement
        $NewAzEmailServiceDomain.Name | Should -Be $env.domainResourceName
     }
     It 'CreateViaJsonString' -skip  {
-        $NewAzEmailServiceDomain = New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $env.domainResourceName -Location $env.location -DomainManagement $env.domainManagement
-        $NewAzEmailServiceDomain.Name | Should -Be $env.domainResourceName
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'CreateViaJsonFilePath' -skip {
-       
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-    It 'CreateViaIdentityEmailServiceExpanded' -skip {
+    It 'CreateViaIdentityEmailServiceExpanded' {
         $EmailServiceInstance01 = Get-AzEmailService -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName
-        $EmailServiceDomainInstance = New-AzEmailServiceDomain -EmailServiceInputObject $EmailServiceInstance01 -DomainName $env.domainResourceName -Location $env.location -DomainManagement $env.domainManagement
+        $EmailServiceDomainInstance = New-AzEmailServiceDomain -EmailServiceInputObject $EmailServiceInstance01 -DomainName $env.domainResourceName -DomainManagement $env.domainManagement
         $EmailServiceDomainInstance.Name | Should -Be $env.domainResourceName
     }
-    It 'CreateViaIdentityEmailService' -skip {
+    It 'CreateViaIdentityEmailService' {
         $EmailServiceInstance01 = Get-AzEmailService -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName
-        $EmailServiceDomainInstance = New-AzEmailServiceDomain -EmailServiceInputObject $EmailServiceInstance01 -DomainName $env.domainResourceName -Location $env.location -DomainManagement $env.domainManagement
+        $EmailServiceDomainInstance = New-AzEmailServiceDomain -EmailServiceInputObject $EmailServiceInstance01 -DomainName $env.domainResourceName -DomainManagement $env.domainManagement
         $EmailServiceDomainInstance.Name | Should -Be $env.domainResourceName
     }
 }

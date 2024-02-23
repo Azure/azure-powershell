@@ -20,9 +20,9 @@ Operation to delete a SenderUsernames resource.
 .Description
 Operation to delete a SenderUsernames resource.
 .Example
-{{ Add code here }}
+PS C:\> Remove-AzEmailServiceSenderUsername -SenderUsername test -DomainName testcustomdomain1.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 .Example
-{{ Add code here }}
+PS C:\> Remove-AzEmailServiceSenderUsername -SenderUsername test -DomainName AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity

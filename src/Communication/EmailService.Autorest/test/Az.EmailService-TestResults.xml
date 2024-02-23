@@ -1,189 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="4" errors="0" failures="0" not-run="0" inconclusive="0" ignored="65" skipped="0" invalid="0" date="2024-02-20" time="14:51:00">
-  <environment platform="Microsoft Windows 10 Enterprise|C:\Windows|\Device\Harddisk0\Partition3" cwd="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest" machine-name="DESKTOP-9URL70T" clr-version="Unknown" os-version="10.0.19045" user-domain="REDMOND" nunit-version="2.5.8.0" user="v-vprasannak" />
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="6" errors="0" failures="0" not-run="0" inconclusive="0" ignored="2" skipped="0" invalid="0" date="2024-02-23" time="15:24:22">
+  <environment os-version="10.0.19045" machine-name="DESKTOP-9URL70T" nunit-version="2.5.8.0" platform="Microsoft Windows 10 Enterprise|C:\Windows|\Device\Harddisk0\Partition3" cwd="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest" user="v-vprasannak" user-domain="REDMOND" clr-version="Unknown" />
   <culture-info current-culture="en-IN" current-uiculture="en-US" />
-  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="172.5181" asserts="0" description="Pester">
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="808.6076" asserts="0" description="Pester">
     <results>
-      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Get-AzEmailService.Tests.ps1" executed="True" result="Ignored" success="True" time="2.1601" asserts="0" description="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Get-AzEmailService.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Get-AzEmailService" executed="True" result="Ignored" success="True" time="1.7082" asserts="0" description="Get-AzEmailService">
-            <results>
-              <test-case description="List" name="Get-AzEmailService.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="Get" name="Get-AzEmailService.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="List1" name="Get-AzEmailService.List1" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="GetViaIdentity" name="Get-AzEmailService.GetViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Get-AzEmailService.Tests.ps1" executed="True" result="Success" success="True" time="0.1199" asserts="0" description="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Get-AzEmailService.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Get-AzEmailServiceDomain.Tests.ps1" executed="True" result="Ignored" success="True" time="1.2815" asserts="0" description="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Get-AzEmailServiceDomain.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Get-AzEmailServiceDomain" executed="True" result="Ignored" success="True" time="0.9947" asserts="0" description="Get-AzEmailServiceDomain">
-            <results>
-              <test-case description="List" name="Get-AzEmailServiceDomain.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="Get" name="Get-AzEmailServiceDomain.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="GetViaIdentityEmailService" name="Get-AzEmailServiceDomain.GetViaIdentityEmailService" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="GetViaIdentity" name="Get-AzEmailServiceDomain.GetViaIdentity" time="0.8573" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Get-AzEmailServiceDomain.Tests.ps1" executed="True" result="Success" success="True" time="0.0403" asserts="0" description="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Get-AzEmailServiceDomain.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Get-AzEmailServiceSenderUsername.Tests.ps1" executed="True" result="Ignored" success="True" time="2.7828" asserts="0" description="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Get-AzEmailServiceSenderUsername.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Get-AzEmailServiceSenderUsername" executed="True" result="Ignored" success="True" time="2.5435" asserts="0" description="Get-AzEmailServiceSenderUsername">
-            <results>
-              <test-case description="List" name="Get-AzEmailServiceSenderUsername.List" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="GetViaIdentityEmailService" name="Get-AzEmailServiceSenderUsername.GetViaIdentityEmailService" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="Get" name="Get-AzEmailServiceSenderUsername.Get" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="GetViaIdentityDomain" name="Get-AzEmailServiceSenderUsername.GetViaIdentityDomain" time="1.0459" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="GetViaIdentity" name="Get-AzEmailServiceSenderUsername.GetViaIdentity" time="1.3828" asserts="0" success="True" result="Success" executed="True" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Get-AzEmailServiceSenderUsername.Tests.ps1" executed="True" result="Success" success="True" time="0.0512" asserts="0" description="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Get-AzEmailServiceSenderUsername.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Invoke-AzEmailServiceInitiateDomainVerification.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3528" asserts="0" description="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Invoke-AzEmailServiceInitiateDomainVerification.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Invoke-AzEmailServiceInitiateDomainVerification.Tests.ps1" executed="True" result="Ignored" success="True" time="807.9632" asserts="0" description="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Invoke-AzEmailServiceInitiateDomainVerification.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Invoke-AzEmailServiceInitiateDomainVerification" executed="True" result="Ignored" success="True" time="0.114" asserts="0" description="Invoke-AzEmailServiceInitiateDomainVerification">
+          <test-suite type="TestFixture" name="Invoke-AzEmailServiceInitiateDomainVerification" executed="True" result="Ignored" success="True" time="807.5299" asserts="0" description="Invoke-AzEmailServiceInitiateDomainVerification">
             <results>
-              <test-case description="InitiateExpanded" name="Invoke-AzEmailServiceInitiateDomainVerification.InitiateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="InitiateExpanded" name="Invoke-AzEmailServiceInitiateDomainVerification.InitiateExpanded" time="135.4029" asserts="0" success="True" result="Success" executed="True" />
               <test-case description="InitiateViaJsonString" name="Invoke-AzEmailServiceInitiateDomainVerification.InitiateViaJsonString" time="0" asserts="0" success="True" result="Ignored" executed="False" />
               <test-case description="InitiateViaJsonFilePath" name="Invoke-AzEmailServiceInitiateDomainVerification.InitiateViaJsonFilePath" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="InitiateViaIdentityEmailServiceExpanded" name="Invoke-AzEmailServiceInitiateDomainVerification.InitiateViaIdentityEmailServiceExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="InitiateViaIdentityEmailService" name="Invoke-AzEmailServiceInitiateDomainVerification.InitiateViaIdentityEmailService" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="Initiate" name="Invoke-AzEmailServiceInitiateDomainVerification.Initiate" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="InitiateViaIdentityExpanded" name="Invoke-AzEmailServiceInitiateDomainVerification.InitiateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="InitiateViaIdentity" name="Invoke-AzEmailServiceInitiateDomainVerification.InitiateViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
+              <test-case description="InitiateViaIdentityEmailServiceExpanded" name="Invoke-AzEmailServiceInitiateDomainVerification.InitiateViaIdentityEmailServiceExpanded" time="130.0323" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="InitiateViaIdentityEmailService" name="Invoke-AzEmailServiceInitiateDomainVerification.InitiateViaIdentityEmailService" time="132.2348" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Initiate" name="Invoke-AzEmailServiceInitiateDomainVerification.Initiate" time="135.6368" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="InitiateViaIdentityExpanded" name="Invoke-AzEmailServiceInitiateDomainVerification.InitiateViaIdentityExpanded" time="133.8052" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="InitiateViaIdentity" name="Invoke-AzEmailServiceInitiateDomainVerification.InitiateViaIdentity" time="138.4833" asserts="0" success="True" result="Success" executed="True" />
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\New-AzEmailService.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3341" asserts="0" description="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\New-AzEmailService.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="New-AzEmailService" executed="True" result="Ignored" success="True" time="0.0948" asserts="0" description="New-AzEmailService">
-            <results>
-              <test-case description="CreateExpanded" name="New-AzEmailService.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CreateViaJsonFilePath" name="New-AzEmailService.CreateViaJsonFilePath" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CreateViaJsonString" name="New-AzEmailService.CreateViaJsonString" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\New-AzEmailService.Tests.ps1" executed="True" result="Success" success="True" time="0.0479" asserts="0" description="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\New-AzEmailService.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\New-AzEmailServiceDomain.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3396" asserts="0" description="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\New-AzEmailServiceDomain.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="New-AzEmailServiceDomain" executed="True" result="Ignored" success="True" time="0.1016" asserts="0" description="New-AzEmailServiceDomain">
-            <results>
-              <test-case description="CreateExpanded" name="New-AzEmailServiceDomain.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CreateViaJsonString" name="New-AzEmailServiceDomain.CreateViaJsonString" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CreateViaJsonFilePath" name="New-AzEmailServiceDomain.CreateViaJsonFilePath" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CreateViaIdentityEmailServiceExpanded" name="New-AzEmailServiceDomain.CreateViaIdentityEmailServiceExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CreateViaIdentityEmailService" name="New-AzEmailServiceDomain.CreateViaIdentityEmailService" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\New-AzEmailServiceDomain.Tests.ps1" executed="True" result="Success" success="True" time="0.0428" asserts="0" description="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\New-AzEmailServiceDomain.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\New-AzEmailServiceSenderUsername.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3471" asserts="0" description="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\New-AzEmailServiceSenderUsername.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="New-AzEmailServiceSenderUsername" executed="True" result="Ignored" success="True" time="0.1133" asserts="0" description="New-AzEmailServiceSenderUsername">
-            <results>
-              <test-case description="CreateExpanded" name="New-AzEmailServiceSenderUsername.CreateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CreateViaJsonString" name="New-AzEmailServiceSenderUsername.CreateViaJsonString" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CreateViaJsonFilePath" name="New-AzEmailServiceSenderUsername.CreateViaJsonFilePath" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CreateViaIdentityEmailServiceExpanded" name="New-AzEmailServiceSenderUsername.CreateViaIdentityEmailServiceExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CreateViaIdentityEmailService" name="New-AzEmailServiceSenderUsername.CreateViaIdentityEmailService" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CreateViaIdentityDomainExpanded" name="New-AzEmailServiceSenderUsername.CreateViaIdentityDomainExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CreateViaIdentityDomain" name="New-AzEmailServiceSenderUsername.CreateViaIdentityDomain" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\New-AzEmailServiceSenderUsername.Tests.ps1" executed="True" result="Success" success="True" time="0.0425" asserts="0" description="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\New-AzEmailServiceSenderUsername.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Remove-AzEmailService.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3432" asserts="0" description="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Remove-AzEmailService.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Remove-AzEmailService" executed="True" result="Ignored" success="True" time="0.0844" asserts="0" description="Remove-AzEmailService">
-            <results>
-              <test-case description="Delete" name="Remove-AzEmailService.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="DeleteViaIdentity" name="Remove-AzEmailService.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Remove-AzEmailService.Tests.ps1" executed="True" result="Success" success="True" time="0.0425" asserts="0" description="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Remove-AzEmailService.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Remove-AzEmailServiceDomain.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3251" asserts="0" description="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Remove-AzEmailServiceDomain.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Remove-AzEmailServiceDomain" executed="True" result="Ignored" success="True" time="0.0929" asserts="0" description="Remove-AzEmailServiceDomain">
-            <results>
-              <test-case description="Delete" name="Remove-AzEmailServiceDomain.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="DeleteViaIdentityEmailService" name="Remove-AzEmailServiceDomain.DeleteViaIdentityEmailService" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="DeleteViaIdentity" name="Remove-AzEmailServiceDomain.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Remove-AzEmailServiceDomain.Tests.ps1" executed="True" result="Success" success="True" time="0.043" asserts="0" description="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Remove-AzEmailServiceDomain.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Remove-AzEmailServiceSenderUsername.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3463" asserts="0" description="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Remove-AzEmailServiceSenderUsername.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Remove-AzEmailServiceSenderUsername" executed="True" result="Ignored" success="True" time="0.0933" asserts="0" description="Remove-AzEmailServiceSenderUsername">
-            <results>
-              <test-case description="Delete" name="Remove-AzEmailServiceSenderUsername.Delete" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="DeleteViaIdentityEmailService" name="Remove-AzEmailServiceSenderUsername.DeleteViaIdentityEmailService" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="DeleteViaIdentityDomain" name="Remove-AzEmailServiceSenderUsername.DeleteViaIdentityDomain" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="DeleteViaIdentity" name="Remove-AzEmailServiceSenderUsername.DeleteViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Remove-AzEmailServiceSenderUsername.Tests.ps1" executed="True" result="Success" success="True" time="0.043" asserts="0" description="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Remove-AzEmailServiceSenderUsername.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Stop-AzEmailServiceDomainVerification.Tests.ps1" executed="True" result="Ignored" success="True" time="162.4547" asserts="0" description="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Stop-AzEmailServiceDomainVerification.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Stop-AzEmailServiceDomainVerification" executed="True" result="Ignored" success="True" time="162.2139" asserts="0" description="Stop-AzEmailServiceDomainVerification">
-            <results>
-              <test-case description="CancelExpanded" name="Stop-AzEmailServiceDomainVerification.CancelExpanded" time="162.0915" asserts="0" success="True" result="Success" executed="True" />
-              <test-case description="CancelViaJsonString" name="Stop-AzEmailServiceDomainVerification.CancelViaJsonString" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CancelViaJsonFilePath" name="Stop-AzEmailServiceDomainVerification.CancelViaJsonFilePath" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CancelViaIdentityEmailServiceExpanded" name="Stop-AzEmailServiceDomainVerification.CancelViaIdentityEmailServiceExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CancelViaIdentityEmailService" name="Stop-AzEmailServiceDomainVerification.CancelViaIdentityEmailService" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="Cancel" name="Stop-AzEmailServiceDomainVerification.Cancel" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CancelViaIdentityExpanded" name="Stop-AzEmailServiceDomainVerification.CancelViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="CancelViaIdentity" name="Stop-AzEmailServiceDomainVerification.CancelViaIdentity" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Stop-AzEmailServiceDomainVerification.Tests.ps1" executed="True" result="Success" success="True" time="0.0476" asserts="0" description="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Stop-AzEmailServiceDomainVerification.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Update-AzEmailService.Tests.ps1" executed="True" result="Ignored" success="True" time="0.6745" asserts="0" description="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Update-AzEmailService.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Update-AzEmailService" executed="True" result="Ignored" success="True" time="0.1045" asserts="0" description="Update-AzEmailService">
-            <results>
-              <test-case description="UpdateExpanded" name="Update-AzEmailService.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="UpdateViaJsonString" name="Update-AzEmailService.UpdateViaJsonString" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="UpdateViaJsonFilePath" name="Update-AzEmailService.UpdateViaJsonFilePath" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="UpdateViaIdentityExpanded" name="Update-AzEmailService.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Update-AzEmailService.Tests.ps1" executed="True" result="Success" success="True" time="0.0415" asserts="0" description="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Update-AzEmailService.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Update-AzEmailServiceDomain.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3953" asserts="0" description="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Update-AzEmailServiceDomain.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Update-AzEmailServiceDomain" executed="True" result="Ignored" success="True" time="0.1169" asserts="0" description="Update-AzEmailServiceDomain">
-            <results>
-              <test-case description="UpdateExpanded" name="Update-AzEmailServiceDomain.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="UpdateViaJsonString" name="Update-AzEmailServiceDomain.UpdateViaJsonString" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="UpdateViaJsonFilePath" name="Update-AzEmailServiceDomain.UpdateViaJsonFilePath" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="UpdateViaIdentityEmailServiceExpanded" name="Update-AzEmailServiceDomain.UpdateViaIdentityEmailServiceExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="UpdateViaIdentityEmailService" name="Update-AzEmailServiceDomain.UpdateViaIdentityEmailService" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="UpdateViaIdentityExpanded" name="Update-AzEmailServiceDomain.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Update-AzEmailServiceDomain.Tests.ps1" executed="True" result="Success" success="True" time="0.0415" asserts="0" description="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Update-AzEmailServiceDomain.Tests.ps1">
+        <results />
       </test-suite>
-      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Update-AzEmailServiceSenderUsername.Tests.ps1" executed="True" result="Ignored" success="True" time="0.3811" asserts="0" description="C:\v-vprasannak\PS\Generation\azure-powershell\src\Communication\EmailService.Autorest\test\Update-AzEmailServiceSenderUsername.Tests.ps1">
-        <results>
-          <test-suite type="TestFixture" name="Update-AzEmailServiceSenderUsername" executed="True" result="Ignored" success="True" time="0.1084" asserts="0" description="Update-AzEmailServiceSenderUsername">
-            <results>
-              <test-case description="UpdateExpanded" name="Update-AzEmailServiceSenderUsername.UpdateExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="UpdateViaIdentityEmailServiceExpanded" name="Update-AzEmailServiceSenderUsername.UpdateViaIdentityEmailServiceExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="UpdateViaIdentityEmailService" name="Update-AzEmailServiceSenderUsername.UpdateViaIdentityEmailService" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="UpdateViaIdentityDomainExpanded" name="Update-AzEmailServiceSenderUsername.UpdateViaIdentityDomainExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="UpdateViaIdentityDomain" name="Update-AzEmailServiceSenderUsername.UpdateViaIdentityDomain" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-              <test-case description="UpdateViaIdentityExpanded" name="Update-AzEmailServiceSenderUsername.UpdateViaIdentityExpanded" time="0" asserts="0" success="True" result="Ignored" executed="False" />
-            </results>
-          </test-suite>
-        </results>
+      <test-suite type="TestFixture" name="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Update-AzEmailServiceSenderUsername.Tests.ps1" executed="True" result="Success" success="True" time="0.0408" asserts="0" description="C:\v-vprasannak\PS\Generation1\azure-powershell\src\Communication\EmailService.Autorest\test\Update-AzEmailServiceSenderUsername.Tests.ps1">
+        <results />
       </test-suite>
     </results>
   </test-suite>

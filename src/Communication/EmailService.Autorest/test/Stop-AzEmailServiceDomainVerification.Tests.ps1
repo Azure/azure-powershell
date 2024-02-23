@@ -15,10 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzEmailServiceDomainVeri
 }
 
 Describe 'Stop-AzEmailServiceDomainVerification' {
-    It 'CancelExpanded'  {
-        New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $env.domainResourceName7 -DomainManagement $env.domainManagement
-        Invoke-AzEmailServiceInitiateDomainVerification -DomainName $env.domainResourceName7 -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -VerificationType $env.verificationType
-        Stop-AzEmailServiceDomainVerification -DomainName $env.domainResourceName7  -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -VerificationType $env.verificationType
+    It 'CancelExpanded' {
+        $name = "EmailServiceDomain-test1" + $env.rstr1 + ".net"
+        New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $name -DomainManagement $env.domainManagement
+        Invoke-AzEmailServiceInitiateDomainVerification -DomainName $name -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -VerificationType $env.verificationType
+        Stop-AzEmailServiceDomainVerification -DomainName $name  -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -VerificationType $env.verificationType
     }
 
     It 'CancelViaJsonString' -skip {
@@ -30,36 +31,41 @@ Describe 'Stop-AzEmailServiceDomainVerification' {
     }
 
     It 'CancelViaIdentityEmailServiceExpanded' {
-        New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $env.domainResourceName8 -DomainManagement $env.domainManagement
-        Invoke-AzEmailServiceInitiateDomainVerification -EmailServiceInputObject $EmailServiceInstance01 -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -DomainName $env.domainResourceNam8 -VerificationType Domain
+        $name = "EmailServiceDomain-test2" + $env.rstr1 + ".net"
+        New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $name -DomainManagement $env.domainManagement
+        Invoke-AzEmailServiceInitiateDomainVerification -DomainName $name -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -VerificationType $env.verificationType
         $EmailServiceInstance01 = Get-AzEmailService -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName
-        Stop-AzEmailServiceDomainVerification -EmailServiceInputObject $EmailServiceInstance01 -DomainName $env.domainResourceName8 -VerificationType $env.verificationType
+        Stop-AzEmailServiceDomainVerification -EmailServiceInputObject $EmailServiceInstance01 -DomainName $name -VerificationType $env.verificationType
     }
 
-    It 'CancelViaIdentityEmailService' -skip {
-        New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $env.domainResourceName9 -DomainManagement $env.domainManagement
-        Invoke-AzEmailServiceInitiateDomainVerification -EmailServiceInputObject $EmailServiceInstance01 -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -DomainName $env.domainResourceName8 -VerificationType Domain
+    It 'CancelViaIdentityEmailService' {
+        $name = "EmailServiceDomain-test3" + $env.rstr1 + ".net"
+        New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $name -DomainManagement $env.domainManagement
+        Invoke-AzEmailServiceInitiateDomainVerification -DomainName $name -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -VerificationType $env.verificationType
         $EmailServiceInstance01 = Get-AzEmailService -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName
-        Stop-AzEmailServiceDomainVerification -EmailServiceInputObject $EmailServiceInstance01 -DomainName $env.domainResourceName9 -VerificationType $env.verificationType
+        Stop-AzEmailServiceDomainVerification -EmailServiceInputObject $EmailServiceInstance01 -DomainName $name -VerificationType $env.verificationType
     }
 
-    It 'Cancel' -skip {
-        New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $env.domainResourceName10 -DomainManagement $env.domainManagement
-        Invoke-AzEmailServiceInitiateDomainVerification -DomainName $env.domainResourceName10 -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -VerificationType $env.verificationType
-        Stop-AzEmailServiceDomainVerification -DomainName $env.domainResourceName10 -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -VerificationType $env.verificationType
+    It 'Cancel' {
+        $name = "EmailServiceDomain-test4" + $env.rstr1 + ".net"
+        New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $name -DomainManagement $env.domainManagement
+        Invoke-AzEmailServiceInitiateDomainVerification -DomainName $name -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -VerificationType $env.verificationType
+        Stop-AzEmailServiceDomainVerification -DomainName $name -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -VerificationType $env.verificationType
     }
 
-    It 'CancelViaIdentityExpanded' -skip {
-        New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $env.domainResourceName11 -DomainManagement $env.domainManagement
-        Invoke-AzEmailServiceInitiateDomainVerification -EmailServiceInputObject $EmailServiceInstance01 -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -DomainName $env.domainResourceName11 -VerificationType Domain
-        $EmailServiceDomainInstance01 = Get-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -DomainName $env.domainResourceName11
+    It 'CancelViaIdentityExpanded' {
+        $name = "EmailServiceDomain-test5" + $env.rstr1 + ".net"
+        New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $name -DomainManagement $env.domainManagement
+        Invoke-AzEmailServiceInitiateDomainVerification -DomainName $name -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -VerificationType $env.verificationType
+        $EmailServiceDomainInstance01 = Get-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -DomainName $name
         Stop-AzEmailServiceDomainVerification -InputObject $EmailServiceDomainInstance01 -VerificationType $env.verificationType        
     }
 
-    It 'CancelViaIdentity' -skip {
-        New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $env.domainResourceName12 -DomainManagement $env.domainManagement
-        Invoke-AzEmailServiceInitiateDomainVerification -EmailServiceInputObject $EmailServiceInstance01 -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -DomainName $env.domainResourceName12 -VerificationType Domain
-        $EmailServiceDomainInstance01 = Get-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -DomainName $env.domainResourceName12
+    It 'CancelViaIdentity' {
+        $name = "EmailServiceDomain-test6" + $env.rstr1 + ".net"
+        New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $name -DomainManagement $env.domainManagement
+        Invoke-AzEmailServiceInitiateDomainVerification -DomainName $name -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -VerificationType $env.verificationType
+        $EmailServiceDomainInstance01 = Get-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -DomainName $name
         Stop-AzEmailServiceDomainVerification -InputObject $EmailServiceDomainInstance01 -VerificationType $env.verificationType   
     }
 }

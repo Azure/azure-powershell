@@ -20,9 +20,7 @@ Cancel verification of DNS record.
 .Description
 Cancel verification of DNS record.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+PS C:\> Stop-AzEmailServiceDomainVerification  -DomainName testcustomdomain1.net  -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -VerificationType Domain
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity

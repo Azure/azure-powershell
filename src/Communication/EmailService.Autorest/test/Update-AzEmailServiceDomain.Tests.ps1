@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzEmailServiceDomain')
 }
 
 Describe 'Update-AzEmailServiceDomain' {
-    It 'UpdateExpanded' -skip {
+    It 'UpdateExpanded' {
         $tag = @{$env.exampleKey1=$env.exampleValue1; $env.exampleKey2=$env.exampleValue2}
         $UpdatedAzEmailServiceDomain = Update-AzEmailServiceDomain -Name $env.persistentResourceDomainName -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -Tag $tag
 
@@ -31,7 +31,7 @@ Describe 'Update-AzEmailServiceDomain' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityEmailServiceExpanded' -skip {
+    It 'UpdateViaIdentityEmailServiceExpanded' {
         $tag = @{$env.exampleKey1=$env.exampleValue1; $env.exampleKey2=$env.exampleValue2}
         $UpdatedAzEmailServiceInstance01 = Get-AzEmailService -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName
         $UpdatedAzEmailServiceDomain = Update-AzEmailServiceDomain -EmailServiceInputObject $UpdatedAzEmailServiceInstance01 -DomainName $env.persistentResourceDomainName -Tag $tag
@@ -40,7 +40,7 @@ Describe 'Update-AzEmailServiceDomain' {
         $UpdatedAzEmailServiceDomain.Tag[$env.exampleKey2] | Should -Be $env.exampleValue2
     }
 
-    It 'UpdateViaIdentityEmailService' -skip {
+    It 'UpdateViaIdentityEmailService' {
         $tag = @{$env.exampleKey1=$env.exampleValue1; $env.exampleKey2=$env.exampleValue2}
         $UpdatedAzEmailServiceInstance01 = Get-AzEmailService -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName
         $UpdatedAzEmailServiceDomain = Update-AzEmailServiceDomain -EmailServiceInputObject $UpdatedAzEmailServiceInstance01 -DomainName $env.persistentResourceDomainName -Tag $tag
@@ -49,7 +49,7 @@ Describe 'Update-AzEmailServiceDomain' {
         $UpdatedAzEmailServiceDomain.Tag[$env.exampleKey2] | Should -Be $env.exampleValue2
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
+    It 'UpdateViaIdentityExpanded' {
        $tag = @{$env.exampleKey1=$env.exampleValue1; $env.exampleKey2=$env.exampleValue2}
         $UpdatedAzEmailServiceInstance01 = Get-AzEmailServiceDomain -DomainName $env.persistentResourceDomainName -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName
         $UpdatedAzEmailServiceDomain = Update-AzEmailServiceDomain -InputObject $UpdatedAzEmailServiceInstance01 -Tag $tag

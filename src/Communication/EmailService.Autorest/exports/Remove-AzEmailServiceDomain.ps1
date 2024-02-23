@@ -20,9 +20,9 @@ Operation to delete a Domains resource.
 .Description
 Operation to delete a Domains resource.
 .Example
-{{ Add code here }}
+PS C:\> Remove-AzEmailServiceDomain -Name test.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 .Example
-{{ Add code here }}
+Remove-AzEmailServiceDomain -Name AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity

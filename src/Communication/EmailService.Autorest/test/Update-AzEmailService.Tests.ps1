@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzEmailService'))
 }
 
 Describe 'Update-AzEmailService' {
-    It 'UpdateExpanded' -skip  {
+    It 'UpdateExpanded' {
         $tag = @{$env.exampleKey1=$env.exampleValue1; $env.exampleKey2=$env.exampleValue2}
         $UpdatedAzEmailService = Update-AzEmailService -Name $env.persistentResourceName -ResourceGroupName $env.resourceGroup -Tag $tag
 
@@ -24,22 +24,14 @@ Describe 'Update-AzEmailService' {
     }
 
     It 'UpdateViaJsonString' -skip  {
-        $tag = @{$env.exampleKey1=$env.exampleValue1; $env.exampleKey2=$env.exampleValue2}
-        $UpdatedAzEmailService = Update-AzEmailService -Name $env.persistentResourceName -ResourceGroupName $env.resourceGroup -Tag $tag
-
-        $UpdatedAzEmailService.Tag[$env.exampleKey1] | Should -Be $env.exampleValue1
-        $UpdatedAzEmailService.Tag[$env.exampleKey2] | Should -Be $env.exampleValue2
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'UpdateViaJsonFilePath' -skip  {
-        $tag = @{$env.exampleKey1=$env.exampleValue1; $env.exampleKey2=$env.exampleValue2}
-        $UpdatedAzEmailService = Update-AzEmailService -Name $env.persistentResourceName -ResourceGroupName $env.resourceGroup -Tag $tag
-
-        $UpdatedAzEmailService.Tag[$env.exampleKey1] | Should -Be $env.exampleValue1
-        $UpdatedAzEmailService.Tag[$env.exampleKey2] | Should -Be $env.exampleValue2
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip  {
+    It 'UpdateViaIdentityExpanded' {
         $tag = @{$env.exampleKey1=$env.exampleValue1; $env.exampleKey2=$env.exampleValue2}
         $res = Get-AzEmailService -Name $env.persistentResourceName -ResourceGroupName $env.resourceGroup
         $UpdatedAzEmailService = Update-AzEmailService -InputObject $res -Tag $tag

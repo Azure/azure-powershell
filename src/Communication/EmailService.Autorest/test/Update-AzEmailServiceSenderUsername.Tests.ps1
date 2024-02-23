@@ -15,41 +15,41 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzEmailServiceSenderUs
 }
 
 Describe 'Update-AzEmailServiceSenderUsername' {
-    It 'UpdateExpanded' -skip {
+    It 'UpdateExpanded' {
         $UpdatedAzEmailServiceSenderUsername = Update-AzEmailServiceSenderUsername -SenderUsername $env.persistentResourceDomainSenderUsername -Username $env.persistentResourceDomainSenderUsername -DisplayName $env.displayName -DomainName $env.persistentResourceDomainName -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup
 
         $UpdatedAzEmailServiceSenderUsername.DisplayName | Should -Be $env.displayName
     }
 
-    It 'UpdateViaIdentityEmailServiceExpanded' -skip {
+    It 'UpdateViaIdentityEmailServiceExpanded' {
         $UpdatedAzEmailServiceInstance01 = Get-AzEmailService -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName
         $UpdatedAzEmailServiceSenderUsername = Update-AzEmailServiceSenderUsername -EmailServiceInputObject $UpdatedAzEmailServiceInstance01 -DomainName $env.persistentResourceDomainName -SenderUsername $env.persistentResourceDomainSenderUsername -Username $env.persistentResourceDomainSenderUsername -DisplayName $env.displayName
 
         $UpdatedAzEmailServiceSenderUsername.DisplayName | Should -Be $env.displayName
     }
 
-    It 'UpdateViaIdentityEmailService' -skip  {
+    It 'UpdateViaIdentityEmailService' {
        $UpdatedAzEmailServiceInstance01 = Get-AzEmailService -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName
         $UpdatedAzEmailServiceSenderUsername = Update-AzEmailServiceSenderUsername -EmailServiceInputObject $UpdatedAzEmailServiceInstance01 -DomainName $env.persistentResourceDomainName -SenderUsername $env.persistentResourceDomainSenderUsername -Username $env.persistentResourceDomainSenderUsername -DisplayName $env.displayName
 
         $UpdatedAzEmailServiceSenderUsername.DisplayName | Should -Be $env.displayName
     }
 
-    It 'UpdateViaIdentityDomainExpanded' -skip {
+    It 'UpdateViaIdentityDomainExpanded' {
         $UpdatedAzEmailServiceDomainInstance01 = Get-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -DomainName $env.persistentResourceDomainName
         $UpdatedAzEmailServiceSenderUsername = Update-AzEmailServiceSenderUsername -DomainInputObject $UpdatedAzEmailServiceDomainInstance01 -SenderUsername $env.persistentResourceDomainSenderUsername -Username $env.persistentResourceDomainSenderUsername -DisplayName $env.displayName
 
         $UpdatedAzEmailServiceSenderUsername.DisplayName | Should -Be $env.displayName
     }
 
-    It 'UpdateViaIdentityDomain' -skip {
+    It 'UpdateViaIdentityDomain' {
         $UpdatedAzEmailServiceDomainInstance01 = Get-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -DomainName $env.persistentResourceDomainName
         $UpdatedAzEmailServiceSenderUsername = Update-AzEmailServiceSenderUsername -DomainInputObject $UpdatedAzEmailServiceDomainInstance01 -SenderUsername $env.persistentResourceDomainSenderUsername -Username $env.persistentResourceDomainSenderUsername -DisplayName $env.displayName
 
         $UpdatedAzEmailServiceSenderUsername.DisplayName | Should -Be $env.displayName
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
+    It 'UpdateViaIdentityExpanded' {
         $res = Get-AzEmailServiceSenderUsername -SenderUsername $env.persistentResourceDomainSenderUsername -DomainName $env.persistentResourceDomainName -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup
         $UpdatedAzEmailServiceSenderUsername = Update-AzEmailServiceSenderUsername -InputObject $res -DisplayName $env.displayName
 

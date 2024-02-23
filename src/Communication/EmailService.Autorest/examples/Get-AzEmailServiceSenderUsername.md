@@ -1,11 +1,4 @@
-### Example 1: {{ Add title here }}
-```powershell
-
-```
-
-{{ Add description here }}
-
-### Example 2: Get infomation on specified Sender user user name
+### Example 1: Get infomation on specified Azure Email services senderusername resource.
 ```powershell
 Get-AzEmailServiceSenderUsername -SenderUsername donotreply -DomainName AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 
@@ -26,5 +19,18 @@ Type                         : emailservices/domains/senderusernames
 Username                     : donotreply
 ```
 
-Returns the information on an sender domain resource, if one matching provided parameters is found.
+Returns the information on senderusername resource.
+
+### Example 2: List existing Email Service sender usernames.
+```powershell
+Get-AzEmailServiceSenderUsername -DomainName AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+
+Name       SystemData SystemData SystemData    SystemData     SystemData     SystemData         ResourceGroup
+           CreatedAt  CreatedBy  CreatedByType LastModifiedAt LastModifiedBy LastModifiedByType                                                                                                                                        Name
+----       ---------- ---------- ------------- -------------- -------------- ------------------ ------------- 
+donotreply                                                                                      ContosoResourceProvider1
+test                                                                                            ContosoResourceProvider1
+```
+
+Returns the information on existing Email Service sender usernames.
 

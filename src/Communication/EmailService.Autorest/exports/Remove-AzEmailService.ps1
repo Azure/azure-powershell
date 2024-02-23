@@ -20,9 +20,7 @@ Operation to delete a EmailService.
 .Description
 Operation to delete a EmailService.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+PS C:\> Remove-AzEmailService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity

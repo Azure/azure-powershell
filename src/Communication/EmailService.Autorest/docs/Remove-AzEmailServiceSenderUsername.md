@@ -42,27 +42,19 @@ Operation to delete a SenderUsernames resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Removes Email service custom domain sender username resource.
 ```powershell
-{{ Add code here }}
+Remove-AzEmailServiceSenderUsername -SenderUsername test -DomainName testcustomdomain1.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Removes Email service custom domain sender username resource.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Removes Email service azure managed domain sender username resource.
 ```powershell
-{{ Add code here }}
+Remove-AzEmailServiceSenderUsername -SenderUsername test -DomainName AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removes Email service azure managed domain sender username resource.
 
 ## PARAMETERS
 

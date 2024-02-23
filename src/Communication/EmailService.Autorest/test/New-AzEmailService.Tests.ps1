@@ -15,18 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEmailService'))
 }
 
 Describe 'New-AzEmailService' {
-     It 'CreateExpanded' -skip {
-        $NewAzEmailService = New-AzEmailService -ResourceGroupName $env.resourceGroup -Name $env.resourceName -DataLocation $env.dataLocation -Location $env.location
+     It 'CreateExpanded' {
+        $NewAzEmailService = New-AzEmailService -ResourceGroupName $env.resourceGroup -Name $env.resourceName -DataLocation $env.dataLocation
         $NewAzEmailService.Name | Should -Be $env.resourceName
     }
 
     It 'CreateViaJsonFilePath' -skip {
-        $NewAzEmailService = New-AzEmailService -ResourceGroupName $env.resourceGroup -Name $env.resourceName -DataLocation $env.dataLocation -Location $env.location
-        $NewAzEmailService.Name | Should -Be $env.resourceName
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'CreateViaJsonString' -skip  {
-        $NewAzEmailService = New-AzEmailService -ResourceGroupName $env.resourceGroup -Name $env.resourceName -DataLocation $env.dataLocation -Location $env.location
-        $NewAzEmailService.Name | Should -Be $env.resourceName
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

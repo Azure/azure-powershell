@@ -59,77 +59,38 @@ function setupEnv() {
     # Create the resource name for New-AzEmailService
     $resourceName = "acsResource" + $rstr1
     $env.Add("resourceName", $resourceName)
-    write-host "ResourceName : " $resourceName
  
     # Create the domain resource name for New-AzEmailServiceDomain
     $domainResourceName = "acsDomainResource" + $rstr1 + ".net"
     $env.Add("domainResourceName", $domainResourceName)
-    write-host "DomainResourceName : " $domainResourceName
 
     # Create the domain resource name for Invoke-AzEmailServiceInitiateDomainVerification
     $domainResourceName1 = "acsDomainResource1" + $rstr1 + ".net"
     $env.Add("domainResourceName1", $domainResourceName1)
-    write-host "DomainResourceName1 : " $domainResourceName1
 
     # Create the domain resource name for Invoke-AzEmailServiceInitiateDomainVerification
     $domainResourceName2 = "acsDomainResource2" + $rstr1 + ".net"
     $env.Add("domainResourceName2", $domainResourceName2)
-    write-host "DomainResourceName2 : " $domainResourceName2
 
     # Create the domain resource name for Invoke-AzEmailServiceInitiateDomainVerification
     $domainResourceName3 = "acsDomainResource3" + $rstr1 + ".net"
     $env.Add("domainResourceName3", $domainResourceName3)
-    write-host "DomainResourceName3 : " $domainResourceName3
 
     # Create the domain resource name for Invoke-AzEmailServiceInitiateDomainVerification
     $domainResourceName4 = "acsDomainResource4" + $rstr1 + ".net"
     $env.Add("domainResourceName4", $domainResourceName4)
-    write-host "DomainResourceName4 : " $domainResourceName4
 
     # Create the domain resource name for Invoke-AzEmailServiceInitiateDomainVerification
     $domainResourceName5 = "acsDomainResource5" + $rstr1 + ".net"
     $env.Add("domainResourceName5", $domainResourceName5)
-    write-host "DomainResourceName5 : " $domainResourceName5
 
     # Create the domain resource name for Invoke-AzEmailServiceInitiateDomainVerification
     $domainResourceName6 = "acsDomainResource6" + $rstr1 + ".net"
-    $env.Add("domainResourceName6", $domainResourceName6)
-    write-host "DomainResourceName6 : " $domainResourceName6
-
-    # Create the domain resource name for Invoke-AzEmailServiceInitiateDomainVerification
-    $domainResourceName7 = "acsDomainResource7" + $rstr1 + ".net"
-    $env.Add("domainResourceName7", $domainResourceName7)
-    write-host "DomainResourceName7 : " $domainResourceName7
-
-    # Create the domain resource name for Invoke-AzEmailServiceInitiateDomainVerification
-    $domainResourceName8 = "acsDomainResource8" + $rstr1 + ".net"
-    $env.Add("domainResourceName8", $domainResourceName8)
-    write-host "DomainResourceName8 : " $domainResourceName8
-
-    # Create the domain resource name for Invoke-AzEmailServiceInitiateDomainVerification
-    $domainResourceName9 = "acsDomainResource9" + $rstr1 + ".net"
-    $env.Add("domainResourceName9", $domainResourceName9)
-    write-host "DomainResourceName9 : " $domainResourceName9
-
-    # Create the domain resource name for Invoke-AzEmailServiceInitiateDomainVerification
-    $domainResourceName10 = "acsDomainResource10" + $rstr1 + ".net"
-    $env.Add("domainResourceName10", $domainResourceName10)
-    write-host "DomainResourceName10 : " $domainResourceName10
-
-    # Create the domain resource name for Invoke-AzEmailServiceInitiateDomainVerification
-    $domainResourceName11 = "acsDomainResource11" + $rstr1 + ".net"
-    $env.Add("domainResourceName11", $domainResourceName11)
-    write-host "DomainResourceName11 : " $domainResourceName11
-
-    # Create the domain resource name for Invoke-AzEmailServiceInitiateDomainVerification
-    $domainResourceName12 = "acsDomainResource12" + $rstr1 + ".net"
-    $env.Add("domainResourceName12", $domainResourceName12)
-    write-host "DomainResourceName12 : " $domainResourceName12
+    $env.Add("domainResourceName6", $domainResourceName6)    
 
     # Create the domain resource name for New-AzEmailServiceSenderUsername
     $senderUsername = "acsDomainSenderUsername" + $rstr1
     $env.Add("senderUsername", $senderUsername)
-    write-host "SenderUsername : " $senderUsername
     
     # Create an unused resource name for Test-AzEmailServiceNameAvailability
     $resourceNameAvailable = "acsResource" + $rstr2

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzEmailServiceInitiate
 }
 
 Describe 'Invoke-AzEmailServiceInitiateDomainVerification' {
-    It 'InitiateExpanded' -skip {
+    It 'InitiateExpanded' {
         New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $env.domainResourceName1 -DomainManagement $env.domainManagement
         Invoke-AzEmailServiceInitiateDomainVerification -DomainName $env.domainResourceName1 -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -VerificationType $env.verificationType
     }
@@ -28,30 +28,30 @@ Describe 'Invoke-AzEmailServiceInitiateDomainVerification' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'InitiateViaIdentityEmailServiceExpanded' -skip {
+    It 'InitiateViaIdentityEmailServiceExpanded' {
         New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $env.domainResourceName2 -DomainManagement $env.domainManagement
         $EmailServiceInstance01 = Get-AzEmailService -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName
         Invoke-AzEmailServiceInitiateDomainVerification -EmailServiceInputObject $EmailServiceInstance01 -DomainName $env.domainResourceName2 -VerificationType Domain
     }
 
-    It 'InitiateViaIdentityEmailService' -skip {
+    It 'InitiateViaIdentityEmailService' {
         New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $env.domainResourceName3 -DomainManagement $env.domainManagement
         $EmailServiceInstance01 = Get-AzEmailService -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName
         Invoke-AzEmailServiceInitiateDomainVerification -EmailServiceInputObject $EmailServiceInstance01 -DomainName $env.domainResourceName3 -VerificationType Domain
     }
 
-    It 'Initiate' -skip {
+    It 'Initiate' {
         New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $env.domainResourceName4 -DomainManagement $env.domainManagement
         Invoke-AzEmailServiceInitiateDomainVerification -DomainName $env.domainResourceName4 -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -VerificationType Domain
     }
 
-    It 'InitiateViaIdentityExpanded' -skip {
+    It 'InitiateViaIdentityExpanded' {
         New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $env.domainResourceName5 -DomainManagement $env.domainManagement
         $EmailServiceDomainInstance01 = Get-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -DomainName $env.domainResourceName5
         Invoke-AzEmailServiceInitiateDomainVerification -InputObject $EmailServiceDomainInstance01 -VerificationType Domain
     }
 
-    It 'InitiateViaIdentity' -skip {
+    It 'InitiateViaIdentity' {
         New-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -Name $env.domainResourceName6 -DomainManagement $env.domainManagement
         $EmailServiceDomainInstance01 = Get-AzEmailServiceDomain -ResourceGroupName $env.resourceGroup -EmailServiceName $env.persistentResourceName -DomainName $env.domainResourceName6
         Invoke-AzEmailServiceInitiateDomainVerification -InputObject $EmailServiceDomainInstance01 -VerificationType Domain

@@ -15,21 +15,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEmailService'))
 }
 
 Describe 'Get-AzEmailService' {
-    It 'List' -skip {
+    It 'List' {
         $services = Get-AzEmailService
         $services.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $service = Get-AzEmailService -Name $env.persistentResourceName -ResourceGroupName $env.resourceGroup
         $service.Name | Should -Be $env.persistentResourceName
     }
 
-    It 'List1' -skip {
+    It 'List1' {
         $services = Get-AzEmailService -ResourceGroupName $env.resourceGroup
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $EmailServiceInstance01 = Get-AzEmailService -ResourceGroupName $env.resourceGroup -Name $env.persistentResourceName
         $EmailServiceInstance = Get-AzEmailService -inputObject $EmailServiceInstance01
         $EmailServiceInstance.Name | Should -Be $env.persistentResourceName

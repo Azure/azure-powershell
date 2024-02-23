@@ -280,9 +280,31 @@ Get a valid sender username for a domains resource.
 .Description
 Get a valid sender username for a domains resource.
 .Example
-{{ Add code here }}
+PS C:\> Get-AzEmailServiceSenderUsername -SenderUsername donotreply -DomainName AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+
+DataLocation                 :
+DisplayName                  : DoNotReply
+Id                           : /subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourcegroups/ContosoResourceProvider1/providers/microsoft.communication/emailservices/
+                               ContosoAcsResource1/domains/azuremanageddomain/senderusernames/donotreply
+Name                         : donotreply
+ProvisioningState            :
+ResourceGroupName            : ContosoResourceProvider1
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : emailservices/domains/senderusernames
+Username                     : donotreply
 .Example
-{{ Add code here }}
+PS C:\> Get-AzEmailServiceSenderUsername -DomainName AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+
+Name       SystemData SystemData SystemData    SystemData     SystemData     SystemData         ResourceGroup
+           CreatedAt  CreatedBy  CreatedByType LastModifiedAt LastModifiedBy LastModifiedByType                                                                                                                                        Name
+----       ---------- ---------- ------------- -------------- -------------- ------------------ ------------- 
+donotreply                                                                                      ContosoResourceProvider1
+test                                                                                            ContosoResourceProvider1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
@@ -1944,9 +1966,9 @@ Operation to delete a Domains resource.
 .Description
 Operation to delete a Domains resource.
 .Example
-{{ Add code here }}
+PS C:\> Remove-AzEmailServiceDomain -Name test.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 .Example
-{{ Add code here }}
+Remove-AzEmailServiceDomain -Name AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
@@ -2178,9 +2200,9 @@ Operation to delete a SenderUsernames resource.
 .Description
 Operation to delete a SenderUsernames resource.
 .Example
-{{ Add code here }}
+PS C:\> Remove-AzEmailServiceSenderUsername -SenderUsername test -DomainName testcustomdomain1.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 .Example
-{{ Add code here }}
+PS C:\> Remove-AzEmailServiceSenderUsername -SenderUsername test -DomainName AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
@@ -2423,9 +2445,7 @@ Operation to delete a EmailService.
 .Description
 Operation to delete a EmailService.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+PS C:\> Remove-AzEmailService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
@@ -2634,9 +2654,7 @@ Cancel verification of DNS record.
 .Description
 Cancel verification of DNS record.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+PS C:\> Stop-AzEmailServiceDomainVerification  -DomainName testcustomdomain1.net  -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -VerificationType Domain
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
@@ -2917,6 +2935,7 @@ Operation to update an existing Domains resource.
 Operation to update an existing Domains resource.
 .Example
 PS C:\> Update-AzEmailServiceDomain -Name testcustomdomain2.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleUpdatedValue"} -UserEngagementTracking 1
+
 DataLocation                 : unitedstates
 Dkim2ErrorCode               :
 Dkim2Status                  : NotStarted

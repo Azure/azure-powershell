@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEmailServiceSenderUs
 }
 
 Describe 'Remove-AzEmailServiceSenderUsername' {
-    It 'Delete' -skip {
+    It 'Delete' {
         $name = "EmailServiceSenderUsername-test" + $env.rstr1
         $res = New-AzEmailServiceSenderUsername -SenderUsername $name -Username $name -DomainName $env.persistentResourceDomainName -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup
 
@@ -25,13 +25,13 @@ Describe 'Remove-AzEmailServiceSenderUsername' {
         $serviceList.Name | Should -Not -Contain $name
     }
 
-    It 'DeleteViaIdentityEmailService' -skip {
+    It 'DeleteViaIdentityEmailService' {
         $newResourceName = "EmailService-test" + $env.rstr2
         $newResourceDomainName = "EmailServiceDomain-test" + $env.rstr2 + ".net"
         $name = "EmailServiceSenderUsername-test" + $env.rstr2
 
-        $res = New-AzEmailService -EmailServiceName $newResourceName -ResourceGroupName $env.resourceGroup -DataLocation $env.dataLocation -Location $env.location
-        $res1 = New-AzEmailServiceDomain -DomainName $newResourceDomainName -EmailServiceName $newResourceName -ResourceGroupName $env.resourceGroup -Location $env.location -DomainManagement $env.domainManagement
+        $res = New-AzEmailService -EmailServiceName $newResourceName -ResourceGroupName $env.resourceGroup -DataLocation $env.dataLocation
+        $res1 = New-AzEmailServiceDomain -DomainName $newResourceDomainName -EmailServiceName $newResourceName -ResourceGroupName $env.resourceGroup -DomainManagement $env.domainManagement
         $res2 = New-AzEmailServiceSenderUsername -SenderUsername $name -Username $name -DomainName $newResourceDomainName -EmailServiceName $newResourceName -ResourceGroupName $env.resourceGroup
         
         Remove-AzEmailServiceSenderUsername -EmailServiceInputObject $res -DomainName $newResourceDomainName -SenderUsername $name
@@ -40,11 +40,11 @@ Describe 'Remove-AzEmailServiceSenderUsername' {
         $serviceList.Name | Should -Not -Contain $name
     }
 
-    It 'DeleteViaIdentityDomain' -skip {
+    It 'DeleteViaIdentityDomain' {
         $newResourceDomainName = "EmailServiceDomain-test" + $env.rstr2 + ".net"
         $name = "EmailServiceSenderUsername-test" + $env.rstr2
 
-        $res = New-AzEmailServiceDomain -DomainName $newResourceDomainName -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -Location $env.location -DomainManagement $env.domainManagement
+        $res = New-AzEmailServiceDomain -DomainName $newResourceDomainName -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup -DomainManagement $env.domainManagement
         $res1 = New-AzEmailServiceSenderUsername -SenderUsername $name -Username $name -DomainName $newResourceDomainName -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup
         
         Remove-AzEmailServiceSenderUsername -DomainInputObject $res -SenderUsername $name
@@ -53,7 +53,7 @@ Describe 'Remove-AzEmailServiceSenderUsername' {
         $serviceList.Name | Should -Not -Contain $name
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         $name = "EmailServiceSenderUsername-test" + $env.rstr2
         $res = New-AzEmailServiceSenderUsername -SenderUsername $name -Username $name -DomainName $env.persistentResourceDomainName -EmailServiceName $env.persistentResourceName -ResourceGroupName $env.resourceGroup
 
