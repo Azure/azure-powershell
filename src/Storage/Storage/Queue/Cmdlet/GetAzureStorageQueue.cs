@@ -25,11 +25,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using Microsoft.Azure.Storage.Queue;
 
     /// <summary>
     /// list azure queues
     /// </summary>
-    [GenericBreakingChangeWithVersion("CloudQueue property will be removed from the cmdlet output object", "11.0.0", "6.0.0")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(AzureStorageQueue), "11.0.0", "6.0.0", ChangeDescription = "The child property CloudQueue and EncodeMessage from deprecated v11 SDK will be removed. Use child property QueueClient instead of CloudQueue.")]
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageQueue", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageQueue))]
     public class GetAzureStorageQueueCommand : StorageQueueBaseCmdlet
     {

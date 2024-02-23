@@ -24,8 +24,10 @@
     - `New-AzStorageQueue`
     - `Get-AzStorageQueue`
     - `New-AzStorageQueueSASToken`
-* Added warning messages for an upcoming breaking change when uploading a file without read permission 
+* Added warning messages for an upcoming breaking change when uploading a file using SAS token without read permission 
     - `Set-AzStorageFileContent`
+* Added warning messages for an upcoming breaking change when upgrading a Storage account to StorageV2
+    - `Set-AzStorageAccount`
 
 ## Version 6.1.1
 * Removed some code branches referencing Microsoft.Azure.Storage.Blob
