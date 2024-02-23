@@ -17,8 +17,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzActionGroupReceiver'
 Describe 'Enable-AzActionGroupReceiver' {
     It 'EnableExpanded' {
         {
+            # Receiver with name smsreceiver in action group with Id MONITOR:xx is already enabled
             Enable-AzActionGroupReceiver -ActionGroupName $env.actiongroupname -ResourceGroupName $env.resourceGroup -ReceiverName $env.smsreceiver
-        } | Should -Not -Throw
+        } | Should -Throw "is already enabled"
     }
 
     It 'EnableViaJsonString' -skip {
@@ -30,9 +31,10 @@ Describe 'Enable-AzActionGroupReceiver' {
     }
 
     It 'EnableViaIdentityExpanded' {
-        { 
+        {
+            # Receiver with name smsreceiver in action group with Id MONITOR:xx is already enabled
             $ag = Get-AzActionGroup -Name $env.actiongroupname -ResourceGroupName $env.resourceGroup
             Enable-AzActionGroupReceiver -InputObject $ag -ReceiverName $env.emailreceiver1
-        } | Should -Not -Throw
+        } | Should -Throw "is already enabled"
     }
 }

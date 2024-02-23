@@ -32,7 +32,7 @@ For information on how to develop for `Az.ActionGroup`, see [how-to.md](how-to.m
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
-branch: 47d1d82108a0db0395ed4eca106622becee7fbb4
+commit: 47d1d82108a0db0395ed4eca106622becee7fbb4
 
 input-file:
     - $(repo)/specification/monitor/resource-manager/Microsoft.Insights/stable/2023-01-01/actionGroups_API.json
