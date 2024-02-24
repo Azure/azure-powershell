@@ -1,8 +1,5 @@
-### Example 1: Create new AwsEnvironment object
+### Example 1: Create new AwsEnvironment object as member
 ```powershell
-$organization = New-AzSecurityAwsOrganizationalDataMasterObject -StacksetName "myAwsStackSet" -ExcludedAccountId "123456789012"
-$environment = New-AzSecurityAwsEnvironmentObject -Region "Central US" -ScanInterval 24 -OrganizationalData $organization
-
 $member = New-AzSecurityAwsOrganizationalDataMemberObject -ParentHierarchyId "123"
 New-AzSecurityAwsEnvironmentObject -Region "Central US" -ScanInterval 24 -OrganizationalData $member
 ```
@@ -18,4 +15,22 @@ Region             : {Central US}
 ScanInterval       : 24
 ```
 
+
+### Example 2: Create new AwsEnvironment object as organization
+```powershell
+$organization = New-AzSecurityAwsOrganizationalDataMasterObject -StacksetName "myAwsStackSet" -ExcludedAccountId "123456789012"
+New-AzSecurityAwsEnvironmentObject -Region "Central US" -ScanInterval 24 -OrganizationalData $organization
+```
+
+```output
+AccountName        : 
+EnvironmentType    : AwsAccount
+OrganizationalData : {
+                       "organizationMembershipType": "Organization",
+                       "stacksetName": "myAwsStackSet",
+                       "excludedAccountIds": [ "123456789012" ]
+                     }
+Region             : {Central US}
+ScanInterval       : 24
+```
 

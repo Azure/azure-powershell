@@ -1,6 +1,6 @@
 ### Example 1: Get a specific onboarded api collection resource
 ```powershell
-Get-AzSecurityApiCollection -ResourceGroup apicollectionstests -ServiceName "demoapimservice2" -ApiId "echo-api"
+Get-AzSecurityApiCollection -ResourceGroupName apicollectionstests -ServiceName "demoapimservice2" -ApiId "echo-api"
 ```
 
 ```output
@@ -24,7 +24,7 @@ Type                                         : microsoft.security/apicollections
 
 ### Example 2: List onboarded api collections by service name
 ```powershell
-Get-AzSecurityApiCollection -ResourceGroup "apicollectionstests" -ServiceName "demoapimservice2"
+Get-AzSecurityApiCollection -ResourceGroupName "apicollectionstests" -ServiceName "demoapimservice2"
 ```
 
 ```output

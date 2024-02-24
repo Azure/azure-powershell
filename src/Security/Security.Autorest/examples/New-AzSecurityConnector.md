@@ -180,10 +180,10 @@ Offering                        : {{
                                     },
                                     "vmScanners": {
                                         "configuration": {
-                                        "scanningMode": "Default",
-                                        "exclusionTags": {
-                                            "key": "value"
-                                        }
+                                            "scanningMode": "Default",
+                                            "exclusionTags": {
+                                                "key": "value"
+                                            }
                                         },
                                         "enabled": true
                                     },
@@ -233,8 +233,7 @@ SystemDataCreatedByType         : Application
 SystemDataLastModifiedAt        : 2/22/2024 11:45:53 PM
 SystemDataLastModifiedBy        : c3d82ccb-fee1-430c-949e-6c0a217c00a8
 SystemDataLastModifiedByType    : Application
-Tag                             : {
-                                  }
+Tag                             : {}
 Type                            : Microsoft.Security/securityconnectors
 ```
 

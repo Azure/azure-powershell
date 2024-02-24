@@ -39,7 +39,7 @@ Returns a monitored GitHub repository.
 
 ### Example 1: Get discovered GitHub repository by name
 ```powershell
-Get-AzSecurityConnectorGitHubRepos -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-gh-01 -OwnerName dfdsdktests -RepoName TestApp0
+Get-AzSecurityConnectorGitHubRepo -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-gh-01 -OwnerName dfdsdktests -RepoName TestApp0
 ```
 
 ```output
@@ -68,7 +68,7 @@ Type                            : Microsoft.Security/securityConnectors/devops/g
 
 ### Example 2: List discovered GitHub repositories
 ```powershell
-Get-AzSecurityConnectorGitHubRepos -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-gh-01 -OwnerName dfdsdktests
+Get-AzSecurityConnectorGitHubRepo -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-gh-01 -OwnerName dfdsdktests
 ```
 
 ```output
