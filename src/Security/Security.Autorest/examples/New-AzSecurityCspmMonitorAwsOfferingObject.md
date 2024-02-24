@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create new CspmMonitorAwsOffering object
 ```powershell
-{{ Add code here }}
+New-AzSecurityCspmMonitorAwsOfferingObject -NativeCloudConnectionCloudRoleArn "arn:aws:iam::123456789012:role/CspmMonitorAws"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Description NativeCloudConnectionCloudRoleArn             OfferingType
+----------- ---------------------------------             ------------
+            arn:aws:iam::123456789012:role/CspmMonitorAws CspmMonitorAws
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 

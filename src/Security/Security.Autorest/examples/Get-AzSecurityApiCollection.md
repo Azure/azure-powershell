@@ -1,22 +1,48 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a specific onboarded api collection resource
 ```powershell
-{{ Add code here }}
+Get-AzSecurityApiCollection -ResourceGroup apicollectionstests -ServiceName "demoapimservice2" -ApiId "echo-api"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+BaseUrl                                      : https://demoapimservice2.azure-api.net/echo
+DiscoveredVia                                : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapim
+                                               service2
+DisplayName                                  : Echo API
+Id                                           : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapim
+                                               service2/providers/Microsoft.Security/apiCollections/echo-api
+Name                                         : echo-api
+NumberOfApiEndpoint                          : 6
+NumberOfApiEndpointsWithSensitiveDataExposed : 0
+NumberOfExternalApiEndpoint                  : 0
+NumberOfInactiveApiEndpoint                  : 6
+NumberOfUnauthenticatedApiEndpoint           : 0
+ProvisioningState                            : Succeeded
+ResourceGroupName                            : apicollectionstests
+SensitivityLabel                             :
+Type                                         : microsoft.security/apicollections
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List onboarded api collections by service name
 ```powershell
-{{ Add code here }}
+Get-AzSecurityApiCollection -ResourceGroup "apicollectionstests" -ServiceName "demoapimservice2"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name       ResourceGroupName
+----       -----------------
+echo-api   apicollectionstests
+echo-api-2 apicollectionstests
 ```
 
-{{ Add description here }}
+### Example 3: List onboarded api collections by subscription
+```powershell
+Get-AzSecurityApiCollection
+```
+
+```output
+Name       ResourceGroupName
+----       -----------------
+echo-api   apicollectionstests
+echo-api-2 apicollectionstests
+```
 

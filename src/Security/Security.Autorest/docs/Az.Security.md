@@ -27,7 +27,7 @@ Returns a list of all Azure DevOps organizations accessible by the user token co
 ### [Get-AzSecurityConnectorAzureDevOpsProject](Get-AzSecurityConnectorAzureDevOpsProject.md)
 Returns a monitored Azure DevOps project resource.
 
-### [Get-AzSecurityConnectorAzureDevOpsRepos](Get-AzSecurityConnectorAzureDevOpsRepos.md)
+### [Get-AzSecurityConnectorAzureDevOpsRepo](Get-AzSecurityConnectorAzureDevOpsRepo.md)
 Returns a monitored Azure DevOps repository resource.
 
 ### [Get-AzSecurityConnectorDevOpsConfiguration](Get-AzSecurityConnectorDevOpsConfiguration.md)
@@ -39,7 +39,7 @@ Returns a monitored GitHub owner.
 ### [Get-AzSecurityConnectorGitHubOwnerAvailable](Get-AzSecurityConnectorGitHubOwnerAvailable.md)
 Returns a list of all GitHub owners accessible by the user token consumed by the connector.
 
-### [Get-AzSecurityConnectorGitHubRepos](Get-AzSecurityConnectorGitHubRepos.md)
+### [Get-AzSecurityConnectorGitHubRepo](Get-AzSecurityConnectorGitHubRepo.md)
 Returns a monitored GitHub repository.
 
 ### [Get-AzSecurityConnectorGitLabGroup](Get-AzSecurityConnectorGitLabGroup.md)
@@ -156,7 +156,7 @@ Updates monitored Azure DevOps organization details.
 ### [Update-AzSecurityConnectorAzureDevOpsProject](Update-AzSecurityConnectorAzureDevOpsProject.md)
 Updates a monitored Azure DevOps project resource.
 
-### [Update-AzSecurityConnectorAzureDevOpsRepos](Update-AzSecurityConnectorAzureDevOpsRepos.md)
+### [Update-AzSecurityConnectorAzureDevOpsRepo](Update-AzSecurityConnectorAzureDevOpsRepo.md)
 Updates a monitored Azure DevOps repository resource.
 
 ### [Update-AzSecurityConnectorDevOpsConfiguration](Update-AzSecurityConnectorDevOpsConfiguration.md)

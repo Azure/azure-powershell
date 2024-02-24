@@ -1,6 +1,6 @@
-### Example 1: Get discovered AzureDevOps project by organization and project name
+### Example 1: Get discovered AzureDevOps repository by organization, project and repo name
 ```powershell
-Get-AzSecurityConnectorAzureDevOpsProject -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-azdo-01 -OrgName dfdsdktests -ProjectName ContosoSDKDfd
+Get-AzSecurityConnectorAzureDevOpsRepo -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-azdo-01 -OrgName dfdsdktests -ProjectName ContosoSDKDfd -RepoName TestApp0
 ```
 
 ```output
@@ -16,17 +16,19 @@ ActionableRemediation           : {
                                       "branchNames": [ ],
                                       "annotateDefaultBranch": "Enabled"
                                     },
-                                    "inheritFromParentState": "Disabled"
+                                    "inheritFromParentState": "Enabled"
                                   }
 Id                              : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/Co 
-                                  ntosoSDKDfd
-Name                            : ContosoSDKDfd
+                                  ntosoSDKDfd/repos/TestApp0
+Name                            : TestApp0
 OnboardingState                 : Onboarded
 ParentOrgName                   : dfdsdktests
-ProjectId                       : 161fb6f6-f2fe-4616-a627-293b788ff583
+ParentProjectName               : ContosoSDKDfd
 ProvisioningState               : Succeeded
 ProvisioningStatusMessage       : OK
-ProvisioningStatusUpdateTimeUtc : 2/23/2024 6:52:43 PM
+ProvisioningStatusUpdateTimeUtc : 2/23/2024 6:52:44 PM
+RepoId                          : 35cd4811-63c7-4043-8587-f0a9cf37709e
+RepoUrl                         : https://dev.azure.com/dfdsdktests/ContosoSDKDfd/_git/TestApp0
 ResourceGroupName               : dfdtest-sdk
 SystemDataCreatedAt             : 
 SystemDataCreatedBy             : 
@@ -34,19 +36,20 @@ SystemDataCreatedByType         :
 SystemDataLastModifiedAt        : 
 SystemDataLastModifiedBy        : 
 SystemDataLastModifiedByType    : 
-Type                            : Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects
+Type                            : Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos
+Visibility                      : 
 ```
 
-### Example 2: List discovered AzureDevOps projects
+### Example 2: List discovered AzureDevOps repositories
 ```powershell
-Get-AzSecurityConnectorAzureDevOpsProject -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-azdo-01 -OrgName dfdsdktests
+Get-AzSecurityConnectorAzureDevOpsRepo -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-azdo-01 -OrgName dfdsdktests -ProjectName ContosoSDKDfd
 ```
 
 ```output
-Name              ResourceGroupName
-----              -----------------
-ContosoSDKDfd     dfdtest-sdk
-ContosoEnterprise dfdtest-sdk
+Name          ResourceGroupName
+----          -----------------
+ContosoSDKDfd dfdtest-sdk
+TestApp0      dfdtest-sdk
+TestApp2      dfdtest-sdk
 ```
-
 

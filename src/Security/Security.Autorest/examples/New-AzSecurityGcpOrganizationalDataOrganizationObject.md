@@ -1,22 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create new GcpOrganizationalDataOrganization object
 ```powershell
-{{ Add code here }}
+New-AzSecurityGcpOrganizationalDataOrganizationObject -WorkloadIdentityProviderId "provider" -ServiceAccountEmailAddress "my@email.com" -ExcludedProjectNumber @(1,2)
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ExcludedProjectNumber      : {1, 2}
+OrganizationMembershipType : Organization
+OrganizationName           : 
+ServiceAccountEmailAddress : my@email.com
+WorkloadIdentityProviderId : provider
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 

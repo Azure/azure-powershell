@@ -22,27 +22,18 @@ Create an in-memory object for InformationProtectionAwsOffering.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create new InformationProtectionAwsOffering object
 ```powershell
-{{ Add code here }}
+New-AzSecurityInformationProtectionAwsOfferingObject -InformationProtectionCloudRoleArn "arn:aws:iam::123456789012:role/myRole"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Description InformationProtectionCloudRoleArn     OfferingType
+----------- ---------------------------------     ------------
+            arn:aws:iam::123456789012:role/myRole InformationProtectionAws
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

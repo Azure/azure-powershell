@@ -23,27 +23,29 @@ Create an in-memory object for ActionableRemediation.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create new ActionableRemediation object
 ```powershell
-{{ Add code here }}
+New-AzSecurityConnectorActionableRemediationObject -State Enabled -InheritFromParentState Disabled `
+            -BranchConfiguration @{AnnotateDefaultBranch="Enabled"; branchName=@("main", "hotfix")} -CategoryConfiguration @( @{category="First"; minimumSeverityLevel="High"}, @{category="Second"; minimumSeverityLevel="Low"})
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+BranchConfiguration    : {
+                           "branchNames": [ "main", "hotfix" ],
+                           "annotateDefaultBranch": "Enabled"
+                         }
+CategoryConfiguration  : {{
+                           "minimumSeverityLevel": "High",
+                           "category": "First"
+                         }, {
+                           "minimumSeverityLevel": "Low",
+                           "category": "Second"
+                         }}
+InheritFromParentState : Disabled
+State                  : Enabled
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create new GcpOrganizationalDataMember object
 ```powershell
-{{ Add code here }}
+New-AzSecurityGcpOrganizationalDataMemberObject -ManagementProjectNumber "12345" -ParentHierarchyId "00000"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ManagementProjectNumber OrganizationMembershipType ParentHierarchyId
+----------------------- -------------------------- -----------------
+12345                   Member                     00000
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 

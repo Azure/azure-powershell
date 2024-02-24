@@ -112,8 +112,18 @@ directive:
       subject-prefix: SecurityConnector
 
   - where:
+      subject: (.*)(AzureDevOpsRepos)$
+    set:
+      subject: $1AzureDevOpsRepo
+  
+  - where:
+      subject: (.*)(GitHubRepos)$
+    set:
+      subject: $1GitHubRepo
+
+  - where:
       verb: New
-      subject: ^(AzureDevOpsOrg|AzureDevOpsProject|AzureDevOpsRepos)(.*)
+      subject: ^(AzureDevOpsOrg|AzureDevOpsProject|AzureDevOpsRepo)(.*)
     remove: true
   
   - where:

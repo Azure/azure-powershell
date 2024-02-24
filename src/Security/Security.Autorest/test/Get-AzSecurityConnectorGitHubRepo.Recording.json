@@ -1,5 +1,5 @@
 {
-  "Get-AzSecurityConnectorGitHubRepos+[NoContext]+List+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos?api-version=2023-09-01-preview+1": {
+  "Get-AzSecurityConnectorGitHubRepo+[NoContext]+List+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos?api-version=2023-09-01-preview+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos?api-version=2023-09-01-preview",
@@ -8,8 +8,8 @@
       "Headers": {
         "x-ms-unique-id": [ "28" ],
         "x-ms-client-request-id": [ "b066c6a2-4127-409a-8535-12ef197d7d2e" ],
-        "CommandName": [ "Get-AzSecurityConnectorGitHubRepos" ],
-        "FullCommandName": [ "Get-AzSecurityConnectorGitHubRepos_List" ],
+        "CommandName": [ "Get-AzSecurityConnectorGitHubRepo" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorGitHubRepo_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
         "Authorization": [ "[Filtered]" ]
@@ -46,7 +46,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzSecurityConnectorGitHubRepos+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp0?api-version=2023-09-01-preview+1": {
+  "Get-AzSecurityConnectorGitHubRepo+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp0?api-version=2023-09-01-preview+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp0?api-version=2023-09-01-preview",
@@ -55,8 +55,8 @@
       "Headers": {
         "x-ms-unique-id": [ "29" ],
         "x-ms-client-request-id": [ "b45daeeb-68c1-4b7c-bba2-b357b707aa25" ],
-        "CommandName": [ "Get-AzSecurityConnectorGitHubRepos" ],
-        "FullCommandName": [ "Get-AzSecurityConnectorGitHubRepos_Get" ],
+        "CommandName": [ "Get-AzSecurityConnectorGitHubRepo" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorGitHubRepo_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
         "Authorization": [ "[Filtered]" ]
@@ -93,7 +93,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzSecurityConnectorGitHubRepos+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp0?api-version=2023-09-01-preview+1": {
+  "Get-AzSecurityConnectorGitHubRepo+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp0?api-version=2023-09-01-preview+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp0?api-version=2023-09-01-preview",
@@ -102,8 +102,8 @@
       "Headers": {
         "x-ms-unique-id": [ "30" ],
         "x-ms-client-request-id": [ "ce2facb8-29c7-4ec0-bce6-165a9084c455" ],
-        "CommandName": [ "Get-AzSecurityConnectorGitHubRepos" ],
-        "FullCommandName": [ "Get-AzSecurityConnectorGitHubRepos_GetViaIdentity" ],
+        "CommandName": [ "Get-AzSecurityConnectorGitHubRepo" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorGitHubRepo_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
         "Authorization": [ "[Filtered]" ]

@@ -1,12 +1,12 @@
-### Example 1: Update discovered AzureDevOps project configuration
+### Example 1: Update discovered AzureDevOps repository configuration
 ```powershell
-$config = New-AzSecurityConnectorActionableRemediationObject -State Disabled -InheritFromParentState Disabled -CategoryConfiguration @( @{category="IaC"; minimumSeverityLevel="Low"})
-Update-AzSecurityConnectorAzureDevOpsProject -ResourceGroupName "securityConnectors-pwsh-tmp" -SecurityConnectorName "ado-sdk-pwsh-test03" -OrgName "org1" -ProjectName "Build" -ActionableRemediation $config
+$config = New-AzSecurityConnectorActionableRemediationObject -State Enabled -InheritFromParentState Disabled -CategoryConfiguration @( @{category="IaC"; minimumSeverityLevel="Low"} )
+Update-AzSecurityConnectorAzureDevOpsRepo -ResourceGroupName "securityConnectors-pwsh-tmp" -SecurityConnectorName "ado-sdk-pwsh-test03" -OrgName "org1" -ProjectName "Build" -RepoName "Build" -ActionableRemediation $config
 ```
 
 ```output
 ActionableRemediation           : {
-                                    "state": "Disabled",
+                                    "state": "Enabled",
                                     "categoryConfigurations": [
                                       {
                                         "minimumSeverityLevel": "Low",
@@ -20,14 +20,16 @@ ActionableRemediation           : {
                                     "inheritFromParentState": "Disabled"
                                   }
 Id                              : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/ado-sdk-pwsh-test03/devops/default/azureDevOpsOrgs/org1/p 
-                                  rojects/Build
+                                  rojects/Build/repos/Build
 Name                            : Build
 OnboardingState                 : Onboarded
 ParentOrgName                   : org1
-ProjectId                       : 68b6a6ae-a3e4-41fa-b16e-bc4bbacd139a
+ParentProjectName               : Build
 ProvisioningState               : Succeeded
 ProvisioningStatusMessage       : OK
-ProvisioningStatusUpdateTimeUtc : 2/24/2024 12:31:18 AM
+ProvisioningStatusUpdateTimeUtc : 2/24/2024 12:31:19 AM
+RepoId                          : 64d6ea8c-6030-44db-86a4-044f13a7f43e
+RepoUrl                         : https://dev.azure.com/org1/Build/_git/Build
 ResourceGroupName               : securityConnectors-pwsh-tmp
 SystemDataCreatedAt             : 
 SystemDataCreatedBy             : 
@@ -35,8 +37,8 @@ SystemDataCreatedByType         :
 SystemDataLastModifiedAt        : 
 SystemDataLastModifiedBy        : 
 SystemDataLastModifiedByType    : 
-Type                            : Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects
+Type                            : Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos
+Visibility                      : 
 ```
-
 
 

@@ -1,22 +1,5 @@
-### Example 1: {{ Add title here }}
+### Example 1: Offboard an Azure API Management API to Microsoft Defender for APIs.
 ```powershell
-{{ Add code here }}
+Invoke-AzSecurityApiCollectionApimOffboard -ResourceGroupName "apicollectionstests" -ServiceName "demoapimservice2" -ApiId "echo-api-2
 ```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 

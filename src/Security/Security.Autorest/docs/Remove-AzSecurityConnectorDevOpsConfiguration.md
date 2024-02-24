@@ -30,27 +30,12 @@ Deletes a DevOps Connector.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove DevOps Configuration for the security connector
 ```powershell
-{{ Add code here }}
+Remove-AzSecurityConnectorDevOpsConfiguration -ResourceGroupName "securityconnectors-pwsh-tmp" -SecurityConnectorName "ado-sdk-pwsh-test03"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

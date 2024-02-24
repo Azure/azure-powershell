@@ -29,27 +29,12 @@ Deletes a security connector.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove security connector
 ```powershell
-{{ Add code here }}
+Remove-AzSecurityConnector -ResourceGroupName "securityconnectors-pwsh-tmp" -Name "ado-sdk-pwsh-test03" 
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

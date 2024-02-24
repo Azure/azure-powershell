@@ -22,27 +22,43 @@ Returns a list of all Azure DevOps organizations accessible by the user token co
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List available AzureDevOps organizations for onboarding
 ```powershell
-{{ Add code here }}
+Get-AzSecurityConnectorAzureDevOpsOrgAvailable -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-azdo-01
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ActionableRemediation           : {
+                                    "state": "Enabled",
+                                    "categoryConfigurations": [
+                                      {
+                                        "minimumSeverityLevel": "High",
+                                        "category": "IaC"
+                                      }
+                                    ],
+                                    "branchConfiguration": {
+                                      "branchNames": [ ],
+                                      "annotateDefaultBranch": "Enabled"
+                                    },
+                                    "inheritFromParentState": "Disabled"
+                                  }
+Id                              : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests
+Name                            : dfdsdktests
+OnboardingState                 : Onboarded
+ProvisioningState               : Succeeded
+ProvisioningStatusMessage       : OK
+ProvisioningStatusUpdateTimeUtc : 2/23/2024 6:49:40 PM
+ResourceGroupName               : dfdtest-sdk
+SystemDataCreatedAt             : 
+SystemDataCreatedBy             : 
+SystemDataCreatedByType         : 
+SystemDataLastModifiedAt        : 
+SystemDataLastModifiedBy        : 
+SystemDataLastModifiedByType    : 
+Type                            : Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

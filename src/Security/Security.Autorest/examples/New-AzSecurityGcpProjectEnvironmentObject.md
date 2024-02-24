@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create new GcpOrganizationalDataOrganization object
 ```powershell
-{{ Add code here }}
+$orgData = New-AzSecurityGcpOrganizationalDataOrganizationObject -WorkloadIdentityProviderId "provider" -ServiceAccountEmailAddress "my@email.com" -ExcludedProjectNumber @(1,2)
+New-AzSecurityGcpProjectEnvironmentObject -ProjectDetailProjectId "asc-sdk-samples" -ScanInterval 24 -OrganizationalData $orgData -ProjectDetailProjectNumber "1234"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+EnvironmentType                     : GcpProject
+OrganizationalData                  : {
+                                        "organizationMembershipType": "Organization",
+                                        "excludedProjectNumbers": [ "1", "2" ],
+                                        "serviceAccountEmailAddress": "my@email.com",
+                                        "workloadIdentityProviderId": "provider"
+                                      }
+ProjectDetailProjectId              : asc-sdk-samples
+ProjectDetailProjectName            : 
+ProjectDetailProjectNumber          : 1234
+ProjectDetailWorkloadIdentityPoolId : 
+ScanInterval                        : 24
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 

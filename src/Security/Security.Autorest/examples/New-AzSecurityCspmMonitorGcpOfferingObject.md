@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create new CspmMonitorGcpOffering object
 ```powershell
-{{ Add code here }}
+New-AzSecurityCspmMonitorGcpOfferingObject -NativeCloudConnectionServiceAccountEmailAddress "microsoft-defender-cspm@asc-sdk-samples.iam.gserviceaccount.com" -NativeCloudConnectionWorkloadIdentityProviderId "cspm"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Description NativeCloudConnectionServiceAccountEmailAddress                 NativeCloudConnectionWorkloadIdentityProviderId OfferingType
+----------- -----------------------------------------------                 ----------------------------------------------- ------------
+            microsoft-defender-cspm@asc-sdk-samples.iam.gserviceaccount.com cspm                                            CspmMonitorGcp
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 

@@ -21,27 +21,18 @@ Create an in-memory object for CspmMonitorAzureDevOpsOffering.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create new CspmMonitorAzureDevOpsOffering object
 ```powershell
-{{ Add code here }}
+New-AzSecurityCspmMonitorAzureDevOpsOfferingObject
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Description OfferingType
+----------- ------------
+            CspmMonitorAzureDevOps
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

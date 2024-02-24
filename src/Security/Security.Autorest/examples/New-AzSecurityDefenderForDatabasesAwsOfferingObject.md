@@ -1,22 +1,24 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create new DefenderForDatabasesAwsOffering object
 ```powershell
-{{ Add code here }}
+$arnPrefix = "arn:aws:iam::123456789012:role"
+New-AzSecurityDefenderForDatabasesAwsOfferingObject `
+    -ArcAutoProvisioningEnabled $true -ArcAutoProvisioningCloudRoleArn "$arnPrefix/DefenderForCloud-ArcAutoProvisioning" `
+    -DatabaseDspmEnabled $true -DatabaseDspmCloudRoleArn "$arnPrefix/DefenderForCloud-DataSecurityPostureDB"
+        
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ArcAutoProvisioningCloudRoleArn : arn:aws:iam::123456789012:role/DefenderForCloud-ArcAutoProvisioning
+ArcAutoProvisioningEnabled      : True
+ConfigurationPrivateLinkScope   : 
+ConfigurationProxy              : 
+DatabaseDspmCloudRoleArn        : arn:aws:iam::123456789012:role/DefenderForCloud-DataSecurityPostureDB
+DatabaseDspmEnabled             : True
+Description                     : 
+OfferingType                    : DefenderForDatabasesAws
+RdCloudRoleArn                  : 
+RdEnabled                       : 
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 

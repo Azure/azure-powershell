@@ -1,5 +1,5 @@
 {
-  "Get-AzSecurityConnectorAzureDevOpsRepos+[NoContext]+List+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos?api-version=2023-09-01-preview+1": {
+  "Get-AzSecurityConnectorAzureDevOpsRepo+[NoContext]+List+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos?api-version=2023-09-01-preview+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos?api-version=2023-09-01-preview",
@@ -8,8 +8,8 @@
       "Headers": {
         "x-ms-unique-id": [ "17" ],
         "x-ms-client-request-id": [ "9558e794-b6e0-4245-ad7e-99a589307e08" ],
-        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepos" ],
-        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepos_List" ],
+        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepo" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepo_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
         "Authorization": [ "[Filtered]" ]
@@ -46,7 +46,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzSecurityConnectorAzureDevOpsRepos+[NoContext]+List+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos?api-version=2023-09-01-preview\u0026continuation-token=eyJPcHRpbWlzdGljRGlyZWN0RXhlY3V0aW9uVG9rZW4iOnsidG9rZW4iOiIrUklEOn42RElDQUxFR1p5aXZTUVFBQUFBQURBPT0jUlQ6MSNUUkM6MTAjSVNWOjIjSUVPOjY1NTY3I1FDRjo4I0ZQQzpBYTlKQkFBQUFBQU1zVWtFQUFBQUFBdz0iLCJyYW5nZSI6eyJtaW4iOiIwNUMxRTVCNUUzNkY4NiIsIm1heCI6IkZGIn19fQ==+2": {
+  "Get-AzSecurityConnectorAzureDevOpsRepo+[NoContext]+List+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos?api-version=2023-09-01-preview\u0026continuation-token=eyJPcHRpbWlzdGljRGlyZWN0RXhlY3V0aW9uVG9rZW4iOnsidG9rZW4iOiIrUklEOn42RElDQUxFR1p5aXZTUVFBQUFBQURBPT0jUlQ6MSNUUkM6MTAjSVNWOjIjSUVPOjY1NTY3I1FDRjo4I0ZQQzpBYTlKQkFBQUFBQU1zVWtFQUFBQUFBdz0iLCJyYW5nZSI6eyJtaW4iOiIwNUMxRTVCNUUzNkY4NiIsIm1heCI6IkZGIn19fQ==+2": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos?api-version=2023-09-01-preview\u0026continuation-token=eyJPcHRpbWlzdGljRGlyZWN0RXhlY3V0aW9uVG9rZW4iOnsidG9rZW4iOiIrUklEOn42RElDQUxFR1p5aXZTUVFBQUFBQURBPT0jUlQ6MSNUUkM6MTAjSVNWOjIjSUVPOjY1NTY3I1FDRjo4I0ZQQzpBYTlKQkFBQUFBQU1zVWtFQUFBQUFBdz0iLCJyYW5nZSI6eyJtaW4iOiIwNUMxRTVCNUUzNkY4NiIsIm1heCI6IkZGIn19fQ==",
@@ -56,8 +56,8 @@
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "18" ],
         "x-ms-client-request-id": [ "9558e794-b6e0-4245-ad7e-99a589307e08" ],
-        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepos" ],
-        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepos_List" ],
+        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepo" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepo_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ]
       },
@@ -93,7 +93,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzSecurityConnectorAzureDevOpsRepos+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp0?api-version=2023-09-01-preview+1": {
+  "Get-AzSecurityConnectorAzureDevOpsRepo+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp0?api-version=2023-09-01-preview+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp0?api-version=2023-09-01-preview",
@@ -102,8 +102,8 @@
       "Headers": {
         "x-ms-unique-id": [ "19" ],
         "x-ms-client-request-id": [ "3223d8d7-87de-4cee-a462-648f52998337" ],
-        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepos" ],
-        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepos_Get" ],
+        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepo" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepo_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
         "Authorization": [ "[Filtered]" ]
@@ -140,7 +140,7 @@
       "isContentBase64": false
     }
   },
-  "Get-AzSecurityConnectorAzureDevOpsRepos+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp0?api-version=2023-09-01-preview+1": {
+  "Get-AzSecurityConnectorAzureDevOpsRepo+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp0?api-version=2023-09-01-preview+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/ContosoSDKDfd/repos/TestApp0?api-version=2023-09-01-preview",
@@ -149,8 +149,8 @@
       "Headers": {
         "x-ms-unique-id": [ "20" ],
         "x-ms-client-request-id": [ "498be2d4-1043-4996-8b49-c5aef8aa16aa" ],
-        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepos" ],
-        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepos_GetViaIdentity" ],
+        "CommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepo" ],
+        "FullCommandName": [ "Get-AzSecurityConnectorAzureDevOpsRepo_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
         "Authorization": [ "[Filtered]" ]

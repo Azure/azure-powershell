@@ -1,22 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create new AwsEnvironment object
 ```powershell
-{{ Add code here }}
+$organization = New-AzSecurityAwsOrganizationalDataMasterObject -StacksetName "myAwsStackSet" -ExcludedAccountId "123456789012"
+$environment = New-AzSecurityAwsEnvironmentObject -Region "Central US" -ScanInterval 24 -OrganizationalData $organization
+
+$member = New-AzSecurityAwsOrganizationalDataMemberObject -ParentHierarchyId "123"
+New-AzSecurityAwsEnvironmentObject -Region "Central US" -ScanInterval 24 -OrganizationalData $member
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AccountName        : 
+EnvironmentType    : AwsAccount
+OrganizationalData : {
+                       "organizationMembershipType": "Member",
+                       "parentHierarchyId": "123"
+                     }
+Region             : {Central US}
+ScanInterval       : 24
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 

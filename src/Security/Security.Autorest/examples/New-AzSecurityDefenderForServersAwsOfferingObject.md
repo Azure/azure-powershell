@@ -1,22 +1,34 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create new DefenderForServersAwsOffering object
 ```powershell
-{{ Add code here }}
+$arnPrefix = "arn:aws:iam::123456789012:role"
+New-AzSecurityDefenderForServersAwsOfferingObject `
+    -DefenderForServerCloudRoleArn "$arnPrefix/DefenderForCloud-DefenderForServers" `
+    -ArcAutoProvisioningEnabled $true -ArcAutoProvisioningCloudRoleArn "$arnPrefix/DefenderForCloud-ArcAutoProvisioning" `
+    -MdeAutoProvisioningEnabled $true `
+    -VaAutoProvisioningEnabled $true -ConfigurationType TVM `
+    -VMScannerEnabled $true -ConfigurationCloudRoleArn "$arnPrefix/DefenderForCloud-AgentlessScanner" -ConfigurationScanningMode Default `
+    -SubPlanType P2
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ArcAutoProvisioningCloudRoleArn  : arn:aws:iam::123456789012:role/DefenderForCloud-ArcAutoProvisioning
+ArcAutoProvisioningEnabled       : True
+ConfigurationCloudRoleArn        : arn:aws:iam::123456789012:role/DefenderForCloud-AgentlessScanner
+ConfigurationExclusionTag        : {
+                                   }
+ConfigurationPrivateLinkScope    : 
+ConfigurationProxy               : 
+ConfigurationScanningMode        : Default
+ConfigurationType                : TVM
+DefenderForServerCloudRoleArn    : arn:aws:iam::123456789012:role/DefenderForCloud-DefenderForServers
+Description                      : 
+MdeAutoProvisioningConfiguration : {
+                                   }
+MdeAutoProvisioningEnabled       : True
+OfferingType                     : DefenderForServersAws
+SubPlanType                      : P2
+VMScannerEnabled                 : True
+VaAutoProvisioningEnabled        : True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 

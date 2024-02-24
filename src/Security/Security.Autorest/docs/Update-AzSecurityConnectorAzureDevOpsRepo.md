@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Security
-online version: https://learn.microsoft.com/powershell/module/az.security/update-azsecurityconnectorazuredevopsrepos
+online version: https://learn.microsoft.com/powershell/module/az.security/update-azsecurityconnectorazuredevopsrepo
 schema: 2.0.0
 ---
 
-# Update-AzSecurityConnectorAzureDevOpsRepos
+# Update-AzSecurityConnectorAzureDevOpsRepo
 
 ## SYNOPSIS
 Updates a monitored Azure DevOps repository resource.
@@ -14,7 +14,7 @@ Updates a monitored Azure DevOps repository resource.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzSecurityConnectorAzureDevOpsRepos -OrgName <String> -ProjectName <String> -RepoName <String>
+Update-AzSecurityConnectorAzureDevOpsRepo -OrgName <String> -ProjectName <String> -RepoName <String>
  -ResourceGroupName <String> -SecurityConnectorName <String> [-SubscriptionId <String>]
  [-ActionableRemediation <IActionableRemediation>] [-ParentOrgName <String>] [-ParentProjectName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,7 +22,7 @@ Update-AzSecurityConnectorAzureDevOpsRepos -OrgName <String> -ProjectName <Strin
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSecurityConnectorAzureDevOpsRepos -InputObject <ISecurityIdentity>
+Update-AzSecurityConnectorAzureDevOpsRepo -InputObject <ISecurityIdentity>
  [-ActionableRemediation <IActionableRemediation>] [-ParentOrgName <String>] [-ParentProjectName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -32,27 +32,50 @@ Updates a monitored Azure DevOps repository resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update discovered AzureDevOps repository configuration
 ```powershell
-{{ Add code here }}
+$config = New-AzSecurityConnectorActionableRemediationObject -State Enabled -InheritFromParentState Disabled -CategoryConfiguration @( @{category="IaC"; minimumSeverityLevel="Low"} )
+Update-AzSecurityConnectorAzureDevOpsRepo -ResourceGroupName "securityConnectors-pwsh-tmp" -SecurityConnectorName "ado-sdk-pwsh-test03" -OrgName "org1" -ProjectName "Build" -RepoName "Build" -ActionableRemediation $config
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ActionableRemediation           : {
+                                    "state": "Enabled",
+                                    "categoryConfigurations": [
+                                      {
+                                        "minimumSeverityLevel": "Low",
+                                        "category": "IaC"
+                                      }
+                                    ],
+                                    "branchConfiguration": {
+                                      "branchNames": [ ],
+                                      "annotateDefaultBranch": "Enabled"
+                                    },
+                                    "inheritFromParentState": "Disabled"
+                                  }
+Id                              : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/ado-sdk-pwsh-test03/devops/default/azureDevOpsOrgs/org1/p 
+                                  rojects/Build/repos/Build
+Name                            : Build
+OnboardingState                 : Onboarded
+ParentOrgName                   : org1
+ParentProjectName               : Build
+ProvisioningState               : Succeeded
+ProvisioningStatusMessage       : OK
+ProvisioningStatusUpdateTimeUtc : 2/24/2024 12:31:19 AM
+RepoId                          : 64d6ea8c-6030-44db-86a4-044f13a7f43e
+RepoUrl                         : https://dev.azure.com/org1/Build/_git/Build
+ResourceGroupName               : securityConnectors-pwsh-tmp
+SystemDataCreatedAt             : 
+SystemDataCreatedBy             : 
+SystemDataCreatedByType         : 
+SystemDataLastModifiedAt        : 
+SystemDataLastModifiedBy        : 
+SystemDataLastModifiedByType    : 
+Type                            : Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos
+Visibility                      : 
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

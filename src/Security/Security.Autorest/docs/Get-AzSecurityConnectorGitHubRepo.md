@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Security
-online version: https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorgithubrepos
+online version: https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorgithubrepo
 schema: 2.0.0
 ---
 
-# Get-AzSecurityConnectorGitHubRepos
+# Get-AzSecurityConnectorGitHubRepo
 
 ## SYNOPSIS
 Returns a monitored GitHub repository.
@@ -14,21 +14,21 @@ Returns a monitored GitHub repository.
 
 ### List (Default)
 ```
-Get-AzSecurityConnectorGitHubRepos -OwnerName <String> -ResourceGroupName <String>
+Get-AzSecurityConnectorGitHubRepo -OwnerName <String> -ResourceGroupName <String>
  -SecurityConnectorName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzSecurityConnectorGitHubRepos -OwnerName <String> -RepoName <String> -ResourceGroupName <String>
+Get-AzSecurityConnectorGitHubRepo -OwnerName <String> -RepoName <String> -ResourceGroupName <String>
  -SecurityConnectorName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzSecurityConnectorGitHubRepos -InputObject <ISecurityIdentity> [-DefaultProfile <PSObject>]
+Get-AzSecurityConnectorGitHubRepo -InputObject <ISecurityIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -37,27 +37,49 @@ Returns a monitored GitHub repository.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get discovered GitHub repository by name
 ```powershell
-{{ Add code here }}
+Get-AzSecurityConnectorGitHubRepos -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-gh-01 -OwnerName dfdsdktests -RepoName TestApp0
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                              : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gh-01/devops/default/gitHubOwners/dfdsdktests/repos/TestApp0
+Name                            : TestApp0
+OnboardingState                 : Onboarded
+ParentOwnerName                 : dfdsdktests
+ProvisioningState               : 
+ProvisioningStatusMessage       : 
+ProvisioningStatusUpdateTimeUtc : 2/23/2024 8:46:23 PM
+RepoFullName                    : 
+RepoId                          : 728418798
+RepoName                        : TestApp0
+RepoUrl                         : https://github.com/dfdsdktests/TestApp0
+ResourceGroupName               : dfdtest-sdk
+SystemDataCreatedAt             : 
+SystemDataCreatedBy             : 
+SystemDataCreatedByType         : 
+SystemDataLastModifiedAt        : 
+SystemDataLastModifiedBy        : 
+SystemDataLastModifiedByType    : 
+Type                            : Microsoft.Security/securityConnectors/devops/gitHubOwners/repos
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
+
+### Example 2: List discovered GitHub repositories
 ```powershell
-{{ Add code here }}
+Get-AzSecurityConnectorGitHubRepos -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-gh-01 -OwnerName dfdsdktests
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+
+Name      ResourceGroupName
+----      -----------------
+TestApp0  dfdtest-sdk
+TestApp1  dfdtest-sdk
 ```
 
-{{ Add description here }}
+
 
 ## PARAMETERS
 
