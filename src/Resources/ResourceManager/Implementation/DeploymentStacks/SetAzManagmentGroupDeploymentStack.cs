@@ -16,16 +16,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System;
     using System.Collections;
-    using System.IO;
     using System.Management.Automation;
-    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     [Cmdlet("Set", Common.AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStack",
         SupportsShouldProcess = true, DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSDeploymentStack))]
@@ -98,63 +94,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             try
             {
-                Hashtable parameters = new Hashtable();
-
-                switch (ParameterSetName)
-                {
-                    case ParameterlessTemplateFileParameterSetName:
-                    case ParameterUriTemplateFileParameterSetName:
-                        ResolveTemplate();
-                        break;
-                    case ParameterFileTemplateSpecParameterSetName:
-                    case ParameterFileTemplateUriParameterSetName:
-                        parameters = ResolveParameters();
-
-                        // contruct the protected template URI if a query string was provided
-                        if (!string.IsNullOrEmpty(QueryString))
-                        {
-                            if (QueryString.Substring(0, 1) == "?")
-                                protectedTemplateUri = TemplateUri + QueryString;
-                            else
-                                protectedTemplateUri = TemplateUri + "?" + QueryString;
-                        }
-                        break;
-                    case ParameterFileTemplateFileParameterSetName:
-                        parameters = ResolveParameters();
-                        ResolveTemplate();
-                        break;
-                    case ByParameterFileWithNoTemplateParameterSetName:
-                        parameters = ResolveParameters();
-                        break;
-                    case ParameterObjectTemplateFileParameterSetName:
-                        ResolveTemplate();
-                        parameters = GetTemplateParameterObject(TemplateParameterObject);
-                        break;
-                    case ParameterObjectTemplateSpecParameterSetName:
-                    case ParameterObjectTemplateUriParameterSetName:
-                        parameters = GetTemplateParameterObject(TemplateParameterObject);
-
-                        // contruct the protected template URI if a query string was provided
-                        if (!string.IsNullOrEmpty(QueryString))
-                        {
-                            if (QueryString.Substring(0, 1) == "?")
-                                protectedTemplateUri = TemplateUri + QueryString;
-                            else
-                                protectedTemplateUri = TemplateUri + "?" + QueryString;
-                        }
-                        break;
-                    case ParameterlessTemplateUriParameterSetName:
-                        // contruct the protected template URI if a query string was provided
-                        if (!string.IsNullOrEmpty(QueryString))
-                        {
-                            if (QueryString.Substring(0, 1) == "?")
-                                protectedTemplateUri = TemplateUri + QueryString;
-                            else
-                                protectedTemplateUri = TemplateUri + "?" + QueryString;
-                        }
-                        break;
-                }
-
                 var shouldDeleteResources = (DeleteAll.ToBool() || DeleteResources.ToBool()) ? true : false;
                 var shouldDeleteResourceGroups = (DeleteAll.ToBool() || DeleteResourceGroups.ToBool()) ? true : false;
 
@@ -173,25 +112,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 Action createOrUpdateAction = () =>
                 {
                     var deploymentStack = DeploymentStacksSdkClient.ManagementGroupCreateOrUpdateDeploymentStack(
-                            deploymentStackName: Name,
-                            managementGroupId: ManagementGroupId,
-                            location: Location,
-                            templateUri: !string.IsNullOrEmpty(protectedTemplateUri) ? protectedTemplateUri : TemplateUri,
-                            templateSpec: TemplateSpecId,
-                            templateJson: TemplateJson,
-                            parameterUri: TemplateParameterUri,
-                            parameters: parameters,
-                            description: Description,
-                            resourcesCleanupAction: shouldDeleteResources ? "delete" : "detach",
-                            resourceGroupsCleanupAction: shouldDeleteResourceGroups ? "delete" : "detach",
-                            managementGroupsCleanupAction: "detach",
-                            deploymentScope: deploymentScope,
-                            denySettingsMode: DenySettingsMode.ToString(),
-                            denySettingsExcludedPrincipals: DenySettingsExcludedPrincipal,
-                            denySettingsExcludedActions: DenySettingsExcludedAction,
-                            denySettingsApplyToChildScopes: DenySettingsApplyToChildScopes.IsPresent,
-                            tags: Tag
-                        );
+                        deploymentStackName: Name,
+                        managementGroupId: ManagementGroupId,
+                        location: Location,
+                        templateFile: TemplateFile,
+                        templateUri: !string.IsNullOrEmpty(protectedTemplateUri) ? protectedTemplateUri : TemplateUri,
+                        templateSpec: TemplateSpecId,
+                        templateObject: TemplateObject,
+                        parameterUri: TemplateParameterUri,
+                        parameters: GetTemplateParameterObject(),
+                        description: Description,
+                        resourcesCleanupAction: shouldDeleteResources ? "delete" : "detach",
+                        resourceGroupsCleanupAction: shouldDeleteResourceGroups ? "delete" : "detach",
+                        managementGroupsCleanupAction: "detach",
+                        deploymentScope: deploymentScope,
+                        denySettingsMode: DenySettingsMode.ToString(),
+                        denySettingsExcludedPrincipals: DenySettingsExcludedPrincipal,
+                        denySettingsExcludedActions: DenySettingsExcludedAction,
+                        denySettingsApplyToChildScopes: DenySettingsApplyToChildScopes.IsPresent,
+                        tags: Tag
+                    );
 
                     WriteObject(deploymentStack);
                 };
