@@ -58,8 +58,6 @@ Location                        : centralus
 Name                            : dfdsdktests-azdo-01
 Offering                        : {{
                                     "offeringType": "CspmMonitorAzureDevOps"
-                                  }, {
-                                    "offeringType": "DefenderForDevOpsAzureDevOps"
                                   }}
 ResourceGroupName               : dfdtest-sdk
 SystemDataCreatedAt             : 12/7/2023 6:38:36 AM
