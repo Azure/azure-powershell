@@ -206,7 +206,15 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
             var subscriptionId = typeof(T).GetProperty("SubscriptionId");
             if (subscriptionId != null && currentEnvironment.SubscriptionId != null)
             {
-                subscriptionId.SetValue(client, currentEnvironment.SubscriptionId);
+                // TODO: Once subscription type is updated to Guid everywhere, will no longer need this check.
+                if (subscriptionId.PropertyType.Name == "Guid")
+                {
+                    subscriptionId.SetValue(client, Guid.Parse(currentEnvironment.SubscriptionId));
+                }
+                else
+                {
+                    subscriptionId.SetValue(client, currentEnvironment.SubscriptionId);
+                }
             }
 
             var tenantId = typeof(T).GetProperty("TenantId");

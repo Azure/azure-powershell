@@ -11,7 +11,7 @@ autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
 autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
 autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
 autorest --use:@autorest/powershell@4.x --tag=package-resources-2021-04
-autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2022-08-preview
+autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2024-03
 autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
 ```
 
@@ -28,11 +28,10 @@ azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
 ```
 
-
 ## Configuration
 
 ```yaml
-commit: 13bf172f804ad5546ad3ccdf0c785777d4f15825
+commit: 88cc082d66e2b481ed99a17d44edffaeb6254eec
 ```
 
 ### Tag: package-deploymentscripts-2023-08
@@ -98,11 +97,13 @@ input-file:
 - https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2021-05-01/templateSpecs.json
 ```
 
-### Tag: package-deploymentstacks-2022-08-preview
+### Tag: package-deploymentstacks-2024-03
 
-These settings apply only when `--tag=package-deploymentstacks-2022-08-preview` is specified on the command line.
+These settings apply only when `--tag=package-deploymentstacks-2024-03` is specified on the command line.
 
-``` yaml $(tag) == 'package-deploymentstacks-2022-08-preview'
+``` yaml $(tag) == 'package-deploymentstacks-2024-03'
 input-file:
-- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/preview/2022-08-01-preview/deploymentStacks.json
+- https://github.com/Azure/azure-rest-api-specs/tree/$(commit)/specification/resources/resource-manager/Microsoft.Resources/stable/2024-03-01/deploymentStacks.json
 ```
+
+### - C:\Users\danted\kyle-rest-api\specification\resources\resource-manager\Microsoft.Resources\stable\2024-03-01\deploymentStacks.json

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Resources
     using Models;
 
     /// <summary>
-    /// The APIs listed in this specification can be used to manage deployment
+    /// The APIs listed in this specification can be used to manage Deployment
     /// stack resources through the Azure Resource Manager.
     /// </summary>
     public partial class DeploymentStacksClient : Microsoft.Rest.ServiceClient<DeploymentStacksClient>, IDeploymentStacksClient, IAzureClient
@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Management.Resources
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        public string SubscriptionId { get; set;}
+        public System.Guid SubscriptionId { get; set;}
 
         /// <summary>
         /// The preferred language for the response.
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Management.Resources
         {
             this.DeploymentStacks = new DeploymentStacksOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2022-08-01-preview";
+            this.ApiVersion = "2024-03-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

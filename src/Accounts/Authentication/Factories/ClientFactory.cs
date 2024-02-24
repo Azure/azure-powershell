@@ -67,7 +67,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             var subscriptionId = typeof(TClient).GetProperty("SubscriptionId");
             if (subscriptionId != null && context.Subscription != null)
             {
-                subscriptionId.SetValue(client, context.Subscription.Id.ToString());
+                // TODO: Once subscription type is updated to Guid everywhere, will no longer need this check.
+                if (subscriptionId.PropertyType.Name == "Guid")
+                {
+                    subscriptionId.SetValue(client, Guid.Parse(context.Subscription.Id));
+                }
+                else
+                {
+                    subscriptionId.SetValue(client, context.Subscription.Id);
+                }
             }
 
             return client;
