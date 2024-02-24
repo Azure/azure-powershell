@@ -33,7 +33,7 @@ The system will stop monitoring the operations within the Azure API Management A
 
 ### Example 1: Offboard an Azure API Management API to Microsoft Defender for APIs.
 ```powershell
-Invoke-AzSecurityApiCollectionApimOffboard -ResourceGroupName "apicollectionstests" -ServiceName "demoapimservice2" -ApiId "echo-api-2
+Invoke-AzSecurityApiCollectionApimOffboard -ResourceGroupName "apicollectionstests" -ServiceName "demoapimservice2" -ApiId "echo-api-2"
 ```
 
 
