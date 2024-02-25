@@ -1,39 +1,32 @@
 ---
-external help file: Az.Databricks-help.xml
+external help file:
 Module Name: Az.Databricks
-online version: https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksaccessconnector
+online version: https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksaccessconnector
 schema: 2.0.0
 ---
 
-# Update-AzDatabricksAccessConnector
+# New-AzDatabricksAccessConnector
 
 ## SYNOPSIS
-Updates an azure databricks accessConnector.
+Creates or updates azure databricks accessConnector.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
-Update-AzDatabricksAccessConnector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzDatabricksAccessConnector -InputObject <IDatabricksIdentity>
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzDatabricksAccessConnector -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-IdentityType <ManagedServiceIdentityType>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an azure databricks accessConnector.
+Creates or updates azure databricks accessConnector.
 
 ## EXAMPLES
 
-### Example 1: Updates an azure databricks accessConnector.
+### Example 1: Creates or updates azure databricks accessConnector.
 ```powershell
-Update-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector -Tag @{'key'='value'}
+New-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector -Location eastus -IdentityType 'SystemAssigned'
 ```
 
 ```output
@@ -42,20 +35,7 @@ Location Name                            ResourceGroupName
 eastus   azps-databricks-accessconnector azps_test_gp_db
 ```
 
-This command updates an azure databricks accessConnector.
-
-### Example 2: Updates an azure databricks accessConnector by pipeline.
-```powershell
-Get-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector | Update-AzDatabricksAccessConnector  -Tag @{'key'='value'}
-```
-
-```output
-Location Name                            ResourceGroupName
--------- ----                            -----------------
-eastus   azps-databricks-accessconnector azps_test_gp_db
-```
-
-This command updates an azure databricks accessConnector by pipeline.
+This command creates or updates azure databricks accessConnector.
 
 ## PARAMETERS
 
@@ -105,36 +85,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
+### -Location
+The geo-location where the resource lives
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
-Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -143,7 +105,7 @@ The name of the azure databricks accessConnector.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -174,7 +136,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -189,7 +151,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -201,6 +163,23 @@ Accept wildcard characters: False
 
 ### -Tag
 Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The set of user assigned identities associated with the resource.
+The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+The dictionary values can be empty objects ({}) in requests.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -250,29 +229,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230501.IAccessConnector
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDatabricksIdentity>`: Identity Parameter
-  - `[ConnectorName <String>]`: The name of the azure databricks accessConnector.
-  - `[GroupId <String>]`: The name of the private link resource
-  - `[Id <String>]`: Resource identity path
-  - `[PeeringName <String>]`: The name of the workspace vNet peering.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WorkspaceName <String>]`: The name of the workspace.
-
 ## RELATED LINKS
+

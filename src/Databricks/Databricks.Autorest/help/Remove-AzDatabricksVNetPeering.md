@@ -1,47 +1,48 @@
 ---
-external help file: Az.Databricks-help.xml
+external help file:
 Module Name: Az.Databricks
-online version: https://learn.microsoft.com/powershell/module/az.databricks/remove-azdatabricksaccessconnector
+online version: https://learn.microsoft.com/powershell/module/az.databricks/remove-azdatabricksvnetpeering
 schema: 2.0.0
 ---
 
-# Remove-AzDatabricksAccessConnector
+# Remove-AzDatabricksVNetPeering
 
 ## SYNOPSIS
-Deletes the azure databricks accessConnector.
+Deletes the workspace vNetPeering.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzDatabricksAccessConnector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzDatabricksVNetPeering -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzDatabricksAccessConnector -InputObject <IDatabricksIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzDatabricksVNetPeering -InputObject <IDatabricksIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes the azure databricks accessConnector.
+Deletes the workspace vNetPeering.
 
 ## EXAMPLES
 
-### Example 1: Deletes the azure databricks accessConnector.
+### Example 1: Remove a vnet peering of databricks by name.
 ```powershell
-Remove-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector
+Remove-AzDatabricksVNetPeering -Name vnet-peering-t1 -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db 
 ```
 
-This command deletes the azure databricks accessConnector.
+This command removes a vnet peering of databricks by name.
 
-### Example 2: Deletes the azure databricks accessConnector by pipeline.
+### Example 2: Remove a vnet peering of databricks by object.
 ```powershell
-Get-AzDatabricksAccessConnector -ResourceGroupName azps_test_gp_db -Name azps-databricks-accessconnector | Remove-AzDatabricksAccessConnector
+Get-AzDatabricksVNetPeering -Name vnet-peering-t1 -WorkspaceName azps-databricks-workspace-t1 -ResourceGroupName azps_test_gp_db  | Remove-AzDatabricksVNetPeering
 ```
 
-This command deletes the azure databricks accessConnector by pipeline.
+This command removes a vnet peering of databricks by object.
 
 ## PARAMETERS
 
@@ -93,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the azure databricks accessConnector.
+The name of the workspace vNet peering.
 
 ```yaml
 Type: System.String
@@ -168,6 +169,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceName
+The name of the workspace.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -212,21 +228,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDatabricksIdentity>`: Identity Parameter
-  - `[ConnectorName <String>]`: The name of the azure databricks accessConnector.
-  - `[GroupId <String>]`: The name of the private link resource
-  - `[Id <String>]`: Resource identity path
-  - `[PeeringName <String>]`: The name of the workspace vNet peering.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WorkspaceName <String>]`: The name of the workspace.
-
 ## RELATED LINKS
+
