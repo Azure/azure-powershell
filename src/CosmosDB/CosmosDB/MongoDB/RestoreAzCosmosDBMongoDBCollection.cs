@@ -19,8 +19,11 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Exceptions;
+using Microsoft.Rest.Azure;
+using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 using Microsoft.Azure.Management.CosmosDB;
 using System.Text.RegularExpressions;
 using System.Collections;
@@ -105,8 +108,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     RestorableDatabaseAccountGetResult lastestAccountToRestore = null;
                     foreach (RestorableDatabaseAccountGetResult restorableAccount in accountsWithMatchingName)
                     {
-                        if (lastestAccountToRestore == null || (restorableAccount.CreationTime.HasValue &&
-                            restorableAccount.CreationTime > lastestAccountToRestore.CreationTime))
+                        if (lastestAccountToRestore == null)
+                        {
+                            lastestAccountToRestore = restorableAccount;
+                        }
+
+                        if (restorableAccount.CreationTime.HasValue &&
+                            restorableAccount.CreationTime > lastestAccountToRestore.CreationTime)
                         {
                             if (!restorableAccount.DeletionTime.HasValue)
                             {
@@ -117,8 +125,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
                     databaseAccount = lastestAccountToRestore;
                 }
-                
-                if (databaseAccount == null)
+                else
                 {
                     this.WriteWarning($"No database accounts found with matching account name {this.AccountName} that was alive");
                     return;
@@ -186,14 +193,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     }
                 }
 
-                //Subtracting 1 second from delete timestamp to restore till end of logchain in no timestamp restore.
                 if (latestCollectionDeleteTime < latestCollectionCreateOrRecreateTime && latestCollectionCreateOrRecreateTime < latestDatabaseDeleteTime)
                 {
-                    utcRestoreDateTime = latestDatabaseDeleteTime.AddSeconds(-1);
+                    utcRestoreDateTime = latestDatabaseDeleteTime.AddSeconds(-2);
                 }
                 else if (latestCollectionCreateOrRecreateTime < latestCollectionDeleteTime && latestCollectionDeleteTime <= latestDatabaseDeleteTime)
                 {
-                    utcRestoreDateTime = latestCollectionDeleteTime.AddSeconds(-1);
+                    utcRestoreDateTime = latestCollectionDeleteTime.AddSeconds(-2);
                 }
                 else
                 {

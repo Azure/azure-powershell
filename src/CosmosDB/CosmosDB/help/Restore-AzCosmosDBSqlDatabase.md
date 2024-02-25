@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
 online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/restore-azcosmosdbsqldatabase
@@ -25,7 +25,7 @@ Restores the deleted sql database in the same account with the given name and ti
 
 ### Example 1
 ```powershell
-Restore-AzCosmosDBSqlDatabase -AccountName “my-pitr-sql-account” -ResourceGroupName “my-rg” -Name “my-database” -RestoreTimestampInUtc “2022-08-25T07:16:20Z”  
+Restore-AzCosmosDBSqlDatabase -AccountName "my-pitr-sql-account" -ResourceGroupName "my-rg" -Name "my-database" -RestoreTimestampInUtc "2022-08-25T07:16:20Z"
 ```
 
 ```output

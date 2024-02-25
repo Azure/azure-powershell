@@ -31,13 +31,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Possible values include: &#39;Create&#39;, &#39;Replace&#39;, &#39;Delete&#39;, &#39;Recreate&#39;,
         /// &#39;SystemOperation&#39;</param>
 
-        /// <param name="canUndelete">A state of this database to identify if this database is restorable in same
-        /// account.
-        /// </param>
-
-        /// <param name="canUndeleteReason">The reason why this database can not be restored in same account.
-        /// </param>
-
         /// <param name="eventTimestamp">The time when this database event happened.
         /// </param>
 
@@ -49,13 +42,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="database">Cosmos DB SQL database resource object
         /// </param>
-        public RestorableSqlDatabasePropertiesResource(string rid = default(string), string operationType = default(string), string canUndelete = default(string), string canUndeleteReason = default(string), string eventTimestamp = default(string), string ownerId = default(string), string ownerResourceId = default(string), RestorableSqlDatabasePropertiesResourceDatabase database = default(RestorableSqlDatabasePropertiesResourceDatabase))
+        public RestorableSqlDatabasePropertiesResource(string rid = default(string), string operationType = default(string), string eventTimestamp = default(string), string ownerId = default(string), string ownerResourceId = default(string), RestorableSqlDatabasePropertiesResourceDatabase database = default(RestorableSqlDatabasePropertiesResourceDatabase))
 
         {
             this.Rid = rid;
             this.OperationType = operationType;
-            this.CanUndelete = canUndelete;
-            this.CanUndeleteReason = canUndeleteReason;
             this.EventTimestamp = eventTimestamp;
             this.OwnerId = ownerId;
             this.OwnerResourceId = ownerResourceId;
@@ -80,19 +71,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "operationType")]
         public string OperationType {get; private set; }
-
-        /// <summary>
-        /// Gets a state of this database to identify if this database is restorable in
-        /// same account.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "canUndelete")]
-        public string CanUndelete {get; private set; }
-
-        /// <summary>
-        /// Gets the reason why this database can not be restored in same account.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "canUndeleteReason")]
-        public string CanUndeleteReason {get; private set; }
 
         /// <summary>
         /// Gets the time when this database event happened.
@@ -125,8 +103,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </exception>
         public virtual void Validate()
         {
-
-
 
 
 

@@ -24,6 +24,8 @@ using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CosmosDB;
 using Microsoft.Azure.Management.CosmosDB.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -144,13 +146,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     }
                 }
 
-                if (latestDeleteTime == DateTime.MinValue)
-                {
-                    this.WriteWarning($"No deleted database with name {this.Name} found in the account name {this.AccountName}");
-                }
-
-                //Subtracting 1 second from delete timestamp to restore till end of logchain in no timestamp restore.
-                utcRestoreDateTime = latestDeleteTime.AddSeconds(-1);
+                utcRestoreDateTime = latestDeleteTime.AddSeconds(-2);
             }
             
 
@@ -171,7 +167,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (this.ShouldProcess(this.Name, "Restoring CosmosDB MongoDB Database"))
             {
-                MongoDBDatabaseGetResults mongoDBDatabaseGetResults = CosmosDBManagementClient.MongoDbResources.CreateUpdateMongoDBDatabaseWithHttpMessagesAsync(this.ResourceGroupName, this.AccountName, this.Name, mongoDBDatabaseCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                MongoDBDatabaseGetResults mongoDBDatabaseGetResults = this.CosmosDBManagementClient.MongoDbResources.CreateUpdateMongoDBDatabaseWithHttpMessagesAsync(this.ResourceGroupName, this.AccountName, this.Name, mongoDBDatabaseCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 this.WriteObject(new PSMongoDBDatabaseGetResults(mongoDBDatabaseGetResults));
             }
 
