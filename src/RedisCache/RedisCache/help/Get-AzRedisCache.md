@@ -30,7 +30,7 @@ Get-AzRedisCache -Name "myexists"
 ```
 
 ```output
-        ResourceGroupName  : myGroup
+ResourceGroupName  : myGroup
         Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
         Location           : North Central US
         Name               : myexists
@@ -56,7 +56,7 @@ Get-AzRedisCache -ResourceGroupName "myGroup"
 ```
 
 ```output
-        ResourceGroupName  : myGroup
+ResourceGroupName  : myGroup
         Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
         Location           : North Central US
         Name               : myexists
@@ -99,7 +99,7 @@ Get-AzRedisCache
 ```
 
 ```output
-        ResourceGroupName  : myGroup
+ResourceGroupName  : myGroup
         Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
         Location           : North Central US
         Name               : myexists
