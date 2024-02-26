@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             {
                 if (Uri.IsWellFormedUriString(templateParameterFilePath, UriKind.Absolute))
                 {
-                    templateParameterContent = new Hashtable(ParseTemplateParameterContent(templateParameterFilePath));
+                    templateParameterContent = new Hashtable(ParseTemplateParameterContent(GeneralUtilities.DownloadFile(templateParameterFilePath)));
                 }
                 else if (FileUtilities.DataStore.FileExists(templateParameterFilePath))
                 {
