@@ -12,9 +12,24 @@ Flush all data from an Azure Cache for Redis instance.
 
 ## SYNTAX
 
+### NormalParameterSet
 ```
 Clear-AzRedisCache [-ResourceGroupName <String>] -Name <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Clear-AzRedisCache -ResourceId <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RedisCacheAccessPolicyObject
+```
+Clear-AzRedisCache -InputObject <RedisCacheAttributes> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,12 +76,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Object of type RedisCacheAttributes
+
+```yaml
+Type: Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes
+Parameter Sets: RedisCacheAccessPolicyObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of redis cache.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: NormalParameterSet
 Aliases:
 
 Required: True
@@ -92,15 +122,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of resource group under which cache exists.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: NormalParameterSet
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ARM Id of Redis Cache
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

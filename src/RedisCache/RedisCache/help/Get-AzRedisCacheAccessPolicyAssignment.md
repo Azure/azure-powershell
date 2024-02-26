@@ -12,9 +12,24 @@ Get the detailed information about Access Policy Assignment(s) (Redis User(s)) o
 
 ## SYNTAX
 
+### NormalParameterSet
 ```
 Get-AzRedisCacheAccessPolicyAssignment [-ResourceGroupName <String>] -Name <String>
- [-AccessPolicyAssignmentName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AccessPolicyAssignmentName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Get-AzRedisCacheAccessPolicyAssignment -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### CacheObjectParameterSet
+```
+Get-AzRedisCacheAccessPolicyAssignment -TopLevelResourceObject <RedisCacheAttributes>
+ [-AccessPolicyAssignmentName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +58,7 @@ Name of Access Policy Assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: NormalParameterSet, CacheObjectParameterSet
 Aliases:
 
 Required: False
@@ -73,7 +88,7 @@ Name of Redis Cache.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: NormalParameterSet
 Aliases:
 
 Required: True
@@ -83,18 +98,63 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of resource group in which cache exists.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: NormalParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ARM Id of Redis Cache Access Policy Assignment
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TopLevelResourceObject
+Object of type RedisCacheAttributes
+
+```yaml
+Type: Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes
+Parameter Sets: CacheObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

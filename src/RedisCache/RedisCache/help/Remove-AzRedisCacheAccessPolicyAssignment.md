@@ -15,14 +15,29 @@ Delete the Access Policy Assignment (Redis User)
 ### NormalParameterSet (Default)
 ```
 Remove-AzRedisCacheAccessPolicyAssignment [-ResourceGroupName <String>] -Name <String>
- -AccessPolicyAssignmentName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -AccessPolicyAssignmentName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CacheObjectParameterSet
+```
+Remove-AzRedisCacheAccessPolicyAssignment -AccessPolicyAssignmentName <String>
+ -TopLevelResourceObject <RedisCacheAttributes> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Remove-AzRedisCacheAccessPolicyAssignment -ResourceId <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RedisCacheAccessPolicyAssignmentObject
 ```
 Remove-AzRedisCacheAccessPolicyAssignment -InputObject <PSRedisAccessPolicyAssignment> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +59,7 @@ The name of the Access Policy Assignment that is being deleted from the Redis ca
 
 ```yaml
 Type: System.String
-Parameter Sets: NormalParameterSet
+Parameter Sets: NormalParameterSet, CacheObjectParameterSet
 Aliases:
 
 Required: True
@@ -114,6 +129,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of resource group in which cache exists.
 
@@ -126,6 +156,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ARM Id of Redis Cache Access Policy Assignment
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TopLevelResourceObject
+Object of type RedisCacheAttributes
+
+```yaml
+Type: Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes
+Parameter Sets: CacheObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
