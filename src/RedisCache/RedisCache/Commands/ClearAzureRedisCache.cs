@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
 
-    [Cmdlet("Clear", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCache", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Clear", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCache", DefaultParameterSetName = NormalParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class ClearAzureRedisCache : RedisCacheCmdletBase
     {
         private const string NormalParameterSet = "NormalParameterSet";

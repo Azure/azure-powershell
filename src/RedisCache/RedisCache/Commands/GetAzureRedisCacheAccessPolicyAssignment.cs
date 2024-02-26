@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.RedisCache.Models;
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCacheAccessPolicyAssignment"), OutputType(typeof(PSRedisAccessPolicyAssignment))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCacheAccessPolicyAssignment", DefaultParameterSetName = NormalParameterSet), OutputType(typeof(PSRedisAccessPolicyAssignment))]
     public class GetAzureRedisCacheAccessPolicyAssignment : RedisCacheCmdletBase
     {
         private const string NormalParameterSet = "NormalParameterSet";
