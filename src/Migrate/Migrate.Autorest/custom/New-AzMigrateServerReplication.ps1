@@ -185,8 +185,8 @@ function New-AzMigrateServerReplication {
         # Specifies the Operating System disk for the source server to be migrated.
         ${OSDiskID},
 
-        [ValidateSet("Standard" , "ConfidentialVM")]
-        [ArgumentCompleter( { "Standard" , "ConfidentialVM" })]
+        [ValidateSet("Standard" , "ConfidentialVM", "TrustedLaunch")]
+        [ArgumentCompleter( { "Standard" , "ConfidentialVM", "TrustedLaunch" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the security type for the Azure VM.
