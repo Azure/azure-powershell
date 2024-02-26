@@ -244,7 +244,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given subscription
+        /// Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given
+        /// subscription
         /// </summary>
         /// <param name='alertsSuppressionRuleName'>
         /// The unique name of the suppression alert rule

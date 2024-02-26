@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="status">The rule result status.
-        /// Possible values include: 'NonFinding', 'Finding', 'InternalError'</param>
+        /// Possible values include: &#39;NonFinding&#39;, &#39;Finding&#39;, &#39;InternalError&#39;</param>
 
         /// <param name="resultsNotInBaseline">Results the are not in baseline.
         /// </param>

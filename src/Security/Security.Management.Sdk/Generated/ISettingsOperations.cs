@@ -57,10 +57,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Setting>> GetWithHttpMessagesAsync(string settingName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// updating settings about different configurations in Microsoft Defender for Cloud
+        /// updating settings about different configurations in Microsoft Defender for
+        /// Cloud
         /// </summary>
         /// <remarks>
-        /// updating settings about different configurations in Microsoft Defender for Cloud
+        /// updating settings about different configurations in Microsoft Defender for
+        /// Cloud
         /// </remarks>
         /// <param name='settingName'>
         /// The name of the setting

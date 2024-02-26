@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
 
         /// <param name="type">The owner type for the governance rule owner source
-        /// Possible values include: 'ByTag', 'Manually'</param>
+        /// Possible values include: &#39;ByTag&#39;, &#39;Manually&#39;</param>
 
         /// <param name="value">The source value e.g. tag key like owner name or email address
         /// </param>

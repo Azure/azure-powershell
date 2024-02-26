@@ -18,7 +18,8 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         public const string Succeeded = "Succeeded";
         /// <summary>
-        /// Extension was not created/updated successfully. See operation status message for more details.
+        /// Extension was not created/updated successfully. See operation status
+        /// message for more details.
         /// </summary>
         public const string Failed = "Failed";
     }

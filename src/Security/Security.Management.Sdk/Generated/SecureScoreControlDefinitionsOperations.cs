@@ -223,7 +223,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// For a specified subscription, list the available security controls, their assessments, and the max score
+        /// For a specified subscription, list the available security controls, their
+        /// assessments, and the max score
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -601,7 +602,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// For a specified subscription, list the available security controls, their assessments, and the max score
+        /// For a specified subscription, list the available security controls, their
+        /// assessments, and the max score
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

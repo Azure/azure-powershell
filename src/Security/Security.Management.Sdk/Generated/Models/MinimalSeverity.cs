@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         public const string Medium = "Medium";
         /// <summary>
-        /// Don't get notifications on new alerts with low, medium or high severity
+        /// Don&#39;t get notifications on new alerts with low, medium or high severity
         /// </summary>
         public const string Low = "Low";
     }

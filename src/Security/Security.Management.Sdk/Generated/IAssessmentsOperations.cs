@@ -20,7 +20,9 @@ namespace Microsoft.Azure.Management.Security
         /// Get security assessments on all your scanned resources inside a scope
         /// </remarks>
         /// <param name='scope'>
-        /// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+        /// (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -66,10 +68,14 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SecurityAssessmentResponse>> GetWithHttpMessagesAsync(string resourceId, string assessmentName, string expand = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create a security assessment on your resource. An assessment metadata that describes this assessment must be predefined with the same name before inserting the assessment result
+        /// Create a security assessment on your resource. An assessment metadata that
+        /// describes this assessment must be predefined with the same name before
+        /// inserting the assessment result
         /// </summary>
         /// <remarks>
-        /// Create a security assessment on your resource. An assessment metadata that describes this assessment must be predefined with the same name before inserting the assessment result
+        /// Create a security assessment on your resource. An assessment metadata that
+        /// describes this assessment must be predefined with the same name before
+        /// inserting the assessment result
         /// </remarks>
         /// <param name='resourceId'>
         /// The identifier of the resource.
@@ -95,10 +101,14 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SecurityAssessmentResponse>> CreateOrUpdateWithHttpMessagesAsync(string resourceId, string assessmentName, SecurityAssessment assessment, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Delete a security assessment on your resource. An assessment metadata that describes this assessment must be predefined with the same name before inserting the assessment result
+        /// Delete a security assessment on your resource. An assessment metadata that
+        /// describes this assessment must be predefined with the same name before
+        /// inserting the assessment result
         /// </summary>
         /// <remarks>
-        /// Delete a security assessment on your resource. An assessment metadata that describes this assessment must be predefined with the same name before inserting the assessment result
+        /// Delete a security assessment on your resource. An assessment metadata that
+        /// describes this assessment must be predefined with the same name before
+        /// inserting the assessment result
         /// </remarks>
         /// <param name='resourceId'>
         /// The identifier of the resource.

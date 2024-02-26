@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="direction">The rule&#39;s direction
-        /// Possible values include: 'Inbound', 'Outbound'</param>
+        /// Possible values include: &#39;Inbound&#39;, &#39;Outbound&#39;</param>
 
         /// <param name="destinationPort">The rule&#39;s destination port
         /// </param>

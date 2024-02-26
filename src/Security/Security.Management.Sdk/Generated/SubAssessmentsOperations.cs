@@ -39,10 +39,13 @@ namespace Microsoft.Azure.Management.Security
         public SecurityCenterClient Client { get; private set; }
 
         /// <summary>
-        /// Get security sub-assessments on all your scanned resources inside a subscription scope
+        /// Get security sub-assessments on all your scanned resources inside a
+        /// subscription scope
         /// </summary>
         /// <param name='scope'>
-        /// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+        /// (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -236,7 +239,9 @@ namespace Microsoft.Azure.Management.Security
         /// Get security sub-assessments on all your scanned resources inside a scope
         /// </summary>
         /// <param name='scope'>
-        /// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+        /// (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - Unique key for the assessment type
@@ -440,7 +445,9 @@ namespace Microsoft.Azure.Management.Security
         /// Get a security sub-assessment on your scanned resource
         /// </summary>
         /// <param name='scope'>
-        /// Scope of the query, can be subscription (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group (/providers/Microsoft.Management/managementGroups/mgName).
+        /// Scope of the query, can be subscription
+        /// (/subscriptions/0b06d9ea-afe6-4779-bd59-30e5c2d9d13f) or management group
+        /// (/providers/Microsoft.Management/managementGroups/mgName).
         /// </param>
         /// <param name='assessmentName'>
         /// The Assessment Key - Unique key for the assessment type
@@ -651,7 +658,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Get security sub-assessments on all your scanned resources inside a subscription scope
+        /// Get security sub-assessments on all your scanned resources inside a
+        /// subscription scope
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

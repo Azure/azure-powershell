@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="type">The Vulnerability Assessment solution to be provisioned. Can be either
         /// &#39;TVM&#39; or &#39;Qualys&#39;
-        /// Possible values include: 'Qualys', 'TVM'</param>
+        /// Possible values include: &#39;Qualys&#39;, &#39;TVM&#39;</param>
         public DefenderForServersAwsOfferingVaAutoProvisioningConfiguration(string type = default(string))
 
         {

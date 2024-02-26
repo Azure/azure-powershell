@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Security
         public SecurityCenterClient Client { get; private set; }
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='filter'>
         /// OData filter. Optional.
@@ -244,7 +245,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='filter'>
         /// OData filter. Optional.
@@ -455,7 +457,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='taskName'>
         /// Name of the task object, will be a GUID
@@ -667,7 +670,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='taskName'>
         /// Name of the task object, will be a GUID
@@ -868,10 +872,12 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='filter'>
         /// OData filter. Optional.
@@ -1103,10 +1109,12 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='taskName'>
         /// Name of the task object, will be a GUID
@@ -1339,10 +1347,12 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='taskName'>
         /// Name of the task object, will be a GUID
@@ -1564,7 +1574,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1746,7 +1757,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1928,7 +1940,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

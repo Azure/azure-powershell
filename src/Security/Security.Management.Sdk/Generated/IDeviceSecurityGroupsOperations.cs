@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.Security
     public partial interface IDeviceSecurityGroupsOperations
     {
         /// <summary>
-        /// Use this method get the list of device security groups for the specified IoT Hub resource.
+        /// Use this method get the list of device security groups for the specified
+        /// IoT Hub resource.
         /// </summary>
         /// <remarks>
-        /// Use this method get the list of device security groups for the specified IoT Hub resource.
+        /// Use this method get the list of device security groups for the specified
+        /// IoT Hub resource.
         /// </remarks>
         /// <param name='resourceId'>
         /// The identifier of the resource.
@@ -37,16 +39,19 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DeviceSecurityGroup>>> ListWithHttpMessagesAsync(string resourceId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Use this method to get the device security group for the specified IoT Hub resource.
+        /// Use this method to get the device security group for the specified IoT Hub
+        /// resource.
         /// </summary>
         /// <remarks>
-        /// Use this method to get the device security group for the specified IoT Hub resource.
+        /// Use this method to get the device security group for the specified IoT Hub
+        /// resource.
         /// </remarks>
         /// <param name='resourceId'>
         /// The identifier of the resource.
         /// </param>
         /// <param name='deviceSecurityGroupName'>
-        /// The name of the device security group. Note that the name of the device security group is case insensitive.
+        /// The name of the device security group. Note that the name of the device
+        /// security group is case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -63,16 +68,19 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DeviceSecurityGroup>> GetWithHttpMessagesAsync(string resourceId, string deviceSecurityGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Use this method to creates or updates the device security group on a specified IoT Hub resource.
+        /// Use this method to creates or updates the device security group on a
+        /// specified IoT Hub resource.
         /// </summary>
         /// <remarks>
-        /// Use this method to creates or updates the device security group on a specified IoT Hub resource.
+        /// Use this method to creates or updates the device security group on a
+        /// specified IoT Hub resource.
         /// </remarks>
         /// <param name='resourceId'>
         /// The identifier of the resource.
         /// </param>
         /// <param name='deviceSecurityGroupName'>
-        /// The name of the device security group. Note that the name of the device security group is case insensitive.
+        /// The name of the device security group. Note that the name of the device
+        /// security group is case insensitive.
         /// </param>
         /// <param name='deviceSecurityGroup'>
         /// Security group object.
@@ -101,7 +109,8 @@ namespace Microsoft.Azure.Management.Security
         /// The identifier of the resource.
         /// </param>
         /// <param name='deviceSecurityGroupName'>
-        /// The name of the device security group. Note that the name of the device security group is case insensitive.
+        /// The name of the device security group. Note that the name of the device
+        /// security group is case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -115,10 +124,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceId, string deviceSecurityGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Use this method get the list of device security groups for the specified IoT Hub resource.
+        /// Use this method get the list of device security groups for the specified
+        /// IoT Hub resource.
         /// </summary>
         /// <remarks>
-        /// Use this method get the list of device security groups for the specified IoT Hub resource.
+        /// Use this method get the list of device security groups for the specified
+        /// IoT Hub resource.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

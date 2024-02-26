@@ -19,7 +19,12 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         public static Microsoft.Rest.Azure.IPage<GovernanceRule> List(this IGovernanceRulesOperations operations, string scope)
         {
@@ -33,7 +38,12 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -52,10 +62,16 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         public static GovernanceRule Get(this IGovernanceRulesOperations operations, string scope, string ruleId)
         {
@@ -69,10 +85,16 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -91,10 +113,16 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         public static GovernanceRule CreateOrUpdate(this IGovernanceRulesOperations operations, string scope, string ruleId, GovernanceRule governanceRule)
         {
@@ -108,10 +136,16 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -130,10 +164,16 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         public static GovernanceRulesDeleteHeaders Delete(this IGovernanceRulesOperations operations, string scope, string ruleId)
         {
@@ -147,10 +187,16 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -169,10 +215,16 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         public static GovernanceRulesExecuteHeaders Execute(this IGovernanceRulesOperations operations, string scope, string ruleId, bool? overrideParameter = default(bool?))
         {
@@ -186,10 +238,16 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -202,36 +260,50 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Get governance rules long run operation result for the requested scope by ruleId and operationId
+        /// Get governance rules long run operation result for the requested scope by
+        /// ruleId and operationId
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         /// <param name='operationId'>
         /// The governance rule long running operation unique key
         /// </param>
-        public static OperationResultAutoGenerated OperationResults(this IGovernanceRulesOperations operations, string scope, string ruleId, string operationId)
+        public static OperationResult OperationResults(this IGovernanceRulesOperations operations, string scope, string ruleId, string operationId)
         {
                 return ((IGovernanceRulesOperations)operations).OperationResultsAsync(scope, ruleId, operationId).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Get governance rules long run operation result for the requested scope by ruleId and operationId
+        /// Get governance rules long run operation result for the requested scope by
+        /// ruleId and operationId
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         /// <param name='operationId'>
         /// The governance rule long running operation unique key
@@ -239,7 +311,7 @@ namespace Microsoft.Azure.Management.Security
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<OperationResultAutoGenerated> OperationResultsAsync(this IGovernanceRulesOperations operations, string scope, string ruleId, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<OperationResult> OperationResultsAsync(this IGovernanceRulesOperations operations, string scope, string ruleId, string operationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.OperationResultsWithHttpMessagesAsync(scope, ruleId, operationId, null, cancellationToken).ConfigureAwait(false))
             {
@@ -253,10 +325,16 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         public static GovernanceRulesDeleteHeaders BeginDelete(this IGovernanceRulesOperations operations, string scope, string ruleId)
         {
@@ -270,10 +348,16 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -292,10 +376,16 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         public static GovernanceRulesExecuteHeaders BeginExecute(this IGovernanceRulesOperations operations, string scope, string ruleId, bool? overrideParameter = default(bool?))
         {
@@ -309,10 +399,16 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the Governance rules. Valid scopes are: management group (format: &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;), subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security connector (format: &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
+        /// The scope of the Governance rules. Valid scopes are: management group
+        /// (format:
+        /// &#39;providers/Microsoft.Management/managementGroups/{managementGroup}&#39;),
+        /// subscription (format: &#39;subscriptions/{subscriptionId}&#39;), or security
+        /// connector (format:
+        /// &#39;subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})&#39;
         /// </param>
         /// <param name='ruleId'>
-        /// The governance rule key - unique key for the standard governance rule (GUID)
+        /// The governance rule key - unique key for the standard governance rule
+        /// (GUID)
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

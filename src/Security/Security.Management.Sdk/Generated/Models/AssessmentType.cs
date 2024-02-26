@@ -18,15 +18,18 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         public const string BuiltIn = "BuiltIn";
         /// <summary>
-        /// User defined policies that are automatically ingested from Azure Policy to Microsoft Defender for Cloud
+        /// User defined policies that are automatically ingested from Azure Policy to
+        /// Microsoft Defender for Cloud
         /// </summary>
         public const string CustomPolicy = "CustomPolicy";
         /// <summary>
-        /// User assessments pushed directly by the user or other third party to Microsoft Defender for Cloud
+        /// User assessments pushed directly by the user or other third party to
+        /// Microsoft Defender for Cloud
         /// </summary>
         public const string CustomerManaged = "CustomerManaged";
         /// <summary>
-        /// An assessment that was created by a verified 3rd party if the user connected it to ASC
+        /// An assessment that was created by a verified 3rd party if the user
+        /// connected it to ASC
         /// </summary>
         public const string VerifiedPartner = "VerifiedPartner";
     }

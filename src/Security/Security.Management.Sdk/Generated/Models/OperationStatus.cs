@@ -8,8 +8,8 @@ namespace Microsoft.Azure.Management.Security.Models
     using System.Linq;
 
     /// <summary>
-    /// A status describing the success/failure of the extension&#39;s
-    /// enablement/disablement operation.
+    /// A status describing the success/failure of the enablement/disablement
+    /// operation.
     /// </summary>
     public partial class OperationStatus
     {
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
 
         /// <param name="code">The operation status code.
-        /// Possible values include: 'Succeeded', 'Failed'</param>
+        /// </param>
 
         /// <param name="message">Additional information regarding the success/failure of the operation.
         /// </param>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.Security.Models
 
 
         /// <summary>
-        /// Gets or sets the operation status code. Possible values include: &#39;Succeeded&#39;, &#39;Failed&#39;
+        /// Gets or sets the operation status code.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "code")]
         public string Code {get; set; }

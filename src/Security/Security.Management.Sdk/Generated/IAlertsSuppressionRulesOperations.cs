@@ -37,10 +37,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AlertsSuppressionRule>>> ListWithHttpMessagesAsync(string alertType = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given subscription
+        /// Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given
+        /// subscription
         /// </summary>
         /// <remarks>
-        /// Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given subscription
+        /// Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given
+        /// subscription
         /// </remarks>
         /// <param name='alertsSuppressionRuleName'>
         /// The unique name of the suppression alert rule

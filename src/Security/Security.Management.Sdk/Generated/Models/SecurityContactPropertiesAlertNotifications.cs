@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
 
         /// <param name="state">Defines if email notifications will be sent about new security alerts
-        /// Possible values include: 'On', 'Off'</param>
+        /// Possible values include: &#39;On&#39;, &#39;Off&#39;</param>
 
         /// <param name="minimalSeverity">Defines the minimal alert severity which will be sent as email
         /// notifications
-        /// Possible values include: 'High', 'Medium', 'Low'</param>
+        /// Possible values include: &#39;High&#39;, &#39;Medium&#39;, &#39;Low&#39;</param>
         public SecurityContactPropertiesAlertNotifications(string state = default(string), string minimalSeverity = default(string))
 
         {

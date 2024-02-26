@@ -30,11 +30,15 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="projectDetails">The Gcp project&#39;s details
         /// </param>
-        public GcpProjectEnvironmentData(GcpOrganizationalData organizationalData = default(GcpOrganizationalData), GcpProjectDetails projectDetails = default(GcpProjectDetails))
+
+        /// <param name="scanInterval">Scan interval in hours (value should be between 1-hour to 24-hours)
+        /// </param>
+        public GcpProjectEnvironmentData(GcpOrganizationalData organizationalData = default(GcpOrganizationalData), GcpProjectDetails projectDetails = default(GcpProjectDetails), long? scanInterval = default(long?))
 
         {
             this.OrganizationalData = organizationalData;
             this.ProjectDetails = projectDetails;
+            this.ScanInterval = scanInterval;
             CustomInit();
         }
 
@@ -55,5 +59,12 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "projectDetails")]
         public GcpProjectDetails ProjectDetails {get; set; }
+
+        /// <summary>
+        /// Gets or sets scan interval in hours (value should be between 1-hour to
+        /// 24-hours)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "scanInterval")]
+        public long? ScanInterval {get; set; }
     }
 }

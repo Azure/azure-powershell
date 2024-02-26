@@ -28,17 +28,17 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="action">The recommendation action of the machine or rule
-        /// Possible values include: 'Recommended', 'Add', 'Remove'</param>
+        /// Possible values include: &#39;Recommended&#39;, &#39;Add&#39;, &#39;Remove&#39;</param>
 
         /// <param name="type">The type of IoT Security recommendation.
-        /// Possible values include: 'IoT_ACRAuthentication',
-        /// 'IoT_AgentSendsUnutilizedMessages', 'IoT_Baseline',
-        /// 'IoT_EdgeHubMemOptimize', 'IoT_EdgeLoggingOptions',
-        /// 'IoT_InconsistentModuleSettings', 'IoT_InstallAgent',
-        /// 'IoT_IPFilter_DenyAll', 'IoT_IPFilter_PermissiveRule', 'IoT_OpenPorts',
-        /// 'IoT_PermissiveFirewallPolicy', 'IoT_PermissiveInputFirewallRules',
-        /// 'IoT_PermissiveOutputFirewallRules', 'IoT_PrivilegedDockerOptions',
-        /// 'IoT_SharedCredentials', 'IoT_VulnerableTLSCipherSuite'</param>
+        /// Possible values include: &#39;IoT_ACRAuthentication&#39;,
+        /// &#39;IoT_AgentSendsUnutilizedMessages&#39;, &#39;IoT_Baseline&#39;,
+        /// &#39;IoT_EdgeHubMemOptimize&#39;, &#39;IoT_EdgeLoggingOptions&#39;,
+        /// &#39;IoT_InconsistentModuleSettings&#39;, &#39;IoT_InstallAgent&#39;,
+        /// &#39;IoT_IPFilter_DenyAll&#39;, &#39;IoT_IPFilter_PermissiveRule&#39;, &#39;IoT_OpenPorts&#39;,
+        /// &#39;IoT_PermissiveFirewallPolicy&#39;, &#39;IoT_PermissiveInputFirewallRules&#39;,
+        /// &#39;IoT_PermissiveOutputFirewallRules&#39;, &#39;IoT_PrivilegedDockerOptions&#39;,
+        /// &#39;IoT_SharedCredentials&#39;, &#39;IoT_VulnerableTLSCipherSuite&#39;</param>
 
         /// <param name="publisherInfo">Represents the publisher information of a process/rule
         /// </param>
@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="fileType">The type of the file (for Linux files - Executable is used)
-        /// Possible values include: 'Exe', 'Dll', 'Msi', 'Script', 'Executable',
-        /// 'Unknown'</param>
+        /// Possible values include: &#39;Exe&#39;, &#39;Dll&#39;, &#39;Msi&#39;, &#39;Script&#39;, &#39;Executable&#39;,
+        /// &#39;Unknown&#39;</param>
 
         /// <param name="configurationStatus">The configuration status of the machines group or machine or rule
-        /// Possible values include: 'Configured', 'NotConfigured', 'InProgress',
-        /// 'Failed', 'NoStatus'</param>
+        /// Possible values include: &#39;Configured&#39;, &#39;NotConfigured&#39;, &#39;InProgress&#39;,
+        /// &#39;Failed&#39;, &#39;NoStatus&#39;</param>
         public PathRecommendation(string path = default(string), string action = default(string), string type = default(string), PublisherInfo publisherInfo = default(PublisherInfo), bool? common = default(bool?), System.Collections.Generic.IList<string> userSids = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<UserRecommendation> usernames = default(System.Collections.Generic.IList<UserRecommendation>), string fileType = default(string), string configurationStatus = default(string))
 
         {

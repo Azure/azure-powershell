@@ -34,10 +34,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SecuritySolutionsReferenceDataList>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets list of all supported Security Solutions for subscription and location.
+        /// Gets list of all supported Security Solutions for subscription and
+        /// location.
         /// </summary>
         /// <remarks>
-        /// Gets list of all supported Security Solutions for subscription and location.
+        /// Gets list of all supported Security Solutions for subscription and
+        /// location.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

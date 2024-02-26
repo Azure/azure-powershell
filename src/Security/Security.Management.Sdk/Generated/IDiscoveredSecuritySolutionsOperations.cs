@@ -34,10 +34,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DiscoveredSecuritySolution>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets a list of discovered Security Solutions for the subscription and location.
+        /// Gets a list of discovered Security Solutions for the subscription and
+        /// location.
         /// </summary>
         /// <remarks>
-        /// Gets a list of discovered Security Solutions for the subscription and location.
+        /// Gets a list of discovered Security Solutions for the subscription and
+        /// location.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -60,7 +62,8 @@ namespace Microsoft.Azure.Management.Security
         /// Gets a specific discovered Security Solution.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='discoveredSecuritySolutionName'>
         /// Name of a discovered security solution.
@@ -103,10 +106,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DiscoveredSecuritySolution>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets a list of discovered Security Solutions for the subscription and location.
+        /// Gets a list of discovered Security Solutions for the subscription and
+        /// location.
         /// </summary>
         /// <remarks>
-        /// Gets a list of discovered Security Solutions for the subscription and location.
+        /// Gets a list of discovered Security Solutions for the subscription and
+        /// location.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

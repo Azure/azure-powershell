@@ -46,7 +46,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given subscription
+        /// Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given
+        /// subscription
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -60,7 +61,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given subscription
+        /// Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given
+        /// subscription
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

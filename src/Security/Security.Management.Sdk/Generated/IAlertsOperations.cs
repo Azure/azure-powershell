@@ -40,7 +40,8 @@ namespace Microsoft.Azure.Management.Security
         /// List all the alerts that are associated with the resource group
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -57,10 +58,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Alert>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List all the alerts that are associated with the subscription that are stored in a specific location
+        /// List all the alerts that are associated with the subscription that are
+        /// stored in a specific location
         /// </summary>
         /// <remarks>
-        /// List all the alerts that are associated with the subscription that are stored in a specific location
+        /// List all the alerts that are associated with the subscription that are
+        /// stored in a specific location
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -77,13 +80,16 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Alert>>> ListSubscriptionLevelByRegionWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List all the alerts that are associated with the resource group that are stored in a specific location
+        /// List all the alerts that are associated with the resource group that are
+        /// stored in a specific location
         /// </summary>
         /// <remarks>
-        /// List all the alerts that are associated with the resource group that are stored in a specific location
+        /// List all the alerts that are associated with the resource group that are
+        /// stored in a specific location
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -123,13 +129,16 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Alert>> GetSubscriptionLevelWithHttpMessagesAsync(string alertName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get an alert that is associated a resource group or a resource in a resource group
+        /// Get an alert that is associated a resource group or a resource in a
+        /// resource group
         /// </summary>
         /// <remarks>
-        /// Get an alert that is associated a resource group or a resource in a resource group
+        /// Get an alert that is associated a resource group or a resource in a
+        /// resource group
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='alertName'>
         /// Name of the alert object
@@ -235,7 +244,8 @@ namespace Microsoft.Azure.Management.Security
         /// Update the alert&#39;s state
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='alertName'>
         /// Name of the alert object
@@ -258,7 +268,8 @@ namespace Microsoft.Azure.Management.Security
         /// Update the alert&#39;s state
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='alertName'>
         /// Name of the alert object
@@ -281,7 +292,8 @@ namespace Microsoft.Azure.Management.Security
         /// Update the alert&#39;s state
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='alertName'>
         /// Name of the alert object
@@ -304,7 +316,8 @@ namespace Microsoft.Azure.Management.Security
         /// Update the alert&#39;s state
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='alertName'>
         /// Name of the alert object
@@ -407,10 +420,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Alert>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List all the alerts that are associated with the subscription that are stored in a specific location
+        /// List all the alerts that are associated with the subscription that are
+        /// stored in a specific location
         /// </summary>
         /// <remarks>
-        /// List all the alerts that are associated with the subscription that are stored in a specific location
+        /// List all the alerts that are associated with the subscription that are
+        /// stored in a specific location
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -430,10 +445,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Alert>>> ListSubscriptionLevelByRegionNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List all the alerts that are associated with the resource group that are stored in a specific location
+        /// List all the alerts that are associated with the resource group that are
+        /// stored in a specific location
         /// </summary>
         /// <remarks>
-        /// List all the alerts that are associated with the resource group that are stored in a specific location
+        /// List all the alerts that are associated with the resource group that are
+        /// stored in a specific location
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

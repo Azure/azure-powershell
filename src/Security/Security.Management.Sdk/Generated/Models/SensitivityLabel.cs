@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="rank">The rank of the sensitivity label.
-        /// Possible values include: 'None', 'Low', 'Medium', 'High', 'Critical'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;, &#39;Critical&#39;</param>
 
         /// <param name="order">The order of the sensitivity label.
         /// </param>

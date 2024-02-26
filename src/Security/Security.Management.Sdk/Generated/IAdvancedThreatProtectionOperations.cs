@@ -37,10 +37,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AdvancedThreatProtectionSetting>> GetWithHttpMessagesAsync(string resourceId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates or updates the Advanced Threat Protection settings on a specified resource.
+        /// Creates or updates the Advanced Threat Protection settings on a specified
+        /// resource.
         /// </summary>
         /// <remarks>
-        /// Creates or updates the Advanced Threat Protection settings on a specified resource.
+        /// Creates or updates the Advanced Threat Protection settings on a specified
+        /// resource.
         /// </remarks>
         /// <param name='resourceId'>
         /// The identifier of the resource.

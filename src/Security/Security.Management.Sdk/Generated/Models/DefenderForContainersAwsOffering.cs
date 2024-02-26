@@ -59,7 +59,13 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <param name="scubaExternalId">The externalId used by the data reader to prevent the confused deputy
         /// attack
         /// </param>
-        public DefenderForContainersAwsOffering(string description = default(string), DefenderForContainersAwsOfferingKubernetesService kubernetesService = default(DefenderForContainersAwsOfferingKubernetesService), DefenderForContainersAwsOfferingKubernetesScubaReader kubernetesScubaReader = default(DefenderForContainersAwsOfferingKubernetesScubaReader), DefenderForContainersAwsOfferingCloudWatchToKinesis cloudWatchToKinesis = default(DefenderForContainersAwsOfferingCloudWatchToKinesis), DefenderForContainersAwsOfferingKinesisToS3 kinesisToS3 = default(DefenderForContainersAwsOfferingKinesisToS3), DefenderForContainersAwsOfferingContainerVulnerabilityAssessment containerVulnerabilityAssessment = default(DefenderForContainersAwsOfferingContainerVulnerabilityAssessment), DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask containerVulnerabilityAssessmentTask = default(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask), bool? enableContainerVulnerabilityAssessment = default(bool?), bool? autoProvisioning = default(bool?), long? kubeAuditRetentionTime = default(long?), string scubaExternalId = default(string))
+
+        /// <param name="mdcContainersImageAssessment">The Microsoft Defender container image assessment configuration
+        /// </param>
+
+        /// <param name="mdcContainersAgentlessDiscoveryK8S">The Microsoft Defender container agentless discovery K8s configuration
+        /// </param>
+        public DefenderForContainersAwsOffering(string description = default(string), DefenderForContainersAwsOfferingKubernetesService kubernetesService = default(DefenderForContainersAwsOfferingKubernetesService), DefenderForContainersAwsOfferingKubernetesScubaReader kubernetesScubaReader = default(DefenderForContainersAwsOfferingKubernetesScubaReader), DefenderForContainersAwsOfferingCloudWatchToKinesis cloudWatchToKinesis = default(DefenderForContainersAwsOfferingCloudWatchToKinesis), DefenderForContainersAwsOfferingKinesisToS3 kinesisToS3 = default(DefenderForContainersAwsOfferingKinesisToS3), DefenderForContainersAwsOfferingContainerVulnerabilityAssessment containerVulnerabilityAssessment = default(DefenderForContainersAwsOfferingContainerVulnerabilityAssessment), DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask containerVulnerabilityAssessmentTask = default(DefenderForContainersAwsOfferingContainerVulnerabilityAssessmentTask), bool? enableContainerVulnerabilityAssessment = default(bool?), bool? autoProvisioning = default(bool?), long? kubeAuditRetentionTime = default(long?), string scubaExternalId = default(string), DefenderForContainersAwsOfferingMdcContainersImageAssessment mdcContainersImageAssessment = default(DefenderForContainersAwsOfferingMdcContainersImageAssessment), DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8S mdcContainersAgentlessDiscoveryK8S = default(DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8S))
 
         : base(description)
         {
@@ -73,6 +79,8 @@ namespace Microsoft.Azure.Management.Security.Models
             this.AutoProvisioning = autoProvisioning;
             this.KubeAuditRetentionTime = kubeAuditRetentionTime;
             this.ScubaExternalId = scubaExternalId;
+            this.MdcContainersImageAssessment = mdcContainersImageAssessment;
+            this.MdcContainersAgentlessDiscoveryK8S = mdcContainersAgentlessDiscoveryK8S;
             CustomInit();
         }
 
@@ -143,5 +151,19 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "scubaExternalId")]
         public string ScubaExternalId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Microsoft Defender container image assessment
+        /// configuration
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "mdcContainersImageAssessment")]
+        public DefenderForContainersAwsOfferingMdcContainersImageAssessment MdcContainersImageAssessment {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Microsoft Defender container agentless discovery K8s
+        /// configuration
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "mdcContainersAgentlessDiscoveryK8s")]
+        public DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8S MdcContainersAgentlessDiscoveryK8S {get; set; }
     }
 }

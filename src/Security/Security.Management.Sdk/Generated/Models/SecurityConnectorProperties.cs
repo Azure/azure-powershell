@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="environmentName">The multi cloud resource&#39;s cloud name.
-        /// Possible values include: 'Azure', 'AWS', 'GCP', 'Github', 'AzureDevOps'</param>
+        /// Possible values include: &#39;Azure&#39;, &#39;AWS&#39;, &#39;GCP&#39;, &#39;Github&#39;, &#39;AzureDevOps&#39;,
+        /// &#39;GitLab&#39;</param>
 
         /// <param name="offerings">A collection of offerings for the security connector.
         /// </param>
@@ -72,7 +73,7 @@ namespace Microsoft.Azure.Management.Security.Models
         public System.DateTime? HierarchyIdentifierTrialEndDate {get; private set; }
 
         /// <summary>
-        /// Gets or sets the multi cloud resource&#39;s cloud name. Possible values include: &#39;Azure&#39;, &#39;AWS&#39;, &#39;GCP&#39;, &#39;Github&#39;, &#39;AzureDevOps&#39;
+        /// Gets or sets the multi cloud resource&#39;s cloud name. Possible values include: &#39;Azure&#39;, &#39;AWS&#39;, &#39;GCP&#39;, &#39;Github&#39;, &#39;AzureDevOps&#39;, &#39;GitLab&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "environmentName")]
         public string EnvironmentName {get; set; }

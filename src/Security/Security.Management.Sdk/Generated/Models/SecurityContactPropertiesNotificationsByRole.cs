@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="state">Defines whether to send email notifications from AMicrosoft Defender for
         /// Cloud to persons with specific RBAC roles on the subscription.
-        /// Possible values include: 'On', 'Off'</param>
+        /// Possible values include: &#39;On&#39;, &#39;Off&#39;</param>
 
         /// <param name="roles">Defines which RBAC roles will get email notifications from Microsoft
         /// Defender for Cloud. List of allowed RBAC roles:

@@ -14,11 +14,11 @@ namespace Microsoft.Azure.Management.Security.Models
     public static class SecurityAlertNotificationByRoleState
     {
         /// <summary>
-        /// Send notification on new alerts to the subscription's admins
+        /// Send notification on new alerts to the subscription&#39;s admins
         /// </summary>
         public const string On = "On";
         /// <summary>
-        /// Don't send notification on new alerts to the subscription's admins
+        /// Don&#39;t send notification on new alerts to the subscription&#39;s admins
         /// </summary>
         public const string Off = "Off";
     }

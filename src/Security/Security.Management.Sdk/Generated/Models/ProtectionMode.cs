@@ -27,19 +27,19 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="exe">The application control policy enforcement/protection mode of the machine
         /// group
-        /// Possible values include: 'Audit', 'Enforce', 'None'</param>
+        /// Possible values include: &#39;Audit&#39;, &#39;Enforce&#39;, &#39;None&#39;</param>
 
         /// <param name="msi">The application control policy enforcement/protection mode of the machine
         /// group
-        /// Possible values include: 'Audit', 'Enforce', 'None'</param>
+        /// Possible values include: &#39;Audit&#39;, &#39;Enforce&#39;, &#39;None&#39;</param>
 
         /// <param name="script">The application control policy enforcement/protection mode of the machine
         /// group
-        /// Possible values include: 'Audit', 'Enforce', 'None'</param>
+        /// Possible values include: &#39;Audit&#39;, &#39;Enforce&#39;, &#39;None&#39;</param>
 
         /// <param name="executable">The application control policy enforcement/protection mode of the machine
         /// group
-        /// Possible values include: 'Audit', 'Enforce', 'None'</param>
+        /// Possible values include: &#39;Audit&#39;, &#39;Enforce&#39;, &#39;None&#39;</param>
         public ProtectionMode(string exe = default(string), string msi = default(string), string script = default(string), string executable = default(string))
 
         {

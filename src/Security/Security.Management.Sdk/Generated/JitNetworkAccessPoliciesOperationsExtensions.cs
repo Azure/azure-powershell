@@ -40,7 +40,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -51,7 +52,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -67,13 +69,15 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<JitNetworkAccessPolicy> ListByResourceGroup(this IJitNetworkAccessPoliciesOperations operations, string resourceGroupName)
         {
@@ -81,13 +85,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -100,13 +106,15 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<JitNetworkAccessPolicy> ListByResourceGroupAndRegion(this IJitNetworkAccessPoliciesOperations operations, string resourceGroupName)
         {
@@ -114,13 +122,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -133,13 +143,15 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='jitNetworkAccessPolicyName'>
         /// Name of a Just-in-Time access configuration policy.
@@ -150,13 +162,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='jitNetworkAccessPolicyName'>
         /// Name of a Just-in-Time access configuration policy.
@@ -178,7 +192,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='jitNetworkAccessPolicyName'>
         /// Name of a Just-in-Time access configuration policy.
@@ -195,7 +210,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='jitNetworkAccessPolicyName'>
         /// Name of a Just-in-Time access configuration policy.
@@ -217,7 +233,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='jitNetworkAccessPolicyName'>
         /// Name of a Just-in-Time access configuration policy.
@@ -234,7 +251,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='jitNetworkAccessPolicyName'>
         /// Name of a Just-in-Time access configuration policy.
@@ -253,7 +271,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='jitNetworkAccessPolicyName'>
         /// Name of a Just-in-Time access configuration policy.
@@ -270,7 +289,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='jitNetworkAccessPolicyName'>
         /// Name of a Just-in-Time access configuration policy.
@@ -319,7 +339,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -333,7 +354,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -352,7 +374,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -366,7 +389,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -385,7 +409,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -399,7 +424,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Policies for protecting resources using Just-in-Time access control for the subscription, location
+        /// Policies for protecting resources using Just-in-Time access control for the
+        /// subscription, location
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

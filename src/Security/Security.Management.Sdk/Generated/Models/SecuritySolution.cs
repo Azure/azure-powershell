@@ -35,10 +35,10 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="securityFamily">The security family of the security solution
-        /// Possible values include: 'Waf', 'Ngfw', 'SaasWaf', 'Va'</param>
+        /// Possible values include: &#39;Waf&#39;, &#39;Ngfw&#39;, &#39;SaasWaf&#39;, &#39;Va&#39;</param>
 
         /// <param name="provisioningState">The security family provisioning State
-        /// Possible values include: 'Succeeded', 'Failed', 'Updating'</param>
+        /// Possible values include: &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Updating&#39;</param>
 
         /// <param name="template">The security solutions&#39; template
         /// </param>

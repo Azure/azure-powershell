@@ -32,12 +32,16 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="workloadIdentityPoolId">The GCP workload identity federation pool id
         /// </param>
-        public GcpProjectDetails(string projectNumber = default(string), string projectId = default(string), string workloadIdentityPoolId = default(string))
+
+        /// <param name="projectName">GCP project name
+        /// </param>
+        public GcpProjectDetails(string projectNumber = default(string), string projectId = default(string), string workloadIdentityPoolId = default(string), string projectName = default(string))
 
         {
             this.ProjectNumber = projectNumber;
             this.ProjectId = projectId;
             this.WorkloadIdentityPoolId = workloadIdentityPoolId;
+            this.ProjectName = projectName;
             CustomInit();
         }
 
@@ -64,5 +68,11 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "workloadIdentityPoolId")]
         public string WorkloadIdentityPoolId {get; private set; }
+
+        /// <summary>
+        /// Gets gCP project name
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "projectName")]
+        public string ProjectName {get; private set; }
     }
 }

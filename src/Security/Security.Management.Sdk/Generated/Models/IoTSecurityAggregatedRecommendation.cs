@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="reportedSeverity">Assessed recommendation severity.
-        /// Possible values include: 'Informational', 'Low', 'Medium', 'High'</param>
+        /// Possible values include: &#39;Informational&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
 
         /// <param name="recommendationName">Name of the recommendation.
         /// </param>

@@ -5,25 +5,44 @@
 
 namespace Microsoft.Azure.Management.Security.Models
 {
+    using System.Linq;
 
     /// <summary>
-    /// Defines values for OperationResult.
+    /// Long run operation status of governance rule over a given scope
     /// </summary>
-
-
-    public static class OperationResult
+    public partial class OperationResult
     {
         /// <summary>
-        /// The operation succeeded
+        /// Initializes a new instance of the OperationResult class.
         /// </summary>
-        public const string Succeeded = "Succeeded";
+        public OperationResult()
+        {
+            CustomInit();
+        }
+
         /// <summary>
-        /// The operation failed
+        /// Initializes a new instance of the OperationResult class.
         /// </summary>
-        public const string Failed = "Failed";
+
+        /// <param name="status">The status of the long run operation result of governance rule
+        /// Possible values include: &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;</param>
+        public OperationResult(string status = default(string))
+
+        {
+            this.Status = status;
+            CustomInit();
+        }
+
         /// <summary>
-        /// The operation canceled
+        /// An initialization method that performs custom operations like setting defaults
         /// </summary>
-        public const string Canceled = "Canceled";
+        partial void CustomInit();
+
+
+        /// <summary>
+        /// Gets the status of the long run operation result of governance rule Possible values include: &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
+        public string Status {get; private set; }
     }
 }

@@ -39,10 +39,12 @@ namespace Microsoft.Azure.Management.Security
         public SecurityCenterClient Client { get; private set; }
 
         /// <summary>
-        /// Gets a single custom entity store assignment by name for the provided subscription and resource group.
+        /// Gets a single custom entity store assignment by name for the provided
+        /// subscription and resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customEntityStoreAssignmentName'>
         /// Name of the custom entity store assignment. Generated name is GUID.
@@ -269,16 +271,20 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Creates a custom entity store assignment for the provided subscription, if not already exists.
+        /// Creates a custom entity store assignment for the provided subscription, if
+        /// not already exists.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customEntityStoreAssignmentName'>
         /// Name of the custom entity store assignment. Generated name is GUID.
         /// </param>
         /// <param name='principal'>
-        /// The principal assigned with entity store. If not provided, will use caller principal. Format of principal is: [AAD type]=[PrincipalObjectId];[TenantId]
+        /// The principal assigned with entity store. If not provided, will use caller
+        /// principal. Format of principal is: [AAD
+        /// type]=[PrincipalObjectId];[TenantId]
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -535,7 +541,8 @@ namespace Microsoft.Azure.Management.Security
         /// Delete a custom entity store assignment by name for a provided subscription
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customEntityStoreAssignmentName'>
         /// Name of the custom entity store assignment. Generated name is GUID.
@@ -741,10 +748,12 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// List custom entity store assignments by a provided subscription and resource group
+        /// List custom entity store assignments by a provided subscription and
+        /// resource group
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1157,7 +1166,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// List custom entity store assignments by a provided subscription and resource group
+        /// List custom entity store assignments by a provided subscription and
+        /// resource group
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="endOfSupportStatus">End of support status.
-        /// Possible values include: 'None', 'noLongerSupported',
-        /// 'versionNoLongerSupported', 'upcomingNoLongerSupported',
-        /// 'upcomingVersionNoLongerSupported'</param>
+        /// Possible values include: &#39;None&#39;, &#39;noLongerSupported&#39;,
+        /// &#39;versionNoLongerSupported&#39;, &#39;upcomingNoLongerSupported&#39;,
+        /// &#39;upcomingVersionNoLongerSupported&#39;</param>
 
         /// <param name="endOfSupportDate">The end of support date in case the product is upcoming end of support.
         /// </param>

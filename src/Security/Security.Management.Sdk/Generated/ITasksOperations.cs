@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.Security
     public partial interface ITasksOperations
     {
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <remarks>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </remarks>
         /// <param name='filter'>
         /// OData filter. Optional.
@@ -37,10 +39,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SecurityTask>>> ListWithHttpMessagesAsync(string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <remarks>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </remarks>
         /// <param name='filter'>
         /// OData filter. Optional.
@@ -60,10 +64,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SecurityTask>>> ListByHomeRegionWithHttpMessagesAsync(string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <remarks>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </remarks>
         /// <param name='taskName'>
         /// Name of the task object, will be a GUID
@@ -83,10 +89,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SecurityTask>> GetSubscriptionLevelTaskWithHttpMessagesAsync(string taskName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <remarks>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </remarks>
         /// <param name='taskName'>
         /// Name of the task object, will be a GUID
@@ -106,13 +114,16 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> UpdateSubscriptionLevelTaskStateWithHttpMessagesAsync(string taskName, string taskUpdateActionType, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <remarks>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='filter'>
         /// OData filter. Optional.
@@ -132,13 +143,16 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SecurityTask>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string filter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <remarks>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='taskName'>
         /// Name of the task object, will be a GUID
@@ -158,13 +172,16 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SecurityTask>> GetResourceGroupLevelTaskWithHttpMessagesAsync(string resourceGroupName, string taskName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <remarks>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='taskName'>
         /// Name of the task object, will be a GUID
@@ -184,10 +201,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> UpdateResourceGroupLevelTaskStateWithHttpMessagesAsync(string resourceGroupName, string taskName, string taskUpdateActionType, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <remarks>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -207,10 +226,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SecurityTask>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <remarks>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -230,10 +251,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SecurityTask>>> ListByHomeRegionNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <remarks>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

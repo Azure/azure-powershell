@@ -36,23 +36,23 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="enforcementMode">The application control policy enforcement/protection mode of the machine
         /// group
-        /// Possible values include: 'Audit', 'Enforce', 'None'</param>
+        /// Possible values include: &#39;Audit&#39;, &#39;Enforce&#39;, &#39;None&#39;</param>
 
         /// <param name="protectionMode">The protection mode of the collection/file types. Exe/Msi/Script are used
         /// for Windows, Executable is used for Linux.
         /// </param>
 
         /// <param name="configurationStatus">The configuration status of the machines group or machine or rule
-        /// Possible values include: 'Configured', 'NotConfigured', 'InProgress',
-        /// 'Failed', 'NoStatus'</param>
+        /// Possible values include: &#39;Configured&#39;, &#39;NotConfigured&#39;, &#39;InProgress&#39;,
+        /// &#39;Failed&#39;, &#39;NoStatus&#39;</param>
 
         /// <param name="recommendationStatus">The initial recommendation status of the machine group or machine
-        /// Possible values include: 'Recommended', 'NotRecommended', 'NotAvailable',
-        /// 'NoStatus'</param>
+        /// Possible values include: &#39;Recommended&#39;, &#39;NotRecommended&#39;, &#39;NotAvailable&#39;,
+        /// &#39;NoStatus&#39;</param>
 
         /// <param name="sourceSystem">The source type of the machine group
-        /// Possible values include: 'Azure_AppLocker', 'Azure_AuditD',
-        /// 'NonAzure_AppLocker', 'NonAzure_AuditD', 'None'</param>
+        /// Possible values include: &#39;Azure_AppLocker&#39;, &#39;Azure_AuditD&#39;,
+        /// &#39;NonAzure_AppLocker&#39;, &#39;NonAzure_AuditD&#39;, &#39;None&#39;</param>
 
         /// <param name="vmRecommendations">
         /// </param>

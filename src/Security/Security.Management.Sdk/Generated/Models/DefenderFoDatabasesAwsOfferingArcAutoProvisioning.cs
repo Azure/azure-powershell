@@ -29,11 +29,15 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="cloudRoleArn">The cloud role ARN in AWS for this feature
         /// </param>
-        public DefenderFoDatabasesAwsOfferingArcAutoProvisioning(bool? enabled = default(bool?), string cloudRoleArn = default(string))
+
+        /// <param name="configuration">Configuration for servers Arc auto provisioning
+        /// </param>
+        public DefenderFoDatabasesAwsOfferingArcAutoProvisioning(bool? enabled = default(bool?), string cloudRoleArn = default(string), DefenderFoDatabasesAwsOfferingArcAutoProvisioningConfiguration configuration = default(DefenderFoDatabasesAwsOfferingArcAutoProvisioningConfiguration))
 
         {
             this.Enabled = enabled;
             this.CloudRoleArn = cloudRoleArn;
+            this.Configuration = configuration;
             CustomInit();
         }
 
@@ -54,5 +58,11 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "cloudRoleArn")]
         public string CloudRoleArn {get; set; }
+
+        /// <summary>
+        /// Gets or sets configuration for servers Arc auto provisioning
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "configuration")]
+        public DefenderFoDatabasesAwsOfferingArcAutoProvisioningConfiguration Configuration {get; set; }
     }
 }

@@ -14,10 +14,14 @@ namespace Microsoft.Azure.Management.Security
     public partial interface ISecurityConnectorsOperations
     {
         /// <summary>
-        /// Lists all the security connectors in the specified subscription. Use the &#39;nextLink&#39; property in the response to get the next page of security connectors for the specified subscription.
+        /// Lists all the security connectors in the specified subscription. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// connectors for the specified subscription.
         /// </summary>
         /// <remarks>
-        /// Lists all the security connectors in the specified subscription. Use the &#39;nextLink&#39; property in the response to get the next page of security connectors for the specified subscription.
+        /// Lists all the security connectors in the specified subscription. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// connectors for the specified subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -34,13 +38,18 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SecurityConnector>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all the security connectors in the specified resource group. Use the &#39;nextLink&#39; property in the response to get the next page of security connectors for the specified resource group.
+        /// Lists all the security connectors in the specified resource group. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// connectors for the specified resource group.
         /// </summary>
         /// <remarks>
-        /// Lists all the security connectors in the specified resource group. Use the &#39;nextLink&#39; property in the response to get the next page of security connectors for the specified resource group.
+        /// Lists all the security connectors in the specified resource group. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// connectors for the specified resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -63,7 +72,8 @@ namespace Microsoft.Azure.Management.Security
         /// Retrieves details of a specific security connector
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='securityConnectorName'>
         /// The security connector name.
@@ -83,13 +93,18 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SecurityConnector>> GetWithHttpMessagesAsync(string resourceGroupName, string securityConnectorName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates or updates a security connector. If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
+        /// Creates or updates a security connector. If a security connector is already
+        /// created and a subsequent request is issued for the same security connector
+        /// id, then it will be updated.
         /// </summary>
         /// <remarks>
-        /// Creates or updates a security connector. If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
+        /// Creates or updates a security connector. If a security connector is already
+        /// created and a subsequent request is issued for the same security connector
+        /// id, then it will be updated.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='securityConnectorName'>
         /// The security connector name.
@@ -118,7 +133,8 @@ namespace Microsoft.Azure.Management.Security
         /// Updates a security connector
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='securityConnectorName'>
         /// The security connector name.
@@ -147,7 +163,8 @@ namespace Microsoft.Azure.Management.Security
         /// Deletes a security connector.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='securityConnectorName'>
         /// The security connector name.
@@ -164,10 +181,14 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string securityConnectorName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all the security connectors in the specified subscription. Use the &#39;nextLink&#39; property in the response to get the next page of security connectors for the specified subscription.
+        /// Lists all the security connectors in the specified subscription. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// connectors for the specified subscription.
         /// </summary>
         /// <remarks>
-        /// Lists all the security connectors in the specified subscription. Use the &#39;nextLink&#39; property in the response to get the next page of security connectors for the specified subscription.
+        /// Lists all the security connectors in the specified subscription. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// connectors for the specified subscription.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -187,10 +208,14 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SecurityConnector>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all the security connectors in the specified resource group. Use the &#39;nextLink&#39; property in the response to get the next page of security connectors for the specified resource group.
+        /// Lists all the security connectors in the specified resource group. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// connectors for the specified resource group.
         /// </summary>
         /// <remarks>
-        /// Lists all the security connectors in the specified resource group. Use the &#39;nextLink&#39; property in the response to get the next page of security connectors for the specified resource group.
+        /// Lists all the security connectors in the specified resource group. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// connectors for the specified resource group.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

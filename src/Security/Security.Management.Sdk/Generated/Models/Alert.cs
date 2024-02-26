@@ -37,10 +37,10 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <param name="intent">The kill chain related intent behind the alert. For list of supported
         /// values, and explanations of Azure Security Center&#39;s supported kill chain
         /// intents.
-        /// Possible values include: 'Unknown', 'PreAttack', 'InitialAccess',
-        /// 'Persistence', 'PrivilegeEscalation', 'DefenseEvasion', 'CredentialAccess',
-        /// 'Discovery', 'LateralMovement', 'Execution', 'Collection', 'Exfiltration',
-        /// 'CommandAndControl', 'Impact', 'Probing', 'Exploitation'</param>
+        /// Possible values include: &#39;Unknown&#39;, &#39;PreAttack&#39;, &#39;InitialAccess&#39;,
+        /// &#39;Persistence&#39;, &#39;PrivilegeEscalation&#39;, &#39;DefenseEvasion&#39;, &#39;CredentialAccess&#39;,
+        /// &#39;Discovery&#39;, &#39;LateralMovement&#39;, &#39;Execution&#39;, &#39;Collection&#39;, &#39;Exfiltration&#39;,
+        /// &#39;CommandAndControl&#39;, &#39;Impact&#39;, &#39;Probing&#39;, &#39;Exploitation&#39;</param>
 
         /// <param name="version">Schema version.
         /// </param>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="severity">The risk level of the threat that was detected. Learn more:
         /// https://docs.microsoft.com/en-us/azure/security-center/security-center-alerts-overview#how-are-alerts-classified.
-        /// Possible values include: 'Informational', 'Low', 'Medium', 'High'</param>
+        /// Possible values include: &#39;Informational&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
 
         /// <param name="startTimeUtc">The UTC time of the first event or activity included in the alert in
         /// ISO8601 format.
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="status">The life cycle status of the alert.
-        /// Possible values include: 'Active', 'InProgress', 'Resolved', 'Dismissed'</param>
+        /// Possible values include: &#39;Active&#39;, &#39;InProgress&#39;, &#39;Resolved&#39;, &#39;Dismissed&#39;</param>
 
         /// <param name="extendedLinks">Links related to the alert
         /// </param>

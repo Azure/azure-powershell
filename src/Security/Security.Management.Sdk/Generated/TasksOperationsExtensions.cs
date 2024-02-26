@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.Security
     public static partial class TasksOperationsExtensions
     {
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -27,7 +28,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -46,7 +48,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -60,7 +63,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -79,7 +83,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -93,7 +98,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -112,7 +118,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -129,7 +136,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -148,13 +156,15 @@ namespace Microsoft.Azure.Management.Security
             (await operations.UpdateSubscriptionLevelTaskStateWithHttpMessagesAsync(taskName, taskUpdateActionType, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='filter'>
         /// OData filter. Optional.
@@ -165,13 +175,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='filter'>
         /// OData filter. Optional.
@@ -187,13 +199,15 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='taskName'>
         /// Name of the task object, will be a GUID
@@ -204,13 +218,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='taskName'>
         /// Name of the task object, will be a GUID
@@ -226,13 +242,15 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='taskName'>
         /// Name of the task object, will be a GUID
@@ -246,13 +264,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='taskName'>
         /// Name of the task object, will be a GUID
@@ -268,7 +288,8 @@ namespace Microsoft.Azure.Management.Security
             (await operations.UpdateResourceGroupLevelTaskStateWithHttpMessagesAsync(resourceGroupName, taskName, taskUpdateActionType, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -282,7 +303,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -301,7 +323,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -315,7 +338,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -334,7 +358,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -348,7 +373,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Recommended tasks that will help improve the security of the subscription proactively
+        /// Recommended tasks that will help improve the security of the subscription
+        /// proactively
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

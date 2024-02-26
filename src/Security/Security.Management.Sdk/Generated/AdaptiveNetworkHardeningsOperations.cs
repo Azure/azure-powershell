@@ -39,10 +39,12 @@ namespace Microsoft.Azure.Management.Security
         public SecurityCenterClient Client { get; private set; }
 
         /// <summary>
-        /// Gets a list of Adaptive Network Hardenings resources in scope of an extended resource.
+        /// Gets a list of Adaptive Network Hardenings resources in scope of an
+        /// extended resource.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The Namespace of the resource.
@@ -292,7 +294,8 @@ namespace Microsoft.Azure.Management.Security
         /// Gets a single Adaptive Network Hardening resource
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The Namespace of the resource.
@@ -552,7 +555,8 @@ namespace Microsoft.Azure.Management.Security
         /// Enforces the given rules on the NSG(s) listed in the request
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The Namespace of the resource.
@@ -570,7 +574,9 @@ namespace Microsoft.Azure.Management.Security
         /// The rules to enforce
         /// </param>
         /// <param name='networkSecurityGroups'>
-        /// The Azure resource IDs of the effective network security groups that will be updated with the created security rules from the Adaptive Network Hardening rules
+        /// The Azure resource IDs of the effective network security groups that will
+        /// be updated with the created security rules from the Adaptive Network
+        /// Hardening rules
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -589,7 +595,8 @@ namespace Microsoft.Azure.Management.Security
         /// Enforces the given rules on the NSG(s) listed in the request
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The Namespace of the resource.
@@ -607,7 +614,9 @@ namespace Microsoft.Azure.Management.Security
         /// The rules to enforce
         /// </param>
         /// <param name='networkSecurityGroups'>
-        /// The Azure resource IDs of the effective network security groups that will be updated with the created security rules from the Adaptive Network Hardening rules
+        /// The Azure resource IDs of the effective network security groups that will
+        /// be updated with the created security rules from the Adaptive Network
+        /// Hardening rules
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -847,7 +856,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Gets a list of Adaptive Network Hardenings resources in scope of an extended resource.
+        /// Gets a list of Adaptive Network Hardenings resources in scope of an
+        /// extended resource.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

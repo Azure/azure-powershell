@@ -73,7 +73,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// updating settings about different configurations in Microsoft Defender for Cloud
+        /// updating settings about different configurations in Microsoft Defender for
+        /// Cloud
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -87,7 +88,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// updating settings about different configurations in Microsoft Defender for Cloud
+        /// updating settings about different configurations in Microsoft Defender for
+        /// Cloud
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

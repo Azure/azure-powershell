@@ -235,7 +235,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Gets list of all supported Security Solutions for subscription and location.
+        /// Gets list of all supported Security Solutions for subscription and
+        /// location.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.

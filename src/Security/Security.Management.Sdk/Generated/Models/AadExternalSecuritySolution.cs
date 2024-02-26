@@ -35,17 +35,14 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <param name="type">Resource type
         /// </param>
 
-        /// <param name="kind">The kind of the external solution
-        /// Possible values include: 'CEF', 'ATA', 'AAD'</param>
-
         /// <param name="location">Location where the resource is stored
         /// </param>
 
         /// <param name="properties">The external security solution properties for AAD solutions
         /// </param>
-        public AadExternalSecuritySolution(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string location = default(string), AadSolutionProperties properties = default(AadSolutionProperties))
+        public AadExternalSecuritySolution(string id = default(string), string name = default(string), string type = default(string), string location = default(string), AadSolutionProperties properties = default(AadSolutionProperties))
 
-        : base(id, name, type, kind, location)
+        : base(id, name, type, location)
         {
             this.Properties = properties;
             CustomInit();

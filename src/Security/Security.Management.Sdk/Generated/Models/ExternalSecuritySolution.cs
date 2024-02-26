@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Management.Security.Models
     /// which sends information to an OMS workspace and whose data is displayed by
     /// Microsoft Defender for Cloud.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("ExternalSecuritySolution")]
     public partial class ExternalSecuritySolution
     {
         /// <summary>
@@ -35,18 +36,14 @@ namespace Microsoft.Azure.Management.Security.Models
         /// <param name="type">Resource type
         /// </param>
 
-        /// <param name="kind">The kind of the external solution
-        /// Possible values include: 'CEF', 'ATA', 'AAD'</param>
-
         /// <param name="location">Location where the resource is stored
         /// </param>
-        public ExternalSecuritySolution(string id = default(string), string name = default(string), string type = default(string), string kind = default(string), string location = default(string))
+        public ExternalSecuritySolution(string id = default(string), string name = default(string), string type = default(string), string location = default(string))
 
         {
             this.Id = id;
             this.Name = name;
             this.Type = type;
-            this.Kind = kind;
             this.Location = location;
             CustomInit();
         }
@@ -74,12 +71,6 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public string Type {get; private set; }
-
-        /// <summary>
-        /// Gets or sets the kind of the external solution Possible values include: &#39;CEF&#39;, &#39;ATA&#39;, &#39;AAD&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
-        public string Kind {get; set; }
 
         /// <summary>
         /// Gets location where the resource is stored

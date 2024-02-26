@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
 
         /// <param name="type">The available sub plans
-        /// Possible values include: 'P1', 'P2'</param>
+        /// Possible values include: &#39;P1&#39;, &#39;P2&#39;</param>
         public DefenderForServersAwsOfferingSubPlan(string type = default(string))
 
         {

@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Security
         public SecurityCenterClient Client { get; private set; }
 
         /// <summary>
-        /// Settings about where we should store your security data and logs. If the result is empty, it means that no custom-workspace configuration was set
+        /// Settings about where we should store your security data and logs. If the
+        /// result is empty, it means that no custom-workspace configuration was set
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -235,7 +236,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Settings about where we should store your security data and logs. If the result is empty, it means that no custom-workspace configuration was set
+        /// Settings about where we should store your security data and logs. If the
+        /// result is empty, it means that no custom-workspace configuration was set
         /// </summary>
         /// <param name='workspaceSettingName'>
         /// Name of the security setting
@@ -450,7 +452,8 @@ namespace Microsoft.Azure.Management.Security
         /// The full Azure ID of the workspace to save the data in
         /// </param>
         /// <param name='scope'>
-        /// All the VMs in this scope will send their security data to the mentioned workspace unless overridden by a setting with more specific scope
+        /// All the VMs in this scope will send their security data to the mentioned
+        /// workspace unless overridden by a setting with more specific scope
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -675,7 +678,8 @@ namespace Microsoft.Azure.Management.Security
         /// The full Azure ID of the workspace to save the data in
         /// </param>
         /// <param name='scope'>
-        /// All the VMs in this scope will send their security data to the mentioned workspace unless overridden by a setting with more specific scope
+        /// All the VMs in this scope will send their security data to the mentioned
+        /// workspace unless overridden by a setting with more specific scope
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -891,7 +895,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Deletes the custom workspace settings for this subscription. new VMs will report to the default workspace
+        /// Deletes the custom workspace settings for this subscription. new VMs will
+        /// report to the default workspace
         /// </summary>
         /// <param name='workspaceSettingName'>
         /// Name of the security setting
@@ -1076,7 +1081,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Settings about where we should store your security data and logs. If the result is empty, it means that no custom-workspace configuration was set
+        /// Settings about where we should store your security data and logs. If the
+        /// result is empty, it means that no custom-workspace configuration was set
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

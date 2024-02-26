@@ -14,13 +14,16 @@ namespace Microsoft.Azure.Management.Security
     public partial interface IIotSecuritySolutionsAnalyticsAggregatedAlertOperations
     {
         /// <summary>
-        /// Use this method to get the aggregated alert list of yours IoT Security solution.
+        /// Use this method to get the aggregated alert list of yours IoT Security
+        /// solution.
         /// </summary>
         /// <remarks>
-        /// Use this method to get the aggregated alert list of yours IoT Security solution.
+        /// Use this method to get the aggregated alert list of yours IoT Security
+        /// solution.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -43,13 +46,16 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<IoTSecurityAggregatedAlert>>> ListWithHttpMessagesAsync(string resourceGroupName, string solutionName, int? top = default(int?), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Use this method to get a single the aggregated alert of yours IoT Security solution. This aggregation is performed by alert name.
+        /// Use this method to get a single the aggregated alert of yours IoT Security
+        /// solution. This aggregation is performed by alert name.
         /// </summary>
         /// <remarks>
-        /// Use this method to get a single the aggregated alert of yours IoT Security solution. This aggregation is performed by alert name.
+        /// Use this method to get a single the aggregated alert of yours IoT Security
+        /// solution. This aggregation is performed by alert name.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -78,7 +84,8 @@ namespace Microsoft.Azure.Management.Security
         /// Use this method to dismiss an aggregated IoT Security Solution Alert.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='solutionName'>
         /// The name of the IoT Security solution.
@@ -98,10 +105,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DismissWithHttpMessagesAsync(string resourceGroupName, string solutionName, string aggregatedAlertName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Use this method to get the aggregated alert list of yours IoT Security solution.
+        /// Use this method to get the aggregated alert list of yours IoT Security
+        /// solution.
         /// </summary>
         /// <remarks>
-        /// Use this method to get the aggregated alert list of yours IoT Security solution.
+        /// Use this method to get the aggregated alert list of yours IoT Security
+        /// solution.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

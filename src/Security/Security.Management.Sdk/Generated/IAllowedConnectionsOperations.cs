@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.Security
     public partial interface IAllowedConnectionsOperations
     {
         /// <summary>
-        /// Gets the list of all possible traffic between resources for the subscription
+        /// Gets the list of all possible traffic between resources for the
+        /// subscription
         /// </summary>
         /// <remarks>
-        /// Gets the list of all possible traffic between resources for the subscription
+        /// Gets the list of all possible traffic between resources for the
+        /// subscription
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -34,10 +36,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AllowedConnectionsResource>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the list of all possible traffic between resources for the subscription and location.
+        /// Gets the list of all possible traffic between resources for the
+        /// subscription and location.
         /// </summary>
         /// <remarks>
-        /// Gets the list of all possible traffic between resources for the subscription and location.
+        /// Gets the list of all possible traffic between resources for the
+        /// subscription and location.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -54,13 +58,16 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AllowedConnectionsResource>>> ListByHomeRegionWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the list of all possible traffic between resources for the subscription and location, based on connection type.
+        /// Gets the list of all possible traffic between resources for the
+        /// subscription and location, based on connection type.
         /// </summary>
         /// <remarks>
-        /// Gets the list of all possible traffic between resources for the subscription and location, based on connection type.
+        /// Gets the list of all possible traffic between resources for the
+        /// subscription and location, based on connection type.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='connectionType'>
         /// The type of allowed connections (Internal, External)
@@ -80,10 +87,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AllowedConnectionsResource>> GetWithHttpMessagesAsync(string resourceGroupName, string connectionType, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the list of all possible traffic between resources for the subscription
+        /// Gets the list of all possible traffic between resources for the
+        /// subscription
         /// </summary>
         /// <remarks>
-        /// Gets the list of all possible traffic between resources for the subscription
+        /// Gets the list of all possible traffic between resources for the
+        /// subscription
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -103,10 +112,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<AllowedConnectionsResource>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the list of all possible traffic between resources for the subscription and location.
+        /// Gets the list of all possible traffic between resources for the
+        /// subscription and location.
         /// </summary>
         /// <remarks>
-        /// Gets the list of all possible traffic between resources for the subscription and location.
+        /// Gets the list of all possible traffic between resources for the
+        /// subscription and location.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

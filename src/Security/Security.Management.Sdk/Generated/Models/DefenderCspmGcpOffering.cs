@@ -27,10 +27,31 @@ namespace Microsoft.Azure.Management.Security.Models
 
         /// <param name="description">The offering description.
         /// </param>
-        public DefenderCspmGcpOffering(string description = default(string))
+
+        /// <param name="ciemDiscovery">GCP Defenders CSPM Cloud infrastructure entitlement management (CIEM)
+        /// discovery offering configurations
+        /// </param>
+
+        /// <param name="vmScanners">The Microsoft Defender for Server VM scanning configuration
+        /// </param>
+
+        /// <param name="dataSensitivityDiscovery">The Microsoft Defender Data Sensitivity discovery configuration
+        /// </param>
+
+        /// <param name="mdcContainersImageAssessment">The Microsoft Defender Container image assessment configuration
+        /// </param>
+
+        /// <param name="mdcContainersAgentlessDiscoveryK8S">The Microsoft Defender Container agentless discovery configuration
+        /// </param>
+        public DefenderCspmGcpOffering(string description = default(string), DefenderCspmGcpOfferingCiemDiscovery ciemDiscovery = default(DefenderCspmGcpOfferingCiemDiscovery), DefenderCspmGcpOfferingVmScanners vmScanners = default(DefenderCspmGcpOfferingVmScanners), DefenderCspmGcpOfferingDataSensitivityDiscovery dataSensitivityDiscovery = default(DefenderCspmGcpOfferingDataSensitivityDiscovery), DefenderCspmGcpOfferingMdcContainersImageAssessment mdcContainersImageAssessment = default(DefenderCspmGcpOfferingMdcContainersImageAssessment), DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8S mdcContainersAgentlessDiscoveryK8S = default(DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8S))
 
         : base(description)
         {
+            this.CiemDiscovery = ciemDiscovery;
+            this.VMScanners = vmScanners;
+            this.DataSensitivityDiscovery = dataSensitivityDiscovery;
+            this.MdcContainersImageAssessment = mdcContainersImageAssessment;
+            this.MdcContainersAgentlessDiscoveryK8S = mdcContainersAgentlessDiscoveryK8S;
             CustomInit();
         }
 
@@ -39,5 +60,39 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets gCP Defenders CSPM Cloud infrastructure entitlement management
+        /// (CIEM) discovery offering configurations
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ciemDiscovery")]
+        public DefenderCspmGcpOfferingCiemDiscovery CiemDiscovery {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Microsoft Defender for Server VM scanning configuration
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "vmScanners")]
+        public DefenderCspmGcpOfferingVmScanners VMScanners {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Microsoft Defender Data Sensitivity discovery
+        /// configuration
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dataSensitivityDiscovery")]
+        public DefenderCspmGcpOfferingDataSensitivityDiscovery DataSensitivityDiscovery {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Microsoft Defender Container image assessment
+        /// configuration
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "mdcContainersImageAssessment")]
+        public DefenderCspmGcpOfferingMdcContainersImageAssessment MdcContainersImageAssessment {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Microsoft Defender Container agentless discovery
+        /// configuration
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "mdcContainersAgentlessDiscoveryK8s")]
+        public DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8S MdcContainersAgentlessDiscoveryK8S {get; set; }
     }
 }

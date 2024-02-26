@@ -5,16 +5,44 @@
 
 namespace Microsoft.Azure.Management.Security.Models
 {
+    using System.Linq;
 
     /// <summary>
-    /// Defines values for AadConnectivityState.
+    /// Describes an Azure resource with kind
     /// </summary>
-
-
-    public static class AadConnectivityState
+    public partial class AadConnectivityState
     {
-        public const string Discovered = "Discovered";
-        public const string NotLicensed = "NotLicensed";
-        public const string Connected = "Connected";
+        /// <summary>
+        /// Initializes a new instance of the AadConnectivityState class.
+        /// </summary>
+        public AadConnectivityState()
+        {
+            CustomInit();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the AadConnectivityState class.
+        /// </summary>
+
+        /// <param name="connectivityState">The connectivity state of the external AAD solution
+        /// Possible values include: &#39;Discovered&#39;, &#39;NotLicensed&#39;, &#39;Connected&#39;</param>
+        public AadConnectivityState(string connectivityState = default(string))
+
+        {
+            this.ConnectivityState = connectivityState;
+            CustomInit();
+        }
+
+        /// <summary>
+        /// An initialization method that performs custom operations like setting defaults
+        /// </summary>
+        partial void CustomInit();
+
+
+        /// <summary>
+        /// Gets or sets the connectivity state of the external AAD solution Possible values include: &#39;Discovered&#39;, &#39;NotLicensed&#39;, &#39;Connected&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "connectivityState")]
+        public string ConnectivityState {get; set; }
     }
 }

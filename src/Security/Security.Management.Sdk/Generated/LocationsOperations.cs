@@ -39,7 +39,10 @@ namespace Microsoft.Azure.Management.Security
         public SecurityCenterClient Client { get; private set; }
 
         /// <summary>
-        /// The location of the responsible ASC of the specific subscription (home region). For each subscription there is only one responsible location. The location in the response should be used to read or write other resources in ASC according to their ID.
+        /// The location of the responsible ASC of the specific subscription (home
+        /// region). For each subscription there is only one responsible location. The
+        /// location in the response should be used to read or write other resources in
+        /// ASC according to their ID.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -437,7 +440,10 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// The location of the responsible ASC of the specific subscription (home region). For each subscription there is only one responsible location. The location in the response should be used to read or write other resources in ASC according to their ID.
+        /// The location of the responsible ASC of the specific subscription (home
+        /// region). For each subscription there is only one responsible location. The
+        /// location in the response should be used to read or write other resources in
+        /// ASC according to their ID.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.Security
     public partial interface IPricingsOperations
     {
         /// <summary>
-        /// Lists Microsoft Defender for Cloud pricing configurations in the subscription.
+        /// Lists Microsoft Defender for Cloud pricing configurations in the
+        /// subscription.
         /// </summary>
         /// <remarks>
-        /// Lists Microsoft Defender for Cloud pricing configurations in the subscription.
+        /// Lists Microsoft Defender for Cloud pricing configurations in the
+        /// subscription.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -34,10 +36,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<PricingList>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets a provided Microsoft Defender for Cloud pricing configuration in the subscription.
+        /// Gets a provided Microsoft Defender for Cloud pricing configuration in the
+        /// subscription.
         /// </summary>
         /// <remarks>
-        /// Gets a provided Microsoft Defender for Cloud pricing configuration in the subscription.
+        /// Gets a provided Microsoft Defender for Cloud pricing configuration in the
+        /// subscription.
         /// </remarks>
         /// <param name='pricingName'>
         /// name of the pricing configuration
@@ -57,10 +61,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Pricing>> GetWithHttpMessagesAsync(string pricingName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Updates a provided Microsoft Defender for Cloud pricing configuration in the subscription.
+        /// Updates a provided Microsoft Defender for Cloud pricing configuration in
+        /// the subscription.
         /// </summary>
         /// <remarks>
-        /// Updates a provided Microsoft Defender for Cloud pricing configuration in the subscription.
+        /// Updates a provided Microsoft Defender for Cloud pricing configuration in
+        /// the subscription.
         /// </remarks>
         /// <param name='pricingName'>
         /// name of the pricing configuration

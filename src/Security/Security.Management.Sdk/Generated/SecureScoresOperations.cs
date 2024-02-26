@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Security
         public SecurityCenterClient Client { get; private set; }
 
         /// <summary>
-        /// List secure scores for all your Microsoft Defender for Cloud initiatives within your current scope.
+        /// List secure scores for all your Microsoft Defender for Cloud initiatives
+        /// within your current scope.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -235,10 +236,12 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Get secure score for a specific Microsoft Defender for Cloud initiative within your current scope. For the ASC Default initiative, use &#39;ascScore&#39;.
+        /// Get secure score for a specific Microsoft Defender for Cloud initiative
+        /// within your current scope. For the ASC Default initiative, use &#39;ascScore&#39;.
         /// </summary>
         /// <param name='secureScoreName'>
-        /// The initiative name. For the ASC Default initiative, use &#39;ascScore&#39; as in the sample request below.
+        /// The initiative name. For the ASC Default initiative, use &#39;ascScore&#39; as in
+        /// the sample request below.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -441,7 +444,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// List secure scores for all your Microsoft Defender for Cloud initiatives within your current scope.
+        /// List secure scores for all your Microsoft Defender for Cloud initiatives
+        /// within your current scope.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
 
         /// <param name="securityFamily">The security family of the discovered solution
-        /// Possible values include: 'Waf', 'Ngfw', 'SaasWaf', 'Va'</param>
+        /// Possible values include: &#39;Waf&#39;, &#39;Ngfw&#39;, &#39;SaasWaf&#39;, &#39;Va&#39;</param>
 
         /// <param name="offer">The security solutions&#39; image offer
         /// </param>

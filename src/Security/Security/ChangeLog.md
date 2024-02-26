@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Add SecurityConnectors functionality
+* Add SecurityConnectorsDevOps functionality
+* Add ApiCollections Security
 
 ## Version 1.5.1
 * Fixed bug for `Set-AzSecurityPricing`

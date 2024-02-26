@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         public const string On = "On";
         /// <summary>
-        /// Don't get notifications on new alerts
+        /// Don&#39;t get notifications on new alerts
         /// </summary>
         public const string Off = "Off";
     }

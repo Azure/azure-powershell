@@ -14,11 +14,14 @@ namespace Microsoft.Azure.Management.Security.Models
     public static class RecommendationType
     {
         /// <summary>
-        /// Authentication schema used for pull an edge module from an ACR repository does not use Service Principal Authentication.
+        /// Authentication schema used for pull an edge module from an ACR repository
+        /// does not use Service Principal Authentication.
         /// </summary>
         public const string IoTAcrauthentication = "IoT_ACRAuthentication";
         /// <summary>
-        /// IoT agent message size capacity is currently underutilized, causing an increase in the number of sent messages. Adjust message intervals for better utilization.
+        /// IoT agent message size capacity is currently underutilized, causing an
+        /// increase in the number of sent messages. Adjust message intervals for
+        /// better utilization.
         /// </summary>
         public const string IoTAgentSendsUnutilizedMessages = "IoT_AgentSendsUnutilizedMessages";
         /// <summary>
@@ -26,7 +29,8 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         public const string IoTBaseline = "IoT_Baseline";
         /// <summary>
-        /// You can optimize Edge Hub memory usage by turning off protocol heads for any protocols not used by Edge modules in your solution.
+        /// You can optimize Edge Hub memory usage by turning off protocol heads for
+        /// any protocols not used by Edge modules in your solution.
         /// </summary>
         public const string IoTEdgeHubMemOptimize = "IoT_EdgeHubMemOptimize";
         /// <summary>
@@ -34,7 +38,8 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         public const string IoTEdgeLoggingOptions = "IoT_EdgeLoggingOptions";
         /// <summary>
-        /// A minority within a device security group has inconsistent Edge Module settings with the rest of their group.
+        /// A minority within a device security group has inconsistent Edge Module
+        /// settings with the rest of their group.
         /// </summary>
         public const string IoTInconsistentModuleSettings = "IoT_InconsistentModuleSettings";
         /// <summary>
@@ -42,11 +47,13 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         public const string IoTInstallAgent = "IoT_InstallAgent";
         /// <summary>
-        /// IP Filter Configuration should have rules defined for allowed traffic and should deny all other traffic by default.
+        /// IP Filter Configuration should have rules defined for allowed traffic and
+        /// should deny all other traffic by default.
         /// </summary>
         public const string IoTIpfilterDenyAll = "IoT_IPFilter_DenyAll";
         /// <summary>
-        /// An Allow IP Filter rules source IP range is too large. Overly permissive rules might expose your IoT hub to malicious intenders.
+        /// An Allow IP Filter rules source IP range is too large. Overly permissive
+        /// rules might expose your IoT hub to malicious intenders.
         /// </summary>
         public const string IoTIpfilterPermissiveRule = "IoT_IPFilter_PermissiveRule";
         /// <summary>
@@ -54,23 +61,31 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         public const string IoTOpenPorts = "IoT_OpenPorts";
         /// <summary>
-        /// An Allowed firewall policy was found (INPUT/OUTPUT). The policy should Deny all traffic by default and define rules to allow necessary communication to/from the device.
+        /// An Allowed firewall policy was found (INPUT/OUTPUT). The policy should Deny
+        /// all traffic by default and define rules to allow necessary communication
+        /// to/from the device.
         /// </summary>
         public const string IoTPermissiveFirewallPolicy = "IoT_PermissiveFirewallPolicy";
         /// <summary>
-        /// A rule in the firewall has been found that contains a permissive pattern for a wide range of IP addresses or Ports.
+        /// A rule in the firewall has been found that contains a permissive pattern
+        /// for a wide range of IP addresses or Ports.
         /// </summary>
         public const string IoTPermissiveInputFirewallRules = "IoT_PermissiveInputFirewallRules";
         /// <summary>
-        /// A rule in the firewall has been found that contains a permissive pattern for a wide range of IP addresses or Ports.
+        /// A rule in the firewall has been found that contains a permissive pattern
+        /// for a wide range of IP addresses or Ports.
         /// </summary>
         public const string IoTPermissiveOutputFirewallRules = "IoT_PermissiveOutputFirewallRules";
         /// <summary>
-        /// Edge module is configured to run in privileged mode, with extensive Linux capabilities or with host-level network access (send/receive data to host machine).
+        /// Edge module is configured to run in privileged mode, with extensive Linux
+        /// capabilities or with host-level network access (send/receive data to host
+        /// machine).
         /// </summary>
         public const string IoTPrivilegedDockerOptions = "IoT_PrivilegedDockerOptions";
         /// <summary>
-        /// Same authentication credentials to the IoT Hub used by multiple devices. This could indicate an illegitimate device impersonating a legitimate device. It also exposes the risk of device impersonation by an attacker.
+        /// Same authentication credentials to the IoT Hub used by multiple devices.
+        /// This could indicate an illegitimate device impersonating a legitimate
+        /// device. It also exposes the risk of device impersonation by an attacker.
         /// </summary>
         public const string IoTSharedCredentials = "IoT_SharedCredentials";
         /// <summary>

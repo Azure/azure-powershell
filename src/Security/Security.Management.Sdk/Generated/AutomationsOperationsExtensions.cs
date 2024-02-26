@@ -13,7 +13,9 @@ namespace Microsoft.Azure.Management.Security
     public static partial class AutomationsOperationsExtensions
     {
         /// <summary>
-        /// Lists all the security automations in the specified subscription. Use the &#39;nextLink&#39; property in the response to get the next page of security automations for the specified subscription.
+        /// Lists all the security automations in the specified subscription. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// automations for the specified subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -24,7 +26,9 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Lists all the security automations in the specified subscription. Use the &#39;nextLink&#39; property in the response to get the next page of security automations for the specified subscription.
+        /// Lists all the security automations in the specified subscription. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// automations for the specified subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -40,13 +44,16 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Lists all the security automations in the specified resource group. Use the &#39;nextLink&#39; property in the response to get the next page of security automations for the specified resource group.
+        /// Lists all the security automations in the specified resource group. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// automations for the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<Automation> ListByResourceGroup(this IAutomationsOperations operations, string resourceGroupName)
         {
@@ -54,13 +61,16 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Lists all the security automations in the specified resource group. Use the &#39;nextLink&#39; property in the response to get the next page of security automations for the specified resource group.
+        /// Lists all the security automations in the specified resource group. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// automations for the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -79,7 +89,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='automationName'>
         /// The security automation name.
@@ -96,7 +107,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='automationName'>
         /// The security automation name.
@@ -112,13 +124,16 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Creates or updates a security automation. If a security automation is already created and a subsequent request is issued for the same automation id, then it will be updated.
+        /// Creates or updates a security automation. If a security automation is
+        /// already created and a subsequent request is issued for the same automation
+        /// id, then it will be updated.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='automationName'>
         /// The security automation name.
@@ -129,13 +144,16 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Creates or updates a security automation. If a security automation is already created and a subsequent request is issued for the same automation id, then it will be updated.
+        /// Creates or updates a security automation. If a security automation is
+        /// already created and a subsequent request is issued for the same automation
+        /// id, then it will be updated.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='automationName'>
         /// The security automation name.
@@ -157,7 +175,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='automationName'>
         /// The security automation name.
@@ -174,7 +193,8 @@ namespace Microsoft.Azure.Management.Security
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='automationName'>
         /// The security automation name.
@@ -187,13 +207,15 @@ namespace Microsoft.Azure.Management.Security
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, automationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Validates the security automation model before create or update. Any validation errors are returned to the client.
+        /// Validates the security automation model before create or update. Any
+        /// validation errors are returned to the client.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='automationName'>
         /// The security automation name.
@@ -204,13 +226,15 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Validates the security automation model before create or update. Any validation errors are returned to the client.
+        /// Validates the security automation model before create or update. Any
+        /// validation errors are returned to the client.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='automationName'>
         /// The security automation name.
@@ -226,7 +250,9 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Lists all the security automations in the specified subscription. Use the &#39;nextLink&#39; property in the response to get the next page of security automations for the specified subscription.
+        /// Lists all the security automations in the specified subscription. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// automations for the specified subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -240,7 +266,9 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Lists all the security automations in the specified subscription. Use the &#39;nextLink&#39; property in the response to get the next page of security automations for the specified subscription.
+        /// Lists all the security automations in the specified subscription. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// automations for the specified subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -259,7 +287,9 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Lists all the security automations in the specified resource group. Use the &#39;nextLink&#39; property in the response to get the next page of security automations for the specified resource group.
+        /// Lists all the security automations in the specified resource group. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// automations for the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -273,7 +303,9 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Lists all the security automations in the specified resource group. Use the &#39;nextLink&#39; property in the response to get the next page of security automations for the specified resource group.
+        /// Lists all the security automations in the specified resource group. Use the
+        /// &#39;nextLink&#39; property in the response to get the next page of security
+        /// automations for the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

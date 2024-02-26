@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Security
         /// Gets the software inventory of the virtual machine.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The namespace of the resource.
@@ -488,7 +489,8 @@ namespace Microsoft.Azure.Management.Security
         /// Gets a single software data of the virtual machine.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The namespace of the resource.

@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.Security
     public static partial class RegulatoryComplianceControlsOperationsExtensions
     {
         /// <summary>
-        /// All supported regulatory compliance controls details and state for selected standard
+        /// All supported regulatory compliance controls details and state for selected
+        /// standard
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// All supported regulatory compliance controls details and state for selected standard
+        /// All supported regulatory compliance controls details and state for selected
+        /// standard
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -91,7 +93,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// All supported regulatory compliance controls details and state for selected standard
+        /// All supported regulatory compliance controls details and state for selected
+        /// standard
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -105,7 +108,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// All supported regulatory compliance controls details and state for selected standard
+        /// All supported regulatory compliance controls details and state for selected
+        /// standard
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

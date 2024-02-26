@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
 
         /// <param name="code">Programmatic code for the status of the assessment
-        /// Possible values include: 'Healthy', 'Unhealthy', 'NotApplicable'</param>
+        /// Possible values include: &#39;Healthy&#39;, &#39;Unhealthy&#39;, &#39;NotApplicable&#39;</param>
 
         /// <param name="cause">Programmatic code for the cause of the assessment status
         /// </param>

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="recommendationAction">The recommendation action of the machine or rule
-        /// Possible values include: 'Recommended', 'Add', 'Remove'</param>
+        /// Possible values include: &#39;Recommended&#39;, &#39;Add&#39;, &#39;Remove&#39;</param>
         public UserRecommendation(string username = default(string), string recommendationAction = default(string))
 
         {

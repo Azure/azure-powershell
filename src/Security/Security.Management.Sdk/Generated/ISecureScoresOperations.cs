@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.Security
     public partial interface ISecureScoresOperations
     {
         /// <summary>
-        /// List secure scores for all your Microsoft Defender for Cloud initiatives within your current scope.
+        /// List secure scores for all your Microsoft Defender for Cloud initiatives
+        /// within your current scope.
         /// </summary>
         /// <remarks>
-        /// List secure scores for all your Microsoft Defender for Cloud initiatives within your current scope.
+        /// List secure scores for all your Microsoft Defender for Cloud initiatives
+        /// within your current scope.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -34,13 +36,16 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SecureScoreItem>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get secure score for a specific Microsoft Defender for Cloud initiative within your current scope. For the ASC Default initiative, use &#39;ascScore&#39;.
+        /// Get secure score for a specific Microsoft Defender for Cloud initiative
+        /// within your current scope. For the ASC Default initiative, use &#39;ascScore&#39;.
         /// </summary>
         /// <remarks>
-        /// Get secure score for a specific Microsoft Defender for Cloud initiative within your current scope. For the ASC Default initiative, use &#39;ascScore&#39;.
+        /// Get secure score for a specific Microsoft Defender for Cloud initiative
+        /// within your current scope. For the ASC Default initiative, use &#39;ascScore&#39;.
         /// </remarks>
         /// <param name='secureScoreName'>
-        /// The initiative name. For the ASC Default initiative, use &#39;ascScore&#39; as in the sample request below.
+        /// The initiative name. For the ASC Default initiative, use &#39;ascScore&#39; as in
+        /// the sample request below.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -57,10 +62,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<SecureScoreItem>> GetWithHttpMessagesAsync(string secureScoreName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List secure scores for all your Microsoft Defender for Cloud initiatives within your current scope.
+        /// List secure scores for all your Microsoft Defender for Cloud initiatives
+        /// within your current scope.
         /// </summary>
         /// <remarks>
-        /// List secure scores for all your Microsoft Defender for Cloud initiatives within your current scope.
+        /// List secure scores for all your Microsoft Defender for Cloud initiatives
+        /// within your current scope.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="valueType">The value type of the items in the list.
-        /// Possible values include: 'IpCidr', 'String'</param>
+        /// Possible values include: &#39;IpCidr&#39;, &#39;String&#39;</param>
 
         /// <param name="denylistValues">The values to deny. The format of the values depends on the rule type.
         /// </param>

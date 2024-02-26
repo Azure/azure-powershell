@@ -14,13 +14,16 @@ namespace Microsoft.Azure.Management.Security
     public partial interface IAdaptiveNetworkHardeningsOperations
     {
         /// <summary>
-        /// Gets a list of Adaptive Network Hardenings resources in scope of an extended resource.
+        /// Gets a list of Adaptive Network Hardenings resources in scope of an
+        /// extended resource.
         /// </summary>
         /// <remarks>
-        /// Gets a list of Adaptive Network Hardenings resources in scope of an extended resource.
+        /// Gets a list of Adaptive Network Hardenings resources in scope of an
+        /// extended resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The Namespace of the resource.
@@ -52,7 +55,8 @@ namespace Microsoft.Azure.Management.Security
         /// Gets a single Adaptive Network Hardening resource
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The Namespace of the resource.
@@ -87,7 +91,8 @@ namespace Microsoft.Azure.Management.Security
         /// Enforces the given rules on the NSG(s) listed in the request
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The Namespace of the resource.
@@ -105,7 +110,9 @@ namespace Microsoft.Azure.Management.Security
         /// The rules to enforce
         /// </param>
         /// <param name='networkSecurityGroups'>
-        /// The Azure resource IDs of the effective network security groups that will be updated with the created security rules from the Adaptive Network Hardening rules
+        /// The Azure resource IDs of the effective network security groups that will
+        /// be updated with the created security rules from the Adaptive Network
+        /// Hardening rules
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -125,7 +132,8 @@ namespace Microsoft.Azure.Management.Security
         /// Enforces the given rules on the NSG(s) listed in the request
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group within the user&#39;s subscription. The name is case insensitive.
+        /// The name of the resource group within the user&#39;s subscription. The name is
+        /// case insensitive.
         /// </param>
         /// <param name='resourceNamespace'>
         /// The Namespace of the resource.
@@ -143,7 +151,9 @@ namespace Microsoft.Azure.Management.Security
         /// The rules to enforce
         /// </param>
         /// <param name='networkSecurityGroups'>
-        /// The Azure resource IDs of the effective network security groups that will be updated with the created security rules from the Adaptive Network Hardening rules
+        /// The Azure resource IDs of the effective network security groups that will
+        /// be updated with the created security rules from the Adaptive Network
+        /// Hardening rules
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -157,10 +167,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginEnforceWithHttpMessagesAsync(string resourceGroupName, string resourceNamespace, string resourceType, string resourceName, string adaptiveNetworkHardeningResourceName, System.Collections.Generic.IList<Rule> rules, System.Collections.Generic.IList<string> networkSecurityGroups, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets a list of Adaptive Network Hardenings resources in scope of an extended resource.
+        /// Gets a list of Adaptive Network Hardenings resources in scope of an
+        /// extended resource.
         /// </summary>
         /// <remarks>
-        /// Gets a list of Adaptive Network Hardenings resources in scope of an extended resource.
+        /// Gets a list of Adaptive Network Hardenings resources in scope of an
+        /// extended resource.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

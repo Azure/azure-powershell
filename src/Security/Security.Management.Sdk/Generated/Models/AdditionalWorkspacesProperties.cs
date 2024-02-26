@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="type">Workspace type.
-        /// Possible values include: 'Sentinel'</param>
+        /// Possible values include: &#39;Sentinel&#39;</param>
 
         /// <param name="dataTypes">List of data types sent to workspace
         /// </param>

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
 
         /// <param name="sourceType">The type of security control (for example, BuiltIn)
-        /// Possible values include: 'BuiltIn', 'Custom'</param>
+        /// Possible values include: &#39;BuiltIn&#39;, &#39;Custom&#39;</param>
         public SecureScoreControlDefinitionSource(string sourceType = default(string))
 
         {

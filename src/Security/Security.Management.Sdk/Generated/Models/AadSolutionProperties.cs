@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="connectivityState">The connectivity state of the external AAD solution
-        /// Possible values include: 'Discovered', 'NotLicensed', 'Connected'</param>
+        /// Possible values include: &#39;Discovered&#39;, &#39;NotLicensed&#39;, &#39;Connected&#39;</param>
         public AadSolutionProperties(string deviceVendor = default(string), string deviceType = default(string), ConnectedWorkspace workspace = default(ConnectedWorkspace), string connectivityState = default(string))
 
         {

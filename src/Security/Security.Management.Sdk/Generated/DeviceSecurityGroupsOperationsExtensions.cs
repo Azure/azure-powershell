@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.Security
     public static partial class DeviceSecurityGroupsOperationsExtensions
     {
         /// <summary>
-        /// Use this method get the list of device security groups for the specified IoT Hub resource.
+        /// Use this method get the list of device security groups for the specified
+        /// IoT Hub resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -27,7 +28,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Use this method get the list of device security groups for the specified IoT Hub resource.
+        /// Use this method get the list of device security groups for the specified
+        /// IoT Hub resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -46,7 +48,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Use this method to get the device security group for the specified IoT Hub resource.
+        /// Use this method to get the device security group for the specified IoT Hub
+        /// resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -55,7 +58,8 @@ namespace Microsoft.Azure.Management.Security
         /// The identifier of the resource.
         /// </param>
         /// <param name='deviceSecurityGroupName'>
-        /// The name of the device security group. Note that the name of the device security group is case insensitive.
+        /// The name of the device security group. Note that the name of the device
+        /// security group is case insensitive.
         /// </param>
         public static DeviceSecurityGroup Get(this IDeviceSecurityGroupsOperations operations, string resourceId, string deviceSecurityGroupName)
         {
@@ -63,7 +67,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Use this method to get the device security group for the specified IoT Hub resource.
+        /// Use this method to get the device security group for the specified IoT Hub
+        /// resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -72,7 +77,8 @@ namespace Microsoft.Azure.Management.Security
         /// The identifier of the resource.
         /// </param>
         /// <param name='deviceSecurityGroupName'>
-        /// The name of the device security group. Note that the name of the device security group is case insensitive.
+        /// The name of the device security group. Note that the name of the device
+        /// security group is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -85,7 +91,8 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Use this method to creates or updates the device security group on a specified IoT Hub resource.
+        /// Use this method to creates or updates the device security group on a
+        /// specified IoT Hub resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -94,7 +101,8 @@ namespace Microsoft.Azure.Management.Security
         /// The identifier of the resource.
         /// </param>
         /// <param name='deviceSecurityGroupName'>
-        /// The name of the device security group. Note that the name of the device security group is case insensitive.
+        /// The name of the device security group. Note that the name of the device
+        /// security group is case insensitive.
         /// </param>
         public static DeviceSecurityGroup CreateOrUpdate(this IDeviceSecurityGroupsOperations operations, string resourceId, string deviceSecurityGroupName, DeviceSecurityGroup deviceSecurityGroup)
         {
@@ -102,7 +110,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Use this method to creates or updates the device security group on a specified IoT Hub resource.
+        /// Use this method to creates or updates the device security group on a
+        /// specified IoT Hub resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -111,7 +120,8 @@ namespace Microsoft.Azure.Management.Security
         /// The identifier of the resource.
         /// </param>
         /// <param name='deviceSecurityGroupName'>
-        /// The name of the device security group. Note that the name of the device security group is case insensitive.
+        /// The name of the device security group. Note that the name of the device
+        /// security group is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -133,7 +143,8 @@ namespace Microsoft.Azure.Management.Security
         /// The identifier of the resource.
         /// </param>
         /// <param name='deviceSecurityGroupName'>
-        /// The name of the device security group. Note that the name of the device security group is case insensitive.
+        /// The name of the device security group. Note that the name of the device
+        /// security group is case insensitive.
         /// </param>
         public static void Delete(this IDeviceSecurityGroupsOperations operations, string resourceId, string deviceSecurityGroupName)
         {
@@ -150,7 +161,8 @@ namespace Microsoft.Azure.Management.Security
         /// The identifier of the resource.
         /// </param>
         /// <param name='deviceSecurityGroupName'>
-        /// The name of the device security group. Note that the name of the device security group is case insensitive.
+        /// The name of the device security group. Note that the name of the device
+        /// security group is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -160,7 +172,8 @@ namespace Microsoft.Azure.Management.Security
             (await operations.DeleteWithHttpMessagesAsync(resourceId, deviceSecurityGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Use this method get the list of device security groups for the specified IoT Hub resource.
+        /// Use this method get the list of device security groups for the specified
+        /// IoT Hub resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -174,7 +187,8 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Use this method get the list of device security groups for the specified IoT Hub resource.
+        /// Use this method get the list of device security groups for the specified
+        /// IoT Hub resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

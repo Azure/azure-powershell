@@ -14,10 +14,16 @@ namespace Microsoft.Azure.Management.Security
     public partial interface ILocationsOperations
     {
         /// <summary>
-        /// The location of the responsible ASC of the specific subscription (home region). For each subscription there is only one responsible location. The location in the response should be used to read or write other resources in ASC according to their ID.
+        /// The location of the responsible ASC of the specific subscription (home
+        /// region). For each subscription there is only one responsible location. The
+        /// location in the response should be used to read or write other resources in
+        /// ASC according to their ID.
         /// </summary>
         /// <remarks>
-        /// The location of the responsible ASC of the specific subscription (home region). For each subscription there is only one responsible location. The location in the response should be used to read or write other resources in ASC according to their ID.
+        /// The location of the responsible ASC of the specific subscription (home
+        /// region). For each subscription there is only one responsible location. The
+        /// location in the response should be used to read or write other resources in
+        /// ASC according to their ID.
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -54,10 +60,16 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<AscLocation>> GetWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The location of the responsible ASC of the specific subscription (home region). For each subscription there is only one responsible location. The location in the response should be used to read or write other resources in ASC according to their ID.
+        /// The location of the responsible ASC of the specific subscription (home
+        /// region). For each subscription there is only one responsible location. The
+        /// location in the response should be used to read or write other resources in
+        /// ASC according to their ID.
         /// </summary>
         /// <remarks>
-        /// The location of the responsible ASC of the specific subscription (home region). For each subscription there is only one responsible location. The location in the response should be used to read or write other resources in ASC according to their ID.
+        /// The location of the responsible ASC of the specific subscription (home
+        /// region). For each subscription there is only one responsible location. The
+        /// location in the response should be used to read or write other resources in
+        /// ASC according to their ID.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

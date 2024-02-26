@@ -34,10 +34,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SecureScoreControlDefinitionItem>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// For a specified subscription, list the available security controls, their assessments, and the max score
+        /// For a specified subscription, list the available security controls, their
+        /// assessments, and the max score
         /// </summary>
         /// <remarks>
-        /// For a specified subscription, list the available security controls, their assessments, and the max score
+        /// For a specified subscription, list the available security controls, their
+        /// assessments, and the max score
         /// </remarks>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -77,10 +79,12 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<SecureScoreControlDefinitionItem>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// For a specified subscription, list the available security controls, their assessments, and the max score
+        /// For a specified subscription, list the available security controls, their
+        /// assessments, and the max score
         /// </summary>
         /// <remarks>
-        /// For a specified subscription, list the available security controls, their assessments, and the max score
+        /// For a specified subscription, list the available security controls, their
+        /// assessments, and the max score
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -28,5 +28,7 @@ namespace Microsoft.Azure.Management.Security.Models
         public const string DefenderCspmGcp = "DefenderCspmGcp";
         public const string DefenderForDevOpsGithub = "DefenderForDevOpsGithub";
         public const string DefenderForDevOpsAzureDevOps = "DefenderForDevOpsAzureDevOps";
+        public const string CspmMonitorGitLab = "CspmMonitorGitLab";
+        public const string DefenderForDevOpsGitLab = "DefenderForDevOpsGitLab";
     }
 }

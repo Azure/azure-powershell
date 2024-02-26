@@ -13,7 +13,10 @@ namespace Microsoft.Azure.Management.Security
     public static partial class LocationsOperationsExtensions
     {
         /// <summary>
-        /// The location of the responsible ASC of the specific subscription (home region). For each subscription there is only one responsible location. The location in the response should be used to read or write other resources in ASC according to their ID.
+        /// The location of the responsible ASC of the specific subscription (home
+        /// region). For each subscription there is only one responsible location. The
+        /// location in the response should be used to read or write other resources in
+        /// ASC according to their ID.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -24,7 +27,10 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// The location of the responsible ASC of the specific subscription (home region). For each subscription there is only one responsible location. The location in the response should be used to read or write other resources in ASC according to their ID.
+        /// The location of the responsible ASC of the specific subscription (home
+        /// region). For each subscription there is only one responsible location. The
+        /// location in the response should be used to read or write other resources in
+        /// ASC according to their ID.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -67,7 +73,10 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// The location of the responsible ASC of the specific subscription (home region). For each subscription there is only one responsible location. The location in the response should be used to read or write other resources in ASC according to their ID.
+        /// The location of the responsible ASC of the specific subscription (home
+        /// region). For each subscription there is only one responsible location. The
+        /// location in the response should be used to read or write other resources in
+        /// ASC according to their ID.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -81,7 +90,10 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// The location of the responsible ASC of the specific subscription (home region). For each subscription there is only one responsible location. The location in the response should be used to read or write other resources in ASC according to their ID.
+        /// The location of the responsible ASC of the specific subscription (home
+        /// region). For each subscription there is only one responsible location. The
+        /// location in the response should be used to read or write other resources in
+        /// ASC according to their ID.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

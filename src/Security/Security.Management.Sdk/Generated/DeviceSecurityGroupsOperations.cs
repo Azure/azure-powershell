@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Security
         public SecurityCenterClient Client { get; private set; }
 
         /// <summary>
-        /// Use this method get the list of device security groups for the specified IoT Hub resource.
+        /// Use this method get the list of device security groups for the specified
+        /// IoT Hub resource.
         /// </summary>
         /// <param name='resourceId'>
         /// The identifier of the resource.
@@ -233,13 +234,15 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Use this method to get the device security group for the specified IoT Hub resource.
+        /// Use this method to get the device security group for the specified IoT Hub
+        /// resource.
         /// </summary>
         /// <param name='resourceId'>
         /// The identifier of the resource.
         /// </param>
         /// <param name='deviceSecurityGroupName'>
-        /// The name of the device security group. Note that the name of the device security group is case insensitive.
+        /// The name of the device security group. Note that the name of the device
+        /// security group is case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -437,13 +440,15 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Use this method to creates or updates the device security group on a specified IoT Hub resource.
+        /// Use this method to creates or updates the device security group on a
+        /// specified IoT Hub resource.
         /// </summary>
         /// <param name='resourceId'>
         /// The identifier of the resource.
         /// </param>
         /// <param name='deviceSecurityGroupName'>
-        /// The name of the device security group. Note that the name of the device security group is case insensitive.
+        /// The name of the device security group. Note that the name of the device
+        /// security group is case insensitive.
         /// </param>
         /// <param name='deviceSecurityGroup'>
         /// Security group object.
@@ -680,7 +685,8 @@ namespace Microsoft.Azure.Management.Security
         /// The identifier of the resource.
         /// </param>
         /// <param name='deviceSecurityGroupName'>
-        /// The name of the device security group. Note that the name of the device security group is case insensitive.
+        /// The name of the device security group. Note that the name of the device
+        /// security group is case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -857,7 +863,8 @@ namespace Microsoft.Azure.Management.Security
 
         }
         /// <summary>
-        /// Use this method get the list of device security groups for the specified IoT Hub resource.
+        /// Use this method get the list of device security groups for the specified
+        /// IoT Hub resource.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -57,19 +57,25 @@ namespace Microsoft.Azure.Management.Security
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ConnectorSetting>> GetWithHttpMessagesAsync(string connectorName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create a cloud account connector or update an existing one. Connect to your cloud account. For AWS, use either account credentials or role-based authentication. For GCP, use account organization credentials.
+        /// Create a cloud account connector or update an existing one. Connect to your
+        /// cloud account. For AWS, use either account credentials or role-based
+        /// authentication. For GCP, use account organization credentials.
         /// </summary>
         /// <remarks>
-        /// Create a cloud account connector or update an existing one. Connect to your cloud account. For AWS, use either account credentials or role-based authentication. For GCP, use account organization credentials.
+        /// Create a cloud account connector or update an existing one. Connect to your
+        /// cloud account. For AWS, use either account credentials or role-based
+        /// authentication. For GCP, use account organization credentials.
         /// </remarks>
         /// <param name='connectorName'>
         /// Name of the cloud account connector
         /// </param>
         /// <param name='hybridComputeSettings'>
-        /// Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
+        /// Settings for hybrid compute management. These settings are relevant only
+        /// for Arc autoProvision (Hybrid Compute).
         /// </param>
         /// <param name='authenticationDetails'>
-        /// Settings for authentication management, these settings are relevant only for the cloud connector.
+        /// Settings for authentication management, these settings are relevant only
+        /// for the cloud connector.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

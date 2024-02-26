@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </param>
 
         /// <param name="sourceResourceType">The application source, what it affects, e.g. Assessments
-        /// Possible values include: 'Assessments'</param>
+        /// Possible values include: &#39;Assessments&#39;</param>
 
         /// <param name="conditionSets">The application conditionSets - see examples
         /// </param>

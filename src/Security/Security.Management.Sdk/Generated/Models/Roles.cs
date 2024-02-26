@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         public const string Owner = "Owner";
         /// <summary>
-        /// If enabled, send notification on new alerts to the subscription contributors
+        /// If enabled, send notification on new alerts to the subscription
+        /// contributors
         /// </summary>
         public const string Contributor = "Contributor";
     }

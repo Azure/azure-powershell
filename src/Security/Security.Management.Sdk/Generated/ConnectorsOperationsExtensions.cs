@@ -73,7 +73,9 @@ namespace Microsoft.Azure.Management.Security
             }
         }
         /// <summary>
-        /// Create a cloud account connector or update an existing one. Connect to your cloud account. For AWS, use either account credentials or role-based authentication. For GCP, use account organization credentials.
+        /// Create a cloud account connector or update an existing one. Connect to your
+        /// cloud account. For AWS, use either account credentials or role-based
+        /// authentication. For GCP, use account organization credentials.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -87,7 +89,9 @@ namespace Microsoft.Azure.Management.Security
         }
 
         /// <summary>
-        /// Create a cloud account connector or update an existing one. Connect to your cloud account. For AWS, use either account credentials or role-based authentication. For GCP, use account organization credentials.
+        /// Create a cloud account connector or update an existing one. Connect to your
+        /// cloud account. For AWS, use either account credentials or role-based
+        /// authentication. For GCP, use account organization credentials.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
