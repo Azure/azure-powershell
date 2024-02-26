@@ -9,11 +9,17 @@ parameters:
   type: string
   default: Databricks
 
+trigger:
+  branches:
+    include:
+    - eng/archive-test
+
 resources:
   repositories:
   - repository: self
     type: git
     ref: refs/heads/eng/archive-test
+
 jobs:
 - job: Job_1
   displayName: "Service: ${{ parameters.ServiceName }}"
