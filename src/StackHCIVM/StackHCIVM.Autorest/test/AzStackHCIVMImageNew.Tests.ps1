@@ -16,27 +16,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzStackHCIVMImageNew'))
 
 Describe 'AzStackHCIVMImageNew' {
     It 'Create Image '  {
-        New-AzStackHCIVMImage -Name  $env.imageName -ImagePath  $env.imagePath  -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -OSType $env.osTypeLinux | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
+        New-AzStackHCIVMImage -Name  $env.imageName -ImagePath  $env.imagePath  -SubscriptionId $env.newSubscriptionId -ResourceGroupName $env.newResourceGroupName -CustomLocationId $env.newCustomLocationId -Location $env.location -OSType $env.osTypeLinux | Select-Object -Property ProvisioningState | Should -BeExactly "@{ProvisioningState=Succeeded}"
     }
 
     It 'Create MarketplaceImage  '  {
-        New-AzStackHCIVMImage -Name  $env.mkpImageName -Offer $env.offer -Publisher $env.publisher -Sku $env.sku -Version $env.version  -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.resourceGroupName -CustomLocationId $env.customLocationId -Location $env.location -OSType $env.osTypeWindows
+        New-AzStackHCIVMImage -Name  $env.mkpImageName -Offer $env.offer -Publisher $env.publisher -Sku $env.sku -Version $env.version  -SubscriptionId $env.newSubscriptionId -ResourceGroupName $env.newResourceGroupName -CustomLocationId $env.newCustomLocationId -Location $env.location -OSType $env.osTypeWindows
         Start-Sleep -Seconds 300 
-        $image = Get-AzStackHCIVMImage -Name  $env.mkpImageName -ResourceGroupName $env.resourceGroupName
+        $image = Get-AzStackHCIVMImage -Name  $env.mkpImageName -ResourceGroupName $env.newResourceGroupName -SubscriptionId $env.newSubscriptionId
         $image.ProvisioningState |  Should -BeExactly "Succeeded"
     }
 
 
     It 'List'  {
         {
-            $config = Get-AzStackHCIVMImage -ResourceGroupName $env.resourceGroupName
+            $config = Get-AzStackHCIVMImage -ResourceGroupName $env.newResourceGroupName -SubscriptionId $env.newSubscriptionId
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }
 
     It 'Get'  {
         {
-            $config = Get-AzStackHCIVMImage -Name  $env.imageName -ResourceGroupName $env.resourceGroupName 
+            $config = Get-AzStackHCIVMImage -Name  $env.imageName -ResourceGroupName $env.newResourceGroupName -SubscriptionId $env.newSubscriptionId
             $config.Name | Should -Be $env.imageName
         } | Should -Not -Throw
     }
@@ -44,12 +44,12 @@ Describe 'AzStackHCIVMImageNew' {
 
     It 'Delete'{
         {
-            Remove-AzStackHCIVMImage -Name  $env.imageName -ResourceGroupName $env.resourceGroupName -Force
-            $config =  Get-AzStackHCIVMImage -Name  $env.imageName -ResourceGroupName $env.resourceGroupName 
+            Remove-AzStackHCIVMImage -Name  $env.imageName -ResourceGroupName $env.newResourceGroupName -SubscriptionId $env.newSubscriptionId -Force
+            $config =  Get-AzStackHCIVMImage -Name  $env.imageName -ResourceGroupName $env.newResourceGroupName 
             $config | Should -Be $null
 
-            Remove-AzStackHCIVMImage -Name  $env.mkpImageName -ResourceGroupName $env.resourceGroupName -Force
-            $config =  Get-AzStackHCIVMImage -Name  $env.mkpImageName -ResourceGroupName $env.resourceGroupName 
+            Remove-AzStackHCIVMImage -Name  $env.mkpImageName -ResourceGroupName $env.newResourceGroupName -SubscriptionId $env.newSubscriptionId -Force
+            $config =  Get-AzStackHCIVMImage -Name  $env.mkpImageName -ResourceGroupName $env.newResourceGroupName 
             $config | Should -Be $null
 
         } | Should -Throw
