@@ -406,8 +406,8 @@ public static int hashForArtifact(String artifact)
                 }
            }
            else {
-               $response = Get-AzResource -ResourceId $CacheStorageAccountId -ErrorVariable notPresent -ErrorAction SilentlyContinue
-               if ($response -eq $null) {
+               $rsaStorageAccount = Get-AzResource -ResourceId $CacheStorageAccountId -ErrorVariable notPresent -ErrorAction SilentlyContinue
+               if ($rsaStorageAccount -eq $null) {
                    throw "Storage account '$($CacheStorageAccountId)' does not exist."
                }
 
