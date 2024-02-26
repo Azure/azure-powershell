@@ -37,6 +37,6 @@ jobs:
     inputs:
       targetType: inline
       script: >-
-        Write-Warning 'PR: $(System.PullRequest.PullRequestNumber)'
-        Write-Warning 'Commit: $(Build.SourceVersion)'
+        Write-Warning "PR: $(System.PullRequest.PullRequestNumber)"
+        Write-Warning "Commit: $(Build.SourceVersion)"
       workingDirectory: src/${{ parameters.ServiceName }}
