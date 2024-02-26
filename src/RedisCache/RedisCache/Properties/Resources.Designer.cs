@@ -214,6 +214,15 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Id &apos;{0}&apos;is not valid. Id should be of the form &quot;/subscriptions/&lt;subscription id&gt;/resourceGroups/&lt;resource group name&gt;/providers/Microsoft.Cache/Redis/&lt;cache name&gt;/&lt;operation group&gt;/&lt;name&gt;&quot;..
+        /// </summary>
+        internal static string InvalidRedisCacheChildResourceId {
+            get {
+                return ResourceManager.GetString("InvalidRedisCacheChildResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Redis Cache Id &apos;{0}&apos;is not valid. Redis Cache Id should be of the form &quot;/subscriptions/&lt;subscription id&gt;/resourceGroups/&lt;resource group name&gt;/providers/Microsoft.Cache/Redis/&lt;cache name&gt;&quot;. .
         /// </summary>
         internal static string InvalidRedisCacheId {

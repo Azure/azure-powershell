@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     public class NewAzureRedisCacheAccessPolicy : RedisCacheCmdletBase
     {
         private const string NormalParameterSet = "NormalParameterSet";
-        private const string InputObjectParameterSet = "RedisCacheAttributesObject";
-        private const string ResourceIdParameterSet = "ResourceIdParameterSet";
+        private const string ParentObjectParameterSet = "CacheObjectParameterSet";
 
         [Parameter(ParameterSetName = NormalParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which cache exists.")]
         [ResourceGroupCompleter]
@@ -37,13 +36,9 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "Object of type RedisCacheAttributes")]
+        [Parameter(ParameterSetName = ParentObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "Object of type RedisCacheAttributes")]
         [ValidateNotNull]
-        public RedisCacheAttributes InputObject { get; set; }
-
-        [Parameter(ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "ARM Id of Redis Cache.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public RedisCacheAttributes TopLevelResourceObject { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The name of the access policy that is being added to the Redis cache.")]
         [ValidateNotNullOrEmpty]
@@ -55,16 +50,10 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public override void ExecuteCmdlet()
         {
-            // In case of piped parent object "RedisCacheAttributes" fetch ResourceGroupName and Name from it
-            if (ParameterSetName.Equals(InputObjectParameterSet))
+            if (ParameterSetName.Equals(ParentObjectParameterSet))
             {
-                FetchResourceGroupNameAndNameFromInputObject();
+                FetchResourceGroupNameAndCacheNameFromParentObject();
             }
-            else if (ParameterSetName.Equals(ResourceIdParameterSet))
-            {
-                FetchResourceGroupNameAndNameFromResourceId();
-            }
-
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             ResourceGroupName = CacheClient.GetResourceGroupNameIfNotProvided(ResourceGroupName, Name);
 
@@ -82,17 +71,10 @@ namespace Microsoft.Azure.Commands.RedisCache
                 }
             );
         }
-
-        private void FetchResourceGroupNameAndNameFromInputObject()
+        private void FetchResourceGroupNameAndCacheNameFromParentObject()
         {
-            ResourceGroupName = InputObject.ResourceGroupName;
-            Name = InputObject.Name;
-        }
-
-        private void FetchResourceGroupNameAndNameFromResourceId()
-        {
-            ResourceGroupName = Utility.GetResourceGroupNameFromRedisCacheId(ResourceId);
-            Name = Utility.GetRedisCacheNameFromRedisCacheId(ResourceId);
+            ResourceGroupName = TopLevelResourceObject.ResourceGroupName;
+            Name = TopLevelResourceObject.Name;
         }
     }
 }

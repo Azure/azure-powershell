@@ -246,4 +246,7 @@
   <data name="RemoveAccessPolicyAssignment" xml:space="preserve">
     <value>Removing Access Policy Assignment '{0}' from Redis Cache '{1}'...</value>
   </data>
+  <data name="InvalidRedisCacheChildResourceId" xml:space="preserve">
+    <value>Id '{0}'is not valid. Id should be of the form "/subscriptions/&lt;subscription id&gt;/resourceGroups/&lt;resource group name&gt;/providers/Microsoft.Cache/Redis/&lt;cache name&gt;/&lt;operation group&gt;/&lt;name&gt;".</value>
+  </data>
 </root>

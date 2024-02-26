@@ -25,20 +25,41 @@ namespace Microsoft.Azure.Commands.RedisCache
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCacheAccessPolicy"), OutputType(typeof(PSRedisAccessPolicy))]
     public class GetAzureRedisCacheAccessPolicy : RedisCacheCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group in which cache exists.")]
+        private const string NormalParameterSet = "NormalParameterSet";
+        private const string ParentObjectParameterSet = "CacheObjectParameterSet";
+        private const string ResourceIdParameterSet = "ResourceIdParameterSet";
+
+        [Parameter(ParameterSetName = NormalParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group in which cache exists.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of Redis Cache.")]
+        [Parameter(ParameterSetName = NormalParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of Redis Cache.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of Access Policy.")]
+        [Parameter(ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "ARM Id of Redis Cache Access Policy")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(ParameterSetName = ParentObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "Object of type RedisCacheAttributes")]
+        [ValidateNotNull]
+        public RedisCacheAttributes TopLevelResourceObject { get; set; }
+
+        [Parameter(ParameterSetName = NormalParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of Access Policy.")]
+        [Parameter(ParameterSetName = ParentObjectParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of Access Policy.")]
         public string AccessPolicyName { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName.Equals(ParentObjectParameterSet))
+            {
+                FetchResourceGroupNameAndCacheNameFromParentObject();
+            }
+            else if (ParameterSetName.Equals(ResourceIdParameterSet))
+            {
+                FetchDetailsFromChildResourceId();
+            }
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             ResourceGroupName = CacheClient.GetResourceGroupNameIfNotProvided(ResourceGroupName, Name);
 
@@ -74,6 +95,15 @@ namespace Microsoft.Azure.Commands.RedisCache
                 }
                 WriteObject(list, true);
             }
+        }
+        private void FetchDetailsFromChildResourceId()
+        {
+            (ResourceGroupName, Name, AccessPolicyName) = Utility.GetDetailsFromRedisCacheChildResourceId(ResourceId);
+        }
+        private void FetchResourceGroupNameAndCacheNameFromParentObject()
+        {
+            ResourceGroupName = TopLevelResourceObject.ResourceGroupName;
+            Name = TopLevelResourceObject.Name;
         }
     }
 }

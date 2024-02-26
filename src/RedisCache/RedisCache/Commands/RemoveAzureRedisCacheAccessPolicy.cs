@@ -23,7 +23,9 @@ namespace Microsoft.Azure.Commands.RedisCache
     public class RemoveAzureRedisCacheAccessPolicy : RedisCacheCmdletBase
     {
         private const string NormalParameterSet = "NormalParameterSet";
+        private const string ParentObjectParameterSet = "CacheObjectParameterSet";
         private const string InputObjectParameterSet = "RedisCacheAccessPolicyObject";
+        private const string ResourceIdParameterSet = "ResourceIdParameterSet";
 
         [Parameter(ParameterSetName = NormalParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group in which cache exists.")]
         [ResourceGroupCompleter]
@@ -34,24 +36,39 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = NormalParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The name of the access policy that is being deleted from the Redis cache.")]
+        [Parameter(ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "ARM Id of Redis Cache Access Policy")]
         [ValidateNotNullOrEmpty]
-        public string AccessPolicyName { get; set; }
+        public string ResourceId { get; set; }
 
-        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "Object of type RedisCacheAccessPolicy")]
+        [Parameter(ParameterSetName = ParentObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "Object of type RedisCacheAttributes")]
+        [ValidateNotNull]
+        public RedisCacheAttributes TopLevelResourceObject { get; set; }
+
+        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "Object of type PSRedisAccessPolicy")]
         [ValidateNotNull]
         public PSRedisAccessPolicy InputObject { get; set; }
+
+        [Parameter(ParameterSetName = NormalParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The name of the access policy that is being deleted from the Redis cache.")]
+        [Parameter(ParameterSetName = ParentObjectParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The name of the access policy that is being deleted from the Redis cache.")]
+        [ValidateNotNullOrEmpty]
+        public string AccessPolicyName { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName.Equals(ParentObjectParameterSet))
+            {
+                FetchResourceGroupNameAndCacheNameFromParentObject();
+            }
             if (ParameterSetName.Equals(InputObjectParameterSet))
             {
-                ResourceGroupName = InputObject.ResourceGroupName;
-                Name = InputObject.Name;
-                AccessPolicyName = InputObject.AccessPolicyName;
+                FetchDetailsFromInputObject();
+            }
+            else if (ParameterSetName.Equals(ResourceIdParameterSet))
+            {
+                FetchDetailsFromChildResourceId();
             }
 
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
@@ -68,6 +85,22 @@ namespace Microsoft.Azure.Commands.RedisCache
                         WriteObject(true);
                     }
                 });
+        }
+        private void FetchDetailsFromInputObject()
+        {
+            ResourceGroupName = InputObject.ResourceGroupName;
+            Name = InputObject.Name;
+            AccessPolicyName = InputObject.AccessPolicyName;
+        }
+
+        private void FetchDetailsFromChildResourceId()
+        {
+            (ResourceGroupName, Name, AccessPolicyName) = Utility.GetDetailsFromRedisCacheChildResourceId(ResourceId);
+        }
+        private void FetchResourceGroupNameAndCacheNameFromParentObject()
+        {
+            ResourceGroupName = TopLevelResourceObject.ResourceGroupName;
+            Name = TopLevelResourceObject.Name;
         }
     }
 }
