@@ -14,17 +14,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportChatTranscript')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Chat functionality is unavailable for support tickets created outside the portal
 Describe 'Get-AzSupportChatTranscript' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+   
+    It 'List' {
+        Mock Get-AzSupportChatTranscript{ New-MockObject -Type "Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ChatTranscriptDetails"}
+        Get-AzSupportChatTranscript -SupportTicketName $env.Name
+        Assert-MockCalled Get-AzSupportChatTranscript -Exactly 1 
     }
 
     It 'GetViaIdentitySupportTicket' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get'  {
+        Mock Get-AzSupportChatTranscript{ New-MockObject -Type "Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ChatTranscriptDetails"}
+        Get-AzSupportChatTranscript -SupportTicketName $env.Name -Name "testChat"
+        Assert-MockCalled Get-AzSupportChatTranscript -Exactly 2
     }
 
     It 'GetViaIdentity' -skip {

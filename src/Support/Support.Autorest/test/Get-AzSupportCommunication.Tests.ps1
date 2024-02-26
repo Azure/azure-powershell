@@ -15,17 +15,44 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportCommunication'))
 }
 
 Describe 'Get-AzSupportCommunication' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+
+    It 'List' {
+        if($env.SupportPlanSubscription -eq "Basic support" || $env.SupportPlanSubscription -eq "Free"){
+            write-host "cannot get communication operations for tickets with free support plan"
+            
+            Mock Get-AzSupportCommunication{ New-MockObject -Type "Microsoft.Azure.PowerShell.Cmdlets.Support.Models.CommunicationDetails"}
+            
+            Get-AzSupportCommunication -SupportTicketName $env.Name
+            
+            Assert-MockCalled Get-AzSupportCommunication -Exactly 1 
+        }
+        else{
+            $supportMessage = Get-AzSupportCommunication -SupportTicketName $env.Name
+        
+            $supportMessage.Count | Should -BeGreaterThan 0
+        }
     }
 
     It 'GetViaIdentitySupportTicket' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Get' {
+        if($env.SupportPlanSubscription -eq "Basic support" || $env.SupportPlanSubscription -eq "Free"){
+            write-host "cannot get communication operations for tickets with free support plan"
+            
+            Mock Get-AzSupportCommunication{ New-MockObject -Type "Microsoft.Azure.PowerShell.Cmdlets.Support.Models.CommunicationDetails"}
+            
+            Get-AzSupportCommunication -SupportTicketName $env.Name -CommunicationName $env.CommunicationName
+            
+            Assert-MockCalled Get-AzSupportCommunication -Exactly 2 
+        }
+        else{
+            $supportMessage = Get-AzSupportCommunication -CommunicationName $env.CommunicationName -SupportTicketName $env.Name
+        
+            $supportMessage.Body.ToString() | Should -Match $env.Body
+        }
+    } 
 
     It 'GetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
