@@ -47,6 +47,8 @@ identity-correction-for-post: true
 nested-object-to-string: true
 
 directive:
+#**********TEST**********
+
 # Worked around this issue: https://github.com/Azure/autorest.powershell/issues/1258
   - from: EncryptionEntitiesDefinition.json.cs
     where: $
