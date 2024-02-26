@@ -568,6 +568,8 @@ function Test-MongoDBInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
         Start-TestSleep -s 50
         Assert-NotNull $RestoredCollection
 
+        Start-TestSleep -s 100
+
         # list containers
         $ListContainers = Get-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
         Assert-NotNull $ListContainers
