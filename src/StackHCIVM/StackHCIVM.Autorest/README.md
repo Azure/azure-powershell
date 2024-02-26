@@ -58,8 +58,6 @@ commit: 59883fd93ea3f0911d2070a533a3724bf9c2516a
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 repo: azure-rest-api-specs
-use-extension:
-  "@autorest/powershell": "4.0.674"
 
 input-file:
   - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/preview/2023-09-01-preview/common.json
