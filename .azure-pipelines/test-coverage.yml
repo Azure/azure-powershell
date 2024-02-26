@@ -23,7 +23,6 @@ parameters:
 variables:
   EnableTestCoverage: true
   TestCoverageLocation: $(Pipeline.Workspace)/artifacts
-  AZURE_CORE_SHOW_SECRETS_WARNING: true
 
 pr: none
 trigger: none
@@ -87,6 +86,75 @@ jobs:
       command: custom
       custom: msbuild
       arguments: 'build.proj -t:"Test" -p:"Configuration=Debug;TestFramework=${{ parameters.testFramework }}"'
+
+  - task: PowerShell@2
+    displayName: Test AutoRest-Based Cmdlets
+    condition: succeeded()
+    inputs:
+      pwsh: true
+      targetType: inline
+      script: |
+        Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
+
+        if ($IsWindows) { $delimiter = ";" } else { $delimiter = ":" }
+        $rootDir = (Get-Location).Path
+        $debugDir = Join-Path -Path $rootDir -ChildPath "artifacts" | Join-Path -ChildPath "Debug"
+        $env:PSModulePath += $delimiter + $debugDir
+        Get-ChildItem -Path $debugDir -Filter test-module.ps1 -File -Recurse | Select-Object -ExpandProperty FullName | ForEach-Object {
+          Write-Host "##[section]Testing $_"
+          & $_
+        }
+
+  - task: PowerShell@2
+    displayName: Analyze Test Coverage
+    condition: succeeded()
+    inputs:
+      pwsh: true
+      targetType: filePath
+      filePath: ./tools/TestFx/Coverage/AnalyzeTestCoverage.ps1
+      arguments: -CalcBaseline
+
+  - template: util/get-keyvault-secret-steps.yml
+    parameters:
+      serviceConnectionName: $(AzureSubscription)
+      keyVaultName: $(KustoServicePrincipalKeyVaultName)
+      secretName: $(KustoServicePrincipalSecretName)
+      outVar: 'KustoServicePrincipalSecret'
+
+  - task: PowerShell@2
+    displayName: Save Test Coverage Results
+    condition: succeeded()
+    inputs:
+      pwsh: true
+      targetType: filePath
+      filePath: ./tools/TestFx/Coverage/SaveTestCoverageResult.ps1
+      arguments: CITest $(KustoTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion)
+
+  - template: util/get-github-pat-steps.yml
+
+  - task: PowerShell@2
+    displayName: Update Test Coverage Baseline
+    condition: succeeded()
+    inputs:
+      pwsh: true
+      targetType: inline
+      script: |
+        git checkout -b testcoverage-baseline
+        $blDir = "./tools/TestFx/Coverage"
+        $blCsv = Join-Path -Path $blDir -ChildPath "Baseline.csv"
+        Copy-Item -Path "$(Pipeline.Workspace)/artifacts/TestCoverageAnalysis/Results/Baseline.csv" -Destination $blDir -Force
+        git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
+        git config user.name "azure-powershell-bot"
+        git add $blCsv
+        git commit -m "Update with the latest test coverage data"
+        git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git
+        git push origin testcoverage-baseline --force
+
+        $title = "Update test coverage baseline"
+        $headBranch = "testcoverage-baseline"
+        $targetBranch = "main"
+        $description = "Update with the latest test coverage baseline data"
+        ./tools/Github/CreatePR.ps1 -Title $title -HeadBranch $headBranch -BaseBranch $targetBranch -BotAccessToken $(GithubToken) -Description $description
 
   - task: PublishPipelineArtifact@1
     displayName: Publish Test Coverage Result

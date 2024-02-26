@@ -34,7 +34,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer
              */
             return new Dictionary<string, IEnumerable<string>>
             {
-                { "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount", new[] { "Context" } },   // Lazy property
+                // Skip lazy load properties
+                { "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount", new[] { "Context" } },
+                { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageContainer", new[] { "CloudBlobContainer", "Permission" } },
+                { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob", new[] { "BlobProperties" } }
             };
         }
 

@@ -34,9 +34,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private const string CsvHeaderScriptLineNumber = "LineNumber";
         private const string CsvHeaderStartDateTime = "StartDateTime";
         private const string CsvHeaderEndDateTime = "EndDateTime";
-        private const string CsvHeaderTotalDuration = "TotalDuration";
-        private const string CsvHeaderSanitizerDuration = "SanitizerDuration";
-        private const string CsvHeaderSanitizerPercentage = "SanitizerPercentage";
         private const string CsvHeaderIsSuccess = "IsSuccess";
         private const string Delimiter = ",";
 
@@ -84,15 +81,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                          .Append(CsvHeaderScriptLineNumber).Append(Delimiter)
                          .Append(CsvHeaderStartDateTime).Append(Delimiter)
                          .Append(CsvHeaderEndDateTime).Append(Delimiter)
-                         .Append(CsvHeaderTotalDuration).Append(Delimiter)
-                         .Append(CsvHeaderSanitizerDuration).Append(Delimiter)
-                         .Append(CsvHeaderSanitizerPercentage).Append(Delimiter)
                          .Append(CsvHeaderIsSuccess);
 
             return headerBuilder.ToString();
         }
 
-        private string GenerateCsvItem(string commandName, string parameterSetName, string parameters, string sourceScript, int scriptLineNumber, string startDateTime, string endDateTime, string totalDuration, string sanitizerDuration, string sanitizerPercentage, bool isSuccess)
+        private string GenerateCsvItem(string commandName, string parameterSetName, string parameters, string sourceScript, int scriptLineNumber, string startDateTime, string endDateTime, bool isSuccess)
         {
             StringBuilder itemBuilder = new StringBuilder();
             itemBuilder.Append(commandName).Append(Delimiter)
@@ -102,9 +96,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                        .Append(scriptLineNumber).Append(Delimiter)
                        .Append(startDateTime).Append(Delimiter)
                        .Append(endDateTime).Append(Delimiter)
-                       .Append(totalDuration).Append(Delimiter)
-                       .Append(sanitizerDuration).Append(Delimiter)
-                       .Append(sanitizerPercentage).Append(Delimiter)
                        .Append(isSuccess.ToString().ToLowerInvariant());
 
             return itemBuilder.ToString();
@@ -140,24 +131,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 }
 
                 csvData.AppendLine();
-                var totalDuration = qos.Duration.TotalMilliseconds;
-                var sanitizerDuration = qos.SanitizerInfo?.SanitizeDuration.TotalMilliseconds ?? default;
-                var sanitizerPercentage = (sanitizerDuration / totalDuration).ToString("P2");
-                Console.WriteLine($"##[section] Command Name: {commandName}");
-                Console.WriteLine($"##[section] SanitizerInfo is not null: {qos.SanitizerInfo != null}");
-                if (qos.SanitizerInfo != null)
-                {
-                    Console.WriteLine($"##[section] Show Secrets Warning: {qos.SanitizerInfo.ShowSecretsWarning}");
-                }
-                Console.WriteLine($"##[section] Total Duration: {totalDuration}");
-                Console.WriteLine($"##[section] Sanitizer Duration: {sanitizerDuration}");
-                Console.WriteLine($"##[section] Sanitizer Percentage: {sanitizerPercentage}");
-                var csvItem = GenerateCsvItem(
-                    commandName, qos.ParameterSetName, qos.Parameters,
-                    sourceScriptName, qos.ScriptLineNumber,
-                    qos.StartTime.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss"),
-                    qos.EndTime.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss"),
-                    totalDuration.ToString("F4"), sanitizerDuration.ToString("F4"), sanitizerPercentage, qos.IsSuccess);
+                var csvItem = GenerateCsvItem(commandName, qos.ParameterSetName, qos.Parameters, sourceScriptName, qos.ScriptLineNumber, qos.StartTime.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss"), qos.EndTime.UtcDateTime.ToString("yyyy-MM-ddTHH:mm:ss"), qos.IsSuccess);
                 csvData.Append(csvItem);
 
                 File.AppendAllText(csvFilePath, csvData.ToString());
