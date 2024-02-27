@@ -75,7 +75,7 @@ jobs:
         }
         git checkout src/${{ parameters.ServiceName }};
         git checkout -b codegen/${{ parameters.ServiceName }} origin/${{ parameters.TargetBranch }};
-  - task: PowerShell@2
+  - task: PowerShell@2.232.1
     displayName: 'Create codegen/${{ parameters.ServiceName }} branch'
     inputs:
       targetType: 'inline'
