@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
-Module Name: Az.Security
+Module Name: Az.security
 online version: https://learn.microsoft.com/powershell/module/az.security/new-azsecurityautomationscopeobject
 schema: 2.0.0
 ---
@@ -35,7 +35,7 @@ Creates security automation scope object
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 The resources scope description
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +66,7 @@ The resources scope path.
 Can be the subscription on which the automation is defined on or a resource group under that subscription (fully qualified Azure resource IDs)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

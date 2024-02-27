@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
-Module Name: Az.Security
+Module Name: Az.security
 online version: https://learn.microsoft.com/powershell/module/az.security/Get-AzSecuritySolutionsReferenceData
 schema: 2.0.0
 ---
@@ -15,6 +15,17 @@ Get Security Solutions
 ### SubscriptionScope (Default)
 ```
 Get-AzSecuritySolution [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceGroupLevelResource
+```
+Get-AzSecuritySolution -ResourceGroupName <String> -Name <String> -Location <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceId
+```
+Get-AzSecuritySolution -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,6 +73,66 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Location
+Location.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceGroupLevelResource
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceGroupLevelResource
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceGroupLevelResource
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ID of the security resource that you want to invoke the command on.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -74,5 +145,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Security.Models.ExternalSecuritySolutions.PSSecurityExternalSecuritySolution
 
 ## NOTES
+
+## RELATED LINKS
 
 ## RELATED LINKS
