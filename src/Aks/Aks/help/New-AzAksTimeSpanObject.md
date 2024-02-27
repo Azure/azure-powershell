@@ -13,7 +13,8 @@ Create an in-memory object for TimeSpan.
 ## SYNTAX
 
 ```
-New-AzAksTimeSpanObject [-End <DateTime>] [-Start <DateTime>] [<CommonParameters>]
+New-AzAksTimeSpanObject [-End <DateTime>] [-Start <DateTime>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +47,21 @@ The end of a time span.
 Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
