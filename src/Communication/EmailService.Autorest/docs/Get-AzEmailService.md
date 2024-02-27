@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.EmailService
-online version: https://learn.microsoft.com/powershell/module/az.emailservice/get-azemailservice
+Module Name: Az.Communication
+online version: https://learn.microsoft.com/powershell/module/az.communication/get-azemailservice
 schema: 2.0.0
 ---
 
@@ -39,7 +39,7 @@ Get the EmailService and its properties.
 
 ## EXAMPLES
 
-### Example 1: List existing CommunicationServices for a Subscription
+### Example 1: List existing Email Services for a Subscription
 ```powershell
 Get-AzCommunicationService -SubscriptionId 73fc3592-3cef-4300-5e19-8d18b65ce0e8
 
@@ -52,7 +52,7 @@ global   ContosoResource2                             06-12-2021 20:22:48 test@m
 
 Returns a list of all ACS resources under that subscription.
 
-### Example 2: Get infomation on specified Azure Communication resource
+### Example 2: Get infomation on specified Azure Email services resource
 ```powershell
 Get-AzEmailService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 

@@ -2,7 +2,7 @@
   "resourceType": "emailServices/domains",
   "apiVersion": "2023-06-01-preview",
   "learnMore": {
-    "url": "https://learn.microsoft.com/powershell/module/az.emailservice"
+    "url": "https://learn.microsoft.com/powershell/module/az.communication"
   },
   "commands": [
     {
@@ -11,7 +11,7 @@
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.emailservice/get-azemailservicedomain"
+          "url": "https://learn.microsoft.com/powershell/module/az.communication/get-azemailservicedomain"
         },
         "parameterSets": [
           {
@@ -54,7 +54,7 @@
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.emailservice/remove-azemailservicedomain"
+          "url": "https://learn.microsoft.com/powershell/module/az.communication/remove-azemailservicedomain"
         },
         "parameterSets": [
           {

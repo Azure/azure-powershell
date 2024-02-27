@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.EmailService
-online version: https://learn.microsoft.com/powershell/module/az.emailservice/stop-azemailservicedomainverification
+Module Name: Az.Communication
+online version: https://learn.microsoft.com/powershell/module/az.communication/stop-azemailservicedomainverification
 schema: 2.0.0
 ---
 

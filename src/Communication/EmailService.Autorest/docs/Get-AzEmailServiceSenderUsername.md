@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.EmailService
-online version: https://learn.microsoft.com/powershell/module/az.emailservice/get-azemailservicesenderusername
+Module Name: Az.Communication
+online version: https://learn.microsoft.com/powershell/module/az.communication/get-azemailservicesenderusername
 schema: 2.0.0
 ---
 
@@ -82,7 +82,6 @@ test                                                                            
 ```
 
 Returns the information on existing Email Service sender usernames.
-
 
 ## PARAMETERS
 

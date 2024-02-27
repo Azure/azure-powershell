@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.EmailService
-online version: https://learn.microsoft.com/powershell/module/az.emailservice/invoke-azemailserviceinitiatedomainverification
+Module Name: Az.Communication
+online version: https://learn.microsoft.com/powershell/module/az.communication/invoke-azemailserviceinitiatedomainverification
 schema: 2.0.0
 ---
 
@@ -77,6 +77,7 @@ Initiate verification of DNS record.
 ```powershell
 Invoke-AzEmailServiceInitiateDomainVerification -DomainName testcustomdomain1.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -VerificationType Domain
 ```
+
 Invoke initiate domain verification for domain resource.
 
 ## PARAMETERS

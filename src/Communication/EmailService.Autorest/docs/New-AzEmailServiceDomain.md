@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.EmailService
-online version: https://learn.microsoft.com/powershell/module/az.emailservice/new-azemailservicedomain
+Module Name: Az.Communication
+online version: https://learn.microsoft.com/powershell/module/az.communication/new-azemailservicedomain
 schema: 2.0.0
 ---
 
@@ -156,8 +156,6 @@ VerificationRecord           : {
 ```
 
 Create a Azure managed domain resource with the provided parameters.
-
-
 
 ## PARAMETERS
 
