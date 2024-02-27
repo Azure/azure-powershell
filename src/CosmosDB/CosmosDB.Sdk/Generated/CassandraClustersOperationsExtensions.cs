@@ -267,6 +267,90 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
+        /// List all commands currently running on ring info
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        public static System.Collections.Generic.IEnumerable<CommandPublicResource> ListCommand(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName)
+        {
+                return ((ICassandraClustersOperations)operations).ListCommandAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// List all commands currently running on ring info
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<CommandPublicResource>> ListCommandAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListCommandWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get details about a specified command that was run asynchronously.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='commandId'>
+        /// Managed Cassandra cluster command id.
+        /// </param>
+        public static ListCommands GetCommandAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string commandId)
+        {
+                return ((ICassandraClustersOperations)operations).GetCommandAsyncAsync(resourceGroupName, clusterName, commandId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get details about a specified command that was run asynchronously.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='clusterName'>
+        /// Managed Cassandra cluster name.
+        /// </param>
+        /// <param name='commandId'>
+        /// Managed Cassandra cluster command id.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ListCommands> GetCommandAsyncAsync(this ICassandraClustersOperations operations, string resourceGroupName, string clusterName, string commandId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetCommandAsyncWithHttpMessagesAsync(resourceGroupName, clusterName, commandId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// List the backups of this cluster that are available to restore.
         /// </summary>
         /// <param name='operations'>

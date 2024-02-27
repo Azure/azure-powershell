@@ -238,6 +238,51 @@ namespace Microsoft.Azure.Management.CosmosDB
             }
         }
         /// <summary>
+        /// Completes a Data Transfer Online Job.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='jobName'>
+        /// Name of the Data Transfer Job
+        /// </param>
+        public static DataTransferJobGetResults Complete(this IDataTransferJobsOperations operations, string resourceGroupName, string accountName, string jobName)
+        {
+                return ((IDataTransferJobsOperations)operations).CompleteAsync(resourceGroupName, accountName, jobName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Completes a Data Transfer Online Job.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='jobName'>
+        /// Name of the Data Transfer Job
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DataTransferJobGetResults> CompleteAsync(this IDataTransferJobsOperations operations, string resourceGroupName, string accountName, string jobName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CompleteWithHttpMessagesAsync(resourceGroupName, accountName, jobName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Get a list of Data Transfer jobs.
         /// </summary>
         /// <param name='operations'>

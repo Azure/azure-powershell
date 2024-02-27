@@ -133,51 +133,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="customerManagedKeyStatus">Indicates the status of the Customer Managed Key feature on the account. In
         /// case there are errors, the property provides troubleshooting guidance.
-        /// Possible values include: &#39;Access to your account is currently revoked
-        /// because the Azure Cosmos DB service is unable to obtain the AAD
-        /// authentication token for the account&#39;s default identity; for more details
-        /// about this error and how to restore access to your account please visit
-        /// https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide#azure-active-directory-token-acquisition-error
-        /// (4000).&#39;, &#39;Access to your account is currently revoked because the Azure
-        /// Cosmos DB account&#39;s key vault key URI does not follow the expected format;
-        /// for more details about this error and how to restore access to your account
-        /// please visit
-        /// https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide#improper-syntax-detected-on-the-key-vault-uri-property
-        /// (4006).&#39;, &#39;Access to your account is currently revoked because the current
-        /// default identity no longer has permission to the associated Key Vault key;
-        /// for more details about this error and how to restore access to your account
-        /// please visit
-        /// https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide#default-identity-is-unauthorized-to-access-the-azure-key-vault-key
-        /// (4002).&#39;, &#39;Access to your account is currently revoked because the Azure
-        /// Key Vault DNS name specified by the account&#39;s keyvaultkeyuri property could
-        /// not be resolved; for more details about this error and how to restore
-        /// access to your account please visit
-        /// https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide#unable-to-resolve-the-key-vaults-dns
-        /// (4009).&#39;, &#39;Access to your account is currently revoked because the
-        /// correspondent key is not found on the specified Key Vault; for more details
-        /// about this error and how to restore access to your account please visit
-        /// https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide#azure-key-vault-resource-not-found
-        /// (4003).&#39;, &#39;Access to your account is currently revoked because the Azure
-        /// Cosmos DB service is unable to wrap or unwrap the key; for more details
-        /// about this error and how to restore access to your account please visit
-        /// https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide#internal-unwrapping-procedure-error
-        /// (4005).&#39;, &#39;Access to your account is currently revoked because the Azure
-        /// Cosmos DB account has an undefined default identity; for more details about
-        /// this error and how to restore access to your account please visit
-        /// https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide#invalid-azure-cosmos-db-default-identity
-        /// (4015).&#39;, &#39;Access to your account is currently revoked because the access
-        /// rules are blocking outbound requests to the Azure Key Vault service; for
-        /// more details about this error and how to restore access to your account
-        /// please visit
-        /// https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide
-        /// (4016).&#39;, &#39;Access to your account is currently revoked because the
-        /// correspondent Azure Key Vault was not found; for more details about this
-        /// error and how to restore access to your account please visit
-        /// https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide#azure-key-vault-resource-not-found
-        /// (4017).&#39;, &#39;Access to your account is currently revoked; for more details
-        /// about this error and how to restore access to your account please visit
-        /// https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide&#39;,
-        /// &#39;Access to the configured customer managed key confirmed.&#39;</param>
+        /// </param>
 
         /// <param name="enablePriorityBasedExecution">Flag to indicate enabling/disabling of Priority Based Execution Preview
         /// feature on the account
@@ -186,7 +142,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="defaultPriorityLevel">Enum to indicate default Priority Level of request for Priority Based
         /// Execution.
         /// Possible values include: &#39;High&#39;, &#39;Low&#39;</param>
-        public DatabaseAccountUpdateProperties(ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), System.Collections.Generic.IList<Location> locations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), string connectorOffer = default(string), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), ApiProperties apiProperties = default(ApiProperties), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), BackupPolicy backupPolicy = default(BackupPolicy), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), DiagnosticLogSettings diagnosticLogSettings = default(DiagnosticLogSettings), bool? disableLocalAuth = default(bool?), Capacity capacity = default(Capacity), bool? enableMaterializedViews = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), bool? enableBurstCapacity = default(bool?), string minimalTlsVersion = default(string), string customerManagedKeyStatus = default(string), bool? enablePriorityBasedExecution = default(bool?), string defaultPriorityLevel = default(string))
+
+        /// <param name="enablePerRegionPerPartitionAutoscale">Flag to indicate enabling/disabling of Per-Region Per-partition autoscale
+        /// Preview feature on the account
+        /// </param>
+        public DatabaseAccountUpdateProperties(ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), System.Collections.Generic.IList<Location> locations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), string connectorOffer = default(string), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), ApiProperties apiProperties = default(ApiProperties), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), BackupPolicy backupPolicy = default(BackupPolicy), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), DiagnosticLogSettings diagnosticLogSettings = default(DiagnosticLogSettings), bool? disableLocalAuth = default(bool?), Capacity capacity = default(Capacity), bool? enableMaterializedViews = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), bool? enableBurstCapacity = default(bool?), string minimalTlsVersion = default(string), string customerManagedKeyStatus = default(string), bool? enablePriorityBasedExecution = default(bool?), string defaultPriorityLevel = default(string), bool? enablePerRegionPerPartitionAutoscale = default(bool?))
 
         {
             this.ConsistencyPolicy = consistencyPolicy;
@@ -222,6 +182,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.CustomerManagedKeyStatus = customerManagedKeyStatus;
             this.EnablePriorityBasedExecution = enablePriorityBasedExecution;
             this.DefaultPriorityLevel = defaultPriorityLevel;
+            this.EnablePerRegionPerPartitionAutoscale = enablePerRegionPerPartitionAutoscale;
             CustomInit();
         }
 
@@ -437,7 +398,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <summary>
         /// Gets or sets indicates the status of the Customer Managed Key feature on
         /// the account. In case there are errors, the property provides
-        /// troubleshooting guidance. Possible values include: &#39;Access to your account is currently revoked because the Azure Cosmos DB service is unable to obtain the AAD authentication token for the account&#39;s default identity; for more details about this error and how to restore access to your account please visit https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide#azure-active-directory-token-acquisition-error (4000).&#39;, &#39;Access to your account is currently revoked because the Azure Cosmos DB account&#39;s key vault key URI does not follow the expected format; for more details about this error and how to restore access to your account please visit https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide#improper-syntax-detected-on-the-key-vault-uri-property (4006).&#39;, &#39;Access to your account is currently revoked because the current default identity no longer has permission to the associated Key Vault key; for more details about this error and how to restore access to your account please visit https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide#default-identity-is-unauthorized-to-access-the-azure-key-vault-key (4002).&#39;, &#39;Access to your account is currently revoked because the Azure Key Vault DNS name specified by the account&#39;s keyvaultkeyuri property could not be resolved; for more details about this error and how to restore access to your account please visit https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide#unable-to-resolve-the-key-vaults-dns (4009).&#39;, &#39;Access to your account is currently revoked because the correspondent key is not found on the specified Key Vault; for more details about this error and how to restore access to your account please visit https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide#azure-key-vault-resource-not-found (4003).&#39;, &#39;Access to your account is currently revoked because the Azure Cosmos DB service is unable to wrap or unwrap the key; for more details about this error and how to restore access to your account please visit https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide#internal-unwrapping-procedure-error (4005).&#39;, &#39;Access to your account is currently revoked because the Azure Cosmos DB account has an undefined default identity; for more details about this error and how to restore access to your account please visit https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide#invalid-azure-cosmos-db-default-identity (4015).&#39;, &#39;Access to your account is currently revoked because the access rules are blocking outbound requests to the Azure Key Vault service; for more details about this error and how to restore access to your account please visit https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide (4016).&#39;, &#39;Access to your account is currently revoked because the correspondent Azure Key Vault was not found; for more details about this error and how to restore access to your account please visit https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide#azure-key-vault-resource-not-found (4017).&#39;, &#39;Access to your account is currently revoked; for more details about this error and how to restore access to your account please visit https://learn.microsoft.com/en-us/azure/cosmos-db/cmk-troubleshooting-guide&#39;, &#39;Access to the configured customer managed key confirmed.&#39;
+        /// troubleshooting guidance.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "customerManagedKeyStatus")]
         public string CustomerManagedKeyStatus {get; set; }
@@ -455,6 +416,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "defaultPriorityLevel")]
         public string DefaultPriorityLevel {get; set; }
+
+        /// <summary>
+        /// Gets or sets flag to indicate enabling/disabling of Per-Region
+        /// Per-partition autoscale Preview feature on the account
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enablePerRegionPerPartitionAutoscale")]
+        public bool? EnablePerRegionPerPartitionAutoscale {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

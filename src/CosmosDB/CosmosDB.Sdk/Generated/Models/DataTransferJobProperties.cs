@@ -50,7 +50,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="error">Error response for Faulted job
         /// </param>
-        public DataTransferJobProperties(DataTransferDataSourceSink source, DataTransferDataSourceSink destination, string jobName = default(string), string status = default(string), long? processedCount = default(long?), long? totalCount = default(long?), System.DateTime? lastUpdatedUtcTime = default(System.DateTime?), int? workerCount = default(int?), ErrorResponse error = default(ErrorResponse))
+
+        /// <param name="duration">Total Duration of Job
+        /// </param>
+
+        /// <param name="mode">Mode of job execution
+        /// Possible values include: &#39;Offline&#39;, &#39;Online&#39;</param>
+        public DataTransferJobProperties(DataTransferDataSourceSink source, DataTransferDataSourceSink destination, string jobName = default(string), string status = default(string), long? processedCount = default(long?), long? totalCount = default(long?), System.DateTime? lastUpdatedUtcTime = default(System.DateTime?), int? workerCount = default(int?), ErrorResponse error = default(ErrorResponse), string duration = default(string), string mode = default(string))
 
         {
             this.JobName = jobName;
@@ -62,6 +68,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.LastUpdatedUtcTime = lastUpdatedUtcTime;
             this.WorkerCount = workerCount;
             this.Error = error;
+            this.Duration = duration;
+            this.Mode = mode;
             CustomInit();
         }
 
@@ -124,6 +132,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "error")]
         public ErrorResponse Error {get; private set; }
+
+        /// <summary>
+        /// Gets total Duration of Job
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "duration")]
+        public string Duration {get; private set; }
+
+        /// <summary>
+        /// Gets or sets mode of job execution Possible values include: &#39;Offline&#39;, &#39;Online&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "mode")]
+        public string Mode {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -151,6 +171,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "WorkerCount", 0);
                 }
             }
+
+
 
         }
     }

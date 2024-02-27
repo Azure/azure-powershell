@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     /// A CosmosDB Cassandra API data source/sink
     /// </summary>
     [Newtonsoft.Json.JsonObject("CosmosDBCassandra")]
-    public partial class CosmosCassandraDataTransferDataSourceSink
+    public partial class CosmosCassandraDataTransferDataSourceSink : BaseCosmosDataTransferDataSourceSink
     {
         /// <summary>
         /// Initializes a new instance of the CosmosCassandraDataTransferDataSourceSink class.
@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
         public CosmosCassandraDataTransferDataSourceSink(string keyspaceName, string tableName, string remoteAccountName = default(string))
 
+        : base(remoteAccountName)
         {
-            this.RemoteAccountName = remoteAccountName;
             this.KeyspaceName = keyspaceName;
             this.TableName = tableName;
             CustomInit();
@@ -47,12 +47,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "remoteAccountName")]
-        public string RemoteAccountName {get; set; }
 
         /// <summary>
         /// Gets or sets
@@ -81,7 +75,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "TableName");
             }
-
 
 
         }

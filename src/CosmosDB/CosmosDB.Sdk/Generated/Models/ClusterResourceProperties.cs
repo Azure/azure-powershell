@@ -70,6 +70,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// already doing your own repairs.
         /// </param>
 
+        /// <param name="autoReplicate">The form of AutoReplicate that is being used by this cluster.
+        /// Possible values include: &#39;None&#39;, &#39;SystemKeyspaces&#39;, &#39;AllKeyspaces&#39;</param>
+
         /// <param name="clientCertificates">List of TLS certificates used to authorize clients connecting to the
         /// cluster. All connections are TLS encrypted whether clientCertificates is
         /// set or not, but if clientCertificates is set, the managed Cassandra cluster
@@ -95,6 +98,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// should be added to the seed node lists of all unmanaged nodes.
         /// </param>
 
+        /// <param name="externalDataCenters">List of the data center names for unmanaged data centers in this cluster to
+        /// be included in auto-replication.
+        /// </param>
+
         /// <param name="hoursBetweenBackups">(Deprecated) Number of hours to wait between taking a backup of the
         /// cluster.
         /// </param>
@@ -117,7 +124,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="backupSchedules">List of backup schedules that define when you want to back up your data.
         /// </param>
-        public ClusterResourceProperties(string provisioningState = default(string), string restoreFromBackupId = default(string), string delegatedManagementSubnetId = default(string), string cassandraVersion = default(string), string clusterNameOverride = default(string), string authenticationMethod = default(string), string initialCassandraAdminPassword = default(string), SeedNode prometheusEndpoint = default(SeedNode), bool? repairEnabled = default(bool?), System.Collections.Generic.IList<Certificate> clientCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<Certificate> externalGossipCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<Certificate> gossipCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<SeedNode> externalSeedNodes = default(System.Collections.Generic.IList<SeedNode>), System.Collections.Generic.IList<SeedNode> seedNodes = default(System.Collections.Generic.IList<SeedNode>), int? hoursBetweenBackups = default(int?), bool? deallocated = default(bool?), bool? cassandraAuditLoggingEnabled = default(bool?), string clusterType = default(string), CassandraError provisionError = default(CassandraError), System.Collections.Generic.IList<string> extensions = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<BackupSchedule> backupSchedules = default(System.Collections.Generic.IList<BackupSchedule>))
+
+        /// <param name="scheduledEventStrategy">How the nodes in the cluster react to scheduled events
+        /// Possible values include: &#39;Ignore&#39;, &#39;StopAny&#39;, &#39;StopByRack&#39;</param>
+
+        /// <param name="azureConnectionMethod">How to connect to the azure services needed for running the cluster
+        /// Possible values include: &#39;None&#39;, &#39;VPN&#39;</param>
+
+        /// <param name="privateLinkResourceId">If the Connection Method is Vpn, this is the Id of the private link
+        /// resource that the datacenters need to connect to.
+        /// </param>
+        public ClusterResourceProperties(string provisioningState = default(string), string restoreFromBackupId = default(string), string delegatedManagementSubnetId = default(string), string cassandraVersion = default(string), string clusterNameOverride = default(string), string authenticationMethod = default(string), string initialCassandraAdminPassword = default(string), SeedNode prometheusEndpoint = default(SeedNode), bool? repairEnabled = default(bool?), string autoReplicate = default(string), System.Collections.Generic.IList<Certificate> clientCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<Certificate> externalGossipCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<Certificate> gossipCertificates = default(System.Collections.Generic.IList<Certificate>), System.Collections.Generic.IList<SeedNode> externalSeedNodes = default(System.Collections.Generic.IList<SeedNode>), System.Collections.Generic.IList<SeedNode> seedNodes = default(System.Collections.Generic.IList<SeedNode>), System.Collections.Generic.IList<string> externalDataCenters = default(System.Collections.Generic.IList<string>), int? hoursBetweenBackups = default(int?), bool? deallocated = default(bool?), bool? cassandraAuditLoggingEnabled = default(bool?), string clusterType = default(string), CassandraError provisionError = default(CassandraError), System.Collections.Generic.IList<string> extensions = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<BackupSchedule> backupSchedules = default(System.Collections.Generic.IList<BackupSchedule>), string scheduledEventStrategy = default(string), string azureConnectionMethod = default(string), string privateLinkResourceId = default(string))
 
         {
             this.ProvisioningState = provisioningState;
@@ -129,11 +146,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.InitialCassandraAdminPassword = initialCassandraAdminPassword;
             this.PrometheusEndpoint = prometheusEndpoint;
             this.RepairEnabled = repairEnabled;
+            this.AutoReplicate = autoReplicate;
             this.ClientCertificates = clientCertificates;
             this.ExternalGossipCertificates = externalGossipCertificates;
             this.GossipCertificates = gossipCertificates;
             this.ExternalSeedNodes = externalSeedNodes;
             this.SeedNodes = seedNodes;
+            this.ExternalDataCenters = externalDataCenters;
             this.HoursBetweenBackups = hoursBetweenBackups;
             this.Deallocated = deallocated;
             this.CassandraAuditLoggingEnabled = cassandraAuditLoggingEnabled;
@@ -141,6 +160,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.ProvisionError = provisionError;
             this.Extensions = extensions;
             this.BackupSchedules = backupSchedules;
+            this.ScheduledEventStrategy = scheduledEventStrategy;
+            this.AzureConnectionMethod = azureConnectionMethod;
+            this.PrivateLinkResourceId = privateLinkResourceId;
             CustomInit();
         }
 
@@ -225,6 +247,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public bool? RepairEnabled {get; set; }
 
         /// <summary>
+        /// Gets or sets the form of AutoReplicate that is being used by this cluster. Possible values include: &#39;None&#39;, &#39;SystemKeyspaces&#39;, &#39;AllKeyspaces&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "autoReplicate")]
+        public string AutoReplicate {get; set; }
+
+        /// <summary>
         /// Gets or sets list of TLS certificates used to authorize clients connecting
         /// to the cluster. All connections are TLS encrypted whether
         /// clientCertificates is set or not, but if clientCertificates is set, the
@@ -266,6 +294,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "seedNodes")]
         public System.Collections.Generic.IList<SeedNode> SeedNodes {get; private set; }
+
+        /// <summary>
+        /// Gets or sets list of the data center names for unmanaged data centers in
+        /// this cluster to be included in auto-replication.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "externalDataCenters")]
+        public System.Collections.Generic.IList<string> ExternalDataCenters {get; set; }
 
         /// <summary>
         /// Gets or sets (Deprecated) Number of hours to wait between taking a backup
@@ -312,5 +347,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backupSchedules")]
         public System.Collections.Generic.IList<BackupSchedule> BackupSchedules {get; set; }
+
+        /// <summary>
+        /// Gets or sets how the nodes in the cluster react to scheduled events Possible values include: &#39;Ignore&#39;, &#39;StopAny&#39;, &#39;StopByRack&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "scheduledEventStrategy")]
+        public string ScheduledEventStrategy {get; set; }
+
+        /// <summary>
+        /// Gets or sets how to connect to the azure services needed for running the
+        /// cluster Possible values include: &#39;None&#39;, &#39;VPN&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "azureConnectionMethod")]
+        public string AzureConnectionMethod {get; set; }
+
+        /// <summary>
+        /// Gets if the Connection Method is Vpn, this is the Id of the private link
+        /// resource that the datacenters need to connect to.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateLinkResourceId")]
+        public string PrivateLinkResourceId {get; private set; }
     }
 }

@@ -8,29 +8,35 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     using System.Linq;
 
     /// <summary>
-    /// Specification of which command to run where
+    /// resource representing a command
     /// </summary>
-    public partial class CommandPostBody
+    public partial class CommandPublicResource
     {
         /// <summary>
-        /// Initializes a new instance of the CommandPostBody class.
+        /// Initializes a new instance of the CommandPublicResource class.
         /// </summary>
-        public CommandPostBody()
+        public CommandPublicResource()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the CommandPostBody class.
+        /// Initializes a new instance of the CommandPublicResource class.
         /// </summary>
 
         /// <param name="command">The command which should be run
+        /// </param>
+
+        /// <param name="commandId">The unique id of command
         /// </param>
 
         /// <param name="arguments">The arguments for the command to be run
         /// </param>
 
         /// <param name="host">IP address of the cassandra host to run the command on
+        /// </param>
+
+        /// <param name="isAdmin">Whether command has admin privileges
         /// </param>
 
         /// <param name="cassandraStopStart">If true, stops cassandra before executing the command and then start it
@@ -40,14 +46,29 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="readWrite">If true, allows the command to *write* to the cassandra directory,
         /// otherwise read-only.
         /// </param>
-        public CommandPostBody(string command, string host, object arguments = default(object), bool? cassandraStopStart = default(bool?), bool? readWrite = default(bool?))
+
+        /// <param name="result">Result output of the command.
+        /// </param>
+
+        /// <param name="status">Status of the command.
+        /// Possible values include: &#39;Done&#39;, &#39;Running&#39;, &#39;Enqueue&#39;, &#39;Processing&#39;,
+        /// &#39;Finished&#39;, &#39;Failed&#39;</param>
+
+        /// <param name="outputFile">The name of the file where the result is written.
+        /// </param>
+        public CommandPublicResource(string command = default(string), string commandId = default(string), object arguments = default(object), string host = default(string), bool? isAdmin = default(bool?), bool? cassandraStopStart = default(bool?), bool? readWrite = default(bool?), string result = default(string), string status = default(string), string outputFile = default(string))
 
         {
             this.Command = command;
+            this.CommandId = commandId;
             this.Arguments = arguments;
             this.Host = host;
+            this.IsAdmin = isAdmin;
             this.CassandraStopStart = cassandraStopStart;
             this.ReadWrite = readWrite;
+            this.Result = result;
+            this.Status = status;
+            this.OutputFile = outputFile;
             CustomInit();
         }
 
@@ -64,6 +85,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string Command {get; set; }
 
         /// <summary>
+        /// Gets or sets the unique id of command
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "commandId")]
+        public string CommandId {get; set; }
+
+        /// <summary>
         /// Gets or sets the arguments for the command to be run
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "arguments")]
@@ -76,10 +103,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string Host {get; set; }
 
         /// <summary>
+        /// Gets or sets whether command has admin privileges
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isAdmin")]
+        public bool? IsAdmin {get; set; }
+
+        /// <summary>
         /// Gets or sets if true, stops cassandra before executing the command and then
         /// start it again
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "cassandra-stop-start")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "cassandraStopStart")]
         public bool? CassandraStopStart {get; set; }
 
         /// <summary>
@@ -88,25 +121,23 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "readWrite")]
         public bool? ReadWrite {get; set; }
+
         /// <summary>
-        /// Validate the object.
+        /// Gets or sets result output of the command.
         /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (this.Command == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Command");
-            }
-            if (this.Host == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Host");
-            }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "result")]
+        public string Result {get; set; }
 
+        /// <summary>
+        /// Gets or sets status of the command. Possible values include: &#39;Done&#39;, &#39;Running&#39;, &#39;Enqueue&#39;, &#39;Processing&#39;, &#39;Finished&#39;, &#39;Failed&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
+        public string Status {get; set; }
 
-
-        }
+        /// <summary>
+        /// Gets or sets the name of the file where the result is written.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "outputFile")]
+        public string OutputFile {get; set; }
     }
 }

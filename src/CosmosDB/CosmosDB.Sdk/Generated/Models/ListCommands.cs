@@ -8,29 +8,28 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     using System.Linq;
 
     /// <summary>
-    /// A base CosmosDB data source/sink
+    /// List of commands for cluster.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("BaseCosmosDataTransferDataSourceSink")]
-    public partial class BaseCosmosDataTransferDataSourceSink : DataTransferDataSourceSink
+    public partial class ListCommands
     {
         /// <summary>
-        /// Initializes a new instance of the BaseCosmosDataTransferDataSourceSink class.
+        /// Initializes a new instance of the ListCommands class.
         /// </summary>
-        public BaseCosmosDataTransferDataSourceSink()
+        public ListCommands()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the BaseCosmosDataTransferDataSourceSink class.
+        /// Initializes a new instance of the ListCommands class.
         /// </summary>
 
-        /// <param name="remoteAccountName">
+        /// <param name="value">Container for array of commands.
         /// </param>
-        public BaseCosmosDataTransferDataSourceSink(string remoteAccountName = default(string))
+        public ListCommands(System.Collections.Generic.IList<CommandPublicResource> value = default(System.Collections.Generic.IList<CommandPublicResource>))
 
         {
-            this.RemoteAccountName = remoteAccountName;
+            this.Value = value;
             CustomInit();
         }
 
@@ -41,9 +40,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
 
         /// <summary>
-        /// Gets or sets
+        /// Gets container for array of commands.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "remoteAccountName")]
-        public string RemoteAccountName {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
+        public System.Collections.Generic.IList<CommandPublicResource> Value {get; private set; }
     }
 }
