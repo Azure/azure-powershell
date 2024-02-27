@@ -311,7 +311,7 @@ function New-AzStackHCIVMImage{
                 $PercentCompleted = 0 
                 Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted % Complete:" -PercentComplete $PercentCompleted
                 while ($PercentCompleted -ne 100 ) {                  
-                    $image = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName
+                    $image = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
                     $PercentCompleted = $image.StatusProgressPercentage
                     if ($PercentCompleted -eq $null){
                         $PercentCompleted = 0
@@ -355,7 +355,7 @@ function New-AzStackHCIVMImage{
                 $PercentCompleted = 0 
                 Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted % Complete:" -PercentComplete $PercentCompleted
                 while ($PercentCompleted -ne 100 ) {                  
-                    $image = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName
+                    $image = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
                     $PercentCompleted = $image.StatusProgressPercentage
                     if ($PercentCompleted -eq $null){
                         $PercentCompleted = 0
