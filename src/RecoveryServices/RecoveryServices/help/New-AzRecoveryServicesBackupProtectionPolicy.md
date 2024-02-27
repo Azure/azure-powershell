@@ -19,7 +19,7 @@ New-AzRecoveryServicesBackupProtectionPolicy [-Name] <String> [-WorkloadType] <W
  [[-SchedulePolicy] <SchedulePolicyBase>] [[-MoveToArchiveTier] <Boolean>] [[-TieringMode] <TieringMode>]
  [[-TierAfterDuration] <Int32>] [[-TierAfterDurationType] <String>] [-BackupSnapshotResourceGroup <String>]
  [-BackupSnapshotResourceGroupSuffix <String>] [-SnapshotConsistencyType <SnapshotConsistencyType>]
- [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -224,21 +224,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

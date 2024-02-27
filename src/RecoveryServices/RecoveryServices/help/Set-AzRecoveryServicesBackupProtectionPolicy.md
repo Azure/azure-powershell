@@ -20,7 +20,7 @@ Set-AzRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [[-Retention
  [-TierAfterDuration <Int32>] [-TierAfterDurationType <String>] [-BackupSnapshotResourceGroup <String>]
  [-BackupSnapshotResourceGroupSuffix <String>] [-SnapshotConsistencyType <SnapshotConsistencyType>]
  [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-Token <String>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FixPolicyParamSet
@@ -28,7 +28,7 @@ Set-AzRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [[-Retention
 Set-AzRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [-FixForInconsistentItems]
  [-BackupSnapshotResourceGroup <String>] [-BackupSnapshotResourceGroupSuffix <String>]
  [-SnapshotConsistencyType <SnapshotConsistencyType>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -194,21 +194,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
