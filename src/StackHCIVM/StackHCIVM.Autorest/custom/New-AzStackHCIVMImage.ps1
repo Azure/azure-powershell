@@ -310,8 +310,21 @@ function New-AzStackHCIVMImage{
                 Start-Sleep -Seconds 60
                 $PercentCompleted = 0 
                 Write-Progress -Activity "Download Percentage: " -Status "$PercentCompleted % Complete:" -PercentComplete $PercentCompleted
+                $null = $PSBoundParameters.Remove("Version")
+                $null = $PSBoundParameters.Remove("URN")
+                $null = $PSBoundParameters.Remove("Tag")
+                $null = $PSBoundParameters.Remove("StoragePathId")
+                $null = $PSBoundParameters.Remove("Sku")
+                $null = $PSBoundParameters.Remove("Publisher")
+                $null = $PSBoundParameters.Remove("Offer")
+                $null = $PSBoundParameters.Remove("OSType")
+                $null = $PSBoundParameters.Remove("ImagePath")
+                $null = $PSBoundParameters.Remove("CustomLocationId")
+                $null = $PSBoundParameters.Remove("CloudInitDataSource")
+                $null = $PSBoundParameters.Remove("Location")
+                $null = $PSBoundParameters.Remove("NoWait")
                 while ($PercentCompleted -ne 100 ) {                  
-                    $image = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage -Name $Name -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
+                    $image = Az.StackHCIVM.internal\Get-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
                     $PercentCompleted = $image.StatusProgressPercentage
                     if ($PercentCompleted -eq $null){
                         $PercentCompleted = 0
