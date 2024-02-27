@@ -227,10 +227,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             configManager.RegisterConfig(new EnableInterceptSurveyConfig());
             configManager.RegisterConfig(new DisplayBreakingChangeWarningsConfig());
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(
-                ConfigKeys.ShowSecretsWarning,
-                Resources.HelpMessageOfShowSecretsWarning,
+                ConfigKeys.DisplaySecretsWarning,
+                Resources.HelpMessageOfDisplaySecretsWarning,
                 false,
-                "AZURE_CORE_SHOW_SECRETS_WARNING",
+                "AZURE_CLIENTS_SHOW_SECRETS_WARNING",
                 new[] { AppliesTo.Az }));
         }
     }

@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
-using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 

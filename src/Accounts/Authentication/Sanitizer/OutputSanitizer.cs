@@ -17,10 +17,11 @@ using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System;
+using Microsoft.Azure.Commands.Shared.Config;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer
 {
-    public class AzurePSSanitizer : IAzurePSSanitizer
+    public class OutputSanitizer : IOutputSanitizer
     {
         private readonly ISanitizerProviderResolver _providerResolver = DefaultProviderResolver.Instance;
 
@@ -28,28 +29,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer
         {
             get
             {
-                try
-                {
-                    if (AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager))
-                    {
-                        return configManager?.GetConfigValue<bool>(ConfigKeysForCommon.ShowSecretsWarning) ?? false;
-                    }
-                }
-                catch
-                {
-                    // Ignore exceptions
-                }
+                if (AzureSession.Instance != null && AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager))
+                    return configManager?.GetConfigValue<bool>(ConfigKeys.DisplaySecretsWarning) ?? false;
 
                 return false;
             }
         }
 
-        public void Sanitize(object sanitizingObject, out SanitizerTelemetry telemetryData)
+        public void Sanitize(object sanitizingObject, out SanitizerTelemetry telemetry)
         {
             var watch = Stopwatch.StartNew();
 
             var sanitizingStack = new Stack<object>();
-            telemetryData = new SanitizerTelemetry
+            telemetry = new SanitizerTelemetry
             {
                 ShowSecretsWarning = true
             };
@@ -59,17 +51,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer
                 try
                 {
                     var provider = _providerResolver.ResolveProvider(sanitizingObject.GetType());
-                    provider?.SanitizeValue(sanitizingObject, sanitizingStack, _providerResolver, null, telemetryData);
+                    provider?.SanitizeValue(sanitizingObject, sanitizingStack, _providerResolver, null, telemetry);
                 }
                 catch (Exception ex)
                 {
-                    telemetryData.HasErrorInDetection = true;
-                    telemetryData.DetectionError = ex;
+                    telemetry.HasErrorInDetection = true;
+                    telemetry.DetectionError = ex;
                 }
             }
 
             watch.Stop();
-            telemetryData.SanitizeDuration = watch.Elapsed;
+            telemetry.SanitizeDuration = watch.Elapsed;
         }
     }
 }

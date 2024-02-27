@@ -402,10 +402,10 @@
   <data name="FailedToMigrateMsalCacheWithLegayName" xml:space="preserve">
     <value>INITIALIZATION: Failed to migrate MSAL token cache of the legacy name with error : {0}</value>
   </data>
-  <data name="HelpMessageOfShowSecrets" xml:space="preserve">
+  <data name="HelpMessageOfDisplaySecrets" xml:space="preserve">
     <value>Controls if a cmdlets output containing secrets will be displayed in plain text.</value>
   </data>
-  <data name="HelpMessageOfShowSecretsWarning" xml:space="preserve">
+  <data name="HelpMessageOfDisplaySecretsWarning" xml:space="preserve">
     <value>When enabled, a warning message for secrets redaction will be displayed if the cmdlet output contains secrets.</value>
   </data>
 </root>
