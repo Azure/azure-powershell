@@ -14,28 +14,26 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Linq;
 
     /// <summary>
-    /// The gallery artifact version source.
+    /// The security profile of a gallery image version
     /// </summary>
-    public partial class GalleryArtifactVersionSource
+    public partial class ImageVersionSecurityProfile
     {
         /// <summary>
-        /// Initializes a new instance of the GalleryArtifactVersionSource
+        /// Initializes a new instance of the ImageVersionSecurityProfile
         /// class.
         /// </summary>
-        public GalleryArtifactVersionSource()
+        public ImageVersionSecurityProfile()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the GalleryArtifactVersionSource
+        /// Initializes a new instance of the ImageVersionSecurityProfile
         /// class.
         /// </summary>
-        /// <param name="id">The id of the gallery artifact version
-        /// source.</param>
-        public GalleryArtifactVersionSource(string id = default(string))
+        public ImageVersionSecurityProfile(GalleryImageVersionUefiSettings uefiSettings = default(GalleryImageVersionUefiSettings))
         {
-            Id = id;
+            UefiSettings = uefiSettings;
             CustomInit();
         }
 
@@ -45,10 +43,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the id of the gallery artifact version source.
         /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
+        [JsonProperty(PropertyName = "uefiSettings")]
+        public GalleryImageVersionUefiSettings UefiSettings { get; set; }
 
     }
 }
