@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     var result = (this.VirtualMachineScaleSetUpdate == null)
                                  ? VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters)
-                                 : VirtualMachineScaleSetsClient.Update(resourceGroupName, vmScaleSetName, parametersupdate, null, null, this.MigrateTo1PGallery);//Nulls for ifMatch and ifNonMatch.
+                                 : VirtualMachineScaleSetsClient.Update(resourceGroupName, vmScaleSetName, parametersupdate, null, null, this.MigrateTo1PGallery);//Nulls for ifMatch and ifNonMatch since htey have not been released in PS yet.
                     var psObject = new PSVirtualMachineScaleSet();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
                     WriteObject(psObject);
