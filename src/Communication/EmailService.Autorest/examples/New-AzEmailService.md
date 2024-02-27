@@ -1,7 +1,9 @@
 ### Example 1: Create a Email service resource
 ```powershell
 New-AzEmailService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -DataLocation "United States"
+```
 
+```output
 DataLocation                 : United States
 Id                           : /subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/ContosoResourceProvider1/providers/Microsoft.Communication/emailServices/ContosoAcsResource1
 Location                     : global

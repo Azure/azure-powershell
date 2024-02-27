@@ -46,7 +46,9 @@ Operation to update an existing EmailService.
 ### Example 1: Updates an email service resource.
 ```powershell
 Update-AzEmailService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="UpdatedTagValue"}
+```
 
+```output
 DataLocation                 : United States
 Id                           : /subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/ContosoResourceProvider1/providers/Microsoft.Communication/emailServices/
                                ContosoAcsResource1

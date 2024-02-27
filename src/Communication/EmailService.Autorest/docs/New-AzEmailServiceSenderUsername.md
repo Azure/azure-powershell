@@ -68,7 +68,9 @@ Add a new SenderUsername resource under the parent Domains resource or update an
 ### Example 1: Creates a sender username resource for custom domain.
 ```powershell
 New-AzEmailServiceSenderUsername -SenderUsername test -Username test -DomainName testcustomdomain2.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+```
 
+```output
 DataLocation                 :
 DisplayName                  :
 Id                           : /subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/ContosoResourceProvider1/providers/Microsoft.Communication/emailServices/
@@ -91,7 +93,9 @@ Create a sender username resource for custom domain with the provided parameters
 ### Example 2: Creates a sender username resource for Azure managed domain
 ```powershell
 New-AzEmailServiceSenderUsername -SenderUsername test -Username test -DomainName AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1							   
+```
 
+```output
 DataLocation                 :
 DisplayName                  :
 Id                           : /subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/tcsacstest1/providers/Microsoft.Communication/emailServices/

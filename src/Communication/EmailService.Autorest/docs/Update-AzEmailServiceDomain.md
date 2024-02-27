@@ -62,6 +62,9 @@ Operation to update an existing Domains resource.
 ### Example 1: Updates email service custom domain.
 ```powershell
 Update-AzEmailServiceDomain -Name testcustomdomain2.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleUpdatedValue"} -UserEngagementTracking 1
+```
+
+```output
 DataLocation                 : unitedstates
 Dkim2ErrorCode               :
 Dkim2Status                  : NotStarted
@@ -126,7 +129,9 @@ Updates email service custom domain with the provided parameters.
 ### Example 2: Updates email service azure managed domain.
 ```powershell
 Update-AzEmailServiceDomain -Name AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleValue1updated"} -UserEngagementTracking 1
+```
 
+```output
 DataLocation                 : unitedstates
 Dkim2ErrorCode               :
 Dkim2Status                  : Verified

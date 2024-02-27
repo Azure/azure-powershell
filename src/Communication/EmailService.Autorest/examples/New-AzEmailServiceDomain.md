@@ -1,7 +1,9 @@
 ### Example 1: Create a custom domain resource.
 ```powershell
 New-AzEmailServiceDomain -Name testcustomdomain2.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -DomainManagement CustomerManaged
+```
 
+```output
 DataLocation                 : unitedstates
 Dkim2ErrorCode               :
 Dkim2Status                  : NotStarted
@@ -65,7 +67,9 @@ Create a Azure managed domain resource with the provided parameters.
 ### Example 2: Create a Azure managed domain resource.
 ```powershell
 New-AzEmailServiceDomain -Name AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -DomainManagement AzureManaged
+```
 
+```output
 DataLocation                 : unitedstates
 Dkim2ErrorCode               :
 Dkim2Status                  : Verified

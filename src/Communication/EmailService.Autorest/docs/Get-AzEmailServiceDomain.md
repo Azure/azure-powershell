@@ -44,7 +44,9 @@ Get the Domains resource and its properties.
 ### Example 1: List existing Email Service domains for a Subscription
 ```powershell
 Get-AzEmailServiceDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+```
 
+```output
 Location Name                                           SystemDataCreatedAt SystemDataCreatedBy        SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastM
                                                                                                                                                         odifiedBy
 -------- ----                                           ------------------- -------------------        ----------------------- ------------------------ ---------------
@@ -57,7 +59,9 @@ Returns a list of all domain resources under that email services.
 ### Example 2: Get infomation on specified Azure Email services resource
 ```powershell
 Get-AzEmailServiceDomain -Name AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+```
 
+```output
 DataLocation                 : unitedstates
 Dkim2ErrorCode               :
 Dkim2Status                  : Verified

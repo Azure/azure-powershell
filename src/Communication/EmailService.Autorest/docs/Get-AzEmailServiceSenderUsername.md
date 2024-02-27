@@ -50,7 +50,9 @@ Get a valid sender username for a domains resource.
 ### Example 1: Get infomation on specified Azure Email services senderusername resource.
 ```powershell
 Get-AzEmailServiceSenderUsername -SenderUsername donotreply -DomainName AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+```
 
+```output
 DataLocation                 :
 DisplayName                  : DoNotReply
 Id                           : /subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourcegroups/ContosoResourceProvider1/providers/microsoft.communication/emailservices/
@@ -73,7 +75,9 @@ Returns the information on senderusername resource.
 ### Example 2: List existing Email Service sender usernames.
 ```powershell
 Get-AzEmailServiceSenderUsername -DomainName AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+```
 
+```output
 Name       SystemData SystemData SystemData    SystemData     SystemData     SystemData         ResourceGroup
            CreatedAt  CreatedBy  CreatedByType LastModifiedAt LastModifiedBy LastModifiedByType                                                                                                                                        Name
 ----       ---------- ---------- ------------- -------------- -------------- ------------------ ------------- 

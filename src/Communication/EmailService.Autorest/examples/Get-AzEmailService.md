@@ -1,7 +1,9 @@
 ### Example 1: List existing Email Services for a Subscription
 ```powershell
 Get-AzCommunicationService -SubscriptionId 73fc3592-3cef-4300-5e19-8d18b65ce0e8
+```
 
+```output
 Location Name                                         SystemDataCreatedAt SystemDataCreatedBy         SystemDataCreated
                                                                                                       ByType
 -------- ----                                         ------------------- -------------------         -----------------
@@ -14,7 +16,9 @@ Returns a list of all ACS resources under that subscription.
 ### Example 2: Get infomation on specified Azure Email services resource
 ```powershell
 Get-AzEmailService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+```
 
+```output
 DataLocation                 : unitedstates
 Id                           : /subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/ContosoResourceProvider1/providers
                                /Microsoft.Communication/emailServices/ContosoAcsResource1
