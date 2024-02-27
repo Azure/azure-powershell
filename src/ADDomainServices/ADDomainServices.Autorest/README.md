@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the AdDomainServices service.
 
 ---
-## Status
-[![Az.ADDomainServices](https://img.shields.io/powershellgallery/v/Az.ADDomainServices.svg?style=flat-square&label=Az.ADDomainServices "Az.ADDomainServices")](https://www.powershellgallery.com/packages/Az.ADDomainServices/)
 
 ## Info
 - Modifiable: yes

@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the VMware service.
 
 ---
-## Status
-[![Az.VMware](https://img.shields.io/powershellgallery/v/Az.VMware.svg?style=flat-square&label=Az.VMware "Az.VMware")](https://www.powershellgallery.com/packages/Az.VMware/)
 
 ## Info
 - Modifiable: yes

@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the ConfidentialLedger service.
 
 ---
-## Status
-[![Az.ConfidentialLedger](https://img.shields.io/powershellgallery/v/Az.ConfidentialLedger.svg?style=flat-square&label=Az.ConfidentialLedger "Az.ConfidentialLedger")](https://www.powershellgallery.com/packages/Az.ConfidentialLedger/)
 
 ## Info
 - Modifiable: yes

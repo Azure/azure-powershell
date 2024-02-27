@@ -87,7 +87,11 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// <param name="storageSubscriptionId">SubscriptionId of the storage account for persistence (aof/rdb) using
         /// ManagedIdentity.
         /// </param>
-        public RedisCommonPropertiesRedisConfiguration(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string rdbBackupEnabled = default(string), string rdbBackupFrequency = default(string), string rdbBackupMaxSnapshotCount = default(string), string rdbStorageConnectionString = default(string), string aofBackupEnabled = default(string), string aofStorageConnectionString0 = default(string), string aofStorageConnectionString1 = default(string), string maxfragmentationmemoryReserved = default(string), string maxmemoryPolicy = default(string), string maxmemoryReserved = default(string), string maxmemoryDelta = default(string), string maxclients = default(string), string preferredDataArchiveAuthMethod = default(string), string preferredDataPersistenceAuthMethod = default(string), string zonalConfiguration = default(string), string authnotrequired = default(string), string storageSubscriptionId = default(string))
+
+        /// <param name="aadEnabled">Specifies whether AAD based authentication has been enabled or disabled for
+        /// the cache
+        /// </param>
+        public RedisCommonPropertiesRedisConfiguration(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string rdbBackupEnabled = default(string), string rdbBackupFrequency = default(string), string rdbBackupMaxSnapshotCount = default(string), string rdbStorageConnectionString = default(string), string aofBackupEnabled = default(string), string aofStorageConnectionString0 = default(string), string aofStorageConnectionString1 = default(string), string maxfragmentationmemoryReserved = default(string), string maxmemoryPolicy = default(string), string maxmemoryReserved = default(string), string maxmemoryDelta = default(string), string maxclients = default(string), string preferredDataArchiveAuthMethod = default(string), string preferredDataPersistenceAuthMethod = default(string), string zonalConfiguration = default(string), string authnotrequired = default(string), string storageSubscriptionId = default(string), string aadEnabled = default(string))
 
         {
             this.AdditionalProperties = additionalProperties;
@@ -108,6 +112,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
             this.ZonalConfiguration = zonalConfiguration;
             this.Authnotrequired = authnotrequired;
             this.StorageSubscriptionId = storageSubscriptionId;
+            this.AadEnabled = aadEnabled;
             CustomInit();
         }
 
@@ -234,5 +239,12 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "storage-subscription-id")]
         public string StorageSubscriptionId {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether AAD based authentication has been enabled or
+        /// disabled for the cache
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "aad-enabled")]
+        public string AadEnabled {get; set; }
     }
 }

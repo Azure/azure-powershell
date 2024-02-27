@@ -17,7 +17,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.CosmosDB.Exceptions;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
@@ -47,6 +46,51 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ResourceRestoreTimestampHelpMessage)]
         public DateTime RestoreTimestampInUtc { get; set; }
+
+        public (DateTime, DateTime, string) ProcessRestorableDatabases(IEnumerable restorableDatabases)
+        {
+            DateTime latestDatabaseDeleteTime = DateTime.MinValue;
+            DateTime latestDatabaseCreateOrRecreateTime = DateTime.MinValue;
+            string databaseRid = null;
+            string databaseName = this.Name;
+
+            foreach (RestorableSqlDatabaseGetResult restorableDatabase in restorableDatabases)
+            {
+                RestorableSqlDatabasePropertiesResource resource = restorableDatabase.Resource;
+
+                if (resource.OwnerId.Equals(databaseName))
+                {
+                    databaseRid = resource.OwnerResourceId;
+                    var eventTimestamp = DateTime.Parse(resource.EventTimestamp);
+                    if (resource.OperationType == "Delete" && latestDatabaseDeleteTime < eventTimestamp)
+                    {
+                        latestDatabaseDeleteTime = eventTimestamp;
+                    }
+
+                    if ((resource.OperationType == "Create" || resource.OperationType == "Recreate") && latestDatabaseCreateOrRecreateTime < eventTimestamp)
+                    {
+                        latestDatabaseCreateOrRecreateTime = eventTimestamp;
+                    }
+                }
+            }
+
+            if (databaseRid == null)
+            {
+                this.WriteWarning($"No restorable database found with name: {databaseName}");
+                return (latestDatabaseDeleteTime, latestDatabaseCreateOrRecreateTime, databaseRid);
+            }
+
+            // Database never deleted then reset it to max time
+            if (latestDatabaseDeleteTime == DateTime.MinValue)
+            {
+                latestDatabaseDeleteTime = DateTime.MaxValue;
+            }
+
+            this.WriteDebug($"ProcessRestorableDatabases: latestDatabaseDeleteTime {latestDatabaseDeleteTime}," +
+                $" latestDatabaseCreateOrRecreateTime {latestDatabaseCreateOrRecreateTime}, databaseName {databaseName}, databaseRid {databaseRid}");
+
+            return (latestDatabaseDeleteTime, latestDatabaseCreateOrRecreateTime, databaseRid);
+        }
 
         public override void ExecuteCmdlet()
         {
@@ -123,23 +167,24 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
                 string accountInstanceId = sourceAccountToRestore.Name;
                 IEnumerable restorableSqlDatabases = CosmosDBManagementClient.RestorableSqlDatabases.ListWithHttpMessagesAsync(sourceAccountToRestore.Location, accountInstanceId).GetAwaiter().GetResult().Body;
-                DateTime latestDeleteTime = DateTime.MinValue;
-                foreach (RestorableSqlDatabaseGetResult restorableSqlDatabase in restorableSqlDatabases)
+                (DateTime latestDatabaseDeleteTime, DateTime latestDatabaseCreateOrRecreateTime, string databaseRid) = ProcessRestorableDatabases(restorableSqlDatabases);
+
+                if (databaseRid == null)
                 {
-                    DateTime eventDateTime = DateTime.Parse(restorableSqlDatabase.Resource.EventTimestamp);
-                    if (restorableSqlDatabase.Resource.OperationType.Equals(OperationType.Delete) && latestDeleteTime < eventDateTime && restorableSqlDatabase.Resource.OwnerId.Equals(Name))
-                    {
-                        latestDeleteTime = eventDateTime;
-                    }
+                    return;
                 }
 
-                if (latestDeleteTime == DateTime.MinValue)
+                // Database is alive if create or recreate timestamp is later than latest delete timestamp
+                bool isDatabaseAlive = latestDatabaseCreateOrRecreateTime > latestDatabaseDeleteTime || latestDatabaseDeleteTime == DateTime.MaxValue;
+
+                if (isDatabaseAlive)
                 {
-                    this.WriteWarning($"No deleted database with name {this.Name} found in the account name {this.AccountName}");
+                    this.WriteWarning($"Database with name {this.Name} already exists in this account with name {this.AccountName} in location {sourceAccountToRestore.Location}");
+                    return;
                 }
 
                 //Subtracting 1 second from delete timestamp to restore till end of logchain in no timestamp restore.
-                utcRestoreDateTime = latestDeleteTime.AddSeconds(-1);
+                utcRestoreDateTime = latestDatabaseDeleteTime.AddSeconds(-1);
             }
 
             SqlDatabaseCreateUpdateParameters sqlDatabaseCreateUpdateParameters = new SqlDatabaseCreateUpdateParameters

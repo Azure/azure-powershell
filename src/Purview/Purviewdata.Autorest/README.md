@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Purviewdata service.
 
 ---
-## Status
-[![Az.Purviewdata](https://img.shields.io/powershellgallery/v/Az.Purviewdata.svg?style=flat-square&label=Az.Purviewdata "Az.Purviewdata")](https://www.powershellgallery.com/packages/Az.Purviewdata/)
 
 ## Info
 - Modifiable: yes

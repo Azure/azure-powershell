@@ -123,7 +123,7 @@ Accept wildcard characters: False
 
 ### -Parameter
 An Azure Arc PrivateLinkScope definition.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHybridComputePrivateLinkScope

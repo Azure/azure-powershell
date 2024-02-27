@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the StreamAnalytics service.
 
 ---
-## Status
-[![Az.StreamAnalytics](https://img.shields.io/powershellgallery/v/Az.StreamAnalytics.svg?style=flat-square&label=Az.StreamAnalytics "Az.StreamAnalytics")](https://www.powershellgallery.com/packages/Az.StreamAnalytics/)
 
 ## Info
 - Modifiable: yes

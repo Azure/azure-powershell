@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added support for the Metric Data Plane
 
 ## Version 5.0.1
 * Remove outdated breaking change warning [#24033]

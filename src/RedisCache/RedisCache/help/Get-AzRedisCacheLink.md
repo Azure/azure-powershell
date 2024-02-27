@@ -46,7 +46,7 @@ Get-AzRedisCacheLink -Name "mycache1"
 ```
 
 ```output
-        PrimaryServerName            : mycache1
+PrimaryServerName            : mycache1
         SecondaryServerName          : mycache2
         ProvisioningState            : Succeeded
         LinkedRedisCacheLocation     : East US
@@ -63,7 +63,7 @@ Get-AzRedisCacheLink -PrimaryServerName "mycache1"
 ```
 
 ```output
-        PrimaryServerName            : mycache1
+PrimaryServerName            : mycache1
         SecondaryServerName          : mycache2
         ProvisioningState            : Succeeded
         LinkedRedisCacheLocation     : East US
@@ -80,7 +80,7 @@ Get-AzRedisCacheLink -SecondaryServerName "mycache2"
 ```
 
 ```output
-        PrimaryServerName            : mycache1
+PrimaryServerName            : mycache1
         SecondaryServerName          : mycache2
         ProvisioningState            : Succeeded
         LinkedRedisCacheLocation     : East US
@@ -97,7 +97,7 @@ Get-AzRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache
 ```
 
 ```output
-        PrimaryServerName            : mycache1
+PrimaryServerName            : mycache1
         SecondaryServerName          : mycache2
         ProvisioningState            : Succeeded
         LinkedRedisCacheLocation     : East US

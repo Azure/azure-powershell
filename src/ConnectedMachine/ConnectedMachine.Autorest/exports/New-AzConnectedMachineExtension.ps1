@@ -48,7 +48,7 @@ To create the parameters described below, construct a hash table containing the 
 
 EXTENSIONPARAMETER <IMachineExtension>: Describes a Machine Extension.
   Location <String>: The geo-location where the resource lives
-  [Tag <ITrackedResourceTags>]: Resource tags.
+  [Tags <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AutoUpgradeMinorVersion <Boolean?>]: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
   [EnableAutomaticUpgrade <Boolean?>]: Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
@@ -167,7 +167,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    # .
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityMachine', Mandatory, ValueFromPipeline)]
@@ -175,7 +175,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
+    # .
     ${MachineInputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
@@ -184,7 +184,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtension]
     # Describes a Machine Extension.
-    # To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
+    # .
     ${ExtensionParameter},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -369,7 +369,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
+    # Wait forNET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]

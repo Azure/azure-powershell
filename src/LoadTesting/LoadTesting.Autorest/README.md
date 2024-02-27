@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the LoadTesting service.
 
 ---
-## Status
-[![Az.LoadTesting](https://img.shields.io/powershellgallery/v/Az.LoadTesting.svg?style=flat-square&label=Az.LoadTesting "Az.LoadTesting")](https://www.powershellgallery.com/packages/Az.LoadTesting/)
 
 ## Info
 - Modifiable: yes

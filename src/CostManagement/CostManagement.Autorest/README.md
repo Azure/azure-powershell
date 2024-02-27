@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Cost service.
 
 ---
-## Status
-[![Az.CostManagement](https://img.shields.io/powershellgallery/v/Az.CostManagement.svg?style=flat-square&label=Az.CostManagement "Az.CostManagement")](https://www.powershellgallery.com/packages/Az.CostManagement/)
 
 ## Info
 - Modifiable: yes

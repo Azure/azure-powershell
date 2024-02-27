@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the ContainerInstance service.
 
 ---
-## Status
-[![Az.ContainerInstance](https://img.shields.io/powershellgallery/v/Az.ContainerInstance.svg?style=flat-square&label=Az.ContainerInstance "Az.ContainerInstance")](https://www.powershellgallery.com/packages/Az.ContainerInstance/)
 
 ## Info
 - Modifiable: yes

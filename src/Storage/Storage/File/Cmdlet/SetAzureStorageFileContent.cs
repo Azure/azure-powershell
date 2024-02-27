@@ -96,6 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Source { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Path", "12.0.0", "7.0.0", ChangeDescription = "When uploading using SAS token without Read permission, the destination path will be taken as a file path, instead of a directory path previously.")]
         [Parameter(
             Position = 2,
             HelpMessage = "Path to the cloud file which would be uploaded to.")]

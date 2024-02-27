@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Cdn service.
 
 ---
-## Status
-[![Az.Cdn](https://img.shields.io/powershellgallery/v/Az.Cdn.svg?style=flat-square&label=Az.Cdn "Az.Cdn")](https://www.powershellgallery.com/packages/Az.Cdn/)
 
 ## Info
 - Modifiable: yes

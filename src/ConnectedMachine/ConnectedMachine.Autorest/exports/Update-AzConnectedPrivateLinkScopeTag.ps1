@@ -60,7 +60,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [Version <String>]: The version of the Extension being received.
 
 PRIVATELINKSCOPETAG <ITagsResource>: A container holding only the Tags for a resource, allowing the user to update the tags on a PrivateLinkScope instance.
-  [Tag <ITagsResourceTags>]: Resource tags
+  [Tags <ITagsResourceTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedprivatelinkscopetag
@@ -104,7 +104,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    # .
     ${InputObject},
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
@@ -112,7 +112,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITagsResource]
     # A container holding only the Tags for a resource, allowing the user to update the tags on a PrivateLinkScope instance.
-    # To construct, see NOTES section for PRIVATELINKSCOPETAG properties and create a hash table.
+    # .
     ${PrivateLinkScopeTag},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -147,7 +147,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
+    # Wait forNET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]

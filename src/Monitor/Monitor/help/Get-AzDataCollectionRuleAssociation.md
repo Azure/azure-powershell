@@ -14,31 +14,34 @@ Returns the specified association.
 
 ### List (Default)
 ```
-Get-AzDataCollectionRuleAssociation -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDataCollectionRuleAssociation -ResourceUri <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDataCollectionRuleAssociation -AssociationName <String> -ResourceUri <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDataCollectionRuleAssociation -InputObject <IDataCollectionRuleIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzDataCollectionRuleAssociation -DataCollectionRuleName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### List2
 ```
 Get-AzDataCollectionRuleAssociation -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -DataCollectionEndpointName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -DataCollectionEndpointName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -209,6 +212,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

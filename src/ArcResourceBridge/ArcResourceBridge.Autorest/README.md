@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the ArcResourceBridge service.
 
 ---
-## Status
-[![Az.ArcResourceBridge](https://img.shields.io/powershellgallery/v/Az.ArcResourceBridge.svg?style=flat-square&label=Az.ArcResourceBridge "Az.ArcResourceBridge")](https://www.powershellgallery.com/packages/Az.ArcResourceBridge/)
 
 ## Info
 - Modifiable: yes

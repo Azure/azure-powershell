@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Logz service.
 
 ---
-## Status
-[![Az.Logz](https://img.shields.io/powershellgallery/v/Az.Logz.svg?style=flat-square&label=Az.Logz "Az.Logz")](https://www.powershellgallery.com/packages/Az.Logz/)
 
 ## Info
 - Modifiable: yes

@@ -90,7 +90,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
+    # Wait forNET debugger to attach
     ${Break},
 
     [Parameter(Position=8, DontShow)]
