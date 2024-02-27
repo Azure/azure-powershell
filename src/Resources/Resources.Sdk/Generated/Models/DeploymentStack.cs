@@ -88,15 +88,15 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// deleted during the most recent update.</param>
         /// <param name="failedResources">An array of resources that failed to
         /// reach goal state during the most recent update.</param>
-        /// <param name="resources">An array of resources currently managed by
-        /// the deployment stack.</param>
+        /// <param name="resourcesProperty">An array of resources currently
+        /// managed by the deployment stack.</param>
         /// <param name="deploymentId">The resourceId of the deployment
         /// resource created by the deployment stack.</param>
         /// <param name="outputs">The outputs of the underlying
         /// deployment.</param>
         /// <param name="duration">The duration of the deployment stack
         /// update.</param>
-        public DeploymentStack(DeploymentStackPropertiesActionOnUnmanage actionOnUnmanage, DenySettings denySettings, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ErrorResponse error = default(ErrorResponse), object template = default(object), DeploymentStacksTemplateLink templateLink = default(DeploymentStacksTemplateLink), object parameters = default(object), DeploymentStacksParametersLink parametersLink = default(DeploymentStacksParametersLink), DeploymentStacksDebugSetting debugSetting = default(DeploymentStacksDebugSetting), string deploymentScope = default(string), string description = default(string), string provisioningState = default(string), IList<ResourceReference> detachedResources = default(IList<ResourceReference>), IList<ResourceReference> deletedResources = default(IList<ResourceReference>), IList<ResourceReferenceExtended> failedResources = default(IList<ResourceReferenceExtended>), IList<ManagedResourceReference> resources = default(IList<ManagedResourceReference>), string deploymentId = default(string), object outputs = default(object), string duration = default(string))
+        public DeploymentStack(DeploymentStackPropertiesActionOnUnmanage actionOnUnmanage, DenySettings denySettings, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ErrorResponse error = default(ErrorResponse), object template = default(object), DeploymentStacksTemplateLink templateLink = default(DeploymentStacksTemplateLink), object parameters = default(object), DeploymentStacksParametersLink parametersLink = default(DeploymentStacksParametersLink), DeploymentStacksDebugSetting debugSetting = default(DeploymentStacksDebugSetting), string deploymentScope = default(string), string description = default(string), string provisioningState = default(string), IList<ResourceReference> detachedResources = default(IList<ResourceReference>), IList<ResourceReference> deletedResources = default(IList<ResourceReference>), IList<ResourceReferenceExtended> failedResources = default(IList<ResourceReferenceExtended>), IList<ManagedResourceReference> resourcesProperty = default(IList<ManagedResourceReference>), string deploymentId = default(string), object outputs = default(object), string duration = default(string))
             : base(id, name, type, systemData)
         {
             Location = location;
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Resources.Models
             DetachedResources = detachedResources;
             DeletedResources = deletedResources;
             FailedResources = failedResources;
-            Resources = resources;
+            ResourcesProperty = resourcesProperty;
             DeploymentId = deploymentId;
             Outputs = outputs;
             Duration = duration;
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// stack.
         /// </summary>
         [JsonProperty(PropertyName = "properties.resources")]
-        public IList<ManagedResourceReference> Resources { get; private set; }
+        public IList<ManagedResourceReference> ResourcesProperty { get; private set; }
 
         /// <summary>
         /// Gets the resourceId of the deployment resource created by the
@@ -307,6 +307,10 @@ namespace Microsoft.Azure.Management.Resources.Models
                 {
                     throw new ValidationException(ValidationRules.MaxLength, "Description", 4096);
                 }
+            }
+            if (DenySettings != null)
+            {
+                DenySettings.Validate();
             }
         }
     }

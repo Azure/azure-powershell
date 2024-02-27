@@ -10,30 +10,31 @@
 
 namespace Microsoft.Azure.Management.Resources.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Resource link filter.
+    /// Information about shared availability zone.
     /// </summary>
-    public partial class ResourceLinkFilter
+    public partial class Peers
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceLinkFilter class.
+        /// Initializes a new instance of the Peers class.
         /// </summary>
-        public ResourceLinkFilter()
+        public Peers()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceLinkFilter class.
+        /// Initializes a new instance of the Peers class.
         /// </summary>
-        /// <param name="targetId">The ID of the target resource.</param>
-        public ResourceLinkFilter(string targetId)
+        /// <param name="subscriptionId">The subscription ID.</param>
+        /// <param name="availabilityZone">The availabilityZone.</param>
+        public Peers(string subscriptionId = default(string), string availabilityZone = default(string))
         {
-            TargetId = targetId;
+            SubscriptionId = subscriptionId;
+            AvailabilityZone = availabilityZone;
             CustomInit();
         }
 
@@ -43,23 +44,16 @@ namespace Microsoft.Azure.Management.Resources.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the ID of the target resource.
+        /// Gets the subscription ID.
         /// </summary>
-        [JsonProperty(PropertyName = "targetId")]
-        public string TargetId { get; set; }
+        [JsonProperty(PropertyName = "subscriptionId")]
+        public string SubscriptionId { get; private set; }
 
         /// <summary>
-        /// Validate the object.
+        /// Gets the availabilityZone.
         /// </summary>
-        /// <exception cref="ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (TargetId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "TargetId");
-            }
-        }
+        [JsonProperty(PropertyName = "availabilityZone")]
+        public string AvailabilityZone { get; private set; }
+
     }
 }

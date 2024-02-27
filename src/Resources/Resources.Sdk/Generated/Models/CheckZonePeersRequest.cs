@@ -11,29 +11,33 @@
 namespace Microsoft.Azure.Management.Resources.Models
 {
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
-    public partial class PolicyAssignmentUpdate
+    /// <summary>
+    /// Check zone peers request parameters.
+    /// </summary>
+    public partial class CheckZonePeersRequest
     {
         /// <summary>
-        /// Initializes a new instance of the PolicyAssignmentUpdate class.
+        /// Initializes a new instance of the CheckZonePeersRequest class.
         /// </summary>
-        public PolicyAssignmentUpdate()
+        public CheckZonePeersRequest()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PolicyAssignmentUpdate class.
+        /// Initializes a new instance of the CheckZonePeersRequest class.
         /// </summary>
-        /// <param name="location">The location of the policy assignment. Only
-        /// required when utilizing managed identity.</param>
-        /// <param name="identity">The managed identity associated with the
-        /// policy assignment.</param>
-        public PolicyAssignmentUpdate(string location = default(string), Identity identity = default(Identity))
+        /// <param name="location">The Microsoft location.</param>
+        /// <param name="subscriptionIds">The peer Microsoft Azure subscription
+        /// ID.</param>
+        public CheckZonePeersRequest(string location = default(string), IList<string> subscriptionIds = default(IList<string>))
         {
             Location = location;
-            Identity = identity;
+            SubscriptionIds = subscriptionIds;
             CustomInit();
         }
 
@@ -43,18 +47,16 @@ namespace Microsoft.Azure.Management.Resources.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the location of the policy assignment. Only required
-        /// when utilizing managed identity.
+        /// Gets or sets the Microsoft location.
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public string Location { get; set; }
 
         /// <summary>
-        /// Gets or sets the managed identity associated with the policy
-        /// assignment.
+        /// Gets or sets the peer Microsoft Azure subscription ID.
         /// </summary>
-        [JsonProperty(PropertyName = "identity")]
-        public Identity Identity { get; set; }
+        [JsonProperty(PropertyName = "subscriptionIds")]
+        public IList<string> SubscriptionIds { get; set; }
 
     }
 }

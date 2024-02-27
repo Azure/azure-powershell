@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.provisioningState = deploymentStack.ProvisioningState;
             this.deploymentScope = deploymentStack.DeploymentScope;
             this.description = deploymentStack.Description;
-            this.resources = deploymentStack.Resources;
+            this.resources = deploymentStack.ResourcesProperty;
             this.denySettings = deploymentStack.DenySettings;
             this.detachedResources = deploymentStack.DetachedResources;
             this.deletedResources = deploymentStack.DeletedResources;
