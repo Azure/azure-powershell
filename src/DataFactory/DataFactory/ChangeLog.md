@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed vulnerability https://github.com/advisories/GHSA-98g6-xh36-x2p7
 
 ## Version 1.18.2
 * Supported Snowflake V2 in ADF
@@ -161,7 +162,7 @@
 * Add AutoUpdateETA, LatestVersion, PushedVersion, TaskQueueId and VersionStatus properties for Get-AzDataFactoryV2IntegrationRuntime cmd
 
 * Update ADF .Net SDK version to 4.6.0
-* Add parameter "PublicIPs" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd 
+* Add parameter "PublicIPs" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd
 to enable create Azure-SSIS IR with static public IP addresses.
 
 ## Version 1.5.1
