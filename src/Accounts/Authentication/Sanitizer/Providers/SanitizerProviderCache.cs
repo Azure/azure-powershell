@@ -16,9 +16,9 @@ using System;
 using System.Collections.Concurrent;
 using System.Threading;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Sanitizer
+namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 {
-    public class SanitizerProviderCache<TKey, TValue> where TValue : SanitizerProviderBase
+    internal class SanitizerProviderCache<TKey, TValue> where TValue : SanitizerProviderBase
     {
         private readonly ConcurrentDictionary<TKey, Lazy<TValue>> _safeProviderCache;
 

@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer
+namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
 {
-    public class DefaultSanitizerService : ISanitizerService
+    internal class DefaultSanitizerService : ISanitizerService
     {
         public string SanitizedValue => "******";
 

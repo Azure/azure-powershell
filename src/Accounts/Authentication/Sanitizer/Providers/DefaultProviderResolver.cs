@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
@@ -20,9 +20,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Sanitizer
+namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 {
-    public class DefaultProviderResolver : ISanitizerProviderResolver
+    internal class DefaultProviderResolver : ISanitizerProviderResolver
     {
         private readonly SanitizerProviderCache<Type, SanitizerProviderBase> _providerCache;
 
@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Sanitizer
 
         public static ISanitizerProviderResolver Instance => _instance;
 
-        public ISanitizerService Service => AzureSession.Instance.TryGetComponent<ISanitizerService>(nameof(ISanitizerService), out var service) ? service : null;
+        public ISanitizerService Service => new DefaultSanitizerService();
 
         private DefaultProviderResolver()
         {

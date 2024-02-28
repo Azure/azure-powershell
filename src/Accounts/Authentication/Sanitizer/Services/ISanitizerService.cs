@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Sanitizer
+namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
 {
     public interface ISanitizerService
     {

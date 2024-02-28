@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.Common.Sanitizer
+using System;
+using Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services;
+
+namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 {
-    internal enum SanitizerProviderType
+    public interface ISanitizerProviderResolver
     {
-        None,
-        String,
-        JsonObject,
-        JsonArray,
-        Dictionary,
-        Collection,
-        CustomObject
+        ISanitizerService Service { get; }
+
+        SanitizerProviderBase ResolveProvider(Type type);
     }
 }

@@ -14,10 +14,12 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services;
+using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Sanitizer
+namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 {
-    public class SanitizerDictionaryProvider : SanitizerProviderBase
+    internal class SanitizerDictionaryProvider : SanitizerProviderBase
     {
         internal override SanitizerProviderType ProviderType => SanitizerProviderType.Dictionary;
 

@@ -331,16 +331,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Controls if a cmdlets output containing secrets will be displayed in plain text..
-        /// </summary>
-        public static string HelpMessageOfDisplaySecrets {
-            get {
-                return ResourceManager.GetString("HelpMessageOfDisplaySecrets", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to When enabled, a warning message for secrets redaction will be displayed if the cmdlet output contains secrets..
+        ///   Looks up a localized string similar to When enabled, a warning message will be displayed when the cmdlet output contains secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844.
         /// </summary>
         public static string HelpMessageOfDisplaySecretsWarning {
             get {

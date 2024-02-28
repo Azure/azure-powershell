@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System;
 using Microsoft.Azure.Commands.Shared.Config;
+using Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer
 {
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer
             get
             {
                 if (AzureSession.Instance != null && AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var configManager))
-                    return configManager?.GetConfigValue<bool>(ConfigKeys.DisplaySecretsWarning) ?? false;
+                    return configManager.GetConfigValue<bool>(ConfigKeys.DisplaySecretsWarning);
 
                 return false;
             }
@@ -43,6 +44,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer
             var sanitizingStack = new Stack<object>();
             telemetry = new SanitizerTelemetry
             {
+                /*
+                 * QosEvent has the initial value of ShowSecretsWarning as FALSE.
+                 * If this method gets invoked, it means RequireSecretsDetection is TRUE.
+                */
                 ShowSecretsWarning = true
             };
 

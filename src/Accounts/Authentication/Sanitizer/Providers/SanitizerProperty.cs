@@ -15,7 +15,7 @@
 using System;
 using System.Reflection;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Sanitizer
+namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 {
     public class SanitizerProperty
     {

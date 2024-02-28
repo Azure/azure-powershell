@@ -12,12 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services;
+using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
-namespace Microsoft.WindowsAzure.Commands.Common.Sanitizer
+namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 {
-    public class SanitizerJsonArrayProvider : SanitizerProviderBase
+    internal class SanitizerJsonArrayProvider : SanitizerProviderBase
     {
         internal override SanitizerProviderType ProviderType => SanitizerProviderType.JsonArray;
 
