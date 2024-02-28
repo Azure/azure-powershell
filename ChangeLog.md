@@ -1,3 +1,13 @@
+## Upcoming Release
+* Fixed validation issues in same-account collection/container/graph and database/table/Gremlin restores, affecting the following cmdlets:
+- Restore-AzCosmosDBSqlDatabase
+- Restore-AzCosmosDBSqlContainer
+- Restore-AzCosmosDBMongoDBDatabase
+- Restore-AzCosmosDBMongoDBCollection
+- Restore-AzCosmosDBGremlinDatabase
+- Restore-AzCosmosDBGremlinGraph
+- Restore-AzCosmosDBTable
+
 ## 11.3.1 - February 2024
 #### Az.Resources 6.15.1
 * Fixed deadlock in Bicep CLI execution. [#24133]
