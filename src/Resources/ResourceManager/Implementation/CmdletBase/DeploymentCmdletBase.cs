@@ -25,6 +25,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -403,7 +404,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 if (!string.IsNullOrEmpty(output.templateJson))
                 {
-                    TemplateObject = JsonConvert.DeserializeObject<Hashtable>(output.templateJson);
+                    TemplateObject = output.templateJson.FromJson<Hashtable>();
                 }
                 else if (!string.IsNullOrEmpty(output.templateSpecId))
                 {
@@ -425,7 +426,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected void BuildAndUseBicepTemplate()
         {
             var templateJson = BicepUtility.Create().BuildBicepFile(this.ResolvePath(TemplateFile), this.WriteVerbose, this.WriteWarning);
-            TemplateObject = JsonConvert.DeserializeObject<Hashtable>(templateJson);
+            TemplateObject = templateJson.FromJson<Hashtable>();
             TemplateFile = null;
         }
     }

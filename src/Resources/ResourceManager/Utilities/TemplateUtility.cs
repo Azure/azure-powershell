@@ -221,12 +221,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             {
                 try
                 {
-                    parameters = JsonConvert.DeserializeObject<Dictionary<string, TemplateParameterFileParameter>>(templateParameterContent);
+                    parameters = templateParameterContent.FromJson<Dictionary<string, TemplateParameterFileParameter>>();
                 }
                 catch (JsonSerializationException)
                 {
                     parameters = new Dictionary<string, TemplateParameterFileParameter>(
-                        JsonConvert.DeserializeObject<TemplateParameterFile>(templateParameterContent).Parameters);
+                        templateParameterContent.FromJson<TemplateParameterFile>().Parameters);
                 }
             }
 
