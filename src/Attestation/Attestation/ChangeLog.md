@@ -20,6 +20,7 @@
 
 
 ## Upcoming Release
+* Fix vulnerability https://github.com/advisories/GHSA-8g9c-28fc-mcx2
 
 ## Version 2.0.0
 * [Breaking Change] Replaced `New/Remove/Get-AzAttestation` with `New/Remove/Get-AzAttestationProvider`
