@@ -17,14 +17,14 @@ Updates a monitored Azure DevOps project resource.
 Update-AzSecurityConnectorAzureDevOpsProject -OrgName <String> -ProjectName <String>
  -ResourceGroupName <String> -SecurityConnectorName <String> [-SubscriptionId <String>]
  [-ActionableRemediation <IActionableRemediation>] [-ParentOrgName <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzSecurityConnectorAzureDevOpsProject -InputObject <ISecurityIdentity>
  [-ActionableRemediation <IActionableRemediation>] [-ParentOrgName <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,21 +140,6 @@ Gets or sets parent Azure DevOps Organization name.
 Type: String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -313,4 +298,3 @@ The name is case insensitive.
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/az.security/update-azsecurityconnectorazuredevopsproject](https://learn.microsoft.com/powershell/module/az.security/update-azsecurityconnectorazuredevopsproject)
-

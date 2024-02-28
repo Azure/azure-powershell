@@ -14,7 +14,7 @@ Create an in-memory object for AwsEnvironment.
 
 ```
 New-AzSecurityAwsEnvironmentObject [-OrganizationalData <IAwsOrganizationalData>] [-Region <String[]>]
- [-ScanInterval <Int64>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-ScanInterval <Int64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,21 +44,6 @@ The AWS account's organizational data.
 Type: IAwsOrganizationalData
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -117,4 +102,3 @@ ORGANIZATIONALDATA \<IAwsOrganizationalData\>: The AWS account's organizational 
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityawsenvironmentobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityawsenvironmentobject)
-

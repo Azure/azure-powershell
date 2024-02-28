@@ -22,7 +22,7 @@ New-AzSecurityDefenderCspmAwsOfferingObject [-CiemDiscoveryCloudRoleArn <String>
  [-DatabaseDspmEnabled <Boolean>] [-MdcContainerAgentlessDiscoveryK8SCloudRoleArn <String>]
  [-MdcContainerAgentlessDiscoveryK8SEnabled <Boolean>] [-MdcContainerImageAssessmentCloudRoleArn <String>]
  [-MdcContainerImageAssessmentEnabled <Boolean>] [-VMScannerEnabled <Boolean>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -255,21 +255,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -VMScannerEnabled
 Is Microsoft Defender for Server VM scanning enabled.
 
@@ -305,4 +290,3 @@ CONFIGURATIONEXCLUSIONTAG \<IDefenderCspmAwsOfferingVMScannersConfigurationExclu
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefendercspmawsofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefendercspmawsofferingobject)
-

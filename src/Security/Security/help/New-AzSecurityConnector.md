@@ -17,7 +17,7 @@ If a security connector is already created and a subsequent request is issued fo
 New-AzSecurityConnector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-EnvironmentData <ISecurityConnectorEnvironment>] [-EnvironmentName <String>] [-Etag <String>]
  [-HierarchyIdentifier <String>] [-Kind <String>] [-Location <String>] [-Offering <ICloudOffering[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -248,21 +248,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group within the user's subscription.
 The name is case insensitive.
@@ -363,4 +348,3 @@ OFFERING \<ICloudOffering\[\]\>: A collection of offerings for the security conn
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/az.security/new-azsecurityconnector](https://learn.microsoft.com/powershell/module/az.security/new-azsecurityconnector)
-

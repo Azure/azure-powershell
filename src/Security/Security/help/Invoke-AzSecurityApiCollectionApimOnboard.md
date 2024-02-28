@@ -17,13 +17,13 @@ The system will start monitoring the operations within the Azure Management API 
 ```
 Invoke-AzSecurityApiCollectionApimOnboard -ApiId <String> -ResourceGroupName <String> -ServiceName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureViaIdentity
 ```
 Invoke-AzSecurityApiCollectionApimOnboard -InputObject <ISecurityIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,21 +114,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -245,4 +230,3 @@ The name is case insensitive.
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/az.security/invoke-azsecurityapicollectionapimonboard](https://learn.microsoft.com/powershell/module/az.security/invoke-azsecurityapicollectionapimonboard)
-

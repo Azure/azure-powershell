@@ -15,7 +15,7 @@ Gets nested subgroups of given GitLab Group which are onboarded to the connector
 ```
 Get-AzSecurityConnectorGitLabSubgroup -GroupFqName <String> -ResourceGroupName <String>
  -SecurityConnectorName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,21 +55,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -166,4 +151,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorgitlabsubgroup](https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorgitlabsubgroup)
-

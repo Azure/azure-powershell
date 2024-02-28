@@ -14,7 +14,7 @@ Create an in-memory object for AwsOrganizationalDataMaster.
 
 ```
 New-AzSecurityAwsOrganizationalDataMasterObject [-ExcludedAccountId <String[]>] [-StacksetName <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,21 +36,6 @@ If the multi cloud account is of membership type organization, list of accounts 
 Type: String[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -87,4 +72,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityawsorganizationaldatamasterobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityawsorganizationaldatamasterobject)
-

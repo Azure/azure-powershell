@@ -21,7 +21,7 @@ New-AzSecurityDefenderForContainersAwsOfferingObject [-AutoProvisioning <Boolean
  [-KuberneteServiceCloudRoleArn <String>] [-MdcContainerAgentlessDiscoveryK8SCloudRoleArn <String>]
  [-MdcContainerAgentlessDiscoveryK8SEnabled <Boolean>] [-MdcContainerImageAssessmentCloudRoleArn <String>]
  [-MdcContainerImageAssessmentEnabled <Boolean>] [-ScubaExternalId <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -238,21 +238,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ScubaExternalId
 The externalId used by the data reader to prevent the confused deputy attack.
 
@@ -281,4 +266,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderforcontainersawsofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderforcontainersawsofferingobject)
-
