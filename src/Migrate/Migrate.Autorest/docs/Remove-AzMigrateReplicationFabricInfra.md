@@ -1,46 +1,56 @@
 ---
 external help file:
 Module Name: Az.Migrate
-online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationpolicy
+online version: https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigratereplicationfabricinfra
 schema: 2.0.0
 ---
 
-# New-AzMigrateReplicationPolicy
+# Remove-AzMigrateReplicationFabricInfra
 
 ## SYNOPSIS
-The operation to create a replication policy.
+Removes the appliance's infrastructure under the fabric.
 
 ## SYNTAX
 
+### Remove (Default)
 ```
-New-AzMigrateReplicationPolicy -PolicyName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String>] [-ProviderSpecificInput <IPolicyProviderSpecificInput>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzMigrateReplicationFabricInfra -FabricName <String> -ResourceGroupName <String> -ResourceName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RemoveViaIdentity
+```
+Remove-AzMigrateReplicationFabricInfra -InputObject <IMigrateIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to create a replication policy.
+Removes the appliance's infrastructure under the fabric.
 
 ## EXAMPLES
 
-### Example 1: Create a replication policy
+### Example 1: {{ Add title here }}
 ```powershell
-$providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtPolicyCreationInput]::new()
-$providerSpecificPolicy.AppConsistentFrequencyInMinute = 240
-$providerSpecificPolicy.InstanceType = "VMwareCbt"
-$providerSpecificPolicy.RecoveryPointHistoryInMinute = 4320
-$providerSpecificPolicy.CrashConsistentFrequencyInMinute = 60
-New-AzMigrateReplicationPolicy -PolicyName TestPolicy -ResourceGroupName ResourceGroup -ResourceName VaultName -SubscriptionId SubscriptionId -ProviderSpecificInput $providerSpecificPolicy
+{{ Add code here }}
 ```
 
 ```output
-Location Name       Type
--------- ----       ----
-         TestPolicy Microsoft.RecoveryServices/vaults/replicationPolicies
-         
+{{ Add output here }}
 ```
 
-Creates a policy for VmWare Cbt
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -75,6 +85,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FabricName
+Fabric name.
+
+```yaml
+Type: System.String
+Parameter Sets: Remove
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+Parameter Sets: RemoveViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -90,43 +131,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PolicyName
-Replication policy name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProviderSpecificInput
-The ReplicationProviderSettings.
-To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IPolicyProviderSpecificInput
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group where the recovery services vault is present.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Remove
 Aliases:
 
 Required: True
@@ -137,11 +147,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceName
-The name of the recovery services vault.
+Resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Remove
 Aliases:
 
 Required: True
@@ -156,7 +166,7 @@ Azure Subscription Id in which migrate project was created.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Remove
 Aliases:
 
 Required: False
@@ -202,9 +212,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IPolicy
+### System.Boolean
 
 ## NOTES
 

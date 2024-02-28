@@ -102,6 +102,9 @@ Stops replication for the migrated server.
 Delete the migrate project.
 Deleting non-existent project is a no-operation.
 
+### [Remove-AzMigrateReplicationFabricInfra](Remove-AzMigrateReplicationFabricInfra.md)
+Removes the appliance's infrastructure under the fabric.
+
 ### [Remove-AzMigrateServerReplication](Remove-AzMigrateServerReplication.md)
 Stops replication for the migrated server.
 

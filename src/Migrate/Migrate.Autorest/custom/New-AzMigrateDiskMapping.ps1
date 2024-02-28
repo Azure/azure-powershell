@@ -22,7 +22,7 @@ The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attache
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
 #>
 function New-AzMigrateDiskMapping {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtDiskInput])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtDiskInput])]
     [CmdletBinding(DefaultParameterSetName = 'VMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
@@ -41,7 +41,7 @@ function New-AzMigrateDiskMapping {
 
         [Parameter(Mandatory)]
         [ValidateSet("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
-        [ArgumentCompleter( { "Standard_LRS", "Premium_LRS", "StandardSSD_LRS" })]
+        [ArgumentCompleter( { "Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS", "UltraSSD_LRS", "StandardSSD_ZRS", "Premium_ZRS" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the type of disks to be used for the Azure VM.
@@ -55,7 +55,7 @@ function New-AzMigrateDiskMapping {
     )
     
     process {
-        $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtDiskInput]::new()
+        $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtDiskInput]::new()
         $DiskObject.DiskId = $DiskID
 
         $validDiskTypeSpellings = @{ 
