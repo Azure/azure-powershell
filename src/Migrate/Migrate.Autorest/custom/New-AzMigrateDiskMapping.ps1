@@ -40,7 +40,7 @@ function New-AzMigrateDiskMapping {
         ${IsOSDisk},
 
         [Parameter(Mandatory)]
-        [ValidateSet("Standard_LRS", "Premium_LRS", "StandardSSD_LRS")]
+        [ValidateSet("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS", "UltraSSD_LRS", "StandardSSD_ZRS", "Premium_ZRS")]
         [ArgumentCompleter( { "Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "PremiumV2_LRS", "UltraSSD_LRS", "StandardSSD_ZRS", "Premium_ZRS" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
