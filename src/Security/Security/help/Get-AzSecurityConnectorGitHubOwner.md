@@ -37,13 +37,13 @@ Returns a monitored GitHub owner.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 Get-AzSecurityConnectorGitHubOwner -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-gh-01 -OwnerName dfdsdktests
 ```
 
-### EXAMPLE 2
-```
+### Example 2
+```powershell
 Get-AzSecurityConnectorGitHubOwner -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-gh-01
 ```
 

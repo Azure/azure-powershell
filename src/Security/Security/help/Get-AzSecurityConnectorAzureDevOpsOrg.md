@@ -37,13 +37,13 @@ Returns a monitored Azure DevOps organization resource.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 Get-AzSecurityConnectorAzureDevOpsOrg -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-azdo-01 -OrgName dfdsdktests
 ```
 
-### EXAMPLE 2
-```
+### Example 2
+```powershell
 Get-AzSecurityConnectorAzureDevOpsOrg -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-azdo-01
 ```
 

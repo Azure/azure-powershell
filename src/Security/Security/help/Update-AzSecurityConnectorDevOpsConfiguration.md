@@ -32,8 +32,8 @@ Updates a DevOps Configuration.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 Update-AzSecurityConnectorDevOpsConfiguration -ResourceGroupName "securityConnectors-pwsh-tmp" -SecurityConnectorName "ado-sdk-pwsh-test03" -AutoDiscovery Enabled
 ```
 

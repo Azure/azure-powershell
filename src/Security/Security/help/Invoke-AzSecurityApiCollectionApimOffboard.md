@@ -32,8 +32,8 @@ The system will stop monitoring the operations within the Azure API Management A
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 Invoke-AzSecurityApiCollectionApimOffboard -ResourceGroupName "apicollectionstests" -ServiceName "demoapimservice2" -ApiId "echo-api-2"
 ```
 

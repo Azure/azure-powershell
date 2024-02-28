@@ -21,8 +21,8 @@ Create an in-memory object for AzureDevOpsScopeEnvironment.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 New-AzSecurityAzureDevOpsScopeEnvironmentObject
 ```
 

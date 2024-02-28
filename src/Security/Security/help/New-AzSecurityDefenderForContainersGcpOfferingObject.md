@@ -32,8 +32,8 @@ Create an in-memory object for DefenderForContainersGcpOffering.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 $emailSuffix = "myproject.iam.gserviceaccount.com"
 New-AzSecurityDefenderForContainersGcpOfferingObject `
     -NativeCloudConnectionServiceAccountEmailAddress "microsoft-defender-containers@$emailSuffix" -NativeCloudConnectionWorkloadIdentityProviderId "containers" `

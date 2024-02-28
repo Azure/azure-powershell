@@ -50,18 +50,18 @@ If an Azure API Management API is onboarded to Microsoft Defender for APIs, the 
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 Get-AzSecurityApiCollection -ResourceGroupName apicollectionstests -ServiceName "demoapimservice2" -ApiId "echo-api"
 ```
 
-### EXAMPLE 2
-```
+### Example 2
+```powershell
 Get-AzSecurityApiCollection -ResourceGroupName "apicollectionstests" -ServiceName "demoapimservice2"
 ```
 
-### EXAMPLE 3
-```
+### Example 3
+```powershell
 Get-AzSecurityApiCollection
 ```
 

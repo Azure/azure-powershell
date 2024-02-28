@@ -32,8 +32,8 @@ The system will start monitoring the operations within the Azure Management API 
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 Invoke-AzSecurityApiCollectionApimOnboard -ResourceGroupName "apicollectionstests" -ServiceName "demoapimservice2" -ApiId "echo-api-2"
 ```
 

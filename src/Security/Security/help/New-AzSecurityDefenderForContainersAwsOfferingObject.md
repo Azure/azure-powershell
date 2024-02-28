@@ -29,8 +29,8 @@ Create an in-memory object for DefenderForContainersAwsOffering.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 $arnPrefix = "arn:aws:iam::123456789012:role"
 New-AzSecurityDefenderForContainersAwsOfferingObject `
     -AutoProvisioning $true -KuberneteServiceCloudRoleArn "$arnPrefix/DefenderForCloud-Containers-K8s" -KuberneteScubaReaderCloudRoleArn "$arnPrefix/DefenderForCloud-DataCollection" `

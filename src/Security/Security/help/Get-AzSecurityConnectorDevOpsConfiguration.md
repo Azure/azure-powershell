@@ -37,13 +37,13 @@ Gets a DevOps Configuration.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 Get-AzSecurityConnectorDevOpsConfiguration -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-azdo-01
 ```
 
-### EXAMPLE 2
-```
+### Example 2
+```powershell
 Get-AzSecurityConnectorDevOpsConfiguration -ResourceGroupName securityconnectors-tests -SecurityConnectorName aws-sdktest01
 ```
 

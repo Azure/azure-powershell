@@ -21,8 +21,8 @@ Create an in-memory object for CspmMonitorGithubOffering.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 New-AzSecurityCspmMonitorGithubOfferingObject
 ```
 

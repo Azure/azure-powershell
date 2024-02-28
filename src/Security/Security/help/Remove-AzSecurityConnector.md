@@ -30,8 +30,8 @@ Deletes a security connector.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 Remove-AzSecurityConnector -ResourceGroupName "securityconnectors-pwsh-tmp" -Name "ado-sdk-pwsh-test03"
 ```
 

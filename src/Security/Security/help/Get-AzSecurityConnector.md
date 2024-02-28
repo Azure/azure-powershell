@@ -41,13 +41,13 @@ Retrieves details of a specific security connector
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 Get-AzSecurityConnector -ResourceGroupName "dfdtest-sdk" -Name "dfdsdktests-azdo-01"
 ```
 
-### EXAMPLE 2
-```
+### Example 2
+```powershell
 Get-AzSecurityConnector
 ```
 

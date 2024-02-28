@@ -27,8 +27,8 @@ Create an in-memory object for DefenderForServersGcpOffering.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 $emailSuffix = "myproject.iam.gserviceaccount.com"
 New-AzSecurityDefenderForServersGcpOfferingObject `
     -DefenderForServerServiceAccountEmailAddress "microsoft-defender-for-servers@$emailSuffix" -DefenderForServerWorkloadIdentityProviderId "defender-for-servers" `

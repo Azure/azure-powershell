@@ -22,8 +22,8 @@ Create an in-memory object for AwsOrganizationalDataMember.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 New-AzSecurityAwsOrganizationalDataMemberObject -ParentHierarchyId "123"
 ```
 

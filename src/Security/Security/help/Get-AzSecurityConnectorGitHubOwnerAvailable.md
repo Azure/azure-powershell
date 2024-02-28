@@ -23,8 +23,8 @@ Returns a list of all GitHub owners accessible by the user token consumed by the
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 Get-AzSecurityConnectorGitHubOwnerAvailable -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-gh-01
 ```
 

@@ -25,8 +25,8 @@ Create an in-memory object for DefenderForDatabasesGcpOffering.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 $emailSuffix = "myproject.iam.gserviceaccount.com"
 New-AzSecurityDefenderForDatabasesGcpOfferingObject `
     -ArcAutoProvisioningEnabled $true `

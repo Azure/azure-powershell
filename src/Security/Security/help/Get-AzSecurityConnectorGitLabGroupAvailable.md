@@ -23,8 +23,8 @@ Returns a list of all GitLab groups accessible by the user token consumed by the
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 Get-AzSecurityConnectorGitLabGroupAvailable -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-gl-01
 ```
 

@@ -23,8 +23,8 @@ Gets nested subgroups of given GitLab Group which are onboarded to the connector
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 Get-AzSecurityConnectorGitLabSubgroup -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-gl-01 -GroupFqName dfdsdktests
 ```
 

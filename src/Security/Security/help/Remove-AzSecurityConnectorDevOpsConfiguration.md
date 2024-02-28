@@ -30,8 +30,8 @@ Deletes a DevOps Connector.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 Remove-AzSecurityConnectorDevOpsConfiguration -ResourceGroupName "securityconnectors-pwsh-tmp" -SecurityConnectorName "ado-sdk-pwsh-test03"
 ```
 

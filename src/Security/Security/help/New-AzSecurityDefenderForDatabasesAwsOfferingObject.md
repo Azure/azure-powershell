@@ -24,8 +24,8 @@ Create an in-memory object for DefenderForDatabasesAwsOffering.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 $arnPrefix = "arn:aws:iam::123456789012:role"
 New-AzSecurityDefenderForDatabasesAwsOfferingObject `
     -ArcAutoProvisioningEnabled $true -ArcAutoProvisioningCloudRoleArn "$arnPrefix/DefenderForCloud-ArcAutoProvisioning" `

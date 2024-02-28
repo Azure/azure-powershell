@@ -22,8 +22,8 @@ Create an in-memory object for GcpOrganizationalDataMember.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 New-AzSecurityGcpOrganizationalDataMemberObject -ManagementProjectNumber "12345" -ParentHierarchyId "00000"
 ```
 

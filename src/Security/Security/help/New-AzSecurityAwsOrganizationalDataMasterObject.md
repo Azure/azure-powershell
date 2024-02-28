@@ -22,8 +22,8 @@ Create an in-memory object for AwsOrganizationalDataMaster.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 New-AzSecurityAwsOrganizationalDataMasterObject -StacksetName "myAwsStackSet" -ExcludedAccountId "123456789012"
 ```
 

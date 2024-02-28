@@ -24,8 +24,8 @@ Create a DevOps Configuration.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 New-AzSecurityConnectorDevOpsConfiguration -ResourceGroupName "securityconnectors-pwsh-tmp" -SecurityConnectorName "ado-sdk-pwsh-test03" -AutoDiscovery Disabled -TopLevelInventoryList @("org1", "org2") -AuthorizationCode "myAuthorizationCode"
 ```
 

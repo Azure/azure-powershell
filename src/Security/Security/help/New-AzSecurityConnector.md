@@ -27,8 +27,8 @@ If a security connector is already created and a subsequent request is issued fo
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 $account = "891376984375"
 $arnPrefix = "arn:aws:iam::$($account):role"
 ```
@@ -58,8 +58,8 @@ New-AzSecurityConnector -Name "aws-sdktest01" -ResourceGroupName "securityConnec
         -Offering @($cspmMonitorOffering, $dcspmOffering, $defenderForContainersOffering) \`
         -Location "CentralUS"
 
-### EXAMPLE 2
-```
+### Example 2
+```powershell
 $account = "843025268399"
 $emailSuffix = "myproject.iam.gserviceaccount.com"
 $cspmMonitorOffering = New-AzSecurityCspmMonitorGcpOfferingObject -NativeCloudConnectionServiceAccountEmailAddress "microsoft-defender-cspm@$emailSuffix" -NativeCloudConnectionWorkloadIdentityProviderId "cspm"
@@ -84,24 +84,24 @@ $environment = New-AzSecurityGcpProjectEnvironmentObject -ScanInterval 24 -Proje
 New-AzSecurityConnector -Name "gcp-sdktest01" -ResourceGroupName "securityConnectors-tests" -EnvironmentData $environment -EnvironmentName GCP -HierarchyIdentifier "$account" \`
     -Offering @($cspmMonitorOffering, $dcspmOffering, $defenderForContainersOffering) -Location "CentralUS"
 
-### EXAMPLE 3
-```
+### Example 3
+```powershell
 New-AzSecurityConnector -ResourceGroupName "securityConnectors-pwsh-tmp" -Name "ado-sdk-pwsh-test03" `
     -EnvironmentName AzureDevOps -EnvironmentData (New-AzSecurityAzureDevOpsScopeEnvironmentObject) `
     -HierarchyIdentifier ([guid]::NewGuid().ToString()) -Location "CentralUS" `
     -Offering @(New-AzSecurityCspmMonitorAzureDevOpsOfferingObject)
 ```
 
-### EXAMPLE 4
-```
+### Example 4
+```powershell
 New-AzSecurityConnector -ResourceGroupName "securityConnectors-pwsh-tmp" -Name "gh-sdk-pwsh-test03" `
     -EnvironmentName GitHub -EnvironmentData (New-AzSecurityGitHubScopeEnvironmentObject) `
     -HierarchyIdentifier ([guid]::NewGuid().ToString()) -Location "CentralUS" `
     -Offering @(New-AzSecurityCspmMonitorGithubOfferingObject)
 ```
 
-### EXAMPLE 5
-```
+### Example 5
+```powershell
 New-AzSecurityConnector -ResourceGroupName "securityConnectors-pwsh-tmp" -Name "gl-sdk-pwsh-test03" `
     -EnvironmentName GitLab -EnvironmentData (New-AzSecurityGitLabScopeEnvironmentObject) `
     -HierarchyIdentifier ([guid]::NewGuid().ToString()) -Location "CentralUS" `

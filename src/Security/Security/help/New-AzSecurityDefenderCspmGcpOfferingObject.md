@@ -33,8 +33,8 @@ Create an in-memory object for DefenderCspmGcpOffering.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 $emailSuffix = "myproject.iam.gserviceaccount.com"
 New-AzSecurityDefenderCspmGcpOfferingObject `
     -VMScannerEnabled $true -ConfigurationScanningMode Default -ConfigurationExclusionTag @{key="value"} `

@@ -28,8 +28,8 @@ Create an in-memory object for DefenderForServersAwsOffering.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 $arnPrefix = "arn:aws:iam::123456789012:role"
 New-AzSecurityDefenderForServersAwsOfferingObject `
     -DefenderForServerCloudRoleArn "$arnPrefix/DefenderForCloud-DefenderForServers" `

@@ -37,13 +37,13 @@ Returns a monitored GitLab Group resource for a given fully-qualified name.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1
+```powershell
 Get-AzSecurityConnectorGitLabGroup -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-gl-01 -GroupFqName dfdsdktests
 ```
 
-### EXAMPLE 2
-```
+### Example 2
+```powershell
 Get-AzSecurityConnectorGitLabGroup -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-gl-01
 ```
 
