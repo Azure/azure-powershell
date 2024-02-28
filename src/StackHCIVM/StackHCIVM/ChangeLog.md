@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Reported image download progress
 
 ## Version 1.0.0
 * General availability for module Az.StackHCIVM

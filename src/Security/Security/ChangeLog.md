@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Added new cmdlets for Security Connectors
+* Added new cmdlets for ApiCollections Security
 
 ## Version 1.5.1
 * Fixed bug for `Set-AzSecurityPricing`
