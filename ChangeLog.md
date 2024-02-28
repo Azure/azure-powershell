@@ -1,3 +1,13 @@
+## Upcoming Release
+* Fixed validation issues in same-account collection/container/graph and database/table/Gremlin restores, affecting the following cmdlets:
+- Restore-AzCosmosDBSqlDatabase
+- Restore-AzCosmosDBSqlContainer
+- Restore-AzCosmosDBMongoDBDatabase
+- Restore-AzCosmosDBMongoDBCollection
+- Restore-AzCosmosDBGremlinDatabase
+- Restore-AzCosmosDBGremlinGraph
+- Restore-AzCosmosDBTable
+
 ## 11.3.0 - February 2024
 #### Az.Accounts 2.15.1
 * Upgraded the reference of Azure PowerShell Common to 1.3.90-preview.
