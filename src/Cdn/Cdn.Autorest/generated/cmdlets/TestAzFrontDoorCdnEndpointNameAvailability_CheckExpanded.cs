@@ -19,6 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckEndpointNameAvailabilityOutput))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Check the availability of a resource name. This is needed for resources where name is globally unique, such as a afdx endpoint.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/checkEndpointNameAvailability", ApiVersion = "2023-05-01")]
     public partial class TestAzFrontDoorCdnEndpointNameAvailability_CheckExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener
     {

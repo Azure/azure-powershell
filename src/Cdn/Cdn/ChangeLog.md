@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed the case sensitive issue when do preparing migration steps for `Start-AzFrontDoorCdnProfilePrepareMigration`
 
 ## Version 3.1.1
 * Customized output property for `Get-AzCdnEdgeNode` command

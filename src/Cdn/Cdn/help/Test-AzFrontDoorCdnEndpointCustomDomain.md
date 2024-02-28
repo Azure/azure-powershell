@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnendpointcustomdomain
 schema: 2.0.0
@@ -15,14 +15,14 @@ Validates the custom domain mapping to ensure it maps to the correct Azure Front
 ### ValidateExpanded (Default)
 ```
 Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String>
- -ResourceGroupName <String> -HostName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -HostName <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded
 ```
 Test-AzFrontDoorCdnEndpointCustomDomain -InputObject <ICdnIdentity> -HostName <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +43,7 @@ True
 
 Test an AzureFrontDoor domain within the specified AzureFrontDoor endpoint
 
-### Example 2: Test an AzureFrontDoor domain within the specified AzureFrontDoor endpoint via identity 
+### Example 2: Test an AzureFrontDoor domain within the specified AzureFrontDoor endpoint via identity
 ```powershell
 Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 | Test-AzFrontDoorCdnEndpointCustomDomain -HostName "pstest001.dev.cdn.azure.cn"
 ```
@@ -130,6 +130,21 @@ Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -233,4 +248,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Azure Subscription ID.
 
 ## RELATED LINKS
-
