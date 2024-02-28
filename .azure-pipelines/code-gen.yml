@@ -94,6 +94,7 @@ jobs:
         git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git;
         git push origin codegen/${{ parameters.ServiceName }} --force;
       arguments: '-RequiredPsVersion $(PSVersion)'
+      pwsh: true
   - pwsh: |
       $SourceBranch = "$(Build.SourceBranch)"
       $SourceBranch = $SourceBranch.Replace("refs/heads/", "")
