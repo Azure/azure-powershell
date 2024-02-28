@@ -221,13 +221,19 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         $allPoliciesWithWAF = New-Object System.Collections.Generic.HashSet[string]
         $allPoliciesWithVault = New-Object System.Collections.Generic.HashSet[string]
         foreach ($info in $frontDoorInfos) {
-            if ($info.WebApplicationFirewallPolicyLink) {
-                $allPoliciesWithWAF.Add($info.WebApplicationFirewallPolicyLink)  | Out-Null
+            $wafInfo = $info.WebApplicationFirewallPolicyLink
+            if ($wafInfo) {
+                $allPoliciesWithWAF.Add($wafInfo.ToLower())  | Out-Null
             }
             if ($info.Vault) {
-                $allPoliciesWithVault.Add($info.Vault.split("/")[-1]) | Out-Null
+                $vaultNameInfo = $info.Vault.split("/")[-1]
+                $allPoliciesWithVault.Add($vaultNameInfo.ToLower()) | Out-Null
             }
         }
+
+        Write-Debug("WAF linked to the frontdoor: $allPoliciesWithWAF")
+        Write-Debug("Key vault name used for the frontdoor: $allPoliciesWithVault")
+
         if (${MigrationWebApplicationFirewallMapping}.count -ne $allPoliciesWithWAF.count) {
             throw "MigrationWebApplicationFirewallMapping parameter instance should be equal to the number of WAF policy instance in the profile."
         }
