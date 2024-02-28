@@ -15,7 +15,7 @@ Returns a monitored GitHub owner.
 ### List (Default)
 ```
 Get-AzSecurityConnectorGitHubOwner -ResourceGroupName <String> -SecurityConnectorName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -23,13 +23,13 @@ Get-AzSecurityConnectorGitHubOwner -ResourceGroupName <String> -SecurityConnecto
 ```
 Get-AzSecurityConnectorGitHubOwner -OwnerName <String> -ResourceGroupName <String>
  -SecurityConnectorName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzSecurityConnectorGitHubOwner -InputObject <ISecurityIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,21 +90,6 @@ Parameter Sets: Get
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -192,4 +177,3 @@ The name is case insensitive.
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorgithubowner](https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorgithubowner)
-

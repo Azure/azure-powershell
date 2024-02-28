@@ -25,7 +25,7 @@ New-AzSecurityDefenderCspmGcpOfferingObject [-CiemDiscoveryAzureActiveDirectoryA
  [-MdcContainerImageAssessmentEnabled <Boolean>]
  [-MdcContainerImageAssessmentServiceAccountEmailAddress <String>]
  [-MdcContainerImageAssessmentWorkloadIdentityProviderId <String>] [-VMScannerEnabled <Boolean>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -257,21 +257,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -VMScannerEnabled
 Is Microsoft Defender for Server VM scanning enabled.
 
@@ -307,4 +292,3 @@ CONFIGURATIONEXCLUSIONTAG \<IDefenderCspmGcpOfferingVMScannersConfigurationExclu
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefendercspmgcpofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefendercspmgcpofferingobject)
-

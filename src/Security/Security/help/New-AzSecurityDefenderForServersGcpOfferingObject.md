@@ -19,7 +19,7 @@ New-AzSecurityDefenderForServersGcpOfferingObject [-ArcAutoProvisioningEnabled <
  [-ConfigurationType <String>] [-DefenderForServerServiceAccountEmailAddress <String>]
  [-DefenderForServerWorkloadIdentityProviderId <String>] [-MdeAutoProvisioningConfiguration <IAny>]
  [-MdeAutoProvisioningEnabled <Boolean>] [-SubPlanType <String>] [-VMScannerEnabled <Boolean>]
- [-VaAutoProvisioningEnabled <Boolean>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-VaAutoProvisioningEnabled <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -191,21 +191,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubPlanType
 The available sub plans.
 
@@ -271,4 +256,3 @@ CONFIGURATIONEXCLUSIONTAG \<IDefenderForServersGcpOfferingVMScannersConfiguratio
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderforserversgcpofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderforserversgcpofferingobject)
-

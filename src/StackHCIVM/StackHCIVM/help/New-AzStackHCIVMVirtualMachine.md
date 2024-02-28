@@ -25,7 +25,7 @@ New-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-Subs
  [-AdminUsername <String>] [-ComputerName <String>] [-EnableTpm] [-SshPublicKey <String[]>]
  [-StoragePathId <String>] [-StoragePathName <String>] [-StoragePathResourceGroup <String>]
  [-SecureBootEnabled] [-EnableAutomaticUpdate] [-TimeZone <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByImageName
@@ -40,7 +40,7 @@ New-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-Subs
  [-EnableTpm] [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-SecureBootEnabled] [-EnableAutomaticUpdate] [-TimeZone <String>]
  -ImageName <String> [-ImageResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByOsDiskId
@@ -54,7 +54,7 @@ New-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-Subs
  [-DataDiskResourceGroup <String>] [-AdminPassword <String>] [-AdminUsername <String>] [-ComputerName <String>]
  [-EnableTpm] [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-SecureBootEnabled] [-EnableAutomaticUpdate] [-TimeZone <String>]
- -OSDiskId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -OSDiskId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -70,7 +70,7 @@ New-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-Subs
  [-EnableTpm] [-SshPublicKey <String[]>] [-StoragePathId <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-SecureBootEnabled] [-EnableAutomaticUpdate] [-TimeZone <String>]
  -OSDiskName <String> [-OSDiskResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -528,21 +528,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ProvisionVMAgent
 Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process.
 VM Agent is provsioned by default.
@@ -791,4 +776,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmvirtualmachine](https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmvirtualmachine)
-

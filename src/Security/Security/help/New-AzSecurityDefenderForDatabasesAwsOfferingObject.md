@@ -16,7 +16,7 @@ Create an in-memory object for DefenderForDatabasesAwsOffering.
 New-AzSecurityDefenderForDatabasesAwsOfferingObject [-ArcAutoProvisioningCloudRoleArn <String>]
  [-ArcAutoProvisioningEnabled <Boolean>] [-ConfigurationPrivateLinkScope <String>]
  [-ConfigurationProxy <String>] [-DatabaseDspmCloudRoleArn <String>] [-DatabaseDspmEnabled <Boolean>]
- [-RdCloudRoleArn <String>] [-RdEnabled <Boolean>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-RdCloudRoleArn <String>] [-RdEnabled <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -124,21 +124,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RdCloudRoleArn
 The cloud role ARN in AWS for this feature.
 
@@ -182,4 +167,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderfordatabasesawsofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderfordatabasesawsofferingobject)
-

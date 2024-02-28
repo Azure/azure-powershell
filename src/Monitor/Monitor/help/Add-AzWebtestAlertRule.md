@@ -19,7 +19,7 @@ Add-AzWebtestAlertRule -MetricName <String> -TargetResourceUri <String> -WindowS
  -FailedLocationCount <Int32> [-MetricNamespace <String>] -Location <String> [-Description <String>]
  [-DisableRule] -ResourceGroupName <String> -Name <String>
  [-Action <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -182,21 +182,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of the resource group.
 
@@ -300,5 +285,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzAlertHistory](./Get-AzAlertHistory.md)
 
 [New-AzAlertRuleWebhook](./New-AzAlertRuleWebhook.md)
-
-

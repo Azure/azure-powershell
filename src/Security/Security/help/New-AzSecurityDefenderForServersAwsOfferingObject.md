@@ -19,7 +19,7 @@ New-AzSecurityDefenderForServersAwsOfferingObject [-ArcAutoProvisioningCloudRole
  [-ConfigurationPrivateLinkScope <String>] [-ConfigurationProxy <String>] [-ConfigurationScanningMode <String>]
  [-ConfigurationType <String>] [-DefenderForServerCloudRoleArn <String>]
  [-MdeAutoProvisioningConfiguration <IAny>] [-MdeAutoProvisioningEnabled <Boolean>] [-SubPlanType <String>]
- [-VMScannerEnabled <Boolean>] [-VaAutoProvisioningEnabled <Boolean>] [-ProgressAction <ActionPreference>]
+ [-VMScannerEnabled <Boolean>] [-VaAutoProvisioningEnabled <Boolean>]
  [<CommonParameters>]
 ```
 
@@ -209,21 +209,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubPlanType
 The available sub plans.
 
@@ -289,4 +274,3 @@ CONFIGURATIONEXCLUSIONTAG \<IDefenderForServersAwsOfferingVMScannersConfiguratio
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderforserversawsofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderforserversawsofferingobject)
-

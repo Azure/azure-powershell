@@ -15,7 +15,7 @@ Create an in-memory object for ActionableRemediation.
 ```
 New-AzSecurityConnectorActionableRemediationObject [-BranchConfiguration <ITargetBranchConfiguration>]
  [-CategoryConfiguration <ICategoryConfiguration[]>] [-InheritFromParentState <String>] [-State <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,21 +81,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -State
 ActionableRemediation Setting.
         None - the setting was never set.
@@ -147,4 +132,3 @@ Container scanning results.
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityconnectoractionableremediationobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityconnectoractionableremediationobject)
-
