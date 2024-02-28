@@ -127,6 +127,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
             }
+            if (EnablePerRegionPerPartitionAutoscale != null)
+            {
+                databaseAccountUpdateParameters.EnablePerRegionPerPartitionAutoscale = EnablePerRegionPerPartitionAutoscale;
+            }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
             {
