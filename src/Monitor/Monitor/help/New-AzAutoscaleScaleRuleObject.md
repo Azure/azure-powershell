@@ -20,7 +20,7 @@ New-AzAutoscaleScaleRuleObject -MetricTriggerMetricName <String> -MetricTriggerM
  -ScaleActionDirection <ScaleDirection> -ScaleActionType <ScaleType>
  [-MetricTriggerDimension <IScaleRuleMetricDimension[]>] [-MetricTriggerDividePerInstance <Boolean>]
  [-MetricTriggerMetricNamespace <String>] [-MetricTriggerMetricResourceLocation <String>]
- [-ScaleActionValue <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-ScaleActionValue <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -227,21 +227,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ScaleActionCooldown
 the amount of time to wait since the last scaling action before this action occurs.
 It must be between 1 week and 1 minute in ISO 8601 format.
@@ -307,7 +292,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable, -ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

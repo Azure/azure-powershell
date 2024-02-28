@@ -364,7 +364,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable, -ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -384,4 +384,3 @@ DESTINATION \<INeighborGroupDestination\>: An array of destination IPv4 Addresse
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabricneighborgroup](https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabricneighborgroup)
-

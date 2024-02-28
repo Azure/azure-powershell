@@ -15,7 +15,7 @@ Create an in-memory object for GcpProjectEnvironment.
 ```
 New-AzSecurityGcpProjectEnvironmentObject [-OrganizationalData <IGcpOrganizationalData>]
  [-ProjectDetailProjectId <String>] [-ProjectDetailProjectNumber <String>] [-ScanInterval <Int64>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,21 +39,6 @@ The Gcp project's organizational data.
 Type: IGcpOrganizationalData
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -108,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable, -ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -127,4 +112,3 @@ ORGANIZATIONALDATA \<IGcpOrganizationalData\>: The Gcp project's organizational 
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritygcpprojectenvironmentobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritygcpprojectenvironmentobject)
-

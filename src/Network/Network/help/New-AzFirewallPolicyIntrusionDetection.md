@@ -59,7 +59,7 @@ This example creates intrusion detection with bypass traffic setting
 
 ### Example 5: Create firewall policy with intrusion detection profile setting
 ```powershell
-$intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Deny" -Profile “Advanced”
+$intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Deny" -Profile ï¿½Advancedï¿½
 New-AzFirewallPolicy -Name fp1 -Location "westus2" -ResourceGroupName TestRg -SkuTier "Premium" -IntrusionDetection $intrusionDetection
 ```
 
@@ -94,7 +94,7 @@ Accepted values: Basic, Standard, Advanced
 
 Required: False
 Position: Named
-Default value: For newly created policy the default IDPS profile is “Standard” and for existing policy without IDPS profile setting,  the default is “Advanced”
+Default value: For newly created policy the default IDPS profile is ï¿½Standardï¿½ and for existing policy without IDPS profile setting,  the default is ï¿½Advancedï¿½
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutBuffer, -OutVariable, -PipelineVariable, -ProgressAction, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
