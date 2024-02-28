@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added new feature to detect secrets related information from Azure PowerShell cmdlet output with warning message.
 * Fixed `CacheDirectory` and `CacheFile` out-of-sync issue in AzureRmContextSettings.json and the customers are not allowed to change these 2 properties.
 * Redirected device code login messages from warning stream to information stream if use device authentication in `Connect-AzAccount`.
 
