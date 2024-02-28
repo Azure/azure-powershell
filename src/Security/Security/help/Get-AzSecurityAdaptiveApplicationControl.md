@@ -14,7 +14,8 @@ Gets a list of application control VM/server groups for the subscription.
 
 ```
 Get-AzSecurityAdaptiveApplicationControl [-SubscriptionId <String>] [-IncludePathRecommendation <Boolean>]
- [-Summary <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Summary <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,6 +74,21 @@ Include the policy rules
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
