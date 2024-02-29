@@ -265,6 +265,7 @@ public static int hashForArtifact(String artifact)
 
             foreach ($fabric in $allFabrics) {
                 if (($fabric.Property.CustomDetail.InstanceType -ceq "VMwareV2") -and ($fabric.Property.CustomDetail.VmwareSiteId.Split("/")[8] -ceq $SiteName)) {
+                    $fabricName = $fabric.Name
                     $HashCodeInput = $fabric.Id
                     $peContainers = Get-AzMigrateReplicationProtectionContainer -FabricName $fabric.Name -ResourceGroupName $ResourceGroupName -ResourceName $VaultName
                     $peContainer = $peContainers[0]
@@ -274,7 +275,7 @@ public static int hashForArtifact(String artifact)
                         throw $targetRegionMismatchExceptionMsg
                     }
 
-                    if (($isPublicScenario) -and ($CacheStorageAccountId -ne $null) -and ($existingMapping) -and ($existingMapping.ProviderSpecificDetail.StorageAccountId -ne $CacheStorageAccountId)) {
+                    if (($isPublicScenario) -and ($CacheStorageAccountId) -and ($existingMapping) -and ($existingMapping.ProviderSpecificDetail.StorageAccountId -ne $CacheStorageAccountId)) {
                         $saMismatchExceptionMsg = $applianceName + " is already configured for migrating servers with storage account " + $existingMapping.ProviderSpecificDetail.StorageAccountId + ". Storage account cannot be modified once configured."
                         throw $saMismatchExceptionMsg
                     }
@@ -322,7 +323,7 @@ public static int hashForArtifact(String artifact)
                             Write-Host $LogStringCreated, $ReplicationStorageAcName
                         }
                         elseif ($replicationStorageAccount.Location -ne $TargetRegion){
-                            throw "Storage account '$($ReplicationStorageAcName)' already exists in '$($replicationStorageAccount.Location)', which does not match with the target region. Please delete the storage account to proceed."
+                            throw "Storage account with name '$($ReplicationStorageAcName)' already exists in '$($replicationStorageAccount.Location)'. You can either migrate to '$($replicationStorageAccount.Location)' or delete the existing storage account."
                         }
                         else {
                              Write-Host $ReplicationStorageAcName, $LogStringSkipping
@@ -353,16 +354,20 @@ public static int hashForArtifact(String artifact)
                 # RoleAssignments
                 $applianceDetails = Get-AzMigrateReplicationRecoveryServicesProvider -ResourceGroupName $ResourceGroupName -ResourceName $VaultName
                 if ($applianceDetails.length -eq 1){
-                    $applianceSpnIds = @($applianceDetails.ResourceAccessIdentityDetailObjectId)
+                    $applianceSpnId = $applianceDetails.ResourceAccessIdentityDetailObjectId
                 }
                 else {
-                    $applianceSpnIds = $applianceDetails.ResourceAccessIdentityDetailObjectId
+                    foreach ($appliance in $applianceDetails){
+                        if ($appliance.FabricFriendlyName -ceq $fabricName){
+                            $applianceSpnId = $appliance.ResourceAccessIdentityDetailObjectId
+                        }
+                    }
                 }
 
                 $vaultMsiPrincipalId = $VaultDetails.Identity.PrincipalId
 
-                if ($applianceSpnIds -eq $null) {
-                    Write-Host "The appliance '$($applianceName)' does not have MSI enabled. Please enable system assigned MSI and retry the operation."
+                if ($applianceSpnId -eq $null) {
+                    Write-Host "The appliance '$($applianceName)' does not have SPN enabled. Please enable and retry the operation."
                     continue
                 }
 
@@ -381,27 +386,18 @@ public static int hashForArtifact(String artifact)
                     }
                 }
 
-                foreach($applianceSpnId in $applianceSpnIds.GetEnumerator()){
-                    Create-RoleAssignments $applianceSpnId $rsaStorageAccount.Id
-                }
+                Create-RoleAssignments $applianceSpnId $rsaStorageAccount.Id
                 Create-RoleAssignments $vaultMsiPrincipalId $rsaStorageAccount.Id
 
                 for ($i = 1; $i -le 18; $i++) {
                     Write-Information "Waiting for Role Assignments to be available... $( $i * 10 ) seconds" -InformationAction Continue
                     Start-Sleep -Seconds 10
 
-                    $assignmentsCreatedCount = 0
-                    foreach($applianceSpnId in $applianceSpnIds.GetEnumerator()){
-                        $createdAssignment = Get-AzRoleAssignment -ObjectId $applianceSpnId -Scope $rsaStorageAccount.Id -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                        if ($createdAssignment) {
-                            $assignmentsCreatedCount += 1
-                        }
-                    }
-
+                    $applianceRoleAssignment = Get-AzRoleAssignment -ObjectId $applianceSpnId -Scope $rsaStorageAccount.Id -ErrorVariable notPresent -ErrorAction SilentlyContinue
                     $vaultRoleAssignments = Get-AzRoleAssignment -ObjectId $vaultMsiPrincipalId -Scope $rsaStorageAccount.Id -ErrorVariable notPresent -ErrorAction SilentlyContinue
 
-                    if (($assignmentsCreatedCount -eq $applianceSpnIds.length) -and $vaultRoleAssignments) {
-                    break
+                    if ($applianceRoleAssignment -and $vaultRoleAssignments) {
+                        break
                     }
                 }
            }
