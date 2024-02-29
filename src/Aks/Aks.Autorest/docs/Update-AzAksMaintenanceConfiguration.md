@@ -1,49 +1,41 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://learn.microsoft.com/powershell/module/az.aks/new-azaksmaintenanceconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.aks/update-azaksmaintenanceconfiguration
 schema: 2.0.0
 ---
 
-# New-AzAksMaintenanceConfiguration
+# Update-AzAksMaintenanceConfiguration
 
 ## SYNOPSIS
 Create a maintenance configuration in the specified managed cluster.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <String> -ResourceName <String>
+Update-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String>] [-NotAllowedTime <ITimeSpan[]>] [-TimeInWeek <ITimeInWeek[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityManagedCluster
+### UpdateViaIdentityExpanded
 ```
-New-AzAksMaintenanceConfiguration -ConfigName <String> -ManagedClusterInputObject <IAksIdentity>
+Update-AzAksMaintenanceConfiguration -InputObject <IAksIdentity> [-NotAllowedTime <ITimeSpan[]>]
+ [-TimeInWeek <ITimeInWeek[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityManagedCluster
+```
+Update-AzAksMaintenanceConfiguration -ConfigName <String> -ManagedClusterInputObject <IAksIdentity>
  -Parameter <IMaintenanceConfiguration> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityManagedClusterExpanded
+### UpdateViaIdentityManagedClusterExpanded
 ```
-New-AzAksMaintenanceConfiguration -ConfigName <String> -ManagedClusterInputObject <IAksIdentity>
+Update-AzAksMaintenanceConfiguration -ConfigName <String> -ManagedClusterInputObject <IAksIdentity>
  [-NotAllowedTime <ITimeSpan[]>] [-TimeInWeek <ITimeInWeek[]>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <String> -ResourceName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <String> -ResourceName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,20 +43,27 @@ Create a maintenance configuration in the specified managed cluster.
 
 ## EXAMPLES
 
-### Example 1: Creates or updates a maintenance configuration in the specified managed cluster
+### Example 1: {{ Add title here }}
 ```powershell
-$TimeSpan = New-AzAksTimeSpanObject -Start (Get-Date -Year 2023 -Month 3 -Day 1) -End (Get-Date -Year 2023 -Month 3 -Day 2)
-$TimeInWeek = New-AzAksTimeInWeekObject -Day 'Sunday' -HourSlot 1,2
-$MaintenanceConfig = New-AzAksMaintenanceConfiguration -ResourceGroupName mygroup -ResourceName myCluster -ConfigName 'aks_maintenance_config' -TimeInWeek $TimeInWeek -NotAllowedTime $TimeSpan
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-aks_maintenance_config
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create a maintenance configuration "aks_maintenance_config" in a managed cluster "myCluster" with a time in week and a not allowed time span.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -73,7 +72,7 @@ Thenameofthemaintenanceconfiguration.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityManagedCluster, UpdateViaIdentityManagedClusterExpanded
 Aliases:
 
 Required: True
@@ -98,33 +97,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-PathofJsonfilesuppliedtotheCreateoperation
+### -InputObject
+IdentityParameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-JsonstringsuppliedtotheCreateoperation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -133,7 +117,7 @@ IdentityParameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: CreateViaIdentityManagedCluster, CreateViaIdentityManagedClusterExpanded
+Parameter Sets: UpdateViaIdentityManagedCluster, UpdateViaIdentityManagedClusterExpanded
 Aliases:
 
 Required: True
@@ -148,7 +132,7 @@ Timeslotsonwhichupgradeisnotallowed.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan[]
-Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityManagedClusterExpanded
 Aliases:
 
 Required: False
@@ -163,7 +147,7 @@ See[plannedmaintenance](https://docs.microsoft.com/azure/aks/planned-maintenance
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration
-Parameter Sets: CreateViaIdentityManagedCluster
+Parameter Sets: UpdateViaIdentityManagedCluster
 Aliases:
 
 Required: True
@@ -178,7 +162,7 @@ Thenameoftheresourcegroup.Thenameiscaseinsensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -193,7 +177,7 @@ Thenameofthemanagedclusterresource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -208,7 +192,7 @@ TheIDofthetargetsubscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -223,7 +207,7 @@ Iftwoarrayentriesspecifythesamedayoftheweek,theappliedconfigurationistheunionoft
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek[]
-Parameter Sets: CreateExpanded, CreateViaIdentityManagedClusterExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityManagedClusterExpanded
 Aliases:
 
 Required: False

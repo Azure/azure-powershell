@@ -30,6 +30,12 @@ Get-AzAksMaintenanceConfiguration -InputObject <IAksIdentity> [-DefaultProfile <
  [<CommonParameters>]
 ```
 
+### GetViaIdentityManagedCluster
+```
+Get-AzAksMaintenanceConfiguration -ConfigName <String> -ManagedClusterInputObject <IAksIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the specified maintenance configuration of a managed cluster.
 
@@ -81,11 +87,11 @@ Get a maintenance configuration via identity for a managed cluster "myCluster".
 ## PARAMETERS
 
 ### -ConfigName
-The name of the maintenance configuration.
+Thenameofthemaintenanceconfiguration.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityManagedCluster
 Aliases:
 
 Required: True
@@ -96,8 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -112,8 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+IdentityParameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
@@ -127,9 +131,23 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ManagedClusterInputObject
+IdentityParameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
+Parameter Sets: GetViaIdentityManagedCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Thenameoftheresourcegroup.Thenameiscaseinsensitive.
 
 ```yaml
 Type: System.String
@@ -144,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceName
-The name of the managed cluster resource.
+Thenameofthemanagedclusterresource.
 
 ```yaml
 Type: System.String
@@ -159,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+TheIDofthetargetsubscription.
 
 ```yaml
 Type: System.String[]
@@ -182,28 +200,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IMaintenanceConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAksIdentity>`: Identity Parameter
-  - `[AgentPoolName <String>]`: The name of the agent pool.
-  - `[CommandId <String>]`: Id of the command.
-  - `[ConfigName <String>]`: The name of the maintenance configuration.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceName <String>]`: The name of the managed cluster resource.
-  - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

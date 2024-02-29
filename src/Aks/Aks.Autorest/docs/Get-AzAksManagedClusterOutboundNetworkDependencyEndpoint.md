@@ -46,8 +46,7 @@ apiserver                 {aks0b1f-idb7vuoi.hcp.eastus.azmk8s.io}
 ## PARAMETERS
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -62,8 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Thenameoftheresourcegroup.Thenameiscaseinsensitive.
 
 ```yaml
 Type: System.String
@@ -78,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceName
-The name of the managed cluster resource.
+Thenameofthemanagedclusterresource.
 
 ```yaml
 Type: System.String
@@ -93,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+TheIDofthetargetsubscription.
 
 ```yaml
 Type: System.String[]
@@ -114,11 +112,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOutboundEnvironmentEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOutboundEnvironmentEndpoint
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

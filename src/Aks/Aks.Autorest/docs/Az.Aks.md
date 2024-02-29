@@ -54,16 +54,10 @@ If the operation completes before cancellation can take place, a 409 error code 
 Rotates the service account signing keys of a managed cluster.
 
 ### [New-AzAksMaintenanceConfiguration](New-AzAksMaintenanceConfiguration.md)
-Creates or updates a maintenance configuration in the specified managed cluster.
+Create a maintenance configuration in the specified managed cluster.
 
 ### [New-AzAksSnapshot](New-AzAksSnapshot.md)
-Creates or updates a snapshot.
-
-### [New-AzAksTimeInWeekObject](New-AzAksTimeInWeekObject.md)
-Create an in-memory object for TimeInWeek.
-
-### [New-AzAksTimeSpanObject](New-AzAksTimeSpanObject.md)
-Create an in-memory object for TimeSpan.
+Create a snapshot.
 
 ### [Remove-AzAksMaintenanceConfiguration](Remove-AzAksMaintenanceConfiguration.md)
 Deletes a maintenance configuration.
@@ -84,4 +78,7 @@ This can only be performed on Azure Virtual Machine Scale set backed clusters.
 Stopping a cluster stops the control plane and agent nodes entirely, while maintaining all object and cluster state.
 A cluster does not accrue charges while it is stopped.
 See [stopping a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about stopping a cluster.
+
+### [Update-AzAksMaintenanceConfiguration](Update-AzAksMaintenanceConfiguration.md)
+Create a maintenance configuration in the specified managed cluster.
 

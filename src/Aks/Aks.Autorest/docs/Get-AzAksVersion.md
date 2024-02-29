@@ -47,7 +47,7 @@ List available version for creating managed Kubernetes cluster.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+Thecredentials,account,tenant,andsubscriptionusedforcommunicationwithAzure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The name of a supported Azure region.
+ThenameofasupportedAzureregion.
 
 ```yaml
 Type: System.String
@@ -77,8 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+SubscriptioncredentialswhichuniquelyidentifyMicrosoftAzuresubscription.ThesubscriptionIDformspartoftheURIforeveryservicecall.
 
 ```yaml
 Type: System.String[]
@@ -99,11 +98,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IOrchestratorVersionProfileListResult
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

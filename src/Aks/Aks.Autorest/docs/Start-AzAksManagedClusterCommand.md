@@ -27,6 +27,20 @@ Start-AzAksManagedClusterCommand -InputObject <IAksIdentity> -Command <String> [
  [-Context <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### RunViaJsonFilePath
+```
+Start-AzAksManagedClusterCommand -ResourceGroupName <String> -ResourceName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RunViaJsonString
+```
+Start-AzAksManagedClusterCommand -ResourceGroupName <String> -ResourceName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 AKS will create a pod to run the command.
 This is primarily useful for private clusters.
@@ -79,7 +93,7 @@ StartedAt         : 3/31/2023 8:54:16 AM
 ## PARAMETERS
 
 ### -AsJob
-Run the command as a job
+Runthecommandasajob
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -94,11 +108,11 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterToken
-AuthToken issued for AKS AAD Server App.
+AuthTokenissuedforAKSAADServerApp.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -109,11 +123,11 @@ Accept wildcard characters: False
 ```
 
 ### -Command
-The command to run.
+Thecommandtorun.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -124,11 +138,11 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-A base64 encoded zip file containing the files required by the command.
+Abase64encodedzipfilecontainingthefilesrequiredbythecommand.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -139,8 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -155,8 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+IdentityParameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
@@ -170,8 +182,38 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+PathofJsonfilesuppliedtotheRunoperation
+
+```yaml
+Type: System.String
+Parameter Sets: RunViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+JsonstringsuppliedtotheRunoperation
+
+```yaml
+Type: System.String
+Parameter Sets: RunViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
-Run the command asynchronously
+Runthecommandasynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -186,12 +228,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Thenameoftheresourcegroup.Thenameiscaseinsensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded
+Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
 Aliases:
 
 Required: True
@@ -202,11 +243,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceName
-The name of the managed cluster resource.
+Thenameofthemanagedclusterresource.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded
+Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
 Aliases:
 
 Required: True
@@ -217,11 +258,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+TheIDofthetargetsubscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded
+Parameter Sets: RunExpanded, RunViaJsonFilePath, RunViaJsonString
 Aliases:
 
 Required: False
@@ -271,28 +312,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IRunCommandResult
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IRunCommandResult
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAksIdentity>`: Identity Parameter
-  - `[AgentPoolName <String>]`: The name of the agent pool.
-  - `[CommandId <String>]`: Id of the command.
-  - `[ConfigName <String>]`: The name of the maintenance configuration.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceName <String>]`: The name of the managed cluster resource.
-  - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 
