@@ -70,6 +70,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.SourceBackupLocationHelpMessage)]
         public string SourceBackupLocation { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.DisableTtlHelpMessage)]
+        public bool? DisableTtl { get; set; }
+
         public override void ExecuteCmdlet()
         {
             DateTime utcRestoreDateTime;
@@ -222,6 +225,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 RestoreSource = sourceAccountToRestore.Id,
                 RestoreTimestampInUtc = utcRestoreDateTime,
+                DisableTtl = DisableTtl,
                 DatabasesToRestore = DatabasesToRestore,
                 TablesToRestore = TablesToRestore,
                 GremlinDatabasesToRestore = GremlinDatabasesToRestore,

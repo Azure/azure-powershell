@@ -101,13 +101,19 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// </summary>
         public string SourceBackupLocation { get; set; }
 
+        /// <summary>
+        /// Gets or Sets disablement of restoring with Time-To-Live disabled.
+        /// </summary>
+        public bool? DisableTtl { get; set; }
+
         public RestoreParameters ToSDKModel()
         {
             RestoreParameters restoreParameters = new RestoreParameters()
             {
                 RestoreMode = "PointInTime",
                 RestoreSource = RestoreSource,
-                RestoreTimestampInUtc = RestoreTimestampInUtc
+                RestoreTimestampInUtc = RestoreTimestampInUtc,
+                RestoreWithTtlDisabled = DisableTtl
             };
 
             if (DatabasesToRestore != null)
