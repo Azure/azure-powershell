@@ -264,7 +264,7 @@ public static int hashForArtifact(String artifact)
             $allFabrics = Get-AzMigrateReplicationFabric -ResourceGroupName $ResourceGroupName -ResourceName $VaultName
 
             foreach ($fabric in $allFabrics) {
-                if (($fabric.Property.CustomDetail.InstanceType -ceq "VMwareV2") -and ($fabric.Property.CustomDetail.VmwareSiteId.Split("/")[8] -ceq $SiteName)) {
+                if (($fabric.Property.CustomDetail.InstanceType -eq "VMwareV2") -and ($fabric.Property.CustomDetail.VmwareSiteId.Split("/")[8] -eq $SiteName)) {
                     $fabricName = $fabric.Name
                     $HashCodeInput = $fabric.Id
                     $peContainers = Get-AzMigrateReplicationProtectionContainer -FabricName $fabric.Name -ResourceGroupName $ResourceGroupName -ResourceName $VaultName
@@ -358,7 +358,7 @@ public static int hashForArtifact(String artifact)
                 }
                 else {
                     foreach ($appliance in $applianceDetails){
-                        if ($appliance.FabricFriendlyName -ceq $fabricName){
+                        if ($appliance.FabricFriendlyName -eq $fabricName){
                             $applianceSpnId = $appliance.ResourceAccessIdentityDetailObjectId
                         }
                     }
@@ -434,7 +434,7 @@ public static int hashForArtifact(String artifact)
             $mappingName = "containermapping"
             $allFabrics = Get-AzMigrateReplicationFabric -ResourceGroupName $ResourceGroupName -ResourceName $VaultName
             foreach ($fabric in $allFabrics) {
-                if (($fabric.Property.CustomDetail.InstanceType -ceq "VMwareV2") -and ($fabric.Property.CustomDetail.VmwareSiteId.Split("/")[8] -ceq $SiteName)) {
+                if (($fabric.Property.CustomDetail.InstanceType -eq "VMwareV2") -and ($fabric.Property.CustomDetail.VmwareSiteId.Split("/")[8] -eq $SiteName)) {
                     $peContainers = Get-AzMigrateReplicationProtectionContainer -FabricName $fabric.Name -ResourceGroupName $ResourceGroupName -ResourceName $VaultName
                     $peContainer = $peContainers[0]
                     $existingMapping = Get-AzMigrateReplicationProtectionContainerMapping -ResourceGroupName $ResourceGroupName -ResourceName $VaultName -FabricName $fabric.Name -ProtectionContainerName $peContainer.Name -MappingName $mappingName -ErrorVariable notPresent -ErrorAction SilentlyContinue
