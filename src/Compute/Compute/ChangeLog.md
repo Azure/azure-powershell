@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Az.Compute is updated to use the 2023-07-03 GalleryRP REST API calls.
+* Az.Compute is updated to use the 2023-07-03 GalleryRP REST API calls. test
 
 ## Version 7.1.1
 * Fixed `New-AzVmss` to correctly work when using `-EdgeZone` by creating the Load Balancer in the correct edge zone.
