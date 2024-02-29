@@ -4447,7 +4447,7 @@
       "New-AzNetworkWatcherConnectionMonitorProtocolConfigurationObject": {},
       "New-AzNetworkWatcherConnectionMonitorTestConfigurationObject": {},
       "New-AzNetworkWatcherConnectionMonitorTestGroupObject": {},
-      "Migrate-AzNetworkWatcherClassicConnectionMonitor": {},
+      "New-AzNetworkWatcherMigrateClassicConnectionMonitor": {},
       "New-AzNetworkWatcherFlowLog": {},
       "New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile": {},
       "New-AzNetworkWatcherPacketCapture": {},
