@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.6.0
 * Added new cmdlets for Security Connectors
 * Added new cmdlets for ApiCollections Security
 
