@@ -16,11 +16,10 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 {
     using System;
     using System.IO;
-    using System.Collections.Generic;
-    using System.Runtime.InteropServices;
     using Microsoft.Build.Framework;
     using Microsoft.Build.Utilities;
     using Octokit;
+    using System.Linq;
 
     /// <summary>
     /// Build task to get all of the files changed in a given PR.
@@ -43,6 +42,11 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         /// Gets or set the PullRequestNumber of a GitHub Pull Request.
         /// </summary>
         public string PullRequestNumber { get; set; }
+
+        /// <summary>
+        /// Gets or set the Commit Id triggered this task.
+        /// </summary>
+        public string CommitId { get; set; }
 
         /// <summary>
         /// Gets or set the OutputFile, store FilesChanged.txt in 'artifacts' folder
@@ -85,70 +89,63 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 Console.WriteLine("PullRequestNumber:" + PullRequestNumber);
             }
 
-            int ParsedPullRequestNumber;
-
-            // The next statement will convert the string representation of a number to its integer equivalent.
-            // If it succeeds it will return 'true'.
-            if (int.TryParse(PullRequestNumber, out ParsedPullRequestNumber))
+            try 
             {
-                List<string> filesChanged = new List<string>();
-                try
+                var client = new GitHubClient(new ProductHeaderValue("Azure"))
                 {
-                    //The variable is set in pipeline: "azure-powershell - powershell-core"
-                    var client = new GitHubClient(new ProductHeaderValue("Azure"));
-                    client.Credentials = new Credentials(Environment.GetEnvironmentVariable("OCTOKITPAT"));
-                    IReadOnlyList<PullRequestFile> files;
+                    Credentials = new Credentials(Environment.GetEnvironmentVariable("OCTOKITPAT"))
+                };
+                // The next statement will convert the string representation of a number to its integer equivalent.
+                // If it succeeds it will return 'true'.
+                if (int.TryParse(PullRequestNumber, out int ParsedPullRequestNumber))
+                {
                     try
                     {
-                        files = client.PullRequest.Files(RepositoryOwner, RepositoryName, int.Parse(PullRequestNumber))
-                                        .ConfigureAwait(false).GetAwaiter().GetResult();
+                        FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, ParsedPullRequestNumber)
+                                        .ConfigureAwait(false).GetAwaiter().GetResult().Select(x => x.FileName).ToArray<string>();
                     }
                     catch (AuthorizationException e)
                     {
                         Console.WriteLine(e.Message);
                         client = new GitHubClient(new ProductHeaderValue("Azure"));
-                        files = client.PullRequest.Files(RepositoryOwner, RepositoryName, int.Parse(PullRequestNumber))
-                                        .ConfigureAwait(false).GetAwaiter().GetResult();
-                    }
-
-                    if (files == null)
-                    {
-                        return false;
-                    }
-
-                    if (debug)
-                    {
-                        Console.WriteLine("DEBUG: ---Using these files: ");
-                    }
-
-                    foreach (var file in files)
-                    {
-                        var fileName = file.FileName;
-                        if (debug)
-                        {
-                            Console.WriteLine("DEBUG: " + fileName);
-                        }
-
-                        filesChanged.Add(fileName);
-                    }
-
-                    if (debug)
-                    {
-                        Console.WriteLine("Total: " + filesChanged.Count);
+                        FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, ParsedPullRequestNumber)
+                                        .ConfigureAwait(false).GetAwaiter().GetResult().Select(x => x.FileName).ToArray<string>();
                     }
                 }
-                catch (Exception e)
+                else if (!string.IsNullOrEmpty(CommitId))
                 {
-                    Console.WriteLine("---Exception Caught when trying to detect file changes with PS script: " + e.ToString());
-                    FilesChanged = new string[] { };
-                    return true;
+                    try
+                    {
+                        FilesChanged = client.Repository.Commit.Get(RepositoryOwner, RepositoryName, CommitId)
+                                        .ConfigureAwait(false).GetAwaiter().GetResult().Files.Select(x => x.Filename).ToArray<string>();
+                    }
+                    catch (AuthorizationException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        client = new GitHubClient(new ProductHeaderValue("Azure"));
+                        FilesChanged = client.Repository.Commit.Get(RepositoryOwner, RepositoryName, CommitId)
+                                        .ConfigureAwait(false).GetAwaiter().GetResult().Files.Select(x => x.Filename).ToArray<string>();
+                    }
                 }
-
-                FilesChanged = filesChanged.ToArray();
+                else
+                {
+                    FilesChanged = new string[] { };
+                }
             }
-            else
+            catch (Exception e)
             {
+                Console.WriteLine("---Exception Caught when trying to detect file changes with PS script: " + e.ToString());
                 FilesChanged = new string[] { };
+                return true;
+            }
+            
+            if (null != FilesChanged && FilesChanged.Length != 0 && debug) {
+                Console.WriteLine("DEBUG: ---Using these files: ");
+                foreach (string fileName in FilesChanged) 
+                {
+                    Console.WriteLine("DEBUG: " + fileName);
+                }
+                Console.WriteLine("Total: " + FilesChanged.Length);
             }
 
             SerializeChangedFilesToFile(FilesChanged);
