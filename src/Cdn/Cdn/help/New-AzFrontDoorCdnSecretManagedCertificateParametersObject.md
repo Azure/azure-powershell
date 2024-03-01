@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretManagedCertificateParametersObject
 schema: 2.0.0
@@ -13,7 +13,8 @@ Create an in-memory object for ManagedCertificateParameters.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnSecretManagedCertificateParametersObject -Type <SecretType> [<CommonParameters>]
+New-AzFrontDoorCdnSecretManagedCertificateParametersObject -Type <SecretType>
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,6 +35,21 @@ ExpirationDate Subject
 Create an in-memory object for ManagedCertificateParameters.
 
 ## PARAMETERS
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Type
 The type of the secret resource.
@@ -64,4 +80,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

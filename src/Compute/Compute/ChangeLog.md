@@ -21,11 +21,13 @@
 -->
 ## Upcoming Release
 
+## Version 7.1.2
+* Fixed `New-AzVM` when a source image is specified to avoid an error on the `Version` value.
+
 ## Version 7.1.1
 * Fixed `New-AzVmss` to correctly work when using `-EdgeZone` by creating the Load Balancer in the correct edge zone.
 * Removed references to image aliases in `New-AzVM` and `New-AzVmss` to images that were removed.
 * Az.Compute is updated to use the 2023-09-01 ComputeRP REST API calls. 
-* Fixed `New-AzVM` when a source image is specified to avoid an error on the `Version` value. 
 
 ## Version 7.1.0
 * Added new parameter `-ElasticSanResourceId` to `New-AzSnapshotConfig` cmdlet.

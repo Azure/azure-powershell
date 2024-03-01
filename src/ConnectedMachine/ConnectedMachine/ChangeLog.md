@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.0
 * Added `ScriptLocalPath` to `New-AzConnectedMachineRunCommand` to let users add script files locally
 * Added `MachineName` parameter to the McahineExtension and MachineRunCommand models
 

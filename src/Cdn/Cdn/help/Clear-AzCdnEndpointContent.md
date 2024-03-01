@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/clear-azcdnendpointcontent
 schema: 2.0.0
@@ -15,27 +15,28 @@ Removes a content from CDN.
 ### PurgeExpanded1 (Default)
 ```
 Clear-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- -ContentPath <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -ContentPath <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Purge1
 ```
 Clear-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- -ContentFilePath <IPurgeParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PurgeViaIdentity1
-```
-Clear-AzCdnEndpointContent -InputObject <ICdnIdentity> -ContentFilePath <IPurgeParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -ContentFilePath <IPurgeParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PurgeViaIdentityExpanded1
 ```
 Clear-AzCdnEndpointContent -InputObject <ICdnIdentity> -ContentPath <String[]> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PurgeViaIdentity1
+```
+Clear-AzCdnEndpointContent -InputObject <ICdnIdentity> -ContentFilePath <IPurgeParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +46,7 @@ Removes a content from CDN.
 
 ### Example 1: Removes a content from CDN endpoint using Parameter "ContentPath"
 ```powershell
-Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentPath @("/movies/*","/pictures/pic1.jpg") 
+Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentPath @("/movies/*","/pictures/pic1.jpg")
 ```
 
 Removes a content from CDN endpoint using Parameter "ContentPath"
@@ -129,7 +130,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge1, PurgeExpanded1
+Parameter Sets: PurgeExpanded1, Purge1
 Aliases:
 
 Required: True
@@ -145,7 +146,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: PurgeViaIdentity1, PurgeViaIdentityExpanded1
+Parameter Sets: PurgeViaIdentityExpanded1, PurgeViaIdentity1
 Aliases:
 
 Required: True
@@ -190,10 +191,25 @@ Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge1, PurgeExpanded1
+Parameter Sets: PurgeExpanded1, Purge1
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -205,7 +221,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge1, PurgeExpanded1
+Parameter Sets: PurgeExpanded1, Purge1
 Aliases:
 
 Required: True
@@ -220,7 +236,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Purge1, PurgeExpanded1
+Parameter Sets: PurgeExpanded1, Purge1
 Aliases:
 
 Required: False
@@ -302,4 +318,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Azure Subscription ID.
 
 ## RELATED LINKS
-
