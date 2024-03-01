@@ -45,7 +45,8 @@ default
 ## PARAMETERS
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -60,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
@@ -75,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-ThenameofAzureregion.
+The name of Azure region.
 
 ```yaml
 Type: System.String
@@ -90,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceType
-TheresourcetypeforwhichtheOSoptionsneedstobereturned
+The resource type for which the OS options needs to be returned
 
 ```yaml
 Type: System.String
@@ -105,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]

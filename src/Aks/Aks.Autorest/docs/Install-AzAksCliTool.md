@@ -40,7 +40,7 @@ Install-AzAksCliTool -KubectlInstallVersion "v1.25.0" -KubectlInstallDestination
 ## PARAMETERS
 
 ### -AsJob
-Runcmdletinthebackground
+Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -55,7 +55,8 @@ Accept wildcard characters: False
 ```
 
 ### -Destination
-Pathatwhichtoinstallkubectl.Defaulttoinstallinto~/.azure-kubectl/
+Path at which to install kubectl.
+Default to install into ~/.azure-kubectl/
 
 ```yaml
 Type: System.String
@@ -70,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -DownloadFromMirror
-Downloadfrommirrorsite:https://mirror.azure.cn/kubernetes/kubectl/
+Download from mirror site : https://mirror.azure.cn/kubernetes/kubectl/
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -85,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Overwriteexistingkubectlandkubeloginwithoutprompt
+Overwrite existing kubectl and kubelogin without prompt
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -100,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -KubeloginDownloadFromMirror
-Downloadfrommirrorsite:https://mirror.azure.cn/kubernetes/kubelogin
+Download from mirror site : https://mirror.azure.cn/kubernetes/kubelogin
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -115,7 +116,8 @@ Accept wildcard characters: False
 ```
 
 ### -KubeloginInstallDestination
-Pathatwhichtoinstallkubectl.Defaulttoinstallinto~/.azure-kubelogin/
+Path at which to install kubectl.
+Default to install into ~/.azure-kubelogin/
 
 ```yaml
 Type: System.String
@@ -130,7 +132,9 @@ Accept wildcard characters: False
 ```
 
 ### -KubeloginInstallVersion
-Versionofkubectltoinstall,e.g.'v0.0.20'.Defaultvalue:Latest
+Version of kubectl to install, e.g.
+'v0.0.20'.
+Default value: Latest
 
 ```yaml
 Type: System.String
@@ -145,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Waitfor.NETdebuggertoattach
+Wait for .NET debugger to attach
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -160,7 +164,9 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-Versionofkubectltoinstall,e.g.'v1.17.2'.Defaultvalue:Latest.
+Version of kubectl to install, e.g.
+'v1.17.2'.
+Default value: Latest.
 
 ```yaml
 Type: System.String

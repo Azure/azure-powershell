@@ -69,7 +69,7 @@ Create a maintenance configuration "aks_maintenance_config" in a managed cluster
 ## PARAMETERS
 
 ### -ConfigName
-Thenameofthemaintenanceconfiguration.
+The name of the maintenance configuration.
 
 ```yaml
 Type: System.String
@@ -84,7 +84,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -99,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-PathofJsonfilesuppliedtotheCreateoperation
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -114,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-JsonstringsuppliedtotheCreateoperation
+Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -129,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -ManagedClusterInputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
@@ -144,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -NotAllowedTime
-Timeslotsonwhichupgradeisnotallowed.
+Time slots on which upgrade is not allowed.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeSpan[]
@@ -159,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-See[plannedmaintenance](https://docs.microsoft.com/azure/aks/planned-maintenance)formoreinformationaboutplannedmaintenance.
+See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IMaintenanceConfiguration
@@ -174,7 +175,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -189,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceName
-Thenameofthemanagedclusterresource.
+The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
@@ -204,7 +206,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -219,7 +221,7 @@ Accept wildcard characters: False
 ```
 
 ### -TimeInWeek
-Iftwoarrayentriesspecifythesamedayoftheweek,theappliedconfigurationistheunionoftimesinbothentries.
+If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ITimeInWeek[]

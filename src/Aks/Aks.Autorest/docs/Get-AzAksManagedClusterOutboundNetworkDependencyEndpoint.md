@@ -46,7 +46,8 @@ apiserver                 {aks0b1f-idb7vuoi.hcp.eastus.azmk8s.io}
 ## PARAMETERS
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -61,7 +62,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -76,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceName
-Thenameofthemanagedclusterresource.
+The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
@@ -91,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]

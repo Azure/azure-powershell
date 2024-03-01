@@ -93,7 +93,7 @@ StartedAt         : 3/31/2023 8:54:16 AM
 ## PARAMETERS
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterToken
-AuthTokenissuedforAKSAADServerApp.
+AuthToken issued for AKS AAD Server App.
 
 ```yaml
 Type: System.String
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -Command
-Thecommandtorun.
+The command to run.
 
 ```yaml
 Type: System.String
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -Context
-Abase64encodedzipfilecontainingthefilesrequiredbythecommand.
+A base64 encoded zip file containing the files required by the command.
 
 ```yaml
 Type: System.String
@@ -153,7 +153,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -168,7 +169,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
@@ -183,7 +184,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-PathofJsonfilesuppliedtotheRunoperation
+Path of Json file supplied to the Run operation
 
 ```yaml
 Type: System.String
@@ -198,7 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-JsonstringsuppliedtotheRunoperation
+Json string supplied to the Run operation
 
 ```yaml
 Type: System.String
@@ -213,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -228,7 +229,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -243,7 +245,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceName
-Thenameofthemanagedclusterresource.
+The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
@@ -258,7 +260,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

@@ -87,7 +87,7 @@ Get a maintenance configuration via identity for a managed cluster "myCluster".
 ## PARAMETERS
 
 ### -ConfigName
-Thenameofthemaintenanceconfiguration.
+The name of the maintenance configuration.
 
 ```yaml
 Type: System.String
@@ -102,7 +102,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -117,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
@@ -132,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -ManagedClusterInputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
@@ -147,7 +148,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -162,7 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceName
-Thenameofthemanagedclusterresource.
+The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
@@ -177,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]

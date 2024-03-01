@@ -47,7 +47,7 @@ List available version for creating managed Kubernetes cluster.
 ## PARAMETERS
 
 ### -DefaultProfile
-Thecredentials,account,tenant,andsubscriptionusedforcommunicationwithAzure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-ThenameofasupportedAzureregion.
+The name of a supported Azure region.
 
 ```yaml
 Type: System.String
@@ -77,7 +77,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-SubscriptioncredentialswhichuniquelyidentifyMicrosoftAzuresubscription.ThesubscriptionIDformspartoftheURIforeveryservicecall.
+Subscription credentials which uniquely identify Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]

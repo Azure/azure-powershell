@@ -54,7 +54,7 @@ Creates or updates a snapshot for a nodepool "default" of a managed cluster "myc
 ## PARAMETERS
 
 ### -CreationDataSourceResourceId
-ThisistheARMIDofthesourceobjecttobeusedtocreatethetargetobject.
+This is the ARM ID of the source object to be used to create the target object.
 
 ```yaml
 Type: System.String
@@ -69,7 +69,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -84,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-PathofJsonfilesuppliedtotheCreateoperation
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -99,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-JsonstringsuppliedtotheCreateoperation
+Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -114,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Thegeo-locationwheretheresourcelives
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
@@ -129,7 +130,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -144,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceName
-Thenameofthemanagedclusterresource.
+The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
@@ -159,7 +161,8 @@ Accept wildcard characters: False
 ```
 
 ### -SnapshotType
-Thetypeofasnapshot.ThedefaultisNodePool.
+The type of a snapshot.
+The default is NodePool.
 
 ```yaml
 Type: System.String
@@ -174,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -189,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resourcetags.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
