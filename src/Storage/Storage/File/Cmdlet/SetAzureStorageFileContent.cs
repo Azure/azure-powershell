@@ -244,12 +244,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             {
                                 long currentBlockSize = offset + blockSize < fileSize ? blockSize : fileSize - offset;
 
-                                // Only need to create new buffer when chunk size change
-                                if (currentBlockSize != lastBlockSize)
-                                {
-                                    buffer = new byte[currentBlockSize];
-                                    lastBlockSize = currentBlockSize;
-                                }
+                                // create new buffer, the old buffer will be GC
+                                buffer = new byte[currentBlockSize];
+                                lastBlockSize = currentBlockSize;
+
                                 await stream.ReadAsync(buffer: buffer, offset: 0, count: (int)currentBlockSize);
                                 if (!fipsEnabled && hash != null)
                                 {
