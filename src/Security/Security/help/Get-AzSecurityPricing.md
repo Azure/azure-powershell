@@ -15,17 +15,20 @@ Gets the Azure Defender plans for a subscription in Azure Security Center.
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecurityPricing [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityPricing [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
 ```
-Get-AzSecurityPricing -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityPricing -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzSecurityPricing -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityPricing -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
