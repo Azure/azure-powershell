@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/clear-azfrontdoorcdnendpointcontent
 schema: 2.0.0
@@ -15,29 +15,27 @@ Removes a content from AzureFrontDoor.
 ### PurgeExpanded (Default)
 ```
 Clear-AzFrontDoorCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -ContentPath <String[]> [-Domain <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ContentPath <String[]> [-SubscriptionId <String>] [-Domain <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Purge
 ```
 Clear-AzFrontDoorCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Content <IAfdPurgeParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### PurgeViaIdentityExpanded
-```
-Clear-AzFrontDoorCdnEndpointContent -InputObject <ICdnIdentity> -ContentPath <String[]> [-Domain <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -Content <IAfdPurgeParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PurgeViaIdentity
 ```
 Clear-AzFrontDoorCdnEndpointContent -InputObject <ICdnIdentity> -Content <IAfdPurgeParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PurgeViaIdentityExpanded
+```
+Clear-AzFrontDoorCdnEndpointContent -InputObject <ICdnIdentity> -ContentPath <String[]> [-Domain <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -146,7 +144,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: PurgeExpanded, Purge
+Parameter Sets: Purge, PurgeExpanded
 Aliases:
 
 Required: True
@@ -162,7 +160,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: PurgeViaIdentityExpanded, PurgeViaIdentity
+Parameter Sets: PurgeViaIdentity, PurgeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -207,25 +205,10 @@ Name of the Azure Front Door Standard or Azure Front Door Premium profile which 
 
 ```yaml
 Type: System.String
-Parameter Sets: PurgeExpanded, Purge
+Parameter Sets: Purge, PurgeExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -237,7 +220,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: PurgeExpanded, Purge
+Parameter Sets: Purge, PurgeExpanded
 Aliases:
 
 Required: True
@@ -252,7 +235,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: PurgeExpanded, Purge
+Parameter Sets: Purge, PurgeExpanded
 Aliases:
 
 Required: False
@@ -335,3 +318,4 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Azure Subscription ID.
 
 ## RELATED LINKS
+

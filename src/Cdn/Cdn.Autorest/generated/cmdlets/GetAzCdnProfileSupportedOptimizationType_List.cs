@@ -19,7 +19,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.OptimizationType))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Gets the supported optimization types for the current profile. A user can create an endpoint with an optimization type from the listed values.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getSupportedOptimizationTypes", ApiVersion = "2023-05-01")]
     public partial class GetAzCdnProfileSupportedOptimizationType_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener
     {

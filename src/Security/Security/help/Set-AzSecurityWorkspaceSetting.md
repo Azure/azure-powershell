@@ -14,8 +14,7 @@ Updates the workspace settings for the subscription.
 
 ```
 Set-AzSecurityWorkspaceSetting -Name <String> -Scope <String> -WorkspaceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

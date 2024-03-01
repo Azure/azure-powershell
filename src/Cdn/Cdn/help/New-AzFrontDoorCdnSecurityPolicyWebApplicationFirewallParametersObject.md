@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-azfrontdoorcdnsecuritypolicywebapplicationfirewallparametersobject
 schema: 2.0.0
@@ -15,7 +15,7 @@ Create an in-memory object for SecurityPolicyWebApplicationFirewallParameters.
 ```
 New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject
  [-Association <ISecurityPolicyWebApplicationFirewallAssociation[]>] [-WafPolicyId <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,21 +49,6 @@ To construct, see NOTES section for ASSOCIATION properties and create a hash tab
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicyWebApplicationFirewallAssociation[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -111,3 +96,4 @@ To create the parameters described below, construct a hash table containing the 
   - `[PatternsToMatch <String[]>]`: List of paths
 
 ## RELATED LINKS
+

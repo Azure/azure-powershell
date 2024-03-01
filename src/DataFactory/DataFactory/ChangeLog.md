@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.18.2
 * Supported Snowflake V2 in ADF
 
 ## Version 1.18.1

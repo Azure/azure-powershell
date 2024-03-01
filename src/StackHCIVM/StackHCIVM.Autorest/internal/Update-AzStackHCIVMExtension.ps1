@@ -99,7 +99,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # .
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Upgrade', Mandatory, ValueFromPipeline)]
@@ -107,7 +107,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionUpgrade]
     # Describes the Machine Extension Upgrade Properties.
-    # .
+    # To construct, see NOTES section for EXTENSIONUPGRADEPARAMETER properties and create a hash table.
     ${ExtensionUpgradeParameter},
 
     [Parameter(ParameterSetName='UpgradeExpanded')]
@@ -148,7 +148,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]

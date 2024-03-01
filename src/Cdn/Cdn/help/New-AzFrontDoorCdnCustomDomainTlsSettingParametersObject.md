@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
 schema: 2.0.0
@@ -14,8 +14,7 @@ Create an in-memory object for AFDDomainHttpsParameters.
 
 ```
 New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType <AfdCertificateType>
- [-MinimumTlsVersion <AfdMinimumTlsVersion>] [-Secret <IResourceReference>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-MinimumTlsVersion <AfdMinimumTlsVersion>] [-Secret <IResourceReference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,21 +69,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Secret
 Resource reference to the secret.
 ie.
@@ -125,3 +109,4 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource ID.
 
 ## RELATED LINKS
+

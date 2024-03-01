@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 5.2.1
 * Supported `HsmPlatform` in `KeyAttributes`.
 
 ## Version 5.2.0

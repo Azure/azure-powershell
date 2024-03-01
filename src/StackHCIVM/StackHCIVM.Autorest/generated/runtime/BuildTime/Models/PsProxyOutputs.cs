@@ -188,7 +188,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PowerShell
         public VariantGroup VariantGroup { get; }
 
         protected static readonly bool IsAzure = Convert.ToBoolean(@"true");
-
         public BaseOutput(VariantGroup variantGroup)
         {
             VariantGroup = variantGroup;
@@ -296,7 +295,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PowerShell
             }
             return sb.ToString();
         }
-
     }
 
     internal class ProcessOutput : BaseOutput

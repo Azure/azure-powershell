@@ -15,7 +15,7 @@ API to register a new machine and thereby create a tracked resource in ARM
 ```
 Connect-AzConnectedMachine [-ResourceGroupName] <String> [[-SubscriptionId] <String>] [[-Name] <String>]
  [-Location] <String> [[-PSSession] <PSSession[]>] [[-Tag] <Hashtable>] [[-DefaultProfile] <PSObject>]
- [[-Proxy] <Uri>] [<CommonParameters>]
+ [[-Proxy] <Uri>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,6 +108,21 @@ Aliases:
 
 Required: False
 Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

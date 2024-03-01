@@ -14,8 +14,7 @@ Get external security solution
 
 ### SubscriptionScope (Default)
 ```
-Get-AzExternalSecuritySolution [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzExternalSecuritySolution [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource

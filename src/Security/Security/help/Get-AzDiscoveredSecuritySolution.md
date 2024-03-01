@@ -14,8 +14,7 @@ Gets security solutions that were discovered by Azure Security Center
 
 ### SubscriptionScope (Default)
 ```
-Get-AzDiscoveredSecuritySolution [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzDiscoveredSecuritySolution [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource

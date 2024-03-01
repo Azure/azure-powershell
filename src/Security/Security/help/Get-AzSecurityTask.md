@@ -14,14 +14,12 @@ Gets the security tasks that Azure Security Center recommends you to do in order
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecurityTask [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityTask [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupScope
 ```
-Get-AzSecurityTask -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityTask -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
@@ -32,14 +30,12 @@ Get-AzSecurityTask -ResourceGroupName <String> -Name <String> [-DefaultProfile <
 
 ### SubscriptionLevelResource
 ```
-Get-AzSecurityTask -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityTask -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzSecurityTask -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityTask -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

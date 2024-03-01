@@ -526,7 +526,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.LogicalNetworksCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _logicalNetworksBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate);
+                    await this.Client.LogicalNetworksCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _logicalNetworksBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.UndeclaredResponseException urexception)

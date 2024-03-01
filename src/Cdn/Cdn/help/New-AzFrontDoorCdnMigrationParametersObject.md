@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnMigrationParametersObject
 schema: 2.0.0
@@ -15,7 +15,7 @@ Create an in-memory object for MigrationParameters.
 ```
 New-AzFrontDoorCdnMigrationParametersObject -ProfileName <String> [-ClassicResourceReferenceId <String>]
  [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>] [-SkuName <SkuName>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,21 +84,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SkuName
 Name of the pricing tier.
 
@@ -137,3 +122,4 @@ To create the parameters described below, construct a hash table containing the 
   - `[MigratedToId <String>]`: Resource ID.
 
 ## RELATED LINKS
+

@@ -13,8 +13,7 @@ Retrieves the effective tenant SQL information protection policy.
 ## SYNTAX
 
 ```
-Get-AzSqlInformationProtectionPolicy [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSqlInformationProtectionPolicy [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

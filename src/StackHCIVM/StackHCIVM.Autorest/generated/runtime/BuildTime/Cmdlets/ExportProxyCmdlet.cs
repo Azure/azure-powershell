@@ -70,8 +70,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PowerShell
                 var variantGroups = profileGroups.SelectMany(pg => pg.Variants
                     .GroupBy(v => new { v.CmdletName, v.IsInternal })
                     .Select(vg => new VariantGroup(ModuleName, vg.Key.CmdletName, vg.Select(v => v).ToArray(),
-                    Path.Combine(vg.Key.IsInternal ? InternalFolder : ExportsFolder, pg.ProfileFolder), pg.ProfileName, isInternal: vg.Key.IsInternal)))
+                        Path.Combine(vg.Key.IsInternal ? InternalFolder : ExportsFolder, pg.ProfileFolder), pg.ProfileName, isInternal: vg.Key.IsInternal)))
                     .ToArray();
+
                 var license = new StringBuilder();
                 license.Append(@"
 # ----------------------------------------------------------------------------------
@@ -113,7 +114,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PowerShell
 
                     sb.Append("param(");
                     sb.Append($"{(parameterGroups.Any() ? Environment.NewLine : String.Empty)}");
-
                     foreach (var parameterGroup in parameterGroups)
                     {
                         var parameters = parameterGroup.HasAllVariants ? parameterGroup.Parameters.Take(1) : parameterGroup.Parameters;

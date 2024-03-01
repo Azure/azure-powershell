@@ -14,20 +14,7 @@ Get Security Solutions Reference Data
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecuritySolutionsReferenceData [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### SubscriptionLevelResource
-```
-Get-AzSecuritySolutionsReferenceData -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ResourceId
-```
-Get-AzSecuritySolutionsReferenceData -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecuritySolutionsReferenceData [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,33 +64,6 @@ Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: SubscriptionLevelResource
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceId
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

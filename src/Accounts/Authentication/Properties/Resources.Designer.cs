@@ -331,15 +331,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When enabled, a warning message will be displayed when the cmdlet output contains secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844.
-        /// </summary>
-        public static string HelpMessageOfDisplaySecretsWarning {
-            get {
-                return ResourceManager.GetString("HelpMessageOfDisplaySecretsWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the customer experience. For more information, see our privacy statement: https://aka.ms/privacy.
         /// </summary>
         public static string HelpMessageOfEnableDataCollection {

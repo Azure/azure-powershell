@@ -14,8 +14,7 @@ Gets a list of application control VM/server groups for the subscription.
 
 ```
 Get-AzSecurityAdaptiveApplicationControl [-SubscriptionId <String>] [-IncludePathRecommendation <Boolean>]
- [-Summary <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-Summary <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

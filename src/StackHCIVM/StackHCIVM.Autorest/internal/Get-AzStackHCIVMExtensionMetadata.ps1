@@ -144,21 +144,21 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # .
+    # To construct, see NOTES section for EXTENSIONTYPEINPUTOBJECT properties and create a hash table.
     ${ExtensionTypeInputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityLocation', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # .
+    # To construct, see NOTES section for LOCATIONINPUTOBJECT properties and create a hash table.
     ${LocationInputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityPublisher', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # .
+    # To construct, see NOTES section for PUBLISHERINPUTOBJECT properties and create a hash table.
     ${PublisherInputObject},
 
     [Parameter()]
@@ -173,7 +173,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]

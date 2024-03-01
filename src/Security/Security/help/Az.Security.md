@@ -90,7 +90,7 @@ Gets security assessments and their results on a subscription
 Gets security assessments types and metadta in a subscription.
 
 ### [Get-AzSecurityAutomation](Get-AzSecurityAutomation.md)
-Gets security automations
+Gets security automation(s)
 
 ### [Get-AzSecurityAutoProvisioningSetting](Get-AzSecurityAutoProvisioningSetting.md)
 Gets the security automatic provisioning settings
@@ -118,12 +118,6 @@ Gets security secure score control definitions on a subscription
 
 ### [Get-AzSecuritySetting](Get-AzSecuritySetting.md)
 Get security settings in Azure Security Center
-
-### [Get-AzSecuritySolution](Get-AzSecuritySolution.md)
-Get Security Solutions
-
-### [Get-AzSecuritySolutionsReferenceData](Get-AzSecuritySolutionsReferenceData.md)
-Get Security Solutions Reference Data
 
 ### [Get-AzSecuritySqlVulnerabilityAssessmentBaseline](Get-AzSecuritySqlVulnerabilityAssessmentBaseline.md)
 Get SQL vulnerability assessment baseline.
@@ -170,6 +164,9 @@ Create new recommendation configuration for iot security solution
 ### [New-AzIotSecuritySolutionUserDefinedResourcesObject](New-AzIotSecuritySolutionUserDefinedResourcesObject.md)
 Create new user defined resources for iot security solution
 
+### [Remove-AzAlertsSuppressionRule](Remove-AzAlertsSuppressionRule.md)
+Deletes an alerts suppression rule.
+
 ### [New-AzSecurityAutomation](New-AzSecurityAutomation.md)
 Creates new security automation
 
@@ -177,19 +174,16 @@ Creates new security automation
 Creates new security automation action object
 
 ### [New-AzSecurityAutomationRuleObject](New-AzSecurityAutomationRuleObject.md)
-Creates security automation rule object
+Creates new security automation rule object
 
 ### [New-AzSecurityAutomationRuleSetObject](New-AzSecurityAutomationRuleSetObject.md)
-Creates security automation rule set object
+Creates new security automation rule set object
 
 ### [New-AzSecurityAutomationScopeObject](New-AzSecurityAutomationScopeObject.md)
-Creates security automation scope object
+Creates new security automation scope object
 
 ### [New-AzSecurityAutomationSourceObject](New-AzSecurityAutomationSourceObject.md)
-Creates security automation source object
-
-### [Remove-AzAlertsSuppressionRule](Remove-AzAlertsSuppressionRule.md)
-Deletes an alerts suppression rule.
+Creates new security automation source object
 
 ### [Remove-AzDeviceSecurityGroup](Remove-AzDeviceSecurityGroup.md)
 Delete device security group
@@ -239,6 +233,9 @@ Create or update a security assessment result on a resource
 ### [Set-AzSecurityAssessmentMetadata](Set-AzSecurityAssessmentMetadata.md)
 Creates or updates a security assessment type.
 
+### [Set-AzSecurityAutomation](Set-AzSecurityAutomation.md)
+Creates or updates a security automation. If a security automation is already created and a subsequent request is issued for the same automation id, then it will be updated.
+
 ### [Set-AzSecurityAutoProvisioningSetting](Set-AzSecurityAutoProvisioningSetting.md)
 Updates automatic provisioning setting
 
@@ -246,10 +243,7 @@ Updates automatic provisioning setting
 Updates a security contact for a subscription.
 
 ### [Set-AzSecurityPricing](Set-AzSecurityPricing.md)
-Enables or disables Microsoft Defender plans for a subscription in Microsoft Defender for Cloud.
-
-> [!NOTE]
-> For CloudPosture (Defender Cloud Security Posture Management), [the agentless extensions](https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/enhanced-cloud-security-value-added-with-defender-cspm-s/ba-p/3880746) will not be enabled when using this command. To enable extensions, please use the Azure Policy definition or scripts in the [Microsoft Defender for Cloud Community Repository](https://github.com/Azure/Microsoft-Defender-for-Cloud/tree/main/Policy/Configure-DCSPM-Extensions).
+Enables or disables Azure Defender plans for a subscription in Azure Security Center.
 
 ### [Set-AzSecuritySetting](Set-AzSecuritySetting.md)
 Update a security setting in Azure Security Center

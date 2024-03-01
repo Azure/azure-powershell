@@ -14,13 +14,12 @@ Creates security automation source object
 
 ### SecurityAutomationSource (Default)
 ```
-New-AzSecurityAutomationSourceObject [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzSecurityAutomationSourceObject [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SecurityAutomationActionLogicApp
 ```
-New-AzSecurityAutomationSourceObject -EventSource <String> -RuleSet <PSSecurityAutomationRuleSet[]>
+New-AzSecurityAutomationSourceObject -EventSource <String> -RuleSets <PSSecurityAutomationRuleSet[]>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -42,7 +41,7 @@ Creates security automation source object
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -58,7 +57,7 @@ The triggered Logic App Azure Resource ID.
 This can also reside on other subscriptions, given that you have permissions to trigger the Logic App
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SecurityAutomationActionLogicApp
 Aliases:
 
@@ -69,11 +68,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleSet
+### -RuleSets
 The Logic App trigger URI endpoint (it will not be included in any response)
 
 ```yaml
-Type: Microsoft.Azure.Commands.Security.Models.Automations.PSSecurityAutomationRuleSet[]
+Type: PSSecurityAutomationRuleSet[]
 Parameter Sets: SecurityAutomationActionLogicApp
 Aliases:
 

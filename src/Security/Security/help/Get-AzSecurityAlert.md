@@ -14,14 +14,12 @@ Gets security alerts that were detected by Azure Security Center
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecurityAlert [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityAlert [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupScope
 ```
-Get-AzSecurityAlert -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityAlert -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
@@ -38,8 +36,7 @@ Get-AzSecurityAlert -Name <String> -Location <String> [-DefaultProfile <IAzureCo
 
 ### ResourceId
 ```
-Get-AzSecurityAlert -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityAlert -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

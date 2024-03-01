@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnroute
 schema: 2.0.0
@@ -13,16 +13,15 @@ Creates a new route with the specified route name under the specified subscripti
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CacheConfigurationQueryParameter <String>]
+New-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-CacheConfigurationQueryParameter <String>]
  [-CacheConfigurationQueryStringCachingBehavior <AfdQueryStringCachingBehavior>]
  [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
  [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <EnabledState>]
  [-ForwardingProtocol <ForwardingProtocol>] [-HttpsRedirect <HttpsRedirect>]
  [-LinkToDefaultDomain <LinkToDefaultDomain>] [-OriginGroupId <String>] [-OriginPath <String>]
  [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <AfdEndpointProtocols[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +39,7 @@ $ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
 $customdomainResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $customdomain.Id
 
 New-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled" -CustomDomain @($customdomainResoure)
+     
 ```
 
 ```output
@@ -332,21 +332,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of the Resource group within the Azure subscription.
 
@@ -464,3 +449,4 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource ID.
 
 ## RELATED LINKS
+

@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/import-azcdnendpointcontent
 schema: 2.0.0
@@ -16,28 +16,27 @@ Available for Verizon Profiles.
 ### LoadExpanded (Default)
 ```
 Import-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -ContentPath <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ContentPath <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Load
 ```
 Import-AzCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -ContentFilePath <ILoadParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### LoadViaIdentityExpanded
-```
-Import-AzCdnEndpointContent -InputObject <ICdnIdentity> -ContentPath <String[]> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ContentFilePath <ILoadParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### LoadViaIdentity
 ```
 Import-AzCdnEndpointContent -InputObject <ICdnIdentity> -ContentFilePath <ILoadParameters>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### LoadViaIdentityExpanded
+```
+Import-AzCdnEndpointContent -InputObject <ICdnIdentity> -ContentPath <String[]> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +47,7 @@ Available for Verizon Profiles.
 
 ### Example 1: Import content of an AzureCDN Endpoint under the AzureCDN profile
 ```powershell
-Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verizon -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentPath @("/movies/hello","/pictures/pic1.jpg")
+Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verizon -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentPath @("/movies/hello","/pictures/pic1.jpg") 
 ```
 
 Import content of an AzureCDN Endpoint under the AzureCDN profile, only some skus support this action
@@ -132,7 +131,7 @@ Name of the endpoint under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: LoadExpanded, Load
+Parameter Sets: Load, LoadExpanded
 Aliases:
 
 Required: True
@@ -148,7 +147,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: LoadViaIdentityExpanded, LoadViaIdentity
+Parameter Sets: LoadViaIdentity, LoadViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -193,25 +192,10 @@ Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: LoadExpanded, Load
+Parameter Sets: Load, LoadExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -223,7 +207,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: LoadExpanded, Load
+Parameter Sets: Load, LoadExpanded
 Aliases:
 
 Required: True
@@ -238,7 +222,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: LoadExpanded, Load
+Parameter Sets: Load, LoadExpanded
 Aliases:
 
 Required: False
@@ -320,3 +304,4 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Azure Subscription ID.
 
 ## RELATED LINKS
+

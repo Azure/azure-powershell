@@ -15,8 +15,7 @@ Delete IoT security solution
 ### ResourceGroupLevelResource (Default)
 ```
 Remove-AzIotSecuritySolution -Name <String> -ResourceGroupName <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -28,8 +27,7 @@ Remove-AzIotSecuritySolution -ResourceId <String> [-PassThru] [-DefaultProfile <
 ### InputObject
 ```
 Remove-AzIotSecuritySolution -InputObject <PSIotSecuritySolution> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
