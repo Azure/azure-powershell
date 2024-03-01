@@ -62,12 +62,12 @@ $output.Add("version", "$Version")
 $outputModules = @{}
 
 #Create mappings file
-& "ToolsRootPath/CreateMappings.ps1" -OutputFile $OutputFile/../groupMapping.json -WarningFile $OutputFile/../groupMappingWarnings.json
+& "$ToolsRootPath/CreateMappings.ps1" -OutputFile $OutputFile/../groupMapping.json -WarningFile $OutputFile/../groupMappingWarnings.json
 $labelMapping = Get-Content -Raw $OutputFile/../groupMapping.json | ConvertFrom-Json
 
 $HelpFolders = @()
 
-$ProjectPaths = @( "ToolsRootPath/../src")
+$ProjectPaths = @( "$ToolsRootPath/../src")
 $RMpsd1s = $ProjectPaths | ForEach-Object {
     Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | Where-Object { 
         $_.FullName -inotlike "*autorest*" -and `

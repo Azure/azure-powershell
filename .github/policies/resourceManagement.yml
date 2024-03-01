@@ -2221,6 +2221,22 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: Maintenance
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Maintenance
+        then:
+        - mentionUsers:
+            mentionees:
+            - adana-popescu，KalpeshChavan12，ralucaminea
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: Managed Identity
         - hasLabel:
             label: Service Attention
