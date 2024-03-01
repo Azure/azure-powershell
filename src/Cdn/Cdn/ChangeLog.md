@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.1.2
 * Fixed the case sensitive issue when do preparing migration steps for `Start-AzFrontDoorCdnProfilePrepareMigration`
 
 ## Version 3.1.1

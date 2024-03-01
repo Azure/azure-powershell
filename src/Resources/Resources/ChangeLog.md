@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.16.0
 * Added breaking change warnings for Azure Policy cmdlets.
 * Added `AuxTenant` parameter in `New-AzResourceGroupDeployment`to support cross-tenant deployment.
 * Fixed bug with custom types and deployments whatif. [#13245]

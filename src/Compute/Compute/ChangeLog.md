@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 7.1.2
 * Fixed `New-AzVM` when a source image is specified to avoid an error on the `Version` value.
 
 ## Version 7.1.1
