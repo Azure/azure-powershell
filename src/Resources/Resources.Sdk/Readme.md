@@ -6,13 +6,13 @@ In this directory, run AutoRest:
 ```
 rm -r Generated/*
 autorest --reset
-autorest.cmd README.md --tag=package-privatelinks-2020-05 --version=v2
-autorest.cmd README.md --tag=package-subscriptions-2021-01 --version=v2
-autorest.cmd README.md --tag=package-features-2021-07 --version=v2
-autorest.cmd README.md --tag=package-deploymentscripts-2020-10 --version=v2
-autorest.cmd README.md --tag=package-resources-2021-04 --version=v2
-autorest.cmd README.md --tag=package-deploymentstacks-2022-08-preview --version=v2
-autorest.cmd README.md --tag=package-templatespecs-2021-05 --version=v2
+autorest --use:@autorest/powershell@4.x --tag=package-privatelinks-2020-05
+autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
+autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
+autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
+autorest --use:@autorest/powershell@4.x --tag=package-resources-2021-04
+autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2022-08-preview
+autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
 ```
 
 ### AutoRest Configuration
@@ -20,7 +20,8 @@ autorest.cmd README.md --tag=package-templatespecs-2021-05 --version=v2
 ``` yaml
 output-folder: Generated
 namespace: Microsoft.Azure.Management.Resources
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: false
 reflect-api-versions: true
 azure-arm: true
