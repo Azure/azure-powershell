@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject
 schema: 2.0.0
@@ -14,8 +14,7 @@ Create an in-memory object for LoadBalancingSettingsParameters.
 
 ```
 New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject [-AdditionalLatencyInMillisecond <Int32>]
- [-SampleSize <Int32>] [-SuccessfulSamplesRequired <Int32>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ [-SampleSize <Int32>] [-SuccessfulSamplesRequired <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,21 +44,6 @@ The additional latency in milliseconds for probes to fall into the lowest latenc
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -112,3 +96,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
+

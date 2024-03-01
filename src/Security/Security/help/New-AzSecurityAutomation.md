@@ -17,8 +17,7 @@ Creates new security automation
 New-AzSecurityAutomation -ResourceGroupName <String> -Name <String> -Location <String> [-Etag <String>]
  [-Tag <Hashtable>] [-Description <String>] [-IsEnabled <Boolean>] -Scope <PSSecurityAutomationScope[]>
  -Source <PSSecurityAutomationSource[]> -Action <PSSecurityAutomationAction[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -26,8 +25,7 @@ New-AzSecurityAutomation -ResourceGroupName <String> -Name <String> -Location <S
 New-AzSecurityAutomation -ResourceId <String> -Location <String> [-Etag <String>] [-Tag <Hashtable>]
  [-Description <String>] [-IsEnabled <Boolean>] -Scope <PSSecurityAutomationScope[]>
  -Source <PSSecurityAutomationSource[]> -Action <PSSecurityAutomationAction[]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -35,8 +33,7 @@ New-AzSecurityAutomation -ResourceId <String> -Location <String> [-Etag <String>
 New-AzSecurityAutomation [-Location <String>] [-Etag <String>] [-Tag <Hashtable>] [-Description <String>]
  [-IsEnabled <Boolean>] [-Scope <PSSecurityAutomationScope[]>] [-Source <PSSecurityAutomationSource[]>]
  -Action <PSSecurityAutomationAction[]> -InputObject <PSSecurityAutomation>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

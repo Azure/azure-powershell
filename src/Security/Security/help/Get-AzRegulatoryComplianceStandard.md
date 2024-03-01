@@ -14,8 +14,7 @@ Gets regulatory compliance standards
 
 ### SubscriptionScope (Default)
 ```
-Get-AzRegulatoryComplianceStandard [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzRegulatoryComplianceStandard [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource

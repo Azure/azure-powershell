@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnprofile
 schema: 2.0.0
@@ -14,25 +14,23 @@ Gets an CDN profile with the specified profile name under the specified subscrip
 
 ### List (Default)
 ```
-Get-AzCdnProfile [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzCdnProfile [-SubscriptionId <String[]>] -ResourceGroupName <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzCdnProfile [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzCdnProfile [-SubscriptionId <String[]>] -Name <String> -ResourceGroupName <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzCdnProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzCdnProfile -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+Get-AzCdnProfile -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzCdnProfile -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -144,27 +142,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, Get
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -179,7 +162,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, List1, Get
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -225,3 +208,4 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Azure Subscription ID.
 
 ## RELATED LINKS
+

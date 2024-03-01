@@ -14,8 +14,7 @@ Gets a list of Security Topologies on a subscription
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecurityTopology [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityTopology [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
@@ -26,8 +25,7 @@ Get-AzSecurityTopology -ResourceGroupName <String> -Name <String> -Location <Str
 
 ### ResourceId
 ```
-Get-AzSecurityTopology -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityTopology -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

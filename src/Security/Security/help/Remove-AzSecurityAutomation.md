@@ -15,8 +15,7 @@ Deletes security automation
 ### ResourceGroupLevelResource (Default)
 ```
 Remove-AzSecurityAutomation -ResourceGroupName <String> -Name <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -28,8 +27,7 @@ Remove-AzSecurityAutomation -ResourceId <String> [-PassThru] [-DefaultProfile <I
 ### InputObject
 ```
 Remove-AzSecurityAutomation -InputObject <PSSecurityAutomation> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

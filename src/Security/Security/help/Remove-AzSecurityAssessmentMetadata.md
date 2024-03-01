@@ -27,8 +27,7 @@ Remove-AzSecurityAssessmentMetadata -ResourceId <String> [-PassThru] [-DefaultPr
 ### InputObject
 ```
 Remove-AzSecurityAssessmentMetadata -InputObject <PSSecurityAssessmentMetadata> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

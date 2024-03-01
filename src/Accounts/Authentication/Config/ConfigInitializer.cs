@@ -226,12 +226,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
             configManager.RegisterConfig(new EnableLoginByWamConfig());
             configManager.RegisterConfig(new EnableInterceptSurveyConfig());
             configManager.RegisterConfig(new DisplayBreakingChangeWarningsConfig());
-            configManager.RegisterConfig(new SimpleTypedConfig<bool>(
-                ConfigKeys.DisplaySecretsWarning,
-                Resources.HelpMessageOfDisplaySecretsWarning,
-                false,
-                "AZURE_CLIENTS_SHOW_SECRETS_WARNING",
-                new[] { AppliesTo.Az }));
         }
     }
 }

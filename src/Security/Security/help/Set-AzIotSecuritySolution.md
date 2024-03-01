@@ -18,8 +18,7 @@ Set-AzIotSecuritySolution -Name <String> -ResourceGroupName <String> [-Tag <Hash
  -Workspace <String> -DisplayName <String> [-Enabled <Boolean>] [-Export <String[]>]
  [-DisabledDataSource <String[]>] -IotHub <String[]> [-UserDefinedResource <PSUserDefinedResources>]
  [-RecommendationsConfiguration <PSRecommendationConfiguration[]>] [-UnmaskedIpLoggingStatus <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -28,8 +27,7 @@ Set-AzIotSecuritySolution -InputObject <PSIotSecuritySolution> [-Tag <Hashtable>
  -Workspace <String> -DisplayName <String> [-Enabled <Boolean>] [-Export <String[]>]
  [-DisabledDataSource <String[]>] -IotHub <String[]> [-UserDefinedResource <PSUserDefinedResources>]
  [-RecommendationsConfiguration <PSRecommendationConfiguration[]>] [-UnmaskedIpLoggingStatus <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -38,8 +36,7 @@ Set-AzIotSecuritySolution -ResourceId <String> [-Tag <Hashtable>] -Location <Str
  -DisplayName <String> [-Enabled <Boolean>] [-Export <String[]>] [-DisabledDataSource <String[]>]
  -IotHub <String[]> [-UserDefinedResource <PSUserDefinedResources>]
  [-RecommendationsConfiguration <PSRecommendationConfiguration[]>] [-UnmaskedIpLoggingStatus <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

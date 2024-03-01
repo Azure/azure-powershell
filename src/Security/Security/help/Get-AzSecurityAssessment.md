@@ -14,14 +14,12 @@ Gets security assessments and their results on a subscription
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecurityAssessment [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityAssessment [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
 ```
-Get-AzSecurityAssessment -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityAssessment -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdScope
@@ -32,8 +30,7 @@ Get-AzSecurityAssessment -Name <String> -AssessedResourceId <String> [-DefaultPr
 
 ### ResourceId
 ```
-Get-AzSecurityAssessment -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityAssessment -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

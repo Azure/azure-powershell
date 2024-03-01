@@ -14,14 +14,12 @@ Gets the configured security workspace settings on a subscription.
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecurityWorkspaceSetting [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityWorkspaceSetting [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
 ```
-Get-AzSecurityWorkspaceSetting -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSecurityWorkspaceSetting -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId

@@ -18,8 +18,9 @@ Please note some properties can be set only during  image creation.
 New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  -CustomLocationId <String> -OSType <Object> -URN <String> [-CloudInitDataSource <String>]
  [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-StoragePathId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GalleryImage
@@ -27,8 +28,9 @@ New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionI
 New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  -CustomLocationId <String> -OSType <Object> [-CloudInitDataSource <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-StoragePathId <String>] [-Tag <Hashtable>] -ImagePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Marketplace
@@ -36,8 +38,9 @@ New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionI
 New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  -CustomLocationId <String> -OSType <Object> [-CloudInitDataSource <String>] [-StoragePathName <String>]
  [-StoragePathResourceGroup <String>] [-StoragePathId <String>] [-Tag <Hashtable>] -Offer <String>
- -Publisher <String> -Sku <String> -Version <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Publisher <String> -Sku <String> -Version <String> [-DefaultProfile <PSObject>] [-AsJob] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +68,21 @@ New-AzStackHCIVMImage -Name "testMarketplaceImageURN" -ResourceGroupName "test-r
 
 ### -AsJob
 Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Break
+Wait for .NET debugger to attach
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -115,6 +133,36 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelineAppend
+SendAsync Pipeline Steps to be appended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelinePrepend
+SendAsync Pipeline Steps to be prepended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -213,6 +261,51 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Proxy
+The URI for the proxy server to use
+
+```yaml
+Type: System.Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyCredential
+Credentials for a proxy server to use for the remote call
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyUseDefaultCredentials
+Use the default credentials for the proxy
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -414,3 +507,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmimage](https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmimage)
+

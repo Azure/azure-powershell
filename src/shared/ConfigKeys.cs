@@ -37,6 +37,5 @@ namespace Microsoft.Azure.Commands.Shared.Config
         public const string EnableErrorRecordsPersistence = "EnableErrorRecordsPersistence";
         public const string CheckForUpgrade = "CheckForUpgrade";
         public const string EnvCheckForUpgrade = "AZUREPS_CHECK_FOR_UPGRADE";
-        public const string DisplaySecretsWarning = "DisplaySecretsWarning";
     }
 }

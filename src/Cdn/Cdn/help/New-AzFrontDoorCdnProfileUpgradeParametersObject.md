@@ -1,5 +1,5 @@
 ---
-external help file: Az.Cdn-help.xml
+external help file:
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileUpgradeParametersObject
 schema: 2.0.0
@@ -14,7 +14,7 @@ Create an in-memory object for ProfileUpgradeParameters.
 
 ```
 New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList <IProfileChangeSkuWafMapping[]>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Create an in-memory object for ProfileUpgradeParameters.
 ### Example 1: Create an in-memory object for ProfileUpgradeParameters.
 ```powershell
 $waf1 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
-New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf1
+New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf1  
 ```
 
 ```output
@@ -59,21 +59,6 @@ $upgrade.ToString()
 Create an in-memory object for ProfileUpgradeParameters, show the details of the object.
 
 ## PARAMETERS
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -WafMappingList
 Web Application Firewall (WAF) and security policy mapping for the profile upgrade.
@@ -114,3 +99,4 @@ To create the parameters described below, construct a hash table containing the 
   - `[ChangeToWafPolicyId <String>]`: Resource ID.
 
 ## RELATED LINKS
+

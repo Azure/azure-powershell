@@ -14,8 +14,7 @@ Used to display allowed traffic between resources for the subscription
 
 ### SubscriptionScope (Default)
 ```
-Get-AzAllowedConnection [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzAllowedConnection [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
@@ -26,8 +25,7 @@ Get-AzAllowedConnection -ResourceGroupName <String> -Name <String> -Location <St
 
 ### ResourceId
 ```
-Get-AzAllowedConnection -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzAllowedConnection -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

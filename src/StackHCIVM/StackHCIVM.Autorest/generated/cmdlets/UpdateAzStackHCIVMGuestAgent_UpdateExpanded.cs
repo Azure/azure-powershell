@@ -445,7 +445,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     _body = await this.Client.GuestAgentGetWithResult(ResourceUri, this, Pipeline);
                     this.Update_body();
-                    await this.Client.GuestAgentCreate(ResourceUri, _body, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate);
+                    await this.Client.GuestAgentCreate(ResourceUri, _body, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.UndeclaredResponseException urexception)

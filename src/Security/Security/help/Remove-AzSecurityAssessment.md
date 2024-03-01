@@ -14,15 +14,14 @@ Deletes a security assessment result from a subscription.
 
 ### SubscriptionLevelResource (Default)
 ```
-Remove-AzSecurityAssessment -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSecurityAssessment -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdLevelResource
 ```
 Remove-AzSecurityAssessment -Name <String> [-AssessedResourceId <String>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -34,8 +33,7 @@ Remove-AzSecurityAssessment -ResourceId <String> [-PassThru] [-DefaultProfile <I
 ### InputObject
 ```
 Remove-AzSecurityAssessment -InputObject <PSSecurityAssessment> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
