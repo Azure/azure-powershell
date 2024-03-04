@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Restarts one or more nodes on the node type. It will disable the fabric nodes, trigger a restart on the VMs and activate the nodes back again.
+        /// Restarts one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a restart on the VMs and activate the nodes back again.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -72,7 +73,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Restarts one or more nodes on the node type. It will disable the fabric nodes, trigger a restart on the VMs and activate the nodes back again.
+        /// Restarts one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a restart on the VMs and activate the nodes back again.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -94,7 +96,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             (await operations.RestartWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Reimages one or more nodes on the node type. It will disable the fabric nodes, trigger a reimage on the VMs and activate the nodes back again.
+        /// Reimages one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a reimage on the VMs and activate the nodes back again.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -114,7 +117,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Reimages one or more nodes on the node type. It will disable the fabric nodes, trigger a reimage on the VMs and activate the nodes back again.
+        /// Reimages one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a reimage on the VMs and activate the nodes back again.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -136,7 +140,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             (await operations.ReimageWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Deletes one or more nodes on the node type. It will disable the fabric nodes, trigger a delete on the VMs and removes the state from the cluster.
+        /// Deletes one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a delete on the VMs and removes the state from the cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -156,7 +161,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Deletes one or more nodes on the node type. It will disable the fabric nodes, trigger a delete on the VMs and removes the state from the cluster.
+        /// Deletes one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a delete on the VMs and removes the state from the cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -268,7 +274,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Update the configuration of a node type of a given managed cluster, only updating tags.
+        /// Update the configuration of a node type of a given managed cluster, only
+        /// updating tags.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -282,13 +289,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='nodeTypeName'>
         /// The name of the node type.
         /// </param>
-        public static NodeType Update(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), NodeTypeSku sku = default(NodeTypeSku))
+        public static NodeType Update(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeUpdateParameters parameters)
         {
-                return ((INodeTypesOperations)operations).UpdateAsync(resourceGroupName, clusterName, nodeTypeName, tags, sku).GetAwaiter().GetResult();
+                return ((INodeTypesOperations)operations).UpdateAsync(resourceGroupName, clusterName, nodeTypeName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Update the configuration of a node type of a given managed cluster, only updating tags.
+        /// Update the configuration of a node type of a given managed cluster, only
+        /// updating tags.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -305,9 +313,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NodeType> UpdateAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), NodeTypeSku sku = default(NodeTypeSku), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NodeType> UpdateAsync(this INodeTypesOperations operations, string resourceGroupName, string clusterName, string nodeTypeName, NodeTypeUpdateParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, tags, sku, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -355,7 +363,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Restarts one or more nodes on the node type. It will disable the fabric nodes, trigger a restart on the VMs and activate the nodes back again.
+        /// Restarts one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a restart on the VMs and activate the nodes back again.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -375,7 +384,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Restarts one or more nodes on the node type. It will disable the fabric nodes, trigger a restart on the VMs and activate the nodes back again.
+        /// Restarts one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a restart on the VMs and activate the nodes back again.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -397,7 +407,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             (await operations.BeginRestartWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Reimages one or more nodes on the node type. It will disable the fabric nodes, trigger a reimage on the VMs and activate the nodes back again.
+        /// Reimages one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a reimage on the VMs and activate the nodes back again.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -417,7 +428,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Reimages one or more nodes on the node type. It will disable the fabric nodes, trigger a reimage on the VMs and activate the nodes back again.
+        /// Reimages one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a reimage on the VMs and activate the nodes back again.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -439,7 +451,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             (await operations.BeginReimageWithHttpMessagesAsync(resourceGroupName, clusterName, nodeTypeName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Deletes one or more nodes on the node type. It will disable the fabric nodes, trigger a delete on the VMs and removes the state from the cluster.
+        /// Deletes one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a delete on the VMs and removes the state from the cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -459,7 +472,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Deletes one or more nodes on the node type. It will disable the fabric nodes, trigger a delete on the VMs and removes the state from the cluster.
+        /// Deletes one or more nodes on the node type. It will disable the fabric
+        /// nodes, trigger a delete on the VMs and removes the state from the cluster.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
