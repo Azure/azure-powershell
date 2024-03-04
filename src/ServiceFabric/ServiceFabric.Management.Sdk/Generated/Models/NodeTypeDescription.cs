@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
             this.ApplicationPorts = applicationPorts;
             this.EphemeralPorts = ephemeralPorts;
             this.IsPrimary = isPrimary;
-            this.VmInstanceCount = vmInstanceCount;
+            this.VMInstanceCount = vmInstanceCount;
             this.ReverseProxyEndpointPort = reverseProxyEndpointPort;
             this.IsStateless = isStateless;
             this.MultipleAvailabilityZones = multipleAvailabilityZones;
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// for the initial cluster size computation.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vmInstanceCount")]
-        public int VmInstanceCount {get; set; }
+        public int VMInstanceCount {get; set; }
 
         /// <summary>
         /// Gets or sets the endpoint used by reverse proxy.
@@ -228,11 +228,11 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
             {
                 this.EphemeralPorts.Validate();
             }
-            if (this.VmInstanceCount > 2147483647)
+            if (this.VMInstanceCount > 2147483647)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "VMInstanceCount", 2147483647);
             }
-            if (this.VmInstanceCount < 0)
+            if (this.VMInstanceCount < 0)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "VMInstanceCount", 0);
             }
