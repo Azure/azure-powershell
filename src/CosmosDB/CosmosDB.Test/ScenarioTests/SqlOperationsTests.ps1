@@ -456,6 +456,173 @@ function Test-SqlInAccountRestoreOperationsCmdlets
   }
 }
 
+<#
+.SYNOPSIS
+ 1. Create database.
+ 2. Create container.
+ 3. Get database.
+ 4. Get container.
+ 5. Delete container.
+ 6. Restore non-existent container and expect failure.
+ 7. Restore container (from #5).
+ 8. Delete database.
+ 9. Restore container and expect failure (due to the database being offline).
+ 10. Restore database.
+ 11. Restore container.
+ 12. Restore container again and expect failure (as the collection is already online).
+ 13. Delete database.
+ 14. Restore non-existent database and expect failure.
+ 15. Restore database.
+ 16. Restore database again and expect failure (as the database already exists).
+ 17. Restore collection.
+#>
+function Test-SqlInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
+{
+    $AccountName = "dbaccount49-sql-ntbr"
+    $rgName = "CosmosDBResourceGroup63"
+    $DatabaseName = "sqldbName6"
+    $ContainerName = "container1"
+    $location = "West US"
+    $DatabaseName2 = "dbName2"
+    $ContainerName2 = "container2"
+    $apiKind = "Sql"
+    $PartitionKeyPathValue = "/foo/bar"
+    $PartitionKeyKindValue = "Hash"
+
+    $locations = @()
+    $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
+    $locations += New-AzCosmosDBLocationObject -LocationName "Central US" -FailoverPriority 1 -IsZoneRedundant 0
+
+    Try {
+        $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
+        $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -BackupPolicyType Continuous
+
+        # 1. Create a new database
+        $NewDatabase = New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+        Assert-AreEqual $NewDatabase.Name $DatabaseName
+
+        # 2. Create a new container
+        $NewContainer = New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
+        Assert-AreEqual $NewContainer.Name $ContainerName
+
+        # 3. Get a database
+        $Database = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+        Assert-AreEqual $NewDatabase.Id $Database.Id
+        Assert-AreEqual $NewDatabase.Name $Database.Name
+        Assert-NotNull($Database)
+
+        # 4. Get a container
+        $Container = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+        Assert-AreEqual $NewContainer.Id $Container.Id
+        Assert-AreEqual $NewContainer.Name $Container.Name
+        Assert-NotNull($Container)
+
+        Start-TestSleep -s 50
+
+        # 5. Remove container
+        Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+
+        Start-TestSleep -s 50
+
+        # 6. Restore non-existent container - expect failure
+        $InvalidContainerName = "Invalid-Container459"
+        $RestoreInvalidContainerResult = Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $InvalidContainerName
+        Assert-Null $RestoreInvalidContainerResult
+
+        # 7. Restore deleted container in #5
+        Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+
+        Start-TestSleep -s 50
+
+        # list containers
+        $ListContainers = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+        Assert-NotNull($ListContainers)
+
+        # 8. Delete database
+        Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+
+        Start-TestSleep -s 100
+
+        # list databases
+        $ListDatabases = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName
+        Assert-Null($ListDatabases)
+
+        # 9. Restore container - expect failure (database is offline)
+        $RestoreContainerWhenDatabaseOfflineResult = Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+        Assert-Null $RestoreContainerWhenDatabaseOfflineResult
+
+        # 10. Restore deleted database
+        Restore-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+
+        Start-TestSleep -s 50
+
+        # list databases
+        $ListDatabases = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName
+        Assert-NotNull($ListDatabases)
+
+        Start-TestSleep -s 50
+
+        # 11. Restore collection
+        $RestoredCollection = Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+
+        Start-TestSleep -s 50
+
+        # list containers
+        $ListContainers = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+        Assert-NotNull($ListContainers)
+
+        # 12. Restore container again - expect failure (collection already online)
+        $SecondInAccountContainerRestore = Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+        Assert-Null $SecondInAccountContainerRestore
+
+        # 13. Delete database
+        Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+
+        Start-TestSleep -s 100
+        # list databases
+        $ListDatabases = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName
+        Assert-Null($ListDatabases)
+
+        # 14. Restore non-existent database - expect failure
+        $InvalidDatabaseName = "InvalidDatabaseName"
+        $RestoreInvalidDatabase = Restore-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $InvalidDatabaseName
+        Assert-Null $RestoreInvalidDatabase
+
+
+        # 15. Restore database
+        Restore-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+
+        Start-TestSleep -s 50
+
+        # list databases
+        $ListDatabases = Get-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName
+        Assert-NotNull($ListDatabases)
+
+        # 16. Restore database again - expect failure (database already exists)
+        $SecondInAccountDatabaseRestore = Restore-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+        Assert-Null $SecondInAccountDatabaseRestore
+
+        # 17. Restore collection
+        $RestoredCollection = Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+        Start-TestSleep -s 50
+        Assert-NotNull $RestoredCollection
+
+        Start-TestSleep -s 100
+
+        # list containers
+        $ListContainers = Get-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+        Assert-NotNull $ListContainers
+  }
+  Catch {
+        Write-Output "Error: $_"
+        throw $_
+  }
+  Finally {
+        Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+        Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
 function Test-SqlInAccountRestoreOperationsNoTimestampCmdlets
 {
   $AccountName = "dbaccount60-14"

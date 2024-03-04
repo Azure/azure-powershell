@@ -24,8 +24,6 @@ using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CosmosDB;
 using Microsoft.Azure.Management.CosmosDB.Models;
-using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -47,6 +45,51 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ResourceRestoreTimestampHelpMessage)]
         public DateTime RestoreTimestampInUtc { get; set; }
+
+        public (DateTime, DateTime, string) ProcessRestorableDatabases(IEnumerable restorableDatabases)
+        {
+            DateTime latestDatabaseDeleteTime = DateTime.MinValue;
+            DateTime latestDatabaseCreateOrRecreateTime = DateTime.MinValue;
+            string databaseRid = null;
+            string databaseName = this.Name;
+
+            foreach (RestorableMongodbDatabaseGetResult restorableDatabase in restorableDatabases)
+            {
+                RestorableMongodbDatabasePropertiesResource resource = restorableDatabase.Resource;
+
+                if (resource != null && resource.OwnerId.Equals(databaseName))
+                {
+                    databaseRid = resource.OwnerResourceId;
+                    var eventTimestamp = DateTime.Parse(resource.EventTimestamp);
+                    if (resource.OperationType == "Delete" && latestDatabaseDeleteTime < eventTimestamp)
+                    {
+                        latestDatabaseDeleteTime = eventTimestamp;
+                    }
+
+                    if ((resource.OperationType == "Create" || resource.OperationType == "Recreate") && latestDatabaseCreateOrRecreateTime < eventTimestamp)
+                    {
+                        latestDatabaseCreateOrRecreateTime = eventTimestamp;
+                    }
+                }
+            }
+
+            if (databaseRid == null)
+            {
+                this.WriteWarning($"No restorable database found with name: {databaseName}");
+                return (latestDatabaseDeleteTime, latestDatabaseCreateOrRecreateTime, databaseRid);
+            }
+
+            // Database never deleted then reset it to max time
+            if (latestDatabaseDeleteTime == DateTime.MinValue)
+            {
+                latestDatabaseDeleteTime = DateTime.MaxValue;
+            }
+
+            this.WriteDebug($"ProcessRestorableDatabases: latestDatabaseDeleteTime {latestDatabaseDeleteTime}," +
+                $" latestDatabaseCreateOrRecreateTime {latestDatabaseCreateOrRecreateTime}, databaseName {databaseName}, databaseRid {databaseRid}");
+
+            return (latestDatabaseDeleteTime, latestDatabaseCreateOrRecreateTime, databaseRid);
+        }
 
         public override void ExecuteCmdlet()
         {
@@ -125,30 +168,27 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     return;
                 }
 
-                Regex regex = new Regex(@"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}");
-                var matches = regex.Matches(databaseAccount.Id);
-
-                string accountInstanceId = string.Empty;
-                if (matches.Count > 1)
-                {
-                    accountInstanceId = matches[1].Value;
-                }
-
-
-                DateTime latestDeleteTime = DateTime.MinValue;
+                string accountInstanceId = databaseAccount.Name;
                 IEnumerable restorableMongoDBDatabases = CosmosDBManagementClient.RestorableMongodbDatabases.ListWithHttpMessagesAsync(databaseAccount.Location, accountInstanceId).GetAwaiter().GetResult().Body;
-                foreach (RestorableMongodbDatabaseGetResult restorableMongoDBDatabase in restorableMongoDBDatabases)
+                (DateTime latestDatabaseDeleteTime, DateTime latestDatabaseCreateOrRecreateTime, string databaseRid) = ProcessRestorableDatabases(restorableMongoDBDatabases);
+
+                if (databaseRid == null)
                 {
-                    DateTime eventDateTime = DateTime.Parse(restorableMongoDBDatabase.Resource.EventTimestamp);
-                    if (restorableMongoDBDatabase.Resource.OperationType.Equals(OperationType.Delete) && latestDeleteTime < eventDateTime)
-                    {
-                        latestDeleteTime = eventDateTime;
-                    }
+                    return;
                 }
 
-                utcRestoreDateTime = latestDeleteTime.AddSeconds(-2);
+                // Database is alive if create or recreate timestamp is later than latest delete timestamp
+                bool isDatabaseAlive = latestDatabaseCreateOrRecreateTime > latestDatabaseDeleteTime || latestDatabaseDeleteTime == DateTime.MaxValue;
+
+                if (isDatabaseAlive)
+                {
+                    this.WriteWarning($"Database with name {this.Name} already exists in this account with name {this.AccountName} in location {databaseAccount.Location}");
+                    return;
+                }
+
+                //Subtracting 1 second from delete timestamp to restore till end of logchain in no timestamp restore.
+                utcRestoreDateTime = latestDatabaseDeleteTime.AddSeconds(-1);
             }
-            
 
             MongoDBDatabaseCreateUpdateParameters mongoDBDatabaseCreateUpdateParameters = new MongoDBDatabaseCreateUpdateParameters
             {
@@ -167,7 +207,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (this.ShouldProcess(this.Name, "Restoring CosmosDB MongoDB Database"))
             {
-                MongoDBDatabaseGetResults mongoDBDatabaseGetResults = this.CosmosDBManagementClient.MongoDbResources.CreateUpdateMongoDBDatabaseWithHttpMessagesAsync(this.ResourceGroupName, this.AccountName, this.Name, mongoDBDatabaseCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                MongoDBDatabaseGetResults mongoDBDatabaseGetResults = CosmosDBManagementClient.MongoDbResources.CreateUpdateMongoDBDatabaseWithHttpMessagesAsync(this.ResourceGroupName, this.AccountName, this.Name, mongoDBDatabaseCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 this.WriteObject(new PSMongoDBDatabaseGetResults(mongoDBDatabaseGetResults));
             }
 
