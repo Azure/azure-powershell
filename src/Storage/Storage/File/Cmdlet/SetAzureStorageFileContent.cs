@@ -239,26 +239,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         using (FileStream stream = File.OpenRead(localFile.FullName))
                         {
                             byte[] buffer = null;
-                            long lastBlockSize = 0;
-                            for (long offset = 0; offset < fileSize; offset += blockSize)
+                            for (long offset = 0; offset < fileSize;)
                             {
-                                long currentBlockSize = offset + blockSize < fileSize ? blockSize : fileSize - offset;
+                                long targetBlockSize = offset + blockSize < fileSize ? blockSize : fileSize - offset;
 
                                 // create new buffer, the old buffer will be GC
-                                buffer = new byte[currentBlockSize];
-                                lastBlockSize = currentBlockSize;
+                                buffer = new byte[targetBlockSize];
 
-                                await stream.ReadAsync(buffer: buffer, offset: 0, count: (int)currentBlockSize);
+                                int actualBlockSize = await stream.ReadAsync(buffer: buffer, offset: 0, count: (int)targetBlockSize);
                                 if (!fipsEnabled && hash != null)
                                 {
-                                    hash.AppendData(buffer);
+                                    hash.AppendData(buffer, 0, actualBlockSize);
                                 }
 
                                 Task task = UploadFileRangAsync(fileClient,
-                                    new HttpRange(offset, currentBlockSize),
-                                    new MemoryStream(buffer),
+                                    new HttpRange(offset, actualBlockSize),
+                                    new MemoryStream(buffer, 0, actualBlockSize),
                                     progressHandler);
                                 runningTasks.Add(task);
+
+                                offset += actualBlockSize;
 
                                 // Check if any of upload range tasks are still busy
                                 if (runningTasks.Count >= maxWorkers)
