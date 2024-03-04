@@ -23,7 +23,8 @@ Get-AzAutoscalePredictiveMetric -InputObject <IAutoscaleIdentity> -Aggregation <
 ```
 Get-AzAutoscalePredictiveMetric -AutoscaleSettingName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -Aggregation <String> -Interval <TimeSpan> -MetricName <String>
- -MetricNamespace <String> -Timespan <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -MetricNamespace <String> -Timespan <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

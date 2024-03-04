@@ -16,12 +16,13 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ApplicationPackages
 {
-    public class NewBatchApplicationPackageCommandTests
+    public class NewBatchApplicationPackageCommandTests : RMTestBase
     {
         private NewBatchApplicationPackageCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

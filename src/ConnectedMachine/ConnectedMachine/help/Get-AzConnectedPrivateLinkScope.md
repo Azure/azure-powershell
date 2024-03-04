@@ -14,7 +14,8 @@ Returns a Azure Arc PrivateLinkScope.
 
 ### List (Default)
 ```
-Get-AzConnectedPrivateLinkScope [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedPrivateLinkScope [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### List1

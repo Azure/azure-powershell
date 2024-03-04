@@ -68,6 +68,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Test_WhatIfWithUserDefinedTypes()
+            => TestRunner.RunTestScript("Test-WhatIfWithUserDefinedTypes");
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubLevelWhatIf_BlankTemplate_ReturnsNoChange()
         {
             TestRunner.RunTestScript("Test-WhatIfWithBlankTemplateAtSubscriptionScope");

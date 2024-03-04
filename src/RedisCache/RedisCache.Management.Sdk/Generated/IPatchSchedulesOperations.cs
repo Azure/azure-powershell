@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// Gets all patch schedules in the specified redis cache (there is only one).
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// Create or replace the patching schedule for Redis cache.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// Deletes the patching schedule of a redis cache.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the redis cache.
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// Gets the patching schedule of a redis cache.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the redis cache.

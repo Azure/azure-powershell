@@ -16,7 +16,8 @@ Creates a local criteria object that can be used to create a new metric alert
 ```
 New-AzMetricAlertRuleV2Criteria -MetricName <String> [-MetricNamespace <String>]
  [-SkipMetricValidation <Boolean>] [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String>
- -Operator <String> -Threshold <Double> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -Operator <String> -Threshold <Double> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### DynamicThresholdParameterSet
@@ -31,7 +32,8 @@ New-AzMetricAlertRuleV2Criteria [-DynamicThreshold] -MetricName <String> [-Metri
 ### WebtestParameterSet
 ```
 New-AzMetricAlertRuleV2Criteria [-WebTest] -WebTestId <String> -ApplicationInsightsId <String>
- [-FailedLocationCount <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-FailedLocationCount <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

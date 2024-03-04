@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string TierAfterDurationType = "Specifies whether the TierAfterDuration is in Days or Months";
             public const string AzureBackupResourceGroup = "Custom resource group name to store the instant recovery points of managed virtual machines. This is optional";
             public const string AzureBackupResourceGroupSuffix = "Custom resource group name suffix to store the instant recovery points of managed virtual machines. This is optional";
+            public const string SnapshotConsistencyType = "Snapshot consistency type to be used for backup. If set to OnlyCrashConsistent, all associated items will have crash consistent snapshot. Possible values are OnlyCrashConsistent, Default";
         }
 
         internal static class Job

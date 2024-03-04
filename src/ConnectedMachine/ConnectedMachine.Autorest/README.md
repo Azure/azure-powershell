@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ConnectedMachine service.
 
 ---
-## Status
-[![Az.ConnectedMachine](https://img.shields.io/powershellgallery/v/Az.ConnectedMachine.svg?style=flat-square&label=Az.ConnectedMachine "Az.ConnectedMachine")](https://www.powershellgallery.com/packages/Az.ConnectedMachine/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -265,6 +262,12 @@ directive:
       parameter-name: AgentUpgradeEnableAutomaticUpgrade
     set:
       parameter-name: AgentUpgradeEnableAutomatic
+    
+  # Rename Tag to Tags
+  - where:
+      property-name: Tag
+    set:
+      property-name: Tags
  
   # Formatting
   - where:

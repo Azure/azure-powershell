@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the BillingBenefits service.
 
 ---
-## Status
-[![Az.BillingBenefits](https://img.shields.io/powershellgallery/v/Az.BillingBenefits.svg?style=flat-square&label=Az.BillingBenefits "Az.BillingBenefits")](https://www.powershellgallery.com/packages/Az.BillingBenefits/)
 
 ## Info
 - Modifiable: yes

@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Dashboard service.
 
 ---
-## Status
-[![Az.Dashboard](https://img.shields.io/powershellgallery/v/Az.Dashboard.svg?style=flat-square&label=Az.Dashboard "Az.Dashboard")](https://www.powershellgallery.com/packages/Az.Dashboard/)
 
 ## Info
 - Modifiable: yes

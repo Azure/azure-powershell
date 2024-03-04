@@ -52,7 +52,6 @@ jobs:
       custom: msbuild
       arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true;ModifiedModuleBuild=true"'
 
-
   - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
     displayName: 'Manifest Generator '
     inputs:
@@ -301,7 +300,7 @@ jobs:
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:Publish /p:Configuration=Release;NuGetKey=$(NuGetKey);GenerateDocumentationFile=false'
+      arguments: 'build.proj /t:Publish /p:Configuration=Release;NuGetKey=$(NuGetKey);GenerateDocumentationFile=false;TargetModule=${{ parameters.TargetModule }}'
 
   - pwsh: |
       #this task won't be triggered unless $AzureStack was set to true
@@ -362,6 +361,11 @@ jobs:
   - pwsh: './tools/PackModules.ps1 -Artifacts artifacts -NugetExe tools\NuGet.exe'
     displayName: 'Repackage modules'
     condition: and(succeeded(), ne(variables['SignPsd1'], 'false'))
+
+  - pwsh: |
+      ./tools/Docs/OutputTypeIndex.ps1 -OutputFile ./artifacts/outputtypes.json -BuildConfig Release
+      ./tools/Docs/HelpIndex.ps1 -OutputFile ./artifacts/index.json -BuildConfig Release
+    displayName: 'Post process for Docs'
 
   - task: PublishBuildArtifacts@1
     displayName: 'Save artifacts'

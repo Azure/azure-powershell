@@ -161,5 +161,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzAlertHistory](./Get-AzAlertHistory.md)
 
 [Remove-AzAlertRule](./Remove-AzAlertRule.md)
-
-

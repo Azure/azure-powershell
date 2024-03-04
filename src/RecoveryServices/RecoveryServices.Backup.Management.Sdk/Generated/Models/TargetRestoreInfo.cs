@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="overwriteOption">Can Overwrite if Target DataBase already exists
-        /// Possible values include: 'Invalid', 'FailOnConflict', 'Overwrite'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;FailOnConflict&#39;, &#39;Overwrite&#39;</param>
 
         /// <param name="containerId">Resource Id name of the container in which Target DataBase resides
         /// </param>

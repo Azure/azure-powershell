@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the DataBox service.
 
 ---
-## Status
-[![Az.DataBox](https://img.shields.io/powershellgallery/v/Az.DataBox.svg?style=flat-square&label=Az.DataBox "Az.DataBox")](https://www.powershellgallery.com/packages/Az.DataBox/)
 
 ## Info
 - Modifiable: yes

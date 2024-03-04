@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the SecurityInsights service.
 
 ---
-## Status
-[![Az.SecurityInsights](https://img.shields.io/powershellgallery/v/Az.SecurityInsights.svg?style=flat-square&label=Az.SecurityInsights "Az.SecurityInsights")](https://www.powershellgallery.com/packages/Az.SecurityInsights/)
 
 ## Info
 - Modifiable: yes

@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the WindowsIotServices service.
 
 ---
-## Status
-[![Az.WindowsIotServices](https://img.shields.io/powershellgallery/v/Az.WindowsIotServices.svg?style=flat-square&label=Az.WindowsIotServices "Az.WindowsIotServices")](https://www.powershellgallery.com/packages/Az.WindowsIotServices/)
 
 ## Info
 - Modifiable: yes

@@ -23,14 +23,15 @@ Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName <String> -Re
 ```
 Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -SoftwareAssuranceChangeRequest <ISoftwareAssuranceChangeRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ExtendViaIdentityExpanded
 ```
 Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -InputObject <IStackHciIdentity>
- [-SoftwareAssuranceIntent <SoftwareAssuranceIntent>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SoftwareAssuranceIntent <SoftwareAssuranceIntent>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExtendViaIdentity

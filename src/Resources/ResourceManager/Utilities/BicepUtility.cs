@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             }
 
             // print warning message
-            if (!string.IsNullOrEmpty(output.Stderr))
+            if (!string.IsNullOrWhiteSpace(output.Stderr))
             {
                 writeWarning?.Invoke(output.Stderr);
             }

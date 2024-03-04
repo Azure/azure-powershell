@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 5.2.1
+* Supported `HsmPlatform` in `KeyAttributes`.
+
 ## Version 5.2.0
 * Supported authentication via User Managed Identity by adding parameter `UseUserManagedIdentity` and making `SasToken` optional.
 

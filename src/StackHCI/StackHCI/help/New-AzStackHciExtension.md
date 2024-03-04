@@ -18,8 +18,8 @@ New-AzStackHciExtension -ArcSettingName <String> -ClusterName <String> -Name <St
  [-ExtensionParameterEnableAutomaticUpgrade] [-ExtensionParameterForceUpdateTag <String>]
  [-ExtensionParameterProtectedSetting <Hashtable>] [-ExtensionParameterPublisher <String>]
  [-ExtensionParameterSetting <Hashtable>] [-ExtensionParameterType <String>]
- [-ExtensionParameterTypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ExtensionParameterTypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

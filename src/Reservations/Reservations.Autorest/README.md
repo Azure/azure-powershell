@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Reservations service.
 
 ---
-## Status
-[![Az.Reservations](https://img.shields.io/powershellgallery/v/Az.Reservations.svg?style=flat-square&label=Az.Reservations "Az.Reservations")](https://www.powershellgallery.com/packages/Az.Reservations/)
 
 ## Info
 - Modifiable: yes

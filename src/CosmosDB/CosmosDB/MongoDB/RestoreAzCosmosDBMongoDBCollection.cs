@@ -22,7 +22,6 @@ using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Exceptions;
 using Microsoft.Azure.Management.CosmosDB;
-using System.Text.RegularExpressions;
 using System.Collections;
 
 namespace Microsoft.Azure.Commands.CosmosDB
@@ -49,6 +48,91 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ResourceRestoreTimestampHelpMessage)]
         public DateTime RestoreTimestampInUtc { get; set; }
+
+        public (DateTime, DateTime, string) ProcessRestorableDatabases(IEnumerable restorableDatabases)
+        {
+            DateTime latestDatabaseDeleteTime = DateTime.MinValue;
+            DateTime latestDatabaseCreateOrRecreateTime = DateTime.MinValue;
+            string databaseRid = null;
+
+            foreach (RestorableMongodbDatabaseGetResult restorableDatabase in restorableDatabases)
+            {
+                RestorableMongodbDatabasePropertiesResource resource = restorableDatabase.Resource;
+
+                if (resource != null && resource.OwnerId.Equals(this.DatabaseName))
+                {
+                    databaseRid = resource.OwnerResourceId;
+                    var eventTimestamp = DateTime.Parse(resource.EventTimestamp);
+                    if (resource.OperationType == "Delete" && latestDatabaseDeleteTime < eventTimestamp)
+                    {
+                        latestDatabaseDeleteTime = eventTimestamp;
+                    }
+
+                    if ((resource.OperationType == "Create" || resource.OperationType == "Recreate") && latestDatabaseCreateOrRecreateTime < eventTimestamp)
+                    {
+                        latestDatabaseCreateOrRecreateTime = eventTimestamp;
+                    }
+                }
+            }
+
+            if (databaseRid == null)
+            {
+                this.WriteWarning($"No restorable database found with name: {this.DatabaseName}");
+                return (latestDatabaseDeleteTime, latestDatabaseCreateOrRecreateTime, databaseRid);
+            }
+
+            // Database never deleted then reset it to max time
+            if (latestDatabaseDeleteTime == DateTime.MinValue)
+            {
+                latestDatabaseDeleteTime = DateTime.MaxValue;
+            }
+
+            this.WriteDebug($"ProcessRestorableDatabases: latestDatabaseDeleteTime {latestDatabaseDeleteTime}," +
+                $" latestDatabaseCreateOrRecreateTime {latestDatabaseCreateOrRecreateTime}, databaseName {this.DatabaseName}, databaseRid {databaseRid}");
+
+            return (latestDatabaseDeleteTime, latestDatabaseCreateOrRecreateTime, databaseRid);
+        }
+
+        public (DateTime, DateTime, string) ProcessRestorableCollections(IEnumerable restorableCollections)
+        {
+            DateTime latestCollectionDeleteTime = DateTime.MinValue;
+            DateTime latestCollectionCreateOrRecreateTime = DateTime.MinValue;
+            string collectionRid = null;
+
+            foreach (RestorableMongodbCollectionGetResult restorableCollection in restorableCollections)
+            {
+                RestorableMongodbCollectionPropertiesResource resource = restorableCollection.Resource;
+
+                if (resource != null && resource.OwnerId.Equals(this.Name))
+                {
+                    collectionRid = resource.OwnerResourceId;
+                    var eventTimestamp = DateTime.Parse(resource.EventTimestamp);
+                    if (resource.OperationType == "Delete" && latestCollectionDeleteTime < eventTimestamp)
+                    {
+                        latestCollectionDeleteTime = eventTimestamp;
+                    }
+
+                    if ((resource.OperationType == "Create" || resource.OperationType == "Recreate") && latestCollectionCreateOrRecreateTime < eventTimestamp)
+                    {
+                        latestCollectionCreateOrRecreateTime = eventTimestamp;
+                    }
+                }
+            }
+
+            if (collectionRid == null)
+            {
+                this.WriteWarning($"No restorable collection found with name: {this.Name} in database with name: {this.DatabaseName}");
+                return (latestCollectionDeleteTime, latestCollectionCreateOrRecreateTime, collectionRid);
+            }
+
+            // Collection never deleted then reset it to max time
+            latestCollectionDeleteTime = latestCollectionDeleteTime == DateTime.MinValue ? DateTime.MaxValue : latestCollectionDeleteTime;
+
+            this.WriteDebug($"ProcessRestorableCollections: latestCollectionDeleteTime {latestCollectionDeleteTime}," +
+                $" latestCollectionCreateOrRecreateTime {latestCollectionCreateOrRecreateTime}, databaseName {this.DatabaseName}, collectionName {this.Name}");
+
+            return (latestCollectionDeleteTime, latestCollectionCreateOrRecreateTime, collectionRid);
+        }
 
         public override void ExecuteCmdlet()
         {
@@ -124,82 +208,50 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     return;
                 }
 
-                Regex regex = new Regex(@"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}");
-                var matches = regex.Matches(databaseAccount.Id);
-
-                string accountInstanceId = string.Empty;
-                if (matches.Count > 1)
-                {
-                    accountInstanceId = matches[1].Value;
-                }
-
+                string accountInstanceId = databaseAccount.Name;
                 IEnumerable restorableMongoDBDatabases = CosmosDBManagementClient.RestorableMongodbDatabases.ListWithHttpMessagesAsync(databaseAccount.Location, accountInstanceId).GetAwaiter().GetResult().Body;
-                DateTime latestDatabaseDeleteTime = DateTime.MinValue;
-                DateTime latestDatabaseCreateOrRecreateTime = DateTime.MinValue;
-                DateTime latestCollectionDeleteTime = DateTime.MinValue;
-                DateTime latestCollectionCreateOrRecreateTime = DateTime.MinValue;
-                string databaseRid = string.Empty;
-                string collectionRid = string.Empty;
 
-                foreach (RestorableMongodbDatabaseGetResult restorableMongoDBDatabase in restorableMongoDBDatabases)
+                (DateTime latestDatabaseDeleteTime, DateTime latestDatabaseCreateOrRecreateTime, string databaseRid) = ProcessRestorableDatabases(restorableMongoDBDatabases);
+
+                if (databaseRid == null)
                 {
-                    if (restorableMongoDBDatabase.Resource.OwnerId.Equals(DatabaseName))
-                    {
-                        databaseRid = restorableMongoDBDatabase.Resource.OwnerResourceId;
-
-                        DateTime eventDateTime = DateTime.Parse(restorableMongoDBDatabase.Resource.EventTimestamp);
-                        if (restorableMongoDBDatabase.Resource.OperationType.Equals(OperationType.Delete) && latestDatabaseDeleteTime < eventDateTime)
-                        {
-                            latestDatabaseDeleteTime = eventDateTime;
-                        }
-
-                        if ((restorableMongoDBDatabase.Resource.OperationType.Equals(OperationType.Create) || restorableMongoDBDatabase.Resource.OperationType.Equals(OperationType.Recreate)) && latestDatabaseCreateOrRecreateTime < eventDateTime)
-                        {
-                            latestDatabaseCreateOrRecreateTime = eventDateTime;
-                        }
-                    }
+                    return;
                 }
 
-                latestDatabaseDeleteTime = latestDatabaseDeleteTime == default(DateTime) ? DateTime.MaxValue : latestDatabaseDeleteTime;
+                // Database is alive if create or recreate timestamp is later than latest delete timestamp
+                bool isDatabaseAlive = latestDatabaseCreateOrRecreateTime > latestDatabaseDeleteTime || latestDatabaseDeleteTime == DateTime.MaxValue;
+
+                if (!isDatabaseAlive)
+                {
+                    this.WriteWarning($"No active database with name {this.DatabaseName} found that contains the collection {this.Name} in location {databaseAccount.Location}");
+                    return;
+                }
+
                 IEnumerable restorableMongoDBCollections = CosmosDBManagementClient.RestorableMongodbCollections.ListWithHttpMessagesAsync(
                     databaseAccount.Location,
                     accountInstanceId,
-                    databaseRid,
-                    latestDatabaseCreateOrRecreateTime.ToString(),
-                    (latestDatabaseCreateOrRecreateTime < latestDatabaseDeleteTime) ? latestDatabaseDeleteTime.ToString() : DateTime.MaxValue.ToString()).GetAwaiter().GetResult().Body;
+                    databaseRid).GetAwaiter().GetResult().Body;
 
-                foreach (RestorableMongodbCollectionGetResult restorableMongoDBCollection in restorableMongoDBCollections)
+                (DateTime latestCollectionDeleteTime, DateTime latestCollectionCreateOrRecreateTime, string collectionRid) = ProcessRestorableCollections(restorableMongoDBCollections);
+
+                if (collectionRid == null)
                 {
-                    if (restorableMongoDBCollection.Resource.OwnerId.Equals(Name))
-                    {
-                        collectionRid = restorableMongoDBCollection.Resource.Rid;
-                        DateTime eventDateTime = DateTime.Parse(restorableMongoDBCollection.Resource.EventTimestamp);
-                        if (restorableMongoDBCollection.Resource.OperationType.Equals(OperationType.Delete) && latestCollectionDeleteTime < eventDateTime && eventDateTime <= latestDatabaseDeleteTime)
-                        {
-                            latestCollectionDeleteTime = eventDateTime;
-                        }
+                    return;
+                }
 
-                        if ((restorableMongoDBCollection.Resource.OperationType.Equals(OperationType.Create) || restorableMongoDBCollection.Resource.OperationType.Equals(OperationType.Recreate)) && latestCollectionDeleteTime < eventDateTime)
-                        {
-                            latestCollectionCreateOrRecreateTime = eventDateTime;
-                        }
-                    }
+                // Collection is alive if create or recreate timestamp is later than latest delete timestamp
+                bool isCollectionAlive = latestCollectionCreateOrRecreateTime > latestCollectionDeleteTime || latestCollectionDeleteTime == DateTime.MaxValue;
+
+                if (isCollectionAlive)
+                {
+                    this.WriteWarning($"The collection {this.Name} in database {this.DatabaseName} is currently online. " +
+                        $"Please delete the collection and provide a restore timestamp for restoring different instance of the collection. in location {databaseAccount.Location}");
+                    return;
                 }
 
                 //Subtracting 1 second from delete timestamp to restore till end of logchain in no timestamp restore.
-                if (latestCollectionDeleteTime < latestCollectionCreateOrRecreateTime && latestCollectionCreateOrRecreateTime < latestDatabaseDeleteTime)
-                {
-                    utcRestoreDateTime = latestDatabaseDeleteTime.AddSeconds(-1);
-                }
-                else if (latestCollectionCreateOrRecreateTime < latestCollectionDeleteTime && latestCollectionDeleteTime <= latestDatabaseDeleteTime)
-                {
-                    utcRestoreDateTime = latestCollectionDeleteTime.AddSeconds(-1);
-                }
-                else
-                {
-                    this.WriteWarning($"No collection with name {Name} existed in the current version of database. Please provide a restore timestamp for restoring the collection from different instance of the database");
-                    return;
-                }
+                utcRestoreDateTime = latestCollectionDeleteTime.AddSeconds(-1);
+
             }
 
             MongoDBCollectionResource mongoDBCollectionResource = new MongoDBCollectionResource

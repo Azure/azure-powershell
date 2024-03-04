@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Databricks service.
 
 ---
-## Status
-[![Az.Databricks](https://img.shields.io/powershellgallery/v/Az.Databricks.svg?style=flat-square&label=Az.Databricks "Az.Databricks")](https://www.powershellgallery.com/packages/Az.Databricks/)
 
 ## Info
 - Modifiable: yes

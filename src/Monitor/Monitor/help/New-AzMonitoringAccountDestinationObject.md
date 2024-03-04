@@ -13,7 +13,8 @@ Create an in-memory object for MonitoringAccountDestination.
 ## SYNTAX
 
 ```
-New-AzMonitoringAccountDestinationObject [-AccountResourceId <String>] [-Name <String>] [<CommonParameters>]
+New-AzMonitoringAccountDestinationObject [-AccountResourceId <String>] [-Name <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

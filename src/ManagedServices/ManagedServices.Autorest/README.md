@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the ManagedServices service.
 
 ---
-## Status
-[![Az.ManagedServices](https://img.shields.io/powershellgallery/v/Az.ManagedServices.svg?style=flat-square&label=Az.ManagedServices "Az.ManagedServices")](https://www.powershellgallery.com/packages/Az.ManagedServices/)
 
 ## Info
 - Modifiable: yes

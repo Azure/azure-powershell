@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the ServiceLinker service.
 
 ---
-## Status
-[![Az.ServiceLinker](https://img.shields.io/powershellgallery/v/Az.ServiceLinker.svg?style=flat-square&label=Az.ServiceLinker "Az.ServiceLinker")](https://www.powershellgallery.com/packages/Az.ServiceLinker/)
 
 ## Info
 - Modifiable: yes

@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.provisioningState = deploymentStack.ProvisioningState;
             this.deploymentScope = deploymentStack.DeploymentScope;
             this.description = deploymentStack.Description;
-            this.resources = deploymentStack.Resources;
+            this.resources = deploymentStack.ResourcesProperty;
             this.denySettings = deploymentStack.DenySettings;
             this.detachedResources = deploymentStack.DetachedResources;
             this.deletedResources = deploymentStack.DeletedResources;
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             // Continue deserialize if the type of Value in DeploymentVariable is array.
             mappedDeploymentVariables?.Values.ForEach(dv =>
             { 
-                if ("Array".Equals(dv?.Type))
+                if ("Array".Equals(dv?.Type) && dv?.Value != null)
                 {
                     dv.Value = JsonConvert.DeserializeObject<object[]>(dv.Value.ToString());
                 }

@@ -15,7 +15,8 @@ The operation to assess patches on a hybrid machine identity in Azure.
 ### Assess (Default)
 ```
 Invoke-AzConnectedAssessMachinePatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AssessViaIdentity

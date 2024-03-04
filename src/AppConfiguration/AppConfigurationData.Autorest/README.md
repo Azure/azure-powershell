@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the AppConfigurationdata service.
 
 ---
-## Status
-[![Az.AppConfigurationdata](https://img.shields.io/powershellgallery/v/Az.AppConfigurationdata.svg?style=flat-square&label=Az.AppConfigurationdata "Az.AppConfigurationdata")](https://www.powershellgallery.com/packages/Az.AppConfigurationdata/)
 
 ## Info
 - Modifiable: yes

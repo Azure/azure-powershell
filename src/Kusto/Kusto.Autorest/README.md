@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Kusto service.
 
 ---
-## Status
-[![Az.Kusto](https://img.shields.io/powershellgallery/v/Az.Kusto.svg?style=flat-square&label=Az.Kusto "Az.Kusto")](https://www.powershellgallery.com/packages/Az.Kusto/)
 
 ## Info
 - Modifiable: yes

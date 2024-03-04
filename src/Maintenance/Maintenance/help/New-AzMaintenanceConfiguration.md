@@ -57,6 +57,36 @@ Type                : Microsoft.Maintenance/maintenanceConfigurations
 
 Create a maintenance configuration with scope Host
 
+### Example 2
+```powershell
+New-AzMaintenanceConfiguration -ResourceGroupName sethurams-test2  -Name workervmscentralus -MaintenanceScope "InGuestPatch" -Location eastus2euap -Timezone "UTC" -StartDateTime "2025-10-09 12:30" -Duration "3:00" -RecurEvery "Day" -LinuxParameterPackageNameMaskToInclude "apt","httpd" -ExtensionProperty @{inGuestPatchMode="User"} -InstallPatchRebootSetting "IfRequired"  -Debug
+```
+
+```output
+Location                               : eastus2euap
+Tags                                   : {}
+ExtensionProperties                    : {"inGuestPatchMode":"User"}
+MaintenanceScope                       : InGuestPatch
+Id                                     : /subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/sethurams-test2/provider
+s/Microsoft.Maintenance/maintenanceConfigurations/workervmscentralus
+Name                                   : workervmscentralus
+Type                                   : Microsoft.Maintenance/maintenanceConfigurations
+StartDateTime                          : 2025-10-09 12:30
+Duration                               : 03:00
+Timezone                               : UTC
+Visibility                             : Custom
+RecurEvery                             : Day
+LinuxParameterClassificationToInclude  : System.Collections.Generic.HashSet`1[System.String]
+LinuxParameterPackageNameMaskToExclude : System.Collections.Generic.HashSet`1[System.String]
+LinuxParameterPackageNameMaskToInclude : System.Collections.Generic.HashSet`1[System.String]
+WindowParameterKbNumberToInclude       : System.Collections.Generic.HashSet`1[System.String]
+WindowParameterKbNumberToExclude       : System.Collections.Generic.HashSet`1[System.String]
+WindowParameterClassificationToInclude : System.Collections.Generic.HashSet`1[System.String]
+InstallPatchRebootSetting              : IfRequired
+```
+
+Create a maintenance configuration with scope InGuest
+
 ## PARAMETERS
 
 ### -AsJob

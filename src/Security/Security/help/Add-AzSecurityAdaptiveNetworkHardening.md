@@ -17,7 +17,8 @@ Add-AzSecurityAdaptiveNetworkHardening -AdaptiveNetworkHardeningResourceName <St
  -ResourceGroupName <String> -ResourceName <String> -ResourceNamespace <String> -ResourceType <String>
  -SubscriptionId <String> -Rule <PSSecurityAdaptiveNetworkHardeningsRule[]>
  -NetworkSecurityGroup <System.Collections.Generic.List`1[System.String]> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the PostgreSql service.
 
 ---
-## Status
-[![Az.PostgreSql](https://img.shields.io/powershellgallery/v/Az.PostgreSql.svg?style=flat-square&label=Az.PostgreSql "Az.PostgreSql")](https://www.powershellgallery.com/packages/Az.PostgreSql/)
 
 ## Info
 - Modifiable: yes
