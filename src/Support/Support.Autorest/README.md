@@ -135,6 +135,13 @@ directive:
       verb: Update
       subject: CommunicationsNoSubscription
     remove: true
+  - from: swagger-document
+    where: $.definitions.CommunicationDetails
+    transform: $.required = ['properties']
+  - from: swagger-document
+    where: $.definitions.SupportTicketDetails
+    transform: $.required = ['properties']
+
   # Following are common directives which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required

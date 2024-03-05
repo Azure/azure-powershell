@@ -114,12 +114,6 @@ This API should be used to check the uniqueness of the name for support ticket c
 Check the availability of a resource name.
 This API should be used to check the uniqueness of the name for support ticket creation for the selected subscription.
 
-### [Update-AzSupportCommunication](Update-AzSupportCommunication.md)
-Adds a new customer communication to an Azure support ticket.
-
-### [Update-AzSupportCommunicationsNoSubscription](Update-AzSupportCommunicationsNoSubscription.md)
-Adds a new customer communication to an Azure support ticket.
-
 ### [Update-AzSupportTicket](Update-AzSupportTicket.md)
 This API allows you to update the severity level, ticket status, advanced diagnostic consent and your contact information in the support ticket.\<br/\>\<br/\>Note: The severity levels cannot be changed if a support ticket is actively being worked upon by an Azure support engineer.
 In such a case, contact your support engineer to request severity update by adding a new communication using the Communications API.
