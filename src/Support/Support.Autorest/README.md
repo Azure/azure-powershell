@@ -141,7 +141,18 @@ directive:
   - from: swagger-document
     where: $.definitions.SupportTicketDetails
     transform: $.required = ['properties']
-
+  - from: GetAzSupportTicket_List.cs
+    where: $
+    transform: $ = $.replace("!String.IsNullOrEmpty(_nextLink)" ,"!String.IsNullOrEmpty(_nextLink) && this._top <= 0");
+  - from: GetAzSupportTicketsNoSubscription_List.cs
+    where: $
+    transform: $ = $.replace("!String.IsNullOrEmpty(_nextLink)" ,"!String.IsNullOrEmpty(_nextLink) && this._top <= 0");
+  - from: GetAzSupportCommunication_List.cs
+    where: $
+    transform: $ = $.replace("!String.IsNullOrEmpty(_nextLink)" ,"!String.IsNullOrEmpty(_nextLink) && this._top <= 0");
+  - from: GetAzSupportTicketCommunicationsNoSubscription_List.cs
+    where: $
+    transform: $ = $.replace("!String.IsNullOrEmpty(_nextLink)" ,"!String.IsNullOrEmpty(_nextLink) && this._top <= 0");
   # Following are common directives which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required
