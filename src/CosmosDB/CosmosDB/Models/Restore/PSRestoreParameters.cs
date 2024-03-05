@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Management.CosmosDB.Models;
+using SDKModel = Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
@@ -104,7 +105,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// <summary>
         /// Gets or Sets disablement of restoring with Time-To-Live disabled.
         /// </summary>
-        public bool? DisableTtl { get; set; }
+        public string DisableTtl { get; set; }
 
         public RestoreParameters ToSDKModel()
         {
@@ -112,8 +113,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             {
                 RestoreMode = "PointInTime",
                 RestoreSource = RestoreSource,
-                RestoreTimestampInUtc = RestoreTimestampInUtc,
-                RestoreWithTtlDisabled = DisableTtl
+                RestoreTimestampInUtc = RestoreTimestampInUtc
             };
 
             if (DatabasesToRestore != null)
@@ -146,6 +146,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             if (!string.IsNullOrEmpty(SourceBackupLocation))
             {
                 restoreParameters.SourceBackupLocation = SourceBackupLocation;
+            }
+
+            if(DisableTtl.Equals(SDKModel.Restore.DisableTtl.Enabled))
+            {
+                restoreParameters.RestoreWithTtlDisabled = true;
             }
 
             return restoreParameters;
