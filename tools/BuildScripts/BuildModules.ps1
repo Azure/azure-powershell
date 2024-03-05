@@ -1,117 +1,126 @@
 [CmdletBinding(DefaultParameterSetName="AllSet")]
 param (
     [string]$RepoRoot,
-    [string]$Configuration,
-    [string]$TestsToRun,
+    [string]$Configuration = 'Debug',
+    [Parameter(ParameterSetName="AllSet")]
+    [string]$TestsToRun = 'All',
     [string]$RepoArtifacts,
-    [string]$CoreTests,
-    [Parameter(ParameterSetName="PullRequestSet", Mandatory=$true)]
-    [string]$BuildCsprojList,
-	[Parameter(ParameterSetName="PullRequestSet", Mandatory=$false)]
-    [string]$TestCsprojList,
-	[Parameter(ParameterSetName="TargetModuleSet", Mandatory=$true)]
-    [string]$TargetModule,
-	[Parameter(ParameterSetName="ModifiedBuildSet", Mandatory=$true)]
-    [string]$ModifiedModuleBuild
+    [Parameter(ParameterSetName="CIPlanSet", Mandatory=$true)]
+    [switch]$CIPlan,
+    [Parameter(ParameterSetName="ModifiedBuildSet", Mandatory=$true)]
+    [switch]$ModifiedModuleBuild,
+	[Parameter(ParameterSetName="TargetModuleSet")]
+    [string[]]$TargetModule
 )
-
-function Include-CsprojFiles {
+function Get-CsprojFromModule {
     param (
-        [string]$Path,
-        [string]$Exclude = "",
-        [string]$Include = "",
-        [string]$Filter = "*.csproj"
-
+        [string[]]$BuildModuleList,
+        [string]$SourceDirectory,
+        [string]$GeneratedDirectory
     )
-    $excludeItems = @()
-    foreach ($item in ($Exclude -split ';')) {
-        if (-not $item) { continue }
-        if (Test-Path -Path $item -PathType Leaf) {
-            $excludeItems += Resolve-Path -Path $item
+
+    $modulePath = @()
+    foreach ($moduleName in $BuildModuleList) {
+        if ($SourceDirectory -And '' -ne $SourceDirectory) {
+            $modulePath += "$SourceDirectory/$moduleName"
         }
-        else {
-            try {
-                $excludeItems += Get-ChildItem -Path $Path -Filter $item -Recurse
-            } catch {
-                Write-Warning "Cannot find path or pattern: $item"
-            }
+        if ($SourceDirectory -And '' -ne $GeneratedDirectory) {
+            $modulePath += "$GeneratedDirectory/$moduleName"
         }
     }
-    $includeItems = @()
-    foreach ($item in ($Include -split ';')) {
-        if (-not $item) { continue }
-        if (Test-Path -Path $item -PathType Leaf) {
-            $includeItems += Resolve-Path -Path $item
-        }
-        else {
-            try {
-                $includeItems += Get-ChildItem -Path $Path -Filter $item -Recurse
-            } catch {
-                Write-Warning "Cannot find path or pattern: $item"
-            }
-        }
-    }
-    $allItems = Get-ChildItem -Path $Path -Filter $Filter -Recurse
-    if ($null -ne $includeItems -and $includeItems.Count -gt 0) {
-        $allItems = $allItems | Where-Object { 
-            ($includeItems.Path -contains $_.FullName) -or 
-            ($includeItems.FullName -contains $_.FullName) 
-        }
-    }
-    $allItems = $allItems | Where-Object { 
-        ($excludeItems.Path -notcontains $_.FullName) -and 
-        ($excludeItems.FullName -notcontains $_.FullName) 
-    }
-    $allItems
-    
+    return Get-ChildItem -Path $modulePath -Filter "*.csproj" -Recurse | foreach-object { $_.FullName }
 }
 
-function Add-Project {
-    param (
-        [string]$Path,
-        [string]$Configuration = "Release"
-    )
-    $result = @()
-    $result += Include-CsprojFiles -Path $Path -Exclude "*.Test.csproj;Authenticators.csproj" -Filter "*.csproj"
-    if ($Configuration -ne 'Release') {
-        if ($TestsToRun -eq 'All') {
-            $result += Include-CsprojFiles -Path $Path -Filter "*.Test.csproj"
-        } elseif ($TestsToRun -eq 'NonCore') {
-            $result += Include-CsprojFiles -Path $Path -Exclude $CoreTests -Filter "*.Test.csproj"
-        } elseif ($TestsToRun -eq 'Core') {
-            $result += Include-CsprojFiles -Path $Path -Include $CoreTests
-        }
-    }
-
-    if ($env:OS -eq "Windows_NT") {
-        $result += Include-CsprojFiles -Path $Path -Filter "Authenticators.csproj"
-    }
-    $result
+<#
+    TODO: add comments
+#>
+$notModules = @('lib')
+$coreTestModules = @('Compute', 'Network', 'Resources', 'Sql', 'Websites')
+$renamedModules = @{
+    'Storage' = @('Storage.Management');
+    'DataFactory' = @('DataFactoryV1', 'DataFactoryV2')
 }
 
 $csprojFiles = @()
-
-if ($PSCmdlet.ParameterSetName -eq 'AllSet') {
-    $csprojFiles += Add-Project -Path "$RepoRoot/src/" -Configuration $Configuration
+$sourceDirectory = Resolve-Path "$RepoRoot/src"
+$generatedDirectory = Resolve-Path "$RepoRoot/generated"
+$testModules = @()
+if (-not (Test-Path $sourceDirectory)) {
+    Write-Warning "Cannot find source directory: $sourceDirectory"
+} elseif (-not (Test-Path $generatedDirectory)) {
+    Write-Warning "Cannot find generated directory: $generatedDirectory"
 }
 
-if ($PSCmdlet.ParameterSetName -eq 'ModifiedBuildSet' -or $PSCmdlet.ParameterSetName -eq 'TargetModuleSet') {
-    .$RepoRoot\tools\BuildScripts\CheckChangeLogs.ps1 -outputFile $RepoArtifacts/ModifiedModule.txt -rootPath $RepoRoot -TargetModuleList $TargetModule
-    $ModuleList = Get-Content $RepoArtifacts/ModifiedModule.txt
-    foreach ($module in $ModuleList) {
-        $csprojFiles += Add-Project -Path "$RepoRoot/src/$module" -Configuration $Configuration
+switch ($PSCmdlet.ParameterSetName) {
+    'AllSet' {
+        $TargetModule = Get-Childitem -Path $sourceDirectory -Directory | ForEach-Object {$_.Name} | Where-Object { $_ -notin $notModules}
+        if ('Core' -eq $TestsToRun) {
+            $testModules = $coreTestModules
+        } elseif ('NonCore') {
+            $testModules = $TargetModule | Where-Object { $_ -notin $coreTestModules}
+        } else {
+            $testModules = $TargetModule
+        }
+    }
+    'CIPlanSet' {
+        $CIPlanPath = Resolve-Path "$RepoArtifacts/PipelineResult/CIPlan.json"
+        If (Test-Path $CIPlanPath) {
+            $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
+            $TargetModule = $CIPlan.build
+            $testModules = $CIPlan.test
+        }
+    }
+    'ModifiedBuildSet' {
+        $changelogPath = Resolve-Path "$RepoRoot/tools/Azpreview/changelog.md"
+        if (Test-Path $changelogPath) {
+            $content = Get-Content -Path $changelogPath
+            $continueReading = $false
+            foreach ($line in $content) {
+                if ($line -match "^##\s\d+\.\d+\.\d+") {
+                    if ($continueReading) {
+                        break
+                    } else {
+                        $continueReading = $true
+                    }
+                }
+                elseif ($continueReading -and $line -match "^####\sAz\.(\w+)") {
+                    $TargetModule += $matches[1]
+                }
+            }
+        }
+        $testModules = $TargetModule
+    }
+    'TargetModuleSet' {
+        $testModules = $TargetModule
     }
 }
-if ($PSCmdlet.ParameterSetName -eq 'PullRequestSet') {
-    if ($PSBoundParameters.ContainsKey('BuildCsprojList') -and $BuildCsprojList) {
-        $BuildCsprojList = (($BuildCsprojList -split ';' | ForEach-Object { Resolve-Path $_ }).Path) -join ';'
-        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Include $BuildCsprojList
+
+$csprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory
+$testCsprojPattern = @()
+foreach ($testModule in $testModules) {
+    if ($testModule -in $renamedModules) {
+        foreach ($renamedTestModule in $renamedModules[$testModule]) {
+            $testCsprojPattern += "^*.$renamedTestModule.Test.csproj$"
+        }
     }
-    if ($PSBoundParameters.ContainsKey('TestCsprojList') -and $TestCsprojList) {
-        $TestCsprojList = (($TestCsprojList -split ';' | ForEach-Object { Resolve-Path $_ }).Path) -join ';'
-        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Include $TestCsprojList
-    }
+    $testCsprojPattern += "^*.$testModule.Test.csproj$"
 }
+$testCsprojPattern = ($testCsprojPattern | Join-String -Separator '|')
+$testCsproj = $csprojFiles | Where-Object { $_ -match $testCsprojPattern }
+# can be simplified by more complex regex maybe
+$csprojFiles | Where-Object { ($_ -notmatch '^*.test.csproj$') -or $_ -in $testCsproj }
+if ($testModule -and $testModule.Length -ne 0) {
+    $csprojFiles += (Resolve-Path "$RepoRoot/tools/TestFx/TestFx.csproj")
+}
+if ('Release' -eq $Configuration) {
+    $csprojFiles | Where-Object { $_ -notmatch '^*.test.csproj$' }
+}
+$csprojFiles | Select-Object -Unique
+
+<#
+    insert generation
+#>
+
 & dotnet --version
 & dotnet new sln -n Azure.PowerShell -o $RepoArtifacts --force
 foreach ($file in $csprojFiles) {
