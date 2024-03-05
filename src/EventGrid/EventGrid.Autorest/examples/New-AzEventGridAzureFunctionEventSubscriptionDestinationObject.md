@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AzureFunctionEventSubscriptionDestination.
 ```powershell
-{{ Add code here }}
+$damObj = New-AzEventGridDeliveryAttributeMappingObject -Type "TestType" -Name "TestName"
+$eventSubObj = Get-AzEventGridEventSubscription -ResourceGroupName azps_test_group_eventgrid -DomainName azps-domain -TopicName azps-topic
+New-AzEventGridAzureFunctionEventSubscriptionDestinationObject -DeliveryAttributeMapping $damObj -ResourceId $eventSubObj.Id
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+EndpointType
+------------
+AzureFunction
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for AzureFunctionEventSubscriptionDestination.

@@ -44,27 +44,18 @@ Get all delivery attributes for an event subscription for domain topic.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all delivery attributes for an event subscription for domain topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridDomainTopicEventSubscriptionDeliveryAttribute -DomainName azps-domain -ResourceGroupName azps_test_group_eventgrid -TopicName azps-topic -EventSubscriptionName azps-eventsubname
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Value
+-----
+......
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Get all delivery attributes for an event subscription for domain topic.
 
 ## PARAMETERS
 

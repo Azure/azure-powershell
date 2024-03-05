@@ -36,27 +36,32 @@ Get the full endpoint URL of a partner destination channel.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the full endpoint URL of a partner destination channel.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridChannelFullUrl -ResourceGroupName azps_test_group_eventgrid -PartnerNamespaceName azps-partnernamespace -ChannelName azps-destination
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+EndpointUrl
+-----------
+https://azpssite.azurewebsites.net/api/updates
 ```
 
-{{ Add description here }}
+Get the full endpoint URL of a partner destination channel.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the full endpoint URL of a partner destination channel.
 ```powershell
-{{ Add code here }}
+$partnerObj = Get-AzEventGridPartnerNamespace -ResourceGroupName azps_test_group_eventgrid -Name azps-partnernamespace
+Get-AzEventGridChannelFullUrl -PartnerNamespaceInputObject $partnerObj -ChannelName azps-destination
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+EndpointUrl
+-----------
+https://azpssite.azurewebsites.net/api/updates
 ```
 
-{{ Add description here }}
+Get the full endpoint URL of a partner destination channel.
 
 ## PARAMETERS
 

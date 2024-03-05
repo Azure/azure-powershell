@@ -36,27 +36,12 @@ Delete existing domain topic.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete existing domain topic.
 ```powershell
-{{ Add code here }}
+Remove-AzEventGridDomainTopic -DomainName azps-domain -ResourceGroupName azps_test_group_eventgrid -Name azps-domaintopic
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Delete existing domain topic.
 
 ## PARAMETERS
 

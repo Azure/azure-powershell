@@ -44,27 +44,33 @@ List all event subscriptions from the given location under a specific Azure subs
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all event subscriptions from the given location under a specific Azure subscription.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridEventSubscriptionRegional -Location eastus
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              ResourceGroupName
+----              -----------------
+azps-eventsub     azps_test_group_eventgrid
+azps-eventsubname azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List all event subscriptions from the given location under a specific Azure subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: List all event subscriptions from the given location under a specific Azure subscription.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridEventSubscriptionRegional -Location eastus -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              ResourceGroupName
+----              -----------------
+azps-eventsub     azps_test_group_eventgrid
+azps-eventsubname azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List all event subscriptions from the given location under a specific Azure subscription.
 
 ## PARAMETERS
 

@@ -37,27 +37,18 @@ Get all delivery attributes for an event subscription.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all delivery attributes for an event subscription.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute -EventSubscriptionName azps-evnetsub -ResourceGroupName azps_test_group_eventgrid -SystemTopicName azps-systopic
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Value
+-----
+......
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Get all delivery attributes for an event subscription.
 
 ## PARAMETERS
 

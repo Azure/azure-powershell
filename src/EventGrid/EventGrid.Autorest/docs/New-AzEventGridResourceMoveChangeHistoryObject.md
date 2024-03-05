@@ -22,27 +22,18 @@ Create an in-memory object for ResourceMoveChangeHistory.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for ResourceMoveChangeHistory.
 ```powershell
-{{ Add code here }}
+New-AzEventGridResourceMoveChangeHistoryObject -AzureSubscriptionId "{subId}" -ChangedTimeUtc "2023-12-10T11:06:13.109Z" -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AzureSubscriptionId ChangedTimeUtc         ResourceGroupName
+------------------- --------------         -----------------
+{subId}             2023-12-10 07:06:13 PM azps_test_group_eventgrid2
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for ResourceMoveChangeHistory.
 
 ## PARAMETERS
 

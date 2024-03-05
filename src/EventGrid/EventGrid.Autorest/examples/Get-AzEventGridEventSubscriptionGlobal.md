@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all aggregated global event subscriptions under a specific Azure subscription.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridEventSubscriptionGlobal -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Value
+-----
+......
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+List all aggregated global event subscriptions under a specific Azure subscription.

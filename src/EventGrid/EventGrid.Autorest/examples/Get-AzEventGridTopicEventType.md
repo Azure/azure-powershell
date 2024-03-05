@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: List event types for a topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridTopicEventType -ProviderNamespace "Microsoft.EventGrid" -ResourceGroupName azps_test_group_eventgrid -ResourceName azps-topic -ResourceTypeName "topics"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Value
+-----
+......
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+List event types for a topic.

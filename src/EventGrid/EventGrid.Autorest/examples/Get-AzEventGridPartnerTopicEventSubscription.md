@@ -1,22 +1,39 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get properties of an event subscription of a partner topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPartnerTopic -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              ResourceGroupName
+----              -----------------
+azps-eventsubname azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Get properties of an event subscription of a partner topic.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get properties of an event subscription of a partner topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPartnerTopicEventSubscription -ResourceGroupName azps_test_group_eventgrid -PartnerTopicName default -EventSubscriptionName azps-eventsubname
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              ResourceGroupName
+----              -----------------
+azps-eventsubname azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Get properties of an event subscription of a partner topic.
 
+### Example 3: Get properties of an event subscription of a partner topic.
+```powershell
+$partnerTopicObj = Get-AzEventGridPartnerTopic -Name default -ResourceGroupName azps_test_group_eventgrid
+Get-AzEventGridPartnerTopicEventSubscription -PartnerTopicInputObject $partnerTopicObj -EventSubscriptionName azps-eventsubname
+```
+
+```output
+Name              ResourceGroupName
+----              -----------------
+azps-eventsubname azps_test_group_eventgrid
+```
+
+Get properties of an event subscription of a partner topic.

@@ -18,6 +18,74 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
+
+    $caCertificate = "a" + (RandomString -allChars $false -len 6)
+    $channel = "a" + (RandomString -allChars $false -len 6)
+    $client = "a" + (RandomString -allChars $false -len 6)
+    $clientGroup = "a" + (RandomString -allChars $false -len 6)
+    $domain = "a" + (RandomString -allChars $false -len 6)
+    $domainEventSub = "a" + (RandomString -allChars $false -len 6)
+    $domainTopic = "a" + (RandomString -allChars $false -len 6)
+    $domainTopicEventSub = "a" + (RandomString -allChars $false -len 6)
+    $eventSub = "a" + (RandomString -allChars $false -len 6)
+    $namespace = "a" + (RandomString -allChars $false -len 6)
+    $namespace2 = "a" + (RandomString -allChars $false -len 6)
+    $namespaceTopic = "a" + (RandomString -allChars $false -len 6)
+    $namespaceTopicEventSub = "a" + (RandomString -allChars $false -len 6)
+    $partnerConfiguration = "a" + (RandomString -allChars $false -len 6)
+    $partnerDestination = "a" + (RandomString -allChars $false -len 6)
+    $partnerNamespace = "a" + (RandomString -allChars $false -len 6)
+    $partnerRegistration = "a" + (RandomString -allChars $false -len 6)
+    $partnerTopicEventSub = "a" + (RandomString -allChars $false -len 6)
+    $permissionBind = "a" + (RandomString -allChars $false -len 6)
+    $sysTopic = "a" + (RandomString -allChars $false -len 6)
+    $sysTopicEventSub = "a" + (RandomString -allChars $false -len 6)
+    $topic = "a" + (RandomString -allChars $false -len 6)
+    $TopicEventSub = "a" + (RandomString -allChars $false -len 6)
+    $topicSpace = "a" + (RandomString -allChars $false -len 6)
+    
+    $env.Add("caCertificate", $caCertificate)
+    $env.Add("channel", $channel)
+    $env.Add("client", $client)
+    $env.Add("clientGroup", $clientGroup)
+    $env.Add("domain", $domain)
+    $env.Add("domainEventSub", $domainEventSub)
+    $env.Add("domainTopic", $domainTopic)
+    $env.Add("domainTopicEventSub", $domainTopicEventSub)
+    $env.Add("eventSub", $eventSub)
+    $env.Add("namespace", $namespace)
+    $env.Add("namespace2", $namespace2)
+    $env.Add("namespaceTopic", $namespaceTopic)
+    $env.Add("namespaceTopicEventSub", $namespaceTopicEventSub)
+    $env.Add("partnerConfiguration", $partnerConfiguration)
+    $env.Add("partnerDestination", $partnerDestination)
+    $env.Add("partnerNamespace", $partnerNamespace)
+    $env.Add("partnerRegistration", $partnerRegistration)
+    $env.Add("partnerTopicEventSub", $partnerTopicEventSub)
+    $env.Add("permissionBind", $permissionBind)
+    $env.Add("sysTopic", $sysTopic)
+    $env.Add("sysTopicEventSub", $sysTopicEventSub)
+    $env.Add("topic", $topic)
+    $env.Add("TopicEventSub", $TopicEventSub)
+    $env.Add("topicSpace", $topicSpace)
+    
+    $EndpointUrl = "https://azpssite.azurewebsites.net/api/updates"
+    $env.Add("EndpointUrl", $EndpointUrl)
+
+    $StorageAccount = "azpssa0123"
+    $env.Add("StorageAccount", $StorageAccount)
+
+    $env.Add("location", "eastus")
+
+    # Create the test group
+    write-host "start to create test group"
+    $resourceGroup = "azps_test_group_eventgrid"
+    $env.Add("resourceGroup", $resourceGroup)
+
+    # New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+
+    New-AzEventGridNamespace -Name $env.namespace -ResourceGroupName $env.resourceGroup -Location $env.location -TopicSpaceConfigurationState Enabled
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -27,5 +95,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    # Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

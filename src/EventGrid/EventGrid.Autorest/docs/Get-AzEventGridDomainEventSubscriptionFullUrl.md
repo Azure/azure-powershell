@@ -37,27 +37,32 @@ Get the full endpoint URL for an event subscription for domain.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the full endpoint URL for an event subscription for domain.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridDomainEventSubscriptionFullUrl -ResourceGroupName azps_test_group_eventgrid -DomainName azps-domain -EventSubscriptionName azps-eventsubname
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+EndpointUrl
+-----------
+https://azpssite.azurewebsites.net/api/updates
 ```
 
-{{ Add description here }}
+Get the full endpoint URL for an event subscription for domain.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the full endpoint URL for an event subscription for domain.
 ```powershell
-{{ Add code here }}
+$domainObj = Get-AzEventGridDomain -ResourceGroupName azps_test_group_eventgrid -Name azps-domain
+Get-AzEventGridDomainEventSubscriptionFullUrl -DomainInputObject $domainObj -EventSubscriptionName azps-eventsubname
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+EndpointUrl
+-----------
+https://azpssite.azurewebsites.net/api/updates
 ```
 
-{{ Add description here }}
+Get the full endpoint URL for an event subscription for domain.
 
 ## PARAMETERS
 

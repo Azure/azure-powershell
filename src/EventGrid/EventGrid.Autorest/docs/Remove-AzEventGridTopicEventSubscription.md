@@ -37,27 +37,12 @@ Delete an existing event subscription for a topic.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete an existing event subscription for a topic.
 ```powershell
-{{ Add code here }}
+Remove-AzEventGridTopicEventSubscription -EventSubscriptionName azps-eventsub -ResourceGroupName azps_test_group_eventgrid -TopicName azps-topic
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Delete an existing event subscription for a topic.
 
 ## PARAMETERS
 

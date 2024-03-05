@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Asynchronously updates a partner topic with the specified parameters.
 ```powershell
-{{ Add code here }}
+Update-AzEventGridPartnerTopic -Name default -ResourceGroupName azps_test_group_eventgrid -IdentityType 'SystemAssigned, UserAssigned' -IdentityUserAssignedIdentity @{"/subscriptions/{subId}/resourcegroups/azps_test_group_eventgrid/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uami"="{}"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name    ResourceGroupName
+-------- ----    -----------------
+eastus   default azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Asynchronously updates a partner topic with the specified parameters.

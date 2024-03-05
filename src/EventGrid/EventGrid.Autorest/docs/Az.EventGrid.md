@@ -191,6 +191,9 @@ Create a client with the specified parameters.
 ### [New-AzEventGridClientGroup](New-AzEventGridClientGroup.md)
 Create a client group with the specified parameters.
 
+### [New-AzEventGridDeliveryAttributeMappingObject](New-AzEventGridDeliveryAttributeMappingObject.md)
+Create an in-memory object for DeliveryAttributeMapping.
+
 ### [New-AzEventGridDomain](New-AzEventGridDomain.md)
 Asynchronously Create a new domain with the specified parameters.
 
@@ -382,9 +385,6 @@ Delete an existing event subscription for a topic.
 
 ### [Remove-AzEventGridTopicSpace](Remove-AzEventGridTopicSpace.md)
 Delete an existing topic space.
-
-### [Update-AzEventGridCaCertificate](Update-AzEventGridCaCertificate.md)
-Create a CA certificate with the specified parameters.
 
 ### [Update-AzEventGridChannel](Update-AzEventGridChannel.md)
 Synchronously updates a channel with the specified parameters.

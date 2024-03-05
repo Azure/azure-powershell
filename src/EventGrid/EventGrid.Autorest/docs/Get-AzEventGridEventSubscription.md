@@ -43,27 +43,31 @@ Get properties of an event subscription.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get properties of an event subscription.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridEventSubscription -ResourceGroupName azps_test_group_eventgrid -DomainName azps-domain -TopicName azps-topic
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              ResourceGroupName
+----              -----------------
+azps-eventsubname azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Get properties of an event subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get properties of an event subscription.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridEventSubscription -Name azps-eventsub -Scope "/subscriptions/{subId}/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/topics/azps-topic"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name          ResourceGroupName
+----          -----------------
+azps-eventsub azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Get properties of an event subscription.
 
 ## PARAMETERS
 

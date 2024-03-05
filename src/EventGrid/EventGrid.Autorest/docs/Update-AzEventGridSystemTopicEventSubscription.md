@@ -75,27 +75,19 @@ Update an existing event subscription of a system topic.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an existing event subscription of a system topic.
 ```powershell
-{{ Add code here }}
+$obj = New-AzEventGridWebHookEventSubscriptionDestinationObject -EndpointUrl "https://azpsweb.azurewebsites.net/api/updates"
+Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName azps-evnetsub -ResourceGroupName azps_test_group_eventgrid -SystemTopicName azps-systopic -FilterIsSubjectCaseSensitive:$false -FilterSubjectBeginsWith "ExamplePrefix" -FilterSubjectEndsWith "ExampleSuffix" -Destination $obj
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name          ResourceGroupName
+----          -----------------
+azps-evnetsub azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Update an existing event subscription of a system topic.
 
 ## PARAMETERS
 

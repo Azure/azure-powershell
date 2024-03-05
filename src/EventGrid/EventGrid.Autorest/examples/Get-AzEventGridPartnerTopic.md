@@ -1,22 +1,38 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get properties of a partner topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPartnerTopic
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name    ResourceGroupName
+-------- ----    -----------------
+eastus   default azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Get properties of a partner topic.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get properties of a partner topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPartnerTopic -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name    ResourceGroupName
+-------- ----    -----------------
+eastus   default azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Get properties of a partner topic.
 
+### Example 3: Get properties of a partner topic.
+```powershell
+Get-AzEventGridPartnerTopic -Name default -ResourceGroupName azps_test_group_eventgrid
+```
+
+```output
+Location Name    ResourceGroupName
+-------- ----    -----------------
+eastus   default azps_test_group_eventgrid
+```
+
+Get properties of a partner topic.

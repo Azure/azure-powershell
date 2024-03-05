@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the full endpoint URL for an event subscription of a partner topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPartnerTopicEventSubscriptionFullUrl -ResourceGroupName azps_test_group_eventgrid -PartnerTopicName default -EventSubscriptionName azps-eventsubname
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+EndpointUrl
+-----------
+https://azpssite.azurewebsites.net/api/updates
 ```
 
-{{ Add description here }}
+Get the full endpoint URL for an event subscription of a partner topic.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the full endpoint URL for an event subscription of a partner topic.
 ```powershell
-{{ Add code here }}
+$partnerTopicObj = Get-AzEventGridPartnerTopic -Name default -ResourceGroupName azps_test_group_eventgrid
+Get-AzEventGridPartnerTopicEventSubscriptionFullUrl -PartnerTopicInputObject $partnerTopicObj -EventSubscriptionName azps-eventsubname
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+EndpointUrl
+-----------
+https://azpssite.azurewebsites.net/api/updates
 ```
 
-{{ Add description here }}
-
+Get the full endpoint URL for an event subscription of a partner topic.

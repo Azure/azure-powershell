@@ -1,22 +1,38 @@
-### Example 1: {{ Add title here }}
+### Example 1: List properties of partner destination.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPartnerDestination
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name        ResourceGroupName
+-------- ----        -----------------
+eastus   azps-destin azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of partner destination.
 
-### Example 2: {{ Add title here }}
+### Example 2: List properties of partner destination.
 ```powershell
-{{ Add code here }}
+Get-azeventGridPartnerDestination -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name        ResourceGroupName
+-------- ----        -----------------
+eastus   azps-destin azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+List properties of partner destination.
 
+### Example 3: Get properties of a partner destination.
+```powershell
+Get-azeventGridPartnerDestination -ResourceGroupName azps_test_group_eventgrid -Name azps-destin
+```
+
+```output
+Location Name        ResourceGroupName
+-------- ----        -----------------
+eastus   azps-destin azps_test_group_eventgrid
+```
+
+Get properties of a partner destination.

@@ -1,22 +1,39 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get properties of an event subscription of a domain.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridDomainEventSubscription -DomainName azps-domain -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              ResourceGroupName
+----              -----------------
+azps-eventsubname azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Get properties of an event subscription of a domain.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get properties of an event subscription of a domain.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridDomainEventSubscription -DomainName azps-domain -ResourceGroupName azps_test_group_eventgrid -EventSubscriptionName azps-eventsubname
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              ResourceGroupName
+----              -----------------
+azps-eventsubname azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Get properties of an event subscription of a domain.
 
+### Example 3: Get properties of an event subscription of a domain.
+```powershell
+$domainObj = Get-AzEventGridDomain -ResourceGroupName azps_test_group_eventgrid -Name azps-domain
+Get-AzEventGridDomainEventSubscription -DomainInputObject $domainObj -EventSubscriptionName azps-eventsubname
+```
+
+```output
+Name              ResourceGroupName
+----              -----------------
+azps-eventsubname azps_test_group_eventgrid
+```
+
+Get properties of an event subscription of a domain.

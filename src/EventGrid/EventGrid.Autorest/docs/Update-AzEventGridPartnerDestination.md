@@ -43,27 +43,18 @@ Asynchronously updates a partner destination with the specified parameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Asynchronously updates a partner destination with the specified parameters.
 ```powershell
-{{ Add code here }}
+Update-AzEventGridPartnerDestination -Name azps-destin -ResourceGroupName azps_test_group_eventgrid -Tag @{"123"="abc"} -DefaultProfile "test default"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name        ResourceGroupName
+-------- ----        -----------------
+eastus   azps-destin azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Asynchronously updates a partner destination with the specified parameters.
 
 ## PARAMETERS
 

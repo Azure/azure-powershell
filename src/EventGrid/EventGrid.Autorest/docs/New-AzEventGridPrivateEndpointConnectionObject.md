@@ -24,27 +24,25 @@ Create an in-memory object for PrivateEndpointConnection.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for PrivateEndpointConnection.
 ```powershell
-{{ Add code here }}
+New-AzEventGridPrivateEndpointConnectionObject -GroupId "TestId" -PrivateEndpointId "TestPrivateEndpointId" -PrivateLinkServiceConnectionStateActionsRequired "TestActionsRequired" -PrivateLinkServiceConnectionStateDescription "TestDescription" -PrivateLinkServiceConnectionStateStatus Approved -ProvisioningState Succeeded | fl
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+GroupId                                          : {TestId}
+Id                                               :
+Name                                             :
+PrivateEndpointId                                : TestPrivateEndpointId
+PrivateLinkServiceConnectionStateActionsRequired : TestActionsRequired
+PrivateLinkServiceConnectionStateDescription     : TestDescription
+PrivateLinkServiceConnectionStateStatus          : Approved
+ProvisioningState                                : Succeeded
+ResourceGroupName                                :
+Type                                             :
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for PrivateEndpointConnection.
 
 ## PARAMETERS
 

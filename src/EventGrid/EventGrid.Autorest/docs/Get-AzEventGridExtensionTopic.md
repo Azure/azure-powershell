@@ -21,27 +21,18 @@ Get the properties of an extension topic.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the properties of an extension topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridExtensionTopic -Scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Value
+-----
+......
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Get the properties of an extension topic.
 
 ## PARAMETERS
 

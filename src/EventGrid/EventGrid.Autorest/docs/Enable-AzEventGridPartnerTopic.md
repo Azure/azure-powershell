@@ -29,27 +29,31 @@ Activate a newly created partner topic.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Activate a newly created partner topic.
 ```powershell
-{{ Add code here }}
+Enable-AzEventGridPartnerTopic -Name default -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name    ResourceGroupName
+-------- ----    -----------------
+eastus   default azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Activate a newly created partner topic.
 
-### Example 2: {{ Add title here }}
+### Example 2: Activate a newly created partner topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridPartnerTopic -Name default -ResourceGroupName azps_test_group_eventgrid | Enable-AzEventGridPartnerTopic
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name    ResourceGroupName
+-------- ----    -----------------
+eastus   default azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
+Activate a newly created partner topic.
 
 ## PARAMETERS
 

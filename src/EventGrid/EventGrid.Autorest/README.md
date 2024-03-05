@@ -176,6 +176,27 @@ directive:
       }
 
   - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}"].patch.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/definitions/PartnerTopic"
+          }
+        },
+        "201": {
+          "description": "Partner Topic update request accepted.",
+          "schema": {
+            "$ref": "#/definitions/PartnerTopic"
+          }
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 500 Internal Server Error."
+        }
+      }
+
+  - from: swagger-document 
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/eventSubscriptions/{eventSubscriptionName}"].patch.responses
     transform: >-
       return {
@@ -218,6 +239,27 @@ directive:
       }
 
   - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}"].patch.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/definitions/Domain"
+          }
+        },
+        "201": {
+          "description": "Domain update request accepted.",
+          "schema": {
+            "$ref": "#/definitions/Domain"
+          }
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 500 Internal Server Error."
+        }
+      }
+
+  - from: swagger-document 
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}"].patch.responses
     transform: >-
       return {
@@ -252,6 +294,21 @@ directive:
           "description": "Created",
           "schema": {
             "$ref": "#/definitions/EventSubscription"
+          }
+        },
+        "default": {
+          "description": "*** Error Responses: ***\n\n * 400 Bad Request.\n\n * 500 Internal Server Error."
+        }
+      }
+
+  - from: swagger-document 
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerNamespaces/{partnerNamespaceName}/channels/{channelName}"].patch.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/definitions/Channel"
           }
         },
         "default": {
@@ -413,9 +470,16 @@ directive:
     - model-name: ResourceMoveChangeHistory
     - model-name: PrivateEndpointConnection
     - model-name: DynamicRoutingEnrichment
+    - model-name: DeliveryAttributeMapping
     - model-name: StaticRoutingEnrichment
     - model-name: InboundIPRule
     - model-name: AdvancedFilter
     - model-name: Partner
     - model-name: Filter
+
+  # CA Certificates cannot be updated. Please delete the existing CA Certificate resource and recreate it with the desired values.
+  - where:
+      verb: Update
+      subject: CaCertificate
+    remove: true
 ```

@@ -39,7 +39,7 @@ Get the full endpoint URL for an event subscription of a system topic.
 
 ### Example 1: Get the full endpoint URL for an event subscription of a system topic.
 ```powershell
-Get-AzEventGridSystemTopic -ResourceGroupName azps_test_group_eventgrid -Name azps-systopic
+Get-AzEventGridSystemTopicEventSubscriptionFullUrl -ResourceGroupName azps_test_group_eventgrid -SystemTopicName azps-systopic -EventSubscriptionName azps-evnetsub
 ```
 
 ```output

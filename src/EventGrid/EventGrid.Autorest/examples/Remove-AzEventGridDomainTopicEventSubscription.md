@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a nested existing event subscription for a domain topic.
 ```powershell
-{{ Add code here }}
+Remove-AzEventGridDomainTopicEventSubscription -DomainName azps-domain -EventSubscriptionName azps-eventsub -ResourceGroupName azps_test_group_eventgrid -TopicName azps-topic
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Delete a nested existing event subscription for a domain topic.

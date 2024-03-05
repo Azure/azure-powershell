@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Activate a newly created partner destination.
 ```powershell
-{{ Add code here }}
+Enable-AzEventGridPartnerDestination -Name azps-destination -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Location Name        ResourceGroupName
+-------- ----        -----------------
+eastus   azps-destin azps_test_group_eventgrid
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Activate a newly created partner destination.

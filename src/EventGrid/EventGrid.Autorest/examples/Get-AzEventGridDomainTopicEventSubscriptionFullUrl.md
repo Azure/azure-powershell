@@ -1,22 +1,40 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the full endpoint URL for a nested event subscription for domain topic.
 ```powershell
-{{ Add code here }}
+Get-AzEventGridDomainTopicEventSubscriptionFullUrl -DomainName azps-domain -ResourceGroupName azps_test_group_eventgrid -TopicName azps-topic -EventSubscriptionName azps-eventsubname
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+EndpointUrl
+-----------
+https://azpssite.azurewebsites.net/api/updates
 ```
 
-{{ Add description here }}
+Get the full endpoint URL for a nested event subscription for domain topic.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the full endpoint URL for a nested event subscription for domain topic.
 ```powershell
-{{ Add code here }}
+$domainObj = Get-AzEventGridDomain -ResourceGroupName azps_test_group_eventgrid -Name azps-domain
+Get-AzEventGridDomainTopicEventSubscriptionFullUrl -DomainInputObject $domainObj -TopicName azps-topic -EventSubscriptionName azps-eventsubname
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+EndpointUrl
+-----------
+https://azpssite.azurewebsites.net/api/updates
 ```
 
-{{ Add description here }}
+Get the full endpoint URL for a nested event subscription for domain topic.
 
+### Example 3: Get the full endpoint URL for a nested event subscription for domain topic.
+```powershell
+$domainTopicObj = Get-AzEventGridDomainTopic -DomainName azps-domain -ResourceGroupName azps_test_group_eventgrid -Name azps-topic
+Get-AzEventGridDomainTopicEventSubscriptionFullUrl -TopicInputObject $domainTopicObj -EventSubscriptionName azps-eventsubname
+```
+
+```output
+EndpointUrl
+-----------
+https://azpssite.azurewebsites.net/api/updates
+```
+
+Get the full endpoint URL for a nested event subscription for domain topic.
