@@ -115,6 +115,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableTtl
+Flag to disable Time-To-Live on the restored account. Possible values include: false, true
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -GremlinDatabasesToRestore
 The list of PSGremlinDatabaseToRestore objects which specify the subset of databases and graphs to restore from the source account. (If not provided, all the databases will be restored)
 
@@ -151,21 +166,6 @@ Flag to allow/block public endpoint access the restored account. Possible values
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisableTtl
-Flag to disable Time-To-Live on the restored account. Possible values include: false, true
-
-```yaml
-Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
