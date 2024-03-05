@@ -78,6 +78,7 @@ function setupEnv() {
     $env.Add("location", "eastus")
 
     # Create the test group
+    # Need to create env: App Server, App Server plan, Application Insights, Function App, Managed Identity, Storage account, Smart detector alert rule
     write-host "start to create test group"
     $resourceGroup = "azps_test_group_eventgrid"
     $env.Add("resourceGroup", $resourceGroup)
