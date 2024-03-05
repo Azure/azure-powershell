@@ -18,7 +18,6 @@ param (
     [string]$Configuration = 'Debug',
     [Parameter(ParameterSetName="AllSet")]
     [string]$TestsToRun = 'All',
-    [string]$RepoArtifacts,
     [Parameter(ParameterSetName="CIPlanSet", Mandatory=$true)]
     [switch]$CIPlan,
     [Parameter(ParameterSetName="ModifiedBuildSet", Mandatory=$true)]
@@ -57,9 +56,9 @@ $renamedModules = @{
 $RepoArtifacts = (Resolve-Path "$RepoRoot/Artifacts")
 
 $csprojFiles = @()
+$testModules = @()
 $sourceDirectory = Resolve-Path "$RepoRoot/src"
 $generatedDirectory = Resolve-Path "$RepoRoot/generated"
-$testModules = @()
 if (-not (Test-Path $sourceDirectory)) {
     Write-Warning "Cannot find source directory: $sourceDirectory"
 } elseif (-not (Test-Path $generatedDirectory)) {
