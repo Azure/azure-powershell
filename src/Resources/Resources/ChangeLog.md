@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Used correct JSON serializer settings for all templates-related deserialization.
 
 ## Version 6.16.0
 * Added breaking change warnings for Azure Policy cmdlets.
