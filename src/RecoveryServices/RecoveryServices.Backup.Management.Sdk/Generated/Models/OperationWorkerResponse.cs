@@ -25,19 +25,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="statusCode">HTTP Status Code of the operation.
-        /// Possible values include: 'Continue', 'SwitchingProtocols', 'OK', 'Created',
-        /// 'Accepted', 'NonAuthoritativeInformation', 'NoContent', 'ResetContent',
-        /// 'PartialContent', 'MultipleChoices', 'Ambiguous', 'MovedPermanently',
-        /// 'Moved', 'Found', 'Redirect', 'SeeOther', 'RedirectMethod', 'NotModified',
-        /// 'UseProxy', 'Unused', 'TemporaryRedirect', 'RedirectKeepVerb',
-        /// 'BadRequest', 'Unauthorized', 'PaymentRequired', 'Forbidden', 'NotFound',
-        /// 'MethodNotAllowed', 'NotAcceptable', 'ProxyAuthenticationRequired',
-        /// 'RequestTimeout', 'Conflict', 'Gone', 'LengthRequired',
-        /// 'PreconditionFailed', 'RequestEntityTooLarge', 'RequestUriTooLong',
-        /// 'UnsupportedMediaType', 'RequestedRangeNotSatisfiable',
-        /// 'ExpectationFailed', 'UpgradeRequired', 'InternalServerError',
-        /// 'NotImplemented', 'BadGateway', 'ServiceUnavailable', 'GatewayTimeout',
-        /// 'HttpVersionNotSupported'</param>
+        /// Possible values include: &#39;Continue&#39;, &#39;SwitchingProtocols&#39;, &#39;OK&#39;, &#39;Created&#39;,
+        /// &#39;Accepted&#39;, &#39;NonAuthoritativeInformation&#39;, &#39;NoContent&#39;, &#39;ResetContent&#39;,
+        /// &#39;PartialContent&#39;, &#39;MultipleChoices&#39;, &#39;Ambiguous&#39;, &#39;MovedPermanently&#39;,
+        /// &#39;Moved&#39;, &#39;Found&#39;, &#39;Redirect&#39;, &#39;SeeOther&#39;, &#39;RedirectMethod&#39;, &#39;NotModified&#39;,
+        /// &#39;UseProxy&#39;, &#39;Unused&#39;, &#39;TemporaryRedirect&#39;, &#39;RedirectKeepVerb&#39;,
+        /// &#39;BadRequest&#39;, &#39;Unauthorized&#39;, &#39;PaymentRequired&#39;, &#39;Forbidden&#39;, &#39;NotFound&#39;,
+        /// &#39;MethodNotAllowed&#39;, &#39;NotAcceptable&#39;, &#39;ProxyAuthenticationRequired&#39;,
+        /// &#39;RequestTimeout&#39;, &#39;Conflict&#39;, &#39;Gone&#39;, &#39;LengthRequired&#39;,
+        /// &#39;PreconditionFailed&#39;, &#39;RequestEntityTooLarge&#39;, &#39;RequestUriTooLong&#39;,
+        /// &#39;UnsupportedMediaType&#39;, &#39;RequestedRangeNotSatisfiable&#39;,
+        /// &#39;ExpectationFailed&#39;, &#39;UpgradeRequired&#39;, &#39;InternalServerError&#39;,
+        /// &#39;NotImplemented&#39;, &#39;BadGateway&#39;, &#39;ServiceUnavailable&#39;, &#39;GatewayTimeout&#39;,
+        /// &#39;HttpVersionNotSupported&#39;</param>
 
         /// <param name="headers">HTTP headers associated with this operation.
         /// </param>

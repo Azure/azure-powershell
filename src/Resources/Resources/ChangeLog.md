@@ -19,11 +19,14 @@
 -->
 
 ## Upcoming Release
+* Use correct JSON serializer settings for all templates-related deserialization.
+
+## Version 6.16.0
+* Added breaking change warnings for Azure Policy cmdlets.
 * Added `AuxTenant` parameter in `New-AzResourceGroupDeployment`to support cross-tenant deployment.
 * Fixed bug with custom types and deployments whatif. [#13245]
 * Fixed bug with nullable array parameters & outputs.
 * Fixed bug with TemplateParameterUri not downloading parameters correctly.
-* Use correct JSON serializer settings for all templates-related deserialization.
 
 ## Version 6.15.1
 * Fixed deadlock in Bicep CLI execution. [#24133]

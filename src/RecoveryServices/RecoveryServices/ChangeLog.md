@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added option to set snapshot consistency type in policy cmdlets for creating or updating enhanced AzureVM policies.
+* Fixed an issue while setting soft delete vault property. 
 
 ## Version 6.7.1
 * Added CRR support for taiwannorth, taiwannorthwest region.

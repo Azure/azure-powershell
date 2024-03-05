@@ -262,7 +262,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                 if (oldPolicySubType == PSPolicyType.Standard && newPolicySubType == PSPolicyType.Enhanced)
                 {
-                    // resx Resources.StdToEnhPolicyMigrationWarning
                     Logger.Instance.WriteWarning(String.Format(Resources.StdToEnhPolicyMigrationWarning));
                 }
                 #endregion
@@ -510,8 +509,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             if(storageAccountResource == null)
             {
-                //resx
-                throw new ArgumentException("Storage Account not found");
+                throw new ArgumentException(String.Format(Resources.RestoreAzureStorageNotFound));
             }
 
             var useOsa = ShouldUseOsa(rp, osaOption);
@@ -893,6 +891,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             string snapshotRGName = (string)ProviderData[PolicyParams.BackupSnapshotResourceGroup];
             string snapshotRGNameSuffix = (string)ProviderData[PolicyParams.BackupSnapshotResourceGroupSuffix];
+            SnapshotConsistencyType snapshotConsistencyType = (SnapshotConsistencyType)ProviderData[PolicyParams.SnapshotConsistencyType];
 
             // do validations
             ValidateAzureVMWorkloadType(workloadType);                       
@@ -974,6 +973,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new ArgumentException(String.Format(Resources.RequiredBackupSnapshotResourceGroup));
             }
 
+            string consistencyType = null;
+            if (snapshotConsistencyType != 0)
+            {
+                if (!((schedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2))))
+                {
+                    throw new ArgumentException(string.Format(Resources.SnapshotConsistencyTypeCantBeSetForStandardPolicy));
+                }
+
+                if (snapshotConsistencyType == SnapshotConsistencyType.OnlyCrashConsistent)
+                {
+                    consistencyType = snapshotConsistencyType.ToString();
+                }
+            }
+
             // construct Service Client policy request            
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource()
             {
@@ -986,7 +999,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     PolicyType = (schedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2)) ? "V2" : null,
                     TimeZone = timeZone,
                     InstantRpRetentionRangeInDays = snapshotRetentionInDays,
-                    InstantRpDetails = instantRPAdditionalDetails
+                    InstantRpDetails = instantRPAdditionalDetails,
+                    SnapshotConsistencyType = consistencyType
                 }
             };
 
@@ -1019,6 +1033,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             string snapshotRGName = (string)ProviderData[PolicyParams.BackupSnapshotResourceGroup];
             string snapshotRGNameSuffix = (string)ProviderData[PolicyParams.BackupSnapshotResourceGroupSuffix];
+            SnapshotConsistencyType snapshotConsistencyType = (SnapshotConsistencyType)ProviderData[PolicyParams.SnapshotConsistencyType];
 
             // do validations
             ValidateAzureVMProtectionPolicy(policy);
@@ -1110,6 +1125,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 throw new ArgumentException(String.Format(Resources.RequiredBackupSnapshotResourceGroup));
             }
 
+            string consistencyType = ((AzureVmPolicy)policy).SnapshotConsistencyType;
+            if(snapshotConsistencyType != 0)
+            {
+                if(!(((AzureVmPolicy)policy).SchedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2)))
+                {                    
+                    throw new ArgumentException(string.Format(Resources.SnapshotConsistencyTypeCantBeSetForStandardPolicy));
+                }
+
+                if (snapshotConsistencyType == SnapshotConsistencyType.Default){
+                    consistencyType = null;
+                }
+                else
+                {
+                    consistencyType = snapshotConsistencyType.ToString();
+                }
+            }
+
             // construct Service Client policy request            
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource()
             {
@@ -1124,9 +1156,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     InstantRpRetentionRangeInDays = ((AzureVmPolicy)policy).SnapshotRetentionInDays,
                     InstantRpDetails = (instantRPAdditionalDetails != null)? instantRPAdditionalDetails : new InstantRPAdditionalDetails(
                         ((AzureVmPolicy)policy).AzureBackupRGName,
-                        ((AzureVmPolicy)policy).AzureBackupRGNameSuffix)
+                        ((AzureVmPolicy)policy).AzureBackupRGNameSuffix),
+                    SnapshotConsistencyType = consistencyType
                 }
-            };
+            };            
 
             // check for MUA
             bool isMUAProtected = false;

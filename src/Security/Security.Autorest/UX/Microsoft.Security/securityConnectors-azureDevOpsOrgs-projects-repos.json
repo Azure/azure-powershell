@@ -1,0 +1,62 @@
+{
+  "resourceType": "securityConnectors/azureDevOpsOrgs/projects/repos",
+  "apiVersion": "2023-09-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.security"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSecurityConnectorAzureDevOpsRepo",
+      "description": "Returns a monitored Azure DevOps repository resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default/azureDevOpsOrgs/{orgName}/projects/{projectName}/repos/{repoName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorazuredevopsrepo"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-OrgName <String>",
+              "-ProjectName <String>",
+              "-RepoName <String>",
+              "-ResourceGroupName <String>",
+              "-SecurityConnectorName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns a monitored Azure DevOps repository resource.",
+          "parameters": [
+            {
+              "name": "-OrgName",
+              "value": "[Path.orgName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
+            },
+            {
+              "name": "-RepoName",
+              "value": "[Path.repoName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SecurityConnectorName",
+              "value": "[Path.securityConnectorName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
