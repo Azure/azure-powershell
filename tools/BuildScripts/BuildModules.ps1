@@ -1,5 +1,19 @@
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
 [CmdletBinding(DefaultParameterSetName="AllSet")]
 param (
+    [Parameter(Mandatory=$true)]
     [string]$RepoRoot,
     [string]$Configuration = 'Debug',
     [Parameter(ParameterSetName="AllSet")]
@@ -22,10 +36,10 @@ function Get-CsprojFromModule {
     $modulePath = @()
     foreach ($moduleName in $BuildModuleList) {
         if ($SourceDirectory -And '' -ne $SourceDirectory) {
-            $modulePath += "$SourceDirectory/$moduleName"
+            $modulePath += (Resolve-Path "$SourceDirectory/$moduleName")
         }
         if ($SourceDirectory -And '' -ne $GeneratedDirectory) {
-            $modulePath += "$GeneratedDirectory/$moduleName"
+            $modulePath += (Resolve-Path "$GeneratedDirectory/$moduleName")
         }
     }
     return Get-ChildItem -Path $modulePath -Filter "*.csproj" -Recurse | foreach-object { $_.FullName }
@@ -34,12 +48,13 @@ function Get-CsprojFromModule {
 <#
     TODO: add comments
 #>
-$notModules = @('lib')
+$notModules = @('lib', 'shared')
 $coreTestModules = @('Compute', 'Network', 'Resources', 'Sql', 'Websites')
 $renamedModules = @{
     'Storage' = @('Storage.Management');
     'DataFactory' = @('DataFactoryV1', 'DataFactoryV2')
 }
+$RepoArtifacts = (Resolve-Path "$RepoRoot/Artifacts")
 
 $csprojFiles = @()
 $sourceDirectory = Resolve-Path "$RepoRoot/src"
@@ -123,7 +138,8 @@ $csprojFiles | Select-Object -Unique
 
 & dotnet --version
 & dotnet new sln -n Azure.PowerShell -o $RepoArtifacts --force
+$sln = (Resolve-Path "$RepoArtifacts/Azure.PowerShell.sln")
 foreach ($file in $csprojFiles) {
-    & dotnet sln $RepoArtifacts/Azure.PowerShell.sln add "$file"
+    & dotnet sln $sln add "$file"
 }
 Write-Output "Modules are added to sln file"
