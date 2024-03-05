@@ -331,7 +331,7 @@ function Test-TableMigrateThroughputCmdlets
 #>
 function Test-TableInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
 {
-    $AccountName = "dbaccount-table-ntbr4"
+    $AccountName = "dbaccount-table-ntbr41"
     $rgName = "CosmosDBResourceGroup66"
     $DatabaseName = "iar-table-ntbrtest"
     $ContainerName = "container1"
