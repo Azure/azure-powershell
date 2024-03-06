@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the EventGrid service.
 
 ---
-## Status
-[![Az.EventGrid](https://img.shields.io/powershellgallery/v/Az.EventGrid.svg?style=flat-square&label=Az.EventGrid "Az.EventGrid")](https://www.powershellgallery.com/packages/Az.EventGrid/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -49,6 +46,19 @@ use-extension:
   "@autorest/powershell": "4.x"
 
 directive:
+  - from: swagger-document 
+    where: $.definitions.TrackedResource.properties.location
+    transform: >-
+      return {
+        "description": "Location of the resource.",
+        "type": "string",
+        "x-ms-mutability": [
+          "read",
+          "create",
+          "update"
+        ]
+      }
+
   - from: swagger-document 
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}"].put.responses
     transform: >-

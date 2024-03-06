@@ -172,7 +172,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
@@ -310,7 +309,6 @@ Accept wildcard characters: False
 
 ### -PartnerDestinationInfoResourceMoveChangeHistory
 Change history of the resource move.
-To construct, see NOTES section for PARTNERDESTINATIONINFORESOURCEMOVECHANGEHISTORY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IResourceMoveChangeHistory[]
@@ -326,7 +324,6 @@ Accept wildcard characters: False
 
 ### -PartnerNamespaceInputObject
 Identity Parameter
-To construct, see NOTES section for PARTNERNAMESPACEINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity

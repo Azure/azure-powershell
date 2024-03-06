@@ -19,8 +19,8 @@ New-AzEventGridNamespaceTopicEventSubscription -EventSubscriptionName <String> -
  -ResourceGroupName <String> -TopicName <String> [-SubscriptionId <String>]
  [-DeliveryConfigurationDeliveryMode <String>] [-EventDeliverySchema <String>]
  [-FilterConfigurationFilter <IFilter[]>] [-FilterConfigurationIncludedEventType <String[]>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentity <String>] [-QueueEventTimeToLive <TimeSpan>]
- [-QueueMaxDeliveryCount <Int32>] [-QueueReceiveLockDurationInSecond <Int32>] [-DefaultProfile <PSObject>]
+ [-IdentityType <String>] [-QueueEventTimeToLive <TimeSpan>] [-QueueMaxDeliveryCount <Int32>]
+ [-QueueReceiveLockDurationInSecond <Int32>] [-UserAssignedIdentity <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,8 +29,8 @@ New-AzEventGridNamespaceTopicEventSubscription -EventSubscriptionName <String> -
 New-AzEventGridNamespaceTopicEventSubscription -InputObject <IEventGridIdentity>
  [-DeliveryConfigurationDeliveryMode <String>] [-EventDeliverySchema <String>]
  [-FilterConfigurationFilter <IFilter[]>] [-FilterConfigurationIncludedEventType <String[]>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentity <String>] [-QueueEventTimeToLive <TimeSpan>]
- [-QueueMaxDeliveryCount <Int32>] [-QueueReceiveLockDurationInSecond <Int32>] [-DefaultProfile <PSObject>]
+ [-IdentityType <String>] [-QueueEventTimeToLive <TimeSpan>] [-QueueMaxDeliveryCount <Int32>]
+ [-QueueReceiveLockDurationInSecond <Int32>] [-UserAssignedIdentity <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -40,9 +40,9 @@ New-AzEventGridNamespaceTopicEventSubscription -EventSubscriptionName <String>
  -NamespaceInputObject <IEventGridIdentity> -TopicName <String> [-DeliveryConfigurationDeliveryMode <String>]
  [-EventDeliverySchema <String>] [-FilterConfigurationFilter <IFilter[]>]
  [-FilterConfigurationIncludedEventType <String[]>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <String>] [-QueueEventTimeToLive <TimeSpan>] [-QueueMaxDeliveryCount <Int32>]
- [-QueueReceiveLockDurationInSecond <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-QueueEventTimeToLive <TimeSpan>] [-QueueMaxDeliveryCount <Int32>]
+ [-QueueReceiveLockDurationInSecond <Int32>] [-UserAssignedIdentity <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityTopicExpanded
@@ -51,9 +51,9 @@ New-AzEventGridNamespaceTopicEventSubscription -EventSubscriptionName <String>
  -TopicInputObject <IEventGridIdentity> [-DeliveryConfigurationDeliveryMode <String>]
  [-EventDeliverySchema <String>] [-FilterConfigurationFilter <IFilter[]>]
  [-FilterConfigurationIncludedEventType <String[]>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <String>] [-QueueEventTimeToLive <TimeSpan>] [-QueueMaxDeliveryCount <Int32>]
- [-QueueReceiveLockDurationInSecond <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-QueueEventTimeToLive <TimeSpan>] [-QueueMaxDeliveryCount <Int32>]
+ [-QueueReceiveLockDurationInSecond <Int32>] [-UserAssignedIdentity <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -172,7 +172,6 @@ Accept wildcard characters: False
 
 ### -FilterConfigurationFilter
 An array of filters that are used for filtering event subscriptions.
-To construct, see NOTES section for FILTERCONFIGURATIONFILTER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IFilter[]
@@ -219,24 +218,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityUserAssignedIdentity
-The user identity associated with the resource.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
@@ -282,7 +265,6 @@ Accept wildcard characters: False
 
 ### -NamespaceInputObject
 Identity Parameter
-To construct, see NOTES section for NAMESPACEINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
@@ -417,7 +399,6 @@ Accept wildcard characters: False
 
 ### -TopicInputObject
 Identity Parameter
-To construct, see NOTES section for TOPICINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
@@ -440,6 +421,21 @@ Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaJso
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The user identity associated with the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

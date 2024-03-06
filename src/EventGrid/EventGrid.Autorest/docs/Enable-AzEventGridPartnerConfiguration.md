@@ -124,7 +124,6 @@ Accept wildcard characters: False
 
 ### -PartnerInfo
 Information about the partner.
-To construct, see NOTES section for PARTNERINFO properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartner

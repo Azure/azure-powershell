@@ -164,7 +164,6 @@ Accept wildcard characters: False
 
 ### -PartnerAuthorizationAuthorizedPartnersList
 The list of authorized partners.
-To construct, see NOTES section for PARTNERAUTHORIZATIONAUTHORIZEDPARTNERSLIST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartner[]

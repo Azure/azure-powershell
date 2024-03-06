@@ -8,56 +8,46 @@ schema: 2.0.0
 # Update-AzEventGridNamespace
 
 ## SYNOPSIS
-Asynchronously updates a namespace with the specified parameters.
+Asynchronously Create a new namespace with the specified parameters.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzEventGridNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ClientAuthenticationAlternativeAuthenticationNameSource <String[]>] [-IdentityPrincipalId <String>]
- [-IdentityTenantId <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-InboundIPRule <IInboundIPRule[]>] [-PublicNetworkAccess <String>]
- [-RoutingEnrichmentDynamic <IDynamicRoutingEnrichment[]>]
+ [-ClientAuthenticationAlternativeAuthenticationNameSource <String[]>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
+ [-InboundIPRule <IInboundIPRule[]>] [-IsZoneRedundant] [-Location <String>]
+ [-MinimumTlsVersionAllowed <String>] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
+ [-PublicNetworkAccess <String>] [-RoutingEnrichmentDynamic <IDynamicRoutingEnrichment[]>]
  [-RoutingEnrichmentStatic <IStaticRoutingEnrichment[]>] [-RoutingIdentityInfoType <String>]
  [-RoutingIdentityInfoUserAssignedIdentity <String>] [-SkuCapacity <Int32>] [-SkuName <String>]
  [-Tag <Hashtable>] [-TopicSpaceConfigurationMaximumClientSessionsPerAuthenticationName <Int32>]
  [-TopicSpaceConfigurationMaximumSessionExpiryInHour <Int32>]
  [-TopicSpaceConfigurationRouteTopicResourceId <String>] [-TopicSpaceConfigurationState <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzEventGridNamespace -InputObject <IEventGridIdentity>
- [-ClientAuthenticationAlternativeAuthenticationNameSource <String[]>] [-IdentityPrincipalId <String>]
- [-IdentityTenantId <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-InboundIPRule <IInboundIPRule[]>] [-PublicNetworkAccess <String>]
- [-RoutingEnrichmentDynamic <IDynamicRoutingEnrichment[]>]
+ [-ClientAuthenticationAlternativeAuthenticationNameSource <String[]>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
+ [-InboundIPRule <IInboundIPRule[]>] [-IsZoneRedundant] [-Location <String>]
+ [-MinimumTlsVersionAllowed <String>] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
+ [-PublicNetworkAccess <String>] [-RoutingEnrichmentDynamic <IDynamicRoutingEnrichment[]>]
  [-RoutingEnrichmentStatic <IStaticRoutingEnrichment[]>] [-RoutingIdentityInfoType <String>]
  [-RoutingIdentityInfoUserAssignedIdentity <String>] [-SkuCapacity <Int32>] [-SkuName <String>]
  [-Tag <Hashtable>] [-TopicSpaceConfigurationMaximumClientSessionsPerAuthenticationName <Int32>]
  [-TopicSpaceConfigurationMaximumSessionExpiryInHour <Int32>]
  [-TopicSpaceConfigurationRouteTopicResourceId <String>] [-TopicSpaceConfigurationState <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzEventGridNamespace -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzEventGridNamespace -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Asynchronously updates a namespace with the specified parameters.
+Asynchronously Create a new namespace with the specified parameters.
 
 ## EXAMPLES
 
@@ -110,7 +100,7 @@ Alternative authentication name sources related to client authentication setting
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -136,12 +126,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityPrincipalId
 The principal ID of resource identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -156,40 +161,7 @@ The tenant ID of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-The type of managed identity used.
-The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
-The type 'None' will remove any identity.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The list of user identities associated with the resource.
-The user identity dictionary key references will be ARM resource ids in the form:'/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.This property is currently not used and reserved for future usage.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -202,11 +174,10 @@ Accept wildcard characters: False
 ### -InboundIPRule
 This can be used to restrict traffic from specific IPs instead of all IPs.
 Note: These are considered only if PublicNetworkAccess is enabled.
-To construct, see NOTES section for INBOUNDIPRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IInboundIPRule[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -218,7 +189,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
@@ -232,30 +202,47 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Update operation
+### -IsZoneRedundant
+Allows the user to specify if the service is zone-redundant.
+This is a required property and user needs to specify this value explicitly.Once specified, this property cannot be updated.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonString
-Json string supplied to the Update operation
+### -Location
+Location of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinimumTlsVersionAllowed
+Minimum TLS version of the publisher allowed to publish to this namespace.
+Only TLS version 1.2 is supported.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -267,7 +254,7 @@ Name of the namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases: NamespaceName
 
 Required: True
@@ -292,14 +279,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrivateEndpointConnection
+.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPrivateEndpointConnection[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 This determines if traffic is allowed over public network.
-By default it is enabled.
-You can further restrict to specific IPs by configuring \<seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceUpdateParameterProperties.InboundIpRules" /\>
+By default it is enabled.You can further restrict to specific IPs by configuring \<seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceProperties.InboundIpRules" /\>
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -314,7 +315,7 @@ The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -326,11 +327,10 @@ Accept wildcard characters: False
 
 ### -RoutingEnrichmentDynamic
 .
-To construct, see NOTES section for ROUTINGENRICHMENTDYNAMIC properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDynamicRoutingEnrichment[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -342,11 +342,10 @@ Accept wildcard characters: False
 
 ### -RoutingEnrichmentStatic
 .
-To construct, see NOTES section for ROUTINGENRICHMENTSTATIC properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IStaticRoutingEnrichment[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -361,7 +360,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -376,7 +375,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -393,7 +392,7 @@ Min capacity is 1 andmax allowed capacity is 20.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -408,7 +407,7 @@ The name of the SKU.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -424,7 +423,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -435,11 +434,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Tags of the namespace resource.
+Tags of the resource.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -455,7 +454,7 @@ The property default value is 1.Min allowed value is 1 and max allowed value is 
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -471,7 +470,7 @@ The property default value is 1 hour.Min allowed value is 1 hour and max allowed
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -482,11 +481,11 @@ Accept wildcard characters: False
 ```
 
 ### -TopicSpaceConfigurationRouteTopicResourceId
-This property is used to specify custom topic to which events will be routed to from topic spaces configuration under namespace.
+Fully qualified Azure Resource Id for the Event Grid Topic to which events will be routed to from TopicSpaces under a namespace.This property should be in the following format '/subscriptions/{subId}/resourcegroups/{resourceGroupName}/providers/microsoft.EventGrid/topics/{topicName}'.This topic should reside in the same region where namespace is located.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -502,7 +501,23 @@ Default is Disabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False

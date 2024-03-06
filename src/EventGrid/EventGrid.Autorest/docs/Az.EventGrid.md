@@ -396,7 +396,7 @@ Create a client with the specified parameters.
 Create a client group with the specified parameters.
 
 ### [Update-AzEventGridDomain](Update-AzEventGridDomain.md)
-Asynchronously updates a domain with the specified parameters.
+Asynchronously Create a new domain with the specified parameters.
 
 ### [Update-AzEventGridDomainEventSubscription](Update-AzEventGridDomainEventSubscription.md)
 Update an existing event subscription for a topic.
@@ -408,7 +408,7 @@ Update an existing event subscription for a domain topic.
 Asynchronously updates an existing event subscription.
 
 ### [Update-AzEventGridNamespace](Update-AzEventGridNamespace.md)
-Asynchronously updates a namespace with the specified parameters.
+Asynchronously Create a new namespace with the specified parameters.
 
 ### [Update-AzEventGridNamespaceTopic](Update-AzEventGridNamespaceTopic.md)
 Asynchronously updates a namespace topic with the specified parameters.
@@ -429,7 +429,7 @@ Asynchronously updates a partner namespace with the specified parameters.
 Updates a partner registration with the specified parameters.
 
 ### [Update-AzEventGridPartnerTopic](Update-AzEventGridPartnerTopic.md)
-Asynchronously updates a partner topic with the specified parameters.
+Asynchronously creates a new partner topic with the specified parameters.
 
 ### [Update-AzEventGridPartnerTopicEventSubscription](Update-AzEventGridPartnerTopicEventSubscription.md)
 Update an existing event subscription of a partner topic.
@@ -438,13 +438,13 @@ Update an existing event subscription of a partner topic.
 Create a permission binding with the specified parameters.
 
 ### [Update-AzEventGridSystemTopic](Update-AzEventGridSystemTopic.md)
-Asynchronously updates a system topic with the specified parameters.
+Asynchronously creates a new system topic with the specified parameters.
 
 ### [Update-AzEventGridSystemTopicEventSubscription](Update-AzEventGridSystemTopicEventSubscription.md)
 Update an existing event subscription of a system topic.
 
 ### [Update-AzEventGridTopic](Update-AzEventGridTopic.md)
-Asynchronously updates a topic with the specified parameters.
+Asynchronously creates a new topic with the specified parameters.
 
 ### [Update-AzEventGridTopicEventSubscription](Update-AzEventGridTopicEventSubscription.md)
 Update an existing event subscription for a topic.

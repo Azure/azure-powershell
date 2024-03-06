@@ -171,7 +171,6 @@ Accept wildcard characters: False
 
 ### -DeliveryWithResourceIdentityDestination
 Information about the destination where events have to be delivered for the event subscription.Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
-To construct, see NOTES section for DELIVERYWITHRESOURCEIDENTITYDESTINATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscriptionDestination
@@ -219,7 +218,6 @@ Accept wildcard characters: False
 
 ### -Destination
 Information about the destination where events have to be delivered for the event subscription.Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
-To construct, see NOTES section for DESTINATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventSubscriptionDestination
@@ -235,7 +233,6 @@ Accept wildcard characters: False
 
 ### -DomainInputObject
 Identity Parameter
-To construct, see NOTES section for DOMAININPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
@@ -312,7 +309,6 @@ Accept wildcard characters: False
 
 ### -FilterAdvancedFilter
 An array of advanced filters that are used for filtering event subscriptions.
-To construct, see NOTES section for FILTERADVANCEDFILTER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IAdvancedFilter[]
@@ -404,7 +400,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
@@ -556,7 +551,6 @@ Accept wildcard characters: False
 
 ### -TopicInputObject
 Identity Parameter
-To construct, see NOTES section for TOPICINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity

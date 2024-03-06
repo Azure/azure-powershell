@@ -42,7 +42,6 @@ Create an in-memory object for AzureFunctionEventSubscriptionDestination.
 
 ### -DeliveryAttributeMapping
 Delivery attribute details.
-To construct, see NOTES section for DELIVERYATTRIBUTEMAPPING properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDeliveryAttributeMapping[]

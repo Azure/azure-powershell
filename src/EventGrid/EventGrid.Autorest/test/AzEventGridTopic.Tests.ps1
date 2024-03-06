@@ -128,8 +128,8 @@ Describe 'AzEventGridTopic' {
     It 'Update-AzEventGridTopic'{
         {
             $inboundIpRule = New-AzEventGridInboundIPRuleObject -Action Allow -IPMask "12.18.176.1"
-            $config = Update-AzEventGridTopic -Name $env.topic -ResourceGroupName $env.resourceGroup -PublicNetworkAccess Enabled -InboundIPRule $inboundIpRule -PassThru
-            $config | Should -Be True
+            $config = Update-AzEventGridTopic -Name $env.topic -ResourceGroupName $env.resourceGroup -PublicNetworkAccess Enabled -InboundIPRule $inboundIpRule
+            $config.Name | Should -Be $env.topic
         } | Should -Not -Throw
     }
 

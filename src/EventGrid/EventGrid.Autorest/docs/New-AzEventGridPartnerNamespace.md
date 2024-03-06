@@ -128,7 +128,6 @@ Accept wildcard characters: False
 ### -InboundIPRule
 This can be used to restrict traffic from specific IPs instead of all IPs.
 Note: These are considered only if PublicNetworkAccess is enabled.
-To construct, see NOTES section for INBOUNDIPRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IInboundIPRule[]
@@ -144,7 +143,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity

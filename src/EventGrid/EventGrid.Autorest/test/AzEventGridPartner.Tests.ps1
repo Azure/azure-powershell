@@ -219,7 +219,7 @@ Describe 'AzEventGridPartner' {
 
     It 'Update-AzEventGridPartnerTopic' {
         {
-            $config = Update-AzEventGridPartnerTopic -Name default -ResourceGroupName $env.resourceGroup -IdentityType 'SystemAssigned, UserAssigned' -IdentityUserAssignedIdentity @{"/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uami03"="{}"}
+            $config = Update-AzEventGridPartnerTopic -Name default -ResourceGroupName $env.resourceGroup -UserAssignedIdentity "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uami03"
             $config.Name | Should -Be "default"
         } | Should -Not -Throw
     }

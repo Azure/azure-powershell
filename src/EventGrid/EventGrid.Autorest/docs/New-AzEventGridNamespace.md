@@ -16,23 +16,7 @@ Asynchronously Create a new namespace with the specified parameters.
 ```
 New-AzEventGridNamespace -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ClientAuthenticationAlternativeAuthenticationNameSource <String[]>]
- [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-InboundIPRule <IInboundIPRule[]>] [-IsZoneRedundant]
- [-MinimumTlsVersionAllowed <String>] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
- [-PublicNetworkAccess <String>] [-RoutingEnrichmentDynamic <IDynamicRoutingEnrichment[]>]
- [-RoutingEnrichmentStatic <IStaticRoutingEnrichment[]>] [-RoutingIdentityInfoType <String>]
- [-RoutingIdentityInfoUserAssignedIdentity <String>] [-SkuCapacity <Int32>] [-SkuName <String>]
- [-Tag <Hashtable>] [-TopicSpaceConfigurationMaximumClientSessionsPerAuthenticationName <Int32>]
- [-TopicSpaceConfigurationMaximumSessionExpiryInHour <Int32>]
- [-TopicSpaceConfigurationRouteTopicResourceId <String>] [-TopicSpaceConfigurationState <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzEventGridNamespace -InputObject <IEventGridIdentity> -Location <String>
- [-ClientAuthenticationAlternativeAuthenticationNameSource <String[]>] [-IdentityPrincipalId <String>]
- [-IdentityTenantId <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-EnableSystemAssignedIdentity] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
  [-InboundIPRule <IInboundIPRule[]>] [-IsZoneRedundant] [-MinimumTlsVersionAllowed <String>]
  [-PrivateEndpointConnection <IPrivateEndpointConnection[]>] [-PublicNetworkAccess <String>]
  [-RoutingEnrichmentDynamic <IDynamicRoutingEnrichment[]>]
@@ -41,7 +25,25 @@ New-AzEventGridNamespace -InputObject <IEventGridIdentity> -Location <String>
  [-Tag <Hashtable>] [-TopicSpaceConfigurationMaximumClientSessionsPerAuthenticationName <Int32>]
  [-TopicSpaceConfigurationMaximumSessionExpiryInHour <Int32>]
  [-TopicSpaceConfigurationRouteTopicResourceId <String>] [-TopicSpaceConfigurationState <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzEventGridNamespace -InputObject <IEventGridIdentity> -Location <String>
+ [-ClientAuthenticationAlternativeAuthenticationNameSource <String[]>] [-EnableSystemAssignedIdentity]
+ [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-InboundIPRule <IInboundIPRule[]>]
+ [-IsZoneRedundant] [-MinimumTlsVersionAllowed <String>]
+ [-PrivateEndpointConnection <IPrivateEndpointConnection[]>] [-PublicNetworkAccess <String>]
+ [-RoutingEnrichmentDynamic <IDynamicRoutingEnrichment[]>]
+ [-RoutingEnrichmentStatic <IStaticRoutingEnrichment[]>] [-RoutingIdentityInfoType <String>]
+ [-RoutingIdentityInfoUserAssignedIdentity <String>] [-SkuCapacity <Int32>] [-SkuName <String>]
+ [-Tag <Hashtable>] [-TopicSpaceConfigurationMaximumClientSessionsPerAuthenticationName <Int32>]
+ [-TopicSpaceConfigurationMaximumSessionExpiryInHour <Int32>]
+ [-TopicSpaceConfigurationRouteTopicResourceId <String>] [-TopicSpaceConfigurationState <String>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -124,6 +126,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityPrincipalId
 The principal ID of resource identity.
 
@@ -154,43 +171,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The type of managed identity used.
-The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
-The type 'None' will remove any identity.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The list of user identities associated with the resource.
-The user identity dictionary key references will be ARM resource ids in the form:'/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.This property is currently not used and reserved for future usage.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InboundIPRule
 This can be used to restrict traffic from specific IPs instead of all IPs.
 Note: These are considered only if PublicNetworkAccess is enabled.
-To construct, see NOTES section for INBOUNDIPRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IInboundIPRule[]
@@ -206,7 +189,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
@@ -329,7 +311,6 @@ Accept wildcard characters: False
 
 ### -PrivateEndpointConnection
 .
-To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPrivateEndpointConnection[]
@@ -376,7 +357,6 @@ Accept wildcard characters: False
 
 ### -RoutingEnrichmentDynamic
 .
-To construct, see NOTES section for ROUTINGENRICHMENTDYNAMIC properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IDynamicRoutingEnrichment[]
@@ -392,7 +372,6 @@ Accept wildcard characters: False
 
 ### -RoutingEnrichmentStatic
 .
-To construct, see NOTES section for ROUTINGENRICHMENTSTATIC properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IStaticRoutingEnrichment[]
@@ -552,6 +531,22 @@ Default is Disabled.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 

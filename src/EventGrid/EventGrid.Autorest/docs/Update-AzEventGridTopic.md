@@ -8,57 +8,48 @@ schema: 2.0.0
 # Update-AzEventGridTopic
 
 ## SYNOPSIS
-Asynchronously updates a topic with the specified parameters.
+Asynchronously creates a new topic with the specified parameters.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzEventGridTopic -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DataResidencyBoundary <String>] [-DisableLocalAuth] [-EventTypeInfoInlineEventType <Hashtable>]
- [-EventTypeInfoKind <String>] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-InboundIPRule <IInboundIPRule[]>]
+ [-DataResidencyBoundary <String>] [-DisableLocalAuth] [-EnableSystemAssignedIdentity <Boolean?>]
+ [-EventTypeInfoInlineEventType <Hashtable>] [-EventTypeInfoKind <String>] [-ExtendedLocationName <String>]
+ [-ExtendedLocationType <String>] [-IdentityPrincipalId <String>] [-IdentityTenantId <String>]
+ [-InboundIPRule <IInboundIPRule[]>] [-InputSchema <String>] [-Kind <String>] [-Location <String>]
  [-MinimumTlsVersionAllowed <String>] [-PublicNetworkAccess <String>] [-SkuName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzEventGridTopic -InputObject <IEventGridIdentity> [-DataResidencyBoundary <String>]
- [-DisableLocalAuth] [-EventTypeInfoInlineEventType <Hashtable>] [-EventTypeInfoKind <String>]
- [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-InboundIPRule <IInboundIPRule[]>]
- [-MinimumTlsVersionAllowed <String>] [-PublicNetworkAccess <String>] [-SkuName <String>] [-Tag <Hashtable>]
+ [-DisableLocalAuth] [-EnableSystemAssignedIdentity <Boolean?>] [-EventTypeInfoInlineEventType <Hashtable>]
+ [-EventTypeInfoKind <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
+ [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-InboundIPRule <IInboundIPRule[]>]
+ [-InputSchema <String>] [-Kind <String>] [-Location <String>] [-MinimumTlsVersionAllowed <String>]
+ [-PublicNetworkAccess <String>] [-SkuName <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
-```
-Update-AzEventGridTopic -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzEventGridTopic -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Asynchronously updates a topic with the specified parameters.
+Asynchronously creates a new topic with the specified parameters.
 
 ## EXAMPLES
 
 ### Example 1: Asynchronously updates a topic with the specified parameters.
 ```powershell
 $inboundIpRule = New-AzEventGridInboundIPRuleObject -Action Allow -IPMask "12.18.176.1"
-Update-AzEventGridTopic -Name azps-topic -ResourceGroupName azps_test_group_eventgrid -PublicNetworkAccess Enabled -InboundIPRule $inboundIpRule -PassThru
+Update-AzEventGridTopic -Name azps-topic -ResourceGroupName azps_test_group_eventgrid -PublicNetworkAccess Enabled -InboundIPRule $inboundIpRule
 ```
 
 ```output
-True
+Location Name       Kind  ResourceGroupName
+-------- ----       ----  -----------------
+eastus   azps-topic Azure azps_test_group_eventgrid
 ```
 
 Asynchronously updates a topic with the specified parameters.
@@ -67,11 +58,13 @@ Asynchronously updates a topic with the specified parameters.
 ```powershell
 $inboundIpRule = New-AzEventGridInboundIPRuleObject -Action Allow -IPMask "12.18.176.1"
 $topic = Get-AzEventGridTopic -ResourceGroupName azps_test_group_eventgrid -Name azps-topic
-Update-AzEventGridTopic -InputObject $topic -PublicNetworkAccess Enabled -InboundIPRule $inboundIpRule -PassThru
+Update-AzEventGridTopic -InputObject $topic -PublicNetworkAccess Enabled -InboundIPRule $inboundIpRule
 ```
 
 ```output
-True
+Location Name       Kind  ResourceGroupName
+-------- ----       ----  -----------------
+eastus   azps-topic Azure azps_test_group_eventgrid
 ```
 
 Asynchronously updates a topic with the specified parameters.
@@ -94,11 +87,11 @@ Accept wildcard characters: False
 ```
 
 ### -DataResidencyBoundary
-The data residency boundary for the topic.
+Data Residency Boundary of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -131,7 +124,22 @@ When the property is set to true, only AAD token will be used to authenticate if
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -147,7 +155,7 @@ The inline event type keys are of type string which represents the name of the e
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -162,7 +170,37 @@ The kind of event type used.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedLocationName
+Fully qualified name of the extended location.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedLocationType
+Type of the extended location.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -177,7 +215,7 @@ The principal ID of resource identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -192,40 +230,7 @@ The tenant ID of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-The type of managed identity used.
-The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
-The type 'None' will remove any identity.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The list of user identities associated with the resource.
-The user identity dictionary key references will be ARM resource ids in the form:'/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.This property is currently not used and reserved for future usage.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -238,11 +243,10 @@ Accept wildcard characters: False
 ### -InboundIPRule
 This can be used to restrict traffic from specific IPs instead of all IPs.
 Note: These are considered only if PublicNetworkAccess is enabled.
-To construct, see NOTES section for INBOUNDIPRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IInboundIPRule[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -254,7 +258,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IEventGridIdentity
@@ -268,30 +271,45 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Update operation
+### -InputSchema
+This determines the format that Event Grid should expect for incoming events published to the topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonString
-Json string supplied to the Update operation
+### -Kind
+Kind of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -299,11 +317,11 @@ Accept wildcard characters: False
 ```
 
 ### -MinimumTlsVersionAllowed
-Minimum TLS version of the publisher allowed to publish to this domain
+Minimum TLS version of the publisher allowed to publish to this topic
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -318,7 +336,7 @@ Name of the topic.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases: TopicName
 
 Required: True
@@ -361,11 +379,11 @@ Accept wildcard characters: False
 ### -PublicNetworkAccess
 This determines if traffic is allowed over public network.
 By default it is enabled.
-You can further restrict to specific IPs by configuring \<seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicUpdateParameterProperties.InboundIpRules" /\>
+You can further restrict to specific IPs by configuring \<seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" /\>
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -380,7 +398,7 @@ The name of the resource group within the user's subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -396,7 +414,7 @@ The possible values are: Basic or Premium.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -412,7 +430,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -423,11 +441,27 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Tags of the Topic resource.
+Tags of the resource.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -477,7 +511,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ITopic
 
 ## NOTES
 
