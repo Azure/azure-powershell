@@ -141,6 +141,14 @@ directive:
   - from: swagger-document
     where: $.definitions.SupportTicketDetails
     transform: $.required = ['properties']
+  - from: swagger-document 
+    where: $.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts"].get.operationId
+    transform: >-
+      return "ChatTranscriptsNoSubscription_List"
+  - from: swagger-document 
+    where: $.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications"].get.operationId
+    transform: >-
+      return "CommunicationsNoSubscription_List"
   - from: GetAzSupportTicket_List.cs
     where: $
     transform: $ = $.replace("!String.IsNullOrEmpty(_nextLink)" ,"!String.IsNullOrEmpty(_nextLink) && this._top <= 0");
