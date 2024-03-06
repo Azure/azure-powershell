@@ -29,7 +29,7 @@ The **Get-AzPolicySetDefinition** cmdlet gets a collection of policy set definit
 https://learn.microsoft.com/powershell/module/az.resources/get-azpolicysetdefinition
 #>
 function Get-AzPolicySetDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicySetDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition])]
 [CmdletBinding(DefaultParameterSetName='Name')]
 param(
     [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
@@ -195,17 +195,20 @@ process {
         Write-Host -ForegroundColor Cyan "process:Get-AzPolicySetDefinition(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
 
+    # handle disallowed cases not handled by PS parameter attributes
+    if ($PSBoundParameters['SubscriptionId'] -and $PSBoundParameters['ManagementGroupName']) {
+        throw 'Only -ManagementGroupName or -SubscriptionId can be provided, not both.'
+    }
+
     # handle specific parameter sets
     $parameterSet = $PSCmdlet.ParameterSetName
     $calledParameterSet = 'List'
 
     switch ($parameterSet) {
         'BuiltIn' {
-            $null = $PSBoundParameters.Remove('BuiltIn')
             $PSBoundParameters.Add('Filter', "policyType eq 'BuiltIn'")
         }
         'Custom' {
-            $null = $PSBoundParameters.Remove('Custom')
             $PSBoundParameters.Add('Filter', "policyType eq 'Custom'")
         }
         'Id' {
@@ -269,6 +272,8 @@ process {
     $null = $PSBoundParameters.Remove('SubscriptionId')
     $null = $PSBoundParameters.Remove('ManagementGroupName')
     $null = $PSBoundParameters.Remove('Id')
+    $null = $PSBoundParameters.Remove('BuiltIn')
+    $null = $PSBoundParameters.Remove('Custom')
 
     if ($writeln) {
         Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $PSBoundParameters ')'

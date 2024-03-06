@@ -17,43 +17,40 @@ For example, when you assign a policy at resource group scope, that policy appli
 ### Name (Default)
 ```
 Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-Description <String>]
- [-DisplayName <String>] [-EnforcementMode <EnforcementMode>] [-IdentityId <String>]
- [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <String>]
- [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
+ [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
 Update-AzPolicyAssignment -Id <String> [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
- [-EnforcementMode <EnforcementMode>] [-IdentityId <String>] [-IdentityType <ResourceIdentityType>]
- [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
+ [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### IdParameterObject
 ```
 Update-AzPolicyAssignment -Id <String> -PolicyParameterObject <PSObject> [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-EnforcementMode <EnforcementMode>] [-IdentityId <String>]
- [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <String>]
- [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>]
+ [-IdentityType <String>] [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>]
+ [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### IdParameterString
 ```
 Update-AzPolicyAssignment -Id <String> -PolicyParameter <String> [-BackwardCompatible] [-Description <String>]
- [-DisplayName <String>] [-EnforcementMode <EnforcementMode>] [-IdentityId <String>]
- [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <String>]
- [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
+ [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### NameParameterObject
 ```
 Update-AzPolicyAssignment -Name <String> -PolicyParameterObject <PSObject> [-Scope <String>]
- [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <EnforcementMode>]
- [-IdentityId <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <String>]
+ [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
+ [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
  [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -61,10 +58,9 @@ Update-AzPolicyAssignment -Name <String> -PolicyParameterObject <PSObject> [-Sco
 ### NameParameterString
 ```
 Update-AzPolicyAssignment -Name <String> -PolicyParameter <String> [-Scope <String>] [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-EnforcementMode <EnforcementMode>] [-IdentityId <String>]
- [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <String>]
- [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>]
+ [-IdentityType <String>] [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>]
+ [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -244,7 +240,7 @@ The policy assignment enforcement mode.
 Possible values are Default and DoNotEnforce.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.EnforcementMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -292,7 +288,7 @@ The identity type.
 This is the only required field when adding a system or user assigned identity to a resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.ResourceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -464,8 +460,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.EnforcementMode
-
 ### System.Management.Automation.PSObject[]
 
 ### System.String
@@ -474,7 +468,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment
 
 ## NOTES
 

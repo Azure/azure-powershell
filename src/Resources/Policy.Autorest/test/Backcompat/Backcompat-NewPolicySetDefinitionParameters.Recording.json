@@ -1,0 +1,39 @@
+{
+  "Backcompat-NewPolicySetDefinitionParameters+[NoContext]+parameter combinations starting with -Name+$PUT+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policySetDefinitions/someName?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policySetDefinitions/someName?api-version=2023-04-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "b5a52f96-e9b0-4da8-b13c-5569a59fcafb" ],
+        "x-ms-correlation-request-id": [ "b5a52f96-e9b0-4da8-b13c-5569a59fcafb" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240306T020823Z:b5a52f96-e9b0-4da8-b13c-5569a59fcafb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C20F9797F69846B0A073E8C37FECD232 Ref B: CO6AA3150217011 Ref C: 2024-03-06T02:08:23Z" ],
+        "Date": [ "Wed, 06 Mar 2024 02:08:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "199" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InvalidRequestContent\",\"message\":\"The request content was invalid and could not be deserialized: \u0027Required property \u0027properties\u0027 not found in JSON. Path \u0027\u0027, line 2, position 1.\u0027.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

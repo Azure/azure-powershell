@@ -34,7 +34,7 @@ For example, when you assign a policy at resource group scope, that policy appli
 https://learn.microsoft.com/powershell/module/az.resources/update-azpolicyassignment
 #>
 function Update-AzPolicyAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment])]
 [Alias('Set-AzPolicyAssignment')]
 [CmdletBinding(DefaultParameterSetName='Name', SupportsShouldProcess=$true, ConfirmImpact='Low')]
 param(
@@ -91,7 +91,7 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignmentPropertiesMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesMetadata]))]
     [System.String]
     # The policy assignment metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
@@ -115,6 +115,7 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [ArgumentCompleter({ LocationCompleter })]
     [System.String]
     # The location of the policy assignment.
     # Only required when utilizing managed identity.
@@ -122,17 +123,17 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.EnforcementMode])]
+    [ValidateSet('Default', 'DoNotEnforce')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.EnforcementMode]
+    [System.String]
     # The policy assignment enforcement mode.
     # Possible values are Default and DoNotEnforce.
     ${EnforcementMode},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.ResourceIdentityType])]
+    [ValidateSet('None', 'SystemAssigned', 'UserAssigned')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.ResourceIdentityType]
+    [System.String]
     # The identity type.
     # This is the only required field when adding a system or user assigned identity to a resource.
     ${IdentityType},
@@ -147,7 +148,7 @@ param(
     [Parameter(ValueFromPipelineByPropertyName)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.INonComplianceMessage[]]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.INonComplianceMessage[]]))]
     [PSCustomObject[]]
     # The messages that describe why a resource is non-compliant with the policy.
     # To construct, see NOTES section for NONCOMPLIANCEMESSAGE properties and create a hash table.

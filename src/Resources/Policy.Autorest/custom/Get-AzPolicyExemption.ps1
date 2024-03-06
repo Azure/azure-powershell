@@ -29,7 +29,7 @@ The **Get-AzPolicyExemption** cmdlet gets a collection of policy exemptions or a
 https://learn.microsoft.com/powershell/module/az.resources/get-azpolicyexemption
 #>
 function Get-AzPolicyExemption {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220701Preview.IPolicyExemption])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption])]
 [CmdletBinding(DefaultParameterSetName='Name')]
 param(
     [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]

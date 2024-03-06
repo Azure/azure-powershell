@@ -211,9 +211,8 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-[Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IParameterDefinitions]))]
- The parameter definitions for parameters used in the policy set.
- The keys are the parameter names.
+The parameter definitions for parameters used in the policy set.
+The keys are the parameter names.
 
 ```yaml
 Type: System.String
@@ -312,7 +311,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicySetDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition
 
 ## NOTES
 

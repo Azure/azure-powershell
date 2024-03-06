@@ -31,7 +31,7 @@ The **New-AzPolicyExemption** cmdlet creates a policy exemption with the given s
 https://learn.microsoft.com/powershell/module/az.resources/new-azpolicyexemption
 #>
 function New-AzPolicyExemption {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220701Preview.IPolicyExemption])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption])]
 [CmdletBinding(DefaultParameterSetName='Default', SupportsShouldProcess=$true, ConfirmImpact='Low')]
 param(
     [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
@@ -51,9 +51,9 @@ param(
     ${Scope},
 
     [Parameter(ValueFromPipelineByPropertyName)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.AssignmentScopeValidation])]
+    [ValidateSet('Default', 'DoNotValidate')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.AssignmentScopeValidation]
+    [System.String]
     # Whether to validate the exemption is at or under the assignment scope.
     ${AssignmentScopeValidation},
 
@@ -72,14 +72,14 @@ param(
     [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
     [ValidateSet('Waiver', 'Mitigated')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.ExemptionCategory]
+    [System.String]
     # The policy exemption category
     ${ExemptionCategory},
 
     [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignment]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment]))]
     [PSCustomObject]
     # The policy assignment id filter.
     ${PolicyAssignment},
@@ -97,7 +97,7 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220701Preview.IPolicyExemptionPropertiesMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesMetadata]))]
     [System.String]
     # The policy assignment metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
@@ -197,7 +197,7 @@ process {
 
     # resolve policyassignment
     if ($PolicyAssignment) {
-        $calledParameters.PolicyAssignmentId = $PolicyAssignment.PolicyAssignmentId
+        $calledParameters.PolicyAssignmentId = $PolicyAssignment.Id
     }
 
     # resolve [string] 'metadata' input parameter to [hashtable]

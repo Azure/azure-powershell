@@ -1,12 +1,13 @@
 # setup the Pester environment for policy backcompat tests
-. (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyAssignmentWithParameters'
+. (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicyAssignmentWithParameters'
 
-Describe 'PolicyAssignmentWithParameters' -Tag 'LiveOnly' {
+Describe 'Backcompat-PolicyAssignmentWithParameters' {
 
     BeforeAll {
         # setup
         $rgname = Get-ResourceGroupName
         $policyName = Get-ResourceName
+        $testPAWP = Get-ResourceName
 
         # make a resource group and policy definition with parameters
         $rg = New-ResourceGroup -Name $rgname -Location "west us"
@@ -18,8 +19,8 @@ Describe 'PolicyAssignmentWithParameters' -Tag 'LiveOnly' {
     It 'make policy assignment with parameters' {
         {
             # assign the policy definition to the resource group supplying powershell object parameters, get the policy assignment back and validate
-            $actual = New-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -PolicyDefinition $policy -PolicyParameterObject $param -Description $description -BackwardCompatible
-            $expected = Get-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -BackwardCompatible
+            $actual = New-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -PolicyDefinition $policy -PolicyParameterObject $param -Description $description -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
@@ -29,7 +30,7 @@ Describe 'PolicyAssignmentWithParameters' -Tag 'LiveOnly' {
             Assert-AreEqual $array[1] $expected.Properties.Parameters.listOfAllowedLocations.Value[1]
 
             # delete the policy assignment
-            $remove = Remove-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -BackwardCompatible
+            $remove = Remove-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -BackwardCompatible
             Assert-AreEqual True $remove
         } | Should -Not -Throw
     }
@@ -37,8 +38,8 @@ Describe 'PolicyAssignmentWithParameters' -Tag 'LiveOnly' {
     It 'make policy assignment with parameters from a file' {
         {
             # assign the policy definition to the resource group supplying file parameters, get the policy assignment back and validate
-            $actual = New-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -PolicyDefinition $policy -PolicyParameter "$testFilesFolder\SamplePolicyAssignmentParameters.json" -Description $description -BackwardCompatible
-            $expected = Get-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -BackwardCompatible
+            $actual = New-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -PolicyDefinition $policy -PolicyParameter "$testFilesFolder\SamplePolicyAssignmentParameters.json" -Description $description -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
@@ -53,8 +54,8 @@ Describe 'PolicyAssignmentWithParameters' -Tag 'LiveOnly' {
         {
             # update parameters
             # this is validation for https://github.com/Azure/azure-powershell/issues/6055
-            $actual = Set-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -PolicyParameter '{ "listOfAllowedLocations": { "value": [ "something", "something else" ] } }' -BackwardCompatible
-            $expected = Get-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -BackwardCompatible
+            $actual = Set-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -PolicyParameter '{ "listOfAllowedLocations": { "value": [ "something", "something else" ] } }' -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
@@ -64,7 +65,7 @@ Describe 'PolicyAssignmentWithParameters' -Tag 'LiveOnly' {
             Assert-AreEqual "something else" $expected.Properties.Parameters.listOfAllowedLocations.Value[1]
 
             # delete the policy assignment
-            $remove = Remove-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -BackwardCompatible
+            $remove = Remove-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -BackwardCompatible
             Assert-AreEqual True $remove
         } | Should -Not -Throw
     }
@@ -72,8 +73,8 @@ Describe 'PolicyAssignmentWithParameters' -Tag 'LiveOnly' {
     It 'make policy assignment with hashtable of parameters' {
         {
             # assign the policy definition to the resource group supplying command line literal parameters, get the policy assignment back and validate
-            $actual = New-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -PolicyDefinition $policy -PolicyParameter '{ "listOfAllowedLocations": { "value": [ "West US", "West US 2" ] } }' -Description $description -Metadata $metadata -BackwardCompatible
-            $expected = Get-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -BackwardCompatible
+            $actual = New-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -PolicyDefinition $policy -PolicyParameter '{ "listOfAllowedLocations": { "value": [ "West US", "West US 2" ] } }' -Description $description -Metadata $metadata -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
@@ -85,7 +86,7 @@ Describe 'PolicyAssignmentWithParameters' -Tag 'LiveOnly' {
             Assert-AreEqual $array[1] $expected.Properties.Parameters.listOfAllowedLocations.Value[1]
 
             # delete the policy assignment (commented out because next two tests are -Skip'd)
-            #$remove = Remove-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -BackwardCompatible
+            #$remove = Remove-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -BackwardCompatible
             #Assert-AreEqual True $remove
         } | Should -Not -Throw
     }
@@ -95,8 +96,8 @@ Describe 'PolicyAssignmentWithParameters' -Tag 'LiveOnly' {
     It 'make policy assignment with dynamic parameters' -Skip {
         {
             # assign the policy definition to the resource group supplying Powershell parameters, get the policy assignment back and validate
-            $actual = New-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -PolicyDefinition $policy -listOfAllowedLocations $array -Description $description -Metadata $metadata -BackwardCompatible
-            $expected = Get-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -BackwardCompatible
+            $actual = New-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -PolicyDefinition $policy -listOfAllowedLocations $array -Description $description -Metadata $metadata -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
@@ -108,7 +109,7 @@ Describe 'PolicyAssignmentWithParameters' -Tag 'LiveOnly' {
             Assert-AreEqual $array[1] $expected.Properties.Parameters.listOfAllowedLocations.Value[1]
 
             # delete the policy assignment
-            $remove = Remove-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -BackwardCompatible
+            $remove = Remove-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -BackwardCompatible
             Assert-AreEqual True $remove
         } | Should -Not -Throw
     }
@@ -118,8 +119,8 @@ Describe 'PolicyAssignmentWithParameters' -Tag 'LiveOnly' {
     It 'make policy assignment overriding default dynamic parameter' -Skip {
         {
             # assign the policy definition to the resource group supplying Powershell parameters (including overriding a default value), get the policy assignment back and validate
-            $actual = New-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -PolicyDefinition $policy -listOfAllowedLocations $array -effectParam "Disabled" -Description $description -Metadata $metadata -BackwardCompatible
-            $expected = Get-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -BackwardCompatible
+            $actual = New-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -PolicyDefinition $policy -listOfAllowedLocations $array -effectParam "Disabled" -Description $description -Metadata $metadata -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
@@ -139,8 +140,8 @@ Describe 'PolicyAssignmentWithParameters' -Tag 'LiveOnly' {
             # this is validation for https://github.com/Azure/azure-powershell/issues/6055
             $newDescription = "$description - Updated"
             $newMetadata =  "{'Meta1': 'Value1', 'Meta2': { 'Meta22': 'Value22' }}"
-            $actual = Set-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -Description $newDescription -Metadata $newMetadata -BackwardCompatible
-            $expected = Get-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -BackwardCompatible
+            $actual = Set-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -Description $newDescription -Metadata $newMetadata -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
@@ -161,8 +162,8 @@ Describe 'PolicyAssignmentWithParameters' -Tag 'LiveOnly' {
             # this is validation for https://msazure.visualstudio.com/One/_workitems/edit/4421756
             $array2 = @("West2 US2", "West2 US22")
             $param2 = @{"listOfAllowedLocations"=$array2}
-            $actual = Set-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -PolicyParameterObject $param2 -BackwardCompatible
-            $expected = Get-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -BackwardCompatible
+            $actual = Set-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -PolicyParameterObject $param2 -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
@@ -175,9 +176,9 @@ Describe 'PolicyAssignmentWithParameters' -Tag 'LiveOnly' {
 
     AfterAll {
         # clean up
-        $remove = Remove-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -BackwardCompatible
+        $remove = Remove-AzPolicyAssignment -Name $testPAWP -Scope $rg.ResourceId -BackwardCompatible
         $remove = (Remove-AzPolicyDefinition -Name $policyName -Force -BackwardCompatible) -and $remove
-        $remove = (Remove-ResourceGroup -Name $rgname -Force) -and $remove
+        $remove = (Remove-ResourceGroup -Name $rgname) -and $remove
         Assert-AreEqual True $remove
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."

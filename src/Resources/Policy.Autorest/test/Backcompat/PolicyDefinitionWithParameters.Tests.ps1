@@ -1,17 +1,18 @@
 # setup the Pester environment for policy backcompat tests
-. (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyDefinitionWithParameters'
+. (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicyDefinitionWithParameters'
 
-Describe 'PolicyDefinitionWithParameters' -Tag 'LiveOnly' {
+Describe 'Backcompat-PolicyDefinitionWithParameters' {
 
     BeforeAll {
+        $testPDWP = Get-ResourceName
         # make a policy definition with parameters from a file
-        $actual = New-AzPolicyDefinition -Name testPDWP -Policy "$testFilesFolder\SamplePolicyDefinitionWithParameters.json" -Parameter "$testFilesFolder\SamplePolicyDefinitionParameters.json" -Description $description -BackwardCompatible
+        $actual = New-AzPolicyDefinition -Name $testPDWP -Policy "$testFilesFolder\SamplePolicyDefinitionWithParameters.json" -Parameter "$testFilesFolder\SamplePolicyDefinitionParameters.json" -Description $description -BackwardCompatible
     }
 
     It 'make a policy definition with parameters from a file' {
         {
             # get it back and validate
-            $expected = Get-AzPolicyDefinition -Name testPDWP -BackwardCompatible
+            $expected = Get-AzPolicyDefinition -Name $testPDWP -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
             Assert-NotNull($actual.Properties.PolicyRule)
@@ -29,12 +30,12 @@ Describe 'PolicyDefinitionWithParameters' -Tag 'LiveOnly' {
     It 'make a policy definition with parameters on the command line' {
         {
             # delete the policy definition
-            $remove = Remove-AzPolicyDefinition -Name testPDWP -Force -BackwardCompatible
+            $remove = Remove-AzPolicyDefinition -Name $testPDWP -Force -BackwardCompatible
             Assert-AreEqual True $remove
 
             # make a policy definition with parameters from the command line, get it back and validate
-            $actual = New-AzPolicyDefinition -Name testPDWP -Policy "$testFilesFolder\SamplePolicyDefinitionWithParameters.json" -Parameter $fullParameterDefinition -Description $description -BackwardCompatible
-            $expected = Get-AzPolicyDefinition -Name testPDWP -BackwardCompatible
+            $actual = New-AzPolicyDefinition -Name $testPDWP -Policy "$testFilesFolder\SamplePolicyDefinitionWithParameters.json" -Parameter $fullParameterDefinition -Description $description -BackwardCompatible
+            $expected = Get-AzPolicyDefinition -Name $testPDWP -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
             Assert-NotNull($actual.Properties.PolicyRule)
@@ -51,7 +52,7 @@ Describe 'PolicyDefinitionWithParameters' -Tag 'LiveOnly' {
 
     AfterAll {
         # delete the policy definition
-        $remove = Remove-AzPolicyDefinition -Name testPDWP -Force -BackwardCompatible
+        $remove = Remove-AzPolicyDefinition -Name $testPDWP -Force -BackwardCompatible
         Assert-AreEqual True $remove
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."

@@ -14,20 +14,19 @@ This operation updates a policy exemption with the given scope and name.
 
 ### Name (Default)
 ```
-Update-AzPolicyExemption -Name <String> [-ExemptionCategory <ExemptionCategory>]
- [-PolicyDefinitionReferenceId <String[]>] [-Scope <String>]
- [-AssignmentScopeValidation <AssignmentScopeValidation>] [-BackwardCompatible] [-ClearExpiration]
- [-Description <String>] [-DisplayName <String>] [-ExpiresOn <DateTime?>] [-Metadata <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzPolicyExemption -Name <String> [-ExemptionCategory <String>]
+ [-PolicyDefinitionReferenceId <String[]>] [-Scope <String>] [-AssignmentScopeValidation <String>]
+ [-BackwardCompatible] [-ClearExpiration] [-Description <String>] [-DisplayName <String>]
+ [-ExpiresOn <DateTime?>] [-Metadata <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Id
 ```
-Update-AzPolicyExemption -Id <String> [-ExemptionCategory <ExemptionCategory>]
- [-PolicyDefinitionReferenceId <String[]>] [-AssignmentScopeValidation <AssignmentScopeValidation>]
- [-BackwardCompatible] [-ClearExpiration] [-Description <String>] [-DisplayName <String>]
- [-ExpiresOn <DateTime?>] [-Metadata <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzPolicyExemption -Id <String> [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>]
+ [-AssignmentScopeValidation <String>] [-BackwardCompatible] [-ClearExpiration] [-Description <String>]
+ [-DisplayName <String>] [-ExpiresOn <DateTime?>] [-Metadata <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,7 +105,7 @@ The updated exemption will never expire.
 The option whether validate the exemption is at or under the assignment scope.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.AssignmentScopeValidation
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -197,7 +196,7 @@ Accept wildcard characters: False
 The policy exemption category
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.ExemptionCategory
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -212,7 +211,7 @@ Accept wildcard characters: False
 The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the policy exemption.
 
 ```yaml
-Type: System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -337,11 +336,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.ExemptionCategory
-
 ### System.Management.Automation.SwitchParameter
 
-### System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
 ### System.String
 
@@ -349,7 +346,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220701Preview.IPolicyExemption
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption
 
 ## NOTES
 

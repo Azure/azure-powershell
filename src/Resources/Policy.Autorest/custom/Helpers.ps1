@@ -28,6 +28,10 @@ function parsePolicyId {
     if (!$typeName) {
         # extract typename
         $temp = $resourceId -split '/providers/Microsoft.Authorization/'
+        if ($temp.Length -lt 2) {
+            throw 'parsePolicy(resourceId, typeName) argument error: resourceId is not a Microsoft.Authorization resource type'
+        }
+
         $typeName = ($temp[1] -split '/')[0]
     }
 
@@ -37,7 +41,11 @@ function parsePolicyId {
 
     $mark = "/providers/microsoft.authorization/$($typeName)/"
     $parts = $resourceId -split $mark
-    $name = $parts[1]
+    $name = ''
+    if ($parts.Length -gt 1) {
+        $name = $parts[1]
+    }
+
     $scope = $parts[0]
     $subId = ''
     $mgName = ''
@@ -497,3 +505,31 @@ function ResolvePolicyExemption {
 
     resolvePolicyArtifact $null $null $null $resourceId 'policyExemptions'
 }
+
+function LocationCompleter {
+    param (
+        [Parameter(Mandatory=$true)]
+        $commandName,
+        [Parameter(Mandatory=$true)]
+        $parameterName,
+        [Parameter(Mandatory=$true)]
+        $wordToComplete,
+        [Parameter(Mandatory=$true)]
+        $commandAst,
+        [Parameter(Mandatory=$true)]
+        $fakeBoundParameter
+    )
+
+    $currentLocations | Where-Object { $_ -like "$wordToComplete*" }
+}
+
+# register the location completer for New-AzPolicyAssignment
+Register-ArgumentCompleter -CommandName New-AzPolicyAssignment -ParameterName Location -ScriptBlock ${function:LocationCompleter}
+
+# cache Azure locations to be used by the location completer (Get-AzLocation is not available in this context, need to use REST)
+$subscriptionId = (Get-AzContext).Subscription.Id
+
+$response = Invoke-AzRestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/locations?api-version=2022-12-01" -Method GET
+$currentLocations = ($response.Content | ConvertFrom-Json -Depth 100).value | Sort-Object -Property name | Select-Object -ExpandProperty name
+# If you see the following error, it means your context access has expired
+# The given key 'AzureAttestationServiceEndpointSuffix' was not present in the dictionary.

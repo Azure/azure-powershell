@@ -1,12 +1,14 @@
 # setup the Pester environment for policy backcompat tests
-. (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyAssignmentEnforcementMode'
+. (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicyAssignmentEnforcementMode'
 
-Describe 'PolicyAssignmentEnforcementMode' -Tag 'LiveOnly' {
+Describe 'Backcompat-PolicyAssignmentEnforcementMode' {
 
     BeforeAll {
         # setup
         $rgname = Get-ResourceGroupName
         $policyName = Get-ResourceName
+        $testPA = Get-ResourceName
+        $test2 = Get-ResourceName
         $location = "westus"
 
         # make a new resource group and policy definition
@@ -14,13 +16,13 @@ Describe 'PolicyAssignmentEnforcementMode' -Tag 'LiveOnly' {
         $policy = New-AzPolicyDefinition -Name $policyName -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description -BackwardCompatible
 
         # assign the policy definition to the resource group
-        $actual = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -Location $location -EnforcementMode DoNotEnforce -BackwardCompatible
+        $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -Location $location -EnforcementMode DoNotEnforce -BackwardCompatible
     }
 
     It 'make a policy assignment' {
         {
             # get the assignment back and validate
-            $expected = Get-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $testPA -Scope $rg.ResourceId -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
@@ -62,7 +64,7 @@ Describe 'PolicyAssignmentEnforcementMode' -Tag 'LiveOnly' {
     It 'make another policy assignment without enforcement mode' {
         {
             # make another policy assignment without an enforcementMode, validate default mode is set
-            $withoutEnforcementMode = New-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description -BackwardCompatible
+            $withoutEnforcementMode = New-AzPolicyAssignment -Name $test2 -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description -BackwardCompatible
             Assert-AreEqual $enforcementModeDefault $withoutEnforcementMode.Properties.EnforcementMode
 
             # set an enforcement mode to the new assignment using the SET cmdlet
@@ -78,17 +80,17 @@ Describe 'PolicyAssignmentEnforcementMode' -Tag 'LiveOnly' {
     It 'enforcement mode in policy assignment list' {
         {
             # verify enforcement mode is returned in collection GET
-            $list = Get-AzPolicyAssignment -Scope $rg.ResourceId -BackwardCompatible | ?{ $_.Name -in @('testPA', 'test2') }
+            $list = Get-AzPolicyAssignment -Scope $rg.ResourceId -BackwardCompatible | ?{ $_.Name -in @($testPA, $test2) }
             Assert-AreEqual 2 @($list.Properties.EnforcementMode | Select -Unique).Count
         } | Should -Not -Throw
     }
 
     AfterAll {
         # clean up
-        $remove = Remove-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId -BackwardCompatible
-        $remove = (Remove-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId -BackwardCompatible) -and $remove
+        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $rg.ResourceId -BackwardCompatible
+        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $rg.ResourceId -BackwardCompatible) -and $remove
         $remove = (Remove-AzPolicyDefinition -Name $policyName -Force -BackwardCompatible) -and $remove
-        $remove = (Remove-ResourceGroup -Name $rgname -Force) -and $remove
+        $remove = (Remove-ResourceGroup -Name $rgname) -and $remove
         Assert-AreEqual True $remove
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."

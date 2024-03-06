@@ -1,12 +1,14 @@
 # setup the Pester environment for policy backcompat tests
-. (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyAssignmentUserAssignedIdentity'
+. (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicyAssignmentUserAssignedIdentity'
 
-Describe 'PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
+Describe 'Backcompat-PolicyAssignmentUserAssignedIdentity' {
 
     BeforeAll {
         # setup
         $rgname = Get-ResourceGroupName
         $policyName = Get-ResourceName
+        $testPA = Get-ResourceName
+        $test2 = Get-ResourceName
         $location = "westus"
         $userassignedidentityname = "test-user-msi"
     
@@ -16,13 +18,13 @@ Describe 'PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
         $userassignedidentity = New-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $userassignedidentityname -Location $location
         $userassignedidentityid = $userassignedidentity.Id
         # assign the policy definition with user MSI to the resource group
-        $actual = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -IdentityType "UserAssigned" -IdentityId $userassignedidentityid -Location $location -BackwardCompatible
+        $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -IdentityType "UserAssigned" -IdentityId $userassignedidentityid -Location $location -BackwardCompatible
     }
 
     It 'make a policy assignment at RG scope with user assigned MSI' {
         {
             # get the assignment back and validate
-            $expected = Get-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $testPA -Scope $rg.ResourceId -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
@@ -30,7 +32,8 @@ Describe 'PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
             Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
             Assert-AreEqual "UserAssigned" $expected.Identity.IdentityType
 
-            $actualuserassignedidentitieshashtable = $expected.Identity.UserAssignedIdentities
+            # looks like format of userassigned identities changed in the newer spec: adjusting the test to conform to the new format
+            $actualuserassignedidentitieshashtable = $expected.Identity.UserAssignedIdentities.AdditionalProperties
             $actualuserassignedidentityid = $($actualuserassignedidentitieshashtable.keys)
             $actualuserassignedidentityresource = $($actualuserassignedidentitieshashtable.values)[0]
             Assert-AreEqual $actualuserassignedidentityid $userassignedidentityid
@@ -48,7 +51,7 @@ Describe 'PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
             Assert-AreEqual $actual.ResourceId $actualById.ResourceId
             Assert-AreEqual "UserAssigned" $actualById.Identity.IdentityType
 
-            $actualbyiduserassignedidentityresource = $($actual.Identity.UserAssignedIdentities.values)[0]
+            $actualbyiduserassignedidentityresource = $($actual.Identity.UserAssignedIdentities.AdditionalProperties.values)[0]
             Assert-NotNull($actualbyiduserassignedidentityresource.PrincipalId)
             Assert-NotNull($actualbyiduserassignedidentityresource.ClientId)
             Assert-AreEqual $location $actualById.Location
@@ -61,7 +64,7 @@ Describe 'PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
             $setResult = Set-AzPolicyAssignment -Id $actual.ResourceId -DisplayName "testDisplay" -BackwardCompatible
             Assert-AreEqual "testDisplay" $setResult.Properties.DisplayName
             Assert-AreEqual "UserAssigned" $setResult.Identity.IdentityType
-            $setresultuserassignedidentityresource = $($setresult.Identity.UserAssignedIdentities.values)[0]
+            $setresultuserassignedidentityresource = $($setresult.Identity.UserAssignedIdentities.AdditionalProperties.values)[0]
             Assert-NotNull($setresultuserassignedidentityresource.PrincipalId)
             Assert-NotNull($setresultuserassignedidentityresource.ClientId)
             Assert-AreEqual $location $setResult.Location
@@ -71,14 +74,14 @@ Describe 'PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
     It 'make another policy assignment without MSI then add MSI' {
         {
             # make another policy assignment without an identity
-            $withoutIdentityResult = New-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description -BackwardCompatible
+            $withoutIdentityResult = New-AzPolicyAssignment -Name $test2 -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description -BackwardCompatible
             Assert-Null($withoutIdentityResult.Identity)
             Assert-Null($withoutIdentityResult.Location)
 
             # add an identity to the new assignment using the SET cmdlet
             $setResult = Set-AzPolicyAssignment -Id $withoutIdentityResult.ResourceId -IdentityType "UserAssigned" -IdentityId $userassignedidentityid -Location $location -BackwardCompatible
             Assert-AreEqual "UserAssigned" $setResult.Identity.IdentityType
-            $setresultuserassignedidentityresource = $($setresult.Identity.UserAssignedIdentities.values)[0]
+            $setresultuserassignedidentityresource = $($setresult.Identity.UserAssignedIdentities.AdditionalProperties.values)[0]
             Assert-NotNull($setresultuserassignedidentityresource.PrincipalId)
             Assert-NotNull($setresultuserassignedidentityresource.ClientId)
             Assert-AreEqual $location $setResult.Location
@@ -88,24 +91,24 @@ Describe 'PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
     It 'list policy assignments with user assigned MSI' {
         {
             # verify identity is returned in collection GET
-            $list = Get-AzPolicyAssignment -Scope $rg.ResourceId -BackwardCompatible | Where-Object{ $_.Name -in @('testPA', 'test2') }
+            $list = Get-AzPolicyAssignment -Scope $rg.ResourceId -BackwardCompatible | Where-Object{ $_.Name -in @($testPA, $test2) }
             $userassignedidentityobject = ($list.Identity.UserAssignedIdentities | Select -Unique)    
             Assert-AreEqual "UserAssigned" ($list.Identity.IdentityType | Select -Unique)
-            Assert-AreEqual 1 @(($($userassignedidentityobject.values)[0]).PrincipalId | Select -Unique).Count
-            Assert-AreEqual 1 @(($($userassignedidentityobject.values)[0]).ClientId | Select -Unique).Count
+            Assert-AreEqual 1 @(($($userassignedidentityobject.AdditionalProperties.values)[0]).PrincipalId | Select -Unique).Count
+            Assert-AreEqual 1 @(($($userassignedidentityobject.AdditionalProperties.values)[0]).ClientId | Select -Unique).Count
             Assert-AreEqual $location ($list.Location | Select -Unique)
         } | Should -Not -Throw
     }
 
     AfterAll {
         # clean up
-        $remove = Remove-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId -BackwardCompatible
-        $remove = (Remove-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId -BackwardCompatible) -and $remove
+        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $rg.ResourceId -BackwardCompatible
+        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $rg.ResourceId -BackwardCompatible) -and $remove
 
         Remove-AzUserAssignedIdentity -ResourceGroupName $rgName -Name $userassignedidentityname
 
         $remove = (Remove-AzPolicyDefinition -Name $policyName -Force -BackwardCompatible) -and $remove
-        $remove = (Remove-ResourceGroup -Name $rgname -Force) -and $remove
+        $remove = (Remove-ResourceGroup -Name $rgname) -and $remove
         Assert-AreEqual True $remove
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."

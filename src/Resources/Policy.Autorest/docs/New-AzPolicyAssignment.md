@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPolicyAssignment
 
 ## SYNOPSIS
-This operation creates or updates a policy assignment with the given scope and name.
+This operation Create a policy assignment with the given scope and name.
 Policy assignments apply to all resources contained within their scope.
 For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
 
@@ -17,51 +17,40 @@ For example, when you assign a policy at resource group scope, that policy appli
 ### Default (Default)
 ```
 New-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-Description <String>]
- [-DisplayName <String>] [-EnforcementMode <EnforcementMode>] [-IdentityId <String>]
- [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <String>]
- [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-PolicyDefinition <PSObject>]
- [-PolicySetDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
+ [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
+ [-PolicyDefinition <PSObject>] [-PolicySetDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzPolicyAssignment [-Description <String>] [-DisplayName <String>] [-EnforcementMode <EnforcementMode>]
- [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
- [-NotScope <String[]>] [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicyAssignment [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
+ [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded1
 ```
-New-AzPolicyAssignment [-Description <String>] [-DisplayName <String>] [-EnforcementMode <EnforcementMode>]
- [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
- [-NotScope <String[]>] [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded1
-```
-New-AzPolicyAssignment -InputObject <IPolicyIdentity> [-Description <String>] [-DisplayName <String>]
- [-EnforcementMode <EnforcementMode>] [-IdentityType <ResourceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>] [-NotScope <String[]>]
- [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzPolicyAssignment [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
+ [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ParameterObject
 ```
 New-AzPolicyAssignment -Name <String> -PolicyDefinition <PSObject> -PolicyParameterObject <Hashtable>
  [-Scope <String>] [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
- [-EnforcementMode <EnforcementMode>] [-IdentityId <String>] [-IdentityType <ResourceIdentityType>]
- [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
+ [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
+ [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
  [-PolicySetDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ParameterString
 ```
 New-AzPolicyAssignment -Name <String> -PolicyDefinition <PSObject> -PolicyParameter <String> [-Scope <String>]
- [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <EnforcementMode>]
- [-IdentityId <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <String>]
+ [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
+ [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
  [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-PolicySetDefinition <PSObject>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -70,8 +59,8 @@ New-AzPolicyAssignment -Name <String> -PolicyDefinition <PSObject> -PolicyParame
 ```
 New-AzPolicyAssignment -Name <String> -PolicyParameterObject <Hashtable> -PolicySetDefinition <PSObject>
  [-Scope <String>] [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
- [-EnforcementMode <EnforcementMode>] [-IdentityId <String>] [-IdentityType <ResourceIdentityType>]
- [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
+ [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
+ [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
  [-PolicyDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -79,13 +68,13 @@ New-AzPolicyAssignment -Name <String> -PolicyParameterObject <Hashtable> -Policy
 ```
 New-AzPolicyAssignment -Name <String> -PolicyParameter <String> -PolicySetDefinition <PSObject>
  [-Scope <String>] [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
- [-EnforcementMode <EnforcementMode>] [-IdentityId <String>] [-IdentityType <ResourceIdentityType>]
- [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
+ [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
+ [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
  [-PolicyDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This operation creates or updates a policy assignment with the given scope and name.
+This operation Create a policy assignment with the given scope and name.
 Policy assignments apply to all resources contained within their scope.
 For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
 
@@ -311,7 +300,7 @@ The policy assignment enforcement mode.
 Possible values are Default and DoNotEnforce.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.EnforcementMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -343,7 +332,7 @@ The identity type.
 This is the only required field when adding a system or user assigned identity to a resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.ResourceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -360,29 +349,13 @@ The user identity dictionary key references will be ARM resource ids in the form
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded, CreateExpanded1
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
-Parameter Sets: CreateViaIdentityExpanded1, Default, ParameterObject, ParameterString, SetParameterObject, SetParameterString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -463,22 +436,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Override
-The policy property value override.
-To construct, see NOTES section for OVERRIDE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ApiV1.IOverride[]
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PolicyDefinition
 The ID of the policy definition or policy set definition being assigned.
 To construct, see NOTES section for POLICYDEFINITION properties and create a hash table.
@@ -543,22 +500,6 @@ Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceSelector
-The resource selector list to filter policies by resource properties.
-To construct, see NOTES section for RESOURCESELECTOR properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ApiV1.IResourceSelector[]
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Scope
 The scope of the policy assignment.
 Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
@@ -611,10 +552,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.EnforcementMode
-
 ### System.Management.Automation.PSObject
 
 ### System.Management.Automation.PSObject[]
@@ -625,96 +562,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IPolicyIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ManagementGroupId <String>]`: The ID of the management group.
-  - `[ParentResourcePath <String>]`: The parent resource path. Use empty string if there is none.
-  - `[PolicyAssignmentId <String>]`: The ID of the policy assignment to delete. Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
-  - `[PolicyAssignmentName <String>]`: The name of the policy assignment to delete.
-  - `[PolicyDefinitionName <String>]`: The name of the policy definition to create.
-  - `[PolicyExemptionName <String>]`: The name of the policy exemption to delete.
-  - `[PolicySetDefinitionName <String>]`: The name of the policy set definition to create.
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains policy assignments.
-  - `[ResourceName <String>]`: The name of the resource.
-  - `[ResourceProviderNamespace <String>]`: The namespace of the resource provider. For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
-  - `[ResourceType <String>]`: The resource type name. For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
-  - `[Scope <String>]`: The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-`NONCOMPLIANCEMESSAGETABLE <INonComplianceMessage[]>`: The messages that describe why a resource is non-compliant with the policy.
-  - `Message <String>`: A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
-  - `[PolicyDefinitionReferenceId <String>]`: The policy definition reference ID within a policy set definition the message is intended for. This is only applicable if the policy assignment assigns a policy set definition. If this is not provided the message applies to all policies assigned by this policy assignment.
-
-`OVERRIDE <IOverride[]>`: The policy property value override.
-  - `[Kind <OverrideKind?>]`: The override kind.
-  - `[Selector <ISelector[]>]`: The list of the selector expressions.
-    - `[In <String[]>]`: The list of values to filter in.
-    - `[Kind <SelectorKind?>]`: The selector kind.
-    - `[NotIn <String[]>]`: The list of values to filter out.
-  - `[Value <String>]`: The value to override the policy property.
-
-`POLICYDEFINITION <PSObject>`: The ID of the policy definition or policy set definition being assigned.
-  - `[Description <String>]`: The policy definition description.
-  - `[DisplayName <String>]`: The display name of the policy definition.
-  - `[Metadata <IPolicyDefinitionPropertiesMetadata>]`: The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[Mode <String>]`: The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
-  - `[Parameter <IParameterDefinitions>]`: The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[PolicyRule <IPolicyDefinitionPropertiesPolicyRule>]`: The policy rule.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[PolicyType <PolicyType?>]`: The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-
-`POLICYSETDEFINITION <PSObject>`: The ID of the policy definition or policy set definition being assigned.
-  - `[Description <String>]`: The policy set definition description.
-  - `[DisplayName <String>]`: The display name of the policy set definition.
-  - `[Metadata <IPolicySetDefinitionPropertiesMetadata>]`: The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[Parameter <IParameterDefinitions>]`: The policy set definition parameters that can be used in policy definition references.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[PolicyDefinition <IPolicyDefinitionReference[]>]`: An array of policy definition references.
-    - `PolicyDefinitionId <String>`: The ID of the policy definition or policy set definition.
-    - `[GroupName <String[]>]`: The name of the groups that this policy definition reference belongs to.
-    - `[Id <String>]`: A unique id (within the policy set definition) for this policy definition reference.
-    - `[Parameter <IParameterValues>]`: The parameter values for the referenced policy rule. The keys are the parameter names.
-      - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[PolicyDefinitionGroup <IPolicyDefinitionGroup[]>]`: The metadata describing groups of policy definition references within the policy set definition.
-    - `Name <String>`: The name of the group.
-    - `[AdditionalMetadataId <String>]`: A resource ID of a resource that contains additional metadata about the group.
-    - `[Category <String>]`: The group's category.
-    - `[Description <String>]`: The group's description.
-    - `[DisplayName <String>]`: The group's display name.
-  - `[PolicyType <PolicyType?>]`: The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-
-`RESOURCESELECTOR <IResourceSelector[]>`: The resource selector list to filter policies by resource properties.
-  - `[Name <String>]`: The name of the resource selector.
-  - `[Selector <ISelector[]>]`: The list of the selector expressions.
-    - `[In <String[]>]`: The list of values to filter in.
-    - `[Kind <SelectorKind?>]`: The selector kind.
-    - `[NotIn <String[]>]`: The list of values to filter out.
 
 ## RELATED LINKS
 

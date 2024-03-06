@@ -29,7 +29,7 @@ The **New-AzPolicySetDefinition** cmdlet creates or updates a policy set definit
 https://learn.microsoft.com/powershell/module/az.resources/new-azpolicysetdefinition
 #>
 function New-AzPolicySetDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicySetDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition])]
 [CmdletBinding(DefaultParameterSetName='Name', SupportsShouldProcess=$true, ConfirmImpact='Low')]
 param(
     [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
@@ -54,7 +54,7 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicySetDefinitionPropertiesMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinitionPropertiesMetadata]))]
     [System.String]
     # The policy set definition metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
@@ -63,7 +63,6 @@ param(
     [Parameter(Mandatory)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicyDefinitionReference[]]))]
     [System.String]
     # The policy definition array in JSON string form.
     ${PolicyDefinition},
@@ -71,7 +70,6 @@ param(
     [Parameter()]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IParameterDefinitions]))]
     [System.String]
     # The parameter definitions for parameters used in the policy rule.
     # The keys are the parameter names.
@@ -94,7 +92,7 @@ param(
     [Parameter()]
     [Alias('GroupDefinition')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicyDefinitionGroup[]]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionGroup[]]))]
     [System.String]
     # The metadata describing groups of policy definition references within the policy set definition.
     # To construct, see NOTES section for POLICYDEFINITIONGROUP properties and create a hash table.

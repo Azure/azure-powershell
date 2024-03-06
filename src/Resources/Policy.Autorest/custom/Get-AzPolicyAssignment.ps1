@@ -30,7 +30,7 @@ Identify a policy assignment to get by name and scope or by ID.
 https://learn.microsoft.com/powershell/module/az.resources/get-azpolicyassignment
 #>
 function Get-AzPolicyAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment])]
 [CmdletBinding(DefaultParameterSetName='Default')]
 param(
     [Parameter(ParameterSetName='Name', Mandatory, ValueFromPipelineByPropertyName)]

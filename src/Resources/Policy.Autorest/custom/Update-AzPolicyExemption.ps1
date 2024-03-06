@@ -31,7 +31,7 @@ This operation updates a policy exemption with the given scope and name.
 https://learn.microsoft.com/powershell/module/az.resources/update-azpolicyexemption
 #>
 function Update-AzPolicyExemption {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220701Preview.IPolicyExemption])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption])]
 [Alias('Set-AzPolicyExemption')]
 [CmdletBinding(DefaultParameterSetName='Name', SupportsShouldProcess=$true, ConfirmImpact='Low')]
 param(
@@ -75,7 +75,7 @@ param(
     [Parameter(ValueFromPipelineByPropertyName)]
     [ValidateSet('Waiver', 'Mitigated')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.ExemptionCategory]
+    [System.String]
     # The policy exemption category
     ${ExemptionCategory},
 
@@ -97,7 +97,7 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220701Preview.IPolicyExemptionPropertiesMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemptionPropertiesMetadata]))]
     [System.String]
     # The policy assignment metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
@@ -109,9 +109,9 @@ param(
     ${BackwardCompatible} = $false,
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.AssignmentScopeValidation])]
+    [ValidateSet('Default', 'DoNotValidate')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.AssignmentScopeValidation]
+    [System.String]
     # The option whether validate the exemption is at or under the assignment scope.
     ${AssignmentScopeValidation},
 
@@ -233,7 +233,7 @@ process {
         $null = $calledParameters.Remove('Id')
     }
 
-    $calledParameters.PolicyAssignment = [PSCustomObject]@{ PolicyAssignmentId = $existing.PolicyAssignmentId }
+    $calledParameters.PolicyAssignment = [PSCustomObject]@{ Id = $existing.PolicyAssignmentId }
 
     if (!$ExemptionCategory) {
         $calledParameters.ExemptionCategory = $existing.ExemptionCategory
