@@ -175,6 +175,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             databaseAccountCreateUpdateParameters.MinimalTlsVersion = MinimalTlsVersion;
             databaseAccountCreateUpdateParameters.EnablePriorityBasedExecution = EnablePriorityBasedExecution;
             databaseAccountCreateUpdateParameters.DefaultPriorityLevel = DefaultPriorityLevel;
+            databaseAccountCreateUpdateParameters.EnablePerRegionPerPartitionAutoscale = EnablePerRegionPerPartitionAutoscale;
 
             if (IpRule != null && IpRule.Length > 0)
             {
