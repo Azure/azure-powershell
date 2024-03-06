@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed upload file with OAuth authentication issue [#24289] 
+    - `Set-AzStorageFileContent`
 
 ## Version 6.1.2
 * Fixed parser logic when downloading blob from managed disk account with Sas Uri and bearer token on Linux and MacOS
