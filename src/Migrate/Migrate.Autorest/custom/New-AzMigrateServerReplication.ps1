@@ -326,7 +326,9 @@ function New-AzMigrateServerReplication {
             $validDiskTypeSpellings = @{ 
                 Standard_LRS    = "Standard_LRS";
                 Premium_LRS     = "Premium_LRS";
-                StandardSSD_LRS = "StandardSSD_LRS"
+                StandardSSD_LRS = "StandardSSD_LRS";
+                StandardSSD_ZRS = "StandardSSD_ZRS";
+                Premium_ZRS     = "Premium_ZRS"
             }
             $DiskType = $validDiskTypeSpellings[$DiskType]
             
