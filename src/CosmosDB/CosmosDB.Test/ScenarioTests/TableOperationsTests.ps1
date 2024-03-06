@@ -234,6 +234,114 @@ function Test-TableMigrateThroughputCmdlets
 
 <#
 .SYNOPSIS
+ 1. Create database.
+ 2. Create container.
+ 3. Get database.
+ 4. Get container.
+ 5. Delete container.
+ 6. Restore non-existent container and expect failure.
+ 7. Restore container (from #5).
+ 8. Delete database.
+ 9. Restore container and expect failure (due to the database being offline).
+ 10. Restore database.
+ 11. Restore container.
+ 12. Restore container again and expect failure (as the collection is already online).
+ 13. Delete database.
+ 14. Restore non-existent database and expect failure.
+ 15. Restore database.
+ 16. Restore database again and expect failure (as the database already exists).
+ 17. Restore collection.
+#>
+function Test-TableInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
+{
+    $AccountName = "dbaccount-table-ntbr4"
+    $rgName = "CosmosDBResourceGroup66"
+    $DatabaseName = "iar-table-ntbrtest"
+    $ContainerName = "container1"
+    $location = "West US"
+    $DatabaseName2 = "dbName2"
+    $ContainerName2 = "container2"
+    $apiKind = "Table"
+    $PartitionKeyPathValue = "/foo/bar"
+    $PartitionKeyKindValue = "Hash"
+
+    $locations = @()
+    $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
+    Try {
+        $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
+        $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -BackupPolicyType Continuous
+
+        # 1. Create a new database
+        $NewDatabase = New-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+        Assert-AreEqual $NewDatabase.Name $DatabaseName
+
+        # 3. Get a database
+        $Database = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+        Assert-AreEqual $NewDatabase.Id $Database.Id
+        Assert-AreEqual $NewDatabase.Name $Database.Name
+        Assert-NotNull($Database)
+
+        Start-TestSleep -s 50
+
+        # 8. Delete database
+        Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+
+        Start-TestSleep -s 100
+
+        # list databases
+        $ListDatabases = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName
+        Assert-Null($ListDatabases)
+
+        # 10. Restore deleted database
+        Restore-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+
+        Start-TestSleep -s 50
+
+        # list databases
+        $ListDatabases = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName
+        Assert-NotNull($ListDatabases)
+
+        Start-TestSleep -s 50
+
+        # 13. Delete database
+        Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+
+        Start-TestSleep -s 100
+
+        # list databases
+        $ListDatabases = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName
+        Assert-Null($ListDatabases)
+
+        # 14. Restore non-existent database - expect failure
+        $InvalidDatabaseName = "InvalidDatabaseName"
+        $RestoreInvalidDatabase = Restore-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $InvalidDatabaseName
+        Assert-Null $RestoreInvalidDatabase
+
+
+        # 15. Restore database
+        Restore-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+
+        Start-TestSleep -s 50
+
+        # list databases
+        $ListDatabases = Get-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName
+        Assert-NotNull($ListDatabases)
+
+        # 16. Restore database again - expect failure (database already exists)
+        $SecondInAccountDatabaseRestore = Restore-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+        Assert-Null $SecondInAccountDatabaseRestore
+  }
+  Catch {
+        Write-Output "Error: $_"
+        throw $_
+  }
+  Finally {
+       Remove-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
 Test Table InAccount Restore operations
 #>
 function Test-TableInAccountRestoreOperationsCmdlets

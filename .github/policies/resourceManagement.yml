@@ -435,6 +435,22 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: arm-bicep
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: arm-bicep
+        then:
+        - mentionUsers:
+            mentionees:
+            - Azure/deployments-owners
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: ARO
         - hasLabel:
             label: Service Attention
@@ -690,6 +706,22 @@ configuration:
         - mentionUsers:
             mentionees:
             - maertendMSFT
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: CloudService
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: CloudService
+        then:
+        - mentionUsers:
+            mentionees:
+            - bberera
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1730,7 +1762,8 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - alec-baird，costinhagiu
+            - alec-baird
+            - costinhagiu
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1950,6 +1983,24 @@ configuration:
             mentionees:
             - romahamu
             - omzevall
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: ImageBuilder
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: ImageBuilder
+        then:
+        - mentionUsers:
+            mentionees:
+            - adana-popescu
+            - KalpeshChavan12
+            - ralucaminea
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2189,6 +2240,24 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: Maintenance
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Maintenance
+        then:
+        - mentionUsers:
+            mentionees:
+            - adana-popescu
+            - KalpeshChavan12
+            - ralucaminea
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: Managed Identity
         - hasLabel:
             label: Service Attention
@@ -2197,7 +2266,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - varunkch (Azure Cli route to zhoxing-ms)
+            - RamyaElangovanP
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3327,7 +3396,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - chiragg4u
+            - venu-l
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3626,6 +3695,22 @@ configuration:
         - mentionUsers:
             mentionees:
             - azureSQLGitHub
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: StackHCIVM
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: StackHCIVM
+        then:
+        - mentionUsers:
+            mentionees:
+            - arc-enabled-vms-on-hci Team
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:

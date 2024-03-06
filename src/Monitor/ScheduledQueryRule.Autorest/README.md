@@ -27,12 +27,13 @@ For information on how to develop for `Az.ScheduledQueryRule`, see [how-to.md](h
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
+commit: 9be728717e3e81bd3d28566016e71d8f49a8e755
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/9be728717e3e81bd3d28566016e71d8f49a8e755/specification/monitor/resource-manager/Microsoft.Insights/stable/2021-08-01/scheduledQueryRule_API.json
+  - $(repo)/specification/monitor/resource-manager/Microsoft.Insights/stable/2021-08-01/scheduledQueryRule_API.json
 
 root-module-name: $(prefix).Monitor
 title: ScheduledQueryRule
@@ -44,6 +45,10 @@ nested-object-to-string: true
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

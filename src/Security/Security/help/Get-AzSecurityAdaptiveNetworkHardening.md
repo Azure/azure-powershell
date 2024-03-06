@@ -15,7 +15,8 @@ Gets a list of Adaptive Network Hardenings resources in scope of an extended res
 ```
 Get-AzSecurityAdaptiveNetworkHardening [-AdaptiveNetworkHardeningResourceName <String>]
  -ResourceGroupName <String> -ResourceName <String> -ResourceNamespace <String> -ResourceType <String>
- [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

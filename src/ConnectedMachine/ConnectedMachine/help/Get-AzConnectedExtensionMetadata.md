@@ -15,13 +15,15 @@ Gets an Extension Metadata based on location, publisher, extensionType and versi
 ### List (Default)
 ```
 Get-AzConnectedExtensionMetadata -ExtensionType <String> -Location <String> -Publisher <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzConnectedExtensionMetadata -ExtensionType <String> -Location <String> -Publisher <String>
- [-SubscriptionId <String[]>] -Version <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] -Version <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

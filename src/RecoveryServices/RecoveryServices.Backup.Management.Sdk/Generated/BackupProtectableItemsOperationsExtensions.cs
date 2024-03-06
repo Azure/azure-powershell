@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class BackupProtectableItemsOperationsExtensions
     {
         /// <summary>
-        /// Provides a pageable list of protectable objects within your subscription according to the query filter and the
+        /// Provides a pageable list of protectable objects within your subscription
+        /// according to the query filter and the
         /// pagination parameters.
         /// </summary>
         /// <param name='operations'>
@@ -26,7 +27,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
@@ -37,7 +39,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Provides a pageable list of protectable objects within your subscription according to the query filter and the
+        /// Provides a pageable list of protectable objects within your subscription
+        /// according to the query filter and the
         /// pagination parameters.
         /// </summary>
         /// <param name='operations'>
@@ -50,7 +53,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
@@ -66,7 +70,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             }
         }
         /// <summary>
-        /// Provides a pageable list of protectable objects within your subscription according to the query filter and the
+        /// Provides a pageable list of protectable objects within your subscription
+        /// according to the query filter and the
         /// pagination parameters.
         /// </summary>
         /// <param name='operations'>
@@ -81,7 +86,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Provides a pageable list of protectable objects within your subscription according to the query filter and the
+        /// Provides a pageable list of protectable objects within your subscription
+        /// according to the query filter and the
         /// pagination parameters.
         /// </summary>
         /// <param name='operations'>

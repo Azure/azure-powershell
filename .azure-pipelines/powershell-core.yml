@@ -20,6 +20,7 @@ variables:
   EnableTestCoverage: true
   TestCoverageLocation: $(Build.SourcesDirectory)/artifacts
   PowerShellPlatform: PowerShell Core
+  AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
 
 trigger: none
 

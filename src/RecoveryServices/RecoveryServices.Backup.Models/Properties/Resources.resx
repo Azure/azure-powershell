@@ -847,4 +847,16 @@ Please contact Microsoft for further assistance.</value>
   <data name="StdToEnhPolicyMigrationWarning" xml:space="preserve">
     <value>Upgrading to enhanced policy can incur additional charges. Once upgraded to the enhanced policy, it is not possible to revert back to the standard policy</value>
   </data>
+  <data name="SnapshotConsistencyTypeCantBeSetForStandardPolicy" xml:space="preserve">
+    <value>SnapshotConsistencyType parameter can only be used for enhanced AzureVM policy</value>
+  </data>
+  <data name="InvalidParameterSnapshotConsistencyType" xml:space="preserve">
+    <value>SnapshotConsistencyType parameter can only be used for WorkloadType AzureVM</value>
+  </data>
+  <data name="AADPropertiesCouldNotBeFetchedException" xml:space="preserve">
+    <value>An error occured while fetching AAD properties, this property is needed to get CRR access token</value>
+  </data>
+  <data name="CRRAccessTokenCouldNotBeFetchedException" xml:space="preserve">
+    <value>Unable to fetch CRR access token. Please retry the operation or contact Microsoft support if issue persists</value>
+  </data>
 </root>

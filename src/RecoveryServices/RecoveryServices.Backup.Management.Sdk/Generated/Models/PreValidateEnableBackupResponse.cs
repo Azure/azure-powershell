@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="status">Validation Status
-        /// Possible values include: 'Invalid', 'Succeeded', 'Failed'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;</param>
 
         /// <param name="errorCode">Response error code
         /// </param>

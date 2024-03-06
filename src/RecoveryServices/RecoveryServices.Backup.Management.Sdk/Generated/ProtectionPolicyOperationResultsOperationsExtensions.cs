@@ -22,13 +22,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='policyName'>
         /// Backup policy name whose operation&#39;s result needs to be fetched.
         /// </param>
         /// <param name='operationId'>
-        /// Operation ID which represents the operation whose result needs to be fetched.
+        /// Operation ID which represents the operation whose result needs to be
+        /// fetched.
         /// </param>
         public static ProtectionPolicyResource Get(this IProtectionPolicyOperationResultsOperations operations, string vaultName, string resourceGroupName, string policyName, string operationId)
         {
@@ -45,13 +47,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='policyName'>
         /// Backup policy name whose operation&#39;s result needs to be fetched.
         /// </param>
         /// <param name='operationId'>
-        /// Operation ID which represents the operation whose result needs to be fetched.
+        /// Operation ID which represents the operation whose result needs to be
+        /// fetched.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

@@ -181,6 +181,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     throw;
                 }
 
+                this.WriteDebugWithTimestamp($"[{nameof(ResourceManagerCmdletBase)}.{nameof(ExecuteCmdlet)}] Caught unhandled exception: {ex}");
+
                 var capturedException = ExceptionDispatchInfo.Capture(ex);
                 this.HandleException(capturedException: capturedException);
             }

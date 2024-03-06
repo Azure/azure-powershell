@@ -16,8 +16,8 @@ Create or update an alerts suppression rule.
 ```
 Set-AzAlertsSuppressionRule -Name <String> -AlertType <String> [-ExpirationDateUtc <DateTime>] -Reason <String>
  -State <PSRuleState> [-Comment <String>] [-SuppressionAlertsScope <PSSuppressionAlertsScope>]
- [-AllOf <PSIScopeElement[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AllOf <PSIScopeElement[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -25,7 +25,8 @@ Set-AzAlertsSuppressionRule -Name <String> -AlertType <String> [-ExpirationDateU
 Set-AzAlertsSuppressionRule -InputObject <PSAlertsSuppressionRule> [-Name <String>] [-AlertType <String>]
  [-ExpirationDateUtc <DateTime>] [-Reason <String>] [-State <PSRuleState>] [-Comment <String>]
  [-SuppressionAlertsScope <PSSuppressionAlertsScope>] [-AllOf <PSIScopeElement[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
