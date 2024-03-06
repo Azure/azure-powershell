@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 RestoreSource = RestoreSource,
                 RestoreTimestampInUtc = RestoreTimestampInUtc,
                 RestoreWithTtlDisabled = DisableTtl
-            };
+        };
 
             if (DatabasesToRestore != null)
             {

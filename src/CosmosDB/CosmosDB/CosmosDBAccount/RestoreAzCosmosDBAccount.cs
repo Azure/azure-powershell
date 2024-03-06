@@ -71,8 +71,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string SourceBackupLocation { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.DisableTtlHelpMessage)]
-        [PSArgumentCompleter(SDKModel.Restore.DisableTtl.Disabled, SDKModel.Restore.DisableTtl.Enabled)]
-        public string DisableTtl { get; set; }
+        public bool? DisableTtl { get; set; }
 
         public override void ExecuteCmdlet()
         {

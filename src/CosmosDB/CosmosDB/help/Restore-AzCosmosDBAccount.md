@@ -16,7 +16,7 @@ Restores an existing CosmosDB account (live or deleted) to a given timestamp to 
 Restore-AzCosmosDBAccount -RestoreTimestampInUtc <DateTime> -SourceDatabaseAccountName <String>
  -Location <String> -TargetResourceGroupName <String> -TargetDatabaseAccountName <String>
  [-DatabasesToRestore <PSDatabaseToRestore[]>] [-GremlinDatabasesToRestore <PSGremlinDatabaseToRestore[]>]
- [-TablesToRestore <PSTablesToRestore>] [-AsJob] [-PublicNetworkAccess <String>] [-DisableTtl <String>]
+ [-TablesToRestore <PSTablesToRestore>] [-AsJob] [-PublicNetworkAccess <String>] [-DisableTtl <Boolean>]
  [-SourceBackupLocation <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -116,10 +116,10 @@ Accept wildcard characters: False
 ```
 
 ### -DisableTtl
-Flag to disable Time-To-Live on the restored account. Possible values include: false, true
+Bool to indicate if restored account is going to have Time-To-Live disabled.
 
 ```yaml
-Type: System.String
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
