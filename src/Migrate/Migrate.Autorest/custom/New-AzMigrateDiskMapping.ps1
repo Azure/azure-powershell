@@ -61,7 +61,11 @@ function New-AzMigrateDiskMapping {
         $validDiskTypeSpellings = @{ 
             Standard_LRS    = "Standard_LRS";
             Premium_LRS     = "Premium_LRS";
-            StandardSSD_LRS = "StandardSSD_LRS"
+            StandardSSD_LRS = "StandardSSD_LRS";
+            PremiumV2_LRS   = "PremiumV2_LRS";
+            UltraSSD_LRS    = "UltraSSD_LRS";
+            StandardSSD_ZRS = "StandardSSD_ZRS";
+            Premium_ZRS     = "Premium_ZRS"
         }
         $DiskObject.DiskType = $validDiskTypeSpellings[$DiskType]
 
