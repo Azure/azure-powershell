@@ -64,7 +64,7 @@ Get-AzNetworkFabricExternalNetwork -L3IsolationDomainName $l3name -Name $name -R
 ```output
 AdministrativeState Annotation ConfigurationState ExportRoutePolicy
 ------------------- ---------- ------------------ -----------------
-Enabled                                           {…
+Enabled                                           
 ```
 
 This command gets details of the given External Network.

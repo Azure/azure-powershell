@@ -25,7 +25,7 @@ New-AzNetworkFabricNni -Name $name -NetworkFabricName $nfName -ResourceGroupName
 ```output
 AdministrativeState ConfigurationState EgressAclId ExportRoutePolicy Id
 ------------------- ------------------ ----------- ----------------- --
-Disabled            Succeeded                      {…                /subscriptions/<identity>/resourceGroups/nfa-tool-t…
+Disabled            Succeeded                                        /subscriptions/<identity>/resourceGroups/nfa-tool-t…
 ```
 
 This command creates the Network To Network Interconnect resource.

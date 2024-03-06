@@ -6,7 +6,7 @@ Get-AzNetworkFabricInternalNetwork -L3IsolationDomainName $l3name -ResourceGroup
 ```output
 AdministrativeState Annotation BgpConfiguration
 ------------------- ---------- ----------------
-Enabled                        {…
+Enabled                        
 ```
 
 This command lists all the Internal Networks.
@@ -19,7 +19,7 @@ Get-AzNetworkFabricInternalNetwork -L3IsolationDomainName $l3name -Name $name -R
 ```output
 AdministrativeState Annotation BgpConfiguration
 ------------------- ---------- ----------------
-Enabled                        {…
+Enabled                        
 ```
 
 This command gets details of the given Internal Network.

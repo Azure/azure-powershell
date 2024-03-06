@@ -26,7 +26,7 @@ stages:
         custom: msbuild
         arguments: 'build.proj "/t:Clean;Build" /p:Configuration=Release;TargetModule=${{ parameters.ServiceName }}'
     - pwsh: |
-          .\tools\RunVersionController.ps1 -ModuleName "Az.${{ parameters.ServiceName }}”
+          .\tools\RunVersionController.ps1 -ModuleName "Az.${{ parameters.ServiceName }}"
       displayName: 'Bump up version'
     - task: PowerShell@2
       displayName: get changelog info

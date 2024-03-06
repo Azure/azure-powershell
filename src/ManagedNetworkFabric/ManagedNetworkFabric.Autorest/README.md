@@ -362,6 +362,10 @@ directive:
       verb: Update
       subject: NetworkTapRuleAdministrativeState
     remove: true
+  - where:
+      verb: Remove
+      subject: Interface
+    remove: true
   # Handle 200 status code not exist in swagger spec for DELETE API's
   - from: swagger-document
     where: $.paths..delete.responses

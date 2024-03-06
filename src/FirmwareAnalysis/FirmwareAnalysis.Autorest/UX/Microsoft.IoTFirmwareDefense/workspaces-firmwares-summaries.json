@@ -1,0 +1,57 @@
+{
+  "resourceType": "workspaces/firmwares/summaries",
+  "apiVersion": "2024-01-10",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.firmwareanalysis"
+  },
+  "commands": [
+    {
+      "name": "Get-AzFirmwareAnalysisSummary",
+      "description": "Get an analysis result summary of a firmware by name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.firmwareanalysis/get-azfirmwareanalysissummary"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FirmwareId <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get an analysis result summary of a firmware by name.",
+          "parameters": [
+            {
+              "name": "-FirmwareId",
+              "value": "[Path.firmwareId]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.summaryName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-WorkspaceName",
+              "value": "[Path.workspaceName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

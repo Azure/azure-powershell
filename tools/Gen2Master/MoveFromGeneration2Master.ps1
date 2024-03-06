@@ -24,7 +24,12 @@ Function Move-Generation2Master {
 
     process {
         #Region Handle the module whoes folder is a subfolder of the module folder.
-        $ModuleName = $SourcePath.Replace('/', '\').Split('\src\')[1].Split('\')[0]
+        if (-not (Test-Path -Path $SourcePath)) {
+            Write-Error "The source path $SourcePath does not exist." -ForegroundColor Red
+            return
+        }
+        $SourceFolder = Get-Item -Path $SourcePath
+        $ModuleName = $SourceFolder.Name
 
         $DestParentPath = $DestPath
         While ("" -ne $DestParentPath) {
@@ -41,7 +46,9 @@ Function Move-Generation2Master {
             New-Item -Type Directory -Path $DestPath -Force
             New-Item "$DestPath\$ModuleName\Properties" -ItemType Directory
             New-Item "$DestPath\$ModuleName\help" -ItemType Directory
+            Update-MappingJson $ModuleName
         }
+        $DestPath = (Get-Item -Path $DestPath).FullName
         $Dir2Copy = @{
             'custom' = 'custom'
             'examples' = 'examples'
@@ -67,7 +74,7 @@ Function Move-Generation2Master {
             $Psd1Metadata = Import-LocalizedData -BaseDirectory "$PSScriptRoot/Templates" -FileName "Module.psd1"
         }
         foreach ($submoduleDir in $submoduleDirs) {
-            $psd1File = Get-ChildItem -Filter *.psd1 -File -Path $submoduleDir
+            $psd1File = Get-ChildItem -Filter *.psd1 -File -Path $submoduleDir.FullName
             write-host ("psd1 file name {0}" -f $psd1File.Name)
             $submoduleName = $psd1File.Name.Split('.')[-2]
             Foreach ($Dir in $Dir2Copy.GetEnumerator()) {
@@ -152,13 +159,6 @@ Function Move-Generation2Master {
         $Psd1Metadata.NestedModules = Unique-PathList $Psd1Metadata.NestedModules
         
         New-ModuleManifest -Path $DestPsd1Path @Psd1Metadata
-        
-        if (-not (Test-Path "$DestPath\$ModuleName\Properties")) {
-            New-Item "$DestPath\$ModuleName\Properties" -ItemType Directory
-            # Copy the assemblyinfo file
-            Copy-Template -SourceName AssemblyInfo.cs -DestPath "$DestPath\$ModuleName\Properties" -DestName AssemblyInfo.cs -ModuleName $submoduleName
-            Update-MappingJson $ModuleName
-        }
         # update module page
         dotnet build $slnFilePath
         # start a job to update markdown help module, since we can not uninstall a module in the same process.

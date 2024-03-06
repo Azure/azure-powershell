@@ -40,7 +40,7 @@ New-AzNetworkFabricInternalNetwork -Name $name -L3IsolationDomainName $l3domainN
 ```output
 AdministrativeState Annotation BgpConfiguration
 ------------------- ---------- ----------------
-Enabled                        {…
+Enabled                        
 ```
 
 This command creates the Internal Network resource.

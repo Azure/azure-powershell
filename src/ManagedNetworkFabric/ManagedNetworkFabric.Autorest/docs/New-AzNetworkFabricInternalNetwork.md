@@ -15,11 +15,11 @@ Creates InternalNetwork PUT method.
 ### CreateExpanded (Default)
 ```
 New-AzNetworkFabricInternalNetwork -L3IsolationDomainName <String> -Name <String> -ResourceGroupName <String>
- -VlanId <Int32> [-SubscriptionId <String>] [-Annotation <String>] [-BgpConfiguration <IBgpConfiguration>]
- [-ConnectedIPv4Subnet <IConnectedSubnet[]>] [-ConnectedIPv6Subnet <IConnectedSubnet[]>]
- [-EgressAclId <String>] [-ExportRoutePolicy <IExportRoutePolicy>] [-ExportRoutePolicyId <String>]
- [-Extension <String>] [-ImportRoutePolicy <IImportRoutePolicy>] [-ImportRoutePolicyId <String>]
- [-IngressAclId <String>] [-IsMonitoringEnabled <String>] [-Mtu <Int32>]
+ -VlanId <Int32> [-SubscriptionId <String>] [-Annotation <String>]
+ [-BgpConfiguration <IInternalNetworkPropertiesBgpConfiguration>] [-ConnectedIPv4Subnet <IConnectedSubnet[]>]
+ [-ConnectedIPv6Subnet <IConnectedSubnet[]>] [-EgressAclId <String>] [-ExportRoutePolicy <IExportRoutePolicy>]
+ [-ExportRoutePolicyId <String>] [-Extension <String>] [-ImportRoutePolicy <IImportRoutePolicy>]
+ [-ImportRoutePolicyId <String>] [-IngressAclId <String>] [-IsMonitoringEnabled <String>] [-Mtu <Int32>]
  [-StaticRouteConfigurationBfdConfiguration <IBfdConfiguration>] [-StaticRouteConfigurationExtension <String>]
  [-StaticRouteConfigurationIpv4Route <IStaticRouteProperties[]>]
  [-StaticRouteConfigurationIpv6Route <IStaticRouteProperties[]>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -36,11 +36,11 @@ New-AzNetworkFabricInternalNetwork -L3IsolationDomainInputObject <IManagedNetwor
 ### CreateViaIdentityL3IsolationDomainExpanded
 ```
 New-AzNetworkFabricInternalNetwork -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
- -Name <String> -VlanId <Int32> [-Annotation <String>] [-BgpConfiguration <IBgpConfiguration>]
- [-ConnectedIPv4Subnet <IConnectedSubnet[]>] [-ConnectedIPv6Subnet <IConnectedSubnet[]>]
- [-EgressAclId <String>] [-ExportRoutePolicy <IExportRoutePolicy>] [-ExportRoutePolicyId <String>]
- [-Extension <String>] [-ImportRoutePolicy <IImportRoutePolicy>] [-ImportRoutePolicyId <String>]
- [-IngressAclId <String>] [-IsMonitoringEnabled <String>] [-Mtu <Int32>]
+ -Name <String> -VlanId <Int32> [-Annotation <String>]
+ [-BgpConfiguration <IInternalNetworkPropertiesBgpConfiguration>] [-ConnectedIPv4Subnet <IConnectedSubnet[]>]
+ [-ConnectedIPv6Subnet <IConnectedSubnet[]>] [-EgressAclId <String>] [-ExportRoutePolicy <IExportRoutePolicy>]
+ [-ExportRoutePolicyId <String>] [-Extension <String>] [-ImportRoutePolicy <IImportRoutePolicy>]
+ [-ImportRoutePolicyId <String>] [-IngressAclId <String>] [-IsMonitoringEnabled <String>] [-Mtu <Int32>]
  [-StaticRouteConfigurationBfdConfiguration <IBfdConfiguration>] [-StaticRouteConfigurationExtension <String>]
  [-StaticRouteConfigurationIpv4Route <IStaticRouteProperties[]>]
  [-StaticRouteConfigurationIpv6Route <IStaticRouteProperties[]>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -108,7 +108,7 @@ New-AzNetworkFabricInternalNetwork -Name $name -L3IsolationDomainName $l3domainN
 ```output
 AdministrativeState Annotation BgpConfiguration
 ------------------- ---------- ----------------
-Enabled                        {…
+Enabled                        
 ```
 
 This command creates the Internal Network resource.
@@ -150,7 +150,7 @@ BGP configuration properties.
 To construct, see NOTES section for BGPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBgpConfiguration
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IInternalNetworkPropertiesBgpConfiguration
 Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
 Aliases:
 

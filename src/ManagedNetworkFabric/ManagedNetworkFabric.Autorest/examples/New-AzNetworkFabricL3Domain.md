@@ -21,7 +21,7 @@ New-AzNetworkFabricL3Domain -Name $name -ResourceGroupName $resourceGroupName -L
 ```output
 AdministrativeState AggregateRouteConfiguration
 ------------------- ---------------------------
-Disabled            {…
+Disabled            
 ```
 
 This command creates the L3 Isolation Domain resource.

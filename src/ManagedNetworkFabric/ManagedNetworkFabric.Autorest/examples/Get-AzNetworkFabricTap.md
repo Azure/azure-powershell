@@ -6,7 +6,7 @@ Get-AzNetworkFabricTap -SubscriptionId $subscriptionId
 ```output
 AdministrativeState Annotation ConfigurationState Destination
 ------------------- ---------- ------------------ -----------
-Disabled                       Succeeded          {{…
+Disabled                       Succeeded          
 ```
 
 This command lists all the Network Tap under the given Subscription.
@@ -19,7 +19,7 @@ Get-AzNetworkFabricTap -ResourceGroupName $resourceGroupName
 ```output
 AdministrativeState Annotation ConfigurationState Destination
 ------------------- ---------- ------------------ -----------
-Disabled                       Succeeded          {{…
+Disabled                       Succeeded          
 ```
 
 This command lists all the Network Tap under the given Resource Group.
@@ -32,7 +32,7 @@ Get-AzNetworkFabricTap -Name $name -ResourceGroupName $resourceGroupName
 ```output
 AdministrativeState Annotation ConfigurationState Destination
 ------------------- ---------- ------------------ -----------
-Disabled                       Succeeded          {{…
+Disabled                       Succeeded          
 ```
 
 This command gets details of the given Network Tap.

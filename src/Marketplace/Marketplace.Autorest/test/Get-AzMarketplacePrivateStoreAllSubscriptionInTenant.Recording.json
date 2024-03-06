@@ -1,0 +1,52 @@
+{
+  "Get-AzMarketplacePrivateStoreAllSubscriptionInTenant+[NoContext]+Fetch+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/fetchAllSubscriptionsInTenant?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/fetchAllSubscriptionsInTenant?api-version=2023-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "b5f58e2a-76b5-4f52-993f-a191223fef29" ],
+        "CommandName": [ "Get-AzMarketplacePrivateStoreAllSubscriptionInTenant" ],
+        "FullCommandName": [ "Get-AzMarketplacePrivateStoreAllSubscriptionInTenant_Fetch" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.11", "Az.Marketplace/1.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=80c7a5f90186ed67b1a22b2d6ba64306a36f909c848093374b79f8b04109a233;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=80c7a5f90186ed67b1a22b2d6ba64306a36f909c848093374b79f8b04109a233;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.02586.90-5c77bed2" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-azure-ref": [ "20240206T121442Z-un93fkbvw50w5bbm67x1677wk800000009c0000000008krq" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "85dbfdf7-72d4-455a-be30-02b3418eb660" ],
+        "x-ms-correlation-request-id": [ "85dbfdf7-72d4-455a-be30-02b3418eb660" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240206T121442Z:85dbfdf7-72d4-455a-be30-02b3418eb660" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-MSEdge-Ref": [ "Ref A: BC68FB6AB11A42D7AB65C6D92F539D30 Ref B: MRS211050313051 Ref C: 2024-02-06T12:14:42Z" ],
+        "Date": [ "Tue, 06 Feb 2024 12:14:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "398" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/1f58b5dd-313c-42ed-84fc-f1e351bba7fb\",\"subscriptionId\":\"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\",\"displayName\":\"PrivatestorePAYGSubscription\",\"state\":\"Enabled\"},{\"id\":\"/subscriptions/ab3de7bc-7a6e-4e9f-a34a-f6922df453e4\",\"subscriptionId\":\"ab3de7bc-7a6e-4e9f-a34a-f6922df453e4\",\"displayName\":\"PrivatestoreTestSubscription\",\"state\":\"Enabled\"}],\"skipToken\":null,\"count\":2}",
+      "isContentBase64": false
+    }
+  }
+}

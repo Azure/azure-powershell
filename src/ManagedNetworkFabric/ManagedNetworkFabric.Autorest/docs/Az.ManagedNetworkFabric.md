@@ -152,9 +152,6 @@ Deletes the Network Fabric Controller resource.
 ### [Remove-AzNetworkFabricExternalNetwork](Remove-AzNetworkFabricExternalNetwork.md)
 Implements ExternalNetworks DELETE method.
 
-### [Remove-AzNetworkFabricInterface](Remove-AzNetworkFabricInterface.md)
-Delete the Network Interface resource.
-
 ### [Remove-AzNetworkFabricInternalNetwork](Remove-AzNetworkFabricInternalNetwork.md)
 Implements InternalNetworks DELETE method.
 

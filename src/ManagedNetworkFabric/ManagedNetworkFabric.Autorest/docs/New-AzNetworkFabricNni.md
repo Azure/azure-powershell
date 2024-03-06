@@ -19,8 +19,8 @@ New-AzNetworkFabricNni -Name <String> -NetworkFabricName <String> -ResourceGroup
  [-ExportRoutePolicy <IExportRoutePolicyInformation>] [-ImportRoutePolicy <IImportRoutePolicyInformation>]
  [-IngressAclId <String>] [-IsManagementType <String>] [-Layer2Configuration <ILayer2Configuration>]
  [-NniType <String>] [-NpbStaticRouteConfiguration <INpbStaticRouteConfiguration>]
- [-OptionBLayer3Configuration <IOptionBLayer3Configuration>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-OptionBLayer3Configuration <INetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNetworkFabric
@@ -37,8 +37,8 @@ New-AzNetworkFabricNni -Name <String> -NetworkFabricInputObject <IManagedNetwork
  [-ImportRoutePolicy <IImportRoutePolicyInformation>] [-IngressAclId <String>] [-IsManagementType <String>]
  [-Layer2Configuration <ILayer2Configuration>] [-NniType <String>]
  [-NpbStaticRouteConfiguration <INpbStaticRouteConfiguration>]
- [-OptionBLayer3Configuration <IOptionBLayer3Configuration>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-OptionBLayer3Configuration <INetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -87,7 +87,7 @@ New-AzNetworkFabricNni -Name $name -NetworkFabricName $nfName -ResourceGroupName
 ```output
 AdministrativeState ConfigurationState EgressAclId ExportRoutePolicy Id
 ------------------- ------------------ ----------- ----------------- --
-Disabled            Succeeded                      {…                /subscriptions/<identity>/resourceGroups/nfa-tool-t…
+Disabled            Succeeded                                        /subscriptions/<identity>/resourceGroups/nfa-tool-t…
 ```
 
 This command creates the Network To Network Interconnect resource.
@@ -365,7 +365,7 @@ Common properties for Layer3Configuration.
 To construct, see NOTES section for OPTIONBLAYER3CONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOptionBLayer3Configuration
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration
 Parameter Sets: CreateExpanded, CreateViaIdentityNetworkFabricExpanded
 Aliases:
 

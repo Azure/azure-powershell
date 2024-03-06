@@ -29,7 +29,7 @@ New-AzNetworkFabricExternalNetwork -L3IsolationDomainName $l3domainName -Name $n
 ```output
 AdministrativeState Annotation ConfigurationState ExportRoutePolicy
 ------------------- ---------- ------------------ -----------------
-Enabled                                           {…
+Enabled                                           
 ```
 
 This command creates the External Network resource with Option B Properties.
@@ -42,7 +42,7 @@ New-AzNetworkFabricExternalNetwork -L3IsolationDomainName $l3domainName -Name $n
 ```output
 AdministrativeState Annotation ConfigurationState ExportRoutePolicy
 ------------------- ---------- ------------------ -----------------
-Enabled                                           {…
+Enabled                                           
 ```
 
 This command creates the External Network resource with Option A Properties.

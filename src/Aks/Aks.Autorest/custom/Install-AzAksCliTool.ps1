@@ -175,11 +175,12 @@ Function Install-Kubectl
         {
             $Destination = [System.IO.Path]::Combine($env:USERPROFILE, ".azure-kubectl")
         }
-        $Destination = Resolve-Path -Path $Destination
         If (-not (Test-Path -Path $Destination))
         {
             New-Item -Path $Destination -ItemType Directory
         }
+        $Destination = Resolve-Path -Path $Destination
+
         If (($Null -Eq $Version) -or ("" -Eq $Version))
         {
             $url = "$baseUrl/stable.txt"
@@ -269,11 +270,11 @@ Function Install-Kubelogin
         {
             $Destination = [System.IO.Path]::Combine($env:USERPROFILE, ".azure-kubelogin")
         }
-        $Destination = Resolve-Path -Path $Destination
         If (-not (Test-Path -Path $Destination))
         {
             New-Item -Path $Destination -ItemType Directory
         }
+        $Destination = Resolve-Path -Path $Destination
         If (($Null -Eq $Version) -or ("" -Eq $Version))
         {
             $latestVersionInfo = (Invoke-WebRequest -Uri $latestReleaseUrl).Content | ConvertFrom-Json
