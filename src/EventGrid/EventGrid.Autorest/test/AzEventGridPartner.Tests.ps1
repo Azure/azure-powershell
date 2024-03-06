@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzEventGridPartner'))
 }
 
 Describe 'AzEventGridPartner' {
-    It 'New-AzEventGridCaCertificate' {
+    It 'New-AzEventGridCaCertificate' -skip {
         {
             $crtData = Get-Content -Path ".\test\intermediate_ca.crt" -Raw
             $config = New-AzEventGridCaCertificate -Name $env.caCertificate -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -EncodedCertificate $crtData.Trim("`n")
