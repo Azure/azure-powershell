@@ -47,8 +47,9 @@ function setupEnv() {
     $tenant = (Get-AzContext).Tenant.Id
     $env.AddWithCache("SubscriptionId", $sub, $UsePreviousConfigForRecord)
     $env.AddWithCache("TenantId", $tenant, $UsePreviousConfigForRecord)
-
+    Write-Host "SubscriptionId: $($env.SubscriptionId)"
     $env.HasSubscription = $env.SubscriptionId -ne $null
+    Write-Host "HasSubscription: $($env.HasSubscription)"
     if($env.HasSubscription){
         Write-Host "Running subscription level tests"
     }

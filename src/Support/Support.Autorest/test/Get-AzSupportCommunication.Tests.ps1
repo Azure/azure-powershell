@@ -1,5 +1,6 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportCommunication'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportCommunication') -and ($env.HasSubscription -eq $true))
 {
+  Write-Host "in Get-AzSupportCommunication env.HasSubscription: $(($env.HasSubscription -eq $true))"
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
@@ -16,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportCommunication'))
 
 Describe 'Get-AzSupportCommunication' {
 
-    It 'List' -Skip:!$env.HasSubscription {
+    It 'List' -skip:($env.HasSubscription -eq $false){
         # if($env.SupportPlanSubscription -eq "Basic support" || $env.SupportPlanSubscription -eq "Free"){
         #     write-host "cannot get communication operations for tickets with free support plan"
             
@@ -37,7 +38,7 @@ Describe 'Get-AzSupportCommunication' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -Skip:!$env.HasSubscription {
+    It 'Get' -skip:($env.HasSubscription -eq $false) {
         # if($env.SupportPlanSubscription -eq "Basic support" || $env.SupportPlanSubscription -eq "Free"){
         #     write-host "cannot get communication operations for tickets with free support plan"
             

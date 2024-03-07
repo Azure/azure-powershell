@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportFilesNoSubscript
 }
 
 Describe 'Get-AzSupportFilesNoSubscription' {
-    It 'List' -Skip:$env.HasSubscription{
+    It 'List' -skip:($env.HasSubscription -eq $true) {
         $files = Get-AzSupportFilesNoSubscription -WorkspaceName $env.FileWorkspaceNameNoSubscription
         $files | Should -Not -BeNullOrEmpty
         $files.Count | Should -BeGreaterOrEqual 1
@@ -25,8 +25,8 @@ Describe 'Get-AzSupportFilesNoSubscription' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -Skip:$env.HasSubscription{
-        $file = Get-AzSupportFile -Name "test2.txt" -WorkspaceName $env.FileWorkspaceNameSubscription
+    It 'Get' -skip:($env.HasSubscription -eq $true){
+        $file = Get-AzSupportFilesNoSubscription -Name "test2.txt" -WorkspaceName $env.FileWorkspaceNameSubscription
         $file | Should -Not -BeNullOrEmpty
         $file.Name | Should -Be "test2.txt"
     }

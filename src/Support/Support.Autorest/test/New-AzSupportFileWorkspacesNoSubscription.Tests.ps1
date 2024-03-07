@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSupportFileWorkspacesNo
 }
 
 Describe 'New-AzSupportFileWorkspacesNoSubscription' {
-    It 'Create' -Skip:$env.HasSubscription{
+    It 'Create' -skip:($env.HasSubscription -eq $true){
         $fileWorkspaceName = $env.fileWorkspaceNameNoSubscriptionForCreate
         $fileWorkspace = New-AzSupportFileWorkspacesNoSubscription -Name $fileWorkspaceName
         $fileWorkspace.Name | Should -Be $fileWorkspaceName

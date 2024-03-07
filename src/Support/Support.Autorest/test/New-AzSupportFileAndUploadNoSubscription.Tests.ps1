@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSupportFileAndUploadNoS
 }
 
 Describe 'New-AzSupportFileAndUploadNoSubscription' {
-    It 'CreateExpanded' -Skip:$env.HasSubscription{
+    It 'CreateExpanded' -skip:($env.HasSubscription -eq $true){
         $testFilePath = Join-Path $PSScriptRoot files test.txt
         $file = New-AzSupportFileAndUploadNoSubscription -WorkspaceName $env.FileWorkspaceNameNoSubscription -FilePath $testFilePath
         $file.Name | Should -Be "test.txt"

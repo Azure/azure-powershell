@@ -16,13 +16,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportChatTranscriptsN
 
 # Chat functionality is unavailable for support tickets created outside the portal
 Describe 'Get-AzSupportChatTranscriptsNoSubscription' {
-    it 'List' -Skip:$env.HasSubscription {
+    it 'List' -skip:($env.HasSubscription -eq $true){
         Mock Get-AzSupportChatTranscriptsNoSubscription{ New-MockObject -Type "Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ChatTranscriptDetails"}
-        Get-AzSupportChatTranscriptsNoSubscription
+        Get-AzSupportChatTranscriptsNoSubscription -SupportTicketName $env.Name
         Assert-MockCalled Get-AzSupportChatTranscriptsNoSubscription -Exactly 1
     }
 
-    It 'Get' -Skip:$env.HasSubscription {
+    It 'Get' -skip:($env.HasSubscription -eq $true){
         Mock Get-AzSupportChatTranscriptsNoSubscription{ New-MockObject -Type "Microsoft.Azure.PowerShell.Cmdlets.Support.Models.ChatTranscriptDetails"}
         Get-AzSupportChatTranscriptsNoSubscription -SupportTicketName $env.Name -ChatTranscriptName "testChat"
         Assert-MockCalled Get-AzSupportChatTranscriptsNoSubscription -Exactly 2
