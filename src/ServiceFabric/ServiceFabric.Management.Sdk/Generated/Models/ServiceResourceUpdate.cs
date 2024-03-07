@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </param>
 
         /// <param name="defaultMoveCost">Specifies the move cost for the service.
-        /// Possible values include: 'Zero', 'Low', 'Medium', 'High'</param>
+        /// Possible values include: &#39;Zero&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
         public ServiceResourceUpdate(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), SystemData systemData = default(SystemData), string placementConstraints = default(string), System.Collections.Generic.IList<ServiceCorrelationDescription> correlationScheme = default(System.Collections.Generic.IList<ServiceCorrelationDescription>), System.Collections.Generic.IList<ServiceLoadMetricDescription> serviceLoadMetrics = default(System.Collections.Generic.IList<ServiceLoadMetricDescription>), System.Collections.Generic.IList<ServicePlacementPolicyDescription> servicePlacementPolicies = default(System.Collections.Generic.IList<ServicePlacementPolicyDescription>), string defaultMoveCost = default(string))
 
         : base(id, name, type, location, tags, etag, systemData)

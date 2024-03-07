@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
 
         /// <param name="upgradeMode">The mode used to monitor health during a rolling upgrade. The values are
         /// UnmonitoredAuto, UnmonitoredManual, and Monitored.
-        /// Possible values include: 'Invalid', 'UnmonitoredAuto', 'UnmonitoredManual',
-        /// 'Monitored'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;UnmonitoredAuto&#39;, &#39;UnmonitoredManual&#39;,
+        /// &#39;Monitored&#39;</param>
 
         /// <param name="recreateApplication">Determines whether the application should be recreated on update. If
         /// value=true, the rest of the upgrade policy parameters are not allowed and

@@ -21,7 +21,7 @@ payload-flattening-threshold: 1
 
 ###
 ``` yaml
-commit: 2ce7ebed8b2fbcce991d2839ba0ba712f9a0d12b
+commit: fc3713a79f8c495e51a9ed9ac986ca5e23b68c29
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/servicefabricmanagedclusters/resource-manager/Microsoft.ServiceFabric/preview/2023-12-01-preview/managedcluster.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/servicefabricmanagedclusters/resource-manager/Microsoft.ServiceFabric/preview/2023-12-01-preview/nodetype.json
