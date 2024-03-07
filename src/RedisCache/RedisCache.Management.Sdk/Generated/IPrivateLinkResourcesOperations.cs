@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// Gets the private link resources that need to be created for a redis cache.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.

@@ -1,0 +1,47 @@
+{
+  "Get-AzMarketplacePrivateStoreUserRule+[NoContext]+QueryExpanded+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/queryUserRules?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/queryUserRules?api-version=2023-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"subscriptionIds\": [ \"1f58b5dd-313c-42ed-84fc-f1e351bba7fb\" ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "95" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=a3053b2a1619a6aa4b0e7e497e4fa01864cd730cd9c257837f8a0036d6c79b63;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=a3053b2a1619a6aa4b0e7e497e4fa01864cd730cd9c257837f8a0036d6c79b63;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1197" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.02586.90-5c77bed2" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-azure-ref": [ "20240206T121509Z-un93fkbvw50w5bbm67x1677wk800000009c0000000008me5" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "4da12fda-a76b-4ab1-bb01-4cfaad210264" ],
+        "x-ms-correlation-request-id": [ "4da12fda-a76b-4ab1-bb01-4cfaad210264" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240206T121510Z:4da12fda-a76b-4ab1-bb01-4cfaad210264" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-MSEdge-Ref": [ "Ref A: D70CAE77926C46B4877610BB88233F35 Ref B: MRS211050313051 Ref C: 2024-02-06T12:15:09Z" ],
+        "Date": [ "Tue, 06 Feb 2024 12:15:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "93" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"type\":\"TermsAndCondition\",\"value\":null},{\"type\":\"PrivateProducts\",\"value\":null}]}",
+      "isContentBase64": false
+    }
+  }
+}

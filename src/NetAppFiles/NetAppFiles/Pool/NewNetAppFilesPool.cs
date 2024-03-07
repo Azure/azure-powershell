@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 {
@@ -167,8 +168,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var anfPool = AzureNetAppFilesManagementClient.Pools.CreateOrUpdate(ResourceGroupName, AccountName, Name, capacityPoolBody);
-                WriteObject(anfPool.ToPsNetAppFilesPool());
+                try
+                {
+                    var anfPool = AzureNetAppFilesManagementClient.Pools.CreateOrUpdate(ResourceGroupName, AccountName, Name, capacityPoolBody);
+                    WriteObject(anfPool.ToPsNetAppFilesPool());
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

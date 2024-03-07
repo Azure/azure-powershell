@@ -66,9 +66,9 @@ function setupEnv() {
     $env.actiongroup1 = 'actiongroup1'
     $env.actiongroup3 = 'actiongroup3'
 
-    $env.EventHubNamespaceName = "Namespace$(Get-Random)"
-    New-AzEventHubNamespace -ResourceGroupName $env.resourceGroup -NamespaceName $env.EventHubNamespaceName -Location $env.region
-    $env.eventHubName = "testEventHub$(Get-Random)"
+    $env.EventHubNamespaceName = "Namespace20240204"
+    New-AzEventHubNamespace -ResourceGroupName $env.resourceGroup -Name $env.EventHubNamespaceName -Location $env.region
+    $env.eventHubName = "testEventHub20240204"
     New-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.EventHubNamespaceName -EventHubName $env.eventHubName
     Write-Host "create test event hub namespace" $env.EventHubNamespaceName
     Write-Host "create test event hub" $env.eventHubName
@@ -76,7 +76,7 @@ function setupEnv() {
     Write-Host "Start to create test action group" $env.actiongroupname
     $email1 = New-AzActionGroupEmailReceiverObject -EmailAddress $env.useremail -Name $env.emailreceiver1
     $sms1 = New-AzActionGroupSmsReceiverObject -CountryCode $env.phonecountry -Name $env.smsreceiver -PhoneNumber $env.userphone
-    $ag = New-AzActionGroup -Name $env.actiongroupname -ResourceGroupName $env.resourceGroup -Location southcentralus -EmailReceiver $email1 -SmsReceiver $sms1 -ShortName ag1
+    New-AzActionGroup -Name $env.actiongroupname -ResourceGroupName $env.resourceGroup -Location southcentralus -EmailReceiver $email1 -SmsReceiver $sms1 -ShortName ag1
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
@@ -88,5 +88,6 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     Remove-AzActionGroup -Name 'actiongroupGet' -ResourceGroupName 'Monitor-ActionGroup'
+    Remove-AzEventHubNamespace -ResourceGroupName 'Monitor-ActionGroup' -Name "Namespace20240204"
 }
 

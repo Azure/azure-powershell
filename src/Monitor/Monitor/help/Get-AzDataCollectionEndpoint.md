@@ -14,7 +14,8 @@ Returns the specified data collection endpoint.
 
 ### List1 (Default)
 ```
-Get-AzDataCollectionEndpoint [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDataCollectionEndpoint [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get

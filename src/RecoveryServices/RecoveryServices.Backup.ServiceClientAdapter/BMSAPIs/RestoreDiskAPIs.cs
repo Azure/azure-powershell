@@ -91,8 +91,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string recoveryPointId = rp.RecoveryPointId;
 
             CrrModel.AADPropertiesResource userInfo = GetAADProperties(secondaryRegion, backupManagementType);
+
+            if(userInfo == null || userInfo.Properties == null)
+            {
+                throw new Exception(Resources.AADPropertiesCouldNotBeFetchedException);
+            }
+
             var accessToken = CrrAdapter.Client.RecoveryPoints.GetAccessTokenWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 AzureFabricName, containerUri, protectedItemUri, recoveryPointId, userInfo).Result.Body; 
+
+            if(accessToken == null || accessToken.Properties == null)
+            {
+                throw new Exception(Resources.CRRAccessTokenCouldNotBeFetchedException);
+            }
 
             return accessToken.Properties; 
         }

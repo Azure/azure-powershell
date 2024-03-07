@@ -96,7 +96,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
+    # Wait forNET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]

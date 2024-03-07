@@ -13,7 +13,8 @@ Create an in-memory object for WindowsFirewallLogsDataSource.
 ## SYNTAX
 
 ```
-New-AzWindowsFirewallLogsDataSourceObject -Stream <String[]> [-Name <String>] [<CommonParameters>]
+New-AzWindowsFirewallLogsDataSourceObject -Stream <String[]> [-Name <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

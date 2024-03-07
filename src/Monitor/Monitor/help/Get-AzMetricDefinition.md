@@ -15,7 +15,8 @@ Gets metric definitions.
 
 ```
 Get-AzMetricDefinition [-ResourceId] <String> [-MetricName <String[]>] [-MetricNamespace <String>]
- [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -236,5 +237,3 @@ https://learn.microsoft.com/azure/azure-monitor/platform/metrics-supported
 
 [Get-AzMetric](./Get-AzMetric.md)
 [New-AzMetricFilter](./New-AzMetricFilter.md)
-
-

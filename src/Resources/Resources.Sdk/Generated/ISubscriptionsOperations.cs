@@ -95,6 +95,31 @@ namespace Microsoft.Azure.Management.Resources
         /// </exception>
         Task<AzureOperationResponse<IPage<Subscription>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Compares a subscriptions logical zone mapping
+        /// </summary>
+        /// <param name='subscriptionId'>
+        /// The ID of the target subscription.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters for checking zone peers.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="ErrorResponseException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<CheckZonePeersResult>> CheckZonePeersWithHttpMessagesAsync(string subscriptionId, CheckZonePeersRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Gets all subscriptions for a tenant.
         /// </summary>
         /// <param name='nextPageLink'>

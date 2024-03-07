@@ -14,7 +14,8 @@ Returns the specified data collection rule.
 
 ### List1 (Default)
 ```
-Get-AzDataCollectionRule [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDataCollectionRule [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get

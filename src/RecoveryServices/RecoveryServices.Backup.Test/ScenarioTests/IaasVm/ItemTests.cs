@@ -303,5 +303,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 "Test-AzureVaultImmutability"
             );
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
+        public void TestAzureVaultSoftDelete()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
+                "Test-AzureVaultSoftDelete"
+            );
+        }
     }
 }

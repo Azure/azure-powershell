@@ -15,22 +15,22 @@ The operation to Upgrade Machine Extensions.
 ### UpgradeExpanded (Default)
 ```
 Update-AzConnectedExtension -MachineName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ExtensionTarget <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ExtensionTarget <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpgradeViaJsonString
 ```
 Update-AzConnectedExtension -MachineName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpgradeViaJsonFilePath
 ```
 Update-AzConnectedExtension -MachineName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Upgrade
@@ -43,7 +43,8 @@ Update-AzConnectedExtension -MachineName <String> -ResourceGroupName <String> [-
 ### UpgradeViaIdentityExpanded
 ```
 Update-AzConnectedExtension -InputObject <IConnectedMachineIdentity> [-ExtensionTarget <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpgradeViaIdentity

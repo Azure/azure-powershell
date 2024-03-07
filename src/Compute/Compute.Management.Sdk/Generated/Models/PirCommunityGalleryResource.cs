@@ -16,7 +16,8 @@ namespace Microsoft.Azure.Management.Compute.Models
     using System.Linq;
 
     /// <summary>
-    /// Base information about the community gallery resource in pir.
+    /// Base information about the community gallery resource in azure compute
+    /// gallery.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class PirCommunityGalleryResource

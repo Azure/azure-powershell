@@ -15,20 +15,20 @@ Lists all Azure RBAC roles that are available for assignment.
 
 ### RoleDefinitionNameParameterSet (Default)
 ```
-Get-AzRoleDefinition [[-Name] <String>] [-Scope <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzRoleDefinition [[-Name] <String>] [-Scope <String>] [-SkipClientSideScopeValidation]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RoleDefinitionIdParameterSet
 ```
-Get-AzRoleDefinition -Id <Guid> [-Scope <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzRoleDefinition -Id <Guid> [-Scope <String>] [-SkipClientSideScopeValidation]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RoleDefinitionCustomParameterSet
 ```
-Get-AzRoleDefinition [-Scope <String>] [-Custom] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzRoleDefinition [-Scope <String>] [-Custom] [-SkipClientSideScopeValidation]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,6 +127,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -SkipClientSideScopeValidation
+If specified, skip client side scope validation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

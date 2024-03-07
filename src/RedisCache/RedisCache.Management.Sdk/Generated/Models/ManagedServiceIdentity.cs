@@ -34,8 +34,8 @@ namespace Microsoft.Azure.Management.RedisCache.Models
 
         /// <param name="type">Type of managed service identity (where both SystemAssigned and
         /// UserAssigned types are allowed).
-        /// Possible values include: 'None', 'SystemAssigned', 'UserAssigned',
-        /// 'SystemAssigned, UserAssigned'</param>
+        /// Possible values include: &#39;None&#39;, &#39;SystemAssigned&#39;, &#39;UserAssigned&#39;,
+        /// &#39;SystemAssigned, UserAssigned&#39;</param>
 
         /// <param name="userAssignedIdentities">The set of user assigned identities associated with the resource. The
         /// userAssignedIdentities dictionary keys will be ARM resource ids in the

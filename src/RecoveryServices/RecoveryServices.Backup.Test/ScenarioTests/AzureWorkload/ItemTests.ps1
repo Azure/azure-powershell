@@ -28,7 +28,7 @@ function Test-AzureVmWorkloadCrossRegionRestore
 	$vaultId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault"
 	$sourceDBName = "model"
 	$location = "centraluseuap"
-	$recoveryPointId = "169022372866539" # $rp[1].RecoveryPointId
+	$recoveryPointId = "173566778191977" # $rp[1].RecoveryPointId
 
 	$targetResourceGroup = "clitest-rg-donotuse"
 	$targetVault = "clitest-vault-secondary-donotuse"

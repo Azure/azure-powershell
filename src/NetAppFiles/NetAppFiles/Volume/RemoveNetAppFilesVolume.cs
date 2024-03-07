@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -140,8 +142,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
             {
-                AzureNetAppFilesManagementClient.Volumes.Delete(ResourceGroupName, AccountName, PoolName, Name, ForceDelete = ForceDelete);
-                success = true;
+                try
+                {
+                    AzureNetAppFilesManagementClient.Volumes.Delete(ResourceGroupName, AccountName, PoolName, Name, ForceDelete = ForceDelete);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
 
             if (PassThru)

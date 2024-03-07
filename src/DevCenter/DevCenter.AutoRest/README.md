@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the DevCenter service.
 
 ---
-## Status
-[![Az.DevCenter](https://img.shields.io/powershellgallery/v/Az.DevCenter.svg?style=flat-square&label=Az.DevCenter "Az.DevCenter")](https://www.powershellgallery.com/packages/Az.DevCenter/)
 
 ## Info
 - Modifiable: yes

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Marketplace-help.xml
 Module Name: Az.Marketplace
 online version: https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorev1
 schema: 2.0.0
@@ -14,12 +14,14 @@ Get information about the private store
 
 ### List (Default)
 ```
-Get-AzMarketplacePrivateStoreV1 [-UseCache <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMarketplacePrivateStoreV1 [-UseCache <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzMarketplacePrivateStoreV1 -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMarketplacePrivateStoreV1 -Id <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -45,7 +47,6 @@ a260d38c-96cf-492d-a340-404d0c4b3ad6                                         Use
 ```
 
 This command Gets the private store details
-
 
 ## PARAMETERS
 
@@ -139,4 +140,3 @@ INPUTOBJECT `<IMarketplaceIdentity>`: Identity Parameter
   - `[RequestApprovalId <String>]`: The request approval ID to get create or update
 
 ## RELATED LINKS
-

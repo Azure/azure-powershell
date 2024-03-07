@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Attestation service.
 
 ---
-## Status
-[![Az.Attestation](https://img.shields.io/powershellgallery/v/Az.Attestation.svg?style=flat-square&label=Az.Attestation "Az.Attestation")](https://www.powershellgallery.com/packages/Az.Attestation/)
 
 ## Info
 - Modifiable: yes

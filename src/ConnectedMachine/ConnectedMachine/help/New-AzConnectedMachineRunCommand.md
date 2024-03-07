@@ -22,22 +22,36 @@ New-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <Strin
  [-ProtectedParameter <IRunCommandInputParameter[]>] [-RunAsPassword <String>] [-RunAsUser <String>]
  [-ScriptUriManagedIdentityClientId <String>] [-ScriptUriManagedIdentityObjectId <String>]
  [-SourceCommandId <String>] [-SourceScript <String>] [-SourceScriptUri <String>] [-Tag <Hashtable>]
- [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ScriptLocalPath
+```
+New-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <String> -RunCommandName <String>
+ [-SubscriptionId <String>] -Location <String> [-AsyncExecution] [-ErrorBlobManagedIdentityClientId <String>]
+ [-ErrorBlobManagedIdentityObjectId <String>] [-ErrorBlobUri <String>]
+ [-OutputBlobManagedIdentityClientId <String>] [-OutputBlobManagedIdentityObjectId <String>]
+ [-OutputBlobUri <String>] [-Parameter <IRunCommandInputParameter[]>]
+ [-ProtectedParameter <IRunCommandInputParameter[]>] [-RunAsPassword <String>] [-RunAsUser <String>]
+ [-ScriptUriManagedIdentityClientId <String>] [-ScriptUriManagedIdentityObjectId <String>]
+ [-SourceCommandId <String>] [-SourceScript <String>] [-SourceScriptUri <String>] [-Tag <Hashtable>]
+ [-TimeoutInSecond <Int32>] [-ScriptLocalPath <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <String> -RunCommandName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <String> -RunCommandName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
@@ -57,15 +71,15 @@ New-AzConnectedMachineRunCommand -RunCommandName <String> -MachineInputObject <I
  [-ProtectedParameter <IRunCommandInputParameter[]>] [-RunAsPassword <String>] [-RunAsUser <String>]
  [-ScriptUriManagedIdentityClientId <String>] [-ScriptUriManagedIdentityObjectId <String>]
  [-SourceCommandId <String>] [-SourceScript <String>] [-SourceScriptUri <String>] [-Tag <Hashtable>]
- [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityMachine
 ```
 New-AzConnectedMachineRunCommand -RunCommandName <String> -MachineInputObject <IConnectedMachineIdentity>
- -RunCommandProperty <IMachineRunCommand> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -RunCommandProperty <IMachineRunCommand> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -84,8 +98,8 @@ New-AzConnectedMachineRunCommand -InputObject <IConnectedMachineIdentity> -Locat
 ### CreateViaIdentity
 ```
 New-AzConnectedMachineRunCommand -InputObject <IConnectedMachineIdentity>
- -RunCommandProperty <IMachineRunCommand> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -RunCommandProperty <IMachineRunCommand> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,7 +118,7 @@ New-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -Location "eas
 Run the command as a job
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -120,8 +134,8 @@ Optional.
 If set to true, provisioning will complete as soon as script starts and will not wait for script to complete.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -136,7 +150,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -152,8 +166,8 @@ Client Id (GUID value) of the user-assigned managed identity.
 ObjectId should not be used if this is provided.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -168,8 +182,8 @@ Object Id (GUID value) of the user-assigned managed identity.
 ClientId should not be used if this is provided.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -185,8 +199,8 @@ Use a SAS URI with read, append, create, write access OR use managed identity to
 Refer errorBlobManagedIdentity parameter.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -201,7 +215,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IConnectedMachineIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
 Aliases:
 
@@ -216,7 +230,7 @@ Accept wildcard characters: False
 Path of Json file supplied to the Create operation
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
@@ -231,7 +245,7 @@ Accept wildcard characters: False
 Json string supplied to the Create operation
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateViaJsonString
 Aliases:
 
@@ -246,8 +260,8 @@ Accept wildcard characters: False
 The geo-location where the resource lives
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -262,7 +276,7 @@ Identity Parameter
 To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IConnectedMachineIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 Parameter Sets: CreateViaIdentityMachineExpanded, CreateViaIdentityMachine
 Aliases:
 
@@ -277,8 +291,8 @@ Accept wildcard characters: False
 The name of the hybrid machine.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases:
 
 Required: True
@@ -292,7 +306,7 @@ Accept wildcard characters: False
 Run the command asynchronously
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -308,8 +322,8 @@ Client Id (GUID value) of the user-assigned managed identity.
 ObjectId should not be used if this is provided.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -324,8 +338,8 @@ Object Id (GUID value) of the user-assigned managed identity.
 ClientId should not be used if this is provided.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -341,8 +355,8 @@ Use a SAS URI with read, append, create, write access OR use managed identity to
 Refer outputBlobManagedIdentity parameter.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -357,8 +371,8 @@ The parameters used by the script.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: IRunCommandInputParameter[]
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandInputParameter[]
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -373,8 +387,8 @@ The parameters used by the script.
 To construct, see NOTES section for PROTECTEDPARAMETER properties and create a hash table.
 
 ```yaml
-Type: IRunCommandInputParameter[]
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandInputParameter[]
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -389,8 +403,8 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases:
 
 Required: True
@@ -404,8 +418,8 @@ Accept wildcard characters: False
 Specifies the user account password on the machine when executing the run command.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -419,8 +433,8 @@ Accept wildcard characters: False
 Specifies the user account on the machine when executing the run command.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -434,8 +448,8 @@ Accept wildcard characters: False
 The name of the run command.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create, CreateViaIdentityMachineExpanded, CreateViaIdentityMachine
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaJsonString, CreateViaJsonFilePath, Create, CreateViaIdentityMachineExpanded, CreateViaIdentityMachine
 Aliases:
 
 Required: True
@@ -450,7 +464,7 @@ Describes a Run Command
 To construct, see NOTES section for RUNCOMMANDPROPERTY properties and create a hash table.
 
 ```yaml
-Type: IMachineRunCommand
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommand
 Parameter Sets: Create, CreateViaIdentityMachine, CreateViaIdentity
 Aliases:
 
@@ -461,13 +475,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ScriptLocalPath
+{{ Fill ScriptLocalPath Description }}
+
+```yaml
+Type: System.String
+Parameter Sets: ScriptLocalPath
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ScriptUriManagedIdentityClientId
 Client Id (GUID value) of the user-assigned managed identity.
 ObjectId should not be used if this is provided.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -482,8 +511,8 @@ Object Id (GUID value) of the user-assigned managed identity.
 ClientId should not be used if this is provided.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -497,8 +526,8 @@ Accept wildcard characters: False
 Specifies the commandId of predefined built-in script.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -512,8 +541,8 @@ Accept wildcard characters: False
 Specifies the script content to be executed on the machine.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -528,8 +557,8 @@ Specifies the script download location.
 It can be either SAS URI of an Azure storage blob with read access or public URI.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -543,8 +572,8 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: String
-Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
+Type: System.String
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases:
 
 Required: False
@@ -558,8 +587,8 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -573,8 +602,8 @@ Accept wildcard characters: False
 The timeout in seconds to execute the run command.
 
 ```yaml
-Type: Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
+Type: System.Int32
+Parameter Sets: CreateExpanded, ScriptLocalPath, CreateViaIdentityMachineExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -588,7 +617,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -604,7 +633,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -726,4 +755,3 @@ It can be either SAS URI of an Azure storage blob with read access or public URI
 ## RELATED LINKS
 
 [https://learn.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedmachineruncommand](https://learn.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedmachineruncommand)
-

@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the EventHub service.
 
 ---
-## Status
-[![Az.EventHub](https://img.shields.io/powershellgallery/v/Az.EventHub.svg?style=flat-square&label=Az.EventHub "Az.EventHub")](https://www.powershellgallery.com/packages/Az.EventHub/)
 
 ## Info
 - Modifiable: yes

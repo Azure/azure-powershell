@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the MobileNetwork service.
 
 ---
-## Status
-[![Az.MobileNetwork](https://img.shields.io/powershellgallery/v/Az.MobileNetwork.svg?style=flat-square&label=Az.MobileNetwork "Az.MobileNetwork")](https://www.powershellgallery.com/packages/Az.MobileNetwork/)
 
 ## Info
 - Modifiable: yes

@@ -19,10 +19,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
-using System.Globalization;
+using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
 {
@@ -56,6 +57,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
             Mandatory = false,
             HelpMessage = "The name of the ANF snapshot policy",
             ParameterSetName = FieldsParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = ParentObjectParameterSet,
+            HelpMessage = "The name of the ANF pool")]
         [ValidateNotNullOrEmpty]
         [Alias("SnapshotPolicyName")]
         [ResourceNameCompleter(
@@ -97,15 +102,22 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
                 AccountName = NameParts[0];
             }
 
-            if (Name != null)
-            {                
-                var anfSnapshotPolicy = AzureNetAppFilesManagementClient.SnapshotPolicies.Get(ResourceGroupName, AccountName, snapshotPolicyName: Name);
-                WriteObject(anfSnapshotPolicy.ConvertToPs());
-            }
-            else
+            try
             {
-                var anfSnapshotPolicies = AzureNetAppFilesManagementClient.SnapshotPolicies.List(ResourceGroupName, AccountName).Select(e => e.ConvertToPs());
-                WriteObject(anfSnapshotPolicies, true);
+                if (Name != null)
+                {
+                    var anfSnapshotPolicy = AzureNetAppFilesManagementClient.SnapshotPolicies.Get(ResourceGroupName, AccountName, snapshotPolicyName: Name);
+                    WriteObject(anfSnapshotPolicy.ConvertToPs());
+                }
+                else
+                {
+                    var anfSnapshotPolicies = AzureNetAppFilesManagementClient.SnapshotPolicies.List(ResourceGroupName, AccountName).Select(e => e.ConvertToPs());
+                    WriteObject(anfSnapshotPolicies, true);
+                }
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw new CloudException(ex.Body.Error.Message, ex);
             }
         }
     }

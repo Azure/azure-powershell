@@ -29,7 +29,7 @@ Get-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_clou
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -61,11 +61,12 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareprivatecloud
 #>
 function Get-AzVMwarePrivateCloud {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -104,7 +105,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -156,7 +158,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -178,11 +180,15 @@ begin {
             List = 'Az.VMware.private\Get-AzVMwarePrivateCloud_List';
             List1 = 'Az.VMware.private\Get-AzVMwarePrivateCloud_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

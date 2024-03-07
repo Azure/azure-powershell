@@ -15,8 +15,8 @@ Resume/Resync the connection on the destination volume. If the operation is ran 
 ### ByFieldsParameterSet (Default)
 ```
 Resume-AzNetAppFilesReplication -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -28,7 +28,8 @@ Resume-AzNetAppFilesReplication -ResourceId <String> [-PassThru] [-DefaultProfil
 ### ByObjectParameterSet
 ```
 Resume-AzNetAppFilesReplication -InputObject <PSNetAppFilesVolume> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

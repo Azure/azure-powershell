@@ -15,7 +15,8 @@ Get volume's replication
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzNetAppFilesVolumeReplication -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet

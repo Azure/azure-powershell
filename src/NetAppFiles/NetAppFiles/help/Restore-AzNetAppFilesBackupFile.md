@@ -16,29 +16,30 @@ Create a new Backup Restore Files request
 ```
 Restore-AzNetAppFilesBackupFile -ResourceGroupName <String> -AccountName <String> -Name <String>
  -PoolName <String> -VolumeName <String> -FileList <String[]> [-RestoreFilePath <String>]
- -DestinationVolumeId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -DestinationVolumeId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Restore-AzNetAppFilesBackupFile -Name <String> -FileList <String[]> [-RestoreFilePath <String>]
  -DestinationVolumeId <String> -VolumeObject <PSNetAppFilesVolume> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Restore-AzNetAppFilesBackupFile -FileList <String[]> [-RestoreFilePath <String>] -DestinationVolumeId <String>
- -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Restore-AzNetAppFilesBackupFile -FileList <String[]> [-RestoreFilePath <String>] -DestinationVolumeId <String>
- -InputObject <PSNetAppFilesBackup> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -InputObject <PSNetAppFilesBackup> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
