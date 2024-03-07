@@ -54,18 +54,29 @@ function setupEnv() {
     $testGuid = [guid]::NewGuid().ToString()
     $env.BillingServiceId = "517f2da6-78fd-0498-4e22-ad26996b1dfc"
     $env.BillingProblemClassificationId = "d0f16bf7-e011-3f3b-1c26-3147f84e0896"
-    $env.FileWorkspaceNameSubscription = "test-ps-$(New-Guid)"
-    $env.FileWorkspaceNameNoSubscription = "test-ps-$(New-Guid)"
+    $fileWorkspaceNameSubscription = "test-ps-$(New-Guid)"
+    $fileWorkspaceNameNoSubscription = "test-ps-$(New-Guid)"
+    $fileWorkspaceNameSubscription2 = "test-ps-$(New-Guid)"
+    $fileWorkspaceNameNoSubscription2 = "test-ps-$(New-Guid)"
+    $env.AddWithCache("FileWorkspaceNameSubscription", $fileWorkspaceNameSubscription, $UsePreviousConfigForRecord)
+    $env.AddWithCache("FileWorkspaceNameNoSubscription", $fileWorkspaceNameNoSubscription, $UsePreviousConfigForRecord)
+    $env.AddWithCache("FileWorkspaceNameSubscription2", $fileWorkspaceNameSubscription2, $UsePreviousConfigForRecord)
+    $env.AddWithCache("FileWorkspaceNameNoSubscription2", $fileWorkspaceNameNoSubscription2, $UsePreviousConfigForRecord)
+    # $env.FileWorkspaceNameSubscription = "test-ps-$(New-Guid)"
+    # $env.FileWorkspaceNameNoSubscription = "test-ps-$(New-Guid)"
 
     $testFilePath = Join-Path $PSScriptRoot files test2.txt
-    if($env.HasSubscription){
-        New-AzSupportFileWorkspace -Name $env.FileWorkspaceNameSubscription
-        New-AzSupportFileAndUpload -WorkspaceName $env.FileWorkspaceNameSubscription -FilePath $testFilePath
+    if($TestMode -ne 'playback'){
+        if($env.HasSubscription){
+            New-AzSupportFileWorkspace -Name $env.FileWorkspaceNameSubscription
+            New-AzSupportFileAndUpload -WorkspaceName $env.FileWorkspaceNameSubscription -FilePath $testFilePath
+        }
+        else{
+            New-AzSupportFileWorkspacesNoSubscription -Name $env.FileWorkspaceNameNoSubscription
+            New-AzSupportFileAndUploadNoSubscription -WorkspaceName $env.FileWorkspaceNameNoSubscription -FilePath $testFilePath
+        }
     }
-    else{
-        New-AzSupportFileWorkspacesNoSubscription -Name $env.FileWorkspaceNameNoSubscription
-        New-AzSupportFileAndUploadNoSubscription -WorkspaceName $env.FileWorkspaceNameNoSubscription -FilePath $testFilePath
-    }
+    
 
     $testTicketName = "test-$testGuid"
     $advancedDiagnosticConsent = "no"
@@ -111,8 +122,8 @@ function setupEnv() {
     $env.AddWithCache("Sender", $msgSender, $UsePreviousConfigForRecord)
     $env.AddWithCache("Subject", $subject, $UsePreviousConfigForRecord)
     $env.AddWithCache("Body", $body, $UsePreviousConfigForRecord)
-
-    if($env.HasSubscription){
+    if($TestMode -ne 'playback'){
+        if($env.HasSubscription){
         write-host "creating a support ticket request at subscription level"
         $supportTicketSubscription =  New-AzSupportTicket -Name $env.Name -AdvancedDiagnosticConsent $env.AdvancedDiagnosticConsent -ContactDetailCountry $env.ContactDetailCountry -ContactDetailFirstName $env.ContactDetailFirstName -ContactDetailLastName $env.ContactDetailLastName -ContactDetailPreferredContactMethod $env.ContactDetailPreferredContactMethod -ContactDetailPreferredSupportLanguage $env.ContactDetailPreferredSupportLanguage -ContactDetailPreferredTimeZone $env.ContactDetailPreferredTimeZone -ContactDetailPrimaryEmailAddress $env.ContactDetailPrimaryEmailAddress -Description $env.Description -ProblemClassificationId $env.ProblemClassificationId -ServiceId $env.ServiceId -Severity $env.Severity -Title $env.Title
         write-host "adding a message at subscription level"
@@ -136,6 +147,8 @@ function setupEnv() {
         # }
         $env.AddWithCache("SupportPlanTenant", $supportTicketTenant.SupportPlanDisplayName.ToString(), $UsePreviousConfigForRecord)   
     }
+    }
+    
 
     
     # For any resources you created for test, you should add it to $env here.
