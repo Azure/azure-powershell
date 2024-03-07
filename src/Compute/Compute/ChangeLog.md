@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Az.Compute is updated to use the 2023-07-03 GalleryRP REST API calls.
 
 ## Version 7.1.2
 * Fixed `New-AzVM` when a source image is specified to avoid an error on the `Version` value.
