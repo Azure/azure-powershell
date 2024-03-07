@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportTicketsNoSubscri
 }
 
 Describe 'Get-AzSupportTicketsNoSubscription' {
-    It 'List'  {
+    It 'List'  -Skip:$env.HasSubscription{
         # if($env.SupportPlanTenant -eq "Basic support" || $env.SupportPlanTenant -eq "Free"){
         #     write-host "cannot get support tickets with free support plan"
             
@@ -31,7 +31,7 @@ Describe 'Get-AzSupportTicketsNoSubscription' {
         # }
     }
 
-    It 'Get'  {
+    It 'Get'  -Skip:$env.HasSubscription{
     #     if($env.SupportPlanTenant -eq "Basic support" || $env.SupportPlanTenant -eq "Free"){
     #         write-host "cannot get support tickets with free support plan"
             

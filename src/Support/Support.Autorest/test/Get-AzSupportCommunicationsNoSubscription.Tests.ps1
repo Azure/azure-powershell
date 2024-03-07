@@ -15,8 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportCommunicationsNo
 }
 
 Describe 'Get-AzSupportCommunicationsNoSubscription' {
-
-    It 'Get' {
+    It 'List' -Skip:$env.HasSubscription {
+        $supportMessages = Get-AzSupportCommunicationsNoSubscription -SupportTicketName $env.Name
+        
+        $supportMessages.Count | Should -BeGreaterThan 0
+    }
+    It 'Get' -Skip:$env.HasSubscription {
         # if($env.SupportPlanTenant -eq "Basic support" || $env.SupportPlanTenant -eq "Free"){
         #     write-host "cannot get communication operations for tickets with free support plan"
             

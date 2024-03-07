@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSupportTicketsNoSubs
 
 Describe 'Update-AzSupportTicketsNoSubscription' {
 
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -Skip:$env.HasSubscription{
         # if($env.SupportPlanTenant -eq "Basic support" || $env.SupportPlanTenant -eq "Free"){
             # write-host "cannot update support tickets with free support plan"
             

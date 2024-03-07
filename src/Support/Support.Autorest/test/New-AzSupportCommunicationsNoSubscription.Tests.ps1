@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSupportCommunicationsNo
 }
 
 Describe 'New-AzSupportCommunicationsNoSubscription' {
-    It 'CreateExpanded'  {
+    It 'CreateExpanded'  -Skip:$env.HasSubscription{
         # if($env.SupportPlanTenant -eq "Basic support" || $env.SupportPlanTenant -eq "Free"){
         #     write-host "cannot create communication operations for tickets with free support plan"
             
@@ -27,7 +27,7 @@ Describe 'New-AzSupportCommunicationsNoSubscription' {
         # }
         # else{
 
-            $supportMessage = New-AzSupportCommunicationsNoSubscription -CommunicationName $env.CommunicationName1 -SupportTicketName $env.Name -Body $env.Body -Sender $env.Sender -Subject $env.Subject
+            $supportMessage = New-AzSupportCommunicationsNoSubscription -CommunicationName $env.CommunicationNameForCreate -SupportTicketName $env.Name -Body $env.Body -Sender $env.Sender -Subject $env.Subject
         
             $supportMessage.Body.ToString() |  Should -Match $env.Body
         # }
