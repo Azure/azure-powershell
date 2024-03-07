@@ -96,6 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Source { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Path", "12.0.0", "7.0.0", ChangeDescription = "When uploading using SAS token without Read permission, the destination path will be taken as a file path, instead of a directory path previously.")]
         [Parameter(
             Position = 2,
             HelpMessage = "Path to the cloud file which would be uploaded to.")]
@@ -238,28 +239,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         using (FileStream stream = File.OpenRead(localFile.FullName))
                         {
                             byte[] buffer = null;
-                            long lastBlockSize = 0;
-                            for (long offset = 0; offset < fileSize; offset += blockSize)
+                            for (long offset = 0; offset < fileSize;)
                             {
-                                long currentBlockSize = offset + blockSize < fileSize ? blockSize : fileSize - offset;
+                                long targetBlockSize = offset + blockSize < fileSize ? blockSize : fileSize - offset;
 
-                                // Only need to create new buffer when chunk size change
-                                if (currentBlockSize != lastBlockSize)
-                                {
-                                    buffer = new byte[currentBlockSize];
-                                    lastBlockSize = currentBlockSize;
-                                }
-                                await stream.ReadAsync(buffer: buffer, offset: 0, count: (int)currentBlockSize);
+                                // create new buffer, the old buffer will be GC
+                                buffer = new byte[targetBlockSize];
+
+                                int actualBlockSize = await stream.ReadAsync(buffer: buffer, offset: 0, count: (int)targetBlockSize);
                                 if (!fipsEnabled && hash != null)
                                 {
-                                    hash.AppendData(buffer);
+                                    hash.AppendData(buffer, 0, actualBlockSize);
                                 }
 
                                 Task task = UploadFileRangAsync(fileClient,
-                                    new HttpRange(offset, currentBlockSize),
-                                    new MemoryStream(buffer),
+                                    new HttpRange(offset, actualBlockSize),
+                                    new MemoryStream(buffer, 0, actualBlockSize),
                                     progressHandler);
                                 runningTasks.Add(task);
+
+                                offset += actualBlockSize;
 
                                 // Check if any of upload range tasks are still busy
                                 if (runningTasks.Count >= maxWorkers)

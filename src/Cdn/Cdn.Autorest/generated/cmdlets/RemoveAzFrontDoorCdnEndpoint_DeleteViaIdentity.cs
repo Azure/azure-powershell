@@ -19,6 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Deletes an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}", ApiVersion = "2023-05-01")]
     public partial class RemoveAzFrontDoorCdnEndpoint_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener
     {

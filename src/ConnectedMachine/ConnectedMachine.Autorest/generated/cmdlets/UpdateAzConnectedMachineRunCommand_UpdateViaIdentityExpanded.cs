@@ -157,21 +157,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>The geo-location where the resource lives</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The geo-location where the resource lives")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The geo-location where the resource lives",
-        SerializedName = @"location",
-        PossibleTypes = new [] { typeof(string) })]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.CompleterInfo(
-        Name = @"Location Completer",
-        Description =@"Gets the list of locations available for this resource.",
-        Script = @"Get-AzLocation | Where-Object Providers -Contains ""Microsoft.HybridCompute"" | Select-Object -ExpandProperty Location")]
-        public string Location { get => _runCommandPropertiesBody.Location ?? null; set => _runCommandPropertiesBody.Location = value; }
-
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -368,7 +353,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         Description = @"Resource tags.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags Tag { get => _runCommandPropertiesBody.Tag ?? null /* object */; set => _runCommandPropertiesBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags Tag { get => _runCommandPropertiesBody.Tags ?? null /* object */; set => _runCommandPropertiesBody.Tags = value; }
 
         /// <summary>The timeout in seconds to execute the run command.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The timeout in seconds to execute the run command.")]
@@ -645,7 +630,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                     {
                         _runCommandPropertiesBody = await this.Client.MachineRunCommandsGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
                         this.Update_runCommandPropertiesBody();
-                        await this.Client.MachineRunCommandsCreateOrUpdateViaIdentity(InputObject.Id, _runCommandPropertiesBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.MachineRunCommandsCreateOrUpdateViaIdentity(InputObject.Id, _runCommandPropertiesBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -668,7 +653,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                         }
                         _runCommandPropertiesBody = await this.Client.MachineRunCommandsGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.MachineName ?? null, InputObject.RunCommandName ?? null, this, Pipeline);
                         this.Update_runCommandPropertiesBody();
-                        await this.Client.MachineRunCommandsCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.MachineName ?? null, InputObject.RunCommandName ?? null, _runCommandPropertiesBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.MachineRunCommandsCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.MachineName ?? null, InputObject.RunCommandName ?? null, _runCommandPropertiesBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -706,10 +691,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
             {
                 this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITrackedResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
-            }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Location")))
-            {
-                this.Location = (string)(this.MyInvocation?.BoundParameters["Location"]);
             }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Parameter")))
             {

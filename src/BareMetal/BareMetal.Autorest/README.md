@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the BareMetal service.
 
 ---
-## Status
-[![Az.BareMetal](https://img.shields.io/powershellgallery/v/Az.BareMetal.svg?style=flat-square&label=Az.BareMetal "Az.BareMetal")](https://www.powershellgallery.com/packages/Az.BareMetal/)
 
 ## Info
 - Modifiable: yes

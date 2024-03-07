@@ -120,7 +120,7 @@ Accept wildcard characters: False
 
 ### -ExtensionUpgradeParameter
 Describes the Machine Extension Upgrade Properties.
-To construct, see NOTES section for EXTENSIONUPGRADEPARAMETER properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgrade
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity

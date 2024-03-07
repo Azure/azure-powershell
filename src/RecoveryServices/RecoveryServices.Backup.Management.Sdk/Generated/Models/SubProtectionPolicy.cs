@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="policyType">Type of backup policy type
-        /// Possible values include: 'Invalid', 'Full', 'Differential', 'Log',
-        /// 'CopyOnlyFull', 'Incremental', 'SnapshotFull', 'SnapshotCopyOnlyFull'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Full&#39;, &#39;Differential&#39;, &#39;Log&#39;,
+        /// &#39;CopyOnlyFull&#39;, &#39;Incremental&#39;, &#39;SnapshotFull&#39;, &#39;SnapshotCopyOnlyFull&#39;</param>
 
         /// <param name="schedulePolicy">Backup schedule specified as part of backup policy.
         /// </param>
@@ -38,13 +38,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Key is Target Tier, defined in RecoveryPointTierType enum.
         /// Tiering policy specifies the criteria to move RP to the target tier.
         /// </param>
-        public SubProtectionPolicy(string policyType = default(string), SchedulePolicy schedulePolicy = default(SchedulePolicy), RetentionPolicy retentionPolicy = default(RetentionPolicy), System.Collections.Generic.IDictionary<string, TieringPolicy> tieringPolicy = default(System.Collections.Generic.IDictionary<string, TieringPolicy>))
+
+        /// <param name="snapshotBackupAdditionalDetails">Snapshot Backup related fields for WorkloadType SaPHanaSystem
+        /// </param>
+        public SubProtectionPolicy(string policyType = default(string), SchedulePolicy schedulePolicy = default(SchedulePolicy), RetentionPolicy retentionPolicy = default(RetentionPolicy), System.Collections.Generic.IDictionary<string, TieringPolicy> tieringPolicy = default(System.Collections.Generic.IDictionary<string, TieringPolicy>), SnapshotBackupAdditionalDetails snapshotBackupAdditionalDetails = default(SnapshotBackupAdditionalDetails))
 
         {
             this.PolicyType = policyType;
             this.SchedulePolicy = schedulePolicy;
             this.RetentionPolicy = retentionPolicy;
             this.TieringPolicy = tieringPolicy;
+            this.SnapshotBackupAdditionalDetails = snapshotBackupAdditionalDetails;
             CustomInit();
         }
 
@@ -80,5 +84,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tieringPolicy")]
         public System.Collections.Generic.IDictionary<string, TieringPolicy> TieringPolicy {get; set; }
+
+        /// <summary>
+        /// Gets or sets snapshot Backup related fields for WorkloadType SaPHanaSystem
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "snapshotBackupAdditionalDetails")]
+        public SnapshotBackupAdditionalDetails SnapshotBackupAdditionalDetails {get; set; }
     }
 }

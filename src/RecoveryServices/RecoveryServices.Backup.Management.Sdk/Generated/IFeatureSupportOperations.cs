@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public partial interface IFeatureSupportOperations
     {
         /// <summary>
-        /// It will validate if given feature with resource properties is supported in service
+        /// It will validate if given feature with resource properties is supported in
+        /// service
         /// </summary>
         /// <remarks>
-        /// It will validate if given feature with resource properties is supported in service
+        /// It will validate if given feature with resource properties is supported in
+        /// service
         /// </remarks>
         /// <param name='azureRegion'>
         /// Azure region to hit Api

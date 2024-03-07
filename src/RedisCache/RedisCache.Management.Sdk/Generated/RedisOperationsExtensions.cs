@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -82,13 +82,14 @@ namespace Microsoft.Azure.Management.RedisCache
             }
         }
         /// <summary>
-        /// Create or replace (overwrite/recreate, with potential downtime) an existing Redis cache.
+        /// Create or replace (overwrite/recreate, with potential downtime) an existing
+        /// Redis cache.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -99,13 +100,14 @@ namespace Microsoft.Azure.Management.RedisCache
         }
 
         /// <summary>
-        /// Create or replace (overwrite/recreate, with potential downtime) an existing Redis cache.
+        /// Create or replace (overwrite/recreate, with potential downtime) an existing
+        /// Redis cache.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -127,7 +129,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -144,7 +146,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -166,7 +168,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -183,7 +185,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -202,7 +204,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -219,7 +221,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -241,7 +243,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<RedisResource> ListByResourceGroup(this IRedisOperations operations, string resourceGroupName)
         {
@@ -255,7 +257,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -295,13 +297,14 @@ namespace Microsoft.Azure.Management.RedisCache
             }
         }
         /// <summary>
-        /// Retrieve a Redis cache&#39;s access keys. This operation requires write permission to the cache resource.
+        /// Retrieve a Redis cache&#39;s access keys. This operation requires write
+        /// permission to the cache resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -312,13 +315,14 @@ namespace Microsoft.Azure.Management.RedisCache
         }
 
         /// <summary>
-        /// Retrieve a Redis cache&#39;s access keys. This operation requires write permission to the cache resource.
+        /// Retrieve a Redis cache&#39;s access keys. This operation requires write
+        /// permission to the cache resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -334,13 +338,14 @@ namespace Microsoft.Azure.Management.RedisCache
             }
         }
         /// <summary>
-        /// Regenerate Redis cache&#39;s access keys. This operation requires write permission to the cache resource.
+        /// Regenerate Redis cache&#39;s access keys. This operation requires write
+        /// permission to the cache resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -351,13 +356,14 @@ namespace Microsoft.Azure.Management.RedisCache
         }
 
         /// <summary>
-        /// Regenerate Redis cache&#39;s access keys. This operation requires write permission to the cache resource.
+        /// Regenerate Redis cache&#39;s access keys. This operation requires write
+        /// permission to the cache resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -373,13 +379,14 @@ namespace Microsoft.Azure.Management.RedisCache
             }
         }
         /// <summary>
-        /// Reboot specified Redis node(s). This operation requires write permission to the cache resource. There can be potential data loss.
+        /// Reboot specified Redis node(s). This operation requires write permission to
+        /// the cache resource. There can be potential data loss.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -390,13 +397,14 @@ namespace Microsoft.Azure.Management.RedisCache
         }
 
         /// <summary>
-        /// Reboot specified Redis node(s). This operation requires write permission to the cache resource. There can be potential data loss.
+        /// Reboot specified Redis node(s). This operation requires write permission to
+        /// the cache resource. There can be potential data loss.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -418,7 +426,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -435,7 +443,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -454,7 +462,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -471,7 +479,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -484,13 +492,53 @@ namespace Microsoft.Azure.Management.RedisCache
             (await operations.ExportDataWithHttpMessagesAsync(resourceGroupName, name, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Create or replace (overwrite/recreate, with potential downtime) an existing Redis cache.
+        /// Deletes all of the keys in a cache.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cacheName'>
+        /// The name of the Redis cache.
+        /// </param>
+        public static OperationStatusResult FlushCache(this IRedisOperations operations, string resourceGroupName, string cacheName)
+        {
+                return ((IRedisOperations)operations).FlushCacheAsync(resourceGroupName, cacheName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes all of the keys in a cache.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cacheName'>
+        /// The name of the Redis cache.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<OperationStatusResult> FlushCacheAsync(this IRedisOperations operations, string resourceGroupName, string cacheName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.FlushCacheWithHttpMessagesAsync(resourceGroupName, cacheName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Create or replace (overwrite/recreate, with potential downtime) an existing
+        /// Redis cache.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -501,13 +549,14 @@ namespace Microsoft.Azure.Management.RedisCache
         }
 
         /// <summary>
-        /// Create or replace (overwrite/recreate, with potential downtime) an existing Redis cache.
+        /// Create or replace (overwrite/recreate, with potential downtime) an existing
+        /// Redis cache.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -529,7 +578,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -546,7 +595,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -568,7 +617,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -585,7 +634,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -604,7 +653,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -621,7 +670,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -640,7 +689,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -657,7 +706,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -668,6 +717,45 @@ namespace Microsoft.Azure.Management.RedisCache
         public static async System.Threading.Tasks.Task BeginExportDataAsync(this IRedisOperations operations, string resourceGroupName, string name, ExportRDBParameters parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginExportDataWithHttpMessagesAsync(resourceGroupName, name, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Deletes all of the keys in a cache.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cacheName'>
+        /// The name of the Redis cache.
+        /// </param>
+        public static OperationStatusResult BeginFlushCache(this IRedisOperations operations, string resourceGroupName, string cacheName)
+        {
+                return ((IRedisOperations)operations).BeginFlushCacheAsync(resourceGroupName, cacheName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes all of the keys in a cache.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cacheName'>
+        /// The name of the Redis cache.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<OperationStatusResult> BeginFlushCacheAsync(this IRedisOperations operations, string resourceGroupName, string cacheName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginFlushCacheWithHttpMessagesAsync(resourceGroupName, cacheName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Gets any upgrade notifications for a Redis cache.

@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Confluent service.
 
 ---
-## Status
-[![Az.Confluent](https://img.shields.io/powershellgallery/v/Az.Confluent.svg?style=flat-square&label=Az.Confluent "Az.Confluent")](https://www.powershellgallery.com/packages/Az.Confluent/)
 
 ## Info
 - Modifiable: yes

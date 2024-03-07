@@ -43,20 +43,20 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="soqlQuery">Database query. Type: string (or Expression with resultType string).
         /// </param>
 
-        /// <param name="readBehavior">The read behavior for the operation. Default is query. Allowed values:
-        /// query/queryAll. Type: string (or Expression with resultType string).
+        /// <param name="includeDeletedObjects">This property control whether query result contains Deleted objects.
+        /// Default is false. Type: boolean (or Expression with resultType boolean).
         /// </param>
 
         /// <param name="additionalColumns">Specifies the additional columns to be added to source data. Type: array of
         /// objects(AdditionalColumns) (or Expression with resultType array of
         /// objects).
         /// </param>
-        public SalesforceServiceCloudV2Source(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object soqlQuery = default(object), object readBehavior = default(object), object additionalColumns = default(object))
+        public SalesforceServiceCloudV2Source(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object soqlQuery = default(object), object includeDeletedObjects = default(object), object additionalColumns = default(object))
 
         : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection)
         {
             this.SoqlQuery = soqlQuery;
-            this.ReadBehavior = readBehavior;
+            this.IncludeDeletedObjects = includeDeletedObjects;
             this.AdditionalColumns = additionalColumns;
             CustomInit();
         }
@@ -75,12 +75,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object SoqlQuery {get; set; }
 
         /// <summary>
-        /// Gets or sets the read behavior for the operation. Default is query. Allowed
-        /// values: query/queryAll. Type: string (or Expression with resultType
-        /// string).
+        /// Gets or sets this property control whether query result contains Deleted
+        /// objects. Default is false. Type: boolean (or Expression with resultType
+        /// boolean).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "readBehavior")]
-        public object ReadBehavior {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "includeDeletedObjects")]
+        public object IncludeDeletedObjects {get; set; }
 
         /// <summary>
         /// Gets or sets specifies the additional columns to be added to source data.

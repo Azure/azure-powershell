@@ -109,9 +109,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Tag"))
+            if (content.Contains("Tags"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ResourceUpdateTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateInternal)this).Tags = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateTags) content.GetValueForProperty("Tags",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateInternal)this).Tags, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ResourceUpdateTagsTypeConverter.ConvertFrom);
             }
             AfterDeserializeDictionary(content);
         }
@@ -130,9 +130,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Tag"))
+            if (content.Contains("Tags"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ResourceUpdateTagsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateInternal)this).Tags = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateTags) content.GetValueForProperty("Tags",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateInternal)this).Tags, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ResourceUpdateTagsTypeConverter.ConvertFrom);
             }
             AfterDeserializePSObject(content);
         }

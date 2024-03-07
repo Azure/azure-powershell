@@ -45,6 +45,9 @@ using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.PowerShell.Common.Share.Survey;
 using Microsoft.Azure.Commands.Profile.Utilities;
+using System.Management.Automation.Runspaces;
+using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
+using Microsoft.Azure.Commands.Common.Authentication.Sanitizer;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -249,6 +252,7 @@ namespace Microsoft.Azure.Commands.Profile
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
+            ValidateActionRequiredMessageCanBePresented();
             if (AzureEnvironment.PublicEnvironments.ContainsKey(EnvironmentName.AzureCloud))
             {
                 _environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
@@ -273,10 +277,18 @@ namespace Microsoft.Azure.Commands.Profile
 
             _writeWarningEvent -= WriteWarningSender;
             _writeWarningEvent += WriteWarningSender;
+            _writeInformationEvent -= WriteInformationSender;
+            _writeInformationEvent += WriteInformationSender;
+
             // store the original write warning handler, register a thread safe one
             AzureSession.Instance.TryGetComponent(WriteWarningKey, out _originalWriteWarning);
             AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteWarningKey);
             AzureSession.Instance.RegisterComponent(WriteWarningKey, () => _writeWarningEvent);
+
+            // store the original write information handler, register a thread safe one
+            AzureSession.Instance.TryGetComponent(WriteInformationKey, out _originalWriteInformation);
+            AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteInformationKey);
+            AzureSession.Instance.RegisterComponent(WriteInformationKey, () => _writeInformationEvent);
 
             // todo: ideally cancellation token should be passed to authentication factory as a parameter
             // however AuthenticationFactory.Authenticate does not support it
@@ -289,9 +301,17 @@ namespace Microsoft.Azure.Commands.Profile
         private event EventHandler<StreamEventArgs> _writeWarningEvent;
         private event EventHandler<StreamEventArgs> _originalWriteWarning;
 
+        private event EventHandler<StreamEventArgs> _writeInformationEvent;
+        private event EventHandler<StreamEventArgs> _originalWriteInformation;
+
         private void WriteWarningSender(object sender, StreamEventArgs args)
         {
             _tasks.Enqueue(new Task(() => this.WriteWarning(args.Message)));
+        }
+
+        private void WriteInformationSender(object sender, StreamEventArgs args)
+        {
+            _tasks.Enqueue(new Task(() => this.WriteInformation(args.Message)));
         }
 
         protected override void StopProcessing()
@@ -562,6 +582,20 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
+        private void ValidateActionRequiredMessageCanBePresented()
+        {
+            if (UseDeviceAuthentication.IsPresent && IsWriteInformationIgnored())
+            {
+                throw new ActionPreferenceStopException(Resources.DoNotIgnoreInformationIfUserDeviceAuth);
+            }
+        }
+
+        private bool IsWriteInformationIgnored()
+        {
+            return !MyInvocation.BoundParameters.ContainsKey("InformationAction") && ActionPreference.Ignore.ToString().Equals(SessionState?.PSVariable?.GetValue("InformationPreference", ActionPreference.SilentlyContinue)?.ToString() ?? "") ||
+                MyInvocation.BoundParameters.TryGetValue("InformationAction", out var value) && ActionPreference.Ignore.ToString().Equals(value?.ToString() ?? "", StringComparison.InvariantCultureIgnoreCase);
+        }
+
         private string PreProcessAuthScope()
         {
             string mappedScope = AuthScope;
@@ -755,6 +789,7 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => new AzureCredentialFactory());
                 AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => new MsalAccessTokenAcquirerFactory());
                 AzureSession.Instance.RegisterComponent<ISshCredentialFactory>(nameof(ISshCredentialFactory), () => new SshCredentialFactory());
+                AzureSession.Instance.RegisterComponent<IOutputSanitizer>(nameof(IOutputSanitizer), () => new OutputSanitizer());
 #if DEBUG || TESTCOVERAGE
                 AzureSession.Instance.RegisterComponent<ITestCoverage>(nameof(ITestCoverage), () => new TestCoverage());
 #endif
@@ -774,6 +809,9 @@ namespace Microsoft.Azure.Commands.Profile
             // unregister the thread-safe write warning, because it won't work out of this cmdlet
             AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteWarningKey);
             AzureSession.Instance.RegisterComponent(WriteWarningKey, () => _originalWriteWarning);
+            // unregister the thread-safe write information, because it won't work out of this cmdlet
+            AzureSession.Instance.UnregisterComponent<EventHandler<StreamEventArgs>>(WriteInformationKey);
+            AzureSession.Instance.RegisterComponent(WriteInformationKey, () => _originalWriteInformation);
         }
     }
 }

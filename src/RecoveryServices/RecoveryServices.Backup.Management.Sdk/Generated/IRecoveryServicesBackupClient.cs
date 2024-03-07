@@ -55,15 +55,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         int? LongRunningOperationRetryTimeout { get; set;}
 
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         bool? GenerateClientRequestId { get; set;}
 
@@ -314,6 +314,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         IResourceGuardProxyOperations ResourceGuardProxy { get; }
 
         /// <summary>
+        /// Gets the IFetchTieringCostOperations
+        /// </summary>
+        IFetchTieringCostOperations FetchTieringCost { get; }
+
+        /// <summary>
+        /// Gets the IGetTieringCostOperationResultOperations
+        /// </summary>
+        IGetTieringCostOperationResultOperations GetTieringCostOperationResult { get; }
+
+        /// <summary>
+        /// Gets the ITieringCostOperationStatusOperations
+        /// </summary>
+        ITieringCostOperationStatusOperations TieringCostOperationStatus { get; }
+
+        /// <summary>
         /// Fetches operation status for data move operation on vault
         /// </summary>
         /// <remarks>
@@ -323,7 +338,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='operationId'>
         /// 
@@ -352,7 +368,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='parameters'>
         /// Prepare data move request
@@ -378,7 +395,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='parameters'>
         /// Trigger data move request
@@ -404,7 +422,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// 
@@ -442,7 +461,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='parameters'>
         /// Prepare data move request
@@ -468,7 +488,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='parameters'>
         /// Trigger data move request
@@ -494,7 +515,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// 

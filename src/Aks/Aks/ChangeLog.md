@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.0.1
 * Fixed the resolve path issue in `Install-AzAksCliTool`.
 
 ## Version 6.0.0

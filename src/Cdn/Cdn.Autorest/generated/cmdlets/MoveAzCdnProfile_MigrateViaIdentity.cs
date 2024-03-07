@@ -19,6 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrateResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile. The change need to be committed after this.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/migrate", ApiVersion = "2023-05-01")]
     public partial class MoveAzCdnProfile_MigrateViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener
     {

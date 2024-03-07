@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Compute service.
 
 ---
-## Status
-[![Az.Compute](https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute "Az.Compute")](https://www.powershellgallery.com/packages/Az.Compute/)
 
 ## Info
 - Modifiable: yes

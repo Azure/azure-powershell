@@ -21,7 +21,8 @@ Get-AzConnectedMachineExtension -MachineName <String> -ResourceGroupName <String
 ### Get
 ```
 Get-AzConnectedMachineExtension -MachineName <String> -ResourceGroupName <String> -Name <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -1,17 +1,17 @@
 {
-  "Remove-AzMarketplacePrivateStoreCollectionOffer+[NoContext]+Delete+$DELETE+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1/offers/aumatics.azure_managedservices?api-version=2021-06-01+1": {
+  "Remove-AzMarketplacePrivateStoreCollectionOffer+[NoContext]+Delete+$DELETE+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1/offers/aumatics.azure_managedservices?api-version=2023-01-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1/offers/aumatics.azure_managedservices?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1/offers/aumatics.azure_managedservices?api-version=2023-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "13" ],
-        "x-ms-client-request-id": [ "31d2d61f-6e47-4118-8621-c4e09af24f7a" ],
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "aeef3aad-66c0-4bbc-b61d-0683b9d197ec" ],
         "CommandName": [ "Remove-AzMarketplacePrivateStoreCollectionOffer" ],
         "FullCommandName": [ "Remove-AzMarketplacePrivateStoreCollectionOffer_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.11", "Az.Marketplace/1.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,19 +22,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Set-Cookie": [ "ARRAffinity=a3053b2a1619a6aa4b0e7e497e4fa01864cd730cd9c257837f8a0036d6c79b63;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=a3053b2a1619a6aa4b0e7e497e4fa01864cd730cd9c257837f8a0036d6c79b63;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "x-ms-ratelimit-remaining-tenant-deletes": [ "14998" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
-        "x-ms-version": [ "6.0.01832.0004-467b09b3" ],
-        "Set-Cookie": [ "ARRAffinity=ac34b1a047b7a77113a516ef142ac6ff661eaaf7884099e34431a940426d41cc;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=ac34b1a047b7a77113a516ef142ac6ff661eaaf7884099e34431a940426d41cc;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
+        "x-ms-version": [ "6.0.02586.90-5c77bed2" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-tenant-deletes": [ "14998" ],
-        "x-ms-request-id": [ "81058a07-c121-4e25-882f-394b959a07f4" ],
-        "x-ms-correlation-request-id": [ "81058a07-c121-4e25-882f-394b959a07f4" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20220124T135906Z:81058a07-c121-4e25-882f-394b959a07f4" ],
+        "x-azure-ref": [ "20240206T121518Z-e9fr18rg4936d7qwr39u9d2ats000000030g000000007k4m" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "e6b91b98-50a3-447e-8373-de634bb9a2ed" ],
+        "x-ms-correlation-request-id": [ "e6b91b98-50a3-447e-8373-de634bb9a2ed" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240206T121519Z:e6b91b98-50a3-447e-8373-de634bb9a2ed" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Mon, 24 Jan 2022 13:59:05 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 67DC9E1325E14110929E6A3695AEA01A Ref B: MRS211050313051 Ref C: 2024-02-06T12:15:18Z" ],
+        "Date": [ "Tue, 06 Feb 2024 12:15:18 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -44,19 +47,19 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzMarketplacePrivateStoreCollectionOffer+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1/offers/aumatics.azure_managedservices?api-version=2021-06-01+2": {
+  "Remove-AzMarketplacePrivateStoreCollectionOffer+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1/offers/aumatics.azure_managedservices?api-version=2023-01-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1/offers/aumatics.azure_managedservices?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/fdb889a1-cf3e-49f0-95b8-2bb012fa01f1/offers/aumatics.azure_managedservices?api-version=2023-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "de213ed4-ecb5-4f0e-95f1-ab093eed051a" ],
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "23ecf0bd-4d81-46c9-adb8-708cbb52c3b3" ],
         "CommandName": [ "Get-AzMarketplacePrivateStoreCollectionOffer" ],
         "FullCommandName": [ "Get-AzMarketplacePrivateStoreCollectionOffer_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.11", "Az.Marketplace/1.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -67,19 +70,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "Set-Cookie": [ "ARRAffinity=bfe2117850ddf2eb1a1bdbff379f22be7abd277495b3d0ff28b1c1254c65d847;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=bfe2117850ddf2eb1a1bdbff379f22be7abd277495b3d0ff28b1c1254c65d847;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-XSS-Protection": [ "1; mode=block" ],
-        "x-ms-version": [ "6.0.01832.0004-467b09b3" ],
-        "Set-Cookie": [ "ARRAffinity=b04ffa86539d7689519d8eb5d5e7423177e93a8afca318b1f76e4c8444a7d2a2;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=b04ffa86539d7689519d8eb5d5e7423177e93a8afca318b1f76e4c8444a7d2a2;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
+        "x-ms-version": [ "6.0.02586.90-5c77bed2" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-tenant-reads": [ "11996" ],
-        "x-ms-request-id": [ "c77c861f-baf3-4139-aef2-748e816655a9" ],
-        "x-ms-correlation-request-id": [ "c77c861f-baf3-4139-aef2-748e816655a9" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20220124T135906Z:c77c861f-baf3-4139-aef2-748e816655a9" ],
+        "x-azure-ref": [ "20240206T121519Z-e9fr18rg4936d7qwr39u9d2ats000000030g000000007k4z" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "9d4baabb-6155-4f8e-9ebf-1fcd15da380d" ],
+        "x-ms-correlation-request-id": [ "9d4baabb-6155-4f8e-9ebf-1fcd15da380d" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240206T121519Z:9d4baabb-6155-4f8e-9ebf-1fcd15da380d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Mon, 24 Jan 2022 13:59:05 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C30BD4EC846D4F7C85B5A03C26CBDFA5 Ref B: MRS211050313051 Ref C: 2024-02-06T12:15:19Z" ],
+        "Date": [ "Tue, 06 Feb 2024 12:15:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "95" ],

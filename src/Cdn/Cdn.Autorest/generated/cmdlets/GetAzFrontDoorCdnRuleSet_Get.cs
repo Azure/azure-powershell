@@ -19,6 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSet))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}", ApiVersion = "2023-05-01")]
     public partial class GetAzFrontDoorCdnRuleSet_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener
     {

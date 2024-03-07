@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="sourceTierType">Source tier from where RP needs to be moved
-        /// Possible values include: 'Invalid', 'InstantRP', 'HardenedRP', 'ArchivedRP'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;</param>
 
         /// <param name="targetTierType">Target tier where RP needs to be moved
-        /// Possible values include: 'Invalid', 'InstantRP', 'HardenedRP', 'ArchivedRP'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;InstantRP&#39;, &#39;HardenedRP&#39;, &#39;ArchivedRP&#39;</param>
         public MoveRPAcrossTiersRequest(string objectType = default(string), RecoveryPointTierType? sourceTierType = default(RecoveryPointTierType?), RecoveryPointTierType? targetTierType = default(RecoveryPointTierType?))
 
         {

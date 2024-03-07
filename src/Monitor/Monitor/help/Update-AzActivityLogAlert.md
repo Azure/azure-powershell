@@ -17,7 +17,8 @@ To update other fields use CreateOrUpdate operation.
 ### UpdateExpanded (Default)
 ```
 Update-AzActivityLogAlert -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Enabled <Boolean>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Enabled <Boolean>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded

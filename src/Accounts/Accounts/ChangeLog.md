@@ -19,11 +19,22 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.16.0
+* Added a preview feature to detect secrets and sensitive information from the output of Azure PowerShell cmdlets to prevent leakage. Enable it by `Set-AzConfig -DisplaySecretsWarning $true`. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844
+* Fixed `CacheDirectory` and `CacheFile` out-of-sync issue in AzureRmContextSettings.json and the customers are not allowed to change these 2 properties.
+* Redirected device code login messages from warning stream to information stream if use device authentication in `Connect-AzAccount`.
+
+## Version 2.15.1
+* Adjusted output format to be more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`, including 
+    - ordering and grouping output items to make items easy to find.
+    - re-prioritizing positions for output properties to highlight valuable properties.
+* Upgraded the reference of Azure PowerShell Common to 1.3.90-preview.
 * Upgraded Azure.Identity to 1.10.3 [#23018].
   - Renamed token cache from `msal.cache` to `msal.cache.cae` or `masl.cache.nocae`.
-* Enabled Continue Access Evalution (CAE) for all Service Principals login methods.
-* Adjusted output format to be more user-friendly for `Get-AzContext/Tenant/Subscription` and `Invoke-AzRestMethod`
-* Fixed the multiple `x-ms-unique-id` values issue
+* Enabled Continue Access Evaluation (CAE) for all Service Principals login methods.
+* Supported signing in with Microsoft Account (MSA) via Web Account Manager (WAM). Enable it by `Set-AzConfig -EnableLoginByWam $true`.
+* Fixed the multiple `x-ms-unique-id` values issue.
 
 ## Version 2.15.0
 * Fixed the authentication issue when using `FederatedToken` in Sovereign Clouds. [#23742]
@@ -34,8 +45,8 @@
 * Upgraded Azure.Core to 1.35.0.
 
 ## Version 2.13.1
-* Added the module name in breaking change messages 
-* Upgraded Microsoft.ApplicationInsights version from 2.13.1 to 2.18.0 
+* Added the module name in breaking change messages
+* Upgraded Microsoft.ApplicationInsights version from 2.13.1 to 2.18.0
 
 ## Version 2.13.0
 * Supported in-tool notification for version upgrade.
@@ -46,7 +57,7 @@
 
 ## Version 2.12.5
 * Changed output stream from debug stream to warning stream for `CmdletPreviewAttribute`
-* Decreased the prompted frequency of preview warning message to once per cmdlet in one session  
+* Decreased the prompted frequency of preview warning message to once per cmdlet in one session
 * Reworded default preview message and added estimated GA date for `CmdletPreviewAttribute`
 * Updated Azure.Core to 1.33.0
 

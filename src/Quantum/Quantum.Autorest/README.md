@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Quantum service.
 
 ---
-## Status
-[![Az.Quantum](https://img.shields.io/powershellgallery/v/Az.Quantum.svg?style=flat-square&label=Az.Quantum "Az.Quantum")](https://www.powershellgallery.com/packages/Az.Quantum/)
 
 ## Info
 - Modifiable: yes
