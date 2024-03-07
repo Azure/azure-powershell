@@ -108,7 +108,7 @@ pac106,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac107,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Monitor.5.1.0.nupkg;sourceType=sa]Az.Monitor,5.1.0
 pac108,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MonitoringSolutions.0.1.0.nupkg;sourceType=sa]Az.MonitoringSolutions,0.1.0
 pac109,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MySql.1.1.1.nupkg;sourceType=sa]Az.MySql,1.1.1
-pac110,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetAppFiles.0.15.0.nupkg;sourceType=sa]Az.NetAppFiles,0.15.0
+pac110,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetAppFiles.0.15.1.nupkg;sourceType=sa]Az.NetAppFiles,0.15.1
 pac111,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Network.7.4.0.nupkg;sourceType=sa]Az.Network,7.4.0
 pac112,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetworkAnalytics.0.1.0.nupkg;sourceType=sa]Az.NetworkAnalytics,0.1.0
 pac113,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetworkCloud.1.0.0.nupkg;sourceType=sa]Az.NetworkCloud,1.0.0
