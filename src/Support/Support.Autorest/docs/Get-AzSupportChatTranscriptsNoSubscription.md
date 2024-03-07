@@ -12,7 +12,13 @@ Returns chatTranscript details for a no subscription support ticket.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
+```
+Get-AzSupportChatTranscriptsNoSubscription -SupportTicketName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Get
 ```
 Get-AzSupportChatTranscriptsNoSubscription -ChatTranscriptName <String> -SupportTicketName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -127,7 +133,7 @@ Support ticket name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True

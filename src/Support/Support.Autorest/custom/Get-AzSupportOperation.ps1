@@ -27,9 +27,9 @@ Lists all the available Microsoft Support REST API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IOperation
 .Link
-https://learn.microsoft.com/powershell/module/az.support/new-azsupportfile
+https://learn.microsoft.com/powershell/module/az.support/get-azsupportoperation
 #>
-function Get-AzSupportOperation_List {
+function Get-AzSupportOperation {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IOperation])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(    

@@ -128,7 +128,7 @@ process {
     }
 
     $PSBoundParameters.Remove('FilePath') | Out-Null
-    New-AzSupportFile -ErrorAction Stop -Name $FileName -FileSize $FileSize -ChunkSize $ChunkSize -NumberOfChunk $NumberOfChunks @PSBoundParameters
+    Az.Support.internal\New-AzSupportFile -ErrorAction Stop -Name $FileName -FileSize $FileSize -ChunkSize $ChunkSize -NumberOfChunk $NumberOfChunks @PSBoundParameters
 
     $chunkIndex = 0
     $startIndex = 0
@@ -136,7 +136,7 @@ process {
     
     while($chunkIndex -lt $NumberOfChunks){
         $FileContent = [convert]::ToBase64String($FileContentByteArray[$startIndex..$endIndex])
-        Invoke-AzSupportUploadFile -ErrorAction Stop -FileName $FileName -ChunkIndex $chunkIndex -Content $FileContent @PSBoundParameters
+        Az.Support.internal\Invoke-AzSupportUploadFile -ErrorAction Stop -FileName $FileName -ChunkIndex $chunkIndex -Content $FileContent @PSBoundParameters
         $chunkIndex++
         $startIndex = $endIndex + 1
         $endIndex = $FileSize - 1

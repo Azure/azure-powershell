@@ -16,18 +16,18 @@ The Azure support engineer working on your ticket will reach out to you for cons
 ## SYNTAX
 
 ```
-New-AzSupportTicketsNoSubscription -SupportTicketName <String> [-AdvancedDiagnosticConsent <String>]
- [-ContactDetailAdditionalEmailAddress <String[]>] [-ContactDetailCountry <String>]
- [-ContactDetailFirstName <String>] [-ContactDetailLastName <String>] [-ContactDetailPhoneNumber <String>]
- [-ContactDetailPreferredContactMethod <String>] [-ContactDetailPreferredSupportLanguage <String>]
- [-ContactDetailPreferredTimeZone <String>] [-ContactDetailPrimaryEmailAddress <String>]
- [-Description <String>] [-FileWorkspaceName <String>] [-ProblemClassificationId <String>]
- [-ProblemScopingQuestion <String>] [-ProblemStartTime <DateTime>]
- [-QuotaTicketDetailQuotaChangeRequest <IQuotaChangeRequest[]>]
+New-AzSupportTicketsNoSubscription -SupportTicketName <String> -ContactDetailCountry <String>
+ -ContactDetailFirstName <String> -ContactDetailLastName <String>
+ -ContactDetailPreferredContactMethod <String> -ContactDetailPreferredSupportLanguage <String>
+ -ContactDetailPreferredTimeZone <String> -ContactDetailPrimaryEmailAddress <String> -Description <String>
+ -ProblemClassificationId <String> -ServiceId <String> -Severity <String> -Title <String>
+ [-AdvancedDiagnosticConsent <String>] [-ContactDetailAdditionalEmailAddress <String[]>]
+ [-ContactDetailPhoneNumber <String>] [-FileWorkspaceName <String>] [-ProblemScopingQuestion <String>]
+ [-ProblemStartTime <DateTime>] [-QuotaTicketDetailQuotaChangeRequest <IQuotaChangeRequest[]>]
  [-QuotaTicketDetailQuotaChangeRequestSubType <String>] [-QuotaTicketDetailQuotaChangeRequestVersion <String>]
- [-Require24X7Response] [-SecondaryConsent <ISecondaryConsent[]>] [-ServiceId <String>] [-Severity <String>]
- [-SupportPlanId <String>] [-SupportTicketId <String>] [-TechnicalTicketDetailResourceId <String>]
- [-Title <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Require24X7Response] [-SecondaryConsent <ISecondaryConsent[]>] [-SupportPlanId <String>]
+ [-SupportTicketId <String>] [-TechnicalTicketDetailResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,7 +148,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -163,7 +163,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -178,7 +178,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -209,7 +209,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -228,7 +228,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -244,7 +244,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -259,7 +259,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -290,7 +290,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -336,7 +336,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -458,7 +458,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -474,7 +474,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -549,7 +549,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
