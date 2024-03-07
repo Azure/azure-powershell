@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Upgraded Azure.Core to 1.37.0.
 * Az.Compute is updated to use the 2023-07-03 GalleryRP REST API calls.
 
 ## Version 7.1.2
