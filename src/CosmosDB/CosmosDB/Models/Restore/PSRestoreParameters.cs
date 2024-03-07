@@ -67,6 +67,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             {
                 SourceBackupLocation = restoreParameters.SourceBackupLocation;
             }
+
+            if(restoreParameters.RestoreWithTtlDisabled != null)
+            {
+                DisableTtl = restoreParameters.RestoreWithTtlDisabled;
+            }
         }
 
         /// <summary>
