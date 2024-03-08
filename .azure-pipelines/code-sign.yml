@@ -366,6 +366,8 @@ jobs:
       ./tools/Docs/OutputTypeIndex.ps1 -OutputFile ./artifacts/outputtypes.json -BuildConfig Release
       ./tools/Docs/HelpIndex.ps1 -OutputFile ./artifacts/index.json -BuildConfig Release
     displayName: 'Post process for Docs'
+    condition: eq('${{ parameters.TargetModule }}', 'none') 
+
 
   - task: PublishBuildArtifacts@1
     displayName: 'Save artifacts'
