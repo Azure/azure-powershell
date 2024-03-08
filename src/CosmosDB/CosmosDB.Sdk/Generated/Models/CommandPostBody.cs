@@ -37,17 +37,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// again
         /// </param>
 
-        /// <param name="readwrite">If true, allows the command to *write* to the cassandra directory,
+        /// <param name="readWrite">If true, allows the command to *write* to the cassandra directory,
         /// otherwise read-only.
         /// </param>
-        public CommandPostBody(string command, string host, System.Collections.Generic.IDictionary<string, string> arguments = default(System.Collections.Generic.IDictionary<string, string>), bool? cassandraStopStart = default(bool?), bool? readwrite = default(bool?))
+        public CommandPostBody(string command, string host, object arguments = default(object), bool? cassandraStopStart = default(bool?), bool? readWrite = default(bool?))
 
         {
             this.Command = command;
             this.Arguments = arguments;
             this.Host = host;
             this.CassandraStopStart = cassandraStopStart;
-            this.Readwrite = readwrite;
+            this.ReadWrite = readWrite;
             CustomInit();
         }
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Gets or sets the arguments for the command to be run
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "arguments")]
-        public System.Collections.Generic.IDictionary<string, string> Arguments {get; set; }
+        public object Arguments {get; set; }
 
         /// <summary>
         /// Gets or sets iP address of the cassandra host to run the command on
@@ -86,8 +86,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Gets or sets if true, allows the command to *write* to the cassandra
         /// directory, otherwise read-only.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "readwrite")]
-        public bool? Readwrite {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "readWrite")]
+        public bool? ReadWrite {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

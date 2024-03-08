@@ -60,7 +60,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="materializedViewDefinition">The configuration for defining Materialized Views. This must be specified
         /// only for creating a Materialized View container.
         /// </param>
-        public SqlContainerResource(string id, IndexingPolicy indexingPolicy = default(IndexingPolicy), ContainerPartitionKey partitionKey = default(ContainerPartitionKey), int? defaultTtl = default(int?), UniqueKeyPolicy uniqueKeyPolicy = default(UniqueKeyPolicy), ConflictResolutionPolicy conflictResolutionPolicy = default(ConflictResolutionPolicy), ClientEncryptionPolicy clientEncryptionPolicy = default(ClientEncryptionPolicy), long? analyticalStorageTtl = default(long?), ResourceRestoreParameters restoreParameters = default(ResourceRestoreParameters), string createMode = default(string), MaterializedViewDefinition materializedViewDefinition = default(MaterializedViewDefinition))
+
+        /// <param name="computedProperties">List of computed properties
+        /// </param>
+        public SqlContainerResource(string id, IndexingPolicy indexingPolicy = default(IndexingPolicy), ContainerPartitionKey partitionKey = default(ContainerPartitionKey), int? defaultTtl = default(int?), UniqueKeyPolicy uniqueKeyPolicy = default(UniqueKeyPolicy), ConflictResolutionPolicy conflictResolutionPolicy = default(ConflictResolutionPolicy), ClientEncryptionPolicy clientEncryptionPolicy = default(ClientEncryptionPolicy), long? analyticalStorageTtl = default(long?), ResourceRestoreParameters restoreParameters = default(ResourceRestoreParameters), string createMode = default(string), MaterializedViewDefinition materializedViewDefinition = default(MaterializedViewDefinition), System.Collections.Generic.IList<ComputedProperty> computedProperties = default(System.Collections.Generic.IList<ComputedProperty>))
 
         {
             this.Id = id;
@@ -74,6 +77,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.RestoreParameters = restoreParameters;
             this.CreateMode = createMode;
             this.MaterializedViewDefinition = materializedViewDefinition;
+            this.ComputedProperties = computedProperties;
             CustomInit();
         }
 
@@ -152,6 +156,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "materializedViewDefinition")]
         public MaterializedViewDefinition MaterializedViewDefinition {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of computed properties
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "computedProperties")]
+        public System.Collections.Generic.IList<ComputedProperty> ComputedProperties {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -182,6 +192,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 this.MaterializedViewDefinition.Validate();
             }
+
         }
     }
 }

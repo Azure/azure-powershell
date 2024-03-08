@@ -31,9 +31,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="restoreTimestampInUtc">Time to which the account has to be restored (ISO-8601 format).
         /// </param>
-        public ResourceRestoreParameters(string restoreSource = default(string), System.DateTime? restoreTimestampInUtc = default(System.DateTime?))
 
-        : base(restoreSource, restoreTimestampInUtc)
+        /// <param name="restoreWithTtlDisabled">Specifies whether the restored account will have Time-To-Live disabled upon
+        /// the successful restore.
+        /// </param>
+        public ResourceRestoreParameters(string restoreSource = default(string), System.DateTime? restoreTimestampInUtc = default(System.DateTime?), bool? restoreWithTtlDisabled = default(bool?))
+
+        : base(restoreSource, restoreTimestampInUtc, restoreWithTtlDisabled)
         {
             CustomInit();
         }

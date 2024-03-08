@@ -25,6 +25,8 @@
 * Added new paramater `MinimalTlsVersion` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
 * Added new property `CustomerManagedKeyStatus` to `Get-AzCosmosDBAccount`.
 * Added new parameter `EnablePartitionMerge` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
+* Added new parameter `EnablePerRegionPerPartitionAutoscale` to `Update-AzCosmosDBAccount` and `New-AzCosmosDBAccount`.
+* Added new parameter `DisableTtl` to `Restore-AzCosmosDBAccount`.
 
 ## Version 2.0.5
 * Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.

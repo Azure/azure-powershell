@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     /// A CosmosDB No Sql API data source/sink
     /// </summary>
     [Newtonsoft.Json.JsonObject("CosmosDBSql")]
-    public partial class CosmosSqlDataTransferDataSourceSink
+    public partial class CosmosSqlDataTransferDataSourceSink : BaseCosmosDataTransferDataSourceSink
     {
         /// <summary>
         /// Initializes a new instance of the CosmosSqlDataTransferDataSourceSink class.
@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
         public CosmosSqlDataTransferDataSourceSink(string databaseName, string containerName, string remoteAccountName = default(string))
 
+        : base(remoteAccountName)
         {
-            this.RemoteAccountName = remoteAccountName;
             this.DatabaseName = databaseName;
             this.ContainerName = containerName;
             CustomInit();
@@ -47,12 +47,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "remoteAccountName")]
-        public string RemoteAccountName {get; set; }
 
         /// <summary>
         /// Gets or sets
@@ -81,7 +75,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ContainerName");
             }
-
 
 
         }

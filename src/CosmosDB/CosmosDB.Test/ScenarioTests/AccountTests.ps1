@@ -33,7 +33,7 @@ function Test-AccountRelatedCmdlets
   $networkAclBypass = "AzureServices"
   $networkAclBypassResourceId = @("/subscriptions/subId/resourcegroups/rgName/providers/Microsoft.Synapse/workspaces/workspaceName")
 
-  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRule $IpRule -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess -EnableFreeTier 0 -EnableAnalyticalStorage 0 -ServerVersion "3.2" -NetworkAclBypass $NetworkAclBypass -BackupRetentionIntervalInHours 16 -BackupIntervalInMinutes 480 -EnableBurstCapacity 1 -MinimalTlsVersion "Tls12" -EnablePriorityBasedExecution 1 -DefaultPriorityLevel "Low"
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -Location $location -IpRule $IpRule -Tag $tags -EnableVirtualNetwork  -EnableMultipleWriteLocations  -EnableAutomaticFailover -ApiKind "MongoDB" -PublicNetworkAccess $publicNetworkAccess -EnableFreeTier 0 -EnableAnalyticalStorage 0 -ServerVersion "3.2" -NetworkAclBypass $NetworkAclBypass -BackupRetentionIntervalInHours 16 -BackupIntervalInMinutes 480 -EnableBurstCapacity 1 -MinimalTlsVersion "Tls12" -EnablePriorityBasedExecution 1 -DefaultPriorityLevel "Low" -EnablePerRegionPerPartitionAutoscale 1
   
   Assert-AreEqual $cosmosDBAccountName $cosmosDBAccount.Name
   Assert-AreEqual "BoundedStaleness" $cosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
@@ -53,7 +53,8 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $cosmosDBAccount.EnableBurstCapacity 1
   Assert-AreEqual $cosmosDBAccount.EnablePriorityBasedExecution 1
   Assert-AreEqual $cosmosDBAccount.DefaultPriorityLevel "Low"
-  Assert-AreEqual $cosmosDBAccount.MinimalTlsVersion "Tls12" 
+  Assert-AreEqual $cosmosDBAccount.MinimalTlsVersion "Tls12"
+  Assert-AreEqual $cosmosDBAccount.EnablePerRegionPerPartitionAutoscale 1
 
   # create an existing database
   Try {
@@ -63,7 +64,7 @@ function Test-AccountRelatedCmdlets
     Assert-AreEqual $_.Exception.Message ("Resource with Name " + $cosmosDBAccountName + " already exists.")
   }
 
-  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRule $IpRule -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess -NetworkAclBypassResourceId $networkAclBypassResourceId -EnableBurstCapacity 0 -EnablePriorityBasedExecution 0 -DefaultPriorityLevel "High" -EnablePartitionMerge 0 -MinimalTlsVersion "Tls12"
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -DefaultConsistencyLevel "BoundedStaleness" -MaxStalenessIntervalInSeconds 10  -MaxStalenessPrefix 20 -IpRule $IpRule -Tag $tags -EnableVirtualNetwork 1 -EnableAutomaticFailover 1 -PublicNetworkAccess $publicNetworkAccess -NetworkAclBypassResourceId $networkAclBypassResourceId -EnableBurstCapacity 0 -EnablePriorityBasedExecution 0 -DefaultPriorityLevel "High" -EnablePartitionMerge 0 -MinimalTlsVersion "Tls12" -EnablePerRegionPerPartitionAutoscale 0
 
   Assert-AreEqual $cosmosDBAccountName $updatedCosmosDBAccount.Name
   Assert-AreEqual "BoundedStaleness" $updatedCosmosDBAccount.ConsistencyPolicy.DefaultConsistencyLevel
@@ -81,6 +82,7 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $updatedCosmosDBAccount.EnablePriorityBasedExecution 0
   Assert-AreEqual $updatedCosmosDBAccount.DefaultPriorityLevel "High"
   Assert-AreEqual $updatedCosmosDBAccount.MinimalTlsVersion "Tls12"
+  Assert-AreEqual $updatedCosmosDBAccount.EnablePerRegionPerPartitionAutoscale 0
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -EnableBurstCapacity 1
   Assert-AreEqual $updatedCosmosDBAccount.EnableBurstCapacity 1
@@ -94,6 +96,9 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 480
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupRetentionIntervalInHours 16
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupStorageRedundancy "Local"
+
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -EnablePerRegionPerPartitionAutoscale 1
+  Assert-AreEqual $updatedCosmosDBAccount.EnablePerRegionPerPartitionAutoscale 1
 
   $cosmosDBAccountKey = Get-AzCosmosDBAccountKey -Name $cosmosDBAccountName -ResourceGroupName $rgname
   Assert-NotNull $cosmosDBAccountKey

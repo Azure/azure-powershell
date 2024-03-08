@@ -10,7 +10,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     /// <summary>
     /// A base CosmosDB data source/sink
     /// </summary>
-    public partial class BaseCosmosDataTransferDataSourceSink
+    [Newtonsoft.Json.JsonObject("BaseCosmosDataTransferDataSourceSink")]
+    public partial class BaseCosmosDataTransferDataSourceSink : DataTransferDataSourceSink
     {
         /// <summary>
         /// Initializes a new instance of the BaseCosmosDataTransferDataSourceSink class.
