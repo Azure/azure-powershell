@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnendpoint
 schema: 2.0.0
@@ -25,18 +25,20 @@ Update-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <St
  [-OriginHostHeader <String>] [-OriginPath <String>] [-ProbePath <String>]
  [-QueryStringCachingBehavior <QueryStringCachingBehavior>] [-Tag <Hashtable>]
  [-UrlSigningKey <IUrlSigningKey[]>] [-WebApplicationFirewallPolicyLinkId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded1
 ```
 Update-AzCdnEndpoint -InputObject <ICdnIdentity> [-ContentTypesToCompress <String[]>]
- [-DefaultOriginGroupId <String>] [-DeliveryPolicyDescription <String>]
- [-DeliveryPolicyRule <IDeliveryRule[]>] [-GeoFilter <IGeoFilter[]>] [-IsCompressionEnabled] [-IsHttpAllowed]
- [-IsHttpsAllowed] [-OptimizationType <OptimizationType>] [-OriginHostHeader <String>] [-OriginPath <String>]
+ [-DefaultOriginGroupId <String>] [-DeliveryPolicyDescription <String>] [-DeliveryPolicyRule <IDeliveryRule[]>]
+ [-GeoFilter <IGeoFilter[]>] [-IsCompressionEnabled] [-IsHttpAllowed] [-IsHttpsAllowed]
+ [-OptimizationType <OptimizationType>] [-OriginHostHeader <String>] [-OriginPath <String>]
  [-ProbePath <String>] [-QueryStringCachingBehavior <QueryStringCachingBehavior>] [-Tag <Hashtable>]
  [-UrlSigningKey <IUrlSigningKey[]>] [-WebApplicationFirewallPolicyLinkId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -388,6 +390,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -QueryStringCachingBehavior
 Defines how CDN caches requests that include query strings.
 You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL.
@@ -568,4 +585,3 @@ To create the parameters described below, construct a hash table containing the 
   - `KeySourceParameterVaultName <String>`: The name of the user's Key Vault containing the secret
 
 ## RELATED LINKS
-

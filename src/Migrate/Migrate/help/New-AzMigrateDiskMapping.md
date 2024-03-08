@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratediskmapping
 schema: 2.0.0
@@ -13,8 +13,8 @@ Creates a new disk mapping
 ## SYNTAX
 
 ```
-New-AzMigrateDiskMapping -DiskID <String> -DiskType <String> -IsOSDisk <String>
- [-DiskEncryptionSetID <String>] [<CommonParameters>]
+New-AzMigrateDiskMapping -DiskID <String> -IsOSDisk <String> -DiskType <String> [-DiskEncryptionSetID <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ New-AzMigrateDiskMapping -DiskID a -DiskType Standard -IsOSDisk 'true'
 ```output
 DiskEncryptionSetId DiskId   DiskType  IsOSDisk LogStorageAccountId LogStorageAccountSasSecretName  
 ------------------- ------   --------  -------- ------------------- ------------------------------   
-                      a      Standard  true  
+                      a      Standard  true
 ```
 
 Get disks object to provide input for New-AzMigrateServerReplication
@@ -111,4 +111,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

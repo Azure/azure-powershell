@@ -268,6 +268,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to INITIALIZATION: Failed to migrate MSAL token cache of the legacy name with error : {0}.
+        /// </summary>
+        public static string FailedToMigrateMsalCacheWithLegayName {
+            get {
+                return ResourceManager.GetString("FailedToMigrateMsalCacheWithLegayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File path is not valid.
         /// </summary>
         public static string FilePathIsNotValid {
@@ -318,6 +327,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         public static string HelpMessageOfDisplayRegionIdentified {
             get {
                 return ResourceManager.GetString("HelpMessageOfDisplayRegionIdentified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When enabled, a warning message will be displayed when the cmdlet output contains secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844.
+        /// </summary>
+        public static string HelpMessageOfDisplaySecretsWarning {
+            get {
+                return ResourceManager.GetString("HelpMessageOfDisplaySecretsWarning", resourceCulture);
             }
         }
         

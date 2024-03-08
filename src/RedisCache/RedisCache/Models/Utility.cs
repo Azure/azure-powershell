@@ -42,6 +42,17 @@ namespace Microsoft.Azure.Commands.RedisCache
             return e[8];
         }
 
+        public static (string resourceGroupName, string cacheName, string childResource) GetDetailsFromRedisCacheChildResourceId(string id)
+        {
+            //Id looks like this: "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Cache/Redis/<cache name>/<operation group>/<name>"
+            string[] e = id.Split('/');
+            if (e.Length != 11 || string.IsNullOrWhiteSpace(e[4]) || string.IsNullOrWhiteSpace(e[8]) || string.IsNullOrWhiteSpace(e[10]))
+            {
+                throw new ArgumentException(string.Format(Resources.InvalidRedisCacheChildResourceId, id));
+            }
+            return (e[4], e[8], e[10]);
+        }
+
         internal static ManagedServiceIdentity BuildManagedServiceIdentity(string identityType, string[] userAssignedIdentities)
         {
             if (!string.IsNullOrEmpty(identityType))

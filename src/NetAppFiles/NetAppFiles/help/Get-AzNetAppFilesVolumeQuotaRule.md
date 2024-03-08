@@ -15,7 +15,8 @@ Gets details of an Azure NetApp Files (ANF) Volume Quouta Rule.
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzNetAppFilesVolumeQuotaRule -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- [-VolumeName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VolumeName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet

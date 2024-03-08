@@ -15,7 +15,8 @@ Gets details of an Azure NetApp Files (ANF) Active Directory configuration.
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <String>
- [-ActiveDirectoryId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ActiveDirectoryId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet

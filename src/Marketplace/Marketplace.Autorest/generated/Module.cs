@@ -11,6 +11,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
     using GetParameterDelegate = global::System.Func<string, string, global::System.Management.Automation.InvocationInfo, string, string, object>;
     using ModuleLoadPipelineDelegate = global::System.Action<string, string, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>>;
     using ArgumentCompleterDelegate = global::System.Func<string, global::System.Management.Automation.InvocationInfo, string, string[], string[], string[]>;
+    using GetTelemetryIdDelegate = global::System.Func<string>;
+    using TelemetryDelegate = global::System.Action<string, global::System.Management.Automation.InvocationInfo, string, global::System.Management.Automation.PSCmdlet>;
     using NewRequestPipelineDelegate = global::System.Action<global::System.Management.Automation.InvocationInfo, string, string, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>>;
     using SignalDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>;
     using EventListenerDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Management.Automation.InvocationInfo, string, string, string, global::System.Exception, global::System.Threading.Tasks.Task>;
@@ -24,11 +26,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
 
         public global::System.Net.Http.HttpClientHandler _handler = new global::System.Net.Http.HttpClientHandler();
 
+        private static bool _init = false;
+
+        private static readonly global::System.Object _initLock = new global::System.Object();
+
+        private static Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module _instance;
+
         /// <summary>the ISendAsync pipeline instance</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.HttpPipeline _pipeline;
 
         /// <summary>the ISendAsync pipeline instance (when proxy is enabled)</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.HttpPipeline _pipelineWithProxy;
+
+        private static readonly global::System.Object _singletonLock = new global::System.Object();
+
+        public bool _useProxy = false;
 
         public global::System.Net.WebProxy _webProxy = new global::System.Net.WebProxy();
 
@@ -44,11 +56,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
         /// <summary>The delegate to call to get parameter data from a common module.</summary>
         public GetParameterDelegate GetParameterValue { get; set; }
 
-        /// <summary>Backing field for <see cref="Instance" /> property.</summary>
-        private static Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module _instance;
+        /// <summary>The delegate to get the telemetry Id.</summary>
+        public GetTelemetryIdDelegate GetTelemetryId { get; set; }
 
         /// <summary>the singleton of this module class</summary>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module Instance => Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module._instance?? (Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module._instance = new Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module());
+        public static Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module Instance { get { if (_instance == null) { lock (_singletonLock) { if (_instance == null) { _instance = new Module(); }}} return _instance; } }
 
         /// <summary>The Name of this module</summary>
         public string Name => @"Az.Marketplace";
@@ -64,6 +76,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
 
         /// <summary>The ResourceID for this module (azure arm).</summary>
         public string ResourceId => @"Az.Marketplace";
+
+        /// <summary>The delegate for creating a telemetry.</summary>
+        public TelemetryDelegate Telemetry { get; set; }
 
         /// <param name="invocationInfo">The <see cref="System.Management.Automation.InvocationInfo" /> from the cmdlet</param>
         /// <param name="pipeline">The HttpPipeline for the request</param>
@@ -88,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
         {
             Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.HttpPipeline pipeline = null;
             BeforeCreatePipeline(invocationInfo, ref pipeline);
-            pipeline = (pipeline ?? (_handler.UseProxy ? _pipelineWithProxy : _pipeline)).Clone();
+            pipeline = (pipeline ?? (_useProxy ? _pipelineWithProxy : _pipeline)).Clone();
             AfterCreatePipeline(invocationInfo, ref pipeline);
             pipeline.Append(new Runtime.CmdInfoHandler(processRecordId, invocationInfo, parameterSetName).SendAsync);
             OnNewRequest?.Invoke( invocationInfo, correlationId,processRecordId, (step)=> { pipeline.Prepend(step); } , (step)=> { pipeline.Append(step); } );
@@ -107,15 +122,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
         /// <summary>Initialization steps performed after the module is loaded.</summary>
         public void Init()
         {
-            OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipeline.Prepend(step); } , (step)=> { _pipeline.Append(step); } );
-            OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipelineWithProxy.Prepend(step); } , (step)=> { _pipelineWithProxy.Append(step); } );
-            CustomInit();
+            if (_init == false)
+            {
+                lock (_initLock) {
+                    if (_init == false) {
+                        OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipeline.Prepend(step); } , (step)=> { _pipeline.Append(step); } );
+                        OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipelineWithProxy.Prepend(step); } , (step)=> { _pipelineWithProxy.Append(step); } );
+                        CustomInit();
+                        _init = true;
+                    }
+                }
+            }
         }
 
         /// <summary>Creates the module instance.</summary>
         private Module()
         {
-            /// constructor
+            // constructor
             ClientAPI = new Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Marketplace();
             _handler.Proxy = _webProxy;
             _pipeline = new Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.HttpPipeline(new Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.HttpClientFactory(new global::System.Net.Http.HttpClient()));
@@ -127,12 +150,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
         /// <param name="proxyUseDefaultCredentials">True if the proxy should use default credentials</param>
         public void SetProxyConfiguration(global::System.Uri proxy, global::System.Management.Automation.PSCredential proxyCredential, bool proxyUseDefaultCredentials)
         {
+            _useProxy = proxy != null;
+            if (proxy == null)
+            {
+                return;
+            }
             // set the proxy configuration
             _webProxy.Address = proxy;
             _webProxy.BypassProxyOnLocal = false;
-            _webProxy.Credentials = proxyCredential ?.GetNetworkCredential();
-            _webProxy.UseDefaultCredentials = proxyUseDefaultCredentials;
-            _handler.UseProxy = proxy != null;
+            if (proxyUseDefaultCredentials)
+            {
+                _webProxy.Credentials = null;
+                _webProxy.UseDefaultCredentials = true;
+            }
+            else
+            {
+                _webProxy.UseDefaultCredentials = false;
+                _webProxy.Credentials = proxyCredential ?.GetNetworkCredential();
+            }
         }
 
         /// <summary>Called to dispatch events to the common module listener</summary>

@@ -15,8 +15,8 @@ Gets the configs of Azure PowerShell.
 ```
 Get-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzureContextContainer>]
  [-CheckForUpgrade] [-DefaultSubscriptionForLogin] [-DisableErrorRecordsPersistence]
- [-DisplayBreakingChangeWarning] [-DisplayRegionIdentified] [-DisplaySurveyMessage] [-EnableDataCollection]
- [-EnableLoginByWam] [<CommonParameters>]
+ [-DisplayBreakingChangeWarning] [-DisplayRegionIdentified] [-DisplaySecretsWarning]
+ [-DisplaySurveyMessage] [-EnableDataCollection] [-EnableLoginByWam] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -159,6 +159,21 @@ Accept wildcard characters: False
 
 ### -DisplayRegionIdentified
 When enabled, Azure PowerShell displays recommendations on regions which may reduce your costs.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplaySecretsWarning
+When enabled, a warning message will be displayed when the cmdlet output contains secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

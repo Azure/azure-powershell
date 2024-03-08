@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class JobsOperationsExtensions
     {
         /// <summary>
-        /// Triggers export of jobs specified by filters and returns an OperationID to track.
+        /// Triggers export of jobs specified by filters and returns an OperationID to
+        /// track.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -25,7 +26,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         public static void Export(this IJobsOperations operations, string vaultName, string resourceGroupName, Microsoft.Rest.Azure.OData.ODataQuery<JobQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<JobQueryObject>))
         {
@@ -33,7 +35,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Triggers export of jobs specified by filters and returns an OperationID to track.
+        /// Triggers export of jobs specified by filters and returns an OperationID to
+        /// track.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -45,7 +48,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

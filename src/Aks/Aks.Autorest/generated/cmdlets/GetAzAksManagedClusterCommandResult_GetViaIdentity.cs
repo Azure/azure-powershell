@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IRunCommandResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Description(@"Gets the results of a command which has been run on the Managed Cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/commandResults/{commandId}", ApiVersion = "2023-02-01")]
     public partial class GetAzAksManagedClusterCommandResult_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener
     {
@@ -115,12 +116,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="headers">the header result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClustersGetCommandResultAcceptedResponseHeaders"
-        /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onAccepted method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnAccepted(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClustersGetCommandResultAcceptedResponseHeaders> headers, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnAccepted(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -339,17 +338,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 202 (Accepted).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="headers">the header result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClustersGetCommandResultAcceptedResponseHeaders"
-        /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onAccepted(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClustersGetCommandResultAcceptedResponseHeaders> headers)
+        private async global::System.Threading.Tasks.Task onAccepted(global::System.Net.Http.HttpResponseMessage responseMessage)
         {
             using( NoSynchronizationContext )
             {
                 var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnAccepted(responseMessage, headers, ref _returnNow);
+                overrideOnAccepted(responseMessage, ref _returnNow);
                 // if overrideOnAccepted has returned true, then return right away.
                 if ((null != _returnNow && await _returnNow))
                 {

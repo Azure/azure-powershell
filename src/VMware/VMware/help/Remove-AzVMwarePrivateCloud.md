@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.VMware-help.xml
 Module Name: Az.VMware
 online version: https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareprivatecloud
 schema: 2.0.0
@@ -15,13 +15,13 @@ Delete a private cloud
 ### Delete (Default)
 ```
 Remove-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,6 @@ Delete a private cloud
 ### Example 1: Delete private cloud
 ```powershell
 Remove-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud
-
 ```
 
 Delete private cloud
@@ -40,7 +39,6 @@ Delete private cloud
 ### Example 2: Delete private cloud
 ```powershell
 Get-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud | Remove-AzVMwarePrivateCloud
-
 ```
 
 Delete private cloud
@@ -248,4 +246,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[VirtualMachineId <String>]`: Virtual Machine identifier
 
 ## RELATED LINKS
-

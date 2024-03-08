@@ -87,7 +87,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfiguration[]]
     # IPConfigurations - A list of IPConfigurations of the network interface.
-    # To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
+    # .
     ${IPConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -133,7 +133,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
+    # Wait forNET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnResponseBasedOriginErrorDetectionParametersObject
 schema: 2.0.0
@@ -15,7 +15,7 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 ```
 New-AzCdnResponseBasedOriginErrorDetectionParametersObject [-HttpErrorRange <IHttpErrorRangeParameters[]>]
  [-ResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes>]
- [-ResponseBasedFailoverThresholdPercentage <Int32>] [<CommonParameters>]
+ [-ResponseBasedFailoverThresholdPercentage <Int32>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 
 ### Example 1: Create an in-memory object for ResponseBasedOriginErrorDetectionParameters
 ```powershell
-New-AzCdnResponseBasedOriginErrorDetectionParametersObject -ResponseBasedDetectedErrorType testDetctedError -ResponseBasedFailoverThresholdPercentage 6 
+New-AzCdnResponseBasedOriginErrorDetectionParametersObject -ResponseBasedDetectedErrorType testDetctedError -ResponseBasedFailoverThresholdPercentage 6
 ```
 
 ```output
@@ -46,6 +46,21 @@ To construct, see NOTES section for HTTPERRORRANGE properties and create a hash 
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IHttpErrorRangeParameters[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -107,4 +122,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[End <Int32?>]`: The inclusive end of the http status code range.
 
 ## RELATED LINKS
-

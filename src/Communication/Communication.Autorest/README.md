@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Communication service.
 
 ---
-## Status
-[![Az.Communication](https://img.shields.io/powershellgallery/v/Az.Communication.svg?style=flat-square&label=Az.Communication "Az.Communication")](https://www.powershellgallery.com/packages/Az.Communication/)
 
 ## Info
 - Modifiable: yes

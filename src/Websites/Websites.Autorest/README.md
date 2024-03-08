@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Websites service.
 
 ---
-## Status
-[![Az.Websites](https://img.shields.io/powershellgallery/v/Az.Websites.svg?style=flat-square&label=Az.Websites "Az.Websites")](https://www.powershellgallery.com/packages/Az.Websites/)
 
 ## Info
 - Modifiable: yes

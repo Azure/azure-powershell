@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Description(@"Get list of operations supported in the API.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.HttpPath(Path = "/providers/Microsoft.OffAzure/operations", ApiVersion = "2020-01-01")]
     public partial class GetAzMigrateOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener
     {

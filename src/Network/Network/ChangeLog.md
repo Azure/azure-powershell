@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.4.0
 * Fixed a few minor issues
 * Updated `New-AzApplicationGateway` to include `EnableRequestBuffering` and `EnableResponseBuffering` parameters
 * Changed the Default Rule Set from CRS3.0 to DRS2.1 in `NewAzureApplicationGatewayFirewallPolicy`

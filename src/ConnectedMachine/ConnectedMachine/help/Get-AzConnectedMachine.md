@@ -14,7 +14,8 @@ Retrieves information about the model view or the instance view of a hybrid mach
 
 ### List1 (Default)
 ```
-Get-AzConnectedMachine [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedMachine [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 //
-
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Extensions.Msal;
+
 using System.Diagnostics;
 using System.Threading.Tasks;
 

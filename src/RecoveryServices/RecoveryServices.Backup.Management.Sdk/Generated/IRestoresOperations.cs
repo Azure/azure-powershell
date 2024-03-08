@@ -14,18 +14,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public partial interface IRestoresOperations
     {
         /// <summary>
-        /// Restores the specified backed up data. This is an asynchronous operation. To know the status of this API call, use
+        /// Restores the specified backed up data. This is an asynchronous operation.
+        /// To know the status of this API call, use
         /// GetProtectedItemOperationResult API.
         /// </summary>
         /// <remarks>
-        /// Restores the specified backed up data. This is an asynchronous operation. To know the status of this API call, use
+        /// Restores the specified backed up data. This is an asynchronous operation.
+        /// To know the status of this API call, use
         /// GetProtectedItemOperationResult API.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up items.
@@ -54,18 +57,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> TriggerWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, RestoreRequestResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Restores the specified backed up data. This is an asynchronous operation. To know the status of this API call, use
+        /// Restores the specified backed up data. This is an asynchronous operation.
+        /// To know the status of this API call, use
         /// GetProtectedItemOperationResult API.
         /// </summary>
         /// <remarks>
-        /// Restores the specified backed up data. This is an asynchronous operation. To know the status of this API call, use
+        /// Restores the specified backed up data. This is an asynchronous operation.
+        /// To know the status of this API call, use
         /// GetProtectedItemOperationResult API.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up items.

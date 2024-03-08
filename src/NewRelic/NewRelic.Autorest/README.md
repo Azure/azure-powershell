@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the NewRelic service.
 
 ---
-## Status
-[![Az.NewRelic](https://img.shields.io/powershellgallery/v/Az.NewRelic.svg?style=flat-square&label=Az.NewRelic "Az.NewRelic")](https://www.powershellgallery.com/packages/Az.NewRelic/)
 
 ## Info
 - Modifiable: yes

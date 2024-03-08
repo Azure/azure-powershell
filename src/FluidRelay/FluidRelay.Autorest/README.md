@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the FluidRelay service.
 
 ---
-## Status
-[![Az.FluidRelay](https://img.shields.io/powershellgallery/v/Az.FluidRelay.svg?style=flat-square&label=Az.FluidRelay "Az.FluidRelay")](https://www.powershellgallery.com/packages/Az.FluidRelay/)
 
 ## Info
 - Modifiable: yes

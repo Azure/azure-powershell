@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Automanage service.
 
 ---
-## Status
-[![Az.Automanage](https://img.shields.io/powershellgallery/v/Az.Automanage.svg?style=flat-square&label=Az.Automanage "Az.Automanage")](https://www.powershellgallery.com/packages/Az.Automanage/)
 
 ## Info
 - Modifiable: yes

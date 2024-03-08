@@ -15,7 +15,8 @@ Updates or creates offer for private store.
 ```
 Set-AzMarketplacePrivateStoreOffer -PrivateStoreId <String> -OfferId <String>
  -SpecificPlanIdsLimitation <System.Collections.Generic.List`1[System.String]> [-ETag <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,7 +112,6 @@ Type                      : Microsoft.Marketplace/privateStores/offers
 
 Updates offer for private store with private plans only that was created under subscription scope. Etag is needed.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -183,6 +183,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Azure subscription id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

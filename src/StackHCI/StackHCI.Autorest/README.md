@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the StackHci service.
 
 ---
-## Status
-[![Az.StackHCI](https://img.shields.io/powershellgallery/v/Az.StackHCI.svg?style=flat-square&label=Az.StackHCI "Az.StackHCI")](https://www.powershellgallery.com/packages/Az.StackHCI/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -47,7 +44,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 5758cc23b0022e403d876662d9799f02c9bba3e6
+commit: 5758cc23b0022e403d876662d9799f02c9bba3e6
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
@@ -64,6 +61,10 @@ subject-prefix: $(service-name)
 inlining-threshold: 50
 
 resourcegroup-append: true 
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Rename function

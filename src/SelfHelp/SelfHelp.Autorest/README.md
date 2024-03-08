@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the SelfHelp service.
 
 ---
-## Status
-[![Az.SelfHelp](https://img.shields.io/powershellgallery/v/Az.SelfHelp.svg?style=flat-square&label=Az.SelfHelp "Az.SelfHelp")](https://www.powershellgallery.com/packages/Az.SelfHelp/)
 
 ## Info
 - Modifiable: yes

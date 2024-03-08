@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the NetworkCloud service.
 
 ---
-## Status
-[![Az.NetworkCloud](https://img.shields.io/powershellgallery/v/Az.NetworkCloud.svg?style=flat-square&label=Az.NetworkCloud "Az.NetworkCloud")](https://www.powershellgallery.com/packages/Az.NetworkCloud/)
 
 ## Info
 - Modifiable: yes
