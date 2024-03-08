@@ -15,22 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzSupportTicketsNoSubscr
 }
 
 Describe 'Test-AzSupportTicketsNoSubscriptionNameAvailability' {
-    It 'CheckExpandedSupportTicketTrue' -skip:($env.HasSubscription -eq $true) {
+    It 'CheckExpandedSupportTicketTrue' {
         $supportTicketResult = Test-AzSupportTicketsNoSubscriptionNameAvailability -Name $env.NameForCheck -Type "Microsoft.Support/supportTickets"
         $supportTicketResult.NameAvailable | Should -Be $true
     }
 
-    It 'CheckExpandedSupportTicket' -skip:($env.HasSubscription -eq $true) {
+    It 'CheckExpandedSupportTicket' {
         $supportTicketResult = Test-AzSupportTicketsNoSubscriptionNameAvailability -Name $env.Name -Type "Microsoft.Support/supportTickets"
         $supportTicketResult.NameAvailable | Should -Be $false
     }
 
-    It 'CheckExpandedFileWorkspaceTrue' -skip:($env.HasSubscription -eq $true) {
+    It 'CheckExpandedFileWorkspaceTrue' {
         $fileWorkspaceResult = Test-AzSupportTicketsNoSubscriptionNameAvailability -Name $env.FileWorkspaceNameNoSubscriptionForCheckName -Type "Microsoft.Support/fileWorkspaces"
         $fileWorkspaceResult.NameAvailable | Should -Be $true
     }
 
-    It 'CheckExpandedFileWorkspaceFalse' -skip:($env.HasSubscription -eq $true) {
+    It 'CheckExpandedFileWorkspaceFalse' {
         $fileWorkspaceResult = Test-AzSupportTicketsNoSubscriptionNameAvailability -Name $env.fileWorkspaceNameNoSubscription -Type "Microsoft.Support/fileWorkspaces"
         $fileWorkspaceResult.NameAvailable | Should -Be $false
     }

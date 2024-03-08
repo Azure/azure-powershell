@@ -17,7 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportOperation'))
 Describe 'Get-AzSupportOperation' {
     It 'List' {
        $getOperation = Get-AzSupportOperation
-
        $getOperation.Count | Should -BeGreaterThan 0
     }
 }

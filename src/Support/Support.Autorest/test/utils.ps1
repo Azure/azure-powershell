@@ -48,9 +48,13 @@ function setupEnv() {
     $env.AddWithCache("SubscriptionId", $sub, $UsePreviousConfigForRecord)
     $env.AddWithCache("TenantId", $tenant, $UsePreviousConfigForRecord)
     Write-Host "SubscriptionId: $($env.SubscriptionId)"
-    $env.HasSubscription = $env.SubscriptionId -ne $null
+    $hasSubscription = $sub -ne $null
+    $isNoSubscriptionAccount = (Get-AzContext).Account.Id -eq "bhshah@TestTest06172019GBL.onmicrosoft.com" -and $tenant -eq "2e6a0c9f-986d-480e-ad4b-bdfddc047aba"
+    if(!$isNoSubscriptionAccount -and $sub -eq $null){
+        Write-Host "Use account bhshah@TestTest06172019GBL.onmicrosoft.com to test no subscription scenarios. The tests will fail otherwise"
+    }
     Write-Host "HasSubscription: $($env.HasSubscription)"
-    if($env.HasSubscription){
+    if($hasSubscription){
         Write-Host "Running subscription level tests"
     }
     else{
@@ -81,22 +85,18 @@ function setupEnv() {
     $env.AddWithCache("FileWorkspaceNameSubscriptionForCheckName", $fileWorkspaceNameSubscriptionForCheckName, $UsePreviousConfigForRecord)
     $env.AddWithCache("FileWorkspaceNameNoSubscriptionForCheckName", $fileWorkspaceNameNoSubscriptionForCheckName, $UsePreviousConfigForRecord)
 
+    # Creating and uploading file workspace and files
     $testFilePath = Join-Path $PSScriptRoot files test2.txt
-    if($TestMode -ne 'playback'){
-        Write-Host "creating file workspaces and uploading files for tests"
-        if($env.HasSubscription){
-            New-AzSupportFileWorkspace -Name $env.FileWorkspaceNameSubscription
-            New-AzSupportFileAndUpload -WorkspaceName $env.FileWorkspaceNameSubscription -FilePath $testFilePath
-        }
-        else{
-            New-AzSupportFileWorkspacesNoSubscription -Name $env.FileWorkspaceNameNoSubscription
-            New-AzSupportFileAndUploadNoSubscription -WorkspaceName $env.FileWorkspaceNameNoSubscription -FilePath $testFilePath
-        }
+    Write-Host "creating file workspaces and uploading files for tests"
+    if($hasSubscription){
+        New-AzSupportFileWorkspace -Name $env.FileWorkspaceNameSubscription
+        New-AzSupportFileAndUpload -WorkspaceName $env.FileWorkspaceNameSubscription -FilePath $testFilePath
     }
     else{
-        Write-Host "Running in playback mode, skipping file workspace creation and file upload"
+        New-AzSupportFileWorkspacesNoSubscription -Name $env.FileWorkspaceNameNoSubscription
+        New-AzSupportFileAndUploadNoSubscription -WorkspaceName $env.FileWorkspaceNameNoSubscription -FilePath $testFilePath
     }
-    
+
     # Test ticket and communication information for get ticket tests
     $testTicketName = "test-$testGuid"
     $advancedDiagnosticConsent = "no"
@@ -150,35 +150,20 @@ function setupEnv() {
     $env.AddWithCache("Subject", $subject, $UsePreviousConfigForRecord)
     $env.AddWithCache("Body", $body, $UsePreviousConfigForRecord)
 
-    if($TestMode -ne 'playback'){
-        Write-Host "creating support ticket request and adding a message"
-        if($env.HasSubscription){
-            write-host "creating a support ticket request at subscription level"
-            $supportTicketSubscription =  New-AzSupportTicket -Name $env.Name -AdvancedDiagnosticConsent $env.AdvancedDiagnosticConsent -ContactDetailCountry $env.ContactDetailCountry -ContactDetailFirstName $env.ContactDetailFirstName -ContactDetailLastName $env.ContactDetailLastName -ContactDetailPreferredContactMethod $env.ContactDetailPreferredContactMethod -ContactDetailPreferredSupportLanguage $env.ContactDetailPreferredSupportLanguage -ContactDetailPreferredTimeZone $env.ContactDetailPreferredTimeZone -ContactDetailPrimaryEmailAddress $env.ContactDetailPrimaryEmailAddress -Description $env.Description -ProblemClassificationId $env.ProblemClassificationId -ServiceId $env.ServiceId -Severity $env.Severity -Title $env.Title
-            write-host "adding a message at subscription level"
-            # if($supportTicketSubscription.SupportPlanDisplayName -eq "Basic support" || $supportTicket.SupportPlanDisplayName -eq "Free"){
-            #     write-host "cannot create, update support tickets and add communication operations for tickets with free support plan"
-            # }
-            # else{
-                New-AzSupportCommunication -Name $env.CommunicationName -SupportTicketName $env.Name -Body $env.Body -Sender $env.Sender -Subject $env.Subject
-            # }
-            $env.AddWithCache("SupportPlanSubscription", $supportTicketSubscription.SupportPlanDisplayName.ToString(), $UsePreviousConfigForRecord)
-        }
-        else{
-            write-host "creating a support ticket request at tenant level"
-            $supportTicketTenant = New-AzSupportTicketsNoSubscription -SupportTicketName $env.Name -AdvancedDiagnosticConsent $env.AdvancedDiagnosticConsent -ContactDetailCountry $env.ContactDetailCountry -ContactDetailFirstName $env.ContactDetailFirstName -ContactDetailLastName $env.ContactDetailLastName -ContactDetailPreferredContactMethod $env.ContactDetailPreferredContactMethod -ContactDetailPreferredSupportLanguage $env.ContactDetailPreferredSupportLanguage -ContactDetailPreferredTimeZone $env.ContactDetailPreferredTimeZone -ContactDetailPrimaryEmailAddress $env.ContactDetailPrimaryEmailAddress -Description $env.Description -ProblemClassificationId $env.ProblemClassificationId -ServiceId $env.ServiceId -Severity $env.Severity -Title $env.Title
-            write-host "adding a message at tenant level"
-            # if($supportTicketTenant.SupportPlanDisplayName -eq "Basic support" || $supportTicket.SupportPlanDisplayName -eq "Free"){
-            #     write-host "cannot create, update support tickets and add communication operations for tickets with free support plan"
-            # }
-            # else{
-                New-AzSupportCommunicationsNoSubscription -CommunicationName $env.CommunicationName -SupportTicketName $env.Name -Body $env.Body -Sender $env.Sender -Subject $env.Subject
-            # }
-            $env.AddWithCache("SupportPlanTenant", $supportTicketTenant.SupportPlanDisplayName.ToString(), $UsePreviousConfigForRecord)   
-        }
+    Write-Host "creating support ticket request and adding a message"
+    if($hasSubscription){
+        write-host "creating a support ticket request at subscription level"
+        $supportTicketSubscription =  New-AzSupportTicket -Name $env.Name -AdvancedDiagnosticConsent $env.AdvancedDiagnosticConsent -ContactDetailCountry $env.ContactDetailCountry -ContactDetailFirstName $env.ContactDetailFirstName -ContactDetailLastName $env.ContactDetailLastName -ContactDetailPreferredContactMethod $env.ContactDetailPreferredContactMethod -ContactDetailPreferredSupportLanguage $env.ContactDetailPreferredSupportLanguage -ContactDetailPreferredTimeZone $env.ContactDetailPreferredTimeZone -ContactDetailPrimaryEmailAddress $env.ContactDetailPrimaryEmailAddress -Description $env.Description -ProblemClassificationId $env.ProblemClassificationId -ServiceId $env.ServiceId -Severity $env.Severity -Title $env.Title
+        write-host "adding a message at subscription level"
+        New-AzSupportCommunication -Name $env.CommunicationName -SupportTicketName $env.Name -Body $env.Body -Sender $env.Sender -Subject $env.Subject
+        $env.AddWithCache("SupportPlanSubscription", $supportTicketSubscription.SupportPlanDisplayName.ToString(), $UsePreviousConfigForRecord)
     }
     else{
-        Write-Host "Running in playback mode, skipping support ticket creation and message addition"
+        write-host "creating a support ticket request at tenant level"
+        $supportTicketTenant = New-AzSupportTicketsNoSubscription -SupportTicketName $env.Name -AdvancedDiagnosticConsent $env.AdvancedDiagnosticConsent -ContactDetailCountry $env.ContactDetailCountry -ContactDetailFirstName $env.ContactDetailFirstName -ContactDetailLastName $env.ContactDetailLastName -ContactDetailPreferredContactMethod $env.ContactDetailPreferredContactMethod -ContactDetailPreferredSupportLanguage $env.ContactDetailPreferredSupportLanguage -ContactDetailPreferredTimeZone $env.ContactDetailPreferredTimeZone -ContactDetailPrimaryEmailAddress $env.ContactDetailPrimaryEmailAddress -Description $env.Description -ProblemClassificationId $env.ProblemClassificationId -ServiceId $env.ServiceId -Severity $env.Severity -Title $env.Title
+        write-host "adding a message at tenant level"
+        New-AzSupportCommunicationsNoSubscription -CommunicationName $env.CommunicationName -SupportTicketName $env.Name -Body $env.Body -Sender $env.Sender -Subject $env.Subject
+        $env.AddWithCache("SupportPlanTenant", $supportTicketTenant.SupportPlanDisplayName.ToString(), $UsePreviousConfigForRecord)   
     }
     
     # For any resources you created for test, you should add it to $env here.

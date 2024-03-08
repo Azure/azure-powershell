@@ -1,8 +1,8 @@
 {
-  "New-AzSupportFileAndUploadNoSubscription+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/providers/Microsoft.Support/fileWorkspaces/test-ps-afd5e347-4c0f-444d-9119-8a0dcb829c96/files/test.txt?api-version=2022-09-01-preview+1": {
+  "New-AzSupportFileAndUploadNoSubscription+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/providers/Microsoft.Support/fileWorkspaces/test-ps-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1/files/test.txt?api-version=2022-09-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/fileWorkspaces/test-ps-afd5e347-4c0f-444d-9119-8a0dcb829c96/files/test.txt?api-version=2022-09-01-preview",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/fileWorkspaces/test-ps-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1/files/test.txt?api-version=2022-09-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"chunkSize\": 4,\r\n    \"fileSize\": 4,\r\n    \"numberOfChunks\": 1\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,29 +17,30 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/providers/Microsoft.Support/fileWorkspaces/test-ps-afd5e347-4c0f-444d-9119-8a0dcb829c96/files/test.txt?api-version=2022-09-01-preview" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Support/fileWorkspaces/test-ps-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1/files/test.txt?api-version=2022-09-01-preview" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
-        "x-ms-request-id": [ "90f689f2-0343-48f3-8966-a163ab814972" ],
-        "x-ms-correlation-request-id": [ "90f689f2-0343-48f3-8966-a163ab814972" ],
-        "x-ms-routing-request-id": [ "EASTUS:20240131T180407Z:90f689f2-0343-48f3-8966-a163ab814972" ],
-        "Date": [ "Wed, 31 Jan 2024 18:04:07 GMT" ]
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-request-id": [ "d1ab0556-c3d5-4f88-b748-b0564b35995f" ],
+        "x-ms-correlation-request-id": [ "d1ab0556-c3d5-4f88-b748-b0564b35995f" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240308T172338Z:d1ab0556-c3d5-4f88-b748-b0564b35995f" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 32458FCD584E44C59812F130F79261E4 Ref B: MNZ221060609009 Ref C: 2024-03-08T17:23:30Z" ],
+        "Date": [ "Fri, 08 Mar 2024 17:23:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "259" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.Support/fileWorkspaces/test-ps-afd5e347-4c0f-444d-9119-8a0dcb829c96/files/test.txt\",\"name\":\"test.txt\",\"type\":\"Microsoft.Support/files\",\"properties\":{\"createdOn\":\"2024-01-31T18:04:07Z\",\"fileSize\":4,\"chunkSize\":4,\"numberOfChunks\":1}}",
+      "Content": "{\"id\":\"/providers/Microsoft.Support/fileWorkspaces/test-ps-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1/files/test.txt\",\"name\":\"test.txt\",\"type\":\"Microsoft.Support/files\",\"properties\":{\"createdOn\":\"2024-03-08T17:23:36Z\",\"fileSize\":4,\"chunkSize\":4,\"numberOfChunks\":1}}",
       "isContentBase64": false
     }
   },
-  "New-AzSupportFileAndUploadNoSubscription+[NoContext]+CreateExpanded+$POST+https://management.azure.com/providers/Microsoft.Support/fileWorkspaces/test-ps-afd5e347-4c0f-444d-9119-8a0dcb829c96/files/test.txt/upload?api-version=2022-09-01-preview+2": {
+  "New-AzSupportFileAndUploadNoSubscription+[NoContext]+CreateExpanded+$POST+https://management.azure.com/providers/Microsoft.Support/fileWorkspaces/test-ps-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1/files/test.txt/upload?api-version=2022-09-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/fileWorkspaces/test-ps-afd5e347-4c0f-444d-9119-8a0dcb829c96/files/test.txt/upload?api-version=2022-09-01-preview",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/fileWorkspaces/test-ps-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1/files/test.txt/upload?api-version=2022-09-01-preview",
       "Content": "{\r\n  \"content\": \"dGVzdA==\",\r\n  \"chunkIndex\": 0\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -56,12 +57,13 @@
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1197" ],
-        "x-ms-request-id": [ "32e8ee90-14b3-44b3-9577-fdda5b088188" ],
-        "x-ms-correlation-request-id": [ "32e8ee90-14b3-44b3-9577-fdda5b088188" ],
-        "x-ms-routing-request-id": [ "EASTUS:20240131T180411Z:32e8ee90-14b3-44b3-9577-fdda5b088188" ],
-        "Date": [ "Wed, 31 Jan 2024 18:04:10 GMT" ]
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-request-id": [ "c252e62d-2612-4ab9-a7e0-ea0f483f13b5" ],
+        "x-ms-correlation-request-id": [ "c252e62d-2612-4ab9-a7e0-ea0f483f13b5" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240308T172348Z:c252e62d-2612-4ab9-a7e0-ea0f483f13b5" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 30A76956AAFA4A57B576E238A36317DB Ref B: MNZ221060609009 Ref C: 2024-03-08T17:23:38Z" ],
+        "Date": [ "Fri, 08 Mar 2024 17:23:47 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]

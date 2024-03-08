@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzSupportCommunicationsN
 }
 
 Describe 'Test-AzSupportCommunicationsNoSubscriptionNameAvailability' {
-    It 'CheckExpandedTrue' -skip:($env.HasSubscription -eq $true) { 
+    It 'CheckExpandedTrue' { 
         $communicationResult = Test-AzSupportCommunicationsNoSubscriptionNameAvailability -SupportTicketName $env.Name -Name $env.CommunicationNameForCheck -Type "Microsoft.Support/communications"
         $communicationResult.NameAvailable | Should -Be $true
     }
