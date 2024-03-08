@@ -204,11 +204,11 @@ process {
         # fix parameters and call generated cmdlet
         if ($thisId) {
             switch ($resolved.ScopeType) {
-                'subId' {
-                    $calledParameterSet = 'DeleteViaIdentity'
-                }
                 'mgName' {
                     $calledParameterSet = 'DeleteViaIdentity1'
+                }
+                default {
+                    $calledParameterSet = 'DeleteViaIdentity'
                 }
             }
 

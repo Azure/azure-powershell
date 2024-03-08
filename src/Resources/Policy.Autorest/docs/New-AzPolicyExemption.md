@@ -8,20 +8,32 @@ schema: 2.0.0
 # New-AzPolicyExemption
 
 ## SYNOPSIS
-Creates or updates a policy exemption.
+This operation Create a policy exemption with the given scope and name.
+Policy exemptions apply to all resources contained within their scope.
+For example, when you create a policy exemption at resource group scope for a policy assignment at the same or above level, the exemption exempts to all applicable resources in the resource group.
 
 ## SYNTAX
 
+### Default (Default)
 ```
-New-AzPolicyExemption [-Name] <String> [-ExemptionCategory] <ExemptionCategory> [-PolicyAssignment] <PSObject>
- [[-Scope] <String>] [[-AssignmentScopeValidation] <AssignmentScopeValidation>] [[-DisplayName] <String>]
+New-AzPolicyExemption [-Name] <String> [-ExemptionCategory] <String> [-PolicyAssignment] <PSObject>
+ [[-Scope] <String>] [[-AssignmentScopeValidation] <String>] [[-DisplayName] <String>]
  [[-Description] <String>] [[-PolicyDefinitionReferenceId] <String[]>] [[-ExpiresOn] <DateTime?>]
  [[-Metadata] <String>] [[-DefaultProfile] <PSObject>] [-BackwardCompatible] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### CreateExpanded
+```
+New-AzPolicyExemption -ExemptionCategory <String> [-PolicyDefinitionReferenceId <String[]>]
+ [-AssignmentScopeValidation <String>] [-Description <String>] [-DisplayName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **New-AzPolicyExemption** cmdlet creates a policy exemption with the given scope and name.
+This operation Create a policy exemption with the given scope and name.
+Policy exemptions apply to all resources contained within their scope.
+For example, when you create a policy exemption at resource group scope for a policy assignment at the same or above level, the exemption exempts to all applicable resources in the resource group.
 
 ## EXAMPLES
 
@@ -50,10 +62,10 @@ The final command exempts the policy assignment in $Assignment at the level of t
 ## PARAMETERS
 
 ### -AssignmentScopeValidation
-Whether to validate the exemption is at or under the assignment scope.
+The option whether validate the exemption is at or under the assignment scope.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.AssignmentScopeValidation
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +81,7 @@ Causes cmdlet to return artifacts using legacy format placing policy-specific pr
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Default
 Aliases:
 
 Required: False
@@ -96,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-This message will be part of response in case of policy violation.
+The description of the policy exemption.
 
 ```yaml
 Type: System.String
@@ -111,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-The display name of the policy assignment.
+The display name of the policy exemption.
 
 ```yaml
 Type: System.String
@@ -126,10 +138,11 @@ Accept wildcard characters: False
 ```
 
 ### -ExemptionCategory
-The policy exemption category
+The policy exemption category.
+Possible values are Waiver and Mitigated.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.ExemptionCategory
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -144,8 +157,8 @@ Accept wildcard characters: False
 The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the policy exemption.
 
 ```yaml
-Type: System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: (All)
+Type: System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: Default
 Aliases:
 
 Required: False
@@ -161,7 +174,7 @@ Metadata is an open ended object and is typically a collection of key value pair
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Default
 Aliases:
 
 Required: False
@@ -176,7 +189,7 @@ The name of the policy exemption.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Default
 Aliases: PolicyExemptionName
 
 Required: True
@@ -192,7 +205,7 @@ To construct, see NOTES section for POLICYASSIGNMENT properties and create a has
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: Default
 Aliases:
 
 Required: True
@@ -203,7 +216,7 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyDefinitionReferenceId
-The policy definition reference ID list when the associated policy assignment is for a policy set (initiative).
+The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
 
 ```yaml
 Type: System.String[]
@@ -223,7 +236,7 @@ Valid scopes are: management group (format: '/providers/Microsoft.Management/man
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Default
 Aliases:
 
 Required: False
@@ -269,13 +282,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.AssignmentScopeValidation
-
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.ExemptionCategory
-
 ### System.Management.Automation.PSObject
 
-### System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
 ### System.String
 
@@ -283,50 +292,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220701Preview.IPolicyExemption
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`POLICYASSIGNMENT <PSObject>`: The policy assignment id filter.
-  - `[Description <String>]`: This message will be part of response in case of policy violation.
-  - `[DisplayName <String>]`: The display name of the policy assignment.
-  - `[EnforcementMode <EnforcementMode?>]`: The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
-  - `[IdentityType <ResourceIdentityType?>]`: The identity type. This is the only required field when adding a system or user assigned identity to a resource.
-  - `[IdentityUserAssignedIdentity <IIdentityUserAssignedIdentities>]`: The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-    - `[(Any) <IUserAssignedIdentitiesValue>]`: This indicates any property can be added to this object.
-  - `[Location <String>]`: The location of the policy assignment. Only required when utilizing managed identity.
-  - `[Metadata <IPolicyAssignmentPropertiesMetadata>]`: The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[NonComplianceMessage <INonComplianceMessage[]>]`: The messages that describe why a resource is non-compliant with the policy.
-    - `Message <String>`: A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
-    - `[PolicyDefinitionReferenceId <String>]`: The policy definition reference ID within a policy set definition the message is intended for. This is only applicable if the policy assignment assigns a policy set definition. If this is not provided the message applies to all policies assigned by this policy assignment.
-  - `[NotScope <String[]>]`: The policy's excluded scopes.
-  - `[Override <IOverride[]>]`: The policy property value override.
-    - `[Kind <OverrideKind?>]`: The override kind.
-    - `[Selector <ISelector[]>]`: The list of the selector expressions.
-      - `[In <String[]>]`: The list of values to filter in.
-      - `[Kind <SelectorKind?>]`: The selector kind.
-      - `[NotIn <String[]>]`: The list of values to filter out.
-    - `[Value <String>]`: The value to override the policy property.
-  - `[Parameter <IParameterValues>]`: The parameter values for the assigned policy rule. The keys are the parameter names.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[PolicyDefinitionId <String>]`: The ID of the policy definition or policy set definition being assigned.
-  - `[ResourceSelector <IResourceSelector[]>]`: The resource selector list to filter policies by resource properties.
-    - `[Name <String>]`: The name of the resource selector.
-    - `[Selector <ISelector[]>]`: The list of the selector expressions.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
 
 ## RELATED LINKS
 

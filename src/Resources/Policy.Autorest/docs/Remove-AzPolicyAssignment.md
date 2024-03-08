@@ -245,28 +245,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IPolicyIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ManagementGroupId <String>]`: The ID of the management group.
-  - `[ParentResourcePath <String>]`: The parent resource path. Use empty string if there is none.
-  - `[PolicyAssignmentId <String>]`: The ID of the policy assignment to delete. Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
-  - `[PolicyAssignmentName <String>]`: The name of the policy assignment to delete.
-  - `[PolicyDefinitionName <String>]`: The name of the policy definition to create.
-  - `[PolicyExemptionName <String>]`: The name of the policy exemption to delete.
-  - `[PolicySetDefinitionName <String>]`: The name of the policy set definition to create.
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains policy assignments.
-  - `[ResourceName <String>]`: The name of the resource.
-  - `[ResourceProviderNamespace <String>]`: The namespace of the resource provider. For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
-  - `[ResourceType <String>]`: The resource type name. For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
-  - `[Scope <String>]`: The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
 

@@ -29,7 +29,7 @@ The **Get-AzPolicySetDefinition** cmdlet gets a collection of policy set definit
 https://learn.microsoft.com/powershell/module/az.resources/get-azpolicydefinition
 #>
 function Get-AzPolicyDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicyDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition])]
 [CmdletBinding(DefaultParameterSetName='Name')]
 param(
     [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
@@ -93,6 +93,7 @@ param(
     # port to autorest: we will address this in the future and hide the parameter for now to avoid future backcompat complexity.
     [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='BuiltIn', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Static', ValueFromPipelineByPropertyName)]
@@ -203,21 +204,23 @@ process {
         Write-Host -ForegroundColor Cyan "process:Get-AzPolicyDefinition(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
 
+    # handle disallowed cases not handled by PS parameter attributes
+    if ($PSBoundParameters['SubscriptionId'] -and $PSBoundParameters['ManagementGroupName']) {
+        throw 'Only -ManagementGroupName or -SubscriptionId can be provided, not both.'
+    }
+
     # handle specific parameter sets
     $parameterSet = $PSCmdlet.ParameterSetName
     $calledParameterSet = 'List'
 
     switch ($parameterSet) {
         'BuiltIn' {
-            $null = $PSBoundParameters.Remove('BuiltIn')
             $PSBoundParameters.Add('Filter', "policyType eq 'BuiltIn'")
         }
         'Custom' {
-            $null = $PSBoundParameters.Remove('Custom')
             $PSBoundParameters.Add('Filter', "policyType eq 'Custom'")
         }
         'Static' {
-            $null = $PSBoundParameters.Remove('Static')
             $PSBoundParameters.Add('Filter', "policyType eq 'Static'")
         }
         'Id' {
@@ -281,6 +284,9 @@ process {
     $null = $PSBoundParameters.Remove('SubscriptionId')
     $null = $PSBoundParameters.Remove('ManagementGroupName')
     $null = $PSBoundParameters.Remove('Id')
+    $null = $PSBoundParameters.Remove('BuiltIn')
+    $null = $PSBoundParameters.Remove('Custom')
+    $null = $PSBoundParameters.Remove('Static')
 
     if ($writeln) {
         Write-Host -ForegroundColor Blue -> $mapping[$calledParameterSet]'(' $PSBoundParameters ')'

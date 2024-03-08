@@ -1,8 +1,8 @@
 # setup the Pester environment for policy backcompat tests
-. (Join-Path $PSScriptRoot 'Common.ps1') 'Repro'
+. (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-Repro'
 
 # Repro of crash in New-AzPolicyAssignment proxy cmdlet
-Describe 'Repro' -Tag 'LiveOnly' {
+Describe 'Backcompat-Repro' {
 
     BeforeAll {
         # setup
@@ -50,7 +50,7 @@ Describe 'Repro' -Tag 'LiveOnly' {
 
     AfterAll {
         # clean up
-        $remove = (Remove-ResourceGroup -Name $rgname -Force)
+        $remove = (Remove-ResourceGroup -Name $rgname)
         $remove = (Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -BackwardCompatible | Remove-AzPolicySetDefinition -Force -BackwardCompatible) -and $remove
         $remove = (Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -BackwardCompatible | Remove-AzPolicyDefinition -Force -BackwardCompatible) -and $remove
         Assert-AreEqual True $remove

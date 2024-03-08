@@ -1,7 +1,7 @@
 # setup the Pester environment for policy backcompat tests
-. (Join-Path $PSScriptRoot 'Common.ps1') 'GetBuiltinsByName'
+. (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-GetBuiltinsByName'
 
-Describe 'GetBuiltinsByName' -Tag 'LiveOnly' {
+Describe 'Backcompat-GetBuiltinsByName' {
 
     It 'get some builtin definitions by name' {
         {

@@ -1,7 +1,7 @@
 # setup the Pester environment for policy backcompat tests
-. (Join-Path $PSScriptRoot 'Common.ps1') 'NewPolicyDefinitionParameters'
+. (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-NewPolicyDefinitionParameters'
 
-Describe 'NewPolicyDefinitionParameters' -Tag 'LiveOnly' {
+Describe 'Backcompat-NewPolicyDefinitionParameters' {
 
     It 'no parameters' {
         {

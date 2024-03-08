@@ -1,7 +1,7 @@
 # setup the Pester environment for policy backcompat tests
-. (Join-Path $PSScriptRoot 'Common.ps1') 'NewPolicyExemptionParameters'
+. (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-NewPolicyExemptionParameters'
 
-Describe 'NewPolicyExemptionParameters' -Tag 'LiveOnly' {
+Describe 'Backcompat-NewPolicyExemptionParameters' {
 
     BeforeAll {
         # make a new resource group and policy assignment of some built-in definition
@@ -46,7 +46,7 @@ Describe 'NewPolicyExemptionParameters' -Tag 'LiveOnly' {
     AfterAll {
         $remove = Remove-AzPolicyAssignment -Name $assignmentName -BackwardCompatible
 
-        $remove = (Remove-ResourceGroup -Name $rgname -Force) -and $remove
+        $remove = (Remove-ResourceGroup -Name $rgname) -and $remove
         Assert-AreEqual True $remove
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."

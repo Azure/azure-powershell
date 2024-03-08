@@ -303,7 +303,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicyDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition
 
 ## NOTES
 

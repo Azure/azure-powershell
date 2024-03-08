@@ -233,11 +233,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicySetDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

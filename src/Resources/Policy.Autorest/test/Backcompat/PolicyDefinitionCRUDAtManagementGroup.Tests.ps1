@@ -1,11 +1,12 @@
 # setup the Pester environment for policy backcompat tests
-. (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyDefinitionCRUDAtManagementGroup'
+. (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicyDefinitionCRUDAtManagementGroup'
 
-Describe 'PolicyDefinitionCRUDAtManagementGroup' -Tag 'LiveOnly' {
+Describe 'Backcompat-PolicyDefinitionCRUDAtManagementGroup' {
 
     BeforeAll {
         # setup
         $policyName = Get-ResourceName
+        $test2 = Get-ResourceName
     }
 
     It 'make policy definition at MG level' {
@@ -36,8 +37,8 @@ Describe 'PolicyDefinitionCRUDAtManagementGroup' -Tag 'LiveOnly' {
     It 'list policy definitions at MG level' {
         {
             # make another policy definition, ensure both are present in listing
-            New-AzPolicyDefinition -Name test2 -ManagementGroupName $managementGroup -Policy "{""if"":{""source"":""action"",""equals"":""blah""},""then"":{""effect"":""deny""}}" -Description $description -BackwardCompatible
-            $list = Get-AzPolicyDefinition -ManagementGroupName $managementGroup -BackwardCompatible | ?{ $_.Name -in @($policyName, 'test2') }
+            New-AzPolicyDefinition -Name $test2 -ManagementGroupName $managementGroup -Policy "{""if"":{""source"":""action"",""equals"":""blah""},""then"":{""effect"":""deny""}}" -Description $description -BackwardCompatible
+            $list = Get-AzPolicyDefinition -ManagementGroupName $managementGroup -BackwardCompatible | ?{ $_.Name -in @($policyName, $test2) }
             Assert-AreEqual 2 $list.Count
         } | Should -Not -Throw
     }
@@ -45,7 +46,7 @@ Describe 'PolicyDefinitionCRUDAtManagementGroup' -Tag 'LiveOnly' {
     AfterAll {
         # clean up
         $remove = Remove-AzPolicyDefinition -Name $policyName -ManagementGroupName $managementGroup -Force -BackwardCompatible
-        $remove = (Remove-AzPolicyDefinition -Name 'test2' -ManagementGroupName $managementGroup -Force -BackwardCompatible) -and $remove
+        $remove = (Remove-AzPolicyDefinition -Name $test2 -ManagementGroupName $managementGroup -Force -BackwardCompatible) -and $remove
         Assert-AreEqual True $remove
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."

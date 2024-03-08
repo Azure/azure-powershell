@@ -1,7 +1,7 @@
 # setup the Pester environment for policy backcompat tests
-. (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyObjectPiping'
+. (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicyObjectPiping'
 
-Describe 'PolicyObjectPiping' -Tag 'LiveOnly' {
+Describe 'Backcompat-PolicyObjectPiping' {
 
     BeforeAll {
         # setup
@@ -149,7 +149,7 @@ Describe 'PolicyObjectPiping' -Tag 'LiveOnly' {
     AfterAll {
         # clean up
         $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -BackwardCompatible | Remove-AzPolicyAssignment -BackwardCompatible
-        $remove = (Remove-ResourceGroup -Name $rgname -Force) -and $remove
+        $remove = (Remove-ResourceGroup -Name $rgname) -and $remove
         $remove = (Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -BackwardCompatible | Remove-AzPolicySetDefinition -Force -BackwardCompatible) -and $remove
         $remove = (Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -BackwardCompatible | Remove-AzPolicyDefinition -Force -BackwardCompatible) -and $remove
         Assert-AreEqual True $remove

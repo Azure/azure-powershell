@@ -1,7 +1,7 @@
 # setup the Pester environment for policy backcompat tests
-. (Join-Path $PSScriptRoot 'Common.ps1') 'PolicySetDefinitionCRUDWithGroups'
+. (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicySetDefinitionCRUDWithGroups'
 
-Describe 'PolicySetDefinitionCRUDWithGroups' -Tag 'LiveOnly' {
+Describe 'Backcompat-PolicySetDefinitionCRUDWithGroups' {
 
     BeforeAll {
         # setup

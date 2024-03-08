@@ -1,12 +1,12 @@
 # setup the Pester environment for policy backcompat tests
-. (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyDefinitionCRUDAtSubscription'
+. (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicyDefinitionCRUDAtSubscription'
 
-Describe 'PolicyDefinitionCRUDAtSubscription' -Tag 'LiveOnly' {
+Describe 'Backcompat-PolicyDefinitionCRUDAtSubscription' {
 
     BeforeAll {
         # setup
         $policyName = Get-ResourceName
-        $subscriptionId = (Get-AzContext).Subscription.Id
+        $test2 = Get-ResourceName
     }
 
     It 'make policy definition at subscription level' {
@@ -37,8 +37,8 @@ Describe 'PolicyDefinitionCRUDAtSubscription' -Tag 'LiveOnly' {
     It 'list policy definitions at subscription level' {
         {
             # make another policy definition, ensure both are present in listing
-            New-AzPolicyDefinition -Name test2 -SubscriptionId $subscriptionId -Policy "{""if"":{""source"":""action"",""equals"":""blah""},""then"":{""effect"":""deny""}}" -Description $description -BackwardCompatible
-            $list = Get-AzPolicyDefinition -SubscriptionId $subscriptionId -BackwardCompatible | ?{ $_.Name -in @($policyName, 'test2') }
+            New-AzPolicyDefinition -Name $test2 -SubscriptionId $subscriptionId -Policy "{""if"":{""source"":""action"",""equals"":""blah""},""then"":{""effect"":""deny""}}" -Description $description -BackwardCompatible
+            $list = Get-AzPolicyDefinition -SubscriptionId $subscriptionId -BackwardCompatible | ?{ $_.Name -in @($policyName, $test2) }
             Assert-AreEqual 2 $list.Count
         } | Should -Not -Throw
     }
@@ -46,7 +46,7 @@ Describe 'PolicyDefinitionCRUDAtSubscription' -Tag 'LiveOnly' {
     AfterAll {
         # clean up
         $remove = Remove-AzPolicyDefinition -Name $policyName -SubscriptionId $subscriptionId -Force -BackwardCompatible
-        $remove = (Remove-AzPolicyDefinition -Name 'test2' -SubscriptionId $subscriptionId -Force -BackwardCompatible) -and $remove
+        $remove = (Remove-AzPolicyDefinition -Name $test2 -SubscriptionId $subscriptionId -Force -BackwardCompatible) -and $remove
         Assert-AreEqual True $remove
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."

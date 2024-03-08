@@ -31,7 +31,7 @@ For example, when you assign a policy at resource group scope, that policy appli
 https://learn.microsoft.com/powershell/module/az.resources/new-azpolicyassignment
 #>
 function New-AzPolicyAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment])]
 [CmdletBinding(DefaultParameterSetName='Default', SupportsShouldProcess=$true, ConfirmImpact='Low')]
 param(
     [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
@@ -74,7 +74,7 @@ param(
     [Parameter(ParameterSetName='ParameterObject', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='ParameterString', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicyDefinition]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition]))]
     [PSCustomObject]
     # The ID of the policy definition or policy set definition being assigned.
     ${PolicyDefinition},
@@ -84,7 +84,7 @@ param(
     [Parameter(ParameterSetName='SetParameterObject', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='SetParameterString', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20210601.IPolicySetDefinition]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition]))]
     [PSCustomObject]
     # The ID of the policy definition or policy set definition being assigned.
     ${PolicySetDefinition},
@@ -109,7 +109,7 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.IPolicyAssignmentPropertiesMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesMetadata]))]
     [System.String]
     # The policy assignment metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
@@ -117,17 +117,17 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.EnforcementMode])]
+    [ValidateSet('Default', 'DoNotEnforce')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.EnforcementMode]
+    [System.String]
     # The policy assignment enforcement mode.
     # Possible values are Default and DoNotEnforce.
     ${EnforcementMode},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.ResourceIdentityType])]
+    [ValidateSet('None', 'SystemAssigned', 'UserAssigned')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Support.ResourceIdentityType]
+    [System.String]
     # The identity type.
     # This is the only required field when adding a system or user assigned identity to a resource.
     ${IdentityType},
@@ -140,6 +140,7 @@ param(
     ${IdentityId},
 
     [Parameter(ValueFromPipelineByPropertyName)]
+    [ArgumentCompleter({ LocationCompleter })]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The location of the policy assignment.
@@ -149,7 +150,7 @@ param(
     [Parameter(ValueFromPipelineByPropertyName)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Api20220601.INonComplianceMessage[]]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.INonComplianceMessage[]]))]
     [PSCustomObject[]]
     # The messages that describe why a resource is non-compliant with the policy.
     # To construct, see NOTES section for NONCOMPLIANCEMESSAGE properties and create a hash table.
@@ -331,7 +332,7 @@ process {
         if ($PolicySetDefinition) {
             # Single piped input object gets bound to both parameters. This is only OK if they are the same resource
             if ($PolicyDefinition.Id -ne $PolicySetDefinition.Id) {
-                throw 'Only one of PolicyDefinition or PolicySetDefinition can be specified, not both.'
+                throw 'Only one of -PolicyDefinition or -PolicySetDefinition can be specified, not both.'
             }
         }
 
@@ -347,7 +348,7 @@ process {
         $calledParameters.PolicyDefinitionId = $InputObject.Id
     }
     else {
-        throw "PolicyDefinition or PolicySetDefinition must be provided."
+        throw 'One of -PolicyDefinition or -PolicySetDefinition must be provided.'
     }
 
     if ($IdentityType) {

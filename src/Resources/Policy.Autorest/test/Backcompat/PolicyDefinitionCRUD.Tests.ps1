@@ -1,11 +1,13 @@
 # setup the Pester environment for policy backcompat tests
-. (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyDefinitionCRUD'
+. (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicyDefinitionCRUD'
 
-Describe 'PolicyDefinitionCRUD' -Tag 'LiveOnly' {
+Describe 'Backcompat-PolicyDefinitionCRUD' {
 
     BeforeAll {
         # setup
         $policyName = Get-ResourceName
+        $test2 = Get-ResourceName
+        $test3 = Get-ResourceName
     }
 
     It 'make a policy definition from rule file' {
@@ -36,8 +38,8 @@ Describe 'PolicyDefinitionCRUD' -Tag 'LiveOnly' {
     It 'make policy definition from command line rule' {
         {
             # make another policy definition, ensure both are present in listing
-            New-AzPolicyDefinition -Name test2 -Policy "{""if"":{""source"":""action"",""equals"":""blah""},""then"":{""effect"":""deny""}}" -Description $description -BackwardCompatible
-            $list = Get-AzPolicyDefinition -BackwardCompatible | ?{ $_.Name -in @($policyName, 'test2') }
+            New-AzPolicyDefinition -Name $test2 -Policy "{""if"":{""source"":""action"",""equals"":""blah""},""then"":{""effect"":""deny""}}" -Description $description -BackwardCompatible
+            $list = Get-AzPolicyDefinition -BackwardCompatible | ?{ $_.Name -in @($policyName, $test2) }
             Assert-AreEqual 2 $list.Count
             Assert-True { $list.Count -eq 2 }
         } | Should -Not -Throw
@@ -68,8 +70,8 @@ Describe 'PolicyDefinitionCRUD' -Tag 'LiveOnly' {
     It 'make a policy definition from an export file' {
         {
             # make a policy definition from export format, get it back and validate
-            $expected = New-AzPolicyDefinition -Name test3 -Policy "$testFilesFolder\SamplePolicyDefinitionFromExport.json" -Description $description -BackwardCompatible
-            $actual = Get-AzPolicyDefinition -Name test3 -BackwardCompatible
+            $expected = New-AzPolicyDefinition -Name $test3 -Policy "$testFilesFolder\SamplePolicyDefinitionFromExport.json" -Description $description -BackwardCompatible
+            $actual = Get-AzPolicyDefinition -Name $test3 -BackwardCompatible
             Assert-NotNull $actual
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
@@ -82,8 +84,8 @@ Describe 'PolicyDefinitionCRUD' -Tag 'LiveOnly' {
     AfterAll {
         # clean up
         $remove = Remove-AzPolicyDefinition -Name $policyName -Force -BackwardCompatible
-        $remove = (Remove-AzPolicyDefinition -Name 'test2' -Force -BackwardCompatible) -and $remove
-        $remove = (Remove-AzPolicyDefinition -Name 'test3' -Force -BackwardCompatible) -and $remove
+        $remove = (Remove-AzPolicyDefinition -Name $test2 -Force -BackwardCompatible) -and $remove
+        $remove = (Remove-AzPolicyDefinition -Name $test3 -Force -BackwardCompatible) -and $remove
         Assert-AreEqual True $remove
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."
