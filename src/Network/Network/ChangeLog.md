@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed a bug caused by the introduction of the new property `GlobalConfiguration` in `PSApplicationGateway`
 
 ## Version 7.4.0
 * Fixed a few minor issues
@@ -30,7 +31,6 @@
 * Added the new cmdlet for supporting `InternetIngressIp` Property with Network Virtual Appliances -`New-AzVirtualApplianceInternetIngressIpsProperty`
 * Added a new AuxiliaryMode value `AuxiliaryMode.Floating`
 * Added support for AzureFirewallPacketCapture
-* Fixed a bug caused by the introduction of the new property `GlobalConfiguration` in `PSApplicationGateway`
 
 ## Version 7.3.0
 * Fixed a few minor issues
