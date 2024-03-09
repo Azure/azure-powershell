@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed a bug caused by the introduction of the new property `GlobalConfiguration` in `PSApplicationGateway`
 
 ## Version 7.4.0
 * Fixed a few minor issues
