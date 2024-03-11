@@ -121,6 +121,11 @@ directive:
     set:
       alias: Name
   - where:
+      subject: UploadFile
+      parameter-name: FileWorkspaceName
+    set:
+      alias: WorkspaceName
+  - where:
       subject: UploadFilesNoSubscription
       parameter-name: FileWorkspaceName
     set:
