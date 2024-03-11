@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.0.6
 * Added capability to provide Min/Max Throughput RU Consumption
 * Added SecuredByPerimeter value to PublicNetworkAccess enum
 * Added Default Priority Level and Priority Based Execution enablement features
