@@ -817,6 +817,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select the account you want to login with..
+        /// </summary>
+        internal static string PleaseSelectAccount {
+            get {
+                return ResourceManager.GetString("PleaseSelectAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This function is in preview. It may not be available in the selected subscription..
         /// </summary>
         internal static string PreviewFunctionMessage {
