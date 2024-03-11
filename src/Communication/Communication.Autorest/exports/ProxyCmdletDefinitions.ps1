@@ -20,11 +20,7 @@ Get the access keys of the CommunicationService resource.
 .Description
 Get the access keys of the CommunicationService resource.
 .Example
-PS C:\> Get-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
-
-PrimaryConnectionString              PrimaryKey            SecondaryConnectionString               SecondaryKey
------------------------              ----------            -----------------------                 ----------
-endpoint=<example-primary-endpoint>  <example-primarykey>  endpoint=<example-secondary-endpoint>   <example-secondarykey>
+Get-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys
@@ -60,7 +56,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -110,6 +107,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             List = 'Az.Communication.private\Get-AzCommunicationServiceKey_List';
         }
@@ -118,11 +133,16 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -131,17 +151,34 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }
 
 <#
@@ -150,20 +187,9 @@ Get the CommunicationService and its properties.
 .Description
 Get the CommunicationService and its properties.
 .Example
-PS C:\> Get-AzCommunicationService -SubscriptionId 73fc3592-3cef-4300-5e19-8d18b65ce0e8
-
-Location Name             Type                                          AzureAsyncOperation
--------- ----             ----                                          -------------------
-global   ContosoResource1   Microsoft.Communication/communicationServices
-global   ContosoResource4   Microsoft.Communication/communicationServices
-global   ContosoResource3   Microsoft.Communication/communicationServices
-global   ContosoResource5   Microsoft.Communication/communicationServices
+Get-AzCommunicationService -SubscriptionId 73fc3592-3cef-4300-5e19-8d18b65ce0e8
 .Example
-PS C:\> Get-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
-
-Location Name           Type                                          AzureAsyncOperation
--------- ----           ----                                          -------------------
-Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
+Get-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
@@ -222,7 +248,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -272,6 +299,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Get = 'Az.Communication.private\Get-AzCommunicationService_Get';
             GetViaIdentity = 'Az.Communication.private\Get-AzCommunicationService_GetViaIdentity';
@@ -283,11 +328,16 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -296,17 +346,34 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }
 
 <#
@@ -317,17 +384,9 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 Regenerate CommunicationService access key.
 PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 .Example
-PS > New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Parameter @{KeyType="Primary"}
-
-PrimaryConnectionString              PrimaryKey
------------------------              ----------
-endpoint=<example-primary-endpoint>  <example-primarykey>
+New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Parameter @{KeyType="Primary"}
 .Example
-PS C:\> New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -KeyType Secondary
-
-SecondaryConnectionString               SecondaryKey
------------------------                 ----------
-endpoint=<example-secondary-endpoint>   <example-secondarykey>
+New-AzCommunicationServiceKey -CommunicationServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -KeyType Secondary
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.IRegenerateKeyParameters
@@ -408,7 +467,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -458,6 +518,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Regenerate = 'Az.Communication.private\New-AzCommunicationServiceKey_Regenerate';
             RegenerateExpanded = 'Az.Communication.private\New-AzCommunicationServiceKey_RegenerateExpanded';
@@ -469,11 +547,16 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -482,17 +565,34 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }
 
 <#
@@ -501,11 +601,7 @@ Create a new CommunicationService or update an existing CommunicationService.
 .Description
 Create a new CommunicationService or update an existing CommunicationService.
 .Example
-PS C:\> New-AzCommunicationService -ResourceGroupName ContosoResourceProvider1 -Name ContosoAcsResource1 -DataLocation UnitedStates -Location Global
-
-Location Name           Type                                          AzureAsyncOperation
--------- ----           ----                                          -------------------
-Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
+New-AzCommunicationService -ResourceGroupName ContosoResourceProvider1 -Name ContosoAcsResource1 -DataLocation UnitedStates -Location Global
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource
@@ -561,7 +657,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -623,6 +720,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             CreateExpanded = 'Az.Communication.private\New-AzCommunicationService_CreateExpanded';
         }
@@ -631,11 +746,16 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -644,17 +764,34 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }
 
 <#
@@ -663,7 +800,7 @@ Operation to delete a CommunicationService.
 .Description
 Operation to delete a CommunicationService.
 .Example
-PS C:\> Remove-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
+Remove-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
@@ -719,7 +856,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -787,6 +925,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Delete = 'Az.Communication.private\Remove-AzCommunicationService_Delete';
             DeleteViaIdentity = 'Az.Communication.private\Remove-AzCommunicationService_DeleteViaIdentity';
@@ -796,11 +952,16 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -809,17 +970,34 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }
 
 <#
@@ -828,7 +1006,7 @@ Links an Azure Notification Hub to this communication service.
 .Description
 Links an Azure Notification Hub to this communication service.
 .Example
-PS C:\> Set-AzCommunicationServiceNotificationHub -CommunicationServiceName ContosoAcsResource2 -ResourceGroupName ContosoResourceProvider1 -ConnectionString "<notificationhub-connectionstring>" -NotificationHubResourceId "<notificationhub-resourceid>"
+Set-AzCommunicationServiceNotificationHub -CommunicationServiceName ContosoAcsResource2 -ResourceGroupName ContosoResourceProvider1 -ConnectionString "<notificationhub-connectionstring>" -NotificationHubResourceId "<notificationhub-resourceid>"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkNotificationHubParameters
@@ -893,7 +1071,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -943,6 +1122,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Link = 'Az.Communication.private\Set-AzCommunicationServiceNotificationHub_Link';
             LinkExpanded = 'Az.Communication.private\Set-AzCommunicationServiceNotificationHub_LinkExpanded';
@@ -952,11 +1149,16 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -965,17 +1167,34 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }
 
 <#
@@ -984,17 +1203,9 @@ Checks that the CommunicationService name is valid and is not already in use.
 .Description
 Checks that the CommunicationService name is valid and is not already in use.
 .Example
-PS C:\> Test-AzCommunicationServiceNameAvailability -Name ContosoAcsResource1
-
-Message                               NameAvailable Reason
--------                               ------------- ------
-Requested name is unavailable for the requested type False         AlreadyExists
+Test-AzCommunicationServiceNameAvailability -Name ContosoAcsResource1
 .Example
-PS C:\> Test-AzCommunicationServiceNameAvailability -Name ContosoAcsResource2
-
-Message                               NameAvailable Reason
--------                               ------------- ------
-Requested name is available for the requested type True         NameAvailable
+Test-AzCommunicationServiceNameAvailability -Name ContosoAcsResource2
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailability
@@ -1024,7 +1235,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1074,6 +1286,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             CheckExpanded = 'Az.Communication.private\Test-AzCommunicationServiceNameAvailability_CheckExpanded';
         }
@@ -1085,11 +1315,16 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -1098,17 +1333,34 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }
 
 <#
@@ -1117,11 +1369,7 @@ Operation to update an existing CommunicationService.
 .Description
 Operation to update an existing CommunicationService.
 .Example
-PS C:\> Update-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleValue1"}
-
-Location Name           Type                                          AzureAsyncOperation
--------- ----           ----                                          -------------------
-Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
+Update-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleValue1"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
@@ -1196,7 +1444,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1246,6 +1495,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             UpdateExpanded = 'Az.Communication.private\Update-AzCommunicationService_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Communication.private\Update-AzCommunicationService_UpdateViaIdentityExpanded';
@@ -1255,11 +1522,16 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -1268,15 +1540,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Communication.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }
