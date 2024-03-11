@@ -16,19 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSupportCommunication'))
 
 Describe 'New-AzSupportCommunication' {
     It 'CreateExpanded' {
-        if($env.SupportPlanSubscription -eq "Basic support" || $env.SupportPlanSubscription -eq "Free"){
-            write-host "cannot create communication operations for tickets with free support plan"
-            
-            Mock New-AzSupportCommunication{ New-MockObject -Type "Microsoft.Azure.PowerShell.Cmdlets.Support.Models.CommunicationDetails"}
-            
-            New-AzSupportCommunication -Name "test-msg-$(New-Guid)" -SupportTicketName $env.Name -Body $env.Body -Sender $env.Sender -Subject $env.Subject
-            
-            Assert-MockCalled New-AzSupportCommunication -Exactly 1
-        }
-        else{
-            $supportMessage = New-AzSupportCommunication -Name "test-msg-$(New-Guid)" -SupportTicketName $env.Name -Body $env.Body -Sender $env.Sender -Subject $env.Subject
-        
-            $supportMessage.Body.ToString() |  Should -Match $env.Body
-        }
+        $supportMessage = New-AzSupportCommunication -SubscriptionId $env.SubscriptionId -Name $env.communicationNameForCreate -SupportTicketName $env.Name -Body $env.Body -Sender $env.Sender -Subject $env.Subject
+        $supportMessage.Body.ToString() |  Should -Match $env.Body
     }
 }

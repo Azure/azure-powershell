@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportFileWorkspace'))
 
 Describe 'Get-AzSupportFileWorkspace' {
     It 'Get' {
-        $fileWorkspace = Get-AzSupportFileWorkspace -Name $env.FileWorkspaceNameSubscription
+        $fileWorkspace = Get-AzSupportFileWorkspace -Name $env.FileWorkspaceNameSubscription -SubscriptionId $env.SubscriptionId
         $fileWorkspace.Name | Should -Be $env.FileWorkspaceNameSubscription
     }
 

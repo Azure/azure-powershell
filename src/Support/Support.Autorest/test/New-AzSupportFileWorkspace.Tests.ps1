@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSupportFileWorkspace'))
 
 Describe 'New-AzSupportFileWorkspace' {
     It 'Create' {
-        $fileWorkspaceName = "test-ps-$(New-Guid)"
+        $fileWorkspaceName = $env.FileWorkspaceNameSubscriptionForCreate
         $fileWorkspace = New-AzSupportFileWorkspace -Name $fileWorkspaceName -SubscriptionId $env.SubscriptionId
         $fileWorkspace.Name | Should -Be $fileWorkspaceName
     }

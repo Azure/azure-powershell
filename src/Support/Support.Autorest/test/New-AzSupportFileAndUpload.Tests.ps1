@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSupportFileAndUpload'))
 Describe 'New-AzSupportFileAndUpload' {
     It 'CreateExpanded' {
         $testFilePath = Join-Path $PSScriptRoot files test.txt
-        $file = New-AzSupportFileAndUpload -WorkspaceName $env.FileWorkspaceNameSubscription -FilePath $testFilePath
+        $file = New-AzSupportFileAndUpload -WorkspaceName $env.FileWorkspaceNameSubscription -FilePath $testFilePath -SubscriptionId $env.SubscriptionId
         $file.Name | Should -Be "test.txt"
     }
 }

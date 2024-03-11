@@ -1,16 +1,13 @@
 ### Example 1: Get list of support tickets at subscription level
 ```powershell
- Get-AzSupportTicket -Filter "CreatedDate ge 2024-02-21"
+ Get-AzSupportTicket
 ```
 
 ```output
-Name                                                   ResourceGroupName
-----                                                   -----------------
-test1-5dda17d0-a60d-4f4c-82e3-0fe3604c0ed4
-test-5dda17d0-a60d-4f4c-82e3-0fe3604c0ed4
-test1-8fd280ac-966b-41da-b6f5-ad630c784feb
-test-8fd280ac-966b-41da-b6f5-ad630c784feb
-test1-a31f113b-8f99-4a8d-8016-33aec8165a20
+Name                                                   Title                                 SupportTicketId  Severity ServiceDisplayName CreatedDate
+----                                                   -----                                 ---------------  -------- ------------------ -----------
+517f2da6-9bc71cda-278fc71b-7b86-4289-baec-922e8be1a04a test                                  2403080040012292 Minimal  Billing            3/8/2024 9:03:26 PM
+test1-5dda17d0-a60d-4f4c-82e3-0fe3604c0ed4             test ticket - please ignore and close 2403060040007460 Minimal  Billing            3/6/2024 3:09:28 PM
 
 Lists all the support tickets for an Azure subscription
 

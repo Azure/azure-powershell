@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportFilesNoSubscript
 
 Describe 'Get-AzSupportFilesNoSubscription' {
     It 'List' {
-        $files = Get-AzSupportFilesNoSubscription -WorkspaceName $env.FileWorkspaceNameNoSubscription
+        $files = Get-AzSupportFilesNoSubscription -WorkspaceName $env.FileWorkspaceNameNoSubscription 
         $files | Should -Not -BeNullOrEmpty
         $files.Count | Should -BeGreaterOrEqual 1
     }
@@ -26,7 +26,7 @@ Describe 'Get-AzSupportFilesNoSubscription' {
     }
 
     It 'Get' {
-        $file = Get-AzSupportFile -Name "test2.txt" -WorkspaceName $env.FileWorkspaceNameSubscription
+        $file = Get-AzSupportFilesNoSubscription -Name "test2.txt" -WorkspaceName $env.FileWorkspaceNameSubscription
         $file | Should -Not -BeNullOrEmpty
         $file.Name | Should -Be "test2.txt"
     }

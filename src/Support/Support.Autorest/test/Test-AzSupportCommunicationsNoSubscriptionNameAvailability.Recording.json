@@ -1,0 +1,39 @@
+{
+  "Test-AzSupportCommunicationsNoSubscriptionNameAvailability+[NoContext]+CheckExpandedTrue+$POST+https://management.azure.com/providers/Microsoft.Support/supportTickets/test-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1/checkNameAvailability?api-version=2022-09-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/supportTickets/test-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1/checkNameAvailability?api-version=2022-09-01-preview",
+      "Content": "{\r\n  \"name\": \"test-for-check-msg-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1\",\r\n  \"type\": \"Microsoft.Support/communications\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "120" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-request-id": [ "dfaf43cc-378d-4fa8-b6ae-f817fdf20cd3" ],
+        "x-ms-correlation-request-id": [ "dfaf43cc-378d-4fa8-b6ae-f817fdf20cd3" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240308T172426Z:dfaf43cc-378d-4fa8-b6ae-f817fdf20cd3" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AD4B48391F814EFDB0A441A40F01CDDB Ref B: MNZ221060609009 Ref C: 2024-03-08T17:24:25Z" ],
+        "Date": [ "Fri, 08 Mar 2024 17:24:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "22" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -16,20 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSupportTicket'))
 
 Describe 'Update-AzSupportTicket' {
 
-    It 'UpdateExpanded' {
-        if($env.SupportPlanSubscription -eq "Basic support" || $env.SupportPlanSubscription -eq "Free"){
-            write-host "cannot update support tickets with free support plan"
-            
-            Mock Update-AzSupportTicket{ New-MockObject -Type "Microsoft.Azure.PowerShell.Cmdlets.Support.Models.SupportTicketDetails"}
-            
-            Update-AzSupportTicket -SupportTicketName $env.Name -AdvancedDiagnosticConsent "Yes"
-
-            Assert-MockCalled Update-AzSupportTicket -Exactly 1
-        }
-        else{
-            $supportTicket = Update-AzSupportTicket -SupportTicketName $env.Name -AdvancedDiagnosticConsent "Yes"
-            $supportTicket.AdvancedDiagnosticConsent | Should -Be "Yes"
-        }
+    It 'UpdateExpanded' -skip:($env.HasSubscription -eq $false) {
+        $supportTicket = Update-AzSupportTicket -SubscriptionId $env.SubscriptionId -SupportTicketName $env.Name -AdvancedDiagnosticConsent "Yes"
+        $supportTicket.AdvancedDiagnosticConsent | Should -Be "Yes"
     }
 
     It 'UpdateViaIdentityExpanded' -skip {

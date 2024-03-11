@@ -4,11 +4,10 @@
 ```
 
 ```output
-Name                                 SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModi
-                                                                                                     fiedAt
-----                                 ------------------- ------------------- ----------------------- ------------------
-595df7b4-167f-4f3e-8292-f0ba2b8a53f9
-f8b45cd6-a8ec-40e2-b846-a28b848553cf
+Name                                 StartTime
+----                                 ---------
+595df7b4-167f-4f3e-8292-f0ba2b8a53f9 8/11/2023 7:27:49 PM
+f8b45cd6-a8ec-40e2-b846-a28b848553cf 8/11/2023 7:52:44 PM
 ```
 
 Lists all chat transcripts for a support ticket under subscription

@@ -15,36 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportTicketsNoSubscri
 }
 
 Describe 'Get-AzSupportTicketsNoSubscription' {
-    It 'List'  {
-        if($env.SupportPlanTenant -eq "Basic support" || $env.SupportPlanTenant -eq "Free"){
-            write-host "cannot get support tickets with free support plan"
-            
-            Mock Get-AzSupportTicketsNoSubscription{ New-MockObject -Type "Microsoft.Azure.PowerShell.Cmdlets.Support.Models.SupportTicketDetails"}
-            
-            Get-AzSupportTicketsNoSubscription
-            
-            Assert-MockCalled Get-AzSupportTicketsNoSubscription -Exactly 1
-        }
-        else{
-            $supportTickets = Get-AzSupportTicketsNoSubscription 
-            $supportTickets.Count | Should -BeGreaterThan 1
-        }
+    It 'List' {
+        $supportTickets = Get-AzSupportTicketsNoSubscription -Top 5
+        $supportTickets.Count | Should -BeGreaterThan 1
     }
 
-    It 'Get'  {
-        if($env.SupportPlanTenant -eq "Basic support" || $env.SupportPlanTenant -eq "Free"){
-            write-host "cannot get support tickets with free support plan"
-            
-            Mock Get-AzSupportTicketsNoSubscription{ New-MockObject -Type "Microsoft.Azure.PowerShell.Cmdlets.Support.Models.SupportTicketDetails"}
-            
-            Get-AzSupportTicketsNoSubscription -SupportTicketName $env.Name
-
-            Assert-MockCalled Get-AzSupportTicketsNoSubscription -Exactly 2
-        }
-        else{
-            $supportTicket = Get-AzSupportTicketsNoSubscription -SupportTicketName $env.Name
-            $supportTicket.Description | Should -Be "test ticket - please ignore and close"
-        }
+    It 'Get' {
+        $supportTicket = Get-AzSupportTicketsNoSubscription -SupportTicketName $env.Name
+        $supportTicket.Description | Should -Be "test ticket - please ignore and close"
     }
 
     It 'GetViaIdentity' -skip {
