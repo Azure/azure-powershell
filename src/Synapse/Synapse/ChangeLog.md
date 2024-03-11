@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Upgraded Azure.Core to 1.37.0.
 * Fixed vulnerability https://github.com/advisories/GHSA-98g6-xh36-x2p7
 
 ## Version 3.0.5
