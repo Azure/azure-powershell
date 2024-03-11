@@ -4,17 +4,13 @@
 ```
 
 ```output
-Name                                       ResourceGroupName
-----                                       -----------------
-test1-5dda17d0-a60d-4f4c-82e3-0fe3604c0ed4
-test-5dda17d0-a60d-4f4c-82e3-0fe3604c0ed4
-test1-8fd280ac-966b-41da-b6f5-ad630c784feb
-test-8fd280ac-966b-41da-b6f5-ad630c784feb
-test1-a31f113b-8f99-4a8d-8016-33aec8165a20
-test-a31f113b-8f99-4a8d-8016-33aec8165a20
-test1-9fbdfed4-20e5-47ee-b36e-455ca16bb46b
-test-9fbdfed4-20e5-47ee-b36e-455ca16bb46b
-test-1c0ad9a1-f2fb-44a7-b776-7400e0b286a8
+Name                                      Title                                 SupportTicketId  Severity ServiceDisplayName CreatedDate
+----                                      -----                                 ---------------  -------- ------------------ -----------
+2403110040009092                          test ticket please ignore and close   2403110040009092 Minimal  Billing            3/11/2024 3:46:20 PM
+test-41b4ec72-8634-4e03-978e-15bde625be00 test ticket - please ignore and close 2403070040010395 Minimal  Billing            3/7/2024 5:35:55 PM
+test-270a8ba4-7083-4b02-8b32-b5c2cdc55e78 test ticket - please ignore and close 2403070040010346 Minimal  Billing            3/7/2024 5:32:40 PM
+test-8dad4b97-5ff5-4a1e-bb6e-d323348db3f2 test ticket - please ignore and close 2403070040009816 Minimal  Billing            3/7/2024 5:04:36 PM
+test-0d8ee1f2-89d6-4078-8c1a-5845673966a1 test ticket - please ignore and close 2403070040009769 Minimal  Billing            3/7/2024 5:02:44 PM
 ```
 
 Lists all the support tickets.
@@ -72,4 +68,4 @@ Title                                      : test ticket - please ignore and clo
 Type                                       : Microsoft.Support/supportTickets
 ```
 
-Lists all the support tickets
+Gets details of a support ticket

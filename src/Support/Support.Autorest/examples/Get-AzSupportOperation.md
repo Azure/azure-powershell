@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: List Azure Support operations
 ```powershell
 Get-AzSupportOperation
 ```

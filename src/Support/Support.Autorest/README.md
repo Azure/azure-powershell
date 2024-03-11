@@ -79,10 +79,47 @@ directive:
           - FileSize
           - NumberOfChunks 
   - where:
-      subject: UploadFile
-      parameter-name: FileWorkspaceName
+      model-name: SupportTicketDetails
     set:
-      alias: WorkspaceName
+      format-table:
+        properties:
+          - Name
+          - Title
+          - SupportTicketId
+          - Severity
+          - ServiceDisplayName
+          - CreatedDate
+  - where:
+      model-name: CommunicationDetails
+    set:
+      format-table:
+        properties:
+          - Name
+          - Sender
+          - Subject
+          - CreatedDate
+  - where:
+      model-name: ChatTranscriptDetails
+    set:
+      format-table:
+        properties:
+          - Name
+          - StartTime
+  - where:
+      subject: CommunicationsNoSubscription
+      parameter-name: CommunicationName
+    set:
+      alias: Name
+  - where:
+      subject: SupportTicketsNoSubscription
+      parameter-name: SupportTicketName
+    set:
+      alias: Name
+  - where:
+      subject: ChatTranscriptsNoSubscription
+      parameter-name: ChatTranscriptName
+    set:
+      alias: Name
   - where:
       subject: UploadFilesNoSubscription
       parameter-name: FileWorkspaceName
@@ -158,7 +195,7 @@ directive:
   - from: GetAzSupportCommunication_List.cs
     where: $
     transform: $ = $.replace("!String.IsNullOrEmpty(_nextLink)" ,"!String.IsNullOrEmpty(_nextLink) && this._top <= 0");
-  - from: GetAzSupportTicketCommunicationsNoSubscription_List.cs
+  - from: GetAzSupportCommunicationsNoSubscription_List.cs
     where: $
     transform: $ = $.replace("!String.IsNullOrEmpty(_nextLink)" ,"!String.IsNullOrEmpty(_nextLink) && this._top <= 0");
   # Following are common directives which are normally required in all the RPs
