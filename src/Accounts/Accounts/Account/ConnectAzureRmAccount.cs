@@ -549,7 +549,7 @@ namespace Microsoft.Azure.Commands.Profile
                         shouldPopulateContextList,
                         MaxContextPopulation,
                         resourceId,
-                        ReadHost));
+                        Prompt));
                     task.Start();
                     while (!task.IsCompleted)
                     {
@@ -678,21 +678,11 @@ namespace Microsoft.Azure.Commands.Profile
                 writeInformationEvent(this, new StreamEventArgs() { Message = message });
             }
         }
-        private string ReadHost(string prompt)
+        private string Prompt(string message)
         {
             var input = new StringBuilder();
-            _tasks.Enqueue(new Task(() => this.WriteInformation(prompt, true)));
+            _tasks.Enqueue(new Task(() => this.WriteInformation(message, true)));
             input.Append(this.Host.UI.ReadLine());
-           /* FieldDescription fd = new FieldDescription(prompt);
-            Collection<FieldDescription> fdc = new Collection<FieldDescription>() { fd };
-            Dictionary<string, PSObject> result = Host.UI.Prompt(string.Empty, string.Empty, fdc);
-            if (result != null)
-            {
-                foreach (PSObject o in result.Values)
-                {
-                    input.Append(o);
-                }
-            }*/
             return input.ToString();
         }
 

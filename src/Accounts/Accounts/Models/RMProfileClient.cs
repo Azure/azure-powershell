@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return tenants?.Where(t => t.Id.Equals(tenantId))?.FirstOrDefault(); ;
         }
 
-        public delegate string ReadHost(string prompt);
+        public delegate string Prompt(string message);
 
         public AzureRmProfile Login(
             IAzureAccount account,
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             bool shouldPopulateContextList = true,
             int maxContextPopulation = Profile.ConnectAzureRmAccountCommand.DefaultMaxContextPopulation,
             string authScope = null,
-            ReadHost readHost = null)
+            Prompt prompt = null)
         {
             IAzureSubscription defaultSubscription = null;
             IAzureTenant defaultTenant = null;
@@ -150,7 +150,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                  !account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
                 ? ShowDialog.Always : ShowDialog.Never;
 
-            bool IsRequiredToSelectSubscription = promptBehavior == ShowDialog.Always && tenantIdOrName == null && subscriptionId == null && subscriptionName == null && name == null;
+            bool IsRequiredToSelectSubscription = promptBehavior == ShowDialog.Always && 
+                tenantIdOrName == null && subscriptionId == null && subscriptionName == null && name == null &&
+                GetLastLoginedContext() == null;
 
             SubscritpionClientCandidates.Reset();
 
@@ -367,7 +369,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 {
                     if (shouldWriteSubscriptionTable) WriteSubSubscriptionTableRow(++subCount, subscription,
                         tenants.Where(t => t.Id.Equals(subscription.GetTenant())).FirstOrDefault().GetProperty(AzureTenant.Property.DefaultDomain),
-                        subscription.GetId().Equals(defaultSubscription.GetId()));
+                        !IsRequiredToSelectSubscription && subscription.GetId().Equals(defaultSubscription.GetId()));
                     IAzureTenant tempTenant = GetDetailedTenantFromQueryHistory(tenants, subscription.GetProperty(AzureSubscription.Property.Tenants)) ?? new AzureTenant()
                     {
                         Id = subscription.GetProperty(AzureSubscription.Property.Tenants)
@@ -393,9 +395,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     WriteInformationMessage($"{Environment.NewLine}The default is marked with an *; the default tenant is \"{defaultTenant.GetProperty(AzureTenant.Property.DefaultDomain)}\" and subscription is \"{defaultSubscription.Name} ({defaultSubscription.Id})\".");
                 }
 
-                if (promptBehavior.Equals(ShowDialog.Always) && null!= readHost)
+                if (promptBehavior.Equals(ShowDialog.Always) && null!= prompt)
                 {
-                    string input = readHost($"{Environment.NewLine}Select a tenant and subscription {Foreground.BrightBlack}(Type a number or Enter to accept default){PSStyle.Reset}");
+                    string input = prompt($"{Environment.NewLine}Select a tenant and subscription:");
                     int selectedSubIndex = -1;
                     try
                     {
@@ -425,6 +427,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         int ColumnNoWidth = 4, ColumnSubNameWidth = 36, ColumnSubIdWidth = 40, ColumnTenantWidth = 26, ColumnIdentsWidth = 4;
         string defaultSubscriptionMark = $"{Foreground.BrightYellow}(*){PSStyle.Reset}";
+
+        private IAzureContext GetLastLoginedContext()
+        {
+            return _profile.DefaultContext;
+        }
 
         private void WriteSubscriptionTableHeader()
         {
