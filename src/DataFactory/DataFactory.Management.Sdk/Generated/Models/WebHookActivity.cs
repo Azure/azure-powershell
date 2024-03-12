@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// setting statusCode &gt;= 400 in callback request. Default is false. Type:
         /// boolean (or Expression with resultType boolean).
         /// </param>
-        public WebHookActivity(string name, object url, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string), string state = default(string), string onInactiveMarkAs = default(string), System.Collections.Generic.IList<ActivityDependency> dependsOn = default(System.Collections.Generic.IList<ActivityDependency>), System.Collections.Generic.IList<UserProperty> userProperties = default(System.Collections.Generic.IList<UserProperty>), SecureInputOutputPolicy policy = default(SecureInputOutputPolicy), string timeout = default(string), System.Collections.Generic.IDictionary<string, string> headers = default(System.Collections.Generic.IDictionary<string, string>), object body = default(object), WebActivityAuthentication authentication = default(WebActivityAuthentication), object reportStatusOnCallBack = default(object))
+        public WebHookActivity(string name, object url, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string), string state = default(string), string onInactiveMarkAs = default(string), System.Collections.Generic.IList<ActivityDependency> dependsOn = default(System.Collections.Generic.IList<ActivityDependency>), System.Collections.Generic.IList<UserProperty> userProperties = default(System.Collections.Generic.IList<UserProperty>), SecureInputOutputPolicy policy = default(SecureInputOutputPolicy), string timeout = default(string), System.Collections.Generic.IDictionary<string, object> headers = default(System.Collections.Generic.IDictionary<string, object>), object body = default(object), WebActivityAuthentication authentication = default(WebActivityAuthentication), object reportStatusOnCallBack = default(object))
 
         : base(name, additionalProperties, description, state, onInactiveMarkAs, dependsOn, userProperties)
         {
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// string (or Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.headers")]
-        public System.Collections.Generic.IDictionary<string, string> Headers {get; set; }
+        public System.Collections.Generic.IDictionary<string, object> Headers {get; set; }
 
         /// <summary>
         /// Gets or sets represents the payload that will be sent to the endpoint.

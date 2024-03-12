@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// POST/PUT method, not allowed for GET method Type: string (or Expression
         /// with resultType string).
         /// </param>
-        public AzureFunctionActivityTypeProperties(string method, object functionName, System.Collections.Generic.IDictionary<string, string> headers = default(System.Collections.Generic.IDictionary<string, string>), object body = default(object))
+        public AzureFunctionActivityTypeProperties(string method, object functionName, System.Collections.Generic.IDictionary<string, object> headers = default(System.Collections.Generic.IDictionary<string, object>), object body = default(object))
 
         {
             this.Method = method;
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// string (or Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "headers")]
-        public System.Collections.Generic.IDictionary<string, string> Headers {get; set; }
+        public System.Collections.Generic.IDictionary<string, object> Headers {get; set; }
 
         /// <summary>
         /// Gets or sets represents the payload that will be sent to the endpoint.
