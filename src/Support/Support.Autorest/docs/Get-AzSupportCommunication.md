@@ -46,15 +46,10 @@ Returns communication details for a support ticket.
 ```
 
 ```output
-Name                                 ResourceGroupName
-----                                 -----------------
-9079281d-0fcc-ee11-9079-6045bdef78de
-test123
-9ffd523a-5acb-ee11-9079-6045bdef7a0a
-590629b9-44cb-ee11-9079-6045bdef700d
-8a03e5d5-8eca-ee11-9079-6045bdeb5f9a
-14696079-8eca-ee11-9079-6045bdeb5f9a
-e0d2b429-7bca-ee11-907a-0022482a4908
+Name                                 Sender                             Subject                             CreatedDate
+----                                 ------                             -------                             -----------
+590629b9-44cb-ee11-9079-6045bdef700d support@mail.support.microsoft.com test - TrackingID#2403080040012292 3/9/2024 2:21:58 AM
+ee25b14e-8fdd-ee11-904d-0022482a4908 support@mail.support.microsoft.com …                                  3/8/2024 9:03:35 PM
 ```
 
 Lists all communications (attachments not included) for a support ticket.

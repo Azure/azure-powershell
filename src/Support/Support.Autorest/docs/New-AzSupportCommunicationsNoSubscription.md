@@ -23,27 +23,26 @@ Adds a new customer communication to an Azure support ticket.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new communication under a no subscription ticket
 ```powershell
-{{ Add code here }}
+New-AzSupportCommunicationsNoSubscription -SupportTicketName test1234 -Name testCommunication2 -Subject test -Body test
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Body                   : <pre>test</pre>
+CommunicationDirection : Inbound
+CommunicationType      : Web
+CreatedDate            : 3/11/2024 2:21:32 PM
+Id                     : /providers/Microsoft.Support/supportTickets/test-7d6ad184-eb1d-40b1-ae43-5b4312b702d4/communications/33445ea3-b
+                         2df-ee11-904d-00224835ac0b
+Name                   : 33445ea3-b2df-ee11-904d-00224835ac0b
+ResourceGroupName      :
+Sender                 : bhshah@TestTest06172019GBL.onmicrosoft.com
+Subject                : test - TrackingID#2403070040015890
+Type                   : Microsoft.Support/communications
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a new communication under a no subscription ticket
 
 ## PARAMETERS
 
@@ -83,7 +82,7 @@ Communication name.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named

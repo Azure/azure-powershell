@@ -16,14 +16,14 @@ The Azure support engineer working on your ticket will reach out to you for cons
 ## SYNTAX
 
 ```
-New-AzSupportTicketsNoSubscription -SupportTicketName <String> -ContactDetailCountry <String>
- -ContactDetailFirstName <String> -ContactDetailLastName <String>
+New-AzSupportTicketsNoSubscription -SupportTicketName <String> -AdvancedDiagnosticConsent <String>
+ -ContactDetailCountry <String> -ContactDetailFirstName <String> -ContactDetailLastName <String>
  -ContactDetailPreferredContactMethod <String> -ContactDetailPreferredSupportLanguage <String>
  -ContactDetailPreferredTimeZone <String> -ContactDetailPrimaryEmailAddress <String> -Description <String>
  -ProblemClassificationId <String> -ServiceId <String> -Severity <String> -Title <String>
- [-AdvancedDiagnosticConsent <String>] [-ContactDetailAdditionalEmailAddress <String[]>]
- [-ContactDetailPhoneNumber <String>] [-FileWorkspaceName <String>] [-ProblemScopingQuestion <String>]
- [-ProblemStartTime <DateTime>] [-QuotaTicketDetailQuotaChangeRequest <IQuotaChangeRequest[]>]
+ [-ContactDetailAdditionalEmailAddress <String[]>] [-ContactDetailPhoneNumber <String>]
+ [-FileWorkspaceName <String>] [-ProblemScopingQuestion <String>] [-ProblemStartTime <DateTime>]
+ [-QuotaTicketDetailQuotaChangeRequest <IQuotaChangeRequest[]>]
  [-QuotaTicketDetailQuotaChangeRequestSubType <String>] [-QuotaTicketDetailQuotaChangeRequestVersion <String>]
  [-Require24X7Response] [-SecondaryConsent <ISecondaryConsent[]>] [-SupportPlanId <String>]
  [-SupportTicketId <String>] [-TechnicalTicketDetailResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -102,7 +102,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -517,7 +517,7 @@ Support ticket name.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named

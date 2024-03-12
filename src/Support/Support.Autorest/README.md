@@ -79,6 +79,48 @@ directive:
           - FileSize
           - NumberOfChunks 
   - where:
+      model-name: SupportTicketDetails
+    set:
+      format-table:
+        properties:
+          - Name
+          - Title
+          - SupportTicketId
+          - Severity
+          - ServiceDisplayName
+          - CreatedDate
+  - where:
+      model-name: CommunicationDetails
+    set:
+      format-table:
+        properties:
+          - Name
+          - Sender
+          - Subject
+          - CreatedDate
+  - where:
+      model-name: ChatTranscriptDetails
+    set:
+      format-table:
+        properties:
+          - Name
+          - StartTime
+  - where:
+      subject: CommunicationsNoSubscription
+      parameter-name: CommunicationName
+    set:
+      alias: Name
+  - where:
+      subject: SupportTicketsNoSubscription
+      parameter-name: SupportTicketName
+    set:
+      alias: Name
+  - where:
+      subject: ChatTranscriptsNoSubscription
+      parameter-name: ChatTranscriptName
+    set:
+      alias: Name
+  - where:
       subject: UploadFile
       parameter-name: FileWorkspaceName
     set:
@@ -141,6 +183,11 @@ directive:
   - from: swagger-document
     where: $.definitions.SupportTicketDetails
     transform: $.required = ['properties']
+  # only needed for 2022 preview version, should be able to remove for GA
+  - from: swagger-document
+    where: $.definitions.SupportTicketDetailsProperties
+    transform: $.required = ['serviceId','title','description','problemClassificationId','severity','contactDetails', 'advancedDiagnosticConsent']
+    
   - from: swagger-document 
     where: $.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts"].get.operationId
     transform: >-
@@ -158,7 +205,7 @@ directive:
   - from: GetAzSupportCommunication_List.cs
     where: $
     transform: $ = $.replace("!String.IsNullOrEmpty(_nextLink)" ,"!String.IsNullOrEmpty(_nextLink) && this._top <= 0");
-  - from: GetAzSupportTicketCommunicationsNoSubscription_List.cs
+  - from: GetAzSupportCommunicationsNoSubscription_List.cs
     where: $
     transform: $ = $.replace("!String.IsNullOrEmpty(_nextLink)" ,"!String.IsNullOrEmpty(_nextLink) && this._top <= 0");
   # Following are common directives which are normally required in all the RPs
