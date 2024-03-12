@@ -494,10 +494,10 @@ function Get-ScriptAnalyzerResult {
 
     # Invoke PSScriptAnalyzer : input scriptblock, output error set in $result with property: RuleName, Message, Extent
     if ($null -eq $RulePaths) {
-        $analysisResults = Invoke-ScriptAnalyzer -Path $ScriptPath -IncludeDefaultRules:$IncludeDefaultRules.IsPresent -Debug
+        $analysisResults = Invoke-ScriptAnalyzer -Path $ScriptPath -IncludeDefaultRules:$IncludeDefaultRules.IsPresent
     }
     else {
-        $analysisResults = Invoke-ScriptAnalyzer -Path $ScriptPath -CustomRulePath $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent -Debug
+        $analysisResults = Invoke-ScriptAnalyzer -Path $ScriptPath -CustomRulePath $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent
     }
     $errors = @()
     foreach($analysisResult in $analysisResults){

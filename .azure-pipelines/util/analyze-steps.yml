@@ -29,9 +29,7 @@ steps:
     packageType: sdk
     version: 6.0.x
 
-- pwsh: |
-    Install-Module "platyPS" -Force -Confirm:$false -Scope CurrentUser
-    Install-Module "PSScriptAnalyzer" -Force -Confirm:$false -Scope CurrentUser -RequiredVersion 1.21.0
+- pwsh: 'Install-Module "platyPS", "PSScriptAnalyzer" -Force -Confirm:$false -Scope CurrentUser'
   displayName: 'Install PowerShell Dependencies'
 
 - task: PowerShell@2
