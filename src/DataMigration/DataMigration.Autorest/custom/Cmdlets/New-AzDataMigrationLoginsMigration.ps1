@@ -88,47 +88,15 @@ function New-AzDataMigrationLoginsMigration
             }
             else
             {
-                #Remove old Login console app files
-                #Old console app download address
-                $ZipDestination = Join-Path -Path $DownloadsFolder -ChildPath "LoginsMigration.zip";
-
-                # Remove old zip file
-                if(Test-Path $ZipDestination)
-                {
-                    Remove-Item -Path $ZipDestination;
-                }
-
-                # Remove existing folder and contents
-                $ConsoleAppDestination = Join-Path -Path $DownloadsFolder -ChildPath "Logins.Console.csproj";
-                if(Test-Path $ConsoleAppDestination)
-                {
-                    Remove-Item -Path $ConsoleAppDestination -Recurse;
-                }
-
-                # Remove version file
-                $VersionFileDestination = Join-Path -Path $DownloadsFolder -ChildPath "loginconsoleappversion.json";
-                if(Test-Path $VersionFileDestination)
-                {
-                    Remove-Item -Path $VersionFileDestination;
-                }
+                #Delete old Login console app files
+                Delete-OldLoginConsoleApp $DownloadsFolder;
             }
 
             #Determine latest version of Login console app
             $PackageId = "Microsoft.SqlServer.Migration.LoginsConsoleApp"
+            $LatestNugetOrgDetails = Get-LatestConsoleAppVersionFromNugetOrg $PackageId
 
-            $AvailablePackagesOnNugetOrg = ""
-
-            try {
-                $AvailablePackagesOnNugetOrg = Find-Package -Source "https://api.nuget.org/v3/index.json" -Name $PackageId -AllowPrereleaseVersions -AllVersions
-                $AvailablePackagesOnNugetOrg = $AvailablePackagesOnNugetOrg | Sort-Object -Property Version -Descending
-            } catch {
-                Write-Host "Unable to connect to NuGet.org to check for updates."
-            }
-
-            $LatestNugetOrgName  = $AvailablePackagesOnNugetOrg[0].Name
-            $LatestNugetOrgVersion = $AvailablePackagesOnNugetOrg[0].Version
-            $LatestNugetOrgNameAndVersion = "$LatestNugetOrgName.$LatestNugetOrgVersion";
-
+            #Determine local version of Login console app
             $ConsoleAppFolders = Get-ChildItem -Path $DownloadsFolder -Filter "$PackageId.*"
             $LatestLocalNameAndVersion = ""
             if ($ConsoleAppFolders.Length -gt 0)
@@ -139,7 +107,7 @@ function New-AzDataMigrationLoginsMigration
 
                 if ($AvailablePackagesOnNugetOrg -eq "")
                 {
-                    $LatestNugetOrgNameAndVersion = $LatestLocalNameAndVersion
+                    $LatestNugetOrgDetails.NameAndVersion = $LatestLocalNameAndVersion
                 }
             }
             else
@@ -153,93 +121,12 @@ function New-AzDataMigrationLoginsMigration
                 }
             }
 
-            Write-Host "Latest Login migration console app nupkg version on Nuget.org: $LatestNugetOrgNameAndVersion";
-            $LatestNugetFolder = Join-Path -Path $DownloadsFolder -ChildPath $LatestNugetOrgNameAndVersion;
+            Write-Host "Latest Login migration console app nupkg version on Nuget.org: $($LatestNugetOrgDetails.NameAndVersion)";
+            $LatestNugetFolder = Join-Path -Path $DownloadsFolder -ChildPath $LatestNugetOrgDetails.NameAndVersion;
             $ExePath = "tools\Microsoft.SqlServer.Migration.Logins.ConsoleApp.exe";
 
-            #User consent for Login migration console app update. By default it is set to yes.
-            $userUpdateConsent = "yes";
-
-            # Prompt for user consent on Login migration console app update
-            if($LatestLocalNameAndVersion -ne "" -and $LatestNugetOrgNameAndVersion -gt $LatestLocalNameAndVersion)
-            {
-                Write-Host "Newer Login migration console app nupkg version is available in Nuget.org...";
-                while($true) {
-                    $userUpdateConsent = Read-Host -Prompt "Do you want to upgrade to the latest version? (yes/no)"
-
-                    if ($userUpdateConsent -eq "yes")
-                    {
-                        Write-Host "You chose to upgrade. Proceeding..."
-                        break;
-                    }
-                    elseif ($userUpdateConsent -eq "no")
-                    {
-                        Write-Host "You chose not to upgrade."
-                        $LatestNugetFolder = Join-Path -Path $DownloadsFolder -ChildPath $LatestLocalNameAndVersion;
-                        break;
-                    }
-                    else
-                    {
-                        Write-Host "Invalid input. Please enter 'yes' or 'no'."
-                    }
-                }
-            }
-
-            if ($LatestNugetOrgNameAndVersion -gt $LatestLocalNameAndVersion -and $userUpdateConsent -eq "yes")
-            {
-                #Update is available
-                $DownloadUrl = "https://www.nuget.org/api/v2/package/$PackageId/$LatestNugetOrgVersion"
-
-                #Checking if LatestNugetFolder Path is valid or not
-                if(-Not (Test-Path $LatestNugetFolder))
-                {
-                    $null = New-Item -Path $LatestNugetFolder -ItemType "directory";
-                }
-
-                Write-Host "Downloading the latest Login migration console app nupkg: $LatestNugetOrgNameAndVersion ..."
-                Invoke-WebRequest $DownloadUrl -OutFile "$LatestNugetFolder\\$LatestNugetOrgName.$LatestNugetOrgVersion.nupkg"
-
-                $ToolsPathExists = Test-Path -Path (Join-Path -Path $LatestNugetFolder -ChildPath "tools");
-
-                if ($ToolsPathExists -eq $False)
-                {
-                    $Nugets = Get-ChildItem -Path $LatestNugetFolder -Filter "$PackageId.*.nupkg";
-
-                    if ($Nugets.Length -gt 0)
-                    {
-                        Write-Host "Extracting the latest Login migration console app nupkg: $LatestNugetOrgNameAndVersion ..."
-                        $Nugets = $Nugets | Sort-Object -Property Name -Descending;
-                        $LatestNugetPath = $Nugets[0].FullName;
-                        Expand-Archive -Path $LatestNugetPath -DestinationPath $LatestNugetFolder;
-                    }
-                }
-
-                #Check if update was successful
-                $TestPathResult = Test-Path -Path "$LatestNugetFolder\$ExePath"
-
-                $NugetVersions = Get-ChildItem -Path $DownloadsFolder -Filter "$PackageId.*";
-                $NugetVersions = $NugetVersions | Sort-Object -Property Name -Descending
-
-                if($TestPathResult)
-                {
-                    Write-Host "Removing all older Login migration console apps..."
-                    #Remove all other NuGet versions except for the version just downloaded
-                    for ($NugetIndex = 0; $NugetIndex -lt $NugetVersions.Length; $NugetIndex = $NugetIndex + 1)
-                    {
-                        if($NugetVersions[$NugetIndex].Name -ne $LatestNugetOrgNameAndVersion)
-                        {
-                            Remove-Item -Path $NugetVersions[$NugetIndex].FullName -Recurse -Force
-                        }
-                    }
-                }
-                else
-                {
-                    if($NugetVersions.Length -gt 0)
-                    {
-                        $LatestNugetFolder = $NugetVersions[0].Name;
-                    }
-                }
-            }
+            # Check for the latest console app version and download it if needed.
+            CheckAndDownloadConsoleAppFromNugetOrg $LatestLocalNameAndVersion $LatestNugetOrgDetails $ExePath ([ref]$LatestNugetFolder)
 
             if(-Not (Test-Path -Path "$LatestNugetFolder\$ExePath"))
             {
