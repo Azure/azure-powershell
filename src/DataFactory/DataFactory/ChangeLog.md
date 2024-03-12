@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed headers property schema deserialize issue
 * Fixed vulnerability https://github.com/advisories/GHSA-98g6-xh36-x2p7
 
 ## Version 1.18.2
