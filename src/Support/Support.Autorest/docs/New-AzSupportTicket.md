@@ -19,12 +19,12 @@ The auxiliary token will be from the Cloud solution provider (CSP) partner tenan
 ## SYNTAX
 
 ```
-New-AzSupportTicket -Name <String> -ContactDetailCountry <String> -ContactDetailFirstName <String>
- -ContactDetailLastName <String> -ContactDetailPreferredContactMethod <String>
- -ContactDetailPreferredSupportLanguage <String> -ContactDetailPreferredTimeZone <String>
- -ContactDetailPrimaryEmailAddress <String> -Description <String> -ProblemClassificationId <String>
- -ServiceId <String> -Severity <String> -Title <String> [-SubscriptionId <String>]
- [-AdvancedDiagnosticConsent <String>] [-ContactDetailAdditionalEmailAddress <String[]>]
+New-AzSupportTicket -Name <String> -AdvancedDiagnosticConsent <String> -ContactDetailCountry <String>
+ -ContactDetailFirstName <String> -ContactDetailLastName <String>
+ -ContactDetailPreferredContactMethod <String> -ContactDetailPreferredSupportLanguage <String>
+ -ContactDetailPreferredTimeZone <String> -ContactDetailPrimaryEmailAddress <String> -Description <String>
+ -ProblemClassificationId <String> -ServiceId <String> -Severity <String> -Title <String>
+ [-SubscriptionId <String>] [-ContactDetailAdditionalEmailAddress <String[]>]
  [-ContactDetailPhoneNumber <String>] [-FileWorkspaceName <String>] [-ProblemScopingQuestion <String>]
  [-ProblemStartTime <DateTime>] [-QuotaTicketDetailQuotaChangeRequest <IQuotaChangeRequest[]>]
  [-QuotaTicketDetailQuotaChangeRequestSubType <String>] [-QuotaTicketDetailQuotaChangeRequestVersion <String>]
@@ -109,7 +109,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

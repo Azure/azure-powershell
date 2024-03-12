@@ -183,6 +183,11 @@ directive:
   - from: swagger-document
     where: $.definitions.SupportTicketDetails
     transform: $.required = ['properties']
+  # only needed for 2022 preview version, should be able to remove for GA
+  - from: swagger-document
+    where: $.definitions.SupportTicketDetailsProperties
+    transform: $.required = ['serviceId','title','description','problemClassificationId','severity','contactDetails', 'advancedDiagnosticConsent']
+    
   - from: swagger-document 
     where: $.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts"].get.operationId
     transform: >-
