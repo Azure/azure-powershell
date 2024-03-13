@@ -1,4 +1,4 @@
- ---
+---
 external help file:
 Module Name: Az.EventHub
 online version: https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhub
