@@ -1,4 +1,4 @@
----
+ ---
 external help file:
 Module Name: Az.EventHub
 online version: https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhub
@@ -512,6 +512,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEventhub
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 
