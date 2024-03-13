@@ -138,6 +138,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAccessToken
 
+### Microsoft.Azure.Commands.Profile.Models.PSSecureAccessToken
+
 ## NOTES
 
 ## RELATED LINKS

@@ -29,7 +29,7 @@ using System.Text.Json;
 namespace Microsoft.Azure.Commands.Profile
 {
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "AccessToken", DefaultParameterSetName = KnownResourceNameParameterSet)]
-    [OutputType(typeof(PSAccessToken), typeof(SecureString))]
+    [OutputType(typeof(PSAccessToken), typeof(PSSecureAccessToken))]
     public class GetAzureRmAccessTokenCommand : AzureRMCmdlet
     {
         private const string ResourceUrlParameterSet = "ResourceUrl";
