@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ServiceBus service.
 
 ---
-## Status
-[![Az.ServiceBus](https://img.shields.io/powershellgallery/v/Az.ServiceBus.svg?style=flat-square&label=Az.ServiceBus "Az.ServiceBus")](https://www.powershellgallery.com/packages/Az.ServiceBus/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
