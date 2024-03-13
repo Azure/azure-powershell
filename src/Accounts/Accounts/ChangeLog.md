@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Add `AsSecureString` to `Get-AzAccessToken` to convert the returned token to SecureString [#24190].
+* Added `AsSecureString` to `Get-AzAccessToken` to convert the returned token to SecureString [#24190].
 * Upgraded Azure.Core to 1.37.0.
 
 ## Version 2.16.0
