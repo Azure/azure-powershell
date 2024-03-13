@@ -175,7 +175,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Alias("AutoOSUpgrade")]
         [Parameter(
-            Mandatory = false)]
+            Mandatory = false,
+            HelpMessage = "Whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available.")]
         public SwitchParameter EnableAutomaticOSUpgrade { get; set; }
 
         [Parameter(
