@@ -173,9 +173,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string AutomaticRepairGracePeriod { get; set; }
 
+        [Alias("AutoOSUpgrade")]
         [Parameter(
             Mandatory = false)]
-        public SwitchParameter AutoOSUpgrade { get; set; }
+        public SwitchParameter EnableAutomaticOSUpgrade { get; set; }
 
         [Parameter(
             Mandatory = false)]
@@ -469,7 +470,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vUpgradePolicy.RollingUpgradePolicy = this.RollingUpgradePolicy;
             }
             
-            if (this.AutoOSUpgrade.IsPresent)
+            if (this.EnableAutomaticOSUpgrade.IsPresent)
             {
                 if (vUpgradePolicy == null)
                 {
@@ -479,7 +480,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vUpgradePolicy.AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy();
                 }
-                vUpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.AutoOSUpgrade.IsPresent;
+                vUpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = this.EnableAutomaticOSUpgrade.IsPresent;
             }
 
             if (this.EnableAutomaticRepair.IsPresent)
