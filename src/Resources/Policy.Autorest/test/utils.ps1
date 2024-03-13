@@ -219,7 +219,7 @@ function Remove-ResourceGroup
             $tries = 0
             $result = Get-ResourceGroup -Name $n
             if ($result -and ($result.ProvisioningState -ne 'Deleting')) {
-                throw 'Delete operation for resource group $n failed to start'
+                throw "Delete operation for resource group [$n] failed to start (provisioningState is [$result.ProvisioningState]"
             }
 
             while ($result -and ($result.ProvisioningState -eq 'Deleting') -and (++$tries -le 500)) {
@@ -228,7 +228,7 @@ function Remove-ResourceGroup
             }
 
             if ($result) {
-                throw 'Delete operation for resource group $n failed to complete within 500 seconds'
+                throw "Delete operation for resource group [$n] failed to complete within 500 seconds"
             }
 
             Write-Output ($null -eq $result)
