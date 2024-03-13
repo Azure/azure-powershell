@@ -330,8 +330,8 @@ directive:
 # For some reason these can't be hidden by hiding them in
 # the custom folder so we have to do it here.
   - where:
-      verb: New
-      subject: PolicyAssignment
+      verb: New|Update
+      subject: PolicyAssignment|PolicyExemption
       parameter-name: PolicyDefinitionId|ResourceSelector|Override
     hide: true
   - where:
@@ -341,18 +341,22 @@ directive:
     hide: true
   - where:
       verb: New|Update
-      subject: PolicyExemption
-      parameter-name: ResourceSelector
+      subject: PolicyDefinition|PolicySetDefinition
+      parameter-name: Version|PropertiesVersions
+    hide: true
+  - where:
+      verb: Get
+      parameter-name: Top
     hide: true
 
-  # Hide cmdlets that are customized or not supported at all
+  # Remove or hide cmdlets that are customized or not supported at all
   - where:
       verb: Get|Remove|Update
     hide: true
   - where:
       verb: New|Remove|Update
       subject: PolicyDefinitionVersion|PolicySetDefinitionVersion
-    hide: true
+    remove: true
 
 metadata:
   scriptsToProcess:

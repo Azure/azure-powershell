@@ -45,11 +45,6 @@ Get-AzPolicyAssignment -PolicyDefinitionId <String> [-Scope <String>] [-Backward
 Get-AzPolicyAssignment -Scope <String> [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Top
-```
-Get-AzPolicyAssignment [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **Get-AzPolicyAssignment** cmdlet gets all policy assignments or particular assignments.
 Identify a policy assignment to get by name and scope or by ID.
