@@ -38,14 +38,14 @@ jobs:
     displayName: 'Install PowerShellGet [v2.1.3 has a Publish-Module bug]'
 
   - task: DotNetCoreCLI@2
-    displayName: Build
+    displayName: Build For Target Module
     condition: ne('${{ parameters.TargetModule }}', 'none') 
     inputs:
       command: custom
       custom: msbuild
       arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true;TargetModule=${{ parameters.TargetModule }}"'
   - task: DotNetCoreCLI@2
-    displayName: Build
+    displayName: Build For Modified Modules
     condition: eq('${{ parameters.TargetModule }}', 'none') 
     inputs:
       command: custom
