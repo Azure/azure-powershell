@@ -12,12 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Text.Json;
-
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Models;
@@ -26,10 +20,16 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.PowerShell.Authenticators;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
+using System;
+using System.Linq;
+using System.Management.Automation;
+using System.Security;
+using System.Text.Json;
+
 namespace Microsoft.Azure.Commands.Profile
 {
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "AccessToken", DefaultParameterSetName = KnownResourceNameParameterSet)]
-    [OutputType(typeof(PSAccessToken))]
+    [OutputType(typeof(PSAccessToken), typeof(SecureString))]
     public class GetAzureRmAccessTokenCommand : AzureRMCmdlet
     {
         private const string ResourceUrlParameterSet = "ResourceUrl";
@@ -68,6 +68,9 @@ namespace Microsoft.Azure.Commands.Profile
         //TODO: Should not specify TenantId for MSI, CloudShell(?)
         [Parameter(Mandatory = false, HelpMessage = "Optional Tenant Id. Use tenant id of default context if not specified.")]
         public string TenantId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Specifiy to convert output token as a secure string.")]
+        public SwitchParameter AsSecureString { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -134,7 +137,14 @@ namespace Microsoft.Azure.Commands.Profile
                 }
             }
 
-            WriteObject(result);
+            if (AsSecureString.IsPresent)
+            {
+                WriteObject(new PSSecureAccessToken(result));
+            }
+            else
+            {
+                WriteObject(result);
+            }
         }
     }
 }
