@@ -49,7 +49,7 @@ In this directory, run AutoRest:
 ### General settings
 > Values
 ``` yaml
-branch: f09aacf4c6b63be416212cb182f6b31e8bc6d545
+branch: a434a5a7ee851abc96218443e66a5ebb57911fee
 require:
   - $(this-folder)/../readme.azure.noprofile.md
   - $(repo)/specification/hdinsight/resource-manager/Microsoft.HDInsight/HDInsightOnAks/readme.md
@@ -61,7 +61,7 @@ inlining-threshold: 100
 
 > Names
 ``` yaml
-module-version: 0.1.0
+module-version: 0.2.0
 title: HdInsightOnAks
 subject-prefix: "$(service-name)"
 ```
