@@ -30,6 +30,7 @@ function New-AzServiceBusIPRuleConfig{
 		[Parameter(HelpMessage = "The IP Filter Action")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.NetworkRuleIPAction]
 		# The IP Filter Action
+		[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("Action","12.0.0", "7.0.0","2024-05-21" )]
         ${Action}
 	)
 
