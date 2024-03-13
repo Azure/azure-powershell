@@ -67,6 +67,7 @@ function Set-AzEventHubNetworkRuleSet{
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.DefaultAction]
         #Default Action for Network Rule Set
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("DefaultAction","12.0.0", "7.0.0","2024-05-21" )]
         ${DefaultAction},
 
         [Parameter(HelpMessage = "List of IpRules")]
