@@ -75,6 +75,7 @@ function Set-AzEventHubNamespace{
         [Parameter(HelpMessage = "Type of managed service identity.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("IdentityType","12.0.0", "4.0.1","2024-05-21" )]
         ${IdentityType},
 
         [Parameter(HelpMessage = "Properties for User Assigned Identities")]
