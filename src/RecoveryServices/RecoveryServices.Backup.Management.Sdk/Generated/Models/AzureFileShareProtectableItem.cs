@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="protectionState">State of the back up item.
-        /// Possible values include: 'Invalid', 'NotProtected', 'Protecting',
-        /// 'Protected', 'ProtectionFailed'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;NotProtected&#39;, &#39;Protecting&#39;,
+        /// &#39;Protected&#39;, &#39;ProtectionFailed&#39;</param>
 
         /// <param name="parentContainerFabricId">Full Fabric ID of container to which this protectable item belongs. For
         /// example, ARM ID.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="azureFileShareType">File Share type XSync or XSMB.
-        /// Possible values include: 'Invalid', 'XSMB', 'XSync'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;XSMB&#39;, &#39;XSync&#39;</param>
         public AzureFileShareProtectableItem(string backupManagementType = default(string), string workloadType = default(string), string friendlyName = default(string), string protectionState = default(string), string parentContainerFabricId = default(string), string parentContainerFriendlyName = default(string), string azureFileShareType = default(string))
 
         : base(backupManagementType, workloadType, friendlyName, protectionState)

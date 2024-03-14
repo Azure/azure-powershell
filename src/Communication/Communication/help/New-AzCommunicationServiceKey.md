@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Communication-help.xml
 Module Name: Az.Communication
 online version: https://learn.microsoft.com/powershell/module/az.communication/new-azcommunicationservicekey
 schema: 2.0.0
@@ -16,27 +16,27 @@ PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 ### RegenerateExpanded (Default)
 ```
 New-AzCommunicationServiceKey -CommunicationServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-KeyType <KeyType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-KeyType <KeyType>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Regenerate
 ```
 New-AzCommunicationServiceKey -CommunicationServiceName <String> -ResourceGroupName <String>
- -Parameter <IRegenerateKeyParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### RegenerateViaIdentity
-```
-New-AzCommunicationServiceKey -InputObject <ICommunicationIdentity> -Parameter <IRegenerateKeyParameters>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -Parameter <IRegenerateKeyParameters> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RegenerateViaIdentityExpanded
 ```
 New-AzCommunicationServiceKey -InputObject <ICommunicationIdentity> [-KeyType <KeyType>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RegenerateViaIdentity
+```
+New-AzCommunicationServiceKey -InputObject <ICommunicationIdentity> -Parameter <IRegenerateKeyParameters>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +78,7 @@ The name of the CommunicationService resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Regenerate, RegenerateExpanded
+Parameter Sets: RegenerateExpanded, Regenerate
 Aliases:
 
 Required: True
@@ -109,7 +109,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
-Parameter Sets: RegenerateViaIdentity, RegenerateViaIdentityExpanded
+Parameter Sets: RegenerateViaIdentityExpanded, RegenerateViaIdentity
 Aliases:
 
 Required: True
@@ -151,13 +151,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Regenerate, RegenerateExpanded
+Parameter Sets: RegenerateExpanded, Regenerate
 Aliases:
 
 Required: True
@@ -172,7 +187,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Regenerate, RegenerateExpanded
+Parameter Sets: RegenerateExpanded, Regenerate
 Aliases:
 
 Required: False
@@ -245,4 +260,3 @@ PARAMETER `<IRegenerateKeyParameters>`: Parameters describes the request to rege
   - `[KeyType <KeyType?>]`: The keyType to regenerate. Must be either 'primary' or 'secondary'(case-insensitive).
 
 ## RELATED LINKS
-

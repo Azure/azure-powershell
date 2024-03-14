@@ -13,7 +13,7 @@ Saves the current authentication information for use in other PowerShell session
 ## SYNTAX
 
 ```
-Save-AzContext [[-Profile] <AzureRmProfile>] [-Path] <String> [-Force]
+Save-AzContext [[-Profile] <AzureRmProfile>] [-Path] <String> [-Force] [-WithCredential]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -97,6 +97,21 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -WithCredential
+Export the credentials to the file
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

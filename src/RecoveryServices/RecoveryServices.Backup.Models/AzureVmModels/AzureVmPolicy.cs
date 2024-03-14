@@ -53,6 +53,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public TieringPolicy TieringPolicy { get; set; }
 
+        /// <summary>
+        ///  Gets or sets SnapshotConsistencyType. Possible values include: OnlyCrashConsistent.
+        /// </summary>
+        public string SnapshotConsistencyType { get; set; }
+
     }
 
     /// <summary>

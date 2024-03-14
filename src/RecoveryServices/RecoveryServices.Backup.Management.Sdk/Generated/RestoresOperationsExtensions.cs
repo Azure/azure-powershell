@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class RestoresOperationsExtensions
     {
         /// <summary>
-        /// Restores the specified backed up data. This is an asynchronous operation. To know the status of this API call, use
+        /// Restores the specified backed up data. This is an asynchronous operation.
+        /// To know the status of this API call, use
         /// GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
@@ -23,7 +24,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up items.
@@ -43,7 +45,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Restores the specified backed up data. This is an asynchronous operation. To know the status of this API call, use
+        /// Restores the specified backed up data. This is an asynchronous operation.
+        /// To know the status of this API call, use
         /// GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
@@ -53,7 +56,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up items.
@@ -75,7 +79,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             (await operations.TriggerWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, recoveryPointId, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Restores the specified backed up data. This is an asynchronous operation. To know the status of this API call, use
+        /// Restores the specified backed up data. This is an asynchronous operation.
+        /// To know the status of this API call, use
         /// GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
@@ -85,7 +90,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up items.
@@ -105,7 +111,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Restores the specified backed up data. This is an asynchronous operation. To know the status of this API call, use
+        /// Restores the specified backed up data. This is an asynchronous operation.
+        /// To know the status of this API call, use
         /// GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
@@ -115,7 +122,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up items.

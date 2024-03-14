@@ -25,6 +25,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Support;
 using Microsoft.Azure.Management.Support.Models;
 using Microsoft.Rest.Azure.OData;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,15 @@ using static Microsoft.Azure.Commands.Support.Helpers.ResourceIdentifierHelper;
 
 namespace Microsoft.Azure.Commands.Support.SupportTickets
 {
+    [GenericBreakingChangeWithVersion("New parameter 'ServiceId' will be required", "12.0.0", "2.0.0")]
+    [GenericBreakingChangeWithVersion("New parameter 'AdvancedDiagnosticConsent' will be required", "12.0.0", "2.0.0")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSSupportTicket), "12.0.0", "2.0.0", ChangeDescription = "The child output property ContactDetail will be deprecated. Use properties ContactDetailAdditionalEmailAddress," +
+        "ContactDetailCountry, ContactDetailFirstName, ContactDetailLastName, ContactDetailPhoneNumber, ContactDetailPreferredContactMethod, ContactDetailPreferredSupportLanguage, ContactDetailPreferredTimeZone, " +
+        "and ContactDetailPrimaryEmailAddress instead")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSSupportTicket), "12.0.0", "2.0.0", ChangeDescription = "The child output property SupportEngineer will be deprecated. Use property SupportEngineerEmailAddress instead")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSSupportTicket), "12.0.0", "2.0.0", ChangeDescription = "The child output property QuotaTicketDetail will be deprecated. Use properties QuotaTicketDetailQuotaChangeRequest," +
+        "QuotaTicketDetailQuotaChangeRequestSubType, QuotaTicketDetailQuotaChangeRequestVersion instead")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSSupportTicket), "12.0.0", "2.0.0", ChangeDescription = "The output property TechnicalTicketResourceId will be changed to TechnicalTicketDetailResourceId")]
     [Cmdlet(VerbsCommon.New, AzureRMConstants.AzureRMPrefix + "SupportTicket", DefaultParameterSetName = CreateSupportTicketWithContactDetailParameterSet, SupportsShouldProcess = true),
        OutputType(typeof(PSSupportTicket))]
     public class NewAzSupportTicket : AzSupportCmdletBase
@@ -66,47 +76,56 @@ namespace Microsoft.Azure.Commands.Support.SupportTickets
         [Parameter(Mandatory = true, HelpMessage = "Severity of the support ticket. This indicates the urgency of the case, which in turn determines the response time according to the service level agreement of the technical support plan you have with Azure.")]
         public Severity Severity { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("CustomerContactDetail", "12.0.0", "2.0.0", ChangeDescription = "CustomerContactDetail will be removed. Use new parameters ContactDetailCountry, ContactDetailFirstName, ContactDetailLastName," +
+            "ContactDetailPhoneNumber, ContactDetailPreferredSupportLanguage, ContactDetailPreferredTimeZone, ContactDetailPrimaryEmailAddress, ContactDetailPreferredContactMethod instead.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateSupportTicketWithContactObjectParameterSet, HelpMessage = "Customer contact details associated with SupportTicket resource.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateTechnicalSupportTicketWithContactObjectParameterSet, HelpMessage = "Customer contact details associated with SupportTicket resource.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateQuotaSupportTicketWithContactObjectParameterSet, HelpMessage = "Customer contact details associated with SupportTicket resource.")]
         [ValidateNotNull]
         public PSContactProfile CustomerContactDetail { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("CustomerFirstName", "12.0.0", "2.0.0", ChangeDescription = "Parameter 'CustomerFirstName' will be renamed to 'ContactDetailFirstName'")]
         [Parameter(Mandatory = true, ParameterSetName = CreateSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer first name.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateTechnicalSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer first name.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateQuotaSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer first name.")]
         [ValidateNotNullOrEmpty]
         public string CustomerFirstName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("CustomerLastName", "12.0.0", "2.0.0", ChangeDescription = "Parameter 'CustomerLastName' will be renamed to 'ContactDetailLastName'")]
         [Parameter(Mandatory = true, ParameterSetName = CreateSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer last name.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateTechnicalSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer last name.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateQuotaSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer last name.")]
         [ValidateNotNullOrEmpty]
         public string CustomerLastName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("PreferredContactMethdod", "12.0.0", "2.0.0", ChangeDescription = "Parameter 'PreferredContactMethod' will be renamed to 'ContactDetailPreferredContactMethod'")]
         [Parameter(Mandatory = true, ParameterSetName = CreateSupportTicketWithContactDetailParameterSet, HelpMessage = "Preferred contact method.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateTechnicalSupportTicketWithContactDetailParameterSet, HelpMessage = "Preferred contact method.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateQuotaSupportTicketWithContactDetailParameterSet, HelpMessage = "Preferred contact method.")]
         public ContactMethod PreferredContactMethod { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("CustomerPrimaryEmailAddress", "12.0.0", "2.0.0", ChangeDescription = "Parameter 'CustomerPrimaryEmailAddress' will be renamed to 'ContactDetailPrimaryEmailAddress'")]
         [Parameter(Mandatory = true, ParameterSetName = CreateSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer primary email address.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateTechnicalSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer primary email address.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateQuotaSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer primary email address.")]
         [ValidateNotNullOrEmpty]
         public string CustomerPrimaryEmailAddress { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("AdditionalEmailAddress", "12.0.0", "2.0.0", ChangeDescription = "Parameter 'AdditionalEmailAddress' will be renamed to 'ContactDetailAdditionalEmailAddress'")]
         [Parameter(Mandatory = false, ParameterSetName = CreateSupportTicketWithContactDetailParameterSet, HelpMessage = "Additional email addresses. Email addresses listed here will be copied on any correspondence about the support ticket.")]
         [Parameter(Mandatory = false, ParameterSetName = CreateTechnicalSupportTicketWithContactDetailParameterSet, HelpMessage = "Additional email addresses. Email addresses listed here will be copied on any correspondence about the support ticket.")]
         [Parameter(Mandatory = false, ParameterSetName = CreateQuotaSupportTicketWithContactDetailParameterSet, HelpMessage = "Additional email addresses. Email addresses listed here will be copied on any correspondence about the support ticket.")]
         [ValidateNotNull]
         public string[] AdditionalEmailAddress { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("CustomerPhoneNumber", "12.0.0", "2.0.0", ChangeDescription = "Parameter 'CustomerPhoneNumber' will be renamed to 'ContactDetailPhoneNumber'")]
         [Parameter(Mandatory = false, ParameterSetName = CreateSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer phone number. This is required if preferred contact method is phone.")]
         [Parameter(Mandatory = false, ParameterSetName = CreateTechnicalSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer phone number. This is required if preferred contact method is phone.")]
         [Parameter(Mandatory = false, ParameterSetName = CreateQuotaSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer phone number. This is required if preferred contact method is phone.")]
         [ValidateNotNullOrEmpty]
         public string CustomerPhoneNumber { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("CustomerPreferredTimeZone", "12.0.0", "2.0.0", ChangeDescription = "Parameter 'CustomerPreferredTimeZone' will be renamed to 'ContactDetailPreferredTimeZone'")]
         [Parameter(Mandatory = true, ParameterSetName = CreateSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer preferred time zone. This must be a valid System.TimeZoneInfo.Id value.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateTechnicalSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer preferred time zone. This must be a valid System.TimeZoneInfo.Id value.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateQuotaSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer preferred time zone. This must be a valid System.TimeZoneInfo.Id value.")]
@@ -114,12 +133,14 @@ namespace Microsoft.Azure.Commands.Support.SupportTickets
         [ValidateNotNullOrEmpty]
         public string CustomerPreferredTimeZone { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("CustomerCountry", "12.0.0", "2.0.0", ChangeDescription = "Parameter 'CustomerCountry' will be renamed to 'ContactDetailCountry'")]
         [Parameter(Mandatory = true, ParameterSetName = CreateSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer country. This must be a valid ISO Alpha-3 country code (ISO 3166).")]
         [Parameter(Mandatory = true, ParameterSetName = CreateTechnicalSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer country. This must be a valid ISO Alpha-3 country code (ISO 3166).")]
         [Parameter(Mandatory = true, ParameterSetName = CreateQuotaSupportTicketWithContactDetailParameterSet, HelpMessage = "Customer country. This must be a valid ISO Alpha-3 country code (ISO 3166).")]
         [ValidateNotNullOrEmpty]
         public string CustomerCountry { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("CustomerPreferredSupportLanguage", "12.0.0", "2.0.0", ChangeDescription = "Parameter 'CustomerPreferredSupportLanguage' will be renamed to 'ContactDetailPreferredSupportLanguage'")]
         [Parameter(Mandatory = true, ParameterSetName = CreateSupportTicketWithContactDetailParameterSet, HelpMessage = "Peferred language of the custom. This must be a valid language-contry code for one of the supported languages listed here https://azure.microsoft.com/en-us/support/faq/.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateTechnicalSupportTicketWithContactDetailParameterSet, HelpMessage = "Peferred language of the contact. This must be a valid language-contry code for one of the supported languages listed here https://azure.microsoft.com/en-us/support/faq/.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateQuotaSupportTicketWithContactDetailParameterSet, HelpMessage = "Peferred language of the contact. This must be a valid language-contry code for one of the supported languages listed here https://azure.microsoft.com/en-us/support/faq/.")]
@@ -130,16 +151,20 @@ namespace Microsoft.Azure.Commands.Support.SupportTickets
         [Parameter(Mandatory = false, HelpMessage = "Date and time when the problem started.")]
         public DateTime ProblemStartTime { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("TechnicalTicketResourceId", "12.0.0", "2.0.0", ChangeDescription = "Parameter 'TechnicalTicketResourceId' will be renamed to 'TechnicalTicketDetailResourceId'")]
         [Parameter(Mandatory = true, ParameterSetName = CreateTechnicalSupportTicketWithContactDetailParameterSet, HelpMessage = "This is the resource id of the Azure service resource (For example: A virtual machine resource or an HDInsight resource) for which the support ticket is created.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateTechnicalSupportTicketWithContactObjectParameterSet, HelpMessage = "This is the resource id of the Azure service resource (For example: A virtual machine resource or an HDInsight resource) for which the support ticket is created.")]
         [ValidateNotNullOrEmpty]
         public string TechnicalTicketResourceId { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("QuotaTicketDetail", "12.0.0", "2.0.0", ChangeDescription = "Parameter QuotaTicketDetail will be removed. Use new parameters QuotaTicketDetailQuotaChangeRequest, " +
+            "QuotaTicketDetailQuotaChangeRequestSubType, QuotaTicketDetailQuotaChangeRequestVersion instead.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateQuotaSupportTicketWithContactDetailParameterSet, HelpMessage = "Additional details for a Quota support ticket.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateQuotaSupportTicketWithContactObjectParameterSet, HelpMessage = "Additional details for a Quota support ticket.")]
         [ValidateNotNull]
         public PSQuotaTicketDetail QuotaTicketDetail { get; set; }        
 
+        [CmdletParameterBreakingChangeWithVersion("CSPHomeTenantId", "12.0.0", "2.0.0", ChangeDescription = "Parameter 'CSPHomeTenantId' will be removed.")]
         [Parameter(Mandatory = false, HelpMessage = "This is the home tenant id of the Cloud Solution Provider user trying to create a support ticket for their customer.")]
         public string CSPHomeTenantId { get; set; }
 

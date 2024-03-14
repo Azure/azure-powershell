@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
-        public WebActivityTypeProperties(string method, object url, System.Collections.Generic.IDictionary<string, string> headers = default(System.Collections.Generic.IDictionary<string, string>), object body = default(object), WebActivityAuthentication authentication = default(WebActivityAuthentication), bool? disableCertValidation = default(bool?), object httpRequestTimeout = default(object), bool? turnOffAsync = default(bool?), System.Collections.Generic.IList<DatasetReference> datasets = default(System.Collections.Generic.IList<DatasetReference>), System.Collections.Generic.IList<LinkedServiceReference> linkedServices = default(System.Collections.Generic.IList<LinkedServiceReference>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference))
+        public WebActivityTypeProperties(string method, object url, System.Collections.Generic.IDictionary<string, object> headers = default(System.Collections.Generic.IDictionary<string, object>), object body = default(object), WebActivityAuthentication authentication = default(WebActivityAuthentication), bool? disableCertValidation = default(bool?), object httpRequestTimeout = default(object), bool? turnOffAsync = default(bool?), System.Collections.Generic.IList<DatasetReference> datasets = default(System.Collections.Generic.IList<DatasetReference>), System.Collections.Generic.IList<LinkedServiceReference> linkedServices = default(System.Collections.Generic.IList<LinkedServiceReference>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference))
 
         {
             this.Method = method;
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// string (or Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "headers")]
-        public System.Collections.Generic.IDictionary<string, string> Headers {get; set; }
+        public System.Collections.Generic.IDictionary<string, object> Headers {get; set; }
 
         /// <summary>
         /// Gets or sets represents the payload that will be sent to the endpoint.
