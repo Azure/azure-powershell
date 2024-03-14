@@ -51,6 +51,9 @@ using Microsoft.Azure.Commands.Common.Authentication.Sanitizer;
 using System.Management.Automation.Host;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -331,6 +334,7 @@ namespace Microsoft.Azure.Commands.Profile
             Guid subscriptionIdGuid;
             string subscriptionName = null;
             string subscriptionId = null;
+            bool isInteractiveAuthentication = IsInteractiveAuthentication();
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
             {
                 if (Guid.TryParse(Subscription, out subscriptionIdGuid))
@@ -358,6 +362,21 @@ namespace Microsoft.Azure.Commands.Profile
                     {
                         subscriptionName = subscriptionFromConfig;
                     }
+                }
+            }
+            
+            if(isInteractiveAuthentication && string.IsNullOrEmpty(subscriptionId) && string.IsNullOrEmpty(subscriptionName))
+            {
+                try
+                {
+                    using (var profile = GetDefaultProfile())
+                    {
+                        subscriptionId = profile?.DefaultContext?.Subscription?.Id;
+                    }
+                }
+                catch
+                {
+                    // do nothing
                 }
             }
 
@@ -530,11 +549,6 @@ namespace Microsoft.Azure.Commands.Profile
                     profileClient.InformationLog = (message) => _tasks.Enqueue(new Task(() => this.WriteInformation(message, false)));
                     profileClient.DebugLog = (message) => _tasks.Enqueue(new Task(() => this.WriteDebugWithTimestamp(message)));
 
-                    if (this.IsInteractiveAuthentication())
-                    {
-                        WriteInformation($"{Foreground.BrightYellow}{Resources.PleaseSelectAccount}{PSStyle.Reset}{System.Environment.NewLine}");
-                    }
-                    
                     var task = new Task<AzureRmProfile>(() => profileClient.Login(
                         azureAccount,
                         _environment,
@@ -549,7 +563,8 @@ namespace Microsoft.Azure.Commands.Profile
                         shouldPopulateContextList,
                         MaxContextPopulation,
                         resourceId,
-                        Prompt));
+                        Prompt,
+                        isInteractiveAuthentication));
                     task.Start();
                     while (!task.IsCompleted)
                     {
