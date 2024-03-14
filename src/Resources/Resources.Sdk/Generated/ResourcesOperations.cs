@@ -745,7 +745,7 @@ namespace Microsoft.Azure.Management.Resources
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<bool>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-            _result.Body = (_statusCode == System.Net.HttpStatusCode.OK);
+            _result.Body = (_statusCode == System.Net.HttpStatusCode.NoContent);
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -1303,7 +1303,7 @@ namespace Microsoft.Azure.Management.Resources
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<bool>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-            _result.Body = (_statusCode == System.Net.HttpStatusCode.OK);
+            _result.Body = (_statusCode == System.Net.HttpStatusCode.NoContent);
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
