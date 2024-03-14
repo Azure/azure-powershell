@@ -1,0 +1,127 @@
+{
+  "Update-AzAcatWebhook+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook?api-version=2023-02-15-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook?api-version=2023-02-15-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"sendAllEvents\": \"true\",\r\n    \"events\": [ ],\r\n    \"payloadUrl\": \"https://a.b.com\",\r\n    \"contentType\": \"application/json\",\r\n    \"updateWebhookKey\": \"false\",\r\n    \"enableSslVerification\": \"true\"\r\n  }\r\n}",
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "253" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1191" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:7ecf4129-cb5b-4aab-a086-b332c76641c8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "f0086205-d41b-429b-89ac-09ff5ac3068e" ],
+        "x-ms-request-id": [ "379b5198-665a-4ef4-a5cc-98511d55db0e" ],
+        "X-ms-Operation-Id": [ "a16e2c8adcf7f3f26d04ab383f11d319" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-Azure-Ref": [ "0mPgGZAAAAABDeN9W6gp6SaouOoTI0sCcQk9NMDJFREdFMDkxMwAwYjg5MzVkOC1iNjY0LTQxNjUtYTkwZi1jM2NiYWJkZTdkYmI=" ],
+        "x-ms-correlation-request-id": [ "ad25293a-0117-48d8-9abe-ef32c3793854" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T084056Z:ad25293a-0117-48d8-9abe-ef32c3793854" ],
+        "Date": [ "Tue, 07 Mar 2023 08:40:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "760" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook\",\"name\":\"test-webhook\",\"type\":\"Microsoft.AppComplianceAutomation/reports/webhooks\",\"systemData\":{\"createdBy\":\"\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-07T05:46:59.0731545Z\",\"lastModifiedBy\":\"\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-03-07T08:40:56.6Z\"},\"properties\":{\"webhookId\":\"3636ee53-7fe7-4a2b-85da-5f0b4c420175\",\"webhookName\":\"test-webhook\",\"status\":\"Enabled\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"sendAllEvents\":\"true\",\"events\":[],\"payloadUrl\":\"https://a.b.com\",\"contentType\":\"application/json\",\"webhookKeyEnabled\":\"true\",\"enableSslVerification\":\"true\",\"deliveryStatus\":\"Failed\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Update-AzAcatWebhook+[NoContext]+Update+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook?api-version=2023-02-15-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "68" ],
+        "x-ms-client-request-id": [ "764c9d31-48cb-4b5d-aa7a-732d9895b7d8" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Get-AzAppComplianceAutomationWebhook" ],
+        "FullCommandName": [ "Get-AzAppComplianceAutomationWebhook_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11949" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:7ecf4129-cb5b-4aab-a086-b332c76641c8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "0dd8a217-0f58-4b6f-af8e-f673afe6975b" ],
+        "x-ms-request-id": [ "759153fd-ff21-4918-acbc-01817b1916de" ],
+        "X-ms-Operation-Id": [ "ec735f2233e3c5f1935edefcd09194cd" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-Azure-Ref": [ "0mfgGZAAAAAAd9lucXtuJTYoC5uAOchdbQk9NMDJFREdFMDkxMwAwYjg5MzVkOC1iNjY0LTQxNjUtYTkwZi1jM2NiYWJkZTdkYmI=" ],
+        "x-ms-correlation-request-id": [ "b3b308b1-664a-4eef-819e-4239db9444ed" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T084057Z:b3b308b1-664a-4eef-819e-4239db9444ed" ],
+        "Date": [ "Tue, 07 Mar 2023 08:40:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "760" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook\",\"name\":\"test-webhook\",\"type\":\"Microsoft.AppComplianceAutomation/reports/webhooks\",\"systemData\":{\"createdBy\":\"\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-07T05:46:59.0731545Z\",\"lastModifiedBy\":\"\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-03-07T08:40:56.6Z\"},\"properties\":{\"webhookId\":\"3636ee53-7fe7-4a2b-85da-5f0b4c420175\",\"webhookName\":\"test-webhook\",\"status\":\"Enabled\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"sendAllEvents\":\"true\",\"events\":[],\"payloadUrl\":\"https://a.b.com\",\"contentType\":\"application/json\",\"webhookKeyEnabled\":\"true\",\"enableSslVerification\":\"true\",\"deliveryStatus\":\"Failed\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Update-AzAcatWebhook+[NoContext]+Update+$PATCH+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook?api-version=2023-02-15-preview+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook?api-version=2023-02-15-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"sendAllEvents\": \"true\",\r\n    \"events\": [ ],\r\n    \"payloadUrl\": \"https://a.b.com\",\r\n    \"contentType\": \"application/json\",\r\n    \"enableSslVerification\": \"true\"\r\n  }\r\n}",
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "219" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1190" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:7ecf4129-cb5b-4aab-a086-b332c76641c8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "1834eeb0-aefe-4b36-860e-785de524ea45" ],
+        "x-ms-request-id": [ "7f9266ce-7961-47af-bbd6-eca263d48ed6" ],
+        "X-ms-Operation-Id": [ "9555dbdd42fbb9bdb91e518adb38c950" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-Azure-Ref": [ "0mfgGZAAAAAAKEIzsOeceQ6Km/uNuLxY2Qk9NMDJFREdFMDkxMwAwYjg5MzVkOC1iNjY0LTQxNjUtYTkwZi1jM2NiYWJkZTdkYmI=" ],
+        "x-ms-correlation-request-id": [ "f1f5205f-f58f-4cab-adcb-f230bc0fe847" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T084058Z:f1f5205f-f58f-4cab-adcb-f230bc0fe847" ],
+        "Date": [ "Tue, 07 Mar 2023 08:40:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "761" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook\",\"name\":\"test-webhook\",\"type\":\"Microsoft.AppComplianceAutomation/reports/webhooks\",\"systemData\":{\"createdBy\":\"\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-07T05:46:59.0731545Z\",\"lastModifiedBy\":\"\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-03-07T08:40:58.08Z\"},\"properties\":{\"webhookId\":\"3636ee53-7fe7-4a2b-85da-5f0b4c420175\",\"webhookName\":\"test-webhook\",\"status\":\"Enabled\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"sendAllEvents\":\"true\",\"events\":[],\"payloadUrl\":\"https://a.b.com\",\"contentType\":\"application/json\",\"webhookKeyEnabled\":\"true\",\"enableSslVerification\":\"true\",\"deliveryStatus\":\"Failed\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  }
+}

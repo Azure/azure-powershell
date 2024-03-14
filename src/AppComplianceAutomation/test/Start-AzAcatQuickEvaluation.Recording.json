@@ -1,0 +1,1004 @@
+{
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$POST+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/onboard?api-version=2023-02-15-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/onboard?api-version=2023-02-15-preview",
+      "Content": "{\r\n  \"subscriptionIds\": [ \"f744fbde-a95f-437e-8fcf-38f9324e3d9c\" ]\r\n}",
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "69" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/70578a99-2dc9-48e2-bd57-bfa1e599a213*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1196" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:7ecf4129-cb5b-4aab-a086-b332c76641c8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "b5b3d634-34dc-496d-bf74-9bf9c28c02ad" ],
+        "x-ms-request-id": [ "48f4b443-74b5-4fbd-a4e1-ed6227c4c9bc" ],
+        "X-ms-Operation-Id": [ "e0301c328008bb1e2d5e811ce7ae1434" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-Azure-Ref": [ "0r/UGZAAAAACN19m6Cf06QqqLGIFrhzoJQk9NMDJFREdFMDgyMAAwYjg5MzVkOC1iNjY0LTQxNjUtYTkwZi1jM2NiYWJkZTdkYmI=" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/70578a99-2dc9-48e2-bd57-bfa1e599a213*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview" ],
+        "x-ms-correlation-request-id": [ "a05fe742-94f5-49db-809b-a2c0fb24bdcd" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T082832Z:a05fe742-94f5-49db-809b-a2c0fb24bdcd" ],
+        "Date": [ "Tue, 07 Mar 2023 08:28:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "60" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "{\"subscriptionIds\":[\"f744fbde-a95f-437e-8fcf-38f9324e3d9c\"]}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/70578a99-2dc9-48e2-bd57-bfa1e599a213*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/70578a99-2dc9-48e2-bd57-bfa1e599a213*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "6c210da7-4886-49fb-a50a-3d38fbffe312" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Invoke-AzAppComplianceAutomationOnboard" ],
+        "FullCommandName": [ "Invoke-AzAppComplianceAutomationOnboard_OnboardExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6a0830f5-0000-4d00-0000-6406f5b10000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11980" ],
+        "x-ms-request-id": [ "5211ec50-59a0-4531-ac18-6eb01bb1f811" ],
+        "x-ms-correlation-request-id": [ "0c5e0324-e28a-40f4-b82c-623e32cb6681" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T082903Z:0c5e0324-e28a-40f4-b82c-623e32cb6681" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:29:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "463" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/70578a99-2dc9-48e2-bd57-bfa1e599a213*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"70578a99-2dc9-48e2-bd57-bfa1e599a213*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-07T08:28:31.4340714Z\",\"endTime\":\"2023-03-07T08:28:33.7509916Z\",\"error\":{},\"properties\":null}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/70578a99-2dc9-48e2-bd57-bfa1e599a213*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/70578a99-2dc9-48e2-bd57-bfa1e599a213*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "6c210da7-4886-49fb-a50a-3d38fbffe312" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Invoke-AzAppComplianceAutomationOnboard" ],
+        "FullCommandName": [ "Invoke-AzAppComplianceAutomationOnboard_OnboardExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6a0830f5-0000-4d00-0000-6406f5b10000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11979" ],
+        "x-ms-request-id": [ "0ae69e2a-e33c-4c08-b1f6-9ca7ad89358d" ],
+        "x-ms-correlation-request-id": [ "de6d21a9-6a2f-4a3f-9a85-99a308e9cc5f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T082903Z:de6d21a9-6a2f-4a3f-9a85-99a308e9cc5f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:29:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "463" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/70578a99-2dc9-48e2-bd57-bfa1e599a213*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"70578a99-2dc9-48e2-bd57-bfa1e599a213*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-07T08:28:31.4340714Z\",\"endTime\":\"2023-03-07T08:28:33.7509916Z\",\"error\":{},\"properties\":null}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$POST+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/triggerEvaluation?api-version=2023-02-15-preview+4": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/triggerEvaluation?api-version=2023-02-15-preview",
+      "Content": "{\r\n  \"resourceIds\": [ \"/subscriptions/f744fbde-a95f-437e-8fcf-38f9324e3d9c/resourceGroups/github-action-deploy/providers/Microsoft.Storage/storageAccounts/storexahdnmg5xqlduarm\" ]\r\n}",
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "182" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1195" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:7ecf4129-cb5b-4aab-a086-b332c76641c8" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "dc5900ef-2691-4d66-b0af-bed4e63b0d22" ],
+        "x-ms-request-id": [ "20191f7b-95e4-4e07-a00f-4e3d45080c2a" ],
+        "X-ms-Operation-Id": [ "918a6f72a6e3af16ce8b6463c7a7562c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-Azure-Ref": [ "00PUGZAAAAAAsGZpoAuP6Sbd3bSzyg7pzQk9NMDJFREdFMDkxMwAwYjg5MzVkOC1iNjY0LTQxNjUtYTkwZi1jM2NiYWJkZTdkYmI=" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview" ],
+        "x-ms-correlation-request-id": [ "0ed0c2b5-07c8-44d0-b848-52445ef3fba4" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T082905Z:0ed0c2b5-07c8-44d0-b848-52445ef3fba4" ],
+        "Date": [ "Tue, 07 Mar 2023 08:29:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ]
+      },
+      "Content": "bnVsbA=="
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11978" ],
+        "x-ms-request-id": [ "865bf631-b39c-40f1-8b06-57f40853e890" ],
+        "x-ms-correlation-request-id": [ "1a10c8b3-23ef-42f6-8b43-7b93471db68e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T082935Z:1a10c8b3-23ef-42f6-8b43-7b93471db68e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:29:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11977" ],
+        "x-ms-request-id": [ "36aeaec0-17c1-40c7-8340-f5826d99cd42" ],
+        "x-ms-correlation-request-id": [ "f3690f11-5b9d-465b-83ce-627221ff1867" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083006Z:f3690f11-5b9d-465b-83ce-627221ff1867" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:30:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "37" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11976" ],
+        "x-ms-request-id": [ "faacbb35-14cf-4c9b-af03-fa85b7dd575b" ],
+        "x-ms-correlation-request-id": [ "e9c90441-61bf-4b24-a7ba-3784e2030768" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083036Z:e9c90441-61bf-4b24-a7ba-3784e2030768" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:30:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11975" ],
+        "x-ms-request-id": [ "db1f4eaa-3473-4342-b086-32138f7ca663" ],
+        "x-ms-correlation-request-id": [ "64585242-553a-4fc7-8b9e-635a85f4293b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083106Z:64585242-553a-4fc7-8b9e-635a85f4293b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:31:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11974" ],
+        "x-ms-request-id": [ "e9ed983e-b06f-4730-ad8c-1ae3f47067b7" ],
+        "x-ms-correlation-request-id": [ "fa6d69e5-4d12-4d00-bf19-821f1d20fdd5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083137Z:fa6d69e5-4d12-4d00-bf19-821f1d20fdd5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:31:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "40" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11973" ],
+        "x-ms-request-id": [ "29c73448-abff-42c3-b9c8-0ee01f7a1d77" ],
+        "x-ms-correlation-request-id": [ "e042c5ba-ec8b-4175-af6f-9d217dc7e258" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083208Z:e042c5ba-ec8b-4175-af6f-9d217dc7e258" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:32:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11972" ],
+        "x-ms-request-id": [ "32dddbeb-f9b0-438a-8203-2d15b5ad0d50" ],
+        "x-ms-correlation-request-id": [ "b0173d74-7f8d-45f6-b131-28a9104aabce" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083238Z:b0173d74-7f8d-45f6-b131-28a9104aabce" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:32:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11971" ],
+        "x-ms-request-id": [ "1d6a2104-5313-4993-bf18-fa7c3ed067cf" ],
+        "x-ms-correlation-request-id": [ "8b3049d7-4019-454e-a54d-4447911b72ce" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083308Z:8b3049d7-4019-454e-a54d-4447911b72ce" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:33:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "43" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11970" ],
+        "x-ms-request-id": [ "45be3a16-e944-4056-902e-4b9586d80aff" ],
+        "x-ms-correlation-request-id": [ "75cbf886-8ad5-4385-ab8c-13cffb26c57d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083339Z:75cbf886-8ad5-4385-ab8c-13cffb26c57d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:33:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+14": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "44" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11969" ],
+        "x-ms-request-id": [ "543ffcad-9879-4003-98a7-c4eaa501e3a8" ],
+        "x-ms-correlation-request-id": [ "dbfe533e-65a2-4def-bcb9-bb1462cf13cd" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083410Z:dbfe533e-65a2-4def-bcb9-bb1462cf13cd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:34:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+15": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "45" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11968" ],
+        "x-ms-request-id": [ "53110e54-9ea2-4009-81a3-753673d318de" ],
+        "x-ms-correlation-request-id": [ "08b10f70-f281-45a3-bbdb-49905c43e18d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083440Z:08b10f70-f281-45a3-bbdb-49905c43e18d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:34:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+16": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11967" ],
+        "x-ms-request-id": [ "afe40e11-f0a2-4200-a34b-3121e5b9b80e" ],
+        "x-ms-correlation-request-id": [ "91c4c75b-1eb9-4c33-8ed8-926fb40ee676" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083510Z:91c4c75b-1eb9-4c33-8ed8-926fb40ee676" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:35:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+17": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "47" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11966" ],
+        "x-ms-request-id": [ "4a1b077b-1e60-42b0-8697-1146aa5f0cb9" ],
+        "x-ms-correlation-request-id": [ "c2df252a-1d82-4791-8edb-bc9c51d9fb14" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083541Z:c2df252a-1d82-4791-8edb-bc9c51d9fb14" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:35:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+18": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "48" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11965" ],
+        "x-ms-request-id": [ "17f841b4-dc3b-4b3c-92a5-83a72cf37af2" ],
+        "x-ms-correlation-request-id": [ "e396f90a-1b29-42e1-9e8b-be28050d68b1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083611Z:e396f90a-1b29-42e1-9e8b-be28050d68b1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:36:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+19": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "49" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11964" ],
+        "x-ms-request-id": [ "0f91f37f-6800-4523-9c3f-84e2e2990640" ],
+        "x-ms-correlation-request-id": [ "e32c7f8e-24ad-4c3d-b1ae-9c5b1208876e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083642Z:e32c7f8e-24ad-4c3d-b1ae-9c5b1208876e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:36:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+20": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "50" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11963" ],
+        "x-ms-request-id": [ "2198dfd1-8e30-4005-bddc-185a21f57a50" ],
+        "x-ms-correlation-request-id": [ "b6c23167-81da-4451-9c56-24777cc15ba5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083713Z:b6c23167-81da-4451-9c56-24777cc15ba5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:37:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+21": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "51" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11962" ],
+        "x-ms-request-id": [ "7573d47a-5186-41dc-8c05-d061506a5c24" ],
+        "x-ms-correlation-request-id": [ "4cf755eb-c095-4488-b87c-eebbe582eab0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083743Z:4cf755eb-c095-4488-b87c-eebbe582eab0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:37:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+22": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "52" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11961" ],
+        "x-ms-request-id": [ "c45dc48e-d282-4b6f-8353-6f4549f5020b" ],
+        "x-ms-correlation-request-id": [ "c5c85de3-0047-4c2e-8869-938e5f48780d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083813Z:c5c85de3-0047-4c2e-8869-938e5f48780d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:38:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+23": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "53" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"6b08f13b-0000-4d00-0000-6406f5d20000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11960" ],
+        "x-ms-request-id": [ "db36a93f-3781-4fdb-a0f0-fef09de07903" ],
+        "x-ms-correlation-request-id": [ "60bef522-aadb-42ca-95bf-2a673b2fe972" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083844Z:60bef522-aadb-42ca-95bf-2a673b2fe972" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:38:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "402" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Running\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"error\":{}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+24": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"70089c12-0000-4d00-0000-6406f82b0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11959" ],
+        "x-ms-request-id": [ "c62fd67b-04b6-4519-88b4-f6efd183b423" ],
+        "x-ms-correlation-request-id": [ "3371ae7d-6937-4958-be15-e82114378879" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083915Z:3371ae7d-6937-4958-be15-e82114378879" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:39:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2039" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"endTime\":\"2023-03-07T08:39:07.6438937Z\",\"error\":{},\"properties\":{\"triggerTime\":\"2023-03-07T08:29:05.365Z\",\"resourceIds\":[\"/subscriptions/f744fbde-a95f-437e-8fcf-38f9324e3d9c/resourcegroups/github-action-deploy/providers/microsoft.storage/storageaccounts/storexahdnmg5xqlduarm\"],\"quickAssessments\":[{\"timestamp\":\"2023-03-07T08:30:34.4894156Z\",\"resourceId\":\"/subscriptions/f744fbde-a95f-437e-8fcf-38f9324e3d9c/resourcegroups/github-action-deploy/providers/microsoft.storage/storageaccounts/storexahdnmg5xqlduarm\",\"resourceStatus\":\"Unhealthy\",\"responsibilityId\":\"\",\"displayName\":\"Storage accounts should restrict network access using virtual network rules\",\"description\":\"\",\"remediationLink\":\"\"},{\"timestamp\":\"2023-03-07T08:30:34.4889984Z\",\"resourceId\":\"/subscriptions/f744fbde-a95f-437e-8fcf-38f9324e3d9c/resourcegroups/github-action-deploy/providers/microsoft.storage/storageaccounts/storexahdnmg5xqlduarm\",\"resourceStatus\":\"Healthy\",\"responsibilityId\":\"\",\"displayName\":\"Secure transfer to storage accounts should be enabled\",\"description\":\"\",\"remediationLink\":\"\"},{\"timestamp\":\"2023-03-07T08:30:34.4888328Z\",\"resourceId\":\"/subscriptions/f744fbde-a95f-437e-8fcf-38f9324e3d9c/resourcegroups/github-action-deploy/providers/microsoft.storage/storageaccounts/storexahdnmg5xqlduarm\",\"resourceStatus\":\"Unhealthy\",\"responsibilityId\":\"\",\"displayName\":\"Storage accounts should have the specified minimum TLS version\",\"description\":\"\",\"remediationLink\":\"1.Go to the storage account page, click Configuration under Settings category. \u003cbr\u003e  2.Select a TLS version \u0027Version 1.2\u0027 from the drop-down list. \u003cbr\u003e 3.Click \u0027Save\u0027 to make the change effectable.\"}]}}"
+    }
+  },
+  "Start-AzAcatQuickEvaluation+[NoContext]+TriggerExpanded+$GET+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview+25": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9?api-version=2023-02-15-preview",
+      "Content": null,
+      "Headers": {
+        "x-ms-aad-user-token": [ "[Filtered]" ],
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "55" ],
+        "x-ms-client-request-id": [ "aa18d0f0-b6b6-4976-b296-8e91f9c181ff" ],
+        "CommandName": [ "Az.AppComplianceAutomation.internal\\Start-AzAppComplianceAutomationEvaluation" ],
+        "FullCommandName": [ "Start-AzAppComplianceAutomationEvaluation_TriggerExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"70089c12-0000-4d00-0000-6406f82b0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11958" ],
+        "x-ms-request-id": [ "b95249a5-454e-4534-9e56-14d8d3d95958" ],
+        "x-ms-correlation-request-id": [ "47bfc74c-8715-4a09-bc3f-7d7315c5cfd9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T083915Z:47bfc74c-8715-4a09-bc3f-7d7315c5cfd9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 07 Mar 2023 08:39:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2039" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/locations/WESTUS3/operationStatuses/706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"name\":\"706d82b4-9bfd-4bb3-811b-096e78398194*0695451AAD461519B883EC5EB132DB4348D55DEDE2D9C17F3709E26D9E21EDB9\",\"resourceId\":\"/providers/\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-07T08:29:03.7604649Z\",\"endTime\":\"2023-03-07T08:39:07.6438937Z\",\"error\":{},\"properties\":{\"triggerTime\":\"2023-03-07T08:29:05.365Z\",\"resourceIds\":[\"/subscriptions/f744fbde-a95f-437e-8fcf-38f9324e3d9c/resourcegroups/github-action-deploy/providers/microsoft.storage/storageaccounts/storexahdnmg5xqlduarm\"],\"quickAssessments\":[{\"timestamp\":\"2023-03-07T08:30:34.4894156Z\",\"resourceId\":\"/subscriptions/f744fbde-a95f-437e-8fcf-38f9324e3d9c/resourcegroups/github-action-deploy/providers/microsoft.storage/storageaccounts/storexahdnmg5xqlduarm\",\"resourceStatus\":\"Unhealthy\",\"responsibilityId\":\"\",\"displayName\":\"Storage accounts should restrict network access using virtual network rules\",\"description\":\"\",\"remediationLink\":\"\"},{\"timestamp\":\"2023-03-07T08:30:34.4889984Z\",\"resourceId\":\"/subscriptions/f744fbde-a95f-437e-8fcf-38f9324e3d9c/resourcegroups/github-action-deploy/providers/microsoft.storage/storageaccounts/storexahdnmg5xqlduarm\",\"resourceStatus\":\"Healthy\",\"responsibilityId\":\"\",\"displayName\":\"Secure transfer to storage accounts should be enabled\",\"description\":\"\",\"remediationLink\":\"\"},{\"timestamp\":\"2023-03-07T08:30:34.4888328Z\",\"resourceId\":\"/subscriptions/f744fbde-a95f-437e-8fcf-38f9324e3d9c/resourcegroups/github-action-deploy/providers/microsoft.storage/storageaccounts/storexahdnmg5xqlduarm\",\"resourceStatus\":\"Unhealthy\",\"responsibilityId\":\"\",\"displayName\":\"Storage accounts should have the specified minimum TLS version\",\"description\":\"\",\"remediationLink\":\"1.Go to the storage account page, click Configuration under Settings category. \u003cbr\u003e  2.Select a TLS version \u0027Version 1.2\u0027 from the drop-down list. \u003cbr\u003e 3.Click \u0027Save\u0027 to make the change effectable.\"}]}}"
+    }
+  }
+}
