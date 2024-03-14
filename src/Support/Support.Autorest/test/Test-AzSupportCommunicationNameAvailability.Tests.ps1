@@ -15,8 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzSupportCommunicationNa
 }
 
 Describe 'Test-AzSupportCommunicationNameAvailability' {
-    It 'CheckExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckExpandedTrue' { 
+        $communicationResult = Test-AzSupportCommunicationNameAvailability -SubscriptionId $env.SubscriptionId -SupportTicketName $env.Name -Name $env.CommunicationNameForCheck -Type "Microsoft.Support/communications"
+        $communicationResult.NameAvailable | Should -Be $true
+    }
+
+    It 'CheckExpandedFalse' { 
+        $communicationResult = Test-AzSupportCommunicationNameAvailability -SubscriptionId $env.SubscriptionId -SupportTicketName $env.Name -Name $env.CommunicationName-Type "Microsoft.Support/communications"
+        $communicationResult.NameAvailable | Should -Be $false
     }
 
     It 'CheckViaJsonString' -skip {

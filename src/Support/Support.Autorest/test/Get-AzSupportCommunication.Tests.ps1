@@ -1,5 +1,6 @@
 if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportCommunication'))
 {
+  Write-Host "in Get-AzSupportCommunication env.HasSubscription: $(($env.HasSubscription -eq $true))"
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
@@ -17,20 +18,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSupportCommunication'))
 Describe 'Get-AzSupportCommunication' {
 
     It 'List' {
-        if($env.SupportPlanSubscription -eq "Basic support" || $env.SupportPlanSubscription -eq "Free"){
-            write-host "cannot get communication operations for tickets with free support plan"
-            
-            Mock Get-AzSupportCommunication{ New-MockObject -Type "Microsoft.Azure.PowerShell.Cmdlets.Support.Models.CommunicationDetails"}
-            
-            Get-AzSupportCommunication -SupportTicketName $env.Name
-            
-            Assert-MockCalled Get-AzSupportCommunication -Exactly 1 
-        }
-        else{
-            $supportMessage = Get-AzSupportCommunication -SupportTicketName $env.Name
-        
-            $supportMessage.Count | Should -BeGreaterThan 0
-        }
+        $supportMessage = Get-AzSupportCommunication -SupportTicketName $env.Name -SubscriptionId $env.SubscriptionId
+        $supportMessage.Count | Should -BeGreaterThan 0
     }
 
     It 'GetViaIdentitySupportTicket' -skip {
@@ -38,20 +27,8 @@ Describe 'Get-AzSupportCommunication' {
     }
 
     It 'Get' {
-        if($env.SupportPlanSubscription -eq "Basic support" || $env.SupportPlanSubscription -eq "Free"){
-            write-host "cannot get communication operations for tickets with free support plan"
-            
-            Mock Get-AzSupportCommunication{ New-MockObject -Type "Microsoft.Azure.PowerShell.Cmdlets.Support.Models.CommunicationDetails"}
-            
-            Get-AzSupportCommunication -SupportTicketName $env.Name -CommunicationName $env.CommunicationName
-            
-            Assert-MockCalled Get-AzSupportCommunication -Exactly 2 
-        }
-        else{
-            $supportMessage = Get-AzSupportCommunication -CommunicationName $env.CommunicationName -SupportTicketName $env.Name
-        
-            $supportMessage.Body.ToString() | Should -Match $env.Body
-        }
+        $supportMessage = Get-AzSupportCommunication -CommunicationName $env.CommunicationName -SupportTicketName $env.Name -SubscriptionId $env.SubscriptionId
+        $supportMessage.Body.ToString() | Should -Match $env.Body
     } 
 
     It 'GetViaIdentity' -skip {
