@@ -88,23 +88,6 @@ param(
     # Causes cmdlet to return only static policy definitions.
     ${Static},
 
-    # This switch is implemented and working, but confusing, since -Top is a misleading name. Due to backend implementation
-    # of $top, this parameter should actually be called -Pagesize. Addressing this issue is beyond the scope of the initial
-    # port to autorest: we will address this in the future and hide the parameter for now to avoid future backcompat complexity.
-    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='BuiltIn', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Static', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Top', Mandatory, ValueFromPipelineByPropertyName)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
-    [System.Int32]
-    # Maximum number of records to return.
-    # When -Top is not provided, this cmdlet will return 500 or fewer records.
-    [Parameter(DontShow)]
-    ${Top},
-
     [Parameter()]
     [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.

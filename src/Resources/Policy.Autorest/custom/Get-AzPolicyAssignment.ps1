@@ -75,21 +75,6 @@ param(
     # Get all policy assignments that target the given policy definition [fully qualified] ID.
     ${IncludeDescendent},
 
-    # This switch is implemented and working, but confusing, since -Top is a misleading name. Due to backend implementation
-    # of $top, this parameter should actually be called -Pagesize. Addressing this issue is beyond the scope of the initial
-    # port to autorest: we will address this in the future and hide the parameter for now to avoid future backcompat complexity.
-    [Parameter(ParameterSetName='Default', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Scope', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='PolicyDefinitionId', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='IncludeDescendent', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Top', Mandatory, ValueFromPipelineByPropertyName)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
-    [System.Int32]
-    # Maximum number of records to return.
-    # When -Top is not provided, this cmdlet will return 500 or fewer records.
-    [Parameter(DontShow)]
-    ${Top},
-
     [Parameter()]
     [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
@@ -105,45 +90,6 @@ param(
     # If $filter=atExactScope() is provided, the returned list only includes all policy assignments that at the given scope.
     # If $filter=policyDefinitionId eq '{value}' is provided, the returned list includes all policy assignments of the policy definition whose id is {value}.
     ${Filter},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The name of the resource group that contains policy assignments.
-    ${ResourceGroupName},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The parent resource path.
-    # Use empty string if there is none.
-    ${ParentResourcePath},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The name of the resource.
-    ${ResourceName},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The namespace of the resource provider.
-    # For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
-    ${ResourceProviderNamespace},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The resource type name.
-    # For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
-    ${ResourceType},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
@@ -228,10 +174,6 @@ process {
     }
 
     $calledParameters = $PSBoundParameters
-
-    # SubscriptionId is autorest-generated and mandatory so gets populated with default value.
-    # This customized cmdlet doesn't allow/use it, so we must remove it, otherwise the parameter set is broken.
-    $null = $calledParameters.Remove('SubscriptionId')
 
     if ($Name) {
         $calledParameterSet = 'Get'

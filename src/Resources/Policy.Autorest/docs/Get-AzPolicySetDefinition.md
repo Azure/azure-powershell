@@ -47,11 +47,6 @@ Get-AzPolicySetDefinition -SubscriptionId <String> [-Name <String>] [-BackwardCo
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Top
-```
-Get-AzPolicySetDefinition [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **Get-AzPolicySetDefinition** cmdlet gets a collection of policy set definitions or a specific policy set definition identified by name or ID.
 
