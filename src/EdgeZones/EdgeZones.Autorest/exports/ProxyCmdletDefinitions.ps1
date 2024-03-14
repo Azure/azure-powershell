@@ -15,9 +15,9 @@ Get an Azure Extended Zone for a subscription
 {{ Add code here }}
 
 .Inputs
-Sample.API.Models.IEdgeZonesIdentity
+Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IEdgeZonesIdentity
 .Outputs
-Sample.API.Models.IAzureExtendedZone
+Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IAzureExtendedZone
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -27,67 +27,67 @@ INPUTOBJECT <IEdgeZonesIdentity>: Identity Parameter
   [AzureExtendedZoneName <String>]: The name of the AzureExtendedZone
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
-https://learn.microsoft.com/powershell/module/edgezones/get-azureextendedzone
+https://learn.microsoft.com/powershell/module/edgezones/get-azextendedzone
 #>
-function Get-AzureExtendedZone {
-[OutputType([Sample.API.Models.IAzureExtendedZone])]
+function Get-AzExtendedZone {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IAzureExtendedZone])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Sample.API.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Path')]
     [System.String]
     # The name of the AzureExtendedZone
     ${AzureExtendedZoneName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
-    [Sample.API.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Path')]
     [System.String]
     # The ID of the target subscription.
     # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Sample.API.Category('Path')]
-    [Sample.API.Models.IEdgeZonesIdentity]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IEdgeZonesIdentity]
     # Identity Parameter
     ${InputObject},
 
     [Parameter(DontShow)]
-    [Sample.API.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Sample.API.Category('Runtime')]
-    [Sample.API.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Sample.API.Category('Runtime')]
-    [Sample.API.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter(DontShow)]
-    [Sample.API.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Sample.API.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
-    [Sample.API.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
@@ -102,112 +102,9 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $mapping = @{
-            Get = 'EdgeZones.private\Get-AzureExtendedZone_Get';
-            GetViaIdentity = 'EdgeZones.private\Get-AzureExtendedZone_GetViaIdentity';
-            List = 'EdgeZones.private\Get-AzureExtendedZone_List';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Sample.API.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        [Sample.API.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-List the operations for the provider
-.Description
-List the operations for the provider
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Outputs
-Sample.API.Models.IOperation
-.Link
-https://learn.microsoft.com/powershell/module/edgezones/get-operation
-#>
-function Get-Operation {
-[OutputType([Sample.API.Models.IOperation])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(DontShow)]
-    [Sample.API.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Sample.API.Category('Runtime')]
-    [Sample.API.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Sample.API.Category('Runtime')]
-    [Sample.API.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Sample.API.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Sample.API.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Sample.API.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            List = 'EdgeZones.private\Get-Operation_List';
+            Get = 'EdgeZones.private\Get-AzExtendedZone_Get';
+            GetViaIdentity = 'EdgeZones.private\Get-AzExtendedZone_GetViaIdentity';
+            List = 'EdgeZones.private\Get-AzExtendedZone_List';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Sample.API.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -253,9 +150,9 @@ Registers a subscription for an Azure Extended Zone
 {{ Add code here }}
 
 .Inputs
-Sample.API.Models.IEdgeZonesIdentity
+Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IEdgeZonesIdentity
 .Outputs
-Sample.API.Models.IAzureExtendedZone
+Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IAzureExtendedZone
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -265,66 +162,66 @@ INPUTOBJECT <IEdgeZonesIdentity>: Identity Parameter
   [AzureExtendedZoneName <String>]: The name of the AzureExtendedZone
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
-https://learn.microsoft.com/powershell/module/edgezones/register-azureextendedzone
+https://learn.microsoft.com/powershell/module/edgezones/register-azextendedzone
 #>
-function Register-AzureExtendedZone {
-[OutputType([Sample.API.Models.IAzureExtendedZone])]
+function Register-AzExtendedZone {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IAzureExtendedZone])]
 [CmdletBinding(DefaultParameterSetName='Register', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Register', Mandatory)]
-    [Sample.API.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Path')]
     [System.String]
     # The name of the AzureExtendedZone
     ${AzureExtendedZoneName},
 
     [Parameter(ParameterSetName='Register', Mandatory)]
-    [Sample.API.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Path')]
     [System.String]
     # The ID of the target subscription.
     # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='RegisterViaIdentity', Mandatory, ValueFromPipeline)]
-    [Sample.API.Category('Path')]
-    [Sample.API.Models.IEdgeZonesIdentity]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IEdgeZonesIdentity]
     # Identity Parameter
     ${InputObject},
 
     [Parameter(DontShow)]
-    [Sample.API.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Sample.API.Category('Runtime')]
-    [Sample.API.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Sample.API.Category('Runtime')]
-    [Sample.API.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter(DontShow)]
-    [Sample.API.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Sample.API.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
-    [Sample.API.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
@@ -339,8 +236,8 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $mapping = @{
-            Register = 'EdgeZones.private\Register-AzureExtendedZone_Register';
-            RegisterViaIdentity = 'EdgeZones.private\Register-AzureExtendedZone_RegisterViaIdentity';
+            Register = 'EdgeZones.private\Register-AzExtendedZone_Register';
+            RegisterViaIdentity = 'EdgeZones.private\Register-AzExtendedZone_RegisterViaIdentity';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Sample.API.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -386,9 +283,9 @@ Unregisters a subscription for an Azure Extended Zone
 {{ Add code here }}
 
 .Inputs
-Sample.API.Models.IEdgeZonesIdentity
+Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IEdgeZonesIdentity
 .Outputs
-Sample.API.Models.IAzureExtendedZone
+Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IAzureExtendedZone
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -398,66 +295,66 @@ INPUTOBJECT <IEdgeZonesIdentity>: Identity Parameter
   [AzureExtendedZoneName <String>]: The name of the AzureExtendedZone
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
-https://learn.microsoft.com/powershell/module/edgezones/unregister-azureextendedzone
+https://learn.microsoft.com/powershell/module/edgezones/unregister-azextendedzone
 #>
-function Unregister-AzureExtendedZone {
-[OutputType([Sample.API.Models.IAzureExtendedZone])]
+function Unregister-AzExtendedZone {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IAzureExtendedZone])]
 [CmdletBinding(DefaultParameterSetName='Unregister', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Unregister', Mandatory)]
-    [Sample.API.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Path')]
     [System.String]
     # The name of the AzureExtendedZone
     ${AzureExtendedZoneName},
 
     [Parameter(ParameterSetName='Unregister', Mandatory)]
-    [Sample.API.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Path')]
     [System.String]
     # The ID of the target subscription.
     # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UnregisterViaIdentity', Mandatory, ValueFromPipeline)]
-    [Sample.API.Category('Path')]
-    [Sample.API.Models.IEdgeZonesIdentity]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IEdgeZonesIdentity]
     # Identity Parameter
     ${InputObject},
 
     [Parameter(DontShow)]
-    [Sample.API.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Sample.API.Category('Runtime')]
-    [Sample.API.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Sample.API.Category('Runtime')]
-    [Sample.API.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter(DontShow)]
-    [Sample.API.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Sample.API.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
-    [Sample.API.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
@@ -472,8 +369,8 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         $mapping = @{
-            Unregister = 'EdgeZones.private\Unregister-AzureExtendedZone_Unregister';
-            UnregisterViaIdentity = 'EdgeZones.private\Unregister-AzureExtendedZone_UnregisterViaIdentity';
+            Unregister = 'EdgeZones.private\Unregister-AzExtendedZone_Unregister';
+            UnregisterViaIdentity = 'EdgeZones.private\Unregister-AzExtendedZone_UnregisterViaIdentity';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Sample.API.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

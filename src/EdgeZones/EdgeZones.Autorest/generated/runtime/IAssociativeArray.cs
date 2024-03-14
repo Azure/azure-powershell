@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 #define NO_DICT_PROPERTIES
-namespace Sample.API.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime
 {
     /// <summary>A subset of IDictionary that doesn't implement IEnumerable or IDictionary to work around PowerShell's aggressive formatter</summary>
     public interface IAssociativeArray<T>

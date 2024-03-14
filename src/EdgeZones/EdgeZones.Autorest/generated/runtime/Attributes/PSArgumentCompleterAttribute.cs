@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace Sample.API
+namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone
 {
     public class PSArgumentCompleterAttribute : ArgumentCompleterAttribute
     {

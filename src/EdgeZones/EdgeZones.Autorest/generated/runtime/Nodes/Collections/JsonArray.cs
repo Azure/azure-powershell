@@ -6,7 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Sample.API.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Json
 {
     public abstract partial class JsonArray : JsonNode, IEnumerable<JsonNode>
     {

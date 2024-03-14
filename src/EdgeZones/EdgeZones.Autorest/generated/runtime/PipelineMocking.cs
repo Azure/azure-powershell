@@ -3,14 +3,14 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-namespace Sample.API.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime
 {
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Linq;
     using System.Net;
-    using Sample.API.Runtime.Json;
+    using Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Json;
 
     public enum MockMode
     {
@@ -30,7 +30,7 @@ namespace Sample.API.Runtime
         private readonly string recordingPath;
         private int counter = 0;
 
-        public static implicit operator Sample.API.Runtime.SendAsyncStep(PipelineMock instance) => instance.SendAsync;
+        public static implicit operator Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.SendAsyncStep(PipelineMock instance) => instance.SendAsync;
 
         public MockMode Mode { get; set; } = MockMode.Live;
         public PipelineMock(string recordingPath)

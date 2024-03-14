@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 ﻿using System;
 
-namespace Sample.API.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Json
 {
     public sealed class UriConverter : JsonConverter<Uri>
     {

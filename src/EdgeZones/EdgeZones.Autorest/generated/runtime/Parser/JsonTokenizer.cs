@@ -5,7 +5,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Sample.API.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Json
 {
     using System.IO;
     

@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-namespace Sample.API.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime
 {
 
     using System;
@@ -14,11 +14,11 @@ namespace Sample.API.Runtime
     using System.Threading;
     using System.Threading.Tasks;
     using GetEventData = System.Func<EventData>;
-    using static Sample.API.Runtime.Extensions;
+    using static Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Extensions;
 
     public interface IValidates
     {
-        Task Validate(Sample.API.Runtime.IEventListener listener);
+        Task Validate(Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.IEventListener listener);
     }
 
     /// <summary>
@@ -69,21 +69,21 @@ namespace Sample.API.Runtime
         {
             if (value == null)
             {
-                await instance.Signal(Sample.API.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Sample.API.Runtime.Events.ValidationWarning, Message = $"'{parameterName}' should not be null", Parameter = parameterName, Cancel = instance.Cancel });
+                await instance.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, Message = $"'{parameterName}' should not be null", Parameter = parameterName, Cancel = instance.Cancel });
             }
         }
         public static async Task AssertMinimumLength(this IEventListener instance, string parameterName, string value, int length)
         {
             if (value != null && value.Length < length)
             {
-                await instance.Signal(Sample.API.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Sample.API.Runtime.Events.ValidationWarning, Message = $"Length of '{parameterName}' is less than {length}", Parameter = parameterName, Cancel = instance.Cancel });
+                await instance.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, Message = $"Length of '{parameterName}' is less than {length}", Parameter = parameterName, Cancel = instance.Cancel });
             }
         }
         public static async Task AssertMaximumLength(this IEventListener instance, string parameterName, string value, int length)
         {
             if (value != null && value.Length > length)
             {
-                await instance.Signal(Sample.API.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Sample.API.Runtime.Events.ValidationWarning, Message = $"Length of '{parameterName}' is greater than {length}", Parameter = parameterName, Cancel = instance.Cancel });
+                await instance.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, Message = $"Length of '{parameterName}' is greater than {length}", Parameter = parameterName, Cancel = instance.Cancel });
             }
         }
 
@@ -91,54 +91,54 @@ namespace Sample.API.Runtime
         {
             if (value != null && !System.Text.RegularExpressions.Regex.Match(value, regularExpression).Success)
             {
-                await instance.Signal(Sample.API.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Sample.API.Runtime.Events.ValidationWarning, Message = $"'{parameterName}' does not validate against pattern /{regularExpression}/", Parameter = parameterName, Cancel = instance.Cancel });
+                await instance.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, Message = $"'{parameterName}' does not validate against pattern /{regularExpression}/", Parameter = parameterName, Cancel = instance.Cancel });
             }
         }
         public static async Task AssertEnum(this IEventListener instance, string parameterName, string value, params string[] values)
         {
             if (!values.Any(each => each.Equals(value)))
             {
-                await instance.Signal(Sample.API.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Sample.API.Runtime.Events.ValidationWarning, Message = $"'{parameterName}' is not one of ({values.Aggregate((c, e) => $"'{e}',{c}")}", Parameter = parameterName, Cancel = instance.Cancel });
+                await instance.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, Message = $"'{parameterName}' is not one of ({values.Aggregate((c, e) => $"'{e}',{c}")}", Parameter = parameterName, Cancel = instance.Cancel });
             }
         }
         public static async Task AssertObjectIsValid(this IEventListener instance, string parameterName, object inst)
         {
-            await (inst as Sample.API.Runtime.IValidates)?.Validate(instance);
+            await (inst as Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.IValidates)?.Validate(instance);
         }
 
         public static async Task AssertIsLessThan<T>(this IEventListener instance, string parameterName, T? value, T max) where T : struct, System.IComparable<T>
         {
             if (null != value && ((T)value).CompareTo(max) >= 0)
             {
-                await instance.Signal(Sample.API.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Sample.API.Runtime.Events.ValidationWarning, Message = $"Value of '{parameterName}' must be less than {max} (value is {value})", Parameter = parameterName, Cancel = instance.Cancel });
+                await instance.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, Message = $"Value of '{parameterName}' must be less than {max} (value is {value})", Parameter = parameterName, Cancel = instance.Cancel });
             }
         }
         public static async Task AssertIsGreaterThan<T>(this IEventListener instance, string parameterName, T? value, T max) where T : struct, System.IComparable<T>
         {
             if (null != value && ((T)value).CompareTo(max) <= 0)
             {
-                await instance.Signal(Sample.API.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Sample.API.Runtime.Events.ValidationWarning, Message = $"Value of '{parameterName}' must be greater than {max} (value is {value})", Parameter = parameterName, Cancel = instance.Cancel });
+                await instance.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, Message = $"Value of '{parameterName}' must be greater than {max} (value is {value})", Parameter = parameterName, Cancel = instance.Cancel });
             }
         }
         public static async Task AssertIsLessThanOrEqual<T>(this IEventListener instance, string parameterName, T? value, T max) where T : struct, System.IComparable<T>
         {
             if (null != value && ((T)value).CompareTo(max) > 0)
             {
-                await instance.Signal(Sample.API.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Sample.API.Runtime.Events.ValidationWarning, Message = $"Value of '{parameterName}' must be less than or equal to {max} (value is {value})", Parameter = parameterName, Cancel = instance.Cancel });
+                await instance.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, Message = $"Value of '{parameterName}' must be less than or equal to {max} (value is {value})", Parameter = parameterName, Cancel = instance.Cancel });
             }
         }
         public static async Task AssertIsGreaterThanOrEqual<T>(this IEventListener instance, string parameterName, T? value, T max) where T : struct, System.IComparable<T>
         {
             if (null != value && ((T)value).CompareTo(max) < 0)
             {
-                await instance.Signal(Sample.API.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Sample.API.Runtime.Events.ValidationWarning, Message = $"Value of '{parameterName}' must be greater than or equal to {max} (value is {value})", Parameter = parameterName, Cancel = instance.Cancel });
+                await instance.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, Message = $"Value of '{parameterName}' must be greater than or equal to {max} (value is {value})", Parameter = parameterName, Cancel = instance.Cancel });
             }
         }
         public static async Task AssertIsMultipleOf(this IEventListener instance, string parameterName, Int64? value, Int64 multiple)
         {
             if (null != value && value % multiple != 0)
             {
-                await instance.Signal(Sample.API.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Sample.API.Runtime.Events.ValidationWarning, Message = $"Value of '{parameterName}' must be multiple of {multiple} (value is {value})", Parameter = parameterName, Cancel = instance.Cancel });
+                await instance.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, Message = $"Value of '{parameterName}' must be multiple of {multiple} (value is {value})", Parameter = parameterName, Cancel = instance.Cancel });
             }
         }
         public static async Task AssertIsMultipleOf(this IEventListener instance, string parameterName, double? value, double multiple)
@@ -148,7 +148,7 @@ namespace Sample.API.Runtime
                 var i = (Int64)(value / multiple);
                 if (i != value / multiple)
                 {
-                    await instance.Signal(Sample.API.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Sample.API.Runtime.Events.ValidationWarning, Message = $"Value of '{parameterName}' must be multiple of {multiple} (value is {value})", Parameter = parameterName, Cancel = instance.Cancel });
+                    await instance.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, Message = $"Value of '{parameterName}' must be multiple of {multiple} (value is {value})", Parameter = parameterName, Cancel = instance.Cancel });
                 }
             }
         }
@@ -159,7 +159,7 @@ namespace Sample.API.Runtime
                 var i = (Int64)(value / multiple);
                 if (i != value / multiple)
                 {
-                    await instance.Signal(Sample.API.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Sample.API.Runtime.Events.ValidationWarning, Message = $"Value of '{parameterName}' must be multiple of {multiple} (value is {value})", Parameter = parameterName, Cancel = instance.Cancel });
+                    await instance.Signal(Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, instance.Token, () => new EventData { Id = Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Events.ValidationWarning, Message = $"Value of '{parameterName}' must be multiple of {multiple} (value is {value})", Parameter = parameterName, Cancel = instance.Cancel });
                 }
             }
         }

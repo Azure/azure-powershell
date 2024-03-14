@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: EdgeZones
-online version: https://learn.microsoft.com/powershell/module/edgezones/register-azureextendedzone
+online version: https://learn.microsoft.com/powershell/module/edgezones/register-azextendedzone
 schema: 2.0.0
 ---
 
-# Register-AzureExtendedZone
+# Register-AzExtendedZone
 
 ## SYNOPSIS
 Registers a subscription for an Azure Extended Zone
@@ -14,13 +14,13 @@ Registers a subscription for an Azure Extended Zone
 
 ### Register (Default)
 ```
-Register-AzureExtendedZone -AzureExtendedZoneName <String> -SubscriptionId <String> [-Confirm] [-WhatIf]
+Register-AzExtendedZone -AzureExtendedZoneName <String> -SubscriptionId <String> [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### RegisterViaIdentity
 ```
-Register-AzureExtendedZone -InputObject <IEdgeZonesIdentity> [-Confirm] [-WhatIf] [<CommonParameters>]
+Register-AzExtendedZone -InputObject <IEdgeZonesIdentity> [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,19 +28,27 @@ Registers a subscription for an Azure Extended Zone
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
 
+{{ Add description here }}
 
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
 
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -63,7 +71,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: Sample.API.Models.IEdgeZonesIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IEdgeZonesIdentity
 Parameter Sets: RegisterViaIdentity
 Aliases:
 
@@ -126,11 +134,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Sample.API.Models.IEdgeZonesIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IEdgeZonesIdentity
 
 ## OUTPUTS
 
-### Sample.API.Models.IAzureExtendedZone
+### Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IAzureExtendedZone
 
 ## NOTES
 

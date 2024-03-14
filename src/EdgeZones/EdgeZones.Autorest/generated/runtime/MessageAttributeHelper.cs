@@ -11,9 +11,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-namespace Sample.API.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime
 {
-    using Sample.API.generated.runtime.Properties;
+    using Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.generated.runtime.Properties;
     using System;
     using System.Collections.Generic;
     using System.Linq;

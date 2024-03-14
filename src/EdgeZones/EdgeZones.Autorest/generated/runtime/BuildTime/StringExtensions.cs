@@ -5,7 +5,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Sample.API.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.PowerShell
 {
     internal static class StringExtensions
     {

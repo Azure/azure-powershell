@@ -6,7 +6,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Sample.API.Runtime.Cmdlets
+namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Cmdlets
 {
     public abstract class InputHandler
     {
@@ -17,6 +17,6 @@ namespace Sample.API.Runtime.Cmdlets
             this.NextHandler = nextHandler;
         }
 
-        public abstract void Process(Sample.API.Runtime.IContext context);
+        public abstract void Process(Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.IContext context);
     }
 }

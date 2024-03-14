@@ -2,9 +2,9 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-namespace Sample.API.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime
 {
-    using Sample.API.generated.runtime.Properties;
+    using Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.generated.runtime.Properties;
     using System;
     using System.Collections.Generic;
     using System.Globalization;

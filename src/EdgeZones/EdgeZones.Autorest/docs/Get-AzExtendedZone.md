@@ -1,46 +1,58 @@
 ---
 external help file:
 Module Name: EdgeZones
-online version: https://learn.microsoft.com/powershell/module/edgezones/unregister-azureextendedzone
+online version: https://learn.microsoft.com/powershell/module/edgezones/get-azextendedzone
 schema: 2.0.0
 ---
 
-# Unregister-AzureExtendedZone
+# Get-AzExtendedZone
 
 ## SYNOPSIS
-Unregisters a subscription for an Azure Extended Zone
+Get an Azure Extended Zone for a subscription
 
 ## SYNTAX
 
-### Unregister (Default)
+### List (Default)
 ```
-Unregister-AzureExtendedZone -AzureExtendedZoneName <String> -SubscriptionId <String> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzExtendedZone -SubscriptionId <String> [<CommonParameters>]
 ```
 
-### UnregisterViaIdentity
+### Get
 ```
-Unregister-AzureExtendedZone -InputObject <IEdgeZonesIdentity> [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzExtendedZone -AzureExtendedZoneName <String> -SubscriptionId <String> [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzExtendedZone -InputObject <IEdgeZonesIdentity> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Unregisters a subscription for an Azure Extended Zone
+Get an Azure Extended Zone for a subscription
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
 
+{{ Add description here }}
 
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
 {{ Add code here }}
 ```
 
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
 
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -49,7 +61,7 @@ The name of the AzureExtendedZone
 
 ```yaml
 Type: System.String
-Parameter Sets: Unregister
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -63,8 +75,8 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: Sample.API.Models.IEdgeZonesIdentity
-Parameter Sets: UnregisterViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IEdgeZonesIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -80,41 +92,10 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Unregister
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -126,11 +107,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Sample.API.Models.IEdgeZonesIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IEdgeZonesIdentity
 
 ## OUTPUTS
 
-### Sample.API.Models.IAzureExtendedZone
+### Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Models.IAzureExtendedZone
 
 ## NOTES
 

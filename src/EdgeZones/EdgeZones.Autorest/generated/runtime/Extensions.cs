@@ -2,7 +2,7 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-namespace Sample.API.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime
 {
     using System.Linq;
     using System;
@@ -35,7 +35,7 @@ namespace Sample.API.Runtime
         internal static void AddIf<T>(T value, System.Action<T> addMethod)
         {
             // if value is present (and it's not just an empty JSON Object)
-            if (null != value && (value as Sample.API.Runtime.Json.JsonObject)?.Keys.Count != 0)
+            if (null != value && (value as Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Json.JsonObject)?.Keys.Count != 0)
             {
                 addMethod(value);
             }
@@ -44,7 +44,7 @@ namespace Sample.API.Runtime
         internal static void AddIf<T>(T value, string serializedName, System.Action<string, T> addMethod)
         {
             // if value is present (and it's not just an empty JSON Object)
-            if (null != value && (value as Sample.API.Runtime.Json.JsonObject)?.Keys.Count != 0)
+            if (null != value && (value as Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Json.JsonObject)?.Keys.Count != 0)
             {
                 addMethod(serializedName, value);
             }

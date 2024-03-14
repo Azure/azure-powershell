@@ -5,9 +5,9 @@
 ﻿using System;
 using System.Linq;
 using System.Management.Automation;
-using static Sample.API.Runtime.PowerShell.MarkdownRenderer;
+using static Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.PowerShell.MarkdownRenderer;
 
-namespace Sample.API.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.PowerShell
 {
   [Cmdlet(VerbsData.Export, "HelpMarkdown")]
   [DoNotExport]

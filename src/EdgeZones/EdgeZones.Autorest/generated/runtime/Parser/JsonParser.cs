@@ -6,7 +6,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Sample.API.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Json
 {
     public class JsonParser : IDisposable
     {

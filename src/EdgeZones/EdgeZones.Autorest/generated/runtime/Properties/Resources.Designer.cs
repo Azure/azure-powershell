@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sample.API.generated.runtime.Properties
+namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.generated.runtime.Properties
 {
     using System;
 
@@ -4576,7 +4576,7 @@ namespace Sample.API.generated.runtime.Properties
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to &quot;An exception occurred when calling the ServiceManagement API. HTTP Status Code: {0}. Service Management Error Code: {1}. Message: {2}. Operation Tracking ID: {3}.&quot;.
+        ///   Looks up a localized string similar to &quot;An exception occurred when calling the ServiceManagement Cmdlets. HTTP Status Code: {0}. Service Management Error Code: {1}. Message: {2}. Operation Tracking ID: {3}.&quot;.
         /// </summary>
         public static string ServiceManagementClientExceptionStringFormat
         {
