@@ -16,10 +16,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Support.Common;
 using Microsoft.Azure.Commands.Support.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Support.SupportTickets
 {
+    [CmdletDeprecationWithVersion("12.0.0", "2.0.0")]
     [Cmdlet(VerbsCommon.New, AzureRMConstants.AzureRMPrefix + "SupportContactProfileObject", SupportsShouldProcess = true), 
       OutputType(typeof(PSContactProfile))]
     public class NewAzSupportContactProfileObject : AzSupportCmdletBase
